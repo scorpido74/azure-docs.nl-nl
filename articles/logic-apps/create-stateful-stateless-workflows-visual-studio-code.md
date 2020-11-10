@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: deli, rohitha, vikanand, hongzili, sopai, absaafan, logicappspm
 ms.topic: conceptual
-ms.date: 10/16/2020
-ms.openlocfilehash: 51fd8b8427dd8214e22fa59e50b26bb9db237946
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 11/09/2020
+ms.openlocfilehash: 749807349fd83f9639461fd4ddd9ab771d108119
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322050"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410552"
 ---
 # <a name="create-stateful-or-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Stateful of stateless werkstromen maken in Visual Studio code met de Azure Logic Apps-extensie (preview)
 
@@ -109,8 +109,6 @@ Deze mogelijkheden zijn niet beschikbaar of worden niet ondersteund voor deze op
   Met uitzonde ring van de eerder opgegeven triggers kunnen *stateful* werk stromen zowel triggers als acties voor [beheerde connectors](../connectors/apis-list.md#managed-api-connectors)gebruiken, die in Azure worden geïmplementeerd en ingebouwde triggers en acties die systeem eigen met de Logic apps runtime uitvoeren. *Stateless* werk stromen ondersteunen momenteel echter alleen *acties* voor beheerde connectors, niet voor triggers. Hoewel u connectors in azure kunt inschakelen voor uw stateless werk stroom, worden in de ontwerp functie geen beheerde connector triggers weer gegeven die u moet selecteren.
 
 * U kunt het resource type nieuwe **logische app (preview-versie)** alleen implementeren op een [Premium-of app service hosting plan in azure](#publish-azure) of op een [docker-container](#deploy-docker), en niet de [integratie service omgevingen (ISEs)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md). **Verbruiks** hosting plannen worden niet ondersteund of zijn niet beschikbaar voor de implementatie van dit resource type.
-
-* In de Azure Portal kunt u geen nieuwe logische apps maken met het resource type van de nieuwe **logische app (preview-versie)** . U kunt deze Logic apps alleen maken in Visual Studio code. Nadat u logische apps hebt geïmplementeerd met dit resource type van Visual Studio code naar Azure, kunt u echter [nieuwe werk stromen toevoegen aan die Logic apps](#add-workflows).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -774,12 +772,7 @@ In Visual Studio code kunt u alle geïmplementeerde Logic apps in uw Azure-abonn
 
 ## <a name="find-and-manage-deployed-logic-apps-in-the-portal"></a>Geïmplementeerde logische apps zoeken en beheren in de portal
 
-In de Azure Portal kunt u alle geïmplementeerde Logic apps bekijken die zich in uw Azure-abonnement bevinden, ongeacht of ze het oorspronkelijke **Logic apps** bron type of het bron type van de **logische app (preview-versie)** zijn. Op dit moment wordt elk resource type geordend en beheerd als afzonderlijke categorieën in Azure.
-
-> [!NOTE]
-> Voor de open bare preview kunt u alleen geïmplementeerde resources voor **logische apps (preview)** in de Azure portal weer geven en geen nieuwe **logische app-resources (preview)** maken. U kunt deze Logic apps alleen maken in Visual Studio code. U kunt echter [werk stromen toevoegen](#add-workflows) aan geïmplementeerde Logic apps met dit resource type.
-
-Voer de volgende stappen uit om logische apps te vinden die het resource type **logische app (preview)** hebben:
+In de Azure Portal kunt u alle geïmplementeerde Logic apps bekijken die zich in uw Azure-abonnement bevinden, ongeacht of ze het oorspronkelijke **Logic apps** bron type of het bron type van de **logische app (preview-versie)** zijn. Op dit moment wordt elk resource type geordend en beheerd als afzonderlijke categorieën in Azure. Voer de volgende stappen uit om logische apps te vinden die het resource type **logische app (preview)** hebben:
 
 1. Voer in het zoekvak van Azure Portal in `logic app preview` . Wanneer de lijst met resultaten wordt weer gegeven, selecteert u onder **Services** de optie **logische app (preview)**.
 

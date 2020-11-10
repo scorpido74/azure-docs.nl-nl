@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: terrylan
-ms.openlocfilehash: a02b2157209b5f47ac7ffbde4e15f3e7df1c258b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 278812754c636d434bf579c0408832f1e99d3445
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462527"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408070"
 ---
 # <a name="best-practices-for-securing-paas-databases-in-azure"></a>Aanbevolen procedures voor het beveiligen van PaaS-data bases in azure
 
@@ -40,7 +40,7 @@ Azure SQL Database kunnen worden geconfigureerd voor het gebruik van een van de 
 
 - **Azure Active Directory-verificatie** maakt gebruik van identiteiten die worden beheerd door Azure Active Directory en wordt ondersteund voor beheerde en geïntegreerde domeinen. Als u Azure Active Directory-verificatie wilt gebruiken, moet u een andere server beheerder maken met de naam ' Azure AD-beheerder ', waarmee Azure AD-gebruikers en-groepen kunnen worden beheerd. Deze beheerder kan ook alle bewerkingen uitvoeren die reguliere serverbeheerders kunnen uitvoeren.
 
-[Azure Active Directory-verificatie](../../active-directory/develop/authentication-scenarios.md) is een mechanisme om verbinding te maken met Azure SQL database en Azure Synapse Analytics met behulp van identiteiten in azure Active Directory (AD). Azure AD biedt een alternatief voor SQL Server verificatie, zodat u de verspreiding van gebruikers identiteiten op database servers kunt stoppen. Met Azure AD-verificatie kunt u de identiteiten van database gebruikers en andere micro soft-services centraal beheren op één centrale locatie. Centraal identiteitsbeheer biedt één plek voor het beheren van databasegebruikers en vereenvoudigt het machtigingenbeheer.  
+[Azure Active Directory-verificatie](../../active-directory/develop/authentication-vs-authorization.md) is een mechanisme om verbinding te maken met Azure SQL database en Azure Synapse Analytics met behulp van identiteiten in azure Active Directory (AD). Azure AD biedt een alternatief voor SQL Server verificatie, zodat u de verspreiding van gebruikers identiteiten op database servers kunt stoppen. Met Azure AD-verificatie kunt u de identiteiten van database gebruikers en andere micro soft-services centraal beheren op één centrale locatie. Centraal identiteitsbeheer biedt één plek voor het beheren van databasegebruikers en vereenvoudigt het machtigingenbeheer.  
 
 ### <a name="benefits-of-using-azure-ad-instead-of-sql-authentication"></a>Voor delen van het gebruik van Azure AD in plaats van SQL-verificatie
 
@@ -50,7 +50,7 @@ Azure SQL Database kunnen worden geconfigureerd voor het gebruik van een van de 
 - Gebruikt Inge sloten database gebruikers voor het verifiëren van identiteiten op database niveau.
 - Biedt ondersteuning voor verificatie op basis van tokens voor toepassingen die verbinding maken met SQL Database.
 - Ondersteunt domein Federatie met Active Directory Federation Services (ADFS) of systeem eigen gebruikers-en wachtwoord verificatie voor een lokale Azure AD zonder domein synchronisatie.
-- Ondersteunt verbindingen van SQL Server Management Studio die gebruikmaken van Active Directory universele verificatie, waaronder [multi-factor Authentication (MFA)](/azure/active-directory/authentication/multi-factor-authentication). MFA omvat robuuste verificatie met een scala aan gebruikersvriendelijke verificatieopties, waaronder telefoonoproepen, sms-berichten, smartcards met pincode of melding in mobiele app. Zie voor meer informatie [universele verificatie met SQL database en Azure Synapse Analytics](../../azure-sql/database/authentication-mfa-ssms-overview.md).
+- Ondersteunt verbindingen van SQL Server Management Studio die gebruikmaken van Active Directory universele verificatie, waaronder [multi-factor Authentication (MFA)](../../active-directory/authentication/concept-mfa-howitworks.md). MFA omvat robuuste verificatie met een scala aan gebruikersvriendelijke verificatieopties, waaronder telefoonoproepen, sms-berichten, smartcards met pincode of melding in mobiele app. Zie voor meer informatie [universele verificatie met SQL database en Azure Synapse Analytics](../../azure-sql/database/authentication-mfa-ssms-overview.md).
 
 Zie voor meer informatie over Azure AD-verificatie:
 

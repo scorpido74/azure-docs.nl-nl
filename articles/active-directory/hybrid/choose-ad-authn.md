@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: d5de8da548c2e141eb921aa4f95e82f7199ae1f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e8310d5941916ed3e4a9d7c66af96779be8f939
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90602367"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410273"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Kies de juiste verificatie methode voor uw Azure Active Directory hybride identiteits oplossing
 
@@ -179,7 +179,7 @@ In de volgende diagrammen vindt u een overzicht van de architectuur onderdelen o
 |Wat zijn de vereisten voor on-premises Internet en netwerken buiten het inrichtings systeem?|Geen|[Uitgaande internet toegang](../../active-directory/hybrid/how-to-connect-pta-quick-start.md) vanaf de servers met verificatie agenten|[Inkomende Internet toegang](/windows-server/identity/ad-fs/overview/ad-fs-requirements) tot WAP-servers in het perimeter netwerk<br><br>Inkomende netwerk toegang tot AD FS servers van WAP-servers in de perimeter<br><br>Taakverdeling voor netwerken|
 |Is er een vereiste voor TLS/SSL-certificaat?|Nee|Nee|Ja|
 |Is er een oplossing voor status controle?|Niet vereist|Agent status die is verschaft door [Azure Active Directory-beheer centrum](../../active-directory/hybrid/tshoot-connect-pass-through-authentication.md)|[Azure AD Connect Health (Engelstalig)](../../active-directory/hybrid/how-to-connect-health-adfs.md)|
-|Krijgen gebruikers eenmalige aanmelding voor cloud resources van apparaten die lid zijn van een domein in het bedrijfs netwerk?|Ja, met [naadloze SSO](../../active-directory/hybrid/how-to-connect-sso.md)|Ja, met [naadloze SSO](../../active-directory/hybrid/how-to-connect-sso.md)|Ja|
+|Krijgen gebruikers eenmalige aanmelding voor cloud resources van apparaten die lid zijn van een domein in het bedrijfs netwerk?|Ja, met [naadloze SSO](../../active-directory/hybrid/how-to-connect-sso.md)|Ja, met [naadloze SSO](../../active-directory/hybrid/how-to-connect-sso.md)|Yes|
 |Welke typen aanmelding worden ondersteund?|UserPrincipalName + wacht woord<br><br>Verificatie Windows-Integrated met [naadloze SSO](../../active-directory/hybrid/how-to-connect-sso.md)<br><br>[Alternatieve aanmeldings-ID](../../active-directory/hybrid/how-to-connect-install-custom.md)|UserPrincipalName + wacht woord<br><br>Verificatie Windows-Integrated met [naadloze SSO](../../active-directory/hybrid/how-to-connect-sso.md)<br><br>[Alternatieve aanmeldings-ID](../../active-directory/hybrid/how-to-connect-pta-faq.md)|UserPrincipalName + wacht woord<br><br>sAMAccountName + wacht woord<br><br>Windows-Integrated-verificatie<br><br>[Verificatie van certificaten en Smart Cards](/windows-server/identity/ad-fs/operations/configure-user-certificate-authentication)<br><br>[Alternatieve aanmeldings-ID](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)|
 |Wordt Windows hello voor bedrijven ondersteund?|[Sleutel vertrouwens model](/windows/security/identity-protection/hello-for-business/hello-identity-verification)|[Sleutel vertrouwens model](/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br>*Vereist een Windows Server 2016-domein functionaliteits niveau*|[Sleutel vertrouwens model](/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br><br>[Certificaat vertrouwens model](/windows/security/identity-protection/hello-for-business/hello-key-trust-adfs)|
 |Wat zijn de opties voor multi-factor Authentication?|[Azure MFA](/azure/multi-factor-authentication/)<br><br>[Aangepaste besturings elementen met voorwaardelijke toegang *](../../active-directory/conditional-access/controls.md)|[Azure MFA](/azure/multi-factor-authentication/)<br><br>[Aangepaste besturings elementen met voorwaardelijke toegang *](../../active-directory/conditional-access/controls.md)|[Azure MFA](/azure/multi-factor-authentication/)<br><br>[Azure MFA-server](../../active-directory/authentication/howto-mfaserver-deploy.md)<br><br>[MFA van derden](/windows-server/identity/ad-fs/operations/configure-additional-authentication-methods-for-ad-fs)<br><br>[Aangepaste besturings elementen met voorwaardelijke toegang *](../../active-directory/conditional-access/controls.md)|
@@ -221,4 +221,4 @@ In de huidige wereld zijn bedreigingen 24 uur per dag aanwezig en zijn ze overal
 
 [Ga](../fundamentals/active-directory-whatis.md) aan de slag met Azure AD en implementeer de juiste verificatie oplossing voor uw organisatie.
 
-Als u overweegt om te migreren van federatieve naar Cloud authenticatie, lees dan meer informatie over [het wijzigen van de aanmeldings methode](../../active-directory/hybrid/plan-connect-user-signin.md). Als hulp bij het plannen en implementeren van de migratie, gebruikt u [Deze implementatie plannen](https://aka.ms/deploymentplans) van het project of overweegt u de nieuwe functie voor [gefaseerde](../../active-directory/hybrid/how-to-connect-staged-rollout.md) implementatie te gebruiken voor het migreren van federatieve gebruikers naar het gebruik van Cloud-verificatie in een gefaseerde benadering.
+Als u overweegt om te migreren van federatieve naar Cloud authenticatie, lees dan meer informatie over [het wijzigen van de aanmeldings methode](../../active-directory/hybrid/plan-connect-user-signin.md). Als hulp bij het plannen en implementeren van de migratie, gebruikt u [Deze implementatie plannen](../fundamentals/active-directory-deployment-plans.md) van het project of overweegt u de nieuwe functie voor [gefaseerde](../../active-directory/hybrid/how-to-connect-staged-rollout.md) implementatie te gebruiken voor het migreren van federatieve gebruikers naar het gebruik van Cloud-verificatie in een gefaseerde benadering.

@@ -11,12 +11,12 @@ ms.date: 04/14/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c083b319b11807a88461b2464153821fa2ad0b67
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 219893859d05eb419bc862484a9083abf8c26db7
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89276181"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94409294"
 ---
 # <a name="hybrid-identity-considerations-for-the-azure-government-cloud"></a>Overwegingen voor hybride identiteit voor de Azure Government Cloud
 
@@ -36,7 +36,7 @@ In de volgende informatie wordt de implementatie van Pass-Through-verificatie en
 Voordat u de Pass-Through-verificatie agent implementeert, controleert u of er een firewall bestaat tussen uw servers en Azure AD. Als uw firewall of Proxy Domain Name System (DNS) geblokkeerde of veilige Program ma's toestaat, voegt u de volgende verbindingen toe.
 
 > [!NOTE]
-> De volgende richt lijnen zijn ook van toepassing op de installatie van de [Azure AD-toepassingsproxy-connector](https://aka.ms/whyappproxy) voor Azure Government omgevingen.
+> De volgende richt lijnen zijn ook van toepassing op de installatie van de [Azure AD-toepassingsproxy-connector](../manage-apps/what-is-application-proxy.md) voor Azure Government omgevingen.
 
 |URL |Hoe dat wordt gebruikt|
 |-----|-----|

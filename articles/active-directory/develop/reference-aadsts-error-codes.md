@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/30/2020
+ms.date: 11/09/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 4bd738197c84d7dce36f087d170f61a55d8e9f32
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 59ed397f3bd54a324f8fa375a3ea870860c31142
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93241324"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410926"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Verificatie- en autorisatiefoutcodes in Azure AD
 
@@ -74,7 +74,7 @@ Het `error` veld heeft verschillende mogelijke waarden: Controleer de koppelinge
 ## <a name="lookup-current-error-code-information"></a>Informatie over actuele fout code opzoeken
 Fout codes en berichten zijn onderhevig aan wijzigingen.  Voor de meest recente informatie raadpleegt [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) u de pagina om AADSTS-fout beschrijvingen, fixes en enkele voorgestelde tijdelijke oplossingen te vinden.  
 
-Zoek naar het numerieke deel van de geretourneerde fout code.  Als u bijvoorbeeld de fout code ' AADSTS16000 ' hebt ontvangen, voert u een zoek opdracht uit [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) voor ' 16000 '.  U kunt ook rechtstreeks een koppeling naar een specifieke fout maken door het fout code nummer toe te voegen aan de URL: [https://login.microsoftonline.com/error?code=16000](https://login.microsoftonline.com/error?code=16000) .
+Als u bijvoorbeeld de fout code ' AADSTS50058 ' hebt ontvangen, voert u een zoek opdracht uit [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) voor ' 50058 '.  U kunt ook rechtstreeks een koppeling naar een specifieke fout maken door het fout code nummer toe te voegen aan de URL: [https://login.microsoftonline.com/error?code=50058](https://login.microsoftonline.com/error?code=50058) .
 
 ## <a name="aadsts-error-codes"></a>AADSTS-fout codes
 

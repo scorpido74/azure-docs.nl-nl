@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/2/2019
 ms.author: terrylan
-ms.openlocfilehash: d2862d5ab2c42ebdd1787022dc86119bc4e0f596
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d22ce3941b00903be8532caaa36a9ce55e2f2c6f
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86229360"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94409787"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Overzicht van Azure Virtual Machines-beveiliging
 Dit artikel bevat een overzicht van de belangrijkste Azure-beveiligings functies die kunnen worden gebruikt met virtuele machines.
@@ -51,13 +51,13 @@ Meer informatie over [micro soft antimalware voor Azure](antimalware.md) en de b
 Meer informatie over antimalware-software om uw virtuele machines te beschermen:
 
 * [Deploying Antimalware Solutions on Azure Virtual Machines](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/) (Antimalware-oplossingen implementeren op virtuele machines van Azure)
-* [Trend Micro diepe Security als een service op een Windows-VM installeren en configureren](/azure/virtual-machines/windows/classic/install-trend)
-* [Symantec-Endpoint Protection installeren en configureren op een Windows-VM](/azure/virtual-machines/windows/classic/install-symantec)
+* [Trend Micro diepe Security als een service op een Windows-VM installeren en configureren](../../virtual-machines/extensions/trend.md)
+* [Symantec-Endpoint Protection installeren en configureren op een Windows-VM](../../virtual-machines/extensions/symantec.md)
 * [Beveiligings oplossingen in azure Marketplace](https://azure.microsoft.com/marketplace/?term=security)
 
-Voor nog krachtigere beveiliging kunt u het gebruik van [Windows Defender Advanced Threat Protection](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/windows-defender-advanced-threat-protection)gebruiken. Met Windows Defender ATP krijgt u het volgende:
+Voor nog krachtigere beveiliging kunt u het gebruik van [Windows Defender Advanced Threat Protection](/windows/security/threat-protection/windows-defender-atp/windows-defender-advanced-threat-protection)gebruiken. Met Windows Defender ATP krijgt u het volgende:
 
-* [Kwetsbaarheid voor aanvallen verminderen](/windows/security/threat-protection/windows-defender-atp/overview-attack-surface-reduction)  
+* [Kwets baarheid voor aanvallen verminderen](/windows/security/threat-protection/windows-defender-atp/overview-attack-surface-reduction)  
 * [Beveiliging van de volgende generatie](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)  
 * [Endpoint Protection en respons](/windows/security/threat-protection/windows-defender-atp/overview-endpoint-detection-response)
 * [Geautomatiseerd onderzoek en herstel](/windows/security/threat-protection/windows-defender-atp/automated-investigations-windows-defender-advanced-threat-protection)
@@ -75,22 +75,22 @@ Meer informatie:
 
 Het verbeteren van de sleutel beveiliging kan versleuteling en verificatie beveiliging verbeteren. U kunt het beheer en de beveiliging van uw essentiële geheimen en sleutels vereenvoudigen door ze op te slaan in Azure Key Vault.
 
-Key Vault biedt de mogelijkheid om uw sleutels op te slaan in Hardware Security modules (Hsm's) die zijn gecertificeerd voor FIPS 140-2 level 2-standaarden. Uw SQL Server versleutelings sleutels voor back-up of [transparante gegevens versleuteling](https://msdn.microsoft.com/library/bb934049.aspx) kunnen allemaal worden opgeslagen in Key Vault met alle sleutels of geheimen van uw toepassingen. Machtigingen en toegang tot deze beveiligde items worden beheerd via [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/).
+Key Vault biedt de mogelijkheid om uw sleutels op te slaan in Hardware Security modules (Hsm's) die zijn gecertificeerd voor FIPS 140-2 level 2-standaarden. Uw SQL Server versleutelings sleutels voor back-up of [transparante gegevens versleuteling](/sql/relational-databases/security/encryption/transparent-data-encryption) kunnen allemaal worden opgeslagen in Key Vault met alle sleutels of geheimen van uw toepassingen. Machtigingen en toegang tot deze beveiligde items worden beheerd via [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/).
 
 Meer informatie:
 
-* [Wat is Azure Key Vault?](/azure/key-vault/key-vault-overview)
-* [Azure Key Vault blog](https://blogs.technet.microsoft.com/kv/)
+* [Wat is Azure Key Vault?](../../key-vault/general/overview.md)
+* [Azure Key Vault blog](/archive/blogs/kv/)
 
 ## <a name="virtual-machine-disk-encryption"></a>Schijf versleuteling van virtuele machine
 
-Azure Disk Encryption is een nieuwe mogelijkheid voor het versleutelen van de schijven van de virtuele Windows-en Linux-machines. Azure Disk Encryption maakt gebruik van de industrie standaard [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) -functie van Windows en de [DM-cryptografie](https://en.wikipedia.org/wiki/Dm-crypt) functie van Linux om volume versleuteling voor het besturings systeem en de gegevens schijven te bieden.
+Azure Disk Encryption is een nieuwe mogelijkheid voor het versleutelen van de schijven van de virtuele Windows-en Linux-machines. Azure Disk Encryption maakt gebruik van de industrie standaard [BitLocker](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc732774(v=ws.11)) -functie van Windows en de [DM-cryptografie](https://en.wikipedia.org/wiki/Dm-crypt) functie van Linux om volume versleuteling voor het besturings systeem en de gegevens schijven te bieden.
 
 De oplossing is geïntegreerd met Azure Key Vault om u te helpen de schijf versleutelings sleutels en geheimen in uw sleutel kluis abonnement te controleren en te beheren. Zo zorgt u ervoor dat alle gegevens in de virtuele-machine schijven op rest worden versleuteld in Azure Storage.
 
 Meer informatie:
 
-* [Azure Disk Encryption voor IaaS-Vm's](/azure/security/azure-security-disk-encryption-overview)
+* [Azure Disk Encryption voor IaaS-Vm's](./azure-disk-encryption-vms-vmss.md)
 * [Snelstart: Een Windows Iaas-VM versleutelen met Azure PowerShell](../../virtual-machines/linux/disk-encryption-powershell-quickstart.md)
 
 ## <a name="virtual-machine-backup"></a>Back-up van virtuele machine
@@ -99,8 +99,8 @@ Azure Backup is een schaal bare oplossing die helpt bij het beschermen van uw to
 
 Meer informatie:
 
-* [Wat is Azure Backup?](/azure/backup/backup-introduction-to-azure-backup)
-* [Veelgestelde vragen over de Azure Backup-Service](/azure/backup/backup-azure-backup-faq)
+* [Wat is Azure Backup?](../../backup/backup-overview.md)
+* [Veelgestelde vragen over de Azure Backup-Service](../../backup/backup-azure-backup-faq.md)
 
 ## <a name="azure-site-recovery"></a>Azure Site Recovery
 
@@ -108,17 +108,17 @@ Een belang rijk onderdeel van de BCDR-strategie van uw organisatie is het bepale
 
 Site Recovery:
 
-* **Vereenvoudigt uw BCDR-strategie**: site Recovery maakt het eenvoudig om de replicatie, failover en het herstel van meerdere werk belastingen en apps vanaf één locatie te verwerken. Site Recovery organiseert de replicatie en failover, maar onderschept geen toepassings gegevens of bevat er informatie over.
-* **Voorziet in flexibele replicatie**: door site Recovery te gebruiken, kunt u workloads repliceren die worden uitgevoerd op virtuele Hyper-V-machines, virtuele VMware-machines en fysieke Windows/Linux-servers.
-* **Biedt ondersteuning voor failover en herstel**: site Recovery voorziet in testfailover voor het ondersteunen van herstel na nood gevallen zonder dat dit van invloed is op productie omgevingen. Bovendien kunt u bij verwachte uitval geplande failovers uitvoeren zonder gegevensverlies, en bij onverwachte noodsituaties ongeplande failovers met minimaal gegevensverlies (afhankelijk van de replicatiefrequentie). Na een failover kunt u weer een failback uitvoeren naar uw primaire sites. De herstelplannen van Site Recovery kunnen scripts en Azure Automation-werkmappen bevatten, zodat u failovers en het herstel van toepassingen met meerdere lagen naar behoefte kunt aanpassen.
-* **Elimineert secundaire data centers**: u kunt repliceren naar een secundaire on-premises site of naar Azure. Als u Azure als doel gebruikt voor herstel na nood gevallen, elimineert u de kosten en complexiteit van het onderhouden van een secundaire site. Gerepliceerde gegevens worden opgeslagen in Azure Storage.
-* Kan worden **geïntegreerd met bestaande BCDR-technologieën**: site Recovery partners met de BCDR-functies van andere toepassingen. U kunt bijvoorbeeld Site Recovery gebruiken om de SQL Server back-end van zakelijke workloads te helpen beveiligen. Dit omvat systeem eigen ondersteuning voor SQL Server altijd aan om de failover van beschikbaarheids groepen te beheren.
+* **Vereenvoudigt uw BCDR-strategie** : site Recovery maakt het eenvoudig om de replicatie, failover en het herstel van meerdere werk belastingen en apps vanaf één locatie te verwerken. Site Recovery organiseert de replicatie en failover, maar onderschept geen toepassings gegevens of bevat er informatie over.
+* **Voorziet in flexibele replicatie** : door site Recovery te gebruiken, kunt u workloads repliceren die worden uitgevoerd op virtuele Hyper-V-machines, virtuele VMware-machines en fysieke Windows/Linux-servers.
+* **Biedt ondersteuning voor failover en herstel** : site Recovery voorziet in testfailover voor het ondersteunen van herstel na nood gevallen zonder dat dit van invloed is op productie omgevingen. Bovendien kunt u bij verwachte uitval geplande failovers uitvoeren zonder gegevensverlies, en bij onverwachte noodsituaties ongeplande failovers met minimaal gegevensverlies (afhankelijk van de replicatiefrequentie). Na een failover kunt u weer een failback uitvoeren naar uw primaire sites. De herstelplannen van Site Recovery kunnen scripts en Azure Automation-werkmappen bevatten, zodat u failovers en het herstel van toepassingen met meerdere lagen naar behoefte kunt aanpassen.
+* **Elimineert secundaire data centers** : u kunt repliceren naar een secundaire on-premises site of naar Azure. Als u Azure als doel gebruikt voor herstel na nood gevallen, elimineert u de kosten en complexiteit van het onderhouden van een secundaire site. Gerepliceerde gegevens worden opgeslagen in Azure Storage.
+* Kan worden **geïntegreerd met bestaande BCDR-technologieën** : site Recovery partners met de BCDR-functies van andere toepassingen. U kunt bijvoorbeeld Site Recovery gebruiken om de SQL Server back-end van zakelijke workloads te helpen beveiligen. Dit omvat systeem eigen ondersteuning voor SQL Server altijd aan om de failover van beschikbaarheids groepen te beheren.
 
 Meer informatie:
 
-* [Wat is Azure Site Recovery?](/azure/site-recovery/site-recovery-overview)
-* [Hoe werkt Azure Site Recovery?](/azure/site-recovery/site-recovery-components)
-* [Welke workloads worden beveiligd door Azure Site Recovery?](/azure/site-recovery/site-recovery-workload)
+* [Wat is Azure Site Recovery?](../../site-recovery/site-recovery-overview.md)
+* [Hoe werkt Azure Site Recovery?](/azure/security/fundamentals/azure-to-azure-architecture)
+* [Welke workloads worden beveiligd door Azure Site Recovery?](../../site-recovery/site-recovery-workload.md)
 
 ## <a name="virtual-networking"></a>Virtueel netwerk
 
@@ -129,7 +129,7 @@ Een virtueel Azure-netwerk is een logische constructie die boven op de fysieke A
 Meer informatie:
 
 * [Overzicht van Azure-netwerk beveiliging](network-overview.md)
-* [Overzicht van Virtual Network](/azure/virtual-network/virtual-networks-overview)
+* [Overzicht van Virtual Network](../../virtual-network/virtual-networks-overview.md)
 * [Netwerk functies en partnerschappen voor bedrijfs scenario's](https://azure.microsoft.com/blog/networking-enterprise/)
 
 ## <a name="security-policy-management-and-reporting"></a>Beheer en rapportage van beveiligings beleid
@@ -138,14 +138,14 @@ Azure Security Center helpt u bedreigingen te voorkomen, te detecteren en erop t
 
 Security Center helpt u de beveiliging van uw virtuele machines te optimaliseren en te controleren door:
 
-* [Beveiligings aanbevelingen](/azure/security-center/security-center-recommendations) voor de virtuele machines opgeven. Voor beelden van aanbevelingen zijn: systeem updates Toep assen, Acl's-eind punten configureren, antimalware inschakelen, netwerk beveiligings groepen inschakelen en schijf versleuteling Toep assen.
+* [Beveiligings aanbevelingen](../../security-center/security-center-recommendations.md) voor de virtuele machines opgeven. Voor beelden van aanbevelingen zijn: systeem updates Toep assen, Acl's-eind punten configureren, antimalware inschakelen, netwerk beveiligings groepen inschakelen en schijf versleuteling Toep assen.
 * Bewaken van de status van uw virtuele machines.
 
 Meer informatie:
 
-* [Inleiding tot Azure Security Center](/azure/security-center/security-center-intro)
-* [Veelgestelde vragen over Azure Security Center](/azure/security-center/security-center-faq)
-* [Planning en bewerkingen Azure Security Center](/azure/security-center/security-center-planning-and-operations-guide)
+* [Inleiding tot Azure Security Center](../../security-center/security-center-introduction.md)
+* [Veelgestelde vragen over Azure Security Center](../../security-center/faq-general.md)
+* [Planning en bewerkingen Azure Security Center](../../security-center/security-center-planning-and-operations-guide.md)
 
 ## <a name="compliance"></a>Naleving
 

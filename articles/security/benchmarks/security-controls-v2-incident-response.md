@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 172607a7f8f036bbfb68e8d15e77b2a3e3fb5377
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ba7391b3b524f7532101083a444aab6059e8a10
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91326385"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408752"
 ---
 # <a name="security-control-v2-incident-response"></a>Beveiligings controle v2: reactie op incidenten
 
@@ -26,15 +26,15 @@ Reactie op incidenten heeft betrekking op besturings elementen in de levens cycl
 
 Zorg ervoor dat uw organisatie processen heeft om te reageren op beveiligings incidenten, dat deze processen voor Azure zijn bijgewerkt en dat ze regel matig worden uitgevoerd om de gereedheid te garanderen.
 
-- [Implementeer beveiliging in de bedrijfs omgeving](https://aka.ms/AzSec4)
+- [Implementeer beveiliging in de bedrijfs omgeving](/azure/cloud-adoption-framework/security/security-top-10#3-process-assign-accountability-for-cloud-security-decisions)
 
 - [Naslag Gids voor respons op incidenten](/microsoft-365/downloads/IR-Reference-Guide.pdf)
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid** : klant
 
-**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Beveiligings belanghebbenden van klanten** ( [meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Beveiligingsbewerkingen](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Beveiligings bewerkingen](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Incidentvoorbereiding](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
@@ -50,11 +50,11 @@ Contact gegevens voor beveiligings incidenten in Azure Security Center instellen
 
 - [De Azure Security Center Security-contact persoon instellen](../../security-center/security-center-provide-security-contact-details.md)
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid** : klant
 
-**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Beveiligings belanghebbenden van klanten** ( [meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Beveiligingsbewerkingen](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Beveiligings bewerkingen](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Incidentvoorbereiding](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
@@ -76,11 +76,11 @@ Exporteer uw Azure Security Center waarschuwingen en aanbevelingen met behulp va
 
 - [Waarschuwingen streamen naar Azure Sentinel](../../sentinel/connect-azure-security-center.md)
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid** : klant
 
-**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Beveiligings belanghebbenden van klanten** ( [meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Beveiligingsbewerkingen](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Beveiligings bewerkingen](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Incidentvoorbereiding](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
@@ -116,11 +116,11 @@ Azure Sentinel biedt uitgebreide gegevens analyse voor vrijwel elke logboek bron
 
 - [Incidenten onderzoeken met Azure Sentinel](../../sentinel/tutorial-investigate-cases.md)
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid** : klant
 
-**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Beveiligings belanghebbenden van klanten** ( [meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Beveiligingsbewerkingen](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Beveiligings bewerkingen](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Incidentvoorbereiding](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
@@ -140,13 +140,13 @@ Daarnaast kunt u resources markeren met behulp van tags en een naamgevings syste
 
 - [Beveiligingswaarschuwingen in Azure Security Center](../../security-center/security-center-alerts-overview.md)
 
-- [Labels gebruiken om uw Azure-resources te organiseren](/azure/azure-resource-manager/resource-group-using-tags)
+- [Tags gebruiken om Azure-resources te organiseren](../../azure-resource-manager/management/tag-resources.md)
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid** : klant
 
-**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Beveiligings belanghebbenden van klanten** ( [meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Beveiligingsbewerkingen](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Beveiligings bewerkingen](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Incidentvoorbereiding](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
@@ -166,13 +166,12 @@ Automatiseer hand matige terugkerende taken om de reactie tijd te versnellen en 
 
 - [Automatische bedreigings reacties instellen in azure Sentinel](../../sentinel/tutorial-respond-threats-playbook.md)
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid** : klant
 
-**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Beveiligings belanghebbenden van klanten** ( [meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Beveiligingsbewerkingen](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Beveiligings bewerkingen](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Incidentvoorbereiding](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
 - [Informatie over bedreigingen](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
-

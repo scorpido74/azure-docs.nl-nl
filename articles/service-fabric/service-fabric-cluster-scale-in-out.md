@@ -3,12 +3,12 @@ title: Een Service Fabric cluster in-of uitschalen
 description: Schaal een Service Fabric cluster in of uit om te voldoen aan de vraag door regels voor automatisch schalen in te stellen voor elk knooppunt type/virtuele-machine schaalset. Knoop punten toevoegen aan of verwijderen uit een Service Fabric-cluster
 ms.topic: conceptual
 ms.date: 03/12/2019
-ms.openlocfilehash: c9393ca4531dea58859a4fc60509524e9c4a0b7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ee04c73b75d6b335e450ff816c51f0a3089b918
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86246483"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94409957"
 ---
 # <a name="scale-a-cluster-in-or-out"></a>Een cluster in- of uitschalen
 
@@ -54,7 +54,6 @@ Volg deze instructies voor [het instellen van automatisch schalen voor elke scha
 > [!NOTE]
 > In een schaal in een scenario, tenzij uw knooppunt type een [duurzaamheids niveau][durability] van goud of zilver heeft, moet u de [cmdlet Remove-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate) aanroepen met de juiste knooppunt naam. Voor de duurzaamheid van bronzen is het niet raadzaam om in meer dan één knoop punt tegelijk te schalen.
 > 
-> 
 
 ## <a name="manually-add-vms-to-a-node-typevirtual-machine-scale-set"></a>Vm's hand matig toevoegen aan een knooppunt type/virtuele-machine schaalset
 
@@ -97,6 +96,9 @@ Voor een stateful service hebt u een bepaald aantal knoop punten nodig om altijd
 ### <a name="remove-the-service-fabric-node"></a>Het Service Fabric-knooppunt verwijderen
 
 De stappen voor het hand matig verwijderen van de knooppunt status zijn alleen van toepassing op knooppunt typen met een *Bronze* -duurzaamheids categorie.  Voor *Silver* -en *Gold* -duurzaamheids lagen worden deze stappen automatisch uitgevoerd door het platform. Voor meer informatie over duurzaamheid raadpleegt u [Service Fabric cluster capacity planning][durability] (Capaciteitsplanning voor Service Fabric-clusters).
+
+>[!NOTE]
+> Behoud een minimum aantal van vijf knoop punten voor een schaalset voor virtuele machines met duurzaamheids niveau goud of zilver ingeschakeld. In uw cluster wordt de fout status ingevoerd als u deze drempel waarde inschaalt en u de verwijderde knoop punten hand matig moet opschonen.
 
 Als u de knooppunten van het cluster gelijkmatig verdeeld wilt houden in upgrade- en foutdomeinen en op die manier gelijkmatig gebruik wilt inschakelen, moet het meest recent gemaakte knooppunt eerst worden verwijderd. Met andere woorden - de knooppunten moeten op basis van 'last in, first out' worden verwijderd. Het meest recent gemaakte knooppunt heeft de hoogste `virtual machine scale set InstanceId`-eigenschapswaarde. Met de onderstaande codevoorbeelden wordt het meest recent gemaakte knooppunt geretourneerd.
 
@@ -184,7 +186,7 @@ else
 }
 ```
 
-In onderstaande **sfctl**-code wordt de volgende opdracht gebruikt om de waarde van **knooppuntnaam** op te halen van het laatst gemaakte knooppunt: `sfctl node list --query "sort_by(items[*], &name)[-1].name"`
+In onderstaande **sfctl** -code wordt de volgende opdracht gebruikt om de waarde van **knooppuntnaam** op te halen van het laatst gemaakte knooppunt: `sfctl node list --query "sort_by(items[*], &name)[-1].name"`
 
 ```shell
 # Inform the node that it is going to be removed
@@ -198,7 +200,7 @@ sfctl node remove-state --node-name _nt1vm_5
 ```
 
 > [!TIP]
-> Gebruik de volgende **sfctl**-query's om de status van elke stap te controleren
+> Gebruik de volgende **sfctl** -query's om de status van elke stap te controleren
 >
 > **Status van deactiveren controleren**
 > `sfctl node list --query "sort_by(items[*], &name)[-1].nodeDeactivationInfo"`
@@ -239,6 +241,9 @@ Om ervoor te zorgen dat een knoop punt wordt verwijderd wanneer een virtuele mac
 
 1. Kies een duurzaamheids niveau van goud of zilver voor de knooppunt typen in uw cluster, waarmee u de infra structuur kunt integreren. Hiermee worden de knoop punten vervolgens automatisch verwijderd uit de status van de systeem services (FM) wanneer u schaalt in.
 Raadpleeg [hier de details over duurzaamheids niveaus](service-fabric-cluster-capacity.md)
+
+> [!NOTE]
+> Behoud een minimum aantal van vijf knoop punten voor een schaalset voor virtuele machines met duurzaamheids niveau goud of zilver ingeschakeld. In uw cluster wordt de fout status ingevoerd als u deze drempel waarde inschaalt en u de verwijderde knoop punten hand matig moet opschonen.
 
 2. Zodra het VM-exemplaar is geschaald in, moet u de [cmdlet Remove-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate)aanroepen.
 

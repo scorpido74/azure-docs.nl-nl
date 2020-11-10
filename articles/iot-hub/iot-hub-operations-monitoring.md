@@ -1,27 +1,27 @@
 ---
 title: Bewaking van Azure-IoT Hub bewerkingen (afgeschaft) | Microsoft Docs
 description: Azure IoT Hub Operations monitoring gebruiken om de status van bewerkingen op uw IoT-hub in realtime te controleren.
-author: nberdy
-manager: briz
+author: robinsh
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/11/2019
-ms.author: nberdy
+ms.author: robinsh
 ms.custom: amqp, devx-track-csharp
-ms.openlocfilehash: 559dac0f37daf612404fca839e9918e97077029e
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 045d5693c4388c6285bc6983ac2a385ceac9f6d0
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92538490"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408121"
 ---
 # <a name="iot-hub-operations-monitoring-deprecated"></a>Bewaking van IoT Hub bewerkingen (afgeschaft)
 
 Met IoT Hub bewerkingen bewaken kunt u de status van de bewerkingen op uw IoT-hub in realtime bewaken. IoT Hub houdt gebeurtenissen in verschillende categorieën bewerkingen bij. U kunt ervoor kiezen gebeurtenissen te verzenden van een of meer categorieën naar een eind punt van uw IoT-hub voor verwerking. U kunt de gegevens controleren op fouten of complexere verwerking instellen op basis van gegevens patronen.
 
 >[!NOTE]
->IoT Hub **bewerkings bewaking is afgeschaft en is op 10 maart 2019 verwijderd uit IOT hub** . Zie [IOT hub bewaken](monitor-iot-hub.md)voor het bewaken van de bewerkingen en de status van IOT hub. Zie [uw Azure IOT-oplossingen bewaken met Azure monitor en Azure resource Health](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health)voor meer informatie over de tijd lijn van de afschaffing.
+>IoT Hub **bewerkings bewaking is afgeschaft en is op 10 maart 2019 verwijderd uit IOT hub**. Zie [IOT hub bewaken](monitor-iot-hub.md)voor het bewaken van de bewerkingen en de status van IOT hub. Zie [uw Azure IOT-oplossingen bewaken met Azure monitor en Azure resource Health](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health)voor meer informatie over de tijd lijn van de afschaffing.
 
 IoT Hub bewaken zes categorieën gebeurtenissen:
 
@@ -39,11 +39,11 @@ IoT Hub bewaken zes categorieën gebeurtenissen:
 
 1. Maak een IoT-hub. In de hand leiding [aan de slag](quickstart-send-telemetry-dotnet.md) vindt u instructies voor het maken van een IOT-hub.
 
-2. Open de Blade van uw IoT-hub. Klik vervolgens op **bewerkingen bewaking** .
+2. Open de Blade van uw IoT-hub. Klik vervolgens op **bewerkingen bewaking**.
 
     ![Configuratie van bewerkings bewaking openen in de portal](./media/iot-hub-operations-monitoring/enable-OM-1.png)
 
-3. Selecteer de bewakings categorieën die u wilt bewaken en klik vervolgens op **Opslaan** . De gebeurtenissen zijn beschikbaar voor het lezen van het eind punt dat compatibel is met Event hub, vermeld in **bewakings instellingen** . Het IoT Hub-eind punt wordt aangeroepen `messages/operationsmonitoringevents` .
+3. Selecteer de bewakings categorieën die u wilt bewaken en klik vervolgens op **Opslaan**. De gebeurtenissen zijn beschikbaar voor het lezen van het eind punt dat compatibel is met Event hub, vermeld in **bewakings instellingen**. Het IoT Hub-eind punt wordt aangeroepen `messages/operationsmonitoringevents` .
 
     ![Bewaking van bewerkingen op uw IoT-hub configureren](./media/iot-hub-operations-monitoring/enable-OM-2.png)
 
@@ -201,7 +201,7 @@ Als u verbinding wilt maken met het bewakings eindpunt, hebt u een connection st
 
     ![Event hub-compatibele eindpunt waarden](./media/iot-hub-operations-monitoring/monitoring-endpoint.png)
 
-3. Kies **beleid voor gedeelde toegang** en kies vervolgens **service** . Noteer de waarde van de **primaire sleutel** :
+3. Kies **beleid voor gedeelde toegang** en kies vervolgens **service**. Noteer de waarde van de **primaire sleutel** :
 
     ![Primaire sleutel voor het beleid voor gedeelde toegang van services](./media/iot-hub-operations-monitoring/service-key.png)
 
@@ -267,8 +267,8 @@ class Program
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over de mogelijkheden van IoT Hub:
+Zie voor meer informatie over het gebruik van Azure Monitor om IoT Hub te bewaken:
 
-* [Ontwikkelaars handleiding IoT Hub](iot-hub-devguide.md)
+* [IoT Hub bewaken](monitor-iot-hub.md)
 
-* [AI implementeren op Edge-apparaten met Azure IoT Edge](../iot-edge/quickstart-linux.md)
+* [Migreren van IoT Hub Operations-bewaking naar Azure Monitor](iot-hub-migrate-to-diagnostics-settings.md)

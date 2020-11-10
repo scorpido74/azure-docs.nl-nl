@@ -16,12 +16,12 @@ ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7baa851943db3e8c691b50c2cb5446a2adbbccc
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 5e50b9e5dc683eb30452dbb96d82c9f66de93763
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457988"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408002"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Naadloze eenmalige aanmelding met Azure Active Directory
 
@@ -64,9 +64,9 @@ Naadloze SSO kan worden gecombineerd met de aanmeldings methoden voor [wachtwoor
 | OS\Browser |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
 |Windows 10|Ja\*|Ja|Ja|Ja\*\*\*|N.v.t.
-|Windows 8.1|Klikt\*|Klikt\*\*\*|Ja|Ja\*\*\*|N.v.t.
-|Windows 8|Klikt\*|N.v.t.|Ja|Ja\*\*\*|N.v.t.
-|Windows 7|Klikt\*|N.v.t.|Ja|Ja\*\*\*|N.v.t.
+|Windows 8.1|Yes\*|Klikt\*\*\*|Yes|Ja\*\*\*|N.v.t.
+|Windows 8|Yes\*|N.v.t.|Ja|Ja\*\*\*|N.v.t.
+|Windows 7|Yes\*|N.v.t.|Ja|Ja\*\*\*|N.v.t.
 |Windows Server 2012 R2 of hoger|Klikt\*\*|N.v.t.|Ja|Ja\*\*\*|N.v.t.
 |Mac OS X|N.v.t.|N.v.t.|Ja\*\*\*|Ja\*\*\*|Ja\*\*\*
 
@@ -85,7 +85,7 @@ Naadloze SSO kan worden gecombineerd met de aanmeldings methoden voor [wachtwoor
 ## <a name="next-steps"></a>Volgende stappen
 
 - [**Quick Start**](how-to-connect-sso-quick-start.md) : krijg Azure AD naadloze SSO en voer deze uit.
-- [**Implementatie plan**](https://aka.ms/deploymentplans/sso) -stap-voor-stap implementatie plan.
+- [**Implementatie plan**](../manage-apps/plan-sso-deployment.md) -stap-voor-stap implementatie plan.
 - [**Technisch diep gaande**](how-to-connect-sso-how-it-works.md) kennis van de werking van deze functie.
 - [**Veelgestelde vragen**](how-to-connect-sso-faq.md) : antwoorden op veelgestelde vragen.
 - [**Problemen oplossen**](tshoot-connect-sso.md) : informatie over het oplossen van veelvoorkomende problemen met de functie.

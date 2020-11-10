@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: f496d0f38452fa7cf64bc9eef370bd0b2116cfa5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe703b9589dcd49298ac45d5a14032ca7e556bfd
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89049958"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408403"
 ---
 # <a name="azure-red-hat-openshift-support-policy"></a>Ondersteunings beleid voor Azure Red Hat open Shift
 
@@ -30,6 +30,7 @@ Bepaalde configuraties voor Azure Red Hat open Shift 4-clusters kunnen van invlo
 * Alle virtuele cluster machines moeten directe uitgaande internet toegang hebben, ten minste aan de eind punten Azure Resource Manager (ARM) en service logging (Genève).  Er wordt geen vorm van HTTPS-proxy ondersteund.
 * Wijzig de DNS-configuratie van het virtuele netwerk van het cluster niet. De standaard Azure DNS resolver moet worden gebruikt.
 * Overschrijf een van de MachineConfig-objecten van het cluster (bijvoorbeeld de kubelet-configuratie) op geen enkele manier.
+* Stel geen unsupportedConfigOverrides-opties in. Als u deze opties instelt, worden upgrades van de secundaire versie niet meer mogelijk.
 * De Azure Red Hat open Shift-service opent uw cluster via een privé koppelings service.  Geen toegang tot de service verwijderen of wijzigen.
 * Niet-RHCOS Compute-knoop punten worden niet ondersteund. U kunt bijvoorbeeld geen RHEL Compute-knoop punt gebruiken.
 

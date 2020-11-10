@@ -16,15 +16,15 @@ ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d970fd133f8c43319e7f1fdb6b3a50c3c05f687
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57990fda7475b95bd6582fa5a495ac8d24aa55d5
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "64918445"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408529"
 ---
 # <a name="determine-content-management-requirements-for-your-hybrid-identity-solution"></a>Vereisten voor inhoudbeheer bepalen voor uw hybride identiteits oplossing
-Meer informatie over de vereisten voor het beheer van inhoud voor uw bedrijf is mogelijk van invloed op uw beslissing over welke hybride identiteits oplossing u wilt gebruiken. Met de verspreiding van meerdere apparaten en de mogelijkheid van gebruikers om hun eigen apparaten ([BYOD](https://aka.ms/byodcg)) te kunnen gebruiken, moet het bedrijf zijn eigen gegevens beveiligen, maar moet ook de privacy van de gebruiker intact blijven. Normaal gesp roken wanneer een gebruiker een eigen apparaat heeft, kunnen ze ook meerdere referenties hebben die worden verwisseld op basis van de toepassing die ze gebruiken. Het is belang rijk om te onderscheiden welke inhoud is gemaakt met behulp van persoonlijke referenties, evenals de gegevens die zijn gemaakt met bedrijfs referenties. Uw identiteits oplossing moet kunnen communiceren met Cloud Services om een naadloze ervaring te bieden aan de eind gebruiker, terwijl hun privacy wordt gegarandeerd en de beveiliging wordt verhoogd tegen lekkage van gegevens. 
+Meer informatie over de vereisten voor het beheer van inhoud voor uw bedrijf is mogelijk van invloed op uw beslissing over welke hybride identiteits oplossing u wilt gebruiken. Met de verspreiding van meerdere apparaten en de mogelijkheid van gebruikers om hun eigen apparaten ([BYOD](/mem/intune/fundamentals/byod-technology-decisions)) te kunnen gebruiken, moet het bedrijf zijn eigen gegevens beveiligen, maar moet ook de privacy van de gebruiker intact blijven. Normaal gesp roken wanneer een gebruiker een eigen apparaat heeft, kunnen ze ook meerdere referenties hebben die worden verwisseld op basis van de toepassing die ze gebruiken. Het is belang rijk om te onderscheiden welke inhoud is gemaakt met behulp van persoonlijke referenties, evenals de gegevens die zijn gemaakt met bedrijfs referenties. Uw identiteits oplossing moet kunnen communiceren met Cloud Services om een naadloze ervaring te bieden aan de eind gebruiker, terwijl hun privacy wordt gegarandeerd en de beveiliging wordt verhoogd tegen lekkage van gegevens. 
 
 Uw identiteits oplossing wordt gebruikt door verschillende technische controles om inhouds beheer te bieden, zoals wordt weer gegeven in de afbeelding hieronder:
 
@@ -69,4 +69,3 @@ Bij het plannen van uw hybride identiteits oplossing moet u ervoor zorgen dat de
 
 ## <a name="see-also"></a>Zie ook
 [Overzicht van ontwerp overwegingen](plan-hybrid-identity-design-considerations-overview.md)
-

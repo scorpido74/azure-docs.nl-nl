@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 087147038286bd7363fcc0eb3812abccc6ef9206
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: c553652d4d8abd16b4e5fd4ff896e42bdba103ad
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92201831"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408971"
 ---
 # <a name="security-control-v2-asset-management"></a>Beveiligings controle v2: beheer van middelen
 
@@ -36,9 +36,9 @@ Opmerking: er zijn mogelijk extra machtigingen vereist om inzicht te krijgen in 
 
 - [Overzicht van Azure Beheergroepen](../../governance/management-groups/overview.md)
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid** : klant
 
-**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Beveiligings belanghebbenden van klanten** ( [meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Infrastructuur- en eindpuntbeveiliging](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -56,15 +56,15 @@ Met de functie voor Azure Security Center Inventory en Azure resource Graph kunt
 
 Organiseer op logische wijze activa op basis van de taxonomie van uw organisatie met behulp van tags en andere meta gegevens in azure (naam, beschrijving en categorie).  
 
-- [Query's maken met Azure resource Graph Explorer](../../governance/resource-graph/first-query-portal.md)
+- [Query's maken met Azure Resource Graph Explorer](../../governance/resource-graph/first-query-portal.md)
 
 - [Azure Security Center Asset Inventory Management](../../security-center/asset-inventory.md)
 
-- [Voor meer informatie over het labelen van assets raadpleegt u de hand leiding resource naamgeving en Tags toevoegen](https://docs.microsoft.com/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json)
+- [Voor meer informatie over het labelen van assets raadpleegt u de hand leiding resource naamgeving en Tags toevoegen](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=%252fazure%252fazure-resource-manager%252fmanagement%252ftoc.json)
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid** : klant
 
-**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Beveiligings belanghebbenden van klanten** ( [meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Infrastructuur- en eindpuntbeveiliging](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -80,13 +80,13 @@ Gebruik Azure Policy om te controleren welke Services gebruikers in uw omgeving 
 
 - [Azure Policy configureren en beheren](../../governance/policy/tutorials/create-and-manage.md)
 
-- [Een specifiek resource type weigeren met Azure Policy](/azure/governance/policy/samples/not-allowed-resource-types)
+- [Een specifiek resource type weigeren met Azure Policy](../../governance/policy/samples/index.md)
 
-- [Query's maken met Azure resource Graph Explorer](../../governance/resource-graph/first-query-portal.md)
+- [Query's maken met Azure Resource Graph Explorer](../../governance/resource-graph/first-query-portal.md)
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid** : klant
 
-**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Beveiligings belanghebbenden van klanten** ( [meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Beheer van beveiligings naleving](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
@@ -104,9 +104,9 @@ Verwijder Azure-resources wanneer ze niet meer nodig zijn.
 
 - [Azure-resource groep en-resource verwijderen](../../azure-resource-manager/management/delete-resource-group.md)
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid** : klant
 
-**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Beveiligings belanghebbenden van klanten** ( [meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Infrastructuur- en eindpuntbeveiliging](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -124,9 +124,9 @@ Gebruik voorwaardelijke toegang van Azure AD om de interactie van gebruikers met
 
 - [Voorwaardelijke toegang configureren om de toegang tot Azure-bronnen beheer te blok keren](../../role-based-access-control/conditional-access-azure-management.md)
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid** : klant
 
-**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Beveiligings belanghebbenden van klanten** ( [meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Postuurbeheer](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)  
 
@@ -152,15 +152,14 @@ U kunt ook een oplossing van derden gebruiken om niet-goedgekeurde software te d
 
 - [Meer informatie over Azure Automation Wijzigingen bijhouden en inventaris](../../automation/change-tracking/overview.md)
 
-- [De uitvoering van Power shell-scripts beheren in Windows-omgevingen](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
+- [De uitvoering van Power shell-scripts beheren in Windows-omgevingen](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid** : klant
 
-**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Beveiligings belanghebbenden van klanten** ( [meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Infrastructuur- en eindpuntbeveiliging](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
 - [Postuurbeheer](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)  
 
 - [Beheer van beveiligings naleving](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
-

@@ -11,12 +11,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Operations'
 - 'Role: Technical Support'
-ms.openlocfilehash: 72aff2a2761d3aae695968bd5b4b9d07eab1697f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 5a5b20efbf804c2ea1097f905da1cfd62727ff15
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547687"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410688"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Referentie-IoT Hub quota's en beperking
 
@@ -30,7 +30,7 @@ Elke IoT-hub is ingericht met een bepaald aantal eenheden in een bepaalde laag. 
 
 De laag bepaalt ook de beperkings limieten die IoT Hub afgedwongen voor alle bewerkingen.
 
-## <a name="iot-plug-and-play"></a>IoT Plug en Play
+## <a name="iot-plug-and-play"></a>IoT Plug and Play
 
 IoT Plug en Play-apparaten verzenden ten minste één telemetrie-bericht voor elke interface, met inbegrip van de hoofdmap, waardoor het aantal berichten dat kan worden meegeteld voor uw bericht quotum kan toenemen.
 
@@ -69,7 +69,7 @@ De volgende tabel geeft de afgedwongen vertragingen weer. Waarden verwijzen naar
 
    Ten slotte, als de grootte van de nettolading tussen 156KB en 160 KB ligt, kunt u slechts één oproep per seconde per eenheid in uw hub maken voordat u de limiet van 160 KB per seconde/eenheid aanroept.
 
-*  Voor *bewerkingen voor taken apparaten (update dubbele, directe methode aanroepen)* voor tier S2 geldt dat 50 per seconde per eenheid alleen van toepassing is wanneer u methoden aanroept met behulp van taken. Als u rechtstreeks directe methoden aanroept, geldt de oorspronkelijke beperkings limiet van 24 MB per seconde per eenheid (voor S2).
+*  Voor *bewerkingen voor taken apparaten (update dubbele, directe methode aanroepen)* voor tier S3 geldt dat 50 per seconde per eenheid alleen van toepassing is wanneer u methoden aanroept met behulp van taken. Als u rechtstreeks directe methoden aanroept, geldt de oorspronkelijke beperkings limiet van 24 MB per seconde per eenheid (voor S3).
 
 *  **Quota** is het totale aantal berichten dat *per dag* in uw hub kan worden verzonden. U kunt de quotum limiet van uw hub vinden onder het kolom **Totaal aantal berichten/dag** op de [pagina met IOT hub prijzen](https://azure.microsoft.com/pricing/details/iot-hub/).
 

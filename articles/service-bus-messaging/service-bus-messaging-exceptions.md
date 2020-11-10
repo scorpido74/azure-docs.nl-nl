@@ -3,12 +3,12 @@ title: Azure Service Bus-Messa ging Exceptions | Microsoft Docs
 description: Dit artikel bevat een lijst met Azure Service Bus Messa ging-uitzonde ringen en voorgestelde acties die moeten worden uitgevoerd wanneer de uitzonde ring optreedt.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 45f18d16aaeee0017bd4d219b6dc9e6beab515af
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: e4aa6d82c20e21caabf0205d7446cf88ed8b7f34
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027513"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94409311"
 ---
 # <a name="service-bus-messaging-exceptions"></a>Uitzonde ringen Service Bus berichten
 Dit artikel bevat de .NET-uitzonde ringen die door .NET Framework Api's worden gegenereerd. 
@@ -33,8 +33,7 @@ De volgende tabel bevat een lijst met uitzonderings typen van berichten, en de o
 | [ArgumentException](/dotnet/api/system.argumentexception?view=netcore-3.1&preserve-view=true)<br /> [ArgumentNullException](/dotnet/api/system.argumentnullexception?view=netcore-3.1&preserve-view=true)<br />[ArgumentOutOfRangeException](/dotnet/api/system.argumentoutofrangeexception?view=netcore-3.1&preserve-view=true) |Een of meer argumenten die zijn opgegeven voor de methode, zijn ongeldig.<br /> De URI die is geleverd aan [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) of [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) bevat een of meer paden.<br /> Het URI-schema dat is opgegeven aan [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) of [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) , is ongeldig. <br />De waarde van de eigenschap is groter dan 32 KB. |Controleer de aanroepende code en controleer of de argumenten juist zijn. |Nieuwe poging is niet meer nodig. |
 | [MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.servicebus.messagingentitynotfoundexception) |De entiteit die aan de bewerking is gekoppeld, bestaat niet of is verwijderd. |Controleer of de entiteit bestaat. |Nieuwe poging is niet meer nodig. |
 | [MessageNotFoundException](/dotnet/api/microsoft.servicebus.messaging.messagenotfoundexception) |Poging tot het ontvangen van een bericht met een bepaald Volg nummer. Dit bericht is niet gevonden. |Zorg ervoor dat het bericht nog niet is ontvangen. Controleer de deadletter-wachtrij om te zien of het bericht is deadlettered. |Nieuwe poging is niet meer nodig. |
-| [MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception) |De client kan geen verbinding tot stand brengen met Service Bus. |Controleer of de opgegeven hostnaam juist is en of de host bereikbaar is. <p>Als uw code wordt uitgevoerd in een omgeving met een firewall/proxy, moet u ervoor zorgen dat het verkeer naar het Service Bus domein/IP-adres en de poorten niet wordt geblokkeerd.
-</p>|Opnieuw proberen kan helpen als er onregelmatige verbindings problemen zijn. |
+| [MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception) |De client kan geen verbinding tot stand brengen met Service Bus. |Controleer of de opgegeven hostnaam juist is en of de host bereikbaar is. <p>Als uw code wordt uitgevoerd in een omgeving met een firewall/proxy, moet u ervoor zorgen dat het verkeer naar het Service Bus domein/IP-adres en de poorten niet wordt geblokkeerd.</p>|Opnieuw proberen kan helpen als er onregelmatige verbindings problemen zijn. |
 | [ServerBusyException](/dotnet/api/microsoft.azure.servicebus.serverbusyexception) |De aanvraag kan op dit moment niet door de service worden verwerkt. |De client kan gedurende een bepaalde tijd wachten en vervolgens de bewerking opnieuw uitvoeren. |Client kan na een bepaald interval opnieuw proberen. Als een nieuwe poging resulteert in een andere uitzonde ring, controleert u het gedrag voor opnieuw proberen van deze uitzonde ring. |
 | [MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception) |Generieke Messa ging-uitzonde ring die in de volgende gevallen kan worden gegenereerd:<p>Er wordt geprobeerd een [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) te maken met behulp van een naam of pad dat tot een ander type entiteit behoort (bijvoorbeeld een onderwerp).</p><p>Er is een poging gedaan om een bericht te verzenden dat groter is dan 256 KB. </p>Er is een fout opgetreden op de server of service tijdens het verwerken van de aanvraag. Zie het uitzonderings bericht voor meer informatie. Doorgaans is dit een tijdelijke uitzonde ring.</p><p>De aanvraag is beëindigd omdat de entiteit wordt beperkt. Fout code: 50001, 50002, 50008. </p> | Controleer de code en zorg ervoor dat alleen serialiseerbare objecten worden gebruikt voor de hoofd tekst van het bericht (of een aangepaste serialisatiefunctie te gebruiken). <p>Raadpleeg de documentatie voor de ondersteunde typen waarden van de eigenschappen en gebruik alleen ondersteunde typen.</p><p> Controleer de eigenschap [IsTransient](/dotnet/api/microsoft.servicebus.messaging.messagingexception) . Als de **waarde True** is, kunt u de bewerking opnieuw proberen. </p>| Als de uitzonde ring wordt veroorzaakt door beperkingen, wacht u een paar seconden en voert u de bewerking opnieuw uit. Het gedrag voor opnieuw proberen is niet gedefinieerd en kan mogelijk niet worden geholpen in andere scenario's.|
 | [MessagingEntityAlreadyExistsException](/dotnet/api/microsoft.servicebus.messaging.messagingentityalreadyexistsexception) |Poging een entiteit te maken met een naam die al wordt gebruikt door een andere entiteit in die service naam ruimte. |Verwijder de bestaande entiteit of kies een andere naam voor de entiteit die u wilt maken. |Nieuwe poging is niet meer nodig. |
@@ -81,7 +80,7 @@ Er zijn twee veelvoorkomende oorzaken voor deze fout: de wachtrij voor onbestelb
 1. **[Wachtrij met onbestelbare berichten](service-bus-dead-letter-queues.md)** Een lezer kan berichten niet volt ooien en de berichten worden teruggestuurd naar de wachtrij/het onderwerp wanneer de vergren deling verloopt. Dit kan gebeuren als de lezer een uitzonde ring tegen komt die verhindert dat deze [BrokeredMessage. complete](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.complete)aanroept. Nadat een bericht 10 keer is gelezen, wordt het standaard naar de wachtrij voor onbestelbare berichten verplaatst. Dit gedrag wordt bepaald door de eigenschap [QueueDescription. MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount) en heeft een standaard waarde van 10. Wanneer berichten in de wachtrij voor onbestelbare meldingen worden gestapeld, nemen ze ruimte in beslag.
    
     Om het probleem op te lossen, leest en voltooit u de berichten van de wachtrij voor onbestelbare meldingen, zoals u zou doen vanuit een andere wachtrij. U kunt de [FormatDeadLetterPath](/dotnet/api/microsoft.azure.servicebus.entitynamehelper.formatdeadletterpath) -methode gebruiken om het wachtrij-pad voor onbestelbare berichten op te maken.
-2. **Ontvanger gestopt** . Een ontvanger stopt met het ontvangen van berichten van een wachtrij of abonnement. De manier om dit te identificeren, is door te kijken naar de eigenschap [QueueDescription. MessageCountDetails](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails) , waarin de volledige uitsplitsing van de berichten wordt weer gegeven. Als de eigenschap [ActiveMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.activemessagecount) hoog of groei is, worden de berichten niet zo snel gelezen als ze worden geschreven.
+2. **Ontvanger gestopt**. Een ontvanger stopt met het ontvangen van berichten van een wachtrij of abonnement. De manier om dit te identificeren, is door te kijken naar de eigenschap [QueueDescription. MessageCountDetails](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails) , waarin de volledige uitsplitsing van de berichten wordt weer gegeven. Als de eigenschap [ActiveMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.activemessagecount) hoog of groei is, worden de berichten niet zo snel gelezen als ze worden geschreven.
 
 ## <a name="timeoutexception"></a>TimeoutException
 Een [TimeoutException](/dotnet/api/system.timeoutexception?view=netcore-3.1&preserve-view=true) geeft aan dat een door de gebruiker geïnitieerde bewerking langer duurt dan de time-out van de bewerking. 
@@ -111,7 +110,7 @@ In het geval van een **MessageLockLostException** kan de client toepassing het b
 
 Omdat de vergren deling van het bericht is verlopen, gaat het terug naar de wachtrij (of het abonnement) en kan het worden verwerkt door de volgende client toepassing die wordt ontvangen.
 
-Als de **MaxDeliveryCount** is overschreden, kan het bericht worden verplaatst naar de **DeadLetterQueue** .
+Als de **MaxDeliveryCount** is overschreden, kan het bericht worden verplaatst naar de **DeadLetterQueue**.
 
 ## <a name="sessionlocklostexception"></a>SessionLockLostException
 
@@ -169,7 +168,7 @@ Als de naam omzetting **werkt zoals verwacht** , controleert u of de verbindinge
 
 **MessagingException** is een algemene uitzonde ring die om verschillende redenen kan worden gegenereerd. Hieronder vindt u een aantal redenen.
 
-   * Er wordt een poging gedaan om een **QueueClient** te maken in een **onderwerp** of een **abonnement** .
+   * Er wordt een poging gedaan om een **QueueClient** te maken in een **onderwerp** of een **abonnement**.
    * De grootte van het verzonden bericht is groter dan de limiet voor de opgegeven laag. Meer informatie over de Service Bus [quota's en limieten](service-bus-quotas.md).
    * Specifieke aanvraag voor gegevens vlak (verzenden, ontvangen, volt ooien, afbreken) is beëindigd als gevolg van beperking.
    * Tijdelijke problemen die zijn veroorzaakt door service-upgrades en opnieuw opstarten.

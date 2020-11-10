@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 9833f63d999ab7c24174853bd37f4e7a76f6dfbf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ddce9bd8eaa57571cd3c3eac660806340db4b74
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91329428"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408665"
 ---
 # <a name="security-control-v2-network-security"></a>Beveiligings controle v2: netwerk beveiliging
 
@@ -40,9 +40,9 @@ Gebruik Azure Sentinel om het gebruik van verouderde onveilige protocollen, zoal
 
 - [Azure Sentinel Inveilige protocollen werkmap](../../sentinel/quickstart-get-visibility.md#use-built-in-workbooks)
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid** : klant
 
-**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Beveiligings belanghebbenden van klanten** ( [meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Beveiligingsarchitectuur](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -68,9 +68,9 @@ Als u twee of meer virtuele netwerken in azure met elkaar wilt verbinden, gebrui
 
 - [Azure Private Link](../../private-link/private-link-service-overview.md)
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid** : klant
 
-**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Beveiligings belanghebbenden van klanten** ( [meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Beveiligingsarchitectuur](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -92,9 +92,9 @@ Persoonlijke toegang is een extra verdedigings maatregel naast verificatie en ve
 
 - [Informatie over Virtual Network Service-eind punten](../../virtual-network/virtual-network-service-endpoints-overview.md)
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid** : klant
 
-**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Beveiligings belanghebbenden van klanten** ( [meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Beveiligingsarchitectuur](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -116,15 +116,15 @@ Beveilig Azure-bronnen tegen aanvallen van externe netwerken, waaronder DDoS-aan
 -   Bescherm uw assets tegen DDoS-aanvallen door DDoS Standard-beveiliging in te scha kelen op uw virtuele Azure-netwerken. 
 -   Gebruik Azure Security Center om onjuiste configuratie Risico's te detecteren die zijn gerelateerd aan de bovenstaande. 
 
-- [Documentatie over Azure Firewall](/azure/firewall/)
+- [Documentatie over Azure Firewall](../../firewall/index.yml)
 
 - [Azure WAF implementeren](../../web-application-firewall/overview.md)
 
 - [Azure DDoS Protection Standard beheren met de Azure Portal](../../virtual-network/manage-ddos-protection.md)
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid** : klant
 
-**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Beveiligings belanghebbenden van klanten** ( [meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 Geen
 
@@ -144,9 +144,9 @@ Opmerking: als u een wettelijke of andere vereiste hebt voor het gebruik van ID'
 
 - [Micro soft Defender ATP EDR-mogelijkheid](/windows/security/threat-protection/microsoft-defender-atp/overview-endpoint-detection-response)
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid** : klant
 
-**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Beveiligings belanghebbenden van klanten** ( [meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Beveiligingsarchitectuur](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -168,11 +168,11 @@ U kunt ook toepassings beveiligings groepen gebruiken om complexe beveiligings c
 
 - [Service Tags begrijpen en gebruiken](../../virtual-network/service-tags-overview.md)
 
-- [Toepassings beveiligings groepen begrijpen en gebruiken](/azure/virtual-network/security-overview#application-security-groups)
+- [Toepassings beveiligings groepen begrijpen en gebruiken](../../virtual-network/network-security-groups-overview.md#application-security-groups)
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid** : klant
 
-**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Beveiligings belanghebbenden van klanten** ( [meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Beveiligingsarchitectuur](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -196,13 +196,12 @@ Als Azure DNS als gezaghebbende DNS-service wordt gebruikt, moet u ervoor zorgen
 
 - [Dangling DNS-vermeldingen voor komen en de overname van subdomeinen voor komen](../fundamentals/subdomain-takeover.md)
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid** : klant
 
-**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Beveiligings belanghebbenden van klanten** ( [meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Beveiligingsarchitectuur](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
 - [Postuurbeheer](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
 
-- [Toepassings beveiliging en DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
-
+- [Toepassings beveiliging en DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)

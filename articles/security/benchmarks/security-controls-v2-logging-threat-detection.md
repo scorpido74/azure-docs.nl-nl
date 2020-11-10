@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: b26979f424798bacf6b40d43e5ab603844f595c3
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 99e7a8fcb34c963cfab366f1913508a7ff3f4a51
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360850"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408699"
 ---
 # <a name="security-control-v2-logging-and-threat-detection"></a>Beveiligings controle v2: logboek registratie en detectie van bedreigingen
 
@@ -30,7 +30,7 @@ Gebruik de Azure Security Center ingebouwde functie voor detectie van bedreiging
 
 Daarnaast kunt u Azure Sentinel gebruiken om analyse regels te bouwen, die de bedreigingen doorzoeken die overeenkomen met specifieke criteria in uw omgeving. De regels genereren incidenten wanneer de criteria overeenkomen, zodat u elk incident kunt onderzoeken. Met Azure Sentinel kan ook bedreigings informatie van derden worden geïmporteerd om de detectie mogelijkheden van bedreigingen te verbeteren. 
 
-- [Bescherming tegen bedreiging in Azure Security Center](../../security-center/threat-protection.md)
+- [Bescherming tegen bedreiging in Azure Security Center](../../security-center/azure-defender.md)
 
 - [Naslag Gids voor beveiligings waarschuwingen Azure Security Center](../../security-center/alerts-reference.md)
 
@@ -44,7 +44,7 @@ Daarnaast kunt u Azure Sentinel gebruiken om analyse regels te bouwen, die de be
 
 - [Infrastructuur- en eindpuntbeveiliging](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
-- [Beveiligingsbewerkingen](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Beveiligings bewerkingen](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Postuurbeheer](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
 
@@ -73,7 +73,7 @@ Azure Security Center kan ook worden gewaarschuwd voor bepaalde verdachte activi
 
 - [Azure Identity Protection inschakelen](../../active-directory/identity-protection/overview-identity-protection.md)
 
-- [Bescherming tegen bedreiging in Azure Security Center](../../security-center/threat-protection.md)
+- [Bescherming tegen bedreiging in Azure Security Center](../../security-center/azure-defender.md)
 
 **Verantwoordelijkheid** : klant
 
@@ -81,7 +81,7 @@ Azure Security Center kan ook worden gewaarschuwd voor bepaalde verdachte activi
 
 - [Infrastructuur- en eindpuntbeveiliging](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
-- [Beveiligingsbewerkingen](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Beveiligings bewerkingen](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Postuurbeheer](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
 
@@ -115,7 +115,7 @@ NSG-bron Logboeken (netwerk beveiligings groep), NSG-stroom logboeken, Azure Fir
 
 - [Infrastructuur- en eindpuntbeveiliging](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
-- [Beveiligingsbewerkingen](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Beveiligings bewerkingen](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Postuurbeheer](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
 
@@ -141,7 +141,7 @@ U kunt Azure Security Center en Azure Policy gebruiken om resource Logboeken in 
 
 **Beveiligings belanghebbenden van klanten** ( [meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Beveiligingsbewerkingen](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Beveiligings bewerkingen](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 Infrastructuur- en eindpuntbeveiliging 
 
@@ -201,7 +201,7 @@ In Azure Monitor kunt u de Bewaar periode voor uw Log Analytics werk ruimte inst
 
 - [Toepassings beveiliging en DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
-- [Beveiligingsbewerkingen](/azure/cloud-adoption-framework/organize/cloud-security-operations-center) 
+- [Beveiligings bewerkingen](/azure/cloud-adoption-framework/organize/cloud-security-operations-center) 
 
 - [Beveiligingsnalevingsbeheer](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
@@ -230,4 +230,3 @@ Alle logboeken die zijn gegenereerd door resources binnen Azure bieden tijds tem
 - [Toepassings beveiliging en DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
 - [Infrastructuur- en eindpuntbeveiliging](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
-

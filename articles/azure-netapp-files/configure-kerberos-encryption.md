@@ -12,22 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/05/2020
+ms.date: 11/09/2020
 ms.author: b-juche
-ms.openlocfilehash: f4b485e79bfa89fe293c99fc4e84fc8c0729396a
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 1ffbcc24a2ee386be1a8ce50b55375d5bd458df1
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331886"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410093"
 ---
 # <a name="configure-nfsv41-kerberos-encryption-for-azure-netapp-files"></a>NFSv 4.1 Kerberos-versleuteling voor Azure NetApp Files configureren
 
 Azure NetApp Files ondersteunt NFS-client versleuteling in Kerberos-modi (krb5, krb5i en krb5p) met AES-256-versleuteling. In dit artikel worden de vereiste configuraties voor het gebruik van een NFSv 4.1-volume met Kerberos-versleuteling beschreven.
-
-## <a name="considerations"></a>Overwegingen
-
-* NFSv 4.1 Kerberos-versleutelings volumes bieden momenteel geen ondersteuning voor Azure Active Directory Domain Services (AADDS). 
 
 ## <a name="requirements"></a>Vereisten
 

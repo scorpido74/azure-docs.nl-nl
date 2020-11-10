@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 452b1a33520309ae696ab318c034f0186c993fdc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e74994847608b7fb59a1bf507691f02cf02b714a
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91402919"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408870"
 ---
 # <a name="security-control-v2-endpoint-security"></a>Beveiligings controle v2: Endpoint Security
 
@@ -34,9 +34,9 @@ Micro soft Defender Advanced Threat Protection biedt een EDR-mogelijkheid als on
 
 - [Micro soft Defender ATP-service voor niet-Windows-servers](/windows/security/threat-protection/microsoft-defender-atp/configure-endpoints-non-windows)
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid** : klant
 
-**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Beveiligings belanghebbenden van klanten** ( [meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Infrastructuur- en eindpuntbeveiliging](/azure/cloud-adoption-framework/organize/cloud-security)
 
@@ -60,11 +60,11 @@ Micro soft antimalware voor Azure Cloud Services is de standaard anti-malware vo
 
 - [Micro soft antimalware configureren voor Cloud Services en Virtual Machines](../fundamentals/antimalware.md)
 
-- [Ondersteunde Endpoint Protection-oplossingen](https://docs.microsoft.com/azure/security-center/security-center-services?tabs=features-windows#supported-endpoint-protection-solutions-)
+- [Ondersteunde Endpoint Protection-oplossingen](../../security-center/security-center-services.md?tabs=features-windows#supported-endpoint-protection-solutions-)
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid** : klant
 
-**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Beveiligings belanghebbenden van klanten** ( [meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Infrastructuur- en eindpuntbeveiliging](/azure/cloud-adoption-framework/organize/cloud-security)
 
@@ -86,9 +86,9 @@ Volg de aanbevelingen in Azure Security Center: "COMPUTE &amp; apps" om ervoor t
 
 - [Micro soft antimalware implementeren voor Azure Cloud Services en Virtual Machines](../fundamentals/antimalware.md)
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid** : klant
 
-**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Beveiligings belanghebbenden van klanten** ( [meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Infrastructuur- en eindpuntbeveiliging](/azure/cloud-adoption-framework/organize/cloud-security)
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: b2e54545fb79120a3f9d66067da267df3b151b3f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c3812cef9b90a15870733441c9e830daf32e0b18
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91322118"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408937"
 ---
 # <a name="security-control-v2-backup-and-recovery"></a>Beveiligings controle v2: back-up en herstel
 
@@ -32,13 +32,13 @@ Voor een hoger beveiligings niveau kunt u geografisch redundante opslag optie in
 
 - [Bedrijfscontinuïteit en herstel na noodgevallen](/azure/cloud-adoption-framework/ready/enterprise-scale/business-continuity-and-disaster-recovery)
 
-- [Azure Backup inschakelen](/azure/backup/)
+- [Azure Backup inschakelen](../../backup/index.yml)
 
-- [Het terugzetten van meerdere regio's inschakelen](/azure/backup/backup-azure-arm-restore-vms#cross-region-restore)
+- [Het terugzetten van meerdere regio's inschakelen](../../backup/backup-azure-arm-restore-vms.md#cross-region-restore)
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid** : klant
 
-**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Beveiligings belanghebbenden van klanten** ( [meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Beleid en standaarden](/azure/cloud-adoption-framework/organize/cloud-security-policy-standards)
 
@@ -60,17 +60,17 @@ Voor on-premises back-ups met Azure Backup, wordt versleuteling op rest aangebod
 
 Gebruik op rollen gebaseerd toegangs beheer in Azure Backup, Azure Key Vault of andere bronnen voor het beveiligen van back-ups en door de klant beheerde sleutels. Daarnaast kunt u geavanceerde beveiligings functies inschakelen om MFA te vereisen voordat back-ups kunnen worden gewijzigd of verwijderd.
 
-- [Overzicht van beveiligings functies in Azure Backup](/azure/backup/security-overview)
+- [Overzicht van beveiligings functies in Azure Backup](../../backup/security-overview.md)
 
-- [Versleuteling van back-upgegevens met door de klant beheerde sleutels](/azure/backup/encryption-at-rest-with-cmk) 
+- [Versleuteling van back-upgegevens met door de klant beheerde sleutels](../../backup/encryption-at-rest-with-cmk.md) 
 
-- [Back-ups maken van Key Vault sleutels in azure](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Back-ups maken van Key Vault sleutels in azure](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
 
-- [Beveiligings functies voor het beveiligen van hybride back-ups van aanvallen](/azure/backup/backup-azure-security-feature#prevent-attacks)
+- [Beveiligings functies voor het beveiligen van hybride back-ups van aanvallen](../../backup/backup-azure-security-feature.md#prevent-attacks)
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid** : klant
 
-**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Beveiligings belanghebbenden van klanten** ( [meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Beveiligingsarchitectuur](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
@@ -86,13 +86,13 @@ Gebruik op rollen gebaseerd toegangs beheer in Azure Backup, Azure Key Vault of 
 
 Maak regel matig gegevens herstel van uw back-up. Zorg ervoor dat u een back-up van door de klant beheerde sleutels kunt herstellen.
 
-- [Bestanden herstellen vanuit back-up van Azure virtual machine](/azure/backup/backup-azure-restore-files-from-vm)
+- [Bestanden herstellen vanuit back-up van Azure virtual machine](../../backup/backup-azure-restore-files-from-vm.md)
 
-- [Key Vault sleutels herstellen in azure](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Key Vault sleutels herstellen in azure](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid** : klant
 
-**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Beveiligings belanghebbenden van klanten** ( [meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Incidentvoorbereiding](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
@@ -106,15 +106,14 @@ Maak regel matig gegevens herstel van uw back-up. Zorg ervoor dat u een back-up 
 
 Zorg ervoor dat u maat regelen hebt om te voor komen en te herstellen van het verlies van sleutels. Schakel de beveiliging van zacht verwijderen en opschonen in Azure Key Vault in om sleutels te beschermen tegen onbedoelde of schadelijke verwijdering.  
 
-- [Zacht verwijderen en beveiliging opschonen inschakelen in Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Zacht verwijderen en beveiliging opschonen inschakelen in Key Vault](../../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid** : klant
 
-**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Beveiligings belanghebbenden van klanten** ( [meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Beveiligingsarchitectuur](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
 - [Incidentvoorbereiding](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
 - [Gegevens beveiliging](/azure/cloud-adoption-framework/organize/cloud-security-data-security)
-

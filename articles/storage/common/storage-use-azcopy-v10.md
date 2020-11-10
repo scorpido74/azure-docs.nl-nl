@@ -4,15 +4,16 @@ description: AzCopy is een opdracht regel programma dat u kunt gebruiken om gege
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/27/2020
+ms.date: 11/09/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: ce6398f63149a7f5dd3102d75c8db324f526c419
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.custom: contperfq2
+ms.openlocfilehash: ad9b40b448b48500cd6882ac614611f91370ec9e
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791151"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410263"
 ---
 # <a name="get-started-with-azcopy"></a>Aan de slag met AzCopy
 
@@ -59,7 +60,9 @@ Zie [azcopy](storage-ref-azcopy.md) voor gedetailleerde Naslag informatie voor e
 > [!NOTE] 
 > Als eigenaar van uw Azure Storage-account, worden er niet automatisch machtigingen toegewezen voor toegang tot gegevens. Voordat u iets kunt doen met AzCopy, moet u bepalen hoe u autorisatie referenties voor de opslag service opgeeft. 
 
-## <a name="choose-how-youll-provide-authorization-credentials"></a>Choose how you'll provide authorization credentials (Kiezen hoe u autorisatiereferenties opgeeft)
+<a id="choose-how-youll-provide-authorization-credentials"></a>
+
+## <a name="authorize-azcopy"></a>AzCopy autoriseren
 
 U kunt autorisatie referenties opgeven door gebruik te maken van Azure Active Directory (AD) of door gebruik te maken van een Shared Access Signature SAS-token.
 
@@ -71,177 +74,20 @@ Gebruik deze tabel als richt lijn:
 |**Blob-opslag (hiërarchische naam ruimte)** | Azure AD en SAS |
 |**File Storage** | Alleen SAS |
 
-### <a name="option-1-use-azure-active-directory"></a>Optie 1: Azure Active Directory gebruiken
+#### <a name="option-1-use-azure-active-directory"></a>Optie 1: Azure Active Directory gebruiken
 
-Door Azure Active Directory te gebruiken, kunt u eenmaal referenties opgeven in plaats van een SAS-token aan elke opdracht toe te voegen.  
+Deze optie is alleen beschikbaar voor Blob Storage. Door Azure Active Directory te gebruiken, kunt u eenmaal referenties opgeven in plaats van een SAS-token aan elke opdracht toe te voegen.  
 
 > [!NOTE]
 > Als u in de huidige release blobs tussen opslag accounts wilt kopiëren, moet u een SAS-token toevoegen aan elke bron-URL. U kunt de SAS-token alleen weglaten van de doel-URL. Zie [blobs kopiëren tussen opslag accounts](storage-use-azcopy-blobs.md)voor voor beelden.
 
-Het machtigings niveau dat u nodig hebt, is gebaseerd op de vraag of u bestanden wilt uploaden of gewoon wilt downloaden.
+Als u toegang wilt verlenen met behulp van Azure AD, raadpleegt u [toegang verlenen tot blobs met AzCopy en Azure Active Directory (Azure AD)](storage-use-azcopy-authorize-azure-active-directory.md).
 
-Als u alleen bestanden wilt downloaden, controleert u of de [gegevens lezer](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader) van de opslag-blob is toegewezen aan uw gebruikers-id, beheerde identiteit of Service-Principal.
-
-> Gebruikers identiteiten, beheerde identiteiten en service-principals zijn elk type *beveiligings-principal* , dus gebruiken we de term *Security Principal* voor de rest van dit artikel.
-
-Als u bestanden wilt uploaden, controleert u of een van deze rollen is toegewezen aan uw beveiligingsprincipal:
-
-- [Inzender voor Storage Blob-gegevens](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)
-- [Eigenaar van opslagblobgegevens](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)
-
-Deze rollen kunnen worden toegewezen aan uw beveiligingsprincipal in een van deze bereiken:
-
-- Container (bestands systeem)
-- Storage-account
-- Resourcegroep
-- Abonnement
-
-Zie [de Azure Portal gebruiken om een Azure-rol toe te wijzen voor toegang tot Blob-en wachtrij gegevens](./storage-auth-aad-rbac-portal.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json)voor meer informatie over het controleren en toewijzen van rollen.
-
-> [!NOTE]
-> Houd er rekening mee dat de toewijzingen van Azure-rollen Maxi maal vijf minuten kunnen worden door gegeven.
-
-U hoeft niet een van deze rollen te hebben toegewezen aan uw beveiligingsprincipal als uw beveiligingsprincipal wordt toegevoegd aan de toegangs beheer lijst (ACL) van de doel container of directory. In de ACL heeft uw beveiligings-principal schrijf machtigingen nodig voor de doel directory, en moet de machtiging voor het uitvoeren van de container en elke bovenliggende map worden uitgevoerd.
-
-Zie [toegangs beheer in azure data Lake Storage Gen2](../blobs/data-lake-storage-access-control.md)voor meer informatie.
-
-#### <a name="authenticate-a-user-identity"></a>Een gebruikers identiteit verifiëren
-
-Nadat u hebt gecontroleerd of uw gebruikers-id het benodigde autorisatie niveau heeft gekregen, opent u een opdracht prompt, typt u de volgende opdracht en drukt u vervolgens op ENTER.
-
-```azcopy
-azcopy login
-```
-
-Als u een fout bericht ontvangt, kunt u de Tenant-ID van de organisatie waartoe het opslag account behoort, opnemen.
-
-```azcopy
-azcopy login --tenant-id=<tenant-id>
-```
-
-Vervang de `<tenant-id>` tijdelijke aanduiding door de Tenant-id van de organisatie waartoe het opslag account behoort. Als u de Tenant-ID wilt vinden, selecteert u **Azure Active Directory > eigenschappen > Directory-id** in het Azure Portal.
-
-Met deze opdracht worden een verificatiecode en de URL van een website geretourneerd. Open de website, geef de code op en kies vervolgens de knop **Volgende** .
-
-![Een container maken](media/storage-use-azcopy-v10/azcopy-login.png)
-
-Er wordt een aanmeldingsvenster weergegeven. Meld u in dat venster aan bij uw Azure-account met behulp van de referenties van uw Azure-account. Nadat u bent aangemeld, kunt u het browservenster sluiten en AzCopy gebruiken.
-
-<a id="service-principal"></a>
-
-#### <a name="authenticate-a-service-principal"></a>Een Service-Principal verifiëren
-
-Dit is een uitstekende optie als u van plan bent AzCopy te gebruiken in een script dat wordt uitgevoerd zonder tussen komst van de gebruiker, met name wanneer u on-premises uitvoert. Als u van plan bent AzCopy uit te voeren op Vm's die worden uitgevoerd in azure, is een beheerde service-identiteit eenvoudiger te beheren. Zie de sectie [een beheerde identiteit verifiëren](#managed-identity) in dit artikel voor meer informatie.
-
-Voordat u een script uitvoert, moet u zich ten minste één keer interactief aanmelden zodat u AzCopy kunt opgeven met de referenties van uw service-principal.  Deze referenties worden opgeslagen in een beveiligd en versleuteld bestand, zodat uw script geen gevoelige informatie hoeft op te geven.
-
-U kunt zich aanmelden bij uw account door gebruik te maken van een client geheim of door het wacht woord te gebruiken van een certificaat dat is gekoppeld aan de app-registratie van uw service-principal.
-
-Zie [How to: de portal gebruiken om een Azure AD-toepassing en Service-Principal te maken die toegang hebben tot resources](../../active-directory/develop/howto-create-service-principal-portal.md)voor meer informatie over het maken van een service-principal.
-
-Zie [toepassings-en Service-Principal-objecten in azure Active Directory](../../active-directory/develop/app-objects-and-service-principals.md) voor meer informatie over service-principals in het algemeen.
-
-##### <a name="using-a-client-secret"></a>Een client geheim gebruiken
-
-Begin door de `AZCOPY_SPA_CLIENT_SECRET` omgevings variabele in te stellen op het client geheim van de app-registratie van de Service-Principal.
-
-> [!NOTE]
-> Zorg ervoor dat u deze waarde instelt vanaf de opdracht prompt en niet in de omgevings variabele-instellingen van uw besturings systeem. Op die manier is de waarde alleen beschikbaar voor de huidige sessie.
-
-In dit voor beeld ziet u hoe u dit kunt doen in Power shell.
-
-```azcopy
-$env:AZCOPY_SPA_CLIENT_SECRET="$(Read-Host -prompt "Enter key")"
-```
-
-> [!NOTE]
-> U kunt een prompt gebruiken zoals in dit voor beeld wordt weer gegeven. Op die manier wordt uw wacht woord niet weer gegeven in de opdracht geschiedenis van de console.  
-
-Typ vervolgens de volgende opdracht en druk vervolgens op ENTER.
-
-```azcopy
-azcopy login --service-principal  --application-id application-id --tenant-id=tenant-id
-```
-
-Vervang de `<application-id>` tijdelijke aanduiding door de toepassings-id van de app-registratie van uw service-principal. Vervang de `<tenant-id>` tijdelijke aanduiding door de Tenant-id van de organisatie waartoe het opslag account behoort. Als u de Tenant-ID wilt vinden, selecteert u **Azure Active Directory > eigenschappen > Directory-id** in het Azure Portal. 
-
-##### <a name="using-a-certificate"></a>Een certificaat gebruiken
-
-Als u uw eigen referenties voor autorisatie wilt gebruiken, kunt u een certificaat uploaden naar de registratie van uw app en dat certificaat vervolgens gebruiken om u aan te melden.
-
-Naast het uploaden van uw certificaat naar de registratie van uw app, moet u ook een kopie van het certificaat hebben opgeslagen op de machine of VM waarop AzCopy wordt uitgevoerd. Deze kopie van het certificaat moet zich in bestaan. PFX of. PEM-indeling en moet de persoonlijke sleutel bevatten. De persoonlijke sleutel moet met een wacht woord zijn beveiligd. Als u Windows gebruikt en uw certificaat alleen bestaat in een certificaat archief, moet u het certificaat exporteren naar een PFX-bestand (met inbegrip van de persoonlijke sleutel). Zie [export-pfx](/powershell/module/pkiclient/export-pfxcertificate) voor meer informatie.
-
-Vervolgens stelt u de `AZCOPY_SPA_CERT_PASSWORD` omgevings variabele in op het certificaat wachtwoord.
-
-> [!NOTE]
-> Zorg ervoor dat u deze waarde instelt vanaf de opdracht prompt en niet in de omgevings variabele-instellingen van uw besturings systeem. Op die manier is de waarde alleen beschikbaar voor de huidige sessie.
-
-In dit voor beeld ziet u hoe u deze taak kunt uitvoeren in Power shell.
-
-```azcopy
-$env:AZCOPY_SPA_CERT_PASSWORD="$(Read-Host -prompt "Enter key")"
-```
-
-Typ vervolgens de volgende opdracht en druk vervolgens op ENTER.
-
-```azcopy
-azcopy login --service-principal --certificate-path <path-to-certificate-file> --tenant-id=<tenant-id>
-```
-
-Vervang de `<path-to-certificate-file>` tijdelijke aanduiding door het relatieve of volledig gekwalificeerde pad naar het certificaat bestand. AzCopy slaat het pad naar dit certificaat op, maar er wordt geen kopie van het certificaat opgeslagen. Zorg er dus voor dat u dat certificaat blijft bewaren. Vervang de `<tenant-id>` tijdelijke aanduiding door de Tenant-id van de organisatie waartoe het opslag account behoort. Als u de Tenant-ID wilt vinden, selecteert u **Azure Active Directory > eigenschappen > Directory-id** in het Azure Portal.
-
-> [!NOTE]
-> U kunt een prompt gebruiken zoals in dit voor beeld wordt weer gegeven. Op die manier wordt uw wacht woord niet weer gegeven in de opdracht geschiedenis van de console. 
-
-<a id="managed-identity"></a>
-
-#### <a name="authenticate-a-managed-identity"></a>Een beheerde identiteit verifiëren
-
-Dit is een uitstekende optie als u van plan bent AzCopy te gebruiken in een script dat wordt uitgevoerd zonder tussen komst van de gebruiker en het script wordt uitgevoerd vanaf een virtuele machine van Azure (VM). Wanneer u deze optie gebruikt, hoeft u geen referenties op te slaan op de VM.
-
-U kunt zich aanmelden bij uw account met behulp van een door het systeem beheerde identiteit die u op uw virtuele machine hebt ingeschakeld, of met behulp van de client-ID, object-ID of Resource-ID van een door de gebruiker toegewezen beheerde identiteit die u aan uw VM hebt toegewezen.
-
-Zie [beheerde identiteiten voor Azure-resources configureren op een virtuele machine met behulp van de Azure Portal](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#enable-system-assigned-managed-identity-on-an-existing-vm)voor meer informatie over het inschakelen van een door het systeem beheerde identiteit of het maken van een door de gebruiker toegewezen beheerde identiteit.
-
-##### <a name="using-a-system-wide-managed-identity"></a>Een beheerde identiteit voor het hele systeem gebruiken
-
-Zorg er eerst voor dat u een op het hele systeem beheerde identiteit hebt ingeschakeld op uw VM. Zie door [het systeem toegewezen beheerde identiteit](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#system-assigned-managed-identity).
-
-Typ vervolgens in de opdracht console de volgende opdracht en druk vervolgens op ENTER.
-
-```azcopy
-azcopy login --identity
-```
-
-##### <a name="using-a-user-assigned-managed-identity"></a>Een door de gebruiker toegewezen beheerde identiteit gebruiken
-
-Zorg er eerst voor dat u een door de gebruiker toegewezen beheerde identiteit hebt ingeschakeld op de virtuele machine. Zie door de [gebruiker toegewezen beheerde identiteit](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#user-assigned-managed-identity).
-
-Typ in de opdracht console een van de volgende opdrachten en druk vervolgens op ENTER.
-
-```azcopy
-azcopy login --identity --identity-client-id "<client-id>"
-```
-
-Vervang de `<client-id>` tijdelijke aanduiding door de client-id van de door de gebruiker toegewezen beheerde identiteit.
-
-```azcopy
-azcopy login --identity --identity-object-id "<object-id>"
-```
-
-Vervang de `<object-id>` tijdelijke aanduiding door de object-id van de door de gebruiker toegewezen beheerde identiteit.
-
-```azcopy
-azcopy login --identity --identity-resource-id "<resource-id>"
-```
-
-Vervang de `<resource-id>` tijdelijke aanduiding door de resource-id van de door de gebruiker toegewezen beheerde identiteit.
-
-### <a name="option-2-use-a-sas-token"></a>Optie 2: een SAS-token gebruiken
+#### <a name="option-2-use-a-sas-token"></a>Optie 2: een SAS-token gebruiken
 
 U kunt een SAS-token toevoegen aan elke bron-of doel-URL die wordt gebruikt in uw AzCopy-opdrachten.
 
-Met dit voor beeld worden gegevens uit een lokale map recursief gekopieerd naar een BLOB-container. Een fictief SAS-token wordt toegevoegd aan het einde van de container-URL.
+Met dit voor beeld worden gegevens uit een lokale map recursief gekopieerd naar een BLOB-container. Er wordt een fictief SAS-token toegevoegd aan het einde van de container-URL.
 
 ```azcopy
 azcopy copy "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/?sv=2018-03-28&ss=bjqt&srt=sco&sp=rwddgcup&se=2019-05-01T05:01:17Z&st=2019-04-30T21:01:17Z&spr=https&sig=MGCXiyEzbtttkr3ewJIh2AR8KrghSy1DGM9ovN734bQF4%3D" --recursive=true
@@ -249,9 +95,9 @@ azcopy copy "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/
 
 Zie [using Shared Access signatures (SAS) (Engelstalig)](./storage-sas-overview.md)voor meer informatie over SAS-tokens en hoe u er een kunt verkrijgen.
 
-## <a name="transfer-files"></a>Bestandsoverdracht
+## <a name="transfer-data"></a>Gegevens overdragen
 
-Nadat u uw identiteit hebt geverifieerd of een SAS-token hebt aangeschaft, kunt u beginnen met het overdragen van bestanden.
+Nadat u uw identiteit hebt goedgekeurd of een SAS-token hebt aangeschaft, kunt u beginnen met het overbrengen van gegevens.
 
 Zie een van deze artikelen om voorbeeld opdrachten te vinden.
 
@@ -263,13 +109,13 @@ Zie een van deze artikelen om voorbeeld opdrachten te vinden.
 
 - [Gegevens overdragen met AzCopy en Azure Stack Storage](/azure-stack/user/azure-stack-storage-transfer#azcopy)
 
-## <a name="use-azcopy-in-a-script"></a>AzCopy gebruiken in een script
+## <a name="use-in-a-script"></a>Gebruiken in een script
 
-### <a name="obtain-a-static-download-link"></a>Een statische Download koppeling verkrijgen
+#### <a name="obtain-a-static-download-link"></a>Een statische Download koppeling verkrijgen
 
 Na verloop van tijd verwijst de [Download koppeling](#download-and-install-azcopy) AzCopy naar nieuwe versies van AzCopy. Als uw script AzCopy downloadt, werkt het script mogelijk niet meer als een nieuwere versie van AzCopy functies wijzigt waarvan uw script afhankelijk is.
 
-Als u deze problemen wilt voor komen, moet u een statische koppeling (niet wijzigen) verkrijgen met de huidige versie van AzCopy. Op die manier downloadt uw script dezelfde exacte versie van AzCopy elke keer dat deze wordt uitgevoerd.
+Als u deze problemen wilt voor komen, moet u een statische (ongewijzigde) koppeling naar de huidige versie van AzCopy verkrijgen. Op die manier downloadt uw script dezelfde exacte versie van AzCopy elke keer dat deze wordt uitgevoerd.
 
 Voer de volgende opdracht uit om de koppeling te verkrijgen:
 
@@ -288,11 +134,11 @@ De URL wordt weer gegeven in de uitvoer van deze opdracht. Uw script kan vervolg
 | **Linux** | `wget -O azcopy_v10.tar.gz https://aka.ms/downloadazcopy-v10-linux && tar -xf azcopy_v10.tar.gz --strip-components=1` |
 | **Windows** | `Invoke-WebRequest https://azcopyvnext.azureedge.net/release20190517/azcopy_windows_amd64_10.1.2.zip -OutFile azcopyv10.zip <<Unzip here>>` |
 
-### <a name="escape-special-characters-in-sas-tokens"></a>Speciale tekens in SAS-tokens escapepen
+#### <a name="escape-special-characters-in-sas-tokens"></a>Speciale tekens in SAS-tokens escapepen
 
 In batch-bestanden met de `.cmd` extensie moet u de `%` tekens die worden weer gegeven in SAS-tokens weglaten. U kunt dit doen door een extra teken toe te voegen `%` naast `%` de bestaande tekens in de SAS-token teken reeks.
 
-### <a name="run-scripts-by-using-jenkins"></a>Scripts uitvoeren met behulp van Jenkins
+#### <a name="run-scripts-by-using-jenkins"></a>Scripts uitvoeren met behulp van Jenkins
 
 Als u van plan bent [Jenkins](https://jenkins.io/) te gebruiken om scripts uit te voeren, moet u de volgende opdracht aan het begin van het script plaatsen.
 
@@ -300,7 +146,7 @@ Als u van plan bent [Jenkins](https://jenkins.io/) te gebruiken om scripts uit t
 /usr/bin/keyctl new_session
 ```
 
-## <a name="use-azcopy-in-azure-storage-explorer"></a>AzCopy gebruiken in Azure Storage Explorer
+## <a name="use-in-azure-storage-explorer"></a>Gebruiken in Azure Storage Explorer
 
 [Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) gebruikt AzCopy om alle bewerkingen voor gegevens overdracht uit te voeren. U kunt [Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) gebruiken als u de prestatie voordelen van AzCopy wilt benutten, maar u liever een graphical user interface gebruikt in plaats van de opdracht regel om te communiceren met uw bestanden.
 
@@ -308,17 +154,17 @@ Storage Explorer gebruikt uw account sleutel voor het uitvoeren van bewerkingen,
 
 <a id="previous-version"></a>
 
-## <a name="use-the-previous-version-of-azcopy"></a>De vorige versie van AzCopy gebruiken
+## <a name="configure-optimize-and-fix"></a>Configureren, optimaliseren en oplossen
+
+Zie [AzCopy configureren, optimaliseren en problemen oplossen](storage-use-azcopy-configure.md)
+
+## <a name="use-a-previous-version"></a>Een vorige versie gebruiken
 
 Als u de vorige versie van AzCopy moet gebruiken, raadpleegt u een van de volgende koppelingen:
 
 - [AzCopy in Windows (v8)](/previous-versions/azure/storage/storage-use-azcopy)
 
 - [AzCopy op Linux (V7)](/previous-versions/azure/storage/storage-use-azcopy-linux)
-
-## <a name="configure-optimize-and-troubleshoot-azcopy"></a>Configureren, optimaliseren en problemen oplossen in AzCopy
-
-Zie [AzCopy configureren, optimaliseren en problemen oplossen](storage-use-azcopy-configure.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 

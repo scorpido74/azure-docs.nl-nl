@@ -7,12 +7,12 @@ ms.service: security
 ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: 4548bf77c01194802c2e6203bcbf9fbd240370a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 93b25e65914ce603b4a969eda7fd7c048704e466
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81461647"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410008"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Best practices voor Azure Service Fabric-beveiliging
 Het implementeren van een toepassing op Azure is snel, eenvoudig en voordelig. Raadpleeg de lijst met essentiële en aanbevolen procedures voor het implementeren van beveiligde clusters in uw toepassing voordat u uw Cloud toepassing in productie implementeert.
@@ -132,7 +132,7 @@ Het certificaat moet voldoen aan de volgende vereisten voor SSL/TLS-certificaten
 -   De onderwerpnaam van het certificaat moet overeenkomen met de domein naam die wordt gebruikt voor toegang tot uw Cloud service.
 
     - Haal een aangepaste domein naam op om te gebruiken voor toegang tot uw Cloud service.
-    - Vraag een certificaat aan bij een CA met een onderwerpnaam die overeenkomt met de aangepaste domein naam van uw service. Als uw aangepaste domein naam bijvoorbeeld __Contoso__**. com**is, moet het certificaat van uw CA de onderwerpnaam **. contoso.com** of __www__**. contoso.com**hebben.
+    - Vraag een certificaat aan bij een CA met een onderwerpnaam die overeenkomt met de aangepaste domein naam van uw service. Als uw aangepaste domein naam bijvoorbeeld __Contoso__**. com** is, moet het certificaat van uw CA de onderwerpnaam **. contoso.com** of __www__**. contoso.com** hebben.
 
     >[!NOTE]
     >U kunt geen SSL/TLS-certificaat verkrijgen van een certificerings instantie voor het __cloudapp__**.net** -domein.
@@ -178,6 +178,6 @@ Azure Service Fabric ondersteunt twee typen toegangs beheer voor clients die zij
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Controle lijst voor Service Fabric beveiliging](service-fabric-checklist.md)
+- [Controle lijst voor Service Fabric beveiliging](../../service-fabric/service-fabric-best-practices-security.md)
 - Stel uw Service Fabric- [ontwikkel omgeving](../../service-fabric/service-fabric-get-started.md)in.
 - Meer informatie over [service Fabric ondersteunings opties](../../service-fabric/service-fabric-support.md).

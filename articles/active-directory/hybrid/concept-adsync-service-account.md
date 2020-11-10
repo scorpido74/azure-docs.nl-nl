@@ -15,12 +15,12 @@ ms.date: 06/27/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 875c503a9959565d76d46902b5ecb386995ef1e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8dddfb8426b769c06cb5b7494431b7eee34dbf9e
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86144724"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410892"
 ---
 # <a name="adsync-service-account"></a>ADSync-serviceaccount
 Azure AD Connect een on-premises service installeert waarmee de synchronisatie tussen Active Directory en Azure Active Directory wordt georchestrator.  De Microsoft Azure AD Sync Synchronization-Service (ADSync) wordt uitgevoerd op een server in uw on-premises omgeving.  De referenties voor de service worden standaard ingesteld in de snelle installaties, maar kunnen worden aangepast om te voldoen aan de beveiligings vereisten van uw organisatie.  Deze referenties worden niet gebruikt om verbinding te maken met uw on-premises forests of Azure Active Directory.
@@ -61,7 +61,7 @@ De versleutelings sleutels voor de AdSync-service zijn niet gevonden en zijn opn
 
 Probleem oplossing voor dit probleem de versleutelings sleutels voor de Microsoft Azure AD-synchronisatie worden ontoegankelijk als de aanmeldings referenties van de AdSync-service worden gewijzigd.  Als de referenties zijn gewijzigd, gebruikt u de service toepassing om het aanmeldings account terug te zetten op de oorspronkelijk geconfigureerde waarde (bijvoorbeeld NT SERVICE\AdSync) en start de service opnieuw.  Hiermee herstelt u onmiddellijk de juiste werking van de AdSync-service.
 
-Raadpleeg het volgende [artikel](https://go.microsoft.com/fwlink/?linkid=2086764) voor meer informatie.
+Raadpleeg het volgende [artikel](./whatis-hybrid-identity.md) voor meer informatie.
 
 ### <a name="example-2"></a>Voorbeeld 2
 
@@ -69,7 +69,7 @@ De service kan niet worden gestart omdat er geen verbinding kan worden gemaakt m
 
 Problemen met dit probleem oplossen de Microsoft Azure AD synchronisatie service heeft geen toegang tot de lokale database provider als de aanmeldings referenties van de AdSync-service worden gewijzigd.  Als de referenties zijn gewijzigd, gebruikt u de service toepassing om het aanmeldings account terug te zetten op de oorspronkelijk geconfigureerde waarde (bijvoorbeeld NT SERVICE\AdSync) en start de service opnieuw.  Hiermee herstelt u onmiddellijk de juiste werking van de AdSync-service.
 
-Raadpleeg het volgende [artikel](https://go.microsoft.com/fwlink/?linkid=2086764) voor meer informatie.
+Raadpleeg het volgende [artikel](./whatis-hybrid-identity.md) voor meer informatie.
 
 Aanvullende informatie de volgende fout gegevens zijn geretourneerd door de provider:
  

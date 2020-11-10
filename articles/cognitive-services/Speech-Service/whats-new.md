@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 06/12/2020
+ms.date: 11/06/2020
 ms.author: erhopf
-ms.openlocfilehash: c2b96193204c6938338594054bc3cd4715008313
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87832057e955f8408b369e2f55096a713780e965
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89055308"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410773"
 ---
 # <a name="speech-service-whats-new-in-docs"></a>Speech Service: what's New in docs
 
@@ -23,9 +23,10 @@ Welkom. Op deze pagina wordt beschreven wat er nieuw is in de speech service doc
 
 ### <a name="service-updates"></a>Service-updates
 
-Als u meer informatie wilt over updates voor de speech-service, spraak-SDK, Speech-apparaten SDK of spraak-CLI, raadpleegt u:
+Als u meer informatie wilt over updates voor de speech-service, spraak-SDK, Speech-apparaten SDK, spraak-CLI of spraak containers, raadpleegt u:
 * [Opmerkingen bij de release van Speech SDK](releasenotes.md).
 * [Release opmerkingen bij de SDK voor spraak apparaten](devices-sdk-release-notes.md)
+* [Release opmerkingen voor Cognitive Services container](../containers/container-image-tags.md)
 
 ## <a name="may-2020"></a>Mei 2020
 
@@ -57,7 +58,7 @@ Deze problemen zijn in mei geopend. Deze tabel geeft een lijst van de gebruiker 
 
 Deze tabel wordt maandelijks bijgewerkt en weerspiegelt alleen problemen die in mei zijn geopend.  
 
-|Id|Gebruiker|Beschrijving|Had|Status|Type|
+|Id|Gebruiker|Beschrijving|Had|Staat|Type|
 | :--- | :--- | :--- | :--- | :--- | :--- |
 |[56045](https://github.com/MicrosoftDocs/azure-docs/issues/56045)|rhalaly|De activiteit is verwijderd omdat het eind punt van de bot ontbreekt|2020-05-31|Gesloten|Probleem|
 |[56038](https://github.com/MicrosoftDocs/azure-docs/issues/56038)|rhalaly|Verkeerde stappen voor de publicatie-bot|2020-05-31|Openen|Probleem|

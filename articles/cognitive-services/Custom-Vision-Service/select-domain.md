@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: shono
-ms.openlocfilehash: 1fb30cc0634224213dc9a188a16902e07d379904
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87b9e4a3ca7151b3666928b00add175eddeea050
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82127780"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94409379"
 ---
 # <a name="select-a-domain-for-a-custom-vision-project"></a>Een domein voor een Custom Vision project selecteren
 
@@ -42,27 +42,15 @@ Op de Blade instellingen voor uw Custom Vision project kunt u een domein voor uw
 
 ## <a name="compact-domains"></a>Compacte domeinen
 
-De modellen die door compacte domeinen worden gegenereerd, kunnen worden geëxporteerd om lokaal te worden uitgevoerd. Model prestaties verschillen per geselecteerd domein. In de onderstaande tabel rapporteren we de model grootte en de tijd voor het afnemen van de Intel-Desktop-CPU en NVidia GPU \[ 1 \] . 
+De modellen die door compacte domeinen worden gegenereerd, kunnen worden geëxporteerd om lokaal te worden uitgevoerd. In de open bare preview-API van Custom Vision 3,4 kunt u een lijst met de Exporteer bare platforms voor compacte domeinen verkrijgen door de GetDomains-API aan te roepen.
 
-> [!NOTE]
-> Deze getallen bevatten geen voorverwerkende en postprocessing tijd.
+Model prestaties verschillen per geselecteerd domein. In de onderstaande tabel rapporteren we de model grootte en de tijd voor het afnemen van de Intel-Desktop-CPU en NVidia GPU \[ 1 \] . Deze getallen bevatten geen voorverwerkende en postprocessing tijd.
 
-|Taak|Domain|Model grootte|Time-outtijd van CPU|Time-outtijd GPU|
+|Taak|Domain|Modelgrootte|Time-outtijd van CPU|Time-outtijd GPU|
 |---|---|---|---|---|
 |Classificatie|Algemeen (compact)|5 MB|13 MS|5 MS|
 |Objectdetectie|Algemeen (compact)|45 MB|35 MS|5 MS|
 |Objectdetectie|Algemeen (compact) [S1]|14 MB|27 MS|7 MS|
-
-## <a name="vaidk-vision-ai-dev-kit"></a>VAIDK (Vision AI dev kit)
-
-Wanneer een compact domein is geselecteerd, wordt er een extra optie export mogelijkheden geboden, waardoor onderscheid kan worden gemaakt tussen ' Basic platforms ' en ' Vision AI dev kit '.
-
-Onder _export mogelijkheden_ zijn de volgende twee opties:
-
-- Basis platforms (tensor flow, CoreML, ONNX, etc.)
-- Vision AI dev kit.
-
-Als _Vision AI dev kit_ is geselecteerd, zijn de _algemene_, _bezienswaardigheden_en _detail handel_ , maar niet de _voedsel_ -compacte domeinen beschikbaar voor de classificatie van installatie kopieën, terwijl zowel _Algemeen (compact)_ als _Algemeen (compact) [S1]_ beschikbaar zijn voor object detectie.
 
 >[!NOTE]
 >__Algemeen (compact)__ domein voor object detectie vereist speciale postprocessing-logica. Raadpleeg voor meer informatie een voorbeeld script in het geëxporteerde zip-pakket. Als u een model nodig hebt zonder de postprocessing Logic, gebruikt u __Algemeen (compact) [S1]__.

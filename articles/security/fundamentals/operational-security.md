@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: a5decd3e222af11c402cbff4585532a0cf22282e
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: f968267d4233c765bfd107d81957cf04edace923
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168049"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408512"
 ---
 # <a name="azure-operational-security"></a>Operationele Azure-beveiliging
 ## <a name="introduction"></a>Inleiding
@@ -43,13 +43,13 @@ Azure Operational Security heeft betrekking op de services, besturings elementen
 Dit technisch document geeft een overzicht van de micro soft-benadering van de operationele beveiliging van Azure binnen het Microsoft Azure Cloud platform en behandelt de volgende services:
 1.  [Azure Monitor](../../azure-monitor/index.yml)
 
-2.  [Azure Security Center](../../security-center/security-center-intro.md)
+2.  [Azure Security Center](../../security-center/security-center-introduction.md)
 
 3.  [Azure Monitor](../../azure-monitor/overview.md)
 
 4.  [Azure Network Watcher](../../network-watcher/network-watcher-monitoring-overview.md)
 
-5.  [Azure Storage Analytics](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)
+5.  [Azure Storage Analytics](/rest/api/storageservices/fileservices/storage-analytics)
 
 6.  [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)
 
@@ -100,15 +100,15 @@ Het beschermt uw toepassingsgegevens en bewaart deze jarenlang, zonder dat u gro
 Beveiligde gegevens in Azure Backup worden opgeslagen in een back-upkluis in een bepaalde geografische regio. De gegevens worden in dezelfde regio gerepliceerd en kunnen, afhankelijk van het type kluis, ook worden gerepliceerd naar een andere regio voor verdere tolerantie.
 
 ### <a name="management-solutions"></a>Beheeroplossingen
-[Azure monitor](../../security-center/security-center-intro.md) is de Cloud oplossing van micro soft die u helpt bij het beheren en beveiligen van uw on-premises en Cloud infrastructuur.
+[Azure monitor](../../security-center/security-center-introduction.md) is de Cloud oplossing van micro soft die u helpt bij het beheren en beveiligen van uw on-premises en Cloud infrastructuur.
 
 
-[Beheer oplossingen](../../monitoring/monitoring-solutions.md) zijn voorverpakte sets van logica die een bepaald beheer scenario implementeren met behulp van een of meer Azure monitor Services. Er zijn verschillende oplossingen beschikbaar van micro soft en partners die u eenvoudig kunt toevoegen aan uw Azure-abonnement om de waarde van uw investering in Azure Monitor te verg Roten. Als partner kunt u uw eigen oplossingen maken ter ondersteuning van uw toepassingen en services en deze aan gebruikers verstrekken via de sjablonen voor Azure Marketplace of Quick Start.
+[Beheer oplossingen](../../azure-monitor/insights/solutions.md) zijn voorverpakte sets van logica die een bepaald beheer scenario implementeren met behulp van een of meer Azure monitor Services. Er zijn verschillende oplossingen beschikbaar van micro soft en partners die u eenvoudig kunt toevoegen aan uw Azure-abonnement om de waarde van uw investering in Azure Monitor te verg Roten. Als partner kunt u uw eigen oplossingen maken ter ondersteuning van uw toepassingen en services en deze aan gebruikers verstrekken via de sjablonen voor Azure Marketplace of Quick Start.
 
 
 ![Beheeroplossingen](./media/operational-security/azure-operational-security-fig4.png)
 
-Een goed voor beeld van een oplossing die gebruikmaakt van meerdere services om aanvullende functionaliteit te bieden is de [updatebeheer oplossing](../../automation/update-management/update-mgmt-overview.md). Deze oplossing maakt gebruik van de [Azure monitor logboeken](../../log-analytics/log-analytics-queries.md) agent voor Windows en Linux voor het verzamelen van informatie over de vereiste updates op elke agent. Deze gegevens worden naar de opslag plaats van Azure Monitor-logboeken geschreven, waar u deze kunt analyseren met een dash board.
+Een goed voor beeld van een oplossing die gebruikmaakt van meerdere services om aanvullende functionaliteit te bieden is de [updatebeheer oplossing](../../automation/update-management/overview.md). Deze oplossing maakt gebruik van de [Azure monitor logboeken](../../azure-monitor/log-query/log-query-overview.md) agent voor Windows en Linux voor het verzamelen van informatie over de vereiste updates op elke agent. Deze gegevens worden naar de opslag plaats van Azure Monitor-logboeken geschreven, waar u deze kunt analyseren met een dash board.
 
 Wanneer u een implementatie maakt, worden runbooks in [Azure Automation](../../automation/automation-intro.md) gebruikt om vereiste updates te installeren. U beheert dit hele proces in de portal en hoeft zich geen zorgen te maken over de onderliggende details.
 
@@ -128,7 +128,7 @@ In Security Center definieert u de beleidsregels op grond van de beveiligingsver
 Beleids regels die zijn ingeschakeld in het abonnements niveau, worden automatisch door gegeven aan alle resource groepen binnen het abonnement, zoals wordt weer gegeven in het diagram aan de rechter kant:
 
 
-### <a name="data-collection"></a>Gegevens verzamelen
+### <a name="data-collection"></a>Gegevensverzameling
 
 Met Security Center worden gegevens van uw virtuele machines (VM's) verzameld om de beveiligingsstatus van de VM's te beoordelen, aanbevelingen voor beveiliging te geven en u te waarschuwen bij bedreigingen. Wanneer u voor het eerst toegang Security Center, wordt gegevens verzameling ingeschakeld op alle virtuele machines in uw abonnement. Gegevensverzameling wordt aanbevolen, maar u kunt gegevensverzameling indien gewenst ook uitschakelen in het Security Center-beleid.
 
@@ -148,19 +148,19 @@ Met Security Center worden gegevens van uw virtuele machines (VM's) verzameld om
 
 Om klanten te helpen bedreigingen te voorkomen, te detecteren en erop te reageren, verzamelt en verwerkt Azure Security Center gegevens over beveiliging, zoals configuratie-informatie, metagegevens, gebeurtenislogboeken, crashdumpbestanden en nog veel meer. Microsoft voldoet aan strikte nalevings- en beveiligingsrichtlijnen - van het schrijven van code tot de uitvoering van een service.
 
--   **Scheiding van gegevens**: gegevens worden op een logische manier apart van elkaar gehouden, in elk onderdeel van de service. Alle gegevens worden gemarkeerd per organisatie. Deze markering blijft aanwezig gedurende de levenscyclus van de gegevens en deze wordt afgedwongen op elke laag van de service.
+-   **Scheiding van gegevens** : gegevens worden op een logische manier apart van elkaar gehouden, in elk onderdeel van de service. Alle gegevens worden gemarkeerd per organisatie. Deze markering blijft aanwezig gedurende de levenscyclus van de gegevens en deze wordt afgedwongen op elke laag van de service.
 
--   **Gegevens toegang**: om aanbevelingen voor beveiliging te bieden en mogelijke beveiligings Risico's te onderzoeken, kunnen mede werkers van micro soft toegang hebben tot gegevens die worden verzameld of geanalyseerd door Azure-Services, waaronder crash dump bestanden, gebeurtenissen voor het maken van processen, moment opnamen van virtuele schijven en artefacten, die per ongeluk klant gegevens of persoonlijke gegevens van uw virtuele machines kunnen bevatten. We voldoen aan de [voor waarden van de micro soft Online Services en de privacyverklaring](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31), die aangeven dat micro soft de klant gegevens niet gebruikt of dat er gegevens worden afgeleid voor reclame-of vergelijk bare commerciële doel einden.
+-   **Gegevens toegang** : om aanbevelingen voor beveiliging te bieden en mogelijke beveiligings Risico's te onderzoeken, kunnen mede werkers van micro soft toegang hebben tot gegevens die worden verzameld of geanalyseerd door Azure-Services, waaronder crash dump bestanden, gebeurtenissen voor het maken van processen, moment opnamen van virtuele schijven en artefacten, die per ongeluk klant gegevens of persoonlijke gegevens van uw virtuele machines kunnen bevatten. We voldoen aan de [voor waarden van de micro soft Online Services en de privacyverklaring](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31), die aangeven dat micro soft de klant gegevens niet gebruikt of dat er gegevens worden afgeleid voor reclame-of vergelijk bare commerciële doel einden.
 
--   **Gegevensgebruik**: Microsoft gebruikt informatie over patronen en bedreigingen die worden gezien tussen meerdere tenants voor het verbeteren van onze mogelijkheden voor voorkoming en detectie; wij doen dit in overeenstemming met de privacyverplichtingen beschreven in onze [Privacyverklaring](https://www.microsoft.com/en-us/privacystatement/OnlineServices/).
+-   **Gegevensgebruik** : Microsoft gebruikt informatie over patronen en bedreigingen die worden gezien tussen meerdere tenants voor het verbeteren van onze mogelijkheden voor voorkoming en detectie; wij doen dit in overeenstemming met de privacyverplichtingen beschreven in onze [Privacyverklaring](https://www.microsoft.com/en-us/privacystatement/OnlineServices/).
 
 ### <a name="data-location"></a>Locatie van gegevens
 
 Azure Security Center verzamelt tijdelijke kopieën van uw crashdumpbestanden en analyseert deze op bewijs van pogingen tot misbruik en geslaagde aanvallen. Azure Security Center voert deze analyse uit binnen hetzelfde geografische gebied als de werkruimte en verwijdert de tijdelijke kopieën wanneer de analyse is voltooid. Machine-artefacten worden centraal opgeslagen in dezelfde regio als de virtuele machine.
 
--   **Uw opslag accounts**: er is een opslag account opgegeven voor elke regio waarin de virtuele machines worden uitgevoerd. Hierdoor kunt u gegevens in dezelfde regio opslaan als de virtuele machine waarvan de gegevens worden verzameld.
+-   **Uw opslag accounts** : er is een opslag account opgegeven voor elke regio waarin de virtuele machines worden uitgevoerd. Hierdoor kunt u gegevens in dezelfde regio opslaan als de virtuele machine waarvan de gegevens worden verzameld.
 
--   **Azure Security Center-opslag**: informatie over beveiligingswaarschuwingen, waaronder waarschuwingen van partners, aanbevelingen en de status van de beveiliging, worden centraal opgeslagen, momenteel in de Verenigde Staten. Deze informatie omvat mogelijk gerelateerde configuratie-informatie en beveiligingsgebeurtenissen die indien nodig zijn verzameld van uw virtuele machines om u de beveiligingswaarschuwing, aanbeveling of de beveiligingsstatus door te geven.
+-   **Azure Security Center-opslag** : informatie over beveiligingswaarschuwingen, waaronder waarschuwingen van partners, aanbevelingen en de status van de beveiliging, worden centraal opgeslagen, momenteel in de Verenigde Staten. Deze informatie omvat mogelijk gerelateerde configuratie-informatie en beveiligingsgebeurtenissen die indien nodig zijn verzameld van uw virtuele machines om u de beveiligingswaarschuwing, aanbeveling of de beveiligingsstatus door te geven.
 
 
 ## <a name="azure-monitor"></a>Azure Monitor
@@ -199,13 +199,13 @@ Diagnostische logboeken verschillen van het [activiteiten logboek (voorheen beke
 
 ### <a name="metrics"></a>Metrische gegevens
 
-Met Azure Monitor kunt u telemetrie gebruiken om inzicht te krijgen in de prestaties en status van uw workloads op Azure. Het belangrijkste type Azure-telemetriegegevens is de metrische gegevens (ook wel prestatie meters genoemd) die worden verzonden door de meeste Azure-resources. Azure Monitor biedt verschillende manieren om deze [metrische gegevens](../../monitoring/monitoring-data-collection.md) te configureren en te gebruiken voor bewaking en probleem oplossing. Metrische gegevens zijn een waardevolle bron van telemetrie en u kunt de volgende taken uitvoeren:
+Met Azure Monitor kunt u telemetrie gebruiken om inzicht te krijgen in de prestaties en status van uw workloads op Azure. Het belangrijkste type Azure-telemetriegegevens is de metrische gegevens (ook wel prestatie meters genoemd) die worden verzonden door de meeste Azure-resources. Azure Monitor biedt verschillende manieren om deze [metrische gegevens](../../azure-monitor/platform/data-platform.md) te configureren en te gebruiken voor bewaking en probleem oplossing. Metrische gegevens zijn een waardevolle bron van telemetrie en u kunt de volgende taken uitvoeren:
 
 -   **Volg de prestaties** van uw resource (zoals een VM, website of logische app) door de metrische gegevens in een portal diagram te tekenen en de grafiek vast te maken aan een dash board.
 
 -   **Ontvang een melding over een probleem** dat invloed heeft op de prestaties van uw resource wanneer een metriek een bepaalde drempel overschrijdt.
 
--   **Automatische acties configureren**, zoals het automatisch schalen van een resource of het activeren van een runbook wanneer een metriek een bepaalde drempel overschrijdt.
+-   **Automatische acties configureren** , zoals het automatisch schalen van een resource of het activeren van een runbook wanneer een metriek een bepaalde drempel overschrijdt.
 
 -   **Geavanceerde analyses uitvoeren** of rapportages over prestaties of gebruiks trends van uw resource.
 
@@ -225,22 +225,22 @@ Het controleren van de netwerk beveiliging is essentieel voor het detecteren van
 
 Network Watcher heeft momenteel de volgende mogelijkheden:
 
--   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview">Audit logboeken</a>**: bewerkingen die worden uitgevoerd als onderdeel van de configuratie van netwerken, worden vastgelegd. Deze logboeken kunnen worden weer gegeven in de Azure Portal of worden opgehaald met micro soft-hulpprogram ma's, zoals Power BI of hulpprogram ma's van derden. Audit logboeken zijn beschikbaar via de portal, Power shell, CLI en rest-API. Zie bewerkingen controleren met Resource Manager voor meer informatie over audit Logboeken. Audit logboeken zijn beschikbaar voor bewerkingen die op alle netwerk bronnen worden uitgevoerd.
+-   **<a href="/azure/network-watcher/network-watcher-monitoring-overview">Audit logboeken</a>** : bewerkingen die worden uitgevoerd als onderdeel van de configuratie van netwerken, worden vastgelegd. Deze logboeken kunnen worden weer gegeven in de Azure Portal of worden opgehaald met micro soft-hulpprogram ma's, zoals Power BI of hulpprogram ma's van derden. Audit logboeken zijn beschikbaar via de portal, Power shell, CLI en rest-API. Zie bewerkingen controleren met Resource Manager voor meer informatie over audit Logboeken. Audit logboeken zijn beschikbaar voor bewerkingen die op alle netwerk bronnen worden uitgevoerd.
 
 
--   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview">IP-stroom wordt geverifieerd </a>** : controleert of een pakket is toegestaan of geweigerd op basis van de stroom informatie 5-tuple Packet para meters (doel-IP, bron-IP, doel poort, bron poort en Protocol). Als het pakket wordt geweigerd door een netwerk beveiligings groep, wordt de regel en netwerk beveiligings groep die het pakket heeft geweigerd, geretourneerd.
+-   **<a href="/azure/network-watcher/network-watcher-ip-flow-verify-overview">IP-stroom wordt geverifieerd</a>** : controleert of een pakket is toegestaan of geweigerd op basis van de stroom informatie 5-tuple Packet para meters (doel-IP, bron-IP, doel poort, bron poort en Protocol). Als het pakket wordt geweigerd door een netwerk beveiligings groep, wordt de regel en netwerk beveiligings groep die het pakket heeft geweigerd, geretourneerd.
 
--   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview">Volgende hop</a>** : bepaalt de volgende hop voor pakketten die worden gerouteerd in de Azure-netwerk infrastructuur, zodat u eventuele onjuist geconfigureerde, door de gebruiker gedefinieerde routes kunt vaststellen.
+-   **<a href="/azure/network-watcher/network-watcher-next-hop-overview">Volgende hop</a>** : bepaalt de volgende hop voor pakketten die worden gerouteerd in de Azure-netwerk infrastructuur, zodat u eventuele onjuist geconfigureerde, door de gebruiker gedefinieerde routes kunt vaststellen.
 
--   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview">Weer gave van beveiligings groep</a>** : Hiermee worden de effectief en toegepaste beveiligings regels opgehaald die op een virtuele machine worden toegepast.
+-   **<a href="/azure/network-watcher/network-watcher-security-group-view-overview">Weer gave van beveiligings groep</a>** : Hiermee worden de effectief en toegepaste beveiligings regels opgehaald die op een virtuele machine worden toegepast.
 
--   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview">NSG flow</a>** -logboek registratie: stroom logboeken voor netwerk beveiligings groepen kunt u Logboeken vastleggen die betrekking hebben op verkeer dat is toegestaan of geweigerd door de beveiligings regels in de groep. De stroom wordt gedefinieerd door een gegevens van vijf Tuples: bron-IP, doel-IP, bron poort, doel poort en protocol.
+-   **<a href="/azure/network-watcher/network-watcher-nsg-flow-logging-overview">NSG flow</a>** -logboek registratie: stroom logboeken voor netwerk beveiligings groepen kunt u Logboeken vastleggen die betrekking hebben op verkeer dat is toegestaan of geweigerd door de beveiligings regels in de groep. De stroom wordt gedefinieerd door een gegevens van vijf Tuples: bron-IP, doel-IP, bron poort, doel poort en protocol.
 
 ## <a name="azure-storage-analytics"></a>Azure Opslaganalyse
 
-[Opslaganalyse](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics) kunt metrische gegevens opslaan die geaggregeerde trans actie-statistieken en capaciteitgegevens over aanvragen voor een opslag service bevatten. Trans acties worden gerapporteerd op het niveau van de API-bewerking en op het niveau van de opslag service, en de capaciteit wordt gerapporteerd op het niveau van de opslag service. Metrische gegevens kunnen worden gebruikt voor het analyseren van het gebruik van opslag Services, het diagnosticeren van problemen met aanvragen die zijn gedaan voor de opslag service en voor het verbeteren van de prestaties van toepassingen die gebruikmaken van een service.
+[Opslaganalyse](/rest/api/storageservices/fileservices/storage-analytics) kunt metrische gegevens opslaan die geaggregeerde trans actie-statistieken en capaciteitgegevens over aanvragen voor een opslag service bevatten. Trans acties worden gerapporteerd op het niveau van de API-bewerking en op het niveau van de opslag service, en de capaciteit wordt gerapporteerd op het niveau van de opslag service. Metrische gegevens kunnen worden gebruikt voor het analyseren van het gebruik van opslag Services, het diagnosticeren van problemen met aanvragen die zijn gedaan voor de opslag service en voor het verbeteren van de prestaties van toepassingen die gebruikmaken van een service.
 
-[Azure Opslaganalyse](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics) voert logboek registratie uit en geeft metrische gegevens voor een opslag account. U kunt deze gegevens gebruiken om aanvragen te traceren, gebruiks trends te analyseren en problemen met uw opslag account op te sporen. Opslaganalyse logboek registratie is beschikbaar voor de [Services blob, Queue en Table](../../storage/common/storage-introduction.md). Opslaganalyse registreert gedetailleerde informatie over geslaagde en mislukte aanvragen bij een opslagservice.
+[Azure Opslaganalyse](/rest/api/storageservices/fileservices/storage-analytics) voert logboek registratie uit en geeft metrische gegevens voor een opslag account. U kunt deze gegevens gebruiken om aanvragen te traceren, gebruiks trends te analyseren en problemen met uw opslag account op te sporen. Opslaganalyse logboek registratie is beschikbaar voor de [Services blob, Queue en Table](../../storage/common/storage-introduction.md). Opslaganalyse registreert gedetailleerde informatie over geslaagde en mislukte aanvragen bij een opslagservice.
 
 Deze informatie kan worden gebruikt voor het bewaken van afzonderlijke aanvragen en voor het vaststellen van problemen met een opslagservice. Aanvragen worden op de beste basis geregistreerd. Logboek vermeldingen worden alleen gemaakt als er aanvragen worden gedaan voor het service-eind punt. Als een opslag account bijvoorbeeld activiteit heeft in het BLOB-eind punt, maar niet in de tabel-of wachtrij-eind punten, worden alleen logboeken die betrekking hebben op de Blob service gemaakt.
 
@@ -256,7 +256,7 @@ De volgende acties die door Opslaganalyse worden uitgevoerd, zijn Factureerbaar:
 -   Aanvragen voor het maken van tabel entiteiten voor metrische gegevens.
 
 > [!Note]
-> Zie [Opslaganalyse en facturering](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-and-billing)voor meer informatie over de facturering en het Bewaar beleid voor gegevens.
+> Zie [Opslaganalyse en facturering](/rest/api/storageservices/fileservices/storage-analytics-and-billing)voor meer informatie over de facturering en het Bewaar beleid voor gegevens.
 > Voor optimale prestaties wilt u het aantal zeer gebruikte schijven dat is gekoppeld aan de virtuele machine beperken om mogelijke beperking te voor komen. Als alle schijven op hetzelfde moment niet Maxi maal worden gebruikt, kan het opslag account een grotere schijf ondersteunen.
 
 > [!Note]
@@ -271,7 +271,7 @@ De volgende typen geverifieerde en anonieme aanvragen worden geregistreerd.
 |Mislukte aanvragen, inclusief time-out-, beperkings-, netwerk-, autorisatiefouten en overige fouten | Aanvragen met behulp van een Shared Access Signature (SAS), waaronder mislukte en geslaagde aanvragen |
 | Aanvragen met behulp van een Shared Access Signature (SAS), waaronder mislukte en geslaagde aanvragen |Time-outfouten voor zowel de client als de server |
 |   Aanvragen voor analysegegevens |    Mislukte GET-aanvragen met foutcode 304 (Niet gewijzigd) |
-| Aanvragen die worden gedaan door Opslaganalyse zichzelf, zoals het maken of verwijderen van een logboek, worden niet geregistreerd. Een volledige lijst met de geregistreerde gegevens wordt gedocumenteerd in de onderwerpen [Opslaganalyse vastgelegde bewerkingen en status berichten](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-logged-operations-and-status-messages) en [Opslaganalyse logboek indeling](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-log-format) . | Alle andere mislukte anonieme aanvragen worden niet geregistreerd. Een volledige lijst met de geregistreerde gegevens wordt gedocumenteerd in de [Opslaganalyse geregistreerde bewerkingen en status berichten](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-logged-operations-and-status-messages) en [Opslaganalyse logboek indeling](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-log-format). |
+| Aanvragen die worden gedaan door Opslaganalyse zichzelf, zoals het maken of verwijderen van een logboek, worden niet geregistreerd. Een volledige lijst met de geregistreerde gegevens wordt gedocumenteerd in de onderwerpen [Opslaganalyse vastgelegde bewerkingen en status berichten](/rest/api/storageservices/fileservices/storage-analytics-logged-operations-and-status-messages) en [Opslaganalyse logboek indeling](/rest/api/storageservices/fileservices/storage-analytics-log-format) . | Alle andere mislukte anonieme aanvragen worden niet geregistreerd. Een volledige lijst met de geregistreerde gegevens wordt gedocumenteerd in de [Opslaganalyse geregistreerde bewerkingen en status berichten](/rest/api/storageservices/fileservices/storage-analytics-logged-operations-and-status-messages) en [Opslaganalyse logboek indeling](/rest/api/storageservices/fileservices/storage-analytics-log-format). |
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
 
@@ -281,7 +281,7 @@ Azure AD omvat ook een volledige suite met mogelijkheden voor identiteits beheer
 
 -   Bewaak het gebruik van de toepassing en Bescherm uw bedrijf tegen geavanceerde bedreigingen met beveiligings rapportage en-bewaking.
 
-Azure Active Directory (Azure AD) bevat beveiligings-, activiteits- en controlerapporten voor uw directory. [Het Azure Active Directory controle rapport](../../active-directory/active-directory-reporting-azure-portal.md) helpt klanten bij het identificeren van geprivilegieerde acties die zijn opgetreden in hun Azure Active Directory. Geprivilegieerde acties omvatten verhogings wijzigingen (bijvoorbeeld het maken van functies of het opnieuw instellen van wacht woorden), het wijzigen van beleids configuraties (voor beeld van wachtwoord beleid) of wijzigingen in de configuratie van mappen (bijvoorbeeld wijzigingen in de instellingen van een domein Federatie).
+Azure Active Directory (Azure AD) bevat beveiligings-, activiteits- en controlerapporten voor uw directory. [Het Azure Active Directory controle rapport](../../active-directory/reports-monitoring/overview-reports.md) helpt klanten bij het identificeren van geprivilegieerde acties die zijn opgetreden in hun Azure Active Directory. Geprivilegieerde acties omvatten verhogings wijzigingen (bijvoorbeeld het maken van functies of het opnieuw instellen van wacht woorden), het wijzigen van beleids configuraties (voor beeld van wachtwoord beleid) of wijzigingen in de configuratie van mappen (bijvoorbeeld wijzigingen in de instellingen van een domein Federatie).
 
 De rapporten bieden de controle record voor de gebeurtenis naam, de actor die de actie heeft uitgevoerd, de doel resource die wordt beïnvloed door de wijziging en de datum en tijd (in UTC). Klanten kunnen de lijst met controle gebeurtenissen voor hun Azure Active Directory ophalen via de [Azure Portal](https://portal.azure.com/), zoals wordt beschreven in [uw audit logboeken weer geven](../../active-directory/reports-monitoring/overview-reports.md). Hierna volgt een lijst met de beschikbare rapporten:
 
@@ -299,14 +299,14 @@ De rapporten bieden de controle record voor de gebeurtenis naam, de actor die de
 
 
 
-De gegevens van deze rapporten kunnen nuttig zijn voor uw toepassingen, zoals SIEM Systems, audit en business intelligence tools. De Azure AD Reporting- [api's](../../active-directory/active-directory-reporting-api-getting-started-azure-portal.md) bieden programmatische toegang tot de gegevens via een set op rest gebaseerde api's. U kunt deze Api's aanroepen vanuit verschillende programmeer talen en hulpprogram ma's.
+De gegevens van deze rapporten kunnen nuttig zijn voor uw toepassingen, zoals SIEM Systems, audit en business intelligence tools. De Azure AD Reporting- [api's](../../active-directory/reports-monitoring/concept-reporting-api.md) bieden programmatische toegang tot de gegevens via een set op rest gebaseerde api's. U kunt deze Api's aanroepen vanuit verschillende programmeer talen en hulpprogram ma's.
 
 Gebeurtenissen in het Azure AD-controle rapport worden 180 dagen bewaard.
 
 > [!Note]
 > Zie [Azure Active Directory retentie beleid](../../active-directory/reports-monitoring/reference-reports-data-retention.md)voor rapporten voor meer informatie over retentie op rapport.
 
-De rapportage-API kan worden gebruikt voor klanten die hun [audit gebeurtenissen](../../active-directory/active-directory-reporting-activity-audit-logs.md) willen opslaan voor langere Bewaar perioden, waarmee ze regel matig controle gebeurtenissen in een afzonderlijk gegevens archief kunnen ophalen.
+De rapportage-API kan worden gebruikt voor klanten die hun [audit gebeurtenissen](../../active-directory/reports-monitoring/concept-audit-logs.md) willen opslaan voor langere Bewaar perioden, waarmee ze regel matig controle gebeurtenissen in een afzonderlijk gegevens archief kunnen ophalen.
 
 ## <a name="summary"></a>Samenvatting
 
@@ -342,4 +342,3 @@ Micro soft ontwerpt haar services en software met behulp van beveiliging om ervo
 Gebruik micro soft-beveiligings gegevens en-analyse om intelligente en efficiënte detectie van bedreigingen uit te voeren.
 
 - [Planning en bewerkingen Azure Security Center](../../security-center/security-center-planning-and-operations-guide.md) Een reeks stappen en taken die u kunt volgen om uw gebruik van Security Center te optimaliseren op basis van de beveiligings vereisten van uw organisatie en het model voor Cloud beheer.
-

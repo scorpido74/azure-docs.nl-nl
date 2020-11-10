@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: c5525fc43f23ecd1760c5a869d8171aee0e9415d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e74b540610d3b6520f4c8e25ca2df7bf628706f
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91395767"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410331"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Overzicht van Azure-beveiligings beheer en-bewaking
 Dit artikel bevat een overzicht van de beveiligings functies en-services die Azure biedt om u te helpen bij het beheer en de bewaking van Azure-Cloud Services en virtuele machines.
@@ -48,8 +48,8 @@ Meer informatie:
 
 * [Deploying Antimalware Solutions on Azure Virtual Machines](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/) (Antimalware-oplossingen implementeren op virtuele machines van Azure)
 * [Micro soft antimalware voor Azure Cloud Services en Virtual Machines](antimalware.md)
-* [Trend Micro diepe Security als een service op een Windows-VM installeren en configureren](/azure/virtual-machines/windows/classic/install-trend)
-* [Symantec-Endpoint Protection installeren en configureren op een Windows-VM](/azure/virtual-machines/windows/classic/install-symantec)
+* [Trend Micro diepe Security als een service op een Windows-VM installeren en configureren](../../virtual-machines/extensions/trend.md)
+* [Symantec-Endpoint Protection installeren en configureren op een Windows-VM](../../virtual-machines/extensions/symantec.md)
 * [Nieuwe antimalware-opties voor het beveiligen van Azure Virtual Machines](https://azure.microsoft.com/blog/new-antimalware-options-for-protecting-azure-virtual-machines/)
 
 ## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
@@ -61,7 +61,7 @@ Multi-Factor Authentication helpt de toegang tot gegevens en toepassingen te bes
 Meer informatie:
 
 * [Multi-Factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
-* [Wat is Azure Multi-Factor Authentication?](/azure/active-directory/authentication/multi-factor-authentication)
+* [Wat is Azure Multi-Factor Authentication?](../../active-directory/authentication/concept-mfa-howitworks.md)
 * [Hoe Multi-Factor Authentication werkt](../../active-directory/authentication/concept-mfa-howitworks.md)
 
 ## <a name="expressroute"></a>ExpressRoute
@@ -112,7 +112,7 @@ Door meldingen en aanbevolen herstel te bieden, helpt identiteits beveiliging de
 
 Meer informatie:
 
-* [Azure Active Directory Identity Protection](/azure/active-directory/active-directory-identityprotection)
+* [Azure Active Directory Identity Protection](../../active-directory/identity-protection/overview-identity-protection.md)
 * [Channel 9: Azure AD en identiteits weergave: preview van identiteits beveiliging](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
 ## <a name="security-center"></a>Beveiligingscentrum
@@ -129,8 +129,8 @@ Security Center helpt u de beveiliging van uw Azure-resources te optimaliseren e
 
 Meer informatie:
 
-* [Inleiding tot Azure Security Center](../../security-center/security-center-intro.md)
-* [Verbeter uw beveiligde Score in Azure Security Center](../../security-center/security-center-secure-score.md)
+* [Inleiding tot Azure Security Center](../../security-center/security-center-introduction.md)
+* [Verbeter uw beveiligde Score in Azure Security Center](../../security-center/secure-score-security-controls.md)
 
 ## <a name="intelligent-security-graph"></a>Intelligent Security Graph
 

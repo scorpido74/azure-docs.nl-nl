@@ -16,23 +16,23 @@ ms.date: 05/18/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db5dbef2b57fb89b33ea116d0373184cdade0ac5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 261ab5d0f039705a2566b7c28ff4c06778bb661a
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85356760"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410535"
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Functies van de Azure AD Connect-synchronisatieservice
 
 De synchronisatie functie van Azure AD Connect heeft twee onderdelen:
 
-* Het on-premises onderdeel met de naam **Azure AD Connect Sync**, ook wel **Sync Engine**genoemd.
+* Het on-premises onderdeel met de naam **Azure AD Connect Sync** , ook wel **Sync Engine** genoemd.
 * De service die zich bevindt in azure AD, ook wel bekend als **Azure AD Connect-synchronisatie service**
 
 In dit onderwerp wordt uitgelegd hoe de volgende functies van de **Azure AD Connect Sync-Service** werken en hoe u deze kunt configureren met Windows Power shell.
 
-Deze instellingen worden geconfigureerd door de [Azure Active Directory-module voor Windows Power shell](https://aka.ms/aadposh). Down load en installeer deze afzonderlijk van Azure AD Connect. De cmdlets die in dit onderwerp worden beschreven, zijn geïntroduceerd in de [release van 2016 maart (build 9031,1)](https://social.technet.microsoft.com/wiki/contents/articles/28552.microsoft-azure-active-directory-powershell-module-version-release-history.aspx#Version_9031_1). Als u niet beschikt over de cmdlets die in dit onderwerp worden beschreven, of als u niet hetzelfde resultaat hebt, moet u ervoor zorgen dat u de meest recente versie uitvoert.
+Deze instellingen worden geconfigureerd door de [Azure Active Directory-module voor Windows Power shell](/previous-versions/azure/jj151815(v=azure.100)). Down load en installeer deze afzonderlijk van Azure AD Connect. De cmdlets die in dit onderwerp worden beschreven, zijn geïntroduceerd in de [release van 2016 maart (build 9031,1)](https://social.technet.microsoft.com/wiki/contents/articles/28552.microsoft-azure-active-directory-powershell-module-version-release-history.aspx#Version_9031_1). Als u niet beschikt over de cmdlets die in dit onderwerp worden beschreven, of als u niet hetzelfde resultaat hebt, moet u ervoor zorgen dat u de meest recente versie uitvoert.
 
 Voer uit om de configuratie in uw Azure AD-Directory te bekijken `Get-MsolDirSyncFeatures` .  
 ![Resultaat van Get-MsolDirSyncFeatures](./media/how-to-connect-syncservice-features/getmsoldirsyncfeatures.png)
@@ -114,7 +114,7 @@ Set-MsolDirSyncFeature -Feature SynchronizeUpnForManagedUsers -Enable $true
 
 Nadat deze functie is ingeschakeld, blijven de bestaande userPrincipalName-waarden ongewijzigd. Bij de volgende wijziging van het kenmerk userPrincipalName on-premises wordt de UPN door de normale Delta synchronisatie op de gebruikers bijgewerkt.  
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 * [Azure AD Connect synchronisatie](how-to-connect-sync-whatis.md)
 * [Uw on-premises identiteiten integreren met Azure Active Directory](whatis-hybrid-identity.md).

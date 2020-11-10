@@ -9,12 +9,12 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: d839ea042dec2224885f9ba4a0cb6adef5108568
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff023ad98c7ffa269223b5d0b4a1cecc5fde1feb
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89458617"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410212"
 ---
 # <a name="azure-encryption-overview"></a>Overzicht van Azure-versleuteling
 
@@ -45,15 +45,15 @@ Met versleuteling aan de client zijde hebben Cloud serviceproviders geen toegang
 
 De drie versleutelings modellen aan de server zijde bieden verschillende kenmerken voor sleutel beheer, die u op basis van uw vereisten kunt kiezen:
 
-- Door **service beheerde sleutels**: biedt een combi natie van beheer en gebruiks gemak met lage overhead.
+- Door **service beheerde sleutels** : biedt een combi natie van beheer en gebruiks gemak met lage overhead.
 
-- Door de **klant beheerde sleutels**: geeft u de controle over de sleutels, waaronder het meebrengen van uw eigen sleutels (BYOK), of u kunt er nieuwe toevoegen.
+- Door de **klant beheerde sleutels** : geeft u de controle over de sleutels, waaronder het meebrengen van uw eigen sleutels (BYOK), of u kunt er nieuwe toevoegen.
 
-- Door **service beheerde sleutels in door de klant beheerde hardware**: Hiermee kunt u sleutels in uw eigen opslag plaats beheren, buiten micro soft Control. Dit kenmerk wordt een host uw eigen sleutel (HYOK) genoemd. Configuratie is echter complex en de meeste Azure-Services bieden geen ondersteuning voor dit model.
+- Door **service beheerde sleutels in door de klant beheerde hardware** : Hiermee kunt u sleutels in uw eigen opslag plaats beheren, buiten micro soft Control. Dit kenmerk wordt een host uw eigen sleutel (HYOK) genoemd. Configuratie is echter complex en de meeste Azure-Services bieden geen ondersteuning voor dit model.
 
 ### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
-U kunt virtuele Windows-en Linux-machines beveiligen met behulp van [Azure Disk Encryption](/azure/security/fundamentals/azure-disk-encryption-vms-vmss), die gebruikmaakt van [Windows BitLocker](https://technet.microsoft.com/library/cc766295(v=ws.10).aspx) -technologie en Linux [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) om zowel de besturingssysteem schijven als gegevens schijven te beveiligen met volledige versleuteling van het volume.
+U kunt virtuele Windows-en Linux-machines beveiligen met behulp van [Azure Disk Encryption](./azure-disk-encryption-vms-vmss.md), die gebruikmaakt van [Windows BitLocker](/previous-versions/windows/it-pro/windows-vista/cc766295(v=ws.10)) -technologie en Linux [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) om zowel de besturingssysteem schijven als gegevens schijven te beveiligen met volledige versleuteling van het volume.
 
 Versleutelings sleutels en geheimen worden beveiligd in uw [Azure Key Vault-abonnement](../../key-vault/general/overview.md). Met de Azure Backup-Service kunt u back-ups maken en terugzetten van versleutelde virtuele machines (Vm's) die gebruikmaken van de KEK-configuratie (Key Encryption Key).
 
@@ -83,13 +83,13 @@ Ten slotte kunt u ook de Azure Storage-client bibliotheek voor Java gebruiken om
 
 #### <a name="transparent-data-encryption"></a>Transparante gegevensversleuteling
 
-[TDe](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) wordt gebruikt voor het versleutelen van [SQL Server](https://www.microsoft.com/sql-server/sql-server-2016), [Azure SQL database](../../azure-sql/database/sql-database-paas-overview.md)en [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) -gegevens bestanden in realtime, met behulp van een database versleutelings sleutel (dek), die wordt opgeslagen in de data base boot record voor Beschik baarheid tijdens het herstel.
+[TDe](/sql/relational-databases/security/encryption/transparent-data-encryption-tde) wordt gebruikt voor het versleutelen van [SQL Server](https://www.microsoft.com/sql-server/sql-server-2016), [Azure SQL database](../../azure-sql/database/sql-database-paas-overview.md)en [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) -gegevens bestanden in realtime, met behulp van een database versleutelings sleutel (dek), die wordt opgeslagen in de data base boot record voor Beschik baarheid tijdens het herstel.
 
 TDE beschermt gegevens en logboek bestanden met behulp van AES-en Triple Data Encryption Standard (3DES)-versleutelings algoritmen. Versleuteling van het database bestand wordt uitgevoerd op pagina niveau. De pagina's in een versleutelde data base worden versleuteld voordat ze naar de schijf worden geschreven en worden ontsleuteld wanneer ze in het geheugen worden gelezen. TDE is nu standaard ingeschakeld voor nieuw gemaakte Azure SQL-data bases.
 
 #### <a name="always-encrypted-feature"></a>Always Encrypted functie
 
-Met de functie [Always encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) in Azure SQL kunt u gegevens in client toepassingen versleutelen voordat u deze opslaat in Azure SQL database. U kunt ook delegering van on-premises database beheer aan derden inschakelen en de schei ding tussen degenen die eigenaar zijn, behouden en de gegevens weer geven die deze beheren, maar geen toegang hebben.
+Met de functie [Always encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) in Azure SQL kunt u gegevens in client toepassingen versleutelen voordat u deze opslaat in Azure SQL database. U kunt ook delegering van on-premises database beheer aan derden inschakelen en de schei ding tussen degenen die eigenaar zijn, behouden en de gegevens weer geven die deze beheren, maar geen toegang hebben.
 
 #### <a name="cell-level-or-column-level-encryption"></a>Versleuteling op cellen of op kolom niveau
 
@@ -121,13 +121,13 @@ Micro soft biedt klanten de mogelijkheid om [Transport Layer Security](https://e
 
 [Perfect Forward Secrecy](https://en.wikipedia.org/wiki/Forward_secrecy) (PFS) beschermt verbindingen tussen client systemen van klanten en micro soft-Cloud Services door unieke sleutels. Verbindingen maken ook gebruik van op RSA gebaseerde 2.048-bits versleutelings sleutel lengtes. Deze combi natie maakt het moeilijk voor iemand om gegevens te onderscheppen en te benaderen die onderweg zijn.
 
-### <a name="azure-storage-transactions"></a>Azure Storage trans acties
+### <a name="azure-storage-transactions"></a>Azure Storage-transacties
 
 Wanneer u met Azure Storage communiceert via de Azure Portal, worden alle trans acties uitgevoerd via HTTPS. U kunt ook de opslag REST API via HTTPS gebruiken om te communiceren met Azure Storage. U kunt het gebruik van HTTPS afdwingen wanneer u de REST-Api's aanroept om toegang te krijgen tot objecten in opslag accounts door de beveiligde overdracht in te scha kelen die vereist is voor het opslag account.
 
-Shared Access signatures ([SAS](../../storage/common/storage-dotnet-shared-access-signature-part-1.md)), die kunnen worden gebruikt voor het delegeren van toegang tot Azure Storage-objecten, bevatten een optie om op te geven dat alleen het HTTPS-protocol kan worden gebruikt wanneer u gedeelde toegangs handtekeningen gebruikt. Deze aanpak zorgt ervoor dat iedereen die koppelingen met SAS-tokens verzendt, het juiste protocol gebruikt.
+Shared Access signatures ([SAS](../../storage/common/storage-sas-overview.md)), die kunnen worden gebruikt voor het delegeren van toegang tot Azure Storage-objecten, bevatten een optie om op te geven dat alleen het HTTPS-protocol kan worden gebruikt wanneer u gedeelde toegangs handtekeningen gebruikt. Deze aanpak zorgt ervoor dat iedereen die koppelingen met SAS-tokens verzendt, het juiste protocol gebruikt.
 
-[SMB 3,0](https://technet.microsoft.com/library/dn551363(v=ws.11).aspx#BKMK_SMBEncryption), die wordt gebruikt voor toegang tot Azure files shares, ondersteunt versleuteling en is beschikbaar in windows server 2012 R2, Windows 8, Windows 8,1 en Windows 10. Hiermee hebt u toegang tot meerdere regio's en zelfs toegang op het bureau blad.
+[SMB 3,0](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn551363(v=ws.11)#BKMK_SMBEncryption), die wordt gebruikt voor toegang tot Azure files shares, ondersteunt versleuteling en is beschikbaar in windows server 2012 R2, Windows 8, Windows 8,1 en Windows 10. Hiermee hebt u toegang tot meerdere regio's en zelfs toegang op het bureau blad.
 
 Versleuteling aan client zijde versleutelt de gegevens voordat deze naar uw Azure Storage-exemplaar worden verzonden, zodat deze wordt versleuteld wanneer deze via het netwerk worden overgebracht.
 
@@ -143,7 +143,7 @@ Gegevens in transit naar, van en tussen virtuele machines met Windows kunnen op 
 
 ### <a name="rdp-sessions"></a>RDP-sessies
 
-U kunt verbinding maken met en aanmelden bij een virtuele machine met behulp van de [Remote Desktop Protocol (RDP)](https://msdn.microsoft.com/library/aa383015(v=vs.85).aspx) van een Windows-client computer of van een Mac waarop een RDP-client is geïnstalleerd. Gegevens in de overdracht via het netwerk in RDP-sessies kunnen worden beveiligd door TLS.
+U kunt verbinding maken met en aanmelden bij een virtuele machine met behulp van de [Remote Desktop Protocol (RDP)](/windows/win32/termserv/remote-desktop-protocol) van een Windows-client computer of van een Mac waarop een RDP-client is geïnstalleerd. Gegevens in de overdracht via het netwerk in RDP-sessies kunnen worden beveiligd door TLS.
 
 U kunt Extern bureaublad ook gebruiken om verbinding te maken met een virtuele Linux-machine in Azure.
 
@@ -163,7 +163,7 @@ Site-naar-site-Vpn's gebruiken [IPSec](https://en.wikipedia.org/wiki/IPsec) voor
 
 ### <a name="point-to-site-vpns"></a>Punt-naar-site-VPN's
 
-Met punt-naar-site-Vpn's kunnen afzonderlijke client computers toegang krijgen tot een virtueel Azure-netwerk. [SSTP (Secure Socket Tunneling Protocol)](https://technet.microsoft.com/library/2007.06.cableguy.aspx) wordt gebruikt om de VPN-tunnel te maken. Het kan firewalls passeren (de tunnel wordt weer gegeven als een HTTPS-verbinding). U kunt uw eigen interne PKI (Public Key Infrastructure) basis certificerings instantie (CA) gebruiken voor punt-naar-site-connectiviteit.
+Met punt-naar-site-Vpn's kunnen afzonderlijke client computers toegang krijgen tot een virtueel Azure-netwerk. [SSTP (Secure Socket Tunneling Protocol)](/previous-versions/technet-magazine/cc162322(v=msdn.10)) wordt gebruikt om de VPN-tunnel te maken. Het kan firewalls passeren (de tunnel wordt weer gegeven als een HTTPS-verbinding). U kunt uw eigen interne PKI (Public Key Infrastructure) basis certificerings instantie (CA) gebruiken voor punt-naar-site-connectiviteit.
 
 U kunt een punt-naar-site-VPN-verbinding met een virtueel netwerk configureren met behulp van de Azure Portal met certificaat verificatie of Power shell.
 
@@ -201,9 +201,9 @@ Met Key Vault hoeven organisaties hardwarebeveiligingsmodules (Hardware Security
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Overzicht van Azure-beveiliging](get-started-overview.md)
+- [Overzicht van Azure-beveiliging](./overview.md)
 - [Overzicht van Azure-netwerk beveiliging](network-overview.md)
-- [Overzicht van Azure data base-beveiliging](database-security-overview.md)
+- [Overzicht van Azure data base-beveiliging](../../azure-sql/database/security-overview.md)
 - [Overzicht van de beveiliging van virtuele Azure-machines](virtual-machines-overview.md)
 - [Versleuteling van inactieve gegevens](encryption-atrest.md)
 - [Best practices voor gegevensbeveiliging en -versleuteling](data-encryption-best-practices.md)

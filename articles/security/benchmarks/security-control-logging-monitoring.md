@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 82114164d70eae71678e70ff2bdb7ea44a54d4cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e88976bfbf5d033d6f5dc2318a6383e01ceb791d
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87076303"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94409073"
 ---
 # <a name="security-control-logging-and-monitoring"></a>Beveiligings beheer: logboek registratie en controle
 
@@ -26,9 +26,9 @@ Beveiligings logboeken en-bewaking zijn gericht op activiteiten met betrekking t
 
 Micro soft onderhoudt tijd bronnen voor Azure-resources, maar u hebt de mogelijkheid om de tijd synchronisatie-instellingen voor uw reken resources te beheren.
 
-- [Tijd synchronisatie configureren voor Azure Windows Compute-resources](https://docs.microsoft.com/azure/virtual-machines/windows/time-sync)
+- [Tijd synchronisatie configureren voor Azure Windows Compute-resources](../../virtual-machines/windows/time-sync.md)
 
-- [Tijd synchronisatie configureren voor Azure Linux-reken resources](https://docs.microsoft.com/azure/virtual-machines/linux/time-sync)
+- [Tijd synchronisatie configureren voor Azure Linux-reken resources](../../virtual-machines/linux/time-sync.md)
 
 ## <a name="22-configure-central-security-log-management"></a>2,2: Centraal beveiligings logboek beheer configureren
 
@@ -40,11 +40,11 @@ Opname logboeken via Azure Monitor voor het verzamelen van beveiligings gegevens
 
 U kunt ook gegevens in-of uitschakelen voor Azure Sentinel of een SIEM van derden. 
 
-- [Azure-Sentinel onboarden](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [Azure-Sentinel onboarden](../../sentinel/quickstart-onboard.md)
 
-- [Platform logboeken en metrische gegevens verzamelen met Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings)
+- [Platform logboeken en metrische gegevens verzamelen met Azure Monitor](../../azure-monitor/platform/diagnostic-settings.md)
 
-- [Interne host-logboeken van de virtuele machine van Azure verzamelen met Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/learn/quick-collect-azurevm)
+- [Interne host-logboeken van de virtuele machine van Azure verzamelen met Azure Monitor](../../azure-monitor/learn/quick-collect-azurevm.md)
 
 - [Aan de slag met Azure Monitor en integratie van SIEM van derden](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
@@ -56,9 +56,9 @@ U kunt ook gegevens in-of uitschakelen voor Azure Sentinel of een SIEM van derde
 
 Diagnostische instellingen op Azure-resources inschakelen voor toegang tot controle-, beveiligings-en Diagnostische logboeken. Activiteiten logboeken, die automatisch beschikbaar zijn, omvatten gebeurtenis bron, datum, gebruiker, tijds tempel, bron adressen, doel adressen en andere nuttige elementen.
 
-- [Platform logboeken en metrische gegevens verzamelen met Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings)
+- [Platform logboeken en metrische gegevens verzamelen met Azure Monitor](../../azure-monitor/platform/diagnostic-settings.md)
 
-- [Logboek registratie en verschillende logboek typen in azure](https://docs.microsoft.com/azure/azure-monitor/platform/platform-logs-overview)
+- [Logboek registratie en verschillende logboek typen in azure](../../azure-monitor/platform/platform-logs-overview.md)
 
 ## <a name="24-collect-security-logs-from-operating-systems"></a>2,4: beveiligings logboeken verzamelen van besturings systemen
 
@@ -68,21 +68,21 @@ Diagnostische instellingen op Azure-resources inschakelen voor toegang tot contr
 
 Als de reken resource eigendom is van micro soft, is micro soft verantwoordelijk voor het bewaken van de bron. Als de reken resource eigendom is van uw organisatie, is het uw verantwoordelijkheid om deze te controleren. U kunt Azure Security Center gebruiken om het besturings systeem te bewaken. Gegevens die worden verzameld door Security Center van het besturings systeem zijn onder andere besturingssysteem type en-versie, besturings systeem (Windows-gebeurtenis Logboeken), actieve processen, computer naam, IP-adressen en aangemelde gebruiker. De Log Analytics-agent verzamelt ook crash dump bestanden.
 
-- [Interne host-logboeken van de virtuele machine van Azure verzamelen met Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/learn/quick-collect-azurevm)
+- [Interne host-logboeken van de virtuele machine van Azure verzamelen met Azure Monitor](../../azure-monitor/learn/quick-collect-azurevm.md)
 
-- [Meer informatie over het verzamelen van Azure Security Center gegevens](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection)
+- [Meer informatie over het verzamelen van Azure Security Center gegevens](../../security-center/security-center-enable-data-collection.md)
 
 ## <a name="25-configure-security-log-storage-retention"></a>2,5: Bewaar beveiliging van het beveiligings logboek configureren
 
 | Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 2,5 | 6.4 | Klant |
+| 2.5 | 6.4 | Klant |
 
 Stel binnen Azure Monitor uw Bewaar periode voor Log Analytics werk ruimte in volgens de nalevings voorschriften van uw organisatie. Gebruik Azure Storage-accounts voor lange termijn/archiverings opslag.
 
-- [De Bewaar periode voor gegevens wijzigen in Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [De Bewaar periode voor gegevens wijzigen in Log Analytics](../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
-- [Bewaar beleid configureren voor logboeken van Azure Storage-account](https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account#configure-logging)
+- [Bewaar beleid configureren voor logboeken van Azure Storage-account](../../storage/common/storage-monitor-storage-account.md#configure-logging)
 
 ## <a name="26-monitor-and-review-logs"></a>2,6: Logboeken bewaken en controleren
 
@@ -94,11 +94,11 @@ Analyseer en bewaak logboeken voor afwijkend gedrag en controleer regel matig de
 
 U kunt ook gegevens in-of uitschakelen voor Azure Sentinel of een SIEM van derden. 
 
-- [Azure-Sentinel onboarden](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [Azure-Sentinel onboarden](../../sentinel/quickstart-onboard.md)
 
-- [Log Analytics-werk ruimte begrijpen](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)
+- [Log Analytics-werk ruimte begrijpen](../../azure-monitor/log-query/get-started-portal.md)
 
-- [Aangepaste query's uitvoeren in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries)
+- [Aangepaste query's uitvoeren in Azure Monitor](../../azure-monitor/log-query/get-started-queries.md)
 
 ## <a name="27-enable-alerts-for-anomalous-activities"></a>2,7: waarschuwingen inschakelen voor afwijkende activiteiten
 
@@ -110,11 +110,11 @@ Gebruik Azure Security Center met Log Analytics werk ruimte voor bewaking en waa
 
 U kunt ook gegevens naar Azure-Sentinel inschakelen en op het bord zetten.
 
-- [Azure-Sentinel onboarden](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [Azure-Sentinel onboarden](../../sentinel/quickstart-onboard.md)
 
-- [Waarschuwingen beheren in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)
+- [Waarschuwingen beheren in Azure Security Center](../../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Een waarschuwing over logboek gegevens van log Analytics](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response)
+- [Een waarschuwing over logboek gegevens van log Analytics](../../azure-monitor/learn/tutorial-response.md)
 
 ## <a name="28-centralize-anti-malware-logging"></a>2,8: registratie van anti-malware centraliseren
 
@@ -128,7 +128,7 @@ Schakel de verzameling van antimalware-gebeurtenissen in voor Azure Virtual Mach
 
 - [Micro soft antimalware configureren voor Cloud Services](/powershell/module/servicemanagement/azure.service/set-azureserviceantimalwareextension?view=azuresmps-4.0.0)
 
-- [Micro soft antimalware begrijpen](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
+- [Micro soft antimalware begrijpen](../fundamentals/antimalware.md)
 
 ## <a name="29-enable-dns-query-logging"></a>2,9: DNS-query logboek registratie inschakelen
 
@@ -146,11 +146,11 @@ Implementeer een oplossing van derden van Azure Marketplace voor de DNS-registra
 
 Gebruik micro soft Monitoring Agent op alle ondersteunde virtuele machines van Azure Windows om de gebeurtenis voor het maken van processen en het veld CommandLine te registreren.   Voor ondersteunde virtuele machines van Azure Linux kunt u hand matig console logboek registratie configureren per knoop punt en syslog gebruiken om de gegevens op te slaan.  U kunt ook de werk ruimte Log Analytics van Azure Monitor gebruiken om logboeken te controleren en query's uit te voeren op geregistreerde gegevens van virtuele Azure-machines. 
 
-- [Gegevensverzameling in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection#data-collection-tier)
+- [Gegevensverzameling in Azure Security Center](../../security-center/security-center-enable-data-collection.md#data-collection-tier)
 
-- [Aangepaste query's uitvoeren in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries)
+- [Aangepaste query's uitvoeren in Azure Monitor](../../azure-monitor/log-query/get-started-queries.md)
 
-- [Syslog-gegevensbronnen in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-syslog)
+- [Syslog-gegevensbronnen in Azure Monitor](../../azure-monitor/platform/data-sources-syslog.md)
 
 
 ## <a name="next-steps"></a>Volgende stappen

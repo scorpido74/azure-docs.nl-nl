@@ -12,12 +12,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0ee8661ca985e1882cff54d2fc2cdc5e9ad0a22
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e0edda2a01d6b17aebba3fbe4dbf039bf1d2f2c5
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335966"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94411113"
 ---
 # <a name="migrate-from-federation-to-pass-through-authentication-for-azure-active-directory"></a>Migreren van Federatie naar Pass-Through-verificatie voor Azure Active Directory
 
@@ -76,13 +76,13 @@ Volg de stappen in de volgende secties om te begrijpen welke methode u moet gebr
 #### <a name="verify-how-federation-was-configured"></a>Controleren hoe Federatie is geconfigureerd
 
 1. Open Azure AD Connect op uw Azure AD Connect-server. Selecteer **Configureren**.
-2. Selecteer op de pagina **extra taken** de optie **huidige configuratie weer geven**en selecteer vervolgens **volgende**.<br />
+2. Selecteer op de pagina **extra taken** de optie **huidige configuratie weer geven** en selecteer vervolgens **volgende**.<br />
  
    ![Scherm afbeelding van de optie huidige configuratie weer geven op de pagina extra taken](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image2.png)<br />
-3. Ga onder **aanvullende taken > Federatie beheren**naar **Active Directory Federation Services (AD FS)**.<br />
+3. Ga onder **aanvullende taken > Federatie beheren** naar **Active Directory Federation Services (AD FS)**.<br />
 
-   * Als de AD FS configuratie in deze sectie wordt weer gegeven, kunt u veilig aannemen dat AD FS oorspronkelijk is geconfigureerd met behulp van Azure AD Connect. U kunt uw domeinen van federatieve identiteiten naar een beheerde identiteit converteren met behulp van de aanmeldings optie Azure AD Connect **gebruiker wijzigen** . Zie de sectie **optie A: Pass-Through-verificatie configureren met behulp van Azure AD Connect**voor meer informatie over het proces.
-   * Als AD FS niet in de huidige instellingen wordt vermeld, moet u uw domeinen hand matig met behulp van Power shell converteren van federatieve identiteit naar beheerde identiteit. Zie de sectie **optie B: overschakelen van Federatie naar Pass-Through-verificatie met behulp van Azure AD Connect en Power shell**voor meer informatie over dit proces.
+   * Als de AD FS configuratie in deze sectie wordt weer gegeven, kunt u veilig aannemen dat AD FS oorspronkelijk is geconfigureerd met behulp van Azure AD Connect. U kunt uw domeinen van federatieve identiteiten naar een beheerde identiteit converteren met behulp van de aanmeldings optie Azure AD Connect **gebruiker wijzigen** . Zie de sectie **optie A: Pass-Through-verificatie configureren met behulp van Azure AD Connect** voor meer informatie over het proces.
+   * Als AD FS niet in de huidige instellingen wordt vermeld, moet u uw domeinen hand matig met behulp van Power shell converteren van federatieve identiteit naar beheerde identiteit. Zie de sectie **optie B: overschakelen van Federatie naar Pass-Through-verificatie met behulp van Azure AD Connect en Power shell** voor meer informatie over dit proces.
 
 ### <a name="document-current-federation-settings"></a>Huidige Federatie-instellingen documenteren
 
@@ -98,7 +98,7 @@ Voorbeeld:
 Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 ```
 
-Controleer alle instellingen die mogelijk zijn aangepast voor uw Federatie-ontwerp en implementatie documentatie. Zoek in het bijzonder naar aanpassingen in **PreferredAuthenticationProtocol**, **SupportsMfa**en **PromptLoginBehavior**.
+Controleer alle instellingen die mogelijk zijn aangepast voor uw Federatie-ontwerp en implementatie documentatie. Zoek in het bijzonder naar aanpassingen in **PreferredAuthenticationProtocol** , **SupportsMfa** en **PromptLoginBehavior**.
 
 Raadpleeg deze artikelen voor meer informatie:
 
@@ -106,7 +106,7 @@ Raadpleeg deze artikelen voor meer informatie:
 * [Set-MsolDomainAuthentication](/powershell/module/msonline/set-msoldomainauthentication?view=azureadps-1.0)
 
 > [!NOTE]
-> Als **SupportsMfa** is ingesteld op **True**, gebruikt u een on-premises multi-factor Authentication-oplossing om een tweede factor Challenge in te voeren in de verificatie stroom van de gebruiker. Deze installatie werkt niet meer voor Azure AD-verificatie scenario's. 
+> Als **SupportsMfa** is ingesteld op **True** , gebruikt u een on-premises multi-factor Authentication-oplossing om een tweede factor Challenge in te voeren in de verificatie stroom van de gebruiker. Deze installatie werkt niet meer voor Azure AD-verificatie scenario's. 
 >
 > Gebruik in plaats daarvan de Azure Multi-Factor Authentication cloud-gebaseerde service om dezelfde functie uit te voeren. Evalueer zorgvuldig uw multi-factor Authentication-vereisten voordat u doorgaat. Zorg ervoor dat u weet hoe u Azure Multi-Factor Authentication, de implicaties van licenties en het gebruikers registratie proces kunt gebruiken voordat u uw domeinen converteert.
 
@@ -132,9 +132,9 @@ Voordat u de federatieve identiteit omzet in een beheerde identiteit, kijkt u go
 |-|-|
 | U wilt AD FS blijven gebruiken met andere toepassingen (met uitzonde ring van Azure AD en Microsoft 365). | Nadat u uw domeinen hebt geconverteerd, gebruikt u zowel AD FS als Azure AD. Denk aan de gebruikers ervaring. In sommige gevallen moeten gebruikers mogelijk twee maal worden geverifieerd: eenmaal naar Azure AD (waarbij een gebruiker SSO-toegang krijgt tot andere toepassingen, zoals Microsoft 365) en opnieuw voor alle toepassingen die nog steeds zijn gebonden aan AD FS als een Relying Party-vertrouwens relatie. |
 | Uw AD FS-exemplaar is sterk aangepast en is afhankelijk van specifieke aanpassings instellingen in het onload.js-bestand (bijvoorbeeld als u de aanmeldings ervaring hebt gewijzigd, zodat gebruikers alleen een **sAMAccountName** -indeling voor hun gebruikers naam gebruiken in plaats van een UPN (User Principal Name), of uw organisatie de aanmeldings ervaring sterk merkt). Het onload.js bestand kan niet worden gedupliceerd in azure AD. | Voordat u doorgaat, moet u controleren of Azure AD kan voldoen aan uw huidige aanpassings vereisten. Zie de secties over AD FS huis stijl en AD FS aanpassen voor meer informatie en voor hulp.|
-| U gebruikt AD FS om eerdere versies van Authentication-clients te blok keren.| Overweeg AD FS besturings elementen te vervangen die eerdere versies van authenticatie-clients blok keren door gebruik te maken van een combi natie van [besturings elementen voor voorwaardelijke toegang](../conditional-access/concept-conditional-access-conditions.md) en [Exchange Online-regels voor client toegang](https://aka.ms/EXOCAR). |
+| U gebruikt AD FS om eerdere versies van Authentication-clients te blok keren.| Overweeg AD FS besturings elementen te vervangen die eerdere versies van authenticatie-clients blok keren door gebruik te maken van een combi natie van [besturings elementen voor voorwaardelijke toegang](../conditional-access/concept-conditional-access-conditions.md) en [Exchange Online-regels voor client toegang](/exchange/clients-and-mobile-in-exchange-online/client-access-rules/client-access-rules). |
 | U wilt dat gebruikers multi-factor Authentication uitvoeren op een on-premises multi-factor Authentication-Server oplossing wanneer gebruikers zich verifiëren bij AD FS.| U kunt in een beheerd identiteits domein geen multi-factor Authentication-Challenge injecteren via de on-premises multi-factor Authentication-oplossing in de verificatie stroom. U kunt echter de Azure Multi-Factor Authentication-Service voor multi-factor Authentication gebruiken nadat het domein is geconverteerd.<br /><br /> Als uw gebruikers momenteel geen Azure Multi-Factor Authentication gebruiken, is een eenmalige-gebruikers registratie-stap vereist. U moet de geplande registratie voorbereiden en aan uw gebruikers door geven. |
-| U gebruikt momenteel toegangs beheer beleid (AuthZ-regels) in AD FS om de toegang tot Microsoft 365 te beheren.| Overweeg om het beleid te vervangen door het equivalente [beleid voor voorwaardelijke toegang](../conditional-access/overview.md) van Azure AD en de [Exchange Online-regels voor client toegang](https://aka.ms/EXOCAR).|
+| U gebruikt momenteel toegangs beheer beleid (AuthZ-regels) in AD FS om de toegang tot Microsoft 365 te beheren.| Overweeg om het beleid te vervangen door het equivalente [beleid voor voorwaardelijke toegang](../conditional-access/overview.md) van Azure AD en de [Exchange Online-regels voor client toegang](/exchange/clients-and-mobile-in-exchange-online/client-access-rules/client-access-rules).|
 
 ### <a name="common-ad-fs-customizations"></a>Algemene AD FS aanpassingen
 
@@ -160,7 +160,7 @@ Voor Windows 8-en Windows 7-computer accounts gebruikt hybride deelname naadloze
 
 Zie [Configure Hybrid Azure AD-joined devices](../devices/hybrid-azuread-join-plan.md)(Engelstalig) voor meer informatie.
 
-#### <a name="branding"></a>Huisstijl
+#### <a name="branding"></a>Branding
 
 Als uw organisatie [uw AD FS aanmeld pagina's heeft aangepast](/windows-server/identity/ad-fs/operations/ad-fs-user-sign-in-customization) om informatie weer te geven die relevant is voor de organisatie, kunt u overwegen vergelijk bare [aanpassingen aan te brengen op de aanmeldings pagina van Azure AD](../fundamentals/customize-branding.md).
 
@@ -247,9 +247,9 @@ Gebruik deze methode als u uw AD FS-omgeving voor het eerst hebt geconfigureerd 
 Wijzig eerst de aanmeldings methode:
 
 1. Open de wizard Azure AD Connect op de Azure AD Connect-server.
-2. Selecteer **gebruiker aanmelden wijzigen**en selecteer **volgende**. 
+2. Selecteer **gebruiker aanmelden wijzigen** en selecteer **volgende**. 
 3. Voer op de pagina **verbinding maken met Azure AD** de gebruikers naam en het wacht woord in van een account voor globale beheerders.
-4. Selecteer op de **aanmeldings** pagina voor gebruikers de knop **Pass-Through-verificatie** , selecteer **eenmalige aanmelding inschakelen**en selecteer **volgende**.
+4. Selecteer op de **aanmeldings** pagina voor gebruikers de knop **Pass-Through-verificatie** , selecteer **eenmalige aanmelding inschakelen** en selecteer **volgende**.
 5. Op de pagina **eenmalige aanmelding inschakelen** voert u de referenties in van een domein beheerders account en selecteert u **volgende**.
 
    > [!NOTE]
@@ -262,7 +262,7 @@ Wijzig eerst de aanmeldings methode:
 6. Controleer op de pagina **gereed voor configuratie** of het selectie vakje **synchronisatie proces starten wanneer de configuratie is voltooid** is ingeschakeld. Selecteer vervolgens **configureren**.<br />
 
    ![Scherm afbeelding van de pagina gereed voor configuratie](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image8.png)<br />
-7. Selecteer in de Azure AD-Portal **Azure Active Directory**en selecteer vervolgens **Azure AD Connect**.
+7. Selecteer in de Azure AD-Portal **Azure Active Directory** en selecteer vervolgens **Azure AD Connect**.
 8. Controleer de volgende instellingen:
    * **Federatie** is ingesteld op **uitgeschakeld**.
    * **Naadloze eenmalige aanmelding** is **ingeschakeld**.
@@ -272,7 +272,7 @@ Wijzig eerst de aanmeldings methode:
 
 Volgende. aanvullende verificatie methoden implementeren:
 
-1. Ga in het Azure Portal naar **Azure Active Directory**  >  **Azure AD CONNECT**en selecteer vervolgens **Pass-Through-verificatie**.
+1. Ga in het Azure Portal naar **Azure Active Directory**  >  **Azure AD CONNECT** en selecteer vervolgens **Pass-Through-verificatie**.
 2. Selecteer op de pagina **Pass-Through-verificatie** de knop **downloaden** .
 3. Selecteer op de pagina **agent downloaden** de optie **voor waarden accepteren en downloaden**.
 
@@ -301,9 +301,9 @@ Gebruik deze optie als u uw federatieve domeinen niet eerst hebt geconfigureerd 
 Schakel eerst Pass-Through-verificatie in:
 
 1. Open de wizard Azure AD Connect op de Azure AD Connect-server.
-2. Selecteer **gebruiker aanmelden wijzigen**en selecteer **volgende**.
+2. Selecteer **gebruiker aanmelden wijzigen** en selecteer **volgende**.
 3. Voer op de pagina **verbinding maken met Azure AD** de gebruikers naam en het wacht woord in van een account voor globale beheerders.
-4. Selecteer op de aanmeldings pagina van de **gebruiker** de knop **Pass-Through-verificatie** . Selecteer **eenmalige aanmelding inschakelen**en selecteer **volgende**.
+4. Selecteer op de aanmeldings pagina van de **gebruiker** de knop **Pass-Through-verificatie** . Selecteer **eenmalige aanmelding inschakelen** en selecteer **volgende**.
 5. Op de pagina **eenmalige aanmelding inschakelen** voert u de referenties in van een domein beheerders account en selecteert u **volgende**.
 
    > [!NOTE]
@@ -316,7 +316,7 @@ Schakel eerst Pass-Through-verificatie in:
 6. Controleer op de pagina **gereed voor configuratie** of het selectie vakje **synchronisatie proces starten wanneer de configuratie is voltooid** is ingeschakeld. Selecteer vervolgens **configureren**.<br />
 
    ![Scherm opname van de pagina gereed voor configuratie en de knop configureren](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image18.png)<br />
-   De volgende stappen worden uitgevoerd wanneer u **configureren**selecteert:
+   De volgende stappen worden uitgevoerd wanneer u **configureren** selecteert:
 
    1. De eerste pass-through-verificatie agent is geïnstalleerd.
    2. De Pass-Through-functie is ingeschakeld.
@@ -328,13 +328,13 @@ Schakel eerst Pass-Through-verificatie in:
    * **Pass Through-verificatie** is ingesteld op **ingeschakeld**.
    
    ![Scherm afbeelding met de instellingen die moeten worden gecontroleerd in het gedeelte aanmelden bij de gebruiker.](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image19.png)
-8. Selecteer **Pass-Through-verificatie** en controleer of de status **actief**is.<br />
+8. Selecteer **Pass-Through-verificatie** en controleer of de status **actief** is.<br />
    
    Als de verificatie agent niet actief is, voltooit u de [stappen voor probleem oplossing](./tshoot-connect-pass-through-authentication.md) voordat u verdergaat met het domein conversie proces in de volgende stap. U kunt een verificatie storing veroorzaken als u uw domeinen converteert voordat u valideert dat uw Pass Through-verificatie agenten zijn geïnstalleerd en dat de status ervan **actief** is in de Azure Portal.
 
 Implementeer vervolgens extra verificatie agenten:
 
-1. Ga in het Azure Portal naar **Azure Active Directory**  >  **Azure AD CONNECT**en selecteer vervolgens **Pass-Through-verificatie**.
+1. Ga in het Azure Portal naar **Azure Active Directory**  >  **Azure AD CONNECT** en selecteer vervolgens **Pass-Through-verificatie**.
 2. Selecteer op de pagina **Pass-Through-verificatie** de knop **downloaden** . 
 3. Selecteer op de pagina **agent downloaden** de optie **voor waarden accepteren en downloaden**.
  
@@ -388,7 +388,7 @@ Pass-Through-verificatie testen:
 
    ![Scherm opname van de aanmeldings pagina waarin u een wacht woord invoert](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image28.png)
 
-4. Nadat u het wacht woord hebt ingevoerd en **Aanmelden**hebt geselecteerd, wordt u omgeleid naar de Office 365-Portal.
+4. Nadat u het wacht woord hebt ingevoerd en **Aanmelden** hebt geselecteerd, wordt u omgeleid naar de Office 365-Portal.
 
    ![Scherm afbeelding van de Office 365-Portal](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image29.png)
 

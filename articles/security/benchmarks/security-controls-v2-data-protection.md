@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: ab42acbc07072f48d28b3adb5bc4c65672f257bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bde95006865a2aab2da4a5d6d27ccccc14d74d12
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91314314"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408919"
 ---
 # <a name="security-control-v2-data-protection"></a>Beveiligings controle v2: gegevens beveiliging
 
@@ -32,11 +32,11 @@ U kunt Azure SQL Information Protection gebruiken om te helpen bij het classific
 
 - [Label gevoelige informatie met behulp van Azure Information Protection](/azure/information-protection/what-is-information-protection) 
 
-- [Azure SQL-gegevens detectie implementeren](/azure/sql-database/sql-database-data-discovery-and-classification)
+- [Azure SQL-gegevens detectie implementeren](../../azure-sql/database/data-discovery-and-classification-overview.md)
 
-**Verantwoordelijkheid**: gedeeld
+**Verantwoordelijkheid** : gedeeld
 
-**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Beveiligings belanghebbenden van klanten** ( [meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Toepassings beveiliging en DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)  
 
@@ -60,9 +60,9 @@ Voor het onderliggende platform, dat wordt beheerd door micro soft, behandelt mi
 
 - [Informatie over beveiliging van klanten in azure](../fundamentals/protection-customer-data.md)
 
-**Verantwoordelijkheid**: gedeeld
+**Verantwoordelijkheid** : gedeeld
 
-**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Beveiligings belanghebbenden van klanten** ( [meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Toepassings beveiliging en DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
@@ -86,13 +86,13 @@ Als dat nodig is voor de naleving van preventie van gegevens verlies (DLP), kunt
 
 - [Azure SQL-ATP inschakelen](../../azure-sql/database/threat-detection-overview.md)
 
-- [Azure Storage ATP inschakelen](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection?tabs=azure-security-center)
+- [Azure Storage ATP inschakelen](../../storage/common/azure-defender-storage-configure.md?tabs=azure-security-center)
 
-**Verantwoordelijkheid**: gedeeld
+**Verantwoordelijkheid** : gedeeld
 
-**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Beveiligings belanghebbenden van klanten** ( [meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Beveiligingsbewerkingen](/azure/cloud-adoption-framework/organize/cloud-security) 
+- [Beveiligings bewerkingen](/azure/cloud-adoption-framework/organize/cloud-security) 
 
 - [Toepassings beveiliging en DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
@@ -116,9 +116,9 @@ Azure biedt standaard versleuteling voor gegevens in transit tussen Azure-data c
 
 - [Dubbele versleuteling voor Azure-gegevens in transit](../fundamentals/double-encryption.md#data-in-transit)
 
-**Verantwoordelijkheid**: gedeeld
+**Verantwoordelijkheid** : gedeeld
 
-**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Beveiligings belanghebbenden van klanten** ( [meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Beveiligingsarchitectuur](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -140,15 +140,15 @@ Azure biedt standaard versleuteling voor Data-at-rest. Voor zeer gevoelige gegev
 
 - [Meer informatie over versleuteling in de rest van Azure](../fundamentals/encryption-atrest.md#encryption-at-rest-in-microsoft-cloud-services)
 
-- [Door de klant beheerde versleutelings sleutels configureren](../../storage/common/storage-encryption-keys-portal.md)
+- [Door de klant beheerde versleutelings sleutels configureren](../../storage/common/customer-managed-keys-configure-key-vault.md)
 
 - [Versleutelings model en sleutel beheer tabel](../fundamentals/encryption-models.md)
 
 - [Gegevens bij dubbele versleuteling in de rest van Azure](../fundamentals/double-encryption.md#data-at-rest)
 
-**Verantwoordelijkheid**: gedeeld
+**Verantwoordelijkheid** : gedeeld
 
-**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Beveiligings belanghebbenden van klanten** ( [meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Beveiligingsarchitectuur](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -157,4 +157,3 @@ Azure biedt standaard versleuteling voor Data-at-rest. Voor zeer gevoelige gegev
 - [Toepassings beveiliging en DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
 - [Gegevens beveiliging](/azure/cloud-adoption-framework/organize/cloud-security-data-security)
-

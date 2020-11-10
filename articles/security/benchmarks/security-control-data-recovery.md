@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 4f3e8540902809f951a441aa2fe8d00026c44d82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee28cbffd6f047b4991d29781e0b131a44c7dfae
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81408600"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94409175"
 ---
 # <a name="security-control-data-recovery"></a>Beveiligings beheer: gegevens herstellen
 
@@ -26,7 +26,7 @@ Zorg ervoor dat er regel matig een back-up wordt gemaakt van alle systeem gegeve
 
 Schakel Azure Backup in en configureer de back-upbron (Azure Vm's, SQL Server of bestands shares), evenals de gewenste frequentie en bewaar periode.
 
-- [Azure Backup inschakelen](https://docs.microsoft.com/azure/backup/)
+- [Azure Backup inschakelen](../../backup/index.yml)
 
 ## <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9,2: volledige back-ups van het systeem uitvoeren en een back-up maken van een door de klant beheerde sleutels
 
@@ -36,9 +36,9 @@ Schakel Azure Backup in en configureer de back-upbron (Azure Vm's, SQL Server of
 
 Schakel Azure Backup en doel-VM ('s) in, evenals de gewenste frequentie en retentie perioden. Back-ups van door de klant beheerde sleutels binnen Azure Key Vault.
 
-- [Azure Backup inschakelen](https://docs.microsoft.com/azure/backup/)
+- [Azure Backup inschakelen](../../backup/index.yml)
 
-- [Hoe kan ik een back-up maken van sleutel kluis sleutels in azure?](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Hoe kan ik een back-up maken van sleutel kluis sleutels in azure?](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
 
 ## <a name="93-validate-all-backups-including-customer-managed-keys"></a>9,3: alle back-ups valideren, inclusief door de klant beheerde sleutels
 
@@ -48,25 +48,25 @@ Schakel Azure Backup en doel-VM ('s) in, evenals de gewenste frequentie en reten
 
 Zorg ervoor dat het gegevens herstel van inhoud in Azure Backup regel matig wordt uitgevoerd. Herstel van back-ups van door de klant beheerde sleutels testen.
 
-- [Bestanden herstellen vanuit back-up van Azure virtual machine](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm)
+- [Bestanden herstellen vanuit back-up van Azure virtual machine](../../backup/backup-azure-restore-files-from-vm.md)
 
-- [Sleutel kluis sleutels herstellen in azure](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Sleutel kluis sleutels herstellen in azure](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
 ## <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: zorg voor de bescherming van back-ups en door de klant beheerde sleutels
 
 | Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 9,4 | 10.4 | Klant |
+| 9.4 | 10.4 | Klant |
 
 Voor on-premises back-ups wordt versleuteling in rust geboden met de wachtwoordzin die u opgeeft wanneer u een back-up maakt in Azure. Voot Azure-VM’s worden gegevens in rust versleuteld met behulp van SSE (Storage Service Encryption). Gebruik op rollen gebaseerd toegangs beheer voor het beveiligen van back-ups en door de klant beheerde sleutels.  
 
 Schakel Soft-Delete in en verwijder de beveiliging in Key Vault om sleutels te beschermen tegen onbedoelde of schadelijke verwijdering.  Als Azure Storage wordt gebruikt voor het opslaan van back-ups, schakelt u de optie voor het tijdelijk verwijderen in om uw gegevens op te slaan en te herstellen wanneer blobs of BLOB-moment opnamen worden verwijderd. 
 
-- [Meer informatie over Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
+- [Meer informatie over Azure RBAC](../../role-based-access-control/overview.md)
 
-- [Soft-Delete inschakelen en beveiliging opschonen in Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Soft-Delete inschakelen en beveiliging opschonen in Key Vault](../../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
-- [Voorlopig verwijderen voor Azure Storage-blobs](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Voorlopig verwijderen voor Azure Storage-blobs](../../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 
 ## <a name="next-steps"></a>Volgende stappen

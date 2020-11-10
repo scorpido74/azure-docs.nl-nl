@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2020
 ms.author: terrylan
-ms.openlocfilehash: 3ac044666b8f723e3cc26fd7a30f5dd8a8f77d90
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 3113216b2d8a7572bcb864819a379de6823ee444
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168032"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94409872"
 ---
 # <a name="azure-security-technical-capabilities"></a>Technische mogelijkheden van Azure-beveiliging
 Dit artikel bevat een inleiding tot beveiligings Services in azure waarmee u uw gegevens, resources en toepassingen in de cloud kunt beveiligen en voldoen aan de beveiligings behoeften van uw bedrijf.
@@ -48,7 +48,7 @@ Met Azure kunt u zakelijke en persoonlijke gegevens beveiligen door gebruikers i
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 
-Met de oplossingen voor identiteits-en toegangs beheer van micro soft kunt u de toegang tot toepassingen en resources in het bedrijfs centrum en in de Cloud beveiligen, waardoor er extra validatie niveaus, zoals multi-factor Authentication en beleid voor voorwaardelijke toegang. Het controleren van verdachte activiteiten via geavanceerde beveiligingsrapportage, controle en waarschuwingen, helpt om potentiële beveiligingsproblemen te verminderen. [Azure Active Directory Premium](../../active-directory/active-directory-whatis.md) biedt eenmalige aanmelding voor duizenden Cloud-apps en toegang tot web-apps die u on-premises uitvoert.
+Met de oplossingen voor identiteits-en toegangs beheer van micro soft kunt u de toegang tot toepassingen en resources in het bedrijfs centrum en in de Cloud beveiligen, waardoor er extra validatie niveaus, zoals multi-factor Authentication en beleid voor voorwaardelijke toegang. Het controleren van verdachte activiteiten via geavanceerde beveiligingsrapportage, controle en waarschuwingen, helpt om potentiële beveiligingsproblemen te verminderen. [Azure Active Directory Premium](../../active-directory/fundamentals/active-directory-whatis.md) biedt eenmalige aanmelding voor duizenden Cloud-apps en toegang tot web-apps die u on-premises uitvoert.
 
 Voor delen van de beveiliging van Azure Active Directory (Azure AD) zijn de mogelijkheid om het volgende te doen:
 
@@ -78,7 +78,7 @@ Hier volgen de belangrijkste mogelijkheden van Azure Identity Management:
 
 - Privileged Identity Management
 
-- Identiteitsbescherming
+- Identiteitsbeveiliging
 
 #### <a name="single-sign-on"></a>Eenmalige aanmelding
 
@@ -88,17 +88,17 @@ Veel organisaties zijn afhankelijk van SaaS-toepassingen (Software as a Service)
 
 [Azure AD breidt on-premises Active Directory uit in de Cloud](../../active-directory/manage-apps/what-is-single-sign-on.md), zodat gebruikers hun primaire organisatie-account kunnen gebruiken om zich niet alleen aan te melden bij hun apparaten in het domein en bedrijfs bronnen, maar ook voor alle web-en SaaS-toepassingen die nodig zijn voor hun taak.
 
-Gebruikers hoeven niet alleen meerdere sets met gebruikers namen en wacht woorden te beheren, toepassings toegang kan automatisch worden ingericht of ongedaan gemaakt op basis van organisatie groepen en hun status als werk nemer. [Azure AD introduceert beveiligings-en toegangs beheer functies](../../active-directory/active-directory-enterprise-apps-manage-sso.md) waarmee u de toegang van gebruikers tot de SaaS-toepassingen centraal kunt beheren.
+Gebruikers hoeven niet alleen meerdere sets met gebruikers namen en wacht woorden te beheren, toepassings toegang kan automatisch worden ingericht of ongedaan gemaakt op basis van organisatie groepen en hun status als werk nemer. [Azure AD introduceert beveiligings-en toegangs beheer functies](../../active-directory/manage-apps/view-applications-portal.md) waarmee u de toegang van gebruikers tot de SaaS-toepassingen centraal kunt beheren.
 
 #### <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
-[Azure multi-factor Authentication (MFA)](../../active-directory/authentication/multi-factor-authentication.md) is een verificatie methode waarvoor het gebruik van meer dan één verificatie methode is vereist en waarmee een kritieke tweede beveiligingslaag wordt toegevoegd aan gebruikers aanmeldingen en trans acties. [MFA helpt](../../active-directory/authentication/concept-mfa-howitworks.md) de toegang tot gegevens en toepassingen te beschermen terwijl de vraag naar gebruikers wordt gevergaderd voor een eenvoudig aanmeldings proces. Het biedt sterke authenticatie via verschillende verificatie opties: telefonische oproep, tekst bericht of mobiele app-melding of verificatie code en OAuth-tokens van derden.
+[Azure multi-factor Authentication (MFA)](../../active-directory/authentication/concept-mfa-howitworks.md) is een verificatie methode waarvoor het gebruik van meer dan één verificatie methode is vereist en waarmee een kritieke tweede beveiligingslaag wordt toegevoegd aan gebruikers aanmeldingen en trans acties. [MFA helpt](../../active-directory/authentication/concept-mfa-howitworks.md) de toegang tot gegevens en toepassingen te beschermen terwijl de vraag naar gebruikers wordt gevergaderd voor een eenvoudig aanmeldings proces. Het biedt sterke authenticatie via verschillende verificatie opties: telefonische oproep, tekst bericht of mobiele app-melding of verificatie code en OAuth-tokens van derden.
 
 #### <a name="security-monitoring-alerts-and-machine-learning-based-reports"></a>Beveiligings bewaking, waarschuwingen en rapporten op basis van machine learning
 
 Beveiligings bewaking en waarschuwingen en rapporten op basis van machine learning waarmee inconsistente toegangs patronen worden geïdentificeerd, kunnen u helpen bij het beveiligen van uw bedrijf. U kunt de toegangs-en gebruiks rapporten van Azure Active Directory gebruiken om inzicht te krijgen in de integriteit en beveiliging van de directory van uw organisatie. Met deze informatie kan een Directory-beheerder beter bepalen waar mogelijke beveiligings Risico's zich kunnen voordoen, zodat ze adequaat kunnen plannen om deze Risico's te beperken.
 
-In de Azure Portal of via de [Azure Active Directory-Portal](https://aad.portal.azure.com/)worden [rapporten](../../active-directory/active-directory-reporting-azure-portal.md) op de volgende manieren gecategoriseerd:
+In de Azure Portal of via de [Azure Active Directory-Portal](https://aad.portal.azure.com/)worden [rapporten](../../active-directory/reports-monitoring/overview-reports.md) op de volgende manieren gecategoriseerd:
 
 - Afwijkende rapporten: bevatten aanmeldings gebeurtenissen die afwijkend zijn aangetroffen. Ons doel is om u op de hoogte te stellen van deze activiteit en u in staat te stellen te bepalen of een gebeurtenis verdacht is.
 
@@ -140,9 +140,9 @@ Met Azure AD Privileged Identity Management kunt u het volgende doen:
 
 - Waarschuwingen ontvangen over toegang tot een bevoorrechte rol
 
-#### <a name="identity-protection"></a>Identiteitsbescherming
+#### <a name="identity-protection"></a>Identiteitsbeveiliging
 
-[Azure AD Identity Protection](../../active-directory/identity-protection/overview.md) is een beveiligings service die een geconsolideerde weer gave biedt voor risico detecties en mogelijke beveiligings problemen die van invloed zijn op de identiteiten van uw organisatie. Identiteits beveiliging maakt gebruik van de bestaande Azure Active Directory afwijkingen detectie mogelijkheden (beschikbaar via de afwijkende activiteiten van Azure AD) en introduceert nieuwe typen risico detectie waarmee afwijkingen in realtime kunnen worden gedetecteerd.
+[Azure AD Identity Protection](../../active-directory/identity-protection/overview-identity-protection.md) is een beveiligings service die een geconsolideerde weer gave biedt voor risico detecties en mogelijke beveiligings problemen die van invloed zijn op de identiteiten van uw organisatie. Identiteits beveiliging maakt gebruik van de bestaande Azure Active Directory afwijkingen detectie mogelijkheden (beschikbaar via de afwijkende activiteiten van Azure AD) en introduceert nieuwe typen risico detectie waarmee afwijkingen in realtime kunnen worden gedetecteerd.
 
 ## <a name="secure-resource-access"></a>Toegang tot beveiligde bronnen
 
@@ -183,35 +183,35 @@ Gebruik [punt-naar-site-VPN](../../vpn-gateway/vpn-gateway-howto-point-to-site-c
 
 Grotere gegevens sets kunnen worden verplaatst via een speciale WAN-verbinding met hoge snelheid, zoals [ExpressRoute](https://azure.microsoft.com/services/expressroute/). Als u ervoor kiest om ExpressRoute te gebruiken, kunt u de gegevens op toepassings niveau ook versleutelen met behulp van [SSL/TLS](https://support.microsoft.com/kb/257591) of andere protocollen voor extra beveiliging.
 
-Als u werkt met Azure Storage via de Azure-Portal, worden alle trans acties uitgevoerd via HTTPS. [Opslag rest API](https://msdn.microsoft.com/library/azure/dd179355.aspx) via https kan ook worden gebruikt om te communiceren met [Azure Storage](https://azure.microsoft.com/services/storage/) en [Azure SQL database](https://azure.microsoft.com/services/sql-database/).
+Als u werkt met Azure Storage via de Azure-Portal, worden alle trans acties uitgevoerd via HTTPS. [Opslag rest API](/rest/api/storageservices/) via https kan ook worden gebruikt om te communiceren met [Azure Storage](https://azure.microsoft.com/services/storage/) en [Azure SQL database](https://azure.microsoft.com/services/sql-database/).
 
-Organisaties die gegevens in de overdracht niet kunnen beveiligen, zijn gevoeliger voor [man-in-the-middle-aanvallen](https://technet.microsoft.com/library/gg195821.aspx), [afluis teren](https://technet.microsoft.com/library/gg195641.aspx)en het overnemen van sessies. Deze aanvallen kunnen de eerste stap zijn om toegang te krijgen tot vertrouwelijke gegevens.
+Organisaties die gegevens in de overdracht niet kunnen beveiligen, zijn gevoeliger voor [man-in-the-middle-aanvallen](/previous-versions/office/skype-server-2010/gg195821(v=ocs.14)), [afluis teren](/previous-versions/office/skype-server-2010/gg195641(v=ocs.14))en het overnemen van sessies. Deze aanvallen kunnen de eerste stap zijn om toegang te krijgen tot vertrouwelijke gegevens.
 
 Meer informatie over de Azure VPN-optie vindt u in het artikel [planning en ontwerp voor VPN gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md).
 
 ### <a name="enforce-file-level-data-encryption"></a>Gegevens versleuteling op bestands niveau afdwingen
 
-[Azure RMS](https://technet.microsoft.com/library/jj585026.aspx) maakt gebruik van beleids regels voor versleuteling, identiteit en verificatie om uw bestanden en e-mail te beveiligen. Azure RMS werkt op meerdere apparaten: telefoons, Tablets en Pc's door zowel binnen uw organisatie als buiten uw organisatie te beveiligen. Deze mogelijkheid is mogelijk omdat Azure RMS een beveiligings niveau toevoegt dat bij de gegevens blijft, zelfs wanneer het de grenzen van uw organisatie verlaat.
+[Azure RMS](/azure/information-protection/what-is-azure-rms) maakt gebruik van beleids regels voor versleuteling, identiteit en verificatie om uw bestanden en e-mail te beveiligen. Azure RMS werkt op meerdere apparaten: telefoons, Tablets en Pc's door zowel binnen uw organisatie als buiten uw organisatie te beveiligen. Deze mogelijkheid is mogelijk omdat Azure RMS een beveiligings niveau toevoegt dat bij de gegevens blijft, zelfs wanneer het de grenzen van uw organisatie verlaat.
 
 Wanneer u Azure RMS gebruikt om uw bestanden te beveiligen, gebruikt u gestandaardiseerde crypto grafie met volledige ondersteuning van [FIPS 140-2](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.140-2.pdf). Wanneer u gebruikmaakt van Azure RMS voor gegevens bescherming, hebt u de zekerheid dat de beveiliging bij het bestand blijft, zelfs als dit wordt gekopieerd naar een opslag die niet onder het beheer van de service valt, zoals een Cloud-opslag. Hetzelfde gebeurt voor bestanden die worden gedeeld via e-mail, het bestand wordt beveiligd als bijlage bij een e-mail bericht met instructies voor het openen van de beveiligde bijlage.
 Bij het plannen van Azure RMS aanneming, raden we het volgende aan:
 
-- Installeer de [app RMS sharing](https://technet.microsoft.com/library/dn339006.aspx). Deze app is geïntegreerd met Office-toepassingen door een Office-invoeg toepassing te installeren, zodat gebruikers bestanden eenvoudig rechtstreeks kunnen beveiligen.
+- Installeer de [app RMS sharing](/azure/information-protection/rms-client/sharing-app-windows). Deze app is geïntegreerd met Office-toepassingen door een Office-invoeg toepassing te installeren, zodat gebruikers bestanden eenvoudig rechtstreeks kunnen beveiligen.
 
 - Toepassingen en services configureren ter ondersteuning van Azure RMS
 
-- [Aangepaste sjablonen](https://technet.microsoft.com/library/dn642472.aspx) maken die overeenkomen met uw bedrijfs vereisten. Bijvoorbeeld: een sjabloon voor de belangrijkste geheime gegevens die moeten worden toegepast in alle e-mails met de meeste geheime geheimen.
+- [Aangepaste sjablonen](/azure/information-protection/configure-policy-templates) maken die overeenkomen met uw bedrijfs vereisten. Bijvoorbeeld: een sjabloon voor de belangrijkste geheime gegevens die moeten worden toegepast in alle e-mails met de meeste geheime geheimen.
 
 Organisaties die een zwakke [gegevens classificatie](https://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf) en bestands beveiliging hebben, zijn mogelijk gevoeliger voor het lekken van gegevens. Zonder de juiste bestands beveiliging kunnen organisaties geen zakelijke inzichten verkrijgen, controleren op misbruik en schadelijke toegang tot bestanden voor komen.
 
 > [!Note]
-> Meer informatie over Azure RMS vindt u in het artikel [aan de slag met Azure Rights Management](https://technet.microsoft.com/library/jj585016.aspx).
+> Meer informatie over Azure RMS vindt u in het artikel [aan de slag met Azure Rights Management](/azure/information-protection/requirements).
 
 ## <a name="secure-your-application"></a>Uw toepassing beveiligen
 Hoewel Azure verantwoordelijk is voor de beveiliging van de infra structuur en het platform waarop uw toepassing wordt uitgevoerd, is het uw verantwoordelijkheid om uw toepassing zelf te beveiligen. Met andere woorden, u moet uw toepassings code en-inhoud op een veilige manier ontwikkelen, implementeren en beheren. Als u dit niet doet, kan uw toepassings code of-inhoud nog steeds kwetsbaar zijn voor bedreigingen.
 
 ### <a name="web-application-firewall"></a>Web Application Firewall
-[Web Application firewall (WAF)](../../application-gateway/waf-overview.md) is een functie van [Application Gateway](../../application-gateway/overview.md) waarmee uw webtoepassingen gecentraliseerd worden beschermd tegen veelvoorkomende aanvallen en beveiligings problemen.
+[Web Application firewall (WAF)](../../web-application-firewall/ag/ag-overview.md) is een functie van [Application Gateway](../../application-gateway/overview.md) waarmee uw webtoepassingen gecentraliseerd worden beschermd tegen veelvoorkomende aanvallen en beveiligings problemen.
 
 Web Application Firewall is gebaseerd op regels uit de [Core Rule Set 3.0 of 2.2.9 van OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project). Webtoepassingen zijn in toenemende mate het doel van aanvallen die gebruikmaken van veelvoorkomende bekende beveiligingsproblemen. Veelvoorkomende aanvallen zijn hierbij onder andere aanvallen met SQL-injecties en aanvallen via scripting op meerdere sites. Het kan een hele uitdaging zijn om dergelijke aanvallen in toepassingscode te voorkomen en dit kan tevens veel onderhoud, patching en controle vereisen op meerdere lagen van de toepassingstopologie. Een gecentraliseerde firewall voor webtoepassingen maakt het beveiligingsbeheer veel eenvoudiger en biedt toepassingsbeheerders meer veiligheid tegen bedreigingen of aanvallen. Een WAF-oplossing kan ook sneller reageren op een beveiligingsrisico door een patch voor een bekend beveiligingsprobleem toe te passen op een centrale locatie in plaats van elke afzonderlijke webtoepassing te beveiligen. Bestaande toepassingsgateways kunnen eenvoudig worden geconverteerd naar een toepassingsgateway met Web Application Firewall.
 
@@ -232,7 +232,7 @@ Hieronder ziet u enkele voorbeelden van veelvoorkomende beveiligingsproblemen wa
 - Detectie van veelvoorkomende onjuiste configuraties van toepassingen (dat wil zeggen Apache, IIS, enzovoort)
 
 > [!Note]
-> Zie de volgende [kern regel sets](../../application-gateway/waf-overview.md)voor een gedetailleerde lijst met regels en hun beveiligingen:
+> Zie de volgende [kern regel sets](../../web-application-firewall/ag/ag-overview.md)voor een gedetailleerde lijst met regels en hun beveiligingen:
 
 Azure biedt ook verschillende gebruiks vriendelijke functies waarmee u zowel binnenkomend als uitgaand verkeer voor uw app kunt beveiligen. Met Azure kunnen klanten hun toepassings code ook beveiligen door extern geboden functionaliteit te bieden om uw webtoepassing te scannen op beveiligings problemen.
 
@@ -265,7 +265,7 @@ Azure App Service gebruikt dezelfde antimalware-oplossing die wordt gebruikt doo
 ## <a name="secure-your-network"></a>Uw netwerk beveiligen
 Microsoft Azure bevat een robuuste netwerk infrastructuur ter ondersteuning van uw toepassings-en service connectiviteits vereisten. De netwerk verbinding is mogelijk tussen bronnen in azure, tussen on-premises en Azure gehoste resources, en naar en van Internet en Azure.
 
-Met de [Azure-netwerk infrastructuur](../../virtual-machines/windows/infrastructure-example.md) kunt u Azure-resources veilig met elkaar verbinden met [virtuele netwerken (VNets)](../../virtual-network/virtual-networks-overview.md). Een VNet is een weer gave van uw eigen netwerk in de Cloud. Een VNet is een logische isolatie van het Azure-Cloud netwerk dat specifiek is voor uw abonnement. U kunt VNets verbinding maken met uw on-premises netwerken.
+Met de [Azure-netwerk infrastructuur](/previous-versions/azure/virtual-machines/windows/infrastructure-example) kunt u Azure-resources veilig met elkaar verbinden met [virtuele netwerken (VNets)](../../virtual-network/virtual-networks-overview.md). Een VNet is een weer gave van uw eigen netwerk in de Cloud. Een VNet is een logische isolatie van het Azure-Cloud netwerk dat specifiek is voor uw abonnement. U kunt VNets verbinding maken met uw on-premises netwerken.
 
 ![Uw netwerk beveiligen (beveiligen)](./media/technical-capabilities/azure-security-technical-capabilities-fig6.png)
 
@@ -335,7 +335,7 @@ Met deze methode kunt u gegevens uit verschillende bronnen consolideren, zodat u
 
 ### <a name="azure-security-center"></a>Azure Security Center
 
-[Azure Security Center](../../security-center/security-center-intro.md) helpt u bij het detecteren, voorkomen van en reageren op bedreigingen dankzij een verhoogde zichtbaarheid van en controle over de beveiliging van uw Azure-resources. Het biedt geïntegreerde beveiligingsbewaking en beleidsbeheer voor uw Azure-abonnementen, helpt bedreigingen te detecteren die anders onopgemerkt zouden blijven, en werkt met een uitgebreid ecosysteem van beveiligingsoplossingen.
+[Azure Security Center](../../security-center/security-center-introduction.md) helpt u bij het detecteren, voorkomen van en reageren op bedreigingen dankzij een verhoogde zichtbaarheid van en controle over de beveiliging van uw Azure-resources. Het biedt geïntegreerde beveiligingsbewaking en beleidsbeheer voor uw Azure-abonnementen, helpt bedreigingen te detecteren die anders onopgemerkt zouden blijven, en werkt met een uitgebreid ecosysteem van beveiligingsoplossingen.
 
 Security Center analyseert de beveiligingsstatus van uw Azure-resources om mogelijke beveiligingsproblemen op te sporen. Een lijst met aanbevelingen begeleidt u bij het configureren van benodigde besturingselementen.
 
@@ -378,7 +378,7 @@ Het controleren van de netwerk beveiliging is essentieel voor het detecteren van
 
 ### <a name="storage-analytics"></a>Opslaganalyse
 
-[Opslaganalyse](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics) kunt metrische gegevens opslaan die geaggregeerde trans actie-statistieken en capaciteitgegevens over aanvragen voor een opslag service bevatten. Trans acties worden gerapporteerd op het niveau van de API-bewerking en op het niveau van de opslag service, en de capaciteit wordt gerapporteerd op het niveau van de opslag service. Metrische gegevens kunnen worden gebruikt voor het analyseren van het gebruik van opslag Services, het diagnosticeren van problemen met aanvragen die zijn gedaan voor de opslag service en voor het verbeteren van de prestaties van toepassingen die gebruikmaken van een service.
+[Opslaganalyse](/rest/api/storageservices/fileservices/storage-analytics) kunt metrische gegevens opslaan die geaggregeerde trans actie-statistieken en capaciteitgegevens over aanvragen voor een opslag service bevatten. Trans acties worden gerapporteerd op het niveau van de API-bewerking en op het niveau van de opslag service, en de capaciteit wordt gerapporteerd op het niveau van de opslag service. Metrische gegevens kunnen worden gebruikt voor het analyseren van het gebruik van opslag Services, het diagnosticeren van problemen met aanvragen die zijn gedaan voor de opslag service en voor het verbeteren van de prestaties van toepassingen die gebruikmaken van een service.
 
 ### <a name="application-insights"></a>Application Insights
 

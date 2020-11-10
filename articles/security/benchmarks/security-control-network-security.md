@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: dad01212be3589af7167082ff22c624fa776772a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b74baebd964ee43658f74e0050dff838e29f9b8a
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82193119"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94409056"
 ---
 # <a name="security-control-network-security"></a>Beveiligings beheer: netwerk beveiliging
 
@@ -28,15 +28,15 @@ Zorg ervoor dat alle implementaties van Virtual Network subnet een netwerk bevei
 
 Als u een specifieke gebruiks voorbeeld hebt, kan aan de vereiste worden voldaan door de implementatie van Azure Firewall.
 
-- [Informatie over Virtual Network Service-eind punten](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)
+- [Informatie over Virtual Network Service-eind punten](../../virtual-network/virtual-network-service-endpoints-overview.md)
 
-- [Persoonlijke Azure-koppeling](https://docs.microsoft.com/azure/private-link/private-link-overview)
+- [Persoonlijke Azure-koppeling](../../private-link/private-link-overview.md)
 
-- [Een Virtual Network maken](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+- [Een Virtual Network maken](../../virtual-network/quick-create-portal.md)
 
-- [Een NSG maken met een beveiligings configuratie](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+- [Een NSG maken met een beveiligings configuratie](../../virtual-network/tutorial-filter-network-traffic.md)
 
-- [Azure Firewall implementeren en configureren](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+- [Azure Firewall implementeren en configureren](../../firewall/tutorial-firewall-deploy-portal.md)
 
 ## <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-nics"></a>1,2: de configuratie en het verkeer van virtuele netwerken, subnetten en Nic's bewaken en vastleggen
 
@@ -46,11 +46,11 @@ Als u een specifieke gebruiks voorbeeld hebt, kan aan de vereiste worden voldaan
 
 Gebruik Azure Security Center en volg aanbevelingen voor netwerk beveiliging om uw netwerk bronnen in azure te beveiligen. Schakel logboeken voor NSG-stroom in en verzend logboeken naar een opslag account voor verkeers controle. U kunt ook NSG-stroom logboeken naar een Log Analytics-werk ruimte verzenden en Traffic Analytics gebruiken om inzicht te krijgen in de verkeers stroom in uw Azure-Cloud. Enkele voor delen van Traffic Analytics zijn de mogelijkheid om netwerk activiteiten te visualiseren en HOTS pots te identificeren, beveiligings dreigingen te identificeren, verkeers patronen te begrijpen en netwerk configuraties te lokaliseren.
 
-- [NSG-stroom logboeken inschakelen](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+- [NSG-stroom logboeken inschakelen](../../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-- [Traffic Analytics inschakelen en gebruiken](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)
+- [Traffic Analytics inschakelen en gebruiken](../../network-watcher/traffic-analytics.md)
 
-- [Informatie over de netwerk beveiliging die wordt verschaft door Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
+- [Informatie over de netwerk beveiliging die wordt verschaft door Azure Security Center](../../security-center/security-center-network-recommendations.md)
 
 ## <a name="13-protect-critical-web-applications"></a>1,3: essentiële webtoepassingen beveiligen
 
@@ -60,7 +60,7 @@ Gebruik Azure Security Center en volg aanbevelingen voor netwerk beveiliging om 
 
 Implementeer Azure Web Application firewall (WAF) voor essentiële webtoepassingen voor extra inspectie van inkomend verkeer. Schakel de diagnostische instelling voor WAF-en opname Logboeken in een opslag account, Event hub of Log Analytics werk ruimte in.
 
-- [Azure WAF implementeren](https://docs.microsoft.com/azure/web-application-firewall/ag/create-waf-policy-ag)
+- [Azure WAF implementeren](../../web-application-firewall/ag/create-waf-policy-ag.md)
 
 ## <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1,4: communicatie met bekende schadelijke IP-adressen weigeren
 
@@ -76,15 +76,15 @@ Gebruik Azure Security Center just-in-time-netwerk toegang om Nsg's te configure
 
 Gebruik Azure Security Center adaptieve netwerk beveiliging om NSG-configuraties aan te bevelen die poorten en bron-Ip's beperken op basis van daad werkelijk verkeer en bedreigings informatie.
 
-- [DDoS-beveiliging configureren](https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection)
+- [DDoS-beveiliging configureren](../../virtual-network/manage-ddos-protection.md)
 
-- [Azure Firewall implementeren](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+- [Azure Firewall implementeren](../../firewall/tutorial-firewall-deploy-portal.md)
 
-- [Meer informatie over Azure Security Center geïntegreerde bedreigings informatie](https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer)
+- [Meer informatie over Azure Security Center geïntegreerde bedreigings informatie](../../security-center/azure-defender.md)
 
-- [Meer informatie over Azure Security Center adaptieve netwerk beveiliging](https://docs.microsoft.com/azure/security-center/security-center-adaptive-network-hardening)
+- [Meer informatie over Azure Security Center adaptieve netwerk beveiliging](../../security-center/security-center-adaptive-network-hardening.md)
 
-- [Meer informatie over Azure Security Center just-in-time-netwerk Access Control](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)
+- [Meer informatie over Azure Security Center just-in-time-netwerk Access Control](../../security-center/security-center-just-in-time.md)
 
 ## <a name="15-record-network-packets"></a>1,5: netwerk pakketten opnemen
 
@@ -94,7 +94,7 @@ Gebruik Azure Security Center adaptieve netwerk beveiliging om NSG-configuraties
 
 Schakel Network Watcher pakket opname in om afwijkende activiteiten te onderzoeken.
 
-- [Network Watcher inschakelen](https://docs.microsoft.com/azure/network-watcher/network-watcher-create)
+- [Network Watcher inschakelen](../../network-watcher/network-watcher-create.md)
 
 ## <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1,6: op netwerk gebaseerde inbreuk detectie/indringings systemen (ID'S/IP-adressen) implementeren
 
@@ -108,9 +108,9 @@ Implementeer de door u gewenste firewall oplossing op elk van de netwerk grenzen
 
 - [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/?term=Firewall)
 
-- [Azure Firewall implementeren](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+- [Azure Firewall implementeren](../../firewall/tutorial-firewall-deploy-portal.md)
 
-- [Waarschuwingen configureren met Azure Firewall](https://docs.microsoft.com/azure/firewall/threat-intel)
+- [Waarschuwingen configureren met Azure Firewall](../../firewall/threat-intel.md)
 
 ## <a name="17-manage-traffic-to-web-applications"></a>1,7: verkeer naar webtoepassingen beheren
 
@@ -120,11 +120,11 @@ Implementeer de door u gewenste firewall oplossing op elk van de netwerk grenzen
 
 Implementeer Azure-toepassing gateway voor webtoepassingen met HTTPS/TLS ingeschakeld voor vertrouwde certificaten.
 
-- [Application Gateway implementeren](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)
+- [Application Gateway implementeren](../../application-gateway/quick-create-portal.md)
 
-- [Application Gateway configureren voor het gebruik van HTTPS](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal)
+- [Application Gateway configureren voor het gebruik van HTTPS](../../application-gateway/create-ssl-portal.md)
 
-- [De taak verdeling van laag 7 met Azure Web Application-gateways begrijpen](https://docs.microsoft.com/azure/application-gateway/overview)
+- [De taak verdeling van laag 7 met Azure Web Application-gateways begrijpen](../../application-gateway/overview.md)
 
 ## <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1,8: de complexiteit en administratieve overhead van netwerk beveiligings regels minimaliseren
 
@@ -136,9 +136,9 @@ Gebruik Virtual Network Service Tags om netwerk toegangs beheer te definiëren v
 
 U kunt ook toepassings beveiligings groepen gebruiken om complexe beveiligings configuratie te vereenvoudigen. Met behulp van toepassingsbeveiligingsgroepen kunt u netwerkbeveiliging configureren als een natuurlijk verlengstuk van de structuur van een toepassing, waarbij u virtuele machines kunt groeperen en netwerkbeveiligingsbeleid kunt definiëren op basis van die groepen.
 
-- [Service Tags begrijpen en gebruiken](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
+- [Service Tags begrijpen en gebruiken](../../virtual-network/service-tags-overview.md)
 
-- [Toepassings beveiligings groepen begrijpen en gebruiken](https://docs.microsoft.com/azure/virtual-network/security-overview#application-security-groups)
+- [Toepassings beveiligings groepen begrijpen en gebruiken](../../virtual-network/network-security-groups-overview.md#application-security-groups)
 
 ## <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: standaard beveiligings configuraties voor netwerk apparaten onderhouden
 
@@ -150,11 +150,11 @@ Definieer en implementeer standaard beveiligings configuraties voor netwerk bron
 
 U kunt ook Azure-blauw drukken gebruiken om grootschalige Azure-implementaties te vereenvoudigen door belang rijke omgevings artefacten, zoals Azure Resources Manager-sjablonen, RBAC-besturings elementen en beleids regels, in één blauw definitie te voorzien. U kunt de blauw druk Toep assen op nieuwe abonnementen en het beheer en beheer verfijnen met behulp van versies.
 
-- [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Policy configureren en beheren](../../governance/policy/tutorials/create-and-manage.md)
 
-- [Voor beelden Azure Policy voor netwerken](https://docs.microsoft.com/azure/governance/policy/samples/#network)
+- [Voor beelden Azure Policy voor netwerken](../../governance/policy/samples/built-in-policies.md#network)
 
-- [Een Azure Blueprint maken](https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal)
+- [Een Azure Blueprint maken](../../governance/blueprints/create-blueprint-portal.md)
 
 ## <a name="110-document-traffic-configuration-rules"></a>1,10: configuratie regels voor het document verkeer
 
@@ -168,11 +168,11 @@ Gebruik een van de ingebouwde Azure Policy definities die betrekking hebben op l
 
 U kunt Azure PowerShell of Azure CLI gebruiken om op basis van hun labels acties op resources te zoeken of uit te voeren.
 
-- [Tags maken en gebruiken](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [Tags maken en gebruiken](../../azure-resource-manager/management/tag-resources.md)
 
-- [Een Virtual Network maken](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+- [Een Virtual Network maken](../../virtual-network/quick-create-portal.md)
 
-- [Een NSG maken met een beveiligings configuratie](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+- [Een NSG maken met een beveiligings configuratie](../../virtual-network/tutorial-filter-network-traffic.md)
 
 ## <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1,11: gebruik automatische hulpprogram ma's om netwerk bron configuraties te bewaken en wijzigingen te detecteren
 
@@ -182,9 +182,9 @@ U kunt Azure PowerShell of Azure CLI gebruiken om op basis van hun labels acties
 
 Gebruik Azure-activiteiten logboek om resource configuraties te bewaken en wijzigingen in uw Azure-resources te detecteren. Maak waarschuwingen in Azure Monitor die worden geactiveerd wanneer er wijzigingen in kritieke resources plaatsvinden.
 
-- [Activiteiten logboek gebeurtenissen van Azure weer geven en ophalen](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
+- [Activiteiten logboek gebeurtenissen van Azure weer geven en ophalen](../../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
-- [Waarschuwingen maken in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+- [Waarschuwingen maken in Azure Monitor](../../azure-monitor/platform/alerts-activity-log.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 

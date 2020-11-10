@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: 42582c9474647c4c203bd0cafae0be664398ba41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fa2025fa31ac960eb6c61d03bafd582de4f0e55c
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87533900"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410573"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Isolatie in de open bare Azure-Cloud
 
@@ -86,11 +86,11 @@ Azure Active Directory zijn onder andere de volgende mogelijkheden:
 
 - Azure AD maakt eenmalige aanmelding (SSO) bij SaaS-toepassingen mogelijk, ongeacht waar ze worden gehost. Voor sommige toepassingen kan federatieve aanmelding worden gebruikt via Azure AD en voor andere toepassingen kan eenmalige aanmelding (SSO) met een wachtwoord worden gebruikt. Federatieve toepassingen kunnen ook gebruikers inrichten en [wachtwoord kluizen](https://www.techopedia.com/definition/31415/password-vault)ondersteunen.
 
-- De toegang tot gegevens in [Azure Storage](https://azure.microsoft.com/services/storage/) wordt geregeld via verificatie. Elk opslag account heeft een primaire sleutel ([opslag account Key](../../storage/common/storage-create-storage-account.md), of SAK) en een secundaire geheime sleutel (de Shared Access-hand tekening of SAS).
+- De toegang tot gegevens in [Azure Storage](https://azure.microsoft.com/services/storage/) wordt geregeld via verificatie. Elk opslag account heeft een primaire sleutel ([opslag account Key](../../storage/common/storage-account-create.md), of SAK) en een secundaire geheime sleutel (de Shared Access-hand tekening of SAS).
 
-- Azure AD biedt identiteit als een service via federatie door gebruik te maken van [Active Directory Federation Services](../../active-directory/hybrid/how-to-connect-fed-azure-adfs.md), synchronisatie en replicatie met on-premises directory's.
+- Azure AD biedt identiteit als een service via federatie door gebruik te maken van [Active Directory Federation Services](/windows-server/identity/ad-fs/deployment/how-to-connect-fed-azure-adfs), synchronisatie en replicatie met on-premises directory's.
 
-- [Azure multi-factor Authentication](../../active-directory/authentication/multi-factor-authentication.md) is de multi-factor Authentication-service waarmee gebruikers zich kunnen verifiëren met behulp van een mobiele app, telefonische oproep of een SMS-bericht. Het kan worden gebruikt met Azure AD om on-premises resources te beveiligen met de Azure Multi-Factor Authentication-Server, en ook met aangepaste toepassingen en mappen met behulp van de SDK.
+- [Azure multi-factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) is de multi-factor Authentication-service waarmee gebruikers zich kunnen verifiëren met behulp van een mobiele app, telefonische oproep of een SMS-bericht. Het kan worden gebruikt met Azure AD om on-premises resources te beveiligen met de Azure Multi-Factor Authentication-Server, en ook met aangepaste toepassingen en mappen met behulp van de SDK.
 
 - Met [Azure AD Domain Services](https://azure.microsoft.com/services/active-directory-ds/) kunt u virtuele Azure-machines toevoegen aan een Active Directory domein zonder dat u domein controllers hoeft te implementeren. U kunt u aanmelden bij deze virtuele machines met uw zakelijke Active Directory referenties en virtuele machines die lid zijn van een domein beheren door gebruik te maken van groepsbeleid om beveiligings basislijnen af te dwingen op al uw virtuele machines van Azure.
 
@@ -119,7 +119,7 @@ Microsoft Azure biedt verschillende Cloud Computing Services die een breed scala
 
 ### <a name="dedicated-hosts"></a>Toegewezen hosts
 
-Naast de geïsoleerde hosts die in de voor gaande sectie worden beschreven, biedt Azure ook speciale hosts. Toegewezen hosts in Azure is een service die fysieke servers levert die als host kunnen fungeren voor een of meer virtuele machines, en die zijn toegewezen aan één Azure-abonnement. Toegewezen hosts bieden hardwarematige isolatie op het niveau van de fysieke server. Er worden geen andere Vm's op uw hosts geplaatst. Toegewezen hosts worden geïmplementeerd in dezelfde data centers en delen hetzelfde netwerk en onderliggende opslag infrastructuur als andere, niet-geïsoleerde hosts. Zie het gedetailleerde overzicht van met [Azure toegewezen hosts](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts)voor meer informatie.
+Naast de geïsoleerde hosts die in de voor gaande sectie worden beschreven, biedt Azure ook speciale hosts. Toegewezen hosts in Azure is een service die fysieke servers levert die als host kunnen fungeren voor een of meer virtuele machines, en die zijn toegewezen aan één Azure-abonnement. Toegewezen hosts bieden hardwarematige isolatie op het niveau van de fysieke server. Er worden geen andere Vm's op uw hosts geplaatst. Toegewezen hosts worden geïmplementeerd in dezelfde data centers en delen hetzelfde netwerk en onderliggende opslag infrastructuur als andere, niet-geïsoleerde hosts. Zie het gedetailleerde overzicht van met [Azure toegewezen hosts](../../virtual-machines/dedicated-hosts.md)voor meer informatie.
 
 ### <a name="hyper-v--root-os-isolation-between-root-vm--guest-vms"></a>Hyper-V-&-basis besturingssysteem isolatie tussen de virtuele machines van de virtuele machine & gast-Vm's
 
@@ -194,7 +194,7 @@ Daarom worden Azure Storage uitgevoerd op afzonderlijke hardware zonder netwerk 
 
 ![Isolatie met behulp van opslag toegangs beheer](./media/isolation-choices/azure-isolation-fig9.png)
 
-**Toegang tot Azure Storage gegevens (met inbegrip van tabellen)** kan worden beheerd via een [SAS-token (Shared Access Signature)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) , waarmee toegang met een bereik wordt verleend. De SA'S worden gemaakt via een query sjabloon (URL), ondertekend met de [SAK (Storage account Key)](https://msdn.microsoft.com/library/azure/ee460785.aspx). Deze [ondertekende URL](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) kan worden toegewezen aan een ander proces (dat wil zeggen, gedelegeerd), waardoor de details van de query kunnen worden ingevuld en de opslag service wordt aangevraagd. Met een SAS kunt u op tijd gebaseerde toegang verlenen aan clients zonder dat de geheime sleutel van het opslag account wordt onthuld.
+**Toegang tot Azure Storage gegevens (met inbegrip van tabellen)** kan worden beheerd via een [SAS-token (Shared Access Signature)](../../storage/common/storage-sas-overview.md) , waarmee toegang met een bereik wordt verleend. De SA'S worden gemaakt via een query sjabloon (URL), ondertekend met de [SAK (Storage account Key)](/previous-versions/azure/reference/ee460785(v=azure.100)). Deze [ondertekende URL](../../storage/common/storage-sas-overview.md) kan worden toegewezen aan een ander proces (dat wil zeggen, gedelegeerd), waardoor de details van de query kunnen worden ingevuld en de opslag service wordt aangevraagd. Met een SAS kunt u op tijd gebaseerde toegang verlenen aan clients zonder dat de geheime sleutel van het opslag account wordt onthuld.
 
 De SAS betekent dat we een door de client beperkte machtigingen kunnen verlenen aan objecten in het opslag account voor een bepaalde periode en met een opgegeven set machtigingen. We kunnen deze beperkte machtigingen verlenen zonder dat ze de toegangs sleutels van uw account hoeven te delen.
 
@@ -225,13 +225,13 @@ Voor veel organisaties is [gegevens versleuteling in rust](isolation-choices.md)
 
 - Met [Storage service Encryption](../../storage/blobs/security-recommendations.md) kunt u aanvragen dat de opslag service automatisch gegevens versleutelt bij het schrijven naar Azure Storage.
 - [Versleuteling aan de client zijde](../../storage/blobs/security-recommendations.md) biedt ook de mogelijkheid om op rest te versleutelen.
-- Met [Azure Disk Encryption](../azure-security-disk-encryption-overview.md) kunt u de stations van het besturings systeem en de gegevens schijven die worden gebruikt door een virtuele machine van IaaS versleutelen.
+- Met [Azure Disk Encryption](./azure-disk-encryption-vms-vmss.md) kunt u de stations van het besturings systeem en de gegevens schijven die worden gebruikt door een virtuele machine van IaaS versleutelen.
 
 #### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
-[Azure Disk Encryption](../azure-security-disk-encryption-overview.md) voor virtuele machines (vm's) helpt u bij het versleutelen van de beveiligings-en nalevings vereisten van uw organisatie door uw VM-schijven (inclusief opstart-en gegevens schijven) met sleutels en beleids regels die u beheert in [Azure Key Vault](https://azure.microsoft.com/services/key-vault/).
+[Azure Disk Encryption](./azure-disk-encryption-vms-vmss.md) voor virtuele machines (vm's) helpt u bij het versleutelen van de beveiligings-en nalevings vereisten van uw organisatie door uw VM-schijven (inclusief opstart-en gegevens schijven) met sleutels en beleids regels die u beheert in [Azure Key Vault](https://azure.microsoft.com/services/key-vault/).
 
-De oplossing voor schijf versleuteling voor Windows is gebaseerd op [micro soft BitLocker-stationsversleuteling](https://technet.microsoft.com/library/cc732774.aspx)en de Linux-oplossing is gebaseerd op [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt).
+De oplossing voor schijf versleuteling voor Windows is gebaseerd op [micro soft BitLocker-stationsversleuteling](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc732774(v=ws.11))en de Linux-oplossing is gebaseerd op [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt).
 
 De oplossing ondersteunt de volgende scenario's voor IaaS Vm's wanneer deze zijn ingeschakeld in Microsoft Azure:
 
@@ -243,7 +243,7 @@ De oplossing ondersteunt de volgende scenario's voor IaaS Vm's wanneer deze zijn
 - Versleuteling inschakelen voor IaaS-Vm's waarop Windows client-besturings systeem wordt uitgevoerd
 - Versleuteling inschakelen voor volumes met koppel paden
 - Versleuteling inschakelen voor Linux-Vm's die zijn geconfigureerd met schijf striping (RAID) met behulp van [mdadm](https://en.wikipedia.org/wiki/Mdadm)
-- Versleuteling inschakelen op virtuele Linux-machines met behulp van [lvm (Logical Volume Manager)](https://msdn.microsoft.com/library/windows/desktop/bb540532) voor gegevens schijven
+- Versleuteling inschakelen op virtuele Linux-machines met behulp van [lvm (Logical Volume Manager)](/windows/win32/fileio/about-volume-management) voor gegevens schijven
 - Versleuteling inschakelen op Windows-Vm's die zijn geconfigureerd met behulp van opslag ruimten
 - Alle open bare Azure-regio's worden ondersteund
 

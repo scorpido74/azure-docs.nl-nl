@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp, devx-track-js
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: 8ff70c14310dd81a051ac27c1d6d59bb3d1deb7b
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: ff64d5c17174f8e1e67111ebca9ccf050deb2f26
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677607"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94409651"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Strategieën voor het testen van uw code in Azure Functions
 
@@ -37,9 +37,9 @@ In het volgende voor beeld wordt beschreven hoe u een C#-functie-app maakt in Vi
 Als u uw omgeving wilt instellen, maakt u een functie-en test-app. De volgende stappen helpen u bij het maken van de apps en functies die nodig zijn voor de ondersteuning van de tests:
 
 1. [Een nieuwe functions-app maken](./functions-create-first-azure-function.md) en **hieraan** een naam toe te voegen
-2. [Maak een HTTP-functie op basis van de sjabloon](./functions-create-first-azure-function.md) en geef deze de naam **MyHttpTrigger** .
-3. [Maak een timer functie op basis van de sjabloon](./functions-create-scheduled-function.md) en noem deze **MyTimerTrigger** .
-4. [Maak een xUnit-test-app](https://xunit.github.io/docs/getting-started-dotnet-core) in de oplossing en geef deze de naam **Function. tests** .
+2. [Maak een HTTP-functie op basis van de sjabloon](./functions-create-first-azure-function.md) en geef deze de naam **MyHttpTrigger**.
+3. [Maak een timer functie op basis van de sjabloon](./functions-create-scheduled-function.md) en noem deze **MyTimerTrigger**.
+4. [Maak een xUnit-test-app](https://xunit.github.io/docs/getting-started-dotnet-core) in de oplossing en geef deze de naam **Function. tests**.
 5. Gebruik NuGet om een verwijzing toe te voegen vanuit de test-app naar [micro soft. AspNetCore. MVC](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/)
 6. [Raadpleeg de *functions* -app](/visualstudio/ide/managing-references-in-a-project?view=vs-2017) vanuit *functions. app tests* .
 
@@ -251,17 +251,17 @@ De leden die in deze klasse worden geïmplementeerd zijn:
 
 - **Timer_should_log_message** : met deze test wordt een exemplaar van gemaakt `ListLogger` en door gegeven aan een timer-functie. Zodra de functie is uitgevoerd, wordt het logboek gecontroleerd om te controleren of het verwachte bericht aanwezig is.
 
-Als u toegang wilt krijgen tot toepassings instellingen in uw tests, kunt u [System. Environment. GetEnvironmentVariable](./functions-dotnet-class-library.md#environment-variables)gebruiken.
+Als u toegang wilt krijgen tot toepassings instellingen in uw tests, kunt [inject](./functions-dotnet-dependency-injection.md) u een `IConfiguration` instantie met gemodelde omgevings variabele waarden in uw functie injecteren.
 
 ### <a name="run-tests"></a>Tests uitvoeren
 
-Als u de tests wilt uitvoeren, gaat u naar de **test Verkenner** en klikt u op **alles uitvoeren** .
+Als u de tests wilt uitvoeren, gaat u naar de **test Verkenner** en klikt u op **alles uitvoeren**.
 
 ![Azure Functions testen met C# in Visual Studio](./media/functions-test-a-function/azure-functions-test-visual-studio-xunit.png)
 
 ### <a name="debug-tests"></a>Debug-tests
 
-Als u fouten wilt opsporen in de tests, stelt u een onderbrekings punt in op een test, gaat u naar de **test Verkenner** en klikt u op **uitvoeren > fout opsporing laatst uitgevoerd** .
+Als u fouten wilt opsporen in de tests, stelt u een onderbrekings punt in op een test, gaat u naar de **test Verkenner** en klikt u op **uitvoeren > fout opsporing laatst uitgevoerd**.
 
 ## <a name="javascript-in-vs-code"></a>Java script in VS code
 
@@ -336,7 +336,7 @@ test('Http trigger should return known text', async () => {
 
 De HTTP-functie van de sjabloon retourneert een teken reeks ' Hello ' die is samengevoegd met de naam die is opgenomen in de query reeks. Met deze test wordt een vervalst exemplaar van een aanvraag gemaakt en door gegeven aan de HTTP-functie. De test controleert of de *logboek* methode eenmaal wordt aangeroepen en de geretourneerde tekst is gelijk aan "Hello Bill".
 
-Gebruik vervolgens de extensie VS code functions om een nieuwe Java Script-timer functie te maken en geef deze de naam *Timer trigger* . Nadat de functie is gemaakt, voegt u een nieuw bestand toe aan dezelfde map met de naam **index.test.js** en voegt u de volgende code toe:
+Gebruik vervolgens de extensie VS code functions om een nieuwe Java Script-timer functie te maken en geef deze de naam *Timer trigger*. Nadat de functie is gemaakt, voegt u een nieuw bestand toe aan dezelfde map met de naam **index.test.js** en voegt u de volgende code toe:
 
 ```javascript
 const timerFunction = require('./index');
@@ -379,7 +379,7 @@ Als u fouten wilt opsporen in uw tests, voegt u de volgende configuratie toe aan
 }
 ```
 
-Stel vervolgens een onderbrekings punt in uw test in en druk op **F5** .
+Stel vervolgens een onderbrekings punt in uw test in en druk op **F5**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

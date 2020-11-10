@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 10/19/2020
+ms.date: 11/09/2020
 ms.author: b-juche
-ms.openlocfilehash: f4b8b4b56693023ede2ccf8ae7eeac7ed5e16824
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: c1cdeaa41dda11f2ab520cf8d31ddb2116587082
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216858"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94409566"
 ---
 # <a name="configure-an-nfs-client-for-azure-netapp-files"></a>Een NFS-client voor Azure NetApp Files configureren
 
@@ -75,7 +75,10 @@ In de voor beelden in deze sectie worden de volgende domein naam en IP-adres geb
     Bijvoorbeeld: 
 
     `sudo realm join CONTOSO.COM -U ad_admin --computer-ou="CN=Computers"`
-
+    
+    Zorg ervoor dat `default_realm` is ingesteld op de opgegeven realm in `/etc/krb5.conf` .  Als dat niet het geval is, voegt u deze toe onder de `[libdefaults]` sectie in het bestand, zoals wordt weer gegeven in het volgende voor beeld:
+    
+    `default_realm = CONTOSO.COM`
 
 7. Alle NFS-services opnieuw starten:  
  
@@ -199,7 +202,7 @@ In de voor beelden in deze sectie worden de volgende domein naam en IP-adres geb
 
 5. Ubuntu 18,04 maakt standaard gebruik van chrony. Volg de richt lijnen voor configuratie in [Ubuntu Bionic: using chrony om NTP te configureren](https://ubuntu.com/blog/ubuntu-bionic-using-chrony-to-configure-ntp).
 
-6. Word lid van de Active Directory-domein:   
+6. Word lid van het domein Active Directory:   
  
     `sudo realm join $DOMAIN.NAME -U $SERVICEACCOUNT --computer-ou="OU=$YOUROU"`
  
