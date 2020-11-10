@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 08/13/2020
 ms.author: victorh
-ms.openlocfilehash: 75435155ba1dad798d301006a30a5d5b6e96226a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b94b71993285a61042be3c6cd9e4708315fab9f
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88611174"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413000"
 ---
 # <a name="azure-firewall-faq"></a>Veelgestelde vragen over Azure Firewall
 
@@ -40,9 +40,9 @@ Azure Firewall ondersteunt regels en regel verzamelingen. Een regel verzameling 
 
 Er zijn drie typen regel verzamelingen:
 
-* *Toepassings regels*: Configureer FQDN-namen (Fully Qualified Domain names) die toegankelijk zijn vanuit een subnet.
-* *Netwerk regels*: Configureer regels die bron adressen, protocollen, doel poorten en doel adressen bevatten.
-* *NAT-regels*: DNAT-regels configureren om binnenkomende Internet verbindingen toe te staan.
+* *Toepassings regels* : Configureer FQDN-namen (Fully Qualified Domain names) die toegankelijk zijn vanuit een subnet.
+* *Netwerk regels* : Configureer regels die bron adressen, protocollen, doel poorten en doel adressen bevatten.
+* *NAT-regels* : DNAT-regels configureren om binnenkomende Internet verbindingen toe te staan.
 
 ## <a name="does-azure-firewall-support-inbound-traffic-filtering"></a>Ondersteunt Azure Firewall het filteren van inkomend verkeer?
 
@@ -139,9 +139,9 @@ Nee. NAT-regels voegen impliciet een bijbehorende netwerk regel toe om het verta
 
 ## <a name="how-do-wildcards-work-in-an-application-rule-target-fqdn"></a>Hoe werken joker tekens in een toepassings regel doel-FQDN?
 
-Joker tekens kunnen momenteel alleen worden gebruikt aan de linkerkant van de FQDN. Bijvoorbeeld ***. contoso.com** en ***contoso.com**.
+Joker tekens kunnen momenteel alleen worden gebruikt aan de linkerkant van de FQDN. Bijvoorbeeld * *_. contoso.com_* en * *_contoso.com_*.
 
-Als u ***. contoso.com**configureert, is *anyvalue*. contoso.com, maar niet contoso.com (het domein Apex) toegestaan. Als u het domein Apex wilt toestaan, moet u het expliciet configureren als een doel-FQDN.
+Als u * *_. contoso.com_* configureert, is *anyvalue*. contoso.com, maar niet contoso.com (het domein Apex) toegestaan. Als u het domein Apex wilt toestaan, moet u het expliciet configureren als een doel-FQDN.
 
 ## <a name="what-does-provisioning-state-failed-mean"></a>Wat betekent de *inrichtings status: mislukt* ?
 
@@ -205,7 +205,7 @@ Set-AzFirewall -AzureFirewall $fw
 
 ## <a name="why-can-a-tcp-ping-and-similar-tools-successfully-connect-to-a-target-fqdn-even-when-no-rule-on-azure-firewall-allows-that-traffic"></a>Waarom kan een TCP-ping en soort gelijke hulpprogram ma's verbinding maken met een doel-FQDN, zelfs wanneer er geen regel op Azure Firewall dat verkeer toestaat?
 
-Een TCP-ping maakt geen verbinding met de doel-FQDN. Dit gebeurt omdat de transparante proxy van Azure Firewall luistert op poort 80/443 voor uitgaand verkeer. De TCP ping brengt een verbinding tot stand met de firewall, waarna het pakket wordt neergezet en de verbinding wordt geregistreerd. Dit gedrag heeft geen invloed op de beveiliging. Om Verwar ring te voor komen, kunnen we echter de mogelijke wijzigingen van dit gedrag onderzoeken.
+Een TCP-ping maakt geen verbinding met de doel-FQDN. Dit gebeurt omdat de transparante proxy van Azure Firewall luistert op poort 80/443 voor uitgaand verkeer. De TCP ping brengt een verbinding tot stand met de firewall, waarna het pakket wordt neergezet. Dit gedrag heeft geen invloed op de beveiliging. Om Verwar ring te voor komen, kunnen we echter de mogelijke wijzigingen van dit gedrag onderzoeken.
 
 ## <a name="are-there-limits-for-the-number-of-ip-addresses-supported-by-ip-groups"></a>Gelden er limieten voor het aantal IP-adressen dat door IP-groepen wordt ondersteund?
 

@@ -7,12 +7,12 @@ ms.date: 09/22/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 958402e61f6dc81a3e6618dbcd4df4c8dd6b9ced
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: eedd19189d1e1ccedd3d505aecf407aca8fca831
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92793055"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413357"
 ---
 # <a name="how-to-connect-an--iot-plug-and-play-bridge-sample-running-on-linux-or-windows-to-iot-hub"></a>Verbinding maken met een IoT Plug en Play Bridge-voor beeld dat wordt uitgevoerd in Linux of Windows naar IoT Hub
 
@@ -37,7 +37,7 @@ sudo apt-get update
 sudo apt-get install -y git cmake build-essential curl libcurl4-openssl-dev libssl-dev uuid-dev
 ```
 
-Controleer of de versie van `cmake` hoger is dan **2.8.12** en of de versie van **GCC** hoger dan **4.4.7** .
+Controleer of de versie van `cmake` hoger is dan **2.8.12** en of de versie van **GCC** hoger dan **4.4.7**.
 
 ```sh
 cmake --version
@@ -54,7 +54,7 @@ Om deze quickstart in Windows te voltooien, installeert u de volgende software i
 
 ### <a name="azure-iot-explorer"></a>Azure IoT Explorer
 
-Om in het tweede deel van deze quickstart te communiceren met het voorbeeldapparaat, gebruikt u het hulpprogramma **Azure IoT Explorer** . [Download en installeer de nieuwste release van Azure IoT Explorer](./howto-use-iot-explorer.md) voor uw besturingssysteem.
+Om in het tweede deel van deze quickstart te communiceren met het voorbeeldapparaat, gebruikt u het hulpprogramma **Azure IoT Explorer**. [Download en installeer de nieuwste release van Azure IoT Explorer](./howto-use-iot-explorer.md) voor uw besturingssysteem.
 
 [!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
 
@@ -176,14 +176,14 @@ cd scripts/linux
  Start het voor beeld van de IoT Plug en Play-brug voor omgevings sensoren door te navigeren naar de map *pnpbridge* en het volgende in een opdracht prompt uit te voeren:
 
 ```bash
- cd cmake/pnpbridge_x86/src/adaptors/samples/environmental_sensor/
+ cd cmake/pnpbridge_linux/src/adapters/samples/environmental_sensor/
 ./pnpbridge_environmentalsensor
 
 ```
 
 ```cmd
 REM Windows
-cd cmake\pnpbridge_x86\src\adaptors\samples\environmental_sensor
+cd cmake\pnpbridge_x86\src\adapters\samples\environmental_sensor
 Debug\pnpbridge_environmentalsensor.exe
 ```
 

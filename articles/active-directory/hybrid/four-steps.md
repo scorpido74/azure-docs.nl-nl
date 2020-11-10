@@ -13,12 +13,12 @@ ms.date: 06/20/2019
 ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5dc931c461988daf9ff6fb2f954b52fa58ce94af
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 795f5ede382e561ee810e54e1f8897c5d806e8b8
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369774"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412371"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>Vier stappen voor een sterke identiteits basis met Azure Active Directory
 
@@ -83,7 +83,7 @@ In moderne ondernemingen zijn IT-afdelingen vaak niet op de hoogte van alle Clou
 
 Met [Microsoft Cloud app Security](/cloud-app-security/what-is-cloud-app-security) (MCAS) kunt u nuttige apps identificeren die populair zijn bij gebruikers die ze kunnen erkennen en toevoegen aan de galerie met bedrijfs toepassingen, zodat gebruikers profiteren van mogelijkheden als SSO en voorwaardelijke toegang.
 
-<em>"**Cloud app Security** helpt ons ervoor te zorgen dat onze mensen onze Cloud-en SaaS-toepassingen op de juiste wijze gebruiken, op manieren die ondersteuning bieden voor het basis beleid voor de beveiliging van Accenture."</em> --- [John blasi, Director beheren, Information Security, Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
+<em>" **Cloud app Security** helpt ons ervoor te zorgen dat onze mensen onze Cloud-en SaaS-toepassingen op de juiste wijze gebruiken, op manieren die ondersteuning bieden voor het basis beleid voor de beveiliging van Accenture."</em> --- [John blasi, Director beheren, Information Security, Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
 
 Naast het detecteren van schaduw, kan MCAS ook het risico niveau van apps bepalen, voor komen dat onbevoegde toegang tot Bedrijfs gegevens, mogelijke gegevens lekken en andere beveiligings Risico's die inherent zijn aan de toepassingen.
 
@@ -147,7 +147,7 @@ Op dezelfde manier kan het [rapport voor Self-Service wachtwoord beheer](../auth
 
 ### <a name="self-service-app-management"></a>Self-service app-beheer
 
-Voordat uw gebruikers toepassingen zelf kunnen detecteren vanuit hun toegangs venster, moet u de toegang van [selfservice toepassingen](../manage-apps/access-panel-manage-self-service-access.md) inschakelen voor alle toepassingen waarvoor u gebruikers de mogelijkheid wilt bieden om zichzelf te detecteren en toegang tot te vragen. Toegang voor selfservice toepassingen is een uitstekende manier om gebruikers de mogelijkheid te bieden om zelf toepassingen te detecteren en de bedrijfs groep toe te staan om de toegang tot deze toepassingen goed te keuren. U kunt de bedrijfs groep toestaan om de referenties te beheren die aan deze gebruikers zijn toegewezen voor [wachtwoord Single-Sign op toepassingen](../manage-apps/application-sign-in-problem-password-sso-gallery.md#configure-password-sso-for-an-azure-ad-gallery-app) rechtstreeks vanuit hun toegangs Vensters.
+Voordat uw gebruikers toepassingen zelf kunnen detecteren vanuit hun toegangs venster, moet u de toegang van [selfservice toepassingen](../manage-apps/access-panel-manage-self-service-access.md) inschakelen voor alle toepassingen waarvoor u gebruikers de mogelijkheid wilt bieden om zichzelf te detecteren en toegang tot te vragen. Toegang voor selfservice toepassingen is een uitstekende manier om gebruikers de mogelijkheid te bieden om zelf toepassingen te detecteren en de bedrijfs groep toe te staan om de toegang tot deze toepassingen goed te keuren. U kunt de bedrijfs groep toestaan om de referenties te beheren die aan deze gebruikers zijn toegewezen voor [wachtwoord Single-Sign op toepassingen](../manage-apps/troubleshoot-password-based-sso.md#automatically-capture-sign-in-fields-for-an-app) rechtstreeks vanuit hun toegangs Vensters.
 
 ### <a name="self-service-group-management"></a>Groepsbeheer via selfservice
 
@@ -267,6 +267,6 @@ U wordt aangeraden de volgende controle lijst af te drukken voor referentie wann
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over hoe u uw beveiligde postuur kunt verhogen met behulp van de mogelijkheden van Azure Active Directory en deze controle lijst [voor vijf stappen-vijf stap om uw identiteits infrastructuur te beveiligen](https://aka.ms/securitysteps).
+Meer informatie over hoe u uw beveiligde postuur kunt verhogen met behulp van de mogelijkheden van Azure Active Directory en deze controle lijst [voor vijf stappen-vijf stap om uw identiteits infrastructuur te beveiligen](../../security/fundamentals/steps-secure-identity.md).
 
-Lees hoe u met de identiteits functies in azure AD uw overgang naar het beheer van de cloud kunt versnellen door de oplossingen en mogelijkheden te bieden waarmee organisaties snel meer hun identiteits beheer van traditionele on-premises systemen kunnen overnemen en verplaatsen naar Azure AD: [hoe Azure ad het beheer van de Cloud biedt voor on-premises workloads](https://aka.ms/cloudgoverned).
+Lees hoe u met de identiteits functies in azure AD uw overgang naar het beheer van de cloud kunt versnellen door de oplossingen en mogelijkheden te bieden waarmee organisaties snel meer hun identiteits beheer van traditionele on-premises systemen kunnen overnemen en verplaatsen naar Azure AD: [hoe Azure ad het beheer van de Cloud biedt voor on-premises workloads](./cloud-governed-management-for-on-premises.md).

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 7f274827e646ea0a7c0fd103983cfc566d699228
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a6b6196888aedfd6aa60c9395ff27611907661a
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91596785"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413141"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Welke schijftypen zijn beschikbaar in Azure?
 
@@ -60,6 +60,8 @@ Enkele belang rijke mogelijkheden van ultra disk zijn:
 |512     |153.600         |2.000         |
 |1024-65536 (grootten in dit bereik worden verhoogd in stappen van 1 TiB)     |160.000         |2.000         |
 
+Ultra disks zijn ontworpen om latentie van submilliseconden en doel-IOPS en-door Voer beschreven in de voor gaande tabel 99,99% van de tijd te geven.
+
 ### <a name="ga-scope-and-limitations"></a>GA bereik en beperkingen
 
 [!INCLUDE [managed-disks-ultra-disks-GA-scope-and-limitations](../../includes/managed-disks-ultra-disks-GA-scope-and-limitations.md)]
@@ -67,7 +69,7 @@ Enkele belang rijke mogelijkheden van ultra disk zijn:
 
 Als u ultra disks wilt gaan gebruiken, raadpleegt u ons artikel over het onderwerp: [Azure Ultra Disk gebruiken](disks-enable-ultra-ssd.md).
 
-## <a name="premium-ssd"></a>Premium SSD
+## <a name="premium-ssd"></a>Premium - SSD
 
 Azure Premium Ssd's bieden ondersteuning voor hoge prestaties en lage latentie voor virtuele machines (Vm's) met invoer/uitvoer-intensieve workloads. Als u gebruik wilt maken van de snelheid en prestaties van Premium-opslag schijven, kunt u bestaande VM-schijven migreren naar Premium-Ssd's. Premium-Ssd's zijn geschikt voor essentiële productie toepassingen. Premium-Ssd's kan alleen worden gebruikt in combi natie met een VM-reeks die compatibel is met Premium Storage.
 
@@ -88,7 +90,7 @@ Schijven die ondersteuning bieden voor bursting, worden standaard ingeschakeld v
 
 Voor Premium-Ssd's wordt elke I/O-bewerking kleiner dan of gelijk aan 256 KiB van de door Voer beschouwd als één I/O-bewerking. I/O-bewerkingen die groter zijn dan 256 KiB door Voer, worden beschouwd als meerdere I/O's van grootte 256 KiB.
 
-## <a name="standard-ssd"></a>Standard SSD
+## <a name="standard-ssd"></a>Standard - SSD
 
 Azure Standard Ssd's is een voordelige opslag optie die is geoptimaliseerd voor workloads die consistente prestaties op lagere IOPS-niveaus nodig hebben. Standard-SSD biedt een goede ervaring op instap niveau voor degenen die willen overstappen op de Cloud, met name als u problemen ondervindt met de variantie van werk belastingen die op uw HDD-oplossingen op locatie worden uitgevoerd. In vergelijking met de standaard-Hdd's bieden de standaard-Ssd's betere Beschik baarheid, consistentie, betrouw baarheid en latentie. Standaard Ssd's zijn geschikt voor webservers, lage IOPS-toepassings servers, intensief gebruikte zakelijke toepassingen en werk belastingen voor ontwikkelen en testen. Net als standaard Hdd's zijn standaard Ssd's beschikbaar op alle Azure-Vm's.
 
@@ -101,7 +103,7 @@ Standaard Ssd's zijn ontworpen om latentie van één cijfer en de IOPS en door v
 
 Voor standaard Ssd's wordt elke I/O-bewerking kleiner dan of gelijk aan 256 KiB van de door Voer beschouwd als één I/O-bewerking. I/O-bewerkingen die groter zijn dan 256 KiB door Voer, worden beschouwd als meerdere I/O's van grootte 256 KiB. Deze trans acties hebben een facturerings impact.
 
-## <a name="standard-hdd"></a>Standard HDD
+## <a name="standard-hdd"></a>Standard - HDD
 
 Azure Standard Hdd's levert betrouw bare, voordelige schijf ondersteuning voor virtuele machines met latentie-ongevoelig werk belastingen. Bij standaard opslag worden de gegevens opgeslagen op de harde schijven (Hdd's). Latentie, IOPS en door Voer van Standard-HDD schijven kunnen veel meer verschillen in vergelijking met schijven op basis van SSD. Standard-HDD schijven zijn ontworpen voor het leveren van schrijf latentie onder 10 MS en lees latentie onder 20ms voor de meeste i/o-bewerkingen, maar de werkelijke prestaties kunnen echter variëren, afhankelijk van de i/o-grootte en het werkbelasting patroon. Wanneer u werkt met Vm's, kunt u standaard HDD-schijven gebruiken voor dev/test-scenario's en minder kritieke workloads. Standaard Hdd's zijn beschikbaar in alle Azure-regio's en kunnen worden gebruikt met alle Azure-Vm's.
 
@@ -122,15 +124,15 @@ Bij het gebruik van beheerde schijven gelden de volgende facturerings overweging
 - Uitgaande gegevens overdracht
 - Aantal trans acties
 
-**Beheerde schijf grootte**: beheerde schijven worden gefactureerd op de ingerichte grootte. Azure wijst de ingerichte grootte (afgerond) toe aan de dichtstbijzijnde schijf grootte. Zie de vorige tabellen voor meer informatie over de geboden schijf groottes. Elke schijf wordt toegewezen aan een ondersteunde aanbieding van de ingerichte schijf en wordt dienovereenkomstig gefactureerd. Als u bijvoorbeeld een 200 GiB-Standard-SSD hebt ingericht, wordt deze toegewezen aan de aanbieding voor de schijf grootte van E15 (256 GiB). Facturering voor een ingerichte schijf wordt per uur naar beneden gefactureerd met behulp van de maandelijkse prijs voor de opslag aanbieding. Als u bijvoorbeeld een E10-schijf hebt ingericht en deze na 20 uur hebt verwijderd, wordt u gefactureerd voor het E10-aanbod dat Maxi maal 20 uur in rekening wordt gebracht. Dit is ongeacht de hoeveelheid gegevens die naar de schijf wordt geschreven.
+**Beheerde schijf grootte** : beheerde schijven worden gefactureerd op de ingerichte grootte. Azure wijst de ingerichte grootte (afgerond) toe aan de dichtstbijzijnde schijf grootte. Zie de vorige tabellen voor meer informatie over de geboden schijf groottes. Elke schijf wordt toegewezen aan een ondersteunde aanbieding van de ingerichte schijf en wordt dienovereenkomstig gefactureerd. Als u bijvoorbeeld een 200 GiB-Standard-SSD hebt ingericht, wordt deze toegewezen aan de aanbieding voor de schijf grootte van E15 (256 GiB). Facturering voor een ingerichte schijf wordt per uur naar beneden gefactureerd met behulp van de maandelijkse prijs voor de opslag aanbieding. Als u bijvoorbeeld een E10-schijf hebt ingericht en deze na 20 uur hebt verwijderd, wordt u gefactureerd voor het E10-aanbod dat Maxi maal 20 uur in rekening wordt gebracht. Dit is ongeacht de hoeveelheid gegevens die naar de schijf wordt geschreven.
 
-**Moment opnamen**: moment opnamen worden gefactureerd op basis van de gebruikte grootte. Als u bijvoorbeeld een moment opname maakt van een beheerde schijf met een ingerichte capaciteit van 64 GiB en de daad werkelijke gebruikte gegevens grootte van 10 GiB, wordt de moment opname alleen gefactureerd voor de gebruikte gegevens grootte van 10 GiB.
+**Moment opnamen** : moment opnamen worden gefactureerd op basis van de gebruikte grootte. Als u bijvoorbeeld een moment opname maakt van een beheerde schijf met een ingerichte capaciteit van 64 GiB en de daad werkelijke gebruikte gegevens grootte van 10 GiB, wordt de moment opname alleen gefactureerd voor de gebruikte gegevens grootte van 10 GiB.
 
 Zie de sectie over moment opnamen in het [overzicht Managed Disk](managed-disks-overview.md)voor meer informatie over moment opnamen.
 
-**Uitgaande gegevens overdrachten**: [uitgaande gegevens overdracht](https://azure.microsoft.com/pricing/details/bandwidth/) (gegevens die uit de Azure-data centers worden verzonden) zijn er facturen voor bandbreedte gebruik.
+**Uitgaande gegevens overdrachten** : [uitgaande gegevens overdracht](https://azure.microsoft.com/pricing/details/bandwidth/) (gegevens die uit de Azure-data centers worden verzonden) zijn er facturen voor bandbreedte gebruik.
 
-**Trans acties**: u wordt gefactureerd voor het aantal trans acties dat u uitvoert op een Standard Managed disk. Voor standaard Ssd's wordt elke I/O-bewerking kleiner dan of gelijk aan 256 KiB van de door Voer beschouwd als één I/O-bewerking. I/O-bewerkingen die groter zijn dan 256 KiB door Voer, worden beschouwd als meerdere I/O's van grootte 256 KiB. Voor standaard Hdd's wordt elke IO-bewerking beschouwd als één trans actie, ongeacht de I/O-grootte.
+**Trans acties** : u wordt gefactureerd voor het aantal trans acties dat u uitvoert op een Standard Managed disk. Voor standaard Ssd's wordt elke I/O-bewerking kleiner dan of gelijk aan 256 KiB van de door Voer beschouwd als één I/O-bewerking. I/O-bewerkingen die groter zijn dan 256 KiB door Voer, worden beschouwd als meerdere I/O's van grootte 256 KiB. Voor standaard Hdd's wordt elke IO-bewerking beschouwd als één trans actie, ongeacht de I/O-grootte.
 
 Zie [Managed disks prijzen](https://azure.microsoft.com/pricing/details/managed-disks)voor gedetailleerde informatie over de prijzen voor Managed disks, waaronder transactie kosten.
 

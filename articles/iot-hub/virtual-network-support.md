@@ -5,14 +5,14 @@ services: iot-hub
 author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 09/24/2020
+ms.date: 11/09/2020
 ms.author: jlian
-ms.openlocfilehash: cb6e4b2b10b6b44a544416ad5d57808c7ad4d83f
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: fdc106a1a446f51d309ac4317062c8fd20204bae
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427854"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413391"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>Ondersteuning voor virtuele netwerken IoT Hub met persoonlijke koppelingen en beheerde identiteit
 
@@ -50,17 +50,17 @@ Voordat u doorgaat, controleert u of aan de volgende vereisten wordt voldaan:
 
 Een persoonlijk eind punt werkt voor IoT Hub Api's (zoals apparaat-naar-Cloud-berichten) en service-Api's (zoals het maken en bijwerken van apparaten).
 
-1. Selecteer in Azure Portal **netwerken**, verbindingen met een **persoonlijk eind punt**en klik op het **+ persoonlijke eind punt**.
+1. Selecteer in Azure Portal **netwerken** , verbindingen met een **persoonlijk eind punt** en klik op het **+ persoonlijke eind punt**.
 
     :::image type="content" source="media/virtual-network-support/private-link.png" alt-text="Scherm opname waarin wordt getoond waar een persoonlijk eind punt moet worden toegevoegd voor IoT Hub":::
 
 1. Geef het abonnement, de resource groep, de naam en de regio op voor het maken van het nieuwe persoonlijke eind punt in. In het ideale geval moet het persoonlijke eind punt worden gemaakt in dezelfde regio als uw hub.
 
-1. Klik op **volgende: resource**, geef het abonnement voor uw IOT hub resource op en selecteer **' micro soft. devices/IotHubs '** als resource type, uw IOT hub naam als **resource**en **iotHub** als doel subresource.
+1. Klik op **volgende: resource** , geef het abonnement voor uw IOT hub resource op en selecteer **' micro soft. devices/IotHubs '** als resource type, uw IOT hub naam als **resource** en **iotHub** als doel subresource.
 
 1. Klik op **volgende: Configuratie** en geef uw virtuele netwerk en subnet op om het persoonlijke eind punt in te maken. Selecteer de optie voor de integratie met de persoonlijke DNS-zone van Azure, indien gewenst.
 
-1. Klik op **volgende: Tags**en geef eventueel labels voor uw resource op.
+1. Klik op **volgende: Tags** en geef eventueel labels voor uw resource op.
 
 1. Klik op **beoordeling + maken** om uw persoonlijke koppelings bron te maken.
 
@@ -90,9 +90,9 @@ Om ervoor te zorgen dat andere services uw IoT-hub als een vertrouwde micro soft
 
 1. Ga naar **identiteit** in uw IOT hub-Portal
 
-1. Onder **status**selecteert u **aan**en klikt u vervolgens op **Opslaan**.
+1. Onder **status** selecteert u **aan** en klikt u vervolgens op **Opslaan**.
 
-    :::image type="content" source="media/virtual-network-support/managed-identity.png" alt-text="Scherm opname waarin wordt getoond waar een persoonlijk eind punt moet worden toegevoegd voor IoT Hub":::
+    :::image type="content" source="media/virtual-network-support/managed-identity.png" alt-text="Scherm afbeelding die laat zien hoe u de beheerde identiteit voor IoT Hub inschakelt":::
 
 ### <a name="assign-managed-identity-to-your-iot-hub-at-creation-time-using-arm-template"></a>Beheerde identiteit aan uw IoT Hub toewijzen tijdens het maken van een ARM-sjabloon
 
@@ -174,7 +174,7 @@ IoT Hub kunt berichten routeren naar een opslag account van de klant. Uw IoT Hub
 
 1. Navigeer in het Azure Portal naar het tabblad **toegangs beheer (IAM)** van uw opslag account en klik op **toevoegen** onder de sectie **een roltoewijzing toevoegen** .
 
-2. Selecteer de **gegevens bijdrager** van de opslag-BLOB ([*niet* Inzender of Inzender voor opslag accounts](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues)) als **rol**, **Azure AD-gebruiker,-groep of Service-Principal** , zoals **toegangs rechten toewijzen aan** en selecteer de resource naam van uw IOT hub in de vervolg keuzelijst. Klik op de knop **Opslaan**.
+2. Selecteer de **gegevens bijdrager** van de opslag-BLOB ( [*niet* Inzender of Inzender voor opslag accounts](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues)) als **rol** , **Azure AD-gebruiker,-groep of Service-Principal** , zoals **toegangs rechten toewijzen aan** en selecteer de resource naam van uw IOT hub in de vervolg keuzelijst. Klik op de knop **Opslaan**.
 
 3. Ga naar het tabblad **firewalls en virtuele netwerken** in uw opslag account en schakel de optie **toegang via geselecteerde netwerken toestaan** in. Schakel onder de lijst **uitzonde ringen** het selectie vakje in voor **vertrouwde micro soft-Services toegang geven tot dit opslag account**. Klik op de knop **Opslaan**.
 
@@ -192,7 +192,7 @@ IoT Hub kunnen worden geconfigureerd voor het routeren van berichten naar een ev
 
 1. Ga in het Azure Portal naar uw **iam-tabblad (Event hubs Access Control)** en klik op **toevoegen** onder de sectie **een roltoewijzing toevoegen** .
 
-2. Selecteer **Event hubs gegevens afzender** als **rol**, **Azure AD-gebruiker,-groep of Service-Principal** als **toegangs toewijzing aan** en selecteer de resource naam van uw IOT hub in de vervolg keuzelijst. Klik op de knop **Opslaan**.
+2. Selecteer **Event hubs gegevens afzender** als **rol** , **Azure AD-gebruiker,-groep of Service-Principal** als **toegangs toewijzing aan** en selecteer de resource naam van uw IOT hub in de vervolg keuzelijst. Klik op de knop **Opslaan**.
 
 3. Ga naar het tabblad **firewalls en virtuele netwerken** in uw event hubs en schakel de optie **toegang via geselecteerde netwerken toestaan** in. Schakel onder de lijst **uitzonde ringen** het selectie vakje in om **vertrouwde micro soft-Services toegang te geven tot Event hubs**. Klik op de knop **Opslaan**.
 
@@ -200,7 +200,7 @@ IoT Hub kunnen worden geconfigureerd voor het routeren van berichten naar een ev
 
 5. Navigeer naar het gedeelte **aangepaste eind punten** en klik op **toevoegen**. Selecteer **Event hubs** als het type eind punt.
 
-6. Op de pagina die wordt weer gegeven, geeft u een naam op voor uw eind punt, selecteert u uw event hubs-naam ruimte en-exemplaar en klikt u op de knop **maken** .
+6. Op de pagina die wordt weer gegeven, geeft u een naam voor het eind punt op. Selecteer uw event hubs-naam ruimte en-exemplaar. Selecteer **identiteit op basis van** het **verificatie type** en klik op de knop **maken** .
 
 Uw aangepaste Event hubs-eind punt is ingesteld voor het gebruik van de door het systeem toegewezen identiteit van uw hub en heeft toegang tot uw event hubs-resource ondanks de firewall beperkingen. U kunt dit eind punt nu gebruiken om een routerings regel in te stellen.
 
@@ -210,15 +210,15 @@ IoT Hub kunnen worden geconfigureerd voor het routeren van berichten naar een se
 
 1. Navigeer in het Azure Portal naar het tabblad **toegangs beheer (IAM)** van de service bus en klik op **toevoegen** onder de sectie **een roltoewijzing toevoegen** .
 
-2. Selecteer **Service Bus-gegevens afzender** als **rol**, **Azure AD-gebruiker,-groep of Service-Principal** als **toegangs toewijzing aan** en selecteer de resource naam van uw IOT hub in de vervolg keuzelijst. Klik op de knop **Opslaan**.
+2. Selecteer **Service Bus-gegevens afzender** als **rol** , **Azure AD-gebruiker,-groep of Service-Principal** als **toegangs toewijzing aan** en selecteer de resource naam van uw IOT hub in de vervolg keuzelijst. Klik op de knop **Opslaan**.
 
-3. Ga naar het tabblad **firewalls en virtuele netwerken** in uw service bus en schakel de optie **toegang via geselecteerde netwerken toestaan** in. Schakel onder de lijst **uitzonde ringen** het selectie vakje **vertrouwde micro soft-Services toestaan voor toegang tot deze service bus**in. Klik op de knop **Opslaan**.
+3. Ga naar het tabblad **firewalls en virtuele netwerken** in uw service bus en schakel de optie **toegang via geselecteerde netwerken toestaan** in. Schakel onder de lijst **uitzonde ringen** het selectie vakje **vertrouwde micro soft-Services toestaan voor toegang tot deze service bus** in. Klik op de knop **Opslaan**.
 
 4. Ga op de pagina resource van uw IoT Hub naar het tabblad **bericht routering** .
 
 5. Navigeer naar het gedeelte **aangepaste eind punten** en klik op **toevoegen**. Selecteer **Service Bus-wachtrij** of **Service Bus onderwerp** (indien van toepassing) als het type eind punt.
 
-6. Op de pagina die wordt weer gegeven, geeft u een naam op voor uw eind punt, selecteert u de naam ruimte van de service bus en de wachtrij of het onderwerp (indien van toepassing). Klik op de knop **Maken**.
+6. Op de pagina die wordt weer gegeven, geeft u een naam op voor uw eind punt, selecteert u de naam ruimte van de service bus en de wachtrij of het onderwerp (indien van toepassing). Selecteer **identiteit op basis van** het **verificatie type** en klik op de knop **maken** .
 
 Nu het aangepaste service bus-eind punt is ingesteld voor het gebruik van de door het systeem toegewezen identiteit van uw hub en de toegang heeft tot uw service bus-resource ondanks de firewall beperkingen. U kunt dit eind punt nu gebruiken om een routerings regel in te stellen.
 
@@ -230,13 +230,13 @@ Met de functie voor het uploaden van bestanden van IoT Hub kunnen apparaten best
 
 1. Navigeer in het Azure Portal naar het tabblad **toegangs beheer (IAM)** van uw opslag account en klik op **toevoegen** onder de sectie **een roltoewijzing toevoegen** .
 
-2. Selecteer de **gegevens bijdrager** van de opslag-BLOB ([*niet* Inzender of Inzender voor opslag accounts](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues)) als **rol**, **Azure AD-gebruiker,-groep of Service-Principal** , zoals **toegangs rechten toewijzen aan** en selecteer de resource naam van uw IOT hub in de vervolg keuzelijst. Klik op de knop **Opslaan**.
+2. Selecteer de **gegevens bijdrager** van de opslag-BLOB ( [*niet* Inzender of Inzender voor opslag accounts](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues)) als **rol** , **Azure AD-gebruiker,-groep of Service-Principal** , zoals **toegangs rechten toewijzen aan** en selecteer de resource naam van uw IOT hub in de vervolg keuzelijst. Klik op de knop **Opslaan**.
 
 3. Ga naar het tabblad **firewalls en virtuele netwerken** in uw opslag account en schakel de optie **toegang via geselecteerde netwerken toestaan** in. Schakel onder de lijst **uitzonde ringen** het selectie vakje in voor **vertrouwde micro soft-Services toegang geven tot dit opslag account**. Klik op de knop **Opslaan**.
 
 4. Ga op de pagina resource van uw IoT Hub naar het tabblad **bestand uploaden** .
 
-5. Op de pagina die wordt weer gegeven, selecteert u de container die u wilt gebruiken in uw Blob-opslag, configureert u de **instellingen voor bestands meldingen**, de **SAS TTL**, de **standaard-TTL**en het **maximum aantal leverings aantallen** naar wens. Selecteer **identiteit gebaseerd** als **verificatie type** voor uw opslag eindpunt. Klik op de knop **Maken**. Als er tijdens deze stap een fout optreedt, stelt u uw opslag account tijdelijk in om toegang tot **alle netwerken**toe te staan en probeert u het opnieuw. U kunt de firewall op het opslag account configureren zodra de configuratie van het uploaden van bestanden is voltooid.
+5. Op de pagina die wordt weer gegeven, selecteert u de container die u wilt gebruiken in uw Blob-opslag, configureert u de **instellingen voor bestands meldingen** , de **SAS TTL** , de **standaard-TTL** en het **maximum aantal leverings aantallen** naar wens. Selecteer **identiteit gebaseerd** als **verificatie type** voor uw opslag eindpunt. Klik op de knop **Maken**. Als er tijdens deze stap een fout optreedt, stelt u uw opslag account tijdelijk in om toegang tot **alle netwerken** toe te staan en probeert u het opnieuw. U kunt de firewall op het opslag account configureren zodra de configuratie van het uploaden van bestanden is voltooid.
 
 Nu uw opslag eindpunt voor het uploaden van bestanden is ingesteld voor het gebruik van de door het systeem toegewezen identiteit van uw hub en de toegang heeft tot uw opslag Resource ondanks de firewall beperkingen.
 
@@ -248,7 +248,7 @@ Deze functionaliteit vereist connectiviteit van IoT Hub naar het opslag account.
 
 1. Navigeer in het Azure Portal naar het tabblad **toegangs beheer (IAM)** van uw opslag account en klik op **toevoegen** onder de sectie **een roltoewijzing toevoegen** .
 
-2. Selecteer de **gegevens bijdrager** van de opslag-BLOB ([*niet* Inzender of Inzender voor opslag accounts](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues)) als **rol**, **Azure AD-gebruiker,-groep of Service-Principal** , zoals **toegangs rechten toewijzen aan** en selecteer de resource naam van uw IOT hub in de vervolg keuzelijst. Klik op de knop **Opslaan**.
+2. Selecteer de **gegevens bijdrager** van de opslag-BLOB ( [*niet* Inzender of Inzender voor opslag accounts](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues)) als **rol** , **Azure AD-gebruiker,-groep of Service-Principal** , zoals **toegangs rechten toewijzen aan** en selecteer de resource naam van uw IOT hub in de vervolg keuzelijst. Klik op de knop **Opslaan**.
 
 3. Ga naar het tabblad **firewalls en virtuele netwerken** in uw opslag account en schakel de optie **toegang via geselecteerde netwerken toestaan** in. Schakel onder de lijst **uitzonde ringen** het selectie vakje in voor **vertrouwde micro soft-Services toegang geven tot dit opslag account**. Klik op de knop **Opslaan**.
 
@@ -280,7 +280,7 @@ Voor python downloadt u onze beperkte versie van GitHub.
 
 1. Navigeer naar de [pagina release van github](https://aka.ms/vnetpythonsdk).
 
-2. Down load het volgende bestand, dat u onder aan de pagina release onder de koptekst met de naam **assets**kunt vinden.
+2. Down load het volgende bestand, dat u onder aan de pagina release onder de koptekst met de naam **assets** kunt vinden.
     > *azure_iot_hub-2.2.0_limited-py2. py3-none-any. WHL*
 
 3. Open een Terminal en navigeer naar de map met het gedownloade bestand.

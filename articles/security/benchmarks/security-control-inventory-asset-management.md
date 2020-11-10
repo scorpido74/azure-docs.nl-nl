@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: aece7278d134145e00b027c184f3817d5566e1e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7a5cd7a6019451b27b509aa7f486540c04c29ee2
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81408365"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412643"
 ---
 # <a name="security-control-inventory-and-asset-management"></a>Beveiligings beheer: inventarisatie en activa beheer
 
@@ -28,11 +28,11 @@ Gebruik Azure resource Graph voor het opvragen/detecteren van alle resources (zo
 
 Hoewel klassieke Azure-resources kunnen worden gedetecteerd via resource grafiek, is het raadzaam om Azure Resource Manager resources te maken en te gebruiken.
 
-- [Query's maken met Azure resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+- [Query's maken met Azure resource Graph](../../governance/resource-graph/first-query-portal.md)
 
-- [Uw Azure-abonnementen weer geven](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [Uw Azure-abonnementen weer geven](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
-- [Meer informatie over Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
+- [Meer informatie over Azure RBAC](../../role-based-access-control/overview.md)
 
 ## <a name="62-maintain-asset-metadata"></a>6,2: meta gegevens van activa onderhouden
 
@@ -42,7 +42,7 @@ Hoewel klassieke Azure-resources kunnen worden gedetecteerd via resource grafiek
 
 Pas Tags toe op Azure-resources die meta gegevens geven om ze logisch in een taxonomie te organiseren.
 
-- [Tags maken en gebruiken](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [Tags maken en gebruiken](../../azure-resource-manager/management/tag-resources.md)
 
 ## <a name="63-delete-unauthorized-azure-resources"></a>6,3: niet-geautoriseerde Azure-resources verwijderen
 
@@ -52,11 +52,11 @@ Pas Tags toe op Azure-resources die meta gegevens geven om ze logisch in een tax
 
 Gebruik Tags, beheer groepen en afzonderlijke abonnementen, waar nodig, om assets te organiseren en bij te houden. Sluit de inventaris regel matig af en zorg ervoor dat niet-geautoriseerde resources tijdig worden verwijderd uit het abonnement.
 
-- [Aanvullende Azure-abonnementen maken](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+- [Aanvullende Azure-abonnementen maken](../../cost-management-billing/manage/create-subscription.md)
 
-- [Beheergroepen maken](https://docs.microsoft.com/azure/governance/management-groups/create)
+- [Beheergroepen maken](../../governance/management-groups/create-management-group-portal.md)
 
-- [Tags maken en gebruiken](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [Tags maken en gebruiken](../../azure-resource-manager/management/tag-resources.md)
 
 ## <a name="64-define-and-maintain-an-inventory-of-approved-azure-resources"></a>6,4: een inventaris van goedgekeurde Azure-resources definiëren en onderhouden
 
@@ -76,9 +76,9 @@ Gebruik Azure Policy om beperkingen toe te voegen voor het type resources dat ka
 
 Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen hun abonnement (en).  Zorg ervoor dat alle Azure-resources die aanwezig zijn in de omgeving, zijn goedgekeurd.
 
-- [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Policy configureren en beheren](../../governance/policy/tutorials/create-and-manage.md)
 
-- [Query's maken met Azure Graph](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+- [Query's maken met Azure Graph](../../governance/resource-graph/first-query-portal.md)
 
 ## <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6,6: monitor voor niet-goedgekeurde software toepassingen binnen reken resources
 
@@ -88,21 +88,21 @@ Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen h
 
 Gebruik Azure virtual machine Inventory om het verzamelen van informatie over alle software op Virtual Machines te automatiseren. De software naam, versie, uitgever en tijd van vernieuwen zijn beschikbaar via de Azure Portal. Als u toegang wilt krijgen tot installatie datum en andere informatie, schakelt u Diagnostische gegevens op gast niveau in en brengt u de Windows-gebeurtenis Logboeken in een Log Analytics-werk ruimte.
 
-- [Inventarisatie van virtuele Azure-machines inschakelen](https://docs.microsoft.com/azure/automation/automation-tutorial-installed-software)
+- [Inventarisatie van virtuele Azure-machines inschakelen](../../automation/automation-tutorial-installed-software.md)
 
 ## <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6,7: niet-goedgekeurde Azure-resources en software toepassingen verwijderen
 
 | Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 6.7 | 2,5 | Klant |
+| 6.7 | 2.5 | Klant |
 
 Gebruik Azure Security Center File Integrity Monitoring (Wijzigingen bijhouden) en virtual machine Inventory om alle software te identificeren die op Virtual Machines is geïnstalleerd. U kunt uw eigen proces voor het verwijderen van onbevoegde software implementeren. U kunt ook een oplossing van derden gebruiken om niet-goedgekeurde software te identificeren.
 
-- [Bestands integriteit controleren gebruiken](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring#using-file-integrity-monitoring)
+- [Bestands integriteit controleren gebruiken](../../security-center/security-center-file-integrity-monitoring.md)
 
-- [Meer informatie over Azure Wijzigingen bijhouden](https://docs.microsoft.com/azure/automation/change-tracking)
+- [Meer informatie over Azure Wijzigingen bijhouden](../../automation/change-tracking.md)
 
-- [Inventarisatie van virtuele Azure-machines inschakelen](https://docs.microsoft.com/azure/automation/automation-tutorial-installed-software)
+- [Inventarisatie van virtuele Azure-machines inschakelen](../../automation/automation-tutorial-installed-software.md)
 
 ## <a name="68-use-only-approved-applications"></a>6,8: alleen goedgekeurde toepassingen gebruiken
 
@@ -112,7 +112,7 @@ Gebruik Azure Security Center File Integrity Monitoring (Wijzigingen bijhouden) 
 
 Gebruik Azure Security Center adaptieve toepassings controles om ervoor te zorgen dat alleen geautoriseerde software wordt uitgevoerd en alle niet-geautoriseerde software wordt geblokkeerd voor uitvoering op Azure Virtual Machines.
 
-- [Azure Security Center adaptieve toepassings besturings elementen gebruiken](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)
+- [Azure Security Center adaptieve toepassings besturings elementen gebruiken](../../security-center/security-center-adaptive-application.md)
 
 ## <a name="69-use-only-approved-azure-services"></a>6,9: alleen goedgekeurde Azure-Services gebruiken
 
@@ -122,9 +122,9 @@ Gebruik Azure Security Center adaptieve toepassings controles om ervoor te zorge
 
 Gebruik Azure Policy om te beperken welke services u in uw omgeving kunt inrichten.
 
-- [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Policy configureren en beheren](../../governance/policy/tutorials/create-and-manage.md)
 
-- [Een specifiek resource type weigeren met Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types)
+- [Een specifiek resource type weigeren met Azure Policy](../../governance/policy/samples/index.md)
 
 ## <a name="610-maintain-an-inventory-of-approved-software-titles"></a>6,10: een inventaris van goedgekeurde software titels onderhouden
 
@@ -136,7 +136,7 @@ Gebruik Azure Security Center adaptieve toepassings besturings elementen om op t
 
 Implementeer een oplossing van derden als deze niet aan de vereiste voldoet.
 
-- [Azure Security Center adaptieve toepassings besturings elementen gebruiken](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)
+- [Azure Security Center adaptieve toepassings besturings elementen gebruiken](../../security-center/security-center-adaptive-application.md)
 
 ## <a name="611-limit-users-ability-to-interact-with-azure-resource-manager"></a>6,11: de mogelijkheid van gebruikers om te communiceren met Azure Resource Manager beperken
 
@@ -146,7 +146,7 @@ Implementeer een oplossing van derden als deze niet aan de vereiste voldoet.
 
 Gebruik voorwaardelijke toegang van Azure om gebruikers de mogelijkheid te bieden om met Azure Resource Manager te communiceren door ' toegang blok keren ' te configureren voor de app Microsoft Azure-beheer.
 
-- [Voorwaardelijke toegang configureren om de toegang tot Azure-bronnen beheer te blok keren](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+- [Voorwaardelijke toegang configureren om de toegang tot Azure-bronnen beheer te blok keren](../../role-based-access-control/conditional-access-azure-management.md)
 
 ## <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6,12: de mogelijkheid van gebruikers om scripts uit te voeren binnen reken bronnen beperken
 
@@ -156,9 +156,9 @@ Gebruik voorwaardelijke toegang van Azure om gebruikers de mogelijkheid te biede
 
 Afhankelijk van het type scripts kunt u specifieke configuraties van het besturings systeem of bronnen van derden gebruiken om de mogelijkheid van gebruikers om scripts uit te voeren binnen Azure Compute-resources te beperken.  U kunt ook gebruikmaken van Azure Security Center adaptieve toepassings controles om ervoor te zorgen dat alleen geautoriseerde software wordt uitgevoerd en alle niet-geautoriseerde software wordt geblokkeerd voor uitvoering op Azure Virtual Machines.
 
-- [De uitvoering van Power shell-scripts beheren in Windows-omgevingen](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
+- [De uitvoering van Power shell-scripts beheren in Windows-omgevingen](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
 
-- [Azure Security Center adaptieve toepassings besturings elementen gebruiken](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)
+- [Azure Security Center adaptieve toepassings besturings elementen gebruiken](../../security-center/security-center-adaptive-application.md)
 
 ## <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6,13: toepassingen met een hoog risico fysiek of logisch scheiden
 
@@ -168,9 +168,9 @@ Afhankelijk van het type scripts kunt u specifieke configuraties van het besturi
 
 Software die vereist is voor bedrijfs activiteiten, maar die een groter risico kan opleveren voor de organisatie, moet worden geïsoleerd in een eigen virtuele machine en/of virtueel netwerk en voldoende beveiligd zijn met een Azure Firewall of een netwerk beveiligings groep.
 
-- [Een virtueel netwerk maken](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+- [Een virtueel netwerk maken](../../virtual-network/quick-create-portal.md)
 
-- [Een NSG maken met een beveiligings configuratie](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+- [Een NSG maken met een beveiligings configuratie](../../virtual-network/tutorial-filter-network-traffic.md)
 
 
 ## <a name="next-steps"></a>Volgende stappen

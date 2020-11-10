@@ -6,15 +6,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
-ms.openlocfilehash: ba9f2b10258f19504e3fd37723eceff7b8c37f6a
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 7e1deb11eb8ae754198cae5be7ecf7150262a61e
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203480"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94411385"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Logboek query's in Azure Monitor optimaliseren
-Azure Monitor logboeken maakt gebruik van [Azure Data Explorer (ADX)](/azure/data-explorer/) om logboek gegevens op te slaan en query's uit te voeren voor het analyseren van die gegevens. Het maakt, beheert en onderhoudt de ADX-clusters en optimaliseert deze voor de werk belasting van uw logboek analyse. Wanneer u een query uitvoert, wordt deze geoptimaliseerd en doorgestuurd naar het juiste ADX-cluster waarin de werkruimte gegevens worden opgeslagen. Zowel Azure Monitor-Logboeken als Azure Data Explorer maakt gebruik van veel automatische optimalisatie mechanismen voor query's. Automatische optimalisaties bieden een aanzienlijke Boost, maar in sommige gevallen kunt u de query prestaties aanzienlijk verbeteren. In dit artikel worden de prestatie overwegingen en verschillende technieken uitgelegd om ze op te lossen.
+Azure Monitor logboeken maakt gebruik van [Azure Data Explorer (ADX)](/azure/data-explorer/) om logboek gegevens op te slaan en query's uit te voeren voor het analyseren van die gegevens. Het maakt, beheert en onderhoudt de ADX-clusters en optimaliseert deze voor de werk belasting van uw logboek analyse. Wanneer u een query uitvoert, wordt deze geoptimaliseerd en doorgestuurd naar het juiste ADX-cluster waarin de werkruimte gegevens worden opgeslagen. Zowel Azure Monitor-Logboeken als Azure Data Explorer maakt gebruik van veel automatische optimalisatie mechanismen voor query's. Automatische optimalisaties bieden een aanzienlijke Boost, maar er zijn enkele gevallen waarin u de query prestaties aanzienlijk kunt verbeteren. In dit artikel worden de prestatie overwegingen en verschillende technieken uitgelegd om ze op te lossen.
 
 De meeste technieken zijn gebruikelijk voor query's die rechtstreeks worden uitgevoerd op Azure Data Explorer en Azure Monitor-logboeken, maar er zijn verschillende unieke overwegingen voor Azure Monitor logboeken die hier worden beschreven. Zie voor meer tips voor Azure Data Explorer optimalisatie de [Aanbevolen procedures voor query's](/azure/kusto/query/best-practices).
 
@@ -131,7 +131,7 @@ SecurityEvent
 
 Hoewel sommige aggregatie opdrachten zoals [Max ()](/azure/kusto/query/max-aggfunction), [Sum ()](/azure/kusto/query/sum-aggfunction), [Count (](/azure/kusto/query/count-aggfunction)) en [AVG ()](/azure/kusto/query/avg-aggfunction) een laag CPU-effect hebben vanwege hun logica, zijn andere complexer, en zijn er heuristische en schattingen opgenomen die ervoor zorgen dat ze efficiënt kunnen worden uitgevoerd. Zo maakt [DCount ()](/azure/kusto/query/dcount-aggfunction) gebruik van het HyperLogLog-algoritme om een nauw keurigheid te bieden voor het aantal grote sets gegevens, zonder dat elke waarde daad werkelijk wordt geteld. de percentiel functies voeren vergelijk bare benaderingen uit met behulp van het dichtstbijzijnde rang percentiel-algoritme. Enkele van de opdrachten bevatten optionele para meters om de impact te verminderen. De functie [makenset ()](/azure/kusto/query/makeset-aggfunction) heeft bijvoorbeeld een optionele para meter voor het definiëren van de maximale set grootte, die aanzienlijk van invloed is op de CPU en het geheugen.
 
-Opdrachten voor [samen voegen](/azure/kusto/query/joinoperator?pivots=azuremonitor) en [samen vattingen](/azure/kusto/query/summarizeoperator) kunnen een hoog CPU-gebruik veroorzaken wanneer ze een grote set gegevens verwerken. Hun complexiteit is rechtstreeks gerelateerd aan het aantal mogelijke waarden, aangeduid als *kardinaliteit*, van de kolommen die worden gebruikt als de in- `by` samenvatten of als de koppelings kenmerken. Raadpleeg de documentatie artikelen en optimaliserings tips voor uitleg en Optima Lise ring van deelname en samenvatten.
+Opdrachten voor [samen voegen](/azure/kusto/query/joinoperator?pivots=azuremonitor) en [samen vattingen](/azure/kusto/query/summarizeoperator) kunnen een hoog CPU-gebruik veroorzaken wanneer ze een grote set gegevens verwerken. Hun complexiteit is rechtstreeks gerelateerd aan het aantal mogelijke waarden, aangeduid als *kardinaliteit* , van de kolommen die worden gebruikt als de in- `by` samenvatten of als de koppelings kenmerken. Raadpleeg de documentatie artikelen en optimaliserings tips voor uitleg en Optima Lise ring van deelname en samenvatten.
 
 De volgende query's produceren bijvoorbeeld precies hetzelfde resultaat omdat **CounterPath** altijd een-op-een is toegewezen aan **CounterName** en **object naam**. De tweede is efficiënter naarmate de aggregatie dimensie kleiner is:
 

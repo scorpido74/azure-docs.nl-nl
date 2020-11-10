@@ -4,14 +4,14 @@ description: Vereisten voor het gebruik van Azure HPC cache
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 09/03/2020
+ms.date: 11/05/2020
 ms.author: v-erkel
-ms.openlocfilehash: 92c8d860925ebde7d20befbaa708e8530cd1a0eb
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: a31aee3f4548d3137fa1241aaa3a0f6171cf6895
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92344012"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412507"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Vereisten voor de Azure HPC-cache
 
@@ -59,9 +59,22 @@ De best practice is het maken van een nieuw subnet voor elke cache. U kunt een n
 De cache heeft DNS nodig om toegang te krijgen tot bronnen buiten het virtuele netwerk. Afhankelijk van de bronnen die u gebruikt, moet u mogelijk een aangepaste DNS-server instellen en door sturen configureren tussen die server en Azure DNS servers:
 
 * Als u toegang wilt krijgen tot Azure Blob Storage-eind punten en andere interne resources, hebt u de op Azure gebaseerde DNS-server nodig.
-* Voor toegang tot on-premises opslag moet u een aangepaste DNS-server configureren die uw opslag hostnamen kan omzetten.
+* Voor toegang tot on-premises opslag moet u een aangepaste DNS-server configureren die uw opslag hostnamen kan omzetten. U moet dit doen **voordat** u de cache maakt.
 
 Als u alleen toegang tot de Blob-opslag nodig hebt, kunt u de standaard-DNS-server van Azure gebruiken voor uw cache. Als u echter toegang tot andere bronnen nodig hebt, moet u een aangepaste DNS-server maken en deze configureren voor het door sturen van aanvragen voor specifieke oplossingen van Azure naar de Azure DNS-server.
+
+Als u een aangepaste DNS-server wilt gebruiken, moet u deze installatie stappen uitvoeren voordat u de cache maakt:
+
+* Maak het virtuele netwerk dat als host moet fungeren voor de Azure HPC-cache.
+* Maak de DNS-server.
+* Voeg de DNS-server toe aan het virtuele netwerk van de cache.
+
+  Voer de volgende stappen uit om de DNS-server toe te voegen aan het virtuele netwerk in de Azure Portal:
+
+  1. Open het virtuele netwerk in de Azure Portal.
+  1. Kies **DNS-servers** in het menu **instellingen** in de zijbalk.
+  1. **Aangepaste** selecteren
+  1. Voer het IP-adres van de DNS-server in het veld in.
 
 Een eenvoudige DNS-server kan ook worden gebruikt voor het verdelen van client verbindingen tussen alle beschik bare cache koppel punten.
 
@@ -143,7 +156,7 @@ Meer informatie vindt u in het oplossen van problemen [met NAS-configuratie en N
 * **Directory toegang:** Schakel de `showmount` opdracht in het opslag systeem in. De Azure HPC-cache maakt gebruik van deze opdracht om te controleren of de configuratie van de opslag doel naar een geldige export wijst en om ervoor te zorgen dat meerdere koppels geen toegang hebben tot dezelfde submappen (een risico voor conflicterende bestanden).
 
   > [!NOTE]
-  > Als uw NFS-opslag systeem gebruikmaakt van het ONTAP 9,2-besturings systeem van NetApp, **moet u niet inschakelen `showmount` **. [Neem contact op met micro soft-service en ondersteuning](hpc-cache-support-ticket.md) voor hulp.
+  > Als uw NFS-opslag systeem gebruikmaakt van het ONTAP 9,2-besturings systeem van NetApp, **moet u niet inschakelen `showmount`**. [Neem contact op met micro soft-service en ondersteuning](hpc-cache-support-ticket.md) voor hulp.
 
   Meer informatie over toegang tot mapweergave vindt u in het artikel NFS-opslag doel [probleem oplossing](troubleshoot-nas.md#enable-export-listing).
 

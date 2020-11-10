@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: a78c67892e2bccb7c98d680539a84c2cc1f49a95
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 6830bdd38e8e1f1d649673cfdaf48e8c50ba6c3e
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372290"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413221"
 ---
 # <a name="create-the-azure-arc-data-controller"></a>De Azure Arc-gegevens controller maken
 
@@ -36,7 +36,8 @@ Momenteel zijn de ondersteunde lijst met Kubernetes-Services en-distributies de 
 - Open source, upstream Kubernetes, doorgaans geïmplementeerd met kubeadm
 
 > [!IMPORTANT]
-> * De mini maal ondersteunde versie van Kubernetes is v 1.14.
+> * De mini maal ondersteunde versie van Kubernetes is v 1.17.
+> * De mini maal ondersteunde versie van OCP is 4,3.
 > * Bekijk de [connectiviteits vereisten](connectivity.md) om te begrijpen welke connectiviteit vereist is tussen uw omgeving en Azure.
 > * Zie de [richt lijnen voor opslag configuratie](storage-configuration.md) voor meer informatie over het configureren van uw permanente opslag.
 > * Als u de Azure Kubernetes-service gebruikt, moet de VM-grootte van het werk knooppunt van het cluster ten minste **Standard_D8s_v3** zijn en **Premium-schijven gebruiken.** Het cluster mag niet meerdere beschikbaarheids zones omvatten. 
@@ -45,7 +46,7 @@ Momenteel zijn de ondersteunde lijst met Kubernetes-Services en-distributies de 
 > [!NOTE]
 > Als u het Red Hat open Shift container platform gebruikt in azure, is het raadzaam om de meest recente beschik bare versie te gebruiken.
 
-Afhankelijk van de optie die u kiest, zijn bepaalde hulpprogram ma's _vereist_, maar u wordt aangeraden [alle client hulpprogramma's te installeren](./install-client-tools.md) voordat u begint met het maken van de Azure Arc-gegevens controller.
+Afhankelijk van de optie die u kiest, zijn bepaalde hulpprogram ma's _vereist_ , maar u wordt aangeraden [alle client hulpprogramma's te installeren](./install-client-tools.md) voordat u begint met het maken van de Azure Arc-gegevens controller.
 
 Ongeacht de optie die u kiest, moet u tijdens het aanmaak proces de volgende informatie opgeven:
 

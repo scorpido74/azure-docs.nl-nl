@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 496ee1bc97f6b72e09a62ae3491af7ccc7328583
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a26228b33a7d90df558de2ecdf4686910e606a54
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80811107"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413289"
 ---
 # <a name="azure-network-security-overview"></a>Overzicht van Azure-netwerk beveiliging
 
@@ -63,7 +63,7 @@ Azure ondersteunt verschillende typen netwerk toegangs beheer, zoals:
 Voor een veilige implementatie is een zekere mate van toegangs beheer van het netwerk vereist. Het doel van netwerk toegangs beheer is het beperken van de communicatie van de virtuele machine met de benodigde systemen. Andere communicatie pogingen worden geblokkeerd.
 
 > [!NOTE]
-> Opslag firewalls worden behandeld in het artikel [overzicht van Azure Storage-beveiliging](storage-overview.md)
+> Opslag firewalls worden behandeld in het artikel [overzicht van Azure Storage-beveiliging](../../storage/blobs/security-recommendations.md)
 
 #### <a name="network-security-rules-nsgs"></a>Netwerk beveiligings regels (Nsg's)
 
@@ -77,11 +77,11 @@ Nsg's bieden geen inspectie van toepassings lagen of geverifieerde toegangs behe
 
 Meer informatie:
 
-* [Netwerkbeveiligingsgroepen](../../virtual-network/security-overview.md)
+* [Netwerkbeveiligingsgroepen](../../virtual-network/network-security-groups-overview.md)
 
 #### <a name="asc-just-in-time-vm-access"></a>Just-in-time-VM-toegang
 
-[Azure Security Center](../../security-center/security-center-intro.md) kan de Nsg's op vm's beheren en de toegang tot de virtuele machine vergren delen totdat een gebruiker met de juiste op rollen gebaseerde toegangs beheer [RBAC](/azure/role-based-access-control/overview) -machtigingen toegang vraagt. Wanneer de gebruiker een autorisatie met succes heeft uitgevoerd, worden de Nsg's zodanig gewijzigd dat de toegang tot de geselecteerde poorten voor de opgegeven tijd is toegestaan. Wanneer de tijd verstrijkt, worden de Nsg's hersteld naar de vorige beveiligde status.
+[Azure Security Center](../../security-center/security-center-introduction.md) kan de Nsg's op vm's beheren en de toegang tot de virtuele machine vergren delen totdat een gebruiker met de juiste op rollen gebaseerde toegangs beheer [RBAC](../../role-based-access-control/overview.md) -machtigingen toegang vraagt. Wanneer de gebruiker een autorisatie met succes heeft uitgevoerd, worden de Nsg's zodanig gewijzigd dat de toegang tot de geselecteerde poorten voor de opgegeven tijd is toegestaan. Wanneer de tijd verstrijkt, worden de Nsg's hersteld naar de vorige beveiligde status.
 
 Meer informatie:
 
@@ -141,7 +141,7 @@ Azure Firewall is een beheerde, cloudgebaseerde netwerkbeveiligingsservice die u
 
 Meer informatie:
 
-* [Overzicht van Azure Firewall](/azure/firewall/overview)
+* [Overzicht van Azure Firewall](../../firewall/overview.md)
 
 ## <a name="secure-remote-access-and-cross-premises-connectivity"></a>Beveiligde externe toegang en cross-premises connectiviteit
 
@@ -202,7 +202,7 @@ Het is mogelijk om veel virtuele netwerken te gebruiken voor uw implementaties. 
 
 Een optie is voor services op één virtueel netwerk om verbinding te maken met Services op een ander virtueel netwerk, door een ' loop back ' via internet. De verbinding wordt gestart op één virtueel netwerk, gaat via internet en vervolgens weer terug naar het virtuele netwerk van de bestemming. Met deze optie wordt de verbinding met de beveiligings problemen besproken die inherent zijn aan Internet communicatie.
 
-Een betere optie is het maken van een site-naar-site-VPN dat verbinding maakt tussen twee virtuele netwerken. Deze methode maakt gebruik van hetzelfde [IPSec-tunnel modus](https://technet.microsoft.com/library/cc786385.aspx) protocol als de cross-premises site-naar-site VPN-verbinding die hierboven wordt genoemd.
+Een betere optie is het maken van een site-naar-site-VPN dat verbinding maakt tussen twee virtuele netwerken. Deze methode maakt gebruik van hetzelfde [IPSec-tunnel modus](/previous-versions/windows/it-pro/windows-server-2003/cc786385(v=ws.10)) protocol als de cross-premises site-naar-site VPN-verbinding die hierboven wordt genoemd.
 
 Het voor deel van deze benadering is dat de VPN-verbinding tot stand is gebracht via de Azure-netwerk infrastructuur, in plaats van via Internet verbinding te maken. Dit biedt een extra beveiligingslaag, vergeleken met site-naar-site-Vpn's die via Internet verbinding maken.
 
@@ -231,13 +231,13 @@ Organisaties die webgebaseerde services uitvoeren, willen vaak een op HTTP gebas
 
 Azure-toepassing gateway biedt op HTTP gebaseerde taak verdeling voor uw webservices. Application Gateway ondersteunt:
 
-* Sessie affiniteit op basis van cookies. Op deze manier zorgt u ervoor dat verbindingen die tot stand zijn gebracht op een van de servers achter die load balancer intact blijven tussen de client en de server. Dit garandeert de stabiliteit van trans acties.
+* Sessieaffiniteit op basis van cookies. Op deze manier zorgt u ervoor dat verbindingen die tot stand zijn gebracht op een van de servers achter die load balancer intact blijven tussen de client en de server. Dit garandeert de stabiliteit van trans acties.
 * TLS-offload. Wanneer een client verbinding maakt met de load balancer, wordt die sessie versleuteld met behulp van het HTTPS-protocol (TLS). Om de prestaties te verbeteren, kunt u echter het HTTP (niet-versleutelde) protocol gebruiken om verbinding te maken tussen de load balancer en de webserver achter de load balancer. Dit wordt ' TLS-offload ' genoemd, omdat de webservers achter de load balancer geen gebruik kunnen maken van de processor overhead die bij de versleuteling betrokken is. De webservers kunnen daarom sneller aanvragen.
 * Op URL gebaseerde route ring van inhoud. Met deze functie kunnen de load balancer besluiten nemen over het door sturen van verbindingen op basis van de doel-URL. Dit biedt veel meer flexibiliteit dan oplossingen die taak verdelings beslissingen nemen op basis van IP-adressen.
 
 Meer informatie:
 
-* [Overzicht van Application Gateway](/azure/application-gateway/application-gateway-introduction)
+* [Overzicht van Application Gateway](../../application-gateway/overview.md)
 
 ### <a name="network-level-load-balancing"></a>Taak verdeling netwerk niveau
 
@@ -252,8 +252,8 @@ U kunt profiteren van de voor delen van taak verdeling op netwerk niveau in azur
 
 Meer informatie:
 
-* [Internet gerichte load balancer tussen meerdere virtuele machines of services](/azure/load-balancer/load-balancer-internet-overview)
-* [Overzicht van interne load balancer](/azure/load-balancer/load-balancer-internal-overview)
+* [Internet gerichte load balancer tussen meerdere virtuele machines of services](../../load-balancer/load-balancer-overview.md)
+* [Overzicht van interne load balancer](../../load-balancer/load-balancer-overview.md)
 
 ### <a name="global-load-balancing"></a>Globale taak verdeling
 
@@ -381,7 +381,7 @@ Security Center helpt u bij het optimaliseren en bewaken van netwerk beveiliging
 
 Meer informatie:
 
-* [Inleiding tot Azure Security Center](../../security-center/security-center-intro.md)
+* [Inleiding tot Azure Security Center](../../security-center/security-center-introduction.md)
 
 ### <a name="virtual-network-tap"></a>Virtual Network Tik
 

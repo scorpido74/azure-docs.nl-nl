@@ -8,12 +8,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/05/2020
 ms.author: victorh
-ms.openlocfilehash: d129c37c909c630623f8a41c06da9aa80e4e2392
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0ba0cbbccd1f4a9bc8ff8a4895e238c9150c9b17
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82837631"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413068"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall-on-azure-front-door-service"></a>Veelgestelde vragen over Azure Web Application firewall op de Azure front-deur service
 
@@ -64,7 +64,7 @@ Momenteel worden ModSec CRS 2.2.9, CRS 3,0 en CRS 3,1-regels alleen ondersteund 
 
 ## <a name="is-ddos-protection-integrated-with-front-door"></a>Is DDoS Protection geïntegreerd met de voor deur? 
 
-Wereld wijd gedistribueerd op Azure-netwerk randen kunnen grote volume aanvallen door de Azure front-deur worden geabsorbeerd en geografisch geïsoleerd. U kunt een aangepast WAF-beleid maken om te voor komen dat http (s)-aanvallen met bekende hand tekeningen automatisch worden geblokkeerd en beperkt. U kunt nog meer DDoS Protection Standard inschakelen op het VNet waar uw back-ends worden geïmplementeerd. Azure DDoS Protection Standard-klanten ontvangen extra voor delen, waaronder kosten beveiliging, SLA-garantie en toegang tot experts van DDoS Rapid Response-Team voor onmiddellijke ondersteuning tijdens een aanval.
+Wereld wijd gedistribueerd op Azure-netwerk randen kunnen grote volume aanvallen door de Azure front-deur worden geabsorbeerd en geografisch geïsoleerd. U kunt een aangepast WAF-beleid maken om te voor komen dat http (s)-aanvallen met bekende hand tekeningen automatisch worden geblokkeerd en beperkt. U kunt nog meer DDoS Protection Standard inschakelen op het VNet waar uw back-ends worden geïmplementeerd. Azure DDoS Protection Standard-klanten ontvangen extra voor delen, waaronder kosten beveiliging, SLA-garantie en toegang tot experts van DDoS Rapid Response-Team voor onmiddellijke ondersteuning tijdens een aanval. Zie [DDoS-beveiliging op de voor deur](../../frontdoor/front-door-ddos.md)voor meer informatie.
 
 ## <a name="why-do-additional-requests-above-the-threshold-configured-for-my-rate-limit-rule-get-passed-to-my-backend-server"></a>Waarom worden extra aanvragen boven de drempel waarde die is geconfigureerd voor de regel voor de frequentie limiet, aan mijn back-endserver door gegeven?
 

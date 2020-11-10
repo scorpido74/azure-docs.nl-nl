@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/14/2019
 ms.author: terrylan
-ms.openlocfilehash: fa873baa2d2006164536dd26e040ffbf5cdd51cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14ff56c32fb1fb6ef2fef862e50277e8ef3e5b81
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85123980"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412881"
 ---
 # <a name="microsoft-services-in-cybersecurity"></a>Micro soft-Services in Cyber beveiliging
 
@@ -37,7 +37,7 @@ Meer informatie over services van micro soft-Services:
 * [Offline beoordeling voor Active Directory Services](https://download.microsoft.com/download/1/C/1/1C15BA51-840E-498D-86C6-4BD35D33C79E/Prerequisites_Offline_AD.pdf)
 * [Verbeterde beveiligings beheer omgeving](https://download.microsoft.com/download/A/C/5/AC5D21A6-E04B-4DC4-B1F2-AE060319A4D7/Premier_Support_for_Security/Popis/Enhanced-Security-Admin-Environment-Solution-Datasheet-%5BEN%5D.pdf)
 * [Implementatie services van Azure AD](https://download.microsoft.com/download/0/7/F/07FA8BFC-17D5-4F55-AD4F-3A987A7324AA/azure-active-directory-implementation-services-solution-brief.pdf)
-* [Beveiligen tegen een zijdelingse account verplaatsing](https://docs.microsoft.com/azure-advanced-threat-protection/use-case-lateral-movement-path)
+* [Beveiligen tegen een zijdelingse account verplaatsing](/azure-advanced-threat-protection/use-case-lateral-movement-path)
 * [Respons en herstel van incidenten](/microsoft-365/compliance/gdpr-breach-microsoft-support-professional-services#data-protection-incident-response-overview)
 
 Meer [informatie](https://aka.ms/cyberserv) over micro soft Services Security Consulting Services.

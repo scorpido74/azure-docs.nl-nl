@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/03/2019
 ms.author: terrylan
-ms.openlocfilehash: 0bf9b4d3aa1926343ad25000a05762a31d49617d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f4a3b2afd8b1a5ffdbb1fe0db1c3e345a9c99154
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73889844"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412609"
 ---
 # <a name="azure-security-best-practices-and-patterns"></a>Aanbevolen procedures en patronen voor Azure-beveiliging
 
@@ -28,8 +28,8 @@ De onderstaande artikelen bevatten aanbevolen procedures voor beveiliging bij he
 
 De aanbevolen procedures zijn bedoeld als resource voor IT-professionals. Dit kan ontwerpers, architecten, ontwikkel aars en testers zijn die beveiligde Azure-oplossingen bouwen en implementeren.
 
-* [Best practices voor beveiliging van Azure-grenzen](/azure/security/fundamentals/network-best-practices#adopt-a-zero-trust-approach)
-* [Best practices voor Azure-databasebeveiliging](database-best-practices.md)
+* [Best practices voor beveiliging van Azure-grenzen](./network-best-practices.md#adopt-a-zero-trust-approach)
+* [Best practices voor Azure-databasebeveiliging](../../azure-sql/database/security-best-practice.md)
 * [Best practices van Azure voor gegevensbeveiliging en versleuteling](data-encryption-best-practices.md)
 * [Best practices voor beveiliging voor identiteitsbeheer en toegangsbeheer in Azure](identity-management-best-practices.md)
 * [Best practices voor Azure-netwerkbeveiliging](network-best-practices.md)
@@ -38,7 +38,7 @@ De aanbevolen procedures zijn bedoeld als resource voor IT-professionals. Dit ka
 * [Best practices voor Azure Service Fabric-beveiliging](service-fabric-best-practices.md)
 * [Best practices voor Azure VM-beveiliging](iaas.md)
 * [Een beveiligde hybride netwerkarchitectuur implementeren in Azure](/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid)
-* [Best practices voor Internet of Things-beveiliging](iot-best-practices.md)
+* [Best practices voor Internet of Things-beveiliging](../../iot-fundamentals/iot-security-best-practices.md)
 * [PaaS-databases beveiligen in Azure](paas-applications-using-sql.md)
 * [PaaS-toepassingen voor web en mobiel beveiligen met Azure App Service](paas-applications-using-app-services.md)
 * [PaaS-toepassingen voor web en mobiel beveiligen met Azure Storage](paas-applications-using-storage.md)

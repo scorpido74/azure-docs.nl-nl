@@ -13,12 +13,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed23ffa9971bf4c97b784f230053aed4b1acf0a4
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 1f717e14e5abe62aafffdeef841889ea2458fa8b
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369791"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413442"
 ---
 # <a name="how-azure-ad-delivers-cloud-governed-management-for-on-premises-workloads"></a>Hoe Azure AD onderhevige beheer van de Cloud biedt voor on-premises workloads
 
@@ -39,7 +39,7 @@ Dit artikel bevat een overzicht van de strategie van micro soft voor hybride IDa
 
 ## <a name="the-azure-ad-approach-to-cloud-governed-identity-management"></a>De Azure AD-benadering van de Cloud Identity Management
 
-Als organisaties overstappen op de Cloud, hebben ze een garantie dat ze over de volledige omgeving beschikken over een betere beveiliging en meer inzicht in activiteiten, ondersteund door Automation en proactieve inzichten. "Door de**Cloud bestuurd beheer**" beschrijft hoe organisaties hun gebruikers, toepassingen, groepen en apparaten vanuit de Cloud beheren en regelen.
+Als organisaties overstappen op de Cloud, hebben ze een garantie dat ze over de volledige omgeving beschikken over een betere beveiliging en meer inzicht in activiteiten, ondersteund door Automation en proactieve inzichten. "Door de **Cloud bestuurd beheer** " beschrijft hoe organisaties hun gebruikers, toepassingen, groepen en apparaten vanuit de Cloud beheren en regelen.
 
 In deze moderne wereld moeten organisaties op schaal effectief kunnen beheren vanwege de verspreiding van SaaS-toepassingen en de toenemende rol van samen werking en externe identiteiten. Het nieuwe risico landschap van de Cloud betekent dat een organisatie meer responsief moet zijn: een schadelijke actor die een Cloud gebruiker in gevaar brengt, kan invloed hebben op de Cloud-en on-premises toepassingen.
 
@@ -77,7 +77,7 @@ Bij samenwerkings verbanden in bedrijfs-to-Business wordt steeds toegang verleen
 
 Azure AD kan [automatisch accounts maken in AD voor gast gebruikers](../external-identities/hybrid-cloud-to-on-premises.md) als dat nodig is, waardoor zakelijke gasten toegang krijgen tot on-premises AD-geïntegreerde toepassingen zonder dat er nog een wacht woord nodig is. Organisaties kunnen [multi-factor Authentication-beleid (MFA) voor gast gebruikers](../external-identities/conditional-access.md)instellen, zodat er MFA-controles worden uitgevoerd tijdens de verificatie van de toepassings proxy. Alle [toegangs beoordelingen](../governance/manage-guest-access-with-access-reviews.md) die worden uitgevoerd op gebruikers van de Cloud, zijn ook van toepassing op on-premises gebruikers. Als de Cloud gebruiker bijvoorbeeld wordt verwijderd via het levenscyclus beheer beleid, wordt de lokale gebruiker ook verwijderd.
 
-**Referentie beheer voor Active Directory accounts** Met de self-service voor wachtwoord herstel van Azure AD kunnen gebruikers die hun wacht woord hebben verg eten opnieuw worden geverifieerd en hun wacht woord opnieuw instellen, met de gewijzigde wacht woorden die zijn [geschreven naar on-premises Active Directory](../authentication/concept-sspr-writeback.md). Het proces voor het opnieuw instellen van het wacht woord kan ook gebruikmaken van de on-premises Active Directory wachtwoord beleid: wanneer een gebruiker het wacht woord opnieuw instelt, wordt gecontroleerd of het voldoet aan het beleid voor on-premises Active Directory voordat het wordt doorgevoerd in die map. De self-service voor het [opnieuw instellen van](https://aka.ms/deploymentplans/sspr) het wacht woord voor wachtwoord herstel geeft een overzicht van de aanbevolen procedures voor het implementeren van selfservice voor wachtwoord herstel voor gebruikers via web-en Windows-geïntegreerde ervaringen.
+**Referentie beheer voor Active Directory accounts** Met de self-service voor wachtwoord herstel van Azure AD kunnen gebruikers die hun wacht woord hebben verg eten opnieuw worden geverifieerd en hun wacht woord opnieuw instellen, met de gewijzigde wacht woorden die zijn [geschreven naar on-premises Active Directory](../authentication/concept-sspr-writeback.md). Het proces voor het opnieuw instellen van het wacht woord kan ook gebruikmaken van de on-premises Active Directory wachtwoord beleid: wanneer een gebruiker het wacht woord opnieuw instelt, wordt gecontroleerd of het voldoet aan het beleid voor on-premises Active Directory voordat het wordt doorgevoerd in die map. De self-service voor het [opnieuw instellen van](../authentication/howto-sspr-deployment.md) het wacht woord voor wachtwoord herstel geeft een overzicht van de aanbevolen procedures voor het implementeren van selfservice voor wachtwoord herstel voor gebruikers via web-en Windows-geïntegreerde ervaringen.
 
 ![Azure AD SSPR-architectuur](media/cloud-governed-management-for-on-premises/image3.png)
 
@@ -97,7 +97,7 @@ Als u wilt beginnen met het migreren van federatieve toepassingen naar Azure AD 
 
 * Het White paper [over het migreren van uw toepassingen naar Azure Active Directory](https://aka.ms/migrateapps/whitepaper), die de voor delen van de migratie biedt en beschrijft hoe u de migratie plant in vier duidelijk beschreven fasen: detectie, classificatie, migratie en continu beheer. U wordt begeleid bij het bepalen van het proces en het verbreken van het project in gemakkelijk te gebruiken onderdelen. In het hele document vindt u koppelingen naar belang rijke bronnen die u op weg helpen.
 
-* De oplossings handleiding [voor het migreren van toepassings verificatie van Active Directory Federation Services naar Azure Active Directory](https://aka.ms/migrateapps/adfssolutionguide) Verken in meer detail dezelfde vier fasen voor het plannen en uitvoeren van een toepassings migratie project. In deze hand leiding leert u hoe u deze fasen toepast op het specifieke doel van het verplaatsen van een toepassing van Active Directory Federation Services (AD FS) naar Azure AD.
+* De oplossings handleiding [voor het migreren van toepassings verificatie van Active Directory Federation Services naar Azure Active Directory](../manage-apps/migrate-adfs-apps-to-azure.md) Verken in meer detail dezelfde vier fasen voor het plannen en uitvoeren van een toepassings migratie project. In deze hand leiding leert u hoe u deze fasen toepast op het specifieke doel van het verplaatsen van een toepassing van Active Directory Federation Services (AD FS) naar Azure AD.
 
 * Het [Active Directory Federation Services gereedheids script voor migratie](https://aka.ms/migrateapps/adfstools) kan worden uitgevoerd op bestaande on-premises Active Directory Federation Services (AD FS)-servers om de gereedheid van toepassingen voor migratie naar Azure ad te bepalen.
 
@@ -111,7 +111,7 @@ Organisaties kunnen het toegangs levenscyclus proces automatiseren via technolog
 
 ## <a name="future-directions"></a>Volgende richting
 
-In hybride omgevingen is de strategie van micro soft om implementaties in te scha kelen waarbij de **Cloud het besturings vlak voor identiteits**-en on-premises directory's en andere identiteits systemen, zoals Active Directory en andere on-premises toepassingen, het doel is voor het inrichten van gebruikers met toegang. Deze strategie blijft de rechten, identiteiten en toegang tot de toepassingen en werk belastingen die hiervan afhankelijk zijn, blijven waarborgen. In deze eind toestand kunnen organisaties de productiviteit van eind gebruikers volledig vanuit de Cloud doen.
+In hybride omgevingen is de strategie van micro soft om implementaties in te scha kelen waarbij de **Cloud het besturings vlak voor identiteits** -en on-premises directory's en andere identiteits systemen, zoals Active Directory en andere on-premises toepassingen, het doel is voor het inrichten van gebruikers met toegang. Deze strategie blijft de rechten, identiteiten en toegang tot de toepassingen en werk belastingen die hiervan afhankelijk zijn, blijven waarborgen. In deze eind toestand kunnen organisaties de productiviteit van eind gebruikers volledig vanuit de Cloud doen.
 
 ![Azure AD-architectuur](media/cloud-governed-management-for-on-premises/image6.png)
 

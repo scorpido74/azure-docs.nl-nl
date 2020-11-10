@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 10/22/2020
 ms.author: aahi
 keywords: on-premises, docker, container, Kubernetes
-ms.openlocfilehash: a59d9fb4fb15b361259a705a024b9bea975e8072
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 56d88b9223a80ea9981e8830cac44bac7c6edb3b
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368845"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413034"
 ---
 # <a name="azure-cognitive-services-containers"></a>Azure Cognitive Services-containers
 
@@ -58,7 +58,7 @@ Azure Cognitive Services-containers bieden de volgende set docker-containers, di
 
 | Service | Ondersteunde prijs categorie | Container | Beschrijving |
 |--|--|--|--|
-| [Anomalie detectie][ad-containers] | F0, S0 | **Anomaliey-detector** ( [installatie kopie](https://hub.docker.com/_/azure-cognitive-services-decision-anomaly-detector))  | Met de Anomaly Detector-API kunt u anomalieën in uw tijdreeksgegevens controleren en detecteren met behulp van machine learning.<br>[Toegang aanvragen][request-access] |
+| [Anomalie detectie][ad-containers] | F0, S0 | **Anomaliey-detector** ( [installatie kopie](https://hub.docker.com/_/microsoft-azure-cognitive-services-decision-anomaly-detector))  | Met de Anomaly Detector-API kunt u anomalieën in uw tijdreeksgegevens controleren en detecteren met behulp van machine learning.<br>[Toegang aanvragen][request-access] |
 | [Computer Vision][cv-containers] | F0, S1 | **Lezen** OCR ( [afbeelding](https://hub.docker.com/_/microsoft-azure-cognitive-services-vision-read)) | Met de container OCR lezen kunt u gedrukte en handgeschreven tekst uit afbeeldingen en documenten extra heren met ondersteuning voor JPEG-, PNG-, BMP-, PDF-en TIFF-bestands indelingen. Zie de [Lees API-documentatie](./computer-vision/concept-recognizing-text.md)voor meer informatie.<br>[Toegang aanvragen][request-access] |
 | [Face][fa-containers] | F0, S0 | **Face** | Detecteert menselijke gezichten in afbeeldingen en identificeert kenmerken, met inbegrip van gezichts bezienswaardigheden (zoals neus en ogen), geslacht, leeftijd en andere computer-voorspelde gezichts functies. Naast detectie kan het gezicht controleren of twee gezichten in dezelfde afbeelding of verschillende afbeeldingen hetzelfde zijn door gebruik te maken van een betrouwbaarheids Score, of de gezichten vergelijken met een Data Base om te zien of er al een vergelijkbaar of identiek gezicht bestaat. Het kan ook gelijksoortige gezichten in groepen indelen met behulp van gedeelde visuele elementen. |
 | [Formulier herkenning][fr-containers] | F0, S0 | **Form Recognizer** | Formulier uitleg is van toepassing machine learning technologie om sleutel-waardeparen en tabellen uit formulieren te identificeren en uit te pakken. |
@@ -83,7 +83,7 @@ Daarnaast worden sommige containers ondersteund in Cognitive Services [**alles-i
 * Computer Vision
 * Face
 * LUIS
-* Tekstanalyse
+* Text Analytics
 
 ## <a name="container-availability-in-azure-cognitive-services"></a>Beschik baarheid van containers in azure Cognitive Services
 

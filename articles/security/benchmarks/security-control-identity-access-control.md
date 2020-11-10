@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 7d8ca0b0fa632321b6aa075ab5ca2bdf6632ab51
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 8d2901e71a3c638e25899803ff9b24e20fdf1969
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216501"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412660"
 ---
 # <a name="security-control-identity-and-access-control"></a>Beveiligings beheer: identiteit en Access Control
 
@@ -26,9 +26,9 @@ Aanbevelingen voor identiteits-en toegangs beheer zijn gericht op het adresseren
 
 Azure AD heeft ingebouwde rollen die expliciet moeten worden toegewezen en waarop query's kunnen worden doorzocht. Gebruik de Azure AD Power shell-module om ad hoc-query's uit te voeren om accounts te detecteren die lid zijn van beheer groepen.
 
-- [Een directory-rol verkrijgen in azure AD met Power shell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&preserve-view=true)
+- [Een directory-rol verkrijgen in azure AD met Power shell](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&preserve-view=true)
 
-- [Leden van een directory-rol in azure AD ophalen met Power shell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&preserve-view=true)
+- [Leden van een directory-rol in azure AD ophalen met Power shell](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&preserve-view=true)
 
 ## <a name="32-change-default-passwords-where-applicable"></a>3,2: standaard wachtwoorden wijzigen indien van toepassing
 
@@ -48,7 +48,7 @@ Maak standaard procedures voor het gebruik van specifieke beheerders accounts. G
 
 U kunt ook Just-in-time/alleen-voldoende toegang inschakelen met behulp van Azure AD Privileged Identity Management geprivilegieerde rollen voor micro soft-Services en Azure Resource Manager. 
 
-- [Meer informatie over Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/)
+- [Meer informatie over Privileged Identity Management](../../active-directory/privileged-identity-management/index.yml)
 
 ## <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3,4: eenmalige aanmelding (SSO) met Azure Active Directory gebruiken
 
@@ -58,7 +58,7 @@ U kunt ook Just-in-time/alleen-voldoende toegang inschakelen met behulp van Azur
 
 Gebruik waar mogelijk Azure Active Directory-SSO in plaats van afzonderlijke zelfstandige referenties per service te configureren. Gebruik Azure Security Center aanbevelingen voor identiteits-en toegangs beheer.
 
-- [Informatie over eenmalige aanmelding met Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Informatie over eenmalige aanmelding met Azure AD](../../active-directory/manage-apps/what-is-single-sign-on.md)
 
 ## <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3,5: multi-factor Authentication gebruiken voor alle op Azure Active Directory gebaseerde toegang
 
@@ -68,9 +68,9 @@ Gebruik waar mogelijk Azure Active Directory-SSO in plaats van afzonderlijke zel
 
 Schakel Azure AD MFA in en volg Azure Security Center aanbevelingen voor identiteits-en toegangs beheer.
 
-- [MFA inschakelen in azure](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+- [MFA inschakelen in azure](../../active-directory/authentication/howto-mfa-getstarted.md)
 
-- [Identiteit en toegang bewaken in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+- [Identiteit en toegang bewaken in Azure Security Center](../../security-center/security-center-identity-access.md)
 
 ## <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3,6: gebruik speciale machines (privileged Access workstations) voor alle beheer taken
 
@@ -80,9 +80,9 @@ Schakel Azure AD MFA in en volg Azure Security Center aanbevelingen voor identit
 
 Gebruik Paw's (privileged Access workstations) met MFA dat is geconfigureerd om Azure-resources aan te melden en te configureren.
 
-- [Meer informatie over privileged Access workstations](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [Meer informatie over privileged Access workstations](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
-- [MFA inschakelen in azure](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+- [MFA inschakelen in azure](../../active-directory/authentication/howto-mfa-getstarted.md)
 
 ## <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3,7: Logboeken en waarschuwingen voor verdachte activiteiten van beheerders accounts
 
@@ -92,9 +92,9 @@ Gebruik Paw's (privileged Access workstations) met MFA dat is geconfigureerd om 
 
 Gebruik Azure Active Directory beveiligings rapporten voor het genereren van Logboeken en waarschuwingen wanneer verdachte of onveilige activiteiten in de omgeving worden uitgevoerd. Gebruik Azure Security Center om identiteits-en toegangs activiteiten te bewaken.
 
-- [Azure AD-gebruikers identificeren die zijn gemarkeerd voor Risk ante activiteiten](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk)
+- [Azure AD-gebruikers identificeren die zijn gemarkeerd voor Risk ante activiteiten](../../active-directory/identity-protection/overview-identity-protection.md)
 
-- [Identiteits-en toegangs activiteiten van gebruikers controleren in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+- [Identiteits-en toegangs activiteiten van gebruikers controleren in Azure Security Center](../../security-center/security-center-identity-access.md)
 
 ## <a name="38-manage-azure-resources-from-only-approved-locations"></a>3,8: Azure-resources alleen beheren vanaf goedgekeurde locaties
 
@@ -104,7 +104,7 @@ Gebruik Azure Active Directory beveiligings rapporten voor het genereren van Log
 
 Gebruik benoemde locaties voor voorwaardelijke toegang om alleen toegang toe te staan vanaf specifieke logische groepen met IP-adresbereiken of landen/regio's.
 
-- [Benoemde locaties configureren in azure](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+- [Benoemde locaties configureren in azure](../../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
 ## <a name="39-use-azure-active-directory"></a>3,9: Azure Active Directory gebruiken
 
@@ -114,7 +114,7 @@ Gebruik benoemde locaties voor voorwaardelijke toegang om alleen toegang toe te 
 
 Gebruik Azure Active Directory als centrale verificatie-en autorisatie systeem. Azure AD beveiligt gegevens door gebruik te maken van sterke versleuteling voor gegevens in rust en onderweg. Azure AD bevat ook zouten, hashes en veilige gebruikers referenties.
 
-- [Een Azure AD-exemplaar maken en configureren](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+- [Een Azure AD-exemplaar maken en configureren](../../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 ## <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: regel matig gebruikers toegang controleren en afstemmen
 
@@ -124,9 +124,9 @@ Gebruik Azure Active Directory als centrale verificatie-en autorisatie systeem. 
 
 Azure AD biedt logboeken waarmee u verlopen accounts kunt detecteren. Daarnaast kunt u Azure Identity Access revisies gebruiken om groepslid maatschappen en de toegang tot bedrijfs toepassingen en roltoewijzingen op efficiënte wijze te beheren. Gebruikers toegang kan regel matig worden gecontroleerd om ervoor te zorgen dat alleen de juiste gebruikers toegang hebben. 
 
-- [Meer informatie over Azure AD-rapportage](https://docs.microsoft.com/azure/active-directory/reports-monitoring/)
+- [Meer informatie over Azure AD-rapportage](../../active-directory/reports-monitoring/index.yml)
 
-- [Beoordelingen over Azure Identity Access gebruiken](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+- [Beoordelingen over Azure Identity Access gebruiken](../../active-directory/governance/access-reviews-overview.md)
 
 ## <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3,11: controle pogingen om toegang te krijgen tot gedeactiveerde referenties
 
@@ -138,7 +138,7 @@ U hebt toegang tot de Azure AD-aanmeldings activiteit, de controle-en risico geb
 
 U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure Active Directory gebruikers accounts te maken en de audit logboeken en aanmeldings logboeken te verzenden naar een Log Analytics-werk ruimte. U kunt de gewenste waarschuwingen configureren in Log Analytics werk ruimte.
 
-- [Azure-activiteiten logboeken integreren in Azure Monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Azure-activiteiten logboeken integreren in Azure Monitor](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 ## <a name="312-alert-on-account-login-behavior-deviation"></a>3,12: waarschuwing voor de afwijking van het aanmeldings gedrag van accounts
 
@@ -148,11 +148,11 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure Activ
 
 Gebruik Azure AD-functies voor risico-en identiteits beveiliging om automatische antwoorden te configureren op gedetecteerde verdachte acties met betrekking tot gebruikers identiteiten. U kunt ook gegevens opnemen in azure Sentinel voor verder onderzoek.
 
-- [Risk ante aanmeldingen voor Azure AD weer geven](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Risk ante aanmeldingen voor Azure AD weer geven](../../active-directory/identity-protection/overview-identity-protection.md)
 
-- [Risico beleid voor identiteits beveiliging configureren en inschakelen](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies)
+- [Risico beleid voor identiteits beveiliging configureren en inschakelen](../../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
-- [Azure-Sentinel onboarden](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [Azure-Sentinel onboarden](../../sentinel/quickstart-onboard.md)
 
 ## <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3,13: micro soft biedt toegang tot relevante klant gegevens tijdens ondersteunings scenario's
 
@@ -162,7 +162,7 @@ Gebruik Azure AD-functies voor risico-en identiteits beveiliging om automatische
 
 In ondersteunings scenario's waarin micro soft toegang moet krijgen tot klant gegevens, bevat Klanten-lockbox een interface waarmee u aanvragen voor het verkrijgen van gegevens toegang voor klanten kunt controleren en goed keuren of afwijzen.
 
-- [Klanten-lockbox begrijpen](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview)
+- [Klanten-lockbox begrijpen](../fundamentals/customer-lockbox-overview.md)
 
 
 ## <a name="next-steps"></a>Volgende stappen

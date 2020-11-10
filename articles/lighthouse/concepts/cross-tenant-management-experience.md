@@ -1,14 +1,14 @@
 ---
 title: Beheerervaring in meerdere tenants
 description: Azure delegated Resource Management maakt een cross-Tenant beheer mogelijk.
-ms.date: 10/22/2020
+ms.date: 11/09/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5443c3b5a34cd493e0956f2a0d6ed7d6fecd603d
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: dfb92e3f4f02e693ae5e4bba57e5344288c4615a
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460662"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413119"
 ---
 # <a name="cross-tenant-management-experiences"></a>Beheerervaring in meerdere tenants
 
@@ -104,7 +104,6 @@ De meeste taken en services kunnen worden uitgevoerd op gedelegeerde resources i
 
 [Azure Policy](../../governance/policy/index.yml):
 
-- Voor compatibiliteits momentopnamen worden details weer gegeven voor toegewezen beleid in gedelegeerde abonnementen
 - Beleids definities maken en bewerken binnen gedelegeerde abonnementen
 - Door de klant gedefinieerde beleids definities toewijzen binnen gedelegeerde abonnementen
 - Klanten zien beleid dat door de service provider is ontworpen naast het beleid dat ze zelf hebben ontworpen
@@ -157,7 +156,7 @@ De meeste taken en services kunnen worden uitgevoerd op gedelegeerde resources i
 
 Ondersteunings aanvragen:
 
-- [Ondersteunings aanvragen openen vanuit **Help en ondersteuning** ](../../azure-portal/supportability/how-to-create-azure-support-request.md#getting-started) in de Azure portal voor gedelegeerde resources (het ondersteunings abonnement selecteren dat beschikbaar is voor het gedelegeerde bereik)
+- [Ondersteunings aanvragen openen vanuit **Help en ondersteuning**](../../azure-portal/supportability/how-to-create-azure-support-request.md#getting-started) in de Azure portal voor gedelegeerde resources (het ondersteunings abonnement selecteren dat beschikbaar is voor het gedelegeerde bereik)
 
 ## <a name="current-limitations"></a>Huidige beperkingen
 

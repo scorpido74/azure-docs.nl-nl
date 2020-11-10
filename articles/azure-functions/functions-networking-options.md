@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.author: jehollan
-ms.openlocfilehash: 3a44efac274bf5c5d6cfc6a0f044ee89b479cbe6
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 691fbf3be4e39a724a8a290c3ec147a679013cba
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897072"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413085"
 ---
 # <a name="azure-functions-networking-options"></a>Netwerkopties van Azure Functions
 
@@ -107,7 +107,7 @@ Op dit moment kunt u niet-HTTP-trigger functies vanuit een virtueel netwerk op t
 
 ### <a name="premium-plan-with-virtual-network-triggers"></a>Premium-abonnement met virtuele netwerk triggers
 
-Wanneer u een Premium-abonnement uitvoert, kunt u niet-HTTP-trigger functies verbinden met services die binnen een virtueel netwerk worden uitgevoerd. Hiervoor moet u ondersteuning voor virtuele netwerk triggers inschakelen voor uw functie-app. De instelling **runtime schaal bewaking** vindt u in de [Azure Portal](https://portal.azure.com) onder runtime-instellingen voor de **configuratie** -  >  **functie** .
+Wanneer u een Premium-abonnement uitvoert, kunt u niet-HTTP-trigger functies verbinden met services die binnen een virtueel netwerk worden uitgevoerd. Hiervoor moet u ondersteuning voor virtuele netwerk triggers inschakelen voor uw functie-app. De instelling **runtime schaal bewaking** vindt u in de [Azure Portal](https://portal.azure.com) onder runtime-instellingen voor de **configuratie** -  >  **functie**.
 
 :::image type="content" source="media/functions-networking-options/virtual-network-trigger-toggle.png" alt-text="VNETToggle":::
 
@@ -116,6 +116,9 @@ U kunt ook virtuele netwerk triggers inschakelen met behulp van de volgende Azur
 ```azurecli-interactive
 az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.functionsRuntimeScaleMonitoringEnabled=1 --resource-type Microsoft.Web/sites
 ```
+
+> [!TIP]
+> Het inschakelen van virtuele netwerk triggers kan invloed hebben op de prestaties van uw toepassing, omdat uw App Service plan-instanties uw Triggers moeten controleren om te bepalen wanneer moet worden geschaald. Deze impact is waarschijnlijk zeer klein.
 
 Virtuele netwerk triggers worden ondersteund in versie 2. x en hoger van de functions-runtime. De volgende niet-HTTP-trigger typen worden ondersteund.
 

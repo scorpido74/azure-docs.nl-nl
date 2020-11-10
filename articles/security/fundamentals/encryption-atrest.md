@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: ec81a8f7f9d9f45f1d068a415a599ce30a0d4581
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dafc55656be2d8ef2c0f52d633c7db7eeee83534
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397246"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412779"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Versleuteling van inactieve gegevens in Azure
 
@@ -48,7 +48,7 @@ Versleuteling bij rest biedt gegevens beveiliging voor opgeslagen gegevens (op r
 
 Versleuteling op rest is ontworpen om te voor komen dat een aanvaller toegang krijgt tot de niet-versleutelde gegevens door ervoor te zorgen dat de gegevens worden versleuteld wanneer ze op schijf zijn. Als een aanvaller een harde schijf verkrijgt met versleutelde gegevens, maar niet de versleutelings sleutels, moet de aanvaller de versleuteling verslaan om de gegevens te lezen. Deze aanval is veel ingewik kelder en maakt gebruik van resources dan toegang tot niet-versleutelde gegevens op een harde schijf. Daarom wordt versleuteling in rust sterk aanbevolen en is een hoge prioriteit vereist voor veel organisaties.
 
-Versleuteling in rust kan ook worden vereist door de nood zaak van een organisatie voor data governance en nalevings inspanningen. Industriële en wettelijke voor schriften zoals HIPAA, PCI en FedRAMP, leggen specifieke veiligheids maatregelen vast over de vereisten voor gegevens bescherming en-versleuteling. Versleuteling op rest is een verplichte maat regel die vereist is om te voldoen aan sommige van deze voor Schriften. Zie voor meer informatie over de micro soft-benadering van FIPS 140-2-validatie [Federal Information Processing Standard (FIPS)-publicatie 140-2](https://docs.microsoft.com/microsoft-365/compliance/offering-fips-140-2).
+Versleuteling in rust kan ook worden vereist door de nood zaak van een organisatie voor data governance en nalevings inspanningen. Industriële en wettelijke voor schriften zoals HIPAA, PCI en FedRAMP, leggen specifieke veiligheids maatregelen vast over de vereisten voor gegevens bescherming en-versleuteling. Versleuteling op rest is een verplichte maat regel die vereist is om te voldoen aan sommige van deze voor Schriften. Zie voor meer informatie over de micro soft-benadering van FIPS 140-2-validatie [Federal Information Processing Standard (FIPS)-publicatie 140-2](/microsoft-365/compliance/offering-fips-140-2).
 
 Naast het voldoen aan de nalevings vereisten en de regelgeving, biedt versleuteling op rest een ingrijpende beveiliging. Microsoft Azure biedt een compatibel platform voor services, toepassingen en gegevens. Het biedt ook uitgebreide functionaliteit en fysieke beveiliging, gegevens toegangs beheer en controle. Het is echter belang rijk om extra "overlappende" beveiligings maatregelen te bieden voor het geval een van de andere veiligheids maatregelen mislukt en versleuteling in rust biedt een dergelijke veiligheids maatregel.
 
@@ -115,22 +115,22 @@ Microsoft Azure Services bieden ondersteuning voor een of meer van de versleutel
 
 ### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
-Elke klant die gebruikmaakt van Azure Infrastructure as a Service (IaaS)-functies, kan versleutelen op rest voor hun IaaS Vm's en schijven via Azure Disk Encryption. Zie de [Azure Disk Encryption-documentatie](../azure-security-disk-encryption-overview.md)voor meer informatie over Azure Disk Encryption.
+Elke klant die gebruikmaakt van Azure Infrastructure as a Service (IaaS)-functies, kan versleutelen op rest voor hun IaaS Vm's en schijven via Azure Disk Encryption. Zie de [Azure Disk Encryption-documentatie](./azure-disk-encryption-vms-vmss.md)voor meer informatie over Azure Disk Encryption.
 
 #### <a name="azure-storage"></a>Azure Storage
 
 Alle Azure Storage services (Blob-opslag, wachtrij opslag, tabel opslag en Azure Files) ondersteunen server versleuteling in rust. Sommige services ondersteunen daarnaast door de klant beheerde sleutels en versleuteling aan de client zijde.
 
-- Aan de server zijde: alle Azure Storage services maken server zijde versleuteling mogelijk door gebruik te maken van door de service beheerde sleutels, die transparant zijn voor de toepassing. Zie [Azure Storage-service versleuteling voor Data-at-rest](../../storage/common/storage-service-encryption.md)voor meer informatie. Azure Blob-opslag en Azure Files ondersteunen ook RSA 2048-bits door de klant beheerde sleutels in Azure Key Vault. Zie [Storage service Encryption het gebruik van door de klant beheerde sleutels in azure Key Vault](../../storage/common/storage-encryption-keys-portal.md)voor meer informatie.
+- Aan de server zijde: alle Azure Storage services maken server zijde versleuteling mogelijk door gebruik te maken van door de service beheerde sleutels, die transparant zijn voor de toepassing. Zie [Azure Storage Service Encryption voor data-at-rest](../../storage/common/storage-service-encryption.md). Azure Blob-opslag en Azure Files ondersteunen ook RSA 2048-bits door de klant beheerde sleutels in Azure Key Vault. Zie [Storage service Encryption het gebruik van door de klant beheerde sleutels in azure Key Vault](../../storage/common/customer-managed-keys-configure-key-vault.md)voor meer informatie.
 - Client zijde: Azure-blobs,-tabellen en-wacht rijen ondersteunen versleuteling aan de client zijde. Wanneer u versleuteling aan de client zijde gebruikt, versleutelt klanten de gegevens en uploadt de gegevens als een versleutelde blob. Sleutel beheer wordt uitgevoerd door de klant. Zie [versleuteling aan client zijde en Azure Key Vault voor Microsoft Azure Storage](../../storage/common/storage-client-side-encryption.md)voor meer informatie.
 
 #### <a name="azure-sql-database"></a>Azure SQL Database
 
 Azure SQL Database biedt momenteel ondersteuning voor versleuteling in rust voor micro soft-beheerde service-en versleutelings scenario's aan de client zijde.
 
-Ondersteuning voor Server versleuteling wordt momenteel geboden via de SQL-functie met de naam Transparent Data Encryption. Zodra een Azure SQL Database klant wordt ingeschakeld, wordt er automatisch een TDE-sleutel gemaakt en beheerd. Versleuteling in rust kan worden ingeschakeld op Data Base-en server niveau. Vanaf 2017 juni is [transparent Data Encryption (TDE)](https://msdn.microsoft.com/library/bb934049.aspx) standaard ingeschakeld voor nieuw gemaakte data bases. Azure SQL Database ondersteunt door de klant beheerde sleutels van RSA 2048-bits in Azure Key Vault. Zie [transparent Data Encryption met Bring your own Key ondersteuning voor Azure SQL database en Data Warehouse](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-byok-azure-sql?view=azuresqldb-current)voor meer informatie.
+Ondersteuning voor Server versleuteling wordt momenteel geboden via de SQL-functie met de naam Transparent Data Encryption. Zodra een Azure SQL Database klant wordt ingeschakeld, wordt er automatisch een TDE-sleutel gemaakt en beheerd. Versleuteling in rust kan worden ingeschakeld op Data Base-en server niveau. Vanaf 2017 juni is [transparent Data Encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) standaard ingeschakeld voor nieuw gemaakte data bases. Azure SQL Database ondersteunt door de klant beheerde sleutels van RSA 2048-bits in Azure Key Vault. Zie [transparent Data Encryption met Bring your own Key ondersteuning voor Azure SQL database en Data Warehouse](/sql/relational-databases/security/encryption/transparent-data-encryption-byok-azure-sql?view=azuresqldb-current)voor meer informatie.
 
-Versleuteling aan client zijde van Azure SQL Database gegevens wordt ondersteund via de [Always encrypted](https://msdn.microsoft.com/library/mt163865.aspx) -functie. Always Encrypted gebruikt een sleutel die door de client is gemaakt en opgeslagen. Klanten kunnen de hoofd sleutel opslaan in een Windows-certificaat archief, Azure Key Vault of een lokale hardware Security module. Met behulp van SQL Server Management Studio kiezen SQL-gebruikers welke sleutel ze willen gebruiken om de kolom te versleutelen.
+Versleuteling aan client zijde van Azure SQL Database gegevens wordt ondersteund via de [Always encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) -functie. Always Encrypted gebruikt een sleutel die door de client is gemaakt en opgeslagen. Klanten kunnen de hoofd sleutel opslaan in een Windows-certificaat archief, Azure Key Vault of een lokale hardware Security module. Met behulp van SQL Server Management Studio kiezen SQL-gebruikers welke sleutel ze willen gebruiken om de kolom te versleutelen.
 
 ## <a name="conclusion"></a>Conclusie
 

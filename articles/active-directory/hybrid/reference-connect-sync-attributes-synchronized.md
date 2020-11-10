@@ -16,12 +16,12 @@ ms.date: 04/15/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9411c22183620f883b4d2819eb3078e49837e578
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ec05c4160c6502904644bf7035bda0bed66cc33
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90016075"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413187"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect-synchronisatie: kenmerken die zijn gesynchroniseerd met Azure Active Directory
 In dit onderwerp vindt u de kenmerken die worden gesynchroniseerd door Azure AD Connect synchronisatie.  
@@ -64,7 +64,7 @@ In dit geval begint u met de lijst met kenmerken in dit onderwerp en identificee
 | bedrijf |X |X | | |
 | countryCode |X |X | | |
 | department |X |X | | |
-| description | | |X | |
+| beschrijving | | |X | |
 | displayName |X |X |X | |
 | dLMemRejectPerms |X |X |X | |
 | dLMemSubmitPerms |X |X |X | |
@@ -185,7 +185,7 @@ In dit geval begint u met de lijst met kenmerken in dit onderwerp en identificee
 | bedrijf |X |X | | |
 | countryCode |X |X | | |
 | department |X |X | | |
-| description |X |X |X | |
+| beschrijving |X |X |X | |
 | displayName |X |X |X | |
 | dLMemRejectPerms |X |X |X | |
 | dLMemSubmitPerms |X |X |X | |
@@ -265,7 +265,7 @@ In dit geval begint u met de lijst met kenmerken in dit onderwerp en identificee
 | co |X |X | | |
 | bedrijf |X |X | | |
 | department |X |X | | |
-| description |X |X |X | |
+| beschrijving |X |X |X | |
 | displayName |X |X |X | |
 | facsimiletelephonenumber |X |X |X | |
 | givenName |X |X | | |
@@ -325,7 +325,7 @@ In dit geval begint u met de lijst met kenmerken in dit onderwerp en identificee
 | accountEnabled |X | | |Hiermee wordt bepaald of een account is ingeschakeld. |
 | c |X |X | | |
 | cn |X | |X | |
-| description |X |X |X | |
+| beschrijving |X |X |X | |
 | displayName |X |X |X | |
 | mail |X |X |X | |
 | mailNickname |X |X |X | |
@@ -346,7 +346,7 @@ In dit geval begint u met de lijst met kenmerken in dit onderwerp en identificee
 | co |X |X | | |
 | bedrijf |X |X | | |
 | countryCode |X |X | | |
-| description |X |X |X | |
+| beschrijving |X |X |X | |
 | displayName |X |X |X | |
 | facsimiletelephonenumber |X |X | | |
 | givenName |X |X | | |
@@ -373,7 +373,7 @@ In dit geval begint u met de lijst met kenmerken in dit onderwerp en identificee
 Deze groep is een set kenmerken die wordt gebruikt als de minimale kenmerken die nodig zijn voor een algemene werk belasting of toepassing. Het kan worden gebruikt voor een werk belasting die niet in een andere sectie of voor een niet-micro soft-app wordt vermeld. Deze wordt expliciet gebruikt voor het volgende:
 
 * Yammer (alleen gebruiker wordt gebruikt)
-* [Hybride Business-to-Business (B2B) samenwerkings scenario's voor meerdere organisatie die worden aangeboden door resources zoals share point](https://go.microsoft.com/fwlink/?LinkId=747036)
+* [Hybride Business-to-Business (B2B) samenwerkings scenario's voor meerdere organisatie die worden aangeboden door resources zoals share point](/sharepoint/create-b2b-extranet)
 
 Deze groep is een set kenmerken die kan worden gebruikt als de Azure AD-Directory niet wordt gebruikt voor de ondersteuning van Microsoft 365, Dynamics of intune. Het bevat een kleine set kern kenmerken. Houd er rekening mee dat eenmalige aanmelding of inrichting van sommige toepassingen van derden een synchronisatie van kenmerken moet configureren naast de kenmerken die hier worden beschreven. Toepassings vereisten worden beschreven in de [zelf studie](../saas-apps/tutorial-list.md) over de SaaS-app voor elke toepassing.
 
@@ -420,7 +420,7 @@ Deze kenmerken voor de **gebruiker** zijn naast de andere apps die u hebt gesele
 | msDS-KeyCredentialLink |X |Zodra de gebruiker is inge schreven in Windows hello voor bedrijven. | 
 
 ## <a name="exchange-hybrid-writeback"></a>Hybride write-back van Exchange
-Deze kenmerken worden teruggeschreven van Azure AD naar on-premises Active Directory wanneer u **Exchange Hybrid**inschakelt. Afhankelijk van uw Exchange-versie kunnen minder kenmerken worden gesynchroniseerd.
+Deze kenmerken worden teruggeschreven van Azure AD naar on-premises Active Directory wanneer u **Exchange Hybrid** inschakelt. Afhankelijk van uw Exchange-versie kunnen minder kenmerken worden gesynchroniseerd.
 
 | Kenmerk naam (on-premises AD) | Kenmerk naam (gebruikers interface verbinden) | Gebruiker | Contactpersoon | Groep | Opmerking |
 | --- |:---:|:---:|:---:| --- |---|
@@ -435,7 +435,7 @@ Deze kenmerken worden teruggeschreven van Azure AD naar on-premises Active Direc
 | publicDelegates| MS-Herw-Public-gemachtigden  |X | | |Hiermee kan een Exchange Online-postvak SendOnBehalfTo rechten krijgen voor gebruikers met een on-premises Exchange-postvak. Vereist Azure AD Connect build 1.1.552.0 of After. |
 
 ## <a name="exchange-mail-public-folder"></a>Open bare map voor Exchange-e-mail
-Deze kenmerken worden gesynchroniseerd van on-premises Active Directory naar Azure AD wanneer u de **open bare map voor Exchange-e-mail**inschakelt.
+Deze kenmerken worden gesynchroniseerd van on-premises Active Directory naar Azure AD wanneer u de **open bare map voor Exchange-e-mail** inschakelt.
 
 | Kenmerknaam | PublicFolder | Opmerking |
 | --- | :---:| --- |

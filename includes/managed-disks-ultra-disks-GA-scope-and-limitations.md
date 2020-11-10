@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/28/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7b41105bafedb8eeaffe5f266f5dd824957c57e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eeda43b972e30c573743c8c59f75cfae61d7ee85
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91441184"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413140"
 ---
 Voor nu hebben Ultra disks de volgende beperkingen:
 
@@ -26,24 +26,25 @@ De volgende tabel geeft een overzicht van de regio's Ultra disks zijn beschikbaa
 
 |Regio's  |Redundantie opties  |
 |---------|---------|
-|Brazil South     |Alleen enkele Vm's (beschikbaarheids sets en virtuele-machine schaal sets worden niet ondersteund)|
+|Brazilië - zuid     |Alleen enkele Vm's (beschikbaarheids sets en virtuele-machine schaal sets worden niet ondersteund)|
 |India - centraal     |Alleen enkele Vm's (beschikbaarheids sets en virtuele-machine schaal sets worden niet ondersteund)|
 |Azië - oost     |Alleen enkele Vm's (beschikbaarheids sets en virtuele-machine schaal sets worden niet ondersteund)|
 |Duitsland - west-centraal     |Alleen enkele Vm's (beschikbaarheids sets en virtuele-machine schaal sets worden niet ondersteund)|
 |Korea - centraal     |Alleen enkele Vm's (beschikbaarheids sets en virtuele-machine schaal sets worden niet ondersteund)|
-|South Central US    |Alleen enkele Vm's (beschikbaarheids sets en virtuele-machine schaal sets worden niet ondersteund)|
+|VS - zuid-centraal    |Alleen enkele Vm's (beschikbaarheids sets en virtuele-machine schaal sets worden niet ondersteund)|
 |VS (overheid) - Arizona     |Alleen enkele Vm's (beschikbaarheids sets en virtuele-machine schaal sets worden niet ondersteund)|
 |VS (overheid) - Virginia     |Alleen enkele Vm's (beschikbaarheids sets en virtuele-machine schaal sets worden niet ondersteund)|
+|VS (overheid) - Texas     |Alleen enkele Vm's (beschikbaarheids sets en virtuele-machine schaal sets worden niet ondersteund)|
 |VS - west     |Alleen enkele Vm's (beschikbaarheids sets en virtuele-machine schaal sets worden niet ondersteund)        |
 |Australië - centraal    |Alleen enkele Vm's (beschikbaarheids sets en virtuele-machine schaal sets worden niet ondersteund)|
 |Australië - oost     |Drie beschikbaarheids zones         |
 |Azië - zuidoost    |Drie beschikbaarheids zones        |
 |Canada-centraal *     |Drie beschikbaarheids zones          |
-|Central US     |Drie beschikbaarheids zones          |
+|VS - centraal     |Drie beschikbaarheids zones          |
 |VS - oost     |Drie beschikbaarheids zones          |
-|VS - oost 2     |Drie beschikbaarheids zones         |
+|US - oost 2     |Drie beschikbaarheids zones         |
 |Frankrijk - centraal    |Twee beschikbaarheids zones        |
-|Japan East    |Drie beschikbaarheids zones        |
+|Japan - oost    |Drie beschikbaarheids zones        |
 |Europa - noord    |Drie beschikbaarheids zones        |
 |Verenigd Koninkrijk Zuid    |Drie beschikbaarheids zones        |
 |Europa -west    | Drie beschikbaarheids zones|

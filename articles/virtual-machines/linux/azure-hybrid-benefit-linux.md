@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: alsin
-ms.openlocfilehash: da17122de8db41b6ba9ae9597d52bc3e1d8d0062
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c1200121d1c768a3fdddd7749184d7f8b5c98a96
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962391"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413102"
 ---
 # <a name="preview-azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>Voor beeld: Azure Hybrid Benefit: hoe dit geldt voor Linux Virtual Machines
 
@@ -57,7 +57,7 @@ In deze fase kunt u toegang krijgen tot het voor deel door het formulier [hier](
 1.    Registreren bij het [Red Hat Cloud Access-programma](https://aka.ms/rhel-cloud-access)
 1.    Schakel uw Azure-abonnement (en) in voor Cloud toegang en schakel de abonnementen in die de Vm's bevatten waarvoor u het voor deel wilt gebruiken
 1.    Pas het voor deel toe op uw bestaande Vm's via de Azure Portal of Azure CLI
-1.    Registreer uw Vm's om het voor deel te ontvangen met een afzonderlijke bron van updates
+1.    U kunt uw Vm's ook registreren om het voor deel te ontvangen met een afzonderlijke bron van updates (Switched Vm's kunnen blijven gekoppeld aan [RHUI](../workloads/redhat/redhat-rhui.md) of worden geregistreerd via RHSM)
 
 ### <a name="suse-customers"></a>SUSE-klanten
 
@@ -147,13 +147,14 @@ A: Nee, dat kan niet. Als u een licentie type opgeeft dat onjuist overeenkomt me
 
 A: het kan enige tijd duren voordat de inschrijving van uw Red Hat Cloud Access-abonnement van Red Hat naar Azure wordt door gegeven. Neem contact op met micro soft ondersteuning als u na één werkdag nog steeds de fout ziet.
 
-## <a name="common-errors"></a>Algemene fouten
-Deze sectie bevat een lijst met veelvoorkomende fouten en stappen voor het oplossen van problemen.
+## <a name="common-issues"></a>Algemene problemen
+Deze sectie bevat een lijst met veelvoorkomende problemen die kunnen optreden en stappen voor de oplossing.
 
 | Fout | Oplossing |
 | ----- | ---------- |
 | Het abonnement is niet geregistreerd voor de Linux-preview van Azure Hybrid Benefit. Voor stapsgewijze instructies raadpleegt u https://aka.ms/ahb-linux ' | Vul het formulier in https://aka.ms/ahb-linux-form om u te registreren voor de Linux-preview van de Azure Hybrid Benefit.
 | "De actie kan niet worden voltooid omdat uit onze gegevens blijkt dat u Red Hat Cloud Access niet hebt ingeschakeld voor uw Azure-abonnement............ | Als u het voor deel van RHEL Vm's wilt gebruiken, moet u uw Azure-abonnement (en) eerst registreren bij Red Hat Cloud Access. Bezoek deze koppeling voor meer informatie over het registreren van uw Azure-abonnementen voor Red Hat Cloud Access
+|"De optie voor Azure Hybrid Benefit wordt niet weer gegeven in de portal" | Dit is een bekend probleem voor RHEL-en SLES-Vm's die zijn gemaakt op basis van de galerie met gedeelde afbeeldingen, moment opnamen of vastgelegde PAYG-installatie kopieën. In dit geval gebruikt u de CLI-stappen die worden beschreven in de sectie '[het voor deel in de Azure cli inschakelen en uitschakelen](#enable-and-disable-the-benefit-in-the-azure-cli)'. Gebruik de opdracht om de status van AHB weer te geven ` az vm get-instance-view -g MyResourceGroup -n MyVm` .|
 
 ## <a name="next-steps"></a>Volgende stappen
 * Ga aan de slag met de preview-versie door het formulier [hier](https://aka.ms/ahb-linux-form)in te vullen.

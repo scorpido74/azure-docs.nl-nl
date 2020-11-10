@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f80808f917036dfba122a97bbd255d466f40e476
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0adf548b009ad6fe0c85501b9777ff23723b3e24
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90018489"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413408"
 ---
 # <a name="azure-ad-connect-version-release-history-archive"></a>Azure AD Connect: release geschiedenis archief van versie
 
@@ -167,7 +167,7 @@ Azure AD Connect upgrade mislukt als SQL AlwaysOn-Beschik baarheid is geconfigur
 ### <a name="new-features-and-improvements"></a>Nieuwe functies en verbeteringen
 
 - De integratie van pingen in Azure AD Connect is nu beschikbaar voor algemene Beschik baarheid. [Meer informatie over federatieve Azure AD met pingen](./plan-connect-user-signin.md#federation-with-pingfederate)
-- Azure AD Connect maakt nu een back-up van de Azure AD-vertrouwens relatie in AD FS elke keer dat er een update wordt gemaakt en slaat deze in een afzonderlijk bestand op om zo nodig eenvoudig te kunnen herstellen. Meer [informatie over de nieuwe functionaliteit en het vertrouwens beheer van Azure AD in azure AD Connect](https://aka.ms/fedtrustinaadconnect).
+- Azure AD Connect maakt nu een back-up van de Azure AD-vertrouwens relatie in AD FS elke keer dat er een update wordt gemaakt en slaat deze in een afzonderlijk bestand op om zo nodig eenvoudig te kunnen herstellen. Meer [informatie over de nieuwe functionaliteit en het vertrouwens beheer van Azure AD in azure AD Connect](./how-to-connect-azure-ad-trust.md).
 - Nieuwe probleemoplossings Programma's helpen bij het oplossen van het wijzigen van het primaire e-mail adres en het verbergen van accounts uit de algemene adres lijst
 - Azure AD Connect is bijgewerkt met de meest recente SQL Server 2012 native client
 - Wanneer u de aanmelding van een gebruiker naar een wacht woord-hash-synchronisatie of Pass-Through-verificatie in de taak ' gebruiker aanmelden wijzigen ' wijzigt, wordt het selectie vakje naadloze enkelvoudige Sign-On standaard ingeschakeld.
@@ -212,8 +212,8 @@ Nieuwe functies en verbeteringen
 - De configuratie van het terugschrijven van apparaten wordt nu alleen beheerd in de wizard Azure AD Connect.
 - Er wordt een nieuwe Power shell-module met de naam ADSyncTools. psm1 toegevoegd die kan worden gebruikt voor het oplossen van problemen met SQL-connectiviteit en verschillende andere hulpprogram ma's voor probleem oplossing. Lees [hier](tshoot-connect-tshoot-sql-connectivity.md)meer over de ADSyncTools-module. 
 - Er is een nieuwe extra taak ' Device-opties configureren ' toegevoegd. U kunt de taak gebruiken om de volgende twee bewerkingen te configureren: 
-  - **Hybride Azure AD join**: als uw omgeving een on-PREMISes AD-footprint heeft en u ook wilt profiteren van de mogelijkheden van Azure Active Directory, kunt u aan hybride Azure AD gekoppelde apparaten implementeren. Dit zijn apparaten die zowel aan uw on-premises Active Directory als aan uw Azure Active Directory zijn gekoppeld.
-  - **Write-back van apparaat**: apparaat write-back wordt gebruikt voor het inschakelen van voorwaardelijke toegang op basis van apparaten die zijn AD FS (2012 R2 of hoger) beveiligde apparaten
+  - **Hybride Azure AD join** : als uw omgeving een on-PREMISes AD-footprint heeft en u ook wilt profiteren van de mogelijkheden van Azure Active Directory, kunt u aan hybride Azure AD gekoppelde apparaten implementeren. Dit zijn apparaten die zowel aan uw on-premises Active Directory als aan uw Azure Active Directory zijn gekoppeld.
+  - **Write-back van apparaat** : apparaat write-back wordt gebruikt voor het inschakelen van voorwaardelijke toegang op basis van apparaten die zijn AD FS (2012 R2 of hoger) beveiligde apparaten
 
     >[!NOTE] 
     > - De optie om het terugschrijven van apparaten in te scha kelen voor het aanpassen van synchronisatie opties wordt grijs weer gegeven. 
@@ -425,27 +425,27 @@ Status: oktober 19 2017
 #### <a name="fixed-issues"></a>Opgeloste problemen
 * Er is een probleem opgelost met de *aanmeld taak change user* in azure AD Connect wizard:
 
-  * Het probleem treedt op wanneer u een bestaande Azure AD Connect-implementatie met wachtwoord synchronisatie hebt **ingeschakeld**en u probeert de aanmeldings methode voor gebruikers in te stellen als *Pass-Through-verificatie*. Voordat de wijziging wordt toegepast, wordt in de wizard op onjuiste wijze de prompt "*wachtwoord synchronisatie uitschakelen*" weer gegeven. Wachtwoord synchronisatie blijft echter ingeschakeld nadat de wijziging is toegepast. Met deze oplossing wordt de vraag niet meer weer gegeven in de wizard.
+  * Het probleem treedt op wanneer u een bestaande Azure AD Connect-implementatie met wachtwoord synchronisatie hebt **ingeschakeld** en u probeert de aanmeldings methode voor gebruikers in te stellen als *Pass-Through-verificatie*. Voordat de wijziging wordt toegepast, wordt in de wizard op onjuiste wijze de prompt " *wachtwoord synchronisatie uitschakelen* " weer gegeven. Wachtwoord synchronisatie blijft echter ingeschakeld nadat de wijziging is toegepast. Met deze oplossing wordt de vraag niet meer weer gegeven in de wizard.
 
   * De wizard schakelt wachtwoord synchronisatie niet uit wanneer u de aanmeldings methode voor gebruikers bijwerkt met behulp van de *aanmeldings taak gebruiker wijzigen* . Dit is om onderbrekingen te voor komen aan klanten die wachtwoord synchronisatie willen blijven gebruiken, zelfs als ze Pass-Through-verificatie of Federatie inschakelen als de aanmeldings methode voor de primaire gebruiker.
 
   * Als u wachtwoord synchronisatie wilt uitschakelen nadat u de aanmeldings methode voor gebruikers hebt bijgewerkt, moet u de taak *synchronisatie configuratie aanpassen* in de wizard uitvoeren. Als u naar de pagina *optionele functies* navigeert, schakelt u de optie voor *wachtwoord synchronisatie* uit.
 
-  * Houd er rekening mee dat hetzelfde probleem ook optreedt als u naadloze eenmalige aanmelding wilt in-of uitschakelen. In het bijzonder hebt u een bestaande Azure AD Connect-implementatie met wachtwoord synchronisatie ingeschakeld en is de aanmeldings methode voor gebruikers al geconfigureerd als *Pass-Through-verificatie*. Met de taak *gebruiker aanmelden wijzigen* probeert u de optie *naadloze eenmalige aanmelding inschakelen in te scha kelen* terwijl de aanmeldings methode van de gebruiker geconfigureerd blijft als ' Pass-Through-verificatie '. Voordat de wijziging wordt toegepast, wordt in de wizard op onjuiste wijze de prompt "*wachtwoord synchronisatie uitschakelen*" weer gegeven. Wachtwoord synchronisatie blijft echter ingeschakeld nadat de wijziging is toegepast. Met deze oplossing wordt de vraag niet meer weer gegeven in de wizard.
+  * Houd er rekening mee dat hetzelfde probleem ook optreedt als u naadloze eenmalige aanmelding wilt in-of uitschakelen. In het bijzonder hebt u een bestaande Azure AD Connect-implementatie met wachtwoord synchronisatie ingeschakeld en is de aanmeldings methode voor gebruikers al geconfigureerd als *Pass-Through-verificatie*. Met de taak *gebruiker aanmelden wijzigen* probeert u de optie *naadloze eenmalige aanmelding inschakelen in te scha kelen* terwijl de aanmeldings methode van de gebruiker geconfigureerd blijft als ' Pass-Through-verificatie '. Voordat de wijziging wordt toegepast, wordt in de wizard op onjuiste wijze de prompt " *wachtwoord synchronisatie uitschakelen* " weer gegeven. Wachtwoord synchronisatie blijft echter ingeschakeld nadat de wijziging is toegepast. Met deze oplossing wordt de vraag niet meer weer gegeven in de wizard.
 
 * Er is een probleem opgelost met de *aanmeld taak change user* in azure AD Connect wizard:
 
-  * Het probleem treedt op wanneer u een bestaande Azure AD Connect-implementatie met wachtwoord synchronisatie hebt **uitgeschakeld**en u probeert de aanmeldings methode voor gebruikers in te stellen als *Pass-Through-verificatie*. Wanneer de wijziging wordt toegepast, maakt de wizard verificatie via pass-through-authenticatie en wachtwoord synchronisatie mogelijk. Met deze oplossing schakelt de wizard niet langer wachtwoord synchronisatie in.
+  * Het probleem treedt op wanneer u een bestaande Azure AD Connect-implementatie met wachtwoord synchronisatie hebt **uitgeschakeld** en u probeert de aanmeldings methode voor gebruikers in te stellen als *Pass-Through-verificatie*. Wanneer de wijziging wordt toegepast, maakt de wizard verificatie via pass-through-authenticatie en wachtwoord synchronisatie mogelijk. Met deze oplossing schakelt de wizard niet langer wachtwoord synchronisatie in.
 
-  * Voorheen was wachtwoord synchronisatie een vereiste voor het inschakelen van Pass-Through-verificatie. Wanneer u de aanmeldings methode voor gebruikers als *Pass-Through-verificatie*instelt, wordt zowel Pass-Through-verificatie als wachtwoord synchronisatie door de wizard ingeschakeld. Onlangs is wachtwoord synchronisatie verwijderd als een vereiste. Als onderdeel van Azure AD Connect versie 1.1.557.0 is er een wijziging aangebracht in Azure AD Connect om wachtwoord synchronisatie niet in te scha kelen wanneer u de aanmeldings methode voor gebruikers als *Pass-Through-verificatie*instelt. De wijziging is echter alleen toegepast op Azure AD Connect-installatie. Met deze oplossing wordt dezelfde wijziging ook toegepast op de aanmeldings taak *van de gebruiker wijzigen* .
+  * Voorheen was wachtwoord synchronisatie een vereiste voor het inschakelen van Pass-Through-verificatie. Wanneer u de aanmeldings methode voor gebruikers als *Pass-Through-verificatie* instelt, wordt zowel Pass-Through-verificatie als wachtwoord synchronisatie door de wizard ingeschakeld. Onlangs is wachtwoord synchronisatie verwijderd als een vereiste. Als onderdeel van Azure AD Connect versie 1.1.557.0 is er een wijziging aangebracht in Azure AD Connect om wachtwoord synchronisatie niet in te scha kelen wanneer u de aanmeldings methode voor gebruikers als *Pass-Through-verificatie* instelt. De wijziging is echter alleen toegepast op Azure AD Connect-installatie. Met deze oplossing wordt dezelfde wijziging ook toegepast op de aanmeldings taak *van de gebruiker wijzigen* .
 
   * Houd er rekening mee dat hetzelfde probleem ook optreedt als u naadloze eenmalige aanmelding wilt in-of uitschakelen. In het bijzonder hebt u een bestaande Azure AD Connect-implementatie met wachtwoord synchronisatie uitgeschakeld en is de aanmeldings methode voor gebruikers al geconfigureerd als *Pass-Through-verificatie*. Met de taak *gebruiker aanmelden wijzigen* probeert u de optie *naadloze eenmalige aanmelding inschakelen in te scha kelen* terwijl de aanmeldings methode van de gebruiker geconfigureerd blijft als ' Pass-Through-verificatie '. Wanneer de wijziging wordt toegepast, schakelt de wizard wachtwoord synchronisatie in. Met deze oplossing schakelt de wizard niet langer wachtwoord synchronisatie in. 
 
-* Er is een probleem opgelost waardoor Azure AD Connect upgrade mislukt met fout '*kan geen upgrade uitvoeren voor de synchronisatie service*'. Verder kan de synchronisatie service niet meer worden gestart met de gebeurtenis Fout '*de service kan niet worden gestart omdat de versie van de data base nieuwer is dan de versie van de geïnstalleerde bestanden*'. Het probleem treedt op wanneer de beheerder die de upgrade uitvoert, geen sysadmin-bevoegdheid heeft voor de SQL Server die wordt gebruikt door Azure AD Connect. Met deze oplossing vereist Azure AD Connect alleen dat de beheerder db_owner bevoegdheid heeft voor de ADSync-data base tijdens de upgrade.
+* Er is een probleem opgelost waardoor Azure AD Connect upgrade mislukt met fout ' *kan geen upgrade uitvoeren voor de synchronisatie service* '. Verder kan de synchronisatie service niet meer worden gestart met de gebeurtenis Fout ' *de service kan niet worden gestart omdat de versie van de data base nieuwer is dan de versie van de geïnstalleerde bestanden* '. Het probleem treedt op wanneer de beheerder die de upgrade uitvoert, geen sysadmin-bevoegdheid heeft voor de SQL Server die wordt gebruikt door Azure AD Connect. Met deze oplossing vereist Azure AD Connect alleen dat de beheerder db_owner bevoegdheid heeft voor de ADSync-data base tijdens de upgrade.
 
 * Er is een fout opgetreden bij het upgraden van een Azure AD Connect dat betrokken klanten die [naadloze eenmalige aanmelding](./how-to-connect-sso.md)hebben ingeschakeld. Nadat Azure AD Connect is bijgewerkt, wordt naadloze single Sign-On onjuist weer gegeven als uitgeschakeld in Azure AD Connect wizard, zelfs als de functie ingeschakeld en volledig functioneel blijft. Met deze oplossing wordt de functie nu correct weer gegeven als ingeschakeld in de wizard.
 
-* Er is een probleem opgelost dat ervoor zorgt dat Azure AD Connect wizard altijd de prompt '*bron anker configureren*' weergeeft op de pagina *gereed voor configuratie* , zelfs als er geen wijzigingen zijn aangebracht in het bron anker.
+* Er is een probleem opgelost dat ervoor zorgt dat Azure AD Connect wizard altijd de prompt ' *bron anker configureren* ' weergeeft op de pagina *gereed voor configuratie* , zelfs als er geen wijzigingen zijn aangebracht in het bron anker.
 
 * Bij het uitvoeren van hand matige in-place upgrade van Azure AD Connect moet de klant de globale beheerders referenties van de bijbehorende Azure AD-Tenant opgeven. Voorheen kan de upgrade door gaan, zelfs als de globale beheerders referenties bij een andere Azure AD-Tenant horen. Terwijl de upgrade lijkt te zijn voltooid, worden bepaalde configuraties niet op de juiste wijze bewaard met de upgrade. Met deze wijziging voor komt u dat de upgrade door de wizard wordt voortgezet als de opgegeven referenties niet overeenkomen met de Azure AD-Tenant.
 
@@ -480,7 +480,7 @@ Status: september 05 2017
 ### <a name="azure-ad-connect"></a>Azure AD Connect
 
 #### <a name="known-issues"></a>Bekende problemen
-* Er is een bekend probleem dat ervoor zorgt dat Azure AD Connect upgrade mislukt met de fout '*kan geen upgrade uitvoeren voor de synchronisatie service*'. Verder kan de synchronisatie service niet meer worden gestart met de gebeurtenis Fout '*de service kan niet worden gestart omdat de versie van de data base nieuwer is dan de versie van de geïnstalleerde bestanden*'. Het probleem treedt op wanneer de beheerder die de upgrade uitvoert, geen sysadmin-bevoegdheid heeft voor de SQL Server die wordt gebruikt door Azure AD Connect. Dbo-machtigingen zijn niet voldoende.
+* Er is een bekend probleem dat ervoor zorgt dat Azure AD Connect upgrade mislukt met de fout ' *kan geen upgrade uitvoeren voor de synchronisatie service* '. Verder kan de synchronisatie service niet meer worden gestart met de gebeurtenis Fout ' *de service kan niet worden gestart omdat de versie van de data base nieuwer is dan de versie van de geïnstalleerde bestanden* '. Het probleem treedt op wanneer de beheerder die de upgrade uitvoert, geen sysadmin-bevoegdheid heeft voor de SQL Server die wordt gebruikt door Azure AD Connect. Dbo-machtigingen zijn niet voldoende.
 
 * Er is een bekend probleem met Azure AD Connect-upgrade dat van invloed is op klanten die [naadloze eenmalige aanmelding](how-to-connect-sso.md)hebben ingeschakeld. Nadat Azure AD Connect is bijgewerkt, wordt de functie als uitgeschakeld weer gegeven in de wizard, zelfs als de functie ingeschakeld blijft. In toekomstige versies wordt een oplossing voor dit probleem verstrekt. Klanten die zich zorgen maken over dit weergave probleem kunnen het hand matig oplossen door naadloze single-Sign-On in te scha kelen in de wizard.
 

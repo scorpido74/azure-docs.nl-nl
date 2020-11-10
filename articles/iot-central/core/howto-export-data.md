@@ -4,16 +4,16 @@ description: De nieuwe gegevens export gebruiken om uw IoT-gegevens te exportere
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 09/15/2020
+ms.date: 11/05/2020
 ms.topic: how-to
 ms.service: iot-central
 ms.custom: contperfq1
-ms.openlocfilehash: 2cbdeca41746099643fb06ff5861a39b2e032b33
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: b16880f42cab21c1437d9adcbeb9825d77475e0e
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126700"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413170"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>IoT-gegevens exporteren naar Cloud bestemmingen met behulp van gegevens export
 
@@ -65,7 +65,7 @@ Als u geen bestaande Event Hubs naam ruimte hebt om naar te exporteren, voert u 
     - Kopieer de primaire of secundaire connection string. U gebruikt deze connection string om een nieuwe bestemming in IoT Central in te stellen.
     - U kunt ook een connection string genereren voor de volledige Event Hubs naam ruimte:
         1. Ga naar de naam ruimte van uw Event Hubs in de Azure Portal.
-        2. Onder **instellingen**selecteert u **beleid voor gedeelde toegang**
+        2. Onder **instellingen** selecteert u **beleid voor gedeelde toegang**
         3. Maak een nieuwe sleutel of kies een bestaande sleutel die machtigingen voor **verzenden** heeft.
         4. De primaire of secundaire connection string kopiëren
         
@@ -85,7 +85,7 @@ Als u geen bestaande Service Bus naam ruimte hebt om naar te exporteren, voert u
     - Kopieer de primaire of secundaire connection string. U gebruikt deze connection string om een nieuwe bestemming in IoT Central in te stellen.
     - U kunt ook een connection string genereren voor de volledige Service Bus naam ruimte:
         1. Ga naar de naam ruimte van uw Service Bus in de Azure Portal.
-        2. Onder **instellingen**selecteert u **beleid voor gedeelde toegang**
+        2. Onder **instellingen** selecteert u **beleid voor gedeelde toegang**
         3. Maak een nieuwe sleutel of kies een bestaande sleutel die machtigingen voor **verzenden** heeft.
         4. De primaire of secundaire connection string kopiëren
 
@@ -102,9 +102,9 @@ Als u geen bestaand Azure Storage-account hebt om naar te exporteren, voert u de
     |Standard|Blob Storage|
     |Premium|Blob-opslag blok keren|
 
-1. Als u een container in uw opslag account wilt maken, gaat u naar uw opslag account. Selecteer onder **BLOB**-service **Bladeren door blobs**. Selecteer **+ container** aan de bovenkant om een nieuwe container te maken.
+1. Als u een container in uw opslag account wilt maken, gaat u naar uw opslag account. Selecteer onder **BLOB** -service **Bladeren door blobs**. Selecteer **+ container** aan de bovenkant om een nieuwe container te maken.
 
-1. Genereer een connection string voor uw opslag account door naar **instellingen > toegangs sleutels**te gaan. Kopieer een van de twee verbindings reeksen.
+1. Genereer een connection string voor uw opslag account door naar **instellingen > toegangs sleutels** te gaan. Kopieer een van de twee verbindings reeksen.
 
 ### <a name="create-a-webhook-endpoint"></a>Een webhook-eind punt maken
 
@@ -135,28 +135,32 @@ Nu u een bestemming hebt voor het exporteren van uw gegevens naar, moet u de geg
     |  Telemetrie | Telemetrie-berichten van apparaten in bijna realtime exporteren. Elk geëxporteerd bericht bevat de volledige inhoud van het bericht van het oorspronkelijke apparaat, genormaliseerd.   |  [Indeling voor telemetrie-berichten](#telemetry-format)   |
     | Eigenschaps wijzigingen | Wijzigingen in de eigenschappen van het apparaat en de cloud in bijna realtime exporteren. Wijzigingen in de gerapporteerde waarden worden geëxporteerd voor eigenschappen van alleen-lezen apparaten. Voor eigenschappen voor lezen/schrijven worden zowel gerapporteerde als de gewenste waarden geëxporteerd. | [Bericht indeling voor wijzigen van eigenschap](#property-changes-format) |
 
+<a name="DataExportFilters"></a>
 1. Voeg eventueel filters toe om de hoeveelheid geëxporteerde gegevens te verminderen. Er zijn verschillende typen filters beschikbaar voor elk type gegevens export:
 
     Als u telemetrie wilt filteren, kunt u het volgende doen:
 
     - **Filter** de geëxporteerde stroom zodanig dat deze alleen telemetrie bevat van apparaten die overeenkomen met de apparaatnaam, de apparaat-id en de filter voorwaarde voor de Apparaatbeheer.
     - Mogelijkheden **filteren** : als u een telemetrie-item in de vervolg keuzelijst **naam** kiest, bevat de geëxporteerde stroom alleen telemetriegegevens die voldoen aan de filter voorwaarde. Als u een apparaat-of Cloud eigenschaps item in de vervolg keuzelijst **naam** kiest, bevat de geëxporteerde stroom alleen telemetrie van apparaten met eigenschappen die overeenkomen met de filter voorwaarde.
-    - **Filter voor bericht eigenschappen**: apparaten die gebruikmaken van de apparaat-sdk's kunnen *bericht eigenschappen* of *toepassings eigenschappen* voor elk telemetrie-bericht verzenden. De eigenschappen zijn een verzameling sleutel-waardeparen die het bericht labelen met aangepaste id's. Als u een bericht eigenschaps filter wilt maken, voert u de bericht eigenschap sleutel in die u zoekt en geeft u een voor waarde op. Alleen telemetrie-berichten met eigenschappen die overeenkomen met de opgegeven filter voorwaarde, worden geëxporteerd. De volgende teken reeks vergelijkings operatoren worden ondersteund: is gelijk aan, is niet gelijk aan, bevat, niet bevat, bestaat niet. Meer [informatie over toepassings eigenschappen van IOT hub docs](../../iot-hub/iot-hub-devguide-messages-construct.md).
+    - **Filter voor bericht eigenschappen** : apparaten die gebruikmaken van de apparaat-sdk's kunnen *bericht eigenschappen* of *toepassings eigenschappen* voor elk telemetrie-bericht verzenden. De eigenschappen zijn een verzameling sleutel-waardeparen die het bericht labelen met aangepaste id's. Als u een bericht eigenschaps filter wilt maken, voert u de bericht eigenschap sleutel in die u zoekt en geeft u een voor waarde op. Alleen telemetrie-berichten met eigenschappen die overeenkomen met de opgegeven filter voorwaarde, worden geëxporteerd. De volgende teken reeks vergelijkings operatoren worden ondersteund: is gelijk aan, is niet gelijk aan, bevat, niet bevat, bestaat niet. Meer [informatie over toepassings eigenschappen van IOT hub docs](../../iot-hub/iot-hub-devguide-messages-construct.md).
 
     Als u de wijzigingen wilt filteren op Eigenschappen, gebruikt u een **functie filter**. Kies een eigenschaps item in de vervolg keuzelijst. De geëxporteerde stroom bevat alleen wijzigingen in de geselecteerde eigenschap die voldoen aan de filter voorwaarde.
 
+<a name="DataExportEnrichmnents"></a>
 1. Eventueel verrijkte geëxporteerde berichten met aanvullende meta gegevens van het sleutel/waarde-paar. De volgende verrijkingen zijn beschikbaar voor de gegevens export typen telemetrie en eigenschaps wijzigingen:
 
-    - **Aangepaste teken reeks**: Hiermee voegt u een aangepaste statische teken reeks aan elk bericht toe. Voer een sleutel in en voer een wille keurige teken reeks waarde in.
-    - **Eigenschap**: Hiermee wordt de huidige waarde van de eigenschap voor het apparaat of de eigenschap van de cloud aan elk bericht toegevoegd. Voer een wille keurige sleutel in en kies een apparaat-of Cloud eigenschap. Als het geëxporteerde bericht afkomstig is van een apparaat dat niet de opgegeven eigenschap heeft, wordt de verrijking niet door het geëxporteerde bericht opgehaald.
+    - **Aangepaste teken reeks** : Hiermee voegt u een aangepaste statische teken reeks aan elk bericht toe. Voer een sleutel in en voer een wille keurige teken reeks waarde in.
+    - **Eigenschap** : Hiermee wordt de huidige waarde van de eigenschap voor het apparaat of de eigenschap van de cloud aan elk bericht toegevoegd. Voer een wille keurige sleutel in en kies een apparaat-of Cloud eigenschap. Als het geëxporteerde bericht afkomstig is van een apparaat dat niet de opgegeven eigenschap heeft, wordt de verrijking niet door het geëxporteerde bericht opgehaald.
 
 1. Voeg een nieuwe bestemming toe of Voeg een bestemming toe die u al hebt gemaakt. Selecteer de koppeling **een nieuwe maken** en voeg de volgende gegevens toe:
 
-    - **Doel naam**: de weergave naam van de bestemming in IOT Central.
-    - **Doel type**: Kies het type bestemming. Als u uw bestemming nog niet hebt ingesteld, raadpleegt u [export bestemming instellen](#set-up-export-destination).
+    - **Doel naam** : de weergave naam van de bestemming in IOT Central.
+    - **Doel type** : Kies het type bestemming. Als u uw bestemming nog niet hebt ingesteld, raadpleegt u [export bestemming instellen](#set-up-export-destination).
     - Plak voor Azure Event Hubs, Azure Service Bus wachtrij of onderwerp, de connection string voor uw resource en voer indien nodig de naam van het hoofdletter gevoelige Event Hub, de wachtrij of het onderwerp in.
     - Plak voor Azure Blob Storage de connection string voor uw resource en voer zo nodig de hoofdletter gevoelige container naam in.
-    - Plak voor webhook de call back-URL voor het webhook-eind punt.
+    - Plak voor webhook de call back-URL voor het webhook-eind punt. U kunt desgewenst webhook-autorisatie (OAuth 2,0 en autorisatie token) configureren en aangepaste headers toevoegen. 
+        - Voor OAuth 2,0 wordt alleen de client referentie stroom ondersteund. Wanneer de bestemming wordt opgeslagen, wordt IoT Central met uw OAuth-provider gecommuniceerd om een autorisatie token op te halen. Dit token wordt gekoppeld aan de header Authorization voor elk bericht dat naar deze bestemming wordt verzonden.
+        - Voor autorisatie token kunt u een token waarde opgeven die direct wordt gekoppeld aan de header Authorization voor elk bericht dat naar deze bestemming wordt verzonden.
     - Selecteer **Maken**.
 
 1. Selecteer **+ bestemming** en kies een bestemming in de vervolg keuzelijst. U kunt Maxi maal vijf bestemmingen aan één export toevoegen.
@@ -194,7 +198,7 @@ Elk geëxporteerd bericht bevat een genormaliseerde vorm van het volledige beric
 - `schema`: De naam en versie van het payload-schema.
 - `templateId`: De ID van de Device-sjabloon die aan het apparaat is gekoppeld.
 - `enrichments`: Eventuele verrijkingen die zijn ingesteld voor de export.
-- `messageProperties`: Extra eigenschappen die het apparaat met het bericht heeft verzonden. Deze eigenschappen worden ook wel *toepassings eigenschappen*genoemd. [Meer informatie over IOT hub docs](../../iot-hub/iot-hub-devguide-messages-construct.md).
+- `messageProperties`: Extra eigenschappen die het apparaat met het bericht heeft verzonden. Deze eigenschappen worden ook wel *toepassings eigenschappen* genoemd. [Meer informatie over IOT hub docs](../../iot-hub/iot-hub-devguide-messages-construct.md).
 
 Voor Event Hubs en Service Bus, IoT Central een nieuw bericht snel exporteren nadat het bericht van een apparaat is ontvangen. In de gebruikers eigenschappen (ook wel toepassings eigenschappen genoemd) van elk bericht, de `iotcentral-device-id` , en `iotcentral-application-id` `iotcentral-message-source` worden automatisch opgenomen.
 

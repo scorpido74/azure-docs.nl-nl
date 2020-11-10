@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: f2162ee6df551e1bc64741229aec99d5e697fd29
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8e2144a61d83f6c7dece8f34232031192b51cde8
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91395988"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412694"
 ---
 # <a name="security-control-data-protection"></a>Beveiligings beheer: gegevens beveiliging
 
@@ -26,7 +26,7 @@ Aanbevelingen voor gegevens beveiliging zijn gericht op het adresseren van probl
 
 Gebruik Tags om Azure-resources te helpen bij het bijhouden of verwerken van gevoelige informatie.
 
-- [Tags maken en gebruiken](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [Tags maken en gebruiken](../../azure-resource-manager/management/tag-resources.md)
 
 ## <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: systemen isoleren die gevoelige informatie opslaan of verwerken
 
@@ -36,11 +36,11 @@ Gebruik Tags om Azure-resources te helpen bij het bijhouden of verwerken van gev
 
 Implementeer isolatie met afzonderlijke abonnementen en beheer groepen voor afzonderlijke beveiligings domeinen, zoals omgevings type en gegevens gevoeligheids niveau. U kunt het toegangs niveau voor uw Azure-resources beperken die worden vereist door uw toepassingen en bedrijfs omgevingen. U kunt de toegang tot Azure-resources beheren via Azure op rollen gebaseerd toegangs beheer (Azure RBAC). 
 
-- [Aanvullende Azure-abonnementen maken](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+- [Aanvullende Azure-abonnementen maken](../../cost-management-billing/manage/create-subscription.md)
 
-- [Beheergroepen maken](https://docs.microsoft.com/azure/governance/management-groups/create)
+- [Beheergroepen maken](../../governance/management-groups/create-management-group-portal.md)
 
-- [Tags maken en gebruiken](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [Tags maken en gebruiken](../../azure-resource-manager/management/tag-resources.md)
 
 ## <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4,3: niet-geautoriseerde overdracht van gevoelige gegevens controleren en blok keren
 
@@ -52,7 +52,7 @@ Maak gebruik van een oplossing van een derde partij in azure Marketplace op netw
 
 Voor het onderliggende platform dat door micro soft wordt beheerd, behandelt micro soft alle inhoud van de klant als gevoelig en beschermd tegen verlies en bloot stelling van klant gegevens. Om ervoor te zorgen dat klant gegevens binnen Azure veilig blijven, heeft micro soft een reeks robuuste besturings elementen en mogelijkheden voor gegevens bescherming geïmplementeerd en onderhouden.
 
-- [Informatie over beveiliging van klanten in azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+- [Informatie over beveiliging van klanten in azure](../fundamentals/protection-customer-data.md)
 
 ## <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: alle gevoelige gegevens in de overdracht versleutelen
 
@@ -64,7 +64,7 @@ Versleutel alle gevoelige gegevens tijdens de overdracht. Zorg ervoor dat alle c
 
 Volg Azure Security Center aanbevelingen voor het versleutelen van de rest en de versleuteling in de door Voer, indien van toepassing.
 
-- [Meer informatie over versleuteling in transit met Azure](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit)
+- [Meer informatie over versleuteling in transit met Azure](../fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
 ## <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4,5: een actief detectie hulpprogramma gebruiken om gevoelige gegevens te identificeren
 
@@ -78,21 +78,21 @@ Gebruik Azure Information Protection voor het identificeren van gevoelige gegeve
 
 Gebruik Azure SQL Information Protection om u te helpen bij het classificeren en labelen van informatie die is opgeslagen in Azure SQL Database.
 
-- [Azure SQL-gegevens detectie implementeren](https://docs.microsoft.com/azure/sql-database/sql-database-data-discovery-and-classification)
+- [Azure SQL-gegevens detectie implementeren](../../azure-sql/database/data-discovery-and-classification-overview.md)
 
-- [Azure Information Protection implementeren](https://docs.microsoft.com/azure/information-protection/deployment-roadmap)
+- [Azure Information Protection implementeren](/azure/information-protection/deployment-roadmap)
 
-- [Informatie over beveiliging van klanten in azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+- [Informatie over beveiliging van klanten in azure](../fundamentals/protection-customer-data.md)
 
 ## <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: Azure RBAC gebruiken om de toegang tot resources te beheren
 
 | Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 4.6 | 14,6 | Klant |
+| 4,6 | 14,6 | Klant |
 
 Gebruik Azure RBAC (op rollen gebaseerd toegangs beheer) om de toegang tot gegevens en resources te beheren. anders kunt u gebruikmaken van specifieke methoden voor toegangs beheer op basis van een service.
 
-- [Azure RBAC configureren](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+- [Azure RBAC configureren](../../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4,7: voor komen dat gegevens verlies op basis van host wordt gebruikt voor het afdwingen van toegangs beheer
 
@@ -104,7 +104,7 @@ Als dat nodig is voor de naleving van de reken bronnen, implementeert u een hulp
 
 Voor het onderliggende platform dat door micro soft wordt beheerd, behandelt micro soft alle inhoud van de klant als gevoelig en gaat u naar een fantastische lengte om te beschermen tegen verlies en bloot stelling van klant gegevens. Om ervoor te zorgen dat klant gegevens binnen Azure veilig blijven, heeft micro soft een reeks robuuste besturings elementen en mogelijkheden voor gegevens bescherming geïmplementeerd en onderhouden.
 
-- [Informatie over beveiliging van klanten in azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+- [Informatie over beveiliging van klanten in azure](../fundamentals/protection-customer-data.md)
 
 ## <a name="48-encrypt-sensitive-information-at-rest"></a>4,8: gevoelige informatie op rest versleutelen
 
@@ -114,9 +114,9 @@ Voor het onderliggende platform dat door micro soft wordt beheerd, behandelt mic
 
 Gebruik versleuteling in rust voor alle Azure-resources. Micro soft raadt u aan Azure te laten beheren van uw versleutelings sleutels, maar in sommige gevallen kunt u ook uw eigen sleutels beheren. 
 
-- [Meer informatie over versleuteling in de rest van Azure](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
+- [Meer informatie over versleuteling in de rest van Azure](../fundamentals/encryption-atrest.md)
 
-- [Door de klant beheerde versleutelings sleutels configureren](https://docs.microsoft.com/azure/storage/common/storage-encryption-keys-portal)
+- [Door de klant beheerde versleutelings sleutels configureren](../../storage/common/customer-managed-keys-configure-key-vault.md)
 
 ## <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4,9: wijzigingen in essentiële Azure-resources vastleggen en waarschuwen
 
@@ -126,7 +126,7 @@ Gebruik versleuteling in rust voor alle Azure-resources. Micro soft raadt u aan 
 
 Gebruik Azure Monitor met het Azure-activiteiten logboek om waarschuwingen te maken voor wanneer wijzigingen worden aangebracht in essentiële Azure-resources.
 
-- [Waarschuwingen maken voor gebeurtenissen in het Azure-activiteiten logboek](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+- [Waarschuwingen maken voor gebeurtenissen in het Azure-activiteiten logboek](../../azure-monitor/platform/alerts-activity-log.md)
 
 
 ## <a name="next-steps"></a>Volgende stappen

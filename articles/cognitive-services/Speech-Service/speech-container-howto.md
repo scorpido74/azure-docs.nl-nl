@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/23/2020
+ms.date: 11/09/2020
 ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: on-premises, docker, container
-ms.openlocfilehash: 6f04e40b0b2baa496faf8001684304c5df78ec20
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: f91d96732c872c6f93ee2de4c5c3eba5fe5ffbc4
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92496137"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412235"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>Docker-containers voor de speech service-Api's installeren en uitvoeren 
 
@@ -41,10 +41,10 @@ Met spraakcontainers kunnen klanten een spraaktoepassingsarchitectuur maken die 
 
 | Container | Functies | Laatste |
 |--|--|--|
-| Spraak naar tekst | Analyseert sentiment en transcribeert doorlopend realtime spraak of batch audio-opnamen met tussenliggende resultaten.  | 2.5.0 |
-| Custom Speech-naar-tekst | Door gebruik te maken van een aangepast model van de [Custom speech Portal](https://speech.microsoft.com/customspeech), transcribeert doorlopend realtime spraak of batch opnames in tekst met tussenliggende resultaten. | 2.5.0 |
-| Tekst naar spraak | Hiermee wordt tekst geconverteerd naar een spreek spraak met tekst zonder opmaak of een SSML (Speech synthese Markup Language). | 1.7.0 |
-| Aangepaste tekst-naar-spraak | Door gebruik te maken van een aangepast model van de [aangepaste Voice Portal](https://aka.ms/custom-voice-portal), converteert u tekst naar een natuurlijk geluids fragment met de invoer van een tekst zonder opmaak of een SSML (Speech synthese Markup Language). | 1.7.0 |
+| Spraak naar tekst | Analyseert sentiment en transcribeert doorlopend realtime spraak of batch audio-opnamen met tussenliggende resultaten.  | 2.6.0 |
+| Custom Speech-naar-tekst | Door gebruik te maken van een aangepast model van de [Custom speech Portal](https://speech.microsoft.com/customspeech), transcribeert doorlopend realtime spraak of batch opnames in tekst met tussenliggende resultaten. | 2.6.0 |
+| Tekst naar spraak | Hiermee wordt tekst geconverteerd naar een spreek spraak met tekst zonder opmaak of een SSML (Speech synthese Markup Language). | 1.8.0 |
+| Aangepaste tekst-naar-spraak | Door gebruik te maken van een aangepast model van de [aangepaste Voice Portal](https://aka.ms/custom-voice-portal), converteert u tekst naar een natuurlijk geluids fragment met de invoer van een tekst zonder opmaak of een SSML (Speech synthese Markup Language). | 1.8.0 |
 | Spraak Taaldetectie | De taal detecteren die in audio bestanden wordt gesp roken. | 1.0 |
 | Tekst-naar-spraak Neural | Hiermee wordt tekst geconverteerd naar spraak herkenning met behulp van diepe Neural-netwerk technologie, waardoor natuurlijk gesynthesizerde spraak kan worden gebruikt. | 1.2.0 |
 
@@ -56,9 +56,9 @@ De volgende vereisten voordat u spraak containers gebruikt:
 
 | Vereist | Doel |
 |--|--|
-| Docker-engine | De docker-engine moet zijn geïnstalleerd op een [hostcomputer](#the-host-computer). Docker biedt pakketten waarmee de Docker-omgeving op [MacOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) en [Linux](https://docs.docker.com/engine/installation/#supported-platforms) kan worden geconfigureerd. Zie het [Docker-overzicht](https://docs.docker.com/engine/docker-overview/) voor een inleiding tot de basisprincipes van Docker en containers.<br><br> Docker moet worden geconfigureerd zodat de containers verbinding kunnen maken met en facturerings gegevens kunnen verzenden naar Azure. <br><br> **In Windows**moet docker ook worden geconfigureerd voor de ondersteuning van Linux-containers.<br><br> |
+| Docker-engine | De docker-engine moet zijn geïnstalleerd op een [hostcomputer](#the-host-computer). Docker biedt pakketten waarmee de Docker-omgeving op [MacOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) en [Linux](https://docs.docker.com/engine/installation/#supported-platforms) kan worden geconfigureerd. Zie het [Docker-overzicht](https://docs.docker.com/engine/docker-overview/) voor een inleiding tot de basisprincipes van Docker en containers.<br><br> Docker moet worden geconfigureerd zodat de containers verbinding kunnen maken met en facturerings gegevens kunnen verzenden naar Azure. <br><br> **In Windows** moet docker ook worden geconfigureerd voor de ondersteuning van Linux-containers.<br><br> |
 | Vertrouwd met docker | U moet een basis kennis hebben van docker-concepten, zoals registers, opslag plaatsen, containers en container installatie kopieën, en kennis van basis `docker` opdrachten. |
-| Spraak resource | Als u deze containers wilt gebruiken, hebt u het volgende nodig:<br><br>Een Azure- _spraak_ bron om de bijbehorende API-sleutel en eind punt-URI op te halen. Beide waarden zijn beschikbaar op het **spraak** overzicht van de Azure Portal en op de pagina sleutels. Ze zijn beide nodig om de container te starten.<br><br>**{API_KEY}**: een van de twee beschik bare bron sleutels op de pagina **sleutels**<br><br>**{ENDPOINT_URI}**: het eind punt op de pagina **overzicht** |
+| Spraak resource | Als u deze containers wilt gebruiken, hebt u het volgende nodig:<br><br>Een Azure- _spraak_ bron om de bijbehorende API-sleutel en eind punt-URI op te halen. Beide waarden zijn beschikbaar op het **spraak** overzicht van de Azure Portal en op de pagina sleutels. Ze zijn beide nodig om de container te starten.<br><br>**{API_KEY}** : een van de twee beschik bare bron sleutels op de pagina **sleutels**<br><br>**{ENDPOINT_URI}** : het eind punt op de pagina **overzicht** |
 
 [!INCLUDE [Gathering required parameters](../containers/includes/container-gathering-required-parameters.md)]
 
@@ -119,7 +119,7 @@ Container installatie kopieën voor spraak zijn beschikbaar in de volgende Conta
 |-----------|------------|
 | Custom Speech-naar-tekst | `mcr.microsoft.com/azure-cognitive-services/speechservices/custom-speech-to-text:latest` |
 
-# <a name="text-to-speech"></a>[Tekst naar spraak](#tab/tts)
+# <a name="text-to-speech"></a>[Tekst-naar-spraak](#tab/tts)
 
 | Container | Opslagplaats |
 |-----------|------------|
@@ -156,7 +156,7 @@ Container installatie kopieën voor spraak zijn beschikbaar in de volgende Conta
 
 #### <a name="docker-pull-for-the-speech-to-text-container"></a>Docker-pull voor de spraak-naar-tekst-container
 
-Gebruik de opdracht [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) om een container installatie kopie te downloaden uit het REGI ster van container voorbeelden.
+Gebruik de opdracht [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) om een container installatie kopie te downloaden uit het micro soft container Registry.
 
 ```Docker
 docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/speech-to-text:latest
@@ -176,7 +176,7 @@ Alle tags, met uitzonde ring van voor, `latest` hebben de volgende indeling en z
 De volgende code is een voor beeld van de indeling:
 
 ```
-2.5.0-amd64-en-us-preview
+2.6.0-amd64-en-us
 ```
 
 Zie voor alle ondersteunde land instellingen van de **spraak-naar-tekst** -container Tags voor [spraak-naar-tekst-afbeelding](../containers/container-image-tags.md#speech-to-text).
@@ -185,7 +185,7 @@ Zie voor alle ondersteunde land instellingen van de **spraak-naar-tekst** -conta
 
 #### <a name="docker-pull-for-the-custom-speech-to-text-container"></a>Docker-pull voor de Custom Speech-naar-tekst-container
 
-Gebruik de opdracht [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) om een container installatie kopie te downloaden uit het REGI ster van container voorbeelden.
+Gebruik de opdracht [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) om een container installatie kopie te downloaden uit het micro soft container Registry.
 
 ```Docker
 docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/custom-speech-to-text:latest
@@ -194,11 +194,11 @@ docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/custom-spe
 > [!NOTE]
 > De `locale` en `voice` voor aangepaste spraak containers worden bepaald door het aangepaste model dat door de container is opgenomen.
 
-# <a name="text-to-speech"></a>[Tekst naar spraak](#tab/tts)
+# <a name="text-to-speech"></a>[Tekst-naar-spraak](#tab/tts)
 
 #### <a name="docker-pull-for-the-text-to-speech-container"></a>Docker-pull voor de tekst-naar-spraak-container
 
-Gebruik de opdracht [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) om een container installatie kopie te downloaden uit het REGI ster van container voorbeelden.
+Gebruik de opdracht [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) om een container installatie kopie te downloaden uit het micro soft container Registry.
 
 ```Docker
 docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/text-to-speech:latest
@@ -218,7 +218,7 @@ Alle tags, met uitzonde ring van voor, `latest` hebben de volgende indeling en z
 De volgende code is een voor beeld van de indeling:
 
 ```
-1.6.0-amd64-en-us-ariarus-preview
+1.8.0-amd64-en-us-ariarus
 ```
 
 Zie [tekst-naar-spraak-afbeeldings Tags](../containers/container-image-tags.md#text-to-speech)voor alle ondersteunde land instellingen en overeenkomstige stemmen van de **tekst-naar-spraak** -container.
@@ -230,7 +230,7 @@ Zie [tekst-naar-spraak-afbeeldings Tags](../containers/container-image-tags.md#t
 
 #### <a name="docker-pull-for-the-neural-text-to-speech-container"></a>Docker-pull voor de Neural tekst-naar-spraak-container
 
-Gebruik de opdracht [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) om een container installatie kopie te downloaden uit het REGI ster van container voorbeelden.
+Gebruik de opdracht [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) om een container installatie kopie te downloaden uit het micro soft container Registry.
 
 ```Docker
 docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/neural-text-to-speech:latest
@@ -262,7 +262,7 @@ Voor alle ondersteunde land instellingen en de overeenkomstige stemmen van de **
 
 #### <a name="docker-pull-for-the-custom-text-to-speech-container"></a>Docker-pull voor de aangepaste tekst-naar-spraak-container
 
-Gebruik de opdracht [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) om een container installatie kopie te downloaden uit het REGI ster van container voorbeelden.
+Gebruik de opdracht [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) om een container installatie kopie te downloaden uit het micro soft container Registry.
 
 ```Docker
 docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/custom-text-to-speech:latest
@@ -275,7 +275,7 @@ docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/custom-tex
 
 #### <a name="docker-pull-for-the-speech-language-detection-container"></a>Docker-pull voor de spraak Taaldetectie container
 
-Gebruik de opdracht [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) om een container installatie kopie te downloaden uit het REGI ster van container voorbeelden.
+Gebruik de opdracht [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) om een container installatie kopie te downloaden uit het micro soft container Registry.
 
 ```Docker
 docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/language-detection:latest
@@ -315,6 +315,12 @@ Met deze opdracht gebeurt het volgende:
 
 
 #### <a name="analyze-sentiment-on-the-speech-to-text-output"></a>Sentiment analyseren voor de uitvoer van spraak naar tekst 
+Vanaf v 2.6.0 van de spraak-naar-tekst-container moet u TextAnalytics 3,0 API-eind punt gebruiken in plaats van de preview-versie. Bijvoorbeeld
+* `https://westus2.api.cognitive.microsoft.com/text/analytics/v3.0/sentiment`
+* `https://localhost:5000/text/analytics/v3.0/sentiment`
+
+> [!NOTE]
+> De Text Analytics- `v3.0` API is niet achterwaarts compatibel met Text Analytics `v3.0-preview.1` . Als u de nieuwste ondersteuning voor sentiment-functies wilt, gebruikt u `v2.6.0` de afbeelding voor spraak-naar-tekst container en Text Analytics `v3.0` .
 
 Vanaf v 2.2.0 van de spraak-naar-tekst-container, kunt u de [API voor sentiment Analysis v3](../text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md) op de uitvoer aanroepen. Voor het aanroepen van sentiment-analyse hebt u een Text Analytics-API resource-eind punt nodig. Bijvoorbeeld: 
 * `https://westus2.api.cognitive.microsoft.com/text/analytics/v3.0-preview.1/sentiment`
@@ -338,6 +344,26 @@ Met deze opdracht gebeurt het volgende:
 
 * Voert dezelfde stappen uit als hierboven.
 * Slaat een Text Analytics-API-eind punt en-sleutel op voor het verzenden van sentiment-analyse aanvragen. 
+
+#### <a name="phraselist-v2-on-the-speech-to-text-output"></a>Phraselist v2 op de uitvoer van spraak naar tekst 
+
+Vanaf v 2.6.0 van de spraak-naar-tekst-container, kunt u de uitvoer ophalen met uw eigen zinsdelen, ofwel de hele zin, ofwel zinsdelen in het midden. Bijvoorbeeld *de hoge man* in de volgende zin:
+
+* "Dit is een zin dat **de man** dit een tweede zin is."
+
+Als u een woordgroepen lijst wilt configureren, moet u uw eigen zinsdelen toevoegen wanneer u de aanroep uitvoert. Bijvoorbeeld:
+
+```python
+    phrase="the tall man"
+    recognizer = speechsdk.SpeechRecognizer(
+        speech_config=dict_speech_config,
+        audio_config=audio_config)
+    phrase_list_grammer = speechsdk.PhraseListGrammar.from_recognizer(recognizer)
+    phrase_list_grammer.addPhrase(phrase)
+
+```
+
+Als u meerdere woord groepen wilt toevoegen, roept u `.addPhrase()` elke woord groep aan om deze aan de woordgroepen lijst toe te voegen. 
 
 
 # <a name="custom-speech-to-text"></a>[Custom Speech-naar-tekst](#tab/cstt)
@@ -392,7 +418,47 @@ Met deze opdracht gebeurt het volgende:
 * Als het aangepaste model eerder is gedownload, `ModelId` wordt de genegeerd.
 * Verwijdert de container automatisch nadat deze is afgesloten. De container installatie kopie is nog steeds beschikbaar op de hostcomputer.
 
-# <a name="text-to-speech"></a>[Tekst naar spraak](#tab/tts)
+
+#### <a name="base-model-download-on-the-custom-speech-to-text-container"></a>Het basis model downloaden van de aangepaste spraak-naar-tekst-container  
+Vanaf v 2.6.0 van de aangepaste-spraak-naar-tekst-container, kunt u de beschik bare basis model gegevens ophalen met behulp van de optie `BaseModelLocale=<locale>` . Met deze optie krijgt u een lijst met beschik bare basis modellen voor die land instelling onder uw facturerings account. Bijvoorbeeld:
+
+```bash
+docker run --rm -it \
+mcr.microsoft.com/azure-cognitive-services/speechservices/custom-speech-to-text \
+BaseModelLocale={LOCALE} \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
+```
+
+Met deze opdracht gebeurt het volgende:
+
+* Hiermee wordt een *Custom speech-naar-tekst* -container uitgevoerd vanuit de container installatie kopie.
+* Controleer en retour neer de beschik bare basis modellen van de land instellingen voor de doel groep.
+
+De uitvoer geeft u een lijst van basis modellen met de land instellingen voor de gegevens, de model-id en de aanmaak datum en-tijd. U kunt de model-id gebruiken om het specifieke basis model dat u wilt downloaden en te gebruiken. Bijvoorbeeld:
+```
+Checking available base model for en-us
+2020/10/30 21:54:20 [Info] Searching available base models for en-us
+2020/10/30 21:54:21 [Info] [Base model] Locale: en-us, CreatedDate: 2016-11-04T08:23:42Z, Id: a3d8aab9-6f36-44cd-9904-b37389ce2bfa
+2020/10/30 21:54:21 [Info] [Base model] Locale: en-us, CreatedDate: 2016-11-04T12:01:02Z, Id: cc7826ac-5355-471d-9bc6-a54673d06e45
+2020/10/30 21:54:21 [Info] [Base model] Locale: en-us, CreatedDate: 2017-08-17T12:00:00Z, Id: a1f8db59-40ff-4f0e-b011-37629c3a1a53
+2020/10/30 21:54:21 [Info] [Base model] Locale: en-us, CreatedDate: 2018-04-16T11:55:00Z, Id: c7a69da3-27de-4a4b-ab75-b6716f6321e5
+2020/10/30 21:54:21 [Info] [Base model] Locale: en-us, CreatedDate: 2018-09-21T15:18:43Z, Id: da494a53-0dad-4158-b15f-8f9daca7a412
+2020/10/30 21:54:21 [Info] [Base model] Locale: en-us, CreatedDate: 2018-10-19T11:28:54Z, Id: 84ec130b-d047-44bf-a46d-58c1ac292ca7
+2020/10/30 21:54:21 [Info] [Base model] Locale: en-us, CreatedDate: 2018-11-26T07:59:09Z, Id: ee5c100f-152f-4ae5-9e9d-014af3c01c56
+2020/10/30 21:54:21 [Info] [Base model] Locale: en-us, CreatedDate: 2018-11-26T09:21:55Z, Id: d04959a6-71da-4913-9997-836793e3c115
+2020/10/30 21:54:21 [Info] [Base model] Locale: en-us, CreatedDate: 2019-01-11T10:04:19Z, Id: 488e5f23-8bc5-46f8-9ad8-ea9a49a8efda
+2020/10/30 21:54:21 [Info] [Base model] Locale: en-us, CreatedDate: 2019-02-18T14:37:57Z, Id: 0207b3e6-92a8-4363-8c0e-361114cdd719
+2020/10/30 21:54:21 [Info] [Base model] Locale: en-us, CreatedDate: 2019-03-03T17:34:10Z, Id: 198d9b79-2950-4609-b6ec-f52254074a05
+2020/10/30 21:54:21 [Fatal] Please run this tool again and assign --modelId '<one above base model id>'. If no model id listed above, it means currently there is no available base model for en-us
+```
+
+#### <a name="custom-pronunciation-on-the-custom-speech-to-text-container"></a>Aangepaste uitspraak van de aangepaste spraak-naar-tekst-container 
+Vanaf v 2.5.0 van de functie voor aangepaste spraak naar tekst kunt u een aangepast uitspraak resultaat krijgen in de uitvoer. U hoeft alleen maar uw eigen aangepaste uitspraak regels in uw aangepaste model in te stellen en het model te koppelen aan de container voor aangepaste spraak naar tekst.
+
+
+# <a name="text-to-speech"></a>[Tekst-naar-spraak](#tab/tts)
 
 Voer de volgende opdracht uit om de standaard *-tekst-naar-spraak-* container uit te voeren `docker run` .
 
@@ -690,7 +756,7 @@ In dit artikel hebt u concepten en werk stromen geleerd om spraak containers te 
 * Spraak biedt vier Linux-containers voor docker, die verschillende mogelijkheden inkapselen:
   * *Spraak naar tekst*
   * *Custom Speech-naar-tekst*
-  * *Tekst naar spraak*
+  * *Tekst-naar-spraak*
   * *Aangepaste tekst-naar-spraak*
   * *Tekst-naar-spraak Neural*
   * *Spraak Taaldetectie*

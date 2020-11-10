@@ -1,14 +1,14 @@
 ---
 title: Azure Policy implementeren voor gedelegeerde abonnementen op de juiste schaal
 description: Meer informatie over hoe u met Azure Lighthouse een beleids definitie en beleids toewijzing in meerdere tenants kunt implementeren.
-ms.date: 08/12/2020
+ms.date: 11/09/2020
 ms.topic: how-to
-ms.openlocfilehash: 27d32a68c1a3806e514533efbae581aa97bc6d0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5af938c61ad3e42e36360a15c6011b54fa1e823d
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88167280"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412065"
 ---
 # <a name="deploy-azure-policy-to-delegated-subscriptions-at-scale"></a>Azure Policy implementeren voor gedelegeerde abonnementen op de juiste schaal
 
@@ -91,7 +91,11 @@ foreach ($ManagedSub in $ManagedSubscriptions)
 }
 ```
 
+> [!NOTE]
+> Hoewel u beleid kunt implementeren in meerdere tenants, kunt u op dit moment geen [compatibiliteits details weer geven](../../governance/policy/how-to/determine-non-compliance.md#compliance-details) voor niet-compatibele resources in deze tenants.
+
 ## <a name="next-steps"></a>Volgende stappen
 
 - Meer informatie over [Azure Policy](../../governance/policy/index.yml).
 - Meer informatie over [beheerervaring in meerdere tenants](../concepts/cross-tenant-management-experience.md).
+- Meer informatie over het [implementeren van een beleid dat kan worden hersteld](deploy-policy-remediation.md) binnen een gedelegeerd abonnement.

@@ -3,14 +3,14 @@ title: Limieten en quota voor Azure-abonnementen
 description: Biedt een lijst met algemene Azure-abonnementen en service limieten, quota's en beperkingen. Dit artikel bevat informatie over het verhogen van de limieten en maximum waarden.
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: f18bd4589ea995696175fa23300432793f0f5974
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: b95c056a8885998c3ca5b5c62cb13049c3a8c66d
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91950241"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412921"
 ---
-# <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limieten, quota's en beperkingen voor het Azure-abonnement en de Azure-service
+# <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure-abonnements-en service limieten, quota's en beperkingen
 
 Dit document bevat enkele van de meest voorkomende Microsoft Azure limieten, ook wel quota's genoemd.
 
@@ -96,7 +96,7 @@ Prijs categorieën bepalen de capaciteit en limieten van uw zoek service. Lagen 
 
 * **Gratis** multi tenant-service, gedeeld met andere Azure-abonnees, is bedoeld voor evaluatie-en kleine ontwikkelings projecten.
 * **Basic** biedt specifieke computer bronnen voor productie werkbelastingen op een kleinere schaal, met Maxi maal drie replica's voor Maxi maal beschik bare query werkbelastingen.
-* De **standaard**, waaronder S1, S2, S3 en S3 high density, is voor grotere productie workloads. Er zijn meerdere niveaus in de laag standaard, zodat u een resource configuratie kunt kiezen die het beste overeenkomt met uw werkbelasting profiel.
+* De **standaard** , waaronder S1, S2, S3 en S3 high density, is voor grotere productie workloads. Er zijn meerdere niveaus in de laag standaard, zodat u een resource configuratie kunt kiezen die het beste overeenkomt met uw werkbelasting profiel.
 
 **Limieten per abonnement**
 
@@ -285,7 +285,11 @@ Zie [Media Services v2 (verouderd)](../../media-services/previous/media-services
 
 ### <a name="virtual-network-gateway-limits"></a>Virtual Network gateway limieten
 
-[!INCLUDE [virtual-wan-limits](../../../includes/azure-virtual-network-gateway-limits.md)]
+[!INCLUDE [virtual-network-gateway-limits](../../../includes/azure-virtual-network-gateway-limits.md)]
+
+### <a name="nat-gateway-limits"></a>Limieten voor NAT-gateway
+
+[!INCLUDE [nat-gateway-limits](../../../includes/azure-nat-gateway-limits.md)]
 
 ### <a name="virtual-wan-limits"></a>Virtuele WAN-limieten
 
@@ -434,7 +438,7 @@ Elk abonnement kent limieten voor het implementeren van resources met behulp van
 
 [!INCLUDE [virtual-machine-scale-sets-limits](../../../includes/azure-virtual-machine-scale-sets-limits.md)]
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 * [Meer informatie over Azure-limieten en toename](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
 * [Grootten van virtuele machines en Cloud Services voor Azure](../../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

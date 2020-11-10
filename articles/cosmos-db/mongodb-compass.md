@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/05/2020
 author: christopheranderson
 ms.author: chrande
-ms.openlocfilehash: 6c48639279556d495be57a2933f1d7f3c139294a
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 43bcd54955cb1a8aaf08785368faf13c14f8322c
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93361111"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413051"
 ---
 # <a name="use-mongodb-compass-to-connect-to-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB-kompas gebruiken om verbinding te maken met de API van Azure Cosmos DB voor MongoDB
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -27,9 +27,6 @@ Als u verbinding wilt maken met uw Cosmos DB-account met behulp van MongoDB-komp
 
 * Een [kompas](https://www.mongodb.com/download-center/compass?jmp=hero) downloaden en installeren
 * Informatie over uw Cosmos DB [Connection String](connect-mongodb-account.md)
-
-> [!NOTE]
-> Momenteel wordt de API van Azure Cosmos DB voor MongoDB-Server versie 3,2 ondersteund met de nieuwste versie van MongoDB kompas. MongoDB kompas wordt nog niet ondersteund met de 3,6-server versie. 
 
 ## <a name="connect-to-cosmos-dbs-api-for-mongodb"></a>Verbinding maken met de API van Cosmos DB voor MongoDB
 

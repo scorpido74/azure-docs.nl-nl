@@ -8,12 +8,12 @@ ms.date: 10/28/2020
 ms.author: kuthapar
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 442d6638e88462b1dc87e9321dc631fe0a4f3a10
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: a805300ac62d0627c9b06188c9764a6887947afe
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340072"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94411283"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-java-v4-sdk-request-timeout-exceptions"></a>Problemen met de time-out voor de Azure Cosmos DB Java v4 SDK-aanvragen diagnosticeren en oplossen
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -22,6 +22,9 @@ De HTTP 408-fout treedt op als de SDK de aanvraag niet kan volt ooien voordat de
 
 ## <a name="troubleshooting-steps"></a>Stappen voor probleemoplossing
 De volgende lijst bevat bekende oorzaken en oplossingen voor time-outuitzonderingen voor aanvragen.
+
+### <a name="existing-issues"></a>Bestaande problemen
+Als er aanvragen worden weer gegeven die langer duren of een langere tijds duur hebben, moet u een upgrade uitvoeren van de Java v4 SDK naar de nieuwste versie. Opmerking: we raden u ten zeerste aan de versie 4.7.0 en hoger te gebruiken. Uitchecken van de opmerkingen bij de release van de [Java v4 SDK](sql-api-sdk-java-v4.md) voor meer informatie.
 
 ### <a name="high-cpu-utilization"></a>Hoog CPU-gebruik
 Hoog CPU-gebruik is het meest voorkomende geval. Voor een optimale latentie moet het CPU-gebruik ongeveer 40 procent zijn. 10 seconden gebruiken als het interval voor het controleren van het maximum (niet gemiddeld) CPU-gebruik. CPU-pieken komen vaker voor bij query's met kruis partities, waarbij meerdere verbindingen voor één query kunnen worden uitgevoerd.

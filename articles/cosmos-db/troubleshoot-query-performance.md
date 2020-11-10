@@ -8,12 +8,12 @@ ms.date: 10/12/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 3979e5e904eb54db9566eb014f7e455ebaceaff0
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 012e155737b9251827c668b3a9cacbbe8d59ae77
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93087176"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94411351"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Query-problemen bij het gebruik van Azure Cosmos DB oplossen
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -494,3 +494,4 @@ Raadpleeg de volgende artikelen voor meer informatie over het meten van RUs per 
 * [Metrische gegevens over SQL-query uitvoering ophalen met behulp van .NET SDK](profile-sql-api-query.md)
 * [Queryprestaties afstemmen met Azure Cosmos DB](./sql-api-query-metrics.md)
 * [Tips voor betere prestaties voor de .NET-SDK](performance-tips.md)
+* [Tips voor betere prestaties voor Java v4 SDK](performance-tips-java-sdk-v4-sql.md)
