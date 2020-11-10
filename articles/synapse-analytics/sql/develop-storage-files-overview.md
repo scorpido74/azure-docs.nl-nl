@@ -1,6 +1,6 @@
 ---
-title: Toegang krijgen tot bestanden in opslag in SQL on-demand (preview)
-description: Beschrijft query-opslagbestanden die SQL on-demand-resources (preview) gebruiken binnen Synapse SQL.
+title: Toegang krijgen tot bestanden in opslag in een serverloze SQL-pool (preview-versie)
+description: Beschrijft het doorzoeken van opslagbestanden met behulp van een serverloze SQL-pool (preview-versie) in Azure Synapse Analytics.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8884f62ba015cc4b33b75a133f21264dac6430e5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 73a5414a979742c4a7df16dcd2a5edda3748abef
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91288984"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93315940"
 ---
-# <a name="access-external-storage-in-synapse-sql-on-demand"></a>Toegang krijgen tot externe opslag in Synapse SQL (on-demand)
+# <a name="access-external-storage-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Toegang tot externe opslag met behulp van een serverloze SQL-pool (preview-versie) in Azure Synapse Analytics
 
-In dit document wordt beschreven hoe gebruikers gegevens kunnen lezen van bestanden die zijn opgeslagen op Azure Storage in Synapse SQL (on-demand). Gebruikers hebben de volgende opties om toegang te krijgen tot de opslag:
+In dit document wordt beschreven hoe gebruikers gegevens kunnen lezen uit bestanden die zijn opgeslagen in Azure Storage in een serverloze SQL-pool. Gebruikers hebben de volgende opties om toegang te krijgen tot de opslag:
 
 - De functie [OPENROWSET](develop-openrowset.md) die ad-hocquery's voor de bestanden in Azure Storage mogelijk maakt.
 - [Externe tabel](develop-tables-external-tables.md) dat een vooraf gedefinieerde gegevensstructuur is die boven op de set externe bestanden is gebouwd.
@@ -27,7 +27,7 @@ Een gebruiker kan [verschillende verificatiemethoden gebruiken](develop-storage-
 
 ## <a name="query-files-using-openrowset"></a>Query's uitvoeren op bestanden met OPENROWSET
 
-Met OPENROWSET kunnen gebruikers externe bestanden in Azure Storage opvragen als ze toegang hebben tot de opslag. Een gebruiker die is verbonden met het Synapse SQL on demand-eindpunt moet de volgende query gebruiken om de inhoud van de bestanden in Azure Storage te kunnen lezen:
+Met OPENROWSET kunnen gebruikers externe bestanden in Azure Storage opvragen als ze toegang hebben tot de opslag. Een gebruiker die is verbonden met de serverloze SQL-pool, moet de volgende query gebruiken om de inhoud van de bestanden in Azure Storage te kunnen lezen:
 
 ```sql
 SELECT * FROM

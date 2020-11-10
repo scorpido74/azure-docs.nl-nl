@@ -10,17 +10,17 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bbd82f856213bb36e71625eabc8bce9999ccd53f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 532ada430e7ff2ae76eb0cfbc389792bb0d98209
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91289392"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322665"
 ---
 # <a name="connect-to-synapse-sql"></a>Verbinding maken met Synapse SQL
 Maak verbinding met de Synapse-SQL-optie in Azure Synapse Analytics.
 
-## <a name="supported-tools-for-sql-on-demand-preview"></a>Ondersteunde hulpprogramma's voor SQL on-demand (preview)
+## <a name="supported-tools-for-serverless-sql-pool-preview"></a>Ondersteunde hulpprogramma's voor serverloze SQL-pools (preview-versie)
 
 [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) wordt volledig ondersteund vanaf versie 1.18.0. SSMS wordt gedeeltelijk ondersteund vanaf versie 18.5, maar u kunt de tool gebruiken om alleen verbinding te maken en query's uit te voeren.
 
@@ -31,8 +31,8 @@ Maak verbinding met de Synapse-SQL-optie in Azure Synapse Analytics.
 
 ## <a name="find-your-server-name"></a>Uw servernaam vinden
 
-De servernaam voor de SQL-pool in het volgende voorbeeld is: showdemoweu.sql.azuresynapse.net.
-De servernaam voor SQL on-demand in het volgende voorbeeld is: showdemoweu-ondemand.sql.azuresynapse.net.
+De servernaam voor de toegewezen SQL-pool in het volgende voorbeeld is: showdemoweu.sql.azuresynapse.net.
+De servernaam voor de toegewezen SQL-pool in het volgende voorbeeld is: showdemoweu-ondemand.sql.azuresynapse.net.
 
 Ga als volgt te werk om de volledig gekwalificeerde servernaam te vinden:
 
@@ -46,9 +46,9 @@ Ga als volgt te werk om de volledig gekwalificeerde servernaam te vinden:
 
 ![Volledige servernaam](./media/connect-overview/server-connect-example.png)
 
-## <a name="sql-on-demand"></a>**SQL on-demand**
+## <a name="serverless-sql-pool"></a>**serverloze SQL-pool**
 
-![Volledige servernaam SQL on-demand](./media/connect-overview/server-connect-example-sqlod.png)
+![Volledige servernaam voor de serverloze SQL-pool](./media/connect-overview/server-connect-example-sqlod.png)
 
 ## <a name="supported-drivers-and-connection-strings"></a>Ondersteunde stuurprogramma's en verbindingsreeksen
 Synapse SQL biedt ondersteuning voor [ADO.NET](https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx), [ODBC](https://msdn.microsoft.com/library/jj730314.aspx), [PHP](https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396) en [JDBC](https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx). Selecteer een van de bovenstaande stuurprogramma's om de meest recente versie en documentatie te vinden. Voor het automatisch genereren van de verbindingsreeks voor het stuurprogramma dat u gebruikt vanuit de Azure-portal, selecteert u **Databaseverbindingsreeksen tonen** uit het voorgaande voorbeeld. Hier volgen ook enkele voorbeelden van hoe een verbindingsreeks er voor elk stuurprogramma uitziet.
@@ -92,7 +92,7 @@ Synapse SQL standaardiseert enkele instellingen tijdens het maken van de verbind
 
 ## <a name="recommendations"></a>Aanbevelingen
 
-Voor het uitvoeren van **SQL on-demand**-query's zijn [Azure Data Studio](get-started-azure-data-studio.md) en Azure Synapse Studio de aanbevolen hulpprogramma's.
+[Azure Data Studio](get-started-azure-data-studio.md) en Azure Synapse Studio zijn de aanbevolen hulpprogramma's voor het uitvoeren van query's van een **serverloze SQL-pool**.
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie [Query’s uitvoeren bij Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) als u verbinding wilt maken en een query wilt uitvoeren met Visual Studio. Zie [Verificatie met Synapse SQL](../sql-data-warehouse/sql-data-warehouse-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) voor meer informatie over verificatieopties.

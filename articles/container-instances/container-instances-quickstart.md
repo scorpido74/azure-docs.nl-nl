@@ -9,12 +9,12 @@ ms.custom:
 - mvc
 - devx-track-js
 - devx-track-azurecli
-ms.openlocfilehash: 41e064d34f9fdb004feb72d7becdb08fe377aec5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 1c327fc7fc067948b5022f989e6c86f99573bd1a
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91271202"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100181"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-cli"></a>Quickstart: Een containerinstantie in Azure implementeren met behulp van de Azure CLI
 
@@ -24,11 +24,11 @@ In deze quickstart gebruikt u de Azure CLI om een geïsoleerde Docker-container 
 
 ![Een app weergeven in de browser die is geïmplementeerd in Azure Container Instances][aci-app-browser]
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account][azure-account] aan voordat u begint.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-U kunt de Azure Cloud Shell of een lokale installatie van de Azure CLI gebruiken om deze Quick Start uit te voeren. Als u deze lokaal wilt gebruiken, wordt versie 2.0.55 of hoger aanbevolen. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren][azure-cli-install] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
+- Voor deze quickstart is versie 2.0.55 of hoger van de Azure-CLI vereist. Als u Azure Cloud Shell gebruikt, is de nieuwste versie al geïnstalleerd.
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 

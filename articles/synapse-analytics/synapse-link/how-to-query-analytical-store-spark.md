@@ -9,12 +9,12 @@ ms.subservice: synapse-link
 ms.date: 09/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 07342cb31f1c44273f98a97b018620538f86c17f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2e06f0918ce23beded7475f644e7cc6019facacc
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91287726"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322574"
 ---
 # <a name="interact-with-azure-cosmos-db-using-apache-spark-in-azure-synapse-link-preview"></a>Interactie met Azure Cosmos DB met behulp van Apache Spark in Azure Synapse Link (preview)
 
@@ -35,9 +35,9 @@ Voordat u meer informatie krijgt over de twee mogelijke opties om een query uit 
 
 Het verschil in ervaring is om te bepalen of onderliggende gegevenswijzigingen in de Azure Cosmos DB-container automatisch moeten worden doorgevoerd in de analyse die in Spark wordt uitgevoerd. Wanneer een Spark DataFrame wordt geregistreerd of een Spark-tabel wordt gemaakt op basis van de analytische opslag van een container, worden de metagegevens van de huidige momentopname van de gegevens in het analytische archief naar Spark opgehaald voor efficiënte pushdown van de volgende analyse. Het is belangrijk te weten dat, omdat Spark een lui evaluatiebeleid volgt, tenzij een actie wordt aangeroepen op de Spark-DataFrame of een SparkSQL-query wordt uitgevoerd op basis van de Spark-tabel, de werkelijke gegevens niet worden opgehaald uit de analytische opslag van de onderliggende container.
 
-In het geval van **het laden naar Spark DataFrame**, worden de opgehaalde metagegevens in de cache opgeslagen tijdens de levensduur van de Spark-sessie. Daarom worden de volgende acties die worden uitgevoerd op de DataFrame geëvalueerd op basis van de momentopname van de analytische opslag op het moment dat DataFrame wordt gemaakt.
+In het geval van **het laden naar Spark DataFrame** , worden de opgehaalde metagegevens in de cache opgeslagen tijdens de levensduur van de Spark-sessie. Daarom worden de volgende acties die worden uitgevoerd op de DataFrame geëvalueerd op basis van de momentopname van de analytische opslag op het moment dat DataFrame wordt gemaakt.
 
-Daarentegen, in het geval van **het maken van een Spark-tabel**, worden de metagegevens van de status van de analytische opslag niet in de cache opgeslagen in Spark en worden opnieuw geladen op elke SparkSQL-query-uitvoering in de Spark-tabel.
+Daarentegen, in het geval van **het maken van een Spark-tabel** , worden de metagegevens van de status van de analytische opslag niet in de cache opgeslagen in Spark en worden opnieuw geladen op elke SparkSQL-query-uitvoering in de Spark-tabel.
 
 Daarom kunt u kiezen tussen het laden van Spark DataFrame en het maken van een Spark-tabel op basis van de vraag of u wilt dat uw Spark-analyse wordt geëvalueerd voor respectievelijk een vaste momentopname van de analytische opslag of met de meest recente momentopname van de analytische opslag.
 
@@ -209,7 +209,7 @@ In dit voorbeeld leert u hoe u kunt verwijzen naar externe bibliotheken van JAR-
     ]
 }
 ```
-Als u externe Spark-taakdefinities naar een Synapse Spark-pool wilt verzenden, kunt u leren hoe u naar externe bibliotheken verwijst door deze [zelfstudie te volgen](../spark/apache-spark-job-definitions.md).
+Als u externe Spark-taakdefinities wilt verzenden naar een serverloze Apache Spark-pool, kunt u deze [zelfstudie](../spark/apache-spark-job-definitions.md) volgen om te leren hoe u verwijst naar externe bibliotheken.
 
 ## <a name="next-steps"></a>Volgende stappen
 

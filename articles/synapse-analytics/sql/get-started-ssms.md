@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 166d598528d8fe38e2bc22b76c659326c5e0ba45
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4337d6bb108042a909250b3d87d13ab60357cfec
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91288780"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311129"
 ---
 # <a name="connect-to-synapse-sql-with-sql-server-management-studio-ssms"></a>Verbinding maken met Synapse SQL met behulp van SQL Server Management Studio (SSMS)
 > [!div class="op_single_selector"]
@@ -26,9 +26,9 @@ ms.locfileid: "91288780"
 > 
 > 
 
-U kunt [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) gebruiken om verbinding te maken met Synapse SQL en query's uit te voeren op Azure Synapse Analytics via SQL on-demand (preview) of SQL-poolresources. 
+U kunt [SSMS (SQL Server Management Studio)](/sql/ssms/download-sql-server-management-studio-ssms) gebruiken om verbinding te maken met Synapse SQL en query's uit te voeren op Azure Synapse Analytics via serverloze SQL-pools (preview-versie) of toegewezen SQL-pools. 
 
-### <a name="supported-tools-for-sql-on-demand-preview"></a>Ondersteunde hulpprogramma's voor SQL on-demand (preview)
+### <a name="supported-tools-for-serverless-sql-pool-preview"></a>Ondersteunde hulpprogramma's voor serverloze SQL-pools (preview-versie)
 
 [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) wordt volledig ondersteund vanaf versie 1.18.0. SSMS wordt gedeeltelijk ondersteund vanaf versie 18.5, maar u kunt het hulpprogramma gebruiken om alleen verbinding te maken en query's uit te voeren.
 
@@ -40,41 +40,41 @@ U kunt [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-manag
 Zorg ervoor dat u voordat u begint over het volgende beschikt:  
 
 * [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms). 
-* Voor de SQL-pool hebt u een bestaand datawarehouse nodig. Zie [Een SQL-pool maken](../quickstart-create-sql-pool-portal.md) voor informatie over het maken van een datawarehouse. Voor SQL on-demand is er tijdens het maken al een in uw werkruimte ingericht. 
+* Voor een toegewezen SQL-pool hebt u een bestaand datawarehouse nodig. Zie [Een toegewezen SQL-pool maken](../quickstart-create-sql-pool-portal.md) om er een te maken. Voor een serverloze SQL-groep is tijdens het maken van uw werkruimte al een datawarehouse ingericht, genaamd Ingebouwd. 
 * De volledig gekwalificeerde SQL-servernaam. Zie [Verbinding maken met Synapse SQL](connect-overview.md) om deze naam te vinden.
 
 ## <a name="connect"></a>Verbinding maken
 
-### <a name="sql-pool"></a>SQL-pool
+### <a name="dedicated-sql-pool"></a>Toegewezen SQL-pool
 
-Voer de volgende stappen uit om verbinding te maken met Synapse SQL met behulp van de SQL-pool: 
+Voer de volgende stappen uit om verbinding te maken met Synapse SQL met behulp van een toegewezen SQL-pool: 
 
 1. Open SQL Server Management Studio (SSMS). 
-1. Vul in het dialoogvenster **Verbinding maken met server** de velden in en selecteer vervolgens **Verbinding maken**: 
+1. Vul in het dialoogvenster **Verbinding maken met server** de velden in en selecteer vervolgens **Verbinding maken** : 
   
     ![Verbinding maken met server 1](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/connect-object-explorer1.png)
    
-   * **Servernaam**: Voer de eerder vastgestelde **servernaam** in.
-   * **Verificatie**:  Kies een verificatietype, zoals **SQL Server-verificatie** of **Geïntegreerde Active Directory-verificatie**.
-   * **Gebruikersnaam** en **Wachtwoord**: Voer uw gebruikersnaam en wachtwoord in als u hierboven SQL Server-verificatie hebt geselecteerd.
+   * **Servernaam** : Voer de eerder vastgestelde **servernaam** in.
+   * **Verificatie** :  Kies een verificatietype, zoals **SQL Server-verificatie** of **Geïntegreerde Active Directory-verificatie**.
+   * **Gebruikersnaam** en **Wachtwoord** : Voer uw gebruikersnaam en wachtwoord in als u hierboven SQL Server-verificatie hebt geselecteerd.
 
 1. Vouw uw Azure SQL Server uit in **Objectverkenner**. U kunt de databases weergeven die zijn gekoppeld aan de server, zoals de voorbeelddatabase AdventureWorksDW. U kunt de database uitvouwen om de tabellen te bekijken:
    
     ![AdventureWorksDW 1 verkennen](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/explore-tables.png)
 
 
-### <a name="sql-on-demand-preview"></a>SQL on-demand (preview)
+### <a name="serverless-sql-pool-preview"></a>Serverloze SQL-pool (preview-versie)
 
-Voer de volgende stappen uit om verbinding te maken met Synapse SQL met behulp van SQL on-demand: 
+Voer de volgende stappen uit om verbinding te maken met Synapse SQL met behulp van een serverloze SQL-pool: 
 
 1. Open SQL Server Management Studio (SSMS).
-1. Vul in het dialoogvenster **Verbinding maken met server** de velden in en selecteer vervolgens **Verbinding maken**: 
+1. Vul in het dialoogvenster **Verbinding maken met server** de velden in en selecteer vervolgens **Verbinding maken** : 
    
     ![Verbinding maken met server 2](./media/get-started-ssms/connect-object-explorer1.png)
    
-   * **Servernaam**: Voer de eerder vastgestelde **servernaam** in.
-   * **Verificatie**: Kies een verificatietype, zoals **SQL Server-verificatie** of **Geïntegreerde Active Directory-verificatie**:
-   * **Gebruikersnaam** en **Wachtwoord**: Voer uw gebruikersnaam en wachtwoord in als u hierboven SQL Server-verificatie hebt geselecteerd.
+   * **Servernaam** : Voer de eerder vastgestelde **servernaam** in.
+   * **Verificatie** : Kies een verificatietype, zoals **SQL Server-verificatie** of **Geïntegreerde Active Directory-verificatie** :
+   * **Gebruikersnaam** en **Wachtwoord** : Voer uw gebruikersnaam en wachtwoord in als u hierboven SQL Server-verificatie hebt geselecteerd.
    * Selecteer **Verbinding maken**.
 
 4. U kunt de Azure SQL-server uitvouwen als u deze wilt verkennen. U kunt de databases weergeven die aan de server zijn gekoppeld. Vouw *demo* uit om de inhoud in de voorbeelddatabase te bekijken.
@@ -84,7 +84,7 @@ Voer de volgende stappen uit om verbinding te maken met Synapse SQL met behulp v
 
 ## <a name="run-a-sample-query"></a>Een voorbeeldquery uitvoeren
 
-### <a name="sql-pool"></a>SQL-pool
+### <a name="dedicated-sql-pool"></a>Toegewezen SQL-pool
 
 Nu u een databaseverbinding tot stand hebt gebracht, kunt u een query uitvoeren op de gegevens.
 
@@ -104,7 +104,7 @@ Nu u een databaseverbinding tot stand hebt gebracht, kunt u een query uitvoeren 
    
     ![Resultaten van query 1](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/results.png)
 
-### <a name="sql-on-demand"></a>SQL on-demand
+### <a name="serverless-sql-pool"></a>Serverloze SQL-pool
 
 Nu u een databaseverbinding tot stand hebt gebracht, kunt u een query uitvoeren op de gegevens.
 

@@ -8,12 +8,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: quickstart
 ms.date: 03/10/2020
-ms.openlocfilehash: 375149047d51574e14df15b6385b8c296d49a8ec
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 631717252abe956357cf8b588fa653890037bbc9
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85254698"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322178"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-linux-ubuntu"></a>Quickstart: De Data Science Virtual Machine instellen voor Linux (Ubuntu)
 
@@ -39,25 +39,25 @@ Hier ziet u de stappen die u moet uitvoeren om een exemplaar van een Ubuntu 18.0
    
 1. Voer de volgende gegevens in voor het configureren van elke stap in de wizard:
 
-    1. **Basisprincipes**:
+    1. **Basisprincipes** :
     
-       * **Abonnement**: Als u meer dan één abonnement hebt, selecteert u datgene waarop de machine wordt gemaakt en gefactureerd. U hebt privileges voor het maken van resources nodig voor dit abonnement.
-       * **Resourcegroep**: Maak een nieuwe groep of gebruik een bestaande.
-       * **Naam van virtuele machine**: Voer de naam van de virtuele machine in. Deze naam wordt gebruikt in uw Azure Portal.
-       * **Regio**: Selecteer het geschiktste datacenter. Dit is het datacenter waarop de meeste van uw gegevens zijn opgeslagen of dat zich fysiek het dichtst bij u in de buurt bevindt, voor de snelste netwerktoegang. Meer informatie over [Azure-regio's](https://azure.microsoft.com/global-infrastructure/regions/).
-       * **Installatiekopie**: Laat de standaardwaarde staan.
-       * **Grootte**: Deze optie moet automatisch worden gevuld met een grootte die geschikt is voor algemene werkbelastingen. VM [Linux VM-grootten in Azure](../../virtual-machines/linux/sizes.md).
-       * **Verificatietype**: Selecteer Wachtwoord voor snellere installatie. 
+       * **Abonnement** : Als u meer dan één abonnement hebt, selecteert u datgene waarop de machine wordt gemaakt en gefactureerd. U hebt privileges voor het maken van resources nodig voor dit abonnement.
+       * **Resourcegroep** : Maak een nieuwe groep of gebruik een bestaande.
+       * **Naam van virtuele machine** : Voer de naam van de virtuele machine in. Deze naam wordt gebruikt in uw Azure Portal.
+       * **Regio** : Selecteer het geschiktste datacenter. Dit is het datacenter waarop de meeste van uw gegevens zijn opgeslagen of dat zich fysiek het dichtst bij u in de buurt bevindt, voor de snelste netwerktoegang. Meer informatie over [Azure-regio's](https://azure.microsoft.com/global-infrastructure/regions/).
+       * **Installatiekopie** : Laat de standaardwaarde staan.
+       * **Grootte** : Deze optie moet automatisch worden gevuld met een grootte die geschikt is voor algemene werkbelastingen. VM [Linux VM-grootten in Azure](../../virtual-machines/sizes.md).
+       * **Verificatietype** : Selecteer Wachtwoord voor snellere installatie. 
          
          > [!NOTE]
          > Als u JupyterHub wilt gebruiken moet u Wachtwoord selecteren, omdat JupyterHub *niet* is geconfigureerd voor het gebruik van openbare SSH-sleutels.
 
-       * **Gebruikersnaam**: Voer de gebruikersnaam van de beheerder in. Met deze gebruikersnaam meldt u zich aan bij de virtuele machine. Deze gebruikersnaam hoeft niet hetzelfde te zijn als uw Azure-gebruikersnaam. Gebruik *geen* hoofdletters.
+       * **Gebruikersnaam** : Voer de gebruikersnaam van de beheerder in. Met deze gebruikersnaam meldt u zich aan bij de virtuele machine. Deze gebruikersnaam hoeft niet hetzelfde te zijn als uw Azure-gebruikersnaam. Gebruik *geen* hoofdletters.
          
          > [!IMPORTANT]
          > Als u hoofdletters gebruikt in de gebruikersnaam, werkt JupyterHub niet en krijgt u een foutmelding 500 Interne serverfout.
 
-       * **Wachtwoord**: Voer het wachtwoord in waarmee u zich gaat aanmelden bij de virtuele machine.    
+       * **Wachtwoord** : Voer het wachtwoord in waarmee u zich gaat aanmelden bij de virtuele machine.    
     
    1. Selecteer **Controleren + maken**.
    1. **Beoordelen en maken**
@@ -95,13 +95,13 @@ De virtuele Linux-machine is al ingericht met X2Go Server en is klaar om clientv
 1. Start de X2Go-client. Als het venster Nieuwe sessie niet automatisch wordt weergegeven, gaat u naar Sessie -> Nieuwe sessie.
 
 1. Voer in het configuratievenster dat wordt geopend de volgende configuratieparameters in:
-   * **Tabblad sessie**:
-     * **Host**: Voer het IP-adres van uw virtuele machine in, dat u eerder hebt genoteerd.
-     * **Aanmelden**: Voer de gebruikersnaam in op de virtuele Linux-machine.
-     * **SSH-poort**: Behoud de standaardwaarde 22.
-     * **Sessietype**: Wijzig de waarde in **XFCE**. Momenteel ondersteunt de virtuele Linux-machine alleen het XFCE-bureaublad.
-   * **Tabblad media**: U kunt ondersteuning voor geluid en afdrukken met de client uitschakelen als u die niet nodig hebt.
-   * **Gedeelde mappen**: Gebruik dit tabblad om de map op de clientmachine toe te voegen die u wilt koppelen aan de virtuele machine. 
+   * **Tabblad sessie** :
+     * **Host** : Voer het IP-adres van uw virtuele machine in, dat u eerder hebt genoteerd.
+     * **Aanmelden** : Voer de gebruikersnaam in op de virtuele Linux-machine.
+     * **SSH-poort** : Behoud de standaardwaarde 22.
+     * **Sessietype** : Wijzig de waarde in **XFCE**. Momenteel ondersteunt de virtuele Linux-machine alleen het XFCE-bureaublad.
+   * **Tabblad media** : U kunt ondersteuning voor geluid en afdrukken met de client uitschakelen als u die niet nodig hebt.
+   * **Gedeelde mappen** : Gebruik dit tabblad om de map op de clientmachine toe te voegen die u wilt koppelen aan de virtuele machine. 
 
    ![X2go-configuratie](./media/dsvm-ubuntu-intro/x2go-ubuntu.png)
 1. Selecteer **OK**.
@@ -126,7 +126,7 @@ Op de Ubuntu DSVM wordt [JupyterHub](https://github.com/jupyterhub/jupyterhub) u
       ![Aanmeldingsgegevens Jupyter invoeren](./media/dsvm-ubuntu-intro/jupyter-login.png)
 
 >[!NOTE]
-> Als er in deze fase een 500-fout wordt weergegeven, hebt u waarschijnlijk hoofdletters gebruikt in uw gebruikersnaam. Dit is een bekende interactie tussen Jupyter Hub en de PAMAuthenticator die wordt gebruikt. 
+> Als er in deze fase een 500-fout wordt weergegeven, hebt u waarschijnlijk hoofdletters gebruikt in uw gebruikersnaam. Dit is een bekende interactie tussen Jupyter Hub en de PAMAuthenticator die wordt gebruikt. Als u de fout 'Kan deze pagina niet bereiken' ontvangt, moeten uw machtigingen voor de netwerkbeveiligingsgroep waarschijnlijk worden aangepast. Zoek in Azure Portal de netwerkbeveiligingsgroep binnen de resourcegroep. Als u via openbaar internet toegang wilt tot JupyterHub, moet poort 8000 open zijn. (In de afbeelding ziet u dat deze VM is geconfigureerd voor Just-in-Time-toegang. Dit wordt zeer aanbevolen. Zie [Beheerpoorten beveiligen met Just-in-Time-toegang](../../security-center/security-center-just-in-time.md).) ![Configuratie van netwerkbeveiligingsgroep](./media/dsvm-ubuntu-intro/nsg-permissions.png)
 
    1. Blader door de vele beschikbare voorbeeldnotitieblokken.
 
@@ -144,6 +144,6 @@ U kunt nu verder leren en verkennen:
 
 * Zie [Datatechnologie op de Linux Data Science Virtual Machine](linux-dsvm-walkthrough.md) voor een overzicht waarin wordt getoond hoe u enkele algemene data-sciencetaken uitvoert met de Linux DSVM die hier is ingericht. 
 * U kunt de verschillende hulpprogramma’s voor data science op de DSVM verkennen door de hulpprogramma’s uit te proberen die in dit artikel worden beschreven. U kunt ook `dsvm-more-info` uitvoeren in de shell in de virtuele machine voor een basisintroductie en verwijzingen naar meer informatie over de hulpprogramma’s die op de virtuele machine zijn geïnstalleerd.  
-* Meer informatie over het systematisch bouwen van analytische oplossingen met het [Team Data Science Process](https://aka.ms/tdsp).
+* Meer informatie over het systematisch bouwen van analytische oplossingen met het [Team Data Science Process](../team-data-science-process/index.yml).
 * Ga naar de [Azure AI Gallery](https://gallery.azure.ai/) voor voorbeelden van machine learning en gegevensanalyse die gebruikmaken van de Azure AI-services.
 * Raadpleeg de bijbehorende [referentiedocumentatie](./reference-ubuntu-vm.md) voor deze virtuele machine.

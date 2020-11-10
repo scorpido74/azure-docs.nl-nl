@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/19/2020
 ms.author: yelevin
-ms.openlocfilehash: d3c0ba55541baf3f31952b82a2fa357b48a5f1a9
-ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
+ms.openlocfilehash: 9c5e57f2eb3c38a7df23052a4b3d33bc5a9675fc
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93148351"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94425929"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>Geavanceerde bedreigingen met UEBA (User and entity Behavior Analytics) identificeren in azure Sentinel
 
@@ -30,7 +30,7 @@ ms.locfileid: "93148351"
 >    - Regio Oost-West
 >    - Geografie van Australië
 >
-> - In alle andere geografische gebieden en regio's blijven deze functies gedurende de **open bare preview** -periode behouden en worden ze zonder Service Level Agreement aangeboden. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+> - In alle andere geografische gebieden en regio's blijven deze functies gedurende de **Preview** -periode. Zie de [**aanvullende gebruiks voorwaarden voor Microsoft Azure previews**](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor aanvullende juridische voor waarden die van toepassing zijn op Azure-functies die in bèta, preview of op andere wijze nog niet beschikbaar zijn in algemene Beschik baarheid.
 
 ## <a name="what-is-user-and-entity-behavior-analytics-ueba"></a>Wat is UEBA (User and entity Behavior Analytics)?
 
@@ -56,7 +56,7 @@ Azure Sentinel is geïnspireerd op het paradigma van Gartner voor UEBA-oplossing
 
 - **Analytics:** Met behulp van verschillende machine learning (ML) algoritmen identificeert Azure Sentinel afwijkende activiteiten en presenteert deze duidelijk en beknopt in de vorm van contextuele verrijkingen, met enkele voor beelden die hieronder worden weer gegeven.
 
-    :::image type="content" source="media/identify-threats-with-entity-behavior-analytics/behavior-analytics-top-down.png" alt-text="Architectuur van entiteit gedrag analyse":::
+    :::image type="content" source="media/identify-threats-with-entity-behavior-analytics/behavior-analytics-top-down.png" alt-text="Gedrags analyse buiten de benadering":::
 
 Azure Sentinel presenteert artefacten die uw beveiligings analisten helpen een duidelijk inzicht te krijgen in afwijkende activiteiten in de context en in vergelijking met het basislijn Profiel van de gebruiker. Acties die worden uitgevoerd door een gebruiker (of een host of een adres) worden contextuele geëvalueerd, waarbij een ' waar ' resultaat duidt op een geïdentificeerde anomalie:
 - over geografische locaties, apparaten en omgevingen.
@@ -64,7 +64,7 @@ Azure Sentinel presenteert artefacten die uw beveiligings analisten helpen een d
 - vergeleken met gedrag van de peers.
 - in vergelijking met het gedrag van de organisatie.
 
-    :::image type="content" source="media/identify-threats-with-entity-behavior-analytics/context.png" alt-text="Architectuur van entiteit gedrag analyse":::
+    :::image type="content" source="media/identify-threats-with-entity-behavior-analytics/context.png" alt-text="Context van entiteit":::
 
 
 ### <a name="scoring"></a>Scoren
@@ -120,7 +120,7 @@ Entiteit pagina's bestaan uit drie delen:
 
 ### <a name="the-timeline"></a>De tijd lijn
 
-:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/entity-pages-timeline.png" alt-text="Architectuur van entiteit gedrag analyse":::
+:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/entity-pages-timeline.png" alt-text="Tijd lijn van entiteits pagina's":::
 
 De tijd lijn is een belang rijk onderdeel van de bijdrage van de entiteits pagina voor gedrags analyses in azure Sentinel. Er wordt een verhaal gepresenteerd over entiteits gebeurtenissen, zodat u inzicht krijgt in de activiteit van de entiteit binnen een specifiek tijds bestek.
 
@@ -128,7 +128,7 @@ U kunt het **tijds bereik** kiezen tussen verschillende vooraf ingestelde opties
 
 De volgende typen items zijn opgenomen in de tijd lijn:
 
-- Waarschuwingen: alle waarschuwingen waarin de entiteit is gedefinieerd als een **toegewezen entiteit** . Als uw organisatie aangepaste waarschuwingen heeft gemaakt [met behulp van analyse regels](./tutorial-detect-threats-custom.md), moet u ervoor zorgen dat de entiteits toewijzing van de regels goed wordt uitgevoerd.
+- Waarschuwingen: alle waarschuwingen waarin de entiteit is gedefinieerd als een **toegewezen entiteit**. Als uw organisatie aangepaste waarschuwingen heeft gemaakt [met behulp van analyse regels](./tutorial-detect-threats-custom.md), moet u ervoor zorgen dat de entiteits toewijzing van de regels goed wordt uitgevoerd.
 
 - Blad wijzers: blad wijzers die de specifieke entiteit bevatten die op de pagina wordt weer gegeven.
 
@@ -148,7 +148,7 @@ Entiteits inzichten zijn query's die door micro soft-beveiligings onderzoekers w
 
 Entiteits pagina's zijn ontworpen om deel uit te maken van meerdere gebruiks scenario's, en zijn toegankelijk via incident beheer, de onderzoek grafiek, blad wijzers of rechtstreeks vanaf de pagina entiteit zoeken onder gedrag van entiteits **analyses** in het hoofd menu van Azure Sentinel.
 
-:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/entity-pages-use-cases.png" alt-text="Architectuur van entiteit gedrag analyse":::
+:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/entity-pages-use-cases.png" alt-text="Use cases van entiteits pagina":::
 
 
 ## <a name="data-schema"></a>Gegevens schema
@@ -197,7 +197,7 @@ Meta gegevens van gebruikers zijn belang rijk voor het detecteren van bedreiging
 
 Azure Sentinel berekent en rangschikt de peers van een gebruiker op basis van het lidmaatschap van de Azure AD-beveiligings groep van de gebruiker, mailing lijst, et enzovoort en slaat de peers op die 1-20 in de tabel **UserPeerAnalytics** zijn gerangschikt. In de onderstaande scherm afbeelding ziet u het schema van de tabel UserPeerAnalytics en worden de bovenste acht gerangschikte peers van de gebruiker Kendall Collins weer gegeven. Azure Sentinel maakt gebruik van het algoritme voor de *frequentie-inverse document frequentie* (TF-IDF) om de weeging voor het berekenen van de positie te normaliseren: de kleinere groep, hoe hoger het gewicht. 
 
-:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/user-peers-metadata.png" alt-text="Architectuur van entiteit gedrag analyse":::
+:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/user-peers-metadata.png" alt-text="Scherm opname van de meta gegevens tabel van gebruikers peers":::
 
 U kunt de [Jupyter-notebook](https://github.com/Azure/Azure-Sentinel-Notebooks/tree/master/BehaviorAnalytics/UserSecurityMetadata) in de Azure Sentinel github-opslag plaats gebruiken om de meta gegevens van de gebruikers peers te visualiseren. Zie voor gedetailleerde instructies voor het gebruik van het notitie blok de [begeleide analyse-gebruikers beveiliging meta gegevens](https://github.com/Azure/Azure-Sentinel-Notebooks/blob/master/BehaviorAnalytics/UserSecurityMetadata/Guided%20Analysis%20-%20User%20Security%20Metadata.ipynb) notebook.
 
@@ -205,9 +205,9 @@ U kunt de [Jupyter-notebook](https://github.com/Azure/Azure-Sentinel-Notebooks/t
 
 Met de machtigings analyse kunt u de mogelijke gevolgen bepalen van het compromissen van een organisatie-Asset door een aanvaller. Deze invloed wordt ook wel de ' versterking van de activa ' genoemd. Beveiligings analisten kunnen deze informatie gebruiken om de prioriteit van onderzoek en incidenten te bepalen.
 
-Azure Sentinel bepaalt de directe en transitieve toegangs rechten van een bepaalde gebruiker tot Azure-resources door de Azure-abonnementen te evalueren die de gebruiker rechtstreeks of via groepen of service-principals kan benaderen. Deze informatie, evenals de volledige lijst van het lidmaatschap van de Azure AD-beveiligings groep van de gebruiker, wordt vervolgens opgeslagen in de tabel **UserAccessAnalytics** . In de onderstaande scherm afbeelding ziet u een voor beeld van een rij in de tabel UserAccessAnalytics voor de gebruiker Alex Johnson. **Bron entiteit** is het account van de gebruiker of Service-Principal en de **doel entiteit** is de resource waartoe de bron entiteit toegang heeft. De waarden van **toegangs niveau** en **toegangs type** zijn afhankelijk van het toegangs beheer model van de doel entiteit. U kunt zien dat Alex toegang heeft tot het Azure-abonnement *Contoso Hotels-Tenant* . Het model voor het toegangs beheer van het abonnement is RBAC.   
+Azure Sentinel bepaalt de directe en transitieve toegangs rechten van een bepaalde gebruiker tot Azure-resources door de Azure-abonnementen te evalueren die de gebruiker rechtstreeks of via groepen of service-principals kan benaderen. Deze informatie, evenals de volledige lijst van het lidmaatschap van de Azure AD-beveiligings groep van de gebruiker, wordt vervolgens opgeslagen in de tabel **UserAccessAnalytics** . In de onderstaande scherm afbeelding ziet u een voor beeld van een rij in de tabel UserAccessAnalytics voor de gebruiker Alex Johnson. **Bron entiteit** is het account van de gebruiker of Service-Principal en de **doel entiteit** is de resource waartoe de bron entiteit toegang heeft. De waarden van **toegangs niveau** en **toegangs type** zijn afhankelijk van het toegangs beheer model van de doel entiteit. U kunt zien dat Alex toegang heeft tot het Azure-abonnement *Contoso Hotels-Tenant*. Het model voor het toegangs beheer van het abonnement is RBAC.   
 
-:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/user-access-analytics.png" alt-text="Architectuur van entiteit gedrag analyse":::
+:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/user-access-analytics.png" alt-text="Scherm opname van de analyse tabel voor gebruikers toegang":::
 
 U kunt de [Jupyter-notebook](https://github.com/Azure/Azure-Sentinel-Notebooks/tree/master/BehaviorAnalytics/UserSecurityMetadata) (hetzelfde notitie blok dat hierboven wordt vermeld) gebruiken uit de Azure Sentinel github-opslag plaats om de gegevens over de machtigings analyse te visualiseren. Zie voor gedetailleerde instructies voor het gebruik van het notitie blok de [begeleide analyse-gebruikers beveiliging meta gegevens](https://github.com/Azure/Azure-Sentinel-Notebooks/blob/master/BehaviorAnalytics/UserSecurityMetadata/Guided%20Analysis%20-%20User%20Security%20Metadata.ipynb) notebook.
 

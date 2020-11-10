@@ -3,12 +3,12 @@ title: Azure Monitor Application Insights java
 description: Bewaking van toepassings prestaties voor Java-toepassingen die worden uitgevoerd in een omgeving zonder dat code hoeft te worden gewijzigd. Gedistribueerde tracering en toepassings toewijzing.
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: 2459f80746d95234701319bbb5142c8e540890d3
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: f7cda0f9389f0b628aca82dd6c65acba140e739b
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94379766"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94426830"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>Azure Monitor Application Insights voor de bewaking van Java-toepassingen
 
@@ -16,9 +16,9 @@ Bewaking van Java-toepassingen is heel eenvoudig: er zijn geen code wijzigingen,
 
  De Java-agent werkt in elke omgeving en biedt u de mogelijkheid om al uw Java-toepassingen te bewaken. Met andere woorden, of u nu uw java-apps uitvoert op Vm's, on-premises, in AKS, op Windows, Linux-u de naam geeft, de Java 3,0-agent bewaakt uw app.
 
-Het is niet meer nodig om de Application Insights Java-SDK toe te voegen aan uw toepassing, omdat de 3,0-agent autoverzoekt, afhankelijkheden en logboeken zelf.
+Het is niet meer nodig om de Application Insights Java-SDK toe te voegen aan uw toepassing, omdat de 3,0-agent automatisch aanvragen verzamelt, afhankelijkheden en logboeken zelf.
 
-U kunt nog steeds aangepaste telemetrie verzenden vanuit uw toepassing. De 3,0-agent volgt deze samen met alle automatisch verzamelde telemetrie en correleert deze.
+U kunt nog steeds aangepaste telemetrie verzenden vanuit uw toepassing. De 3,0-agent houdt deze samen met alle automatisch verzamelde telemetrie en correleert deze.
 
 De 3,0-agent ondersteunt Java 8 en hoger.
 
@@ -82,7 +82,7 @@ In het `applicationinsights.json` bestand kunt u verder configureren:
 * Steekproeven
 * Metrische gegevens van JMX
 * Aangepaste dimensies
-* Telemetrieverwerkers
+* Telemetrie-processors (preview-versie)
 * Automatisch verzamelde logboek registratie
 * Automatisch verzamelde metrische gegevens over micrometer (inclusief lente-metrische gegevens over het starten van de klep)
 * Hartslag
@@ -91,7 +91,7 @@ In het `applicationinsights.json` bestand kunt u verder configureren:
 
 Zie [configuratie opties](./java-standalone-config.md) voor volledige informatie.
 
-## <a name="autocollected-requests-dependencies-logs-and-metrics"></a>Autogeïncasseerde aanvragen, afhankelijkheden, logboeken en metrische gegevens
+## <a name="auto-collected-requests-dependencies-logs-and-metrics"></a>Automatisch verzamelde aanvragen, afhankelijkheden, logboeken en metrische gegevens
 
 ### <a name="requests"></a>Aanvragen
 

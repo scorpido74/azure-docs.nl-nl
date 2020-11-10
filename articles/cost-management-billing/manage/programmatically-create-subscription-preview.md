@@ -5,16 +5,16 @@ author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 10/12/2020
+ms.date: 10/29/2020
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c63733a66a2bb4e320a24649dfe82eac259e79ae
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 3ffdeb0add8622e1b9f28f9603dc146b78f742cd
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131102"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043295"
 ---
 # <a name="programmatically-create-azure-subscriptions-with-preview-apis"></a>Programmatisch Azure-abonnementen maken met preview-API's
 
@@ -212,7 +212,7 @@ Zie [az account create](/cli/azure/ext/subscription/account?view=azure-cli-lates
 ### <a name="limitations-of-azure-enterprise-subscription-creation-api"></a>Beperkingen van de API voor het maken van Azure Enter prise-abonnementen
 
 - Alleen Azure Enterprise-abonnementen kunnen met de API worden gemaakt.
-- Er is een limiet van 2000 abonnementen per inschrijvingsaccount. Daarna kunnen alleen nog meer abonnementen voor het account worden gemaakt in Azure Portal. Als u meer abonnementen via de API wilt maken, maakt u een nieuw inschrijvingsaccount.
+- Er is een limiet van 2000 abonnementen per inschrijvingsaccount. Daarna kunnen alleen nog meer abonnementen voor het account worden gemaakt in Azure Portal. Als u meer abonnementen via de API wilt maken, maakt u een nieuw inschrijvingsaccount. Het aantal geannuleerde, verwijderde en overgedragen abonnementen ten opzichte van de limiet van 2000.
 - Gebruikers die geen accounteigenaar zijn, maar die zijn toegevoegd aan een inschrijvingsaccount met Azure RBAC, kunnen geen abonnementen maken in de Azure-portal.
 - U kunt de tenant niet selecteren voor het abonnement waarin deze moet worden gemaakt. Het abonnement wordt altijd gemaakt in de starttenant van de accounteigenaar. Zie [Abonnementstenant wijzigen](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md) om het abonnement naar een andere tenant te verplaatsen.
 
@@ -506,7 +506,7 @@ Gebruik eigenschap `description` om de reseller te identificeren die aan het abo
 
 In het volgende voorbeeld wordt een abonnement met de naam *Dev Team subscription* voor *Fabrikam toys* gemaakt en wordt reseller *Wingtip* aan het abonnement gekoppeld. 
 
-Voer de volgende aanvraag uit en vervang `<customerId>` door de `id` die u tijdens de tweede stap (```/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx```) hebt gekopieerd. Geef de optionele *resellerId*, die in de tweede stap is gekopieerd, door aan de aanvraagparameters van de API.
+Voer de volgende aanvraag uit en vervang `<customerId>` door de `id` die u tijdens de tweede stap (```/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx```) hebt gekopieerd. Geef de optionele *resellerId* , die in de tweede stap is gekopieerd, door aan de aanvraagparameters van de API.
 
 ```json
 POST https://management.azure.com<customerId>/providers/Microsoft.Subscription/createSubscription?api-version=2018-11-01-preview

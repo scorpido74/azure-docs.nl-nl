@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 04/18/2020
 ms.author: lcozzens
 ms.custom: devx-track-java
-ms.openlocfilehash: 9a804bd40635cd039a2c099f98351b2487c554d3
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 64ccc9c91d9ead567035b1f7f35e0a0088b6200b
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075532"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124183"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Quickstart: Functievlaggen toevoegen aan een Spring Boot-app
 
@@ -45,10 +45,10 @@ Gebruik de [Spring Initializr](https://start.spring.io/) om een nieuw Spring Boo
 
 1. Geef de volgende opties op:
 
-   * Genereer een **Maven**-project met **Java**.
-   * Geef een **Spring Boot**-versie op van 2.0 of hoger.
+   * Genereer een **Maven** -project met **Java**.
+   * Geef een **Spring Boot** -versie op van 2.0 of hoger.
    * Geef de namen voor **Groep** en **Artefact** voor uw toepassing op.  In dit artikel worden `com.example` en `demo` gebruikt.
-   * Voeg de **Spring Web**-afhankelijkheid toe.
+   * Voeg de **Spring Web** -afhankelijkheid toe.
 
 1. Nadat u de vorige opties hebt opgegeven, selecteert u **Project genereren**. Wanneer u hierom wordt gevraagd, downloadt u het project naar uw lokale computer.
 
@@ -286,9 +286,9 @@ Gebruik de [Spring Initializr](https://start.spring.io/) om een nieuw Spring Boo
 
 1. Open een browservenster en ga naar de URL: `http://localhost:8080/welcome`.
 
-    ![Quickstart voor het lokaal starten van een app](./media/quickstarts/spring-boot-feature-flag-local-before.png)
+    ![Schermopname van een browservenster met een welkomstbericht.](./media/quickstarts/spring-boot-feature-flag-local-before.png)
 
-1. Selecteer in de App Configuration-portal de optie **Functiebeheer** en wijzig de status van de **Beta**-sleutel in **Aan**:
+1. Selecteer in de App Configuration-portal de optie **Functiebeheer** en wijzig de status van de **Beta** -sleutel in **Aan** :
 
     | Sleutel | Status |
     |---|---|
@@ -296,7 +296,7 @@ Gebruik de [Spring Initializr](https://start.spring.io/) om een nieuw Spring Boo
 
 1. Vernieuw de browserpagina om de nieuwe configuratie-instellingen te zien.
 
-    ![Quickstart voor het lokaal starten van een app](./media/quickstarts/spring-boot-feature-flag-local-after.png)
+    ![Schermopname van een browservenster met een welkomstbericht en een aangeroepen Bèta-koppeling.](./media/quickstarts/spring-boot-feature-flag-local-after.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

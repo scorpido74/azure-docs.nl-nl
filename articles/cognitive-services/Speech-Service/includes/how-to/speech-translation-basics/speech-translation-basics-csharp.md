@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 04/13/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1302b3e959530b0ff738e4fb5c3898355088591d
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: c8392770d7edb18f776f7664657c6985b9f7fb63
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92470697"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94424908"
 ---
 Een van de belangrijkste functies van de speech-service is de mogelijkheid om menselijke spraak te herkennen en te vertalen naar andere talen. In deze Snelstartgids leert u hoe u de Speech SDK in uw apps en producten kunt gebruiken om spraak vertalingen van hoge kwaliteit uit te voeren. In deze Quick Start vindt u onderwerpen, waaronder:
 
@@ -20,7 +20,7 @@ Een van de belangrijkste functies van de speech-service is de mogelijkheid om me
 
 ## <a name="skip-to-samples-on-github"></a>Naar voorbeelden op GitHub
 
-Zie de [C#-quickstartvoorbeelden](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/dotnet/translate-speech-to-text) op GitHub als u direct naar voorbeeldcode wilt gaan.
+Raadpleeg de [C#-snelstartvoorbeelden](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/dotnet/translate-speech-to-text) op GitHub als u direct naar voorbeeldcode wilt gaan.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -76,7 +76,7 @@ Er zijn een paar manieren waarop u een [`SpeechTranslationConfig`][config] kunt 
 * Met een host: geef een hostadres door. Een sleutel of autorisatietoken is optioneel.
 * Met een autorisatietoken: geef een autorisatietoken en de bijbehorende regio door.
 
-Laten we eens kijken hoe een [`SpeechTranslationConfig`][config] wordt gemaakt met behulp van een sleutel en regio. U kunt deze referenties ophalen door de volgende stappen in [de speech-service gratis](../../../overview.md#try-the-speech-service-for-free)uit te voeren.
+Laten we eens kijken hoe een [`SpeechTranslationConfig`][config] wordt gemaakt met behulp van een sleutel en regio. U kunt deze referenties ophalen door de stappen te volgen in [De Speech-service gratis uitproberen](../../../overview.md#try-the-speech-service-for-free).
 
 ```csharp
 public class Program
@@ -228,7 +228,7 @@ static async Task TranslateSpeechAsync()
 }
 ```
 
-Zie [basis beginselen van spraak herkenning](../../../speech-to-text-basics.md)voor meer informatie over spraak naar tekst.
+Zie [basis beginselen van spraak herkenning](../../../get-started-speech-to-text.md)voor meer informatie over spraak naar tekst.
 
 ## <a name="synthesize-translations"></a>Vertalingen voor synthesizer
 
@@ -333,13 +333,13 @@ static async Task TranslateSpeechAsync()
 }
 ```
 
-Zie [basis beginselen van spraak synthese](../../../text-to-speech-basics.md)voor meer informatie over spraak synthese.
+Zie [basis beginselen van spraak synthese](../../../get-started-text-to-speech.md)voor meer informatie over spraak synthese.
 
-[config]: https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechtranslationconfig?view=azure-dotnet
-[audioconfig]: https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audio.audioconfig?view=azure-dotnet
-[recognizer]: https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.translation.translationrecognizer?view=azure-dotnet
-[recognitionlang]: https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.speechrecognitionlanguage?view=azure-dotnet
-[addlang]: https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechtranslationconfig.addtargetlanguage?view=azure-dotnet
-[translations]: https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.translation.translationrecognitionresult.translations?view=azure-dotnet
-[voicename]: https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechtranslationconfig.voicename?view=azure-dotnet
-[speechsynthesisvoicename]: https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.speechsynthesisvoicename?view=azure-dotnet
+[config]: /dotnet/api/microsoft.cognitiveservices.speech.speechtranslationconfig?view=azure-dotnet
+[audioconfig]: /dotnet/api/microsoft.cognitiveservices.speech.audio.audioconfig?view=azure-dotnet
+[recognizer]: /dotnet/api/microsoft.cognitiveservices.speech.translation.translationrecognizer?view=azure-dotnet
+[recognitionlang]: /dotnet/api/microsoft.cognitiveservices.speech.speechconfig.speechrecognitionlanguage?view=azure-dotnet
+[addlang]: /dotnet/api/microsoft.cognitiveservices.speech.speechtranslationconfig.addtargetlanguage?view=azure-dotnet
+[translations]: /dotnet/api/microsoft.cognitiveservices.speech.translation.translationrecognitionresult.translations?view=azure-dotnet
+[voicename]: /dotnet/api/microsoft.cognitiveservices.speech.speechtranslationconfig.voicename?view=azure-dotnet
+[speechsynthesisvoicename]: /dotnet/api/microsoft.cognitiveservices.speech.speechconfig.speechsynthesisvoicename?view=azure-dotnet

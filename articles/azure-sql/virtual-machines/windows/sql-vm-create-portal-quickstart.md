@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: d7d82db7fc8a39a0865e80ee7873ee849627c583
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 454dc593dca216d3805036ce78ec9986cf317d4e
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791066"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145851"
 ---
 # <a name="quickstart-create-sql-server-2017-on-a-windows-virtual-machine-in-the-azure-portal"></a>Quickstart: SQL Server 2017 maken op een virtuele Windows-machine in Azure Portal
 
@@ -44,12 +44,12 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 1. Meld u met uw account aan bij de [Azure Portal](https://portal.azure.com).
 
 1. Selecteer **Azure SQL** in het menu aan de linkerzijde van de Azure Portal. Als **Azure SQL** niet in de lijst staat, selecteert u **Alle services** en typt u *Azure SQL* in het zoekvak.
-1. Selecteer **+Toevoegen** om de pagina **SQL-implementatieoptie selecteren** te openen. U kunt aanvullende informatie weergeven door **Details weergeven** te selecteren op de tegel **Virtuele SQL-machines** .
+1. Selecteer **+Toevoegen** om de pagina **SQL-implementatieoptie selecteren** te openen. U kunt aanvullende informatie weergeven door **Details weergeven** te selecteren op de tegel **Virtuele SQL-machines**.
 1. Selecteer de installatiekopie met de naam **Gratis licentie voor SQL Server: SQL Server 2017 Developer op Windows Server 2016** in de vervolgkeuzelijst.
 
-   ![Nieuw zoekvenster](./media/sql-vm-create-portal-quickstart/select-sql-2017-vm-image.png)
+   ![Schermopname van het selecteren van de gratis SQL Server-licentie: SQL Server 2017 Developer op Windows Server 2016.](./media/sql-vm-create-portal-quickstart/select-sql-2017-vm-image.png)
 
-1. Selecteer **Maken** .
+1. Selecteer **Maken**.
 
    ![Nieuw zoekvenster](./media/sql-vm-create-portal-quickstart/create-sql-2017-vm-image.png)
 
@@ -62,11 +62,11 @@ Geef op het tabblad **Basisbeginselen** u de volgende gegevens op:
    ![Abonnement](./media/sql-vm-create-portal-quickstart/basics-project-details.png)
 
 1. Geef onder **Exemplaardetails** het volgende op:
-    1. Typ _SQLVM_ als de **naam van de virtuele machine** . 
-    1. Kies een locatie voor uw **Regio** . 
-    1. Voor het doel van deze quickstart laat u **Beschikbaarheidsopties** ingesteld op _Geen infrastructuurredundantie vereist_ . Zie [Beschikbaarheid](../../../virtual-machines/availability.md) voor meer informatie over beschikbaarheidsopties. 
-    1. Selecteer in de lijst **Installatiekopie** de optie _Gratis SQL Server-licentie: SQL Server 2017 Developer op Windows Server 2016_ . 
-    1. Kies **Grootte wijzigen** voor de **Grootte** van de virtuele machine en selecteer de aanbieding **A2 Basic** . Zorg dat u uw resources opschoont wanneer u ze niet meer nodig hebt, om te voorkomen dat er onverwachte kosten in rekening worden gebracht. 
+    1. Typ _SQLVM_ als de **naam van de virtuele machine**. 
+    1. Kies een locatie voor uw **Regio**. 
+    1. Voor het doel van deze quickstart laat u **Beschikbaarheidsopties** ingesteld op _Geen infrastructuurredundantie vereist_. Zie [Beschikbaarheid](../../../virtual-machines/availability.md) voor meer informatie over beschikbaarheidsopties. 
+    1. Selecteer in de lijst **Installatiekopie** de optie _Gratis SQL Server-licentie: SQL Server 2017 Developer op Windows Server 2016_. 
+    1. Kies **Grootte wijzigen** voor de **Grootte** van de virtuele machine en selecteer de aanbieding **A2 Basic**. Zorg dat u uw resources opschoont wanneer u ze niet meer nodig hebt, om te voorkomen dat er onverwachte kosten in rekening worden gebracht. 
 
    ![Exemplaardetails](./media/sql-vm-create-portal-quickstart/basics-instance-details.png)
 
@@ -83,12 +83,12 @@ Geef op het tabblad **Basisbeginselen** u de volgende gegevens op:
 Op het tabblad **SQL Server-instellingen** configureert u de volgende opties:
 
 1. Selecteer onder **Netwerken en beveiliging** de optie _Openbaar (internet_ ) voor **SQL-connectiviteit** en wijzig de poort in `1401` om te voorkomen dat u in het openbare scenario een bekend poortnummer gebruikt. 
-1. Selecteer onder **SQL-verificatie** de optie **Inschakelen** . De SQL-aanmeldingsgegevens zijn ingesteld op dezelfde combinatie van gebruikersnaam en wachtwoord als u voor de virtuele machine hebt geconfigureerd. Gebruik de standaardinstelling voor [**Azure Key Vault-integratie**](azure-key-vault-integration-configure.md). **Opslagconfiguratie** is niet beschikbaar voor de basisinstallatiekopie van de virtuele SQL Server-machine, maar in [Opslagconfiguratie](storage-configuration.md#new-vms) vindt u meer informatie over de beschikbare opties voor andere installatiekopieën.  
+1. Selecteer onder **SQL-verificatie** de optie **Inschakelen**. De SQL-aanmeldingsgegevens zijn ingesteld op dezelfde combinatie van gebruikersnaam en wachtwoord als u voor de virtuele machine hebt geconfigureerd. Gebruik de standaardinstelling voor [**Azure Key Vault-integratie**](azure-key-vault-integration-configure.md). **Opslagconfiguratie** is niet beschikbaar voor de basisinstallatiekopie van de virtuele SQL Server-machine, maar in [Opslagconfiguratie](storage-configuration.md#new-vms) vindt u meer informatie over de beschikbare opties voor andere installatiekopieën.  
 
    ![Beveiligingsinstellingen voor SQL-server](./media/sql-vm-create-portal-quickstart/sql-server-settings.png)
 
 
-1. Wijzig indien nodig andere instellingen en selecteer vervolgens **Controleren en maken** . 
+1. Wijzig indien nodig andere instellingen en selecteer vervolgens **Controleren en maken**. 
 
    ![Beoordelen en maken](./media/sql-vm-create-portal-quickstart/review-create.png)
 
@@ -106,15 +106,15 @@ U kunt de implementatie bewaken vanuit Azure Portal. Met de knop **Meldingen** b
 1. Open [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) op een andere computer die is verbonden met internet.
 
 
-1. Bewerk in het dialoogvenster **Verbinding maken met server** of **Verbinding maken met Database-engine** de waarde voor **Servernaam** . Typ het openbare IP-adres van de virtuele machine. Typ nu een komma en vervolgens de aangepaste poort ( **1401** ) die u hebt opgegeven tijdens de configuratie van de nieuwe virtuele machine. Bijvoorbeeld `11.22.33.444,1401`.
+1. Bewerk in het dialoogvenster **Verbinding maken met server** of **Verbinding maken met Database-engine** de waarde voor **Servernaam**. Typ het openbare IP-adres van de virtuele machine. Typ nu een komma en vervolgens de aangepaste poort ( **1401** ) die u hebt opgegeven tijdens de configuratie van de nieuwe virtuele machine. Bijvoorbeeld `11.22.33.444,1401`.
 
-1. Kies in het vak **Verificatie** **SQL Server-verificatie** .
+1. Kies in het vak **Verificatie** **SQL Server-verificatie**.
 
 1. Typ in het vak **Aanmelden** een geldige SQL-aanmeldingsnaam.
 
 1. Typ in het vak **Wachtwoord** het wachtwoord van de aanmelding.
 
-1. Selecteer **Verbinden** .
+1. Selecteer **Verbinden**.
 
     ![ssms verbinden](./media/sql-vm-create-portal-quickstart/ssms-connect.png)
 

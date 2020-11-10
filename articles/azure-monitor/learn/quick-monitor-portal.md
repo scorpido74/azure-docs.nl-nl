@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
 ms.custom: mvc
-ms.openlocfilehash: ed7cec34b4bca1882d069997d4f89677cda32447
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: dd262b942d6ce4e423f524c7381574afd501f466
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88080946"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927546"
 ---
 # <a name="start-monitoring-your-aspnet-web-application"></a>Begin uw ASP.NET-webtoepassing te controleren
 
@@ -38,7 +38,7 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
     > [!IMPORTANT]
     > Het proces voor het toevoegen van Application Insights hangt af van het type ASP.NET-sjabloon. Als u de sjabloon **Leeg** of **Azure mobile app** gebruikt, selecteer dan **Project** > **Application Insights Telemetry toevoegen**. Raadpleeg voor alle andere ASP.NET-sjablonen de instructies in de stap hierboven. 
 
-3. Klik op **Aan de slag** (eerdere versies van Visual Studio hebben in plaats daarvan de knop **Gratis beginnen**).
+3. Klik op **Aan de slag** (eerdere versies van Visual Studio hebben in plaats daarvan de knop **Gratis beginnen** ).
 
     ![Application Insights toevoegen aan Visual Studio](./media/quick-monitor-portal/add-application-insights-b.png)
 
@@ -62,13 +62,13 @@ U kunt nu Application Insights openen in Azure Portal om allerlei gegevens over 
 
 1. Vouw in de Solution Explorer de map **verbonden services** uit (pictogram van wolk en stekker) en klik met de rechtermuisknop op de map **Application Insights**. Klik vervolgens op **Application Insights-portal openen**.  U ziet een aantal gegevens over uw toepassing en allerlei opties.
 
-    ![Toepassingskaart](media/quick-monitor-portal/04-overview.png)
+    ![Schermopname met informatie over de toepassing in de Application Insights-portal.](media/quick-monitor-portal/04-overview.png)
 
 2. Klik op **Toepassingsoverzicht** voor een visueel overzicht van de afhankelijkheidsrelaties tussen de onderdelen van de toepassing.  Voor elk onderdeel worden KPI's weergegeven, zoals belasting, prestaties, fouten en waarschuwingen.
 
     ![Toepassingskaart](media/quick-monitor-portal/05-appmap.png)
 
-3. Klik op het pictogram ![Toepassingskaart](media/quick-monitor-portal/app-viewinlogs-icon.png) van **App-analyse** **Weergave in logboeken (Analytics)** bij een van de toepassingsonderdelen. Hierdoor wordt **Logboeken (Analytics)** geopend. Dit biedt een uitgebreide querytaal voor het analyseren van alle gegevens die zijn verzameld met Application Insights. In dit geval wordt er een query gegenereerd waarmee het aantal aanvragen wordt weergegeven als een grafiek. U kunt uw eigen query's schrijven om andere gegevens te analyseren.
+3. Klik op het pictogram **App Analytics** ![Schermopname van het App Analytics-pictogram.](media/quick-monitor-portal/app-viewinlogs-icon.png) **Bekijk in Logboeken (Analytics)** in een van de toepassingsonderdelen. Hierdoor wordt **Logboeken (Analytics)** geopend. Dit biedt een uitgebreide querytaal voor het analyseren van alle gegevens die zijn verzameld met Application Insights. In dit geval wordt er een query gegenereerd waarmee het aantal aanvragen wordt weergegeven als een grafiek. U kunt uw eigen query's schrijven om andere gegevens te analyseren.
 
     ![Analyse](media/quick-monitor-portal/6viewanalytics.png)
 
@@ -104,7 +104,7 @@ Raadpleeg de GitHub-opslagplaats voor de [open-source JavaScript SDK](https://gi
 ## <a name="clean-up-resources"></a>Resources opschonen
 U kunt de resourcegroep en alle gerelateerde resources verwijderen wanneer u klaar bent met testen. Volg de onderstaande stappen om dit te doen.
 1. Klik in het menu links in Azure Portal op **Resourcegroepen** en klik vervolgens op **myResourceGroup**.
-2. Klik op de pagina van uw resourcegroep op **Verwijderen**, typ **myResourceGroup** in het tekstvak en klik vervolgens op **Verwijderen**.
+2. Klik op de pagina van uw resourcegroep op **Verwijderen** , typ **myResourceGroup** in het tekstvak en klik vervolgens op **Verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 Aan de hand van deze quickstart hebt u uw toepassing ingesteld voor controle met Azure Application Insights.  Ga verder met de zelfstudies om te leren hoe u dit kunt gebruiken om statistieken bij te houden en problemen in uw toepassing te detecteren.

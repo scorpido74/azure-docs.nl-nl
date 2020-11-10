@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 08/26/2020
 ms.author: martinle
 ms.reviewer: euang
-ms.openlocfilehash: 90e7297236994650e0820e883c94a98b29c49fb7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1cdb010e34674d52ebe2135ad1591a163a078708
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91249413"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324956"
 ---
 # <a name="securing-your-credentials-through-linked-services-with-the-tokenlibrary"></a>Uw referenties beveiligen via gekoppelde services met de tokenbibliotheek
 Toegang tot gegevens uit externe bronnen verkrijgen is een veelvoorkomend patroon. Tenzij de externe gegevensbron anonieme toegang toestaat, is de kans groot dat u uw verbinding moet beveiligen met een referentie, geheim of verbindingsreeks.  
@@ -122,5 +122,5 @@ print(accountKey)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Schrijven naar SQL-pool](./synapse-spark-sql-pool-import-export.md)
+- [Schrijven naar toegewezen SQL-pool](./synapse-spark-sql-pool-import-export.md)
 

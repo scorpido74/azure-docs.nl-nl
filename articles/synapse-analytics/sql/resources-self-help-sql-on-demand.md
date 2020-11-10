@@ -1,6 +1,6 @@
 ---
-title: Zelfondersteuning voor SQL on-demand (preview-versie)
-description: Deze sectie bevat informatie die u kan helpen bij het oplossen van problemen met SQL on-demand (preview-versie).
+title: Zelfondersteuning voor serverloze SQL-pools (preview)
+description: Deze sectie bevat informatie die u kan helpen bij het oplossen van problemen met een serverloze SQL-pool (preview).
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,37 +9,37 @@ ms.subservice: sql
 ms.date: 05/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8bd955e844c9569438c5d35f152ba1bcdfccc306
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9753fc491cb5950d679ae3633a18cdd5c1170291
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91287998"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317295"
 ---
-# <a name="self-help-for-sql-on-demand-preview"></a>Zelfondersteuning voor SQL on-demand (preview-versie)
+# <a name="self-help-for-serverless-sql-pool-preview"></a>Zelfondersteuning voor serverloze SQL-pools (preview)
 
-Dit artikel bevat informatie over het oplossen van de meest voorkomende problemen met SQL on-demand (preview-versie) in Azure Synapse Analytics.
+Dit artikel bevat informatie over het oplossen van de meest voorkomende problemen met een serverloze SQL-pool (preview) in Azure Synapse Analytics.
 
-## <a name="sql-on-demand-is-grayed-out-in-synapse-studio"></a>SQL on-demand is niet beschikbaar in Synapse Studio
+## <a name="serverless-sql-pool-is-grayed-out-in-synapse-studio"></a>Serverloze SQL-pool is niet beschikbaar in Synapse Studio
 
-Als Synapse Studio geen verbinding kan maken met SQL on-demand, ziet u dat SQL on-demand niet beschikbaar is of dat de status Offline wordt weergegeven. Dit probleem treedt meestal op in een van de volgende gevallen:
+Als Synapse Studio geen verbinding kan maken met een serverloze SQL-pool, ziet u dat de serverloze SQL-pool niet beschikbaar is of dat de status 'Offline' wordt weergegeven. Dit probleem treedt meestal op in een van de volgende gevallen:
 
-1) Uw netwerk verhindert communicatie met de back-end van Azure Synapse. Het meest voorkomende probleem is dat poort 1443 wordt geblokkeerd. Hef het blokkeren van deze poort op om het gebruik van SQL on-demand mogelijk te maken. Er kunnen ook andere problemen zijn waardoor SQL on-demand niet werkt, [raadpleeg de volledige gids voor probleemoplossing voor meer informatie](../troubleshoot/troubleshoot-synapse-studio.md).
-2) U bent niet gemachtigd om u aan te melden bij SQL on-demand. Als u toegang wilt krijgen, moet een van de beheerders van de Azure Synapse-werkruimte u toevoegen aan de rol Werkruimtebeheerder of SQL-beheerder. [Bekijk de volledige handleiding over toegangsbeheer voor meer informatie](access-control.md).
+1) Uw netwerk verhindert communicatie met de back-end van Azure Synapse. Het meest voorkomende probleem is dat poort 1443 wordt geblokkeerd. Als u de serverloze SQL-pool wilt laten werken, heft u de blokkering van deze poort op. Er kunnen ook andere problemen zijn waardoor de serverloze SQL-pool niet werkt, [raadpleeg de volledige gids voor probleemoplossing voor meer informatie](../troubleshoot/troubleshoot-synapse-studio.md).
+2) U bent niet gemachtigd om u aan te melden bij de serverloze SQL-pool. Als u toegang wilt krijgen, moet een van de beheerders van de Azure Synapse-werkruimte u toevoegen aan de rol Werkruimtebeheerder of SQL-beheerder. [Bekijk de volledige handleiding over toegangsbeheer voor meer informatie](access-control.md).
 
 ## <a name="query-fails-because-file-cannot-be-opened"></a>De query is mislukt omdat het bestand niet kan worden geopend
 
-Als uw query mislukt met het foutbericht Bestand kan niet worden geopend omdat het niet bestaat of wordt gebruikt door een ander proces en u zeker weet dat het bestand bestaat en dat het niet wordt gebruikt door een ander proces, betekent dit dat SQL on-demand geen toegang kan krijgen tot het bestand. Dit probleem treedt meestal op omdat uw Azure Active Directory-identiteit geen rechten heeft om het bestand te openen. SQL on-demand probeert standaard toegang tot het bestand met uw Azure Active Directory-identiteit te krijgen. Om dit probleem op te lossen, moet u de juiste rechten hebben voor toegang tot het bestand. De eenvoudigste manier is om uzelf de rol 'Bijdrager voor opslagblobgegevens' toe te kennen voor het opslagaccount waarnaar u een query wilt uitvoeren. [Ga naar de volledige handleiding over toegangsbeheer voor opslag via Azure Active Directory voor meer informatie](../../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). 
+Als uw query mislukt met het foutbericht 'Bestand kan niet worden geopend omdat het niet bestaat of wordt gebruikt door een ander proces' en u zeker weet dat het bestand bestaat en dat het niet wordt gebruikt door een ander proces, betekent dit dat de serverloze SQL-pool geen toegang kan krijgen tot het bestand. Dit probleem treedt meestal op omdat uw Azure Active Directory-identiteit geen rechten heeft om het bestand te openen. Een serverloze SQL-pool probeert standaard toegang tot het bestand met uw Azure Active Directory-identiteit te krijgen. Om dit probleem op te lossen, moet u de juiste rechten hebben voor toegang tot het bestand. De eenvoudigste manier is om uzelf de rol 'Bijdrager voor opslagblobgegevens' toe te kennen voor het opslagaccount waarnaar u een query wilt uitvoeren. [Ga naar de volledige handleiding over toegangsbeheer voor opslag via Azure Active Directory voor meer informatie](../../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). 
 
 ## <a name="query-fails-because-it-cannot-be-executed-due-to-current-resource-constraints"></a>De query is mislukt omdat deze niet kan worden uitgevoerd vanwege huidige resourcebeperkingen 
 
-Als uw query mislukt met het foutbericht Deze query kan niet worden uitgevoerd vanwege huidige resourcebeperkingen, betekent dit dat SQL on-demand deze niet kan uitvoeren vanwege resourcebeperkingen: 
+Als uw query mislukt met het foutbericht 'Deze query kan niet worden uitgevoerd vanwege huidige resourcebeperkingen', betekent dit dat de serverloze SQL-pool deze niet kan uitvoeren vanwege resourcebeperkingen: 
 
 - Zorg dat u gegevenstypen van redelijke grootte gebruikt. Geef ook een schema op voor Parquet-bestanden voor kolommen met tekenreeksen, omdat deze standaard VARCHAR(8000) zijn. 
 
-- Als uw query CSV-bestanden aanroept, kunt u overwegen om [statistieken te maken](develop-tables-statistics.md#statistics-in-sql-on-demand-preview). 
+- Als uw query CSV-bestanden aanroept, kunt u overwegen om [statistieken te maken](develop-tables-statistics.md#statistics-in-serverless-sql-pool-preview). 
 
-- Raadpleeg de pagina over [best practices voor prestaties voor SQL on-demand](best-practices-sql-on-demand.md) om uw query te optimaliseren.  
+- Raadpleeg de pagina over [best practices voor prestaties voor uw serverloze SQL-pool](best-practices-sql-on-demand.md) om uw query te optimaliseren.  
 
 ## <a name="create-statement-is-not-supported-in-master-database"></a>De instructie CREATE wordt niet ondersteund in de hoofddatabase
 
@@ -47,7 +47,7 @@ Uw query mislukt met het foutbericht:
 
 > Kan de query niet uitvoeren. Fout: CREATE EXTERNAL TABLE/DATA SOURCE/DATABASE SCOPED CREDENTIAL/FILE FORMAT wordt niet ondersteund in de hoofddatabase. 
 
-Dit betekent dat de hoofddatabase in SQL on-demand geen ondersteuning biedt voor het maken van:
+Dit betekent dat de hoofddatabase in de serverloze SQL-pool geen ondersteuning biedt voor het maken van:
   - Externe tabellen
   - Externe gegevensbronnen
   - Referenties van databasebereik
@@ -73,7 +73,7 @@ WITH ( FORMAT_TYPE = PARQUET)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg de volgende artikelen voor meer informatie over het gebruik van SQL on-demand:
+Raadpleeg de volgende artikelen voor meer informatie over het gebruik van een serverloze SQL-pool:
 
 - [Query's uitvoeren op één CSV-bestand](query-single-csv-file.md)
 

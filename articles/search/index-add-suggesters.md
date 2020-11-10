@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8ae25c63e9c6e3bf6ad363cde9eb641703562811
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: ed7b61e9e0379462e0dfbcdcc93acfccf470d95f
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360017"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427034"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>Een suggestie maken om automatisch aanvullen en voorgestelde resultaten in een query in te scha kelen
 
@@ -26,7 +26,7 @@ De volgende scherm afbeelding van [het maken van uw eerste app in C#](tutorial-c
 
 U kunt deze functies afzonderlijk of samen gebruiken. Als u dit gedrag wilt implementeren in azure Cognitive Search, is er een index-en query onderdeel. 
 
-+ Voeg in de index een suggestie toe aan een index. U kunt de portal, [rest API](/rest/api/searchservice/create-index)of [.NET SDK](/dotnet/api/microsoft.azure.search.models.suggester)gebruiken. De rest van dit artikel is gericht op het maken van een suggestie.
++ Voeg in de index een suggestie toe aan een index. U kunt de portal gebruiken: [Create Index (REST) (/rest/API/searchservice/Create-Index) of een Voorst [Ellen eigenschap](/dotnet/api/azure.search.documents.indexes.models.searchindex.suggesters). De rest van dit artikel is gericht op het maken van een suggestie.
 
 + Roep in de query aanvraag een van de [hieronder weer gegeven api's](#how-to-use-a-suggester)aan.
 
@@ -107,24 +107,23 @@ Voeg in de REST API suggesties toe via [Create Index](/rest/api/searchservice/cr
 
 ## <a name="create-using-net"></a>Maken met .NET
 
-Definieer een [suggestie object](/dotnet/api/microsoft.azure.search.models.suggester)in C#. `Suggesters` is een verzameling, maar er kan slechts één item worden toegepast. 
+In C# definieert u een [SearchSuggester-object](/dotnet/api/azure.search.documents.indexes.models.searchsuggester). `Suggesters` is een verzameling voor een SearchIndex-object, maar kan slechts één item hebben. 
 
 ```csharp
-private static void CreateHotelsIndex(SearchServiceClient serviceClient)
+private static void CreateIndex(string indexName, SearchIndexClient indexClient)
 {
-    var definition = new Index()
-    {
-        Name = "hotels-sample-index",
-        Fields = FieldBuilder.BuildForType<Hotel>(),
-        Suggesters = new List<Suggester>() {new Suggester()
-            {
-                Name = "sg",
-                SourceFields = new string[] { "HotelName", "Category" }
-            }}
-    };
+    FieldBuilder fieldBuilder = new FieldBuilder();
+    var searchFields = fieldBuilder.Build(typeof(Hotel));
 
-    serviceClient.Indexes.Create(definition);
+    //var suggester = new SearchSuggester("sg", sourceFields = "HotelName", "Category");
 
+    var definition = new SearchIndex(indexName, searchFields);
+
+    var suggester = new SearchSuggester("sg", new[] { "HotelName", "Category"});
+
+    definition.Suggesters.Add(suggester);
+
+    indexClient.CreateOrUpdateIndex(definition);
 }
 ```
 
@@ -134,7 +133,7 @@ private static void CreateHotelsIndex(SearchServiceClient serviceClient)
 |--------------|-----------------|
 |`name`        |De naam van de suggestie.|
 |`searchMode`  |De strategie die wordt gebruikt om te zoeken naar kandidaten zinsdelen. De enige modus die momenteel wordt ondersteund `analyzingInfixMatching` , die momenteel overeenkomt met het begin van een term.|
-|`sourceFields`|Een lijst met een of meer velden die de bron van de inhoud voor suggesties zijn. Velden moeten van het type `Edm.String` en zijn `Collection(Edm.String)` . Als er een analyse programma is opgegeven in het veld, moet dit een named Analyzer van [deze lijst](/dotnet/api/microsoft.azure.search.models.analyzername) zijn (geen aangepaste analyse functie).<p/> Geef als best practice alleen de velden op die aan een verwacht en passend antwoord worden uitgeleend, of het nu gaat om een voltooide teken reeks in een zoek balk of vervolg keuzelijst.<p/>De naam van een hotel is een goede kandidaat omdat deze precisie heeft. Uitgebreide velden, zoals beschrijvingen en opmerkingen, zijn te dicht bij. Zo zijn herhalende velden, zoals categorieën en tags, minder effectief. In de voor beelden bevatten we ' categorie ' om aan te tonen dat u meerdere velden kunt bevatten. |
+|`sourceFields`|Een lijst met een of meer velden die de bron van de inhoud voor suggesties zijn. Velden moeten van het type `Edm.String` en zijn `Collection(Edm.String)` . Als er een analyse programma is opgegeven in het veld, moet dit een named Analyzer van [deze lijst](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzername) zijn (geen aangepaste analyse functie).<p/> Geef als best practice alleen de velden op die aan een verwacht en passend antwoord worden uitgeleend, of het nu gaat om een voltooide teken reeks in een zoek balk of vervolg keuzelijst.<p/>De naam van een hotel is een goede kandidaat omdat deze precisie heeft. Uitgebreide velden, zoals beschrijvingen en opmerkingen, zijn te dicht bij. Zo zijn herhalende velden, zoals categorieën en tags, minder effectief. In de voor beelden bevatten we ' categorie ' om aan te tonen dat u meerdere velden kunt bevatten. |
 
 <a name="how-to-use-a-suggester"></a>
 
@@ -144,8 +143,8 @@ Een suggestie wordt gebruikt in een query. Nadat een suggestie is gemaakt, roept
 
 + [Suggesties REST API](/rest/api/searchservice/suggestions)
 + [REST API automatisch aanvullen](/rest/api/searchservice/autocomplete)
-+ [Methode SuggestWithHttpMessagesAsync](/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync)
-+ [Methode AutocompleteWithHttpMessagesAsync](/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync)
++ [Methode SuggestAsync](/dotnet/api/azure.search.documents.searchclient.suggestasync)
++ [Methode AutocompleteAsync](/dotnet/api/azure.search.documents.searchclient.autocompleteasync)
 
 In een zoek toepassing moet de client code gebruikmaken van een bibliotheek zoals de [automatisch aanvullen van de jQuery-gebruikers interface](https://jqueryui.com/autocomplete/) om de gedeeltelijke query te verzamelen en de overeenkomst op te geven. Zie voor meer informatie over deze taak [automatisch aanvullen of voorgestelde resultaten aan client code toevoegen](search-autocomplete-tutorial.md).
 

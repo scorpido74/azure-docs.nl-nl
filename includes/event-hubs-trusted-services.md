@@ -5,15 +5,15 @@ services: event-hubs
 author: spelluru
 ms.service: event-hubs
 ms.topic: include
-ms.date: 08/07/2020
+ms.date: 11/09/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 7cef6252a99430f0d62d8f976510f0a723badc1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d828a0c3eb2582a833ee8ad07bdf4f18002c9dca
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91654420"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427191"
 ---
 ## <a name="trusted-microsoft-services"></a>Vertrouwde micro soft-Services
 Wanneer u de instelling **vertrouwde micro soft-Services toestaan deze firewall wilt overs Laan** inschakelt, krijgen de volgende services toegang tot uw event hubs-resources.
@@ -22,3 +22,5 @@ Wanneer u de instelling **vertrouwde micro soft-Services toestaan deze firewall 
 | --------------- | ------------------------- | 
 | Azure Event Grid | Hiermee kan Azure Event Grid gebeurtenissen verzenden naar Event hubs in uw Event Hubs naam ruimte. U moet ook de volgende stappen uitvoeren: <ul><li>Door het systeem toegewezen identiteit voor een onderwerp of een domein inschakelen</li><li>De identiteit toevoegen aan de rol Azure Event Hubs data Sender op de Event Hubs naam ruimte</li><li>Configureer vervolgens het gebeurtenis abonnement dat gebruikmaakt van een Event Hub als een eind punt om de door het systeem toegewezen identiteit te gebruiken.</li></ul> <p>Zie [Event Delivery with a Managed Identity](../articles/event-grid/managed-service-identity.md) (Engelstalig) voor meer informatie.</p>|
 | Azure Monitor (Diagnostische instellingen) | Hiermee kan Azure Monitor diagnostische gegevens verzenden naar Event hubs in uw Event Hubs naam ruimte. |
+| Azure Stream Analytics | Hiermee kan een Azure Stream Analytics taak gegevens lezen van ([invoer](../articles/stream-analytics/stream-analytics-add-inputs.md)) of gegevens schrijven naar ([uitvoer](../articles/stream-analytics/event-hubs-output.md)) event hubs in uw event hubs naam ruimte. |
+| Azure IoT Hub | Hiermee kan IoT Hub berichten verzenden naar Event hubs in uw event hub-naam ruimte. U moet ook de volgende stappen uitvoeren: <ul><li>Door het systeem toegewezen identiteit inschakelen voor uw IoT-hub</li><li>Voeg de identiteit toe aan de rol Azure Event Hubs data Sender op de Event Hubs naam ruimte.</li><li>Configureer vervolgens de IoT Hub die gebruikmaakt van een Event Hub als een aangepast eind punt voor het gebruik van de verificatie op basis van identiteit.</li></ul>

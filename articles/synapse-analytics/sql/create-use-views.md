@@ -1,6 +1,6 @@
 ---
-title: Weergaven maken en gebruiken in SQL on-demand (preview)
-description: In deze sectie leert u hoe u weergaven kunt maken en gebruiken in SQL on-demand-query’s (preview). Weergaven stellen u in staat deze query's opnieuw te gebruiken. Weergaven zijn ook nodig als u hulpprogramma’s, zoals Power BI, wilt gebruiken samen met SQL on-demand.
+title: Weergaven maken en gebruiken in een serverloze SQL-pool (preview-versie)
+description: In deze sectie leert u hoe u weergaven kunt maken en gebruiken in om query's voor serverloze SQL-pools (preview-versie) te verpakken. Weergaven stellen u in staat deze query's opnieuw te gebruiken. Weergaven zijn ook nodig als u hulpprogramma’s, zoals Power BI, wilt gebruiken samen met een serverloze SQL-pool.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: f91611ab3c75a96f13ab84312ca0b2157e69af0d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d578529839afb5393dd013cb10f48c755f08addd
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91289307"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93316245"
 ---
-# <a name="create-and-use-views-in-sql-on-demand-preview-using-azure-synapse-analytics"></a>Weergaven maken en gebruiken in SQL on-demand (preview) met behulp van Azure Synapse Analytics
+# <a name="create-and-use-views-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Weergaven maken en gebruiken met behulp van een serverloze SQL-pool (preview-versie) in Azure Synapse Analytics
 
-In deze sectie leert u hoe u weergaven kunt maken en gebruiken in SQL on-demand-query’s (preview). Weergaven stellen u in staat deze query's opnieuw te gebruiken. Weergaven zijn ook nodig als u hulpprogramma’s, zoals Power BI, wilt gebruiken samen met SQL on-demand.
+In deze sectie leert u hoe u weergaven kunt maken en gebruiken in om query's voor serverloze SQL-pools (preview-versie) te verpakken. Weergaven stellen u in staat deze query's opnieuw te gebruiken. Weergaven zijn ook nodig als u hulpprogramma’s, zoals Power BI, wilt gebruiken samen met een serverloze SQL-pool.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -26,7 +26,7 @@ De eerste stap bestaat uit het maken van een database waar de weergave wordt gem
 
 ## <a name="create-a-view"></a>Een weergave maken
 
-U kunt weergaven op dezelfde manier maken als normale SQL Server-weergaven. Met de volgende query wordt een weergave gemaakt die het *population.csv*-bestand leest.
+U kunt weergaven op dezelfde manier maken als normale SQL Server-weergaven. Met de volgende query wordt een weergave gemaakt die het *population.csv* -bestand leest.
 
 > [!NOTE]
 > Wijzig de eerste regel in de query, d.w.z. [mydbname], zodat u de database gebruikt die u hebt gemaakt.
@@ -57,7 +57,7 @@ WITH (
 
 De weergave in dit voorbeeld maakt gebruik van de functie `OPENROWSET`. Deze functie gebruikt het absolute pad naar de onderliggende bestanden. Als u `EXTERNAL DATA SOURCE` hebt met een basis-URL van uw opslag, kunt u `OPENROWSET` gebruiken met `DATA_SOURCE` en een relatief bestandspad:
 
-```
+```sql
 CREATE VIEW TaxiView
 AS SELECT *, nyc.filepath(1) AS [year], nyc.filepath(2) AS [month]
 FROM

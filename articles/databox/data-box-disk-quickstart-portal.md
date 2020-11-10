@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: quickstart
-ms.date: 09/03/2019
+ms.date: 11/04/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: fcc7c6ff74e17db2066d97597849c985f5a961e9
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 23615daf4a07e02b01bbd5a9cdf57ec9a81a2b76
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76514065"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93347388"
 ---
 ::: zone target="docs"
 
@@ -24,7 +24,7 @@ In deze quickstart wordt beschreven hoe u de Azure Data Box Disk implementeert m
 
 Ga voor gedetailleerde stapsgewijze instructies voor implementatie en tracering naar [Zelfstudie: Azure Data Box Disk bestellen](data-box-disk-deploy-ordered.md). 
 
-Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan.
+Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F&preserve-view=true) aan.
 
 ::: zone-end
 
@@ -52,11 +52,11 @@ Meld u aan bij de Azure Portal op [https://aka.ms/azuredataboxfromdiskdocs](http
 
 > [!div class="checklist"]
 >
-> - **Vereisten controleren**: Controleer het aantal schijven en kabels, het besturingssysteem en overige software.
-> - **Aansluiten en ontgrendelen**: Sluit het apparaat aan en ontgrendel de schijf om de gegevens te kopiëren.
-> - **Gegevens kopiëren naar de schijf en valideren**: Kopieer de gegevens naar de schijven in de van tevoren gemaakte mappen.
-> - **Schijven retourneren**: Retourneer de schijven naar het Azure-datacenter waar de gegevens zijn geüpload naar uw opslagaccount.
-> - **Gegevens in Azure controleren**: Controleer of uw gegevens zijn geüpload naar uw opslagaccount voordat u deze van de server met brongegevens verwijdert.
+> - **Vereisten controleren** : Controleer het aantal schijven en kabels, het besturingssysteem en overige software.
+> - **Aansluiten en ontgrendelen** : Sluit het apparaat aan en ontgrendel de schijf om de gegevens te kopiëren.
+> - **Gegevens kopiëren naar de schijf en valideren** : Kopieer de gegevens naar de schijven in de van tevoren gemaakte mappen.
+> - **Schijven retourneren** : Retourneer de schijven naar het Azure-datacenter waar de gegevens zijn geüpload naar uw opslagaccount.
+> - **Gegevens in Azure controleren** : Controleer of uw gegevens zijn geüpload naar uw opslagaccount voordat u deze van de server met brongegevens verwijdert.
 
 ::: zone-end
 
@@ -64,6 +64,8 @@ Meld u aan bij de Azure Portal op [https://aka.ms/azuredataboxfromdiskdocs](http
 ::: zone target="docs"
 
 ## <a name="order"></a>Bestellen
+
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Deze stap neemt ongeveer 5 minuten in beslag.
 
@@ -73,6 +75,74 @@ Deze stap neemt ongeveer 5 minuten in beslag.
 4. Voer de order- en verzendgegevens in. Als de service beschikbaar is in uw regio, geeft u e-mailadressen voor meldingen op, controleert u de samenvatting en maakt u vervolgens de order.
 
 Zodra de order is gemaakt, worden de schijven voorbereid voor verzending.
+
+### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+
+Gebruik deze Azure CLI-opdrachten om een Data Box Disk-taak te maken.
+
+[!INCLUDE [azure-cli-prepare-your-environment-h3.md](../../includes/azure-cli-prepare-your-environment-h3.md)]
+
+1. Voer de opdracht [az group create](/cli/azure/group#az_group_create) uit om een resourcegroep te maken, of gebruik een bestaande resourcegroep:
+
+   ```azurecli
+   az group create --name databox-rg --location westus
+   ```
+
+1. Gebruik de opdracht [az storage account create](/cli/azure/storage/account#az_storage_account_create) om een opslagaccount te maken, of gebruik een bestaand opslagaccount:
+
+   ```azurecli
+   az storage account create --resource-group databox-rg --name databoxtestsa
+   ```
+
+1. Voer de opdracht [az databox job create](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_create) uit om een Data Box-taak te maken met de SKU DataBoxDisk:
+
+   ```azurecli
+   az databox job create --resource-group databox-rg --name databoxdisk-job \
+       --location westus --sku DataBoxDisk --contact-name "Jim Gan" --phone=4085555555 \
+       –-city Sunnyvale --email-list JimGan@contoso.com --street-address1 "1020 Enterprise Way" \
+       --postal-code 94089 --country US --state-or-province CA \
+       --storage-account databoxtestsa --expected-data-size 1
+   ```
+
+1. Voer de opdracht [az databox job update](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_update) uit om een taak bij te werken, zoals in dit voorbeeld, waar u de naam en het e-mailadres van een contactpersoon wijzigt:
+
+   ```azurecli
+   az databox job update -g databox-rg --name databox-job --contact-name "Robert Anic" --email-list RobertAnic@contoso.com
+   ```
+
+   Voer de opdracht [az databox job show](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_show) uit om informatie te krijgen over de taak:
+
+   ```azurecli
+   az databox job show --resource-group databox-rg --name databox-job
+   ```
+
+   Gebruik de opdracht [az databox job list]( /cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_list) om alle Data Box-taken voor een resourcegroep te zien:
+
+   ```azurecli
+   az databox job list --resource-group databox-rg
+   ```
+
+   Voer de opdracht [az databox job cancel](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_cancel) uit om een taak te annuleren:
+
+   ```azurecli
+   az databox job cancel –resource-group databox-rg --name databox-job --reason "Cancel job."
+   ```
+
+   Voer de opdracht [az databox job delete](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_delete) uit om een taak te verwijderen:
+
+   ```azurecli
+   az databox job delete –resource-group databox-rg --name databox-job
+   ```
+
+1. Gebruik de opdracht [az databox job list-credentials]( /cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_list_credentials) om de referenties voor een Data Box-taak weer te geven:
+
+   ```azurecli
+   az databox job list-credentials --resource-group "databox-rg" --name "databoxdisk-job"
+   ```
+
+Zodra de order is gemaakt, wordt het apparaat voorbereid voor verzending.
+
+---
 
 ## <a name="unpack"></a>Uitpakken
 
@@ -100,9 +170,9 @@ Deze stap neemt ongeveer 5 minuten in beslag.
 
 De duur van deze bewerking hangt af van de hoeveelheid gegevens.
 
-1. Het station bevat de mappen *PageBlob*, *BlockBlob*, *AzureFile*, *ManagedDisk* en *DataBoxDiskImport*. De gegevens die als blok-blobs moeten worden geïmporteerd in de *BlockBlob*-map, kunt u slepen en neerzetten om ze te kopiëren. Kopieer op dezelfde manier gegevens als VHD/VHDX naar de map *PageBlob* en bijbehorende gegevens naar *AzureFile*. Kopieer de VHD's, die u als beheerde schijven wilt uploaden, naar een map onder *ManagedDisk*.
+1. Het station bevat de mappen *PageBlob* , *BlockBlob* , *AzureFile* , *ManagedDisk* en *DataBoxDiskImport*. De gegevens die als blok-blobs moeten worden geïmporteerd in de *BlockBlob* -map, kunt u slepen en neerzetten om ze te kopiëren. Kopieer op dezelfde manier gegevens als VHD/VHDX naar de map *PageBlob* en bijbehorende gegevens naar *AzureFile*. Kopieer de VHD's, die u als beheerde schijven wilt uploaden, naar een map onder *ManagedDisk*.
 
-    Er wordt voor elke submap onder de *BlockBlob*- en *PageBlob*-map een container gemaakt in het Azure-opslagaccount. Er wordt een bestandsshare gemaakt voor een submap onder *AzureFile*.
+    Er wordt voor elke submap onder de *BlockBlob* - en *PageBlob* -map een container gemaakt in het Azure-opslagaccount. Er wordt een bestandsshare gemaakt voor een submap onder *AzureFile*.
 
     Alle bestanden onder de mappen *BlockBlob* en *PageBlob* worden naar een standaardcontainer `$root` onder het Azure-opslagaccount gekopieerd. Kopieer bestanden naar een map in *AzureFile*. Bestanden die rechtstreeks naar de map *AzureFile* worden gekopieerd, mislukken en worden geüpload als blok-blobs.
 

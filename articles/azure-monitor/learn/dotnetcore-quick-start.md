@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
 ms.custom: mvc
-ms.openlocfilehash: a12fe837bfd9606d07c7be71851880d2cebb9d61
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bd45284bfea09935ea48445d816f3b91272f68fc
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89055478"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92925846"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>Beginnen met controleren van de ASP.NET Core-webtoepassing
 
@@ -73,7 +73,7 @@ Met Application Insights kunnen telemetriegegevens worden verzameld vanuit elke 
 
 5. Selecteer **Foutopsporing** > **Starten zonder foutopsporing** (Ctrl + F5) om de app te starten
 
-    ![Menu Overzicht van Application Insights](./media/dotnetcore-quick-start/3debug.png)
+    ![Schermopname van de menuoptie Starten zonder foutopsporing.](./media/dotnetcore-quick-start/3debug.png)
 
 > [!NOTE]
 > Het duurt 3-5 minuten voordat de gegevens worden weergegeven in de portal. Let op: als deze app een test-app met weinig verkeer is, worden de meeste metrische gegevens alleen vastgelegd bij actieve aanvragen en bewerkingen.
@@ -88,7 +88,7 @@ Met Application Insights kunnen telemetriegegevens worden verzameld vanuit elke 
 
    ![Toepassingskaart](./media/dotnetcore-quick-start/5appmap.png)
 
-3. Klik op het **App Analytics**-pictogram ![Pictogram Toepassingskaart](./media/dotnetcore-quick-start/006.png) **Weergeven in Analytics**. Hierdoor wordt **Application Insights Analytics** geopend. Dit biedt een querytaal met opmaak voor het analyseren van alle gegevens die zijn verzameld met Application Insights. In dit geval wordt er een query gegenereerd waarmee het aantal aanvragen wordt weergegeven als een grafiek. U kunt uw eigen query's schrijven om andere gegevens te analyseren.
+3. Klik op het **App Analytics** -pictogram ![Pictogram Toepassingskaart](./media/dotnetcore-quick-start/006.png) **Weergeven in Analytics**. Hierdoor wordt **Application Insights Analytics** geopend. Dit biedt een querytaal met opmaak voor het analyseren van alle gegevens die zijn verzameld met Application Insights. In dit geval wordt er een query gegenereerd waarmee het aantal aanvragen wordt weergegeven als een grafiek. U kunt uw eigen query's schrijven om andere gegevens te analyseren.
 
    ![Analytics-grafiek met gebruikersaanvragen gedurende een tijdsperiode](./media/dotnetcore-quick-start/6analytics.png)
 
@@ -107,7 +107,7 @@ U kunt de resourcegroep en alle gerelateerde resources verwijderen wanneer u kla
 > Als u een bestaande resourcegroep hebt gebruikt, werken de onderstaande instructies niet en hoeft u alleen de afzonderlijke Application Insights-resource te verwijderen. Houd er rekening mee dat wanneer u een resourcegroep verwijdert, alle onderliggende resources die lid zijn van die groep ook worden verwijderd.
 
 1. Klik in het menu links in Azure Portal op **Resourcegroepen** en klik vervolgens op **myResourceGroup**.
-2. Klik op de pagina van uw resourcegroep op **Verwijderen**, typ **myResourceGroup** in het tekstvak en klik vervolgens op **Verwijderen**.
+2. Klik op de pagina van uw resourcegroep op **Verwijderen** , typ **myResourceGroup** in het tekstvak en klik vervolgens op **Verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

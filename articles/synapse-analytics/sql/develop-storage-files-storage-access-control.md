@@ -1,6 +1,6 @@
 ---
-title: Toegang tot opslagaccounts beheren voor SQL on-demand (preview)
-description: Lees hier hoe SQL on-demand (preview) toegang krijgt tot Azure Storage en hoe u de toegang tot opslag kunt beheren voor SQL on-demand in Azure Synapse Analytics.
+title: Toegang tot opslagaccounts beheren voor serverloze SQL-pools (preview-versie)
+description: Lees hier hoe een serverloze SQL-pool (preview-versie) toegang krijgt tot Azure Storage, en hoe u de toegang tot opslag kunt beheren voor serverloze SQL-pools in Azure Synapse Analytics.
 services: synapse-analytics
 author: filippopovic
 ms.service: synapse-analytics
@@ -9,31 +9,31 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 182ab55f8e86d972293222f8a3bcf32dada89328
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 958f371a0018d20331e73d0eabba9354614d121c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91449457"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93315726"
 ---
-# <a name="control-storage-account-access-for-sql-on-demand-preview"></a>Toegang tot opslagaccounts beheren voor SQL on-demand (preview)
+# <a name="control-storage-account-access-for-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Toegang tot opslagaccounts beheren voor serverloze SQL-pools (preview-versie) in Azure Synapse Analytics
 
-Bij een SQL on demand-query worden bestanden rechtstreeks gelezen uit Azure Storage. Machtigingen voor toegang tot de bestanden in Azure Storage worden op twee niveaus bepaald:
-- **Opslagniveau**: de gebruiker moet toegang hebben tot onderliggende opslagbestanden. Uw opslagbeheerder moet de Azure AD-principal toestemming geven om bestanden te lezen/schrijven, of een SAS-sleutel genereren die wordt gebruikt voor toegang tot de opslag.
-- **Niveau van SQL-service**: de gebruiker moet de machtiging `SELECT` hebben om gegevens te lezen uit een [externe tabel](develop-tables-external-tables.md) of de machtiging `ADMINISTER BULK ADMIN` voor het uitvoeren van `OPENROWSET` evenals toestemming om referenties te gebruiken die worden gebruikt voor toegang tot de opslag.
+Bij een query van een serverloze SQL-pool worden bestanden rechtstreeks gelezen uit Azure Storage. Machtigingen voor toegang tot de bestanden in Azure Storage worden op twee niveaus bepaald:
+- **Opslagniveau** : de gebruiker moet toegang hebben tot onderliggende opslagbestanden. Uw opslagbeheerder moet de Azure AD-principal toestemming geven om bestanden te lezen/schrijven, of een SAS-sleutel genereren die wordt gebruikt voor toegang tot de opslag.
+- **Niveau van SQL-service** : de gebruiker moet de machtiging `SELECT` hebben om gegevens te lezen uit een [externe tabel](develop-tables-external-tables.md) of de machtiging `ADMINISTER BULK ADMIN` voor het uitvoeren van `OPENROWSET` evenals toestemming om referenties te gebruiken die worden gebruikt voor toegang tot de opslag.
 
 In dit artikel worden de typen referenties beschreven die u kunt gebruiken en hoe het opzoeken van referenties voor SQL- en Azure AD-gebruikers in zijn werk gaat.
 
 ## <a name="supported-storage-authorization-types"></a>Ondersteunde autorisatietypen voor opslag
 
-Een gebruiker die zich heeft aangemeld bij een SQL on demand-resource moet gemachtigd zijn om query's uit te voeren op de bestanden in Azure Storage als de bestanden niet openbaar beschikbaar zijn. U kunt drie autorisatietypen gebruiken voor toegang tot niet-openbare opslag: [Gebruikersidentiteit](?tabs=user-identity), [Shared Access Signature](?tabs=shared-access-signature) en [Beheerde identiteit](?tabs=managed-identity).
+Een gebruiker die zich heeft aangemeld bij een serverloze SQL-pool, moet zijn gemachtigd om query's uit te voeren op de bestanden in Azure Storage als de bestanden niet openbaar beschikbaar zijn. U kunt drie autorisatietypen gebruiken voor toegang tot niet-openbare opslag: [Gebruikersidentiteit](?tabs=user-identity), [Shared Access Signature](?tabs=shared-access-signature) en [Beheerde identiteit](?tabs=managed-identity).
 
 > [!NOTE]
 > **Azure AD Pass-Through** is het standaardgedrag bij het maken van een werkruimte.
 
 ### <a name="user-identity"></a>[Gebruikersidentiteit](#tab/user-identity)
 
-**Gebruikersidentiteit**, ook wel 'Azure AD-pass-through' genoemd, is een type autorisatie waarbij de identiteit van de Azure AD-gebruiker die is aangemeld bij SQL on-demand wordt gebruikt om toegang tot gegevens te autoriseren. Voordat de gegevens worden vrijgegeven, moet de Azure Storage-beheerder machtigingen verlenen aan de Azure AD-gebruiker. Zoals aangegeven in de tabel hierna, wordt dit niet ondersteund voor het SQL-gebruikerstype.
+**Gebruikersidentiteit** , ook wel 'Azure AD-pass-through' genoemd, is een type autorisatie waarbij de identiteit van de Azure AD-gebruiker die is aangemeld bij een serverloze SQL-pool, wordt gebruikt om toegang tot gegevens te autoriseren. Voordat de gegevens worden vrijgegeven, moet de Azure Storage-beheerder machtigingen verlenen aan de Azure AD-gebruiker. Zoals aangegeven in de tabel hierna, wordt dit niet ondersteund voor het SQL-gebruikerstype.
 
 > [!IMPORTANT]
 > U moet beschikken over de rol van eigenaar/inzender/lezer van Storage-blobgegevens om via uw identiteit toegang te krijgen tot de gegevens.
@@ -49,7 +49,7 @@ Een gebruiker die zich heeft aangemeld bij een SQL on demand-resource moet gemac
 U kunt een SAS-token verkrijgen door te navigeren naar de **Azure-portal > Opslagaccount-> Shared Access Signature-> Machtigingen configureren-> SAS en verbindingsreeks genereren**.
 
 > [!IMPORTANT]
-> Als er een SAS-token wordt gegenereerd, bevat dit een vraagteken ('?') aan het begin van het token. Als u het token wilt gebruiken in SQL on-demand, moet u het vraag teken ('?') verwijderen bij het maken van een referentie. Bijvoorbeeld:
+> Als er een SAS-token wordt gegenereerd, bevat dit een vraagteken ('?') aan het begin van het token. Als u het token wilt gebruiken in een serverloze SQL-pool, moet u het vraag teken ('?') verwijderen bij het maken van een referentie. Bijvoorbeeld:
 >
 > SAS-token: ?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-04-18T20:42:12Z&st=2019-04-18T12:42:12Z&spr=https&sig=lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78%3D
 
@@ -57,7 +57,7 @@ U moet de referenties binnen het database- of serverbereik maken om toegang met 
 
 ### <a name="managed-identity"></a>[Beheerde identiteit](#tab/managed-identity)
 
-**Beheerde identiteit** wordt ook wel MSI genoemd. Het is een functie van Azure Active Directory (Azure AD) die Azure-services biedt voor SQL on-demand. Met MSI wordt ook een automatisch beheerde identiteit geïmplementeerd in Azure AD. Deze identiteit kan worden gebruikt om de aanvraag voor toegang tot gegevens in Azure Storage te autoriseren.
+**Beheerde identiteit** wordt ook wel MSI genoemd. Het is een functie van Azure AD (Azure Active Directory) die Azure-services biedt voor serverloze SQL-pools. Met MSI wordt ook een automatisch beheerde identiteit geïmplementeerd in Azure AD. Deze identiteit kan worden gebruikt om de aanvraag voor toegang tot gegevens in Azure Storage te autoriseren.
 
 Voordat de gegevens worden vrijgegeven, moet de Azure Storage-beheerder machtigingen verlenen aan de beheerde identiteit voor toegang tot de gegevens. Het verlenen van machtigingen aan de beheerde identiteit gebeurt op dezelfde manier als het verlenen van machtigingen aan elke andere gebruiker van Azure AD.
 
@@ -95,7 +95,7 @@ U kunt de volgende combinaties van autorisatie- en Azure Storage-typen gebruiken
 
 ## <a name="credentials"></a>Referenties
 
-Als u een query wilt uitvoeren op een bestand dat zich in Azure Storage bevindt, heeft het eindpunt van SQL on-demand een referentie nodig die de verificatiegegevens bevat. Er worden twee typen referenties gebruikt:
+Als u een query wilt uitvoeren op een bestand dat zich in Azure Storage bevindt, heeft het eindpunt van de serverloze SQL-pool een referentie nodig die de verificatiegegevens bevat. Er worden twee typen referenties gebruikt:
 - Referenties op serverniveau worden gebruikt voor ad-hoc query's die worden uitgevoerd met behulp van de functie `OPENROWSET`. De referentienaam moet overeenkomen met de opslag-URL.
 - Referenties binnen het databasebereik worden gebruikt voor externe tabellen. De externe tabel verwijst naar `DATA SOURCE` met de referentie die moet worden gebruikt voor toegang tot de opslag.
 
@@ -144,7 +144,7 @@ SQL-gebruikers kunnen niet gebruikmaken van Azure AD-verificatie voor toegang to
 
 Met het volgende script maakt u een referentie op serverniveau die kan worden gebruikt door de functie `OPENROWSET` om met behulp van een SAS-token toegang te krijgen tot ieder bestand in Azure-opslag. Maak deze referentie om de SQL-principal in te schakelen die de functie `OPENROWSET` uitvoert om bestanden te lezen die zijn beveiligd met een SAS-sleutel in de Azure-opslag die overeenkomt met de URL in de referentienaam.
 
-U moet <*mystorageaccountname*> vervangen door de werkelijke naam van uw opslagaccount en <*mystorageaccountcontainername*> door de naam van de container:
+U moet < *mystorageaccountname* > vervangen door de werkelijke naam van uw opslagaccount en < *mystorageaccountcontainername* > door de naam van de container:
 
 ```sql
 CREATE CREDENTIAL [https://<storage_account>.dfs.core.windows.net/<container>]

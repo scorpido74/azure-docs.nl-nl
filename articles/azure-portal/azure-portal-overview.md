@@ -9,12 +9,12 @@ ms.date: 12/20/2019
 ms.topic: overview
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 24b249d1098788e518f5eda2d1b0d421d4e5e6bb
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 4a00c1dcf973098895e80d5e3d656efd4a35d0d0
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072387"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93147042"
 ---
 # <a name="azure-portal-overview"></a>Overzicht van de Azure Portal
 
@@ -42,7 +42,7 @@ Als u de modus gedokt voor het menu van de portal kiest, is deze altijd zichtbaa
 
 Als nieuwe abonnee voor Azure-services is het eerste wat u ziet nadat u zich [bij de portal heeft aangemeld](https://portal.azure.com) **Azure Home**. Deze pagina bevat een overzicht van resources waarmee u optimaal kunt profiteren van uw Azure-abonnement. Hier vindt u links naar gratis online cursussen, documentatie, coreservices en nuttige sites om up-to-date te blijven en wijzigingen voor uw organisatie te beheren. Voor snelle en gemakkelijke toegang tot werkzaamheden die worden uitgevoerd tonen we ook een lijst met uw meest recent bezochte resources. Deze pagina kan niet worden aangepast, maar u kunt kiezen of u **Azure Home** of **Azure Dasboard** als standaardweergave wilt gebruiken. De eerste keer dat u zich aanmeldt, wordt aan de bovenkant van de pagina een prompt weergegeven waarin u uw voorkeur kunt opslaan.
 
-![Schermopname met selectie van standaardweergave](./media/azure-portal-overview/azure-portal-default-view.png)
+![Schermopname waarop u ziet waar u uw voorkeuren kunt opslaan.](./media/azure-portal-overview/azure-portal-default-view.png)
 
 Zowel het menu van de Azure Portal als de standaardweergave van Azure kunnen worden gewijzigd in **Portal-instellingen**. Als u de selectie wijzigt, wordt de wijziging onmiddellijk toegepast.
 

@@ -6,13 +6,13 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 08/07/2020
-ms.openlocfilehash: cdc4dfe23cce7c2f58e4c9b44f2cea46e2337e00
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 10/27/2020
+ms.openlocfilehash: 1301af3bd17ce44720d77aa1b812b78bbe57ffc9
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322441"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101388"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Quickstart: Geautomatiseerde taken, processen en werkstromen maken met Azure Logic Apps - Visual Studio
 
@@ -20,7 +20,7 @@ Met [Azure Logic Apps](../logic-apps/logic-apps-overview.md) en Visual Studio ku
 
 Als u niet vertrouwd bent met Azure Logic Apps en u alleen de basisconcepten wilt gebruiken, probeer dan de [quickstart voor het maken van een logische app in de Azure-portal](../logic-apps/quickstart-create-first-logic-app-workflow.md). De ontwerpfunctie Logic App werkt op dezelfde manier in de Azure-portal en in Visual Studio.
 
-In deze quickstart maakt u met Visual Studio dezelfde logische app als in de quickstart voor de Azure-portal. Deze logische app bewaakt de RSS-feed van een website en verzendt een e-mail voor elk nieuw item in die feed. Uw uiteindelijke logische app ziet eruit als deze algemene werkstroom:
+In deze quickstart maakt u met Visual Studio dezelfde logische app als in de quickstart voor de Azure-portal. U kunt ook leren hoe u [een voorbeeld-app maakt in Visual Studio Code](quickstart-create-logic-apps-visual-studio-code.md), en [logische apps maakt en beheert via de Azure CLI (opdrachtregelinterface)](quickstart-logic-apps-azure-cli.md). Met deze logische app wordt de RSS-feed van een website bewaakt en een e-mailbericht verzonden voor elk nieuw item in deze feed. Uw uiteindelijke logische app ziet eruit als deze algemene werkstroom:
 
 ![Schermafbeelding van de algemene werkstroom van een voltooide logische app.](./media/quickstart-create-logic-apps-with-visual-studio/high-level-workflow-overview.png)
 
@@ -37,7 +37,7 @@ In deze quickstart maakt u met Visual Studio dezelfde logische app als in de qui
     > [!IMPORTANT]
     > Als u Visual Studio 2019 of 2017 installeert, selecteer dan de workload **Azure development**.
 
-  * [Microsoft Azure SDK voor .NET (2.9.1 of hoger)](https://azure.microsoft.com/downloads/). Meer informatie over [Azure SDK voor .NET](/dotnet/azure/dotnet-tools?view=azure-dotnet).
+  * [Microsoft Azure SDK voor .NET (2.9.1 of hoger)](https://azure.microsoft.com/downloads/). Meer informatie over [Azure SDK voor .NET](/dotnet/azure/dotnet-tools?tabs=vs).
 
   * [Azure PowerShell](https://github.com/Azure/azure-powershell#installation)
 
@@ -70,7 +70,7 @@ U kunt de [Visual Studio-extensie Azure Environment-selector](https://devblogs.m
 
 ### <a name="visual-studio-2019"></a>Visual Studio 2019
 
-Om te kunnen werken met Azure Government-abonnementen in Azure Logic Apps, moet u [een detectie-eindpunt voor Azure Government Cloud toevoegen aan Visual Studio](../azure-government/documentation-government-connect-vs.md). *Voordat u zich bij Visual Studio aanmeldt met uw Azure Government-account*, moet u echter de naam wijzigen van het JSON-bestand dat wordt gegenereerd nadat u het detectie-eindpunt toevoegt, door deze stappen te volgen:
+Om te kunnen werken met Azure Government-abonnementen in Azure Logic Apps, moet u [een detectie-eindpunt voor Azure Government Cloud toevoegen aan Visual Studio](../azure-government/documentation-government-connect-vs.md). *Voordat u zich bij Visual Studio aanmeldt met uw Azure Government-account* , moet u echter de naam wijzigen van het JSON-bestand dat wordt gegenereerd nadat u het detectie-eindpunt toevoegt, door deze stappen te volgen:
 
 1. Sluit Visual Studio.
 
@@ -100,7 +100,7 @@ Om te beginnen, maakt u een [Azure-resourcegroepproject](../azure-resource-manag
 
    ![In het menu File selecteert u New > Project](./media/quickstart-create-logic-apps-with-visual-studio/create-new-visual-studio-project.png)
 
-1. Onder **Installed**, selecteert u **Visual C#** of **Visual Basic**. Selecteer **Cloud** > **Azure Resource Group**. Geef uw project een naam, bijvoorbeeld:
+1. Onder **Installed** , selecteert u **Visual C#** of **Visual Basic**. Selecteer **Cloud** > **Azure Resource Group**. Geef uw project een naam, bijvoorbeeld:
 
    ![Een Azure-resourcegroepproject maken](./media/quickstart-create-logic-apps-with-visual-studio/create-azure-cloud-service-project.png)
 
@@ -125,7 +125,7 @@ Om te beginnen, maakt u een [Azure-resourcegroepproject](../azure-resource-manag
 
 ## <a name="create-blank-logic-app"></a>Een lege, logische app maken
 
-Nadat u uw Azure-resourcegroep-project hebt gemaakt, maakt u uw logische app met de **Lege logische app**-sjabloon.
+Nadat u uw Azure-resourcegroep-project hebt gemaakt, maakt u uw logische app met de **Lege logische app** -sjabloon.
 
 1. Open in Solution Explorer het contextmenu van het bestand **LogicApp.json**. Selecteer **Openen met Logic App-ontwerpfunctie**. (Toetsenbord: Ctrl + L)
 
@@ -145,7 +145,7 @@ Nadat u uw Azure-resourcegroep-project hebt gemaakt, maakt u uw logische app met
    | Gebruikersaccount | Fabrikam <br> sophia-owen@fabrikam.com | Het account dat u hebt gebruikt voor aanmelden bij Visual Studio |
    | **Abonnement** | Betalen per gebruik <br> (sophia-owen@fabrikam.com) | De naam voor uw Azure-abonnement en het bijbehorende account |
    | **Resourcegroep** | MyLogicApp-RG <br> (VS - west) | De Azure-resourcegroep en locatie voor het opslaan en implementeren van resources voor uw logische app |
-   | **Locatie** | **Dezelfde als de resourcegroep** | Het locatietype en de specifieke locatie voor het implementeren van uw logische app. Het locatietype is een Azure-regio of een bestaande [Integratieserviceomgeving (ISE)](connect-virtual-network-vnet-isolated-environment.md). <p>Laat voor deze quickstart het locatietype ingesteld op **Regio** en de locatie op **Dezelfde als de resourcegroep**. <p>**Opmerking**: Nadat u uw resourcegroepproject hebt gemaakt, kunt u [het locatietype en de locatie wijzigen](manage-logic-apps-with-visual-studio.md#change-location), maar verschillende locatietypes beïnvloeden uw logische app op verschillende manieren. |
+   | **Locatie** | **Dezelfde als de resourcegroep** | Het locatietype en de specifieke locatie voor het implementeren van uw logische app. Het locatietype is een Azure-regio of een bestaande [Integratieserviceomgeving (ISE)](connect-virtual-network-vnet-isolated-environment.md). <p>Laat voor deze quickstart het locatietype ingesteld op **Regio** en de locatie op **Dezelfde als de resourcegroep**. <p>**Opmerking** : Nadat u uw resourcegroepproject hebt gemaakt, kunt u [het locatietype en de locatie wijzigen](manage-logic-apps-with-visual-studio.md#change-location), maar verschillende locatietypes beïnvloeden uw logische app op verschillende manieren. |
    ||||
 
 1. De Logic Apps-ontwerpfunctie opent een pagina met een inleidende video en veelgebruikte triggers. Scrol omlaag vanaf de video en trigger naar **Sjablonen** en selecteer **Lege logische app**.
@@ -184,7 +184,7 @@ Voordat u uw logische app kunt uitvoeren en testen, moet u de app implementeren 
 
    ![Naam van de implementatie opgeven voor de logische app](./media/quickstart-create-logic-apps-with-visual-studio/edit-parameters-deployment.png)
 
-   Wanneer de implementatie wordt gestart, wordt de status van de implementatie van uw app weergegeven in het **Uitvoer**-venster van Visual Studio. Als de status niet wordt weergegeven, opent u de lijst **Uitvoer tonen van** en selecteert u uw Azure-resourcegroep.
+   Wanneer de implementatie wordt gestart, wordt de status van de implementatie van uw app weergegeven in het **Uitvoer** -venster van Visual Studio. Als de status niet wordt weergegeven, opent u de lijst **Uitvoer tonen van** en selecteert u uw Azure-resourcegroep.
 
    ![Uitvoer implementatiestatus](./media/quickstart-create-logic-apps-with-visual-studio/logic-app-output-window.png)
 

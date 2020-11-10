@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: quickstart
-ms.date: 09/03/2019
+ms.date: 11/04/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 9eda54ad23e06149910fe69ec16588f49829a5a5
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 3a7f9179822720b0e5ffc21bc560b4c6ccad9463
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92122820"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93347419"
 ---
 ::: zone target = "docs"
 
@@ -60,6 +60,8 @@ Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azur
 
 ## <a name="order"></a>Bestellen
 
+### <a name="portal"></a>[Portal](#tab/azure-portal)
+
 Deze stap neemt ongeveer 5 minuten in beslag.
 
 1. Maak een nieuwe Azure Data Box-resource in de Azure-portal.
@@ -68,6 +70,77 @@ Deze stap neemt ongeveer 5 minuten in beslag.
 4. Voer de order- en verzendgegevens in. Als de service beschikbaar is in uw regio, geeft u e-mailadressen voor meldingen op, controleert u de samenvatting en maakt u vervolgens de order.
 
 Zodra de order is gemaakt, wordt het apparaat voorbereid voor verzending.
+
+### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+
+Gebruik deze Azure CLI-opdrachten om een Data Box Heavy-taak te maken.
+
+[!INCLUDE [azure-cli-prepare-your-environment-h3.md](../../includes/azure-cli-prepare-your-environment-h3.md)]
+
+1. Voer de opdracht [az group create](/cli/azure/group#az_group_create) uit om een resourcegroep te maken, of gebruik een bestaande resourcegroep:
+
+   ```azurecli
+   az group create --name databox-rg --location westus 
+   ```
+
+1. Gebruik de opdracht [az storage account create](/cli/azure/storage/account#az_storage_account_create) om een opslagaccount te maken, of gebruik een bestaand opslagaccount:
+
+   ```azurecli
+   az storage account create --resource-group databox-rg --name databoxtestsa
+   ```
+
+1. Voer de opdracht [az databox job create](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_create) uit om een Data Box-taak te maken met de waarde **--sku** van `DataBoxHeavy`:
+
+   ```azurecli
+   az databox job create --resource-group databox-rg --name databoxheavy-job \
+       --location westus --sku DataBoxHeavy --contact-name "Jim Gan" --phone 4085555555 \
+       --city Sunnyvale --email-list JimGan@contoso.com --street-address1 "1020 Enterprise Way" \
+       --postal-code 94089 --country US --state-or-province CA --storage-account databoxtestsa \
+       --staging-storage-account databoxtestsa --resource-group-for-managed-disk rg-for-md
+   ```
+
+   > [!NOTE]
+   > Controleer of uw abonnement ondersteuning biedt voor Data Box Heavy.
+
+1. Voer de opdracht [az databox job update](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_update) uit om een taak bij te werken, zoals in dit voorbeeld, waar u de naam en het e-mailadres van een contactpersoon wijzigt:
+
+   ```azurecli
+   az databox job update -g databox-rg --name databox-job --contact-name "Robert Anic" --email-list RobertAnic@contoso.com
+   ```
+
+   Voer de opdracht [az databox job show](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_show) uit om informatie te krijgen over de taak:
+
+   ```azurecli
+   az databox job show --resource-group databox-rg --name databox-job
+   ```
+
+   Gebruik de opdracht [az databox job list]( /cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_list) om alle Data Box-taken voor een resourcegroep te zien:
+
+   ```azurecli
+   az databox job list --resource-group databox-rg
+   ```
+
+   Voer de opdracht [az databox job cancel](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_cancel) uit om een taak te annuleren:
+
+   ```azurecli
+   az databox job cancel –resource-group databox-rg --name databox-job --reason "Cancel job."
+   ```
+
+   Voer de opdracht [az databox job delete](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_delete) uit om een taak te verwijderen:
+
+   ```azurecli
+   az databox job delete –resource-group databox-rg --name databox-job
+   ```
+
+1. Gebruik de opdracht [az databox job list-credentials]( /cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_list_credentials) om de referenties voor een Data Box-taak weer te geven:
+
+   ```azurecli
+   az databox job list-credentials --resource-group "databox-rg" --name "databoxdisk-job"
+   ```
+
+Zodra de order is gemaakt, wordt het apparaat voorbereid voor verzending.
+
+---
 
 ::: zone-end
 
@@ -134,7 +207,7 @@ De duur van deze bewerking hangt af van de hoeveelheid gegevens en de snelheid v
 De duur van deze bewerking hangt af van de hoeveelheid gegevens.
 
 1. Als de gegevens zonder fouten zijn gekopieerd, gaat u naar de pagina **Voorbereiden voor verzending** in de lokale webgebruikersinterface en start u de voorbereiding voor verzending.
-2. Nadat de**voorbereiding op beide** knooppunten is uitgevoerd, schakelt u het apparaat uit via de lokale webgebruikersinterface.
+2. Nadat de **voorbereiding op beide** knooppunten is uitgevoerd, schakelt u het apparaat uit via de lokale webgebruikersinterface.
 
 ## <a name="ship-to-azure"></a>Verzenden naar Azure
 

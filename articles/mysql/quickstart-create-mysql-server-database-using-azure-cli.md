@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 07/15/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 161d1c95507d366ce00f75580a100fd2607675d9
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 0c43f1ea81bbc29817e6a2509c9967bf3b5782c9
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544015"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93337282"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-using-azure-cli"></a>Quickstart: Een Azure-database voor MySQL-server maken met behulp van Azure CLI
 
@@ -91,7 +91,7 @@ Als u verbinding met uw server wilt maken, moet u hostgegevens en toegangsrefere
 az mysql server show --resource-group myresourcegroup --name mydemoserver
 ```
 
-Het resultaat wordt in JSON-indeling weergegeven. Noteer de **fullyQualifiedDomainName** en de **administratorLogin** .
+Het resultaat wordt in JSON-indeling weergegeven. Noteer de **fullyQualifiedDomainName** en de **administratorLogin**.
 ```json
 {
   "administratorLogin": "myadmin",
@@ -143,6 +143,4 @@ az mysql server delete --resource-group myresourcegroup --name mydemoserver
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
->[Een PHP-app in Windows compileren met MySQL](../app-service/tutorial-php-mysql-app.md)
->[PHP-app op Linux compileren met MySQL](../app-service/tutorial-php-mysql-app.md?pivots=platform-linux%253fpivots%253dplatform-linux)
->[Op Java gebaseerde Spring-app compileren met MySQL](/azure/developer/java/spring-framework/spring-app-service-e2e?tabs=bash)
+>[Een PHP-app bouwen in Windows met MySQL](../app-service/tutorial-php-mysql-app.md)

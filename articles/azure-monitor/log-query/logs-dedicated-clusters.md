@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: 845336385fe7490d4c62df41af873c237ae34871
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 293a3fc10920a29cd41e4bdb946e5bb06762eb52
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996324"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427493"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor logboeken toegewezen clusters
 
@@ -47,9 +47,9 @@ Het reserverings niveau voor cluster capaciteit wordt via een programma geconfig
 
 Er zijn twee facturerings methoden voor gebruik in een cluster. Deze kunnen worden opgegeven met de `billingType` para meter bij het configureren van uw cluster. 
 
-1. **Cluster**: in dit geval (dit is de standaard instelling), wordt de facturering voor opgenomen gegevens uitgevoerd op het cluster niveau. De opgenomen gegevens aantallen uit elke werk ruimte die aan een cluster is gekoppeld, worden geaggregeerd voor het berekenen van de dagelijkse factuur voor het cluster. 
+1. **Cluster** : in dit geval (dit is de standaard instelling), wordt de facturering voor opgenomen gegevens uitgevoerd op het cluster niveau. De opgenomen gegevens aantallen uit elke werk ruimte die aan een cluster is gekoppeld, worden geaggregeerd voor het berekenen van de dagelijkse factuur voor het cluster. 
 
-2. **Werk ruimten**: de kosten voor de capaciteits reservering voor uw cluster worden proportioneel toegeschreven aan de werk ruimten in het cluster (na de accounting van toewijzingen per knoop punt van [Azure Security Center](../../security-center/index.yml) voor elke werk ruimte.)
+2. **Werk ruimten** : de kosten voor de capaciteits reservering voor uw cluster worden proportioneel toegeschreven aan de werk ruimten in het cluster (na de accounting van toewijzingen per knoop punt van [Azure Security Center](../../security-center/index.yml) voor elke werk ruimte.)
 
 Houd er rekening mee dat als uw werk ruimte verouderde prijs categorie per knoop punt gebruikt, wanneer deze is gekoppeld aan een cluster, wordt gefactureerd op basis van gegevens die zijn opgenomen in de capaciteits reservering van het cluster en niet langer per knoop punt. Gegevens toewijzingen per knoop punt van Azure Security Center worden nog steeds toegepast.
 
@@ -62,12 +62,12 @@ U maakt eerst cluster bronnen om te beginnen met het maken van een toegewezen cl
 
 De volgende eigenschappen moeten worden opgegeven:
 
-- **Clustername**: wordt gebruikt voor administratieve doel einden. Gebruikers worden niet blootgesteld aan deze naam.
-- **ResourceGroupName**: voor elke Azure-resource behoren clusters tot een resource groep. We raden u aan een centrale IT-resource groep te gebruiken omdat clusters meestal worden gedeeld door veel teams in de organisatie. Raadpleeg [uw implementatie van Azure monitor-logboeken ontwerpen](../platform/design-logs-deployment.md) voor meer overwegingen bij het ontwerpen
-- **Locatie**: een cluster bevindt zich in een specifieke Azure-regio. Alleen werk ruimten in deze regio kunnen worden gekoppeld aan dit cluster.
-- **SkuCapacity**: u moet het *capaciteits reserverings* niveau (SKU) opgeven bij het maken van een *cluster* bron. Het *capaciteits reserverings* niveau kan zich in het bereik van 1.000 gb tot 3.000 GB per dag bevindt. U kunt deze indien nodig bijwerken in de stappen van 100. Als u een capaciteits reserverings niveau nodig hebt dat hoger is dan 3.000 GB per dag, neemt u contact met ons op LAIngestionRate@microsoft.com . Zie [kosten voor log Analytics clusters beheren](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters) voor meer informatie over de cluster kosten
+- **Clustername** : wordt gebruikt voor administratieve doel einden. Gebruikers worden niet blootgesteld aan deze naam.
+- **ResourceGroupName** : voor elke Azure-resource behoren clusters tot een resource groep. We raden u aan een centrale IT-resource groep te gebruiken omdat clusters meestal worden gedeeld door veel teams in de organisatie. Raadpleeg [uw implementatie van Azure monitor-logboeken ontwerpen](../platform/design-logs-deployment.md) voor meer overwegingen bij het ontwerpen
+- **Locatie** : een cluster bevindt zich in een specifieke Azure-regio. Alleen werk ruimten in deze regio kunnen worden gekoppeld aan dit cluster.
+- **SkuCapacity** : u moet het *capaciteits reserverings* niveau (SKU) opgeven bij het maken van een *cluster* bron. Het *capaciteits reserverings* niveau kan zich in het bereik van 1.000 gb tot 3.000 GB per dag bevindt. U kunt deze indien nodig bijwerken in de stappen van 100. Als u een capaciteits reserverings niveau nodig hebt dat hoger is dan 3.000 GB per dag, neemt u contact met ons op LAIngestionRate@microsoft.com . Zie [kosten voor log Analytics clusters beheren](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters) voor meer informatie over de cluster kosten
 
-Nadat u de *cluster* bron hebt gemaakt, kunt u extra eigenschappen bewerken, zoals *SKU*, * keyVaultProperties of *billingType*. Zie hieronder voor meer informatie.
+Nadat u de *cluster* bron hebt gemaakt, kunt u extra eigenschappen bewerken, zoals *SKU* , * keyVaultProperties of *billingType*. Zie hieronder voor meer informatie.
 
 > [!WARNING]
 > Het maken van een cluster activeert resource toewijzing en inrichting. Het kan een uur duren voordat deze bewerking is voltooid. Het wordt aanbevolen deze asynchroon uit te voeren.
@@ -162,7 +162,7 @@ De *principalId* GUID wordt gegenereerd door de beheerde identiteits service voo
 
 Nadat u de *cluster* bron hebt gemaakt en volledig is ingericht, kunt u aanvullende eigenschappen bewerken op cluster niveau met behulp van Power shell of rest API. Met uitzonde ring van de eigenschappen die beschikbaar zijn tijdens het maken van het cluster, kunnen extra eigenschappen alleen worden ingesteld nadat het cluster is ingericht:
 
-- **keyVaultProperties**: wordt gebruikt om de Azure Key Vault te configureren die wordt gebruikt om een Azure monitor door de [klant beheerde sleutel](../platform/customer-managed-keys.md#cmk-provisioning-procedure)in te richten. Het bevat de volgende para meters:  *KeyVaultUri*, *naam*van de *versie*. 
+- **keyVaultProperties** : wordt gebruikt om de Azure Key Vault te configureren die wordt gebruikt om een Azure monitor door de [klant beheerde sleutel](../platform/customer-managed-keys.md#customer-managed-key-provisioning-procedure)in te richten. Het bevat de volgende para meters:  *KeyVaultUri* , *naam* van de *versie*. 
 - **billingType** : de eigenschap *billingType* bepaalt het facturerings kenmerk voor de *cluster* bron en de bijbehorende gegevens.
   - **Cluster** (standaard): de kosten voor de capaciteits reservering voor uw cluster worden toegeschreven aan de *cluster* bron.
   - **Werk ruimten** : de kosten voor de capaciteits reservering voor uw cluster worden proportioneel toegeschreven aan de werk ruimten in het cluster, waarbij een deel van de *cluster* resource wordt gefactureerd als de totale opgenomen gegevens voor de dag onder de capaciteits reservering vallen. Zie [log Analytics toegewezen clusters](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters) voor meer informatie over het prijs model van het cluster. 
@@ -180,7 +180,7 @@ Update-AzOperationalInsightsCluster -ResourceGroupName {resource-group-name} -Cl
 **REST**
 
 > [!NOTE]
-> U kunt de *cluster* resource- *SKU*, *keyVaultProperties* of *billingType* bijwerken met behulp van patch.
+> U kunt de *cluster* resource- *SKU* , *keyVaultProperties* of *billingType* bijwerken met behulp van patch.
 
 Bijvoorbeeld: 
 

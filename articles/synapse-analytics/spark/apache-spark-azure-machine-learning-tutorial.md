@@ -9,12 +9,12 @@ ms.subservice: machine-learning
 ms.date: 06/30/2020
 ms.author: midesa
 ms.reviewer: jrasnick,
-ms.openlocfilehash: da4cef50610b219689e2271e9f70fd1adb1a235f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 979e360bb920fc3b34a201b1287b50b141bffa9b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540503"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313622"
 ---
 # <a name="tutorial-run-experiments-using-azure-automated-ml-and-apache-spark"></a>Zelfstudie: Experimenten uitvoeren met behulp van Azure Automated ML en Apache Spark
 
@@ -29,13 +29,16 @@ In deze zelfstudie leert u het volgende:
 - De nauwkeurigheid van een model berekenen
 
 ### <a name="before-you-begin"></a>Voordat u begint
-- Maak een Apache Spark-pool door de stappen te volgen in [zelfstudie Een Apache Spark-pool maken](../quickstart-create-apache-spark-pool-studio.md).
+
+- Maak een serverloze Apache Spark-pool door de stappen te volgen in de [quickstart Een serverloze Apache Spark-pool maken](../quickstart-create-apache-spark-pool-studio.md).
 - Voltooi de [zelfstudie Azure Machine Learning-werkruimte instellen](https://docs.microsoft.com/azure/machine-learning/tutorial-1st-experiment-sdk-setup) als u niet beschikt over een bestaande Azure Machine Learning-werkruimte. 
 
 ### <a name="understand-regression-models"></a>Regressiemodellen begrijpen
+
 *Regressiemodellen* voorspellen numerieke uitvoerwaarden op basis van onafhankelijke voorspellingen. In regressie is het doel om te helpen de relatie tot stand te brengen tussen deze onafhankelijke voorspellingsvariabelen door te schatten hoe één variabele de andere beïnvloedt.  
 
 ### <a name="regression-analysis-example-on-the-nyc-taxi-data"></a>Voorbeeld van regressieanalyse van de NYC-taxigegevens
+
 In dit voorbeeld gebruikt u Spark om een analyse uit te voeren voor gegevens over fooien voor taxiritten in New York. De gegevens zijn beschikbaar via [Azure Open Datasets](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/). Deze subset van de gegevensset bevat informatie over taxiritten, waaronder informatie over elke rit, de begin- en eindtijd en locaties, de kosten, en andere interessante kenmerken.
 
 > [!IMPORTANT]
@@ -143,7 +146,7 @@ ws = Workspace(workspace_name = workspace_name,
 ```
 
 ## <a name="convert-a-dataframe-to-an-azure-machine-learning-dataset"></a>Een gegevensframe converteren naar een Azure Machine Learning-gegevensset
-Als u een extern experiment wilt verzenden, moet u de gegevensset converteren naar een Azure Machine Learning-```TabularDatset```. Een [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) vertegenwoordigt gegevens in een tabellaire indeling door het opgegeven bestand te parseren.
+Als u een extern experiment wilt verzenden, moet u de gegevensset converteren naar een Azure Machine Learning-```TabularDatset```. Een [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true) vertegenwoordigt gegevens in een tabellaire indeling door het opgegeven bestand te parseren.
 
 Met de volgende code worden de bestaande werkruimte en de standaard-Azure Machine Learning-gegevensopslag opgehaald. Vervolgens worden de gegevensopslag en bestandslocaties doorgegeven aan de padparameter om een nieuwe ```TabularDataset``` te maken. 
 
@@ -165,7 +168,7 @@ dataset_training = Dataset.Tabular.from_delimited_files(path = [(datastore, 'tra
 
 ![Afbeelding van geüploade gegevensset.](./media/apache-spark-machine-learning-aml-notebook/upload-dataset.png)
 
-## <a name="submit-an-auto-ml-experiment"></a>Een Auto ML-experiment verzenden
+## <a name="submit-an-automl-experiment"></a>Een AutoML-experiment verzenden
 
 #### <a name="define-training-settings"></a>Trainingsinstellingen definiëren
 

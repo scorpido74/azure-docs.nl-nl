@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: 7253e257f9d721c09f2e041c1473a9d81d09a321
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 1f15a3b4d8f51ec79fffce09bc006942d08096a6
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92094308"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427459"
 ---
-# <a name="sap-businessobjects-bi-platform-deployment-guide-for-linux-on-azure"></a>Implementatie handleiding voor SAP BusinessObjects BI-platformen voor Linux op Azure
+# <a name="sap-businessobjects-bi-platform-deployment-guide-for-linux-on-azure"></a>Handleiding voor SAP BusinessObjects BI-platformimplementatie voor Linux in Azure
 
 In dit artikel wordt de strategie beschreven voor het implementeren van het SAP BOBI-platform op Azure voor Linux. In dit voor beeld worden twee virtuele machines met Premium-SSD Managed Disks als installatiemap zijn geconfigureerd. Azure Database for MySQL wordt gebruikt voor CMS-data base en Azure NetApp Files voor de bestands opslagplaats server wordt gedeeld op beide servers. De standaard Tomcat Java-webtoepassing en BI-platform toepassing worden samen op virtuele machines geïnstalleerd. Als u de gebruikers aanvraag wilt verdelen, wordt Application Gateway gebruikt dat systeem eigen TLS/SSL-offloading mogelijkheden heeft.
 
@@ -36,7 +36,7 @@ In dit voor beeld wordt onder de product versie en de indeling van het bestands 
 - Azure Database for MySQL (versie: 8.0.15)
 - MySQL C API-connector-libmysqlclient (versie: 6.1.11)
 
-| Bestandssysteem        | Beschrijving                                                                                                               | Grootte (GB)             | Eigenaar  | Groep  | Storage                    |
+| Bestandssysteem        | Beschrijving                                                                                                               | Grootte (GB)             | Eigenaar  | Groep  | Opslag                    |
 |--------------------|---------------------------------------------------------------------------------------------------------------------------|-----------------------|--------|--------|----------------------------|
 | /usr/sap           | Het bestands systeem voor de installatie van het SAP BOBI-exemplaar, de standaard Tomcat-webtoepassing en database Stuur programma's (indien nodig) | SAP-formaat richtlijnen | bl1adm | sapsys | Beheerde Premium-schijf-SSD |
 | /usr/sap/frsinput  | De koppelings Directory is voor de gedeelde bestanden op alle BOBI-hosts die worden gebruikt als opslag plaats Directory voor invoer bestanden  | Bedrijfs behoeften         | bl1adm | sapsys | Azure NetApp Files         |
@@ -113,7 +113,7 @@ Houd bij het maken van uw Azure NetApp Files voor de SAP BOBI platform File Repo
 
 Voor de stappen in deze sectie worden de volgende voor voegsels gebruikt:
 
-**[A]**: de stap is van toepassing op alle hosts
+**[A]** : de stap is van toepassing op alle hosts
 
 ### <a name="format-and-mount-sap-file-system"></a>SAP-bestands systeem Format teren en koppelen
 
@@ -274,7 +274,7 @@ De richt lijnen zijn alleen van toepassing als u Azure DB voor MySQL gebruikt. R
 
 ### <a name="create-an-azure-database-for-mysql"></a>Een Azure-Data Base voor MySQL maken
 
-Meld u aan bij Azure Portal en volg de stappen in deze [Snelstartgids van Azure database for MySQL](../../../mysql/quickstart-create-mysql-server-database-using-azure-portal.md#create-an-azure-database-for-mysql-server). Enkele punten om te noteren tijdens het inrichten van Azure Database for MySQL-
+Meld u aan bij Azure Portal en volg de stappen in deze [Snelstartgids van Azure database for MySQL](../../../mysql/quickstart-create-mysql-server-database-using-azure-portal.md). Enkele punten om te noteren tijdens het inrichten van Azure Database for MySQL-
 
 1. Selecteer dezelfde regio voor Azure Database for MySQL waar uw SAP BI-platform toepassings servers worden uitgevoerd.
 
@@ -395,15 +395,15 @@ Voor SAP BOBI-toepassings server voor toegang tot de data base is data base clie
 
 Voor de stappen in deze sectie worden de volgende voor voegsels gebruikt:
 
-**[A]**: de stap is van toepassing op alle hosts.
+**[A]** : de stap is van toepassing op alle hosts.
 
 1. **[A]** op basis van de kern van Linux (SLES of RHEL), moet u kernel-para meters instellen en de vereiste bibliotheken installeren. Raadpleeg de sectie **systeem vereisten** in de [installatie handleiding voor Business Intelligence platform voor UNIX](https://help.sap.com/viewer/65018c09dbe04052b082e6fc4ab60030/4.3/en-US).
 
 2. **[A]** Controleer of de tijd zone op de computer correct is ingesteld. Raadpleeg de [sectie Aanvullende vereisten voor UNIX en Linux](https://help.sap.com/viewer/65018c09dbe04052b082e6fc4ab60030/4.3/en-US/46b143336e041014910aba7db0e91070.html) in de installatie handleiding.
 
-3. **[A] Maak een** gebruikers account (**BL1**adm) en groep (sapsys) waarmee de achtergrond processen van de software kunnen worden uitgevoerd. Gebruik dit account om de installatie uit te voeren en de software uit te voeren. Voor het account zijn geen hoofd bevoegdheden vereist.
+3. **[A] Maak een** gebruikers account ( **BL1** adm) en groep (sapsys) waarmee de achtergrond processen van de software kunnen worden uitgevoerd. Gebruik dit account om de installatie uit te voeren en de software uit te voeren. Voor het account zijn geen hoofd bevoegdheden vereist.
 
-4. **[A]** stel het gebruikers account (**BL1**adm) in om een ondersteunde UTF-8-land instelling te gebruiken en zorg ervoor dat uw console software UTF-8-teken sets ondersteunt. Om ervoor te zorgen dat uw besturings systeem gebruikmaakt van de juiste land instelling, stelt u de omgevings variabelen LC_ALL en LANG in op uw voorkeurs land instellingen in uw**BL1**adm-gebruikers omgeving.
+4. **[A]** stel het gebruikers account ( **BL1** adm) in om een ondersteunde UTF-8-land instelling te gebruiken en zorg ervoor dat uw console software UTF-8-teken sets ondersteunt. Om ervoor te zorgen dat uw besturings systeem gebruikmaakt van de juiste land instelling, stelt u de omgevings variabelen LC_ALL en LANG in op uw voorkeurs land instellingen in uw **BL1** adm-gebruikers omgeving.
 
    ```bash
    # This configuration is for bash shell. If you are using any other shell for sidadm, kindly set environment variable accordingly.
@@ -413,7 +413,7 @@ Voor de stappen in deze sectie worden de volgende voor voegsels gebruikt:
    export LC_ALL=en_US.utf8
    ```
 
-5. **[A]** gebruikers account (**BL1**adm) configureren.
+5. **[A]** gebruikers account ( **BL1** adm) configureren.
 
    ```bash
    # Set ulimit for bl1adm to unlimited
@@ -445,7 +445,7 @@ Voor de stappen in deze sectie worden de volgende voor voegsels gebruikt:
 
 ## <a name="installation"></a>Installatie
 
-De land instelling controleren van het gebruikers account **BL1**adm op de server
+De land instelling controleren van het gebruikers account **BL1** adm op de server
 
 ```bash
 bl1adm@azusbosl1:~> locale
@@ -453,7 +453,7 @@ LANG=en_US.utf8
 LC_ALL=en_US.utf8
 ```
 
-Navigeer naar media van het SAP BusinessObjects BI-platform en voer de volgende opdracht uit met **BL1**adm-gebruiker-
+Navigeer naar media van het SAP BusinessObjects BI-platform en voer de volgende opdracht uit met **BL1** adm-gebruiker-
 
 ```bash
 ./setup.sh -InstallDir /usr/sap/BL1
@@ -465,7 +465,7 @@ Volg de installatie handleiding voor het [SAP BOBI-platform](https://help.sap.co
 
 - Selecteer in het scherm **installatie type selecteren** de optie **volledige** installatie op de eerste server (azusbosl1), voor een andere server (Azusbosl2), selecteer **aangepast/uitvouwen** , waarmee de bestaande BOBI-installatie wordt uitgevouwen.
 
-- Selecteer in het venster **standaard of bestaande data base** selecteren **de optie een bestaande data base configureren**, waarin u wordt gevraagd om CMS-en audit database te selecteren. Selecteer **MySQL** voor het CMS-database type en het type controle database.
+- Selecteer in het venster **standaard of bestaande data base** selecteren **de optie een bestaande data base configureren** , waarin u wordt gevraagd om CMS-en audit database te selecteren. Selecteer **MySQL** voor het CMS-database type en het type controle database.
 
   U kunt ook geen controle database selecteren als u geen controle wilt configureren tijdens de installatie.
 
@@ -475,7 +475,7 @@ Volg de installatie handleiding voor het [SAP BOBI-platform](https://help.sap.co
   
   ![SAP BOBI-implementatie in Linux-CMS-data base](media/businessobjects-deployment-guide/businessobjects-deployment-linux-sql-cms.png)
 
-- Beschrijving Voer de gegevens van de audit-data base in de **audit opslagplaats configureren-MySQL**in. Voor beeld van invoer voor de controle van database gegevens voor Linux-installatie.
+- Beschrijving Voer de gegevens van de audit-data base in de **audit opslagplaats configureren-MySQL** in. Voor beeld van invoer voor de controle van database gegevens voor Linux-installatie.
 
   ![SAP BOBI-implementatie in Linux-Audit data base](media/businessobjects-deployment-guide/businessobjects-deployment-linux-sql-audit.png)
 
@@ -557,7 +557,7 @@ Als onderdeel van het back-upproces wordt er een moment opname gemaakt en worden
 
 #### <a name="backup--restore-for-file-repository-server"></a>Back-up & herstellen voor de bestands opslagplaats server
 
-U kunt voor **Azure NetApp files**een moment opnamen op aanvraag maken en automatische moment opnamen plannen met behulp van een momentopname beleid. Momentopname kopieën bieden een tijdgebonden kopie van uw ANF-volume. Zie [moment opnamen beheren met Azure NetApp files](../../../azure-netapp-files/azure-netapp-files-manage-snapshots.md)voor meer informatie.
+U kunt voor **Azure NetApp files** een moment opnamen op aanvraag maken en automatische moment opnamen plannen met behulp van een momentopname beleid. Momentopname kopieën bieden een tijdgebonden kopie van uw ANF-volume. Zie [moment opnamen beheren met Azure NetApp files](../../../azure-netapp-files/azure-netapp-files-manage-snapshots.md)voor meer informatie.
 
 **Azure files** back-up is geïntegreerd met de systeem eigen [Azure backup](../../../backup/backup-overview.md) -service, waarmee de functie back-up en herstellen wordt gecentraliseerd, samen met vm's back-ups en vereenvoudigt het werk. Zie back-ups van [Azure-bestands share](../../../backup/azure-file-share-backup-overview.md) en [Veelgestelde vragen-back-ups maken Azure files](../../../backup/backup-azure-files-faq.md)voor meer informatie.
 

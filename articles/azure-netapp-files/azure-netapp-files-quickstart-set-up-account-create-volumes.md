@@ -8,16 +8,16 @@ ms.workload: storage
 ms.topic: quickstart
 ms.date: 09/22/2020
 ms.custom: devx-track-azurecli, subject-armqs
-ms.openlocfilehash: 088961d58cee2f1bb0c6ac042d9d8ee2ad50ba14
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 70441c3a1953fa1b6ebd69ef9cdb324d6cc04a5b
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91931356"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93336436"
 ---
-# <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Quickstart: Azure NetApp Files instellen en een NFS-volume maken 
+# <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Quickstart: Azure NetApp Files instellen en een NFS-volume maken
 
-Dit artikel beschrijft het snel instellen van Azure NetApp Files en het maken van een volume. 
+Dit artikel beschrijft het snel instellen van Azure NetApp Files en het maken van een volume.
 
 In deze snelstart stelt u de volgende items in:
 
@@ -28,10 +28,10 @@ In deze snelstart stelt u de volgende items in:
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
-## <a name="before-you-begin"></a>Voordat u begint 
+## <a name="before-you-begin"></a>Voordat u begint
 
-> [!IMPORTANT] 
-> U moet toegang krijgen tot de Azure NetApp Files-service.  Zie de [Azure NetApp Files waitlist submission page](https://aka.ms/azurenetappfiles) om toegang tot de service aan te vragen.  U moet wachten op een officiële bevestigingse-mail van het Azure NetApp Files-team voordat u verdergaat. 
+> [!IMPORTANT]
+> U moet toegang krijgen tot de Azure NetApp Files-service. Zie de [Azure NetApp Files waitlist submission page](https://aka.ms/azurenetappfiles) om toegang tot de service aan te vragen.  U moet wachten op een officiële bevestigingse-mail van het Azure NetApp Files-team voordat u verdergaat.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -69,11 +69,11 @@ Voor dit artikel is Azure PowerShell-module Az-versie 2.6.0 of nieuwer vereist. 
 
 # <a name="template"></a>[Sjabloon](#tab/template)
 
-Geen.  
+Geen.
 
-Gebruik de Azure Portal, PowerShell of de Azure CLI om u te registreren voor Azure NetApp Files en de NetApp resourceprovider.  
+Gebruik de Azure Portal, PowerShell of de Azure CLI om u te registreren voor Azure NetApp Files en de NetApp resourceprovider.
 
-Zie [Registreren voor Azure NetApp Files](azure-netapp-files-register.md) voor meer informatie. 
+Zie [Registreren voor Azure NetApp Files](azure-netapp-files-register.md) voor meer informatie.
 
 ---
 
@@ -81,7 +81,7 @@ Zie [Registreren voor Azure NetApp Files](azure-netapp-files-register.md) voor m
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. Voer in het zoekvak van de Azure-portal **Azure NetApp Files** in en selecteer vervolgens **Azure NetApp Files** in de lijst die wordt weergegeven.
+1. Voer in het zoekvak van Azure Portal **Azure NetApp Files** in, en selecteer vervolgens **Azure NetApp Files** in de lijst die wordt weergegeven.
 
       ![Selecteer Azure NetApp Files](../media/azure-netapp-files/azure-netapp-files-select-azure-netapp-files.png)
 
@@ -89,13 +89,13 @@ Zie [Registreren voor Azure NetApp Files](azure-netapp-files-register.md) voor m
 
      ![Nieuw NetApp-account maken](../media/azure-netapp-files/azure-netapp-files-create-new-netapp-account.png)
 
-3. Geef in het venster Nieuwe NetApp-account de volgende gegevens op: 
-   1. Voer **myAccount1** in als accountnaam. 
+3. Geef in het venster Nieuwe NetApp-account de volgende gegevens op:
+   1. Voer **myAccount1** in als accountnaam.
    2. Selecteer uw abonnement.
-   3. Selecteer **Nieuwe maken** om een nieuwe resourcegroep te maken. Voer **myRG1** in als naam van de resourcegroep. Klik op **OK**. 
-   4. Selecteer uw accountlocatie.  
+   3. Selecteer **Nieuwe maken** om een nieuwe resourcegroep te maken. Voer **myRG1** in als naam van de resourcegroep. Klik op **OK**.
+   4. Selecteer uw accountlocatie.
 
-      ![Venster Nieuwe NetApp-account](../media/azure-netapp-files/azure-netapp-files-new-account-window.png)  
+      ![Venster Nieuwe NetApp-account](../media/azure-netapp-files/azure-netapp-files-new-account-window.png)
 
       ![Venster Resourcegroepen](../media/azure-netapp-files/azure-netapp-files-resource-group-window.png)
 
@@ -109,7 +109,7 @@ Zie [Registreren voor Azure NetApp Files](azure-netapp-files-register.md) voor m
     $resourceGroup = "myRG1"
     $location = "eastus"
     $anfAccountName = "myaccount1"
-    ``` 
+    ```
 
     > [!NOTE]
     > Raadpleeg [Beschikbare producten per regio](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all) voor een lijst met ondersteunde regio's.
@@ -123,7 +123,7 @@ Zie [Registreren voor Azure NetApp Files](azure-netapp-files-register.md) voor m
     ```
 
 2. Maak een Azure NetApp Files-account met de opdracht [New-AzNetAppFilesAccount](/powershell/module/az.netappfiles/New-AzNetAppFilesAccount):
-   
+
     ```powershell-interactive
     New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $location -Name $anfAccountName
     ```
@@ -136,7 +136,7 @@ Zie [Registreren voor Azure NetApp Files](azure-netapp-files-register.md) voor m
     RESOURCE_GROUP="myRG1"
     LOCATION="eastus"
     ANF_ACCOUNT_NAME="myaccount1"
-    ``` 
+    ```
 
     > [!NOTE]
     > Raadpleeg [Beschikbare producten per regio](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all) voor een lijst met ondersteunde regio's.
@@ -152,7 +152,7 @@ Zie [Registreren voor Azure NetApp Files](azure-netapp-files-register.md) voor m
     ```
 
 3. Maak een Azure NetApp Files-account met de opdracht [az netappfiles account create](/cli/azure/netappfiles/account#az-netappfiles-account-create):
-   
+
     ```azurecli-interactive
     az netappfiles account create \
         --resource-group $RESOURCE_GROUP \
@@ -176,22 +176,22 @@ Het volgende code fragment laat zien hoe u een NetApp-account maakt in een Azure
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. Selecteer in de beheerblade Azure NetApp Files uw NetApp-account (**myAccount1**).
+1. Selecteer in de beheerblade Azure NetApp Files uw NetApp-account ( **myAccount1** ).
 
-    ![NetApp-account selecteren](../media/azure-netapp-files/azure-netapp-files-select-netapp-account.png)  
+    ![NetApp-account selecteren](../media/azure-netapp-files/azure-netapp-files-select-netapp-account.png)
 
 2. Klik in de beheerblade Azure NetApp Files van uw NetApp-account op **Capaciteitspools**.
 
-    ![Klikken op capaciteitspools](../media/azure-netapp-files/azure-netapp-files-click-capacity-pools.png)  
+    ![Klikken op capaciteitspools](../media/azure-netapp-files/azure-netapp-files-click-capacity-pools.png)
 
-3. Klik op **+ Pools toevoegen**. 
+3. Klik op **+ Pools toevoegen**.
 
-    ![Klikken op Pools toevoegen](../media/azure-netapp-files/azure-netapp-files-new-capacity-pool.png)  
+    ![Klikken op Pools toevoegen](../media/azure-netapp-files/azure-netapp-files-new-capacity-pool.png)
 
-4. Geef de gegevens op voor de capaciteitspool: 
+4. Geef de gegevens op voor de capaciteitspool:
     * Voer **mypool1** in als naam van de pool.
-    * Selecteer **Premium** als serviceniveau. 
-    * Specificeer **4 (TiB)** als grootte van de pool. 
+    * Selecteer **Premium** als serviceniveau.
+    * Specificeer **4 (TiB)** als grootte van de pool.
     * Gebruik het **Auto** QoS-type.
 
 5. Klik op **Create**.
@@ -222,7 +222,7 @@ Het volgende code fragment laat zien hoe u een NetApp-account maakt in een Azure
     SERVICE_LEVEL="Premium" # Valid values are Standard, Premium and Ultra
     ```
 
-2. Een nieuwe capaciteitspool maken met de opdracht [az netappfiles pool create](/cli/azure/netappfiles/pool#az-netappfiles-pool-create) 
+2. Een nieuwe capaciteitspool maken met de opdracht [az netappfiles pool create](/cli/azure/netappfiles/pool#az-netappfiles-pool-create)
 
     ```azurecli-interactive
     az netappfiles pool create \
@@ -252,16 +252,16 @@ Het volgende codefragment laat zien hoe u een capaciteitspool maakt in een Azure
 
 1. Klik in de beheerblade Azure NetApp Files van uw NetApp-account op **Volumes**.
 
-    ![Klikken op Volumes](../media/azure-netapp-files/azure-netapp-files-click-volumes.png)  
+    ![Klikken op Volumes](../media/azure-netapp-files/azure-netapp-files-click-volumes.png)
 
 2. Klik op **+ Volume toevoegen**.
 
-    ![Klikken op Volumes toevoegen](../media/azure-netapp-files/azure-netapp-files-click-add-volumes.png)  
+    ![Klikken op Volumes toevoegen](../media/azure-netapp-files/azure-netapp-files-click-add-volumes.png)
 
-3. Geef de gegevens op voor het volume in het venster Volume maken: 
-   1. Voer **myvol1** in als volumenaam. 
-   2. Selecteer uw capaciteitspool (**mypool1**).
-   3. Gebruik de standaardwaarde als quotum. 
+3. Geef de gegevens op voor het volume in het venster Volume maken:
+   1. Voer **myvol1** in als volumenaam.
+   2. Selecteer uw capaciteitspool ( **mypool1** ).
+   3. Gebruik de standaardwaarde als quotum.
    4. Klik onder virtueel netwerk op **Nieuw maken** om een nieuw virtueel Azure-netwerk (Vnet) te maken.  Geef de volgende informatie op:
        * Voer **myvnet1** in als Vnet-naam.
        * Geef een adresruimte op voor uw instelling, bijvoorbeeld: 10.7.0.0/16
@@ -269,28 +269,28 @@ Het volgende codefragment laat zien hoe u een capaciteitspool maakt in een Azure
        * Specificeer het adresbereik van het subnet, bijvoorbeeld: 10.7.0.0/24. U kunt het speciale subnet niet delen met andere bronnen.
        * Selecteer **Microsoft.NetApp/volumes** voor delegatie van het subnet.
        * Klik op **OK** om het Vnet te maken.
-   5. Selecteer in subnet het zojuist gemaakte Vnet (**myvnet1**) als gemachtigde subnet.
+   5. Selecteer in subnet het zojuist gemaakte Vnet ( **myvnet1** ) als gemachtigde subnet.
 
-      ![Een volume maken](../media/azure-netapp-files/azure-netapp-files-create-volume-window.png)  
+      ![Een volume maken](../media/azure-netapp-files/azure-netapp-files-create-volume-window.png)
 
-      ![Venster een virtueel netwerk maken](../media/azure-netapp-files/azure-netapp-files-create-virtual-network-window.png)  
+      ![Venster een virtueel netwerk maken](../media/azure-netapp-files/azure-netapp-files-create-virtual-network-window.png)
 
-4. Klik op **Protocol** en voer de volgende acties uit: 
-    * Selecteer **NFS** als protocoltype voor het volume.  
-    * Geef **myfilepath1** op als het bestandspad dat wordt gebruikt om het exportpad voor het volume te maken.  
-    * Selecteer de NFS-versie (**NFSv3** of**NFSv4.1**) voor het volume.  
-      Raadpleeg [opmerkingen](azure-netapp-files-create-volumes.md#considerations) en [best practice](azure-netapp-files-create-volumes.md#best-practice) voor informatie over NFS-versies. 
-      
-  ![NFS-protocol opgeven voor snelstart](../media/azure-netapp-files/azure-netapp-files-quickstart-protocol-nfs.png)
+4. Klik op **Protocol** en voer de volgende acties uit:
+    * Selecteer **NFS** als protocoltype voor het volume.
+    * Geef **myfilepath1** op als het bestandspad dat wordt gebruikt om het exportpad voor het volume te maken.
+    * Selecteer de NFS-versie ( **NFSv3** of **NFSv4.1** ) voor het volume.
+      Raadpleeg [opmerkingen](azure-netapp-files-create-volumes.md#considerations) en [best practice](azure-netapp-files-create-volumes.md#best-practice) voor informatie over NFS-versies.
+
+    ![NFS-protocol opgeven voor snelstart](../media/azure-netapp-files/azure-netapp-files-quickstart-protocol-nfs.png)
 
 5. Klik op **Controleren + maken**.
 
-    ![Venster Controleren en maken](../media/azure-netapp-files/azure-netapp-files-review-and-create-window.png)  
+    ![Venster Controleren en maken](../media/azure-netapp-files/azure-netapp-files-review-and-create-window.png)
 
-6. Controleer de gegevens voor het volume en klik vervolgens op **Maken**.  
+6. Controleer de gegevens voor het volume en klik vervolgens op **Maken**.
     Het gemaakte volume verschijn in de blade Volumes.
 
-    ![Volume gemaakt](../media/azure-netapp-files/azure-netapp-files-create-volume-created.png)  
+    ![Volume gemaakt](../media/azure-netapp-files/azure-netapp-files-create-volume-created.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -307,13 +307,13 @@ Het volgende codefragment laat zien hoe u een capaciteitspool maakt in een Azure
     ```
 
 3. Maak het virtueel netwerk met de opdracht [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork).
-    
+
     ```powershell-interactive
     $vnet = New-AzVirtualNetwork -Name "myvnet1" -ResourceGroupName $resourceGroup -Location $location -AddressPrefix "10.7.0.0/16" -Subnet $subnet
     ```
 
 4. Maak het volume met de opdracht [New-AzNetAppFilesVolume](/powershell/module/az.netappfiles/new-aznetappfilesvolume).
-   
+
     ```powershell-interactive
     $volumeSizeBytes = 1099511627776 # 100GiB
     $subnetId = $vnet.Subnets[0].Id
@@ -333,14 +333,14 @@ Het volgende codefragment laat zien hoe u een capaciteitspool maakt in een Azure
 # <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 1. Definieer enkele variabelen voor later gebruik.
-    
+
     ```azurecli-interactive
     VNET_NAME="myvnet1"
     SUBNET_NAME="myANFSubnet"
     ```
 
 1. Maak een virtueel netwerk zonder subnet met de opdracht [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create).
-    
+
     ```azurecli-interactive
     az network vnet create \
         --resource-group $RESOURCE_GROUP \
@@ -362,7 +362,7 @@ Het volgende codefragment laat zien hoe u een capaciteitspool maakt in een Azure
     ```
 
 3. Maak het volume met de opdracht [az netappfiles volume create](/cli/azure/netappfiles/volume#az-netappfiles-volume-create).
-   
+
     ```azurecli-interactive
     VNET_ID=$(az network vnet show --resource-group $RESOURCE_GROUP --name $VNET_NAME --query "id" -o tsv)
     SUBNET_ID=$(az network vnet subnet show --resource-group $RESOURCE_GROUP --vnet-name $VNET_NAME --name $SUBNET_NAME --query "id" -o tsv)
@@ -385,7 +385,7 @@ Het volgende codefragment laat zien hoe u een capaciteitspool maakt in een Azure
 
 # <a name="template"></a>[Sjabloon](#tab/template)
 
-<!-- [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)] --> 
+<!-- [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)] -->
 
 De volgende codefragmenten laten zien hoe u een VNet instelt en een Azure NetApp Files-volume maakt in een Azure Resource Manager-sjabloon (ARM-sjabloon). VNet-installatie maakt gebruik van de [Microsoft.Network/virtualNetworks](/azure/templates/Microsoft.Network/virtualNetworks) resource. Voor het maken van volumes wordt gebruikgemaakt van de [Microsoft.NetApp/netAppAccounts/capacityPools/volumes](/azure/templates/microsoft.netapp/netappaccounts/capacitypools/volumes) resource. Als u de code wilt uitvoeren, downloadt u het [volledige ARM-sjabloon](https://github.com/Azure/azure-quickstart-templates/blob/master/101-anf-nfs-volume/azuredeploy.json) van onze GitHub-opslag.
 
@@ -403,50 +403,50 @@ De volgende codefragmenten laten zien hoe u een VNet instelt en een Azure NetApp
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Wanneer u klaar bent en als u wilt, kunt u de resourcegroep verwijderen. Het verwijderen van een resourcegroep kan niet ongedaan worden gemaakt.  
+Wanneer u klaar bent en als u wilt, kunt u de resourcegroep verwijderen. Het verwijderen van een resourcegroep kan niet ongedaan worden gemaakt.
 
 > [!IMPORTANT]
-> Alle resources binnen de resourcegroepen worden permanent verwijderd en kunnen niet worden hersteld. 
+> Alle resources binnen de resourcegroepen worden permanent verwijderd en kunnen niet worden hersteld.
 
-1. Voer in het zoekvak van de Azure-portal **Azure NetApp Files** in en selecteer vervolgens **Azure NetApp Files** in de lijst die wordt weergegeven.
+1. Voer in het zoekvak van Azure Portal **Azure NetApp Files** in, en selecteer vervolgens **Azure NetApp Files** in de lijst die wordt weergegeven.
 
-2. Klik in de lijst met abonnementen op de resourcegroep (myRG1) die u wilt verwijderen. 
+2. Klik in de lijst met abonnementen op de resourcegroep (myRG1) die u wilt verwijderen.
 
     ![Navigeren naar resourcegroepen](../media/azure-netapp-files/azure-netapp-files-azure-navigate-to-resource-groups.png)
 
 
 3. Klik in de pagina van de resourcegroep op **Resourcegroep verwijderen**.
 
-    ![Schermopname met de knop Resourcegroep verwijderen gemarkeerd.](../media/azure-netapp-files/azure-netapp-files-azure-delete-resource-group.png) 
+    ![Schermopname met de knop Resourcegroep verwijderen gemarkeerd.](../media/azure-netapp-files/azure-netapp-files-azure-delete-resource-group.png)
 
     Een venster wordt geopend en toont een waarschuwing over de resources die worden verwijderd met de resourcegroep.
 
 4. Voer de naam in van de resourcegroep (myRG1) om te bevestigen dat u de resourcegroep en alle resources daarin permanent wilt verwijderen en klik dan op **Verwijderen**.
 
-    ![Bevestig verwijderen resourcegroep](../media/azure-netapp-files/azure-netapp-files-azure-confirm-resource-group-deletion.png ) 
+    ![Bevestig verwijderen resourcegroep](../media/azure-netapp-files/azure-netapp-files-azure-confirm-resource-group-deletion.png )
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Wanneer u klaar bent en als u wilt, kunt u de resourcegroep verwijderen. Het verwijderen van een resourcegroep kan niet ongedaan worden gemaakt.  
+Wanneer u klaar bent en als u wilt, kunt u de resourcegroep verwijderen. Het verwijderen van een resourcegroep kan niet ongedaan worden gemaakt.
 
 > [!IMPORTANT]
 > Alle resources binnen de resourcegroepen worden permanent verwijderd en kunnen niet worden hersteld.
 
 1. Verwijder de resourcegroep met de opdracht [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup).
-   
+
     ```powershell-interactive
     Remove-AzResourceGroup -Name $resourceGroup
     ```
 
 # <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
-Wanneer u klaar bent en als u wilt, kunt u de resourcegroep verwijderen. Het verwijderen van een resourcegroep kan niet ongedaan worden gemaakt.  
+Wanneer u klaar bent en als u wilt, kunt u de resourcegroep verwijderen. Het verwijderen van een resourcegroep kan niet ongedaan worden gemaakt.
 
 > [!IMPORTANT]
 > Alle resources binnen de resourcegroepen worden permanent verwijderd en kunnen niet worden hersteld.
 
 1. U kunt de resourcegroep verwijderen met de opdracht [az group delete](/cli/azure/group#az-group-delete).
-   
+
     ```azurecli-interactive
     az group delete \
         --name $RESOURCE_GROUP
@@ -456,13 +456,17 @@ Wanneer u klaar bent en als u wilt, kunt u de resourcegroep verwijderen. Het ver
 
 Geen.
 
-Gebruik de Azure Portal, PowerShell of de Azure CLI om de resourcegroep te verwijderen.   
+Gebruik de Azure Portal, PowerShell of de Azure CLI om de resourcegroep te verwijderen.
 
 ---
 
-## <a name="next-steps"></a>Volgende stappen  
+## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Opslaghiërarchie van Azure NetApp Files](azure-netapp-files-understand-storage-hierarchy.md)   
-> [Serviceniveaus voor Azure NetApp Files](azure-netapp-files-service-levels.md)   
+> [Opslaghiërarchie van Azure NetApp Files](azure-netapp-files-understand-storage-hierarchy.md)
+
+> [!div class="nextstepaction"]
+> [Serviceniveau's voor Azure NetApp Files](azure-netapp-files-service-levels.md)
+
+> [!div class="nextstepaction"]
 > [Een NFS-volume maken](azure-netapp-files-create-volumes.md)

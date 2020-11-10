@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2bac9645fa66cd33c7cda79f16628c1104e27d7d
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 00b4f38f4a2a44b88718224db2b2442033816f83
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480544"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313897"
 ---
 # <a name="azure-synapse-analytics-ip-firewall-rules-preview"></a>IP-firewallregels voor Azure Synapse Analytics (preview-versie)
 
@@ -21,7 +21,7 @@ In dit artikel worden de IP-firewallregels uitgelegd en leert u hoe u deze regel
 
 ## <a name="ip-firewall-rules"></a>IP-firewallregels
 
-IP-firewallregels verlenen of blokkeren toegang tot uw Synapse-werkruimte op basis van het oorspronkelijke IP-adres van elke aanvraag. U kunt IP-firewallregels instellen voor uw werkruimte. De IP-firewallregels die op het niveau van de werkruimte zijn ingesteld, zijn van toepassing op alle openbare eindpunten van de werkruimte (SQL-pools, on-demand SQL-databases en ontwikkeling).
+IP-firewallregels verlenen of blokkeren toegang tot uw Synapse-werkruimte op basis van het oorspronkelijke IP-adres van elke aanvraag. U kunt IP-firewallregels instellen voor uw werkruimte. De IP-firewallregels die op het niveau van de werkruimte zijn ingesteld, zijn van toepassing op alle openbare eindpunten van de werkruimte (toegewezen SQL-pools, serverloze SQL-pools, en ontwikkeling).
 
 ## <a name="create-and-manage-ip-firewall-rules"></a>IP-firewallregels maken en beheren
 
@@ -37,7 +37,7 @@ U kunt ook IP-firewallregels toevoegen aan een Synapse-werkruimte nadat de werkr
 
 ## <a name="connect-to-synapse-from-your-own-network"></a>Verbinding maken met Synapse via uw eigen netwerk
 
-U kunt verbinding maken met uw Synapse-werkruimte met behulp van Synapse Studio. U kunt ook SQL Server Management Studio (SSMS) gebruiken om verbinding te maken met de SQL-resources (SQL-groepen en SQL on-demand) in uw werkruimte.
+U kunt verbinding maken met uw Synapse-werkruimte met behulp van Synapse Studio. U kunt ook SSMS (SQL Server Management Studio) gebruiken om verbinding te maken met de SQL-resources (toegewezen SQL-pools en serverloze SQL-pools) in uw werkruimte.
 
 Zorg ervoor dat de firewall in uw netwerk en op uw lokale computer uitgaande communicatie via TCP-poorten 80, 443 en 1443 toestaan voor Synapse Studio.
 

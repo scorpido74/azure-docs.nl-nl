@@ -6,21 +6,19 @@ ms.author: yegu
 ms.service: cache
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 05/12/2020
-ms.openlocfilehash: 3df6cb1afe8a6249eadbbd3f61619e66be2d2478
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/28/2020
+ms.openlocfilehash: bd5e05f38d34199d9012c52ca3fdad33af231aad
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "83402497"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93127979"
 ---
 # <a name="quickstart-create-an-enterprise-tier-cache-preview"></a>Quickstart: Een cache voor een Enterprise-laag maken (preview)
 
 De Enterprise-lagen voor Azure Cache voor Redis bieden het volledig geïntegreerde en beheerde [Redis Enterprise](https://redislabs.com/redis-enterprise/) in Azure. Ze zijn momenteel beschikbaar als preview. Er zijn twee nieuwe lagen beschikbaar in deze preview:
 * Enterprise, waarbij gebruik wordt gemaakt van vluchtig geheugen (DRAM) op een virtuele machine om gegevens op te slaan
-* Enterprise SSD, waarbij gebruik wordt gemaakt van vluchtig en niet-vluchtig geheugen (NVMe) om gegevens op te slaan
-
-Er zijn geen kosten verbonden aan het samenvoegen van de preview. Als u interesse hebt, kunt u zich op [Azure Marketplace](https://aka.ms/redispreviewsignup/) aanmelden via de knop **Contact opnemen**. Er is een zeer beperkt aantal plaatsen beschikbaar en we kunnen niet garanderen dat u wordt geselecteerd als deelnemer voor deze preview.
+* Enterprise Flash, waarbij wordt gebruikgemaakt van vluchtig en niet-vluchtig geheugen (NVMe of SSD) om gegevens op te slaan.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -29,14 +27,9 @@ U hebt een Azure-abonnement nodig voordat u kunt beginnen. Als u nog geen accoun
 ## <a name="create-a-cache"></a>Een cache maken
 1. Meld u aan bij de Azure-portal via de link in uw preview-uitnodiging en selecteer **Een resource maken** om een cache te maken.
 
-   > [!IMPORTANT] 
-   > Abonneer u niet rechtstreeks op Marketplace op *Azure Cache for Redis, Enterprise Tiers*.
-   > Deze stap wordt automatisch uitgevoerd door de gebruikersinterface van de Azure Cache voor Redis-portal.
-   >
-   
 1. Selecteer op de pagina **Nieuw** de optie **Databases** en selecteer vervolgens **Azure Cache voor Redis**.
    
-   ![Azure Cache voor Redis selecteren](media/cache-create/new-cache-menu.png)
+   :::image type="content" source="media/cache-create/new-cache-menu.png" alt-text="Azure Cache voor Redis selecteren":::
    
 1. Configureer op de pagina **Nieuwe Redis-cache** de instellingen voor de nieuwe cache.
    
@@ -45,40 +38,40 @@ U hebt een Azure-abonnement nodig voordat u kunt beginnen. Als u nog geen accoun
    | **Abonnement** | Open de vervolgkeuzelijst en selecteer uw abonnement. | Het abonnement waarmee dit nieuwe Azure Cache voor Redis-exemplaar wordt gemaakt. | 
    | **Resourcegroep** | Open de vervolgkeuzelijst en selecteer een resourcegroep of kies **Nieuwe maken** en geef een naam voor de nieuwe resourcegroep op. | Naam voor de resourcegroep waarin de cache en andere resources moeten worden gemaakt. Door al uw app-resources in één resourcegroep te plaatsen, kunt u ze eenvoudig beheren of verwijderen. | 
    | **DNS-naam** | Geef een wereldwijd unieke naam op. | De cachenaam is een tekenreeks van 1 tot 63 tekens die alleen cijfers, letters en afbreekstreepjes mag bevatten. De naam moet beginnen en eindigen met een cijfer of letter en mag geen opeenvolgende afbreekstreepjes bevatten. De *hostnaam* van het cache-exemplaar is *\<DNS name>.<Azure region>.redisenterprise.cache.azure.net*. | 
-   | **Locatie** | Open de vervolgkeuzelijst en selecteer een locatie. | Enterprise-lagen zijn beschikbaar in US - west, US - oost 2 en Europa - west. |
-   | **Cachelaag** | Open de vervolgkeuzelijst en selecteer een *Enterprise DRAM*- of *Enterprise SSD*-laag en een grootte. |  De grootte, prestaties en functies die beschikbaar zijn voor de cache, zijn afhankelijk van de gekozen laag. |
+   | **Locatie** | Open de vervolgkeuzelijst en selecteer een locatie. | Tijdens de preview-fase zijn Enterprise-lagen in een beperkt aantal Azure-regio's beschikbaar. |
+   | **Cachetype** | Open de vervolgkeuzelijst en selecteer een *Enterprise* - of *Enterprise Flash* -laag, en een grootte. |  De grootte, prestaties en functies die beschikbaar zijn voor de cache, zijn afhankelijk van de gekozen laag. |
    
-   ![Enterprise-laag Basisinstellingen](media/cache-create/enterprise-tier-basics.png) 
+   :::image type="content" source="media/cache-create/enterprise-tier-basics.png" alt-text="Enterprise-laag Basisinstellingen":::
+
+   > [!NOTE] 
+   > Zorg ervoor dat u het selectievakje onder 'Voorwaarden' inschakelt voordat u doorgaat.
+   >
 
 1. Selecteer **Volgende: Netwerken** en ga door.
 
    > [!NOTE] 
-   > Ondersteuning voor privékoppelingen volgt later.
+   > De optie Private Links wordt momenteel geïmplementeerd, en is mogelijk niet beschikbaar in uw regio.
    >
 
-1. Selecteer **Volgende: Geavanceerd**.
+1. Selecteer **Volgende: Geavanceerd** en stel **Clusterbeleid** in **Enterprise** in.
    
    U kunt de standaardinstellingen behouden of deze indien nodig aanpassen. Als u **Alleen toegang via TLS toestaan** inschakelt, moet u TLS gebruiken om vanuit uw toepassing toegang te krijgen tot de nieuwe cache.
 
-   ![Enterprise-laag Geavanceerd](media/cache-create/enterprise-tier-advanced.png) 
+   :::image type="content" source="media/cache-create/enterprise-tier-advanced.png" alt-text="Enterprise-laag Geavanceerd":::
 
    > [!NOTE] 
-   > Redis-modules worden nog niet ondersteund in de Enterprise SSD-laag. Kies een Enterprise-cache als u van plan bent een Redis-module te gebruiken.
+   > Redis-modules worden nog niet ondersteund in de Enterprise Flash-laag. Kies een Enterprise-cache als u van plan bent een Redis-module te gebruiken.
    >
    
 1. Selecteer **Volgende: Tags** en ga door.
 
-1. Selecteer **Volgende: Samenvatting**.
+1. Selecteer **Volgende: Beoordelen en maken**.
 
-   ![Enterprise-laag Samenvatting](media/cache-create/enterprise-tier-summary.png) 
+   :::image type="content" source="media/cache-create/enterprise-tier-summary.png" alt-text="Enterprise-laag Samenvatting":::
 
-1. Klik op het selectievakje onder **Voorwaarden**, controleer de instellingen en selecteer **Beoordelen en maken**.
+1. Controleer de instellingen en klik op **Maken**.
    
    Het duurt enige tijd voordat de cache is gemaakt. U kunt de voortgang bekijken op de **overzichtspagina** van Azure Cache voor Redis. Als u bij **Status** **Wordt uitgevoerd** ziet staan, kunt u de cache gebruiken.
-
-   > [!NOTE] 
-   > Enige tijd nadat de Enterprise-cache is gemaakt, ontvangt u de e-mail **Actie vereist** van Azure Marketplace om *Azure Cache for Redis, Enterprise Tiers* te configureren. U hoeft hier niets mee te doen. U kunt die e-mail gewoon negeren.
-   >
 
 ## <a name="next-steps"></a>Volgende stappen
 

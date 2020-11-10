@@ -1,6 +1,6 @@
 ---
-title: Query's uitvoeren op gegevens in de opslag met behulp van SQL on-demand (preview)
-description: In dit artikel wordt beschreven hoe u een query uitvoert op Azure Storage met behulp van de SQL on demand-resource (preview) in Azure Synapse Analytics.
+title: Gegevensopslag doorzoeken met een serverloze SQL-pool (preview-versie)
+description: In dit artikel wordt beschreven hoe u een query uitvoert voor Azure-opslag, met behulp van een serverloze SQL-pool (preview-versie) in Azure Synapse Analytics.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,27 +9,27 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0ac54eb5d6350cc234eb7036a3a1dc97a4f1b083
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3fd3a94efd6e7870ae3919a011fc24f66b97c559
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91288372"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93310950"
 ---
-# <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>Query-opslagbestanden die SQL on-demand-resources (preview) gebruiken binnen Synapse SQL
+# <a name="query-storage-files-with-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Opslagbestanden doorzoeken met een serverloze SQL-pool (preview-versie) in Azure Synapse Analytics
 
-Met SQL on-demand (preview) kunt u een query uitvoeren op uw gegevens in uw data lake. Het biedt een T-SQL query-surface area dat geschikt is voor semi-gestructureerde en ongestructureerde gegevensquery's. Voor het uitvoeren van query's worden de volgende T-SQL-aspecten ondersteund:
+Met een serverloze SQL-pool (preview-versie) kunt u een query uitvoeren op uw gegevens in uw data lake. Het biedt een T-SQL query-surface area dat geschikt is voor semi-gestructureerde en ongestructureerde gegevensquery's. Voor het uitvoeren van query's worden de volgende T-SQL-aspecten ondersteund:
 
 - Volledige [SELECT](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)-surface area, met inbegrip van de meeste [SQL-functies en -operatoren](overview-features.md).
 - Met CREATE EXTERNAL TABLE AS SELECT ([CETAS](develop-tables-cetas.md)) wordt een [externe tabel](develop-tables-external-tables.md) gemaakt en parallel de resultaten van een Transact-SQL SELECT-instructie geëxporteerd naar Azure Storage.
 
-Lees het artikel [SQL on-demand-overzicht](on-demand-workspace-overview.md) voor meer informatie ten opzichte van wat momenteel niet wordt ondersteund, of lees de volgende artikelen:
+Lees het artikel [Overzicht van serverloze SQL-pools](on-demand-workspace-overview.md) voor meer informatie over wat momenteel niet wordt ondersteund, of lees de volgende artikelen:
 - [Ontwikkel opslagtoegang](develop-storage-files-overview.md) waar u kunt leren hoe u [Externe tabellen](develop-tables-external-tables.md) en de functie [OPENROWSET](develop-openrowset.md) kunt gebruiken om gegevens uit de opslag te lezen.
 - [Toegang tot opslag beheren](develop-storage-files-storage-access-control.md) waar u kunt leren hoe u Synapse SQL in staat stelt om toegang te krijgen tot opslag met SAS-verificatie of beheerde identiteit van de werkruimte.
 
 ## <a name="overview"></a>Overzicht
 
-Om een soepele ervaring te kunnen bieden voor het lokaal zoeken naar gegevens die zich bevinden in Azure-opslagbestanden gebruikt SQL on-demand de functie [OPENROWSET](develop-openrowset.md) met aanvullende mogelijkheden:
+Om een soepele ervaring te kunnen bieden voor het lokaal zoeken naar gegevens die zich bevinden in Azure Storage-bestanden, gebruikt een serverloze SQL-pool de functie [OPENROWSET](develop-openrowset.md) met aanvullende mogelijkheden:
 
 - [Meerdere bestanden of mappen doorzoeken](#query-multiple-files-or-folders)
 - [Bestandsindeling PARQUET](#query-parquet-files)
@@ -146,7 +146,7 @@ Het retourgegevenstype is nvarchar(1024). Cast het resultaat van de functie best
 
 ## <a name="work-with-complex-types-and-nested-or-repeated-data-structures"></a>Werken met complexe types en geneste of herhaalde gegevensstructuren
 
-SQL on-demand heeft onderstaande extensies toegevoegd om een soepele ervaring te kunnen bieden bij gegevens die zijn opgeslagen in geneste of herhaalde gegevenstypes, zoals in [Parquet](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#nested-types)-bestanden.
+Aan de serverloze SQL-pool zijn onderstaande extensies toegevoegd om een soepele ervaring te kunnen bieden bij gegevens die zijn opgeslagen in geneste of herhaalde gegevenstypes, zoals in [Parquet](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#nested-types)-bestanden.
 
 #### <a name="project-nested-or-repeated-data"></a>Geneste of herhaalde gegevens projecteren
 

@@ -5,12 +5,12 @@ description: Meer informatie over het bijwerken of opnieuw instellen van de refe
 services: container-service
 ms.topic: article
 ms.date: 03/11/2019
-ms.openlocfilehash: e787322f421094cf9ac6681df0119ba820b654ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c787f172bc03e11c574c4de967aee05da9df18aa
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88871221"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427510"
 ---
 # <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>De referenties voor de Azure Kubernetes-service bijwerken of draaien (AKS)
 
@@ -22,7 +22,7 @@ U kunt ook een beheerde identiteit voor machtigingen gebruiken in plaats van een
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-U moet de Azure CLI-versie 2.0.65 of hoger hebben geïnstalleerd en geconfigureerd. Voer  `az --version` uit om de versie te bekijken. Als u wilt installeren of upgraden, raadpleegt u [Azure cli installeren][install-azure-cli].
+U moet de Azure CLI-versie 2.0.65 of hoger hebben geïnstalleerd en geconfigureerd. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren][install-azure-cli] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 ## <a name="update-or-create-a-new-service-principal-for-your-aks-cluster"></a>Een nieuwe service-principal voor uw AKS-cluster bijwerken of maken
 
@@ -82,7 +82,7 @@ De uitvoer lijkt op die in het volgende voorbeeld. Noteer uw eigen `appId` en `p
 }
 ```
 
-Definieer nu variabelen voor de Service-Principal-ID en het client geheim met behulp van de uitvoer van uw eigen [AZ AD SP create-for-RBAC-][az-ad-sp-create] opdracht, zoals wordt weer gegeven in het volgende voor beeld. De *SP_ID* is uw *appId*en de *SP_SECRET* is uw *wacht woord*:
+Definieer nu variabelen voor de Service-Principal-ID en het client geheim met behulp van de uitvoer van uw eigen [AZ AD SP create-for-RBAC-][az-ad-sp-create] opdracht, zoals wordt weer gegeven in het volgende voor beeld. De *SP_ID* is uw *appId* en de *SP_SECRET* is uw *wacht woord* :
 
 ```console
 SP_ID=7d837646-b1f3-443d-874c-fd83c7c739c5
@@ -104,7 +104,7 @@ az aks update-credentials \
     --name myAKSCluster \
     --reset-service-principal \
     --service-principal $SP_ID \
-    --client-secret "$SP_SECRET"
+    --client-secret $SP_SECRET
 ```
 
 Voor kleine en middel grote clusters duurt het enkele minuten voordat de referenties van de service-principal worden bijgewerkt in de AKS.

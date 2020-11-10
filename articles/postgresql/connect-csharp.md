@@ -7,41 +7,52 @@ ms.service: postgresql
 ms.custom: mvc, devcenter, devx-track-csharp
 ms.devlang: csharp
 ms.topic: quickstart
-ms.date: 10/16/2020
-ms.openlocfilehash: 221bd8287133c3fe9bb53bd4b480823d971b3e3a
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.date: 10/18/2020
+ms.openlocfilehash: 8820fd7b0812d925af6aca923a2b205d5bc92f3e
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92166009"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341447"
 ---
 # <a name="quickstart-use-net-c-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Quickstart: .NET (C#) gebruiken om verbinding te maken en gegevens op te vragen in Azure Database for PostgreSQL - één server
 
 In deze snelstartgids ziet u hoe u met behulp van een C#-toepassing verbinding maakt met een Azure Database voor PostgreSQL. U ziet hier hoe u SQL-instructies gebruikt om gegevens in de database op te vragen, in te voegen, bij te werken en te verwijderen. In de stappen van dit artikel wordt ervan uitgegaan dat u bekend bent met het ontwikkelen met C#, maar geen ervaring hebt met het werken met Azure Database voor PostgreSQL.
 
 ## <a name="prerequisites"></a>Vereisten
-In deze snelstartgids worden de resources die in een van deze handleidingen zijn gemaakt, als uitgangspunt gebruikt:
-- [Database maken - Portal](quickstart-create-server-database-portal.md)
-- [Database maken - CLI](quickstart-create-server-database-azure-cli.md)
+Voor deze quickstart hebt u het volgende nodig:
 
-U moet ook het volgende doen:
-- [.NET Framework](https://www.microsoft.com/net/download) installeren. Volg de stappen in het gekoppelde artikel om .NET specifiek voor uw platform (Windows, Ubuntu Linux en Mac OS) te installeren. 
-- Installeer [Visual Studio](https://www.visualstudio.com/downloads/) of Visual Studio Code om code in te voeren en te bewerken.
-- Een verwijzing toevoegen naar het Nuget-pakket [Npgsql](https://www.nuget.org/packages/Npgsql/).
+- Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free)
+- Maak een enkele Azure Database for PostgreSQL-server met behulp van [Azure Portal](./quickstart-create-server-database-portal.md) <br/> of [Azure CLI](./quickstart-create-server-database-azure-cli.md), als u er nog geen hebt.
+- Voltooi **EEN** van de onderstaande acties om connectiviteit in te schakelen, afhankelijk van of u openbare toegang of privétoegang hebt.
+
+  |Bewerking| Verbindingsmethode|Instructiegids|
+  |:--------- |:--------- |:--------- |
+  | **Firewallregels configureren** | Openbaar | [Portal](./howto-manage-firewall-using-portal.md) <br/> [CLI](./howto-manage-firewall-using-cli.md)|
+  | **Service-eindpunt configureren** | Openbaar | [Portal](./howto-manage-vnet-using-portal.md) <br/> [CLI](./howto-manage-vnet-using-cli.md)|
+  | **Privékoppeling configureren** | Privé | [Portal](./howto-configure-privatelink-portal.md) <br/> [CLI](./howto-configure-privatelink-cli.md) |
+
+- Installeer [.NET Framework](https://www.microsoft.com/net/download) voor uw platform (Windows, Ubuntu Linux of macOS). 
+- Installeer [Visual Studio](https://www.visualstudio.com/downloads/) om uw project te bouwen.
+- Installeer het NuGet-pakket [Npgsql](https://www.nuget.org/packages/Npgsql/) in Visual Studio.
 
 ## <a name="get-connection-information"></a>Verbindingsgegevens ophalen
 Haal de verbindingsgegevens op die nodig zijn om verbinding te maken met de Azure Database voor PostgreSQL. U hebt de volledig gekwalificeerde servernaam en aanmeldingsreferenties nodig.
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
-2. Klik in het menu aan de linkerkant in Azure Portal op **Alle resources** en zoek naar de server die u hebt gemaakt (bijvoorbeeld **mydemoserver**).
+2. Klik in het menu aan de linkerkant in Azure Portal op **Alle resources** en zoek naar de server die u hebt gemaakt (bijvoorbeeld **mydemoserver** ).
 3. Klik op de servernaam.
 4. Ga naar het venster **Overzicht** van de server en noteer de **Servernaam** en de **Aanmeldingsnaam van de serverbeheerder**. Als u uw wachtwoord vergeet, kunt u het wachtwoord in dit venster opnieuw instellen.
  :::image type="content" source="./media/connect-csharp/1-connection-string.png" alt-text="Servernaam Azure Database for PostgreSQL":::
 
-## <a name="connect-create-table-and-insert-data"></a>Verbinden, tabel maken en gegevens invoegen
-Gebruik de volgende code om verbinding te maken en de gegevens te laden met de SQL-instructies **CREATE TABLE** EN **INSERT INTO**. In de code wordt de klasse NpgsqlCommand gebruikt met de methode [Open()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_Open) om een verbinding met de PostgreSQL-database te maken. Vervolgens wordt de methode [CreateCommand()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_CreateCommand) gebruikt, de eigenschap CommandText ingesteld en de methode [ExecuteNonQuery()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_ExecuteNonQuery) aangeroepen om de databaseopdrachten uit te voeren. 
+## <a name="step-1-connect-and-insert-data"></a>Stap 1: Gegevens verbinden en invoegen
+Gebruik de volgende code om verbinding te maken en de gegevens te laden met de SQL-instructies **CREATE TABLE** EN **INSERT INTO**. De code maakt gebruik van de klasse NpgsqlCommand met de methode: 
+- [Open()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_Open) om een verbinding tot stand te brengen met de PostgreSQL-database.
+- Met [CreateCommand()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_CreateCommand) wordt de eigenschap CommandText ingesteld.
+- Met de methode [ExecuteNonQuery()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_ExecuteNonQuery) worden de databaseopdrachten uitgevoerd. 
 
-Vervang de parameters Host, DBName, User en Password door de waarden die u hebt opgegeven tijdens het maken van de server en database. 
+> [!IMPORTANT]
+> Vervang de parameters Host, DBName, User en Password door de waarden die u hebt opgegeven tijdens het maken van de server en database. 
 
 ```csharp
 using System;
@@ -113,10 +124,17 @@ namespace Driver
 }
 ```
 
-## <a name="read-data"></a>Gegevens lezen
-Gebruik de volgende code om verbinding te maken en de gegevens te lezen met de SQL-instructie **SELECT**. In de code wordt de klasse NpgsqlCommand met de methode [Open()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_Open) gebruikt om een verbinding te maken met PostgreSQL. Vervolgens worden de methoden [CreateCommand()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_CreateCommand) en [ExecuteReader()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_ExecuteReader) gebruikt om de databaseopdrachten uit te voeren. Daarna wordt [Read()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlDataReader.html#Npgsql_NpgsqlDataReader_Read) gebruikt om naar de record in de resultaten te gaan. Ten slotte worden [GetInt32()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlDataReader.html#Npgsql_NpgsqlDataReader_GetInt32_System_Int32_) en [GetString()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlDataReader.html#Npgsql_NpgsqlDataReader_GetString_System_Int32_) gebruikt om de waarden in de record te parseren.
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/postgres-doc-feedback)
 
-Vervang de parameters Host, DBName, User en Password door de waarden die u hebt opgegeven tijdens het maken van de server en database. 
+## <a name="step-2-read-data"></a>Stap 2: Gegevens lezen
+Gebruik de volgende code om verbinding te maken en de gegevens te lezen met de SQL-instructie **SELECT**. De code maakt gebruik van de klasse NpgsqlCommand met de methode:
+- [Open()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_Open) om een verbinding tot stand te brengen met PostgreSQL.
+- [CreateCommand()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_CreateCommand) en [ExecuteReader()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_ExecuteReader) worden gebruikt om de databaseopdrachten uit te voeren.
+- [Read()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlDataReader.html#Npgsql_NpgsqlDataReader_Read) wordt gebruikt om door te gaan naar de record in de resultaten.
+- [GetInt32()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlDataReader.html#Npgsql_NpgsqlDataReader_GetInt32_System_Int32_) en [GetString()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlDataReader.html#Npgsql_NpgsqlDataReader_GetString_System_Int32_) worden gebruikt om de waarden in de record te parseren.
+
+> [!IMPORTANT]
+> Vervang de parameters Host, DBName, User en Password door de waarden die u hebt opgegeven tijdens het maken van de server en database. 
 
 ```csharp
 using System;
@@ -179,11 +197,16 @@ namespace Driver
 }
 ```
 
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/postgres-doc-feedback)
 
-## <a name="update-data"></a>Gegevens bijwerken
-Gebruik de volgende code om verbinding te maken en de gegevens bij te werken met een SQL-instructie **UPDATE**. In de code wordt de klasse NpgsqlCommand met de methode [Open()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_Open) gebruikt om een verbinding te maken met PostgreSQL. Vervolgens wordt de methode [CreateCommand()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_CreateCommand) gebruikt, de eigenschap CommandText ingesteld en de methode [ExecuteNonQuery()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_ExecuteNonQuery) aangeroepen om de databaseopdrachten uit te voeren.
+## <a name="step-3-update-data"></a>Stap 3: Gegevens bijwerken
+Gebruik de volgende code om verbinding te maken en de gegevens bij te werken met een SQL-instructie **UPDATE**. De code maakt gebruik van de klasse NpgsqlCommand met de methode:
+- [Open()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_Open) om een verbinding tot stand te brengen met PostgreSQL. 
+- Met [CreateCommand()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_CreateCommand) wordt de eigenschap CommandText ingesteld.
+- Met de methode [ExecuteNonQuery()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_ExecuteNonQuery) worden de databaseopdrachten uitgevoerd.
 
-Vervang de parameters Host, DBName, User en Password door de waarden die u hebt opgegeven tijdens het maken van de server en database. 
+> [!IMPORTANT]
+> Vervang de parameters Host, DBName, User en Password door de waarden die u hebt opgegeven tijdens het maken van de server en database. 
 
 ```csharp
 using System;
@@ -239,13 +262,15 @@ namespace Driver
 
 ```
 
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/postgres-doc-feedback)
 
-## <a name="delete-data"></a>Gegevens verwijderen
+## <a name="step-4-delete-data"></a>Stap 4: Gegevens verwijderen
 Gebruik de volgende code om verbinding te maken en gegevens te verwijderen met de SQL-instructie **DELETE**. 
 
 In de code wordt de klasse NpgsqlCommand gebruikt met de methode [Open()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_Open) om een verbinding met de PostgreSQL-database te maken. Vervolgens wordt de methode [CreateCommand()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_CreateCommand) gebruikt, de eigenschap CommandText ingesteld en de methode [ExecuteNonQuery()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_ExecuteNonQuery) aangeroepen om de databaseopdrachten uit te voeren.
 
-Vervang de parameters Host, DBName, User en Password door de waarden die u hebt opgegeven tijdens het maken van de server en database. 
+> [!IMPORTANT]
+> Vervang de parameters Host, DBName, User en Password door de waarden die u hebt opgegeven tijdens het maken van de server en database. 
 
 ```csharp
 using System;
@@ -298,6 +323,21 @@ namespace Driver
 
 ```
 
+## <a name="clean-up-resources"></a>Resources opschonen
+
+Als u alle resources wilt opschonen die tijdens deze quickstart zijn gebruikt, verwijdert u de resourcegroep. Dit kan met de volgende opdracht:
+
+```azurecli
+az group delete \
+    --name $AZ_RESOURCE_GROUP \
+    --yes
+```
+
 ## <a name="next-steps"></a>Volgende stappen
 > [!div class="nextstepaction"]
-> [Een database migreren met behulp van Exporteren en importeren](./howto-migrate-using-export-and-import.md)
+> [Een Azure Database for MySQL-server beheren met de portal](./howto-create-manage-server-portal.md)<br/>
+
+> [!div class="nextstepaction"]
+> [Een Azure Database for MySQL-server beheren met CLI](./how-to-manage-server-cli.md)
+
+[Kunt u niet vinden wat u zoekt? Laat het ons weten.](https://aka.ms/postgres-doc-feedback)

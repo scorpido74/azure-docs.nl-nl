@@ -37,6 +37,10 @@
           href: test-drive-technical-configuration.md
         - name: Test Drive voor Azure Resource Manager
           href: azure-resource-manager-test-drive.md
+        - name: Gedetailleerde configuratie voor gehoste test drive
+          href: test-drive-hosted-detailed-config.md
+        - name: Een Azure-abonnement instellen voor gehoste test drives
+          href: test-drive-azure-subscription-setup.md
     - name: Gebruikskenmerken van klanten van Azure-partners
       href: azure-partner-customer-usage-attribution.md
     - name: Go-To-Market-opties
@@ -270,15 +274,15 @@
     - name: Analyses van de commerciële marketplace
       href: partner-center-portal/analytics.md
     - name: Dashboard voor samenvattingen
-      href: partner-center-portal/summary-dashboard.md
+      href: summary-dashboard.md
     - name: Dashboard voor orders
-      href: partner-center-portal/orders-dashboard.md
+      href: orders-dashboard.md
     - name: Dashboard voor gebruik
-      href: partner-center-portal/usage-dashboard.md
-    - name: Dashboard voor klanten
-      href: partner-center-portal/customer-dashboard.md
+      href: usage-dashboard.md
+    - name: Klantendashboard
+      href: customer-dashboard.md
     - name: Dashboard voor Marketplace-inzichten
-      href: partner-center-portal/insights-dashboard.md
+      href: insights-dashboard.md
     - name: Dashboard voor downloads
       href: partner-center-portal/downloads-dashboard.md
     - name: Dashboard voor classificaties en beoordelingen

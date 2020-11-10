@@ -199,6 +199,8 @@
           href: bookmarks.md
         - name: Livestream gebruiken voor opsporing
           href: livestream.md
+        - name: Opsporingsquery's beheren met REST-API
+          href: hunting-with-rest-api.md
     - name: Azure Sentinel verwijderen
       href: offboard.md
 - name: Verwijzing (Nieuw!)

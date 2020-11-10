@@ -1,6 +1,6 @@
 ---
-title: Queryresultaten opslaan in opslag
-description: In dit artikel leert u hoe u queryresultaten opslaat in de opslag met behulp van SQL op aanvraag (preview).
+title: Queryresultaten uit een serverloze SQL-pool opslaan
+description: In dit artikel leert u hoe u queryresultaten opslaat met behulp van een serverloze SQL-pool (preview-versie).
 services: synapse-analytics
 author: vvasic-msft
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0e5fda5e7a5caf72df3d4c80e37a684232ca5541
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 50897d81ed5ef2fc33e458bd46d9229f6184fea8
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91289358"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322613"
 ---
-# <a name="store-query-results-to-storage-using-sql-on-demand-preview-using-azure-synapse-analytics"></a>Queryresultaten opslaan in opslag met behulp van SQL op aanvraag (preview) met behulp van Azure Synapse Analytics
+# <a name="store-query-results-to-storage-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Queryresultaten opslaan met behulp van een serverloze SQL-pool (preview-versie) in Azure Synapse Analytics
 
-In dit artikel leert u hoe u queryresultaten opslaat in de opslag met behulp van SQL op aanvraag (preview).
+In dit artikel leert u hoe u queryresultaten opslaat met behulp van een serverloze SQL-pool (preview-versie).
 
 ## <a name="prerequisites"></a>Vereisten
 

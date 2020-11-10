@@ -14,23 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2020
 ms.author: yelevin
-ms.openlocfilehash: b769703f7e7054571a3b65a021c0123d8ae07078
-ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
+ms.openlocfilehash: 140228a65be166bc172e81267c4449b49621e02c
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93148232"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94425776"
 ---
 # <a name="enable-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>UEBA (User and entity Behavior Analytics) inschakelen in azure Sentinel 
 
 > [!IMPORTANT]
 >
-> - De UEBA-functie is nu **algemeen beschikbaar** in de volgende Azure Sentinel-geografische gebieden en regio's:
+> - De functies UEBA en Entity pages zijn nu **algemeen beschikbaar** in de volgende Azure Sentinel-geografische gebieden en regio's:
 >    - Verenigde Staten Geografie
 >    - Regio Oost-West
 >    - Geografie van Australië
 >
-> - In alle andere geografische gebieden en regio's blijft deze functie voor de tijd in de **open bare preview** en wordt er zonder Service Level Agreement. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+> - In alle andere geografische gebieden en regio's blijven deze functies gedurende de **Preview** -periode. Zie de [aanvullende gebruiks voorwaarden voor Microsoft Azure previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor aanvullende juridische voor waarden die van toepassing zijn op Azure-functies die in bèta, preview of op andere wijze nog niet beschikbaar zijn in algemene Beschik baarheid.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -54,7 +54,7 @@ Om deze functie in of uit te scha kelen (deze vereisten zijn niet vereist voor h
 
 1. Klik op de knop **gegevens bronnen selecteren** .
 
-1. Schakel in het selectie deel venster **gegevens bron** de selectie vakjes in naast de gegevens bronnen waarvoor u UEBA wilt inschakelen en selecteer vervolgens **Toep assen** .
+1. Schakel in het selectie deel venster **gegevens bron** de selectie vakjes in naast de gegevens bronnen waarvoor u UEBA wilt inschakelen en selecteer vervolgens **Toep assen**.
 
     > [!NOTE]
     >
@@ -62,7 +62,7 @@ Om deze functie in of uit te scha kelen (deze vereisten zijn niet vereist voor h
     >
     > Wanneer u UEBA hebt ingeschakeld, hebt u de optie om nieuwe gegevens bronnen te verbinden, zodat ze rechtstreeks vanuit het deel venster gegevens connector kunnen worden UEBA als deze UEBA-compatibel zijn.
 
-1. Selecteer **Ga naar entiteit zoeken** . Hiermee gaat u naar het deel venster entiteit zoeken, dat vanaf nu wordt weer geven wanneer u **entiteit gedrag** kiest in het hoofd menu van Azure.
+1. Selecteer **Ga naar entiteit zoeken**. Hiermee gaat u naar het deel venster entiteit zoeken, dat vanaf nu wordt weer geven wanneer u **entiteit gedrag** kiest in het hoofd menu van Azure.
 
 ## <a name="next-steps"></a>Volgende stappen
 In dit document hebt u geleerd hoe u UEBA (User and entity Behavior Analytics) inschakelt en configureert in azure Sentinel. Zie de volgende artikelen voor meer informatie over Azure Sentinel:

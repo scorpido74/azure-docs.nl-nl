@@ -4,12 +4,12 @@ description: Gebruik Azure Container Registry-opdrachten om snel een docker-cont
 ms.topic: quickstart
 ms.date: 09/25/2020
 ms.custom: contperfq1
-ms.openlocfilehash: 36921900f64d458f1f2591897e32c98f6d22a550
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 1b4dcc05747ceae52c649c366c3faf437e77b560
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91538203"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098906"
 ---
 # <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>Quickstart: Een containerinstallatiekopie bouwen en uitvoeren met Azure Container Registry-taken
 
@@ -17,11 +17,11 @@ In deze quickstart gebruikt u [Azure Container Registry Tasks][container-registr
 
 Na deze quickstart kunt u meer geavanceerde functies van ACR-taken verkennen met de [zelfstudies](container-registry-tutorial-quick-task.md). Met ACR-taken kunnen onder meer installatiekopieën worden geautomatiseerd op basis van codedoorvoeringen of updates van basisinstallatiekopieën of meerdere containers parallel worden getest. 
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account][azure-account] aan voordat u begint.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-U kunt de Azure Cloud Shell of een lokale installatie van de Azure CLI gebruiken om deze Quick Start uit te voeren. Als u deze lokaal wilt gebruiken, wordt versie 2.0.58 of hoger aanbevolen. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren][azure-cli-install] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
+    
+- Voor deze quickstart is versie 2.0.58 of hoger van de Azure-CLI vereist. Als u Azure Cloud Shell gebruikt, is de nieuwste versie al geïnstalleerd.
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
@@ -42,14 +42,14 @@ az acr create --resource-group myResourceGroup \
   --name myContainerRegistry008 --sku Basic
 ```
 
-In dit voorbeeld maakt u een *Basic*-register. Dit is een voor kosten geoptimaliseerde optie voor ontwikkelaars die meer willen leren over Azure Container Registry. Zie [Servicelagen voor Container Registry][container-registry-skus] voor meer informatie over de beschikbare servicelagen.
+In dit voorbeeld maakt u een *Basic* -register. Dit is een voor kosten geoptimaliseerde optie voor ontwikkelaars die meer willen leren over Azure Container Registry. Zie [Servicelagen voor Container Registry][container-registry-skus] voor meer informatie over de beschikbare servicelagen.
 
 ## <a name="build-and-push-image-from-a-dockerfile"></a>Een installatiekopie bouwen en pushen vanaf een Dockerfile
 
-Gebruik nu Azure Container Registry om een installatiekopie te maken en pushen. Maak eerst een lokale werkmap en maak vervolgens een Dockerfile met de naam *Dockerfile* met één regel: `FROM hello-world`. Dit is een eenvoudig voorbeeld van het bouwen van een Linux-containerinstallatiekopie van de installatiekopie `hello-world` in Docker Hub. U kunt uw eigen standaard Dockerfile maken en installatiekopieën bouwen voor andere platforms. Als u met een bash-shell werkt, maakt u de Dockerfile met de volgende opdracht:
+Gebruik nu Azure Container Registry om een installatiekopie te maken en pushen. Maak eerst een lokale werkmap en maak vervolgens een Dockerfile met de naam *Dockerfile* met één regel: `FROM mcr.microsoft.com/hello-world`. Dit is een eenvoudig voorbeeld van het bouwen van een Linux-containerinstallatiekopie vanuit de `hello-world`-installatiekopie in Microsoft Container Registry. U kunt uw eigen standaard Dockerfile maken en installatiekopieën bouwen voor andere platforms. Als u met een bash-shell werkt, maakt u de Dockerfile met de volgende opdracht:
 
 ```bash
-echo FROM hello-world > Dockerfile
+echo FROM mcr.microsoft.com/hello-world > Dockerfile
 ```
 
 Voer de opdracht [az acr build][az-acr-build] uit, waarmee de installatiekopie wordt gemaakt. Nadat de installatiekopie is gemaakt, wordt deze naar uw register gepusht. In het volgende voorbeeld wordt de `sample/hello-world:v1`-installatiekopie gemaakt en gepusht. Met de `.` aan het einde van de opdracht wordt de locatie van de Dockerfile ingesteld, in dit geval de huidige map.
@@ -78,8 +78,8 @@ Waiting for agent...
 2019/03/18 21:57:00 Successfully obtained source code and scanned for dependencies
 2019/03/18 21:57:00 Launching container with name: build
 Sending build context to Docker daemon  13.82kB
-Step 1/1 : FROM hello-world
-latest: Pulling from library/hello-world
+Step 1/1 : FROM mcr.microsoft.com/hello-world
+latest: Pulling from hello-world
 Digest: sha256:2557e3c07ed1e38f26e389462d03ed943586fxxxx21577a99efb77324b0fe535
 Successfully built fce289e99eb9
 Successfully tagged mycontainerregistry008.azurecr.io/sample/hello-world:v1

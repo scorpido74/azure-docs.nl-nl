@@ -7,12 +7,12 @@ ms.date: 10/21/2019
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 1411491906e763a52ee1b6a66df1dea183b91973
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: b3d9e2e275b4c0d000759878557e5e14f7dfc04f
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425859"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92925744"
 ---
 # <a name="run-a-custom-container-in-azure"></a>Een aangepaste container uitvoeren in Azure
 
@@ -32,7 +32,7 @@ Vereisten voor het voltooien van deze zelfstudie:
 - <a href="https://hub.docker.com/" target="_blank">Registreren voor een Docker Hub-account</a>
 - <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">Docker voor Windows installeren</a>.
 - <a href="/virtualization/windowscontainers/quick-start/quick-start-windows-10" target="_blank">Docker instellen voor het uitvoeren van Windows-containers</a>.
-- <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019 installeren</a> met de workloads **ASP.NET- en webontwikkeling** en **Azure-ontwikkeling** . Als u Visual Studio 2019 al hebt geïnstalleerd:
+- <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019 installeren</a> met de workloads **ASP.NET- en webontwikkeling** en **Azure-ontwikkeling**. Als u Visual Studio 2019 al hebt geïnstalleerd:
 
     - Installeer de nieuwste updates in Visual Studio door **Help** > **Controleren op updates** te selecteren.
     - Voeg de workloads toe in Visual Studio door **Extra** > **Hulpprogramma’s en functies ophalen** te selecteren.
@@ -41,21 +41,21 @@ Vereisten voor het voltooien van deze zelfstudie:
 
 Maak een ASP.NET-web-app door de volgende stappen uit te voeren:
 
-1. Open Visual Studio en selecteer **Een nieuw project maken** .
+1. Open Visual Studio en selecteer **Een nieuw project maken**.
 
-1. Kies in **Een nieuw project maken** de optie **ASP.NET-webtoepassing (.NET Framework)** voor #C. Selecteer vervolgens **Volgende** .
+1. Kies in **Een nieuw project maken** de optie **ASP.NET-webtoepassing (.NET Framework)** voor #C. Selecteer vervolgens **Volgende**.
 
-1. Geef in **Uw nieuwe project configureren** de toepassing de naam _myfirstazurewebapp_ en selecteer **Maken** .
+1. Geef in **Uw nieuwe project configureren** de toepassing de naam _myfirstazurewebapp_ en selecteer **Maken**.
 
    ![Uw web-app-project configureren](./media/quickstart-custom-container/configure-web-app-project-container.png)
 
-1. U kunt elk type ASP.NET-web-app implementeren in Azure. Kies voor deze quickstart de sjabloon **MVC** .
+1. U kunt elk type ASP.NET-web-app implementeren in Azure. Kies voor deze quickstart de sjabloon **MVC**.
 
-1. Selecteer **Docker-ondersteuning** en zorg dat verificatie is ingesteld op **Geen verificatie** . Selecteer **Maken** .
+1. Selecteer **Docker-ondersteuning** en zorg dat verificatie is ingesteld op **Geen verificatie**. Selecteer **Maken**.
 
    ![ASP.NET-webtoepassing maken](./media/quickstart-custom-container/select-mvc-template-for-container.png)
 
-1. Als het bestand _Dockerfile_ niet automatisch wordt geopend, opent u het vanuit **Solution Explorer** .
+1. Als het bestand _Dockerfile_ niet automatisch wordt geopend, opent u het vanuit **Solution Explorer**.
 
 1. U hebt een [ondersteunde bovenliggende installatiekopie](configure-custom-container.md#supported-parent-images) nodig. Wijzig de bovenliggende installatiekopie door de regel `FROM` ​​te vervangen door de volgende code en het bestand op te slaan:
 
@@ -69,19 +69,19 @@ Maak een ASP.NET-web-app door de volgende stappen uit te voeren:
 
 ## <a name="publish-to-docker-hub"></a>Publiceren naar Docker Hub
 
-1. Klik in **Solution Explorer** met de rechtermuisknop op het project **myfirstazurewebapp** en selecteer **Publiceren** .
+1. Klik in **Solution Explorer** met de rechtermuisknop op het project **myfirstazurewebapp** en selecteer **Publiceren**.
 
-1. Kies **App Service** en selecteer vervolgens **Publiceren** .
+1. Kies **App Service** en selecteer vervolgens **Publiceren**.
 
-1. Selecteer in **Een publicatiedoel kiezen** de opties **Container Registry** en **Docker Hub** . Selecteer vervolgens **Publiceren** .
+1. Selecteer in **Een publicatiedoel kiezen** de opties **Container Registry** en **Docker Hub**. Selecteer vervolgens **Publiceren**.
 
    ![Publiceren vanaf de projectoverzichtspagina](./media/quickstart-custom-container/publish-to-docker-vs2019.png)
 
-1. Geef de referenties voor uw Docker Hub-account op en selecteer **Opslaan** .
+1. Geef de referenties voor uw Docker Hub-account op en selecteer **Opslaan**.
 
    Wacht totdat de installatie is voltooid. Op de pagina **Publiceren** ziet u nu de naam van de opslagplaats die u later gaat gebruiken.
 
-   ![Publiceren vanaf de projectoverzichtspagina](./media/quickstart-custom-container/published-docker-repository-vs2019.png)
+   ![Schermopname met de knop naam van de opslagplaats gemarkeerd.](./media/quickstart-custom-container/published-docker-repository-vs2019.png)
 
 1. Kopieer deze naam van de opslagplaats later gebruik.
 
@@ -89,13 +89,13 @@ Maak een ASP.NET-web-app door de volgende stappen uit te voeren:
 
 1. Meld u aan bij de [Azure-portal]( https://portal.azure.com).
 
-1. Kies in de linkerbovenhoek van Azure Portal **Een resource maken** .
+1. Kies in de linkerbovenhoek van Azure Portal **Een resource maken**.
 
-1. Ga in het zoekvak boven de lijst met Azure Marketplace-resources naar **Web App for Containers** en selecteer **Maken** .
+1. Ga in het zoekvak boven de lijst met Azure Marketplace-resources naar **Web App for Containers** en selecteer **Maken**.
 
-1. Kies in **Web-app maken** uw abonnement en een **Resourcegroep** . U kunt een nieuwe resourcegroep maken, indien nodig.
+1. Kies in **Web-app maken** uw abonnement en een **Resourcegroep**. U kunt een nieuwe resourcegroep maken, indien nodig.
 
-1. Geef een naam op voor de app, zoals *win-container-demo* en kies **Windows** als **Besturingssysteem** . Selecteer **Volgende: Docker** om door te gaan.
+1. Geef een naam op voor de app, zoals *win-container-demo* en kies **Windows** als **Besturingssysteem**. Selecteer **Volgende: Docker** om door te gaan.
 
    ![Een web-app voor containers maken](media/quickstart-custom-container/create-web-app-continer.png)
 
@@ -113,9 +113,9 @@ Als de bewerking in Azure is voltooid, wordt er een melding weergegeven.
 
 ![Implementatie geslaagd](media/quickstart-custom-container/portal-create-finished.png)
 
-1. Klik op **Ga naar resource** .
+1. Klik op **Ga naar resource**.
 
-1. Klik in het overzicht van deze resource op de koppeling naast **URL** .
+1. Klik in het overzicht van deze resource op de koppeling naast **URL**.
 
 Er wordt een nieuwe browserpagina geopend met de volgende pagina:
 
@@ -146,7 +146,7 @@ De gestreamde logboeken zien er ongeveer als volgt uit:
 
 ## <a name="update-locally-and-redeploy"></a>Lokaal bijwerken en opnieuw implementeren
 
-1. Open in Visual Studio, in **Solution Explorer** , achtereenvolgens **Weergaven** > **Start** > **Index.cshtml** .
+1. Open in Visual Studio, in **Solution Explorer** , achtereenvolgens **Weergaven** > **Start** > **Index.cshtml**.
 
 1. Zoek ergens bovenaan de HTML-tag `<div class="jumbotron">` en vervang het volledige element door de volgende code:
 
@@ -157,11 +157,11 @@ De gestreamde logboeken zien er ongeveer als volgt uit:
    </div>
    ```
 
-1. Als u opnieuw wilt implementeren in Azure, klikt u in **Solution Explorer** met de rechtermuisknop op het project **myfirstazurewebapp** , en kiest u **Publiceren** .
+1. Als u opnieuw wilt implementeren in Azure, klikt u in **Solution Explorer** met de rechtermuisknop op het project **myfirstazurewebapp** , en kiest u **Publiceren**.
 
 1. Selecteer op de pagina Publiceren de knop **Publiceren** en wacht tot het publiceren is voltooit.
 
-1. Als u wilt dat App Service de nieuwe installatiekopie ophaalt uit Docker Hub, moet u de app opnieuw starten. Klik als u terugbent in de app-pagina in de portal op **Opnieuw starten** > **Ja** .
+1. Als u wilt dat App Service de nieuwe installatiekopie ophaalt uit Docker Hub, moet u de app opnieuw starten. Klik als u terugbent in de app-pagina in de portal op **Opnieuw starten** > **Ja**.
 
    ![Web-app opnieuw starten in Azure](./media/quickstart-custom-container/portal-restart-app.png)
 
@@ -209,7 +209,7 @@ Vervolgens start u VS code en meldt u zich aan bij uw Azure-account met behulp v
 
 Nu kunt u controleren of alle vereiste onderdelen correct zijn geïnstalleerd en geconfigureerd.
 
-In VS Code ziet u uw Azure-e-mailadres in de statusbalk, en uw abonnement in de verkenner van **APP SERVICE** .
+In VS Code ziet u uw Azure-e-mailadres in de statusbalk, en uw abonnement in de verkenner van **APP SERVICE**.
 
 Controleer vervolgens of Docker is geïnstalleerd en wordt uitgevoerd. Met de volgende opdracht wordt de Docker-versie weergegeven als Docker wordt uitgevoerd.
 
@@ -217,7 +217,7 @@ Controleer vervolgens of Docker is geïnstalleerd en wordt uitgevoerd. Met de vo
 docker --version
 ```
 
-Controleer tot slot of uw Azure Container Registry is verbonden. Hiertoe selecteert u het Docker-logo in de balk Activiteit en gaat u vervolgens naar **REGISTERS** .
+Controleer tot slot of uw Azure Container Registry is verbonden. Hiertoe selecteert u het Docker-logo in de balk Activiteit en gaat u vervolgens naar **REGISTERS**.
 
 ![Schermopname van de waarde Registers, met Azure uitgevouwen en een bestand met de bestandsextensie punt i o.](./media/quickstart-docker/registries.png)
 
@@ -225,7 +225,7 @@ Controleer tot slot of uw Azure Container Registry is verbonden. Hiertoe selecte
 
 Nu alles is geconfigureerd, kunt u uw installatiekopie rechtstreeks vanuit de Docker-extensieverkenner implementeren in [Azure App Service](https://azure.microsoft.com/services/app-service/).
 
-Zoek de installatiekopie onder het knooppunt **Registers** in de verkenner van **DOCKER** en vouw deze uit om de tags ervan weer te geven. Klik met de rechtermuisknop op een tag en selecteer **Installatiekopie implementeren naar Azure App Service** .
+Zoek de installatiekopie onder het knooppunt **Registers** in de verkenner van **DOCKER** en vouw deze uit om de tags ervan weer te geven. Klik met de rechtermuisknop op een tag en selecteer **Installatiekopie implementeren naar Azure App Service**.
 
 Volg hier de aanwijzingen voor het kiezen van een abonnement, een globaal unieke app-naam, een resourcegroep en een App Service plan. Kies **B1 Basic** als prijscategorie, en kies een regio.
 

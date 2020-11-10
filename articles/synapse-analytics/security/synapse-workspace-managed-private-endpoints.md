@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 10/16/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 091f73aa2383094973db35efb05c5f93034efa39
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 60087dc23b804dac6644dc09cddc031526fb0f8f
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92738097"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313766"
 ---
 # <a name="synapse-managed-private-endpoints-preview"></a>Beheerde privé-eindpunten in Synapse (preview)
 
@@ -43,17 +43,17 @@ Als de eigenaar de verbinding goedkeurt, wordt de privé-koppeling tot stand geb
 
 Alleen een beheerd privé-eindpunt met een goedgekeurde status kan verkeer verzenden naar een gegeven privé-koppelingsresource.
 
-## <a name="managed-private-endpoints-for-sql-pool-and-sql-on-demand"></a>Beheerde privé-eindpunten voor SQL-pool en SQL op aanvraag
+## <a name="managed-private-endpoints-for-dedicated-sql-pool-and-serverless-sql-pool"></a>Beheerde privé-eindpunten voor toegewezen SQL-pools en serverloze SQL-pools
 
-SQL-pool en SQL op aanvraag zijn analysemogelijkheden in uw Azure Synapse-werkruimte. Deze mogelijkheden gebruiken een multi-tenant infrastructuur die niet is geïmplementeerd in het [Virtual Network in de beheerde werkruimte](./synapse-workspace-managed-vnet.md).
+Toegewezen SQL-pools en serverloze SQL-pools bieden analysemogelijkheden in uw Azure Synapse-werkruimte. Deze mogelijkheden gebruiken een multi-tenant infrastructuur die niet is geïmplementeerd in het [Virtual Network in de beheerde werkruimte](./synapse-workspace-managed-vnet.md).
 
-Wanneer een werkruimte wordt gemaakt, maakt Azure Synapse twee beheerde privé-eindpunten naar SQL-pool en SQL op aanvraag in die werkruimte. 
+Wanneer een werkruimte wordt gemaakt, maakt Azure Synapse twee beheerde privé-eindpunten in de werkruimte, één voor de toegewezen SQL-pool en één voor de serverloze SQL-pool. 
 
 Deze twee beheerde privé-eindpunten worden weergegeven in Azure Synapse Studio. Selecteer **Beheren** in het linkernavigatievenster en selecteer vervolgens **Beheerde virtuele netwerken** om deze weer te geven in de Studio.
 
-Het beheerde privé-eindpunt dat gericht is op de SQL-pool, heet *synapse-ws-sql--\<workspacename\>* en het eindpunt dat gericht is op SQL op aanvraag heet *synapse-ws-sqlOnDemand--\<workspacename\>* .
+Het beheerde privé-eindpunt dat is gericht op de SQL-pool, heet *synapse-ws-sql--\<workspacename\>* . Het eindpunt dat is gericht op de serverloze SQL-pool, heet *synapse-ws-sqlOnDemand--\<workspacename\>* .
 
-![Beheerde privé-eindpunten voor SQL-pool en SQL op aanvraag](./media/synapse-workspace-managed-private-endpoints/managed-pe-for-sql-1.png)
+![Beheerde privé-eindpunten voor toegewezen SQL-pools en serverloze SQL-pools](./media/synapse-workspace-managed-private-endpoints/managed-pe-for-sql-1.png)
 
 Deze twee beheerde privé-eindpunten worden automatisch voor u gemaakt wanneer u de Azure Synapse-werkruimte maakt. Er worden geen kosten in rekening gebracht voor deze twee beheerde privé-eindpunten.
 

@@ -9,12 +9,12 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 141cc47adb398cbd5730fbe33bcd90fece809ed3
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 2597aa1f0589fea75af0a3ac41244e3718d5eb3e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91543279"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93307968"
 ---
 # <a name="quickstart-create-a-new-azure-machine-learning-linked-service-in-synapse"></a>Quickstart: Een nieuwe gekoppelde Azure Machine Learning-service maken in Synapse
 
@@ -79,5 +79,5 @@ Met deze stap maakt u een nieuwe service-principal. Als u een bestaande service-
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Zelfstudie: Wizard voor scoren van het Machine Learning-model - SQL-pool](tutorial-sql-pool-model-scoring-wizard.md)
+- [Zelfstudie: Wizard voor scoren van het Machine learning-model - toegewezen SQL-pool](tutorial-sql-pool-model-scoring-wizard.md)
 - [Machine Learning-mogelijkheden in Azure Synapse Analytics (preview van werkruimten)](what-is-machine-learning.md)

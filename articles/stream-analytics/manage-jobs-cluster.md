@@ -8,14 +8,14 @@ ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 09/22/2020
-ms.openlocfilehash: 6b475e34c01ca26abd3d8ab1d904521de19f941b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 01efb5736d7becf1b46c7c2898c22648b0421dd1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90943636"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305817"
 ---
-# <a name="create-and-delete-jobs-in-an-azure-stream-analytics-cluster"></a>Taken in een Azure Stream Analytics-cluster maken en verwijderen
+# <a name="add-and-remove-jobs-in-an-azure-stream-analytics-cluster"></a>Taken toevoegen en verwijderen in een Azure Stream Analytics-cluster
 
 U kunt meerdere Stream Analytics-taken uitvoeren in een Stream Analytics-cluster. Het uitvoeren van taken op een cluster is een eenvoudig proces met twee stappen: Voeg de taak aan het cluster toe en start de taak. In dit artikel wordt beschreven hoe u taken kunt toevoegen aan en verwijderen uit een bestaand cluster. Volg de snelstartgids om [een Stream Analytics-cluster te maken](create-cluster.md) als u er nog geen hebt.
 

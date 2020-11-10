@@ -1,6 +1,6 @@
 ---
-title: 'Quickstart: een Apache Spark-pool maken (preview) met behulp van Synapse Studio'
-description: Een nieuwe Apache Spark-pool maken met behulp van Synapse Studio door de stappen in deze handleiding uit te voeren.
+title: 'Quickstart: Een serverloze Apache Spark-pool maken (preview-versie) met behulp van Synapse Studio'
+description: Maak een serverloze Apache Spark-pool met behulp van Synapse Studio door de stappen in deze handleiding uit te voeren.
 services: synapse-analytics
 author: saveenr
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: spark
 ms.date: 10/16/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: c497b9974ad2d6fdd9482ae673de5807669d8ff5
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 313ad0c620fe06158e96c208ae265702134b58d1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748320"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324184"
 ---
-# <a name="quickstart-create-an-apache-spark-pool-preview-using-synapse-studio"></a>Quickstart: een Apache Spark-pool maken (preview) met behulp van Synapse Studio
+# <a name="quickstart-create-a-serverless-apache-spark-pool-preview-using-synapse-studio"></a>Quickstart: Een serverloze Apache Spark-pool maken (preview-versie) met behulp van Synapse Studio
 
 Azure Synapse Analytics biedt diverse analyse-engines waarmee u uw gegevens kunt opnemen, transformeren, modelleren, analyseren en gebruiken. Een Apache Spark-pool biedt opensource-rekenmogelijkheden voor big data. Nadat u een Apache Spark-pool in uw Synapse-werkruimte hebt gemaakt, kunnen gegevens worden geladen, gemodelleerd, verwerkt en gebruikt om inzichten te verkrijgen.  
 
@@ -47,7 +47,7 @@ Meld u aan bij [Azure Portal](https://portal.azure.com/)
 
 ## <a name="launch-synapse-studio"></a>Synapse Studio starten 
 
-Selecteer in het werkruimteoverzicht **Synapse Studio starten** om de locatie te openen waar de Apache Spark-pool wordt gemaakt. Typ de servicenaam of resourcenaam rechtstreeks in de zoekbalk.
+Selecteer de **web-URL voor de werkruimte** in het werkruimteoverzicht om Synapse Studio te openen.
 
 ![Azure-portal-Synapse-werkruimteoverzicht met Synapse Studio starten gemarkeerd.](media/quickstart-create-apache-spark-pool/create-spark-pool-studio-20.png)
 

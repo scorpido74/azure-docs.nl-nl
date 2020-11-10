@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 06b535b25df19e5062d16184f4469d9e9253b9c0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 00920f30061832bd1d685f04113a63781df718b4
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87042615"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313692"
 ---
 # <a name="azure-synapse-analytics-managed-virtual-network-preview"></a>Beheerd virtueel netwerk in Azure Synapse Analytics (preview)
 
@@ -30,11 +30,11 @@ Een beheerd, aan werkruimte gekoppeld virtueel netwerk is handig om vier redenen
 - U hoeft geen subnet voor uw Spark-clusters te maken op basis van de piekbelasting.
 - Met een beheerd, aan werkruimte gekoppeld virtueel netwerk in combinatie met beheerde privé-eindpunten wordt u beschermd tegen gegevensexfiltratie. U kunt alleen beheerde privé-eindpunten maken in een werkruimte waaraan een beheerd virtueel netwerk is gekoppeld.
 
-Als u een werkruimte maakt waaraan een beheerd virtueel netwerk is gekoppeld, zorgt u ervoor dat uw werkruimte binnen het netwerk is afgeschermd van andere werkruimten. Azure Synapse biedt verschillende analysemogelijkheden in een werkruimte: Gegevensintegratie, Apache Spark, SQL-pool en SQL on-demand.
+Als u een werkruimte maakt waaraan een beheerd virtueel netwerk is gekoppeld, zorgt u ervoor dat uw werkruimte binnen het netwerk is afgeschermd van andere werkruimten. Azure Synapse biedt verschillende analysemogelijkheden in een werkruimte: Gegevensintegratie, serverloze Apache Spark-pool, toegewezen SQL-pool, en serverloze SQL-pool.
 
 Als uw werkruimte beschikt over een beheerd virtueel netwerk, worden hierin gegevensintegratie en Spark-resources geïmplementeerd. Een beheerd, aan werkruimte gekoppeld virtueel netwerk biedt ook afscherming op gebruikersniveau voor Spark-activiteiten, omdat elk Spark-cluster zich in een eigen subnet bevindt.
 
-SQL-pool en SQL on demand zijn functies met meerdere tenants en bevinden zich daarom buiten het beheerde, aan werkruimte gekoppelde virtuele netwerk. Communicatie tussen werkruimten naar SQL-pool en SQL on-demand gebruiken privélinks van Azure. Deze privélinks worden automatisch gemaakt wanneer u een werkruimte maakt waaraan een beheerd virtueel netwerk is gekoppeld.
+Toegewezen SQL-pools en serverloze SQL-pools bieden mogelijkheden voor meerdere tenants, en bevinden zich daarom buiten het beheerde virtuele werkruimtenetwerk. Voor communicatie tussen werkruimten naar een toegewezen SQL-pool en een serverloze SQL-pool wordt gebruikgemaakt van Azure Private Links. Deze privélinks worden automatisch gemaakt wanneer u een werkruimte maakt waaraan een beheerd virtueel netwerk is gekoppeld.
 
 >[!IMPORTANT]
 >U kunt deze werkruimteconfiguratie niet wijzigen nadat de werkruimte is gemaakt. U kunt een werkruimte waaraan geen beheerd virtueel netwerk is gekoppeld bijvoorbeeld niet opnieuw configureren en er een virtueel netwerk aan koppelen. Evenzo kunt u een werkruimte waaraan geen beheerd virtueel netwerk is gekoppeld niet opnieuw configureren en het virtueel netwerk ervan ontkoppelen.
@@ -43,7 +43,7 @@ SQL-pool en SQL on demand zijn functies met meerdere tenants en bevinden zich da
 
 Registreer de resourceprovider van het netwerk, als u dit nog niet hebt gedaan. Als u een resourceprovider registreert, wordt uw abonnement zo geconfigureerd dat dit kan worden gebruikt met de resourceprovider. Kies *Microsoft.Network* in de lijst met resourceproviders tijdens het [registreren](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types).
 
-Als u een Azure Synapse-werkruimte wilt maken waaraan een beheerd virtueel netwerk is gekoppeld, selecteert u het tabblad **Beveiliging en netwerk** in Azure Portal en schakelt u het selectievakje **Beheerd virtueel netwerk inschakelen** in.
+Als u een Azure Synapse-werkruimte wilt maken waaraan een beheerd virtueel werkruimtenetwerk is gekoppeld, selecteert u het tabblad **Beveiliging** in Azure Portal, en schakelt u het selectievakje **Beheerd virtueel netwerk inschakelen** in.
 
 Als u het selectievakje uitgeschakeld laat, wordt er geen virtueel netwerk gekoppeld aan de werkruimte.
 

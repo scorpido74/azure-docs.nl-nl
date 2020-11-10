@@ -17,12 +17,12 @@ ms.workload: media
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: mvc
-ms.openlocfilehash: c7bdf3e0300bffaffb7191aea019bed719cdc6fa
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 01ec0c7c0d2d060bbd930a099fe3db54de6cb150
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220615"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308965"
 ---
 # <a name="azure-media-services-v3-overview"></a>Overzicht van Azure Media Services v3
 
@@ -59,12 +59,12 @@ Met Media Services kunt u diverse mediawerkstromen in de cloud bouwen. Hier volg
 * Gebruik Azure Media Services in combinatie met [Azure Cognitive Services API's](../../index.yml?pivot=products&panel=ai) om ondertitels en bijschriften toe te voegen aan video's om een breder publiek te bereiken (bijvoorbeeld mensen met een gehoorbeperking of personen die de video in een andere taal willen volgen).
 * Schakel Azure CDN in om grote schaalbaarheid te bieden, zodat piekbelastingen beter kunnen worden verwerkt (bijvoorbeeld bij een productlancering).
 
-## <a name="how-can-i-get-started-with-v3"></a>Hoe ga ik aan de slag met v3? 
+## <a name="how-can-i-get-started-with-v3"></a>Hoe ga ik aan de slag met v3?
 
 Informatie over coderen en verpakken van content, video-streaming op aanvraag, live uitzenden en het analyseren van uw video's met Media Services v3. Zelfstudies, API-verwijzingen en andere documentatie laten zien hoe u veilig on-demand of live video- of audiostromen levert aan miljoenen gebruikers.
 
 > [!TIP]
-> Controleer het volgende voordat u begint met ontwikkelen:<br/>* [Basisconcepten](concepts-overview.md) (bevat belangrijke concepten, zoals verpakking, codering en bescherming)<br/>* [Ontwikkelen met Media Services v3-API's](media-services-apis-overview.md) (bevat informatie over toegang tot API's, naamconventies, enzovoort)
+> Controleer het volgende voordat u begint met ontwikkelen: [Fundamentele concepten](concepts-overview.md), waaronder belangrijke concepten, zoals inpakken, coderen en beveiligen, en [Ontwikkelen met Media Services v3 API's](media-services-apis-overview.md), waaronder informatie over toegang tot API's, naamconventies, enzovoort.
 
 ### <a name="sdks"></a>SDK's
 

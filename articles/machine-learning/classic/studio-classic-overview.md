@@ -10,16 +10,16 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: overview
 ms.date: 08/19/2020
-ms.openlocfilehash: 24b7679c92b8f69b9406677ebe6355c0e1e51f55
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1aadf1fe59c5300a4f16ea96b1e1d7a5fbcbdd6d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91348012"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325740"
 ---
 # <a name="what-can-i-do-with-machine-learning-studio-classic"></a>Wat kan ik doen met Machine Learning Studio (klassiek)?
 
-**VAN TOEPASSING OP:** ![ja](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (klassiek) ![nee](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+**VAN TOEPASSING OP:** ![ja](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (klassiek) ![nee ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
@@ -30,14 +30,14 @@ Machine Learning Studio (klassiek) is een hulpprogramma met functionaliteit op b
 
 Wanneer u een predictive analytics-model ontwikkelt, gebruikt u doorgaans gegevens uit een of meer bronnen. U transformeert en analyseert deze gegevens met diverse functies voor gegevensmanipulatie en statistische functies, en genereert een set resultaten. Het ontwikkelen van een model als dit is een iteratief proces. Terwijl u de verschillende functies en de bijbehorende parameters aanpast, worden de resultaten geconvergeerd tot u een afdoende getraind en doeltreffend model hebt.
 
-Machine Learning Studio (klassiek) beschikt over een interactieve, visuele werkruimte om eenvoudig een predictive analytics-model te bouwen, te testen en te herhalen. U sleept ***gegevenssets*** en ***modules*** voor analyse naar een interactief canvas en verbindt deze met elkaar om een ***experiment*** op te zetten, dat u vervolgens uitvoert in Machine Learning Studio (klassiek). Als u het modelontwerp wilt herhalen, kunt u het experiment bewerken, desgewenst een kopie ervan opslaan en het opnieuw uitvoeren. Wanneer u klaar bent, kunt u het ***trainingsexperiment*** converteren naar een ***voorspellend experiment*** en dit vervolgens publish als ***webservice***, zodat het model ook voor anderen toegankelijk is.
+Machine Learning Studio (klassiek) beschikt over een interactieve, visuele werkruimte om eenvoudig een predictive analytics-model te bouwen, te testen en te herhalen. U sleept * *_gegevenssets_* _ en _*_modules_*_ voor analyse naar een interactief canvas en verbindt deze met elkaar om een _*_experiment_*_ op te zetten, dat u vervolgens uitvoert in Machine Learning Studio (klassiek). Als u het modelontwerp wilt herhalen, kunt u het experiment bewerken, desgewenst een kopie ervan opslaan en het opnieuw uitvoeren. Wanneer u klaar bent, kunt u het _*_trainingsexperiment_*_ converteren naar een _*_voorspellend experiment_*_ en dit vervolgens publiceren als een _*_webservice_*_ , zodat het model ook voor anderen toegankelijk is.
 
 U hoeft niets te programmeren. U hoeft alleen de gegevenssets en modules visueel met elkaar te verbinden om een predictive analytics-model op te zetten.
 
 ![Diagram voor Machine Learning Studio (klassiek): Zet experimenten op, lees gegevens uit verschillende bronnen, schrijf beoordeelde gegevens weg, maak modellen.](./media/what-is-ml-studio/azure-ml-studio-diagram.jpg)
 
 ## <a name="download-the-ml-studio-classic-overview-diagram"></a>Het overzichtsdiagram voor ML Studio (klassiek) downloaden
-Download het diagram **Overzicht van de mogelijkheden van Microsoft ML Studio (klassiek)** voor een algemeen overzicht van de mogelijkheden van Machine Learning Studio (klassiek). Als u het diagram altijd bij de hand wilt hebben, kunt u het in A3-formaat afdrukken.
+Download het diagram _ *Overzicht van de mogelijkheden van Microsoft ML Studio (klassiek)* * voor een algemeen overzicht van de mogelijkheden van Machine Learning Studio (klassiek). Als u het diagram altijd bij de hand wilt hebben, kunt u het in A3-formaat afdrukken.
 
 **Download het diagram hier: [Overzicht van de mogelijkheden van Microsoft Machine Learning Studio (klassiek)](https://download.microsoft.com/download/C/4/6/C4606116-522F-428A-BE04-B6D3213E9E52/ml_studio_overview_v1.1.pdf)** 
 ![Overzicht van de mogelijkheden van Microsoft Machine Learning Studio (klassiek)](./media/what-is-ml-studio/ml_studio_overview_v1.1.png)
@@ -61,9 +61,9 @@ Zie [Een predictive analytics-oplossing maken met Machine Learning Studio (klass
 ### <a name="datasets"></a>Gegevenssets
 Een gegevensset bestaat uit gegevens die zijn geüpload naar Machine Learning Studio (klassiek), zodat ze kunnen worden gebruikt in het modelleringsproces. In Machine Learning Studio (klassiek) is een aantal voorbeeldgegevenssets opgenomen waarmee u kunt experimenteren. U kunt meer gegevenssets uploaden als dat nodig is. Hier volgen enkele voorbeelden van opgenomen gegevenssets:
 
-* **MPG-gegevens voor verschillende auto's**: MPG-waarden (mijl per gallon) voor auto's, geïdentificeerd met het aantal cilinders, paardenkracht, enzovoort.
-* **Borstkankergegevens**: gegevens voor borstkankerdiagnose.
-* **Bosbrandgegevens**: omvang van bosbranden in het noordoosten van Portugal.
+* **MPG-gegevens voor verschillende auto's** : MPG-waarden (mijl per gallon) voor auto's, geïdentificeerd met het aantal cilinders, paardenkracht, enzovoort.
+* **Borstkankergegevens** : gegevens voor borstkankerdiagnose.
+* **Bosbrandgegevens** : omvang van bosbranden in het noordoosten van Portugal.
 
 Wanneer u een experiment maakt, kunt u links in het canvas kiezen uit de lijst met beschikbare gegevenssets.
 
@@ -79,7 +79,7 @@ Een module is een algoritme dat u met uw gegevens kunt uitvoeren. Machine Learni
 
 Wanneer u een experiment maakt, kunt u links in het canvas kiezen uit de lijst met beschikbare modules.
 
-Een module kan een reeks parameters hebben waarmee u de interne algoritmen van de module kunt configureren. Wanneer u een module op het canvas selecteert, worden de parameters van de module weergegeven in het deelvenster **Properties**, rechts van het canvas. U kunt de parameters in dit deelvenster wijzigen om het model af te stemmen.
+Een module kan een reeks parameters hebben waarmee u de interne algoritmen van de module kunt configureren. Wanneer u een module op het canvas selecteert, worden de parameters van de module weergegeven in het deelvenster **Properties** , rechts van het canvas. U kunt de parameters in dit deelvenster wijzigen om het model af te stemmen.
 
 Zie [Algoritmen kiezen voor Microsoft Machine Learning Studio (klassiek)](../how-to-select-algorithms.md) voor hulp bij het navigeren door de uitgebreide verzameling beschikbare machine learning-algoritmen.
 
@@ -90,7 +90,7 @@ Wanneer uw predictive analytics-model klaar is, kunt u het direct vanuit Machine
 U kunt zich de basiskennis van predictive analytics en machine learning eigen maken aan de hand van een [Stapsgewijze quickstart](create-experiment.md) en [door voorbeelden verder uit te werken](sample-experiments.md).
 
 <!-- Module References -->
-[convert-to-arff]: https://msdn.microsoft.com/library/azure/62d2cece-d832-4a7a-a0bd-f01f03af0960/
-[elementary-statistics]: https://msdn.microsoft.com/library/azure/3086b8d4-c895-45ba-8aa9-34f0c944d4d3/
-[linear-regression]: https://msdn.microsoft.com/library/azure/31960a6f-789b-4cf7-88d6-2e1152c0bd1a/
-[score-model]: https://msdn.microsoft.com/library/azure/401b4f92-e724-4d5a-be81-d5b0ff9bdb33/
+[convert-to-arff]: /azure/machine-learning/studio-module-reference/convert-to-arff
+[elementary-statistics]: /azure/machine-learning/studio-module-reference/compute-elementary-statistics
+[linear-regression]: /azure/machine-learning/studio-module-reference/linear-regression
+[score-model]: /azure/machine-learning/studio-module-reference/score-model

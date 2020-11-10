@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 38aea30c5f716df927b5924754eb07e7f94c7ebc
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: da2535a9764c909af3a491402311fe263dbb48fb
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92038464"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93331074"
 ---
 ### <a name="is-azure-virtual-wan-in-ga"></a>Is Azure Virtual WAN algemeen beschikbaar?
 
@@ -259,6 +259,8 @@ Ja. Deze optie is momenteel alleen beschikbaar via PowerShell. De Virtual WAN-po
 ### <a name="is-there-support-for-ipv6-in-virtual-wan"></a>Is er ondersteuning voor IPv6 in Virtual WAN?
 
 IPv6 wordt niet ondersteund in Virtual WAN-hub en de bijbehorende gateways. Dit scenario wordt momenteel niet ondersteund als u een VNet hebt met IPv4- en IPv6-ondersteuning en u het VNet wilt verbinden met Virtual WAN. 
+
+Voor het punt-naar-site-scenario voor VPN (gebruiker) met internetonderbreking via Azure Firewall, moet u waarschijnlijk IPv6-connectiviteit uitschakelen op het clientapparaat, om verkeer naar de Virtual WAN-hub te sturen. Dit komt omdat moderne apparaten standaard IPv6-adressen gebruiken.
 
 ### <a name="what-is-the-recommended-api-version-to-be-used-by-scripts-automating-various-virtual-wan-functionalities"></a>Wat is de aanbevolen API-versie die door scripts moet worden gebruikt om verschillende Virtual WAN-functionaliteit te automatiseren?
 

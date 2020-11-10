@@ -100,7 +100,7 @@
   items:
     - name: Problemen oplossen
       items:
-        - name: Hulp krijgen bij implementatie- of inrichtingsfouten
+        - name: Opent een ondersteuningsaanvraag voor implementatiefouten
           href: fix-deployment-provisioning-failures.md
     - name: Veelgestelde vragen
       href: faq.md

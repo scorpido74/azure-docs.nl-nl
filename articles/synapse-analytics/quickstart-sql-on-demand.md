@@ -1,6 +1,6 @@
 ---
-title: 'Quickstart: SQL on-demand gebruiken'
-description: In deze quickstart ziet u en leert u hoe u eenvoudig een query kunt uitvoeren op verschillende bestandstypen met SQL on-demand (preview-versie).
+title: 'Quickstart: Serverloze SQL-pools gebruiken'
+description: In deze quickstart ziet en leert u hoe u eenvoudig een query kunt uitvoeren op verschillende bestandstypen, met behulp van een serverloze SQL-pool (preview-versie).
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: fe07192b0077518cdd73092f53342c298034cfa8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b2e502a984e71a06eb57b345371d70d659c6a031
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86274166"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321671"
 ---
-# <a name="quickstart-use-sql-on-demand"></a>Quickstart: SQL on-demand gebruiken
+# <a name="quickstart-use-serverless-sql-pool"></a>Quickstart: Serverloze SQL-pools gebruiken
 
-Synapse SQL on-demand (preview-versie) is een serverloze queryservice waarmee u SQL-query's kunt uitvoeren op bestanden die in Azure Storage zijn geplaatst. In deze quickstart leert u hoe u een query kunt uitvoeren op verschillende typen bestanden met SQL on-demand. De ondersteunde indelingen worden weergegeven in [OPENROWSET](sql/develop-openrowset.md).
+Een serverloze Synapse SQL-pool (preview-versie) is een serverloze queryservice waarmee u SQL-query's kunt uitvoeren op bestanden die zich bevinden in Azure Storage. In deze quickstart leert u hoe u een query kunt uitvoeren op verschillende typen bestanden, met behulp van een serverloze SQL-pool. De ondersteunde indelingen worden weergegeven in [OPENROWSET](sql/develop-openrowset.md).
 
 In deze quickstart leert u hoe u query's uitvoert op: CSV-, Apache Parquet- en JSON-bestanden.
 
@@ -34,8 +34,8 @@ Parameters voor deze quickstart:
 
 | Parameter                                 | Beschrijving                                                   |
 | ----------------------------------------- | ------------------------------------------------------------- |
-| Adres van SQL on-demand service-eindpunt    | Gebruikt als servernaam                                   |
-| Regio van SQL on-demand service-eindpunt     | Wordt gebruikt om te bepalen welke opslag wordt gebruikt in voorbeelden |
+| eindpuntadres van de service voor serverloze SQL-pools    | Gebruikt als servernaam                                   |
+| eindpuntregio van de service voor serverloze SQL-pools     | Wordt gebruikt om te bepalen welke opslag wordt gebruikt in voorbeelden |
 | Gebruikersnaam en wachtwoord voor eindpunttoegang | Gebruikt voor toegang tot het eindpunt                               |
 | De database die wordt gebruikt voor het maken van weergaven         | De database die wordt gebruikt als uitgangspunt in voorbeelden       |
 
@@ -44,7 +44,7 @@ Parameters voor deze quickstart:
 Voordat u de voorbeelden gaat gebruiken, moet u het volgende doen:
 
 - Maak een database voor uw weergaven (wanneer u gebruik wilt maken van weergaven)
-- Referenties maken voor gebruik door SQL on-demand om toegang te krijgen tot bestanden in opslag
+- Referenties maken die een serverloze SQL-pool kan gebruiken voor toegang tot bestanden in opslag
 
 ### <a name="create-database"></a>Database maken
 
@@ -62,7 +62,7 @@ CREATE DATABASE mydbname
 
 ### <a name="create-data-source"></a>Gegevensbron maken
 
-Als u query's wilt uitvoeren met behulp van SQL on-demand, maakt u een gegevensbron die door SQL on-demand kan worden gebruikt voor toegang tot bestanden in de opslag.
+Als u query's wilt uitvoeren met behulp van een serverloze SQL-pool, maakt u een gegevensbron die de serverloze SQL-pool kan gebruiken voor toegang tot bestanden in de opslag.
 Voer het volgende codefragment uit om de gegevensbron te maken die in de voorbeelden in deze sectie wordt gebruikt:
 
 ```sql
@@ -115,7 +115,7 @@ Zie [Query uitvoeren op CSV-bestand](sql/query-single-csv-file.md)voor meer voor
 In het volgende voorbeeld ziet u de mogelijkheden voor het automatisch afleiden van schema's voor het uitvoeren van query's op Parquet-bestanden. Hierbij wordt het aantal rijen in september 2017 geretourneerd zonder een schema op te geven.
 
 > [!NOTE]
-> U hoeft geen kolommen op te geven in de component `OPENROWSET WITH` bij het lezen van Parquet-bestanden. In dat geval maakt SQL on-demand gebruik van metagegevens in het Parquet-bestand en worden kolommen op naam gekoppeld.
+> U hoeft geen kolommen op te geven in de component `OPENROWSET WITH` bij het lezen van Parquet-bestanden. In dit geval maakt de serverloze SQL-pool gebruik van metagegevens in het Parquet-bestand, en worden kolommen gekoppeld op naam.
 
 ```sql
 SELECT COUNT_BIG(*)
@@ -133,7 +133,7 @@ Zie [Query uitvoeren op Parquet-bestanden](sql/query-parquet-files.md) voor meer
 
 ### <a name="json-sample-file"></a>JSON-voorbeeldbestand
 
-Bestanden worden opgeslagen in de *json*-container en de map *boeken* en bevatten één boekvermelding met de volgende structuur:
+Bestanden worden opgeslagen in de *json* -container en de map *boeken* en bevatten één boekvermelding met de volgende structuur:
 
 ```json
 {  
@@ -153,7 +153,7 @@ Bestanden worden opgeslagen in de *json*-container en de map *boeken* en bevatte
 
 ### <a name="query-json-files"></a>Query uitvoeren op JSON-bestanden
 
-De volgende query laat zien hoe u [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) kunt gebruiken om scalaire waarden (titel, uitgever) op te halen uit een boek met de titel *Probabilistic and Statistical Methods in Cryptology, An Introduction by Selected articles*:
+De volgende query laat zien hoe u [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) kunt gebruiken om scalaire waarden (titel, uitgever) op te halen uit een boek met de titel *Probabilistic and Statistical Methods in Cryptology, An Introduction by Selected articles* :
 
 ```sql
 SELECT

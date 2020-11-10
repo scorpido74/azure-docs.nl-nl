@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 07/14/2020
 ms.author: v-demjoh
 ms.custom: devx-track-js
-ms.openlocfilehash: c63b55905ea16c0597e1f8f1179153229018ed32
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: c7e9f1ee6a347caa71be2057905eb4ec6e6a1b0b
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92470787"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94424909"
 ---
 Een van de belangrijkste functies van de speech-service is de mogelijkheid om menselijke spraak te herkennen en te vertalen naar andere talen. In deze Snelstartgids leert u hoe u de Speech SDK in uw apps en producten kunt gebruiken om spraak vertalingen van hoge kwaliteit uit te voeren. In deze Quick Start vindt u onderwerpen, waaronder:
 
@@ -66,18 +66,18 @@ Zie <a href="https://nodejs.org/en/knowledge/getting-started/what-is-require/" t
 
 ## <a name="create-a-translation-configuration"></a>Een Vertaal configuratie maken
 
-Als u de Vertaal service wilt aanroepen met behulp van de Speech SDK, moet u een maken [`SpeechTranslationConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechtranslationconfig?view=azure-node-latest&preserve-view=true) . Deze klasse bevat informatie over uw abonnement, zoals uw sleutel en de bijbehorende regio, het eindpunt, de host of het autorisatietoken.
+Als u de Vertaal service wilt aanroepen met behulp van de Speech SDK, moet u een maken [`SpeechTranslationConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechtranslationconfig?preserve-view=true&view=azure-node-latest) . Deze klasse bevat informatie over uw abonnement, zoals uw sleutel en de bijbehorende regio, het eindpunt, de host of het autorisatietoken.
 
 > [!NOTE]
 > Ongeacht of u spraakherkenning, spraaksynthese, vertaling of intentieherkenning uitvoert, u maakt altijd een configuratie.
-Er zijn een paar manieren waarop u een [`SpeechTranslationConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechtranslationconfig?view=azure-node-latest&preserve-view=true) kunt initialiseren:
+Er zijn een paar manieren waarop u een [`SpeechTranslationConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechtranslationconfig?preserve-view=true&view=azure-node-latest) kunt initialiseren:
 
 * Met een abonnement: geef een sleutel en de bijbehorende regio door.
 * Met een eindpunt: geef een Speech-service-eindpunt door. Een sleutel of autorisatietoken is optioneel.
 * Met een host: geef een hostadres door. Een sleutel of autorisatietoken is optioneel.
 * Met een autorisatietoken: geef een autorisatietoken en de bijbehorende regio door.
 
-Laten we eens kijken hoe een [`SpeechTranslationConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechtranslationconfig?view=azure-node-latest&preserve-view=true) wordt gemaakt met behulp van een sleutel en regio. U kunt deze referenties ophalen door de volgende stappen in [de speech-service gratis](../../../overview.md#try-the-speech-service-for-free)uit te voeren.
+Laten we eens kijken hoe een [`SpeechTranslationConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechtranslationconfig?preserve-view=true&view=azure-node-latest) wordt gemaakt met behulp van een sleutel en regio. U kunt deze referenties ophalen door de stappen te volgen in [De Speech-service gratis uitproberen](../../../overview.md#try-the-speech-service-for-free).
 
 ```javascript
 const speechTranslationConfig = SpeechTranslationConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
@@ -85,15 +85,15 @@ const speechTranslationConfig = SpeechTranslationConfig.fromSubscription("YourSu
 
 ## <a name="initialize-a-translator"></a>Een vertaler initialiseren
 
-Nadat u een [`SpeechTranslationConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechtranslationconfig?view=azure-node-latest&preserve-view=true) hebt gemaakt, is de volgende stap het initialiseren van een [`TranslationRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest&preserve-view=true). Wanneer u een [`TranslationRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest&preserve-view=true) initialiseert, moet u er uw `speechTranslationConfig` aan doorgeven. Dit biedt de referenties die de Vertaal service nodig heeft om uw aanvraag te valideren.
+Nadat u een [`SpeechTranslationConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechtranslationconfig?preserve-view=true&view=azure-node-latest) hebt gemaakt, is de volgende stap het initialiseren van een [`TranslationRecognizer`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?preserve-view=true&view=azure-node-latest). Wanneer u een [`TranslationRecognizer`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?preserve-view=true&view=azure-node-latest) initialiseert, moet u er uw `speechTranslationConfig` aan doorgeven. Dit biedt de referenties die de Vertaal service nodig heeft om uw aanvraag te valideren.
 
-Als u via de standaard microfoon van uw apparaat omgaat met spraak, ziet u het [`TranslationRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest&preserve-view=true) volgende:
+Als u via de standaard microfoon van uw apparaat omgaat met spraak, ziet u het [`TranslationRecognizer`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?preserve-view=true&view=azure-node-latest) volgende:
 
 ```javascript
 const translator = new TranslationRecognizer(speechTranslationConfig);
 ```
 
-Als u het audio-invoerapparaat wilt opgeven, moet u een [`AudioConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest&preserve-view=true) maken en de parameter `audioConfig` opgeven bij het initialiseren van uw [`TranslationRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest&preserve-view=true).
+Als u het audio-invoerapparaat wilt opgeven, moet u een [`AudioConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?preserve-view=true&view=azure-node-latest) maken en de parameter `audioConfig` opgeven bij het initialiseren van uw [`TranslationRecognizer`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?preserve-view=true&view=azure-node-latest).
 
 > [!TIP]
 > [Meer informatie over het ophalen van de apparaat-id voor het audio-invoerapparaat](../../../how-to-select-audio-input-devices.md).
@@ -104,7 +104,7 @@ const audioConfig = AudioConfig.fromDefaultMicrophoneInput();
 const recognizer = new TranslationRecognizer(speechTranslationConfig, audioConfig);
 ```
 
-Als u een audiobestand wilt opgeven in plaats van een microfoon te gebruiken, moet u nog steeds een `audioConfig` opgeven. Dit kan echter alleen worden gedaan wanneer het doel **node.js** is en wanneer u een [`AudioConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest&preserve-view=true) maakt, in plaats van `fromDefaultMicrophoneInput` aan te roepen, roept u `fromWavFileOutput` aan en geeft u de parameter `filename` door.
+Als u een audiobestand wilt opgeven in plaats van een microfoon te gebruiken, moet u nog steeds een `audioConfig` opgeven. Dit kan echter alleen worden gedaan wanneer het doel **node.js** is en wanneer u een [`AudioConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?preserve-view=true&view=azure-node-latest) maakt, in plaats van `fromDefaultMicrophoneInput` aan te roepen, roept u `fromWavFileOutput` aan en geeft u de parameter `filename` door.
 
 ```javascript
 const audioConfig = AudioConfig.fromWavFileInput("YourAudioFile.wav");
@@ -113,13 +113,13 @@ const recognizer = new TranslationRecognizer(speechTranslationConfig, audioConfi
 
 ## <a name="translate-speech"></a>Spraak vertalen
 
-De [klasse TranslationRecognizer](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest&preserve-view=true) voor de Speech SDK voor Java script bevat enkele methoden die u voor spraak omzetting kunt gebruiken.
+De [klasse TranslationRecognizer](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?preserve-view=true&view=azure-node-latest) voor de Speech SDK voor Java script bevat enkele methoden die u voor spraak omzetting kunt gebruiken.
 
 * Eenmalige vertaling (asynchroon): voert een vertaling uit in een niet-blokkerende (asynchrone) modus. Hiermee wordt één utterance vertaald. Het einde van één uiting wordt bepaald door te luisteren naar stilte aan het einde of tot een maximum van 15 seconden audio is verwerkt.
-* Continue vertalingen (asynchroon): initieert asynchrone Vertaal bewerking. De gebruiker meldt zich aan bij gebeurtenissen en verwerkt verschillende toepassings statussen. Om asynchrone continue vertaling te stoppen, roept u aan [`stopContinuousRecognitionAsync`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest&preserve-view=true#stopcontinuousrecognitionasync) .
+* Continue vertalingen (asynchroon): initieert asynchrone Vertaal bewerking. De gebruiker meldt zich aan bij gebeurtenissen en verwerkt verschillende toepassings statussen. Om asynchrone continue vertaling te stoppen, roept u aan [`stopContinuousRecognitionAsync`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?preserve-view=true&view=azure-node-latest#stopcontinuousrecognitionasync) .
 
 > [!NOTE]
-> Meer informatie over het [kiezen van een spraakherkenningsmodus](../../../how-to-choose-recognition-mode.md).
+> Meer informatie over het [kiezen van een spraakherkenningsmodus](../../../get-started-speech-to-text.md).
 ### <a name="specify-a-target-language"></a>Een doel taal opgeven
 
 Als u wilt vertalen, moet u zowel een bron taal als ten minste één doel taal opgeven.
@@ -132,7 +132,7 @@ speechTranslationConfig.addTargetLanguage("de");
 
 ### <a name="single-shot-recognition"></a>Eenmalige herkenning
 
-Hier volgt een voor beeld van asynchrone omzetting van één opname met behulp van [`recognizeOnceAsync`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest&preserve-view=true#recognizeonceasync) :
+Hier volgt een voor beeld van asynchrone omzetting van één opname met behulp van [`recognizeOnceAsync`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?preserve-view=true&view=azure-node-latest#recognizeonceasync) :
 
 ```javascript
 recognizer.recognizeOnceAsync(result => {
@@ -140,7 +140,7 @@ recognizer.recognizeOnceAsync(result => {
 });
 ```
 
-U moet code schrijven om het resultaat af te handelen. In dit voor beeld wordt het [`result.reason`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognitionresult?view=azure-node-latest&preserve-view=true) voor een vertaling in het Duits geëvalueerd:
+U moet code schrijven om het resultaat af te handelen. In dit voor beeld wordt het [`result.reason`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognitionresult?preserve-view=true&view=azure-node-latest) voor een vertaling in het Duits geëvalueerd:
 
 ```javascript
 recognizer.recognizeOnceAsync(
@@ -179,20 +179,20 @@ recognizer.recognized = function (s, e) {
 
 ### <a name="continuous-translation"></a>Continue vertaling
 
-Continue vertaling is een beetje meer betrokken dan eenmalige herkenning. U moet zich abonneren op de gebeurtenissen `recognizing`, `recognized`en `canceled` om de herkenningsresultaten op te halen. Als u de vertaling wilt stoppen, moet u bellen [`stopContinuousRecognitionAsync`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest&preserve-view=true#stopcontinuousrecognitionasync) . Hier volgt een voor beeld van hoe continue vertalingen worden uitgevoerd op een audio-invoer bestand.
+Continue vertaling is een beetje meer betrokken dan eenmalige herkenning. U moet zich abonneren op de gebeurtenissen `recognizing`, `recognized`en `canceled` om de herkenningsresultaten op te halen. Als u de vertaling wilt stoppen, moet u bellen [`stopContinuousRecognitionAsync`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?preserve-view=true&view=azure-node-latest#stopcontinuousrecognitionasync) . Hier volgt een voor beeld van hoe continue vertalingen worden uitgevoerd op een audio-invoer bestand.
 
-Laten we beginnen met het definiëren van de invoer en het initialiseren van een [`TranslationRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest&preserve-view=true):
+Laten we beginnen met het definiëren van de invoer en het initialiseren van een [`TranslationRecognizer`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?preserve-view=true&view=azure-node-latest):
 
 ```javascript
 const translator = new TranslationRecognizer(speechTranslationConfig);
 ```
 
-We nemen een abonnement op de gebeurtenissen die vanuit de [`TranslationRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest&preserve-view=true) worden verzonden.
+We nemen een abonnement op de gebeurtenissen die vanuit de [`TranslationRecognizer`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?preserve-view=true&view=azure-node-latest) worden verzonden.
 
-* [`recognizing`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest&preserve-view=true#recognizing): Signaal voor gebeurtenissen met tussenliggende Vertaal resultaten.
-* [`recognized`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest&preserve-view=true#recognized): Signaal voor gebeurtenissen met definitieve Vertaal resultaten (wat een geslaagde omzettings poging aangeeft).
-* [`sessionStopped`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest&preserve-view=true#sessionstopped): Signaal voor gebeurtenissen die het einde van een Vertaal sessie (bewerking) aangeven.
-* [`canceled`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest&preserve-view=true#canceled): Signaal voor gebeurtenissen met Geannuleerde Vertaal resultaten (die een vertalings poging aanduidt die is geannuleerd als gevolg van een aanvraag of een rechtstreekse annulering of een Trans Port-of protocol fout).
+* [`recognizing`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?preserve-view=true&view=azure-node-latest#recognizing): Signaal voor gebeurtenissen met tussenliggende Vertaal resultaten.
+* [`recognized`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?preserve-view=true&view=azure-node-latest#recognized): Signaal voor gebeurtenissen met definitieve Vertaal resultaten (wat een geslaagde omzettings poging aangeeft).
+* [`sessionStopped`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?preserve-view=true&view=azure-node-latest#sessionstopped): Signaal voor gebeurtenissen die het einde van een Vertaal sessie (bewerking) aangeven.
+* [`canceled`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?preserve-view=true&view=azure-node-latest#canceled): Signaal voor gebeurtenissen met Geannuleerde Vertaal resultaten (die een vertalings poging aanduidt die is geannuleerd als gevolg van een aanvraag of een rechtstreekse annulering of een Trans Port-of protocol fout).
 
 ```javascript
 recognizer.recognizing = (s, e) => {
@@ -221,7 +221,7 @@ recognizer.sessionStopped = (s, e) => {
 };
 ```
 
-Nu alles is ingesteld, kunnen we [`startContinuousRecognitionAsync`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true#startcontinuousrecognitionasync) aanroepen.
+Nu alles is ingesteld, kunnen we [`startContinuousRecognitionAsync`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?preserve-view=true&view=azure-node-latest#startcontinuousrecognitionasync) aanroepen.
 
 ```javascript
 // Starts continuous recognition. Uses stopContinuousRecognitionAsync() to stop recognition.
@@ -232,13 +232,13 @@ recognizer.startContinuousRecognitionAsync();
 
 ## <a name="choose-a-source-language"></a>Een bron taal kiezen
 
-Een veelvoorkomende taak voor spraak omzetting is het opgeven van de invoer-(of bron-) taal. Laten we eens kijken hoe u de invoertaal wijzigt in Italiaans. Zoek in uw code uw [`SpeechTranslationConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechtranslationconfig?view=azure-node-latest&preserve-view=true) en voeg vervolgens de volgende regel toe.
+Een veelvoorkomende taak voor spraak omzetting is het opgeven van de invoer-(of bron-) taal. Laten we eens kijken hoe u de invoertaal wijzigt in Italiaans. Zoek in uw code uw [`SpeechTranslationConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechtranslationconfig?preserve-view=true&view=azure-node-latest) en voeg vervolgens de volgende regel toe.
 
 ```javascript
 speechTranslationConfig.speechRecognitionLanguage = "it-IT";
 ```
 
-De eigenschap [`speechRecognitionLanguage`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechtranslationconfig?view=azure-node-latest&preserve-view=true#speechrecognitionlanguage) verwacht een indelingstekenreeks voor taal-landinstellingen. U kunt in de lijst met ondersteunde [Landinstellingen en talen](../../../language-support.md) een willekeurige waarde opgeven in de kolom **Landinstelling**.
+De eigenschap [`speechRecognitionLanguage`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechtranslationconfig?preserve-view=true&view=azure-node-latest#speechrecognitionlanguage) verwacht een indelingstekenreeks voor taal-landinstellingen. U kunt in de lijst met ondersteunde [Landinstellingen en talen](../../../language-support.md) een willekeurige waarde opgeven in de kolom **Landinstelling**.
 
 ## <a name="choose-one-or-more-target-languages"></a>Kies een of meer doel talen
 

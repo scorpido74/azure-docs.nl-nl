@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.subservice: machine-learning
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: b723c77b193b499286a692bd5145131a904a7f07
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d7c5bd2d1918ecebe2d2aabc213de43e7cdb1fef
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369332"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93306968"
 ---
 # <a name="tutorial-build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>Zelfstudie: Een machine learning-app bouwen met Apache Spark MLlib en Azure Synapse Analytics
 
@@ -31,9 +31,9 @@ MLlib is een Spark-kernbibliotheek met veel hulpprogramma's die nuttig zijn voor
 
 ## <a name="understand-classification-and-logistic-regression"></a>Classificatie en logistieke regressie begrijpen
 
-*Classificatie*, een populaire machine learning-taak, is het proces waarbij invoergegevens worden gesorteerd in categorieën. Het is de taak van een algoritme voor classificatie om uit te vinden hoe *labels* moeten worden toegewezen aan invoergegevens die u opgeeft. U kunt een machine learning-algoritme bijvoorbeeld beschouwen als een algoritme dat informatie over aandelen accepteert als invoer, en de aandelen opsplitst in twee categorieën: aandelen die u beter kunt verkopen en aandelen die u beter kunt behouden.
+*Classificatie* , een populaire machine learning-taak, is het proces waarbij invoergegevens worden gesorteerd in categorieën. Het is de taak van een algoritme voor classificatie om uit te vinden hoe *labels* moeten worden toegewezen aan invoergegevens die u opgeeft. U kunt een machine learning-algoritme bijvoorbeeld beschouwen als een algoritme dat informatie over aandelen accepteert als invoer, en de aandelen opsplitst in twee categorieën: aandelen die u beter kunt verkopen en aandelen die u beter kunt behouden.
 
-*Logistieke regressie* is een algoritme dat u kunt gebruiken voor classificatie. De logistieke regressie-API van Spark is handig voor *binaire classificatie*, of voor het classificeren van invoergegevens in één van twee groepen. Zie [Wikipedia](https://en.wikipedia.org/wiki/Logistic_regression) voor meer informatie over logistieke regressies.
+*Logistieke regressie* is een algoritme dat u kunt gebruiken voor classificatie. De logistieke regressie-API van Spark is handig voor *binaire classificatie* , of voor het classificeren van invoergegevens in één van twee groepen. Zie [Wikipedia](https://en.wikipedia.org/wiki/Logistic_regression) voor meer informatie over logistieke regressies.
 
 Samengevat: het proces van logistieke regressie produceert een *logistieke functie* die kan worden gebruikt om de waarschijnlijkheid te voorspellen dat een invoervector behoort in de ene of in de andere groep.
 
@@ -49,7 +49,7 @@ In de volgende stappen ontwikkelt u een model om te voorspellen of voor een bepa
 ## <a name="create-an-apache-spark-mllib-machine-learning-app"></a>Een machine learning-app maken in Apache Spark MLlib
 
 1. Maak een notebook met behulp van de PySpark-kernel. Zie [Een notebook maken](../quickstart-apache-spark-notebook.md#create-a-notebook) voor de instructies.
-2. Importeer de typen die zijn vereist voor deze toepassing. Kopieer en plak de volgende code in een lege cel, en druk vervolgens op **SHIFT + ENTER**, of voer de cel uit met behulp van het blauwe pictogram Afspelen.
+2. Importeer de typen die zijn vereist voor deze toepassing. Kopieer en plak de volgende code in een lege cel, en druk vervolgens op **SHIFT + ENTER** , of voer de cel uit met behulp van het blauwe pictogram Afspelen.
 
     ```python
     import matplotlib.pyplot as plt
@@ -71,7 +71,7 @@ In de volgende stappen ontwikkelt u een model om te voorspellen of voor een bepa
 
 Omdat de onbewerkte gegevens de Parquet-indeling hebben, kunt u de Spark-context gebruiken om het bestand rechtstreeks in het geheugen te plaatsen als een gegevensframe. Hoewel voor de code hieronder de standaardopties worden gebruikt, is het mogelijk de toewijzing van gegevenstypen en andere schemakenmerken af te dwingen, indien nodig.
 
-1. Voer de volgende regels uit om een Spark-gegevensframe te maken door de code in een nieuwe cel te plakken. Hiermee haalt u de gegevens op via de Open Datasets-API. Het ophalen van deze gegevens genereert bijna 1,5 miljard rijen. Afhankelijk van de grootte van de Spark-pool (preview) kan de hoeveelheid onbewerkte gegevens te groot zijn, of kan het bewerken ervan te veel tijd in beslag nemen. U kunt deze gegevens filteren naar een kleinere hoeveelheid. In het volgende codevoorbeeld wordt gebruikgemaakt van start_date en end_date om een filter toe te passen waarmee één maand aan gegevens worden geretourneerd.
+1. Voer de volgende regels uit om een Spark-gegevensframe te maken door de code in een nieuwe cel te plakken. Hiermee haalt u de gegevens op via de Open Datasets-API. Het ophalen van deze gegevens genereert bijna 1,5 miljard rijen. Afhankelijk van de grootte van de serverloze Apache Spark-pool (preview-versie) kan de hoeveelheid onbewerkte gegevens te groot zijn, of kan het bewerken ervan te veel tijd in beslag nemen. U kunt deze gegevens filteren naar een kleinere hoeveelheid. In het volgende codevoorbeeld wordt gebruikgemaakt van start_date en end_date om een filter toe te passen waarmee één maand aan gegevens worden geretourneerd.
 
     ```python
     from azureml.opendatasets import NycTlcYellow

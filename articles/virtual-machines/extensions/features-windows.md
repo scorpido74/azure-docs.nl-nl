@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 78ea26adb8299cc13d4677c66a0e06cba901d9dc
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 00cb63f63ffb1f2e10a276cfdeee9c5e8e1022de
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977371"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427374"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Extensies en functies van virtuele machines voor Windows
 
@@ -92,7 +92,7 @@ U kunt de volgende methoden gebruiken om een uitbrei ding uit te voeren op basis
 
 ### <a name="powershell"></a>PowerShell
 
-Er bestaan verschillende Power shell-opdrachten voor het uitvoeren van afzonderlijke uitbrei dingen. Als u een lijst wilt weer geven, gebruikt u [Get-opdracht](/powershell/module/microsoft.powershell.core/get-command) en filter bij *extensie*:
+Er bestaan verschillende Power shell-opdrachten voor het uitvoeren van afzonderlijke uitbrei dingen. Als u een lijst wilt weer geven, gebruikt u [Get-opdracht](/powershell/module/microsoft.powershell.core/get-command) en filter bij *extensie* :
 
 ```powershell
 Get-Command Set-Az*Extension* -Module Az.Compute
@@ -142,7 +142,7 @@ De `Set-AzVMExtension` opdracht kan worden gebruikt om een VM-extensie te starte
 
 ### <a name="azure-portal"></a>Azure Portal
 
-VM-extensies kunnen worden toegepast op een bestaande virtuele machine via de Azure Portal. Selecteer de virtuele machine in de portal, kies **uitbrei dingen**en selecteer vervolgens **toevoegen**. Kies de gewenste uitbrei ding in de lijst met beschik bare uitbrei dingen en volg de instructies in de wizard.
+VM-extensies kunnen worden toegepast op een bestaande virtuele machine via de Azure Portal. Selecteer de virtuele machine in de portal, kies **uitbrei dingen** en selecteer vervolgens **toevoegen**. Kies de gewenste uitbrei ding in de lijst met beschik bare uitbrei dingen en volg de instructies in de wizard.
 
 In het volgende voor beeld ziet u de installatie van de micro soft-antimalware-extensie van de Azure Portal:
 
@@ -294,7 +294,7 @@ Zie [geïnstalleerde Windows-gast agent detecteren](agent-windows.md#detect-the-
 
 #### <a name="extension-updates"></a>Extensie-updates
 
-Wanneer een extensie-update beschikbaar is, wordt de uitbrei ding gedownload en bijgewerkt met de Windows-gast agent. Automatische extensie-updates zijn een *kleine* of *hotfix*. Wanneer u de uitbrei ding inricht, kunt u niet alleen *kleine* uitbrei dingen in-of uitschakelen. In het volgende voor beeld ziet u hoe u in een resource manager-sjabloon automatisch secundaire versies bijwerkt met *autoUpgradeMinorVersion ': True, '*:
+Wanneer een extensie-update beschikbaar is, wordt de uitbrei ding gedownload en bijgewerkt met de Windows-gast agent. Automatische extensie-updates zijn een *kleine* of *hotfix*. Wanneer u de uitbrei ding inricht, kunt u niet alleen *kleine* uitbrei dingen in-of uitschakelen. In het volgende voor beeld ziet u hoe u in een resource manager-sjabloon automatisch secundaire versies bijwerkt met *autoUpgradeMinorVersion ': True, '* :
 
 ```json
     "properties": {
@@ -322,7 +322,7 @@ U kunt vanuit het VM-model zien of de extensie is ingericht met ' autoUpgradeMin
  $vm.Extensions
 ```
 
-In de volgende voorbeeld uitvoer ziet u dat *autoUpgradeMinorVersion* is ingesteld op *True*:
+In de volgende voorbeeld uitvoer ziet u dat *autoUpgradeMinorVersion* is ingesteld op *True* :
 
 ```powershell
 ForceUpdateTag              :
@@ -336,7 +336,7 @@ AutoUpgradeMinorVersion     : True
 
 Als u wilt zien wanneer een update voor de uitbrei ding is opgetreden, raadpleegt u de logboeken van de agent op de virtuele machine op *C:\WindowsAzure\Logs\WaAppAgent.log*
 
-In het volgende voor beeld had de VM *micro soft. compute. CustomScriptExtension 1,8* geïnstalleerd. Er is een hotfix beschikbaar voor versie *1,9*:
+In het volgende voor beeld had de VM *micro soft. compute. CustomScriptExtension 1,8* geïnstalleerd. Er is een hotfix beschikbaar voor versie *1,9* :
 
 ```powershell
 [INFO]  Getting plugin locations for plugin 'Microsoft.Compute.CustomScriptExtension'. Current Version: '1.8', Requested Version: '1.9'
@@ -345,7 +345,7 @@ In het volgende voor beeld had de VM *micro soft. compute. CustomScriptExtension
 
 ## <a name="agent-permissions"></a>Agent machtigingen
 
-De agent moet als *lokaal systeem*worden uitgevoerd om de taken uit te voeren.
+De agent moet als *lokaal systeem* worden uitgevoerd om de taken uit te voeren.
 
 ## <a name="troubleshoot-vm-extensions"></a>Problemen met VM-extensies oplossen
 
@@ -355,7 +355,7 @@ De volgende stappen voor probleem oplossing zijn van toepassing op alle VM-exten
 
 1. Als u het logboek van de Windows-gast agent wilt controleren, bekijkt u de activiteit wanneer uw extensie is ingericht in *C:\WindowsAzure\Logs\WaAppAgent.log*
 
-2. Raadpleeg de logboeken van de daad werkelijke extensie voor meer informatie over *C:\WindowsAzure\Logs\Plugins \<extensionName> *
+2. Raadpleeg de logboeken van de daad werkelijke extensie voor meer informatie over *C:\WindowsAzure\Logs\Plugins \\ <extensionName>*
 
 3. Raadpleeg de onderwerpen over probleem oplossing voor specifieke documentatie voor fout codes, bekende problemen, enzovoort.
 
@@ -403,7 +403,7 @@ Extensions[0]           :
     Message             : Finished executing command
 ```
 
-De uitvoerings status van de extensie kan ook worden gevonden in de Azure Portal. Als u de status van een uitbrei ding wilt weer geven, selecteert u de virtuele machine, kiest u **uitbrei dingen**en selecteert u de gewenste uitbrei ding.
+De uitvoerings status van de extensie kan ook worden gevonden in de Azure Portal. Als u de status van een uitbrei ding wilt weer geven, selecteert u de virtuele machine, kiest u **uitbrei dingen** en selecteert u de gewenste uitbrei ding.
 
 ### <a name="rerun-vm-extensions"></a>VM-extensies opnieuw uitvoeren
 

@@ -1,18 +1,18 @@
 ---
 title: 'Quickstart: Een Azure DB for PostgreSQL maken met een ARM-sjabloon'
-description: In dit artikel vindt u informatie over het maken van een Azure Database for PostgreSQL-server met behulp van een Azure Resource Manager sjabloon.
-author: mgblythe
+description: In deze quickstart krijgt u informatie over het maken van een enkele Azure Database for PostgreSQL-server met behulp van een Azure Resource Manager-sjabloon.
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.author: mblythe
 ms.date: 05/14/2020
-ms.openlocfilehash: b73bf82b7fba4c7c618dbae81873efabec61051d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9b022f83ed2a4e3a23165cc6bda298a53c008c7c
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90906449"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93331638"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-postgresql---single-server"></a>Quickstart: Een ARM-sjabloon gebruiken om een Azure Database for PostgreSQL te maken - enkele server
 
@@ -68,32 +68,32 @@ Selecteer de volgende koppeling om de Azure Database for PostgreSQL-serversjablo
 
 [:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Implementeren in Azure":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-postgresql-with-vnet%2fazuredeploy.json)
 
-Doe het volgende op de pagina **Azure Database for PostgreSQL implementeren met VNet**:
+Doe het volgende op de pagina **Azure Database for PostgreSQL implementeren met VNet** :
 
-1. Selecteer voor **Resourcegroep** de optie **Nieuwe maken**, voer een naam in voor de nieuwe resourcegroep en selecteer **OK**.
+1. Selecteer voor **Resourcegroep** de optie **Nieuwe maken** , voer een naam in voor de nieuwe resourcegroep en selecteer **OK**.
 
 2. Als u een nieuwe resourcegroep hebt gemaakt, selecteert u een **Locatie** voor de resourcegroep en de nieuwe server.
 
-3. Voer gegevens bij **Servernaam**, **Aanmelden beheerder** en  **Wachtwoord aanmelden beheerder** in.
+3. Voer gegevens bij **Servernaam** , **Aanmelden beheerder** en  **Wachtwoord aanmelden beheerder** in.
 
-    :::image type="content" source="./media/quickstart-create-postgresql-server-database-using-arm-template/deploy-azure-database-for-postgresql-with-vnet.png" alt-text="Implementeren in Azure":::
+    :::image type="content" source="./media/quickstart-create-postgresql-server-database-using-arm-template/deploy-azure-database-for-postgresql-with-vnet.png" alt-text="Azure Database for PostgreSQL implementeren met VNet-venster, Azure-snelstart-sjabloon, Azure-portal":::
 
 4. Wijzig desgewenst de andere standaardinstellingen:
 
-    * **Abonnement**: het Azure abonnement dat u wilt gebruiken voor de server.
-    * **SKU-capaciteit**: de capaciteit van de vCore, die *2* (de standaardinstelling), *4*, *8*, *16*, *32* of *64* kan zijn.
-    * **SKU-naam**: het voorvoegsel van de SKU-laag, de SKU-familie en de SKU-capaciteit, verbonden door middel van onderstrepingstekens, zoals *B_Gen5_1*, *GP_Gen5_2* (de standaardinstelling) of *MO_Gen5_32*.
-    * **SKU-grootte MB**: de opslaggrootte, in megabytes, van de Azure Database for PostgreSQL-server (standaard *51200*).
-    * **SKU-laag**: de implementatielaag, zoals *Basic*, *GeneralPurpose* (de standaardinstelling) of *MemoryOptimized*.
-    * **SKU-familie**: *Gen4* of *Gen5* (de standaardinstelling), wat de hardwaregeneratie voor de serverimplementatie aangeeft.
-    * **Postgresql-versie**: de versie van de PostgreSQL-server die u wilt implementeren, zoals *9,5*, *9,6*, *10* of *11* (de standaardinstelling).
-    * **Retentiedagen van back-ups**: de gewenste periode voor het bewaren van geo-redundante back-ups, in dagen (standaard *7*).
-    * **Geografisch redundante back-up**: *Ingeschakeld* of *Uitgeschakeld* (de standaardinstelling), afhankelijk van de vereisten voor geo-herstel na noodgevallen (geo-DR).
-    * **Naam van virtueel netwerk**: de naam van het virtuele netwerk (standaard *azure_postgresql_vnet*).
-    * **Subnetnaam**: de naam van het subnet (standaard *azure_postgresql_subnet*).
-    * **Naam van regel van het virtuele netwerk**: de naam van de regel van het virtuele netwerk waarmee het subnet wordt toegestaan (standaard *AllowSubnet*).
-    * **Adresvoorvoegsel VNet**: het adresvoorvoegsel voor het virtuele netwerk (standaard *10.0.0.0/16*).
-    * **Subnetvoorvoegsel**: het adresvoorvoegsel voor het subnet (standaard *10.0.0.0/16*).
+    * **Abonnement** : het Azure abonnement dat u wilt gebruiken voor de server.
+    * **SKU-capaciteit** : de capaciteit van de vCore, die *2* (de standaardinstelling), *4* , *8* , *16* , *32* of *64* kan zijn.
+    * **SKU-naam** : het voorvoegsel van de SKU-laag, de SKU-familie en de SKU-capaciteit, verbonden door middel van onderstrepingstekens, zoals *B_Gen5_1* , *GP_Gen5_2* (de standaardinstelling) of *MO_Gen5_32*.
+    * **SKU-grootte MB** : de opslaggrootte, in megabytes, van de Azure Database for PostgreSQL-server (standaard *51200* ).
+    * **SKU-laag** : de implementatielaag, zoals *Basic* , *GeneralPurpose* (de standaardinstelling) of *MemoryOptimized*.
+    * **SKU-familie** : *Gen4* of *Gen5* (de standaardinstelling), wat de hardwaregeneratie voor de serverimplementatie aangeeft.
+    * **Postgresql-versie** : de versie van de PostgreSQL-server die u wilt implementeren, zoals *9,5* , *9,6* , *10* of *11* (de standaardinstelling).
+    * **Retentiedagen van back-ups** : de gewenste periode voor het bewaren van geo-redundante back-ups, in dagen (standaard *7* ).
+    * **Geografisch redundante back-up** : *Ingeschakeld* of *Uitgeschakeld* (de standaardinstelling), afhankelijk van de vereisten voor geo-herstel na noodgevallen (geo-DR).
+    * **Naam van virtueel netwerk** : de naam van het virtuele netwerk (standaard *azure_postgresql_vnet* ).
+    * **Subnetnaam** : de naam van het subnet (standaard *azure_postgresql_subnet* ).
+    * **Naam van regel van het virtuele netwerk** : de naam van de regel van het virtuele netwerk waarmee het subnet wordt toegestaan (standaard *AllowSubnet* ).
+    * **Adresvoorvoegsel VNet** : het adresvoorvoegsel voor het virtuele netwerk (standaard *10.0.0.0/16* ).
+    * **Subnetvoorvoegsel** : het adresvoorvoegsel voor het subnet (standaard *10.0.0.0/16* ).
 
 5. Lees de voorwaarden en schakel vervolgens het selectievakje **Ik ga akkoord met de bovenstaande voorwaarden** in.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: e72d1161f80ad92c1e4cfc7fd2c9fde0d46e77b9
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 97853f0524b794169de3aaaec33cf1b30949d930
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332005"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92901542"
 ---
 # <a name="what-is-azure-security-center"></a>Wat is Azure Security Center?
 
@@ -29,19 +29,19 @@ Het beveiligen van uw resources wordt in een samenwerking tussen uw cloudprovide
 
 Azure Security Center biedt een oplossing voor de drie dringendste beveiligingsproblemen:
 
--   **Snel veranderende workloads**: dit is zowel een sterke kant als een uitdaging van de cloud. Enerzijds kunnen eindgebruikers zelf meer doen. Maar hoe zorgt u ervoor dat de voortdurend veranderende services die gebruikers gebruiken en maken, voldoen aan uw beveiligingsnormen en in overeenstemming zijn met de best practices voor beveiliging?
+-   **Snel veranderende workloads** : dit is zowel een sterke kant als een uitdaging van de cloud. Enerzijds kunnen eindgebruikers zelf meer doen. Maar hoe zorgt u ervoor dat de voortdurend veranderende services die gebruikers gebruiken en maken, voldoen aan uw beveiligingsnormen en in overeenstemming zijn met de best practices voor beveiliging?
 
--   **Aanvallen die steeds geavanceerder worden**: overal waar u de workloads uitvoert, worden de aanvallen steeds geavanceerder. U moet uw workloads in de openbare cloud beveiligen. Dit zijn immers workloads die gebruikmaken van internet, zodat u nog kwetsbaarder bent als u zich niet houdt aan de best practices voor beveiliging.
+-   **Aanvallen die steeds geavanceerder worden** : overal waar u de workloads uitvoert, worden de aanvallen steeds geavanceerder. U moet uw workloads in de openbare cloud beveiligen. Dit zijn immers workloads die gebruikmaken van internet, zodat u nog kwetsbaarder bent als u zich niet houdt aan de best practices voor beveiliging.
 
--   **Beveiligingsvaardigheden zijn schaars**: het aantal beveiligingswaarschuwingen en waarschuwingssystemen is veel groter dan het aantal beheerders met de benodigde achtergrond en ervaring die ervoor kunnen zorgen dat uw omgevingen goed zijn beveiligd. Het is een hele uitdaging om constant op de hoogte te blijven van de meest recente aanvallen. Stilstand is geen optie in de wereld van de beveiliging die altijd in beweging is.
+-   **Beveiligingsvaardigheden zijn schaars** : het aantal beveiligingswaarschuwingen en waarschuwingssystemen is veel groter dan het aantal beheerders met de benodigde achtergrond en ervaring die ervoor kunnen zorgen dat uw omgevingen goed zijn beveiligd. Het is een hele uitdaging om constant op de hoogte te blijven van de meest recente aanvallen. Stilstand is geen optie in de wereld van de beveiliging die altijd in beweging is.
 
 Met Security Center kunt u zich tegen deze bedreigingen beveiligen. Het biedt namelijk hulpprogramma's waarmee u het volgende kunt doen:
 
--   **De beveiligingsstatus verbeteren**: Security Center beoordeelt uw omgeving en biedt u inzicht in de status van uw resources en of ze veilig zijn of niet.
+-   **De beveiligingsstatus verbeteren** : Security Center beoordeelt uw omgeving en biedt u inzicht in de status van uw resources en of ze veilig zijn of niet.
 
--   **Beveiliging tegen bedreigingen**: Security Center beoordeelt uw workloads en genereert aanbevelingen voor het voorkomen van bedreigingen en beveiligingswaarschuwingen.
+-   **Beveiliging tegen bedreigingen** : Security Center beoordeelt uw workloads en genereert aanbevelingen voor het voorkomen van bedreigingen en beveiligingswaarschuwingen.
 
--   **Beveilig uw infrastructuur sneller**: In Security Center wordt alles gedaan met de snelheid van de cloud. Omdat Security Center in het eigen systeem is geïntegreerd, is het eenvoudig te implementeren en kan het u automatische inrichting en beveiliging bieden met Azure-services.
+-   **Beveilig uw infrastructuur sneller** : In Security Center wordt alles gedaan met de snelheid van de cloud. Omdat Security Center in het eigen systeem is geïntegreerd, is het eenvoudig te implementeren en kan het u automatische inrichting en beveiliging bieden met Azure-services.
 
 > [!NOTE]
 > Deze service ondersteunt [Azure Lighthouse](../lighthouse/overview.md), waarmee serviceproviders zich kunnen aanmelden bij een eigen tenant om abonnementen en resourcegroepen te beheren die klanten hebben gedelegeerd. Voor Azure Security Center-scenario's moet een abonnement worden gedelegeerd in plaats van afzonderlijke resourcegroepen.
@@ -62,13 +62,13 @@ Azure Security Center helpt u bij het verbeteren van de beveiligingsstatus. Dit 
 
 ### <a name="manage-organization-security-policy-and-compliance"></a>Het beveiligingsbeleid en de naleving voor een organisatie beheren
 
-Voor een goede beveiliging moet u natuurlijk weten of de workloads veilig zijn en deze hierop controleren. Hiervoor past u een beveiligingsbeleid toe dat op uw organisatie is afgestemd. Omdat het Azure-beleidsbeheer wordt overkoepeld door alle beleidsregels in Security Center, beschikt u over alle mogelijkheden en de flexibiliteit van een**beleidsoplossing van wereldklasse**. U kunt in Security Center uw beleid zo instellen dat dit wordt uitgevoerd in beheergroepen, in verschillende abonnementen en zelfs voor een hele tenant.
+Voor een goede beveiliging moet u natuurlijk weten of de workloads veilig zijn en deze hierop controleren. Hiervoor past u een beveiligingsbeleid toe dat op uw organisatie is afgestemd. Omdat het Azure-beleidsbeheer wordt overkoepeld door alle beleidsregels in Security Center, beschikt u over alle mogelijkheden en de flexibiliteit van een **beleidsoplossing van wereldklasse**. U kunt in Security Center uw beleid zo instellen dat dit wordt uitgevoerd in beheergroepen, in verschillende abonnementen en zelfs voor een hele tenant.
 
 :::image type="content" source="./media/security-center-intro/sc-dashboard.png" alt-text="Pagina voor beleidsbeheer":::
 
-Met Security Center kunt u **schaduw-IT-abonnementen identificeren**. Wanneer u in uw dashboard abonnementen ziet met het label **valt niet onder beleid**, weet u meteen wanneer er recent gemaakte abonnementen zijn en kunt u ervoor zorgen dat deze onder uw beleid vallen en door Azure Security Center worden beveiligd.
+Met Security Center kunt u **schaduw-IT-abonnementen identificeren**. Wanneer u in uw dashboard abonnementen ziet met het label **valt niet onder beleid** , weet u meteen wanneer er recent gemaakte abonnementen zijn en kunt u ervoor zorgen dat deze onder uw beleid vallen en door Azure Security Center worden beveiligd.
 
-:::image type="content" source="./media/security-center-intro/sc-policy-dashboard.png" alt-text="Pagina voor beleidsbeheer":::
+:::image type="content" source="./media/security-center-intro/sc-policy-dashboard.png" alt-text="Beleidsdashboard van Security Center":::
 
 ### <a name="continuous-assessments"></a>Doorlopende beoordelingen
 
@@ -76,13 +76,13 @@ Security Center detecteert doorlopend nieuwe resources die voor uw workloads wor
 
 Om u te laten zien hoe belangrijk elke aanbeveling is voor uw algehele beveiligingspositie, groepeert Security Center de aanbevelingen in beveiligingsbeheeropties en voegt het een **beveiligingsscore** toe aan elke beheeroptie. Dit is van cruciaal belang bij **het stellen van prioriteiten bij uw beveiligingswerkzaamheden**.
 
-:::image type="content" source="./media/security-center-intro/sc-secure-score.png" alt-text="Pagina voor beleidsbeheer":::
+:::image type="content" source="./media/security-center-intro/sc-secure-score.png" alt-text="Security Center-beveiligingsscore":::
 
 ### <a name="network-map"></a>Netwerkoverzicht
 
 Een van de meest efficiënte hulpprogramma's waarover Security Center beschikt voor het doorlopend controleren van de beveiligingsstatus van uw netwerk is het **netwerkoverzicht**. In het overzicht kunt u de topologie van uw workloads bekijken, zodat u kunt zien of elk knooppunt goed is geconfigureerd. U kunt bekijken hoe uw knooppunten zijn verbonden, zodat u ongewenste verbindingen kunt blokkeren die een aanvaller in staat kunnen stellen om in uw netwerk in te breken.
 
-:::image type="content" source="./media/security-center-intro/sc-net-map.png" alt-text="Pagina voor beleidsbeheer":::
+:::image type="content" source="./media/security-center-intro/sc-net-map.png" alt-text="Security Center-netwerkoverzicht":::
 
 
 ### <a name="optimize-and-improve-security-by-configuring-recommended-controls"></a>De beveiliging optimaliseren en verbeteren door aanbevolen beheeropties te configureren
@@ -93,7 +93,7 @@ Security Center stelt u op deze manier niet alleen in staat om het beveiligingsb
 
 Met de aanbevelingen kunt u de kwetsbaarheid voor aanvallen verminderen voor al uw resources. Dit geldt voor onder andere Azure-VM's, andere servers dan Azure-servers en Azure PaaS-services, zoals SQL- en Azure Storage-accounts. Hierbij wordt elk type resource anders beoordeeld en kent elk type eigen normen.
 
-:::image type="content" source="./media/security-center-intro/sc-recommendation-example.png" alt-text="Pagina voor beleidsbeheer":::
+:::image type="content" source="./media/security-center-intro/sc-recommendation-example.png" alt-text="Voorbeeld van een Security Center-aanbeveling":::
 
 ## <a name="protect-against-threats"></a>Beveiligen tegen bedreigingen
 
@@ -101,11 +101,11 @@ Met de beveiliging tegen bedreigingen van Security Center kunt u bedreigingen de
 
 De beveiliging tegen bedreigingen van Security Center bevat een complete analyse van de aanvalsketen, waarbij automatisch waarschuwingen in uw omgeving aan elkaar worden gerelateerd op basis van de cyberaanvalsketenanalyse, zodat u een beter inzicht hebt in de hele geschiedenis van een aanval; waar deze is gestart en welke impact deze had op uw resources.
 
-:::image type="content" source="./media/security-center-intro/sc-alerts.png" alt-text="Pagina voor beleidsbeheer":::
+:::image type="content" source="./media/security-center-intro/sc-alerts.png" alt-text="Beveiligingswaarschuwingen":::
 
-### <a name="integration-with-microsoft-defender-advanced-threat-protection"></a>Integratie met Microsoft Defender Advanced Threat Protection
+### <a name="integration-with-microsoft-defender-for-endpoint"></a>Integratie met Microsoft Defender voor Eindpunt
 
-Security Center omvat automatische, systeemeigen integratie met Microsoft Defender Advanced Threat Protection. Dit betekent dat uw Windows- en Linux-computers zonder enige configuratie volledig zijn geïntegreerd met de aanbevelingen en evaluaties van Security Center.
+Security Center omvat automatische, systeemeigen integratie met Microsoft Defender voor Eindpunt. Dit betekent dat uw Windows- en Linux-computers zonder enige configuratie volledig zijn geïntegreerd met de aanbevelingen en evaluaties van Security Center.
 
 Bovendien kunt u met Security Center het beleid voor toepassingsbeheer automatiseren in serveromgevingen. Met de adaptieve toepassingsregelaars in Security Center kunt u end-to-end apps in een goedkeuringslijst opnemen voor al uw Windows-servers. U hoeft geen regels te maken en op schendingen te controleren. Dit wordt allemaal automatisch voor u gedaan.
 
@@ -123,7 +123,7 @@ Security Center beschikt over mogelijkheden waarmee u de gegevens in Azure SQL a
 
 ## <a name="get-secure-faster"></a>Uw infrastructuur sneller beveiligen
 
-De systeemeigen Azure-integratie (waaronder Azure Policy- en Azure Monitor-logboeken) in combinatie met een naadloze integratie met andere Microsoft-beveiligingsoplossingen, zoals Microsoft Cloud App Security en Windows Defender Advanced Threat Protection zorgen ervoor dat uw beveiligingsoplossing allesomvattend is en eenvoudig kan worden toegevoegd en in gebruik genomen kan worden.
+De systeemeigen Azure-integratie (waaronder Azure Policy- en Azure Monitor-logboeken) in combinatie met een naadloze integratie met andere Microsoft-beveiligingsoplossingen, zoals Microsoft Cloud App Security en Microsoft Defender voor Eindpunt zorgen ervoor dat uw beveiligingsoplossing allesomvattend is en eenvoudig kan worden toegevoegd en in gebruik genomen kan worden.
 
 Bovendien kunt u de volledige oplossing tot buiten Azure uitbreiden naar workloads die worden uitgevoerd in andere clouds en on-premises datacenters.
 

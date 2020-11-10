@@ -10,12 +10,12 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: aa940b00e9c23ab08244ea55c0cd22a8d5f1897f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a90b63f39a4c1cff53686e7ea67c3481f1274f85
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91289375"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322631"
 ---
 # <a name="connection-strings-for-synapse-sql-preview"></a>Verbindingsreeksen voor Synapse SQL (preview)
 
@@ -52,7 +52,7 @@ jdbc:sqlserver://yourserver.sql.azuresynapse.net:1433;database=yourdatabase;user
 
 ## <a name="recommendations"></a>Aanbevelingen
 
-Voor het uitvoeren van **SQL on-demand**-query's zijn [Azure Data Studio](get-started-azure-data-studio.md) en Azure Synapse Studio de aanbevolen hulpprogramma's.
+[Azure Data Studio](get-started-azure-data-studio.md) en Azure Synapse Studio zijn de aanbevolen hulpprogramma's voor het uitvoeren van query's van een **serverloze SQL-pool**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

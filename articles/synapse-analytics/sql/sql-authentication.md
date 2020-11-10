@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8edf782c03300cf22bd349548da425669f492bc1
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 460fed7244ba8094da41ae6b5b8161de3d9efe65
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093528"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317280"
 ---
 # <a name="sql-authentication"></a>SQL-verificatie
 
@@ -22,14 +22,14 @@ Azure Synapse Analytics heeft twee SQL-formulierfactoren waarmee u het gebruik v
 
 Om Synapse SQL te beheren, kunt u gebruikmaken van twee verificatietypen:
 
-- AAD-verificatie
+- Azure Active Directory-verificatie
 - SQL-verificatie
 
-AAD-verificatie is afhankelijk van Azure Active Directory en biedt een centrale plaats voor gebruikersbeheer. Met SQL-verificatie kunnen oudere toepassingen Synapse SQL op vertrouwde wijze gebruiken.
+Azure Active Directory-verificatie biedt één centrale plaats voor gebruikersbeheer. Met SQL-verificatie kunnen oudere toepassingen Synapse SQL op vertrouwde wijze gebruiken.
 
 ## <a name="administrative-accounts"></a>Beheerdersaccounts
 
-Er zijn twee beheerdersaccounts (**serverbeheerder** en **Active Directory-beheerder**) die als beheerder fungeren. Als u deze beheerdersaccounts voor uw SQL-server wilt identificeren, opent u Azure Portal en gaat u naar het tabblad Eigenschappen van uw Synapse SQL.
+Er zijn twee beheerdersaccounts ( **serverbeheerder** en **Active Directory-beheerder** ) die als beheerder fungeren. Als u deze beheerdersaccounts voor uw SQL-server wilt identificeren, opent u Azure Portal en gaat u naar het tabblad Eigenschappen van uw Synapse SQL.
 
 ![SQL Server-beheerders](./media/sql-authentication/sql-admins.png)
 
@@ -51,18 +51,18 @@ De accounts van de **serverbeheerder** en de **Azure AD-beheerder** hebben de vo
 - Deze accounts kunnen leden aan de rollen `dbmanager` en `loginmanager` toevoegen en verwijderen.
 - Deze accounts kunnen de `sys.sql_logins`-systeemtabel weergeven.
 
-## <a name="sql-on-demand-preview"></a>[SQL on-demand (preview-versie)](#tab/serverless)
+## <a name="serverless-sql-pool-preview"></a>[Serverloze SQL-pool (preview-versie)](#tab/serverless)
 
-U kunt de volgende instructies gebruiken om de gebruikers te beheren die toegang hebben tot SQL on-demand.
+U kunt de volgende instructies gebruiken om de gebruikers te beheren die toegang hebben tot serverloze SQL-pools.
 
-Als u een aanmelding voor SQL on-demand wilt maken, gebruikt u de volgende syntaxis:
+Als u een aanmelding voor een serverloze SQL-pool wilt maken, gebruikt u de volgende syntaxis:
 
 ```sql
 CREATE LOGIN Mary WITH PASSWORD = '<strong_password>';
 -- or
 CREATE LOGIN Mary@domainname.net FROM EXTERNAL PROVIDER;
 ```
-Zodra de aanmelding bestaat, kunt u gebruikers maken in de afzonderlijke databases binnen het SQL-on-demand eindpunt en de vereiste machtigingen verlenen aan deze gebruikers. Als u een gebruiker wilt maken, kunt u de volgende syntaxis gebruiken:
+Zodra de aanmelding bestaat, kunt u gebruikers maken in de afzonderlijke databases binnen het eindpunt voor de serverloze SQL-pool, en de vereiste machtigingen verlenen aan deze gebruikers. Als u een gebruiker wilt maken, kunt u de volgende syntaxis gebruiken:
 ```sql
 CREATE USER Mary FROM LOGIN Mary;
 -- or
@@ -127,7 +127,7 @@ Nu kan de gebruiker verbinding maken met de `master`-database en nieuwe database
 
 ### <a name="login-managers"></a>Aanmelding managers
 
-De andere beheerdersrol is de rol voor aanmeldingsbeheerder. Leden van deze rol kunnen nieuwe aanmeldingen maken in de hoofddatabase. Desgewenst kunt u dezelfde stappen doorlopen (een aanmelding maken, een gebruiker maken en een gebruiker toevoegen aan de rol **loginmanager**), zodat een gebruiker nieuwe aanmeldingen kan maken in de hoofddatabase. Gewoonlijk zijn aanmeldingen niet nodig omdat Microsoft het gebruik aanbeveelt van gebruikers van ingesloten databases. Hiervoor wordt verificatie op databaseniveau gebruikt, in plaats van gebruik te maken van gebruikers op basis van aanmelding. Zie [Ingesloten databasegebruikers: een draagbare database maken](/sql/relational-databases/security/contained-database-users-making-your-database-portable?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) voor meer informatie.
+De andere beheerdersrol is de rol voor aanmeldingsbeheerder. Leden van deze rol kunnen nieuwe aanmeldingen maken in de hoofddatabase. Desgewenst kunt u dezelfde stappen doorlopen (een aanmelding maken, een gebruiker maken en een gebruiker toevoegen aan de rol **loginmanager** ), zodat een gebruiker nieuwe aanmeldingen kan maken in de hoofddatabase. Gewoonlijk zijn aanmeldingen niet nodig omdat Microsoft het gebruik aanbeveelt van gebruikers van ingesloten databases. Hiervoor wordt verificatie op databaseniveau gebruikt, in plaats van gebruik te maken van gebruikers op basis van aanmelding. Zie [Ingesloten databasegebruikers: een draagbare database maken](/sql/relational-databases/security/contained-database-users-making-your-database-portable?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) voor meer informatie.
 
 ---
 
@@ -158,7 +158,7 @@ Gebruik in Azure SQL Database of Synapse zonder server de instructie `ALTER ROLE
 ALTER ROLE db_owner ADD MEMBER Mary;
 ```
 
-Gebruik [EXEC sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) in de SQL-pool.
+Gebruik [EXEC sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) in de toegewezen SQL-pool.
 
 ```sql
 EXEC sp_addrolemember 'db_owner', 'Mary';
@@ -187,7 +187,7 @@ Voor efficiënt toegangsbeheer gebruikt u machtigingen die zijn toegewezen aan g
 
 - Als u SQL Server-verificatie gebruikt, maakt u gebruikers van ingesloten databases in de database. Plaats een of meer databasegebruikers in een [databaserol](/sql/relational-databases/security/authentication-access/database-level-roles?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) en wijs vervolgens [machtigingen](/sql/relational-databases/security/permissions-database-engine?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) toe aan de databaserol.
 
-Bij de databaserollen kan het gaan om de ingebouwde rollen als **db_owner**, **db_ddladmin**, **db_datawriter**, **db_datareader**, **db_denydatawriter** en **db_denydatareader**. **db_owner** wordt doorgaans gebruikt voor het verlenen van volledige machtigingen aan slechts enkele gebruikers. De andere vaste databaserollen zijn handig voor het snel verkrijgen van een eenvoudige database voor ontwikkeldoeleinden, maar worden niet aanbevolen voor de meeste productiedatabases. 
+Bij de databaserollen kan het gaan om de ingebouwde rollen als **db_owner** , **db_ddladmin** , **db_datawriter** , **db_datareader** , **db_denydatawriter** en **db_denydatareader**. **db_owner** wordt doorgaans gebruikt voor het verlenen van volledige machtigingen aan slechts enkele gebruikers. De andere vaste databaserollen zijn handig voor het snel verkrijgen van een eenvoudige database voor ontwikkeldoeleinden, maar worden niet aanbevolen voor de meeste productiedatabases. 
 
 De vaste databaserol **db_datareader** verleent bijvoorbeeld leestoegang tot alle tabellen in de database, wat doorgaans meer is dan strikt noodzakelijk. 
 
@@ -205,13 +205,13 @@ Start met de lijst van machtigingen in [Machtigingen (Database-engine)](https://
 
 Bij het beheren van aanmeldingen en gebruikers in SQL Database, moet u de volgende zaken overwegen:
 
-- U moet zijn verbonden met de **hoofd**database bij het uitvoeren van de `CREATE/ALTER/DROP DATABASE`-instructies.
-- De databasegebruiker die overeenkomt met de aanmelding van de **Serverbeheerder**, kan niet worden gewijzigd of verwijderd.
+- U moet zijn verbonden met de **hoofd** database bij het uitvoeren van de `CREATE/ALTER/DROP DATABASE`-instructies.
+- De databasegebruiker die overeenkomt met de aanmelding van de **Serverbeheerder** , kan niet worden gewijzigd of verwijderd.
 - Amerikaans Engels is de standaardtaal van de aanmelding van de **serverbeheerder**.
 - Alleen de beheerders (aanmelding van **serverbeheerder** of Azure AD-beheerder) en de leden van de databaserol **dbmanager** in de **hoofddatabase** zijn gemachtigd om de instructies `CREATE DATABASE` en `DROP DATABASE` uit te voeren.
 - U moet zijn verbonden met de hoofddatabase bij het uitvoeren van de `CREATE/ALTER/DROP LOGIN`-instructies. Het gebruik van aanmeldingen wordt echter afgeraden. Gebruik in plaats daarvan ingesloten databasegebruikers.
 - Om verbinding te maken met een gebruikersdatabase, moet u de naam van de database in de verbindingsreeks opgeven.
-- Alleen de principal-aanmelding op serverniveau en de leden van de databaserol **loginmanager** in de **hoofd**database zijn gemachtigd om `CREATE LOGIN`-, `ALTER LOGIN`- en `DROP LOGIN`-instructies uit te voeren.
+- Alleen de principal-aanmelding op serverniveau en de leden van de databaserol **loginmanager** in de **hoofd** database zijn gemachtigd om `CREATE LOGIN`-, `ALTER LOGIN`- en `DROP LOGIN`-instructies uit te voeren.
 - Bij het uitvoeren van de `CREATE/ALTER/DROP LOGIN`- en `CREATE/ALTER/DROP DATABASE`-instructies in een ADO.NET-toepassing is het gebruik van geparametriseerde opdrachten is niet toegestaan. Zie [Opdrachten en parameters](/dotnet/framework/data/adonet/commands-and-parameters?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) voor meer informatie.
 - Bij het uitvoeren van de `CREATE/ALTER/DROP DATABASE`- en `CREATE/ALTER/DROP LOGIN`-instructies moet elk van deze instructies de enige instructie in een Transact-SQL-batch zijn. Als deze niet overeenkomen, treedt er een fout op. De volgende Transact-SQL controleert bijvoorbeeld of de database bestaat. Als deze bestaat, wordt een `DROP DATABASE`-instructie aangeroepen om de database te verwijderen. Omdat de `DROP DATABASE`-instructie niet de enige instructie in de batch is, leidt het uitvoeren van de volgende Transact-SQL-instructie tot een fout.
 

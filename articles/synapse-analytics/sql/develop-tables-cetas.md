@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 93f23cdcfb3fb7107e3b1838b48b3e58ccc2d028
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d0805aaf694f1569e613ab74135c95e454adbdc0
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91288763"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93315067"
 ---
 # <a name="cetas-with-synapse-sql"></a>CETAS met Synapse SQL
 
-U kunt CREATE EXTERNAL TABLE AS SELECT (CETAS) in SQL-pool of SQL on demand (preview) gebruiken om de volgende taken uit te voeren:  
+U kunt CETAS (CREATE EXTERNAL TABLE AS SELECT) in toegewezen SQL-pools of serverloze SQL-pools (preview-versie) gebruiken om de volgende taken uit te voeren:  
 
 - Een externe tabel maken
 - De resultaten van de Transact-SQL-instructie SELECT gelijktijdig exporteren naar:
@@ -27,13 +27,13 @@ U kunt CREATE EXTERNAL TABLE AS SELECT (CETAS) in SQL-pool of SQL on demand (pre
   - Azure Storage Blob
   - Azure Data Lake Storage Gen2
 
-## <a name="cetas-in-sql-pool"></a>CETAS in SQL-pool
+## <a name="cetas-in-dedicated-sql-pool"></a>CETAS in toegewezen SQL-pools
 
-Bekijk het artikel [CREATE EXTERNAL TABLE AS SELECT](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) voor het gebruik en de syntaxis van CETAS in SQL-pool. Raadpleeg daarnaast het artikel [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) voor meer informatie over CTAS met SQL-pool.
+Bekijk het artikel [CREATE EXTERNAL TABLE AS SELECT](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) voor het gebruik en de syntaxis van CETAS in toegewezen SQL-pools. Raadpleeg daarnaast het artikel [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) voor meer informatie over CETAS met toegewezen SQL-pools.
 
-## <a name="cetas-in-sql-on-demand"></a>CETAS in SQL op aanvraag
+## <a name="cetas-in-serverless-sql-pool"></a>CETAS in serverloze SQL-pools
 
-Wanneer u SQL on-demand gebruikt, wordt CETAS gebruikt om een externe tabel te maken en queryresultaten te exporteren naar Azure Storage Blob of Azure Data Lake Storage Gen2.
+Wanneer u serverloze SQL-pools gebruikt, wordt CETAS gebruikt om een externe tabel te maken en queryresultaten te exporteren naar Azure Storage Blob of Azure Data Lake Storage Gen2.
 
 ## <a name="syntax"></a>Syntaxis
 
@@ -56,7 +56,7 @@ CREATE EXTERNAL TABLE [ [database_name  . [ schema_name ] . ] | schema_name . ] 
 
 *[ [ *database_name* . [ *schema_name* ] . ] | *schema_name* . ] *table_name**
 
-De uit een tot drie delen bestaande naam van de tabel die u wilt maken. Voor een externe tabel slaat SQL on-demand alleen de metagegevens van de tabel op. Er worden geen werkelijke gegevens verplaatst of opgeslagen in SQL on-demand.
+De uit een tot drie delen bestaande naam van de tabel die u wilt maken. Voor een externe tabel slaat een serverloze SQL-pool alleen de metagegevens van de tabel op. Er worden geen werkelijke gegevens verplaatst of opgeslagen in de serverloze SQL-pool.
 
 LOCATION = *'path_to_folder'*
 

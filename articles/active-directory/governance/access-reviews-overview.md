@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.subservice: compliance
-ms.date: 09/08/2020
+ms.date: 10/29/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.custom: contperfq1
-ms.openlocfilehash: b454ced085ec3d73f3ca0f761abb6c5de44244ab
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3f52b8d4e56ec854f93940ea77f09c3dff1d362e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89594336"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095999"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Wat zijn toegangsbeoordelingen in Azure AD?
 
@@ -81,7 +81,7 @@ Uw directory moet ten minste evenveel Azure AD Premium P2-licenties hebben als h
 
 Azure AD Premium P2-licenties zijn **niet** vereist voor Globale beheerders of Gebruikersbeheerders die toegangsbeoordelingen instellen, instellingen configureren of de beslissingen van de beoordelingen toepassen.
 
-Voor elke betaalde Azure AD Premium P2-licentie die u toewijst aan een van de gebruikers van uw eigen organisatie, kunt u Azure AD Business-to-Business (B2B) gebruiken om maximaal vijf gastgebruikers uit te nodigen (toegestane aantal externe gebruikers). Deze gastgebruikers kunnen ook gebruikmaken van Azure AD Premium P2-functies. Zie [Licentierichtlijnen voor Azure AD B2B-samenwerking van Azure Active Directory](../external-identities/licensing-guidance.md) voor meer informatie.
+Azure AD-toegang voor gastgebruikers is gebaseerd op het factureringsmodel MAU (maandelijks actieve gebruiker), dat het factureringsmodel 1:5-verhouding vervangt. Zie [Prijzen voor externe Azure AD-identiteiten](../external-identities/external-identities-pricing.md) voor meer informatie.
 
 Zie [Licenties toewijzen en verwijderen met behulp van het Azure Active Directory-portal](../fundamentals/license-users-groups.md) voor meer informatie over licenties.
 

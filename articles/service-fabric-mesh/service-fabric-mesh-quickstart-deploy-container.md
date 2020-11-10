@@ -5,12 +5,12 @@ author: georgewallace
 ms.author: gwallace
 ms.date: 11/27/2018
 ms.topic: quickstart
-ms.openlocfilehash: a22356e89dcc3ab465226bad196068d934ff1182
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.openlocfilehash: 0c6bb8ba680612acbd497598b3e56efa5c28244a
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91840282"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146242"
 ---
 # <a name="quickstart-deploy-hello-world-to-service-fabric-mesh"></a>Quickstart: Hallo wereld implementeren in Service Fabric Mesh
 
@@ -41,6 +41,12 @@ az group create --name myResourceGroup --location eastus
 ```
 
 ## <a name="deploy-the-application"></a>De toepassing implementeren
+
+>[!NOTE]
+> Met ingang van 2 november 2020 zijn [snelheidslimieten voor downloaden van toepassing](https://docs.docker.com/docker-hub/download-rate-limit/) op anonieme en geverifieerde aanvragen bij Docker Hub, vanuit accounts van gratis Docker-abonnementen. Deze aanvragen worden afgedwongen op IP-adres. 
+> 
+> Deze sjablonen maken gebruik van openbare installatiekopieën van Docker Hub. Houd er rekening mee dat er limieten kunnen gelden. Zie [Verifiëren met Docker Hub](https://docs.microsoft.com/azure/container-registry/buffer-gate-public-content#authenticate-with-docker-hub) voor meer informatie.
+
 Maak uw toepassing in de resourcegroep met de opdracht `az mesh deployment create`.  Voer het volgende uit:
 
 ```azurecli-interactive

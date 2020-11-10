@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/14/2020
+ms.date: 11/09/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: bca960100ee0c9d7e2a779dc86030fc59949dca5
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: e3503a9eef5c11db35684ca61fb1ee39525a465d
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92055967"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427595"
 ---
 # <a name="configure-object-replication-for-block-blobs"></a>Object replicatie configureren voor blok-blobs
 
@@ -65,19 +65,19 @@ Voer de volgende stappen uit om een replicatie beleid te maken in de Azure Porta
 
     De volgende afbeelding toont filters die bepalen welke blobs worden gekopieerd als onderdeel van een replicatie regel.
 
-    :::image type="content" source="media/object-replication-configure/configure-replication-copy-prefix.png" alt-text="Scherm opname van de replicatie regels in Azure Portal":::
+    :::image type="content" source="media/object-replication-configure/configure-replication-copy-prefix.png" alt-text="Scherm afbeelding met filters voor een replicatie regel":::
 
 1. Standaard wordt het Kopieer bereik zo ingesteld dat alleen nieuwe objecten worden gekopieerd. Als u alle objecten in de container wilt kopiëren of objecten wilt kopiëren vanaf een aangepaste datum en tijd, selecteert u de koppeling **wijzigen** en configureert u het Kopieer bereik voor het container paar.
 
     In de volgende afbeelding ziet u een aangepast Kopieer bereik waarmee objecten worden gekopieerd vanaf een opgegeven datum en tijd.
 
-    :::image type="content" source="media/object-replication-configure/configure-replication-copy-scope.png" alt-text="Scherm opname van de replicatie regels in Azure Portal":::
+    :::image type="content" source="media/object-replication-configure/configure-replication-copy-scope.png" alt-text="Scherm opname van het aangepaste Kopieer bereik voor object replicatie":::
 
 1. Selecteer **opslaan en Toep assen** om het replicatie beleid te maken en te beginnen met het repliceren van gegevens.
 
 Nadat u object replicatie hebt geconfigureerd, worden in de Azure Portal het replicatie beleid en de regels weer gegeven, zoals u kunt zien in de volgende afbeelding.
 
-:::image type="content" source="media/object-replication-configure/object-replication-policies-portal.png" alt-text="Scherm opname van de replicatie regels in Azure Portal":::
+:::image type="content" source="media/object-replication-configure/object-replication-policies-portal.png" alt-text="Scherm opname van object replicatie beleid in Azure Portal":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -244,7 +244,7 @@ De volgende tabel bevat een overzicht van de waarden die moeten worden gebruikt 
 
 | Wanneer u het JSON-bestand voor dit account maakt... | Stel de beleids-ID en regel-Id's in op deze waarde... |
 |-|-|
-| Doel account | De *standaard*waarde voor de teken reeks. Azure Storage maakt de beleids-ID en de regel-Id's voor u. |
+| Doel account | De *standaard* waarde voor de teken reeks. Azure Storage maakt de beleids-ID en de regel-Id's voor u. |
 | Bron account | De waarden van de beleids-ID en regel-Id's die worden geretourneerd wanneer u het beleid dat is gedefinieerd op het doel account downloadt als een JSON-bestand. |
 
 In het volgende voor beeld wordt een replicatie beleid gedefinieerd voor het doel account met één regel die overeenkomt met het voor voegsel *b* en wordt de minimale aanmaak tijd ingesteld voor blobs die moeten worden gerepliceerd. Vergeet niet om waarden tussen punt haken te vervangen door uw eigen waarden:
@@ -284,16 +284,16 @@ Voer de volgende stappen uit om de object replicatie te configureren voor het do
 1. Selecteer **replicatie regels uploaden**.
 1. Upload het JSON-bestand. In het Azure Portal worden het beleid en de regels weer gegeven die worden gemaakt, zoals wordt weer gegeven in de volgende afbeelding.
 
-    :::image type="content" source="media/object-replication-configure/replication-rules-upload-portal.png" alt-text="Scherm opname van de replicatie regels in Azure Portal":::
+    :::image type="content" source="media/object-replication-configure/replication-rules-upload-portal.png" alt-text="Scherm afbeelding die laat zien hoe u een JSON-bestand kunt uploaden om een replicatie beleid te definiëren":::
 
 1. Selecteer **uploaden** om het replicatie beleid voor het doel account te maken.
 
 U kunt vervolgens een JSON-bestand met de beleids definitie downloaden dat u aan een andere gebruiker kunt aanbieden om het bron account te configureren. Voer de volgende stappen uit om dit JSON-bestand te downloaden:
 
 1. Navigeer naar de **object replicatie** -instellingen voor het doel account in de Azure Portal.
-1. Selecteer de knop **meer** naast het beleid dat u wilt downloaden en selecteer vervolgens **regels downloaden**, zoals wordt weer gegeven in de volgende afbeelding.
+1. Selecteer de knop **meer** naast het beleid dat u wilt downloaden en selecteer vervolgens **regels downloaden** , zoals wordt weer gegeven in de volgende afbeelding.
 
-    :::image type="content" source="media/object-replication-configure/replication-rules-download-portal.png" alt-text="Scherm opname van de replicatie regels in Azure Portal":::
+    :::image type="content" source="media/object-replication-configure/replication-rules-download-portal.png" alt-text="Scherm afbeelding die laat zien hoe replicatie regels worden gedownload naar een JSON-bestand":::
 
 1. Sla het JSON-bestand op uw lokale computer op om te delen met een andere gebruiker om het beleid op het bron account te configureren.
 
@@ -361,7 +361,7 @@ Voer de volgende stappen uit om de replicatie status voor een BLOB in het bron a
 1. Zoek de container die de bron-BLOB bevat.
 1. Selecteer de blob om de eigenschappen ervan weer te geven. Als de blob is gerepliceerd, ziet u in de sectie **object replicatie** dat de status is ingesteld op *voltooid*. De ID van het replicatie beleid en de ID voor de regel voor object replicatie voor deze container worden ook weer gegeven.
 
-:::image type="content" source="media/object-replication-configure/check-replication-status-source.png" alt-text="Scherm opname van de replicatie regels in Azure Portal":::
+:::image type="content" source="media/object-replication-configure/check-replication-status-source.png" alt-text="Scherm opname van replicatie status voor een BLOB in het bron account":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -392,6 +392,12 @@ az storage blob show \
 
 ---
 
+Als de replicatie status voor een BLOB in het bron account mislukt, wordt de volgende mogelijke oorzaken onderzocht:
+
+- Zorg ervoor dat het object replicatie beleid is geconfigureerd op het doel account.
+- Controleer of de doel container nog bestaat.
+- Als de bron-blob is versleuteld met een door de klant verschafte sleutel als onderdeel van een schrijf bewerking, mislukt de object replicatie. Zie [een versleutelings sleutel voor een aanvraag voor Blob-opslag bieden](encryption-customer-provided-keys.md)voor meer informatie over door de klant geleverde sleutels.
+
 ## <a name="remove-a-replication-policy"></a>Een replicatie beleid verwijderen
 
 Als u een replicatie beleid en de bijbehorende regels wilt verwijderen, gebruikt u Azure Portal, Power shell of CLI.
@@ -401,7 +407,7 @@ Als u een replicatie beleid en de bijbehorende regels wilt verwijderen, gebruikt
 Voer de volgende stappen uit om een replicatie beleid te verwijderen in de Azure Portal:
 
 1. Navigeer naar het bron opslag account in de Azure Portal.
-1. Onder **instellingen**selecteert u **object replicatie**.
+1. Onder **instellingen** selecteert u **object replicatie**.
 1. Klik op de knop **meer** naast de naam van het beleid.
 1. Selecteer **regels verwijderen**.
 

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: f159e38eb66e1758feaf743c32d8de30c614b234
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: fe30a2a0885e1a579eb32ad84ef467f7162febe4
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91288508"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93310331"
 ---
 # <a name="transact-sql-features-supported-in-azure-synapse-sql"></a>Transact-SQL-functies die worden ondersteund in Azure Synapse SQL
 
@@ -79,8 +79,8 @@ Met Synapse SQL kunt u ingebouwde beveiligingsfuncties gebruiken om uw gegevens 
 | **Gebruikers** |  N.v.t. (alleen opgenomen gebruikers worden ondersteund in databases) | Ja |
 | **[Ingesloten gebruikers](/sql/relational-databases/security/contained-database-users-making-your-database-portable?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)** | Ja. **Opmerking:** slechts één Azure Active Directory-gebruiker kan een onbeperkte beheerder zijn | Ja |
 | **Verificatie van SQL-gebruikersnaam/-wachtwoord**| Ja | Ja |
-| **AAD-verificatie (Azure Active Directory)**| Ja, Azure AD-gebruikers | Ja, Azure AD-aanmeldingen en -gebruikers |
-| **Passthrough-verificatie voor opslag voor Azure Active Directory (AAD)** | Ja | Ja |
+| **Azure Active Directory-verificatie (Azure AD)**| Ja, Azure AD-gebruikers | Ja, Azure AD-aanmeldingen en -gebruikers |
+| **Passthrough-verificatie voor opslag voor Azure AD (Azure Active Directory)** | Ja | Ja |
 | **SAS-tokenverificatie voor opslag** | Nee | Ja, met behulp van [DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/create-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) in [EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) of [CREDENTIAL](/sql/t-sql/statements/create-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) op exemplaarniveau. |
 | **Verificatie met toegangssleutel voor opslag** | Ja, met behulp van [DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/create-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) in [EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Nee |
 | **Verificatie van [beheerde identiteit](../security/synapse-workspace-managed-identity.md) voor opslag** | Ja, met behulp van [Managed Service Identity-referenties](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Ja, met `Managed Identity`-referenties. |
@@ -103,7 +103,7 @@ Met Synapse SQL kunt u ingebouwde beveiligingsfuncties gebruiken om uw gegevens 
 | **[Firewallregels](../security/synapse-workspace-ip-firewall.md)**| Ja | Ja |
 | **[Privé-eindpunt](../security/synapse-workspace-managed-private-endpoints.md)**| Ja | Ja |
 
-SQL-pool en SQL op aanvraag gebruiken de standaard Transact-SQL-taal om gegevens op te vragen. Raadpleeg de [Transact-SQL-taalverwijzing](/sql/t-sql/language-reference) voor gedetailleerde verschillen.
+Toegewezen SQL-pools en serverloze SQL-pools gebruiken de Transact-SQL-standaardtaal om gegevens op te vragen. Raadpleeg de [Transact-SQL-taalverwijzing](/sql/t-sql/language-reference) voor gedetailleerde verschillen.
 
 ## <a name="tools"></a>Hulpprogramma's
 
@@ -118,7 +118,7 @@ U kunt verschillende hulpprogramma's gebruiken om verbinding te maken met Synaps
 | **SQL Server Management Studio** | Ja | Ja, versie 18.5 of hoger |
 
 > [!NOTE]
-> U kunt SSMS gebruiken om verbinding te maken met SQL op aanvraag (preview) en query's. Het wordt gedeeltelijk ondersteund vanaf versie 18.5, maar u kunt de tool gebruiken om alleen verbinding te maken en query's uit te voeren.
+> U kunt SSMS gebruiken om verbinding te maken met een serverloze SQL-pool (preview-versie) en query's uit te voeren. Het wordt gedeeltelijk ondersteund vanaf versie 18.5, maar u kunt de tool gebruiken om alleen verbinding te maken en query's uit te voeren.
 
 De meeste toepassingen gebruiken de standaard Transact-SQL-taal om gegevens op te vragen bij zowel ingerichte als serverloze verbruiksmodellen van Synapse SQL.
 
@@ -150,7 +150,7 @@ Geanalyseerde gegevens kunnen in verschillende bestandsindelingen worden opgesla
 | **[CDM](https://docs.microsoft.com/common-data-model/)** | Nee | Nee |
 
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over best practices voor SQL-pool en SQL on-demand vindt u in de volgende artikelen:
+Aanvullende informatie over best practices voor toegewezen SQL-pools en serverloze SQL-pools vindt u in de volgende artikelen:
 
-- [Best practices voor SQL-pool](best-practices-sql-pool.md)
-- [Best practices voor SQL on-demand](best-practices-sql-on-demand.md)
+- [Best practices voor toegewezen SQL-pools](best-practices-sql-pool.md)
+- [Best practices voor serverloze SQL-pools](best-practices-sql-on-demand.md)

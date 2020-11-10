@@ -1,6 +1,6 @@
 ---
-title: Gegevens van Synapse Link voor Azure Cosmos DB naar een SQL-pool kopiëren met behulp van Apache Spark
-description: De gegevens laden in een Apache Spark-dataframe, de gegevens cureren en laden in een SQL-pooltabel
+title: Synapse Link voor Azure Cosmos DB-gegevens kopiëren naar een toegewezen SQL-pool, met behulp van Apache Spark
+description: De gegevens in een Apache Spark-dataframe laden, de gegevens cureren, en ze laden in een toegewezen SQL-pooltabel
 services: synapse-analytics
 author: ArnoMicrosoft
 ms.service: synapse-analytics
@@ -9,30 +9,30 @@ ms.subservice: synapse-link
 ms.date: 08/10/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 409f1ecee5ccf42a0168d500b40337366e07bfc0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 13891f9614e658be39adbb69fed1503a0c66d5e4
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91287847"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309223"
 ---
-# <a name="copy-data-from-azure-cosmos-db-into-a-sql-pool-using-apache-spark"></a>Gegevens van Azure Cosmos DB naar een SQL-pool kopiëren met behulp van Apache Spark
+# <a name="copy-data-from-azure-cosmos-db-into-a-dedicated-sql-pool-using-apache-spark"></a>Azure Cosmos DB-gegevens kopiëren naar een toegewezen SQL-pool, met behulp van Apache Spark
 
 Met Azure Synapse Link voor Azure Cosmos DB kunnen gebruikers in bijna realtime analyses uitvoeren via operationele gegevens in Azure Cosmos DB. Er zijn echter momenten waarop sommige gegevens moeten worden geaggregeerd en verrijkt zodat datawarehouse-gebruikers ze kunnen gebruiken. Synapse Link-gegevens kunnen met slechts enkele cellen in een notebook worden gecureerd en geëxporteerd.
 
 ## <a name="prerequisites"></a>Vereisten
 * [Een Synapse-werkruimte inrichten](../quickstart-create-workspace.md) met:
-    * [Spark-pool](../quickstart-create-apache-spark-pool-studio.md)
-    * [SQL-pool](../quickstart-create-sql-pool-studio.md)
+    * [een serverloze Apache Spark-pool](../quickstart-create-apache-spark-pool-studio.md)
+    * [een toegewezen SQL-pool](../quickstart-create-sql-pool-studio.md)
 * [Een Cosmos DB-account inrichten met een HTAP-container met gegevens](../../cosmos-db/configure-synapse-link.md)
 * [De HTAP-container van Azure Cosmos DB verbinden met de werkruimte](./how-to-connect-synapse-link-cosmos-db.md)
-* [De juiste instelling om vanuit Apache Spark gegevens in een SQL-pool te importeren](../spark/synapse-spark-sql-pool-import-export.md)
+* [De juiste instelling om vanuit Spark gegevens te importeren in een toegewezen SQL-pool](../spark/synapse-spark-sql-pool-import-export.md)
 
 ## <a name="steps"></a>Stappen
 In deze zelfstudie gaat u verbinding maken met de analytische opslag, zodat de transactionele opslag niet wordt beïnvloed (er worden geen aanvraageenheden gebruikt). De volgende stappen worden uitgevoerd:
 1. De HTAP-container van Cosmos DB uitlezen naar een Apache Spark-dataframe
 2. De resultaten aggregeren in een nieuwe dataframe
-3. De gegevens opnemen in een SQL-pool
+3. De gegevens opnemen in een toegewezen SQL-pool
 
 [![Apache Spark naar SQL: stappen 1](../media/synapse-link-spark-to-sql/synapse-spark-to-sql.png)](../media/synapse-link-spark-to-sql/synapse-spark-to-sql.png#lightbox)
 
@@ -50,7 +50,7 @@ In dit voorbeeld wordt een HTAP-container met de naam **RetailSales** gebruikt. 
 * weekStarting: long (nullable = true)
 * _etag: string (nullable = true)
 
-U gaat de verkoop (*quantity*, *revenue* (price x quantity)) aggregeren met *productCode* en *weekStarting* voor rapportagedoeleinden. Ten slotte exporteert u deze gegevens naar een SQL-pooltabel met de naam **dbo.productsales**.
+U gaat de verkoop ( *quantity* , *revenue* (price x quantity)) aggregeren met *productCode* en *weekStarting* voor rapportagedoeleinden. Ten slotte exporteert u deze gegevens naar een toegewezen SQL-pooltabel met de naam **dbo.productsales**.
 
 ## <a name="configure-a-spark-notebook"></a>Een Apache Spark-notebook configureren
 Maak een Apache Spark-notebook met Scala as Spark (Scala) als hoofdtaal. U gebruikt de standaardinstelling van de notebook voor deze sessie.
@@ -67,7 +67,7 @@ val df_olap = spark.read.format("cosmos.olap").
 
 ## <a name="aggregate-the-results-in-a-new-dataframe"></a>De resultaten aggregeren in een nieuwe dataframe
 
-In de tweede cel voert u de transformatie en aggregaties uit die nodig zijn voor de nieuwe dataframe voordat u deze in een SQL-pooldatabase laadt.
+In de tweede cel voert u de transformatie en aggregaties uit die nodig zijn voor de nieuwe dataframe, vóórdat u deze in een toegewezen SQL-pooldatabase laadt.
 
 ```java
 // Select relevant columns and create revenue
@@ -77,12 +77,12 @@ val df_olap_aggr = df_olap_step1.groupBy("productCode","weekStarting").agg(sum("
     withColumn("AvgPrice",col("Sum_revenue")/col("Sum_quantity"))
 ```
 
-## <a name="load-the-results-into-a-sql-pool"></a>De resultaten in een SQL-pool laden
+## <a name="load-the-results-into-a-dedicated-sql-pool"></a>De resultaten laden in een toegewezen SQL-pool
 
-In de derde cel laadt u de gegevens in een SQL-pool. Er worden automatisch een tijdelijke externe tabel, externe gegevensbron en externe bestandsindeling gemaakt, die worden verwijderd zodra de taak is uitgevoerd.
+In de derde cel laadt u de gegevens in een toegewezen SQL-pool. Er worden automatisch een tijdelijke externe tabel, externe gegevensbron en externe bestandsindeling gemaakt, die worden verwijderd zodra de taak is uitgevoerd.
 
 ```java
-df_olap_aggr.write.sqlanalytics("arnaudpool.dbo.productsales", Constants.INTERNAL)
+df_olap_aggr.write.sqlanalytics("userpool.dbo.productsales", Constants.INTERNAL)
 ```
 
 ## <a name="query-the-results-with-sql"></a>Query's uitvoeren op de resultaten met SQL

@@ -1,6 +1,6 @@
 ---
 title: Verbinding maken met Synapse SQL via sqlcmd
-description: Gebruik het opdrachtregelprogramma sqlcmd om verbinding te maken met SQL on-demand (preview) en SQL-pool en deze te doorzoeken.
+description: Gebruik het opdrachtregelprogramma sqlcmd om verbinding te maken met serverloze SQL-pools (preview-versie) en toegewezen SQL-pools, en er query's op uit te voeren.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1af42a838463132a241447c11b90bfb489f879ac
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 10f15ec2108e897164206543358d7a9e7bd40f64
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87059452"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93316493"
 ---
 # <a name="connect-to-synapse-sql-with-sqlcmd"></a>Verbinding maken met Synapse SQL via sqlcmd
 
@@ -25,7 +25,7 @@ ms.locfileid: "87059452"
 > * [sqlcmd](../sql/get-started-connect-sqlcmd.md)
 > * [SSMS](get-started-ssms.md)
 
-U kunt het opdrachtregelprogramma [sqlcmd](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) binnen Synapse SQL gebruiken om verbinding te maken met SQL on-demand (preview) en SQL-pool en deze te doorzoeken.  
+U kunt het opdrachtregelprogramma [sqlcmd](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) binnen Synapse SQL gebruiken om verbinding te maken met serverloze SQL-pools (preview-versie) en toegewezen SQL-pools, en er query's op uit te voeren.  
 
 ## <a name="1-connect"></a>1. Verbinding maken
 U gaat als volgt aan de slag met [sqlcmd](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest): open de opdrachtprompt en voer **sqlcmd** in, gevolgd door de verbindingstekenreeks voor uw Synapse SQL-database. De verbindingstekenreeks moet de volgende parameters bevatten:
@@ -41,13 +41,13 @@ Als u gebruik wilt maken van SQL Server-verificatie, moet u de gebruikersnaam- e
 
 Uw verbindingstekenreeks kan er als volgt uitzien:
 
-**SQL on-demand**
+**Serverloze SQL-pool**
 
 ```sql
 C:\>sqlcmd -S partyeunrt.database.windows.net -d demo -U Enter_Your_Username_Here -P Enter_Your_Password_Here -I
 ```
 
-**SQL-pool**
+**Toegewezen SQL-pool**
 
 ```
 C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@ssword -I
@@ -59,13 +59,13 @@ Als u geïntegreerde verificatie van Azure Active Directory wilt gebruiken, moet
 
 Uw verbindingstekenreeks kan er als volgt uitzien:
 
-**SQL on-demand**
+**Serverloze SQL-pool**
 
 ```
 C:\>sqlcmd -S partyeunrt.database.windows.net -d demo -G -I
 ```
 
-**SQL-pool**
+**Toegewezen SQL-pool**
 
 ```sql
 C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -G -I
@@ -76,7 +76,7 @@ C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -G -I
 
 ## <a name="2-query"></a>2. Query’s uitvoeren
 
-### <a name="use-sql-pool"></a>SQL-pool gebruiken
+### <a name="use-dedicated-sql-pool"></a>Een toegewezen SQL-pool gebruiken
 
 Wanneer verbinding is gemaakt, kunt u elke ondersteunde [Transact-SQL](/sql/t-sql/language-reference?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)-instructie (T-SQL) voor het exemplaar uitvoeren. In dit voorbeeld worden query's in de interactieve modus verzonden.
 
@@ -87,7 +87,7 @@ C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@s
 3> QUIT
 ```
 
-Voor SQL-pool laten de volgende voorbeelden zien hoe u query's in de batchmodus uitvoert met behulp van de optie -Q of door uw SQL naar sqlcmd te sluizen.
+Voor een toegewezen SQL-pool ziet u in de volgende voorbeelden hoe u query's in de batchmodus uitvoert met behulp van de optie -Q of door uw SQL naar sqlcmd te sluizen:
 
 ```sql
 sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@ssword -I -Q "SELECT name FROM sys.tables;"
@@ -97,7 +97,7 @@ sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@sswor
 "SELECT name FROM sys.tables;" | sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@ssword -I > .\tables.out
 ```
 
-### <a name="use-sql-on-demand"></a>SQL on-demand gebruiken
+### <a name="use-serverless-sql-pool"></a>Serverloze SQL-pools gebruiken
 
 Wanneer verbinding is gemaakt, kunt u elke ondersteunde [Transact-SQL](/sql/t-sql/language-reference?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)-instructie (T-SQL) voor het exemplaar uitvoeren.  In het volgende voorbeeld worden query's in de interactieve modus verzonden.
 
@@ -108,7 +108,7 @@ C:\>sqlcmd -S partyeunrt.database.windows.net -d demo -U Enter_Your_Username_Her
 3> QUIT
 ```
 
-Voor SQL on-demand laten de volgende voorbeelden zien hoe u query's in de batchmodus uitvoert met behulp van de optie -Q of door uw SQL naar sqlcmd te sluizen.
+Voor een serverloze SQL-pool ziet u in de volgende voorbeelden hoe u query's in de batchmodus uitvoert met behulp van de optie -Q of door uw SQL naar sqlcmd te sluizen:
 
 ```sql
 sqlcmd -S partyeunrt.database.windows.net -d demo -U Enter_Your_Username_Here -P 'Enter_Your_Password_Here' -I -Q "SELECT COUNT(*) FROM  OPENROWSET(BULK 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer/release/us_population_county/year=20*/*.parquet', FORMAT='PARQUET')"

@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 04/13/2020
 ms.custom: devx-track-java
 ms.author: trbye
-ms.openlocfilehash: 9c4528a87a577ba98f60824936141124387d27a0
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 9c9ac75be5eba41d5625a092ac48166e24fcac79
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92470994"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94425035"
 ---
 Een van de belangrijkste functies van de speech-service is de mogelijkheid om menselijke spraak te herkennen en te vertalen naar andere talen. In deze Snelstartgids leert u hoe u de Speech SDK in uw apps en producten kunt gebruiken om spraak vertalingen van hoge kwaliteit uit te voeren. In deze Quick Start vindt u onderwerpen, waaronder:
 
@@ -32,7 +32,7 @@ Voordat u iets kunt doen, moet u de Speech SDK installeren. Volg afhankelijk van
 
 ## <a name="import-dependencies"></a>Afhankelijkheden importeren
 
-Als u de voor beelden in dit artikel wilt uitvoeren, moet u de volgende `import` instructies toevoegen boven aan het **. Java* -code bestand.
+Als u de voor beelden in dit artikel wilt uitvoeren, moet u de volgende `import` instructies toevoegen boven aan het * *. Java* -code bestand.
 
 ```java
 package speech;
@@ -73,7 +73,7 @@ Er zijn een paar manieren waarop u een [`SpeechTranslationConfig`][config] kunt 
 * Met een host: geef een hostadres door. Een sleutel of autorisatietoken is optioneel.
 * Met een autorisatietoken: geef een autorisatietoken en de bijbehorende regio door.
 
-Laten we eens kijken hoe een [`SpeechTranslationConfig`][config] wordt gemaakt met behulp van een sleutel en regio. U kunt deze referenties ophalen door de volgende stappen in [de speech-service gratis](../../../overview.md#try-the-speech-service-for-free)uit te voeren.
+Laten we eens kijken hoe een [`SpeechTranslationConfig`][config] wordt gemaakt met behulp van een sleutel en regio. U kunt deze referenties ophalen door de stappen te volgen in [De Speech-service gratis uitproberen](../../../overview.md#try-the-speech-service-for-free).
 
 ```java
 public class App {
@@ -233,7 +233,7 @@ static void translateSpeech() throws ExecutionException, InterruptedException {
 }
 ```
 
-Zie [basis beginselen van spraak herkenning](../../../speech-to-text-basics.md)voor meer informatie over spraak naar tekst.
+Zie [basis beginselen van spraak herkenning](../../../get-started-speech-to-text.md)voor meer informatie over spraak naar tekst.
 
 ## <a name="synthesize-translations"></a>Vertalingen voor synthesizer
 
@@ -338,13 +338,13 @@ static void translateSpeech() throws ExecutionException, InterruptedException {
 }
 ```
 
-Zie [basis beginselen van spraak synthese](../../../text-to-speech-basics.md)voor meer informatie over spraak synthese.
+Zie [basis beginselen van spraak synthese](../../../get-started-text-to-speech.md)voor meer informatie over spraak synthese.
 
-[config]: https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.translation.SpeechTranslationConfig?view=azure-java-stable
-[audioconfig]: https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.audio.AudioConfig?view=azure-java-stable
-[recognizer]: https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.translation.TranslationRecognizer?view=azure-java-stable
-[recognitionlang]: https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setspeechrecognitionlanguage?view=azure-java-stable
-[addlang]: https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.translation.speechtranslationconfig.addtargetlanguage?view=azure-java-stable
-[translations]: https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.translation.translationrecognitionresult.gettranslations?view=azure-java-stable
-[voicename]: https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.translation.speechtranslationconfig.setvoicename?view=azure-java-stable
-[speechsynthesisvoicename]: https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setspeechsynthesisvoicename?view=azure-java-stable
+[config]: /java/api/com.microsoft.cognitiveservices.speech.translation.SpeechTranslationConfig?view=azure-java-stable
+[audioconfig]: /java/api/com.microsoft.cognitiveservices.speech.audio.AudioConfig?view=azure-java-stable
+[recognizer]: /java/api/com.microsoft.cognitiveservices.speech.translation.TranslationRecognizer?view=azure-java-stable
+[recognitionlang]: /java/api/com.microsoft.cognitiveservices.speech.speechconfig.setspeechrecognitionlanguage?view=azure-java-stable
+[addlang]: /java/api/com.microsoft.cognitiveservices.speech.translation.speechtranslationconfig.addtargetlanguage?view=azure-java-stable
+[translations]: /java/api/com.microsoft.cognitiveservices.speech.translation.translationrecognitionresult.gettranslations?view=azure-java-stable
+[voicename]: /java/api/com.microsoft.cognitiveservices.speech.translation.speechtranslationconfig.setvoicename?view=azure-java-stable
+[speechsynthesisvoicename]: /java/api/com.microsoft.cognitiveservices.speech.speechconfig.setspeechsynthesisvoicename?view=azure-java-stable

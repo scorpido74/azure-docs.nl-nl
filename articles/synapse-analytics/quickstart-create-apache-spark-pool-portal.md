@@ -1,6 +1,6 @@
 ---
-title: 'Quickstart: Een Apache Spark-pool maken met behulp van de Azure-portal'
-description: Een nieuwe Apache Spark-pool maken met behulp van de Azure-portal door de stappen in deze handleiding uit te voeren.
+title: 'Quickstart: Een serverloze Apache Spark-pool maken met behulp van Azure Portal'
+description: Een serverloze Apache Spark-pool maken met behulp van Azure Portal door de stappen in deze handleiding uit te voeren.
 services: synapse-analytics
 author: julieMSFT
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: ea32126e19c4520a6d5a40f38f60ec44e9a119cd
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e84afc949a84da90a4799d7db3b3e7ad3e0057a3
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91260866"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323558"
 ---
-# <a name="quickstart-create-a-new-apache-spark-pool-using-the-azure-portal"></a>Quickstart: Een nieuwe Apache Spark-pool maken met behulp van de Azure-portal
+# <a name="quickstart-create-a-new-serverless-apache-spark-pool-using-the-azure-portal"></a>Quickstart: Een nieuwe Apache Spark-pool maken met behulp van Azure Portal
 
 Azure Synapse Analytics biedt diverse analyse-engines waarmee u uw gegevens kunt opnemen, transformeren, modelleren, analyseren en distribueren. Een Apache Spark-pool biedt opensource rekenmogelijkheden voor big data. Nadat u een Apache Spark-pool in uw Synapse-werkruimte hebt gemaakt, kunnen gegevens worden geladen, gemodelleerd, verwerkt en gedistribueerd voor een snellere analyse.
 
@@ -47,7 +47,7 @@ Meld u aan bij [Azure Portal](https://portal.azure.com/)
 
 1. Selecteer in de Synapse-werkruimte waar u de Apache Spark-pool wilt maken de opdracht **Nieuwe Apache Spark-pool** in de bovenste balk.
     ![Overzicht van de Synapse-werkruimte met een rood vak rond de opdracht om een nieuwe Apache Spark-pool te maken](media/quickstart-create-apache-spark-pool/create-spark-pool-portal-01.png)
-2. Voer de volgende gegevens in op het tabblad **Basisinformatie**:
+2. Voer de volgende gegevens in op het tabblad **Basisinformatie** :
 
     |Instelling | Voorgestelde waarde | Beschrijving |
     | :------ | :-------------- | :---------- |
@@ -62,7 +62,7 @@ Meld u aan bij [Azure Portal](https://portal.azure.com/)
     > Er gelden specifieke beperkingen voor de namen die Apache Spark-pools kunnen gebruiken. Namen mogen alleen letters of cijfers bevatten, moeten uit maximaal 15 tekens bestaan, moeten beginnen met een letter, mogen geen gereserveerde woorden bevatten en moeten uniek zijn in de werkruimte.
 
 3. Selecteer **Volgende: extra instellingen** en controleer de standaardinstellingen. Wijzig geen standaardinstellingen.
-    ![Stroom voor het maken van Apache Spark-pool - tabblad Aanvullende instellingen.](media/quickstart-create-apache-spark-pool/create-spark-pool-portal-03.png)
+    ![Schermopname van de pagina Apache Spark-pool maken, met het tabblad Aanvullende instellingen geselecteerd.](media/quickstart-create-apache-spark-pool/create-spark-pool-portal-03.png)
 
 4. **Volgende: tags** selecteren. Voeg geen tags toe.
     ![Stroom voor het maken van Apache Spark-pool - tabblad Aanvullende instellingen.](media/quickstart-create-apache-spark-pool/create-spark-pool-03-tags.png)
@@ -73,7 +73,7 @@ Meld u aan bij [Azure Portal](https://portal.azure.com/)
     ![Stroom voor het maken van Apache Spark-pool - tabblad Instellingen controleren.](media/quickstart-create-apache-spark-pool/create-spark-pool-portal-05.png)
 
 7. Op dit punt wordt de stroom voor de resource-inrichting gestart en het wordt aangegeven zodra deze klaar is.
-    ![Stroom voor het maken van Apache Spark-pool - resource-inrichting.](media/quickstart-create-apache-spark-pool/create-spark-pool-portal-06.png)
+    ![Schermopname van de pagina Overzicht, met het bericht 'Uw implementatie is voltooid'.](media/quickstart-create-apache-spark-pool/create-spark-pool-portal-06.png)
 
 8. Als u nadat het inrichten is voltooid weer naar de werkruimte gaat, wordt hier een nieuwe vermelding voor de zojuist gemaakte Apache Spark-pool weergegeven.
     ![Stroom voor het maken van Apache Spark-pool - resource-inrichting.](media/quickstart-create-apache-spark-pool/create-spark-pool-portal-07.png)
@@ -89,7 +89,7 @@ Volg de onderstaande stappen om de Apache Spark-pool uit de werkruimte te verwij
 Ga als volgt te werk om de Apache Spark-pool te verwijderen:
 
 1. Navigeer naar de blade Apache Spark-pools in de werkruimte.
-2. Selecteer de Apache Spark-pool die u wilt verwijderen (in dit geval **contosospark**).
+2. Selecteer de Apache Spark-pool die u wilt verwijderen (in dit geval **contosospark** ).
 3. Druk op **Verwijderen**.
  ![Lijst met Apache Spark-pools, waarbij de zojuist gemaakte groep is geselecteerd.](media/quickstart-create-apache-spark-pool/create-spark-pool-portal-08.png)
 4. Bevestig dat u de werkruimte wilt verwijderen en selecteer de knop **Verwijderen**.
@@ -99,4 +99,4 @@ Ga als volgt te werk om de Apache Spark-pool te verwijderen:
 ## <a name="next-steps"></a>Volgende stappen
 
 - Zie [Quickstart: Een Apache Spark-notebook maken](quickstart-apache-spark-notebook.md).
-- Zie [Quickstart: Een Synapse SQL-pool maken met behulp van de Azure-portal](quickstart-create-sql-pool-portal.md).
+- Zie [Quickstart: Een toegewezen Synapse SQL-pool maken met behulp van Azure Portal](quickstart-create-sql-pool-portal.md).

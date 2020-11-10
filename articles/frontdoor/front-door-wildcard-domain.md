@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/29/2020
 ms.author: duau
-ms.openlocfilehash: 5194e088ce2bd35208a92c5295457e6c34cd2cc1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 18504f1ed4200889b20c9608c9c0ad2c13c9aaa5
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570324"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94425759"
 ---
 # <a name="wildcard-domains"></a>Joker tekens domeinen
 
@@ -27,7 +27,7 @@ De belangrijkste scenario's die zijn verbeterd met ondersteuning voor joker teke
 - U hoeft niet langer de configuratie van de Azure-productie front-deur te wijzigen als een toepassing een nieuw subdomein toevoegt. Voorheen moest u het subdomein toevoegen, een certificaat binden, een Web Application Firewall-beleid (WAF) koppelen en het domein vervolgens toevoegen aan verschillende routerings regels.
 
 > [!NOTE]
-> Domein-joker tekens worden momenteel alleen ondersteund via API, Power shell en de Azure CLI. Ondersteuning voor het toevoegen en beheren van joker tekens in de Azure Portal is niet beschikbaar.
+> Op dit moment wordt het toevoegen van joker tekens via Azure DNS alleen ondersteund via API, Power shell en de Azure CLI. Ondersteuning voor het toevoegen en beheren van joker tekens in de Azure Portal is niet beschikbaar.
 
 ## <a name="adding-wildcard-domains"></a>Joker tekens toevoegen aan domeinen
 

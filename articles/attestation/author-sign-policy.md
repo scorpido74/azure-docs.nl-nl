@@ -1,20 +1,20 @@
 ---
-title: Een Azure Attestation-beleid ontwerpen en ondertekenen
-description: Uitleg van het ontwerpen en ondertekenen van een Attestation-beleid.
+title: Azure Attestation-beleid ontwerpen
+description: Uitleg van het ontwerpen van Attestation-beleid.
 services: attestation
 author: msmbaldwin
 ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: c8ffdcd0615913649e80b20f6873d005f4ad4410
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 3e36de62b79788e2efdc3e9abf711924c4fba0c4
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675983"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341804"
 ---
-# <a name="how-to-author-and-sign-an-attestation-policy"></a>Een Attestation-beleid ontwerpen en ondertekenen
+# <a name="how-to-author-an-attestation-policy"></a>Attestation-beleid ontwerpen
 
 Een Attestation-beleid is een naar Microsoft Azure Attestation geüpload bestand. Azure Attestation biedt de flexibiliteit voor het uploaden van een beleid in een beleidsindeling die specifiek is voor Attestation. U kunt ook een gecodeerde versie van het beleid in JSON Web Signature uploaden. De beleidsbeheerder is verantwoordelijk voor het schrijven van het Attestation-beleid. In de meeste scenario's fungeert de Relying Party als beleidsbeheerder. De client die de Attestation-aanroep doet, verzendt Attestation-bewijzen, die door de service worden geparseerd en omgezet in binnenkomende claims (sets van eigenschappen, waarde). De service verwerkt vervolgens de claims op basis van het gedefinieerde beleid en retourneert het berekende resultaat.
 
@@ -44,7 +44,7 @@ Een beleidsbestand heeft drie segmenten, zoals hierboven te zien is:
 
     Momenteel wordt alleen versie 1.0 ondersteund.
 
-- **authorizationrules** (autorisatieregels): Een verzameling claimregels die eerst worden gecontroleerd, om te bepalen of Azure Attestation door moet gaan naar **issuancerules** . De claimregels worden toegepast in de volgorde waarin ze zijn gedefinieerd.
+- **authorizationrules** (autorisatieregels): Een verzameling claimregels die eerst worden gecontroleerd, om te bepalen of Azure Attestation door moet gaan naar **issuancerules**. De claimregels worden toegepast in de volgorde waarin ze zijn gedefinieerd.
 
 - **issuancerules** (uitgifteregels): Een verzameling claimregels die wordt geëvalueerd om aanvullende informatie toe te voegen aan het Attestation-resultaat zoals gedefinieerd in het beleid. De claimregels worden toegepast in de volgorde waarin ze zijn gedefinieerd en zijn ook optioneel.
 
@@ -54,7 +54,7 @@ Zie [claim en claimregels](claim-rule-grammar.md) voor meer informatie.
 
 1. Maak een nieuw bestand.
 1. Voeg de versie toe aan het bestand.
-1. Voeg secties toe voor **authorizationrules** en **issuancerules** .
+1. Voeg secties toe voor **authorizationrules** en **issuancerules**.
 
   ```
   version=1.0;
@@ -86,7 +86,7 @@ Zie [claim en claimregels](claim-rule-grammar.md) voor meer informatie.
 
   Als de binnenkomende claimset een claim bevat die overeenkomt met het type, de waarde en de verlener, geeft de actie permit() aan dat de beleidsengine de **issuancerules** moet verwerken.
   
-5. Voeg claimregels toe aan **issuancerules** .
+5. Voeg claimregels toe aan **issuancerules**.
 
   ```
   version=1.0;
@@ -134,41 +134,6 @@ Nadat u een beleidsbestand hebt gemaakt, volgt u de onderstaande stappen om een 
 3. Upload de JWS en valideer het beleid.
      - Als het beleidsbestand geen syntaxisfouten bevat, wordt het geaccepteerd door de service.
      - Als het beleidsbestand wel syntaxisfouten bevat, wordt het afgewezen door de service.
-
-## <a name="signing-the-policy"></a>Het beleid ondertekenen
-
-Hieronder volgt een voorbeeld van een Python-script voor het uitvoeren van de bewerking voor het ondertekenen van het beleid
-
-```python
-from OpenSSL import crypto
-import jwt
-import getpass
-       
-def cert_to_b64(cert):
-              cert_pem = crypto.dump_certificate(crypto.FILETYPE_PEM, cert)
-              cert_pem_str = cert_pem.decode('utf-8')
-              return ''.join(cert_pem_str.split('\n')[1:-2])
-       
-print("Provide the path to the PKCS12 file:")
-pkcs12_path = str(input())
-pkcs12_password = getpass.getpass("\nProvide the password for the PKCS12 file:\n")
-pkcs12_bin = open(pkcs12_path, "rb").read()
-pkcs12 = crypto.load_pkcs12(pkcs12_bin, pkcs12_password.encode('utf8'))
-ca_chain = pkcs12.get_ca_certificates()
-ca_chain_b64 = []
-for chain_cert in ca_chain:
-   ca_chain_b64.append(cert_to_b64(chain_cert))
-   signing_cert_pkey = crypto.dump_privatekey(crypto.FILETYPE_PEM, pkcs12.get_privatekey())
-signing_cert_b64 = cert_to_b64(pkcs12.get_certificate())
-ca_chain_b64.insert(0, signing_cert_b64)
-
-print("Provide the path to the policy text file:")
-policy_path = str(input())
-policy_text = open(policy_path, "r").read()
-encoded = jwt.encode({'text': policy_text }, signing_cert_pkey, algorithm='RS256', headers={'x5c' : ca_chain_b64})
-print("\nAttestation Policy JWS:")
-print(encoded.decode('utf-8'))
-```
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Azure Attestation instellen met behulp van PowerShell](quickstart-powershell.md)

@@ -9,22 +9,22 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 394521156d6192d25c3a4d254ac2c9b94c6231f5
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 1a78142ded7be46bdc06c49d6e0a26ef8b266300
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093545"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93318398"
 ---
 # <a name="synapse-sql-resource-consumption"></a>Synapse SQL-resourceverbruik
 
 In dit artikel worden resourceverbruiksmodellen van Synapse SQL (preview) beschreven.
 
-## <a name="sql-on-demand"></a>SQL on-demand
+## <a name="serverless-sql-pool"></a>Serverloze SQL-pool
 
-SQL on-demand is een betalen per query-service waarvoor u niet de juiste grootte hoeft te kiezen. Het systeem wordt automatisch aangepast op basis van uw vereisten, zodat u uw infrastructuur niet hoeft te beheren en de juiste grootte voor uw oplossing kunt kiezen.
+Serverloze SQL-pools werken met betalen per query. U hoeft daarom niet de juiste grootte te kiezen. Het systeem wordt automatisch aangepast op basis van uw vereisten, zodat u uw infrastructuur niet hoeft te beheren en de juiste grootte voor uw oplossing kunt kiezen.
 
-## <a name="sql-pool---data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>SQL-pool: Data Warehouse Units (DWU's) en compute Data Warehouse Units (cDWU's)
+## <a name="dedicated-sql-pool---data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>Toegewezen SQL-pool: DWU's (Data Warehouse Unit) en cDWU's (compute Data Warehouse Unit)
 
 Aanbevelingen voor het kiezen van het ideale aantal Data Warehouse Units (DWU's) om de prijs en prestaties te optimaliseren en hoe u het aantal units kunt wijzigen.
 
@@ -50,12 +50,12 @@ DWU's verhogen:
 
 De Service Level Objective (SLO) is de schaalbaarheidsinstelling waarmee de kosten en het prestatieniveau van uw datawarehouse worden bepaald. De serviceniveaus voor Gen2 worden gemeten in compute Data Warehouse Units (cDWU), bijvoorbeeld DW2000c. Gen1-serviceniveaus worden gemeten in DWU's, bijvoorbeeld DW2000.
 
-De Service Level Objective (SLO) is de schaalbaarheidsinstelling waarmee de kosten en het prestatieniveau van uw datawarehouse worden bepaald. De serviceniveaus voor SQL-pool Gen2 worden gemeten in Data Warehouse Units (DWU), bijvoorbeeld DW2000c.
+De Service Level Objective (SLO) is de schaalbaarheidsinstelling waarmee de kosten en het prestatieniveau van uw datawarehouse worden bepaald. De serviceniveaus voor toegewezen SQL-pool Gen2 worden gemeten in DWU (Data Warehouse Unit), bijvoorbeeld DW2000c.
 
 > [!NOTE]
 > In Azure Synapse Analytics Gen2 zijn onlangs extra schaalmogelijkheden toegevoegd ter ondersteuning van rekenlagen van 100 cDWU. Bestaande datawarehouses met Gen1 waarvoor de lagere rekenlagen zijn vereist, kunnen nu kosteloos worden bijgewerkt naar Gen2 in de regio's die momenteel beschikbaar zijn.  Als uw regio nog niet wordt ondersteund, kunt u nog steeds een upgrade uitvoeren naar een ondersteunde regio. Zie [Upgrade naar Gen2](../sql-data-warehouse/upgrade-to-latest-generation.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) voor meer informatie.
 
-In T-SQL bepaalt de instelling SERVICE_OBJECTIVE het serviceniveau en de prestatielaag voor uw SQL-pool.
+In T-SQL bepaalt de instelling SERVICE_OBJECTIVE het serviceniveau en de prestatielaag voor uw toegewezen SQL-pool.
 
 ```sql
 CREATE DATABASE mySQLDW
@@ -204,7 +204,7 @@ AND       major_resource_id = 'MySQLDW'
 ;
 ```
 
-Deze DMV retourneert informatie over verschillende beheerbewerkingen in uw SQL-groep, zoals de bewerking en de status van de bewerking, die IN_PROGRESS of COMPLETED is.
+Deze DMV retourneert informatie over verschillende beheerbewerkingen in de toegewezen SQL-pool, zoals de bewerking en de status van de bewerking, die IN_PROGRESS of COMPLETED is.
 
 ### <a name="the-scaling-workflow"></a>De werkstroom voor schalen
 

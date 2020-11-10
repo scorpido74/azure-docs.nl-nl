@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Azure Cache voor Redis met Java gebruiken'
+title: 'Quickstart: Azure Cache voor Redis in Java gebruiken'
 description: In deze snelstart maakt u een nieuwe Java-app die gebruikmaakt van Azure Cache voor Redis
 author: yegu-ms
 ms.service: cache
@@ -8,14 +8,14 @@ ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: yegu
 ms.custom: mvc, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 16a912b2530d567a11a81fc10e9e09eee572e7e6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: edb80ab3107cbd0a5ddd802d56a60ce77affb2f2
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87528822"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93088111"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-java"></a>Quickstart: Azure Cache voor Redis met Java gebruiken
+# <a name="quickstart-use-azure-cache-for-redis-in-java"></a>Quickstart: Azure Cache voor Redis in Java gebruiken
 
 In deze quickstart neemt u Azure Cache voor Redis op in een Java-app met de [Jedis](https://github.com/xetorthio/jedis) Redis-client voor toegang tot een veilige, toegewezen cache dat toegankelijk is vanuit elke toepassing binnen Azure.
 
@@ -46,8 +46,8 @@ export REDISCACHEKEY=<YOUR_PRIMARY_ACCESS_KEY>
 
 Vervang de plaatsaanduidingen door de volgende waarden:
 
-- `<YOUR_HOST_NAME>`: De DNS-hostnaam, op te halen uit de sectie *Eigenschappen* van de resource voor Azure Cache voor Redis in de Azure-portal.
-- `<YOUR_PRIMARY_ACCESS_KEY>`: De primaire toegangssleutel, op te halen uit de sectie *Toegangssleutels* van de resource voor Azure Cache voor Redis in de Azure-portal.
+- `<YOUR_HOST_NAME>`: De DNS-hostnaam, op te halen uit de sectie *Eigenschappen* van de resource voor Azure Cache voor Redis in Azure Portal.
+- `<YOUR_PRIMARY_ACCESS_KEY>`: De primaire toegangssleutel, op te halen uit de sectie *Toegangssleutels* van de resource voor Azure Cache voor Redis in Azure Portal.
 
 ## <a name="create-a-new-java-app"></a>Een nieuwe Java-app maken
 

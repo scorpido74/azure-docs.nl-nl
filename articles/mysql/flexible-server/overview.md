@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: 200f74ee8d99c80956f1d27599769401d30c3f95
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 4cb706bfa1c10e941e6d2d44358c784549973302
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92537946"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927971"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL Flexible Server (preview-versie)
 
@@ -50,7 +50,7 @@ Als zone-redundante hoge beschikbaarheid is geconfigureerd, wordt in de service 
 
 Zie [concepten met betrekking tot hoge beschikbaarheid](concepts-high-availability.md) voor meer informatie.
 
-:::image type="content" source="media/overview/3-flexible-server-overview-zone-redundant-ha.png" alt-text="Conceptueel diagram voor hoge beschikbaarheid met één zone"::: 
+:::image type="content" source="media/overview/3-flexible-server-overview-zone-redundant-ha.png" alt-text="Conceptueel diagram voor zone-redundante hoge beschikbaarheid"::: 
 
 ## <a name="automated-patching-with-managed-maintenance-window"></a>Automatische toepassing van patches met beheerd onderhoudsvenster
 
@@ -84,6 +84,17 @@ Zie [Netwerkconcepten](concepts-networking.md) voor meer informatie.
 De service voor flexibele servers is beschikbaar in drie SKU-lagen: Burstable, Algemeen gebruik en Geoptimaliseerd voor geheugen. De Burstable-laag is het meest geschikt voor goedkope ontwikkeling en workloads met weinig gelijktijdigheid waarbij de volledige rekencapaciteit niet continu nodig is. Algemeen gebruik en Geoptimaliseerd voor geheugen zijn beter geschikt voor productieworkloads waarvoor hoge gelijktijdigheid, schaalbaarheid en voorspelbare prestaties nodig zijn. U kunt uw eerste app op een kleine database bouwen voor een paar euro per maand en vervolgens de schaal ervan naadloos aanpassen om aan de vereisten van uw oplossing te voldoen. De opslagschaal is online en ondersteunt automatische groei van opslag. Doordat de schaalbaarheid dynamisch is, kan uw database op een transparante manier reageren op snel veranderende resourcevereisten. U betaalt alleen voor de resources die u gebruikt. 
 
 Zie [Reken- en opslagconcepten](concepts-compute-storage.md) voor meer informatie.
+
+## <a name="scale-out-your-read-workload-with-up-to-10-read-replicas"></a>Uw leesworkload uitschalen met maximaal 10 leesreplica's
+
+MySQL is een van de populaire database-engines voor het uitvoeren van webtoepassingen en mobiele toepassingen op het internet. Veel van onze klanten gebruiken MySQL voor hun online onderwijsservices, videostreamingservices, oplossingen voor digitale betalingen, e-commerceplatforms, gamingservices, nieuwsportalen en websites voor de overheid of gezondheidszorg. Deze services moeten kunnen presteren en schalen als het verkeer op de web- of mobiele toepassing toeneemt.
+
+De toepassing wordt normaal gesproken ontwikkeld in Java of PHP en gemigreerd om te worden uitgevoerd op  [virtuele machine schaalsets van Azure](/azure/virtual-machine-scale-sets/overview.md)  o f [Azure App Service](/azure/app-service/overview.md) , of worden in containers geplaatst om te worden uitgevoerd op  [Azure Kubernetes Service (AKS)](/azure/aks/intro-kubernetes.md). Met de virtuele machineschaalset, App Service of AKS als onderliggende infrastructuur, wordt het schalen van toepassingen vereenvoudigd doordat nieuwe VM's direct wordt ingericht en de staatloze onderdelen van toepassingen worden gerepliceerd om aan de aanvragen te kunnen voldoen. De database wordt echter vaak een knelpunten omdat het een gecentraliseerd staatloos onderdeel is.
+
+Met de functie leesreplica kunt u gegevens van een flexibele Azure Database for MySQL-server repliceren naar een server voor alleen-lezen. U kunt **maximaal 10 replica's** van de bronserver repliceren. Replica's worden asynchroon bijgewerkt met behulp van de systeemeigen, op de positie van het [binlog-bestand (binair logboekbestand) gebaseerde replicatietechnologie](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html) van het MySQL-systeem. U kunt een proxy-oplossing met een load balancer zoals [ProxySQL](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042) gebruiken om de werkbelasting van uw toepassing naadloos uit te schalen naar leesreplica's zonder dat er kosten in rekening worden gebracht. 
+
+Zie [Concepten van leesreplica's](concepts-read-replicas.md) voor meer informatie. 
+
 
 ## <a name="stopstart-server-to-optimize-cost"></a>De server stoppen/starten om de kosten te optimaliseren
 

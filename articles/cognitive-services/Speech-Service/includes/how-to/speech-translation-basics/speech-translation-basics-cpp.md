@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/13/2020
 ms.author: trbye
-ms.openlocfilehash: eab4af541c2190599e953196ba16e9300bee2ede
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: d5489c5c548d1242ebac9f17faa8ed55fa79108b
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92470826"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94424712"
 ---
 Een van de belangrijkste functies van de speech-service is de mogelijkheid om menselijke spraak te herkennen en te vertalen naar andere talen. In deze Snelstartgids leert u hoe u de Speech SDK in uw apps en producten kunt gebruiken om spraak vertalingen van hoge kwaliteit uit te voeren. In deze Quick Start vindt u onderwerpen, waaronder:
 
@@ -70,7 +70,7 @@ Er zijn een paar manieren waarop u een [`SpeechTranslationConfig`][config] kunt 
 * Met een host: geef een hostadres door. Een sleutel of autorisatietoken is optioneel.
 * Met een autorisatietoken: geef een autorisatietoken en de bijbehorende regio door.
 
-Laten we eens kijken hoe een [`SpeechTranslationConfig`][config] wordt gemaakt met behulp van een sleutel en regio. U kunt deze referenties ophalen door de volgende stappen in [de speech-service gratis](../../../overview.md#try-the-speech-service-for-free)uit te voeren.
+Laten we eens kijken hoe een [`SpeechTranslationConfig`][config] wordt gemaakt met behulp van een sleutel en regio. U kunt deze referenties ophalen door de stappen te volgen in [De Speech-service gratis uitproberen](../../../overview.md#try-the-speech-service-for-free).
 
 ```cpp
 auto SPEECH__SUBSCRIPTION__KEY = getenv("SPEECH__SUBSCRIPTION__KEY");
@@ -221,7 +221,7 @@ void translateSpeech() {
 }
 ```
 
-Zie [basis beginselen van spraak herkenning](../../../speech-to-text-basics.md)voor meer informatie over spraak naar tekst.
+Zie [basis beginselen van spraak herkenning](../../../get-started-speech-to-text.md)voor meer informatie over spraak naar tekst.
 
 ## <a name="synthesize-translations"></a>Vertalingen voor synthesizer
 
@@ -329,13 +329,13 @@ void translateSpeech() {
 }
 ```
 
-Zie [basis beginselen van spraak synthese](../../../text-to-speech-basics.md)voor meer informatie over spraak synthese.
+Zie [basis beginselen van spraak synthese](../../../get-started-text-to-speech.md)voor meer informatie over spraak synthese.
 
-[config]: https://docs.microsoft.com/cpp/cognitive-services/speech/translation-speechtranslationconfig
-[audioconfig]: https://docs.microsoft.com/cpp/cognitive-services/speech/audio-audioconfig
-[recognizer]: https://docs.microsoft.com/cpp/cognitive-services/speech/translation-translationrecognizer
-[recognitionlang]: https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#setspeechrecognitionlanguage
-[addlang]: https://docs.microsoft.com/cpp/cognitive-services/speech/translation-speechtranslationconfig#addtargetlanguage
-[translations]: https://docs.microsoft.com/cpp/cognitive-services/speech/translation-translationrecognitionresult#translations
-[voicename]: https://docs.microsoft.com/cpp/cognitive-services/speech/translation-speechtranslationconfig#setvoicename
-[speechsynthesisvoicename]: https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#setspeechsynthesisvoicename
+[config]: /cpp/cognitive-services/speech/translation-speechtranslationconfig
+[audioconfig]: /cpp/cognitive-services/speech/audio-audioconfig
+[recognizer]: /cpp/cognitive-services/speech/translation-translationrecognizer
+[recognitionlang]: /cpp/cognitive-services/speech/speechconfig#setspeechrecognitionlanguage
+[addlang]: /cpp/cognitive-services/speech/translation-speechtranslationconfig#addtargetlanguage
+[translations]: /cpp/cognitive-services/speech/translation-translationrecognitionresult#translations
+[voicename]: /cpp/cognitive-services/speech/translation-speechtranslationconfig#setvoicename
+[speechsynthesisvoicename]: /cpp/cognitive-services/speech/speechconfig#setspeechsynthesisvoicename

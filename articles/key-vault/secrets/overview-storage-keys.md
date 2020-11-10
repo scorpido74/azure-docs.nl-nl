@@ -10,12 +10,12 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/18/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 58b4a8c445548c711c2ad76c2d983acaec11ca7f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: e8ae0463633940ba3192815af6a07a6356901044
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92786272"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94426983"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>Sleutels voor opslagaccounts beheren met Key Vault en de Azure CLI
 
@@ -137,29 +137,13 @@ az keyvault storage sas-definition create --vault-name <YourKeyVaultName> --acco
 
 ### <a name="verify-the-shared-access-signature-definition"></a>De SAS-definitie verifiëren
 
-Controleer of de SAS-definitie is opgeslagen in uw sleutelkluis met behulp van de Azure CLI-opdrachten [az keyvault secret list](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-list) en [az keyvault secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show).
+U kunt controleren of de SAS-definitie is bewaard in uw sleutelkluis met de Azure CLI-opdracht [az keyvault storage sas-definition show](/cli/azure/keyvault/storage/sas-definition?#az_keyvault_storage_sas_definition_show).
 
-Zoek eerst de SAS-definitie op in uw sleutelkluis met behulp van de opdracht [az keyvault secret list](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-list).
-
-```azurecli-interactive
-az keyvault secret list --vault-name <YourKeyVaultName>
-```
-
-Het geheim dat overeenkomt met uw SAS-definitie heeft de volgende eigenschappen:
-
-```console
-    "contentType": "application/vnd.ms-sastoken-storage",
-    "id": "https://<YourKeyVaultName>.vault.azure.net/secrets/<YourStorageAccountName>-<YourSASDefinitionName>",
-```
-
-U kunt nu de opdracht [az keyvault secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) en de eigenschap `id` gebruiken om de inhoud van dat geheim weer te geven.
+U kunt nu de opdracht [az keyvault storage sas-definition show](/cli/azure/keyvault/storage/sas-definition?#az_keyvault_storage_sas_definition_show) en de eigenschap `id` gebruiken om de inhoud van dat geheim weer te geven.
 
 ```azurecli-interactive
-az keyvault secret show --vault-name <YourKeyVaultName> --id <SasDefinitionID>
+az keyvault storage sas-definition show --id https://<YourKeyVaultName>.vault.azure.net/storage/<YourStorageAccountName>/sas/<YourSASDefinitionName>
 ```
-
-De uitvoer van deze opdracht geeft de tekenreeks van de SAS-definitie weer als `value`.
-
 
 ## <a name="next-steps"></a>Volgende stappen
 

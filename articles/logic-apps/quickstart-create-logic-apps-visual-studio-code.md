@@ -6,13 +6,13 @@ ms.suite: integration
 ms.reviewer: jonfan, deli, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 09/25/2020
-ms.openlocfilehash: fa103c39b540c41536e4f231692b4602afe01a3e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/28/2020
+ms.openlocfilehash: 0b777fdef344ce1a60ed00ee46eeaa8cee23b8c0
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91361208"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099185"
 ---
 # <a name="quickstart-create-and-manage-logic-app-workflow-definitions-by-using-visual-studio-code"></a>Quickstart: Werkstroomdefinities voor logische apps maken en beheren met Visual Studio Code
 
@@ -20,7 +20,7 @@ Met [Azure Logic Apps](../logic-apps/logic-apps-overview.md) en Visual Studio Co
 
 Hoewel u dezelfde taken in [Azure Portal](https://portal.azure.com) en in Visual Studio kunt uitvoeren, kunt u sneller aan de slag in Visual Studio Code wanneer u al bekend met logische-app-definities en rechtstreeks in code wilt werken. U kunt bijvoorbeeld reeds gemaakte logische apps uitschakelen, inschakelen, verwijderen en vernieuwen. Ook kunt u werken met logische apps en integratieaccounts vanaf elk ontwikkelingsplatform waarop Visual Studio Code wordt uitgevoerd, zoals Linux, Windows en Mac.
 
-Voor dit artikel kunt u dezelfde logische app maken vanuit deze [quickstart](../logic-apps/quickstart-create-first-logic-app-workflow.md), waarin meer aandacht is voor basisconcepten. In Visual Studio Code ziet de logische app er als volgt uit:
+Voor dit artikel kunt u dezelfde logische app maken vanuit deze [quickstart](../logic-apps/quickstart-create-first-logic-app-workflow.md), waarin meer aandacht is voor basisconcepten. U kunt ook [leren hoe u de voorbeeld-app maakt in Visual Studio](quickstart-create-logic-apps-with-visual-studio.md), en [leren hoe u apps maakt en beheert via Azure CLI (opdrachtregelinterface)](quickstart-logic-apps-azure-cli.md). In Visual Studio Code ziet de logische app er als volgt uit:
 
 ![Voorbeeld van de werkstroomdefinitie voor logische apps](./media/quickstart-create-logic-apps-visual-studio-code/visual-studio-code-overview.png)
 
@@ -58,7 +58,7 @@ Zorg ervoor dat u deze items hebt voordat u begint:
 
    ![Het Azure-pictogram selecteren op de werkbalk van Visual Studio Code](./media/quickstart-create-logic-apps-visual-studio-code/open-extensions-visual-studio-code.png)
 
-1. Selecteer in het Azure-venster onder **Logic Apps** de optie **Aanmelden bij Azure** . Wanneer hierom wordt gevraagd op de Microsoft-aanmeldpagina, meldt u zich aan met uw Azure-account.
+1. Selecteer in het Azure-venster onder **Logic Apps** de optie **Aanmelden bij Azure**. Wanneer hierom wordt gevraagd op de Microsoft-aanmeldpagina, meldt u zich aan met uw Azure-account.
 
    ![Selecteer Aanmelden bij Azure](./media/quickstart-create-logic-apps-visual-studio-code/sign-in-azure-visual-studio-code.png)
 
@@ -70,11 +70,11 @@ Zorg ervoor dat u deze items hebt voordat u begint:
 
       ![De code kopiëren voor aanmelden bij Azure](./media/quickstart-create-logic-apps-visual-studio-code/sign-in-prompt-authentication.png)
 
-   1. Als u een nieuw browservenster wilt openen en door wilt gaan naar de verificatiewebsite, selecteert u **Koppeling openen** .
+   1. Als u een nieuw browservenster wilt openen en door wilt gaan naar de verificatiewebsite, selecteert u **Koppeling openen**.
 
       ![Bevestigen dat u een browser hebt geopend en doorgaan naar de verificatiewebsite](./media/quickstart-create-logic-apps-visual-studio-code/confirm-open-link.png)
 
-   1. Voer op de pagina **Aanmelden bij uw account** uw verificatiecode in en selecteer **Volgende** .
+   1. Voer op de pagina **Aanmelden bij uw account** uw verificatiecode in en selecteer **Volgende**.
 
       ![Verificatiecode invoeren voor aanmelden bij Azure](./media/quickstart-create-logic-apps-visual-studio-code/authentication-code-azure-sign-in.png)
 
@@ -101,7 +101,7 @@ Zorg ervoor dat u deze items hebt voordat u begint:
 
 1. Als u zich nog niet bij uw Azure-account en -abonnement hebt aangemeld vanuit Visual Studio Code, volgt u de [vorige stappen om zich nu aan te melden](#access-azure).
 
-1. Open onder **Logic Apps** in Visual Studio Code het contextmenu van uw abonnement en selecteer **Logische app maken** .
+1. Open onder **Logic Apps** in Visual Studio Code het contextmenu van uw abonnement en selecteer **Logische app maken**.
 
    ![De optie Logische app maken selecteren in het abonnementsmenu](./media/quickstart-create-logic-apps-visual-studio-code/create-logic-app-visual-studio-code.png)
 
@@ -194,7 +194,7 @@ Zorg ervoor dat u deze items hebt voordat u begint:
 
 1. Wanneer u klaar bent, slaat u de werkstroomdefinitie van uw logische app op. (via het menu Bestand > Opslaan, of druk op Ctrl+S)
 
-1. Wanneer u wordt gevraagd om uw logische app naar uw Azure-abonnement te uploaden, selecteert u **Uploaden** .
+1. Wanneer u wordt gevraagd om uw logische app naar uw Azure-abonnement te uploaden, selecteert u **Uploaden**.
 
    Met deze stap publiceert u uw logische app naar [Azure Portal](https://portal.azure.com) waardoor uw logische app wordt geactiveerd in Azure.
 
@@ -204,7 +204,7 @@ Zorg ervoor dat u deze items hebt voordat u begint:
 
 In Visual Studio Code kunt u uw logische app in de alleen-lezen ontwerpweergave openen. Hoewel u uw logische app niet in de ontwerper kunt bewerken, kunt u de werkstroom van uw logische app wel visueel inspecteren met behulp van de ontwerperweergave.
 
-Openen in het Azure-venster, onder **Logic Apps** , het contextmenu van uw logische app en selecteer **Openen in Designer** .
+Openen in het Azure-venster, onder **Logic Apps** , het contextmenu van uw logische app en selecteer **Openen in Designer**.
 
 De alleen-lezen ontwerper wordt in een apart venster geopend en toont u de werkstroom van uw logische app, bijvoorbeeld:
 
@@ -230,11 +230,11 @@ Als u in Visual Studio Code een gepubliceerde logische app verwerkt en de wijzig
 
 1. Vouw in het Azure-venster, onder **Logic Apps** , uw Azure-abonnement uit zodat u alle logische apps in dat abonnement kunt zien.
 
-   1. Als u de gewenste logische app wilt uitschakelen, opent u het menu van de logische app en selecteert u **Uitschakelen** .
+   1. Als u de gewenste logische app wilt uitschakelen, opent u het menu van de logische app en selecteert u **Uitschakelen**.
 
       ![Uw logische app uitschakelen](./media/quickstart-create-logic-apps-visual-studio-code/disable-published-logic-app.png)
 
-   1. Wanneer u klaar bent om uw logische app opnieuw te activeren, opent u het menu van de logische app en selecteert u **Inschakelen** .
+   1. Wanneer u klaar bent om uw logische app opnieuw te activeren, opent u het menu van de logische app en selecteert u **Inschakelen**.
 
       ![Uw logische app inschakelen](./media/quickstart-create-logic-apps-visual-studio-code/enable-published-logic-app.png)
 
@@ -251,7 +251,7 @@ In Visual Studio Code kunt u de werkstroomdefinitie voor een al geïmplementeerd
 
 1. Vouw in het Azure-venster, onder **Logic Apps** , uw Azure-abonnement uit en selecteer de gewenste logische app.
 
-1. Open het menu van uw logische app en selecteer **Openen in Editor** . Of selecteer het bewerkingspictogram naast de naam van uw logische app.
+1. Open het menu van uw logische app en selecteer **Openen in Editor**. Of selecteer het bewerkingspictogram naast de naam van uw logische app.
 
    ![De editor openen voor een bestaande logische app](./media/quickstart-create-logic-apps-visual-studio-code/open-editor-existing-logic-app.png)
 
@@ -263,7 +263,7 @@ In Visual Studio Code kunt u de werkstroomdefinitie voor een al geïmplementeerd
 
 1. Sla de wijzigingen op als u klaar bent. (via het menu Bestand > Opslaan, of druk op Ctrl+S)
 
-1. Wanneer u wordt gevraagd om uw wijzigingen te uploaden en uw bestaande logische app in Azure Portal te *overschrijven* , selecteert u **Uploaden** .
+1. Wanneer u wordt gevraagd om uw wijzigingen te uploaden en uw bestaande logische app in Azure Portal te *overschrijven* , selecteert u **Uploaden**.
 
    Met deze stap publiceert u uw updates naar uw logische app in [Azure Portal](https://portal.azure.com).
 
@@ -286,15 +286,15 @@ In Visual Studio Code kunt u de eerdere versies voor uw logische app openen en c
 
 1. Als u een eerdere versie wilt weergeven selecteert u een van deze stappen:
 
-   * Als u de JSON-definitie wilt weergeven, selecteert u onder **Versies** het versienummer voor die definitie. Of open het contextmenu van die versie en selecteer **Openen in Editor** .
+   * Als u de JSON-definitie wilt weergeven, selecteert u onder **Versies** het versienummer voor die definitie. Of open het contextmenu van die versie en selecteer **Openen in Editor**.
 
      Op uw lokale computer wordt een nieuw bestand geopend en u ziet de JSON-definitie van die versie.
 
-   * Als u de versie in de alleen-lezen ontwerperweergave wilt weergeven, opent u het contextmenu van die versie en selecteert u **Openen in Designer** .
+   * Als u de versie in de alleen-lezen ontwerperweergave wilt weergeven, opent u het contextmenu van die versie en selecteert u **Openen in Designer**.
 
 1. Als u een eerdere versie naar de huidige versie wilt promoveren, volgt u deze stappen:
 
-   1. Onder **Versies** opent u het contextmenu van de eerdere versie en selecteert u **Promoveren** .
+   1. Onder **Versies** opent u het contextmenu van de eerdere versie en selecteert u **Promoveren**.
 
       ![Een eerdere versie promoveren](./media/quickstart-create-logic-apps-visual-studio-code/promote-earlier-version.png)
 

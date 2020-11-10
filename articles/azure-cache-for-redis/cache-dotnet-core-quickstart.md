@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Azure Cache voor Redis gebruiken met .NET Core-apps'
+title: 'Quickstart: Azure Cache voor Redis in .NET Core gebruiken'
 description: In deze snelstart leest u hoe u toegang hebt tot Azure Cache voor Redis in uw .NET Core-apps
 author: yegu-ms
 ms.author: yegu
@@ -8,14 +8,14 @@ ms.devlang: dotnet
 ms.custom: devx-track-csharp, mvc
 ms.topic: quickstart
 ms.date: 06/18/2020
-ms.openlocfilehash: 12466f64daa699925e4e184536b2d50c5fb89847
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 945d4a3d2bba84bf8f5973fd8dec092c66794c11
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547721"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93077078"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-a-net-core-app"></a>Quickstart: Azure Cache voor Redis gebruiken met een .NET Core-app
+# <a name="quickstart-use-azure-cache-for-redis-in-net-core"></a>Quickstart: Azure Cache voor Redis in .NET Core gebruiken
 
 In deze quickstart neemt u Azure Cache voor Redis op in een .NET Core-app voor toegang tot een veilige, toegewezen cache die toegankelijk is vanuit elke toepassing binnen Azure. U gebruikt met name de client [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) met C#-code in een .NET Core-console-app.
 
@@ -41,7 +41,7 @@ Open een nieuw opdrachtvenster en voer de volgende opdracht uit om een nieuwe .N
 dotnet new console -o Redistest
 ```
 
-Ga in het opdrachtvenster naar de nieuwe projectmap *Redistest* .
+Ga in het opdrachtvenster naar de nieuwe projectmap *Redistest*.
 
 
 
@@ -49,7 +49,7 @@ Ga in het opdrachtvenster naar de nieuwe projectmap *Redistest* .
 
 In dit gedeelte voegt u het [hulpprogramma Secret Manager](/aspnet/core/security/app-secrets) toe aan uw project. Dit hulpprogramma slaat gevoelige gegevens voor ontwikkeltaken op buiten de projectstructuur. Deze aanpak voorkomt dat er per ongeluk appgeheimen worden gedeeld in de broncode.
 
-Open het bestand *Redistest.csproj* . Voeg een element `DotNetCliToolReference` toe voor *Microsoft.Extensions.SecretManager.Tools* . Voeg ook een element `UserSecretsId` toe zoals hieronder wordt weergegeven en sla het bestand daarna op.
+Open het bestand *Redistest.csproj*. Voeg een element `DotNetCliToolReference` toe voor *Microsoft.Extensions.SecretManager.Tools*. Voeg ook een element `UserSecretsId` toe zoals hieronder wordt weergegeven en sla het bestand daarna op.
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -88,7 +88,7 @@ Voeg de volgende `using`-instructie toe aan *Program.cs* :
 using Microsoft.Extensions.Configuration;
 ```
 
-Voeg de volgende leden toe aan de `Program`-klasse in *Program.cs* . Met deze code initialiseert u een configuratie voor toegang tot het geheim van de gebruiker voor de verbindingsreeks van Azure Cache voor Redis.
+Voeg de volgende leden toe aan de `Program`-klasse in *Program.cs*. Met deze code initialiseert u een configuratie voor toegang tot het geheim van de gebruiker voor de verbindingsreeks van Azure Cache voor Redis.
 
 ```csharp
 private static IConfigurationRoot Configuration { get; set; }
@@ -293,13 +293,13 @@ Als u niet verder wilt met de voorbeeldtoepassing uit de snelstart, kunt u de Az
 > Het verwijderen van een resourcegroep kan niet ongedaan worden gemaakt. De resourcegroep en alle bijbehorende resources worden permanent verwijderd. Zorg ervoor dat u niet per ongeluk de verkeerde resourcegroep of resources verwijdert. Als u de resources voor het hosten van dit voorbeeld in een bestaande resourcegroep hebt gemaakt en deze groep ook resources bevat die u wilt behouden, kunt u elke resource afzonderlijk verwijderen via hun respectievelijke blade.
 >
 
-Meld u aan bij [Azure Portal](https://portal.azure.com) en klik op **Resourcegroepen** .
+Meld u aan bij [Azure Portal](https://portal.azure.com) en klik op **Resourcegroepen**.
 
-Typ de naam van de resourcegroep in het tekstvak **Filteren op naam...** . In de instructies voor dit artikel is een resourcegroep met de naam *TestResources* gebruikt. Klik in de resourcegroep in de lijst met resultaten op **...** en vervolgens op **Resourcegroep verwijderen** .
+Typ de naam van de resourcegroep in het tekstvak **Filteren op naam...** . In de instructies voor dit artikel is een resourcegroep met de naam *TestResources* gebruikt. Klik in de resourcegroep in de lijst met resultaten op **...** en vervolgens op **Resourcegroep verwijderen**.
 
 ![Verwijderen](./media/cache-dotnet-core-quickstart/cache-delete-resource-group.png)
 
-U wordt gevraagd om het verwijderen van de resourcegroep te bevestigen. Typ de naam van de resourcegroep om te bevestigen en klik op **Verwijderen** .
+U wordt gevraagd om het verwijderen van de resourcegroep te bevestigen. Typ de naam van de resourcegroep om te bevestigen en klik op **Verwijderen**.
 
 Na enkele ogenblikken worden de resourcegroep en alle resources in de groep verwijderd.
 

@@ -1,6 +1,6 @@
 ---
-title: Java en JDBC gebruiken met Azure Database for PostgreSQL
-description: Ontdek hoe u Java en JDBC gebruikt met Azure Database for PostgreSQL.
+title: 'Quickstart: Java en JDBC gebruiken met Azure Database for PostgreSQL'
+description: In deze quickstart leert u hoe u Java en JDBC gebruikt met Azure Database for PostgreSQL.
 author: jdubois
 ms.author: judubois
 ms.service: postgresql
@@ -8,14 +8,14 @@ ms.custom: mvc, devcenter, devx-track-azurecli
 ms.topic: quickstart
 ms.devlang: java
 ms.date: 08/17/2020
-ms.openlocfilehash: 402e69606196ecb1030023c49fa5afefd31b9e94
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 42547338c0f5f2f3105833b12e499d40b6209b05
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92734983"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341413"
 ---
-# <a name="use-java-and-jdbc-with-azure-database-for-postgresql"></a>Java en JDBC gebruiken met Azure Database for PostgreSQL
+# <a name="quickstart-use-java-and-jdbc-with-azure-database-for-postgresql"></a>Quickstart: Java en JDBC gebruiken met Azure Database for PostgreSQL
 
 In dit onderwerp wordt uitgelegd hoe u een voorbeeldtoepassing maakt die gebruikmaakt van Java en [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) om gegevens op te slaan en op te halen in [Azure Database for PostgreSQL](./index.yml).
 
@@ -233,7 +233,7 @@ Deze Java-code maakt gebruik van de bestanden *application.properties* en *schem
 In dit bestand kunt u zien dat we commentaar hebben gemaakt van methoden voor het invoegen, lezen, bijwerken en verwijderen van gegevens. We gaan deze methoden coderen in de rest van dit artikel en u kunt dan de commentaartekens /* en */ per methode verwijderen.
 
 > [!NOTE]
-> De databasereferenties worden opgeslagen in de eigenschappen *users* en *password* van het bestand *application.properties* . Deze referenties worden gebruikt bij het uitvoeren van `DriverManager.getConnection(properties.getProperty("url"), properties);`, omdat het eigenschappenbestand als argument wordt doorgegeven.
+> De databasereferenties worden opgeslagen in de eigenschappen *users* en *password* van het bestand *application.properties*. Deze referenties worden gebruikt bij het uitvoeren van `DriverManager.getConnection(properties.getProperty("url"), properties);`, omdat het eigenschappenbestand als argument wordt doorgegeven.
 
 U kunt nu deze main-klasse uitvoeren met uw favoriete tool:
 
@@ -318,7 +318,7 @@ public class Todo {
 }
 ```
 
-Deze klasse is een domeinmodel dat is toegewezen aan de tabel `todo` die u eerder hebt gemaakt tijdens het uitvoeren van het script *schema.sql* .
+Deze klasse is een domeinmodel dat is toegewezen aan de tabel `todo` die u eerder hebt gemaakt tijdens het uitvoeren van het script *schema.sql*.
 
 ### <a name="insert-data-into-azure-database-for-postgresql"></a>Gegevens invoegen in Azure Database for PostgreSQL
 
@@ -485,7 +485,7 @@ Als u nu de main-klasse uitvoert, zou dit de volgende uitvoer moeten opleveren:
 [INFO   ] Closing database connection 
 ```
 
-## <a name="conclusion-and-resources-clean-up"></a>Conclusie en opschonen van resources
+## <a name="clean-up-resources"></a>Resources opschonen
 
 Gefeliciteerd! U hebt een Java-app gemaakt die gebruikmaakt van JDBC om gegevens op te slaan en op te halen uit Azure Database for PostgreSQL.
 

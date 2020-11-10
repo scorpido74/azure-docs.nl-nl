@@ -1,6 +1,6 @@
 ---
 title: Gedeelde metagegevenstabellen
-description: Azure Synapse Analytics biedt een gedeeld metagegevensmodel. Wanneer u een tabel in Apache Spark maakt, is deze toegankelijk vanuit de SQL on-demand (preview-versie) en de SQL-poolengines zonder dat de gegevens worden gedupliceerd.
+description: Azure Synapse Analytics biedt een gedeeld metagegevensmodel. Wanneer u een tabel in een serverloze Apache Spark-pool maakt, is deze toegankelijk vanuit de serverloze SQL-pool (preview-versie) en de toegewezen SQL-pool zonder dat de gegevens worden gedupliceerd.
 services: sql-data-warehouse
 author: MikeRys
 ms.service: synapse-analytics
@@ -10,30 +10,30 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6b9835cf5de28fbd515a214554f723d99e8e8fe4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f269217908bea4b5e8ef3c0004a9cec9d5d682c7
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91260728"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314546"
 ---
 # <a name="azure-synapse-analytics-shared-metadata-tables"></a>Gedeelde Azure Synapse Analytics-metagegevenstabellen
 
 [!INCLUDE [synapse-analytics-preview-terms](../../../includes/synapse-analytics-preview-terms.md)]
 
-Met Azure Synapse Analytics kunnen de verschillende rekenengines voor de werkruimte databases en door Parquet ondersteunde tabellen delen tussen de Apache Spark-pools (preview-versie) en de SQL-on-demand engine (preview-versie).
+Met Azure Synapse Analytics kunnen de verschillende rekenengines voor de werkruimte databases en door Parquet ondersteunde tabellen delen tussen de Apache Spark-pools (preview-versie) en de serverloze SQL-pool (preview-versie).
 
 Wanneer een database is gemaakt met een Spark-taak, kunt u er tabellen in maken met Spark waarin Parquet als de opslagindeling wordt gebruikt. Deze tabellen zijn direct beschikbaar voor het uitvoeren van query's door een Spark-pool van de Azure Synapse-werkruimte. Ze kunnen ook worden gebruikt vanuit een van de Spark-taken waarvoor machtigingen gelden.
 
-De door Spark gemaakte, beheerde en externe tabellen worden ook beschikbaar gemaakt als externe tabellen met dezelfde naam in de bijbehorende gesynchroniseerde database in SQL on-demand. In [Exposing a Spark table in SQL](#expose-a-spark-table-in-sql) (Een Spark-tabel in SQL weergeven) vindt u meer informatie over tabelsynchronisatie.
+De door Spark gemaakte, beheerde en externe tabellen worden ook beschikbaar gemaakt als externe tabellen met dezelfde naam in de bijbehorende gesynchroniseerde database in de serverloze SQL-pool. In [Exposing a Spark table in SQL](#expose-a-spark-table-in-sql) (Een Spark-tabel in SQL weergeven) vindt u meer informatie over tabelsynchronisatie.
 
-Omdat de tabellen asynchroon worden gesynchroniseerd naar SQL on-demand, is er een kleine vertraging voordat ze worden weergegeven.
+Omdat de tabellen asynchroon worden gesynchroniseerd naar de serverloze SQL-pool, is er een kleine vertraging voordat ze worden weergegeven.
 
 ## <a name="manage-a-spark-created-table"></a>Een met Spark gemaakte tabel beheren
 
-Gebruik Spark voor het beheren van met Spark gemaakte databases. U kunt een database bijvoorbeeld verwijderen via een Spark-pooltaak en er tabellen in maken vanuit Spark.
+Gebruik Spark voor het beheren van met Spark gemaakte databases. U kunt een database bijvoorbeeld verwijderen via een serverloze Apache Spark-pooltaak en er tabellen in maken vanuit Spark.
 
-Als u objecten in een dergelijke database van SQL on-demand maakt of de database verwijdert, wordt de bewerking uitgevoerd, maar wordt de oorspronkelijke Spark-database niet gewijzigd.
+Als u objecten in een dergelijke database van de serverloze SQL-pool maakt of de database verwijdert, wordt de bewerking uitgevoerd, maar wordt de oorspronkelijke Spark-database niet gewijzigd.
 
 ## <a name="expose-a-spark-table-in-sql"></a>Een Spark-tabel beschikbaar maken in SQL
 
@@ -74,12 +74,12 @@ Spark-tabellen bieden andere gegevenstypen dan de Synapse SQL-engines. In de vol
 | `decimal`      | `decimal`        |<!-- need precision and scale-->|
 | `timestamp` |    `datetime2`      |<!-- need precision and scale-->|
 | `date`      | `date`           ||
-| `string`    |    `varchar(max)`   | Met de sortering `Latin1_General_CP1_CI_AS_UTF8` |
+| `string`    |    `varchar(max)`   | Met de sortering `Latin1_General_100_BIN2_UTF8` |
 | `binary`    |    `varbinary(max)` ||
 | `boolean`   |    `bit`            ||
-| `array`     |    `varchar(max)`   | Wordt geserialiseerd in JSON met de sortering `Latin1_General_CP1_CI_AS_UTF8` |
-| `map`       |    `varchar(max)`   | Wordt geserialiseerd in JSON met de sortering `Latin1_General_CP1_CI_AS_UTF8` |
-| `struct`    |    `varchar(max)`   | Wordt geserialiseerd in JSON met de sortering `Latin1_General_CP1_CI_AS_UTF8` |
+| `array`     |    `varchar(max)`   | Wordt geserialiseerd in JSON met de sortering `Latin1_General_100_BIN2_UTF8` |
+| `map`       |    `varchar(max)`   | Wordt geserialiseerd in JSON met de sortering `Latin1_General_100_BIN2_UTF8` |
+| `struct`    |    `varchar(max)`   | Wordt geserialiseerd in JSON met de sortering `Latin1_General_100_BIN2_UTF8` |
 
 <!-- TODO: Add precision and scale to the types mentioned above -->
 
@@ -95,9 +95,9 @@ Zie [Gedeelde database van Azure Synapse Analytics](database.md)voor meer inform
 
 ## <a name="examples"></a>Voorbeelden
 
-### <a name="create-a-managed-table-backed-by-parquet-in-spark-and-query-from-sql-on-demand"></a>Een beheerde tabel maken die wordt ondersteund door Parquet in Spark en een query uitvoeren vanuit SQL on-demand
+### <a name="create-a-managed-table-backed-by-parquet-in-spark-and-query-from-serverless-sql-pool"></a>Een beheerde tabel maken die wordt ondersteund door Parquet in Spark en een query uitvoeren vanuit een serverloze SQL-pool
 
-In dit scenario hebt u een Spark-database met de naam `mytestdb`. Zie [Een Spark-database maken en verbinden met SQL on demand](database.md#create-and-connect-to-spark-database-with-sql-on-demand).
+In dit scenario hebt u een Spark-database met de naam `mytestdb`. Zie [Een Spark-database maken en verbinden met een serverloze SQL-pool](database.md#create-and-connect-to-spark-database-with-serverless-sql-pool).
 
 Maak een beheerde Spark-tabel met SparkSQL door de volgende opdracht uit te voeren:
 
@@ -105,7 +105,7 @@ Maak een beheerde Spark-tabel met SparkSQL door de volgende opdracht uit te voer
     CREATE TABLE mytestdb.myParquetTable(id int, name string, birthdate date) USING Parquet
 ```
 
-Met deze opdracht maakt u de tabel `myParquetTable` in de database `mytestdb`. Na een korte vertraging wordt de tabel in SQL on-demand weergegeven. Voer bijvoorbeeld de volgende instructie uit vanuit SQL on-demand.
+Met deze opdracht maakt u de tabel `myParquetTable` in de database `mytestdb`. Na een korte vertraging wordt de tabel in uw serverloze SQL-pool weergegeven. Voer bijvoorbeeld de volgende instructie uit vanuit uw serverloze SQL-pool.
 
 ```sql
     USE mytestdb;
@@ -140,7 +140,7 @@ var df = spark.CreateDataFrame(data, schema);
 df.Write().Mode(SaveMode.Append).InsertInto("mytestdb.myParquetTable");
 ```
 
-U kunt de gegevens als volgt vanuit SQL on-demand lezen:
+Nu kunt u de gegevens van uw serverloze SQL-pool als volgt lezen:
 
 ```sql
 SELECT * FROM mytestdb.dbo.myParquetTable WHERE name = 'Alice';
@@ -154,7 +154,7 @@ id | name | birthdate
 1 | Alice | 2010-01-01
 ```
 
-### <a name="create-an-external-table-backed-by-parquet-in-spark-and-query-from-sql-on-demand"></a>Een externe tabel maken die wordt ondersteund door Parquet in Spark en een query uitvoeren vanuit SQL on demand
+### <a name="create-an-external-table-backed-by-parquet-in-spark-and-query-from-serverless-sql-pool"></a>Een externe tabel maken die wordt ondersteund door Parquet in Spark en een query uitvoeren vanuit een serverloze SQL-pool
 
 In dit voorbeeld maakt u een externe Spark-tabel via de Parquet-gegevensbestanden die zijn gemaakt in het vorige voorbeeld voor de beheerde tabel.
 
@@ -168,7 +168,7 @@ CREATE TABLE mytestdb.myExternalParquetTable
 
 Vervang de tijdelijke aanduiding `<fs>` door de naam van het bestandssysteem dat het standaardbestandssysteem is voor de werkruimte en de tijdelijke aanduiding `<synapse_ws>` met de naam van de Synapse-werkruimte die u gebruikt om dit voorbeeld uit te voeren.
 
-Met het vorige voorbeeld maakt u de tabel `myExtneralParquetTable` in de database`mytestdb`. Na een korte vertraging wordt de tabel in SQL on-demand weergegeven. Voer bijvoorbeeld de volgende instructie uit vanuit SQL on-demand.
+Met het vorige voorbeeld maakt u de tabel `myExtneralParquetTable` in de database`mytestdb`. Na een korte vertraging wordt de tabel in uw serverloze SQL-pool weergegeven. Voer bijvoorbeeld de volgende instructie uit vanuit uw serverloze SQL-pool.
 
 ```sql
 USE mytestdb;
@@ -177,7 +177,7 @@ SELECT * FROM sys.tables;
 
 Controleer of `myExternalParquetTable` is opgenomen in de resultaten.
 
-U kunt de gegevens als volgt vanuit SQL on-demand lezen:
+Nu kunt u de gegevens van uw serverloze SQL-pool als volgt lezen:
 
 ```sql
 SELECT * FROM mytestdb.dbo.myExternalParquetTable WHERE name = 'Alice';

@@ -1,6 +1,6 @@
 ---
-title: Gegevens importeren en exporteren tussen Spark-pools (preview) en SQL-pools
-description: Dit artikel bevat informatie over het gebruik van de aangepaste connector voor het verplaatsen van gegevens tussen SQL-pools en Spark-pools (preview).
+title: Gegevens importeren en exporteren tussen serverloze Apache Spark-pools (preview) en SQL-pools
+description: Dit artikel bevat informatie over het gebruik van de aangepaste connector voor het overdragen van gegevens tussen toegewezen SQL-pools en serverloze Apache Spark-pools (preview).
 services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
@@ -9,22 +9,22 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: prgomata
 ms.reviewer: euang
-ms.openlocfilehash: 11f73d2becb40b800c49afe0cd58f56953f8d42d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ee82fbaa9687e064747908600c7e5c9017f8f1a9
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91259914"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323894"
 ---
 # <a name="introduction"></a>Inleiding
 
-De Azure Synapse Apache Spark naar Synapse SQL-connector is ontworpen om efficiënt gegevens over te dragen tussen Spark-pools (preview) en SQL-pools in Azure Synapse. De Azure Synapse Apache Spark naar Synapse SQL-connector werkt alleen in SQL-pools, maar werkt niet met SQL on-demand.
+De Azure Synapse Apache Spark naar Synapse SQL-connector is ontworpen om efficiënt gegevens over te dragen tussen serverloze Apache Spark-pools (preview) en SQL-pools in Azure Synapse. De Azure Synapse Apache Spark naar Synapse SQL-connector werkt alleen in toegewezen SQL-pools en werkt niet met een serverloze SQL-pool.
 
 ## <a name="design"></a>Ontwerp
 
 Het overbrengen van gegevens tussen Spark-pools en SQL-pools kan worden uitgevoerd met JDBC. Maar op twee gedistribueerde systemen, zoals Spark en SQL-pools, is JDBC meestal een knelpunt wat betreft seriële gegevensoverdracht.
 
-De Azure Synapse Apache Spark pool naar Synapse SQL-connector is een gegevensbronimplementatie voor Apache Spark. De Azure Data Lake Storage Gen2 en Polybase in SQL-pools worden gebruikt om efficiënt gegevens over te dragen tussen het Spark-cluster en het Synapse SQL-exemplaar.
+De Azure Synapse Apache Spark pool naar Synapse SQL-connector is een gegevensbronimplementatie voor Apache Spark. De Azure Data Lake Storage Gen2 en Polybase in toegewezen SQL-pools worden gebruikt om efficiënt gegevens over te dragen tussen het Spark-cluster en het Synapse SQL-exemplaar.
 
 ![Connectorarchitectuur](./media/synapse-spark-sqlpool-import-export/arch1.png)
 
@@ -32,7 +32,7 @@ De Azure Synapse Apache Spark pool naar Synapse SQL-connector is een gegevensbro
 
 Verificatie tussen systemen wordt in Azure Synapse Analytics naadloos gemaakt. De tokenservice maakt verbinding met Azure Active Directory om beveiligingstokens te verkrijgen die kunnen worden gebruikt bij het openen van het opslagaccount of de datawarehouse-server.
 
-Daarom is het niet nodig om referenties te maken of op te geven in de connector-API zolang AAD-verificatie is geconfigureerd op het opslagaccount en de datawarehouse-server. Als dat niet het geval is, kan de SQL-verificatie worden opgegeven. Meer informatie vindt u in de sectie [Gebruik](#usage).
+Daarom is het niet nodig om referenties te maken of op te geven in de connector-API, zolang Azure AD-Auth is geconfigureerd op het opslagaccount en de datawarehouse-server. Als dat niet het geval is, kan de SQL-verificatie worden opgegeven. Meer informatie vindt u in de sectie [Gebruik](#usage).
 
 ## <a name="constraints"></a>Beperkingen
 
@@ -67,7 +67,7 @@ EXEC sp_addrolemember 'db_exporter',[mike@contoso.com]
 
 De instructies voor importeren zijn niet vereist, ze worden vooraf geïmporteerd voor de notebookervaring.
 
-### <a name="transfer-data-to-or-from-a-sql-pool-attached-with-the-workspace"></a>Gegevens overdragen van of naar een SQL-pool die is gekoppeld aan de werkruimte
+### <a name="transfer-data-to-or-from-a-dedicated-sql-pool-attached-within-the-workspace"></a>Gegevens overdragen van of naar een toegewezen SQL-pool binnen de werkruimte
 
 > [!NOTE]
 > **Importeren niet vereist in notebookervaring**
@@ -91,12 +91,12 @@ De bovenstaande API werkt zowel voor interne (beheerde) als voor externe tabelle
 df.write.sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
-De schrijf-API maakt de tabel in de SQL-pool en roept vervolgens Polybase aan om de gegevens te laden.  De tabel mag niet voorkomen in de SQL-pool, anders wordt er een foutbericht geretourneerd met de mededeling dat er al een object met die naam bestaat.
+De schrijf-API maakt de tabel in de toegewezen SQL-pool en roept vervolgens Polybase aan om de gegevens te laden.  De tabel mag niet voorkomen in de toegewezen SQL-pool, anders wordt er een foutbericht geretourneerd met de mededeling dat er al een object met die naam bestaat.
 
 TableType-waarden
 
-- Constants.INTERNAL: beheerde tabel in SQL-pool
-- Constants.EXTERNAL: externe tabel in SQL-pool
+- Constants.INTERNAL: beheerde tabel in toegewezen SQL-pool
+- Constants.EXTERNAL: externe tabel in toegewezen SQL-pool
 
 Beheerde tabel in SQL-pool
 
@@ -106,10 +106,10 @@ df.write.sqlanalytics("<DBName>.<Schema>.<TableName>", Constants.INTERNAL)
 
 Externe tabel in SQL-pool
 
-Als u naar een externe tabel van een SQL-pool wilt schrijven, moeten er een EXTERNE GEGEVENSBRON en een EXTERNE BESTANDSINDELING bestaan in de SQL-pool.  Lees voor meer informatie [een externe gegevensbron maken](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) en [externe bestandsindelingen](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) in SQL-pool.  Hieronder staan voorbeelden voor het maken van een externe gegevensbron en externe bestandsindelingen in SQL-pool.
+Als u naar een externe tabel van een toegewezen SQL-pool wilt schrijven, moeten er een EXTERNE GEGEVENSBRON en een EXTERNE BESTANDSINDELING bestaan in de toegewezen SQL-pool.  Lees voor meer informatie [Een externe gegevensbron maken](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) en [Externe bestandsindelingen](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) in een toegewezen SQL-pool.  Hieronder staan voorbeelden voor het maken van een externe gegevensbron en externe bestandsindelingen in een toegewezen SQL-pool.
 
 ```sql
---For an external table, you need to pre-create the data source and file format in SQL pool using SQL queries:
+--For an external table, you need to pre-create the data source and file format in dedicated SQL pool using SQL queries:
 CREATE EXTERNAL DATA SOURCE <DataSourceName>
 WITH
   ( LOCATION = 'abfss://...' ,
@@ -134,7 +134,7 @@ df.write.
 
 ```
 
-### <a name="if-you-transfer-data-to-or-from-a-sql-pool-or-database-outside-the-workspace"></a>Als u gegevens overbrengt naar of van een SQL-pool of database buiten de werkruimte
+### <a name="transfer-data-to-or-from-a-dedicated-sql-pool-or-database-outside-the-workspace"></a>Gegevens overdragen van of naar een toegewezen SQL-pool of database buiten de werkruimte
 
 > [!NOTE]
 > Importeren niet vereist in notebookervaring
@@ -160,11 +160,11 @@ option(Constants.SERVER, "samplews.database.windows.net").
 sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
-### <a name="use-sql-auth-instead-of-aad"></a>SQL-verificatie gebruiken in plaats van AAD
+### <a name="use-sql-auth-instead-of-azure-ad"></a>SQL Auth gebruiken in plaats van Azure AD
 
 #### <a name="read-api"></a>API lezen
 
-De connector biedt momenteel geen ondersteuning voor verificatie op basis van tokens naar een SQL-pool die zich buiten de werkruimte bevindt. U moet SQL-verificatie gebruiken.
+De connector biedt momenteel geen ondersteuning voor verificatie op basis van tokens naar een toegewezen SQL-pool die zich buiten de werkruimte bevindt. U moet SQL-verificatie gebruiken.
 
 ```scala
 val df = spark.read.
@@ -227,7 +227,7 @@ U moet de eigenaar van de opslagblobgegevens zijn op het ADLS Gen2-opslagaccount
 
 - U moet ACL kunnen toepassen op alle folders van "synapse" en omlaag vanuit het Azure-portal. Om ACL toe te passen op de hoofdmap "/" folder, volgt u de onderstaande instructies.
 
-- Verbinding maken met het opslagaccount dat is verbonden met de werkruimte vanuit Storage Explorer met AAD
+- Verbinding maken met het opslagaccount dat is verbonden met de werkruimte vanuit Storage Explorer met Azure AD
 - Selecteer uw account en geef de ADLS Gen2 URL en het standaardbestandssysteem voor de werkruimte op
 - Zodra u het vermelde opslagaccount kunt zien, klikt u met de rechtermuisknop op de vermelding werkruimte en selecteert u "Toegang beheren"
 - Voeg de Gebruiker toe aan de /-map met de toegangsmachtiging "Uitvoeren". Selecteer "OK"
@@ -237,5 +237,5 @@ U moet de eigenaar van de opslagblobgegevens zijn op het ADLS Gen2-opslagaccount
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Een SQL-pool maken met behulp van de Azure-portal](../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md)
+- [Een toegewezen SQL-pool maken met behulp van de Azure Portal](../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md)
 - [Een nieuwe Apache Spark-pool maken met behulp van de Azure-portal](../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md) 

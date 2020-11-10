@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: quickstart
-ms.date: 10/19/2020
+ms.date: 10/30/2020
 ms.author: juliako
-ms.openlocfilehash: 6b154db25f1f13b60e4110d1b1866308ee952487
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 9ad004f65335d79205cbaddaa190b92a19c327d5
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92219786"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93147280"
 ---
 # <a name="quickstart-how-to-sign-up-and-upload-your-first-video"></a>Quickstart: Registreren en uw eerste video uploaden
 
@@ -27,8 +27,10 @@ Wanneer u een Video Indexer-account maakt, kunt u kiezen uit een gratis proefver
 
 Als u wilt gaan ontwikkelen met Video Indexer, gaat u naar de website van [Video Indexer](https://www.videoindexer.ai/) en registreert u zich.
 
+Als u eenmaal begint met het gebruik van Video Indexer, worden al uw opgeslagen gegevens en geüploade inhoud at-rest gecodeerd met een door Microsoft beheerde sleutel.
+
 > [!NOTE]
-> Als u eenmaal begint met het gebruik van Video Indexer, worden al uw opgeslagen gegevens en geüploade inhoud at-rest gecodeerd met een door Microsoft beheerde sleutel.
+> Bekijk de [geplande verificatiewijzigingen voor de Video Indexer-website](release-notes.md#planned-video-indexer-website-authenticatication-changes).
 
 ## <a name="upload-a-video-using-the-video-indexer-website"></a>Een video met behulp van de Video Indexer-website uploaden
 
@@ -39,7 +41,7 @@ Zie het artikel [invoercontainer/bestandsindelingen](../latest/media-encoder-sta
 ### <a name="upload-a-video"></a>Een video uploaden
 
 1. Registreer u op de [Video Indexer](https://www.videoindexer.ai/)-website.
-1. Als u een video wilt uploaden, drukt u op de knop of link **Uploaden** .
+1. Als u een video wilt uploaden, drukt u op de knop of link **Uploaden**.
 
     > [!NOTE]
     > De naam van de video mag niet langer zijn dan 80 tekens.
@@ -49,12 +51,12 @@ Zie het artikel [invoercontainer/bestandsindelingen](../latest/media-encoder-sta
 1. Zodra uw video is geüpload, start Video Indexer met het indexeren en analyseren van de video. U ziet de voortgang. 
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/video-indexer-get-started/progress.png" alt-text="Uploaden":::
+    > :::image type="content" source="./media/video-indexer-get-started/progress.png" alt-text="Voortgang van het uploaden":::
 1. Wanneer Video Indexer klaar is met analyseren, ontvangt u een e-mailbericht met een link naar uw video en een korte beschrijving van wat is gevonden in uw video. Bijvoorbeeld: personen, gesproken en geschreven woorden, onderwerpen en benoemde entiteiten.
 1. U kunt uw video later vinden in de bibliotheeklijst en verschillende bewerkingen uitvoeren. Bijvoorbeeld: zoeken, opnieuw indexeren, bewerken.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/video-indexer-get-started/uploaded.png" alt-text="Uploaden":::
+    > :::image type="content" source="./media/video-indexer-get-started/uploaded.png" alt-text="Het uploaden is klaar":::
  
 ## <a name="see-also"></a>Zie ook
 

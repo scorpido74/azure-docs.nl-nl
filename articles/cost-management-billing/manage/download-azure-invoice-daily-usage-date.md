@@ -7,15 +7,15 @@ ms.reviewer: dcscontentpm
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
-ms.topic: conceptual
-ms.date: 08/20/2020
+ms.topic: how-to
+ms.date: 10/28/2020
 ms.author: banders
-ms.openlocfilehash: c24af5a9fb1367e00d9a014b1e10f750a38ad30b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e380aa1f4d50e6ced34254ceca9d899022142f6d
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91270896"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92911287"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Uw Azure-factuur en de dagelijkse gebruiksgegevens downloaden of weergeven
 
@@ -136,9 +136,7 @@ Om als een EA-klant gebruiksgegevens weer te geven en te downloaden, moet u een 
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Zoek naar *Kostenbeheer en facturering*.
-
-    ![Schermopname van de zoekopdracht in de Azure-portal](./media/download-azure-invoice-daily-usage-date/portal-cm-billing-search.png)
-
+1. Als u toegang hebt tot meerdere factureringsaccounts, selecteert u het factureringsbereik voor uw EA-factureringsaccount.
 1. Selecteer **Gebruik + kosten**.
 1. Selecteer **Downloaden** voor de maand waarvan u de gegevens wilt downloaden.
 
@@ -165,10 +163,6 @@ U kunt ook het gebruik van de maand tot heden voor de huidige factureringsperiod
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Toegang tot een Microsoft-klantovereenkomst controleren
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]
-
-## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Contact opnemen
-
-Als u een vraag wilt stellen of hulp nodig hebt, maakt u een [ondersteuningsaanvraag](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Volgende stappen
 

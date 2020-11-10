@@ -1,6 +1,6 @@
 ---
-title: "Quickstart: Een Apache Spark-pool maken in Azure Synapse Analytics met behulp van webhulpprogramma's"
-description: In deze quickstart leert u hoe u met de webhulpprogramma's een Apache Spark-pool maakt in Azure Synapse Analytics en hoe u een Spark SQL-query uitvoert.
+title: "Quickstart: Een serverloze Apache Spark-pool maken met behulp van webhulpprogramma's"
+description: In deze quickstart leert u hoe u met de webhulpprogramma's een serverloze Apache Spark-pool maakt in Azure Synapse Analytics, en hoe u een Spark SQL-query uitvoert.
 services: synapse-analytics
 author: euangMS
 ms.author: euang
@@ -9,16 +9,16 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: quickstart
 ms.date: 10/16/2020
-ms.openlocfilehash: a4583e7fbf1eeaf4447e1e717c716159af645bfa
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b20f2ce88695cb68de496d126c5e3cd52f9eb6c8
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742524"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93316140"
 ---
-# <a name="quickstart-create-an-apache-spark-pool-in-azure-synapse-analytics-using-web-tools"></a>Quickstart: Een Apache Spark-pool maken in Azure Synapse Analytics met behulp van webhulpprogramma's
+# <a name="quickstart-create-a-serverless-apache-spark-pool-in-azure-synapse-analytics-using-web-tools"></a>Quickstart: Een serverloze Apache Spark-pool maken in Azure Synapse Analytics met behulp van webhulpprogramma's
 
-In deze quickstart leert u hoe u een Apache Spark-pool (preview) maakt in Azure Synapse met behulp van webhulpprogramma's. Vervolgens leert u hoe u verbinding maakt met de Apache Spark-pool en Spark SQL-query's uitvoert op bestanden en tabellen. Apache Spark maakt het mogelijk om snelle gegevensanalyses en clusterberekeningen uit te voeren met behulp van verwerking in het geheugen. Informatie over Spark in Azure Synapse kunt u lezen in [Wat is Apache Spark in Azure Synapse Azure Synapse Analytics](./spark/apache-spark-overview.md).
+In deze quickstart leert u hoe u een serverloze Apache Spark-pool (preview-versie) maakt in Azure Synapse met behulp van webhulpprogramma's. Vervolgens leert u hoe u verbinding maakt met de Apache Spark-pool en Spark SQL-query's uitvoert op bestanden en tabellen. Apache Spark maakt het mogelijk om snelle gegevensanalyses en clusterberekeningen uit te voeren met behulp van verwerking in het geheugen. Informatie over Spark in Azure Synapse kunt u lezen in [Wat is Apache Spark in Azure Synapse Azure Synapse Analytics](./spark/apache-spark-overview.md).
 
 > [!IMPORTANT]
 > Spark-instanties worden pro rato per minuut gefactureerd, ongeacht of u ze wel of niet gebruikt. Zorg er daarom voor dat u de Spark-instantie afsluit wanneer u deze niet meer nodig hebt of stel een korte time-out in. Zie voor meer informatie de sectie **Resources opschonen** van dit artikel.
@@ -29,7 +29,7 @@ Als u geen Azure-abonnement hebt, [maakt u een gratis account voordat u begint](
 
 - Azure-abonnement: [u kunt een gratis abonnement nemen](https://azure.microsoft.com/free/)
 - [Synapse Analytics-werkruimte](quickstart-create-workspace.md)
-- [Apache Spark-pool](quickstart-create-apache-spark-pool-studio.md)
+- [Serverloze Apache Spark-pool](quickstart-create-apache-spark-pool-studio.md)
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
@@ -132,9 +132,12 @@ SQL (Structured Query Language) is de meest voorkomende en gebruikte taal voor h
 
 11. Elk van de cellen die eerder is uitgevoerd had de mogelijkheid om naar **History Server** en **Monitoring** te gaan. Als u op de koppelingen klikt, gaat u naar verschillende onderdelen van de gebruikerservaring.
 
+> [!NOTE]
+> Sommige gedeelten van de [officiële Apache Spark-documentatie](https://spark.apache.org/docs/latest/) zijn gebaseerd op het gebruik van de Spark-console. Deze is niet beschikbaar in Synapse Spark. Gebruik in plaats daarvan de ervaring met [notebooks](quickstart-apache-spark-notebook.md) of [IntelliJ](./spark/intellij-tool-synapse.md).
+
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Uw gegevens worden door Azure Synapse opgeslagen in Azure Data Lake Storage. U kunt een Spark-instantie veilig laten uitschakelen wanneer deze niet in gebruik is. Er worden namelijk kosten in rekening gebracht voor een Azure Synapse Apache Spark-pool zolang deze wordt uitgevoerd, zelfs als de pool niet in gebruik is. 
+Uw gegevens worden door Azure Synapse opgeslagen in Azure Data Lake Storage. U kunt een Spark-instantie veilig laten uitschakelen wanneer deze niet in gebruik is. Er worden kosten in rekening gebracht voor een serverloze Apache Spark-pool zolang deze wordt uitgevoerd, zelfs als de pool niet in gebruik is. 
 
 Aangezien de kosten voor de pool vaak veel hoger zijn dan de kosten voor opslag, is het financieel gezien logischer om Spark-instanties te laten uitschakelen wanneer ze niet worden gebruikt.
 
@@ -142,11 +145,10 @@ Om ervoor te zorgen dat de Spark-instantie wordt afgesloten, beëindigt u alle v
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze quickstart hebt u geleerd hoe u een Azure Synapse Apache Spark-pool maakt en een eenvoudige Spark SQL-query uitvoert.
+In deze quickstart hebt u geleerd hoe u een serverloze Apache Spark-pool maakt, en een eenvoudige Spark SQL-query uitvoert.
 
 - [Azure Synapse Analytics](overview-what-is.md)
 - [Documentatie voor .NET voor Apache Spark](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-- [Officiële documentatie voor Apache Spark](https://spark.apache.org/docs/latest/)
 
->[!NOTE]
-> Sommige van de officiële Apache Spark documentatie is gebaseerd op het gebruik van de Spark-console, die echter niet beschikbaar is in Azure Synapse Spark. Gebruik in plaats daarvan de ervaring met [notebooks](quickstart-apache-spark-notebook.md) of [IntelliJ](./spark/intellij-tool-synapse.md).
+
+

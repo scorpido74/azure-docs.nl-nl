@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 708b8255f6cf7c60e2d2fc7fbd280b477c06a3d6
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: a0fbcab194b90bbe89948fee1efb604266dbbb0f
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92503280"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311752"
 ---
 # <a name="manage-access-to-workspaces-data-and-pipelines"></a>Toegang tot werkruimten, gegevens en pijplijnen beheren
 
@@ -94,21 +94,21 @@ Toen u uw werkruimte inrichtte moest u een [Azure Data Lake Storage Gen2](https:
 Toegangsbeheer voor de onderliggende gegevens wordt in drie delen gesplitst:
 
 - Toegang op gegevensvlak tot het opslagaccount (hierboven geconfigureerd in stap 2)
-- Toegang op gegevensvlak tot de SQL Databases (voor zowel SQL-pools als SQL op aanvraag)
-- Een referentie maken voor SQL-databases op aanvraag via het opslagaccount
+- Toegang op gegevensvlak tot de SQL-databases (voor zowel toegewezen SQL-pools als serverloze SQL-pools)
+- Een referentie maken voor serverloze SQL-pooldatabases via het opslagaccount
 
 ## <a name="access-control-to-sql-databases"></a>Toegangsbeheer voor SQL Databases
 
 > [!TIP]
 > De onderstaande stappen moeten worden uitgevoerd voor **elke** SQL-database om gebruikerstoegang te verlenen tot alle SQL-databases, met uitzondering van de sectie [Machtigingen op serverniveau](#server-level-permission). Hier kunt u de sysadmin-rol aan een gebruiker toewijzen.
 
-### <a name="sql-on-demand"></a>SQL on-demand
+### <a name="serverless-sql-pool"></a>Serverloze SQL-pool
 
 In deze sectie vindt u voorbeelden van hoe u gebruikers een machtiging kunt geven voor een bepaalde database of volledige servermachtigingen.
 
 #### <a name="database-level-permission"></a>Machtiging op databaseniveau
 
-Volg de stappen in dit voorbeeld als u een gebruiker toegang wilt verlenen tot een **individuele** SQL-database op aanvraag:
+Volg de stappen in dit voorbeeld als u een gebruiker toegang wilt verlenen tot een **individuele** serverloze SQL-pooldatabase:
 
 1. AANMELDING maken
 
@@ -140,16 +140,16 @@ Volg de stappen in dit voorbeeld als u een gebruiker toegang wilt verlenen tot e
 
 #### <a name="server-level-permission"></a>Machtiging op serverniveau
 
-Volg de stappen in dit voorbeeld als u een gebruiker toegang wilt verlenen tot **alle** SQL-databases op aanvraag:
+Volg de stappen in dit voorbeeld als u een gebruiker toegang wilt verlenen tot **alle** serverloze SQL-pooldatabases:
 
 ```sql
 CREATE LOGIN [alias@domain.com] FROM EXTERNAL PROVIDER;
 ALTER SERVER ROLE  sysadmin  ADD MEMBER [alias@domain.com];
 ```
 
-### <a name="sql-pools"></a>SQL-pools
+### <a name="dedicated-sql-pool"></a>Toegewezen SQL-pool
 
-Volg deze stappen als u een gebruiker toegang wilt verlenen tot een **individuele** SQL Database:
+Volg deze stappen als u een gebruiker toegang wilt verlenen tot een **individuele** SQL-database:
 
 1. Maak de gebruiker in de database door de volgende opdracht uit te voeren, gericht op de gewenste database in de contextkiezer (vervolgkeuzelijst voor het selecteren van databases):
 
@@ -167,18 +167,18 @@ Volg deze stappen als u een gebruiker toegang wilt verlenen tot een **individuel
 
 > [!IMPORTANT]
 > *db_datareader* en *db_datawriter* kunnen worden gebruikt voor lees- en schrijfmachtigingen als het verlenen van *db_owner* -toestemming niet wenselijk is.
-> Een Spark-gebruiker heeft de *db_owner* -machtiging nodig om rechtstreeks vanuit Spark naar/vanuit een SQL-pool te lezen en te schrijven.
+> Een Spark-gebruiker heeft de *db_owner* -machtiging nodig om rechtstreeks vanuit Spark naar/vanuit een toegewezen SQL-pool te lezen en te schrijven.
 
-Wanneer de gebruikers zijn gemaakt, controleert u of SQL op aanvraag een query kan uitvoeren voor het opslagaccount.
+Wanneer de gebruikers zijn gemaakt, controleert u of u met de serverloze SQL-pool een query kan uitvoeren voor het opslagaccount.
 
 ## <a name="access-control-to-workspace-pipeline-runs"></a>Toegangsbeheer voor pijplijnuitvoeringen in een werkruimte
 
 ### <a name="workspace-managed-identity"></a>Door een werkruimte beheerde identiteit
 
 > [!IMPORTANT]
-> Als u pijplijnen wilt uitvoeren die gegevenssets of activiteiten bevatten die verwijzen naar een SQL-pool, moet de werkruimte-id rechtstreeks toegang hebben tot de SQL-pool.
+> Als u pijplijnen wilt uitvoeren die gegevenssets of activiteiten bevatten die verwijzen naar een toegewezen SQL-pool, moet de werkruimte-id rechtstreeks toegang hebben tot de SQL-pool.
 
-Voer de volgende opdrachten uit voor elke SQL-pool opdat de door de werkruimte beheerde identiteit pijplijnen kan uitvoeren op de database van de SQL-pool:
+Voer de volgende opdrachten uit voor elke toegewezen SQL-pool, zodat de door de werkruimte beheerde identiteit pijplijnen kan uitvoeren op de database van de SQL-pool:
 
 ```sql
 --Create user in DB

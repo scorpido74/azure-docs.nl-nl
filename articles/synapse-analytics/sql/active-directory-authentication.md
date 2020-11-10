@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: a3bd565b26d011e6186cc6957769db57f9cd1c9c
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 7518d6ac8bc0cde515ab8da2f3d9c1496cb93f08
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093409"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311717"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-synapse-sql"></a>Azure Active Directory-verificatie gebruiken voor verificatie met Synapse SQL
 
@@ -39,7 +39,7 @@ De configuratiestappen omvatten de volgende procedures voor het configureren en 
 3. Een rol aan gemaakte Azure Active Directory-identiteit toewijzen in Synapse-werkruimte (preview)
 4. Maak verbinding met Synapse Studio met behulp van Azure AD-identiteiten.
 
-## <a name="aad-pass-through-in-azure-synapse-analytics"></a>AAD-doorvoer in Azure Synapse Analytics
+## <a name="azure-ad-pass-through-in-azure-synapse-analytics"></a>Azure AD-doorvoer in Azure Synapse Analytics
 
 Met Azure Synapse Analytics kunt u toegang krijgen tot de gegevens in de data lake door gebruik te maken van uw Azure Active Directory-identiteit.
 
@@ -49,13 +49,13 @@ Door toegangsrechten te definiëren voor de bestanden en gegevens die in verschi
 
 In het volgende overzichtsdiagram ziet u een overzicht van de oplossingsarchitectuur van het gebruik van Azure AD-verificatie met Synapse SQL. Ter ondersteuning van het native gebruikerswachtwoord van Azure AD wordt alleen rekening gehouden met het cloudgedeelte en Azure AD/Synapse Synapse SQL. Voor de ondersteuning van federatieve aanmelding (of gebruiker/wachtwoord voor Windows-referenties), is de communicatie met het ADFS-blok vereist. De pijlen geven communicatiepaden aan.
 
-![aad-verificatiediagram](./media/aad-authentication/1-active-directory-authentication-diagram.png)
+![azure ad-verificatiediagram](./media/aad-authentication/1-active-directory-authentication-diagram.png)
 
 In het volgende diagram worden de federatie-, vertrouwens en hostingrelaties aangegeven waarmee een client verbinding kan maken met een database door een token in te dienen. Het token wordt geverifieerd door een Azure AD en wordt vertrouwd door de database. 
 
 Klant 1 kan een Azure Active Directory met systeemeigen gebruikers of een Azure AD met federatieve gebruikers vertegenwoordigen. Klant 2 vertegenwoordigt een mogelijke oplossing met inbegrip van geïmporteerde gebruikers; in dit voorbeeld afkomstig van een federatieve Azure Active Directory waarbij ADFS wordt gesynchroniseerd met Azure Active Directory. 
 
-Het is belangrijk om te begrijpen dat toegang tot een database met behulp van Azure AD-verificatie vereist dat het hostingabonnement is gekoppeld aan Azure AD. Hetzelfde abonnement moet worden gebruikt voor het maken van de SQL Server die als host fungeert voor de Azure SQL Database of SQL-pool.
+Het is belangrijk om te begrijpen dat toegang tot een database met behulp van Azure AD-verificatie vereist dat het hostingabonnement is gekoppeld aan Azure AD. Hetzelfde abonnement moet worden gebruikt voor het maken van de SQL-server die als host fungeert voor de Azure SQL Database of toegewezen SQL-pool.
 
 ![abonnementsrelatie](./media/aad-authentication/2-subscription-relationship.png)
 
@@ -109,7 +109,7 @@ Azure Active Directory-verificatie ondersteunt de volgende methoden om verbindin
 - Azure Active Directory – Universal met MFA
 - Verificatie van toepassingstoken gebruiken
 
-De volgende verificatiemethoden worden ondersteund voor Azure AD-server-principals (aanmeldingen) (**openbare preview**):
+De volgende verificatiemethoden worden ondersteund voor Azure AD-server-principals (aanmeldingen) ( **openbare preview** ):
 
 - Azure Active Directory – wachtwoord
 - Azure Active Directory – geïntegreerd
@@ -119,10 +119,10 @@ De volgende verificatiemethoden worden ondersteund voor Azure AD-server-principa
 
 - Voor een betere beheerbaarheid raden wij u aan een toegewezen Azure AD-groep in te richten als beheerder.
 - Er kan maar één Azure AD-beheerder (een gebruiker of groep) tegelijk voor een Synapse SQL-pool worden geconfigureerd.
-  - Door Azure AD-server-principals (aanmeldingen) voor SQL on-demand (preview) toe te voegen, wordt het mogelijk om meerdere Azure AD-server-principals (aanmeldingen) te maken die kunnen worden toegevoegd aan de rol `sysadmin`.
-- Alleen een Azure AD-beheerder voor Synapse SQL kan in eerste instantie verbinding maken met de Synapse SQL met een Azure Active Directory-account. De Active Directory-beheerder kan vervolgens nieuwe Azure AD-databasegebruikers configureren.
+  - Door Azure AD-server-principals (aanmeldingen) voor Synapse SQL (preview-versie) toe te voegen, wordt het mogelijk om meerdere Azure AD-server-principals (aanmeldingen) te maken die kunnen worden toegevoegd aan de rol `sysadmin`.
+- Alleen een Azure AD-beheerder voor Synapse SQL kan in eerste instantie verbinding maken met Synapse SQL met een Azure Active Directory-account. De Active Directory-beheerder kan vervolgens nieuwe Azure AD-databasegebruikers configureren.
 - Het is raadzaam om de time-out voor de verbinding in te stellen op 30 seconden.
-- SQL Server 2016 Management Studio en SQL Server Data Tools voor Visual Studio 2015 (versie 14.0.60311.1 van april 2016 of later) ondersteunen Azure Active Directory-verificatie. (Azure AD-verificatie wordt ondersteund door de **.NET Framework-gegevensprovider voor SqlServer**; minimaal .NET Framework versie 4.6). Daardoor kunnen de nieuwste versies van deze hulpprogramma's en toepassingen met een gegevenslaag (DAC en .BACPAC) gebruik maken van Azure AD-verificatie.
+- SQL Server 2016 Management Studio en SQL Server Data Tools voor Visual Studio 2015 (versie 14.0.60311.1 van april 2016 of later) ondersteunen Azure Active Directory-verificatie. (Azure AD-verificatie wordt ondersteund door de **.NET Framework-gegevensprovider voor SqlServer** ; minimaal .NET Framework versie 4.6). Daardoor kunnen de nieuwste versies van deze hulpprogramma's en toepassingen met een gegevenslaag (DAC en .BACPAC) gebruik maken van Azure AD-verificatie.
 - Vanaf versie 15.0.1 ondersteunen de hulpprogramma's [sqlcmd](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) en [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) Active Directory interactieve verificatie met MFA.
 - SQL Server Data Tools voor Visual Studio 2015 vereist minimaal de versie van april 2016 van de hulpmiddelen voor gegevens (versie 14.0.60311.1). Momenteel worden Azure AD-gebruikers niet weergegeven in SSDT Objectverkenner. Als tijdelijke oplossing kunt u de gebruikers weergeven in [sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 - [Microsoft JDBC Driver 6.0 voor SQL Server](https://www.microsoft.com/download/details.aspx?id=11774) ondersteunt Azure AD-verificatie. Zie ook [De verbindingseigenschappen instellen](/sql/connect/jdbc/setting-the-connection-properties?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).

@@ -4,15 +4,14 @@ description: Dit artikel bevat informatie over het toevoegen van een service-ein
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 1b62f69bad4484239b3a6c5d6f7ae910fbdef03f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8005a2c43d42908a9ad6ebea10b6a13ef381084c
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843376"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427646"
 ---
 # <a name="allow-access-to-azure-service-bus-namespace-from-specific-virtual-networks"></a>Toegang tot Azure Service Bus naam ruimte vanuit specifieke virtuele netwerken toestaan
-
 Dankzij de integratie van Service Bus met de [service-eind punten van Virtual Network (VNet)][vnet-sep] is beveiligde toegang mogelijk tot berichten mogelijkheden van werk belastingen, zoals virtuele machines die zijn gebonden aan virtuele netwerken, waarbij het netwerkpad van het netwerk verkeer aan beide uiteinden wordt beveiligd.
 
 Zodra het is geconfigureerd om te worden gebonden aan ten minste één subnet-service-eind punt van een virtueel netwerk, accepteert de respectieve Service Bus naam ruimte geen verkeer meer vanaf een wille keurige locatie, maar geautoriseerde virtuele netwerken en, optioneel, specifieke IP-adressen voor Internet. Vanuit het perspectief van het virtuele netwerk moet u een Service Bus naam ruimte binden aan een service-eind punt een geïsoleerde netwerk tunnel van het subnet van het virtuele netwerk naar de berichten service configureren.
@@ -20,24 +19,14 @@ Zodra het is geconfigureerd om te worden gebonden aan ten minste één subnet-se
 Het resultaat is een privé-en geïsoleerde relatie tussen de werk belastingen die zijn gebonden aan het subnet en de betreffende Service Bus naam ruimte, ondanks het waarneem bare netwerk adres van het berichten service-eind punt in een openbaar IP-bereik.
 
 >[!WARNING]
-> Het implementeren van de integratie van virtuele netwerken kan voorkomen dat andere Azure-services interactie hebben met Service Bus.
+> Het implementeren van de integratie van virtuele netwerken kan voorkomen dat andere Azure-services interactie hebben met Service Bus. Als uitzonde ring kunt u toegang tot Service Bus resources van bepaalde vertrouwde services toestaan, zelfs wanneer de netwerk service-eind punten zijn ingeschakeld. Zie [Trusted Services](#trusted-microsoft-services)(Engelstalig) voor een lijst met vertrouwde services.
 >
-> Vertrouwde micro soft-services worden niet ondersteund wanneer virtuele netwerken zijn geïmplementeerd.
->
-> Algemene scenario's voor Azure die niet met virtuele netwerken werken (Houd er rekening mee dat de lijst **niet** volledig is)-
-> - Integratie met Azure Event Grid
-> - Azure-IoT Hub routes
-> - Azure IoT-Device Explorer
->
-> De onderstaande micro soft-services moeten zich in een virtueel netwerk bevinden
+> De volgende micro soft-services moeten zich in een virtueel netwerk bevinden
 > - Azure App Service
 > - Azure Functions
-> - Azure Monitor (diagnostische instelling)
 
 > [!IMPORTANT]
-> Virtuele netwerken worden alleen ondersteund in de [Premium-laag](service-bus-premium-messaging.md) service bus naam ruimten.
-> 
-> Wanneer u VNet-service-eind punten met Service Bus gebruikt, moet u deze eind punten niet inschakelen in toepassingen die gebruikmaken van de standaard-en Premium-laag Service Bus naam ruimten. Omdat de standaard tier geen VNets ondersteunt. Het eind punt is alleen toegestaan voor de naam ruimte van de Premium-laag.
+> Virtuele netwerken worden alleen ondersteund in de [Premium-laag](service-bus-premium-messaging.md) service bus naam ruimten. Wanneer u VNet-service-eind punten met Service Bus gebruikt, moet u deze eind punten niet inschakelen in toepassingen die gebruikmaken van de standaard-en Premium-laag Service Bus naam ruimten. De Standard-laag biedt geen ondersteuning voor VNets. Het eind punt is alleen toegestaan voor de naam ruimte van de Premium-laag.
 
 ## <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>Geavanceerde beveiligings scenario's ingeschakeld door VNet-integratie 
 
@@ -72,7 +61,7 @@ In deze sectie wordt beschreven hoe u Azure Portal kunt gebruiken om een service
 
     :::image type="content" source="./media/service-bus-ip-filtering/default-networking-page.png" alt-text="Pagina netwerk-standaard" lightbox="./media/service-bus-ip-filtering/default-networking-page.png":::
     
-    Als u de optie **alle netwerken** selecteert, accepteert uw service bus-naam ruimte verbindingen van elk IP-adres. Deze standaard instelling komt overeen met een regel die het IP-adres bereik 0.0.0.0/0 accepteert. 
+    Als u de optie **alle netwerken** selecteert, accepteert uw service bus-naam ruimte verbindingen van elk IP-adres. Deze standaardinstelling komt overeen met een regel die het IP-adresbereik 0.0.0.0/0 accepteert. 
 
     ![Optie Firewall: alle netwerken geselecteerd](./media/service-bus-ip-filtering/firewall-all-networks-selected.png)
 2. Als u de toegang tot specifieke virtuele netwerken wilt beperken, selecteert u de optie **geselecteerde netwerken** als deze nog niet is geselecteerd.
@@ -96,17 +85,19 @@ In deze sectie wordt beschreven hoe u Azure Portal kunt gebruiken om een service
     > [!NOTE]
     > Zie [toegang vanaf specifieke IP-adressen of bereiken toestaan](service-bus-ip-filtering.md)voor instructies voor het toestaan van toegang tot specifieke IP-adressen of bereiken.
 
+[!INCLUDE [service-bus-trusted-services](../../includes/service-bus-trusted-services.md)]
+
 ## <a name="use-resource-manager-template"></a>Resource Manager-sjabloon gebruiken
 Met de volgende Resource Manager-sjabloon kan een regel voor een virtueel netwerk worden toegevoegd aan een bestaande Service Bus naam ruimte.
 
 Sjabloon parameters:
 
-* **naam ruimte**: Service Bus naam ruimte.
-* **virtualNetworkingSubnetId**: volledig gekwalificeerd pad van Resource Manager voor het subnet van het virtuele netwerk; bijvoorbeeld `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` voor het standaard subnet van een virtueel netwerk.
+* **naam ruimte** : Service Bus naam ruimte.
+* **virtualNetworkingSubnetId** : volledig gekwalificeerd pad van Resource Manager voor het subnet van het virtuele netwerk; bijvoorbeeld `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` voor het standaard subnet van een virtueel netwerk.
 
 > [!NOTE]
 > Hoewel er geen regels kunnen worden geweigerd, is voor de Azure Resource Manager sjabloon de standaard actie ingesteld op **' toestaan '** , waardoor verbindingen niet worden beperkt.
-> Wanneer u Virtual Network of firewall regels maakt, moeten we de ***' defaultAction '*** wijzigen
+> Wanneer u Virtual Network of firewall regels maakt, moeten we de **_' defaultAction '_ wijzigen**
 > 
 > from
 > ```json

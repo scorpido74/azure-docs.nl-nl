@@ -2,14 +2,14 @@
 title: Resource providers en resource typen
 description: Hierin worden de resource providers beschreven die Azure Resource Manager ondersteunen. Hierin worden de schema's, beschik bare API-versies en de regio's beschreven die als host kunnen fungeren voor de resources.
 ms.topic: conceptual
-ms.date: 09/01/2020
+ms.date: 11/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8b1a9e6d539d37fb26d8fb0e3a541415dd574e9a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 702836e0dc98b06ccf6e0eeb0d0f373374c4e783
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89278867"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94426456"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure-resourceproviders en -typen
 
@@ -32,7 +32,7 @@ Zie [resource providers voor Azure-Services](azure-services-resource-providers.m
 
 ## <a name="register-resource-provider"></a>Resourceprovider registreren
 
-Voordat u een resource provider gebruikt, moet u de resource provider registreren voor uw Azure-abonnement. Met deze stap configureert u uw abonnement om te werken met de resource provider. Het bereik voor registratie is altijd het abonnement. Standaard worden veel resource providers automatisch geregistreerd. Het is echter mogelijk dat u bepaalde resource providers hand matig moet registreren.
+Voordat u een resource provider gebruikt, moet uw Azure-abonnement zijn geregistreerd voor de resource provider. Met registratie configureert u uw abonnement voor samen werking met de resource provider. Sommige resource providers zijn standaard geregistreerd. Andere resource providers worden automatisch geregistreerd wanneer u bepaalde acties uitvoert. Wanneer u bijvoorbeeld een bron maakt via de portal, wordt de resource provider doorgaans voor u geregistreerd. Voor andere scenario's moet u mogelijk hand matig een resource provider registreren.
 
 In dit artikel leest u hoe u de registratie status van een resource provider kunt controleren en waar nodig kunt registreren. U moet gemachtigd zijn om de `/register/action` bewerking voor de resource provider uit te voeren. De machtiging is opgenomen in de rollen Inzender en eigenaar.
 
@@ -49,7 +49,7 @@ Als u alle resource providers en de registratie status voor uw abonnement wilt w
 
     ![abonnementen selecteren](./media/resource-providers-and-types/select-all-services.png)
 
-3. Voer in het vak **alle services** het **abonnement**in en selecteer vervolgens **abonnementen**.
+3. Voer in het vak **alle services** het **abonnement** in en selecteer vervolgens **abonnementen**.
 4. Selecteer het abonnement dat u wilt weer geven in de lijst met abonnementen.
 5. **Resource providers** selecteren en de lijst met beschik bare resource providers weer geven.
 
@@ -61,7 +61,7 @@ Informatie weer geven voor een bepaalde resource provider:
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Selecteer **Alle services** in het menu van Azure Portal.
-3. In het vak **alle services** voert u **resource Explorer**in en selecteert u vervolgens **resource Explorer**.
+3. In het vak **alle services** voert u **resource Explorer** in en selecteert u vervolgens **resource Explorer**.
 
     ![Alle services selecteren](./media/resource-providers-and-types/select-resource-explorer.png)
 
@@ -83,8 +83,6 @@ Informatie weer geven voor een bepaalde resource provider:
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
 Als u alle resource providers in Azure en de registratie status voor uw abonnement wilt weer geven, gebruikt u:
 
 ```azurepowershell-interactive
@@ -101,6 +99,12 @@ Microsoft.ClassicNetwork         Registered
 Microsoft.ClassicStorage         Registered
 Microsoft.CognitiveServices      Registered
 ...
+```
+
+Als u alle geregistreerde resource providers voor uw abonnement wilt weer geven, gebruikt u:
+
+```azurepowershell-interactive
+ Get-AzResourceProvider -ListAvailable | Where-Object RegistrationState -eq "Registered" | Select-Object ProviderNamespace, RegistrationState | Sort-Object ProviderNamespace
 ```
 
 Als u een resource provider wilt registreren, gebruikt u:
@@ -190,7 +194,7 @@ West US
 
 Als u alle resource providers in Azure en de registratie status voor uw abonnement wilt weer geven, gebruikt u:
 
-```azurecli
+```azurecli-interactive
 az provider list --query "[].{Provider:namespace, Status:registrationState}" --out table
 ```
 
@@ -206,9 +210,15 @@ Microsoft.CognitiveServices      Registered
 ...
 ```
 
+Als u alle geregistreerde resource providers voor uw abonnement wilt weer geven, gebruikt u:
+
+```azurecli-interactive
+az provider list --query "sort_by([?registrationState=='Registered'].{Provider:namespace, Status:registrationState}, &Provider)" --out table
+```
+
 Als u een resource provider wilt registreren, gebruikt u:
 
-```azurecli
+```azurecli-interactive
 az provider register --namespace Microsoft.Batch
 ```
 
@@ -216,7 +226,7 @@ Retourneert een bericht dat de registratie is doorlopend.
 
 Als u informatie wilt weer geven voor een bepaalde resource provider, gebruikt u:
 
-```azurecli
+```azurecli-interactive
 az provider show --namespace Microsoft.Batch
 ```
 
@@ -235,7 +245,7 @@ Hiermee worden resultaten geretourneerd die vergelijkbaar zijn met:
 
 Als u de resource typen voor een resource provider wilt zien, gebruikt u:
 
-```azurecli
+```azurecli-interactive
 az provider show --namespace Microsoft.Batch --query "resourceTypes[*].resourceType" --out table
 ```
 
@@ -254,7 +264,7 @@ De API-versie komt overeen met een versie van REST API bewerkingen die door de r
 
 Als u de beschik bare API-versies voor een resource type wilt ophalen, gebruikt u:
 
-```azurecli
+```azurecli-interactive
 az provider show --namespace Microsoft.Batch --query "resourceTypes[?resourceType=='batchAccounts'].apiVersions | [0]" --out table
 ```
 
@@ -274,7 +284,7 @@ Resource Manager wordt in alle regio's ondersteund, maar de resources die u impl
 
 Als u de ondersteunde locaties voor een resource type wilt ophalen, gebruikt u.
 
-```azurecli
+```azurecli-interactive
 az provider show --namespace Microsoft.Batch --query "resourceTypes[?resourceType=='batchAccounts'].locations | [0]" --out table
 ```
 

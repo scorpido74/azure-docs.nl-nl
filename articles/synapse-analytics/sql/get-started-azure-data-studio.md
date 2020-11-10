@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: c3c1b61cb4f799b79ca00fc92ffadc2374a61c03
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: fb4c7f8ba49cf701ef13cb57ab2b323a94c928cc
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132462"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323819"
 ---
 # <a name="connect-to-synapse-sql-with-azure-data-studio-preview"></a>Verbinding maken met Synapse SQL met Azure Data Studio (preview-versie)
 
@@ -30,11 +30,11 @@ U kunt [Azure Data Studio (preview-versie)](/sql/azure-data-studio/download-azur
 
 ## <a name="connect"></a>Verbinding maken
 
-Als u verbinding wilt maken met Synapse SQL, opent u Azure Data Studio en selecteert u **Nieuwe verbinding** .
+Als u verbinding wilt maken met Synapse SQL, opent u Azure Data Studio en selecteert u **Nieuwe verbinding**.
 
 ![Azure Data Studio openen](./media/get-started-azure-data-studio/1-start.png)
 
-Kies **Microsoft SQL Server** als **verbindingstype** .
+Kies **Microsoft SQL Server** als **verbindingstype**.
 
 Voor de verbinding zijn de volgende parameters vereist:
 
@@ -42,15 +42,15 @@ Voor de verbinding zijn de volgende parameters vereist:
 * **Database:** Databasenaam
 
 > [!NOTE]
-> Als u **SQL op aanvraag (preview-versie)** wilt gebruiken, moet de URL er als volgt uitzien:
+> Als u een **serverloze SQL-pool (preview-versie)** wilt gebruiken, moet de URL er als volgt uitzien:
 >
 > - `<Azure Synapse workspace name>`-ondemand.sql.azuresynapse.net.
 >
-> Als u **SQL-pool** wilt gebruiken, moet de URL er als volgt uitzien:
+> Als u een **toegewezen SQL-pool** wilt gebruiken, moet de URL er als volgt uitzien:
 >
 > - `<Azure Synapse workspace name>`.sql.azuresynapse.net
 
-Kies **Windows-verificatie** , **Azure Active Directory** of **SQL-aanmelding** als **verificatietype** .
+Kies **Windows-verificatie** , **Azure Active Directory** of **SQL-aanmelding** als **verificatietype**.
 
 Als u gebruik wilt maken van **SQL-aanmelding** als verificatietype, moet u de gebruikersnaam- en wachtwoordparameters toevoegen:
 
@@ -77,7 +77,7 @@ Wanneer verbinding is gemaakt, kunt u met behulp van ondersteunde [Transact-SQL 
 
 ![Nieuwe query](./media/get-started-azure-data-studio/5-new-query.png)
 
-U kunt bijvoorbeeld de volgende Transact-SQL-instructie gebruiken om een [query uit te voeren op de Parquet-bestanden ](query-parquet-files.md) met behulp van SQL on demand:
+U kunt bijvoorbeeld de volgende Transact-SQL-instructie gebruiken om een [query uit te voeren op de Parquet-bestanden ](query-parquet-files.md) met behulp van een serverloze SQL-pool:
 
 ```sql
 SELECT COUNT(*)

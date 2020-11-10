@@ -1,6 +1,6 @@
 ---
 title: Gedeelde database
-description: Azure Synapse Analytics biedt een gedeeld metagegevensmodel. Wanneer u een database in Apache Spark maakt, is deze toegankelijk vanuit de SQL on-demand (preview-versie) en de SQL-poolengines.
+description: Azure Synapse Analytics biedt een gedeeld metagegevensmodel. Wanneer u een database in een serverloze Apache Spark-pool maakt, is deze toegankelijk vanuit de serverloze SQL-pool (preview) en de SQL-poolengines.
 services: synapse-analytics
 author: MikeRys
 ms.service: synapse-analytics
@@ -10,36 +10,36 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 58c1aea944d89872a79d0672a925b1696791c1a8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e17eb44a5f4f4aace9ce9d541b8218b35db0f5d3
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91260849"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317842"
 ---
 # <a name="azure-synapse-analytics-shared-database"></a>Gedeelde Azure Synapse Analytics-databases
 
-Met Azure Synapse Analytics kunnen de verschillende rekenengines voor de werkruimte databases en tabellen delen tussen de Spark-pools (preview-versie) en de SQL-on-demand engine (preview-versie).
+Met Azure Synapse Analytics kunnen de verschillende rekenengines voor de werkruimte databases en tabellen delen tussen de serverloze Apache Spark-pools (preview) en serverloze SQL-poolengine (preview).
 
 [!INCLUDE [synapse-analytics-preview-terms](../../../includes/synapse-analytics-preview-terms.md)]
 
-Een database die is gemaakt met een Spark-taak wordt weergegeven met dezelfde naam in alle huidige en toekomstige Spark-pools (preview-versie) in de werkruimte, met inbegrip van de SQL on-demand engine.
+Een database die is gemaakt met een Spark-taak wordt weergegeven met dezelfde naam in alle huidige en toekomstige Spark-pools (preview) in de werkruimte, met inbegrip van de serverloze SQL-poolengine.
 
-De standaard Spark-database met de naam `default` wordt ook weergegeven in de context van SQL on-demand met de naam `default`.
+De standaard Spark-database met de naam `default` wordt ook weergegeven in de context van de serverloze SQL-pool met de naam `default`.
 
-Omdat de databases asynchroon worden gesynchroniseerd naar SQL on-demand, is er een kleine vertraging voordat ze worden weergegeven.
+Omdat de databases asynchroon worden gesynchroniseerd naar de serverloze SQL-pool, is er een kleine vertraging voordat ze worden weergegeven.
 
 ## <a name="manage-a-spark-created-database"></a>Een met Spark gemaakte database beheren
 
 Gebruik Spark voor het beheren van met Spark gemaakte databases. U kunt een database bijvoorbeeld verwijderen via een Spark-pooltaak en er tabellen in maken vanuit Spark.
 
-Als u objecten in een met Spark gemaakte database maakt met SQL on-demand, of als u de database probeert te verwijderen, wordt de bewerking uitgevoerd. De oorspronkelijke Spark-database wordt echter niet gewijzigd.
+Als u objecten in een met Spark gemaakte database maakt met een serverloze SQL-pool, of als u de database probeert te verwijderen, wordt de bewerking uitgevoerd. De oorspronkelijke Spark-database wordt echter niet gewijzigd.
 
 ## <a name="how-name-conflicts-are-handled"></a>Hoe naamconflicten worden verwerkt
 
-Als de naam van een Spark-database een conflict veroorzaakt met de naam van een bestaande SQL on-demand-database, wordt een achtervoegsel toegevoegd aan SQL on-demand in de Spark-database. Het achtervoegsel in SQL on-demand is `_<workspace name>-ondemand-DefaultSparkConnector`.
+Als de naam van een Spark-database een conflict veroorzaakt met de naam van een bestaande serverloze SQL-pooldatabase, wordt een achtervoegsel toegevoegd aan serverloze SQL-pool in de Spark-database. Het achtervoegsel in de serverloze SQL-pool is `_<workspace name>-ondemand-DefaultSparkConnector`.
 
-Als bijvoorbeeld een Spark-database met de naam `mydb` wordt gemaakt in de Azure Synapse-werk ruimte `myws` en er al een SQL on-demand-database met die naam bestaat, moet er naar de Spark-database in SQL on-demand worden verwezen met de naam `mydb_myws-ondemand-DefaultSparkConnector`.
+Er wordt bijvoorbeeld een Spark-database met de naam `mydb` gemaakt in de Azure Synapse-werkruimte `myws` terwijl er al een serverloze SQL-pooldatabase met die naam bestaat. Dan moet er in de serverloze SQL-pool naar de Spark-database worden verwezen met de naam `mydb_myws-ondemand-DefaultSparkConnector`.
 
 > [!CAUTION]
 > Let op: u mag geen afhankelijkheid opnemen van dit gedrag.
@@ -58,7 +58,7 @@ Als voor een beveiligingsprincipal is vereist dat objecten moeten kunnen worden 
 
 ## <a name="examples"></a>Voorbeelden
 
-### <a name="create-and-connect-to-spark-database-with-sql-on-demand"></a>Spark-database maken en verbinden met SQL on demand
+### <a name="create-and-connect-to-spark-database-with-serverless-sql-pool"></a>Een Spark-database maken en verbinden met een serverloze SQL-pool
 
 Maak eerst een nieuwe Spark-database met de naam `mytestdb` met behulp van een Spark-cluster dat u al hebt gemaakt in uw werkruimte. U kunt bijvoorbeeld een Spark C#-notebook gebruiken met de volgende .NET for Spark-instructie:
 
@@ -66,7 +66,7 @@ Maak eerst een nieuwe Spark-database met de naam `mytestdb` met behulp van een S
 spark.Sql("CREATE DATABASE mytestdb")
 ```
 
-Na een korte vertraging wordt de database in SQL on-demand weergegeven. Voer bijvoorbeeld de volgende instructie uit vanuit SQL on-demand.
+Na een korte vertraging wordt de database in de serverloze SQL-pool weergegeven. Voer bijvoorbeeld de volgende instructie uit vanuit de serverloze SQL-pool.
 
 ```sql
 SELECT * FROM sys.databases;

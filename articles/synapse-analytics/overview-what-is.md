@@ -6,33 +6,33 @@ author: saveenr
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: overview
-ms.date: 09/12/2020
+ms.date: 10/28/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: c4338152579170bf809577262992f0db9a1a95ff
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 16e13a18f93da9063a7eb08e3a2df27db9e3090f
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90524943"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321691"
 ---
 # <a name="what-is-azure-synapse-analytics-workspaces-preview"></a>Wat is Azure Synapse Analytics (preview van werkruimten)?
 
 [!INCLUDE [preview](includes/note-preview.md)]
 
-Zakelijke analyses moeten op grote schaal worden uitgevoerd op elk soort gegevens, ongeacht of het gaat om onbewerkte, precieze of zeer samengestelde gegevens. Hiervoor moeten ondernemingen technologieën voor big data en datawarehousing, zoals Spark en SQL, samenvoegen in pijplijnen met rijke gegevens, die werken met de gegevens in relationele opslag en data lakes. Oplossingen zoals deze zijn moeilijk te bouwen, beveiligen en onderhouden. De complexiteit zorgt voor vertraging in de levering van de inzichten die ondernemingen nodig hebben.
+Zakelijke analyses moeten op grote schaal worden uitgevoerd op elk soort gegevens, ongeacht of het gaat om onbewerkte, precieze of zeer samengestelde gegevens. Hiervoor moeten ondernemingen meestal technologieën voor big data en datawarehousing samenvoegen in complexe gegevenspijplijnen, die werken met de gegevens in relationele opslag en data lakes. Dit soort oplossingen lijkt moeilijk te bouwen, te onderhouden en te beveiligen. De complexiteit ervan zorgt voor vertraging in de levering van de inzichten die ondernemingen nodig hebben.
 
-**Azure Synapse** is een geïntegreerde analyse-service die sneller inzicht biedt in alle datawarehouses en analysesystemen voor big data. In de kern combineert Azure Synapse het beste van de **SQL**-technologieën die worden gebruikt in zakelijke datawarehousing, **Spark**-technologieën die worden gebruikt voor big data, en **Pijplijnen** voor gegevensintegratie en ETL/ELT. Synapse heeft een webgebaseerde **Studio** die één plek biedt voor beheer, bewaking, codering en beveiliging. Synapse bevat een diepgaande integratie met andere Azure-services, zoals **PowerBI**, **CosmosDB** en **AzureML**.
+**Azure Synapse** is een geïntegreerde analyse-service die sneller inzicht biedt in alle datawarehouses en systemen voor big data. Azure Synapse combineert het beste van de **SQL** -technologieën die worden gebruikt in zakelijke datawarehousing, **Spark** -technologieën die worden gebruikt voor big data, en **Pipelines** voor gegevensintegratie en ETL/ELT. **Synapse Studio** biedt een uniforme ervaring voor beheer, bewaking, codering en beveiliging. Synapse bevat een diepgaande integratie met andere Azure-services, zoals **PowerBI** , **CosmosDB** en **AzureML**.
 
 ## <a name="key-features--benefits"></a>Belangrijkste functies en voordelen
 
 ### <a name="industry-leading-sql"></a>Toonaangevende SQL
 
-* **Synapse SQL** is een gedistribueerd querysysteem waarmee ondernemingen datawarehousing en gegevensvirtualisatie-scenario's kunnen implementeren met behulp van standaard T-SQL-ervaringen die bekend zijn bij data engineers. Ook worden de mogelijkheden van SQL uitgebreid om scenario's wat betreft streaming- en machine learning aan te pakken.
+* **Synapse SQL** is een gedistribueerd querysysteem waarmee ondernemingen scenario's voor datawarehousing en gegevensvirtualisatie kunnen implementeren, met behulp van bekende T-SQL-standaardversies. Ook worden de mogelijkheden van SQL uitgebreid om scenario's wat betreft streaming- en machine learning aan te pakken.
 
 * Synapse SQL biedt zowel **serverloze** als **toegewezen** resourcemodellen, waarmee u de opties voor verbruik en facturering kunt aanpassen aan uw behoeften. Voor voorspelbare prestaties en kosten kunt u toegewezen SQL-pools maken om verwerkingskracht te reserveren voor gegevens die zijn opgeslagen in SQL-tabellen. Voor niet-geplande of bursty werkbelastingen gebruikt u het altijd beschikbare, serverloze SQL-eindpunt.
 * Gebruik ingebouwde **streamingmogelijkheden** om gegevens van gegevensbronnen in de cloud in SQL-tabellen te plaatsen
-* Integreer AI met SQL, door **machine learning**-modellen te gebruiken om gegevens een score te geven met behulp van de [functie T-SQL PREDICT](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest)
+* Integreer AI met SQL door **machine learning** -modellen te gebruiken om gegevens een score te geven met behulp van de [functie T-SQL PREDICT](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest)
 
 ### <a name="industry-standard-apache-spark"></a>Toonaangevende Apache Spark
 
@@ -79,4 +79,4 @@ Azure Synapse biedt ondernemingen één manier om analyse-resources te beheren, 
 
 * [Aan de slag met Azure Synapse Analytics](get-started.md)
 * [Een werkruimte maken](quickstart-create-workspace.md)
-* [SQL on-demand gebruiken](quickstart-sql-on-demand.md)
+* [Serverloze SQL-pools gebruiken](quickstart-sql-on-demand.md)
