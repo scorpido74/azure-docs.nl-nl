@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 341d24e73c9e07bb3155535d98a88145643c1692
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 889a70005f1cbabaad525147b4661ea04886138a
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92201780"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445605"
 ---
 # <a name="use-the-model-conversion-rest-api"></a>De REST API voor modelconversie gebruiken
 
@@ -26,7 +26,7 @@ Bekijk de [lijst met beschik bare regio's](../../reference/regions.md) voor de b
 
 Deze headers moeten worden opgegeven voor alle aanvragen:
 
-- De **autorisatie** -header moet de waarde ' Bearer [*token*] ' bevatten, waarbij [*token*] een [service toegangs token](../tokens.md)is.
+- De **autorisatie** -header moet de waarde ' Bearer [ *token* ] ' bevatten, waarbij [ *token* ] een [service toegangs token](../tokens.md)is.
 
 ### <a name="common-response-headers"></a>Algemene antwoord headers
 
@@ -47,7 +47,7 @@ Uw Azure-account voor externe rendering moet toegang hebben tot het gegeven opsl
 
 | Eindpunt | Methode |
 |-----------|:-----------|
-| /v1/accounts/**accountID**/conversions/Create | POST |
+| /v1/accounts/ **accountID** /conversions/Create | POST |
 
 Retourneert de ID van de actieve conversie, verpakt in een JSON-document. De veld naam is "conversionId".
 
@@ -79,7 +79,7 @@ Als uw ARR-account niet is gekoppeld aan uw opslag account, kunt u met deze REST
 
 | Eindpunt | Methode |
 |-----------|:-----------|
-| /v1/accounts/**accountID**/conversions/createWithSharedAccessSignature | POST |
+| /v1/accounts/ **accountID** /conversions/createWithSharedAccessSignature | POST |
 
 Retourneert de ID van de actieve conversie, verpakt in een JSON-document. De veld naam is `conversionId` .
 
@@ -120,7 +120,7 @@ De status van een actieve conversie die is gestart met een van de bovenstaande R
 
 | Eindpunt | Methode |
 |-----------|:-----------|
-| /v1/accounts/**accountID**/conversions/**conversionId** | GET |
+| /v1/accounts/ **accountID** /conversions/ **conversionId** | GET |
 
 Retourneert een JSON-document met een status veld dat de volgende waarden kan hebben:
 
@@ -130,6 +130,21 @@ Retourneert een JSON-document met een status veld dat de volgende waarden kan he
 - Veroorzaakt
 
 Als de status ' fout ' is, is er een extra ' fout ' veld met een subveld ' bericht ' met fout gegevens. Extra logboeken worden geüpload naar de uitvoer container.
+
+## <a name="list-conversions"></a>Lijst conversies
+
+Als u een lijst met alle conversies voor een account wilt weer geven, gebruikt u de volgende Interface:
+
+| Eindpunt | Methode |
+|-----------|:-----------|
+| /v1/accounts/ **accountID** /conversions? Skip token = **Skip token** | GET |
+
+| Parameter | Vereist |
+|-----------|:-----------|
+| accountID | Ja |
+| Skip token | Nee |
+
+Retourneert een JSON-document dat een matrix van conversies en de bijbehorende gegevens bevat. Met deze query worden Maxi maal 50 conversies tegelijk geretourneerd. In de situatie waarin meer conversies worden opgehaald, bevat het antwoord een **nextLink** -eigenschap met de Skip token die kan worden opgevraagd om de volgende set resultaten op te halen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

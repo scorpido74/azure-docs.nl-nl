@@ -7,14 +7,14 @@ tags: azure-resource-manager
 ms.service: security
 ms.subservice: security-fundamentals
 ms.topic: article
-ms.date: 10/01/2020
+ms.date: 11/10/2020
 ms.author: mbaldwin
-ms.openlocfilehash: dbc426144678f5bd7382b0961bf9bc3f5339b97a
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 955990ed9209ea1e12eed824241e8a5a456ed73b
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/10/2020
-ms.locfileid: "94409804"
+ms.locfileid: "94444874"
 ---
 # <a name="azure-tls-certificate-changes"></a>Wijzigingen in Azure TLS-certificaat  
 
@@ -22,12 +22,15 @@ Microsoft werkt Azure-services bij om TLS-certificaten te gebruiken van een ande
 
 ## <a name="when-will-this-change-happen"></a>Wanneer vindt deze wijziging plaats?
 
+De bestaande Azure-eind punten zijn sinds 13 augustus 2020 overgegaan op een gefaseerde manier. Alle nieuw gemaakte Azure TLS/SSL-eindpunten bevatten bijgewerkte certificaten die zijn gekoppeld aan de nieuwe basis-CA's.
+
+Servicespecifieke Details:
+
 - Deze transitie is op 7 juli 2020 begonnen in [Azure AD](../../active-directory/index.yml)-services (Active Directory).
-- Alle nieuw gemaakte Azure TLS/SSL-eindpunten bevatten bijgewerkte certificaten die zijn gekoppeld aan de nieuwe basis-CA's.
-- Bestaande Azure-eindpunten worden vanaf 13 augustus 2020 gefaseerd overgezet.
 - [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub) en [DPS](../../iot-dps/index.yml) blijven in de Baltimore CyberTrust Root CA, maar de tussenliggende CA's veranderen. [Klik hier voor meer informatie](https://techcommunity.microsoft.com/t5/internet-of-things/azure-iot-tls-changes-are-coming-and-why-you-should-care/ba-p/1658456).
 - [Azure Storage](../../storage/index.yml) blijft aanwezig in de basis-CA van Baltimore CyberTrust, maar de tussenliggende CA's veranderen. [Klik hier voor meer informatie](https://techcommunity.microsoft.com/t5/azure-storage/azure-storage-tls-changes-are-coming-and-why-you-care/ba-p/1705518).
 - [Azure cache voor redis](../../azure-cache-for-redis/index.yml) blijft aanwezig op Baltimore Cyber Trust-basis certificerings instantie, maar de tussenliggende ca's worden gewijzigd. [Klik hier voor meer informatie](../../azure-cache-for-redis/cache-whats-new.md).
+
 > [!IMPORTANT]
 > Klanten moeten hun toepassing(en) mogelijk bijwerken na deze wijziging om verbindingsfouten te voorkomen wanneer ze proberen verbinding te maken met Azure-services.
 

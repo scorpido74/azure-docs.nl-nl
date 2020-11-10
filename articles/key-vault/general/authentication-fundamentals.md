@@ -7,12 +7,12 @@ ms.date: 09/25/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 1e8f1d2964f42c480026d13bed59921dd3f07610
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: f7f9acd18da57bd83e688249600b8468cc4ebbe5
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286225"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445554"
 ---
 # <a name="key-vault-authentication-fundamentals"></a>Basisprincipes van Key Vault-verificatie
 
@@ -45,9 +45,9 @@ Volg de onderstaande documentatie koppelingen om inzicht te krijgen in het regis
 * Een gebruiker registreren bij Azure Active Directory [koppeling](../../active-directory/fundamentals/add-users-azure-active-directory.md)
 * Een toepassing registreren in Azure Active Directory [koppeling](../../active-directory/develop/quickstart-register-app.md)
 
-## <a name="assign-your-security-principal-a-role-in-azure-active-directory"></a>Uw beveiligingsprincipal een rol in Azure Active Directory toewijzen
+## <a name="assign-your-security-principal-a-role"></a>Uw beveiligingsprincipal een rol toewijzen
 
-Azure Active Directory gebruikt op rollen gebaseerd toegangs beheer (RBAC) om machtigingen toe te wijzen aan beveiligings-principals. Deze machtigingen worden rollen toewijzingen genoemd.
+U kunt Azure RBAC (op rollen gebaseerd toegangs beheer) gebruiken om machtigingen toe te wijzen aan beveiligings-principals. Deze machtigingen worden roltoewijzingen genoemd.
 
 In de context van sleutel kluis bepalen deze roltoewijzingen het toegangs niveau van de beveiligingsprincipal voor het beheer vlak (ook wel besturings vlak genoemd) van sleutel kluis. Deze roltoewijzingen bieden niet rechtstreeks toegang tot de gegevens vlak geheimen, maar bieden toegang tot het beheren van eigenschappen van sleutel kluis. Bijvoorbeeld: een gebruiker of toepassing die een **rol van lezer** heeft toegewezen, mag geen wijzigingen aanbrengen in de firewall instellingen van de sleutel kluis, terwijl een gebruiker of toepassing die een **rol Inzender** toegewezen, wijzigingen kan aanbrengen. Geen van beide rollen heeft rechtstreekse toegang voor het uitvoeren van bewerkingen op geheimen, sleutels en certificaten, zoals het maken of ophalen van de waarde tot ze toegang krijgen tot het gegevens vlak van de sleutel kluis. Dit wordt in de volgende stap besproken.
 
@@ -57,7 +57,7 @@ In de context van sleutel kluis bepalen deze roltoewijzingen het toegangs niveau
 >[!NOTE]
 > Wanneer u een roltoewijzing toewijst aan een gebruiker op het Azure Active Directory Tenant niveau, wordt deze set machtigingen trickle tot alle abonnementen, resource groepen en resources binnen het bereik van de toewijzing. Als u de principal van de minimale bevoegdheid wilt volgen, kunt u deze roltoewijzing op een nauw keuriger bereik maken. U kunt bijvoorbeeld een gebruiker een rol van lezer toewijzen op het abonnements niveau en een rol van eigenaar voor een enkele sleutel kluis. Ga naar de instellingen voor Identity Access Management (IAM) van een abonnement, een resource groep of een sleutel kluis om een roltoewijzing te maken op een nauw keuriger bereik.
 
-* Voor meer informatie over Azure Active Directory rollen [koppeling](../../role-based-access-control/built-in-roles.md)
+* Meer informatie over de [koppeling](../../role-based-access-control/built-in-roles.md) van Azure-functies
 * Meer informatie over [koppeling](../../role-based-access-control/role-assignments-portal.md) van roltoewijzingen toewijzen of verwijderen
 
 ## <a name="configure-key-vault-access-policies-for-your-security-principal"></a>Een sleutel kluis toegangs beleid configureren voor uw beveiligings-principal
@@ -91,7 +91,7 @@ Toegang tot gegevenslaag of toegang tot het uitvoeren van bewerkingen voor sleut
 Met het toegangs beleid voor sleutel kluizen kunnen gebruikers en toepassingen toegang krijgen tot gegevens vlak bewerkingen op een sleutel kluis.
 
 > [!NOTE]
-> Dit toegangs model is niet compatibel met de sleutel kluis RBAC (optie 2) die hieronder wordt beschreven. U moet er een kiezen. U krijgt de mogelijkheid om deze selectie te maken wanneer u op het tabblad toegangs beleid van uw sleutel kluis klikt.
+> Dit toegangs model is niet compatibel met Azure RBAC voor sleutel kluis (optie 2) zoals hieronder wordt beschreven. U moet er een kiezen. U krijgt de mogelijkheid om deze selectie te maken wanneer u op het tabblad toegangs beleid van uw sleutel kluis klikt.
 
 Klassiek toegangs beleid is nauw keurig. Dit betekent dat u de mogelijkheid van elke afzonderlijke gebruiker of toepassing voor het uitvoeren van afzonderlijke bewerkingen binnen een sleutel kluis kunt toestaan of weigeren. Enkele voorbeelden:
 
@@ -104,25 +104,25 @@ Klassiek toegangs beleid staat echter geen machtigingen op niveau per object toe
 > [!IMPORTANT]
 > De klassieke sleutel kluis toegangs beleid en Azure Active Directory roltoewijzingen zijn onafhankelijk van elkaar. Als u een beveiligingsprincipal toewijst voor een rol Inzender op abonnements niveau, wordt de beveiligingsprincipal niet automatisch toegestaan op elke sleutel kluis binnen het bereik van het abonnement de mogelijkheid om gegevenslaag bewerkingen uit te voeren. De beveiligingsprincipal moet nog steeds worden verleend, of u hebt zichzelf toegangs beleid machtigingen voor het uitvoeren van gegevenslaag bewerkingen.
 
-### <a name="data-plane-access-option-2--key-vault-rbac-preview"></a>Access-optie 2 voor gegevens vlak: Key Vault RBAC (preview)
+### <a name="data-plane-access-option-2--azure-rbac-for-key-vault-preview"></a>Access-optie voor gegevens vlak 2: Azure RBAC voor Key Vault (preview-versie)
 
-Een nieuwe manier om toegang tot het sleutel kluis-gegevens vlak te verlenen, is via sleutel-op rollen gebaseerd toegangs beheer (RBAC).
+Een nieuwe manier om toegang tot het sleutel kluis-gegevens vlak te verlenen, is via Azure op rollen gebaseerd toegangs beheer (Azure RBAC) voor sleutel kluis.
 
 > [!NOTE]
 > Dit toegangs model is niet compatibel met het klassieke toegangs beleid van Key kluis dat hierboven wordt weer gegeven. U moet er een kiezen. U krijgt de mogelijkheid om deze selectie te maken wanneer u op het tabblad toegangs beleid van uw sleutel kluis klikt.
 
 Key Vault roltoewijzingen zijn een set van ingebouwde rollen toewijzingen van Azure die algemene sets machtigingen bevatten die worden gebruikt voor toegang tot sleutels, geheimen en certificaten. Dit machtigings model biedt ook aanvullende mogelijkheden die niet beschikbaar zijn in het klassieke sleutel kluis toegangs beleid model.
 
-* RBAC-machtigingen kunnen worden beheerd op schaal door gebruikers toe te staan deze rollen toe te wijzen aan een abonnement, een resource groep of een kluis niveau van individuele sleutels. Een gebruiker heeft de gegevensopslag machtigingen voor alle sleutel kluizen binnen het bereik van de RBAC-toewijzing. Dit elimineert de nood zaak om afzonderlijke toegangs beleid machtigingen per gebruiker/toepassing per sleutel kluis toe te wijzen.
+* U kunt Azure RBAC-machtigingen op schaal beheren door gebruikers toe te staan deze rollen toe te wijzen aan een abonnement, resource groep of een kluis niveau van individuele sleutels. Een gebruiker beschikt over de machtigingen voor het gegevens vlak van alle sleutel kluizen binnen het bereik van de RBAC-toewijzing van Azure. Dit elimineert de nood zaak om afzonderlijke toegangs beleid machtigingen per gebruiker/toepassing per sleutel kluis toe te wijzen.
 
-* RBAC-machtigingen zijn compatibel met Privileged Identity Management of PIM. Zo kunt u just-in-time-toegangs beheer configureren voor geprivilegieerde rollen als Key Vault beheerder. Dit is een best practice voor beveiliging en volgt de principal van de minimale bevoegdheid door permanente toegang tot uw sleutel kluizen te elimineren.
+* De Azure RBAC-machtigingen zijn compatibel met Privileged Identity Management of PIM. Zo kunt u just-in-time-toegangs beheer configureren voor geprivilegieerde rollen als Key Vault beheerder. Dit is een best practice voor beveiliging en volgt de principal van de minimale bevoegdheid door permanente toegang tot uw sleutel kluizen te elimineren.
 
-* RBAC-machtigingen zijn compatibel met nauw keurige machtigingen per object, zodat u kunt voor komen dat een gebruiker alleen bewerkingen uitvoert op sommige van uw sleutel kluis objecten. Hierdoor kunnen meerdere toepassingen een kluis met één sleutel delen terwijl de toegang tussen toepassingen nog steeds wordt geïsoleerd.
+* Azure RBAC-machtigingen zijn compatibel met machtigingen per object, zodat u kunt voor komen dat een gebruiker alleen bewerkingen uitvoert op een van de sleutel kluis objecten. Hierdoor kunnen meerdere toepassingen een kluis met één sleutel delen terwijl de toegang tussen toepassingen nog steeds wordt geïsoleerd.
 
-Raadpleeg de volgende documenten voor meer informatie over Key Vault RBAC:
+Raadpleeg de volgende documenten voor meer informatie over Azure RBAC voor Key Vault:
 
-* RBAC- [koppeling](./secure-your-key-vault.md#management-plane-and-azure-rbac) Azure Key Vault
-* [Koppeling](../../role-based-access-control/built-in-roles.md#key-vault-administrator-preview) van Azure Key Vault RBAC-rollen (preview-versie)
+* [Koppeling](./secure-your-key-vault.md#management-plane-and-azure-rbac) Azure RBAC voor Key Vault
+* [Koppeling](../../role-based-access-control/built-in-roles.md#key-vault-administrator-preview) Azure RBAC voor Key Vault-rollen (preview-versie)
 
 ## <a name="configure-key-vault-firewall"></a>Key Vault firewall configureren
 

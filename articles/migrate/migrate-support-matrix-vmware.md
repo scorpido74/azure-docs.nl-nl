@@ -2,13 +2,13 @@
 title: VMware-evaluatie ondersteuning in Azure Migrate
 description: Meer informatie over ondersteuning voor VMware VM-evaluatie met Azure Migrate server-evaluatie.
 ms.topic: conceptual
-ms.date: 06/08/2020
-ms.openlocfilehash: 8b119b56e7e4c7fac74c57cc5c48fb44f91a7ee6
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.date: 11/10/2020
+ms.openlocfilehash: 6e033bdf0f1492d6cbb4c41192cca8206816917d
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93345428"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444942"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>Ondersteunings matrix voor VMware-evaluatie 
 
@@ -66,14 +66,14 @@ Naast het detecteren van computers kunnen server analyses apps, rollen en functi
 
 **Ondersteuning** | **Details**
 --- | ---
-**Ondersteunde computers** | App-detectie wordt momenteel alleen ondersteund voor virtuele VMware-machines. U kunt op elk Azure Migrate apparaat apps die zijn geïnstalleerd op Maxi maal 10000 VMware-Vm's detecteren.
-**Besturingssystemen** | App-Discovery wordt ondersteund voor Vm's waarop alle Windows-en Linux-versies worden uitgevoerd.
+**Ondersteunde computers** | Momenteel alleen ondersteund voor virtuele VMware-machines. U kunt op elk Azure Migrate apparaat apps die zijn geïnstalleerd op Maxi maal 10000 VMware-Vm's, detecteren.
+**Besturingssystemen** | Ondersteuning voor Vm's waarop alle Windows-en Linux-versies worden uitgevoerd.
 **VM-vereisten** | VMware-hulpprogram ma's moeten zijn geïnstalleerd en worden uitgevoerd op virtuele machines waarop u apps wilt detecteren. <br/><br/> De versie van de VMware-hulpprogram ma's moet later zijn dan 10.2.0.<br/><br/> Op Vm's moet Power shell-versie 2,0 of hoger zijn geïnstalleerd.
-**Discovery** (Detectie) | App-detectie is zonder agent. Hierbij worden de gast referenties van de machine gebruikt en kunnen computers op afstand worden benaderd met WMI-en SSH-aanroepen.
+**Discovery** (Detectie) | Informatie over apps die op een virtuele machine zijn geïnstalleerd, wordt verzameld van de vCenter Server, met behulp van VMware-Hulpprogram Ma's die op de virtuele machine zijn geïnstalleerd. Het apparaat verzamelt de app-gegevens van de vCenter Server, met behulp van vSphere-Api's. App-detectie is zonder agent. Er is niets geïnstalleerd op Vm's en het apparaat maakt geen rechtstreekse verbinding met Vm's. WMI/SSH moet zijn ingeschakeld en beschikbaar zijn op Vm's.
 **vCenter** | Het vCenter Server alleen-lezen account dat wordt gebruikt voor de evaluatie, heeft bevoegdheden nodig die zijn ingeschakeld voor **virtual machines**  >  **gast bewerkingen** om te kunnen communiceren met de virtuele machine voor toepassings detectie.
 **VM-toegang** | App-detectie heeft een lokaal gebruikers account op de virtuele machine nodig voor toepassings detectie.<br/><br/> Azure Migrate biedt momenteel ondersteuning voor het gebruik van één referentie voor alle Windows-servers en één referentie voor alle Linux-servers.<br/><br/> U maakt een gast gebruikers account voor Windows-Vm's en een standaard/normaal gebruikers account (niet-sudo toegang) voor alle virtuele Linux-machines.
 **Poort toegang** | Het Azure Migrate apparaat moet verbinding kunnen maken met TCP-poort 443 op ESXi-hosts waarop Vm's worden uitgevoerd waarop u apps wilt detecteren. De vCenter Server retourneert een ESXI om het bestand met de app-gegevens te downloaden.
-**Limieten** | Voor app-Discovery kunt u tot 10000 Vm's op elk Azure Migrate apparaat detecteren.
+
 
 
 ## <a name="dependency-analysis-requirements-agentless"></a>Vereisten voor afhankelijkheids analyse (zonder agent)
@@ -82,17 +82,15 @@ Naast het detecteren van computers kunnen server analyses apps, rollen en functi
 
 **Vereiste** | **Details**
 --- | --- 
-**Vóór implementatie** | Er moet een Azure Migrate project aanwezig zijn met het hulp programma voor Server evaluatie dat is toegevoegd aan het project.<br/><br/>  U kunt afhankelijkheids visualisatie implementeren nadat u een Azure Migrate apparaat hebt ingesteld om uw on-premises VMware-machines te detecteren.<br/><br/> [Meer informatie over](create-manage-projects.md) het maken van een project voor de eerste keer.<br/> [Meer informatie over het](how-to-assess.md) toevoegen van een evaluatie programma aan een bestaand project.<br/> [Meer informatie over](how-to-set-up-appliance-vmware.md) het instellen van het Azure migrate-apparaat voor de evaluatie van virtuele VMware-machines.
 **Ondersteunde computers** | Momenteel alleen ondersteund voor virtuele VMware-machines.
-**Virtuele Windows-machines** | Windows Server 2016<br/> Windows Server 2012 R2<br/> Windows Server 2012<br/> Windows Server 2008 R2 (64-bits).<br/>Micro soft Windows Server 2008 (32-bits). Zorg ervoor dat Power shell is geïnstalleerd.
-**vCenter Server referenties** | Voor afhankelijkheids visualisatie moet een vCenter Server account met alleen-lezen toegang en bevoegdheden zijn ingeschakeld voor Virtual Machines >-gast bewerkingen.
-**Machtigingen voor Windows-VM'S** |  Voor de afhankelijkheids analyse heeft het Azure Migrate-apparaat een domein beheerders account of een lokaal beheerders account nodig om toegang te krijgen tot Windows-Vm's.
-**Virtuele Linux-machines** | Red Hat Enterprise Linux 7, 6, 5<br/> Ubuntu Linux 14,04, 16,04<br/> Debian 7, 8<br/> Oracle Linux 6, 7<br/> CentOS 5, 6, 7.<br/> SUSE Linux Enterprise Server 11 en hoger
-**Linux-account** | Voor afhankelijkheids analyse, op Linux-machines, heeft het Azure Migrate apparaat een hoofd gebruikers account nodig<br/><br/> Het gebruikers account heeft ook de volgende machtigingen nodig voor/bin/netstat-en/bin/ls-bestanden: CAP_DAC_READ_SEARCH en CAP_SYS_PTRACE. Stel deze mogelijkheden in met behulp van de volgende opdrachten: <br/> sudo setcap CAP_DAC_READ_SEARCH, CAP_SYS_PTRACE = EP/bin/ls <br/> sudo setcap CAP_DAC_READ_SEARCH, CAP_SYS_PTRACE = EP/bin/netstat
-**Vereiste agents** | Er is geen agent vereist voor computers die u wilt analyseren.
-**VMware-Hulpprogram Ma's** | VMware-Hulpprogram Ma's (hoger dan 10,2) moeten zijn geïnstalleerd en worden uitgevoerd op elke virtuele machine die u wilt analyseren.
-**PowerShell** | Op Windows-Vm's moet Power shell-versie 2,0 of hoger zijn geïnstalleerd.
-**Poort toegang** | Op ESXi-hosts waarop Vm's worden uitgevoerd die u wilt analyseren, moet het Azure Migrate apparaat verbinding kunnen maken met TCP-poort 443.
+**Virtuele Windows-machines** | Windows Server 2016<br/> Windows Server 2012 R2<br/> Windows Server 2012<br/> Windows Server 2008 R2 (64-bits).<br/>Micro soft Windows Server 2008 (32-bits). 
+**Virtuele Linux-machines** | Red Hat Enterprise Linux 7, 6, 5<br/> Ubuntu Linux 14,04, 16,04<br/> Debian 7, 8<br/> Oracle Linux 6, 7<br/> CentOS 5, 6, 7.<br/> SUSE Linux Enterprise Server 11 en hoger.
+**VM-vereisten** | VMware-Hulpprogram Ma's (later dan 10.2.0) moeten zijn geïnstalleerd en worden uitgevoerd op de virtuele machines die u wilt analyseren.<br/><br/> Op Vm's moet Power shell-versie 2,0 of hoger zijn geïnstalleerd.
+**Detectie methode** |  Afhankelijkheids informatie tussen Vm's wordt verzameld uit de vCenter Server, met behulp van VMware-hulpprogram ma's die op de virtuele machine zijn geïnstalleerd. Het apparaat verzamelt de informatie van de vCenter Server met behulp van vSphere-Api's. Detectie is zonder agent. Er is niets geïnstalleerd op de virtuele machine en het apparaat maakt geen rechtstreekse verbinding met Vm's. WMI/SSH moet zijn ingeschakeld en beschikbaar zijn op Vm's.
+**vCenter-account** | Het alleen-lezen account dat door Azure Migrate wordt gebruikt voor beoordeling vereist bevoegdheden die zijn ingeschakeld voor **Virtual Machines >-gast bewerkingen**.
+**Machtigingen voor Windows-VM'S** |  Een account (lokale beheerder of domein) met lokale beheerders machtigingen op Vm's.
+**Linux-account** | Hoofd gebruikers account of een account met deze machtigingen voor/bin/netstat-en/bin/ls-bestanden: CAP_DAC_READ_SEARCH en CAP_SYS_PTRACE.<br/><br/> Stel deze mogelijkheden in met behulp van de volgende opdrachten: <br/><br/> sudo setcap CAP_DAC_READ_SEARCH, CAP_SYS_PTRACE = EP/bin/ls<br/><br/> sudo setcap CAP_DAC_READ_SEARCH, CAP_SYS_PTRACE = EP/bin/netstat
+**Poort toegang** | Het Azure Migrate apparaat moet verbinding kunnen maken met TCP-poort 443 op ESXI-hosts waarop de virtuele machines worden uitgevoerd waarvan u de afhankelijkheden wilt detecteren. De vCenter Server retourneert een ESXI om het bestand met de afhankelijkheids gegevens te downloaden.
 
 
 ## <a name="dependency-analysis-requirements-agent-based"></a>Vereisten voor afhankelijkheids analyse (op agent gebaseerd)

@@ -8,12 +8,12 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/12/2020
-ms.openlocfilehash: 6a3916a41635a1c76bddbb092294f6d362fc6050
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1e6f4e16e3eda8519913a9e2ae14f7cc909bf61
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88924708"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445452"
 ---
 # <a name="aml-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>AML-vaardigheid in een Azure Cognitive Search-verrijkings pijplijn
 
@@ -58,9 +58,9 @@ Parameters zijn hoofdlettergevoelig. Welke para meters u kunt gebruiken, is afha
 
 Welke para meters voor de AML-vaardig heden zijn vereist, is afhankelijk van de verificatie die uw AML-service gebruikt, indien van toepassing. AML-services bieden drie verificatie opties:
 
-* [Verificatie op basis van een sleutel](../machine-learning/concept-enterprise-security.md#authentication-for-web-service-deployment). Er wordt een statische sleutel gegeven om Score aanvragen van AML-vaardig heden te verifiëren
+* [Verificatie op basis van een sleutel](../machine-learning/how-to-authenticate-web-service.md#key-based-authentication). Er wordt een statische sleutel gegeven om Score aanvragen van AML-vaardig heden te verifiëren
   * De _URI_ -en _sleutel_ parameters gebruiken
-* [Verificatie op basis van tokens](../machine-learning/concept-enterprise-security.md#authentication). De AML-service wordt [geïmplementeerd met verificatie op basis van tokens](../machine-learning/how-to-deploy-azure-kubernetes-service.md#authentication-with-tokens). De [beheerde identiteit](../active-directory/managed-identities-azure-resources/overview.md) van de Azure Cognitive Search-service is toegewezen aan de [rol van lezer](../machine-learning/how-to-assign-roles.md) in de werk ruimte van de AML-service. De AML-vaardigheid gebruikt vervolgens de beheerde identiteit van de Azure Cognitive Search-service om te verifiëren bij de AML-service, zonder dat er statische sleutels vereist zijn.
+* [Verificatie op basis van tokens](../machine-learning/how-to-authenticate-web-service.md#token-based-authentication). De AML-service wordt [geïmplementeerd met verificatie op basis van tokens](../machine-learning/how-to-authenticate-web-service.md#token-based-authentication). De [beheerde identiteit](../active-directory/managed-identities-azure-resources/overview.md) van de Azure Cognitive Search-service is toegewezen aan de [rol van lezer](../machine-learning/how-to-assign-roles.md) in de werk ruimte van de AML-service. De AML-vaardigheid gebruikt vervolgens de beheerde identiteit van de Azure Cognitive Search-service om te verifiëren bij de AML-service, zonder dat er statische sleutels vereist zijn.
   * Gebruik de para meter _resourceId_ .
   * Als de Azure Cognitive Search-service zich in een andere regio bevindt dan de AML-werk ruimte, gebruikt u de para meter _Region_ voor het instellen van de regio waarin de AML-service is geïmplementeerd
 * Geen verificatie. Er is geen verificatie vereist voor het gebruik van de AML-service

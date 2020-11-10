@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sudbalas
-ms.openlocfilehash: 585f5998eb953c8ed90a47922d76f32897c0f915
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 91a3a0c2ae066fde55892af90a3d666a3c1221a3
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285836"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445486"
 ---
 # <a name="secure-access-to-a-key-vault"></a>Veilige toegang tot een sleutelkluis
 
@@ -26,7 +26,7 @@ Zie [Over Azure Key Vault](overview.md) voor meer informatie over Key Vault. Zie
 
 Toegang tot een sleutel kluis wordt beheerd via twee interfaces: het **beheer vlak** en het **gegevens vlak**. Het beheer vlak is waar u Key Vault zichzelf beheert. Bewerkingen in dit vlak zijn onder andere het maken en verwijderen van sleutel kluizen, het ophalen van Key Vault eigenschappen en het bijwerken van het toegangs beleid. Op het gegevens vlak kunt u werken met de gegevens die zijn opgeslagen in een sleutel kluis. U kunt sleutels, geheimen en certificaten toevoegen, verwijderen en wijzigen.
 
-Beide plannen gebruiken [Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md) voor verificatie. Voor autorisatie gebruikt het beheer vlak [op rollen gebaseerd toegangs beheer (RBAC) van Azure](../../role-based-access-control/overview.md) en maakt het gegevens vlak gebruik van een [Key Vault toegangs beleid](./assign-access-policy-portal.md) en [Azure RBAC voor Key Vault gegevenslaag bewerkingen (preview)](./rbac-guide.md).
+Beide plannen gebruiken [Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md) voor verificatie. Voor autorisatie gebruikt het beheer vlak [Azure RBAC (op rollen gebaseerd toegangs beheer)](../../role-based-access-control/overview.md) en maakt het gegevens vlak gebruik van een [Key Vault toegangs beleid](./assign-access-policy-portal.md) en [Azure RBAC voor Key Vault gegevenslaag bewerkingen (preview)](./rbac-guide.md).
 
 Voor toegang tot een sleutel kluis in een van beide vlieg tuigen moeten alle bellers (gebruikers of toepassingen) de juiste verificatie en autorisatie hebben. Met verificatie wordt de identiteit van de aanroeper bepaald. Autorisatie bepaalt welke bewerkingen de aanroeper kan uitvoeren. Verificatie met Key Vault werkt in combinatie met [Azure AD (Active Directory)](../../active-directory/fundamentals/active-directory-whatis.md), dat verantwoordelijk is voor het verifiëren van de identiteit van elke opgegeven **beveiligingsprincipal**.
 
@@ -58,7 +58,7 @@ Het model van één mechanisme voor verificatie voor beide abonnementen heeft ve
 
 ## <a name="resource-endpoints"></a>Resource-eind punten
 
-Toepassingen hebben toegang tot de abonnementen via eind punten. De toegangs controle voor de twee abonnementen werkt afzonderlijk. Als u een toepassing toegang wilt verlenen voor het gebruik van sleutels in een sleutel kluis, geeft u toegang tot het gegevens vlak met behulp van een Key Vault toegangs beleid of Azure RBAC (preview). Als u een gebruiker lees toegang wilt verlenen voor Key Vault eigenschappen en tags, maar geen toegang tot gegevens (sleutels, geheimen of certificaten), verleent u beheer vlak toegang met RBAC.
+Toepassingen hebben toegang tot de abonnementen via eind punten. De toegangs controle voor de twee abonnementen werkt afzonderlijk. Als u een toepassing toegang wilt verlenen voor het gebruik van sleutels in een sleutel kluis, geeft u toegang tot het gegevens vlak met behulp van een Key Vault toegangs beleid of Azure RBAC (preview). Als u een gebruiker lees toegang wilt verlenen voor Key Vault eigenschappen en tags, maar geen toegang tot gegevens (sleutels, geheimen of certificaten), verleent u beheer vlak toegang met Azure RBAC.
 
 De volgende tabel bevat de eind punten voor de beheer-en gegevens abonnementen.
 
@@ -111,7 +111,7 @@ Wanneer een Azure-rol is toegewezen aan een Azure AD-beveiligings-principal, ver
 
 Belangrijkste voor delen van het gebruik van Azure RBAC-machtigingen via een kluis toegangs beleid zijn gecentraliseerd toegangs beheer en de integratie met [privileged Identity Management (PIM)](../../active-directory/privileged-identity-management/pim-configure.md). Privileged Identity Management biedt op tijd en goedkeuring gebaseerde rolactiveringen om de risico's van buitensporige, onnodige of verkeerd gebruikte toegangsmachtigingen te beperken voor resources die u belangrijk vindt.
 
-Zie voor meer informatie over Key Vault data vlak met RBAC [Key Vault sleutels, certificaten en geheimen met een op rollen gebaseerd toegangs beheer (preview) van Azure](rbac-guide.md)
+Zie voor meer informatie over Key Vault gegevens vlak met Azure RBAC [Key Vault sleutels, certificaten en geheimen met een op rollen gebaseerd toegangs beheer (preview) van Azure](rbac-guide.md)
 
 ## <a name="firewalls-and-virtual-networks"></a>Firewalls en virtuele netwerken
 

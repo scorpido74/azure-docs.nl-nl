@@ -5,17 +5,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 10/20/2017
+ms.date: 11/10/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4e8623ecb351fa99a437de70a9b74a70fb6228cd
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 5f2d3ba12fa65beb7156e056c23e44b028cbb520
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151154"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445061"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>Client-Side versleuteling en Azure Key Vault voor Microsoft Azure Storage
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -223,7 +223,7 @@ BlobClient clientSideEncryptionBlob = plaintextBlob.WithClientSideEncryptionOpti
 ```
 
 # <a name="net-v11"></a>[.NET-V11](#tab/dotnet11)
-Maak een **BlobEncryptionPolicy** -object en stel dit in de aanvraag opties in (per API of op client niveau met behulp van **DefaultRequestOptions**). Alle overige worden intern door de client bibliotheek verwerkt.
+Maak een **BlobEncryptionPolicy** -object en stel dit in de aanvraag opties in (per API of op client niveau met behulp van **DefaultRequestOptions** ). Alle overige worden intern door de client bibliotheek verwerkt.
 
 ```csharp
 // Create the IKey used for encryption.
@@ -324,7 +324,7 @@ Debug.Assert(messages.Length == 4)
 ```
 
 # <a name="net-v11"></a>[.NET-V11](#tab/dotnet11)
-Maak een **QueueEncryptionPolicy** -object en stel dit in de aanvraag opties in (per API of op client niveau met behulp van **DefaultRequestOptions**). Alle overige worden intern door de client bibliotheek verwerkt.
+Maak een **QueueEncryptionPolicy** -object en stel dit in de aanvraag opties in (per API of op client niveau met behulp van **DefaultRequestOptions** ). Alle overige worden intern door de client bibliotheek verwerkt.
 
 ```csharp
 // Create the IKey used for encryption.
@@ -344,7 +344,7 @@ Maak een **QueueEncryptionPolicy** -object en stel dit in de aanvraag opties in 
 ---
 
 ### <a name="table-service-encryption-v11-only"></a>Versleuteling Table service (alleen V11)
-Naast het maken van een versleutelings beleid en het instellen ervan op aanvraag opties, moet u een **EncryptionResolver** opgeven in **TableRequestOptions**of het kenmerk [EncryptProperty] instellen voor de entiteit.
+Naast het maken van een versleutelings beleid en het instellen ervan op aanvraag opties, moet u een **EncryptionResolver** opgeven in **TableRequestOptions** of het kenmerk [EncryptProperty] instellen voor de entiteit.
 
 #### <a name="using-the-resolver"></a>De resolver gebruiken
 
@@ -383,7 +383,7 @@ Naast het maken van een versleutelings beleid en het instellen ervan op aanvraag
 ```
 
 #### <a name="using-attributes"></a>Kenmerken gebruiken
-Zoals hierboven vermeld, als de entiteit TableEntity implementeert, kunnen de eigenschappen worden gedecoreerd met het kenmerk [EncryptProperty] in plaats van de **EncryptionResolver**op te geven.
+Zoals hierboven vermeld, als de entiteit TableEntity implementeert, kunnen de eigenschappen worden gedecoreerd met het kenmerk [EncryptProperty] in plaats van de **EncryptionResolver** op te geven.
 
 ```csharp
 [EncryptProperty]

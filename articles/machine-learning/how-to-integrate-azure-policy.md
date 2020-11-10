@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.reviewer: larryfr
-ms.openlocfilehash: 47a97bb8fbe52d3dde84afd77997b179a5c9248d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 22901c4e8409fc4846c1566a57b2679f4fa92396
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325489"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444557"
 ---
 # <a name="audit-and-manage-azure-machine-learning-using-azure-policy"></a>Azure Machine Learning controleren en beheren met behulp van Azure Policy
 
@@ -42,11 +42,11 @@ U kunt ook beleids regels toewijzen met behulp van [Azure PowerShell](../governa
 
 ## <a name="workspaces-encryption-with-customer-managed-key"></a>Werk ruimten versleuteling met door de klant beheerde sleutel
 
-Hiermee wordt bepaald of werk ruimten moeten worden versleuteld met een door de klant beheerde sleutel (CMK) of met behulp van een door micro soft beheerde sleutel voor het versleutelen van metrische gegevens en meta gegevens. Voor meer informatie over het gebruik van CMK raadpleegt u de sectie [Azure Cosmos DB](concept-enterprise-security.md#azure-cosmos-db) van het beveiligings artikel van de onderneming.
+Hiermee wordt bepaald of werk ruimten moeten worden versleuteld met een door de klant beheerde sleutel of door middel van een door micro soft beheerde sleutel voor het versleutelen van metrische gegevens en meta gegevens. Zie de sectie [Azure Cosmos DB](concept-data-encryption.md#azure-cosmos-db) van het artikel voor gegevens versleuteling voor meer informatie over het gebruik van door de klant beheerde sleutel.
 
-Als u dit beleid wilt configureren, stelt u de para meter effect in op __controleren__ of __weigeren__. Als deze is ingesteld op __audit__ , kunt u werk ruimten maken zonder een CMK en wordt er een waarschuwings gebeurtenis in het activiteiten logboek gemaakt.
+Als u dit beleid wilt configureren, stelt u de para meter effect in op __controleren__ of __weigeren__. Als deze functie is ingesteld op __audit__ , kunt u werk ruimten maken zonder een door de klant beheerde sleutel en wordt er een waarschuwings gebeurtenis in het activiteiten logboek gemaakt.
 
-Als het beleid is ingesteld op __weigeren__ , kunt u geen werk ruimte maken, tenzij er een CMK is opgegeven. Het maken van een werk ruimte zonder CMK resulteert in een fout die vergelijkbaar is met `Resource 'clustername' was disallowed by policy` en er wordt een fout in het activiteiten logboek gemaakt. De beleids-id wordt ook geretourneerd als onderdeel van deze fout.
+Als het beleid is ingesteld op __weigeren__ , kunt u geen werk ruimte maken, tenzij er een door de klant beheerde sleutel wordt opgegeven. Als u probeert een werk ruimte te maken zonder een door de klant beheerde sleutel, resulteert dit in een fout die vergelijkbaar is met `Resource 'clustername' was disallowed by policy` en wordt er een fout in het activiteiten logboek gemaakt. De beleids-id wordt ook geretourneerd als onderdeel van deze fout.
 
 ## <a name="workspaces-should-use-private-link"></a>Werk ruimten moeten een persoonlijke koppeling gebruiken
 

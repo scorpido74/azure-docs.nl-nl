@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2020
+ms.date: 11/10/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ed7b61e9e0379462e0dfbcdcc93acfccf470d95f
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 498934c01970b296c1491e7ccd36ad947324306a
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427034"
+ms.locfileid: "94445333"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>Een suggestie maken om automatisch aanvullen en voorgestelde resultaten in een query in te scha kelen
 
@@ -26,9 +26,9 @@ De volgende scherm afbeelding van [het maken van uw eerste app in C#](tutorial-c
 
 U kunt deze functies afzonderlijk of samen gebruiken. Als u dit gedrag wilt implementeren in azure Cognitive Search, is er een index-en query onderdeel. 
 
-+ Voeg in de index een suggestie toe aan een index. U kunt de portal gebruiken: [Create Index (REST) (/rest/API/searchservice/Create-Index) of een Voorst [Ellen eigenschap](/dotnet/api/azure.search.documents.indexes.models.searchindex.suggesters). De rest van dit artikel is gericht op het maken van een suggestie.
++ Een suggestie toevoegen aan een definitie van een zoek index. De rest van dit artikel is gericht op het maken van een suggestie.
 
-+ Roep in de query aanvraag een van de [hieronder weer gegeven api's](#how-to-use-a-suggester)aan.
++ Roep een query voor suggesties ingeschakeld, in de vorm van een suggestie aanvraag of aanvraag voor automatisch aanvullen, met behulp van een van de [hieronder vermelde api's](#how-to-use-a-suggester).
 
 De ondersteuning voor zoeken naar het type wordt ingeschakeld per veld voor teken reeks velden. U kunt zowel typeahead-gedrag in dezelfde Zoek oplossing implementeren als u een vergelijk bare ervaring wilt hebben als de functie die wordt aangegeven in de scherm opname. Beide aanvragen zijn gericht op de verzameling *documenten* van een specifieke index en reacties worden geretourneerd nadat een gebruiker ten minste een invoer teken reeks van drie tekens heeft opgegeven.
 
@@ -36,9 +36,9 @@ De ondersteuning voor zoeken naar het type wordt ingeschakeld per veld voor teke
 
 Een suggestie is een interne gegevens structuur die ondersteuning biedt voor zoek bewerkingen in het type door het opslaan van voor voegsels voor het vergelijken van gedeeltelijke query's. Net als bij tokened-voor waarden worden voor voegsels opgeslagen in omgekeerde indexen, één voor elk veld dat is opgegeven in de verzameling suggesties van velden.
 
-## <a name="define-a-suggester"></a>Een suggestie definiëren
+## <a name="how-to-create-a-suggester"></a>Een suggestie maken
 
-Als u een suggestie wilt maken, voegt u er een toe aan een [index schema](/rest/api/searchservice/create-index) en [stelt u elke eigenschap](#property-reference)in. Het beste moment om een suggestie te maken, is wanneer u ook het veld definieert dat deze gebruikt.
+Als u een suggestie wilt maken, voegt u er een toe aan een [index definitie](/rest/api/searchservice/create-index). Een suggestie haalt een naam en een verzameling velden op waarvoor de typeahead-ervaring is ingeschakeld. en [Stel elke eigenschap](#property-reference)in. Het beste moment om een suggestie te maken, is wanneer u ook het veld definieert dat deze gebruikt.
 
 + Alleen teken reeks velden gebruiken
 
@@ -60,12 +60,22 @@ Als u wilt voldoen aan beide zoek functies, voegt u alle velden toe die u nodig 
 
 De keuze van een analyse functie bepaalt hoe velden worden getokend en vervolgens worden voorafgegaan door. Bijvoorbeeld: voor een teken reeks die is afgebroken als ' context gevoelig ', resulteert het gebruik van een taal analyse in deze combi Naties van tokens. ' context ', ' gevoelig ', ' context gevoelig '. Had u de standaard-lucene Analyzer hebt gebruikt, is de teken reeks met afbreek streepjes niet aanwezig. 
 
-Bij het evalueren van analyse functies kunt u de [tekst-API analyseren](/rest/api/searchservice/test-analyzer) gebruiken om inzicht te krijgen in hoe termen worden getokend en vervolgens worden voorafgegaan door. Wanneer u een index hebt gemaakt, kunt u verschillende analyse functies op een teken reeks uitproberen om de uitvoer van het token weer te geven.
+Bij het evalueren van analyse functies kunt u de [tekst-API analyseren](/rest/api/searchservice/test-analyzer) gebruiken om inzicht te krijgen in de manier waarop de voor waarden worden verwerkt. Wanneer u een index hebt gemaakt, kunt u verschillende analyse functies op een teken reeks uitproberen om de uitvoer van het token weer te geven.
 
 Velden die gebruikmaken van [aangepaste analyse](index-add-custom-analyzers.md) functies of [vooraf gedefinieerde analyse](index-add-custom-analyzers.md#predefined-analyzers-reference) functies (met uitzonde ring van standaard-lucene), zijn expliciet niet toegestaan om slechte resultaten te voor komen.
 
 > [!NOTE]
 > Als u de restrictie beperking wilt omzeilen, bijvoorbeeld als u een tref woord of ngram Analyzer voor bepaalde query scenario's nodig hebt, moet u twee afzonderlijke velden voor dezelfde inhoud gebruiken. Hiermee kan een van de velden een suggestie bieden, terwijl de andere kan worden ingesteld met een aangepaste analyse configuratie.
+
+## <a name="create-using-the-portal"></a>Maken met behulp van de portal
+
+Wanneer u **index toevoegen** of de wizard **gegevens importeren** gebruikt om een index te maken, hebt u de mogelijkheid om een suggestie in te scha kelen:
+
+1. Voer in de definitie van de index een naam in voor de suggestie.
+
+1. Selecteer in elke veld definitie voor nieuwe velden een selectie vakje in de kolom suggestie. Een selectie vakje is alleen beschikbaar voor teken reeks velden. 
+
+Zoals eerder genoteerd, beïnvloedt Analyzer Choice tokening en voor voegsels. Houd rekening met de volledige veld definitie bij het inschakelen van suggesties. 
 
 ## <a name="create-using-rest"></a>Maken met REST
 
@@ -131,9 +141,9 @@ private static void CreateIndex(string indexName, SearchIndexClient indexClient)
 
 |Eigenschap      |Beschrijving      |
 |--------------|-----------------|
-|`name`        |De naam van de suggestie.|
-|`searchMode`  |De strategie die wordt gebruikt om te zoeken naar kandidaten zinsdelen. De enige modus die momenteel wordt ondersteund `analyzingInfixMatching` , die momenteel overeenkomt met het begin van een term.|
-|`sourceFields`|Een lijst met een of meer velden die de bron van de inhoud voor suggesties zijn. Velden moeten van het type `Edm.String` en zijn `Collection(Edm.String)` . Als er een analyse programma is opgegeven in het veld, moet dit een named Analyzer van [deze lijst](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzername) zijn (geen aangepaste analyse functie).<p/> Geef als best practice alleen de velden op die aan een verwacht en passend antwoord worden uitgeleend, of het nu gaat om een voltooide teken reeks in een zoek balk of vervolg keuzelijst.<p/>De naam van een hotel is een goede kandidaat omdat deze precisie heeft. Uitgebreide velden, zoals beschrijvingen en opmerkingen, zijn te dicht bij. Zo zijn herhalende velden, zoals categorieën en tags, minder effectief. In de voor beelden bevatten we ' categorie ' om aan te tonen dat u meerdere velden kunt bevatten. |
+|`name`        | Opgegeven in de suggestie definitie, maar wordt ook wel een aanvraag voor automatisch aanvullen of suggesties genoemd. |
+|`sourceFields`| Opgegeven in de suggestie definitie. Het is een lijst met een of meer velden in de index die de bron van de inhoud voor suggesties zijn. Velden moeten van het type `Edm.String` en zijn `Collection(Edm.String)` . Als er een analyse programma is opgegeven in het veld, moet dit een benoemde lexicale Analyzer zijn in [deze lijst](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzername) (geen aangepaste analyse functie).<p/> Geef als best practice alleen de velden op die aan een verwacht en passend antwoord worden uitgeleend, of het nu gaat om een voltooide teken reeks in een zoek balk of vervolg keuzelijst.<p/>De naam van een hotel is een goede kandidaat omdat deze precisie heeft. Uitgebreide velden, zoals beschrijvingen en opmerkingen, zijn te dicht bij. Zo zijn herhalende velden, zoals categorieën en tags, minder effectief. In de voor beelden bevatten we ' categorie ' om aan te tonen dat u meerdere velden kunt bevatten. |
+|`searchMode`  | De para meter alleen-lezen, maar is ook zichtbaar in de portal. Deze para meter is niet beschikbaar in de .NET SDK. Hiermee wordt de strategie aangegeven die wordt gebruikt om te zoeken naar kandidaten zinsdelen. De enige modus die momenteel wordt ondersteund `analyzingInfixMatching` , die momenteel overeenkomt met het begin van een term.|
 
 <a name="how-to-use-a-suggester"></a>
 
@@ -160,7 +170,7 @@ POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2020-06-30
 
 ## <a name="sample-code"></a>Voorbeeldcode
 
-+ [Uw eerste app maken in C# (Les 3-zoek opdracht toevoegen aan het type)](tutorial-csharp-type-ahead-and-suggestions.md) toont een voor beeld van de constructie, aanbevolen query's, automatisch aanvullen en facet navigatie. Dit code voorbeeld wordt uitgevoerd op een sandbox Azure Cognitive Search-service en maakt gebruik van een vooraf geladen Hotels-index. u hoeft alleen op F5 te drukken om de toepassing uit te voeren. Er is geen abonnement of aanmelding vereist.
++ [Uw eerste app maken in C# (Les 3-zoek opdracht toevoegen aan het type)](tutorial-csharp-type-ahead-and-suggestions.md) demonstreert aanbevolen query's, automatisch aanvullen en facet navigatie. Dit code voorbeeld wordt uitgevoerd op een sandbox Azure Cognitive Search-service en maakt gebruik van een vooraf geladen Hotels-index met een suggestie die al is gemaakt. u hoeft dus alleen op F5 te drukken om de toepassing uit te voeren. Er is geen abonnement of aanmelding vereist.
 
 ## <a name="next-steps"></a>Volgende stappen
 

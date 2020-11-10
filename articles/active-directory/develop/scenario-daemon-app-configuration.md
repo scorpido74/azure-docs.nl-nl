@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/19/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 8e065651a5527c0ab425614197ce128325454942
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 24e3841abc9c397ab307e55405bdcc208815570e
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91257670"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444160"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Daemon-app die web-Api's aanroept-code configuratie
 
@@ -34,7 +34,7 @@ Deze micro soft-bibliotheken ondersteunen daemon-apps:
 
 ## <a name="configure-the-authority"></a>De instantie configureren
 
-Voor daemon-toepassingen worden toepassings machtigingen gebruikt in plaats van gedelegeerde machtigingen. Het ondersteunde account type kan dus geen account zijn in een organisatorische map of persoonlijke Microsoft-account (bijvoorbeeld Skype, Xbox, Outlook.com). Er is geen Tenant beheerder om toestemming te verlenen voor een daemon-toepassing voor een persoonlijk micro soft-account. U moet *accounts in mijn organisatie* of *accounts in een organisatie*kiezen.
+Voor daemon-toepassingen worden toepassings machtigingen gebruikt in plaats van gedelegeerde machtigingen. Het ondersteunde account type kan dus geen account zijn in een organisatorische map of persoonlijke Microsoft-account (bijvoorbeeld Skype, Xbox, Outlook.com). Er is geen Tenant beheerder om toestemming te verlenen voor een daemon-toepassing voor een persoonlijk micro soft-account. U moet *accounts in mijn organisatie* of *accounts in een organisatie* kiezen.
 
 De in de toepassings configuratie opgegeven instantie moet dus worden getenantd (een Tenant-ID of een domein naam opgeven die is gekoppeld aan uw organisatie).
 
@@ -51,7 +51,7 @@ In MSAL-bibliotheken worden de client referenties (geheim of certificaat) door g
 
 Het configuratie bestand definieert het volgende:
 
-- De Cloud instantie en Tenant-ID, die samen de *instantie*vormen.
+- De Cloud instantie en Tenant-ID, die samen de *instantie* vormen.
 - De client-ID die u hebt ontvangen van de registratie van de toepassing.
 - Een client geheim of een certificaat.
 
@@ -352,17 +352,14 @@ ConfidentialClientApplication cca =
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-> [!div class="nextstepaction"]
-> [Daemon-app-tokens ophalen voor de app](./scenario-daemon-acquire-token.md?tabs=dotnet)
+Ga naar het volgende artikel in dit scenario en [Verkrijg een token voor de app](./scenario-daemon-acquire-token.md?tabs=dotnet).
 
 # <a name="python"></a>[Python](#tab/python)
 
-> [!div class="nextstepaction"]
-> [Daemon-app-tokens ophalen voor de app](./scenario-daemon-acquire-token.md?tabs=python)
+Ga naar het volgende artikel in dit scenario en [Verkrijg een token voor de app](./scenario-daemon-acquire-token.md?tabs=python).
 
 # <a name="java"></a>[Java](#tab/java)
 
-> [!div class="nextstepaction"]
-> [Daemon-app-tokens ophalen voor de app](./scenario-daemon-acquire-token.md?tabs=java)
+Ga naar het volgende artikel in dit scenario en [Verkrijg een token voor de app](./scenario-daemon-acquire-token.md?tabs=java).
 
 ---

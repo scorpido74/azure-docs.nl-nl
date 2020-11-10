@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 67c52728b72f0941ae3c9b39552ca398c12c67a2
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 40d70c7bd740d8c72ddb72047a3bae3586e1aa1f
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425153"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445248"
 ---
 # <a name="feature-coverage-for-machines"></a>Functiedekking voor machines
 
@@ -35,7 +35,7 @@ De twee tabbladen hieronder tonen de functies van Azure Security Center die besc
 |[Bestandsloze beveiligingswaarschuwingen](alerts-reference.md#alerts-windows)|✔|✔|✔|Ja|
 |[Op netwerk gebaseerde beveiligingswaarschuwingen](other-threat-protections.md#network-layer)|✔|✔|-|Ja|
 |[Just-in-time-toegang voor virtuele machines](security-center-just-in-time.md)|✔|-|-|Ja|
-|[Systeemeigen evaluatie van beveiligingsproblemen](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|-|Ja|
+|[Systeemeigen evaluatie van beveiligingsproblemen](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|✔|Ja|
 |[Bestandsintegriteit controleren](security-center-file-integrity-monitoring.md)|✔|✔|✔|Ja|
 |[Adaptieve toepassingsbesturingselementen](security-center-adaptive-application.md)|✔|-|✔|Ja|
 |[Netwerkoverzicht](security-center-network-recommendations.md#network-map)|✔|✔|-|Ja|
@@ -46,7 +46,7 @@ De twee tabbladen hieronder tonen de functies van Azure Security Center die besc
 |Evaluatie van onjuiste beveiligingsconfiguratie|✔|✔|✔|Azure: Nee<br><br>Met Arc: Ja|
 |[Evaluatie van eindpuntbeveiliging](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Azure: Nee<br><br>Met Arc: Ja|
 |Evaluatie van schijfversleuteling|✔</br>(voor [ondersteunde scenario's](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios))|✔|-|Nee|
-|Evaluatie van beveiligingsproblemen van derden|✔|-|-|Nee|
+|Evaluatie van beveiligingsproblemen van derden|✔|-|✔|Nee|
 |[Evaluatie van netwerkbeveiliging](security-center-network-recommendations.md)|✔|✔|-|Nee|
 
 
@@ -59,7 +59,7 @@ De twee tabbladen hieronder tonen de functies van Azure Security Center die besc
 |[Bestandsloze beveiligingswaarschuwingen](alerts-reference.md#alerts-windows)|-|-|-|Ja|
 |[Op netwerk gebaseerde beveiligingswaarschuwingen](other-threat-protections.md#network-layer)|✔|✔|-|Ja|
 |[Just-in-time-toegang voor virtuele machines](security-center-just-in-time.md)|✔|-|-|Ja|
-|[Systeemeigen evaluatie van beveiligingsproblemen](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|-|Ja|
+|[Systeemeigen evaluatie van beveiligingsproblemen](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|✔|Ja|
 |[Bestandsintegriteit controleren](security-center-file-integrity-monitoring.md)|✔|✔|✔|Ja|
 |[Adaptieve toepassingsbesturingselementen](security-center-adaptive-application.md)|✔|-|✔|Ja|
 |[Netwerkoverzicht](security-center-network-recommendations.md#network-map)|✔|✔|-|Ja|
@@ -70,7 +70,7 @@ De twee tabbladen hieronder tonen de functies van Azure Security Center die besc
 |Evaluatie van onjuiste beveiligingsconfiguratie|✔|✔|✔|Azure: Nee<br><br>Met Arc: Ja|
 |[Evaluatie van eindpuntbeveiliging](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|Nee|
 |Evaluatie van schijfversleuteling|✔</br>(voor [ondersteunde scenario's](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios))|✔|-|Nee|
-|Evaluatie van beveiligingsproblemen van derden|✔|-|-|Nee|
+|Evaluatie van beveiligingsproblemen van derden|✔|-|✔|Nee|
 |[Evaluatie van netwerkbeveiliging](security-center-network-recommendations.md)|✔|✔|-|Nee|
 
 --- 

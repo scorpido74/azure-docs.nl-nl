@@ -3,14 +3,14 @@ title: Overzicht van Azure Automation Wijzigingen bijhouden en inventaris
 description: In dit artikel wordt de functie Wijzigingen bijhouden en inventaris beschreven, waarmee u de wijzigingen in de software en micro soft-Services in uw omgeving kunt identificeren.
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 10/26/2020
+ms.date: 11/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 39caa60196eca1afb7df1b0acbecddb557796fc3
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: b5390e4b3dc6d77390c3fca6323cbd52544c638a
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130337"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445418"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>Overzicht Wijzigingen bijhouden en Inventaris
 
@@ -62,6 +62,16 @@ Wijzigingen bijhouden en inventarisatie wordt ondersteund op alle besturings sys
 
 Zie [TLS 1,2 Enforcement voor Azure Automation](../automation-managing-data.md#tls-12-enforcement-for-azure-automation)voor meer informatie over de client vereisten voor TLS 1,2.
 
+### <a name="python-requirement"></a>Python-vereiste
+
+Wijzigingen bijhouden en inventaris bieden alleen ondersteuning voor Python2. Als uw computer gebruikmaakt van een distributie zonder python 2 standaard, dan moet u deze installeren. Met de volgende voorbeeld opdrachten wordt python 2 op verschillende distributies geïnstalleerd.
+
+- Red Hat, CentOS, Oracle: `yum install -y python2`
+- Ubuntu, Debian: `apt-get install -y python2`
+- SuSE `zypper install -y python2`
+
+Het uitvoer bare bestand van python2 moet zijn alias voor *python*.
+
 ## <a name="network-requirements"></a>Netwerkvereisten
 
 De volgende adressen zijn specifiek vereist voor de Wijzigingen bijhouden en de inventarisatie. Communicatie met deze adressen vindt plaats via poort 443.
@@ -73,7 +83,7 @@ De volgende adressen zijn specifiek vereist voor de Wijzigingen bijhouden en de 
 |*.blob.core.windows.net | *. blob.core.usgovcloudapi.net|
 |*.azure-automation.net | *. azure-automation.us|
 
-Wanneer u beveiligings regels voor een netwerk groep maakt of Azure Firewall configureert om verkeer toe te staan voor de Automation-Service en de Log Analytics-werk ruimte, gebruikt u de [service label](../../virtual-network/service-tags-overview.md#available-service-tags) **GuestAndHybridManagement** en **AzureMonitor** . Dit vereenvoudigt het voortdurend beheer van uw netwerk beveiligings regels. Als u verbinding wilt maken met de Automation-Service van uw Azure-Vm's veilig en privé, raadpleegt u [Azure private link gebruiken](../how-to/private-link-security.md). Zie [Download bare json-bestanden](../../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)voor informatie over het verkrijgen van de huidige servicetag en bereik gegevens die u wilt opnemen als onderdeel van uw on-premises firewall configuraties.
+Wanneer u beveiligings regels voor een netwerk groep maakt of Azure Firewall configureert om verkeer toe te staan voor de Automation-Service en de Log Analytics-werk ruimte, gebruikt u de [service label](../../virtual-network/service-tags-overview.md#available-service-tags) **GuestAndHybridManagement** en **AzureMonitor**. Dit vereenvoudigt het voortdurend beheer van uw netwerk beveiligings regels. Als u verbinding wilt maken met de Automation-Service van uw Azure-Vm's veilig en privé, raadpleegt u [Azure private link gebruiken](../how-to/private-link-security.md). Zie [Download bare json-bestanden](../../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)voor informatie over het verkrijgen van de huidige servicetag en bereik gegevens die u wilt opnemen als onderdeel van uw on-premises firewall configuraties.
 
 ## <a name="enable-change-tracking-and-inventory"></a>Wijzigingen bijhouden en Inventaris inschakelen
 
@@ -108,7 +118,7 @@ Met Wijzigingen bijhouden en inventaris kunt u wijzigingen in Windows-register s
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Shutdown` | Bewaakt de scripts die worden uitgevoerd bij het afsluiten.
 > |`HKEY\LOCAL\MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Run` | Bewaakt sleutels die worden geladen voordat de gebruiker zich aanmeldt bij het Windows-account. De sleutel wordt gebruikt voor 32-bits toepassingen die worden uitgevoerd op 64-bits computers.
 > |`HKEY\LOCAL\MACHINE\SOFTWARE\Microsoft\Active Setup\Installed Components` | Hiermee worden wijzigingen in toepassings instellingen gecontroleerd.
-> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers` | Bewaakt context menu-handlers die rechtstreeks in Windows Verkenner zijn aangesloten en die gewoonlijk in-process worden uitgevoerd met **explorer.exe** .
+> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers` | Bewaakt context menu-handlers die rechtstreeks in Windows Verkenner zijn aangesloten en die gewoonlijk in-process worden uitgevoerd met **explorer.exe**.
 > |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\Shellex\CopyHookHandlers` | Hiermee worden Kopieer Hook-handlers gecontroleerd die rechtstreeks in Windows Verkenner zijn aangesloten en normaal gesp roken met **explorer.exe** worden uitgevoerd.
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers` | Monitor voor de registratie van het pictogram-overlay-handler.
 > |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers` | Monitors voor de registratie van pictogram-overlaysoftware-handler voor 32-bits toepassingen die worden uitgevoerd op 64-bits computers.
@@ -127,7 +137,7 @@ Wijzigingen bijhouden en inventarisatie ondersteunt recursie, waarmee u Joker te
 
 - Joker tekens zijn vereist voor het bijhouden van meerdere bestanden.
 
-- U kunt alleen joker tekens gebruiken in het laatste segment van een bestandspad, bijvoorbeeld **c:\folder \\ File** _ of _ */etc/* . conf * *.
+- U kunt alleen joker tekens gebruiken in het laatste segment van een bestandspad, bijvoorbeeld **c:\folder \\ File** _ of _ */etc/*. conf * *.
 
 - Als een omgevings variabele een ongeldig pad heeft, wordt de validatie uitgevoerd, maar het pad mislukt tijdens de uitvoering.
 
@@ -162,7 +172,7 @@ Het gemiddelde Log Analytics gegevens gebruik voor een machine met Wijzigingen b
 
 ### <a name="microsoft-service-data"></a>Micro soft-service gegevens
 
-De standaard frequentie voor het verzamelen van micro soft-Services is 30 minuten. U kunt de frequentie configureren met behulp van een schuif regelaar op het tabblad **micro soft-Services** onder **Instellingen bewerken** .
+De standaard frequentie voor het verzamelen van micro soft-Services is 30 minuten. U kunt de frequentie configureren met behulp van een schuif regelaar op het tabblad **micro soft-Services** onder **Instellingen bewerken**.
 
 ![Micro soft Services-schuif regelaar](./media/overview/windowservices.png)
 

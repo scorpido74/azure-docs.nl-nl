@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 707b6d0f8a5fa3cff89339b9b0465d96b5369a34
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 596de459b888bb9973aca1c7d72f2f9e24c966eb
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287607"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445129"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Gids voor Azure Key Vault-ontwikkelaars
 
@@ -79,7 +79,7 @@ Voor zelf studies over het verifiëren van Key Vault in toepassingen raadpleegt 
 
 ## <a name="manage-keys-certificates-and-secrets"></a>Sleutels, certificaten en geheimen beheren
 
-Toegang tot sleutels, geheimen en certificaten wordt bepaald door het gegevens vlak. Toegangs beheer voor gegevens vlak kan worden uitgevoerd met behulp van het lokale kluis toegangs beleid of RBAC (preview-versie).
+Toegang tot sleutels, geheimen en certificaten wordt bepaald door het gegevens vlak. Toegangs beheer voor gegevens vlak kan worden uitgevoerd met behulp van lokaal beleid voor toegang tot de kluis of Azure RBAC (preview).
 
 **Sleutels Api's en Sdk's**
 
@@ -104,7 +104,7 @@ Toegang tot sleutels, geheimen en certificaten wordt bepaald door het gegevens v
 
 Zie [client bibliotheken](client-libraries.md) voor installatie pakketten en bron code.
 
-Zie [Key Vault data-vlak en toegangs beleid](./secure-your-key-vault.md#data-plane-and-access-policies) en Key Vault gegevenslaag en [RBAC (preview-versie)](./secure-your-key-vault.md#data-plane-and-azure-rbac-preview) voor meer informatie over de beveiliging van Key Vault gegevens vlak.
+Zie [Key Vault data-vlak en toegangs beleid](./secure-your-key-vault.md#data-plane-and-access-policies) en [Key Vault gegevens vlak en Azure RBAC (preview)](./secure-your-key-vault.md#data-plane-and-azure-rbac-preview) voor meer informatie over de beveiliging van Key Vault gegevens vlak.
 
 ### <a name="code-examples"></a>Codevoorbeelden
 

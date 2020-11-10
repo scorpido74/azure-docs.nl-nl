@@ -2,13 +2,13 @@
 title: Wat is er nieuw in de agent voor servers met Azure Arc ingeschakeld
 description: Dit artikel bevat opmerkingen bij de release voor servers agent voor Azure Arc ingeschakeld. Voor veel van de samen vattingen vindt u koppelingen naar aanvullende informatie.
 ms.topic: conceptual
-ms.date: 09/16/2020
-ms.openlocfilehash: 1918d03b5bbfaaa64b7d74c18fad4eb9a86800a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/10/2020
+ms.openlocfilehash: 5322a92bfc67d9f80c2271a3ef9b5626455e9ad7
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90908166"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445282"
 ---
 # <a name="whats-new-with-azure-arc-enabled-servers-agent"></a>Wat is er nieuw in de agent voor servers met Azure Arc ingeschakeld
 
@@ -17,6 +17,21 @@ De Azure-servers die zijn verbonden met de computer agent, ontvangen voortdurend
 - De nieuwste releases
 - Bekende problemen
 - Opgeloste fouten
+
+## <a name="november-2020"></a>November 2020
+
+### <a name="fixed"></a>Opgelost
+
+Probleem opgelost waarbij de proxy configuratie kan worden verwijderd na een upgrade van op RPM gebaseerde distributies.
+
+## <a name="october-2020"></a>Oktober 2020
+
+### <a name="fixed"></a>Opgelost
+
+- Vast proxy script voor het afhandelen van een andere bestands locatie voor GC-daemon-eenheden.
+- Betrouw baarheid van GuestConfig-agent wordt gewijzigd.
+- Ondersteuning voor de GuestConfig-agent voor US Gov-Virginia regio.
+- Berichten van de extensie rapport van de GuestConfig-agent worden uitgebreid in geval van storingen.
 
 ## <a name="september-2020"></a>September 2020
 

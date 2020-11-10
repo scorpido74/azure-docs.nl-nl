@@ -11,12 +11,12 @@ ms.author: mnark
 author: MrudulaN
 ms.reviewer: larryfr
 ms.date: 03/05/2020
-ms.openlocfilehash: 1767f149d9935c86281c7b7be3e684aa82a603f9
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 05d810928a71aec0e3314c32051e5f3565413564
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999037"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444602"
 ---
 # <a name="deploy-a-model-to-azure-machine-learning-compute-instances"></a>Een model implementeren om reken instanties te Azure Machine Learning
 
@@ -28,7 +28,7 @@ Meer informatie over het gebruik van Azure Machine Learning voor het implementer
 - U test een model dat wordt ontwikkeld.
 
 > [!TIP]
-> Het implementeren van een model van een Jupyter Notebook op een compute-exemplaar, is een _lokale implementatie_op een webservice op dezelfde VM. In dit geval is de ' lokale ' computer het reken exemplaar. Zie [modellen implementeren met Azure machine learning](how-to-deploy-and-where.md)voor meer informatie over implementaties.
+> Het implementeren van een model van een Jupyter Notebook op een compute-exemplaar, is een _lokale implementatie_ op een webservice op dezelfde VM. In dit geval is de ' lokale ' computer het reken exemplaar. Zie [modellen implementeren met Azure machine learning](how-to-deploy-and-where.md)voor meer informatie over implementaties.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -63,7 +63,7 @@ Gebruik de volgende code om voorbeeld gegevens naar de actieve service te verzen
 > [!NOTE]
 > Bij verificatie bij een implementatie op het reken exemplaar wordt de verificatie gemaakt met behulp van Azure Active Directory. De aanroep `interactive_auth.get_authentication_header()` van in de voorbeeld code verifieert u met Aad en retourneert een header die vervolgens kan worden gebruikt om te verifiëren bij de service op het reken exemplaar. Zie [verificatie instellen voor Azure machine learning resources en werk stromen](how-to-setup-authentication.md#interactive-authentication)voor meer informatie.
 >
-> Bij het verifiëren van een implementatie in azure Kubernetes service of Azure Container Instances, wordt een andere verificatie methode gebruikt. Zie [verificatie instellen voor Azure machine learning resources en werk stromen](how-to-setup-authentication.md#web-service-authentication)voor meer informatie.
+> Bij het verifiëren van een implementatie in azure Kubernetes service of Azure Container Instances, wordt een andere verificatie methode gebruikt. Zie [Configure Authentication for Azure machine models Implemented as Web Services](how-to-authenticate-web-service.md)(Engelstalig) voor meer informatie.
 
 ```python
 import requests

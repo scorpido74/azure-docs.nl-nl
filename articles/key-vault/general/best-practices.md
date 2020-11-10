@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 03/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 4a522e58677e2c71cb52ad7e04b288622ad62d91
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 3d959cccd4fbce24e36b1ed62bc6bf417af23c82
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287332"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445503"
 ---
 # <a name="best-practices-to-use-key-vault"></a>Aanbevolen procedures voor het gebruik van Key Vault
 
@@ -24,7 +24,7 @@ ms.locfileid: "93287332"
 Azure Key Vault is een cloudservice die versleutelingssleutels en geheimen, zoals certificaten, verbindingsreeksen en wachtwoorden, beveiligt. Omdat deze gegevens gevoelig en zakelijk kritiek zijn, moet u de toegang tot uw sleutel kluizen beveiligen door alleen geautoriseerde toepassingen en gebruikers toe te staan. In dit [artikel](secure-your-key-vault.md) vindt u een overzicht van het toegangs model van Key Vault. Hierin worden verificatie en autorisatie uitgelegd en wordt beschreven hoe u de toegang tot uw sleutel kluizen kunt beveiligen.
 
 Suggesties voor het beheren van de toegang tot uw kluis zijn als volgt:
-1. De toegang tot uw abonnement, resource groep en sleutel kluizen (RBAC) vergren delen
+1. Vergren deling van toegang tot uw abonnement, resource groep en sleutel kluizen (Azure RBAC)
 2. Toegangs beleid maken voor elke kluis
 3. Access principal met minimale bevoegdheden gebruiken om toegang te verlenen
 4. Firewall-en [VNET-service-eind punten](overview-vnet-service-endpoints.md) inschakelen

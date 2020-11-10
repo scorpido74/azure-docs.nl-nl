@@ -7,12 +7,12 @@ ms.service: cache
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 10/09/2020
-ms.openlocfilehash: a55db6a9db8cc53da15ba6e818db7b78b72cefc9
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: f7b4a22c0473acb7da0708f095c25b4f3f78fe66
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927733"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445588"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Virtual Network ondersteuning configureren voor een Premium Azure-cache voor redis
 Azure cache voor redis heeft verschillende cache aanbiedingen, die flexibiliteit bieden bij het kiezen van de cache grootte en-functies, inclusief functies van de Premium-laag, zoals clustering, persistentie en ondersteuning voor virtuele netwerken. Een VNet is een privé netwerk in de Cloud. Wanneer een Azure-cache voor redis-exemplaar is geconfigureerd met een VNet, is het niet openbaar adresseerbaar en is deze alleen toegankelijk vanaf virtuele machines en toepassingen binnen het VNet. In dit artikel wordt beschreven hoe u ondersteuning voor virtuele netwerken kunt configureren voor een Premium Azure-cache voor een redis-exemplaar.
@@ -28,23 +28,23 @@ De implementatie van [azure Virtual Network (VNet)](https://azure.microsoft.com/
 ## <a name="virtual-network-support"></a>Ondersteuning voor virtuele netwerken
 Virtual Network-ondersteuning (VNet) is geconfigureerd op de Blade **nieuwe Azure-cache voor redis** tijdens het maken van de cache. 
 
-1. Als u een Premium-cache wilt maken, meldt u zich aan bij de [Azure Portal](https://portal.azure.com) en selecteert u **een resource maken** . Naast het maken van caches in de Azure Portal, kunt u ze ook maken met behulp van Resource Manager-sjablonen, Power shell of Azure CLI. Zie [Een cache maken](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache) voor meer informatie over het maken van een Azure Cache voor Redis.
+1. Als u een Premium-cache wilt maken, meldt u zich aan bij de [Azure Portal](https://portal.azure.com) en selecteert u **een resource maken**. Naast het maken van caches in de Azure Portal, kunt u ze ook maken met behulp van Resource Manager-sjablonen, Power shell of Azure CLI. Zie [Een cache maken](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache) voor meer informatie over het maken van een Azure Cache voor Redis.
 
     :::image type="content" source="media/cache-private-link/1-create-resource.png" alt-text="Resource maken.":::
    
-2. Selecteer op de pagina **Nieuw** de optie **Databases** en selecteer vervolgens **Azure Cache voor Redis** .
+2. Selecteer op de pagina **Nieuw** de optie **Databases** en selecteer vervolgens **Azure Cache voor Redis**.
 
-    :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="Resource maken.":::
+    :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="Selecteer Azure Cache voor Redis.":::
 
 3. Configureer op de pagina **nieuw redis cache** de instellingen voor uw nieuwe Premium-cache.
    
    | Instelling      | Voorgestelde waarde  | Beschrijving |
    | ------------ |  ------- | -------------------------------------------------- |
-   | **DNS-naam** | Geef een wereldwijd unieke naam op. | De cachenaam is een tekenreeks van 1 tot 63 tekens die alleen cijfers, letters en afbreekstreepjes mag bevatten. De naam moet beginnen en eindigen met een cijfer of letter en mag geen opeenvolgende afbreekstreepjes bevatten. De *hostnaam* van uw cache-exemplaar wordt *\<DNS name>.redis.cache.windows.net* . | 
+   | **DNS-naam** | Geef een wereldwijd unieke naam op. | De cachenaam is een tekenreeks van 1 tot 63 tekens die alleen cijfers, letters en afbreekstreepjes mag bevatten. De naam moet beginnen en eindigen met een cijfer of letter en mag geen opeenvolgende afbreekstreepjes bevatten. De *hostnaam* van uw cache-exemplaar wordt *\<DNS name>.redis.cache.windows.net*. | 
    | **Abonnement** | Vervolg keuzelijst en selecteer uw abonnement. | Het abonnement waarmee dit nieuwe Azure Cache voor Redis-exemplaar wordt gemaakt. | 
    | **Resourcegroep** | Vervolg keuzelijst en selecteer een resource groep of selecteer **nieuwe maken** en voer een nieuwe naam voor de resource groep in. | Naam voor de resourcegroep waarin de cache en andere resources moeten worden gemaakt. Door al uw app-resources in één resourcegroep te plaatsen, kunt u ze eenvoudig beheren of verwijderen. | 
    | **Locatie** | Vervolg keuzelijst en selecteer een locatie. | Selecteer een [regio](https://azure.microsoft.com/regions/) in de buurt van andere services die gaan gebruikmaken van de cache. |
-   | **Cache type** | En selecteer een Premium-cache om Premium-functies te configureren. Zie [Azure cache for redis prijzen](https://azure.microsoft.com/pricing/details/cache/)voor meer informatie. |  De prijscategorie bepaalt de grootte, prestaties en functies die beschikbaar zijn voor de cache. Zie het [Azure Cache voor Redis-overzicht](cache-overview.md) voor meer informatie. |
+   | **Cachetype** | En selecteer een Premium-cache om Premium-functies te configureren. Zie [Azure cache for redis prijzen](https://azure.microsoft.com/pricing/details/cache/)voor meer informatie. |  De prijscategorie bepaalt de grootte, prestaties en functies die beschikbaar zijn voor de cache. Zie het [Azure Cache voor Redis-overzicht](cache-overview.md) voor meer informatie. |
 
 4. Selecteer het tabblad **Netwerken** of klik op de knop **Netwerken** onderaan de pagina.
 
@@ -76,11 +76,11 @@ Virtual Network-ondersteuning (VNet) is geconfigureerd op de Blade **nieuwe Azur
 
 9. Voer desgewenst in het tabblad **Tags** de naam en waarde in om de resource te categoriseren. 
 
-10. Selecteer **Controleren + maken** . Het tabblad Beoordelen + maken wordt weergegeven, waar uw configuratie wordt gevalideerd in Azure.
+10. Selecteer **Controleren + maken**. Het tabblad Beoordelen + maken wordt weergegeven, waar uw configuratie wordt gevalideerd in Azure.
 
 11. Selecteer **Maken** nadat het groene bericht Validatie geslaagd verschijnt.
 
-Het duurt even voor de cache is gemaakt. U kunt de voortgang bekijken op de **overzichtspagina** van Azure Cache voor Redis. Als u bij **Status** **Wordt uitgevoerd** ziet staan, kunt u de cache gebruiken. Nadat de cache is gemaakt, kunt u de configuratie voor het VNet bekijken door te klikken op **Virtual Network** in het **menu resource** .
+Het duurt even voor de cache is gemaakt. U kunt de voortgang bekijken op de **overzichtspagina** van Azure Cache voor Redis. Als u bij **Status** **Wordt uitgevoerd** ziet staan, kunt u de cache gebruiken. Nadat de cache is gemaakt, kunt u de configuratie voor het VNet bekijken door te klikken op **Virtual Network** in het **menu resource**.
 
 ![Virtueel netwerk][redis-cache-vnet-info]
 
@@ -159,7 +159,7 @@ Er zijn acht vereisten voor het poort bereik voor inkomend verkeer. Inkomende aa
 | 6379, 6380 |Inkomend |TCP |Client communicatie naar redis, Azure-taak verdeling | (Redis-subnet) | (Redis subnet), Virtual Network, Azure Load Balancer <sup>1</sup> |
 | 8443 |Inkomend |TCP |Interne communicatie voor redis | (Redis-subnet) |(Redis-subnet) |
 | 8500 |Inkomend |TCP/UDP |Azure-taakverdeling | (Redis-subnet) |Azure Load Balancer |
-| 10221-10231 |Inkomend |TCP |Interne communicatie voor redis | (Redis-subnet) |(Redis subnet), Azure Load Balancer |
+| 10221-10231 |Inkomend |TCP |Client communicatie met redis-clusters, interne communicatie voor redis | (Redis-subnet) |(Redis subnet), Azure Load Balancer, (client-subnet) |
 | 13000-13999 |Inkomend |TCP |Client communicatie met redis-clusters, Azure-taak verdeling | (Redis-subnet) |Virtual Network, Azure Load Balancer |
 | 15000-15999 |Inkomend |TCP |Client communicatie met redis-clusters, Azure-taak verdeling en Geo-Replication | (Redis-subnet) |Virtual Network, Azure Load Balancer, (geo-replica peer-subnet) |
 | 16001 |Inkomend |TCP/UDP |Azure-taakverdeling | (Redis-subnet) |Azure Load Balancer |
@@ -171,15 +171,15 @@ Er zijn acht vereisten voor het poort bereik voor inkomend verkeer. Inkomende aa
 
 Er zijn vereisten voor de netwerk verbinding voor Azure cache voor redis die in eerste instantie niet in een virtueel netwerk kunnen worden bereikt. Azure cache voor redis vereist dat alle volgende items goed werken wanneer ze binnen een virtueel netwerk worden gebruikt.
 
-* Uitgaande netwerk verbinding met Azure Storage eind punten wereld wijd. Dit geldt ook voor eind punten die zich in dezelfde regio bevinden als de Azure-cache voor redis-exemplaar, evenals opslag eindpunten die zich in **andere** Azure-regio's bevinden. Azure Storage-eind punten worden omgezet onder de volgende DNS-domeinen: *Table.core.Windows.net* , *blob.core.Windows.net* , *Queue.core.Windows.net* en *File.core.Windows.net* . 
-* Uitgaande netwerk verbinding met *OCSP.Digicert.com* , *crl4.Digicert.com* , *OCSP.msocsp.com* , *mscrl.Microsoft.com* , *crl3.Digicert.com* , *cacerts.Digicert.com* , *oneocsp.Microsoft.com* en *CRL.Microsoft.com* . Deze connectiviteit is vereist voor de ondersteuning van TLS/SSL-functionaliteit.
+* Uitgaande netwerk verbinding met Azure Storage eind punten wereld wijd. Dit geldt ook voor eind punten die zich in dezelfde regio bevinden als de Azure-cache voor redis-exemplaar, evenals opslag eindpunten die zich in **andere** Azure-regio's bevinden. Azure Storage-eind punten worden omgezet onder de volgende DNS-domeinen: *Table.core.Windows.net* , *blob.core.Windows.net* , *Queue.core.Windows.net* en *File.core.Windows.net*. 
+* Uitgaande netwerk verbinding met *OCSP.Digicert.com* , *crl4.Digicert.com* , *OCSP.msocsp.com* , *mscrl.Microsoft.com* , *crl3.Digicert.com* , *cacerts.Digicert.com* , *oneocsp.Microsoft.com* en *CRL.Microsoft.com*. Deze connectiviteit is vereist voor de ondersteuning van TLS/SSL-functionaliteit.
 * De DNS-configuratie voor het virtuele netwerk moet geschikt zijn voor het oplossen van alle eind punten en domeinen die worden vermeld in de eerdere punten. Aan deze DNS-vereisten kan worden voldaan door ervoor te zorgen dat een geldige DNS-infra structuur is geconfigureerd en onderhouden voor het virtuele netwerk.
-* Uitgaande netwerk verbinding met de volgende Azure Monitor-eind punten die worden omgezet onder de volgende DNS-domeinen: *shoebox2-Black.shoebox2.Metrics.nsatc.net* , *North-prod2.prod2.Metrics.nsatc.net* , *azglobal-Black.azglobal.Metrics.nsatc.net* , *shoebox2-Red.shoebox2.Metrics.nsatc.net* , *East-prod2.prod2.Metrics.nsatc.net* , *azglobal-Red.azglobal.Metrics.nsatc.net* .
+* Uitgaande netwerk verbinding met de volgende Azure Monitor-eind punten die worden omgezet onder de volgende DNS-domeinen: *shoebox2-Black.shoebox2.Metrics.nsatc.net* , *North-prod2.prod2.Metrics.nsatc.net* , *azglobal-Black.azglobal.Metrics.nsatc.net* , *shoebox2-Red.shoebox2.Metrics.nsatc.net* , *East-prod2.prod2.Metrics.nsatc.net* , *azglobal-Red.azglobal.Metrics.nsatc.net*.
 
 ### <a name="how-can-i-verify-that-my-cache-is-working-in-a-vnet"></a>Hoe kan ik controleren of mijn cache werkt in een VNET?
 
 >[!IMPORTANT]
->Wanneer u verbinding maakt met een Azure-cache voor een redis-exemplaar dat wordt gehost in een VNET, moeten uw cache-clients zich in hetzelfde VNET of in een VNET bevinden dat VNET-peering is ingeschakeld in dezelfde Azure-regio. Globale VNET-peering worden momenteel niet ondersteund. Dit omvat alle test toepassingen of diagnostische hulpprogram ma's voor diagnose. Ongeacht waar de client toepassing wordt gehost, moeten netwerk beveiligings groepen zodanig worden geconfigureerd dat het netwerk verkeer van de client het redis-exemplaar kan bereiken.
+>Wanneer u verbinding maakt met een Azure-cache voor een redis-exemplaar dat wordt gehost in een VNET, moeten uw cache-clients zich in hetzelfde VNET of in een VNET bevinden dat VNET-peering is ingeschakeld in dezelfde Azure-regio. Globale VNET-peering worden momenteel niet ondersteund. Dit omvat alle test toepassingen of diagnostische hulpprogram ma's voor diagnose. Ongeacht waar de client toepassing wordt gehost, moeten netwerk beveiligings groepen of andere netwerk lagen zodanig worden geconfigureerd dat het netwerk verkeer van de client het redis-exemplaar kan bereiken.
 >
 >
 

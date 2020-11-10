@@ -7,12 +7,12 @@ ms.date: 07/23/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: caaa4499cbed1dce1a858c33a9488650649a5a44
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: dda0e3d6739e94df4ce5910938c164e3db336bce
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92042912"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445571"
 ---
 # <a name="use-iot-plug-and-play-models-in-an-iot-solution"></a>IoT Plug en Play-modellen gebruiken in een IoT-oplossing
 
@@ -121,7 +121,7 @@ Oplossingen kunnen de [model opslagplaats](concepts-model-repository.md) gebruik
 
 Voer de volgende stappen uit nadat u de model-ID voor een nieuwe apparaat-verbinding hebt geïdentificeerd:
 
-1. Haal de model definitie op met behulp van de model-ID uit de model opslagplaats. Zie [modellen ophalen](/rest/api/iothub/digitaltwinmodelrepositoryservice/getmodelasync/getmodelasync)voor meer informatie.
+1. Haal de model definitie op met behulp van de model-ID uit de model opslagplaats. Zie [device model-opslag plaats](concepts-model-repository.md)voor meer informatie.
 
 1. Met de model definitie van het verbonden apparaat kunt u de mogelijkheden van het apparaat opsommen.
 

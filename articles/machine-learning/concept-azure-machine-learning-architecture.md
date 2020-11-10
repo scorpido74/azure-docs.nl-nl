@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: c96263b5d40d4f6a4904a6da3d40ad98ac81f030
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: f17cdd42c892f6c0d218875cf304846937ba58d7
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322312"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444794"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Hoe Azure Machine Learning werkt: architectuur en concepten
 
@@ -36,7 +36,7 @@ De werk ruimte is de centrale locatie waar u het volgende kunt doen:
   * [Pijplijnen](#ml-pipelines)
   * [Gegevenssets](#datasets-and-datastores)
   * [Modellen](#models)
-  * [Eind punten](#endpoints)
+  * [Eindpunten](#endpoints)
 
 Een werk ruimte bevat andere Azure-resources die worden gebruikt door de werk ruimte:
 
@@ -46,6 +46,19 @@ Een werk ruimte bevat andere Azure-resources die worden gebruikt door de werk ru
 + [Azure Key Vault](https://azure.microsoft.com/services/key-vault/): slaat geheimen op die worden gebruikt door Compute-doelen en andere gevoelige informatie die nodig is voor de werk ruimte.
 
 U kunt een werk ruimte delen met anderen.
+
+### <a name="create-workspace"></a>Werkruimte maken
+
+In het volgende diagram ziet u de werk stroom werk ruimte maken.
+
+* U meldt zich aan bij Azure AD vanaf een van de ondersteunde Azure Machine Learning-clients (Azure CLI, python SDK, Azure Portal) en vraagt het juiste Azure Resource Manager-token op.
+* U roept Azure Resource Manager aan om de werk ruimte te maken. 
+* Azure Resource Manager neemt contact op met de Azure Machine Learning Resource provider om de werk ruimte in te richten.
+* Als u geen bestaande resources opgeeft, worden er aanvullende vereiste resources in uw abonnement gemaakt..
+
+U kunt ook andere reken doelen inrichten die zijn gekoppeld aan een werk ruimte (zoals Azure Kubernetes service of Vm's), indien nodig.
+
+[![Werkruimte werk stroom maken](media/concept-azure-machine-learning-architecture/create-workspace.png)](media/concept-azure-machine-learning-architecture/create-workspace.png#lightbox)
 
 ## <a name="computes"></a>Berekeningen
 
@@ -114,6 +127,10 @@ Zie [een training configureren voor een](how-to-set-up-training-targets.md)voor 
 
 Wanneer u een uitvoering verzendt, comprimeert Azure Machine Learning de map die het script bevat als een zip-bestand en verzendt het naar het Compute-doel. Het zip-bestand wordt vervolgens geëxtraheerd en het script wordt uitgevoerd. Azure Machine Learning slaat het zip-bestand ook als een moment opname op als onderdeel van de uitvoerings record. Iedereen met toegang tot de werk ruimte kan bladeren in een uitvoerings record en de moment opname downloaden.
 
+In het volgende diagram ziet u de werk stroom voor code momentopnamen.
+
+[![Workflow voor code momentopname](media/concept-azure-machine-learning-architecture/code-snapshot.png)](media/concept-azure-machine-learning-architecture/code-snapshot.png#lightbox)
+
 ### <a name="logging"></a>Logboekregistratie
 
 Azure Machine Learning registreert automatisch standaard waarden voor de uitvoering. U kunt echter ook [de python-SDK gebruiken om wille keurige metrieken te registreren](how-to-track-experiments.md).
@@ -129,6 +146,31 @@ Er zijn meerdere manieren om uw logboeken weer te geven: uitvoerings status van 
 Wanneer u begint met het uitvoeren van een training waarbij de bronmap een lokale Git-opslag plaats is, wordt informatie over de opslag plaats opgeslagen in de uitvoerings geschiedenis. Dit werkt met uitvoeringen die zijn verzonden met behulp van een script configuratie of ML-pijp lijn. Het werkt ook voor uitvoeringen die zijn verzonden vanuit de SDK of Machine Learning CLI.
 
 Zie [Git-integratie voor Azure machine learning](concept-train-model-git-integration.md)voor meer informatie.
+
+### <a name="training-workflow"></a>Werk stroom voor training
+
+Wanneer u een experiment uitvoert om een model te trainen, gebeurt de volgende stappen. Deze worden geïllustreerd in het werk stroom diagram training hieronder:
+
+* Azure Machine Learning wordt aangeroepen met de moment opname-ID voor de code momentopname die is opgeslagen in de vorige sectie.
+* Azure Machine Learning maakt een run-ID (optioneel) en een Machine Learning-service token, dat later wordt gebruikt door Compute-doelen als Machine Learning Compute/Vm's om te communiceren met de Machine Learning-service.
+* U kunt kiezen voor een beheerde Compute-doel (zoals Machine Learning Compute) of een niet-beheerd reken doel (zoals Vm's) om trainings taken uit te voeren. Dit zijn de gegevens stromen voor beide scenario's:
+   * Vm's/HDInsight, toegankelijk via SSH-referenties in een sleutel kluis in het micro soft-abonnement. Azure Machine Learning voert beheer code uit op het berekenings doel dat:
+
+   1. Bereidt de omgeving voor. (Docker is een optie voor Vm's en lokale computers. Raadpleeg de volgende stappen voor Machine Learning Compute om te begrijpen hoe het uitvoeren van experimenten op docker-containers werkt.)
+   1. Hiermee downloadt u de code.
+   1. Hiermee stelt u omgevings variabelen en configuraties in.
+   1. Voert gebruikers scripts uit (de code momentopname die in de vorige sectie is vermeld).
+
+   * Machine Learning Compute, toegankelijk via een door een werk ruimte beheerde identiteit.
+Omdat Machine Learning Compute een beheerd reken doel is (dat wil zeggen, wordt het beheerd door micro soft), wordt het uitgevoerd onder uw micro soft-abonnement.
+
+   1. De externe docker-constructie wordt zo nodig gestart.
+   1. De beheer code wordt geschreven naar de Azure Files share van de gebruiker.
+   1. De container wordt gestart met een eerste opdracht. Dat wil zeggen, beheer code zoals beschreven in de vorige stap.
+
+* Nadat de uitvoering is voltooid, kunt u query's uitvoeren en metrische gegevens uitvoeren. In het onderstaande stroom diagram treedt deze stap op wanneer het doel voor het berekenen van de training de metrische uitvoerings waarden terugschrijft naar Azure Machine Learning van opslag in de Cosmos DB-Data Base. Clients kunnen Azure Machine Learning aanroepen. Met Machine Learning worden de metrische gegevens van de Cosmos DB-Data Base opgehaald en terug naar de client geretourneerd.
+
+[![Werk stroom voor training](media/concept-azure-machine-learning-architecture/training-and-metrics.png)](media/concept-azure-machine-learning-architecture/training-and-metrics.png#lightbox)
 
 ## <a name="models"></a>Modellen
 
@@ -178,9 +220,21 @@ Een eind punt is een instantie van uw model in een webservice die kan worden geh
 
 Bij het implementeren van een model als een webservice, kan het eind punt worden geïmplementeerd op Azure Container Instances, Azure Kubernetes service of Fpga's. U maakt de service vanuit uw model, script en de bijbehorende bestanden. Deze worden in een basis container installatie kopie geplaatst, die de uitvoerings omgeving voor het model bevat. De afbeelding heeft een HTTP-eind punt met gelijke taak verdeling dat Score aanvragen ontvangt die naar de webservice worden verzonden.
 
-U kunt Application Insights telemetrie of model-telemetrie inschakelen om uw webservice te bewaken. De telemetriegegevens zijn alleen toegankelijk voor u.  Deze wordt opgeslagen in uw Application Insights-en opslag account-exemplaren.
+U kunt Application Insights telemetrie of model-telemetrie inschakelen om uw webservice te bewaken. De telemetriegegevens zijn alleen toegankelijk voor u.  Deze wordt opgeslagen in uw Application Insights-en opslag account-exemplaren. Als u automatisch schalen hebt ingeschakeld, wordt uw implementatie automatisch door Azure geschaald.
 
-Als u automatisch schalen hebt ingeschakeld, wordt uw implementatie automatisch door Azure geschaald.
+In het volgende diagram ziet u de werk stroom voor het afwijzen van een model dat is geïmplementeerd als een webservice-eind punt:
+
+Dit zijn de details:
+
+* De gebruiker registreert een model met behulp van een-client zoals de Azure Machine Learning SDK.
+* De gebruiker maakt een installatie kopie met behulp van een model, een score bestand en andere model afhankelijkheden.
+* De docker-installatie kopie wordt gemaakt en opgeslagen in Azure Container Registry.
+* De webservice wordt geïmplementeerd op het Compute-doel (Container Instances/AKS) met behulp van de installatie kopie die u in de vorige stap hebt gemaakt.
+* Details van Score aanvragen worden opgeslagen in Application Insights, dat zich in het abonnement van de gebruiker bevindt.
+* Telemetrie wordt ook gepusht naar het micro soft/Azure-abonnement.
+
+[![Werk stroom afwijzen](media/concept-azure-machine-learning-architecture/inferencing.png)](media/concept-azure-machine-learning-architecture/inferencing.png#lightbox)
+
 
 Voor een voor beeld van het implementeren van een model als een webservice raadpleegt u [een installatie kopie classificatie model implementeren in azure container instances](tutorial-deploy-models-with-aml.md).
 

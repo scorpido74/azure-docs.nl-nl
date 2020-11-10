@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 11/10/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f6953f145621e11506a009fa59d67a5f40508a13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 90fc356929a9ea5713a8d359dfaa83286017b8f8
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91539568"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445435"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-11"></a>Upgrade uitvoeren naar Azure Cognitive Search .NET SDK versie 11
 
@@ -49,7 +49,7 @@ Indien van toepassing, wijst de volgende tabel de client bibliotheken toe tussen
 |---------------------|------------------------------|------------------------------|
 | Client die wordt gebruikt voor query's en voor het vullen van een index. | [SearchIndexClient](/dotnet/api/azure.search.documents.indexes.searchindexclient) | [SearchClient](/dotnet/api/azure.search.documents.searchclient) |
 | Client die wordt gebruikt voor indexen, analyse functies, synoniemen | [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) | [SearchIndexClient](/dotnet/api/azure.search.documents.indexes.searchindexclient) |
-| Client die wordt gebruikt voor Indexeer functies, gegevens bronnen, vaardig heden | [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) | [SearchIndexerClient (**Nieuw**)](/dotnet/api/azure.search.documents.indexes.searchindexerclient) |
+| Client die wordt gebruikt voor Indexeer functies, gegevens bronnen, vaardig heden | [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) | [SearchIndexerClient ( **Nieuw** )](/dotnet/api/azure.search.documents.indexes.searchindexerclient) |
 
 > [!Important]
 > `SearchIndexClient` bestaat in beide versies, maar ondersteunt verschillende dingen. Maak in versie 10 `SearchIndexClient` indexen en andere objecten. In versie 11 `SearchIndexClient` werkt met bestaande indexen. Om Verwar ring te voor komen bij het bijwerken van code, moet u mindful van de volg orde waarin de client verwijzingen worden bijgewerkt. Als u de volg orde van de [stappen voor het uitvoeren](#UpgradeSteps) van een upgrade volgt, moet u problemen met de vervanging van teken reeksen oplossen.
@@ -75,7 +75,7 @@ Naast de verschillen tussen de client (eerder vermeld en daarom wegge laten), he
 | [Veld](/dotnet/api/microsoft.azure.search.models.field) | [SearchField](/dotnet/api/azure.search.documents.indexes.models.searchfield) |
 | [Param1](/dotnet/api/microsoft.azure.search.models.datatype) | [SearchFieldDataType](/dotnet/api/azure.search.documents.indexes.models.searchfielddatatype) |
 | [ItemError](/dotnet/api/microsoft.azure.search.models.itemerror) | [SearchIndexerError](/dotnet/api/azure.search.documents.indexes.models.searchindexererror) |
-| [Analyse](/dotnet/api/microsoft.azure.search.models.analyzer) | [LexicalAnalyzer](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzer) (ook `AnalyzerName` naar `LexicalAnalyzerName` ) |
+| [Procedures](/dotnet/api/microsoft.azure.search.models.analyzer) | [LexicalAnalyzer](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzer) (ook `AnalyzerName` naar `LexicalAnalyzerName` ) |
 | [AnalyzeRequest](/dotnet/api/microsoft.azure.search.models.analyzerequest) | [AnalyzeTextOptions](/dotnet/api/azure.search.documents.indexes.models.analyzetextoptions) |
 | [StandardAnalyzer](/dotnet/api/microsoft.azure.search.models.standardanalyzer) | [LuceneStandardAnalyzer](/dotnet/api/azure.search.documents.indexes.models.lucenestandardanalyzer) |
 | [StandardTokenizer](/dotnet/api/microsoft.azure.search.models.standardtokenizer) | [LuceneStandardTokenizer](/dotnet/api/azure.search.documents.indexes.models.lucenestandardtokenizer) (ook `StandardTokenizerV2` naar `LuceneStandardTokenizerV2` ) |
@@ -169,6 +169,24 @@ Met de volgende stappen kunt u aan de slag gaan met een code migratie door de ee
    ```
 
 1. Voeg nieuwe client referenties toe voor Indexeer functie-gerelateerde objecten. Als u Indexeer functies, gegevens bronnen of vaardig heden gebruikt, wijzigt u de client verwijzingen naar [SearchIndexerClient](/dotnet/api/azure.search.documents.indexes.searchindexerclient). Deze client is nieuw in versie 11 en heeft geen ante cedent.
+
+1. Ga naar verzamelingen. In de nieuwe SDK zijn alle lijsten alleen-lezen om downstream-problemen te voor komen als de lijst Null-waarden bevat. De code moet worden gewijzigd om items toe te voegen aan een lijst. In plaats van teken reeksen toe te wijzen aan een eigenschap Select, voegt u deze bijvoorbeeld als volgt toe:
+
+   ```csharp
+   var options = new SearchOptions
+    {
+       SearchMode = SearchMode.All,
+       IncludeTotalCount = true
+    };
+
+    // Select fields to return in results.
+    options.Select.Add("HotelName");
+    options.Select.Add("Description");
+    options.Select.Add("Tags");
+    options.Select.Add("Rooms");
+    options.Select.Add("Rating");
+    options.Select.Add("LastRenovationDate");
+   ```
 
 1. Client Referenties bijwerken voor query's en gegevens import. Instanties van [SearchIndexClient](/dotnet/api/microsoft.azure.search.searchindexclient) moeten worden gewijzigd in [SearchClient](/dotnet/api/azure.search.documents.searchclient). Zorg ervoor dat u alle exemplaren onderschept voordat u verdergaat met de volgende stap om naam Verwar ring te voor komen.
 

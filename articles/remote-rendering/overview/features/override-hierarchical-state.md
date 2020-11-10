@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 29c89d8d3d2ae194ff48b762bc686feefdd3a528
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 851a87885ac765c829e8c2be9fd1205e22906ca9
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380998"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445150"
 ---
 # <a name="hierarchical-state-override"></a>Hiërarchische status overschrijven
 
@@ -39,6 +39,13 @@ De vaste set statussen die kunnen worden overschreven is:
 
   > [!IMPORTANT]
   > Het effect doorkijk werkt alleen wanneer de *TileBasedComposition* - [rendering modus](../../concepts/rendering-modes.md) wordt gebruikt.
+
+* **`Shell`** : De geometrie wordt weer gegeven als een transparante, verzadigde shell. In deze modus kunnen niet-belang rijke onderdelen van een scène worden uitgevaagd, terwijl de vorm en relatieve positionering behouden blijven. Als u de weer gave van de shell-rendering wilt wijzigen, gebruikt u de [ShellRenderingSettings](shell-effect.md) -status. Bekijk de volgende afbeelding voor het auto model dat volledig door de shell wordt weer gegeven, met uitzonde ring van de blauwe veren:
+
+  ![Shell-modus die wordt gebruikt om specifieke objecten uit te faden](./media/shell.png)
+
+  > [!IMPORTANT]
+  > Het shell-effect werkt alleen wanneer de [rendermethode](../../concepts/rendering-modes.md) *TileBasedComposition* wordt gebruikt.
 
 * **`Selected`** : De geometrie wordt weer gegeven met een [selectie overzicht](outlines.md).
 
@@ -101,7 +108,7 @@ De `tint color` onderdrukking is iets speciaal omdat er sprake is van een aan/ui
 
 Een exemplaar van `HierarchicalStateOverrideComponent` zichzelf voegt geen veel runtime overhead toe. Het is echter altijd een goed idee om het aantal actieve onderdelen laag te laten blijven. Bij het implementeren van een selectie systeem dat het verzamelde object markeert, is het raadzaam om het onderdeel te verwijderen wanneer de markering wordt verwijderd. Als u de onderdelen bijhoudt van neutrale functies, kunt u snel aan de slag.
 
-Transparante rendering brengt meer werk belasting op de server Gpu's dan de standaard weergave. Als grote delen van de scène grafiek worden overgeschakeld om te worden *doorzocht* , terwijl veel lagen van de geometrie zichtbaar zijn, kan dit leiden tot een prestatie knelpunt. Hetzelfde geldt voor objecten met selectie- [uitlijningen](../../overview/features/outlines.md#performance).
+Transparante rendering brengt meer werk belasting op de server Gpu's dan de standaard weergave. Als grote delen van de scène grafiek worden overgeschakeld om te worden *doorzocht* , terwijl veel lagen van de geometrie zichtbaar zijn, kan dit leiden tot een prestatie knelpunt. Hetzelfde geldt voor objecten met selectie- [Uitlijnen](../../overview/features/outlines.md#performance) en voor het [weer geven van shells](../../overview/features/shell-effect.md#performance) . 
 
 ## <a name="api-documentation"></a>API-documentatie
 

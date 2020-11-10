@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 3/6/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3fda153d4c48ced17d1a9ba5f060b435b161542e
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 524b34c48146dc9e6102ed8d20ff8d1076706ba7
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127634"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444959"
 ---
 # <a name="test-an-azure-stream-analytics-job-in-the-portal"></a>Een Azure Stream Analytics-taak testen in de portal
 
@@ -29,7 +29,7 @@ Azure Stream Analytics haalt automatisch gebeurtenissen op uit uw streaming-invo
 
 3. Selecteer op de pagina Stream Analytics taak onder de kop **taak topologie** de optie **query** om het venster query-editor te openen. 
 
-4. Als u een voor beeld van een lijst met binnenkomende gebeurtenissen wilt zien, selecteert u het pictogram invoer met bestand en worden de voorbeeld gebeurtenissen automatisch weer gegeven in de **invoer voorbeeld** .
+4. Als u een voor beeld van een lijst met binnenkomende gebeurtenissen wilt zien, selecteert u het pictogram invoer met bestand en worden de voorbeeld gebeurtenissen automatisch weer gegeven in de **invoer voorbeeld**.
 
    a. Het type serialisatie voor uw gegevens wordt automatisch gedetecteerd als de JSON of CSV. U kunt dit ook hand matig wijzigen in JSON, CSV, AVRO door de optie in het vervolg keuzemenu te wijzigen.
     
@@ -45,7 +45,7 @@ Azure Stream Analytics haalt automatisch gebeurtenissen op uit uw streaming-invo
 
    ![Voorbeeld invoer Azure Stream Analytics in RAW-indeling](./media/stream-analytics-test-query/asa-sample-raw.png)
 
-5. Als u uw query wilt testen met inkomende gegevens, selecteert u **query testen** . Resultaten worden weer gegeven op het tabblad **test resultaten** . U kunt ook **Download resultaten** selecteren om de resultaten te downloaden.
+5. Als u uw query wilt testen met inkomende gegevens, selecteert u **query testen**. Resultaten worden weer gegeven op het tabblad **test resultaten** . U kunt ook **Download resultaten** selecteren om de resultaten te downloaden.
 
    ![Voorbeeld query resultaten Azure Stream Analytics test](./media/stream-analytics-test-query/asa-test-query.png)
 
@@ -53,7 +53,7 @@ Azure Stream Analytics haalt automatisch gebeurtenissen op uit uw streaming-invo
    
    ![Azure Stream Analytics tijds bereik voor binnenkomende voorbeeld gebeurtenissen](./media/stream-analytics-test-query/asa-select-time-range.png)
 
-7. Stel het tijds bereik in van de gebeurtenissen die u wilt gebruiken om uw query te testen en selecteer voor **beeld** . Binnen dat tijds bestek kunt u Maxi maal 1000 gebeurtenissen of 1 MB ophalen, afhankelijk van wat het eerste komt.
+7. Stel het tijds bereik in van de gebeurtenissen die u wilt gebruiken om uw query te testen en selecteer voor **beeld**. Binnen dat tijds bestek kunt u Maxi maal 1000 gebeurtenissen of 1 MB ophalen, afhankelijk van wat het eerste komt.
 
    ![Azure Stream Analytics het tijds bereik voor binnenkomende voorbeeld gebeurtenissen instellen](./media/stream-analytics-test-query/asa-set-time-range.png)
 
@@ -81,7 +81,7 @@ In plaats van live data te gebruiken, kunt u voorbeeld gegevens uit een lokaal b
 
    ![Scherm afbeelding toont de invoer optie voor het uploaden van voor beelden.](./media/stream-analytics-test-query/asa-upload-sample-file.png)
 
-5. Upload uw lokale bestand om de query te testen. U kunt alleen bestanden uploaden met de indelingen JSON, CSV of AVRO. Selecteer **OK** .
+5. Upload uw lokale bestand om de query te testen. U kunt alleen bestanden uploaden met de indelingen JSON, CSV of AVRO. Selecteer **OK**.
 
    ![Scherm afbeelding toont het dialoog venster voorbeeld gegevens uploaden, waarin u een bestand kunt selecteren.](./media/stream-analytics-test-query/asa-upload-sample-json-file.png)
 
@@ -111,6 +111,19 @@ In plaats van live data te gebruiken, kunt u voorbeeld gegevens uit een lokaal b
 4.  De time-outwaarde is één minuut. Een query met een venster grootte van meer dan één minuut kan dus geen gegevens ophalen.
 
 5.  Machine learning wordt niet ondersteund.
+
+
+## <a name="troubleshooting"></a>Problemen oplossen
+
+1.  Als deze fout melding wordt weer geven, is er een probleem met de netwerk verbinding opgetreden bij het ophalen van de resultaten. Controleer de netwerk-en Firewall instellingen. Volg de onderstaande stappen:
+
+  * Open in een browser om de verbinding met de service te controleren [https://queryruntime.azurestreamanalytics.com/api/home/index](https://queryruntime.azurestreamanalytics.com/api/home/index) . Als u deze koppeling niet kunt openen, kunt u de firewall instellingen bijwerken.
+  
+2. Als u deze fout melding krijgt, is de omvang van de aanvraag te groot. Verklein de grootte van de invoer gegevens en probeer het opnieuw. "Voer de volgende stappen uit:
+
+  * Invoer grootte verlagen: test uw query met een voor beeld van een kleiner formaat of met een kleiner tijds bereik.
+  * Query grootte verkleinen: als u een selectie query wilt testen, selecteert u een gedeelte van de query en klikt u op **geselecteerde query testen**.
+
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Een IOT-oplossing bouwen met behulp van stream Analytics](./stream-analytics-build-an-iot-solution-using-stream-analytics.md): deze zelf studie helpt u bij het bouwen van een end-to-end oplossing met een gegevens generator waarmee verkeer wordt gesimuleerd op een telefoon stand.

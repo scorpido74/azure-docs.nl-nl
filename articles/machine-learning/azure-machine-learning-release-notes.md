@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: 44afcf6883298eb36cd1219e6d60a8444a487412
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 5054451b181223d3d6deece6812358cfd08b1e30
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93423008"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445078"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Opmerkingen bij de release Azure Machine Learning
 
@@ -204,7 +204,7 @@ Meer informatie over de [segmentatie van afbeeldings instanties](how-to-label-im
     + Los een fout op in Dataset.get_by_name waarmee de labels voor de nieuwste gegevensset-versie worden weer gegeven, zelfs wanneer een specifieke oudere versie is opgehaald.
   + **azureml-interpret**
     + Er zijn waarschijnlijke uitvoer waarden toegevoegd aan Shap Score-uitleg in azureml-Interpreting op basis van shap_values_output para meter van de oorspronkelijke uitleger.
-  + **azureml-pipeline-core**
+  + **azureml-pijp lijn-kern**
     + Verbeterde `PipelineOutputAbstractDataset.register` documentatie.
   + **azureml-train-automl-client**
     + Geüpgraded AutoML-afhankelijkheden: `scikit-learn` (nu 0.22.1), `pandas` (nu 0.25.1), `numpy` (nu 1.18.2).
@@ -1084,7 +1084,7 @@ Toegang tot de volgende webgebaseerde hulp middelen voor ontwerpen vanuit Studio
 
 + **Nieuwe functies**
   + Gegevensset: Voeg twee opties toe `on_error` en `out_of_range_datetime` voor `to_pandas_dataframe` om te mislukken wanneer gegevens fout waarden hebben in plaats van ze te vullen met `None` .
-  + Werk ruimte: de `hbi_workspace` markering voor werk ruimten met gevoelige gegevens toegevoegd, waardoor verdere versleuteling mogelijk is en geavanceerde diagnoses in werk ruimten wordt uitgeschakeld. Er is ook ondersteuning toegevoegd voor het maken van uw eigen sleutels voor het bijbehorende Cosmos DB-exemplaar door de `cmk_keyvault` para meters en op te geven `resource_cmk_uri` bij het aanmaken van een werk ruimte, waardoor een Cosmos DB exemplaar in uw abonnement wordt gemaakt tijdens het inrichten van uw werk ruimte. [Meer informatie vindt u hier.](./concept-enterprise-security.md#azure-cosmos-db)
+  + Werk ruimte: de `hbi_workspace` markering voor werk ruimten met gevoelige gegevens toegevoegd, waardoor verdere versleuteling mogelijk is en geavanceerde diagnoses in werk ruimten wordt uitgeschakeld. Er is ook ondersteuning toegevoegd voor het maken van uw eigen sleutels voor het bijbehorende Cosmos DB-exemplaar door de `cmk_keyvault` para meters en op te geven `resource_cmk_uri` bij het aanmaken van een werk ruimte, waardoor een Cosmos DB exemplaar in uw abonnement wordt gemaakt tijdens het inrichten van uw werk ruimte. [Meer informatie vindt u hier.](./concept-data-encryption.md#azure-cosmos-db)
 
 + **Oplossingen en verbeteringen voor oplossingen**
   + **azureml-automl-runtime**
@@ -1474,7 +1474,7 @@ Azure Machine Learning is nu een resource provider voor Event Grid, kunt u machi
     + Ondersteuning bij het ophalen van op gegevensset gebaseerde gegevens-drift-uitvoer.
   + **azureml-uitleg-model**
     + Voeg ondersteuning toe voor [ScoringExplainer](/python/api/azureml-interpret/azureml.interpret.scoring.scoring_explainer.scoringexplainer?view=azure-ml-py&preserve-view=true) die rechtstreeks worden gemaakt met behulp van MimicWrapper
-  + **[azureml-pipeline-core](/python/api/azureml-pipeline-core)**
+  + **[azureml-pijp lijn-kern](/python/api/azureml-pipeline-core)**
     + Verbeterde prestaties voor het maken van grote pijp lijnen.
   + **[azureml-train-core](/python/api/azureml-train-core)**
     + Tensor Flow 2,0-ondersteuning is toegevoegd in [tensor flow](/python/api/azureml-train-core/azureml.train.dnn.tensorflow) Estimator.
@@ -1781,7 +1781,7 @@ Op het moment van deze release worden de volgende browsers ondersteund: Chrome, 
   + De prestaties van zijn `read_parquet` verbeterd wanneer ze in Spark worden uitgevoerd.
   + Er is een probleem opgelost waarbij `column_type_builder` een fout is opgetreden in een enkele kolom met dubbel zinnige datum notaties.
 
-### <a name="azure-portal"></a>Azure-portal
+### <a name="azure-portal"></a>Azure Portal
 + **Preview-functie**
   + Logboek-en uitvoer bestands streaming is nu beschikbaar voor pagina's met details van de uitvoering. De bestanden streamen updates in realtime wanneer de schakel optie voor preview is ingeschakeld.
   + De mogelijkheid om een quotum op een werkruimte niveau in te stellen, wordt vrijgegeven in de preview-versie. AmlCompute quota worden toegewezen op abonnements niveau, maar we bieden u de mogelijkheid om dat quotum tussen werk ruimten te verdelen en toe te wijzen voor eerlijk delen en governance. Klik op de Blade gebruiks namen en **quota's** in de linkernavigatiebalk van uw werk ruimte en selecteer het tabblad **quota's configureren** . U moet een abonnements beheerder zijn om quota's in te kunnen stellen op het niveau van de werk ruimte, omdat dit een bewerking in meerdere werk ruimten is.
@@ -2060,7 +2060,7 @@ De [`PipelineEndpoint`](/python/api/azureml-pipeline-core/azureml.pipeline.core.
 
 ## <a name="2019-04-15"></a>2019-04-15
 
-### <a name="azure-portal"></a>Azure-portal
+### <a name="azure-portal"></a>Azure Portal
   + U kunt nu een bestaand script opnieuw verzenden dat wordt uitgevoerd op een bestaand extern Compute-Cluster.
   + U kunt nu een gepubliceerde pijp lijn uitvoeren met nieuwe para meters op het tabblad pijp lijnen.
   + Details van de uitvoering bieden nu ondersteuning voor een nieuwe viewer voor momentopname bestanden. U kunt een moment opname van de Directory weer geven wanneer u een specifieke uitvoering hebt ingediend. U kunt ook het notitie blok downloaden dat is verzonden om de uitvoering te starten.
@@ -2118,7 +2118,7 @@ De [`PipelineEndpoint`](/python/api/azureml-pipeline-core/azureml.pipeline.core.
 + **Oplossingen en verbeteringen voor oplossingen**
   + We hebben ondersteuning toegevoegd in Azure Machine Learning-pijp lijnen voor het instellen van de eigenschap source_directory_data_store op een gewenste gegevens opslag (zoals een Blob-opslag) op [RunConfigurations](/python/api/azureml-core/azureml.core.runconfig.runconfiguration?preserve-view=true&view=azure-ml-py) die worden geleverd aan de [PythonScriptStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?preserve-view=true&view=azure-ml-py). In de volgende stappen wordt gebruikgemaakt van Azure File Store als back-upgegevens opslag, wat kan leiden tot beperking van problemen wanneer een groot aantal stappen gelijktijdig wordt uitgevoerd.
 
-### <a name="azure-portal"></a>Azure-portal
+### <a name="azure-portal"></a>Azure Portal
 
 + **Nieuwe functies**
   + Nieuwe functie voor slepen en neerzetten van tabel editor voor rapporten. Gebruikers kunnen een kolom van het ene naar het tabel gebied slepen waarin een voor beeld van de tabel wordt weer gegeven. De kolommen kunnen opnieuw worden gerangschikt.

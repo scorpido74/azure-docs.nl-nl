@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: troubleshooting
 ms.custom: troubleshooting, contperfq4
-ms.date: 10/02/2020
-ms.openlocfilehash: b49e7ab7f3412177ee9eafad8d1a68525e054421
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 11/09/2020
+ms.openlocfilehash: 46763bddd0f173ccf73edc54e5f2688d3bf6efc0
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93314763"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445388"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Bekende problemen en probleemoplossing in Azure Machine Learning
 
@@ -258,7 +258,20 @@ Beperkingen en bekende problemen voor gegevens drift-monitors:
 
 ## <a name="azure-machine-learning-designer"></a>Azure Machine Learning-ontwerpprogramma
 
-* **Lange Compute-voorbereidings tijd:**
+### <a name="dataset-visualization-in-the-designer"></a>Visualisatie van gegevensset in de ontwerp functie
+
+Nadat u een gegevensset hebt geregistreerd op de Asset-pagina **gegevens sets** of met behulp van SDK, kunt u deze vinden onder **gegevens sets** categorie in de lijst links naar het canvas design.
+
+Wanneer u de gegevensset echter naar het canvas sleept en visualiseren, kan het zijn dat deze niet kan worden gevisualiseerd om een van de volgende redenen:
+
+- Momenteel kunt u tabellaire gegevensset alleen visualiseren in de ontwerp functie. Als u een bestands gegevensset buiten Designer registreert, kunt u deze niet visualiseren op het canvas van de ontwerp functie.
+- Uw gegevensset wordt opgeslagen in het virtuele netwerk (VNet). Als u wilt visualiseren, moet u de werk ruimte beheerde identiteit van het gegevens archief inschakelen.
+    1. Ga naar de gerelateerde gegevens opslag en **Klik op referenties bijwerken** 
+     :::image type="content" source="./media/resource-known-issues/datastore-update-credential.png" alt-text="gegevens bijwerken":::
+    1. Selecteer **Ja** om de beheerde identiteit van de werk ruimte in te scha kelen.
+    :::image type="content" source="./media/resource-known-issues/enable-workspace-managed-identity.png" alt-text="Beheerde identiteit van werk ruimte inschakelen":::
+
+### <a name="long-compute-preparation-time"></a>Tijd van lange reken voorbereiding
 
 Het kan enkele minuten of zelfs langer duren wanneer u voor het eerst verbinding maakt of een compute-doel maakt. 
 
@@ -269,7 +282,7 @@ import time
 time.sleep(600)
 ```
 
-* **Log voor realtime-eind punten:**
+### <a name="log-for-real-time-endpoints"></a>Logboek voor realtime-eind punten
 
 Logboeken van real-time eind punten zijn klant gegevens. Voor het oplossen van real-time-eind punten kunt u de volgende code gebruiken om Logboeken in te scha kelen. 
 

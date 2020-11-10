@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: c3dd4e5138741a3c035507358830f3572cf92751
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc08df7390285f9b6e4701bb1ca5c4227b19f1da
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91739687"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445027"
 ---
 # <a name="azure-key-vault-security"></a>Azure Key Vault-beveiliging
 
@@ -25,7 +25,7 @@ U gebruikt Azure Key Vault om versleutelings sleutels en geheimen te beveiligen,
 Wanneer u een sleutel kluis maakt in een Azure-abonnement, wordt deze automatisch gekoppeld aan de Azure AD-Tenant van het abonnement. Iedereen die inhoud probeert te beheren of ophalen uit een kluis, moet worden geverifieerd door Azure AD.
 
 - Met verificatie wordt de identiteit van de aanroeper bepaald.
-- Autorisatie bepaalt welke bewerkingen de aanroeper kan uitvoeren. Autorisatie in Key Vault gebruikt een combi natie van [op rollen gebaseerd toegangs beheer](../../role-based-access-control/overview.md) (RBAC) en Azure Key Vault toegangs beleid.
+- Autorisatie bepaalt welke bewerkingen de aanroeper kan uitvoeren. Autorisatie in Key Vault gebruikt een combi natie van [op rollen gebaseerd toegangs beheer (Azure RBAC) van Azure](../../role-based-access-control/overview.md) en Azure Key Vault toegangs beleid.
 
 ### <a name="access-model-overview"></a>Overzicht van toegangs modellen
 
@@ -34,7 +34,7 @@ De toegang tot kluizen vindt plaats via twee interfaces of-abonnementen. Deze vl
 - Het *beheer vlak* is waar u Key Vault zelf beheert en het is de interface die wordt gebruikt om kluizen te maken en verwijderen. U kunt ook sleutel kluis eigenschappen lezen en toegangs beleid beheren.
 - Met het *gegevens vlak* kunt u werken met de gegevens die zijn opgeslagen in een sleutel kluis. U kunt sleutels, geheimen en certificaten toevoegen, verwijderen en wijzigen.
 
-Voor toegang tot een sleutel kluis in een van beide vlieg tuigen moeten alle bellers (gebruikers of toepassingen) worden geverifieerd en geautoriseerd. Beide plannen gebruiken Azure Active Directory (Azure AD) voor verificatie. Voor autorisatie gebruikt het beheer vlak op rollen gebaseerd toegangs beheer (RBAC) en gebruikt het gegevens vlak een Key Vault toegangs beleid.
+Voor toegang tot een sleutel kluis in een van beide vlieg tuigen moeten alle bellers (gebruikers of toepassingen) worden geverifieerd en geautoriseerd. Beide plannen gebruiken Azure Active Directory (Azure AD) voor verificatie. Voor autorisatie gebruikt het beheer vlak Azure RBAC (op rollen gebaseerd toegangs beheer) en gebruikt het gegevens vlak een Key Vault toegangs beleid.
 
 Het model van één mechanisme voor verificatie voor beide abonnementen heeft verschillende voor delen:
 
@@ -46,11 +46,11 @@ Het model van één mechanisme voor verificatie voor beide abonnementen heeft ve
 
 Wanneer u een sleutel kluis maakt in een resource groep, beheert u de toegang met behulp van Azure AD. U verleent gebruikers of groepen de mogelijkheid om de sleutel kluizen in een resource groep te beheren. U kunt toegang verlenen op een specifiek Scope niveau door de juiste Azure-rollen toe te wijzen. Als u toegang wilt verlenen aan een gebruiker om sleutel kluizen te beheren, wijst u een vooraf gedefinieerde `key vault Contributor` rol toe aan de gebruiker op een specifiek bereik. De volgende Scope niveaus kunnen worden toegewezen aan een Azure-rol:
 
-- **Abonnement**: een Azure-rol die is toegewezen op abonnements niveau, is van toepassing op alle resource groepen en resources in dat abonnement.
-- **Resource groep**: een Azure-rol die is toegewezen op het niveau van de resource groep, is van toepassing op alle resources in die resource groep.
-- **Specifieke resource**: een Azure-rol die is toegewezen voor een specifieke resource, is van toepassing op die resource. In dit geval is de resource een specifieke sleutel kluis.
+- **Abonnement** : een Azure-rol die is toegewezen op abonnements niveau, is van toepassing op alle resource groepen en resources in dat abonnement.
+- **Resource groep** : een Azure-rol die is toegewezen op het niveau van de resource groep, is van toepassing op alle resources in die resource groep.
+- **Specifieke resource** : een Azure-rol die is toegewezen voor een specifieke resource, is van toepassing op die resource. In dit geval is de resource een specifieke sleutel kluis.
 
-Er zijn verschillende vooraf gedefinieerde rollen. Als een vooraf gedefinieerde rol niet aan uw behoeften voldoet, kunt u uw eigen rol definiëren. Zie [RBAC: ingebouwde rollen](../../role-based-access-control/built-in-roles.md)voor meer informatie.
+Er zijn verschillende vooraf gedefinieerde rollen. Als een vooraf gedefinieerde rol niet aan uw behoeften voldoet, kunt u uw eigen rol definiëren. Zie [Azure RBAC: ingebouwde rollen](../../role-based-access-control/built-in-roles.md)voor meer informatie.
 
 > [!IMPORTANT]
 > Als een gebruiker `Contributor` machtigingen heeft voor een sleutel kluis beheer vlak, kan de gebruiker zichzelf toegang verlenen tot het gegevens vlak door een Key Vault toegangs beleid in te stellen. U moet nauw keurig bepalen wie `Contributor` rollen toegang heeft tot uw sleutel kluizen. Zorg ervoor dat alleen geautoriseerde personen uw sleutel kluizen, sleutels, geheimen en certificaten kunnen gebruiken en beheren.
@@ -79,7 +79,7 @@ Raadpleeg voor meer informatie over Azure Key Vault netwerk adres [service-eind 
 
 *   De front-end van Key Vault (Data-vlak) is een multi tenant-server. Dit betekent dat sleutel kluizen van verschillende klanten hetzelfde open bare IP-adres kunnen delen. Om isolatie te kunnen garanderen, wordt elke HTTP-aanvraag geverifieerd en onafhankelijk van andere aanvragen geautoriseerd.
 *   U kunt oudere versies van TLS identificeren om beveiligings problemen te melden, maar omdat het open bare IP-adres wordt gedeeld, is het niet mogelijk om oude versies van TLS uit te scha kelen voor afzonderlijke sleutel kluizen op het niveau van het Trans Port.
-*   Met het HTTPS-protocol kan de client deel nemen aan TLS-onderhandeling. **Clients kunnen de meest recente versie van TLS afdwingen**en wanneer een client dit doet, wordt de bijbehorende beveiliging op het niveau van de volledige verbinding gebruikt. Het feit dat Key Vault nog steeds oudere versies van TLS ondersteunt, heeft geen invloed op de beveiliging van verbindingen met nieuwere TLS-versies.
+*   Met het HTTPS-protocol kan de client deel nemen aan TLS-onderhandeling. **Clients kunnen de meest recente versie van TLS afdwingen** en wanneer een client dit doet, wordt de bijbehorende beveiliging op het niveau van de volledige verbinding gebruikt. Het feit dat Key Vault nog steeds oudere versies van TLS ondersteunt, heeft geen invloed op de beveiliging van verbindingen met nieuwere TLS-versies.
 *   Ondanks bekende beveiligings problemen in het TLS-protocol is er geen bekende aanval waarmee een kwaadwillende agent informatie kan ophalen uit uw sleutel kluis wanneer de aanvaller een verbinding initieert met een TLS-versie met beveiligings problemen. De aanvaller moet zich nog steeds zelf verifiëren en autoriseren, en zolang legitieme clients altijd verbinding maken met recente TLS-versies, is er geen manier waarop referenties kunnen worden gelekt van beveiligings problemen in oude TLS-versies.
 
 ## <a name="logging-and-monitoring"></a>Logboekregistratie en bewaking
@@ -91,4 +91,4 @@ Raadpleeg de [Azure Storage-beveiligings handleiding](../../storage/blobs/securi
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Virtuele netwerk service-eind punten voor Azure Key Vault](overview-vnet-service-endpoints.md)
-- [RBAC: ingebouwde rollen](../../role-based-access-control/built-in-roles.md)
+- [Azure RBAC: Ingebouwde rollen](../../role-based-access-control/built-in-roles.md)

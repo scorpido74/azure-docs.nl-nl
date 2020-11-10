@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: alkohli
-ms.openlocfilehash: 00b6fab2aeebeeb0f39e07a0751e02cefd195b28
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: f9330f99a0473aa38da2fcbb8ae0624a37746613
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337341"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444755"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Azure Data Box-beveiliging en -gegevensbescherming
 
@@ -63,7 +63,7 @@ Het Data Box-apparaat wordt door de volgende functies beschermd:
 De gegevens die in en uit de Data Box stromen, worden door de volgende functies beschermd:
 
 - AES 256-bits versleuteling voor data-at-rest.
-- Versleutelde protocollen kunnen worden gebruikt voor data-in-flight. U wordt aangeraden SMB 3,0 met versleuteling te gebruiken om gegevens te beveiligen wanneer u deze kopieert van uw gegevens servers.
+- Versleutelde protocollen kunnen worden gebruikt voor data-in-flight. U wordt aangeraden SMB 3,0 te gebruiken met versleuteling om gegevens te beveiligen wanneer u deze kopieert van uw gegevens servers.
 - Veilige verwijdering van gegevens van apparaat zodra ze naar Azure zijn geüpload. Gegevens verwijdering is conform richt lijnen in [bijlage A voor ATA harde schijven in de 88r1-standaarden van NIST](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf). De gebeurtenis voor gegevens verwijdering wordt vastgelegd in de [order geschiedenis](data-box-logs.md#download-order-history).
 
 ### <a name="data-box-service-protection"></a>Data Box-servicebescherming
