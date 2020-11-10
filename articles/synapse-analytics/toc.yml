@@ -173,7 +173,7 @@
           href: sql/resource-consumption-models.md
         - name: Verwerkte gegevens
           href: sql/data-processed.md
-        - name: Aanbevolen procedures voor SQL on-demand
+        - name: Best practices voor serverloze SQL-pools
           href: sql/best-practices-sql-on-demand.md
         - name: Best practices voor toegewezen SQL-pools
           href: sql/best-practices-sql-pool.md

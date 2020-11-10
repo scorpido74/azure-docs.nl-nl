@@ -4,7 +4,7 @@
   items:
     - name: Wat is Azure Front Door?
       href: front-door-overview.md
-- name: Quickstarts
+- name: Snelstartgidsen
   expanded: true
   items:
     - name: Een Front Door maken - Portal
@@ -40,6 +40,8 @@
       href: front-door-backend-pool.md
     - name: Opslaan in cache met Front Door
       href: front-door-caching.md
+    - name: DDoS-bescherming
+      href: front-door-ddos.md
     - name: Veelgestelde vragen over Front Door
       href: front-door-faq.md
     - name: Geo-filteren

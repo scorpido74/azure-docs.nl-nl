@@ -64,6 +64,8 @@
           href: connection-monitor-preview-create-using-portal.md
         - name: ARMClient gebruiken
           href: connection-monitor-preview-create-using-arm-client.md
+        - name: PowerShell gebruiken
+          href: connection-monitor-create-using-powershell.md
     - name: Migreren naar verbindingsmonitor (preview)
       items:
         - name: Van Netwerkprestatiemeter

@@ -4,7 +4,7 @@
   items:
     - name: Wat is Kostenbeheer en facturering?
       href: cost-management-billing-overview.md
-- name: Quickstarts
+- name: Snelstartgidsen
   expanded: true
   items:
     - name: Beginnen met analyseren van kosten
@@ -120,6 +120,8 @@
           href: understand/subscription-transfer.md
         - name: Abonnementen uitwisselen tussen partners (preview)
           href: manage/azure-plan-subscription-transfer-partners.md
+        - name: Aan de slag in de Azure EA-portal
+          href: manage/ea-portal-get-started.md
 - name: Instructiegidsen
   items:
     - name: Kostenbeheer en facturering configureren
@@ -200,8 +202,6 @@
               href: manage/cancel-azure-subscription.md
         - name: Enterprise Agreement-abonnement beheren
           items:
-            - name: Aan de slag in de Azure EA-portal
-              href: manage/ea-portal-get-started.md
             - name: EA-rollen in Azure
               href: manage/understand-ea-roles.md
             - name: Beheer van Azure EA Portal
