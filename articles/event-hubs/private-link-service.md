@@ -3,12 +3,12 @@ title: Azure Event Hubs integreren met de persoonlijke koppelings service van Az
 description: Meer informatie over het integreren van Azure Event Hubs met de persoonlijke koppelings service van Azure
 ms.date: 08/22/2020
 ms.topic: article
-ms.openlocfilehash: 59167635cfc0d8c1123a47410c87d6b9151f6f62
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 996779e103dae2d2d950f447d2ac72667fc9e754
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334239"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427748"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-via-private-endpoints"></a>Toegang tot Azure Event Hubs-naam ruimten toestaan via persoonlijke eind punten 
 Met Azure Private Link service kunt u toegang krijgen tot Azure-Services (bijvoorbeeld Azure Event Hubs, Azure Storage en Azure Cosmos DB) en door Azure gehoste klanten/partner services via een **persoonlijk eind punt** in uw virtuele netwerk.
@@ -17,19 +17,11 @@ Een persoonlijk eind punt is een netwerk interface waarmee u privé en veilig ku
 
 Zie [Wat is een Azure Private Link?](../private-link/private-link-overview.md) voor meer informatie.
 
-> [!IMPORTANT]
+> [!WARNING]
+> Het inschakelen van persoonlijke eind punten kan verhinderen dat andere Azure-Services communiceren met Event Hubs.  Aanvragen die zijn geblokkeerd, zijn onder andere die van andere Azure-Services, van de Azure Portal, van de services logboek registratie en metrische gegevens, enzovoort. Als uitzonde ring kunt u toegang verlenen tot Event Hubs resources van bepaalde vertrouwde services, zelfs wanneer persoonlijke eind punten zijn ingeschakeld. Zie [Trusted Services](#trusted-microsoft-services)(Engelstalig) voor een lijst met vertrouwde services.
+
+>[!NOTE]
 > Deze functie wordt ondersteund voor zowel de **standaard** als de **toegewezen** laag. Het wordt niet ondersteund in de laag **basis** .
->
-> Het inschakelen van persoonlijke eind punten kan verhinderen dat andere Azure-Services communiceren met Event Hubs.  Aanvragen die zijn geblokkeerd, zijn onder andere die van andere Azure-Services, van de Azure Portal, van de services logboek registratie en metrische gegevens, enzovoort. 
-> 
-> Hier volgen enkele van de services die geen toegang hebben tot Event Hubs resources wanneer persoonlijke eind punten zijn ingeschakeld. Houd er rekening mee dat de lijst **niet** limitatief is.
->
-> - Azure-IoT Hub routes
-> - Azure IoT-Device Explorer
-> - Azure Event Grid
-> - Azure Monitor (Diagnostische instellingen)
->
-> Als uitzonde ring kunt u toegang verlenen tot Event Hubs resources van bepaalde vertrouwde services, zelfs wanneer persoonlijke eind punten zijn ingeschakeld. Zie [Trusted Services](#trusted-microsoft-services)(Engelstalig) voor een lijst met vertrouwde services.
 
 ## <a name="add-a-private-endpoint-using-azure-portal"></a>Een persoonlijk eind punt toevoegen met Azure Portal
 
@@ -49,7 +41,7 @@ Uw privé-eindpunt maakt gebruik van een privé IP-adres in uw virtueel netwerk.
 ### <a name="steps"></a>Stappen
 Als u al een Event Hubs naam ruimte hebt, kunt u een koppeling voor een particuliere verbinding maken door de volgende stappen uit te voeren:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
 2. Typ in de zoek balk in **Event hubs**.
 3. Selecteer de **naam ruimte** in de lijst waaraan u een persoonlijk eind punt wilt toevoegen.
 4. Selecteer **netwerken** onder **instellingen** in het menu links.
@@ -64,7 +56,7 @@ Als u al een Event Hubs naam ruimte hebt, kunt u een koppeling voor een particul
 1. Selecteer het tabblad **verbindingen met privé-eind punten** boven aan de pagina. 
 1. Selecteer de knop **+ privé-eind punt** boven aan de pagina.
 
-    :::image type="content" source="./media/private-link-service/private-link-service-3.png" alt-text="Tabblad netwerken-opties voor geselecteerde netwerken":::
+    :::image type="content" source="./media/private-link-service/private-link-service-3.png" alt-text="Pagina netwerken-tabblad verbindingen met privé-eind punten-koppeling persoonlijke eind punt toevoegen":::
 7. Voer de volgende stappen uit op de pagina **basis beginselen** : 
     1. Selecteer het **Azure-abonnement** waarin u het persoonlijke eind punt wilt maken. 
     2. Selecteer de **resource groep** voor de persoonlijke eindpunt resource.
@@ -74,18 +66,18 @@ Als u al een Event Hubs naam ruimte hebt, kunt u een koppeling voor een particul
 
         ![Privé-eind punt maken-pagina basis beginselen](./media/private-link-service/create-private-endpoint-basics-page.png)
 8. Voer de volgende stappen uit op de pagina **resource** :
-    1. Als u **verbinding maken met een Azure-resource in mijn Directory**selecteert, voert u de volgende stappen uit om de verbindings methode te selecteren: 
+    1. Als u **verbinding maken met een Azure-resource in mijn Directory** selecteert, voert u de volgende stappen uit om de verbindings methode te selecteren: 
         1. Selecteer het **Azure-abonnement** waarin uw **Event hubs naam ruimte** bestaat. 
-        2. Selecteer voor **resource type**de optie **micro soft. EventHub/naam ruimten** voor het **bron type**.
-        3. Selecteer voor **resource**een event hubs naam ruimte in de vervolg keuzelijst. 
+        2. Selecteer voor **resource type** de optie **micro soft. EventHub/naam ruimten** voor het **bron type**.
+        3. Selecteer voor **resource** een event hubs naam ruimte in de vervolg keuzelijst. 
         4. Controleer of de **doel-subresource** is ingesteld op **naam ruimte**.
         5. Selecteer **volgende: configuratie >** knop onder aan de pagina. 
         
             ![Privé-eind punt maken-resource pagina](./media/private-link-service/create-private-endpoint-resource-page.png)    
-    2. Als u **verbinding maken met een Azure-resource selecteert op resource-id of alias**, voert u de volgende stappen uit:
-        1. Voer de **resource-id** of **alias**in. Dit kan de resource-ID of alias zijn die iemand met u heeft gedeeld. De eenvoudigste manier om de resource-ID op te halen, is door te navigeren naar de Event Hubs naam ruimte in de Azure Portal en het gedeelte van de URI te kopiëren vanaf `/subscriptions/` . Zie de volgende afbeelding voor een voor beeld. 
-        2. Voer een **naam ruimte**in voor de **subresource**van het doel. Het is het type van de subbron waartoe uw persoonlijke eind punt toegang heeft.
-        3. Beschrijving Voer een **aanvraag bericht**in. De resource-eigenaar ziet dit bericht tijdens het beheer van de verbinding met een privé-eind punt.
+    2. Als u **verbinding maken met een Azure-resource selecteert op resource-id of alias** , voert u de volgende stappen uit:
+        1. Voer de **resource-id** of **alias** in. Dit kan de resource-ID of alias zijn die iemand met u heeft gedeeld. De eenvoudigste manier om de resource-ID op te halen, is door te navigeren naar de Event Hubs naam ruimte in de Azure Portal en het gedeelte van de URI te kopiëren vanaf `/subscriptions/` . Zie de volgende afbeelding voor een voor beeld. 
+        2. Voer een **naam ruimte** in voor de **subresource** van het doel. Het is het type van de subbron waartoe uw persoonlijke eind punt toegang heeft.
+        3. Beschrijving Voer een **aanvraag bericht** in. De resource-eigenaar ziet dit bericht tijdens het beheer van de verbinding met een privé-eind punt.
         4. Selecteer vervolgens **volgende: configuratie >** knop onder aan de pagina.
 
             ![Persoonlijk eind punt maken-verbinden via Resource-ID](./media/private-link-service/connect-resource-id.png)
@@ -96,7 +88,7 @@ Als u al een Event Hubs naam ruimte hebt, kunt u een koppeling voor een particul
 
         ![Privé-eind punt maken-configuratie pagina](./media/private-link-service/create-private-endpoint-configuration-page.png)
 10. Maak op de pagina **Tags** een wille keurige labels (namen en waarden) die u wilt koppelen aan de persoonlijke eindpunt resource. Selecteer vervolgens de knop **controleren + maken** onder aan de pagina. 
-11. Controleer alle instellingen in het **overzicht en maken**en selecteer **maken** om het persoonlijke eind punt te maken.
+11. Controleer alle instellingen in het **overzicht en maken** en selecteer **maken** om het persoonlijke eind punt te maken.
     
     ![Privé-eind punt maken-pagina controleren en maken](./media/private-link-service/create-private-endpoint-review-create-page.png)
 12. Controleer of de verbinding van het privé-eind punt dat u hebt gemaakt, wordt weer gegeven in de lijst met eind punten. In dit voor beeld wordt het persoonlijke eind punt automatisch goedgekeurd omdat u verbinding hebt gemaakt met een Azure-resource in uw directory en u voldoende machtigingen hebt. 
@@ -222,7 +214,7 @@ Er zijn vier inrichtingsstatussen:
 3. Selecteer de knop **goed keuren** .
 
     ![Keur het privé-eindpunt goed](./media/private-link-service/approve-private-endpoint.png)
-4. Voeg op de pagina **verbinding goed keuren** een opmerking toe (optioneel) en selecteer **Ja**. Als u **Nee**selecteert, gebeurt er niets. 
+4. Voeg op de pagina **verbinding goed keuren** een opmerking toe (optioneel) en selecteer **Ja**. Als u **Nee** selecteert, gebeurt er niets. 
 5. Als het goed is, ziet u de status van de verbinding met een privé-eind punt in de lijst gewijzigd in **goedgekeurd**. 
 
 ### <a name="reject-a-private-endpoint-connection"></a>Een persoonlijke eindpunt verbinding weigeren
@@ -230,13 +222,13 @@ Er zijn vier inrichtingsstatussen:
 1. Als er particuliere endpoint-verbindingen zijn die u wilt weigeren, ongeacht of het een aanvraag in behandeling of een bestaande verbinding is, selecteert u de verbinding en klikt u op de knop **afwijzen** .
 
     ![Persoonlijk eind punt afwijzen](./media/private-link-service/private-endpoint-reject-button.png)
-2. Voer op de pagina **verbinding afwijzen** een opmerking in (optioneel) en selecteer **Ja**. Als u **Nee**selecteert, gebeurt er niets. 
+2. Voer op de pagina **verbinding afwijzen** een opmerking in (optioneel) en selecteer **Ja**. Als u **Nee** selecteert, gebeurt er niets. 
 3. Als het goed is, ziet u de status van de verbinding met een privé-eind punt in de lijst gewijzigd in **afgewezen**. 
 
 ### <a name="remove-a-private-endpoint-connection"></a>Een verbinding met een privé-eind punt verwijderen
 
 1. Als u een verbinding met een privé-eind punt wilt verwijderen, selecteert u deze in de lijst en selecteert u **verwijderen** op de werk balk.
-2. Selecteer op de pagina **verbinding verwijderen** de optie **Ja** om het verwijderen van het persoonlijke eind punt te bevestigen. Als u **Nee**selecteert, gebeurt er niets.
+2. Selecteer op de pagina **verbinding verwijderen** de optie **Ja** om het verwijderen van het persoonlijke eind punt te bevestigen. Als u **Nee** selecteert, gebeurt er niets.
 3. U ziet dat de status is gewijzigd in **verbroken**. Vervolgens ziet u dat het eind punt verdwijnt uit de lijst.
 
 ## <a name="validate-that-the-private-link-connection-works"></a>Controleren of de verbinding van de Private Link werkt
@@ -247,10 +239,10 @@ Maak eerst een nieuwe virtuele machine door de instructies te volgen in [Een vir
 
 Op het tabblad **netwerk** : 
 
-1. Geef het **virtuele netwerk** en het **subnet**op. U moet het Virtual Network selecteren waarop u het persoonlijke eind punt hebt geïmplementeerd.
+1. Geef het **virtuele netwerk** en het **subnet** op. U moet het Virtual Network selecteren waarop u het persoonlijke eind punt hebt geïmplementeerd.
 2. Geef een **open bare IP-** resource op.
-3. Selecteer voor **NIC-netwerk beveiligings groep**de optie **geen**.
-4. Selecteer **Nee**voor **taak verdeling**.
+3. Selecteer voor **NIC-netwerk beveiligings groep** de optie **geen**.
+4. Selecteer **Nee** voor **taak verdeling**.
 
 Maak verbinding met de virtuele machine, open de opdracht regel en voer de volgende opdracht uit:
 
@@ -269,11 +261,11 @@ Aliases:  <event-hubs-namespace-name>.servicebus.windows.net
 
 ## <a name="limitations-and-design-considerations"></a>Beperkingen en ontwerp overwegingen
 
-**Pricing**: Zie [Prijs van Azure Private Link](https://azure.microsoft.com/pricing/details/private-link/) voor meer informatie over prijzen.
+**Pricing** : Zie [Prijs van Azure Private Link](https://azure.microsoft.com/pricing/details/private-link/) voor meer informatie over prijzen.
 
-**Beperkingen**: deze functie is beschikbaar in alle open bare Azure-regio's.
+**Beperkingen** : deze functie is beschikbaar in alle open bare Azure-regio's.
 
-**Maximum aantal privé-eind punten per Event hubs naam ruimte**: 120.
+**Maximum aantal privé-eind punten per Event hubs naam ruimte** : 120.
 
 Zie [Azure Private Link-service: beperkingen](../private-link/private-link-service-overview.md#limitations) voor meer informatie
 

@@ -8,25 +8,25 @@ ms.topic: include
 ms.date: 10/19/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: fe95481e977d2e35c2f652b6c99b9e69ae89e2f8
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 6bc8b6cc18f4a4bc41cabf7f8fefe78a5aaf7827
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "92479556"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427825"
 ---
-1. Typ n [Azure Portal](https://portal.azure.com) in **Resources, services en documenten zoeken(G+/)** **virtuele netwerkgateway** . Zoek **Gateway van virtueel netwerk** in de zoekresultaten en selecteer de vermelding.
+1. Typ n [Azure Portal](https://portal.azure.com) in **Resources, services en documenten zoeken(G+/)** **virtuele netwerkgateway**. Zoek **Gateway van virtueel netwerk** in de zoekresultaten en selecteer de vermelding.
 
    :::image type="content" source="./media/vpn-gateway-add-gw-rm-portal-include/search.png" alt-text="Zoekveld" lightbox="./media/vpn-gateway-add-gw-rm-portal-include/search-expand.png":::
 
-1. Selecteer op de pagina **Gateway van virtueel netwerk** de optie **+ Toevoegen** . Hiermee opent u de pagina **Gateway van het virtuele netwerk maken** .
+1. Selecteer op de pagina **Gateway van virtueel netwerk** de optie **+ Toevoegen**. Hiermee opent u de pagina **Gateway van het virtuele netwerk maken**.
 
-   :::image type="content" source="./media/vpn-gateway-add-gw-rm-portal-include/add.png" alt-text="Zoekveld":::
+   :::image type="content" source="./media/vpn-gateway-add-gw-rm-portal-include/add.png" alt-text="Pagina virtuele netwerkgateways":::
 1. Vul op het tabblad **Basisinformatie** de waarden in voor de gateway van het virtuele netwerk.
 
-   :::image type="content" source="./media/vpn-gateway-add-gw-rm-portal-include/gateway.png" alt-text="Zoekveld":::
+   :::image type="content" source="./media/vpn-gateway-add-gw-rm-portal-include/gateway.png" alt-text="Gateway-velden":::
 
-   :::image type="content" source="./media/vpn-gateway-add-gw-rm-portal-include/gateway-vnet.png" alt-text="Zoekveld":::
+   :::image type="content" source="./media/vpn-gateway-add-gw-rm-portal-include/gateway-vnet.png" alt-text="Extra gateway-velden":::
 
    * **Abonnement** : Selecteer in de vervolgkeuzelijst het abonnement dat u wilt gebruiken.
    * **Resourcegroep:** Deze instelling wordt automatisch ingevuld wanneer u het virtuele netwerk op deze pagina selecteert.
@@ -35,7 +35,7 @@ ms.locfileid: "92479556"
 
    * **Naam** : naam van uw gateway. Een naam opgeven voor een gateway is niet hetzelfde als een naam opgeven voor een gatewaysubnet. Het is de naam van het gateway-object dat u maakt.
    * **Regio** : Selecteer de regio waarin u deze resource wilt maken. De regio voor de gateway moet hetzelfde zijn als die voor het virtuele netwerk.
-   * **Gatewaytype** : selecteer **VPN** . VPN-gateways maken gebruik van een gateway van het virtuele netwerk van het type **VPN** .
+   * **Gatewaytype** : selecteer **VPN**. VPN-gateways maken gebruik van een gateway van het virtuele netwerk van het type **VPN**.
    * **VPN-type** selecteer het VPN-type dat wordt opgegeven voor uw configuratie. De meeste configuraties vereisen een op route gebaseerd VPN-type.
    * **SKU** : selecteer de gateway-SKU in de vervolgkeuzelijst. Welke SKU's worden weergegeven in de vervolgkeuzelijst, is afhankelijk van het VPN-type dat u selecteert. Zie [Gateway-SKU's](../articles/vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#gwsku) voor informatie over gateway-SKU's.
    * **Generatie** : Zie [Gateway-SKU's](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku) voor meer informatie over de generatie van VPN Gateway.
@@ -49,9 +49,9 @@ ms.locfileid: "92479556"
      * **Openbaar IP-adres** : Laat **Nieuwe maken** geselecteerd.
      * **Openbare IP-adresnaam** : Typ in het tekstvak een naam voor het exemplaar van uw openbare IP-adres.
      * **Toewijzing** : VPN-gateway ondersteunt alleen Dynamisch.
-     * **De modus actief-actief inschakelen** : Selecteer **Modus actief-actief inschakelen** alleen als u een gatewayconfiguratie van het type actief-actief maakt. Anders laat u deze instelling **Uitgeschakeld** .
+     * **De modus actief-actief inschakelen** : Selecteer **Modus actief-actief inschakelen** alleen als u een gatewayconfiguratie van het type actief-actief maakt. Anders laat u deze instelling **Uitgeschakeld**.
      * Laat **BGP configureren** ingesteld **Uitgeschakeld** , tenzij dit voor uw configuratie-instelling nodig is. Als u deze instelling wel nodig hebt, is de ASN standaard 65515. U kunt deze waarde wijzigen.
 1. Selecteer **Beoordelen en maken** om de validatie uit te voeren.
-1. Wanneer de validatie is geslaagd, selecteert u **Maken** om de VPN-gateway te implementeren. Het kan tot 45 minuten duren voordat een gateway volledig is gemaakt en geïmplementeerd. U kunt de implementatiestatus bekijken op de overzichtspagina van uw gateway.
+1. Wanneer de validatie is geslaagd, selecteert u **Maken** om de VPN-gateway te implementeren.
 
-Nadat de gateway is aangemaakt, kunt u het IP-adres dat eraan is toegewezen bekijken door naar het virtuele netwerk in de portal te kijken. De gateway wordt weergegeven als verbonden apparaat.
+Het kan tot 45 minuten duren voordat een gateway volledig is gemaakt en geïmplementeerd. U kunt de implementatiestatus bekijken op de overzichtspagina van uw gateway. Nadat de gateway is aangemaakt, kunt u het IP-adres dat eraan is toegewezen bekijken door naar het virtuele netwerk in de portal te kijken. De gateway wordt weergegeven als verbonden apparaat.

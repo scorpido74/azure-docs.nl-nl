@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: c34cd8e399a005f5eadb3751fb0575f6ecfc27ed
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 90a5f0f84c72895a8450a42260b07f6dbea15e37
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380875"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94428024"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>Verbinding maken tussen Azure en ITSM-hulpprogram ma's met behulp van IT Service Management-connector
 
@@ -28,6 +28,9 @@ ITSMC ondersteunt verbindingen met de volgende ITSM-hulpprogram ma's:
 -   System Center Service Manager
 -   Provance
 -   Cherwell
+
+   >[!NOTE]
+> Met ingang van 1-okt-2020 Cher well-en Provance ITSM-integratie met Azure-waarschuwing wordt niet langer ingeschakeld voor nieuwe klanten. Nieuwe ITSM-verbindingen worden niet ondersteund. Bestaande ITSM-verbindingen worden ondersteund.
 
 Met ITSMC kunt u het volgende doen:
 
@@ -150,7 +153,8 @@ Gebruik de volgende procedure om werk items te maken:
 
    ![Scherm opname van het ITSM-ticket venster.](media/itsmc-overview/itsm-action-configuration.png)
    
-   * In het geval dat u in de vervolg keuzelijst voor werk items selecteert: als u **afzonderlijke werk items maken voor elke logboek vermelding** in de keuze rondjes selecteert, wordt er met elke waarschuwing een nieuw werk item gemaakt. Als u **afzonderlijke werk items maken selecteert voor elk configuratie-item** in de keuze rondjes selectie, heeft elk configuratie-item een eigen werk item. 
+   * In het geval dat u in de vervolg keuzelijst voor werk items selecteert: als u **afzonderlijke werk items maken voor elke logboek vermelding** in de keuze rondjes selecteert, wordt er met elke waarschuwing een nieuw werk item gemaakt. Als u **afzonderlijke werk items maken selecteert voor elk configuratie-item** in de keuze rondjes selectie, heeft elk configuratie-item een eigen werk item.
+   ![Scherm opname van het ITSM-ticket venster.](media/itsmc-overview/itsm-action-configuration-event.png)
 
 10. Selecteer **OK**.
 

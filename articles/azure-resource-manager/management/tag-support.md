@@ -3,12 +3,12 @@ title: Label ondersteuning voor bronnen
 description: Hier wordt weer gegeven welke Azure-resource typen tags ondersteunen. Geeft Details voor alle Azure-Services.
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: c3a94ece52e5c5b17a50fed9810303480a9c974a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: fb81ed303cf27add3a033021f017c03f4b9e9750
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370284"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427765"
 ---
 # <a name="tag-support-for-azure-resources"></a>Ondersteuning voor labels voor Azure-resources
 In dit artikel wordt beschreven of een resource type [labels](tag-resources.md)ondersteunt. De kolom met de naam **ondersteunt labels** geeft aan of het resource type een eigenschap voor de tag heeft. De kolom label **in het kosten rapport** geeft aan of dit resource type de tag doorgeeft aan het kosten rapport. U kunt kosten op labels weer geven in de [Cost Management kosten analyse](../../cost-management-billing/costs/group-filter.md) en de gegevens voor de [factuur en dagelijks gebruik van Azure](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md).
@@ -284,7 +284,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Ondersteunt labels | Label in kosten rapport |
 > | ------------- | ----------- | ----------- |
-> | configurationStores | Ja | Ja |
+> | configurationStores | Ja | Nee |
 > | configurationStores / eventGridFilters | Nee | Nee |
 > | configurationStores/-waarden | Nee | Nee |
 
@@ -847,7 +847,7 @@ Ga naar de naam ruimte van een resource provider:
 > | ReservationTransactions | Nee | Nee |
 > | Tags | Nee | Nee |
 > | tenants | Nee | Nee |
-> | Termen | Nee | Nee |
+> | Voorwaarden | Nee | Nee |
 > | UsageDetails | Nee | Nee |
 
 ## <a name="microsoftcontainerinstance"></a>Micro soft. ContainerInstance
@@ -1764,9 +1764,9 @@ Ga naar de naam ruimte van een resource provider:
 > | expressRoutePorts | Ja | Ja |
 > | expressRouteServiceProviders | Nee | Nee |
 > | firewallPolicies | Ja | Ja |
-> | frontdoors | Ja, maar beperkt (Zie [Opmerking hieronder](#frontdoor)) | Ja |
-> | frontdoorWebApplicationFirewallManagedRuleSets | Ja, maar beperkt (Zie [Opmerking hieronder](#frontdoor)) | Nee |
-> | frontdoorWebApplicationFirewallPolicies | Ja, maar beperkt (Zie [Opmerking hieronder](#frontdoor)) | Ja |
+> | frontdoors | Ja, maar beperkt (Zie [Opmerking hieronder](#frontdoor)) | Yes |
+> | frontdoorWebApplicationFirewallManagedRuleSets | Ja, maar beperkt (Zie [Opmerking hieronder](#frontdoor)) | No |
+> | frontdoorWebApplicationFirewallPolicies | Ja, maar beperkt (Zie [Opmerking hieronder](#frontdoor)) | Yes |
 > | getDnsResourceReference | Nee | Nee |
 > | internalNotify | Nee | Nee |
 > | ipGroups | Ja | Ja |
@@ -2045,7 +2045,7 @@ Ga naar de naam ruimte van een resource provider:
 > | Resourcetype | Ondersteunt labels | Label in kosten rapport |
 > | ------------- | ----------- | ----------- |
 > | Clouds | Ja | Ja |
-> | Informatie | Ja | Ja |
+> | VirtualMachines | Ja | Ja |
 > | VirtualMachineTemplates | Ja | Ja |
 > | VirtualNetworks | Ja | Ja |
 > | vmmservers | Ja | Ja |
@@ -2253,7 +2253,7 @@ Ga naar de naam ruimte van een resource provider:
 > | Resourcetype | Ondersteunt labels | Label in kosten rapport |
 > | ------------- | ----------- | ----------- |
 > | managedInstances | Ja | Ja |
-> | managedInstances/data bases | Ja (Zie [Opmerking hieronder](#sqlnote)) | Ja |
+> | managedInstances/data bases | Ja (Zie [Opmerking hieronder](#sqlnote)) | Yes |
 > | managedInstances/data bases/backupShortTermRetentionPolicies | Nee | Nee |
 > | managedInstances/data bases/schema's/tabellen/kolommen/sensitivityLabels | Nee | Nee |
 > | managedInstances/data bases/vulnerabilityAssessments | Nee | Nee |
@@ -2265,7 +2265,7 @@ Ga naar de naam ruimte van een resource provider:
 > | Server | Ja | Ja |
 > | servers/beheerders | Nee | Nee |
 > | servers/communicationLinks | Nee | Nee |
-> | servers/data bases | Ja (Zie [Opmerking hieronder](#sqlnote)) | Ja |
+> | servers/data bases | Ja (Zie [Opmerking hieronder](#sqlnote)) | Yes |
 > | servers/encryptionProtector | Nee | Nee |
 > | servers/firewallRules | Nee | Nee |
 > | servers/sleutels | Nee | Nee |
@@ -2369,7 +2369,7 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- | ----------- |
 > | clusters | Ja | Ja |
 > | clusters/privateEndpoints | Nee | Nee |
-> | streamingjobs | Ja (zie opmerking hieronder) | Ja |
+> | streamingjobs | Ja (zie opmerking hieronder) | Yes |
 
 > [!NOTE]
 > U kunt geen tag toevoegen wanneer streamingjobs wordt uitgevoerd. Stop de resource om een tag toe te voegen.
@@ -2439,7 +2439,7 @@ Ga naar de naam ruimte van een resource provider:
 > | ArcZones | Ja | Ja |
 > | ResourcePools | Ja | Ja |
 > | VCenter | Ja | Ja |
-> | Informatie | Ja | Ja |
+> | VirtualMachines | Ja | Ja |
 > | VirtualMachineTemplates | Ja | Ja |
 > | VirtualNetworks | Ja | Ja |
 

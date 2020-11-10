@@ -4,12 +4,12 @@ description: Configuratie opties voor Azure Monitor Application Insights java
 ms.topic: conceptual
 ms.date: 11/04/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 6edb77ec21b4f82f8398312fdff24aa5ea207771
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: b703a708af564b9dafc8c1409333a2cfed6d2653
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94381028"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427697"
 ---
 # <a name="configuration-options-for-azure-monitor-application-insights-java"></a>Configuratie opties voor Azure Monitor Application Insights java
 
@@ -178,9 +178,9 @@ Hiermee kunt u regels configureren die worden toegepast op aanvraag-, afhankelij
 
 Raadpleeg de documentatie van de [telemetrie-processor](./java-standalone-telemetry-processors.md) voor meer informatie.
 
-## <a name="autocollected-logging"></a>Logboek registratie voor autocollector
+## <a name="auto-collected-logging"></a>Automatisch verzamelde logboek registratie
 
-Log4j, logback en Java. util. logging zijn automatisch instrumenteel en logboek registraties die via deze logboek registratie raamwerken worden uitgevoerd, worden niet verzameld.
+Log4j, logback en Java. util. logging zijn automatisch instrumenteel en logboek registratie die via deze logboek registratie raamwerken wordt uitgevoerd, wordt automatisch verzameld.
 
 Logboek registratie wordt standaard alleen verzameld wanneer de logboek registratie wordt uitgevoerd op het `INFO` niveau of hoger.
 
@@ -213,13 +213,13 @@ Dit zijn de geldige `level` waarden die u in het bestand kunt opgeven `applicati
 | TRACERen (of het kleinste) | TRACERINGS  | TRACERINGS   | MEEST  |
 | ALL               | ALL    | ALL     | ALL     |
 
-## <a name="autocollected-micrometer-metrics-including-spring-boot-actuator-metrics"></a>Autogeïncasseerde metrische micrometer-gegevens (inclusief lente-metrische gegevens voor de boot-klep)
+## <a name="auto-collected-micrometer-metrics-including-spring-boot-actuator-metrics"></a>Automatisch verzamelde metrische gegevens over micrometer (inclusief lente-metrische gegevens over het starten van de klep)
 
-Als uw toepassing gebruikmaakt van [micrometer](https://micrometer.io), worden metrische gegevens die worden verzonden naar het globale REGI ster van micrometer, verzameld.
+Als uw toepassing gebruikmaakt van [micrometer](https://micrometer.io), worden metrische gegevens die naar het globale REGI ster van micrometer worden verzonden, automatisch verzameld.
 
-Als uw toepassing een [Spring boot-klep](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html)gebruikt, worden de metrische gegevens die zijn geconfigureerd met een Spring boot-klep ook, verzameld.
+Als uw toepassing een [Spring boot-klep](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html)gebruikt, worden de metrische gegevens die zijn geconfigureerd met een Spring boot-klep ook automatisch verzameld.
 
-U kunt als volgt het autoverzamelen van metrische micrometer-gegevens uitschakelen (met inbegrip van gegevens over de veer boot-klep):
+Automatische verzameling van micrometer-metrische gegevens uitschakelen (inclusief lente-metrische gegevens over het starten van de klep):
 
 > [!NOTE]
 > Aangepaste metrische gegevens worden afzonderlijk gefactureerd en kunnen extra kosten in rekening worden gebracht. Controleer de gedetailleerde [prijs informatie](https://azure.microsoft.com/pricing/details/monitor/). Als u de metrische gegevens voor micrometer en lente aandrijving wilt uitschakelen, voegt u de onderstaande configuratie toe aan het configuratie bestand.

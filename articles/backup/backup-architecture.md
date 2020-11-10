@@ -3,12 +3,12 @@ title: Overzicht van de architectuur
 description: Hierin wordt een overzicht gegeven van de architectuur, onderdelen en processen die door de Azure Backup-service worden gebruikt.
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: f5d4c881244ddae41ba4c706812bd7b8274a374e
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 288b073c20b93bf1802f34f5dcd17b12430bb279
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173274"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427731"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Architectuur en onderdelen van Azure Backup
 
@@ -22,11 +22,11 @@ Azure Backup maakt een back-up van de gegevens, machine status en workloads die 
 
 U kunt met behulp van een aantal methoden back-ups maken van computers en gegevens:
 
-- **Back-ups van on-premises machines**:
+- **Back-ups van on-premises machines** :
   - U kunt rechtstreeks een back-up maken van on-premises Windows-machines naar Azure met behulp van de MARS-agent (Azure Backup Microsoft Azure Recovery Services). Linux-machines worden niet ondersteund.
   - U kunt back-ups van on-premises machines maken op een back-upserver: System Center Data Protection Manager (DPM) of Microsoft Azure Backup Server (MABS). U kunt vervolgens een back-up maken van de back-upserver naar een Recovery Services kluis in Azure.
 
-- **Back-ups maken van virtuele Azure-machines**:
+- **Back-ups maken van virtuele Azure-machines** :
   - U kunt rechtstreeks back-ups maken van Azure-Vm's. Azure Backup installeert een back-upextensie in de Azure VM-agent die wordt uitgevoerd op de VM. Deze uitbrei ding maakt een back-up van de volledige VM.
   - U kunt een back-up maken van specifieke bestanden en mappen op de virtuele Azure-machine door de MARS-agent uit te voeren.
   - U kunt back-ups maken van virtuele Azure-machines naar de MABS die worden uitgevoerd in azure, en u kunt vervolgens een back-up maken van de MABS naar een Recovery Services kluis.
@@ -35,7 +35,7 @@ Meer informatie over [waarvan u een back-up kunt maken](backup-overview.md) en o
 
 ## <a name="where-is-data-backed-up"></a>Waar wordt een back-up van gegevens gemaakt?
 
-Azure Backup opgeslagen back-ups van gegevens in een kluis-Recovery Services kluizen en back-upkluizen. Een kluis is een online opslag entiteit in azure die wordt gebruikt om gegevens op te slaan, zoals back-ups, herstel punten en back-upbeleid.
+Azure Backup opgeslagen back-upgegevens in kluizen-Recovery Services kluizen en back-upkluizen. Een kluis is een online opslag entiteit in azure die wordt gebruikt om gegevens op te slaan, zoals back-ups, herstel punten en back-upbeleid.
 
 Kluizen hebben de volgende kenmerken:
 
@@ -43,9 +43,9 @@ Kluizen hebben de volgende kenmerken:
 - U kunt back-upitems bewaken in een kluis, waaronder Azure Vm's en on-premises machines.
 - U kunt de toegang tot de kluis beheren met [Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](../role-based-access-control/role-assignments-portal.md).
 - U geeft op hoe gegevens in de kluis worden gerepliceerd voor redundantie:
-  - **Lokaal redundante opslag (LRS)**: als u wilt beveiligen tegen fouten in een Data Center, kunt u LRS gebruiken. LRS repliceert gegevens naar een opslag schaal eenheid. [Meer informatie](../storage/common/storage-redundancy.md#locally-redundant-storage).
-  - **Geografisch redundante opslag (GRS)**: als u wilt beveiligen tegen regionale storingen, kunt u GRS gebruiken. GRS repliceert uw gegevens naar een secundaire regio. [Meer informatie](../storage/common/storage-redundancy.md#geo-redundant-storage).
-  - **Zone-redundante opslag (ZRS)**: repliceert uw gegevens in [beschikbaarheids zones](../availability-zones/az-overview.md#availability-zones), waarbij de gegevens locatie en tolerantie in dezelfde regio worden gegarandeerd. [Meer informatie](../storage/common/storage-redundancy.md#zone-redundant-storage)
+  - **Lokaal redundante opslag (LRS)** : als u wilt beveiligen tegen fouten in een Data Center, kunt u LRS gebruiken. LRS repliceert gegevens naar een opslag schaal eenheid. [Meer informatie](../storage/common/storage-redundancy.md#locally-redundant-storage).
+  - **Geografisch redundante opslag (GRS)** : als u wilt beveiligen tegen regionale storingen, kunt u GRS gebruiken. GRS repliceert uw gegevens naar een secundaire regio. [Meer informatie](../storage/common/storage-redundancy.md#geo-redundant-storage).
+  - **Zone-redundante opslag (ZRS)** : repliceert uw gegevens in [beschikbaarheids zones](../availability-zones/az-overview.md#availability-zones), waarbij de gegevens locatie en tolerantie in dezelfde regio worden gegarandeerd. [Meer informatie](../storage/common/storage-redundancy.md#zone-redundant-storage)
   - Recovery Services kluizen gebruiken standaard GRS.
 
 Recovery Services kluizen hebben de volgende extra functies:
@@ -87,8 +87,8 @@ Het opslag verbruik, de beoogde herstel tijd (RTO) en het netwerk verbruik vari�
 
 - Gegevens bron A bestaat uit tien opslag blokken, a1-A10, die maandelijks een back-up maken.
 - Blokken A2, A3, A4 en A9 zijn in de eerste maand gewijzigd, en blok A5 is de maand erna gewijzigd.
-- Voor differentiële back-ups, in de tweede maand, zijn er een back-up gemaakt van de blokken a2, a3, A4 en A9. In de derde maand wordt er opnieuw een back-up gemaakt van dezelfde blokken en van het gewijzigde blok A5. Van de gewijzigde blokken worden back-ups gemaakt totdat de volgende volledige back-up wordt uitgevoerd.
-- Voor incrementele back-ups worden in de tweede maand de blokken a2, a3, A4 en A9 gemarkeerd als gewijzigd en overgedragen. In het derde maand wordt alleen gewijzigd blok A5 gemarkeerd als gemarkeerd en overgedragen.
+- Voor differentiële back-ups, in de tweede maand gewijzigde blokken a2, a3, A4 en A9, wordt een back-up gemaakt. In de derde maand wordt er opnieuw een back-up gemaakt van dezelfde blokken en van het gewijzigde blok A5. Van de gewijzigde blokken worden back-ups gemaakt totdat de volgende volledige back-up wordt uitgevoerd.
+- Voor incrementele back-ups worden in de tweede maand de blokken a2, a3, A4 en A9 gemarkeerd als gewijzigd en overgezet. In het derde maand wordt alleen gewijzigd blok A5 gemarkeerd als gemarkeerd en overgedragen.
 
 ![Afbeelding van de vergelijking van back-upmethoden](./media/backup-architecture/backup-method-comparison.png)
 
@@ -99,8 +99,8 @@ De volgende tabel bevat een overzicht van de ondersteunde functies voor de versc
 **Functie** | **Directe back-ups van bestanden en mappen (met behulp van de MARS-agent)** | **Back-up van Azure VM** | **Computers of apps met DPM/MABS**
 --- | --- | --- | ---
 Back-up naar kluis maken | ![Ja][green] | ![Ja][green] | ![Ja][green]
-Back-up naar DPM/MABS-schijf en vervolgens naar Azure | | | ![Ja][green]
-Gegevens comprimeren die voor back-up zijn verzonden | ![Ja][green] | Er wordt geen compressie gebruikt bij de overdracht van gegevens. De opslag is enigszins geflateerd, maar het herstellen gaat sneller.  | ![Ja][green]
+Back-up naar DPM/MABS-schijf en vervolgens naar Azure | | | ![Yes][green]
+Gegevens comprimeren die voor back-up zijn verzonden | ![Yes][green] | Er wordt geen compressie gebruikt bij de overdracht van gegevens. De opslag is enigszins geflateerd, maar het herstellen gaat sneller.  | ![Yes][green]
 Incrementele back-up uitvoeren |![Ja][green] |![Ja][green] |![Ja][green]
 Back-ups maken van ontdubbelde schijven | | | ![Gedeeltelijk][yellow]<br/><br/> Voor DPM-MABS-servers die alleen on-premises worden geïmplementeerd.
 
@@ -123,6 +123,12 @@ Back-ups maken van ontdubbelde schijven | | | ![Gedeeltelijk][yellow]<br/><br/> 
 - Het bewaren van ' maandelijks ', ' jaarlijks ' back-uppunten wordt aangeduid als een lange termijn retentie (LTR)
 - Wanneer een kluis wordt gemaakt, wordt er ook een ' Defaultpolicy bij ' gemaakt en kan deze worden gebruikt voor het maken van een back-up van bronnen.
 - Alle wijzigingen die zijn aangebracht in de Bewaar periode van een back-upbeleid, worden met terugwerkende kracht toegepast op alle oudere herstel punten, van de nieuwe.
+
+### <a name="impact-of-policy-change-on-recovery-points"></a>Gevolgen van beleids wijzigingen op herstel punten
+
+- De **Bewaar periode wordt verg root of verkleind:** Wanneer de Bewaar periode wordt gewijzigd, wordt de nieuwe Bewaar periode ook toegepast op de bestaande herstel punten. Als gevolg hiervan worden sommige herstel punten opgeruimd. Als de retentie periode is toegenomen, zullen de bestaande herstel punten ook een grotere Bewaar termijn hebben.
+- **Gewijzigd van dagelijks in wekelijks:** Wanneer de geplande back-ups worden gewijzigd van dagelijks in wekelijks, worden de bestaande dagelijkse herstel punten opgeschoond.
+- **Gewijzigd van wekelijks in dagelijks:** De bestaande wekelijkse back-ups worden bewaard op basis van het aantal resterende dagen volgens het huidige Bewaar beleid.
 
 ### <a name="additional-reference"></a>Aanvullende naslaginformatie
 

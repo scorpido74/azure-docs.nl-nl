@@ -13,12 +13,12 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 05/26/2020
-ms.openlocfilehash: 8d067d30220c76de5617aab2c42365351888d744
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 393fceaa91600ab143912bb3af38c349f29f770a
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92780016"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427935"
 ---
 # <a name="get-started-with-azure-sql-managed-instance-auditing"></a>Aan de slag met controle van Azure SQL Managed instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -42,7 +42,7 @@ In de volgende sectie wordt de configuratie van de controle op uw beheerde exemp
       > - Als uw opslag account zich achter een Virtual Network of een firewall bevindt, kunt u [toegang verlenen via een virtueel netwerk](../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network).
       > - Als u de retentieperiode van 0 (onbeperkte retentie) wijzigt in een andere waarde, moet u er rekening mee houden dat retentie alleen van toepassing is op logboeken die zijn geschreven nadat de waarde is gewijzigd, (logboeken die zijn geschreven tijdens de periode waarin de retentie was ingesteld op onbeperkt, blijven behouden, zelfs nadat retentie is ingeschakeld).
 
-   1. Ga in het opslag account naar **overzicht** en klik op **blobs** .
+   1. Ga in het opslag account naar **overzicht** en klik op **blobs**.
 
       ![Widget Azure blobs](./media/auditing-configure/1_blobs_widget.png)
 
@@ -50,7 +50,7 @@ In de volgende sectie wordt de configuratie van de controle op uw beheerde exemp
 
       ![Pictogram van een BLOB-container maken](./media/auditing-configure/2_create_container_button.png)
 
-   1. Geef een container **naam** op, stel **openbaar toegangs niveau** in op **privé** en klik vervolgens op **OK** .
+   1. Geef een container **naam** op, stel **openbaar toegangs niveau** in op **privé** en klik vervolgens op **OK**.
 
       ![Configuratie van BLOB-container maken](./media/auditing-configure/3_create_container_config.png)
 
@@ -61,7 +61,7 @@ In de volgende sectie wordt de configuratie van de controle op uw beheerde exemp
 
    - <a id="blobtsql"></a>Blob-opslag configureren voor audit logboeken met T-SQL:
 
-     1. Klik in de lijst containers op de zojuist gemaakte container en klik vervolgens op **container eigenschappen** .
+     1. Klik in de lijst containers op de zojuist gemaakte container en klik vervolgens op **container eigenschappen**.
 
         ![Knop Eigenschappen van BLOB-container](./media/auditing-configure/4_container_properties_button.png)
 
@@ -88,7 +88,7 @@ In de volgende sectie wordt de configuratie van de controle op uw beheerde exemp
             > [!NOTE]
             > Vernieuw het token na verloop om mislukte audits te voor komen.
 
-          - Klik op **SAS genereren** .
+          - Klik op **SAS genereren**.
 
             ![SAS-configuratie](./media/auditing-configure/7_sas_configure.png)
 
@@ -118,7 +118,7 @@ In de volgende sectie wordt de configuratie van de controle op uw beheerde exemp
         GO
         ```
 
-        Ga door met het [maken van een server audit specificatie of specificatie van de database audit](#createspec).
+     1. Ga door met het [maken van een server audit specificatie of specificatie van de database audit](#createspec).
 
    - <a id="blobssms"></a>Blob-opslag configureren voor audit logboeken met SQL Server Management Studio 18 (preview-versie):
 
@@ -138,7 +138,7 @@ In de volgende sectie wordt de configuratie van de controle op uw beheerde exemp
 
         ![Aanmelden bij Azure](./media/auditing-configure/12_mi_SSMS_sign_in_to_azure.png)
 
-     1. Selecteer een abonnement, opslag account en BLOB-container in de vervolg keuzelijsten of maak uw eigen container door te klikken op **maken** . Wanneer u klaar bent, klikt u op **OK** :
+     1. Selecteer een abonnement, opslag account en BLOB-container in de vervolg keuzelijsten of maak uw eigen container door te klikken op **maken**. Wanneer u klaar bent, klikt u op **OK** :
 
         ![Azure-abonnement, opslag account en BLOB-container selecteren](./media/auditing-configure/13_mi_SSMS_select_subscription_account_container.png)
 
@@ -169,15 +169,15 @@ Audit logboeken van een beheerd exemplaar kunnen worden verzonden naar Azure Eve
 
 1. Navigeer in de [Azure Portal](https://portal.azure.com/) naar het beheerde exemplaar.
 
-2. Klik op **Diagnostische instellingen** .
+2. Klik op **Diagnostische instellingen**.
 
-3. Klik op **Diagnostische gegevens inschakelen** . Als diagnostische gegevens al is ingeschakeld, wordt in plaats daarvan de **Diagnostische instelling toevoegen** weer gegeven.
+3. Klik op **Diagnostische gegevens inschakelen**. Als diagnostische gegevens al is ingeschakeld, wordt in plaats daarvan de **Diagnostische instelling toevoegen** weer gegeven.
 
 4. Selecteer **SQLSecurityAuditEvents** in de lijst met Logboeken.
 
 5. Selecteer een doel voor de controle gebeurtenissen: Event Hubs, Azure Monitor Logboeken of beide. Configureer voor elk doel de vereiste para meters (bijvoorbeeld Log Analytics-werk ruimte).
 
-6. Klik op **Opslaan** .
+6. Klik op **Opslaan**.
 
     ![Diagnostische instellingen configureren](./media/auditing-configure/9_mi_configure_diagnostics.png)
 
@@ -234,15 +234,15 @@ De belangrijkste verschillen tussen controles in data bases in Azure SQL Managed
 - Met Azure SQL Managed instance werkt auditing op server niveau en worden `.xel` logboek bestanden opgeslagen in Azure Blob-opslag.
 - In SQL Server werkt audit op het niveau van de server, maar worden gebeurtenissen opgeslagen in gebeurtenis logboeken van bestanden systeem/Windows.
 
-XEvent-controle in beheerde instanties ondersteunt Azure Blob-opslag doelen. Bestands-en Windows-logboeken worden **niet ondersteund** .
+XEvent-controle in beheerde instanties ondersteunt Azure Blob-opslag doelen. Bestands-en Windows-logboeken worden **niet ondersteund**.
 
 De belangrijkste verschillen in de `CREATE AUDIT` syntaxis voor de controle van Azure Blob-opslag zijn:
 
 - Er wordt een nieuwe syntaxis `TO URL` opgegeven, waarmee u de URL kunt opgeven van de Azure Blob Storage-container waar de `.xel` bestanden worden geplaatst.
 - Er wordt een nieuwe syntaxis `TO EXTERNAL MONITOR` gegeven om event hubs-en Azure monitor-logboek doelen in te scha kelen.
 - De syntaxis `TO FILE` wordt **niet ondersteund** omdat een door Azure SQL beheerd exemplaar geen toegang heeft tot Windows-bestands shares.
-- De optie shutdown wordt **niet ondersteund** .
-- `queue_delay` van 0 wordt **niet ondersteund** .
+- De optie shutdown wordt **niet ondersteund**.
+- `queue_delay` van 0 wordt **niet ondersteund**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -7,12 +7,12 @@ ms.custom: references_regions
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: 54d5fdf1f6bc905482186475302901c46de0d285
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 19d464f0148572f30ecd0c3ab1dcee7bd0315b87
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380123"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427799"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Log Analytics werkruimte gegevens exporteren in Azure Monitor (preview-versie)
 Met Log Analytics werkruimte gegevens exporteren in Azure Monitor kunt u voortdurend gegevens exporteren uit geselecteerde tabellen in uw Log Analytics-werk ruimte naar een Azure Storage-account of Azure-Event Hubs wanneer het wordt verzameld. Dit artikel bevat informatie over deze functie en de stappen voor het configureren van gegevens export in uw werk ruimten.
@@ -58,7 +58,7 @@ Log Analytics werk ruimte gegevens exporteren doorlopend exporteert gegevens uit
 ## <a name="data-completeness"></a>Gegevens volledigheid
 Bij het exporteren van gegevens zal het verzenden van gegevens tot 30 minuten blijven duren, in het geval dat de bestemming niet beschikbaar is. Als het na 30 minuten nog steeds niet beschikbaar is, worden de gegevens verwijderd totdat de bestemming weer beschikbaar wordt.
 
-## <a name="cost"></a>Cost
+## <a name="cost"></a>Kosten
 Er zijn momenteel geen extra kosten verbonden aan de functie voor het exporteren van gegevens. De prijzen voor het exporteren van gegevens worden in de toekomst aangekondigd en er is een kennisgeving gegeven vóór het begin van de facturering. Als u ervoor kiest om de gegevens export te blijven gebruiken na de kennisgevings periode, wordt u gefactureerd tegen het toepasselijke rente bedrag.
 
 ## <a name="export-destinations"></a>Export doelen
@@ -77,8 +77,9 @@ Log Analytics gegevens export kan toevoeg-blobs schrijven naar onveranderlijke o
 ### <a name="event-hub"></a>Event Hub
 Gegevens worden bijna in realtime naar uw Event Hub verzonden, omdat deze Azure Monitor bereikt. Er wordt een Event Hub gemaakt voor elk gegevens type dat u exporteert *,* gevolgd door de naam van de tabel. De tabel *SecurityEvent* wordt bijvoorbeeld verzonden naar een event hub met de naam *am-SecurityEvent*. Als u wilt dat de geëxporteerde gegevens een specifieke Event Hub bereiken, of als u een tabel hebt met een naam die groter is dan de limiet van 47 tekens, kunt u uw eigen Event Hub naam opgeven en alle gegevens voor gedefinieerde tabellen naar de groep exporteren.
 
-Het volume van de geëxporteerde gegevens neemt vaak toe in de loop van de tijd en de Event Hub schaal moet worden verhoogd om grotere overdrachts snelheden te verwerken en om te voor komen dat scenario's en gegevens latentie worden beperkt. U moet de functie voor automatisch verg Roten van Event Hubs gebruiken om het aantal doorvoer eenheden automatisch te verg Roten of te verhogen en te voldoen aan de behoeften van het gebruik. Zie [Event hubs doorvoer eenheden van Azure automatisch schalen](../../event-hubs/event-hubs-auto-inflate.md) voor meer informatie.
-
+Overwegingen:
+1. ' Basic ' Event Hub SKU ondersteunt een lagere [limiet](https://docs.microsoft.com/azure/event-hubs/event-hubs-quotas#basic-vs-standard-tiers) voor de grootte van de gebeurtenis en sommige Logboeken in uw werk ruimte kunnen deze overschrijden en worden verwijderd. U wordt aangeraden ' Standard ' of ' dedicated ' te gebruiken Event Hub als export bestemming.
+2. Het volume van de geëxporteerde gegevens neemt vaak toe in de loop van de tijd en de Event Hub schaal moet worden verhoogd om grotere overdrachts snelheden te verwerken en om te voor komen dat scenario's en gegevens latentie worden beperkt. U moet de functie voor automatisch verg Roten van Event Hubs gebruiken om het aantal doorvoer eenheden automatisch te verg Roten of te verhogen en te voldoen aan de behoeften van het gebruik. Zie [Event hubs doorvoer eenheden van Azure automatisch schalen](../../event-hubs/event-hubs-auto-inflate.md) voor meer informatie.
 
 ## <a name="prerequisites"></a>Vereisten
 Hieronder volgen de vereisten die moeten worden voltooid voordat u Log Analytics gegevens export configureert.
