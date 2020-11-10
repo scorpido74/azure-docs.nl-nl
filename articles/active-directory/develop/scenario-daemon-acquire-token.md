@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 13000c5a61dc2c4d49aa395271beddef64d32245
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c13b6ed991403e65c4c4d71c964f1f7f4d1ffe7b
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88119212"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443310"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Daemon-app die web-Api's aanroept-een Token ophalen
 
@@ -57,7 +57,7 @@ Het bereik dat wordt gebruikt voor client referenties moet altijd de resource-ID
 
 > [!IMPORTANT]
 > Wanneer MSAL een toegangs token aanvraagt voor een resource die een versie 1,0-toegangs token accepteert, parseert Azure AD de gewenste doel groep uit het aangevraagde bereik door alles vóór de laatste slash te nemen en deze als resource-id te gebruiken.
-> Als, als Azure SQL Database (**https: \/ /database.Windows.net**), de resource verwacht dat een doel groep eindigt met een slash (voor Azure SQL database `https://database.windows.net/` ), moet u een bereik van aanvragen `https://database.windows.net//.default` . (Let op de dubbele slash.) Zie ook MSAL.NET issue [#747: de afsluitende slash van de resource-URL wordt wegge laten, wat een SQL-verificatie fout heeft veroorzaakt](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747).
+> Als, als Azure SQL Database ( **https: \/ /database.Windows.net** ), de resource verwacht dat een doel groep eindigt met een slash (voor Azure SQL database `https://database.windows.net/` ), moet u een bereik van aanvragen `https://database.windows.net//.default` . (Let op de dubbele slash.) Zie ook MSAL.NET issue [#747: de afsluitende slash van de resource-URL wordt wegge laten, wat een SQL-verificatie fout heeft veroorzaakt](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747).
 
 ## <a name="acquiretokenforclient-api"></a>AcquireTokenForClient-API
 
@@ -202,7 +202,7 @@ Zie de documentatie over het [micro soft-identiteits platform en de OAuth 2,0-cl
 
 ## <a name="application-token-cache"></a>Toepassings token cache
 
-In MSAL.NET `AcquireTokenForClient` wordt de toepassings token cache gebruikt. (Alle andere AcquireToken*xx* -methoden gebruiken de token cache van de gebruiker.) Roep niet `AcquireTokenSilent` aan voordat u belt `AcquireTokenForClient` , omdat `AcquireTokenSilent` de cache van de *gebruikers* token wordt gebruikt. `AcquireTokenForClient` Hiermee wordt de cache van het *toepassings* token zelf gecontroleerd en bijgewerkt.
+In MSAL.NET `AcquireTokenForClient` wordt de toepassings token cache gebruikt. (Alle andere AcquireToken *xx* -methoden gebruiken de token cache van de gebruiker.) Roep niet `AcquireTokenSilent` aan voordat u belt `AcquireTokenForClient` , omdat `AcquireTokenSilent` de cache van de *gebruikers* token wordt gebruikt. `AcquireTokenForClient` Hiermee wordt de cache van het *toepassings* token zelf gecontroleerd en bijgewerkt.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
@@ -233,17 +233,14 @@ Content: {
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-> [!div class="nextstepaction"]
-> [Daemon-app: een web-API aanroepen](./scenario-daemon-call-api.md?tabs=dotnet)
+Ga naar het volgende artikel in dit scenario om [een web-API](./scenario-daemon-call-api.md?tabs=dotnet)aan te roepen.
 
 # <a name="python"></a>[Python](#tab/python)
 
-> [!div class="nextstepaction"]
-> [Daemon-app: een web-API aanroepen](./scenario-daemon-call-api.md?tabs=python)
+Ga naar het volgende artikel in dit scenario om [een web-API](./scenario-daemon-call-api.md?tabs=python)aan te roepen.
 
 # <a name="java"></a>[Java](#tab/java)
 
-> [!div class="nextstepaction"]
-> [Daemon-app: een web-API aanroepen](./scenario-daemon-call-api.md?tabs=java)
+Ga naar het volgende artikel in dit scenario om [een web-API](./scenario-daemon-call-api.md?tabs=java)aan te roepen.
 
 ---

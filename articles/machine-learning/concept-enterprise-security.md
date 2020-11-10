@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/09/2020
-ms.openlocfilehash: 19736a37e0da07237f6b112de7da86efe3d8bfe5
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 2234b1507e6e0fdb0b668fc18a7c8533e3ea7cc1
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359371"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94441780"
 ---
 # <a name="enterprise-security-and-governance-for-azure-machine-learning"></a>Enter prise Security en governance voor Azure Machine Learning
 
@@ -26,7 +26,16 @@ Wanneer u een Cloud service gebruikt, is een best practice het beperken van de t
 > [!NOTE]
 > De informatie in dit artikel werkt met de Azure Machine Learning python SDK-versie 1.0.83.1 of hoger.
 
-## <a name="authentication"></a>Verificatie
+## <a name="authentication--authorization"></a>Verificatie & autorisatie
+
+De meeste authenticatie voor Azure Machine Learning bronnen gebruiken Azure Active Directory (Azure AD) voor verificatie en op rollen gebaseerd toegangs beheer (Azure RBAC) voor autorisatie. De uitzonde ringen hierop zijn:
+
+* __SSH__ : u kunt SSH-toegang inschakelen voor bepaalde reken resources, zoals Azure machine learning reken instantie. SSH-toegang gebruikt verificatie op basis van een sleutel. Zie [SSH-sleutels maken en beheren](../virtual-machines/linux/create-ssh-keys-detailed.md)voor meer informatie over het maken van SSH-sleutels. Zie [Azure machine learning Compute-instantie maken en beheren](how-to-create-manage-compute-instance.md)voor meer informatie over het inschakelen van SSH-toegang.
+* __Modellen die zijn geïmplementeerd als__ webservices: implementaties op basis van __sleutels__ of op __tokens__ gebaseerd toegangs beheer kunnen worden gebruikt. Sleutels zijn statische teken reeksen. Tokens worden opgehaald met behulp van een Azure AD-account. Zie [verificatie configureren voor modellen die zijn geïmplementeerd als een webservice](how-to-authenticate-web-service.md)voor meer informatie.
+
+Specifieke services waarvan Azure Machine Learning afhankelijk is, zoals Azure Data Storage-services, hebben hun eigen verificatie-en autorisatie methoden. Zie [verbinding maken met opslag Services](how-to-access-data.md)voor meer informatie over de verificatie van Storage-services.
+
+### <a name="azure-ad-authentication"></a>Azure Active Directory-verificatie
 
 Multi-factor Authentication wordt ondersteund als Azure Active Directory (Azure AD) is geconfigureerd om het te gebruiken. Dit is het verificatie proces:
 
@@ -36,26 +45,17 @@ Multi-factor Authentication wordt ondersteund als Azure Active Directory (Azure 
 
 [![Verificatie in Azure Machine Learning](media/concept-enterprise-security/authentication.png)](media/concept-enterprise-security/authentication.png#lightbox)
 
-Zie [verificatie instellen voor Azure machine learning resources en werk stromen](how-to-setup-authentication.md)voor meer informatie. Dit artikel bevat informatie en voor beelden over verificatie, waaronder het gebruik van service-principals en geautomatiseerde werk stromen.
+Zie [verificatie voor Azure machine learning-werk ruimte](how-to-setup-authentication.md)voor meer informatie.
 
-### <a name="authentication-for-web-service-deployment"></a>Verificatie voor de implementatie van de webservice
+### <a name="azure-rbac"></a>Azure RBAC
 
-Azure Machine Learning ondersteunt twee verificatie vormen voor webservices: sleutel en token. Elke webservice kan per keer slechts één vorm van authenticatie inschakelen.
-
-|Verificatiemethode|Beschrijving|Azure Container Instances|AKS|
-|---|---|---|---|
-|Sleutel|Sleutels zijn statisch en hoeven niet te worden vernieuwd. Sleutels kunnen hand matig opnieuw worden gegenereerd.|Standaard uitgeschakeld| Standaard ingeschakeld|
-|Token|Tokens verlopen na een opgegeven tijds periode en moeten worden vernieuwd.| Niet beschikbaar| Standaard uitgeschakeld |
-
-Zie de [sectie verificatie](how-to-setup-authentication.md#web-service-authentication)van de webservice voor code voorbeelden.
-
-## <a name="authorization"></a>Autorisatie
-
-U kunt meerdere werk ruimten maken en elke werk ruimte kan worden gedeeld door meerdere personen. Wanneer u een werk ruimte deelt, kunt u de toegang hiertoe beheren door deze rollen toe te wijzen aan gebruikers:
+U kunt meerdere werk ruimten maken en elke werk ruimte kan worden gedeeld door meerdere personen. U kunt bepalen welke functies of bewerkingen van de werkruimte gebruikers toegang hebben door hun Azure AD-account toe te wijzen aan Azure RBAC-rollen. Hier volgen de ingebouwde rollen:
 
 * Eigenaar
 * Inzender
 * Lezer
+
+Eigen aren en inzenders kunnen alle reken doelen en gegevens archieven gebruiken die aan de werk ruimte zijn gekoppeld.  
 
 De volgende tabel bevat enkele van de belangrijkste Azure Machine Learning bewerkingen en de rollen die ze kunnen uitvoeren:
 
@@ -74,18 +74,17 @@ De volgende tabel bevat enkele van de belangrijkste Azure Machine Learning bewer
 | Modellen/afbeeldingen weer geven | ✓ | ✓ | ✓ |
 | Webservice aanroepen | ✓ | ✓ | ✓ |
 
-Als de ingebouwde rollen niet aan uw behoeften voldoen, kunt u aangepaste rollen maken. Aangepaste rollen worden ondersteund voor het beheren van alle bewerkingen binnen een werk ruimte, zoals het maken van een berekening, het indienen van een uitvoering, het registreren van een Data Store of het implementeren van een model. Aangepaste rollen kunnen Lees-, schrijf-of verwijder machtigingen hebben voor de verschillende resources van een werk ruimte, zoals clusters, gegevens opslag, modellen en eind punten. U kunt de rol beschikbaar maken op een specifiek werk ruimte niveau, op een specifiek niveau van de resource groep of op een specifiek abonnements niveau. Zie [gebruikers en rollen beheren in een Azure machine learning-werk ruimte](how-to-assign-roles.md)voor meer informatie.
+Als de ingebouwde rollen niet aan uw behoeften voldoen, kunt u aangepaste rollen maken. Aangepaste rollen bepalen alle bewerkingen binnen een werk ruimte, zoals het maken van een berekening, het indienen van een uitvoering, het registreren van een gegevens opslag of het implementeren van een model. Aangepaste rollen kunnen Lees-, schrijf-of verwijder machtigingen hebben voor de verschillende resources van een werk ruimte, zoals clusters, gegevens opslag, modellen en eind punten. U kunt de rol beschikbaar maken op een specifiek werk ruimte niveau, op een specifiek niveau van de resource groep of op een specifiek abonnements niveau. Zie [gebruikers en rollen beheren in een Azure machine learning-werk ruimte](how-to-assign-roles.md)voor meer informatie.
+
+> [!IMPORTANT]
+> Azure Machine Learning is afhankelijk van andere Azure-Services, zoals Azure Blob Storage en Azure Kubernetes Services. Elke Azure-service heeft zijn eigen Azure RBAC-configuraties. Om het gewenste niveau van toegangs beheer te verkrijgen, moet u mogelijk zowel Azure RBAC-configuraties voor Azure Machine Learning als voor de services die worden gebruikt met Azure Machine Learning Toep assen.
 
 > [!WARNING]
 > Azure Machine Learning wordt ondersteund met Azure Active Directory Business-to-Business-samen werking, maar wordt momenteel niet ondersteund met Azure Active Directory Business-to-Consuming-samen werking.
 
-### <a name="securing-compute-targets-and-data"></a>Reken doelen en gegevens beveiligen
+### <a name="managed-identities"></a>Beheerde identiteiten
 
-Eigen aren en inzenders kunnen alle reken doelen en gegevens archieven gebruiken die aan de werk ruimte zijn gekoppeld.  
-
-Aan elke werk ruimte is ook een aan het systeem toegewezen beheerde identiteit gekoppeld die dezelfde naam heeft als de werk ruimte. De beheerde identiteit heeft de volgende machtigingen op gekoppelde resources die worden gebruikt in de werk ruimte.
-
-Zie [beheerde identiteiten voor Azure-resources](../active-directory/managed-identities-azure-resources/overview.md)voor meer informatie over beheerde identiteiten.
+Aan elke werk ruimte is ook een aan het systeem toegewezen [beheerde identiteit](../active-directory/managed-identities-azure-resources/overview.md) gekoppeld die dezelfde naam heeft als de werk ruimte. De beheerde identiteit wordt gebruikt om veilig toegang te krijgen tot resources die worden gebruikt door de werk ruimte. Het heeft de volgende machtigingen op gekoppelde resources:
 
 | Resource | Machtigingen |
 | ----- | ----- |
@@ -100,152 +99,19 @@ Het is niet raadzaam om beheerders de toegang tot de beheerde identiteit in te t
 
 Azure Machine Learning maakt een extra toepassing (de naam begint met `aml-` of `Microsoft-AzureML-Support-App-` ) met toegang op Inzender niveau in uw abonnement voor elke werkruimte regio. Als u bijvoorbeeld één werk ruimte hebt in VS-Oost en één in Europa-noord in hetzelfde abonnement, ziet u twee van deze toepassingen. Met deze toepassingen kunt u Azure Machine Learning helpen bij het beheren van reken resources.
 
-## <a name="network-security"></a>Netwerkbeveiliging
+U kunt desgewenst uw eigen beheerde identiteiten configureren voor gebruik met Azure Virtual Machines en Azure Machine Learning Compute-Cluster. Met een virtuele machine kan de beheerde identiteit worden gebruikt voor toegang tot uw werk ruimte vanuit de SDK, in plaats van het Azure AD-account van de individuele gebruiker. Met een berekenings cluster wordt de beheerde identiteit gebruikt voor toegang tot bronnen zoals beveiligde gegevens opslag die de gebruiker die de trainings taak uitvoert, geen toegang heeft tot. Zie [verificatie voor Azure machine learning-werk ruimte](how-to-setup-authentication.md)voor meer informatie.
 
-Azure Machine Learning is afhankelijk van andere Azure-Services voor reken resources. Reken bronnen (Compute-doelen) worden gebruikt om modellen te trainen en te implementeren. U kunt deze reken doelen maken in een virtueel netwerk. U kunt bijvoorbeeld Azure Data Science Virtual Machine gebruiken om een model te trainen en het model vervolgens implementeren in AKS.  
+## <a name="network-security-and-isolation"></a>Netwerk beveiliging en-isolatie
+
+U kunt Azure Virtual Network (VNet) gebruiken om fysieke toegang tot Azure Machine Learning resources te beperken. Met VNets kunt u netwerk omgevingen maken die gedeeltelijk of volledig zijn geïsoleerd van het open bare Internet. Dit vermindert de kwets baarheid voor uw oplossing en de kans op gegevens exfiltration.
 
 Zie [Overzicht van isolatie van virtueel netwerk en privacy](how-to-network-security-overview.md).
 
-U kunt ook een persoonlijke Azure-koppeling inschakelen voor uw werk ruimte. Met persoonlijke koppeling kunt u de communicatie met uw werk ruimte beperken vanuit een Azure-Virtual Network. Zie een [persoonlijke koppeling configureren](how-to-configure-private-link.md)voor meer informatie.
+<a id="encryption-at-rest"></a><a id="azure-blob-storage"></a>
 
 ## <a name="data-encryption"></a>Gegevensversleuteling
 
-> [!IMPORTANT]
-> Voor productie kwaliteit versleuteling tijdens de __training__ raadt micro soft aan om Azure machine learning Compute-cluster te gebruiken. Voor de versleuteling van de productie __kwaliteit tijdens de__ degradatie raadt micro soft de Azure Kubernetes-service te gebruiken.
->
-> Azure Machine Learning Compute-instantie is een ontwikkel-en test omgeving. Wanneer u deze gebruikt, raden we u aan om uw bestanden, zoals notebooks en scripts, op te slaan in een bestands share. Uw gegevens moeten worden opgeslagen in een gegevens opslag.
-
-### <a name="encryption-at-rest"></a>Versleuteling 'at rest'
-
-> [!IMPORTANT]
-> Als uw werk ruimte gevoelige gegevens bevat, kunt u het beste de [hbi_workspace vlag](/python/api/azureml-core/azureml.core.workspace%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truecreate-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) instellen tijdens het maken van uw werk ruimte. De `hbi_workspace` vlag kan alleen worden ingesteld wanneer een werk ruimte wordt gemaakt. Het kan niet worden gewijzigd voor een bestaande werk ruimte.
-
-De `hbi_workspace` markering bepaalt de hoeveelheid [gegevens die micro soft verzamelt voor diagnostische doel einden](#microsoft-collected-data) en maakt [extra versleuteling mogelijk in door micro soft beheerde omgevingen](../security/fundamentals/encryption-atrest.md). Daarnaast kunnen de volgende acties worden uitgevoerd:
-
-* Hiermee wordt het versleutelen van de lokale werk schijf in uw Azure Machine Learning Compute-Cluster gestart, mits u geen eerdere clusters hebt gemaakt in dat abonnement. Anders moet u een ondersteunings ticket genereren om versleuteling van de Scratch schijf van uw reken clusters mogelijk te maken 
-* De lokale scratchschijf opschonen tussen uitvoeringen
-* Referenties voor uw opslag account, container register en SSH-account veilig door gegeven van de uitvoerings slaag naar uw reken clusters met behulp van uw sleutel kluis
-* IP-filtering inschakelen om ervoor te zorgen dat de onderliggende batch-groepen niet kunnen worden aangeroepen door andere externe services dan AzureMachineLearningService
-* Houd er rekening mee dat reken instanties niet worden ondersteund in de HBI-werk ruimte
-
-#### <a name="azure-blob-storage"></a>Azure Blob Storage
-
-Azure Machine Learning slaat moment opnamen, uitvoer en logboeken op in het Azure Blob Storage-account dat is gekoppeld aan de Azure Machine Learning-werk ruimte en uw abonnement. Alle gegevens die zijn opgeslagen in Azure Blob Storage, worden op rest versleuteld met door micro soft beheerde sleutels.
-
-Zie [Azure Storage versleuteling met door de klant beheerde sleutels in azure Key Vault](../storage/common/customer-managed-keys-configure-key-vault.md)voor meer informatie over het gebruik van uw eigen sleutels voor gegevens die zijn opgeslagen in Azure Blob-opslag.
-
-Trainings gegevens worden doorgaans ook opgeslagen in Azure Blob-opslag, zodat deze toegankelijk is voor Compute-doel stellingen. Deze opslag wordt niet beheerd door Azure Machine Learning, maar gekoppeld aan Compute-doelen als een extern bestands systeem.
-
-Als u de sleutel wilt __draaien of intrekken__ , kunt u dit op elk gewenst moment doen. Bij het draaien van een sleutel begint het opslag account met de nieuwe sleutel (meest recente versie) voor het versleutelen van gegevens in rust. Bij het intrekken (uitschakelen) van een sleutel zorgt het opslag account ervoor dat er mislukte aanvragen worden uitgevoerd. Het duurt doorgaans een uur voordat de draaiing of intrekken effectief is.
-
-Zie [toegangs sleutels voor opslag opnieuw genereren](how-to-change-storage-access-key.md)voor meer informatie over het opnieuw genereren van de toegangs sleutels.
-
-#### <a name="azure-cosmos-db"></a>Azure Cosmos DB
-
-Azure Machine Learning metrische gegevens en meta data worden opgeslagen in een Azure Cosmos DB-exemplaar. Dit exemplaar is gekoppeld aan een micro soft-abonnement dat wordt beheerd door Azure Machine Learning. Alle gegevens die zijn opgeslagen in Azure Cosmos DB, worden op rest versleuteld met door micro soft beheerde sleutels.
-
-Als u uw eigen (door de klant beheerde) sleutels wilt gebruiken om de Azure Cosmos DB-exemplaar te versleutelen, kunt u een speciaal Cosmos DB exemplaar maken voor gebruik met uw werk ruimte. We raden u aan deze aanpak te gebruiken als u uw gegevens wilt opslaan, zoals informatie over de uitvoerings geschiedenis, buiten het Cosmos DB exemplaar met meerdere tenants dat wordt gehost op het micro soft-abonnement. 
-
-Voer de volgende acties uit om het inrichten van een Cosmos DB-exemplaar in uw abonnement met door de klant beheerde sleutels in te scha kelen:
-
-* Registreer de resource providers micro soft. MachineLearning en Microsoft.DocumentDB in uw abonnement, als u dit nog niet hebt gedaan.
-
-* Gebruik de volgende para meters bij het maken van de Azure Machine Learning-werk ruimte. Beide para meters zijn verplicht en worden ondersteund in SDK, CLI, REST Api's en Resource Manager-sjablonen.
-
-    * `resource_cmk_uri`: Deze para meter is de volledige resource-URI van de door de klant beheerde sleutel in uw sleutel kluis, met inbegrip [van de versie gegevens voor de sleutel](../key-vault/general/about-keys-secrets-certificates.md#objects-identifiers-and-versioning). 
-
-    * `cmk_keyvault`: Deze para meter is de resource-ID van de sleutel kluis in uw abonnement. Deze sleutel kluis moet zich in dezelfde regio en hetzelfde abonnement bevinden als de-werk ruimte die u wilt gebruiken voor de Azure Machine Learning. 
-    
-        > [!NOTE]
-        > Dit sleutel kluis exemplaar kan afwijken van de sleutel kluis die door Azure Machine Learning wordt gemaakt wanneer u de werk ruimte inricht. Als u hetzelfde sleutel kluis exemplaar voor de werk ruimte wilt gebruiken, moet u dezelfde sleutel kluis door geven tijdens het inrichten van de werk ruimte met behulp van de [para meter key_vault](/python/api/azureml-core/azureml.core.workspace%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truecreate-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-). 
-
-[!INCLUDE [machine-learning-customer-managed-keys.md](../../includes/machine-learning-customer-managed-keys.md)]
-
-Als u de sleutel wilt __draaien of intrekken__ , kunt u dit op elk gewenst moment doen. Bij het draaien van een sleutel begint Cosmos DB met het gebruik van de nieuwe sleutel (meest recente versie) om gegevens in rust te versleutelen. Wanneer u een sleutel intrekt (uitschakelt), wordt Cosmos DB het uitvoeren van mislukte aanvragen uitgevoerd. Het duurt doorgaans een uur voordat de draaiing of intrekken effectief is.
-
-Zie door [de klant beheerde sleutels voor uw Azure Cosmos DB account configureren](../cosmos-db/how-to-setup-cmk.md)voor meer informatie over door de klant beheerde sleutels met Cosmos db.
-
-#### <a name="azure-container-registry"></a>Azure Container Registry
-
-Alle container installatie kopieën in het REGI ster (Azure Container Registry) worden op rest versleuteld. Azure versleutelt automatisch een afbeelding voordat deze wordt opgeslagen en ontsleuteld wanneer Azure Machine Learning de installatie kopie ophaalt.
-
-Als u uw eigen (door de klant beheerde) sleutels wilt gebruiken om uw Azure Container Registry te versleutelen, moet u uw eigen ACR maken en koppelen tijdens het inrichten van de werk ruimte, of het standaard exemplaar dat wordt gemaakt, versleutelen op het moment van de inrichting van de werk ruimte.
-
-> [!IMPORTANT]
-> Voor Azure Machine Learning moet het beheerders account zijn ingeschakeld op uw Azure Container Registry. Deze instelling is standaard uitgeschakeld wanneer u een container register maakt. Zie [beheerders account](../container-registry/container-registry-authentication.md#admin-account)voor meer informatie over het inschakelen van het beheerders account.
->
-> Als er een Azure Container Registry voor een werkruimte is gemaakt, moet u deze niet verwijderen. Als u dat doet, werkt de Azure Machine Learning-werkruimte niet meer.
-
-Raadpleeg de volgende artikelen voor een voor beeld van het maken van een werk ruimte met behulp van een bestaande Azure Container Registry:
-
-* [Een werk ruimte maken voor Azure machine learning met Azure cli](how-to-manage-workspace-cli.md).
-* [Een werk ruimte maken met PYTHON SDK](how-to-manage-workspace.md?tabs=python#create-a-workspace).
-* [Een Azure Resource Manager sjabloon gebruiken om een werk ruimte te maken voor Azure Machine Learning](how-to-create-workspace-template.md)
-
-#### <a name="azure-container-instance"></a>Azure Container Instance
-
-U kunt een geïmplementeerde Azure container instance-resource (ACI) versleutelen met door de klant beheerde sleutels. De door de klant beheerde sleutel die wordt gebruikt voor ACI kan worden opgeslagen in de Azure Key Vault voor uw werk ruimte. Zie [gegevens versleutelen met een door de klant beheerde sleutel](../container-instances/container-instances-encrypt-data.md#generate-a-new-key)voor meer informatie over het genereren van een sleutel.
-
-Als u de sleutel wilt gebruiken bij het implementeren van een model naar Azure container instance, maakt u een nieuwe implementatie configuratie met `AciWebservice.deploy_configuration()` . Geef de belangrijkste informatie op met behulp van de volgende para meters:
-
-* `cmk_vault_base_url`: De URL van de sleutel kluis die de sleutel bevat.
-* `cmk_key_name`: De naam van de sleutel.
-* `cmk_key_version`: De versie van de sleutel.
-
-Zie de volgende artikelen voor meer informatie over het maken en gebruiken van een implementatie configuratie:
-
-* Referentie voor [AciWebservice.deploy_configuration ()](/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?preserve-view=true&view=azure-ml-py#&preserve-view=truedeploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none-)
-* [Waar en hoe u implementeert](how-to-deploy-and-where.md)
-* [Een model implementeren op Azure Container Instances](how-to-deploy-azure-container-instance.md)
-
-Zie [gegevens versleutelen met een door de klant beheerde sleutel](../container-instances/container-instances-encrypt-data.md#encrypt-data-with-a-customer-managed-key)voor meer informatie over het gebruik van een door de klant beheerde sleutel met ACI.
-
-#### <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
-
-U kunt een geïmplementeerde Azure Kubernetes service-resource op elk gewenst moment versleutelen met door de klant beheerde sleutels. Zie [uw eigen sleutels maken met de Azure Kubernetes-service](../aks/azure-disk-customer-managed-keys.md)voor meer informatie. 
-
-Met dit proces kunt u zowel de gegevens als de besturingssysteem schijf van de geïmplementeerde virtuele machines in het Kubernetes-cluster versleutelen.
-
-> [!IMPORTANT]
-> Dit proces werkt alleen met AKS K8s versie 1,17 of hoger. Azure Machine Learning is ondersteuning toegevoegd voor AKS 1,17 op 13 januari 2020.
-
-#### <a name="machine-learning-compute"></a>Machine Learning Compute
-
-De besturingssysteem schijf voor elk reken knooppunt dat in Azure Storage is opgeslagen, is versleuteld met door micro soft beheerde sleutels in Azure Machine Learning-opslag accounts. Dit Compute-doel is kortstondig en clusters worden meestal omlaag geschaald wanneer er geen uitvoeringen in de wachtrij worden geplaatst. De inrichting van de onderliggende virtuele machine is ongedaan gemaakt en de besturingssysteem schijf wordt verwijderd. Azure Disk Encryption wordt niet ondersteund voor de besturingssysteem schijf.
-
-Elke virtuele machine heeft ook een lokale tijdelijke schijf voor besturingssysteem bewerkingen. Als u wilt, kunt u de trainings gegevens voor de schijf gebruiken. De schijf is standaard versleuteld voor werk ruimten waarvoor de `hbi_workspace` para meter is ingesteld op `TRUE` . Deze omgeving is slechts korte tijd voor de duur van de uitvoering en de ondersteuning voor versleuteling is beperkt tot alleen door het systeem beheerde sleutels.
-
-#### <a name="azure-databricks"></a>Azure Databricks
-
-Azure Databricks kunnen worden gebruikt in Azure Machine Learning pijp lijnen. Het Databricks File System (DBFS) dat door Azure Databricks wordt gebruikt, is standaard versleuteld met een door micro soft beheerde sleutel. Zie door de klant beheerde sleutels [configureren op standaard (root) DBFS](/azure/databricks/security/customer-managed-keys-dbfs)om Azure Databricks te configureren voor het gebruik van door de klant beheerde sleutels.
-
-### <a name="encryption-in-transit"></a>Versleuteling tijdens overdracht
-
-Azure Machine Learning gebruikt TLS om interne communicatie tussen verschillende Azure Machine Learning micro services te beveiligen. Alle Azure Storage toegang vindt ook plaats via een beveiligd kanaal.
-
-Azure Machine Learning maakt gebruik van TLS om externe aanroepen naar het Score-eind punt te beveiligen. Zie [TLS gebruiken om een webservice te beveiligen via Azure machine learning](./how-to-secure-web-service.md)voor meer informatie.
-
-### <a name="using-azure-key-vault"></a>Azure Key Vault gebruiken
-
-Azure Machine Learning gebruikt het Azure Key Vault exemplaar dat is gekoppeld aan de werk ruimte om referenties van verschillende soorten op te slaan:
-
-* Het gekoppelde opslag account connection string
-* Wacht woorden voor Azure container repository-instanties
-* Verbindings reeksen naar gegevens archieven
-
-SSH-wacht woorden en sleutels voor het berekenen van doelen zoals Azure HDInsight en Vm's worden opgeslagen in een afzonderlijke sleutel kluis die is gekoppeld aan het micro soft-abonnement. Azure Machine Learning slaat geen wacht woorden of sleutels op die door gebruikers worden verschaft. In plaats daarvan worden er eigen SSH-sleutels gegenereerd, geautoriseerd en opgeslagen om verbinding te maken met Vm's en HDInsight om de experimenten uit te voeren.
-
-Aan elke werk ruimte is een door het systeem toegewezen beheerde identiteit gekoppeld die dezelfde naam heeft als de werk ruimte. Deze beheerde identiteit heeft toegang tot alle sleutels, geheimen en certificaten in de sleutel kluis.
-
-## <a name="data-collection-and-handling"></a>Gegevens verzameling en-verwerking
-
-### <a name="microsoft-collected-data"></a>Verzamelde gegevens van micro soft
-
-Micro soft kan gegevens over niet-gebruikers identificeren, zoals resource namen (bijvoorbeeld de naam van de gegevensset of de naam van het machine learning experiment) of taak omgevings variabelen voor diagnostische doel einden. Al deze gegevens worden opgeslagen met behulp van door micro soft beheerde sleutels in de opslag die wordt gehost in micro soft-abonnementen en [de standaard standaarden voor privacybeleid en gegevens verwerking van micro soft](https://privacy.microsoft.com/privacystatement)worden gevolgd.
-
-Micro soft adviseert ook niet om gevoelige informatie (zoals account sleutel geheimen) op te slaan in omgevings variabelen. Omgevings variabelen worden geregistreerd, versleuteld en opgeslagen door ons. Zorg er ook voor dat u een naam [run_id](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py)geeft, Vermijd het gebruik van gevoelige gegevens zoals gebruikers namen of geheime project namen. Deze informatie kan worden weer gegeven in telemetrie-logboeken die toegankelijk zijn voor Microsoft Ondersteuning engineers.
-
-U kunt zich afmelden van diagnostische gegevens die worden verzameld door de `hbi_workspace` para meter in te stellen op `TRUE` tijdens het inrichten van de werk ruimte. Deze functionaliteit wordt ondersteund bij het gebruik van de AzureML python SDK, CLI, REST-Api's of Azure Resource Manager sjablonen.
+Azure Machine Learning gebruikt diverse reken bronnen en gegevens archieven. Zie [gegevens versleuteling met Azure machine learning](concept-data-encryption.md)voor meer informatie over hoe elk van deze gegevens versleuteling in rust en onderweg wordt ondersteund.
 
 ### <a name="microsoft-generated-data"></a>Door micro soft gegenereerde gegevens
 
@@ -255,7 +121,23 @@ U kunt ook [Diagnostische gegevens die vanuit uw geïmplementeerde eind punt zij
 
 ## <a name="monitoring"></a>Bewaking
 
-### <a name="metrics"></a>Metrische gegevens
+Er zijn verschillende bewakings scenario's met Azure Machine Learning, afhankelijk van de rol en wat wordt bewaakt.
+
+| Rol | Bewaking die moet worden gebruikt |
+| ---- | ----- |
+| Beheerder, DevOps, MLOps | [Azure monitor metrische gegevens](#azure-monitor), [activiteiten logboek](#activity-log), het [scannen van beveiligings problemen](#vulnerability-scanning) |
+| Data wetenschapper, MLOps | [Monitors worden uitgevoerd](#monitor-runs) |
+
+### <a name="monitor-runs"></a>Monitors worden uitgevoerd
+
+U kunt experimentele uitvoeringen bewaken in Azure Machine Learning, inclusief informatie over logboek registratie vanuit uw trainings scripts. Deze informatie kan worden weer gegeven via de SDK, Azure CLI en Studio. Raadpleeg voor meer informatie de volgende artikelen:
+
+* [Trainings uitvoeringen starten, controleren en annuleren](how-to-manage-runs.md)
+* [Logboeken inschakelen](how-to-track-experiments.md)
+* [Logboeken weergeven](how-to-monitor-view-training-logs.md)
+* [Uitvoeringen visualiseren met TensorBoard](how-to-monitor-tensorboard.md)
+
+### <a name="azure-monitor"></a>Azure Monitor
 
 U kunt Azure Monitor metrische gegevens gebruiken om metrische gegevens voor uw Azure Machine Learning-werk ruimte weer te geven en te controleren. Selecteer in de [Azure Portal](https://portal.azure.com)uw werk ruimte en selecteer vervolgens **metrische gegevens** :
 
@@ -292,77 +174,6 @@ Details van Score aanvragen worden opgeslagen in Application Insights. Applicati
 
 Azure Security Center biedt geïntegreerd beveiligingsbeheer en geavanceerde bedreigingsbeveiliging voor verschillende hybride cloudworkloads. Voor Azure machine learning moet u het scannen van uw Azure Container Registry resource en Azure Kubernetes-service resources inschakelen. Zie [Azure container Registry Image scanning door Security Center](../security-center/defender-for-container-registries-introduction.md) en [Azure Kubernetes Services-integratie met Security Center](../security-center/defender-for-kubernetes-introduction.md).
 
-## <a name="data-flow-diagrams"></a>Gegevensstroom diagrammen
-
-### <a name="create-workspace"></a>Werkruimte maken
-
-In het volgende diagram ziet u de werk stroom werk ruimte maken.
-
-* U meldt zich aan bij Azure AD vanaf een van de ondersteunde Azure Machine Learning-clients (Azure CLI, python SDK, Azure Portal) en vraagt het juiste Azure Resource Manager-token op.
-* U roept Azure Resource Manager aan om de werk ruimte te maken. 
-* Azure Resource Manager neemt contact op met de Azure Machine Learning Resource provider om de werk ruimte in te richten.
-
-Aanvullende resources worden tijdens het maken van de werk ruimte gemaakt in het abonnement van de gebruiker:
-
-* Key Vault (voor het opslaan van geheimen)
-* Een Azure-opslag account (inclusief Blob en bestands share)
-* Azure Container Registry (voor het opslaan van docker-installatie kopieën voor het afzetten/scoren en experimenteren)
-* Application Insights (voor het opslaan van telemetrie)
-
-De gebruiker kan ook andere reken doelen inrichten die zijn gekoppeld aan een werk ruimte (zoals Azure Kubernetes service of Vm's), indien nodig.
-
-[![Werkruimte werk stroom maken](media/concept-enterprise-security/create-workspace.png)](media/concept-enterprise-security/create-workspace.png#lightbox)
-
-### <a name="save-source-code-training-scripts"></a>Bron code opslaan (trainings scripts)
-
-In het volgende diagram ziet u de werk stroom voor code momentopnamen.
-
-Gekoppeld aan een Azure Machine Learning werk ruimte zijn mappen (experimenten) die de bron code (trainings scripts) bevatten. Deze scripts worden opgeslagen op uw lokale machine en in de Cloud (in de Azure Blob-opslag voor uw abonnement). De code momentopnamen worden gebruikt voor uitvoering of inspectie voor historische controle.
-
-[![Workflow voor code momentopname](media/concept-enterprise-security/code-snapshot.png)](media/concept-enterprise-security/code-snapshot.png#lightbox)
-
-### <a name="training"></a>Training
-
-In het volgende diagram ziet u de werk stroom training.
-
-* Azure Machine Learning wordt aangeroepen met de moment opname-ID voor de code momentopname die is opgeslagen in de vorige sectie.
-* Azure Machine Learning maakt een run-ID (optioneel) en een Machine Learning-service token, dat later wordt gebruikt door Compute-doelen als Machine Learning Compute/Vm's om te communiceren met de Machine Learning-service.
-* U kunt kiezen voor een beheerde Compute-doel (zoals Machine Learning Compute) of een niet-beheerd reken doel (zoals Vm's) om trainings taken uit te voeren. Dit zijn de gegevens stromen voor beide scenario's:
-   * Vm's/HDInsight, toegankelijk via SSH-referenties in een sleutel kluis in het micro soft-abonnement. Azure Machine Learning voert beheer code uit op het berekenings doel dat:
-
-   1. Bereidt de omgeving voor. (Docker is een optie voor Vm's en lokale computers. Raadpleeg de volgende stappen voor Machine Learning Compute om te begrijpen hoe het uitvoeren van experimenten op docker-containers werkt.)
-   1. Hiermee downloadt u de code.
-   1. Hiermee stelt u omgevings variabelen en configuraties in.
-   1. Voert gebruikers scripts uit (de code momentopname die in de vorige sectie is vermeld).
-
-   * Machine Learning Compute, toegankelijk via een door een werk ruimte beheerde identiteit.
-Omdat Machine Learning Compute een beheerd reken doel is (dat wil zeggen, wordt het beheerd door micro soft), wordt het uitgevoerd onder uw micro soft-abonnement.
-
-   1. De externe docker-constructie wordt zo nodig gestart.
-   1. De beheer code wordt geschreven naar de Azure Files share van de gebruiker.
-   1. De container wordt gestart met een eerste opdracht. Dat wil zeggen, beheer code zoals beschreven in de vorige stap.
-
-#### <a name="querying-runs-and-metrics"></a>Uitvoeringen van query's en metrische gegevens
-
-In het onderstaande stroom diagram treedt deze stap op wanneer het doel voor het berekenen van de training de metrische uitvoerings waarden terugschrijft naar Azure Machine Learning van opslag in de Cosmos DB-Data Base. Clients kunnen Azure Machine Learning aanroepen. Met Machine Learning worden de metrische gegevens van de Cosmos DB-Data Base opgehaald en terug naar de client geretourneerd.
-
-[![Werk stroom voor training](media/concept-enterprise-security/training-and-metrics.png)](media/concept-enterprise-security/training-and-metrics.png#lightbox)
-
-### <a name="creating-web-services"></a>Webservices maken
-
-In het volgende diagram ziet u de werk stroom voor afwijzen. Defactorion of model Score is de fase waarin het geïmplementeerde model wordt gebruikt voor de voor spelling, meestal op productie gegevens.
-
-Dit zijn de details:
-
-* De gebruiker registreert een model met behulp van een-client zoals de Azure Machine Learning SDK.
-* De gebruiker maakt een installatie kopie met behulp van een model, een score bestand en andere model afhankelijkheden.
-* De docker-installatie kopie wordt gemaakt en opgeslagen in Azure Container Registry.
-* De webservice wordt geïmplementeerd op het Compute-doel (Container Instances/AKS) met behulp van de installatie kopie die u in de vorige stap hebt gemaakt.
-* Details van Score aanvragen worden opgeslagen in Application Insights, dat zich in het abonnement van de gebruiker bevindt.
-* Telemetrie wordt ook gepusht naar het micro soft/Azure-abonnement.
-
-[![Werk stroom afwijzen](media/concept-enterprise-security/inferencing.png)](media/concept-enterprise-security/inferencing.png#lightbox)
-
 ## <a name="audit-and-manage-compliance"></a>Naleving controleren en beheren
 
 [Azure Policy](../governance/policy/index.yml) is een beheer programma waarmee u ervoor kunt zorgen dat Azure-resources voldoen aan uw beleid. Met Azure Machine Learning kunt u de volgende beleids regels toewijzen:
@@ -384,5 +195,5 @@ Zie [naleving controleren en beheren met Azure Policy](how-to-integrate-azure-po
 * [Een Machine Learning model gebruiken dat is geïmplementeerd als een webservice](how-to-consume-web-service.md)
 * [Azure Machine Learning gebruiken met Azure Firewall](how-to-access-azureml-behind-firewall.md)
 * [Azure Machine Learning gebruiken met Azure Virtual Network](how-to-network-security-overview.md)
-* [Aanbevolen procedures voor het bouwen van aanbevelings systemen](https://github.com/Microsoft/Recommenders)
+* [Gegevens versleuteling in rust en onderweg](concept-data-encryption.md)
 * [Een real-time aanbevelings-API bouwen op Azure](/azure/architecture/reference-architectures/ai/real-time-recommendation)

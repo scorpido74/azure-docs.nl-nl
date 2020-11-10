@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/26/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 9212e99ae317a3abec4bebfc7fb131c6774f8e4d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b8eb737752741dc55da24ad6b605b081053b8a11
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91396192"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443698"
 ---
 # <a name="a-web-api-that-calls-web-apis-call-an-api"></a>Een web-API die web-Api's aanroept: een API aanroepen
 
@@ -26,7 +26,7 @@ Nadat u een token hebt, kunt u een beveiligde web-API aanroepen. Gewoonlijk roep
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Wanneer u *micro soft. Identity. Web*gebruikt, hebt u drie gebruiks scenario's:
+Wanneer u *micro soft. Identity. Web* gebruikt, hebt u drie gebruiks scenario's:
 
 - [Optie 1: Microsoft Graph aanroepen met de Microsoft Graph SDK](#option-1-call-microsoft-graph-with-the-sdk)
 - [Optie 2: een stroomafwaartse Web-API aanroepen met de helper-klasse](#option-2-call-a-downstream-web-api-with-the-helper-class)
@@ -117,7 +117,7 @@ De- `CallWebApiForUserAsync` methode heeft ook sterk getypeerde generieke onderd
 
 #### <a name="option-3-call-a-downstream-web-api-without-the-helper-class"></a>Optie 3: een stroomafwaartse Web-API aanroepen zonder de helper-klasse
 
-Als u hebt besloten om een token hand matig te verkrijgen met behulp van de `ITokenAcquisition` -service, moet u het token nu gebruiken. In dat geval wordt de voorbeeld code die wordt weer gegeven in [een web-API die web-api's aanroept, voortgezet: Schaf een token voor de app aan](scenario-web-api-call-api-acquire-token.md). De code wordt aangeroepen in de acties van de API-controllers. Er wordt een stroomafwaartse API met de naam *ToDoList*aangeroepen.
+Als u hebt besloten om een token hand matig te verkrijgen met behulp van de `ITokenAcquisition` -service, moet u het token nu gebruiken. In dat geval wordt de voorbeeld code die wordt weer gegeven in [een web-API die web-api's aanroept, voortgezet: Schaf een token voor de app aan](scenario-web-api-call-api-acquire-token.md). De code wordt aangeroepen in de acties van de API-controllers. Er wordt een stroomafwaartse API met de naam *ToDoList* aangeroepen.
 
  Nadat u het token hebt aangeschaft, kunt u dit als Bearer-token gebruiken om de downstream API aan te roepen.
 
@@ -164,5 +164,4 @@ Een voor beeld van het demonstreren van deze stroom met MSAL python is nog niet 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-> [!div class="nextstepaction"]
-> [Een web-API die web-Api's aanroept: verplaatsen naar productie](scenario-web-api-call-api-production.md)
+Ga naar het volgende artikel in dit scenario en [Ga naar productie](scenario-web-api-call-api-production.md).

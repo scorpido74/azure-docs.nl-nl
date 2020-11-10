@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 508101ad615dd96559b1c68a61be7c08772545db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b77cc93385efb0bbb8a9b87d29de9bad5cd4ceb
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80885477"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443327"
 ---
 # <a name="daemon-app-that-calls-web-apis---app-registration"></a>Daemon-app voor het aanroepen van web-Api's-app-registratie
 
@@ -35,14 +35,14 @@ Als uw vertrouwelijke client toepassing *alleen* de client referenties stroom ge
 
 ## <a name="api-permissions---app-permissions-and-admin-consent"></a>API-machtigingen-app-machtigingen en beheerders toestemming
 
-Een daemon-toepassing kan alleen toepassings machtigingen voor Api's aanvragen (niet-gedelegeerde machtigingen). Klik op de pagina **API-machtigingen** voor de registratie van de toepassing, nadat u **een machtiging toevoegen** hebt geselecteerd en de API-familie hebt gekozen, kies **toepassings machtigingen**en selecteer vervolgens uw machtigingen.
+Een daemon-toepassing kan alleen toepassings machtigingen voor Api's aanvragen (niet-gedelegeerde machtigingen). Klik op de pagina **API-machtigingen** voor de registratie van de toepassing, nadat u **een machtiging toevoegen** hebt geselecteerd en de API-familie hebt gekozen, kies **toepassings machtigingen** en selecteer vervolgens uw machtigingen.
 
 ![App-machtigingen en beheerders toestemming](media/scenario-daemon-app/app-permissions-and-admin-consent.png)
 
 > [!NOTE]
 > De Web-API die u wilt aanroepen, moet de *toepassings machtigingen (app-rollen)* definiëren, niet de gedelegeerde machtigingen. Zie voor meer informatie over het beschikbaar maken van een dergelijke API [de beveiligde web-API: app-registratie-wanneer uw web-API wordt aangeroepen door een daemon-app](scenario-protected-web-api-app-registration.md#if-your-web-api-is-called-by-a-daemon-app).
 
-Voor daemon-toepassingen moet een Tenant beheerder vooraf toestemming verlenen aan de toepassing die de Web-API aanroept. Tenant beheerders geven deze toestemming op dezelfde API- **machtigings** pagina door **toestemming van beheerder verlenen aan *onze organisatie* ** te selecteren
+Voor daemon-toepassingen moet een Tenant beheerder vooraf toestemming verlenen aan de toepassing die de Web-API aanroept. Tenant beheerders geven deze toestemming op dezelfde API- **machtigings** pagina door **toestemming van beheerder verlenen aan *onze organisatie*** te selecteren
 
 Als u een ISV-toepassing met meerdere tenants maakt, leest u de sectie [implementatie van multi tenant-apps](scenario-daemon-production.md#deployment---multitenant-daemon-apps).
 
@@ -50,5 +50,4 @@ Als u een ISV-toepassing met meerdere tenants maakt, leest u de sectie [implemen
 
 ## <a name="next-steps"></a>Volgende stappen
 
-> [!div class="nextstepaction"]
-> [Daemon-app-app-code configuratie](./scenario-daemon-app-configuration.md)
+Ga naar het volgende artikel in dit scenario, configuratie van de [app-code](./scenario-daemon-app-configuration.md).

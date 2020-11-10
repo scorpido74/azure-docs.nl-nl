@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b71c78f484eef0fc4d9c34a2f218a177dbffa0a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 787380dbf6f739d4b88f18a836da2146b06024c3
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91257504"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443140"
 ---
 # <a name="desktop-app-that-calls-web-apis-app-registration"></a>Bureau blad-app voor het aanroepen van web-Api's: app-registratie
 
@@ -48,8 +48,8 @@ De omleidings-Uri's voor gebruik in een bureaublad toepassing is afhankelijk van
 - Als uw app alleen geïntegreerde Windows-verificatie of een gebruikers naam en wacht woord gebruikt, hoeft u geen omleidings-URI voor uw toepassing te registreren. Deze stromen maken een retour afronding naar het micro soft Identity platform v 2.0-eind punt. Uw toepassing wordt niet terugaangeroepen op een specifieke URI.
 - Voor het onderscheiden van de [apparaatcode stroom](scenario-desktop-acquire-token.md#device-code-flow), [geïntegreerde Windows-verificatie](scenario-desktop-acquire-token.md#integrated-windows-authentication)en een [gebruikers naam en wacht woord](scenario-desktop-acquire-token.md#username-and-password) van een vertrouwelijke client toepassing met behulp van een client referentie stroom die wordt gebruikt in [daemon-toepassingen](scenario-daemon-overview.md), waarvoor geen omleidings-URI is vereist, moet u deze configureren als een open bare client toepassing. Deze configuratie wordt gerealiseerd:
 
-    1. Selecteer in de [Azure Portal](https://portal.azure.com)uw app in **app-registraties**en selecteer vervolgens **verificatie**.
-    1. In **Geavanceerde instellingen**  >  **standaard client type**  >  **behandel toepassing als een open bare client**, selecteert u **Ja**.
+    1. Selecteer in de [Azure Portal](https://portal.azure.com)uw app in **app-registraties** en selecteer vervolgens **verificatie**.
+    1. In **Geavanceerde instellingen**  >  **standaard client type**  >  **behandel toepassing als een open bare client** , selecteert u **Ja**.
 
         :::image type="content" source="media/scenarios/default-client-type.png" alt-text="Instelling van open bare client inschakelen in het deel venster verificatie in Azure Portal":::
 
@@ -59,5 +59,4 @@ Bureau blad-Apps bellen Api's voor de aangemelde gebruiker. Ze moeten gedelegeer
 
 ## <a name="next-steps"></a>Volgende stappen
 
-> [!div class="nextstepaction"]
-> [Bureau blad-app: app-configuratie](scenario-desktop-app-configuration.md)
+Ga naar het volgende artikel in dit scenario, configuratie van de [app-code](scenario-desktop-app-configuration.md).

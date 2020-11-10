@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 613ba527c8f86257dd271d3cc9e43c97fc475068
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bfbfb1ff5b6cb9c711d987608226c51822dfc935
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91257449"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442953"
 ---
 # <a name="protected-web-api-code-configuration"></a>Beveiligde web-API: code configuratie
 
@@ -119,7 +119,7 @@ _Micro soft. Identity. Web_ biedt de lijm tussen ASP.net core, de verificatie-mi
 
 #### <a name="using-microsoftidentityweb-templates"></a>Micro soft. Identity. Web sjablonen gebruiken
 
-U kunt een volledig nieuwe web-API maken met behulp van micro soft. Identity. web project-sjablonen. Zie [micro soft. Identity. Web-Web API project Temp late (Engelstalig)](https://aka.ms/ms-id-web/webapi-project-templates) voor meer informatie.
+U kunt een volledig nieuwe web-API maken met behulp van micro soft. Identity. web project-sjablonen. Zie [micro soft. Identity. Web-Web API project Temp late (Engelstalig)](https://aka.ms/ms-id-web/webapi-project-templates)voor meer informatie.
 
 #### <a name="starting-from-an-existing-aspnet-core-31-application"></a>Beginnen met een bestaande ASP.NET Core 3,1-toepassing
 
@@ -140,7 +140,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
- Op dit moment maken de ASP.NET Core sjablonen Azure Active Directory (Azure AD) Web-Api's waarmee gebruikers zich kunnen aanmelden binnen uw organisatie of een organisatie. Gebruikers kunnen zich niet aanmelden met persoonlijke accounts. U kunt de sjablonen echter wijzigen om het micro soft Identity platform-eind punt te gebruiken met behulp van [micro soft. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) Vervang de code in *Startup.cs*:
+ Op dit moment maken de ASP.NET Core sjablonen Azure Active Directory (Azure AD) Web-Api's waarmee gebruikers zich kunnen aanmelden binnen uw organisatie of een organisatie. Gebruikers kunnen zich niet aanmelden met persoonlijke accounts. U kunt de sjablonen echter wijzigen om het micro soft Identity platform-eind punt te gebruiken met behulp van [micro soft. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) Vervang de code in *Startup.cs* :
 
 ```csharp
 using Microsoft.Identity.Web;
@@ -170,7 +170,7 @@ services.AddControllers();
 ```
 
 > [!NOTE]
-> Als u micro soft. Identity. web gebruikt en de `Audience` in- *appsettings.js*niet hebt ingesteld op, wordt het volgende gebruikt:
+> Als u micro soft. Identity. web gebruikt en de `Audience` in- *appsettings.js* niet hebt ingesteld op, wordt het volgende gebruikt:
 > -  `$"{ClientId}"` Als u de [geaccepteerde versie van het toegangs token](scenario-protected-web-api-app-registration.md#accepted-token-version) hebt ingesteld op `2` of voor Azure AD B2C Web-api's.
 > - `$"api://{ClientId}` in alle andere gevallen (voor [toegangs tokens](access-tokens.md)van v 1.0).
 > Zie micro soft. Identity. web [Source code](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/Resource/RegisterValidAudience.cs#L70-L83)(Engelstalig) voor meer informatie.
@@ -210,7 +210,7 @@ De validators zijn gekoppeld aan eigenschappen van de klasse **TokenValidationPa
 
 In de meeste gevallen hoeft u de para meters niet te wijzigen. Apps die geen enkele Tenant zijn, zijn uitzonde ringen. Deze web-apps accepteren gebruikers van elke organisatie of van persoonlijke micro soft-accounts. Uitgevers in dit geval moeten worden gevalideerd. Micro soft. Identity. Web zorgt voor een goede validatie van de verlener. Zie micro soft. Identity. web [AadIssuerValidator](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web/Resource/AadIssuerValidator.cs)voor meer informatie.
 
-Als u in ASP.NET Core de para meters voor token validatie wilt aanpassen, gebruikt u het volgende code fragment in uw *Startup.cs*:
+Als u in ASP.NET Core de para meters voor token validatie wilt aanpassen, gebruikt u het volgende code fragment in uw *Startup.cs* :
 
 ```c#
 services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -242,5 +242,4 @@ U kunt ook binnenkomende toegangs tokens in Azure Functions valideren. Voor beel
 
 ## <a name="next-steps"></a>Volgende stappen
 
-> [!div class="nextstepaction"]
-> [Bereiken en app-rollen controleren in uw code](scenario-protected-web-api-verification-scope-app-roles.md)
+Ga naar het volgende artikel in dit scenario, [Controleer bereiken en app-rollen in uw code](scenario-protected-web-api-verification-scope-app-roles.md).

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 08/20/2019
 ms.author: negoe
 ms.custom: aaddev
-ms.openlocfilehash: eeba01a609a1a21ed564c0b9cb78a28a4ad5c95a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d91e69d7d9eac9f8cae1a1a122a13afd19ef631
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80882315"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443871"
 ---
 # <a name="single-page-application-acquire-a-token-to-call-an-api"></a>Toepassing met één pagina: een Token ophalen om een API aan te roepen
 
@@ -198,5 +198,4 @@ Deze code is hetzelfde als eerder beschreven.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-> [!div class="nextstepaction"]
-> [Een web-API aanroepen](scenario-spa-call-api.md)
+Ga naar het volgende artikel in dit scenario om [een web-API](scenario-spa-call-api.md)aan te roepen.

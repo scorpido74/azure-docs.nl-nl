@@ -11,26 +11,25 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: f94a3da96243e30faa90277ce86efec037f54672
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 863d8d87d5de771293199dd60618128b0ac11bba
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89436460"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442596"
 ---
 # <a name="a-web-app-that-calls-web-apis-app-registration"></a>Een web-app die web-Api's aanroept: app-registratie
 
 Een web-app die web-Api's aanroept, heeft dezelfde registratie als een web-app die gebruikers ondertekent in. Volg de instructies in [een web-app die zich in gebruikers aanmeldt: app-registratie](scenario-web-app-sign-user-app-registration.md).
 
-Echter, omdat de web-app nu ook Web-Api's aanroept, wordt het een vertrouwelijke client toepassing. Daarom is een extra registratie vereist. De app moet client referenties of *geheimen*delen met het micro soft Identity-platform.
+Echter, omdat de web-app nu ook Web-Api's aanroept, wordt het een vertrouwelijke client toepassing. Daarom is een extra registratie vereist. De app moet client referenties of *geheimen* delen met het micro soft Identity-platform.
 
 [!INCLUDE [Registration of client secrets](../../../includes/active-directory-develop-scenarios-registration-client-secrets.md)]
 
 ## <a name="api-permissions"></a>API-machtigingen
 
-Web apps roepen namens de aangemelde gebruiker Api's aan. Hiervoor moeten ze *gedelegeerde machtigingen*aanvragen. Zie [machtigingen toevoegen voor toegang tot uw web-API](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-your-web-api)voor meer informatie.
+Web apps roepen namens de aangemelde gebruiker Api's aan. Hiervoor moeten ze *gedelegeerde machtigingen* aanvragen. Zie [machtigingen toevoegen voor toegang tot uw web-API](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-your-web-api)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-> [!div class="nextstepaction"]
-> [Een web-app die web-Api's aanroept: code configuratie](scenario-web-app-call-api-app-configuration.md)
+Ga naar het volgende artikel in dit scenario, [code configuratie](scenario-web-app-call-api-app-configuration.md).

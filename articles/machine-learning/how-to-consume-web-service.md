@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-csharp
-ms.openlocfilehash: 03b077c7cadbfd101705c040e485c5766909c2de
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 4fb62ec8d3a6fa97fe6db5b146ba58d3ad66b1b4
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93318156"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94441984"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Een Azure Machine Learning-model gebruiken dat als een webservice is geïmplementeerd
 
@@ -119,7 +119,7 @@ Azure Machine Learning biedt twee manieren om de toegang tot uw webservices te b
 
 Wanneer u een aanvraag verzendt naar een service die is beveiligd met een sleutel of token, gebruikt u de __autorisatie__ -header om de sleutel of het token door te geven. De sleutel of het token moet zijn geformatteerd als `Bearer <key-or-token>` , waarbij `<key-or-token>` de sleutel of Token waarde is.
 
-Het belangrijkste verschil tussen sleutels en tokens is dat **sleutels statisch zijn en hand matig opnieuw kunnen worden gegenereerd** en dat **tokens na verloop van tijd moeten worden vernieuwd**. Verificatie op basis van sleutels wordt ondersteund voor Azure container instance en Azure Kubernetes Service geïmplementeerde webservices en verificatie op basis van tokens is **alleen** beschikbaar voor Azure Kubernetes-service-implementaties. Zie verificatie [voor meer](how-to-setup-authentication.md#web-service-authentication) informatie en specifieke code voorbeelden.
+Het belangrijkste verschil tussen sleutels en tokens is dat **sleutels statisch zijn en hand matig opnieuw kunnen worden gegenereerd** en dat **tokens na verloop van tijd moeten worden vernieuwd**. Verificatie op basis van sleutels wordt ondersteund voor Azure container instance en Azure Kubernetes Service geïmplementeerde webservices en verificatie op basis van tokens is **alleen** beschikbaar voor Azure Kubernetes-service-implementaties. Zie voor meer informatie over het configureren van verificatie [verificatie configureren voor modellen die als webservices zijn geïmplementeerd](how-to-authenticate-web-service.md).
 
 
 #### <a name="authentication-with-keys"></a>Verificatie met sleutels

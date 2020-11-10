@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 781406a1bfd253f0ab3eb333f23917be4aeb3ba9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d7cad0592c5c4c0487f582ce5405c275b94b7bd0
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83771737"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444024"
 ---
 # <a name="call-a-web-api-from-a-mobile-app"></a>Een web-API aanroepen vanuit een mobiele app
 
@@ -119,9 +119,9 @@ task.resume()
 
 Als u dezelfde API meerdere keren moet aanroepen, of als u meerdere Api's moet aanroepen, moet u rekening houden met de volgende onderwerpen wanneer u uw app bouwt:
 
-- **Incrementele toestemming**: met het micro soft Identity-platform kunnen Apps gebruikers toestemming krijgen wanneer er machtigingen zijn vereist in plaats van aan het begin. Telkens wanneer uw app klaar is om een API aan te roepen, moet deze alleen de bereiken aanvragen die het nodig heeft.
+- **Incrementele toestemming** : met het micro soft Identity-platform kunnen Apps gebruikers toestemming krijgen wanneer er machtigingen zijn vereist in plaats van aan het begin. Telkens wanneer uw app klaar is om een API aan te roepen, moet deze alleen de bereiken aanvragen die het nodig heeft.
 
-- **Voorwaardelijke toegang**: wanneer u meerdere API-aanvragen maakt, moet u mogelijk voldoen aan aanvullende vereisten voor voorwaardelijke toegang. De vereisten kunnen op deze manier toenemen als de eerste aanvraag geen beleids regels voor voorwaardelijke toegang heeft en uw app probeert op de achtergrond toegang te krijgen tot een nieuwe API waarvoor voorwaardelijke toegang is vereist. Als u dit probleem wilt verhelpen, moet u ervoor zorgen dat u fouten opvangt van Silent-aanvragen en een interactieve aanvraag maakt.  Zie [richt lijnen voor voorwaardelijke toegang](../azuread-dev/conditional-access-dev-guide.md)voor meer informatie.
+- **Voorwaardelijke toegang** : wanneer u meerdere API-aanvragen maakt, moet u mogelijk voldoen aan aanvullende vereisten voor voorwaardelijke toegang. De vereisten kunnen op deze manier toenemen als de eerste aanvraag geen beleids regels voor voorwaardelijke toegang heeft en uw app probeert op de achtergrond toegang te krijgen tot een nieuwe API waarvoor voorwaardelijke toegang is vereist. Als u dit probleem wilt verhelpen, moet u ervoor zorgen dat u fouten opvangt van Silent-aanvragen en een interactieve aanvraag maakt.  Zie [richt lijnen voor voorwaardelijke toegang](../azuread-dev/conditional-access-dev-guide.md)voor meer informatie.
 
 ## <a name="call-several-apis-by-using-incremental-consent-and-conditional-access"></a>Meerdere Api's aanroepen met behulp van incrementele toestemming en voorwaardelijke toegang
 
@@ -159,5 +159,4 @@ catch(MsalUiRequiredException ex)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-> [!div class="nextstepaction"]
-> [Verplaatsen naar productie](scenario-mobile-production.md)
+Ga naar het volgende artikel in dit scenario en [Ga naar productie](scenario-mobile-production.md).

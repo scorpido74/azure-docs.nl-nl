@@ -4,19 +4,19 @@ description: Gebruik dit artikel om veelvoorkomende problemen op te lossen die o
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 04/27/2020
+ms.date: 11/10/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: ed93d24bc06a6622a8ace2b0ab6b44582da001c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 98ee865a3ddf6c26ffe9cb77767f3872b42018d8
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82783745"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442358"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Veelvoorkomende problemen en oplossingen voor Azure IoT Edge
 
@@ -222,7 +222,7 @@ Wanneer u deze fout ziet, kunt u deze oplossen door de DNS-naam van de virtuele 
    ![De DNS-naam van de virtuele machine configureren](./media/troubleshoot/configure-dns.png)
 
 3. Geef een waarde op voor het label voor de **DNS-naam** en selecteer **Opslaan**.
-4. Kopieer de nieuwe DNS-naam, die de indeling moet hebben ** \<DNSnamelabel\> . \<vmlocation\> .. cloudapp.azure.com**.
+4. Kopieer de nieuwe DNS-naam, die de indeling moet hebben **\<DNSnamelabel\> . \<vmlocation\> .. cloudapp.azure.com**.
 5. Gebruik in de virtuele machine de volgende opdracht om de IoT Edge runtime in te stellen met uw DNS-naam:
 
    * Op Linux:
@@ -331,6 +331,25 @@ Als een automatische implementatie gericht is op een apparaat, heeft dit priorit
 Gebruik slechts één type implementatie mechanisme per apparaat, hetzij een automatische implementatie als implementatie van een afzonderlijk apparaat. Als u meerdere automatische implementaties hebt die gericht zijn op een apparaat, kunt u prioriteits-of doel beschrijvingen wijzigen om ervoor te zorgen dat de juiste van toepassing is op een bepaald apparaat. U kunt het apparaat ook bijwerken tussen en niet langer overeenkomen met de doel beschrijving van de automatische implementatie.
 
 Zie [informatie over IOT Edge automatische implementaties voor één apparaat of op schaal](module-deployment-monitoring.md)voor meer informatie.
+
+<!-- <1.2> -->
+::: moniker range=">=iotedge-2020-11"
+
+## <a name="iot-edge-behind-a-gateway-cannot-perform-http-requests-and-start-edgeagent-module"></a>IoT Edge achter een gateway kan geen HTTP-aanvragen uitvoeren en de edgeAgent-module starten
+
+**Waargenomen gedrag:**
+
+De IoT Edge-daemon is actief met een geldig configuratie bestand, maar de edgeAgent-module kan niet worden gestart. De opdracht `iotedge list` retourneert een lege lijst. Het IoT Edge daemon-logboeken rapport `Could not perform HTTP request` .
+
+**Hoofd oorzaak:**
+
+IoT Edge apparaten achter een gateway halen hun module-installatie kopieën van het bovenliggende IoT Edge apparaat dat is opgegeven in het `parent_hostname` veld van het bestand config. yaml. De `Could not perform HTTP request` fout betekent dat het onderliggende apparaat het bovenliggende apparaat niet via http kan bereiken.
+
+**Oplossing:**
+
+Zorg ervoor dat het bovenliggende IoT Edge apparaat binnenkomende aanvragen kan ontvangen van het onderliggende IoT Edge-apparaat. Open netwerk verkeer op de poorten 443 en 6617 voor aanvragen die afkomstig zijn van het onderliggende apparaat.
+
+:::moniker-end
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -9,15 +9,15 @@ ms.service: virtual-machines-linux
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
-ms.author: alsin
-ms.openlocfilehash: c1200121d1c768a3fdddd7749184d7f8b5c98a96
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.author: mathapli
+ms.openlocfilehash: feaa2471f2867257deb06ab32ed5fc0a26a0d37e
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413102"
+ms.locfileid: "94443429"
 ---
-# <a name="preview-azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>Voor beeld: Azure Hybrid Benefit: hoe dit geldt voor Linux Virtual Machines
+# <a name="public-preview-azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>Open bare Preview: Azure Hybrid Benefit: hoe dit geldt voor Linux Virtual Machines
 
 ## <a name="overview"></a>Overzicht
 
@@ -45,30 +45,26 @@ Gereserveerde instanties, toegewezen hosts en SQL Hybrid bene fits komen niet in
 
 ## <a name="how-to-get-started"></a>Hoe gaat u aan de slag
 
-Azure Hybrid Benefit bevindt zich momenteel in een preview-fase voor Linux-Vm's. Zodra u toegang hebt tot de preview, kunt u het voor deel van de Azure Portal of de Azure CLI inschakelen.
+Azure Hybrid Benefit bevindt zich momenteel in een preview-fase voor Linux-Vm's. Wanneer u toegang hebt tot de preview-versie, kunt u de voor delen van Azure CLI inschakelen.
 
-### <a name="preview"></a>Preview
+### <a name="public-preview"></a>Openbare preview
 
-In deze fase kunt u toegang krijgen tot het voor deel door het formulier [hier](https://aka.ms/ahb-linux-form)in te vullen. Wanneer u het formulier hebt ingevuld, worden uw Azure-abonnement (en) ingeschakeld voor het voor deel en ontvangt u binnen drie werk dagen een bevestiging van micro soft.
+Azure Hybrid Benefit (voor Linux) bevindt zich nu in de open bare preview-fase. U kunt de onderstaande stappen gebruiken om het voor deel voor Red Hat-en SUSE-distributies in te scha kelen. 
 
 ### <a name="red-hat-customers"></a>Red Hat-klanten
 
-1.    Vul hierboven het aanvraag formulier voor de voor beeld in
 1.    Registreren bij het [Red Hat Cloud Access-programma](https://aka.ms/rhel-cloud-access)
 1.    Schakel uw Azure-abonnement (en) in voor Cloud toegang en schakel de abonnementen in die de Vm's bevatten waarvoor u het voor deel wilt gebruiken
-1.    Pas het voor deel toe op uw bestaande Vm's via de Azure Portal of Azure CLI
-1.    U kunt uw Vm's ook registreren om het voor deel te ontvangen met een afzonderlijke bron van updates (Switched Vm's kunnen blijven gekoppeld aan [RHUI](../workloads/redhat/redhat-rhui.md) of worden geregistreerd via RHSM)
+1.    Pas het voor deel toe op uw bestaande Vm's via Azure CLI
+1.    Registreer uw Vm's om het voor deel te ontvangen met een afzonderlijke bron van updates
+
 
 ### <a name="suse-customers"></a>SUSE-klanten
 
-1.    Vul hierboven het aanvraag formulier voor de voor beeld in
 1.    Registreren bij het SUSE open bare-Cloud programma
-1.    Pas het voor deel toe op uw bestaande Vm's via de Azure Portal of Azure CLI
+1.    Pas het voor deel toe op uw bestaande Vm's via Azure CLI
 1.    Registreer uw Vm's om het voor deel te ontvangen met een afzonderlijke bron van updates
 
-### <a name="enable-and-disable-the-benefit-in-the-azure-portal"></a>Het voor deel in de Azure Portal in-en uitschakelen
-
-U kunt het voor deel van bestaande Vm's inschakelen door de Blade **configuratie** te bezoeken en de stappen daar te volgen. U kunt het voor deel voor nieuwe Vm's inschakelen tijdens het maken van de VM.
 
 ### <a name="enable-and-disable-the-benefit-in-the-azure-cli"></a>Het voor deel in de Azure CLI inschakelen en uitschakelen
 
@@ -109,12 +105,8 @@ az vm list -o json | jq '.[] | {VMName: .name, ResourceID: .id}'
 ```
 
 ## <a name="check-ahb-status-of-a-vm"></a>De AHB-status van een virtuele machine controleren
-U kunt de status van de AHB van een virtuele machine op drie manieren bekijken: de portal controleren met behulp van Azure CLI of de Azure Instance Metadata Service (Azure IMDS) gebruiken.
+U kunt de status van de AHB van een virtuele machine op twee manieren weer geven: met behulp van Azure CLI of Azure Instance Metadata Service (Azure IMDS).
 
-
-### <a name="portal"></a>Portal
-
-Bekijk de Blade configuratie en controleer de licentie status om te zien of AHB is ingeschakeld voor uw virtuele machine.
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -152,9 +144,7 @@ Deze sectie bevat een lijst met veelvoorkomende problemen die kunnen optreden en
 
 | Fout | Oplossing |
 | ----- | ---------- |
-| Het abonnement is niet geregistreerd voor de Linux-preview van Azure Hybrid Benefit. Voor stapsgewijze instructies raadpleegt u https://aka.ms/ahb-linux ' | Vul het formulier in https://aka.ms/ahb-linux-form om u te registreren voor de Linux-preview van de Azure Hybrid Benefit.
 | "De actie kan niet worden voltooid omdat uit onze gegevens blijkt dat u Red Hat Cloud Access niet hebt ingeschakeld voor uw Azure-abonnement............ | Als u het voor deel van RHEL Vm's wilt gebruiken, moet u uw Azure-abonnement (en) eerst registreren bij Red Hat Cloud Access. Bezoek deze koppeling voor meer informatie over het registreren van uw Azure-abonnementen voor Red Hat Cloud Access
-|"De optie voor Azure Hybrid Benefit wordt niet weer gegeven in de portal" | Dit is een bekend probleem voor RHEL-en SLES-Vm's die zijn gemaakt op basis van de galerie met gedeelde afbeeldingen, moment opnamen of vastgelegde PAYG-installatie kopieën. In dit geval gebruikt u de CLI-stappen die worden beschreven in de sectie '[het voor deel in de Azure cli inschakelen en uitschakelen](#enable-and-disable-the-benefit-in-the-azure-cli)'. Gebruik de opdracht om de status van AHB weer te geven ` az vm get-instance-view -g MyResourceGroup -n MyVm` .|
 
 ## <a name="next-steps"></a>Volgende stappen
-* Ga aan de slag met de preview-versie door het formulier [hier](https://aka.ms/ahb-linux-form)in te vullen.
+* Meer informatie over het maken en bijwerken van Vm's en het toevoegen van licentie typen (RHEL_BYOS, SLES_BYOS) voor Azure Hybrid Benefit met behulp van [Azure cli.](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest&preserve-view=true)

@@ -12,18 +12,18 @@ ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperfq2
-ms.openlocfilehash: edcfa19ed93733c4d6b060ebcb5ff179708195aa
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 07637a8be49fb2449c5c92c1a1ea4b2c7ace9a8d
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486919"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442256"
 ---
 # <a name="manage-app-consent-policies"></a>Beleid voor app-toestemming beheren
 
 Met Azure AD Power shell kunt u toestemming beleid voor apps weer geven en beheren.
 
-Een beleid voor het door geven van apps bestaat uit een of meer ' voor waarden sets ' en nul of meer ' uitsluitingen '. Voor een gebeurtenis die in een app-toestemming beleid wordt overwogen, moet deze overeenkomen met *ten minste* één ' voor waardenset ' en mag niet veel *een* voor waarde van ' excludes ' zijn ingesteld.
+Een beleid voor het door geven van apps bestaat uit een of meer ' voor waarden sets ' en nul of meer ' uitsluitingen '. Voor een gebeurtenis die in een app-toestemming beleid wordt overwogen, moet deze overeenkomen met *ten minste* één ' voor waardenset ' en mag deze niet overeenkomen met *de* ingestelde voor waarde ' uitsluiten '.
 
 Elke voor waarde die is ingesteld, bestaat uit verschillende voor waarden. Voor een gebeurtenis die overeenkomt met een ingestelde voor waarde, moet aan *alle* voor waarden in de voor waarde worden voldaan.
 
@@ -133,7 +133,7 @@ De volgende tabel bevat de lijst met ondersteunde voor waarden voor het beleid v
 | Conditie | Beschrijving|
 |:---------------|:----------|
 | PermissionClassification | De [machtigings classificatie](configure-permission-classifications.md) voor de machtiging die wordt verleend, of ' all ', zodat deze overeenkomt met een machtigings classificatie (inclusief machtigingen die niet zijn geclassificeerd). De standaard waarde is "all". |
-| PermissionType | Het machtigings type van de machtiging die wordt verleend. Gebruik ' Application ' voor toepassings machtigingen (bijvoorbeeld app-rollen) of ' gedelegeerde ' voor gedelegeerde machtigingen. <br><br>**Opmerking**: de waarde ' delegatedUserConsentable ' geeft gedelegeerde machtigingen aan die niet door de API-uitgever zijn geconfigureerd om toestemming te geven aan de beheerder: deze waarde kan worden gebruikt in het ingebouwde beleid voor machtigings toekenning, maar kan niet worden gebruikt in een aangepast beleid voor machtigings verlening. Vereist. |
+| PermissionType | Het machtigings type van de machtiging die wordt verleend. Gebruik ' Application ' voor toepassings machtigingen (bijvoorbeeld app-rollen) of ' gedelegeerde ' voor gedelegeerde machtigingen. <br><br>**Opmerking** : de waarde ' delegatedUserConsentable ' geeft gedelegeerde machtigingen aan die niet door de API-uitgever zijn geconfigureerd om toestemming te geven aan de beheerder: deze waarde kan worden gebruikt in het ingebouwde beleid voor machtigings toekenning, maar kan niet worden gebruikt in een aangepast beleid voor machtigings verlening. Vereist. |
 | ResourceApplication | De **AppId** van de bron toepassing (bijvoorbeeld de API) waarvoor een machtiging wordt verleend, of een wille keurige, die overeenkomt met een resource toepassing of API. De standaard waarde is any. |
 | Machtigingen | De lijst met machtigings-Id's voor de specifieke machtigingen die moeten overeenkomen met, of een lijst met de enkele waarde ' all ' zodat deze overeenkomt met elke machtiging. De standaard instelling is de enige waarde all. <ul><li>Gemachtigde machtiging-Id's vindt u in de eigenschap **OAuth2Permissions** van het ServicePrincipal-object van de API.</li><li>Id's van toepassings machtigingen vindt u in de eigenschap **AppRoles** van het ServicePrincipal-object van de API.</li></ol> |
 | ClientApplicationIds | Een lijst met **AppId** -waarden voor de client toepassingen die moeten worden vergeleken met, of een lijst met de enkele waarde ' all ' die overeenkomt met elke client toepassing. De standaard instelling is de enige waarde all. |

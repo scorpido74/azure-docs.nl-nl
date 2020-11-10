@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
 ms.date: 09/30/2020
-ms.openlocfilehash: 70e3185257c7c70d74fdc8492cf0a2b4970c03b1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2c415fc92d2d338c568c422b1db2579563527839
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305476"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442052"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Een Azure Resource Manager sjabloon gebruiken om een werk ruimte te maken voor Azure Machine Learning
 
@@ -34,7 +34,7 @@ Zie [een toepassing implementeren met Azure Resource Manager sjabloon](../azure-
 
 * Voor sommige scenario's moet u een ondersteunings ticket openen. Deze scenario's zijn:
 
-    * __Werk ruimte met persoonlijke koppeling ingeschakeld met een door de klant beheerde sleutel (CMK)__
+    * __Werkruimte met Private Link, met een door de klant beheerde sleutel__
     * __Azure Container Registry voor de werkruimte achter uw virtuele netwerk__
 
     Zie [Quota's beheren en verhogen](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases)voor meer informatie.
@@ -170,7 +170,7 @@ In de volgende voorbeeld sjabloon ziet u hoe u een werk ruimte met drie instelli
 > [!IMPORTANT]
 > Als een werk ruimte eenmaal is gemaakt, kunt u de instellingen voor vertrouwelijke gegevens, versleuteling, sleutel kluis-ID of sleutel-id's niet wijzigen. Als u deze waarden wilt wijzigen, moet u een nieuwe werk ruimte maken met behulp van de nieuwe waarden.
 
-Zie [versleuteling bij rest](concept-enterprise-security.md#encryption-at-rest)voor meer informatie.
+Zie [versleuteling bij rest](concept-data-encryption.md#encryption-at-rest)voor meer informatie.
 
 > [!IMPORTANT]
 > Er zijn enkele specifieke vereisten waaraan uw abonnement moet voldoen voordat u deze sjabloon gebruikt:
@@ -252,7 +252,7 @@ New-AzResourceGroupDeployment `
 ```
 ---
 
-Wanneer u een door de klant beheerde sleutel gebruikt, maakt Azure Machine Learning een secundaire resource groep die de Cosmos DB instantie bevat. Zie [versleuteling bij rest-Cosmos DB](concept-enterprise-security.md#encryption-at-rest)voor meer informatie.
+Wanneer u een door de klant beheerde sleutel gebruikt, maakt Azure Machine Learning een secundaire resource groep die de Cosmos DB instantie bevat. Zie [versleuteling bij rest-Cosmos DB](concept-data-encryption.md#encryption-at-rest)voor meer informatie.
 
 U kunt voor uw gegevens een extra configuratie opgeven door de para meter **confidential_data** in te stellen op **True**. Dit doet u door de volgende handelingen uit te voeren:
 
@@ -264,7 +264,7 @@ U kunt voor uw gegevens een extra configuratie opgeven door de para meter **conf
     > [!IMPORTANT]
     > Als een werk ruimte eenmaal is gemaakt, kunt u de instellingen voor vertrouwelijke gegevens, versleuteling, sleutel kluis-ID of sleutel-id's niet wijzigen. Als u deze waarden wilt wijzigen, moet u een nieuwe werk ruimte maken met behulp van de nieuwe waarden.
 
-  Zie [versleuteling bij rest](concept-enterprise-security.md#encryption-at-rest)voor meer informatie.
+  Zie [versleuteling bij rest](concept-data-encryption.md#encryption-at-rest)voor meer informatie.
 
 ## <a name="deploy-workspace-behind-a-virtual-network"></a>Een werk ruimte implementeren achter een virtueel netwerk
 

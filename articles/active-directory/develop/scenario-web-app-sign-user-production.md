@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 47a45b52ac10a44b6efd54c41b3fec1e61a47a35
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f438567851204a1a284955bede1525505712f4b7
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82181627"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442375"
 ---
 # <a name="web-app-that-signs-in-users-move-to-production"></a>Web-app die zich aanmeldt bij gebruikers: verplaatsen naar productie
 
@@ -24,9 +24,7 @@ Nu u weet hoe u een token kunt ophalen om Web-Api's aan te roepen, lees dan hoe 
 
 [!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
 
-## <a name="next-steps"></a>Volgende stappen
-
-### <a name="troubleshooting"></a>Problemen oplossen
+## <a name="troubleshooting"></a>Problemen oplossen
 
 > [!NOTE]
 > Wanneer gebruikers zich voor de eerste keer aanmelden bij de webtoepassing, moeten ze toestemming geven. In sommige organisaties kunnen gebruikers echter een bericht zien als het volgende:
@@ -35,28 +33,17 @@ Nu u weet hoe u een token kunt ophalen om Web-Api's aan te roepen, lees dan hoe 
 >
 > Dit komt doordat de Tenant beheerder de mogelijkheid voor gebruikers om toestemming heeft **uitgeschakeld** . In dat geval moet u contact opnemen met de Tenant beheerders zodat ze een beheerders toestemming voor de door de toepassing vereiste bereiken hebben.
 
-### <a name="same-site"></a>Dezelfde site
+## <a name="same-site"></a>Dezelfde site
 
-Zorg ervoor dat u bekend bent met mogelijke problemen met nieuwe versies van de Chrome-browser
-
-> [!div class="nextstepaction"]
-> [Wijzigingen in SameSite-cookies afhandelen in de Chrome-browser](howto-handle-samesite-cookie-changes-chrome-browser.md)
+Zorg ervoor dat u mogelijke problemen kent met nieuwe versies van de Chrome-browser: [SameSite cookie wijzigingen in de Chrome-browser verwerken](howto-handle-samesite-cookie-changes-chrome-browser.md).
 
 Het NuGet-pakket micro soft. Identity. Web verwerkt de meest voorkomende SameSite-problemen.
-
-### <a name="scenario-for-calling-web-apis"></a>Scenario voor het aanroepen van web-Api's
-
-Nadat uw web-app zich heeft aangemeld bij gebruikers, kan deze web-Api's namens de aangemelde gebruikers aanroepen. Het aanroepen van web-Api's vanuit de web-app is het object van het volgende scenario:
-
-> [!div class="nextstepaction"]
-> [Web-app die web-API's aanroept](scenario-web-app-call-api-overview.md)
 
 ## <a name="deep-dive-aspnet-core-web-app-tutorial"></a>Grondige kennis: zelf studie voor ASP.NET Core web-app
 
 Meer informatie over andere manieren om gebruikers aan te melden bij deze ASP.NET Core-zelf studie: 
 
-> [!div class="nextstepaction"]
-> [Uw web-apps inschakelen voor het aanmelden van gebruikers en het aanroepen van Api's met het micro soft-identiteits platform voor ontwikkel aars](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial) 
+[Uw web-apps inschakelen voor het aanmelden van gebruikers en het aanroepen van Api's met het micro soft-identiteits platform voor ontwikkel aars](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial)
 
 Deze progressieve zelf studie heeft productie-gereed code voor een web-app, waaronder het toevoegen van een aanmelding met accounts in:
 
@@ -70,5 +57,8 @@ Deze progressieve zelf studie heeft productie-gereed code voor een web-app, waar
 
 Meer informatie over de Java-Web-app in dit voor beeld op GitHub: 
 
-> [!div class="nextstepaction"]
-> [Een Java-webtoepassing die zich aanmeldt bij gebruikers met het micro soft-identiteits platform en aanroepen Microsoft Graph](https://github.com/Azure-Samples/ms-identity-java-webapp)
+[Een Java-webtoepassing die zich aanmeldt bij gebruikers met het micro soft-identiteits platform en aanroepen Microsoft Graph](https://github.com/Azure-Samples/ms-identity-java-webapp)
+
+## <a name="next-steps"></a>Volgende stappen
+
+Nadat uw web-app zich heeft aangemeld bij gebruikers, kan deze web-Api's namens de aangemelde gebruikers aanroepen. Het aanroepen van web-Api's vanuit de web-app is het object van het volgende scenario: [Web-app die web-api's aanroept](scenario-web-app-call-api-overview.md).

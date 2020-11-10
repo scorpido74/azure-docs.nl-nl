@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: c1fab15cade2ce23e053bc73028e6420692c3d8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7a38e2384c5f24bc3a72e1ef8e8f7119b2db0f2f
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86518271"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443939"
 ---
 # <a name="protected-web-api-app-registration"></a>Beveiligde web-API: app-registratie
 
@@ -40,7 +40,7 @@ Nadat u de toepassing hebt gemaakt, kunt u de geaccepteerde token versie vastste
 1. Zoek de eigenschap **accessTokenAcceptedVersion** in het manifest.
 1. De waarde geeft aan Azure Active Directory (Azure AD) welke token versie de Web-API accepteert.
     - Als de waarde 2 is, accepteert de Web-API v 2.0-tokens.
-    - Als de waarde **Null**is, accepteert de Web-API v 1.0-tokens.
+    - Als de waarde **Null** is, accepteert de Web-API v 1.0-tokens.
 1. Als u de token versie hebt gewijzigd, selecteert u **Opslaan**.
 
 > [!NOTE]
@@ -64,7 +64,7 @@ Tijdens de registratie van de app moet u deze para meters definiëren:
 - Een of meer scopes
 - Een of meer app-rollen
 
-De portal voor toepassings registratie raadt u standaard aan de resource-URI te gebruiken `api://{clientId}` . Deze URI is uniek, maar niet leesbaar. Als u de URI wijzigt, moet u ervoor zorgen dat de nieuwe waarde uniek is. De portal voor toepassings registratie zorgt ervoor dat u een [geconfigureerde Uitgever domein](howto-configure-publisher-domain.md) gebruikt
+De portal voor toepassings registratie raadt u standaard aan de resource-URI te gebruiken `api://{clientId}` . Deze URI is uniek, maar niet leesbaar. Als u de URI wijzigt, moet u ervoor zorgen dat de nieuwe waarde uniek is. De portal voor toepassings registratie zorgt ervoor dat u een [geconfigureerd uitgevers domein](howto-configure-publisher-domain.md)gebruikt.
 
 Voor client toepassingen worden scopes weer gegeven als *gedelegeerde machtigingen* en app-rollen weer gegeven als *toepassings machtigingen* voor uw web-API.
 
@@ -79,9 +79,9 @@ App-rollen kunnen niet worden door gegeven aan een gebruiker (omdat ze worden ge
 
 1. Selecteer **een API beschikbaar** maken in de registratie van de toepassing.
 1. Selecteer **Een bereik toevoegen**.
-1. Als u hierom wordt gevraagd, accepteert u de voorgestelde URI voor de toepassings-ID ( `api://{clientId}` ) door **opslaan en door gaan**te selecteren.
+1. Als u hierom wordt gevraagd, accepteert u de voorgestelde URI voor de toepassings-ID ( `api://{clientId}` ) door **opslaan en door gaan** te selecteren.
 1. Geef deze waarden op:
-    - Selecteer **Scope naam** en voer **access_as_user**in.
+    - Selecteer **Scope naam** en voer **access_as_user** in.
     - Selecteer **wie toestemming kan** geven en zorg ervoor dat **beheerders en gebruikers** zijn geselecteerd.
     - Selecteer **weergave naam beheerder toestemming** en voer **toegangs TodoListService in als gebruiker**.
     - Selecteer **Beschrijving beheerder toestemming** en voer **de TodoListService-Web-API in als een gebruiker**.
@@ -132,7 +132,7 @@ De Web-API controleert op de functie van de app. Deze rol is de manier waarop so
 Deze verhoogde beveiliging toe te voegen:
 
 1. Ga naar de **overzichts** pagina van de app voor de registratie van uw app.
-1. Onder **beheerde toepassing in lokale map**selecteert u de koppeling met de naam van uw app. Het label voor deze selectie kan worden afgekapt. Zo ziet u mogelijk een **beheerde toepassing in..** .
+1. Onder **beheerde toepassing in lokale map** selecteert u de koppeling met de naam van uw app. Het label voor deze selectie kan worden afgekapt. Zo ziet u mogelijk een **beheerde toepassing in..** .
 
    > [!NOTE]
    >
@@ -143,9 +143,9 @@ Deze verhoogde beveiliging toe te voegen:
 
    > [!IMPORTANT]
    >
-   > Als u de **gebruikers toewijzing** hebt ingesteld op vereist? in azure **AD worden de**toewijzingen van de app-rollen van een client gecontroleerd wanneer deze een web API-toegangs token aanvraagt. Als de client niet is toegewezen aan de app-rollen, retourneert Azure AD de fout melding "invalid_client: AADSTS501051: \<application name\> de toepassing is niet toegewezen aan een rol voor de \<web API\> ".
+   > Als u de **gebruikers toewijzing** hebt ingesteld op vereist? in azure **AD worden de** toewijzingen van de app-rollen van een client gecontroleerd wanneer deze een web API-toegangs token aanvraagt. Als de client niet is toegewezen aan de app-rollen, retourneert Azure AD de fout melding "invalid_client: AADSTS501051: \<application name\> de toepassing is niet toegewezen aan een rol voor de \<web API\> ".
    >
-   > Als u de **gebruikers toewijzing verplicht stelt?** ingesteld op **Nee**, worden de toewijzingen van de app-rollen niet door Azure AD gecontroleerd wanneer een client een toegangs token voor uw web-API aanvraagt. Elke daemon-client, wat betekent dat elke client die gebruikmaakt van de client referentie stroom, een toegangs token voor de API kan krijgen door de doel groep op te geven. Elke toepassing kan toegang krijgen tot de API zonder dat hiervoor machtigingen moeten worden gevraagd.
+   > Als u de **gebruikers toewijzing verplicht stelt?** ingesteld op **Nee** , worden de toewijzingen van de app-rollen niet door Azure AD gecontroleerd wanneer een client een toegangs token voor uw web-API aanvraagt. Elke daemon-client, wat betekent dat elke client die gebruikmaakt van de client referentie stroom, een toegangs token voor de API kan krijgen door de doel groep op te geven. Elke toepassing kan toegang krijgen tot de API zonder dat hiervoor machtigingen moeten worden gevraagd.
    >
    > Maar zoals beschreven in de vorige sectie, kan uw web-API altijd controleren of de toepassing de juiste rol heeft, die door de Tenant beheerder wordt geautoriseerd. De API voert deze verificatie uit door te valideren dat het toegangs token een rol claim heeft en dat de waarde voor deze claim juist is. In het vorige JSON-voor beeld is de waarde `access_as_application` .
 
@@ -153,5 +153,4 @@ Deze verhoogde beveiliging toe te voegen:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-> [!div class="nextstepaction"]
-> [App-code configuratie](scenario-protected-web-api-app-configuration.md)
+Ga naar het volgende artikel in dit scenario, configuratie van de [app-code](scenario-protected-web-api-app-configuration.md).

@@ -13,14 +13,14 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 70ddc2191cc06a1bede87adc5940e0f7dea63384
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 853ab82ab40cc7ebee1c74feaf6aad87adf39ece
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91257534"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443106"
 ---
-# <a name="scenario-mobile-application-that-calls-web-apis"></a>Scenario: mobiele toepassing die web-Api's aanroept
+# <a name="scenario-mobile-application-that-calls-web-apis"></a>Scenario: Een mobiele app die web-API's aanroept
 
 Meer informatie over het bouwen van een mobiele app die web-Api's aanroept.
 
@@ -40,10 +40,10 @@ Een persoonlijke, naadloze gebruikers ervaring is essentieel voor mobiele apps. 
 
 Overwegingen voor mobiele apps:
 
-- **Gebruikers ervaring is sleutel**: Hiermee staat u gebruikers toe de waarde van uw app te zien voordat u zich aanmeldt. Vraag alleen de vereiste machtigingen aan.
-- **Ondersteuning voor alle gebruikers configuraties**: veel mobiele zakelijke gebruikers moeten voldoen aan beleid voor voorwaardelijke toegang en nalevings beleid voor apparaten. Zorg ervoor dat u deze belang rijke scenario's ondersteunt.
-- **Eenmalige aanmelding (SSO) implementeren**: met behulp van MSAL en het micro soft-identiteits platform kunt u eenmalige aanmelding inschakelen via de browser van het apparaat of Microsoft Authenticator (en intune-bedrijfsportal op Android).
-- **Modus voor gedeeld apparaat implementeren**: u kunt uw toepassing gebruiken in scenario's voor gedeelde apparaten, bijvoorbeeld zieken huizen, productie, detail handel en Financiën. [Meer informatie over de ondersteuning van de modus gedeelde apparaten](msal-shared-devices.md).
+- **Gebruikers ervaring is sleutel** : Hiermee staat u gebruikers toe de waarde van uw app te zien voordat u zich aanmeldt. Vraag alleen de vereiste machtigingen aan.
+- **Ondersteuning voor alle gebruikers configuraties** : veel mobiele zakelijke gebruikers moeten voldoen aan beleid voor voorwaardelijke toegang en nalevings beleid voor apparaten. Zorg ervoor dat u deze belang rijke scenario's ondersteunt.
+- **Eenmalige aanmelding (SSO) implementeren** : met behulp van MSAL en het micro soft-identiteits platform kunt u eenmalige aanmelding inschakelen via de browser van het apparaat of Microsoft Authenticator (en intune-bedrijfsportal op Android).
+- **Modus voor gedeeld apparaat implementeren** : u kunt uw toepassing gebruiken in scenario's voor gedeelde apparaten, bijvoorbeeld zieken huizen, productie, detail handel en Financiën. [Meer informatie over de ondersteuning van de modus gedeelde apparaten](msal-shared-devices.md).
 
 ## <a name="specifics"></a>Opsporingsgegevens
 
@@ -59,5 +59,4 @@ Houd rekening met de volgende overwegingen wanneer u een mobiele app bouwt op he
 
 ## <a name="next-steps"></a>Volgende stappen
 
-> [!div class="nextstepaction"]
-> [App-registratie](scenario-mobile-app-registration.md)
+Ga naar het volgende artikel in dit scenario, [app-registratie](scenario-mobile-app-registration.md).

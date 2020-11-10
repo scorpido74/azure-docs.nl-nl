@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: alkohli
-ms.openlocfilehash: b514cce8128dc0b17b5cebf8f2dc42e2c4dd8c8e
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: ad8a5a23361e721fd5d8d55d3555f51def94e768
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94336892"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442018"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box-preview"></a>Zelf studie: export volgorde voor Azure Data Box maken (preview)
 
@@ -183,11 +183,11 @@ Als u **XML-bestand gebruiken** selecteert, kunt u specifieke containers en blob
 
    ![Container details weer geven](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-view-container-details.png)
 
-6. Door te dubbel klikken op de container verschijnt de weer gave container eigenschappen. Nu wilt u het XML-bestand dat de lijst met blobs en/of Azure-bestanden bevat die u wilt exporteren, koppelen (of naar). Selecteer **Uploaden**.
+6. Door te dubbel klikken op de container verschijnt de weer gave container eigenschappen. U wilt nu uw XML-bestand met de lijst met blobs en/of Azure Files die u wilt exporteren, koppelen (of naar). Selecteer **Uploaden**.
 
    ![Blob uploaden naar container](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-blob-to-container.png)
 
-7. Het XML-bestand is toegevoegd aan de container. Alleen blobs en Azure-bestanden die u in deze XML hebt opgegeven, worden geëxporteerd.
+7. Het XML-bestand is toegevoegd aan de container. Alleen blobs en Azure Files die u in deze XML hebt opgegeven, worden geëxporteerd.
 
    ![XML-bestand toegevoegd aan container](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-added-to-container.png)
 
@@ -227,7 +227,7 @@ Als u een geannuleerde bestelling wilt verwijderen, gaat u naar **Overzicht** en
 
 ## <a name="sample-xml-file"></a>XML-voorbeeld bestand
 
-De volgende XML-code toont een voor beeld van BLOB-namen, blob-voor voegsels en Azure-bestanden in de XML-indeling die de export volgorde gebruikt wanneer u de optie **XML-bestand gebruiken** selecteert:
+De volgende XML-code toont een voor beeld van BLOB-namen, blob-voor voegsels en Azure Files in de XML-indeling die de export volgorde gebruikt wanneer u de optie **XML-bestand gebruiken** selecteert:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>

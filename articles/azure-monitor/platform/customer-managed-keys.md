@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 11/09/2020
-ms.openlocfilehash: 7f62aade114613261a22a818ab47e096eb16084b
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 62621a36955808ec3f2c796681fe660e6e8524bc
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427969"
+ms.locfileid: "94443378"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Door de klant beheerde sleutel van Azure Monitor 
 
@@ -27,9 +27,10 @@ Azure Monitor zorgt ervoor dat alle gegevens en opgeslagen query's op rest worde
 
 De door de klant beheerde sleutel mogelijkheid wordt geleverd op toegewezen Log Analytics clusters. Zo kunt u uw gegevens beveiligen met behulp van een [lockbox](#customer-lockbox-preview) -besturings element en hebt u de mogelijkheid om de toegang tot uw gegevens op elk gewenst moment in te trekken. De gegevens die in de afgelopen 14 dagen zijn opgenomen, worden ook opgeslagen in de Hot-cache (met SSD-back-ups) voor een efficiënte query-engine bewerking. Deze gegevens blijven versleuteld met micro soft-sleutels, ongeacht de configuratie van de door de klant beheerde sleutel, maar uw controle over SSD-gegevens voldoet aan de [sleutel intrekking](#key-revocation). Er wordt gewerkt aan SSD-gegevens die zijn versleuteld met Customer-Managed sleutel in de eerste helft van 2021.
 
-Om te controleren of we over de vereiste capaciteit beschikken voor het inrichten van een toegewezen cluster in uw regio, moet u ervoor zorgen dat uw abonnement vooraf is toegestaan. Gebruik uw micro soft-contact persoon of ondersteunings aanvraag om uw abonnement te krijgen dat is toegestaan voordat u de configuratie van de Customer-Managed-sleutel start.
-
 Het [prijs model van log Analytics clusters](./manage-cost-storage.md#log-analytics-dedicated-clusters) maakt gebruik van capaciteits reserveringen vanaf een niveau van 1000 GB per dag.
+
+> [!IMPORTANT]
+> Als gevolg van tijdelijke capaciteits beperkingen, moet u zich vooraf registreren bij voordat u een cluster maakt. Gebruik uw contact personen in micro soft of open de ondersteunings aanvraag om uw abonnementen-Id's te registreren.
 
 ## <a name="how-customer-managed-key-works-in-azure-monitor"></a>Hoe Customer-Managed sleutel werkt in Azure Monitor
 
@@ -63,11 +64,11 @@ De volgende regels zijn van toepassing:
 
 ## <a name="customer-managed-key-provisioning-procedure"></a>Procedure voor het inrichten van Customer-Managed sleutels
 
-1. Abonnement toestaan: de mogelijkheid wordt geleverd op toegewezen Log Analytics clusters. Om te controleren of we de vereiste capaciteit hebben in uw regio, moet u ervoor zorgen dat uw abonnement vooraf is toegestaan. Gebruik uw micro soft-contact persoon om uw abonnement te laten zijn toegestaan.
-2. Azure Key Vault maken en de sleutel opslaan
-3. Cluster maken
-4. Machtigingen verlenen aan uw Key Vault
-5. Log Analytics-werk ruimten koppelen
+1. Uw abonnement registreren zodat het cluster kan worden gemaakt
+1. Azure Key Vault maken en de sleutel opslaan
+1. Cluster maken
+1. Machtigingen verlenen aan uw Key Vault
+1. Log Analytics-werk ruimten koppelen
 
 Customer-Managed-sleutel configuratie wordt niet ondersteund in Azure Portal en het inrichten wordt uitgevoerd via [Power shell](https://docs.microsoft.com/powershell/module/az.operationalinsights/), [cli](https://docs.microsoft.com/cli/azure/monitor/log-analytics) of [rest](https://docs.microsoft.com/rest/api/loganalytics/) -aanvragen.
 
@@ -149,7 +150,6 @@ Bewerking is mislukt
 
 > [!IMPORTANT]
 > De functionaliteit van Customer-Managed-sleutel is regionaal. Uw Azure Key Vault-, cluster-en gekoppelde Log Analytics-werk ruimten moeten zich in dezelfde regio bevinden, maar ze kunnen zich in verschillende abonnementen bevinden.
-> Om te controleren of we over de vereiste capaciteit beschikken voor het inrichten van een toegewezen cluster in uw regio, moet u ervoor zorgen dat uw abonnement vooraf is toegestaan. Gebruik uw micro soft-contact persoon of ondersteunings aanvraag om uw abonnement te ontvangen voordat u begint met het Customer-Managed van de configuratie van de sleutel. 
 
 ### <a name="storing-encryption-key-kek"></a>Versleutelings sleutel opslaan (KEK)
 
@@ -200,6 +200,25 @@ az monitor log-analytics cluster update --name "cluster-name" --resource-group "
 
 ```powershell
 Update-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -KeyVaultUri "key-uri" -KeyName "key-name" -KeyVersion "key-version"
+```
+
+```rst
+PATCH https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/cluster-name"?api-version=2020-08-01
+Authorization: Bearer <token> 
+Content-type: application/json
+ 
+{
+  "properties": {
+    "keyVaultProperties": {
+      "keyVaultUri": "https://key-vault-name.vault.azure.net",
+      "kyName": "key-name",
+      "keyVersion": "current-version"
+  },
+  "sku": {
+    "name": "CapacityReservation",
+    "capacity": 1000
+  }
+}
 ```
 
 **Response**
@@ -288,6 +307,11 @@ Wanneer u uw eigen opslag (BYOS) meebrengt en deze aan uw werk ruimte koppelt, w
 
 Een opslag account voor een *query* aan uw werk ruimte koppelen: *opgeslagen Zoek opdrachten* query's worden opgeslagen in uw opslag account. 
 
+```azurecli
+$storageAccountId = '/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage name>'
+az monitor log-analytics workspace linked-storage create --type Query --resource-group "resource-group-name" --workspace-name "workspace-name" --storage-accounts $storageAccountId
+```
+
 ```powershell
 $storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "storage-account-name"
 New-AzOperationalInsightsLinkedStorageAccount -ResourceGroupName "resource-group-name" -WorkspaceName "workspace-name" -DataSourceType Query -StorageAccountIds $storageAccount.Id
@@ -314,6 +338,11 @@ Na de configuratie wordt een nieuwe *opgeslagen zoek opdracht* opgeslagen in uw 
 **BYOS configureren voor query's met betrekking tot logboek waarschuwingen**
 
 Een opslag account voor *waarschuwingen* aan uw werk ruimte koppelen: query's voor *logboek waarschuwingen* worden opgeslagen in uw opslag account. 
+
+```azurecli
+$storageAccountId = '/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage name>'
+az monitor log-analytics workspace linked-storage create --type ALerts --resource-group "resource-group-name" --workspace-name "workspace-name" --storage-accounts $storageAccountId
+```
 
 ```powershell
 $storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "storage-account-name"

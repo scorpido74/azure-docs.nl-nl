@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: ab0b74ffbcd8167613c6a8470e2f9102566edc60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 56bcc4e4936371b58d78f6de5ce4c2d25fbf614d
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91257228"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442800"
 ---
 # <a name="a-web-api-that-calls-web-apis-acquire-a-token-for-the-app"></a>Een web-API die web-Api's aanroept: een Token ophalen voor de app
 
@@ -29,7 +29,7 @@ Nadat u een client toepassings object hebt gemaakt, gebruikt u dit om een token 
 
 *Micro soft. Identity. Web* voegt extensie methoden toe die de mogelijkheid bieden om Microsoft Graph of een stroomafwaartse Web-API aan te roepen. Deze methoden worden gedetailleerd beschreven in [een web-API die web-api's aanroept: een API aanroepen](scenario-web-api-call-api-call-api.md). Met deze helper-methoden hoeft u geen token hand matig te verkrijgen.
 
-Als u echter hand matig een token moet verkrijgen, ziet u in de volgende code een voor beeld van het gebruik van *micro soft. Identity. Web* om dit te doen in een API-controller. Er wordt een stroomafwaartse API met de naam *ToDoList*aangeroepen.
+Als u echter hand matig een token moet verkrijgen, ziet u in de volgende code een voor beeld van het gebruik van *micro soft. Identity. Web* om dit te doen in een API-controller. Er wordt een stroomafwaartse API met de naam *ToDoList* aangeroepen.
 Als u een token wilt ophalen voor het aanroepen van de stroomafwaartse API, kunt u de service injecteren `ITokenAcquisition` door de afhankelijkheids injectie in de constructor van uw controller (of uw pagina-constructor als u een razendsnelle functie gebruikt) en u deze gebruiken in de controller acties, waarbij een token wordt opgehaald voor de gebruiker ( `GetAccessTokenForUserAsync` ) of voor de toepassing zelf ( `GetAccessTokenForAppAsync` ) in het geval van een daemon-scenario
 
 ```csharp
@@ -92,5 +92,4 @@ Een python-Web-API vereist het gebruik van middleware om het Bearer-token te val
 
 ## <a name="next-steps"></a>Volgende stappen
 
-> [!div class="nextstepaction"]
-> [Een web-API die web-Api's aanroept: een API aanroepen](scenario-web-api-call-api-call-api.md)
+Ga naar het volgende artikel in dit scenario en [roep een API](scenario-web-api-call-api-call-api.md)aan.

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/18/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: a6cbb574245c7b11d2437693d60fd952becedba3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4effdde131f93ccf430029edc4d87e0627010c8b
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91257551"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443188"
 ---
 # <a name="scenario-desktop-app-that-calls-web-apis"></a>Scenario: Bureaublad-app die web-API's aanroept
 
@@ -61,5 +61,4 @@ Desktop toepassingen hebben een aantal specifieke kenmerken. Ze zijn voornamelij
 
 ## <a name="next-steps"></a>Volgende stappen
 
-> [!div class="nextstepaction"]
-> [Bureau blad-app: app-registratie](scenario-desktop-app-registration.md)
+Ga naar het volgende artikel in dit scenario, [app-registratie](scenario-desktop-app-registration.md).

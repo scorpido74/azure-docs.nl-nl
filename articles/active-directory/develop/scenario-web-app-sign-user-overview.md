@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 7cadb4784cbf90d283f64e12edc155d4430fab06
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 38ed7fb2930463e6657422e851a73f2b3b011f35
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91257062"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443582"
 ---
 # <a name="scenario-web-app-that-signs-in-users"></a>Scenario: Web-app waarmee gebruikers worden aangemeld
 
@@ -28,29 +28,25 @@ Meer informatie over wat u nodig hebt om een web-app te bouwen die gebruikmaakt 
 
 Als u uw eerste Portable (ASP.NET Core) Web-App wilt maken die zich aanmeldt bij gebruikers, volgt u deze Snelstartgids:
 
-> [!div class="nextstepaction"]
-> [Quick Start: ASP.NET Core web-app die gebruikers ondertekent](quickstart-v2-aspnet-core-webapp.md)
+[Quick Start: ASP.NET Core web-app die gebruikers ondertekent](quickstart-v2-aspnet-core-webapp.md)
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 Als u wilt weten hoe u aanmelden kunt toevoegen aan een bestaande ASP.NET-webtoepassing, probeert u de volgende Snelstartgids:
 
-> [!div class="nextstepaction"]
-> [Quick Start: ASP.NET-Web-app die gebruikers aanmeldt](quickstart-v2-aspnet-webapp.md)
+[Quick Start: ASP.NET-Web-app die gebruikers aanmeldt](quickstart-v2-aspnet-webapp.md)
 
 # <a name="java"></a>[Java](#tab/java)
 
 Als u een Java-ontwikkelaar bent, kunt u de volgende Snelstartgids proberen:
 
-> [!div class="nextstepaction"]
-> [Quickstart: Aanmelden met Microsoft toevoegen aan een Java-webapp](quickstart-v2-java-webapp.md)
+[Quickstart: Aanmelden met Microsoft toevoegen aan een Java-webapp](quickstart-v2-java-webapp.md)
 
 # <a name="python"></a>[Python](#tab/python)
 
 Als u met python ontwikkelt, voert u de volgende Snelstartgids uit:
 
-> [!div class="nextstepaction"]
-> [Quickstart: Aanmelden met Microsoft toevoegen aan een Python-webapp](quickstart-v2-python-webapp.md)
+[Quickstart: Aanmelden met Microsoft toevoegen aan een Python-webapp](quickstart-v2-python-webapp.md)
 
 ---
 
@@ -81,22 +77,18 @@ Als tweede fase kunt u ervoor zorgen dat uw toepassing namens de aangemelde gebr
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-> [!div class="nextstepaction"]
-> [App-registratie](./scenario-web-app-sign-user-app-registration.md?tabs=aspnetcore)
+Ga naar het volgende artikel in dit scenario, [app-registratie](./scenario-web-app-sign-user-app-registration.md?tabs=aspnetcore).
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-> [!div class="nextstepaction"]
-> [App-registratie](./scenario-web-app-sign-user-app-registration.md?tabs=aspnet)
+Ga naar het volgende artikel in dit scenario, [app-registratie](./scenario-web-app-sign-user-app-registration.md?tabs=aspnet).
 
 # <a name="java"></a>[Java](#tab/java)
 
-> [!div class="nextstepaction"]
-> [App-registratie](./scenario-web-app-sign-user-app-registration.md?tabs=java)
+Ga naar het volgende artikel in dit scenario, [app-registratie](./scenario-web-app-sign-user-app-registration.md?tabs=java).
 
 # <a name="python"></a>[Python](#tab/python)
 
-> [!div class="nextstepaction"]
-> [App-registratie](./scenario-web-app-sign-user-app-registration.md?tabs=python)
+Ga naar het volgende artikel in dit scenario, [app-registratie](./scenario-web-app-sign-user-app-registration.md?tabs=python).
 
 ---

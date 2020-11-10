@@ -1,5 +1,5 @@
 ---
-title: Azure AD-kenmerk toewijzingen aanpassen | Microsoft Docs
+title: Zelf studie-Azure Active Directory kenmerk toewijzingen aanpassen
 description: Meer informatie over kenmerk toewijzingen voor SaaS-apps in Azure Active Directory zijn de manier waarop u ze kunt aanpassen om uw bedrijfs behoeften aan te pakken.
 services: active-directory
 author: kenwith
@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.topic: how-to
-ms.date: 10/26/2020
+ms.topic: tutorial
+ms.date: 11/10/2020
 ms.author: kenwith
-ms.openlocfilehash: 2f21e4f41814b47d8e630df72c255886ac2af53b
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
-ms.translationtype: MT
+ms.openlocfilehash: 42ec826ab95363c2599be541fe451473be5ca08d
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94364289"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94441950"
 ---
-# <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Kenmerk toewijzingen voor het inrichten van gebruikers aanpassen voor SaaS-toepassingen in Azure Active Directory
+# <a name="tutorial---customize-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Zelf studie-het inrichten van kenmerk toewijzingen van gebruikers aanpassen voor SaaS-toepassingen in Azure Active Directory
 
 Microsoft Azure AD biedt ondersteuning voor het inrichten van gebruikers voor SaaS-toepassingen van derden, zoals Sales Force, G suite en anderen. Als u het inrichten van gebruikers inschakelt voor een SaaS-toepassing van derden, bepaalt de Azure Portal de kenmerk waarden via kenmerk toewijzingen.
 

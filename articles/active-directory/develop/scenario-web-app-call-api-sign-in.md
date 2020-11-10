@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/14/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 5246100815fde569c55027a555464c44a240d4b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7f59f235f4baa270b36b01cc4532227ab23fbc8
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88119994"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442528"
 ---
 # <a name="a-web-app-that-calls-web-apis-remove-accounts-from-the-token-cache-on-global-sign-out"></a>Een web-app die web-Api's aanroept: verwijdert accounts uit de token cache op Global Sign-out
 
@@ -50,22 +50,18 @@ Het python-voor beeld verwijdert geen accounts uit de cache op globale afmelding
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-> [!div class="nextstepaction"]
-> [Een token verkrijgen voor de web-app](./scenario-web-app-call-api-acquire-token.md?tabs=aspnetcore)
+Ga naar het volgende artikel in dit scenario en [Verkrijg een token voor de web-app](./scenario-web-app-call-api-acquire-token.md?tabs=aspnetcore).
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-> [!div class="nextstepaction"]
-> [Een token verkrijgen voor de web-app](./scenario-web-app-call-api-acquire-token.md?tabs=aspnet)
+Ga naar het volgende artikel in dit scenario en [Verkrijg een token voor de web-app](./scenario-web-app-call-api-acquire-token.md?tabs=aspnet).
 
 # <a name="java"></a>[Java](#tab/java)
 
-> [!div class="nextstepaction"]
-> [Een token verkrijgen voor de web-app](./scenario-web-app-call-api-acquire-token.md?tabs=java)
+Ga naar het volgende artikel in dit scenario en [Verkrijg een token voor de web-app](./scenario-web-app-call-api-acquire-token.md?tabs=java).
 
 # <a name="python"></a>[Python](#tab/python)
 
-> [!div class="nextstepaction"]
-> [Een token verkrijgen voor de web-app](./scenario-web-app-call-api-acquire-token.md?tabs=python)
+Ga naar het volgende artikel in dit scenario en [Verkrijg een token voor de web-app](./scenario-web-app-call-api-acquire-token.md?tabs=python).
 
 ---

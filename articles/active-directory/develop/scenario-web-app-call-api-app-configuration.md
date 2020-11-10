@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: c8d68a17b3b991b88e02cf056dcb46da2debfa71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b24b95423adb271b8a4016430e7d2b381c386cd2
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91403191"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443752"
 ---
 # <a name="a-web-app-that-calls-web-apis-code-configuration"></a>Een web-app die web-Api's aanroept: code configuratie
 
@@ -99,7 +99,7 @@ In plaats van een client geheim kunt u een client certificaat opgeven. Het volge
 
 ## <a name="startupcs"></a>Startup.cs
 
-Uw web-app moet een token aanschaffen voor de downstream API. U geeft deze op door de `.EnableTokenAcquisitionToCallDownstreamApi()` regel na te voegen `.AddMicrosoftIdentityWebApi(Configuration)` . Deze regel beschrijft de `ITokenAcquisition` service die u in uw controller en pagina acties kunt gebruiken. Zoals u in de volgende twee opties ziet, kan dit echter meer worden gedaan. U moet ook een implementatie van de token cache kiezen, bijvoorbeeld `.AddInMemoryTokenCaches()` in *Startup.cs*:
+Uw web-app moet een token aanschaffen voor de downstream API. U geeft deze op door de `.EnableTokenAcquisitionToCallDownstreamApi()` regel na te voegen `.AddMicrosoftIdentityWebApi(Configuration)` . Deze regel beschrijft de `ITokenAcquisition` service die u in uw controller en pagina acties kunt gebruiken. Zoals u in de volgende twee opties ziet, kan dit echter meer worden gedaan. U moet ook een implementatie van de token cache kiezen, bijvoorbeeld `.AddInMemoryTokenCaches()` in *Startup.cs* :
 
    ```csharp
    using Microsoft.Identity.Web;
@@ -519,5 +519,4 @@ def _build_msal_app(cache=None):
 
 Wanneer de gebruiker zich aanmeldt, wordt er op dit punt een token opgeslagen in de token cache. Laten we eens kijken hoe het wordt gebruikt in andere onderdelen van de web-app.
 
-> [!div class="nextstepaction"]
-> [Een web-app die web-Api's aanroept: Verwijder accounts uit de cache op Global Sign-out](scenario-web-app-call-api-sign-in.md)
+[Accounts verwijderen uit de cache op globale afmelding](scenario-web-app-call-api-sign-in.md)

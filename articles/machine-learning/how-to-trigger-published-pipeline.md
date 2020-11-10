@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.date: 02/07/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4
-ms.openlocfilehash: 64f1c83a570e936759d674f40db201fb2f2cd0e5
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: dabcf30488e45fbe6c7c5b9e5aa0c8bd57f28fd8
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146259"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443497"
 ---
 # <a name="trigger-a-run-of-a-machine-learning-pipeline-from-a-logic-app"></a>Een uitvoering van een Machine Learning pijp lijn vanuit een logische app activeren
 
@@ -49,7 +49,7 @@ Als uw logische app is ingericht, gebruikt u deze stappen om een trigger voor uw
     > [!div class="mx-imgBorder"]
     > ![Lege sjabloon](media/how-to-trigger-published-pipeline/blank-template.png)
 
-1. Zoek in de ontwerp functie naar **BLOB** . Selecteer de trigger **Wanneer een BLOB wordt toegevoegd of gewijzigd (alleen eigenschappen)** en voeg deze trigger toe aan uw logische app.
+1. Zoek in de ontwerp functie naar **BLOB**. Selecteer de trigger **Wanneer een BLOB wordt toegevoegd of gewijzigd (alleen eigenschappen)** en voeg deze trigger toe aan uw logische app.
     > [!div class="mx-imgBorder"]
     > ![Trigger toevoegen](media/how-to-trigger-published-pipeline/add-trigger.png)
 
@@ -96,7 +96,7 @@ Als uw logische app is ingericht, gebruikt u deze stappen om een trigger voor uw
 1. Selecteer **Opslaan** en uw planning is nu gereed.
 
 > [!IMPORTANT]
-> Als u gebruikmaakt van op rollen gebaseerd toegangs beheer (RBAC) voor het beheren van de toegang tot uw pijp lijn, [stelt u de machtigingen in voor uw pijplijn scenario (training of Score)](how-to-assign-roles.md#q-what-are-the-permissions-needed-to-perform-some-common-scenarios-in-the-azure-machine-learning-service)
+> Als u gebruikmaakt van op rollen gebaseerd toegangs beheer (RBAC) voor het beheren van de toegang tot uw pijp lijn, [stelt u de machtigingen in voor uw pijplijn scenario (training of Score)](how-to-assign-roles.md#common-scenarios).
 
 ## <a name="next-steps"></a>Volgende stappen
 

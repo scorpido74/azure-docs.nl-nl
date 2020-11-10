@@ -10,12 +10,12 @@ author: Blackmist
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: 181cae525845e7cae5e8f6f178b01ee33999b8b5
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 9b55c4873c4d7ee430e7d9ce84d2782a37e522ae
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93312481"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442137"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Een werk ruimte maken voor Azure Machine Learning met Azure CLI
 
@@ -177,7 +177,7 @@ Gebruik de para meter om de gegevens te beperken die door micro soft worden verz
 > [!IMPORTANT]
 > Het selecteren van belang rijke bedrijfs impact kan alleen worden uitgevoerd bij het maken van een werk ruimte. U kunt deze instelling niet wijzigen nadat de werk ruimte is gemaakt.
 
-Zie [Enter prise Security for Azure machine learning](concept-enterprise-security.md#encryption-at-rest)voor meer informatie over door de klant beheerde sleutels en een werk ruimte met een grote bedrijfs impact.
+Zie [Enter prise Security for Azure machine learning](concept-data-encryption.md#encryption-at-rest)voor meer informatie over door de klant beheerde sleutels en een werk ruimte met een grote bedrijfs impact.
 
 ### <a name="use-existing-resources"></a>Bestaande resources gebruiken
 

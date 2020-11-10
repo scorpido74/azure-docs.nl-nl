@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: e0f1cc446b6b957b17153dd538922d2b9acd891f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 35c1ffb370a158acc91e2378119055337e28580d
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89442731"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443089"
 ---
 # <a name="register-mobile-apps-that-call-web-apis"></a>Mobiele apps registreren die web-Api's aanroepen
 
@@ -44,7 +44,7 @@ Zie [scenario's en ondersteunde verificatie stromen](authentication-flows-app-sc
 
 ### <a name="interactive-authentication"></a>Interactieve verificatie
 
-Wanneer u een mobiele app bouwt die gebruikmaakt van interactieve verificatie, is de meest kritieke registratie stap de omleidings-URI. U kunt interactieve verificatie instellen met behulp [van de platform configuratie op de Blade **authenticatie** ](https://aka.ms/MobileAppReg).
+Wanneer u een mobiele app bouwt die gebruikmaakt van interactieve verificatie, is de meest kritieke registratie stap de omleidings-URI. U kunt interactieve verificatie instellen met behulp [van de platform configuratie op de Blade **authenticatie**](https://aka.ms/MobileAppReg).
 
 Met deze ervaring wordt uw app in staat stellen om eenmalige aanmelding (SSO) te ontvangen via Microsoft Authenticator (en Intune-bedrijfsportal op Android). Het biedt ook ondersteuning voor het beheer beleid voor apparaten.
 
@@ -72,16 +72,16 @@ Wanneer u de stappen hebt voltooid, wordt de omleidings-URI voor u berekend, zoa
 
 Als u de omleidings-URI liever hand matig wilt configureren, kunt u dit doen via het manifest van de toepassing. Dit is de aanbevolen indeling voor het manifest:
 
-- **IOS**: `msauth.<BUNDLE_ID>://auth`
+- **IOS** : `msauth.<BUNDLE_ID>://auth`
   - Voer bijvoorbeeld in: `msauth.com.yourcompany.appName://auth`
-- **Android**: `msauth://<PACKAGE_NAME>/<SIGNATURE_HASH>`
+- **Android** : `msauth://<PACKAGE_NAME>/<SIGNATURE_HASH>`
   - U kunt de Android-handtekening-hash genereren met behulp van de release sleutel of de debug-toets via de opdracht van het hulp programma.
 
 ### <a name="username-password-authentication"></a>Gebruikers naam-wachtwoord verificatie
 
 Als uw app alleen een gebruikers naam-wachtwoord verificatie gebruikt, hoeft u geen omleidings-URI voor uw toepassing te registreren. Deze stroom voert een retour ronding uit naar het micro soft Identity platform versie 2,0-eind punt. Uw toepassing wordt niet terugaangeroepen op een specifieke URI.
 
-U moet uw toepassing echter identificeren als een open bare client toepassing. Hiertoe gaat u naar het gedeelte **verificatie** van uw toepassing. Selecteer in de Subsectie **Geavanceerde instellingen** in het **standaard-client type** voor de vraag **behandel toepassing als een open bare client**de optie **Ja**.
+U moet uw toepassing echter identificeren als een open bare client toepassing. Hiertoe gaat u naar het gedeelte **verificatie** van uw toepassing. Selecteer in de Subsectie **Geavanceerde instellingen** in het **standaard-client type** voor de vraag **behandel toepassing als een open bare client** de optie **Ja**.
 
 ## <a name="api-permissions"></a>API-machtigingen
 
@@ -91,5 +91,4 @@ Door machtigingen statisch te registreren, kunnen beheerders uw app eenvoudig go
 
 ## <a name="next-steps"></a>Volgende stappen
 
-> [!div class="nextstepaction"]
-> [Codeconfiguratie](scenario-mobile-app-configuration.md)
+Ga naar het volgende artikel in dit scenario, configuratie van de [app-code](scenario-mobile-app-configuration.md).

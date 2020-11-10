@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 21ba0193c3f1e19ffc74452aaceee34759c7e606
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a51442870fb72e2b3cd93d9f03736d2c679ed06
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88949011"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442817"
 ---
 # <a name="single-page-application-move-to-production"></a>Toepassing met één pagina: verplaatsen naar productie
 
@@ -36,27 +36,12 @@ Bekijk een voor [beeld](https://github.com/Azure-Samples/ms-identity-javascript-
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Grondige kennis van het Snelstartgids-voor beeld, waarin de code wordt uitgelegd voor het aanmelden van gebruikers en het verkrijgen van een toegangs token om de **Microsoft Graph-API** aan te roepen met behulp van **MSAL.js**:
+- Dieper in het Snelstartgids-voor beeld, waarin de code wordt uitgelegd voor het aanmelden van gebruikers en het verkrijgen van een toegangs token om de **Microsoft Graph-API** aan te roepen met behulp van **MSAL.js** : [Java script Spa-zelf studie](./tutorial-v2-javascript-spa.md).
 
-> [!div class="nextstepaction"]
-> [Java script-zelf studie](./tutorial-v2-javascript-spa.md)
+- Voor beeld dat laat zien hoe u tokens kunt ophalen voor uw eigen back-end web-API (ASP.NET Core) met behulp van **MSAL.js** : [beveiligd-wachtwoord verificatie met een ASP.net-back-end](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnetcore-webapi).
 
-Voor beeld dat laat zien hoe u tokens kunt ophalen voor uw eigen back-end web-API (ASP.NET Core) met behulp van **MSAL.js**:
+- Voor beeld dat laat zien hoe u toegangs tokens voor uw back-end web-API (Node.js) kunt valideren met behulp van **Pass Port-Azure-AD** : [Node.js Web API (Azure AD](https://github.com/Azure-Samples/active-directory-javascript-nodejs-webapi-v2)).
 
-> [!div class="nextstepaction"]
-> [Beveiligd-wachtwoord verificatie met een ASP.NET-back-end](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnetcore-webapi)
+- Voor beeld waarin wordt uitgelegd hoe u **MSAL.js** gebruikt voor het aanmelden van gebruikers in een app die is geregistreerd met **Azure Active Directory B2C** (Azure AD B2C): beveiligd- [wachtwoord verificatie met Azure AD B2C](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp).
 
-Voor beeld dat laat zien hoe u toegangs tokens voor uw back-end web-API (Node.js) kunt valideren met behulp van **Pass Port-Azure-AD**.
-
-> [!div class="nextstepaction"]
-> [Node.js Web-API (Azure AD)](https://github.com/Azure-Samples/active-directory-javascript-nodejs-webapi-v2)
-
-Voor beeld waarin wordt uitgelegd hoe u **MSAL.js** kunt gebruiken om gebruikers aan te melden bij een app die is geregistreerd met **Azure Active Directory B2C** (Azure AD B2C):
-
-> [!div class="nextstepaction"]
-> [Beveiligd-wachtwoord verificatie met Azure AD B2C](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)
-
-Voor beeld waarin wordt uitgelegd hoe u **Pass Port-Azure-AD** gebruikt om toegangs tokens te valideren voor apps die zijn geregistreerd met **Azure Active Directory B2C** (Azure AD B2C)
-
-> [!div class="nextstepaction"]
-> [Node.js Web-API (Azure AD B2C)](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi)
+- Voor beeld waarin wordt uitgelegd hoe u **Pass Port-Azure-AD** gebruikt om toegangs tokens te valideren voor apps die zijn geregistreerd met **Azure Active Directory B2C** (Azure AD B2C): [Node.js Web-API (Azure AD B2C)](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi).

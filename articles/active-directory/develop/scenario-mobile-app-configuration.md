@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/16/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 43cb891ad63a23353437082f7cb1b1e45f146e5b
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: a18a36b8583f8534b2a2e643e5c155dc7a2d65e2
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92204215"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444058"
 ---
 # <a name="configure-a-mobile-app-that-calls-web-apis"></a>Een mobiele app configureren die web-Api's aanroept
 
@@ -148,9 +148,9 @@ Zie [UWP-specifieke overwegingen met MSAL.net](msal-net-uwp-considerations.md)vo
 
 Op Android en iOS bieden makelaars de volgende opties:
 
-- **Eenmalige aanmelding (SSO)**: u kunt SSO gebruiken voor apparaten die zijn geregistreerd bij Azure Active Directory (Azure AD). Wanneer u SSO gebruikt, hoeven uw gebruikers zich niet aan te melden bij elke toepassing.
-- **Apparaat-id**: met deze instelling schakelt u beleids regels voor voorwaardelijke toegang in die betrekking hebben op Azure ad-apparaten. Het verificatie proces maakt gebruik van het certificaat van het apparaat dat is gemaakt toen het apparaat werd toegevoegd aan de werk plek.
-- **Verificatie**van de toepassings-id: wanneer een toepassing de Broker aanroept, wordt de omleidings-URL door gegeven. Vervolgens wordt de Broker gecontroleerd.
+- **Eenmalige aanmelding (SSO)** : u kunt SSO gebruiken voor apparaten die zijn geregistreerd bij Azure Active Directory (Azure AD). Wanneer u SSO gebruikt, hoeven uw gebruikers zich niet aan te melden bij elke toepassing.
+- **Apparaat-id** : met deze instelling schakelt u beleids regels voor voorwaardelijke toegang in die betrekking hebben op Azure ad-apparaten. Het verificatie proces maakt gebruik van het certificaat van het apparaat dat is gemaakt toen het apparaat werd toegevoegd aan de werk plek.
+- **Verificatie** van de toepassings-id: wanneer een toepassing de Broker aanroept, wordt de omleidings-URL door gegeven. Vervolgens wordt de Broker gecontroleerd.
 
 ### <a name="enable-the-broker-on-xamarin"></a>De Broker inschakelen op Xamarin
 
@@ -367,5 +367,4 @@ Zie voor meer informatie over het inschakelen van een Broker op Android [brokere
 
 ## <a name="next-steps"></a>Volgende stappen
 
-> [!div class="nextstepaction"]
-> [Een token verkrijgen](scenario-mobile-acquire-token.md)
+Ga naar het volgende artikel in dit scenario om [een token te verkrijgen](scenario-mobile-acquire-token.md).
