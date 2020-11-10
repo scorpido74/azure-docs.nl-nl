@@ -111,7 +111,7 @@
       items:
         - name: Metrische gegevens weergeven in Azure Monitor
           href: troubleshoot-metrics.md
-        - name: Diagnostische logboeken inschakelen
+        - name: Diagnostische logboeken inschakelen en er query's op uitvoeren
           href: troubleshoot-diagnostics.md
         - name: Waarschuwingen inschakelen
           href: troubleshoot-alerts.md
