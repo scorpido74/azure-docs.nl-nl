@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 09/15/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 866640d90c66dd82e8be61d221bc903907575454
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 10177dd949ac531027e13cf633b11c16674fd4ab
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91642806"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94386549"
 ---
 In de preview-versie heeft NFS de volgende beperkingen:
 
 - NFS 4,1 ondersteunt momenteel alleen de verplichte functies uit de [protocol specificatie](https://tools.ietf.org/html/rfc5661). Optionele functies zoals delegaties en retour aanroepen van allerlei soorten, het vergren delen van upgrades en downgrades en Kerberos-verificatie en-versleuteling worden niet ondersteund.
 - Als het meren deel van uw aanvragen meta gegevens georiënteerd is, is de latentie verergert in vergelijking met lees-en schrijf-en bijwerk bewerkingen.
 - U moet een nieuw opslag account maken om een NFS-share te kunnen maken.
-- Alleen de REST Api's van het beheer vlak worden ondersteund. REST-Api's voor het gegevens vlak zijn niet beschikbaar. Dit betekent dat hulpprogram ma's zoals Storage Explorer niet werken met NFS-shares en dat u niet kunt bladeren door de NFS-share gegevens in de Azure Portal.
+- Alleen de REST Api's van het beheer vlak worden ondersteund. REST-Api's voor het gegevens vlak zijn niet beschikbaar. Dit betekent dat hulpprogram ma's zoals Storage Explorer niet werken met NFS-shares en dat u niet kunt bladeren door NFS-share gegevens in de Azure Portal.
 - Alleen beschikbaar voor de Premium-laag.
 - Momenteel alleen beschikbaar met lokaal redundante opslag (LRS).
 
