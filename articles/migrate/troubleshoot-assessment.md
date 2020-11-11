@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: d5e8305fb80e6869bf604108aaa0e4d8e36cab8e
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 4da0f40c25d322953fea968396ef33924877c2e1
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92314743"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505220"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Problemen met de evaluatie/afhankelijkheid oplossen
 
@@ -23,10 +23,10 @@ Dit artikel helpt u bij het oplossen van problemen met de visualisatie van evalu
 
 Los problemen met de voorbereidings voorbereiding op als volgt:
 
-**Probleem** | **Herstellen**
+**Probleem** | **Holpen**
 --- | ---
 Niet-ondersteund opstart type | Azure biedt geen ondersteuning voor Vm's met een EFI-opstart type. U wordt aangeraden het opstart type te converteren naar BIOS voordat u een migratie uitvoert. <br/><br/>U kunt Azure Migrate server migratie gebruiken om de migratie van dergelijke Vm's te verwerken. Tijdens de migratie wordt het opstart type van de VM naar het BIOS geconverteerd.
-Voorwaardelijk ondersteund Windows-besturings systeem | Het besturings systeem heeft de eind datum van de ondersteuning door gegeven en heeft een aangepaste ondersteunings overeenkomst (CSA) nodig voor [ondersteuning in azure](/troubleshoot/azure/virtual-machines/server-software-support). Overweeg om te upgraden voordat u naar Azure migreert.
+Voorwaardelijk ondersteund Windows-besturings systeem | Het besturings systeem heeft de eind datum van de ondersteuning door gegeven en heeft een aangepaste ondersteunings overeenkomst (CSA) nodig voor [ondersteuning in azure](/troubleshoot/azure/virtual-machines/server-software-support). Overweeg om te upgraden voordat u naar Azure migreert. [Lees]() de informatie over het [voorbereiden van computers met Windows Server 2003](prepare-windows-server-2003-migration.md) voor migratie naar Azure.
 Niet-ondersteund Windows-besturings systeem | Azure ondersteunt alleen [geselecteerde versies van Windows-besturings systemen](/troubleshoot/azure/virtual-machines/server-software-support). U kunt de machine upgraden voordat u naar Azure migreert.
 Voorwaardelijk goedgekeurd Linux-besturings systeem | Azure bevestigt alleen [geselecteerde Linux-besturingssysteem versies](../virtual-machines/linux/endorsed-distros.md). U kunt de machine upgraden voordat u naar Azure migreert. Raadpleeg ook [hier](#linux-vms-are-conditionally-ready-in-an-azure-vm-assessment) voor meer informatie.
 Niet-goedgekeurd Linux-besturings systeem | De machine kan worden gestart in azure, maar Azure biedt geen ondersteuning voor het besturings systeem. U kunt een upgrade uitvoeren naar een [officiële versie van Linux](../virtual-machines/linux/endorsed-distros.md) voordat u naar Azure migreert.
@@ -48,7 +48,7 @@ Kan de geschiktheid van de virtuele machine niet bepalen vanwege een interne fou
 Kan de geschiktheid van een of meer schijven niet bepalen vanwege een interne fout | Probeer een nieuwe evaluatie voor de groep te maken.
 Kan de geschiktheid voor een of meer netwerk adapters niet bepalen vanwege een interne fout | Probeer een nieuwe evaluatie voor de groep te maken.
 Er is geen VM-grootte gevonden voor het gereserveerde exemplaar van de aanbiedings valuta | De computer is gemarkeerd als niet geschikt omdat de VM-grootte niet is gevonden voor de geselecteerde combi natie van RI, offer en Currency. Bewerk de eigenschappen van de beoordeling om de geldige combi Naties te kiezen en de beoordeling opnieuw te berekenen. 
-Voorwaardelijk gereed Internet Protocol | Alleen van toepassing op AVS-evaluaties (Azure VMware-oplossing). AVS biedt geen ondersteuning voor IPv6-Internet adressen.Neem contact op met het AVS-team voor herstel richtlijnen als uw computer wordt gedetecteerd met IPv6.
+Voorwaardelijk gereed Internet Protocol | Alleen van toepassing op AVS-evaluaties (Azure VMware-oplossing). AVS biedt geen ondersteuning voor IPv6-Internet adressen. Neem contact op met het AVS-team voor herstel richtlijnen als uw computer wordt gedetecteerd met IPv6.
 
 ## <a name="suggested-migration-tool-in-import-based-avs-assessment-marked-as-unknown"></a>Aanbevolen migratie hulpmiddel in op import gebaseerde AVS-evaluatie is gemarkeerd als onbekend
 
@@ -75,7 +75,7 @@ Voor fysieke servers moet de informatie over de secundaire versie van het bestur
 Azure Migrate server-evaluatie kan Azure VM Sku's aanbevelen met meer kernen en geheugen dan de huidige on-premises toewijzing op basis van het type evaluatie:
 
 - De aanbeveling van de VM-SKU is afhankelijk van de evaluatie-eigenschappen.
-- Dit wordt beïnvloed door het type beoordeling dat u uitvoert in Server beoordeling: op *basis van prestaties*of *als on-premises*.
+- Dit wordt beïnvloed door het type beoordeling dat u uitvoert in Server beoordeling: op *basis van prestaties* of *als on-premises*.
 - Voor evaluaties op basis van prestaties worden de gebruiks gegevens van de on-premises Vm's (CPU, geheugen, schijf en netwerk gebruik) beschouwd om de juiste doel-VM-SKU voor uw on-premises Vm's te bepalen. Er wordt ook een comfortfactor toegevoegd bij het bepalen van effectief gebruik.
 - Voor on-premises grootte worden de prestatie gegevens niet in overweging genomen en wordt de doel-SKU aanbevolen op basis van on-premises toewijzing.
 
@@ -83,7 +83,7 @@ Om te laten zien hoe dit kan invloed hebben op aanbevelingen, gaan we een voor b
 
 We hebben een on-premises VM met vier kernen en acht GB geheugen, met een CPU-gebruik van 50% en een geheugen gebruik van 50% en een opgegeven comfort factor van 1,3.
 
--  Als de evaluatie **on-premises**is, wordt een Azure VM-SKU met vier kernen en 8 GB geheugen aanbevolen.
+-  Als de evaluatie **on-premises** is, wordt een Azure VM-SKU met vier kernen en 8 GB geheugen aanbevolen.
 - Als de evaluatie op basis van prestaties is gebaseerd op een effectief CPU-en geheugen gebruik (50% van 4 kernen * 1,3 = 2,6 kernen en 50% van 8 GB geheugen * 1,3 = 5,3-GB geheugen), wordt de goedkoopste VM-SKU van vier kernen (dichtstbijgelegen ondersteunde kernen) en acht GB aan geheugen (dichtstbijgelegen ondersteunde geheugen grootte) aanbevolen.
 - Meer [informatie](concepts-assessment-calculation.md#types-of-assessments) over de beoordelings grootte.
 
@@ -91,8 +91,8 @@ We hebben een on-premises VM met vier kernen en acht GB geheugen, met een CPU-ge
 
 Azure Migrate server beoordeling kan een grotere schijf aanbevelen op basis van het type evaluatie.
 - De schijf grootte in Server analyse is afhankelijk van twee evaluatie-eigenschappen: grootte criteria en opslag type.
-- Als de grootte criteria **op basis van prestaties**zijn en het opslag type is ingesteld op **automatisch**, worden de IOPS-en doorvoer waarden van de schijf beschouwd bij het identificeren van het doel schijf type (Standard-HDD, Standard-SSD of Premium). Er wordt vervolgens een schijf-SKU van het schijf type aanbevolen en de aanbeveling houdt rekening met de grootte vereisten van de on-premises schijf.
-- Als de grootte criteria **op basis van prestaties**zijn en het opslag type **Premium**is, wordt een Premium-schijf-SKU in azure aanbevolen op basis van de IOPS-, doorvoer-en grootte vereisten van de on-premises schijf. Dezelfde logica wordt gebruikt voor het uitvoeren van schijf grootte wanneer de grootte criteria **op locatie** zijn en het opslag type is **Standard-HDD**, **Standard-SSD**of **Premium**.
+- Als de grootte criteria **op basis van prestaties** zijn en het opslag type is ingesteld op **automatisch** , worden de IOPS-en doorvoer waarden van de schijf beschouwd bij het identificeren van het doel schijf type (Standard-HDD, Standard-SSD of Premium). Er wordt vervolgens een schijf-SKU van het schijf type aanbevolen en de aanbeveling houdt rekening met de grootte vereisten van de on-premises schijf.
+- Als de grootte criteria **op basis van prestaties** zijn en het opslag type **Premium** is, wordt een Premium-schijf-SKU in azure aanbevolen op basis van de IOPS-, doorvoer-en grootte vereisten van de on-premises schijf. Dezelfde logica wordt gebruikt voor het uitvoeren van schijf grootte wanneer de grootte criteria **op locatie** zijn en het opslag type is **Standard-HDD** , **Standard-SSD** of **Premium**.
 
 Als u bijvoorbeeld een on-premises schijf met 32 GB geheugen hebt, maar de geaggregeerde Lees-en schrijf-IOPS voor de schijf 800 IOPS is, raadt de server bepaling een Premium-schijf aan (vanwege de hogere IOPS-vereisten). vervolgens wordt een schijf-SKU aanbevolen die de vereiste IOPS en grootte kan ondersteunen. In dit voorbeeld komen we dan uit bij P15 (256 GB, 1100 IOPS). Hoewel de grootte die de on-premises schijf vereist, 32 GB was, raadt server evaluatie een grotere schijf aan vanwege de hoge IOPS-vereiste van de on-premises schijf.
 
@@ -165,8 +165,8 @@ Voor virtuele Linux-machines moet u ervoor zorgen dat de installatie opdrachten 
 
 ## <a name="supported-operating-systems"></a>Ondersteunde besturingssystemen
 
-- **MMS-agent**: Bekijk de ondersteunde [Windows](../azure-monitor/platform/agents-overview.md#supported-operating-systems)-en [Linux](../azure-monitor/platform/agents-overview.md#supported-operating-systems) -besturings systemen.
-- **Afhankelijkheids agent**: de ondersteunde [Windows-en Linux](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) -besturings systemen.
+- **MMS-agent** : Bekijk de ondersteunde [Windows](../azure-monitor/platform/agents-overview.md#supported-operating-systems)-en [Linux](../azure-monitor/platform/agents-overview.md#supported-operating-systems) -besturings systemen.
+- **Afhankelijkheids agent** : de ondersteunde [Windows-en Linux](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) -besturings systemen.
 
 ## <a name="visualize-dependencies-for--hour"></a>Afhankelijkheden voor > uur visualiseren
 
@@ -209,7 +209,7 @@ Verzamel logboeken voor netwerk verkeer als volgt:
    - Klik in Chrome met de rechter muisknop en selecteer **Opslaan als har met inhoud**. Met deze actie worden de logboeken gecomprimeerd en geëxporteerd als een. har-bestand.
    - Selecteer in micro soft Edge of Internet Explorer de optie **vastgelegd verkeer exporteren** . Met deze actie wordt het logboek gecomprimeerd en geëxporteerd.
 6. Selecteer het tabblad **console** om te controleren of er waarschuwingen of fouten zijn. Het console logboek opslaan:
-   - Klik in Chrome met de rechter muisknop op een wille keurige plaats in het console logboek. Selecteer **Opslaan als**, om het logboek te exporteren en uit te voeren.
+   - Klik in Chrome met de rechter muisknop op een wille keurige plaats in het console logboek. Selecteer **Opslaan als** , om het logboek te exporteren en uit te voeren.
    - Klik in micro soft Edge of Internet Explorer met de rechter muisknop op de fouten en selecteer **Alles kopiëren**.
 7. Ontwikkelhulpprogramma's sluiten.
 

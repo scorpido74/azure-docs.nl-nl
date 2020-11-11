@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: efba69372f46c9b8a7f2857e37b34ec8c88654a0
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 1a9d5fe69cd9d853d0bf8ec971f31518bbf47c9a
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546276"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94504693"
 ---
 # <a name="azure-cache-for-redis-with-azure-private-link-public-preview"></a>Azure-cache voor redis met persoonlijke Azure-koppeling (open bare preview)
 In dit artikel leert u hoe u een virtueel netwerk en een Azure-cache maakt voor een redis-exemplaar met een persoonlijk eind punt met behulp van de Azure Portal. U leert ook hoe u een persoonlijk eind punt kunt toevoegen aan een bestaand Azure-cache geheugen voor redis-instantie.
@@ -33,11 +33,11 @@ In deze sectie maakt u een nieuw Azure-cache geheugen voor een redis-exemplaar m
 
 ### <a name="create-a-virtual-network"></a>Een virtueel netwerk maken 
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com) en selecteer **Create a resource** .
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com) en selecteer **Create a resource**.
 
     :::image type="content" source="media/cache-private-link/1-create-resource.png" alt-text="Selecteer een resource maken.":::
 
-2. Selecteer op de pagina **Nieuw** de optie **netwerken** en selecteer vervolgens **virtueel netwerk** .
+2. Selecteer op de pagina **Nieuw** de optie **netwerken** en selecteer vervolgens **virtueel netwerk**.
 
 3. Selecteer **toevoegen** om een virtueel netwerk te maken.
 
@@ -58,7 +58,7 @@ In deze sectie maakt u een nieuw Azure-cache geheugen voor een redis-exemplaar m
 
 8. Geef in het deel venster **subnet bewerken** de **naam** van een subnet en het **adres bereik** van het subnet op. Het adres bereik van het subnet moet de CIDR-notatie hebben (bijvoorbeeld 192.168.1.0/24). Het moet deel uitmaken van de adres ruimte van het virtuele netwerk.
 
-9. Selecteer **Opslaan** .
+9. Selecteer **Opslaan**.
 
 10. Selecteer het tabblad **controleren + maken** of klik op de knop **beoordeling + maken** .
 
@@ -67,17 +67,17 @@ In deze sectie maakt u een nieuw Azure-cache geheugen voor een redis-exemplaar m
 ### <a name="create-an-azure-cache-for-redis-instance-with-a-private-endpoint"></a>Een Azure-cache maken voor een redis-exemplaar met een persoonlijk eind punt
 Volg deze stappen om een cache-exemplaar te maken.
 
-1. Ga terug naar de Azure Portal start pagina of open het menu Sidebar en selecteer vervolgens **een resource maken** . 
+1. Ga terug naar de Azure Portal start pagina of open het menu Sidebar en selecteer vervolgens **een resource maken**. 
    
-1. Selecteer op de pagina **Nieuw** de optie **Databases** en selecteer vervolgens **Azure Cache voor Redis** .
+1. Selecteer op de pagina **Nieuw** de optie **Databases** en selecteer vervolgens **Azure Cache voor Redis**.
 
-    :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="Selecteer een resource maken.":::
+    :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="Selecteer Azure Cache voor Redis.":::
    
 1. Configureer op de pagina **Nieuwe Redis-cache** de instellingen voor de nieuwe cache.
    
    | Instelling      | Voorgestelde waarde  | Beschrijving |
    | ------------ |  ------- | -------------------------------------------------- |
-   | **DNS-naam** | Geef een wereldwijd unieke naam op. | De cachenaam is een tekenreeks van 1 tot 63 tekens die alleen cijfers, letters en afbreekstreepjes mag bevatten. De naam moet beginnen en eindigen met een cijfer of letter en mag geen opeenvolgende afbreekstreepjes bevatten. De *hostnaam* van uw cache-exemplaar wordt *\<DNS name>.redis.cache.windows.net* . | 
+   | **DNS-naam** | Geef een wereldwijd unieke naam op. | De cachenaam is een tekenreeks van 1 tot 63 tekens die alleen cijfers, letters en afbreekstreepjes mag bevatten. De naam moet beginnen en eindigen met een cijfer of letter en mag geen opeenvolgende afbreekstreepjes bevatten. De *hostnaam* van uw cache-exemplaar wordt *\<DNS name>.redis.cache.windows.net*. | 
    | **Abonnement** | Open de vervolgkeuzelijst en selecteer uw abonnement. | Het abonnement waarmee dit nieuwe Azure Cache voor Redis-exemplaar wordt gemaakt. | 
    | **Resourcegroep** | Open de vervolgkeuzelijst en selecteer een resourcegroep of kies **Nieuwe maken** en geef een naam voor de nieuwe resourcegroep op. | Naam voor de resourcegroep waarin de cache en andere resources moeten worden gemaakt. Door al uw app-resources in één resourcegroep te plaatsen, kunt u ze eenvoudig beheren of verwijderen. | 
    | **Locatie** | Open de vervolgkeuzelijst en selecteer een locatie. | Selecteer een [regio](https://azure.microsoft.com/regions/) in de buurt van andere services die gaan gebruikmaken van de cache. |
@@ -89,9 +89,9 @@ Volg deze stappen om een cache-exemplaar te maken.
 
 1. Klik op de knop **toevoegen** om uw persoonlijke eind punt te maken.
 
-    :::image type="content" source="media/cache-private-link/3-add-private-endpoint.png" alt-text="Selecteer een resource maken.":::
+    :::image type="content" source="media/cache-private-link/3-add-private-endpoint.png" alt-text="Voeg in netwerken een persoonlijk eind punt toe.":::
 
-1. Configureer op de pagina **een persoonlijk eind punt maken** de instellingen voor uw persoonlijke eind punt met het virtuele netwerk en het subnet dat u hebt gemaakt in de laatste sectie en selecteer **OK** . 
+1. Configureer op de pagina **een persoonlijk eind punt maken** de instellingen voor uw persoonlijke eind punt met het virtuele netwerk en het subnet dat u hebt gemaakt in de laatste sectie en selecteer **OK**. 
 
 1. Selecteer het tabblad **Volgende: Geavanceerd** of klik op de knop **Volgende: Geavanceerd** onderaan de pagina.
 
@@ -99,12 +99,11 @@ Volg deze stappen om een cache-exemplaar te maken.
 
 1. Configureer in het tabblad **Geavanceerd** voor premium cache-exemplaar de instellingen voor een niet-TLS-poort, clustering en gegevenspersistentie.
 
-
 1. Selecteer het tabblad **Volgende: Tags** of klik op de knop **Volgende: Tags** onderaan de pagina.
 
 1. Voer desgewenst in het tabblad **Tags** de naam en waarde in om de resource te categoriseren. 
 
-1. Selecteer **Controleren + maken** . Het tabblad Beoordelen + maken wordt weergegeven, waar uw configuratie wordt gevalideerd in Azure.
+1. Selecteer **Controleren + maken**. Het tabblad Beoordelen + maken wordt weergegeven, waar uw configuratie wordt gevalideerd in Azure.
 
 1. Selecteer **Maken** nadat het groene bericht Validatie geslaagd verschijnt.
 
@@ -135,9 +134,9 @@ In deze sectie voegt u een persoonlijk eind punt toe aan een bestaand Azure-cach
 ### <a name="create-a-virtual-network"></a>Een virtueel netwerk maken 
 Voer de volgende stappen uit om een virtueel netwerk te maken.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com) en selecteer **Create a resource** .
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com) en selecteer **Create a resource**.
 
-2. Selecteer op de pagina **Nieuw** de optie **netwerken** en selecteer vervolgens **virtueel netwerk** .
+2. Selecteer op de pagina **Nieuw** de optie **netwerken** en selecteer vervolgens **virtueel netwerk**.
 
 3. Selecteer **toevoegen** om een virtueel netwerk te maken.
 
@@ -158,7 +157,7 @@ Voer de volgende stappen uit om een virtueel netwerk te maken.
 
 8. Geef in het deel venster **subnet bewerken** de **naam** van een subnet en het **adres bereik** van het subnet op. Het adres bereik van het subnet moet de CIDR-notatie hebben (bijvoorbeeld 192.168.1.0/24). Het moet deel uitmaken van de adres ruimte van het virtuele netwerk.
 
-9. Selecteer **Opslaan** .
+9. Selecteer **Opslaan**.
 
 10. Selecteer het tabblad **controleren + maken** of klik op de knop **beoordeling + maken** .
 
@@ -170,15 +169,15 @@ Volg deze stappen om een persoonlijk eind punt te maken.
 
 1. Zoek in het Azure Portal naar **Azure cache voor redis** en druk op ENTER of selecteer dit in de zoek suggesties.
 
-    :::image type="content" source="media/cache-private-link/4-search-for-cache.png" alt-text="Selecteer een resource maken.":::
+    :::image type="content" source="media/cache-private-link/4-search-for-cache.png" alt-text="Zoek naar Azure cache voor redis.":::
 
 2. Selecteer het cache-exemplaar waaraan u een persoonlijk eind punt wilt toevoegen.
 
-3. Selecteer aan de linkerkant van het scherm het **persoonlijke eind punt (preview-versie)** .
+3. Selecteer aan de linkerkant van het scherm het **persoonlijke eind punt (preview-versie)**.
 
 4. Klik op de knop **persoonlijk eind punt** om uw persoonlijke eind punt te maken.
 
-    :::image type="content" source="media/cache-private-link/5-add-private-endpoint.png" alt-text="Selecteer een resource maken.":::
+    :::image type="content" source="media/cache-private-link/5-add-private-endpoint.png" alt-text="Persoonlijk eind punt toevoegen.":::
 
 5. Configureer op de **pagina een persoonlijk eind punt maken** de instellingen voor uw persoonlijke eind punt.
 
@@ -201,11 +200,41 @@ Volg deze stappen om een persoonlijk eind punt te maken.
 
 11. Voer desgewenst in het tabblad **Tags** de naam en waarde in om de resource te categoriseren.
 
-12. Selecteer **Controleren + maken** . U gaat naar het tabblad **controleren + maken** , waar Azure uw configuratie valideert.
+12. Selecteer **Controleren + maken**. U gaat naar het tabblad **controleren + maken** , waar Azure uw configuratie valideert.
 
-13. Wanneer het bericht groene **validatie is voltooid** wordt weer gegeven, selecteert u **maken** .
+13. Wanneer het bericht groene **validatie is voltooid** wordt weer gegeven, selecteert u **maken**.
 
+## <a name="faq"></a>Veelgestelde vragen
+
+### <a name="why-cant-i-connect-to-a-private-endpoint"></a>Waarom kan ik geen verbinding maken met een privé-eind punt?
+Als uw cache al een VNet-geïnjecteerde cache is, kunnen privé-eind punten niet worden gebruikt met uw cache-exemplaar. Als uw cache-exemplaar gebruikmaakt van een niet-ondersteunde functie (zie hieronder), kunt u geen verbinding maken met uw exemplaar van een persoonlijk eind punt. Daarnaast moeten cache-exemplaren na juli 27 worden gemaakt om persoonlijke eind punten te kunnen gebruiken.
+
+### <a name="what-features-are-not-supported-with-private-endpoints"></a>Welke functies worden niet ondersteund met persoonlijke eind punten?
+Geo-replicatie, firewall regels, ondersteuning voor de portal console, meerdere eind punten per geclusterde cache, persistentie voor firewall regels en zone redundantie. 
+
+### <a name="how-can-i-change-my-private-endpoint-to-be-disabled-from-public-network-access"></a>Hoe kan ik mijn persoonlijke eind punt wijzigen zodat deze wordt uitgeschakeld via open bare netwerk toegang?
+Er is een `publicNetworkAccess` vlag die `Enabled` standaard is. Deze vlag is bedoeld om u in staat te stellen zowel open bare als privé-eind punten toegang te geven tot de cache als deze is ingesteld op `Enabled` . Als deze eigenschap is ingesteld op `Disabled` , is toegang tot privé-eind punten alleen toegestaan. U kunt de waarde instellen op `Disabled` met de volgende patch-aanvraag.
+```http
+PATCH  https://management.azure.com/subscriptions/{subscription}/resourceGroups/{resourcegroup}/providers/Microsoft.Cache/Redis/{cache}?api-version=2020-06-01
+{    "properties": {
+       "publicNetworkAccess":"Disabled"
+   }
+}
+```
+
+### <a name="are-network-security-groups-nsg-enabled-for-private-endpoints"></a>Zijn netwerk beveiligings groepen (NSG) ingeschakeld voor privé-eind punten?
+Nee, ze zijn uitgeschakeld voor privé-eind punten. Als er echter andere bronnen op het subnet aanwezig zijn, wordt NSG Enforcement toegepast op deze resources.
+
+### <a name="how-can-i-connect-to-a-clustered-cache"></a>Hoe kan ik verbinding maken met een geclusterde cache?
+`publicNetworkAccess` moet worden ingesteld op `Disabled` en er mag slechts één particuliere eindpunt verbinding zijn.
+
+### <a name="since-my-private-endpoint-instance-is-not-in-my-vnet-how-is-it-associated-with-my-vnet"></a>Hoe wordt het exemplaar van mijn privé-eind punt niet in mijn VNet?
+Het is alleen gekoppeld aan uw VNet. Omdat deze zich niet in uw VNet bevindt, hoeven NSG-regels niet te worden gewijzigd voor afhankelijke eind punten.
+
+### <a name="how-can-i-migrate-my-vnet-injected-cache-to-a-private-endpoint-cache"></a>Hoe kan ik mijn door VNet geïnjecteerde cache naar een persoonlijke eindpunt cache migreren?
+U moet uw door VNet geïnjecteerde cache verwijderen en een nieuw cache-exemplaar maken met een persoonlijk eind punt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de [documentatie van Azure private link](../private-link/private-link-overview.md)voor meer informatie over persoonlijke Azure-koppelingen.
+* Zie de [documentatie van Azure private link](../private-link/private-link-overview.md)voor meer informatie over persoonlijke Azure-koppelingen.
+* Zie [Azure cache for redis Network-isolatie opties](cache-network-isolation.md)voor meer informatie over het vergelijken van verschillende netwerk isolatie opties voor uw cache-exemplaar.

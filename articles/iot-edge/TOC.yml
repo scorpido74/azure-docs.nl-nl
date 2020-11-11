@@ -1,5 +1,7 @@
 - name: Documentatie voor Azure IoT Edge
   href: index.yml
+- name: Azure IoT Edge-versies
+  href: version-history.md
 - name: Overzicht
   items:
     - name: Over Azure IoT Edge
@@ -13,13 +15,13 @@
       href: quickstart.md
 - name: Zelfstudies
   items:
-    - name: 1. De ontwikkelomgeving instellen
+    - name: De ontwikkelomgeving instellen
       items:
         - name: Ontwikkelen voor Linux-apparaten
           href: tutorial-develop-for-linux.md
         - name: Ontwikkelen voor Windows-apparaten
           href: tutorial-develop-for-windows.md
-    - name: 2. Aangepaste codemodules ontwikkelen
+    - name: Aangepaste codemodules ontwikkelen
       items:
         - name: C
           items:
@@ -39,7 +41,7 @@
           href: tutorial-node-module.md
         - name: Python
           href: tutorial-python-module.md
-    - name: 3. Azure-services implementeren als modules
+    - name: Azure-services implementeren als modules
       items:
         - name: Gegevens filteren met Azure Functions
           href: tutorial-deploy-function.md
@@ -51,7 +53,11 @@
           href: tutorial-deploy-custom-vision.md
         - name: Gegevens lokaal opslaan met SQL
           href: tutorial-store-data-sql-server.md
-    - name: 4. Integraal voorbeeld van machine learning aan de rand
+    - name: IoT Edge gebruiken als gateway
+      items:
+        - name: Hiërarchieën maken van IoT Edge-apparaten
+          href: tutorial-nested-iot-edge.md
+    - name: Integraal voorbeeld van machine learning aan de rand
       items:
         - name: Inleiding
           href: tutorial-machine-learning-edge-01-intro.md
@@ -187,16 +193,26 @@
           href: how-to-access-built-in-metrics.md
     - name: IoT Edge-apparaten als gateways gebruiken
       items:
-        - name: Een transparante gateway configureren
-          href: how-to-create-transparent-gateway.md
-        - name: Een downstream-apparaat verifiëren
-          href: how-to-authenticate-downstream-device.md
-        - name: Verbinding maken met een downstream-apparaat
-          href: how-to-connect-downstream-device.md
-        - name: Modbus-protocolgateway
-          href: deploy-modbus-gateway.md
+        - name: Gateways voor IoT-apparaten
+          items:
+            - name: Een transparante gateway configureren
+              href: how-to-create-transparent-gateway.md
+            - name: Een downstream-apparaat verifiëren
+              href: how-to-authenticate-downstream-device.md
+            - name: Verbinding maken met een downstream-apparaat
+              href: how-to-connect-downstream-device.md
+            - name: Modbus-protocolgateway
+              href: deploy-modbus-gateway.md
+        - name: Gateways voor IoT Edge-apparaten
+          items:
+            - name: Gateways voor IoT Edge-apparaten configureren
+              href: how-to-connect-downstream-iot-edge-device.md
+            - name: De API-proxymodule configureren
+              href: how-to-configure-api-proxy-module.md
     - name: Proxyondersteuning configureren
       href: how-to-configure-proxy-support.md
+    - name: Publiceren en abonneren met IoT Edge
+      href: how-to-publish-subscribe.md
     - name: Azure Blob Storage op IoT Edge
       items:
         - name: Blobopslag in Edge begrjipen

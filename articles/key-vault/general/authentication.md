@@ -7,12 +7,12 @@ ms.date: 08/27/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 3fdc9a9f99b239f68022067a5aedbc7e6e0d12a4
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 7423114d2da23207dfcc1a329675b8c902b1f320
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287502"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445537"
 ---
 # <a name="authenticate-to-azure-key-vault"></a>Verifiëren bij Azure Key Vault
 
@@ -62,7 +62,7 @@ Key Vault werkt met twee afzonderlijke machtigingsniveaus:
 
     Key Vault biedt momenteel alleen ondersteuning voor de rol [Inzender](../../role-based-access-control/built-in-roles.md#key-vault-contributor), waarmee beheerbewerkingen in Key Vault-resources zijn toegestaan. Een aantal andere rollen is momenteel beschikbaar als preview-versie. U kunt ook aangepaste rollen maken, zoals beschreven in [Aangepaste Azure-rollen](../../role-based-access-control/custom-roles.md).
 
-    Raadpleeg [Wat is Azure RBAC (op rollen gebaseerd toegangsbeheer)?](../../role-based-access-control/overview.md) voor algemene informatie over rollen.
+    Raadpleeg [Wat is op rollen gebaseerd toegangsbeheer (Azure RBAC)?](../../role-based-access-control/overview.md) voor algemene informatie over rollen.
 
 
 > [!IMPORTANT]

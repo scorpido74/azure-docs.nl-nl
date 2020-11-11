@@ -36,6 +36,20 @@
       href: quickstart-multi-container.md
 - name: Zelfstudies
   items:
+    - name: Beveiligde app opent opslag en Microsoft Graph
+      items:
+        - name: Overzicht
+          href: scenario-secure-app-overview.md
+        - name: App Service-verificatie instellen
+          href: scenario-secure-app-authentication-app-service.md
+        - name: Beveiligde app opent opslag
+          href: scenario-secure-app-access-storage.md
+        - name: Beveiligde app opent Microsoft Graph als de gebruiker
+          href: scenario-secure-app-access-microsoft-graph-as-user.md
+        - name: Beveiligde app opent Microsoft Graph als de app
+          href: scenario-secure-app-access-microsoft-graph-as-app.md
+        - name: Resources opschonen
+          href: scenario-secure-app-clean-up-resources.md
     - name: App met DB
       items:
         - name: .Net Core met SQL DB

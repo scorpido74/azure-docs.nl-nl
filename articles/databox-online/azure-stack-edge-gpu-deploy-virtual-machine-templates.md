@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/04/2020
 ms.author: alkohli
-ms.openlocfilehash: eeefbcdc080620c60f7cd49b8f749375e23ddd02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d0d02532f39d676772e5ee5d6414b802faffba7c
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90899715"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505934"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-templates"></a>Vm's op uw Azure Stack Edge Pro GPU-apparaat implementeren via sjablonen
 
@@ -149,7 +149,7 @@ In een typische omgeving zou uw DNS zo zijn geconfigureerd dat alle opslag accou
 
 ### <a name="optional-install-certificates"></a>Beschrijving Certificaten installeren
 
-Sla deze stap over als u verbinding wilt maken via Storage Explorer met behulp van *http*. Als u *https*gebruikt, moet u de juiste certificaten installeren in Storage Explorer. In dit geval installeert u het BLOB-eindpunt certificaat. Zie certificaten maken en uploaden in [certificaten beheren](azure-stack-edge-j-series-manage-certificates.md)voor meer informatie. 
+Sla deze stap over als u verbinding wilt maken via Storage Explorer met behulp van *http*. Als u *https* gebruikt, moet u de juiste certificaten installeren in Storage Explorer. In dit geval installeert u het BLOB-eindpunt certificaat. Zie certificaten maken en uploaden in [certificaten beheren](azure-stack-edge-j-series-manage-certificates.md)voor meer informatie. 
 
 ### <a name="create-and-upload-a-vhd"></a>Een VHD maken en uploaden
 
@@ -185,17 +185,17 @@ Kopieer de schijf installatie kopieën die moeten worden gebruikt in pagina-blob
 
     ![Verbinding maken met Azure Storage 1](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/connect-azure-storage-1.png)
 
-5. Selecteer **De naam en sleutel van een opslagaccount gebruiken**. Selecteer **Next**.
+5. Selecteer **De naam en sleutel van een opslagaccount gebruiken**. Selecteer **Volgende**.
 
     ![Verbinding maken met Azure Storage 2](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/connect-azure-storage-2.png)
 
-6. Geef in de **naam en sleutel verbinding maken**de **weergave naam**, de **naam van het opslag account**, Azure Storage **account sleutel**op. Selecteer een **ander** opslag domein en geef vervolgens de `<device name>.<DNS domain>` Connection String op. Als u een certificaat niet in Storage Explorer hebt geïnstalleerd, controleert u de optie **http gebruiken** . Selecteer **Next**.
+6. Geef in de **naam en sleutel verbinding maken** de **weergave naam** , de **naam van het opslag account** , Azure Storage **account sleutel** op. Selecteer een **ander** opslag domein en geef vervolgens de `<device name>.<DNS domain>` Connection String op. Als u een certificaat niet in Storage Explorer hebt geïnstalleerd, controleert u de optie **http gebruiken** . Selecteer **Volgende**.
 
     ![Verbinding maken met naam en sleutel](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/connect-name-key-1.png)
 
 7. Controleer het **samen vatting** van de verbinding en selecteer **verbinding maken**.
 
-8. Het opslag account wordt weer gegeven in het linkerdeel venster. Selecteer en vouw het opslag account uit. Selecteer **BLOB-containers**, klik met de rechter muisknop en selecteer **BLOB-container maken**. Geef een naam op voor de BLOB-container.
+8. Het opslag account wordt weer gegeven in het linkerdeel venster. Selecteer en vouw het opslag account uit. Selecteer **BLOB-containers** , klik met de rechter muisknop en selecteer **BLOB-container maken**. Geef een naam op voor de BLOB-container.
 
 9. Selecteer de container die u zojuist hebt gemaakt en selecteer in het rechterdeel venster de optie **upload > bestanden uploaden**. 
 
@@ -402,7 +402,7 @@ Implementeer de sjabloon `CreateImageAndVnet.json` . Met deze sjabloon implement
 
 ### <a name="edit-parameters-file-to-create-vm"></a>Parameter bestand bewerken voor het maken van een VM
  
-Als u een virtuele machine wilt maken, gebruikt u het `CreateVM.parameters.json` parameter bestand. Hierbij worden de volgende para meters gebruikt.
+Als u een VM wilt maken, gebruikt u het parameterbestand `CreateVM.parameters.json`. Hierbij worden de volgende para meters gebruikt.
     
 ```json
 "vmName": {
@@ -441,7 +441,7 @@ Wijs de juiste para meters toe aan `CreateVM.parameters.json` voor uw Azure stac
 
 1. Geef een unieke naam, de naam van de netwerk interface en de naam van de ipconfig op. 
 1. Voer een gebruikers naam, wacht woord en een ondersteunde VM-grootte in.
-1. Geef dezelfde naam op voor **VnetName**, **subnetmasker**en **installatie kopie** die is opgegeven in de para meters voor `CreateImageAndVnet.parameters.json` . Als u bijvoorbeeld VnetName, subnetvoorvoegsel en Imagenaam hebt opgegeven als **vnet1**, **subnet1**en **afbeelding1**, moet u deze waarden ook voor de para meters in deze sjabloon gebruiken.
+1. Geef dezelfde naam op voor **VnetName** , **subnetmasker** en **installatie kopie** die is opgegeven in de para meters voor `CreateImageAndVnet.parameters.json` . Als u bijvoorbeeld VnetName, subnetvoorvoegsel en Imagenaam hebt opgegeven als **vnet1** , **subnet1** en **afbeelding1** , moet u deze waarden ook voor de para meters in deze sjabloon gebruiken.
 1. U hebt nu een statisch IP-adres nodig om toe te wijzen aan de virtuele machine in het hierboven gedefinieerde subnet-netwerk. Vervang **PrivateIPAddress** door dit adres in het parameter bestand. Als u wilt dat de virtuele machine een IP-adres van uw lokale DHCP-server krijgt, laat u de `privateIPAddress` waarde leeg.  
     
     ```json
@@ -550,7 +550,8 @@ Implementeer de sjabloon voor het maken van de VM `CreateVM.json` . Met deze sja
         
         PS C:\07-30-2020>
     ```   
-U kunt de opdracht ook `New-AzureRmResourceGroupDeployment` asynchroon uitvoeren met `–AsJob` para meter. Hier volgt een voor beeld van uitvoer wanneer de cmdlet op de achtergrond wordt uitgevoerd. U kunt vervolgens de status van de taak die is gemaakt met behulp van de cmdlet, opvragen `Get-Job` .
+
+    U kunt de opdracht ook `New-AzureRmResourceGroupDeployment` asynchroon uitvoeren met `–AsJob` para meter. Hier volgt een voor beeld van uitvoer wanneer de cmdlet op de achtergrond wordt uitgevoerd. U kunt vervolgens de status van de taak die is gemaakt met behulp van de cmdlet, opvragen `Get-Job` .
 
     ```powershell   
     PS C:\WINDOWS\system32> New-AzureRmResourceGroupDeployment `
@@ -568,7 +569,6 @@ U kunt de opdracht ook `New-AzureRmResourceGroupDeployment` asynchroon uitvoeren
      
     Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
     --     ----            -------------   -----         -----------     --------             -------
-    2      Long Running... AzureLongRun... Completed     True            localhost            New-AzureRmResourceGro...
     ```
 
 7. Controleer of de virtuele machine is ingericht. Voer de volgende opdracht uit:
@@ -615,7 +615,7 @@ On the client used to access your Azure Stack Edge Pro device, set up a global v
 
 ### On Windows client 
 
-`$Env:AZCOPY_DEFAULT_SERVICE_API_VERSION = "2017-11-09"`
+`$Env:AZCOPY_DEFAULT_SERVICE_API_VERSION = "2017-11-09"`
 
 ### On Linux client
 

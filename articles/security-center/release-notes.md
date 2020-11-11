@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2020
 ms.author: memildin
-ms.openlocfilehash: 6de06e4ab9a302517a09b34de56c1b5535b245a9
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 375dff1dacc949dd4373bbf26908feb504750224
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93357807"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372337"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Wat is er nieuw in Azure Security Center?
 
@@ -32,6 +32,12 @@ Zie [Belangrijke aanstaande wijzigingen aan Azure Security Center](upcoming-chan
 
 
 ## <a name="november-2020"></a>November 2020
+
+Updates in november omvatten:
+
+- [Er zijn 29 preview-aanbevelingen toegevoegd om de dekking van Azure Security Benchmark te verhogen](#29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark)
+- [NIST SP 800 171 R2 is toegevoegd aan het nalevingsdashboard van de Security Center](#nist-sp-800-171-r2-added-to-security-centers-regulatory-compliance-dashboard)
+
 
 ### <a name="29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>Er zijn 29 preview-aanbevelingen toegevoegd om de dekking van Azure Security Benchmark te verhogen
 
@@ -61,10 +67,21 @@ Gerelateerde links:
 - [Meer informatie over Azure Database for PostgreSQL](../postgresql/overview.md)
 
 
+### <a name="nist-sp-800-171-r2-added-to-security-centers-regulatory-compliance-dashboard"></a>NIST SP 800 171 R2 is toegevoegd aan het nalevingsdashboard van Security Center
+
+De NIST SP 800-171 R2-standaard is nu beschikbaar als ingebouwd initiatief voor gebruik met het nalevingsdashboard voor Azure Security Center. De toewijzingen voor de controles worden beschreven in [Details van het ingebouwde NIST SP 800-171 R2-nalevingsinitiatief](../governance/policy/samples/nist-sp-800-171-r2.md). 
+
+Als u de standaard wilt toepassen op uw abonnementen en uw nalevingsstatus continu wilt monitoren, gebruikt u de instructies in [De set standaarden in uw nalevingsdasboard aanpassen](update-regulatory-compliance-packages.md).
+
+:::image type="content" source="media/release-notes/nist-sp-800-171-r2-standard.png" alt-text="De NIST SP 800 171 R2-standaard in het nalevingsdashboard van Security Center":::
+
+Zie [NIST SP 800-171 R2](https://csrc.nist.gov/publications/detail/sp/800-171/rev-2/final)voor meer informatie over deze nalevingsstandaard.
+
 
 
 ## <a name="october-2020"></a>Oktober 2020
 
+De updates in oktober omvatten:
 - [Evaluatie van beveiligingsproblemen voor on-premises en multi-cloudmachines (preview)](#vulnerability-assessment-for-on-premise-and-multi-cloud-machines-preview)
 - [Azure Firewall-aanbeveling toegevoegd (preview)](#azure-firewall-recommendation-added-preview)
 - [Aanbeveling Geautoriseerde IP-bereiken moeten worden gedefinieerd voor Kubernetes Services is bijgewerkt met een snelle oplossing](#authorized-ip-ranges-should-be-defined-on-kubernetes-services-recommendation-updated-with-quick-fix)

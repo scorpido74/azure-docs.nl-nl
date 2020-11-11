@@ -13,12 +13,12 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 05/26/2020
-ms.openlocfilehash: 393fceaa91600ab143912bb3af38c349f29f770a
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 31a1169ca6c2194b8d5564e5d0df50116dd25084
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427935"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505662"
 ---
 # <a name="get-started-with-azure-sql-managed-instance-auditing"></a>Aan de slag met controle van Azure SQL Managed instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -32,7 +32,7 @@ Met controle van [Azure SQL Managed instance](sql-managed-instance-paas-overview
 
 In de volgende sectie wordt de configuratie van de controle op uw beheerde exemplaar beschreven.
 
-1. Ga naar [Azure Portal](https://portal.azure.com).
+1. Ga naar de [Azure Portal](https://portal.azure.com).
 2. Een Azure Storage- **container** maken waar audit logboeken worden opgeslagen.
 
    1. Ga naar het Azure Storage-account waar u de audit logboeken wilt opslaan.
@@ -59,7 +59,7 @@ In de volgende sectie wordt de configuratie van de controle op uw beheerde exemp
   
 3. Nadat u de container voor de audit Logboeken hebt gemaakt, zijn er twee manieren om deze te configureren als het doel voor de audit logboeken: het [gebruik van T-SQL](#blobtsql) of [de gebruikers interface van de SQL Server Management Studio (SSMS)](#blobssms):
 
-   - <a id="blobtsql"></a>Blob-opslag configureren voor audit logboeken met T-SQL:
+   - <a id="blobtsql"></a>**Blob-opslag configureren voor audit logboeken met T-SQL:**
 
      1. Klik in de lijst containers op de zojuist gemaakte container en klik vervolgens op **container eigenschappen**.
 
@@ -120,7 +120,7 @@ In de volgende sectie wordt de configuratie van de controle op uw beheerde exemp
 
      1. Ga door met het [maken van een server audit specificatie of specificatie van de database audit](#createspec).
 
-   - <a id="blobssms"></a>Blob-opslag configureren voor audit logboeken met SQL Server Management Studio 18 (preview-versie):
+   - <a id="blobssms"></a>**Blob-opslag configureren voor audit logboeken met behulp van SQL Server Management Studio 18:**
 
      1. Maak verbinding met het beheerde exemplaar met behulp van de SQL Server Management Studio-gebruikers interface.
 
@@ -143,8 +143,8 @@ In de volgende sectie wordt de configuratie van de controle op uw beheerde exemp
         ![Azure-abonnement, opslag account en BLOB-container selecteren](./media/auditing-configure/13_mi_SSMS_select_subscription_account_container.png)
 
      1. Klik op **OK** in het dialoog venster **controle maken** .
-
-4. <a id="createspec"></a>Nadat u de BLOB-container als doel voor de audit Logboeken hebt geconfigureerd, maakt en activeert u een specificatie van de server audit of een database audit die u zou moeten voor SQL Server:
+     
+     1. <a id="createspec"></a>Nadat u de BLOB-container als doel voor de audit Logboeken hebt geconfigureerd, maakt en activeert u een specificatie van de server audit of een database audit die u zou moeten voor SQL Server:
 
    - [T-SQL-hand leiding voor Server audit Specification maken](/sql/t-sql/statements/create-server-audit-specification-transact-sql)
    - [T-SQL-hand leiding voor database audit specificatie maken](/sql/t-sql/statements/create-database-audit-specification-transact-sql)

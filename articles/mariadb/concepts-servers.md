@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 444d7f1574cf1517b01250bcb9d810731030182d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f519ac30468d197c14fcf53d386168ebde5cf8ac
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79527789"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94504353"
 ---
 # <a name="server-concepts-in-azure-database-for-mariadb"></a>Server concepten in Azure Database for MariaDB
 In dit artikel vindt u overwegingen en richt lijnen voor het werken met Azure Database for MariaDB-servers.
@@ -44,6 +44,19 @@ De volgende elementen helpen veilige toegang tot uw data base te garanderen.
 | **TCP/IP** | Het protocol wordt ondersteund via TCP/IP en via Unix-domein sockets. |
 | **Firewall** | Ter bescherming van uw gegevens voor komt een firewall regel alle toegang tot uw database server, totdat u opgeeft welke computers zijn gemachtigd. Zie [Azure database for MariaDB Server firewall-regels](./concepts-firewall-rules.md). |
 | **SSL** | De service biedt ondersteuning voor het afdwingen van SSL-verbindingen tussen uw toepassingen en uw database server. Zie [SSL-connectiviteit in uw toepassing configureren om veilig verbinding te maken met Azure database for MariaDB](./howto-configure-ssl.md). |
+
+## <a name="stopstart-an-azure-database-for-mariadb-preview"></a>Een Azure Database for MariaDB stoppen/starten (preview)
+Azure Database for MariaDB biedt u de mogelijkheid om de server te **stoppen** wanneer deze niet wordt gebruikt en de server **te starten** wanneer u de activiteit hervat. Dit is in feite van toepassing op het besparen van kosten op de database servers en betaalt alleen voor de resource wanneer deze wordt gebruikt. Dit wordt nog belang rijker voor werk belastingen voor dev-test en wanneer u alleen de-server gebruikt voor een deel van de dag. Wanneer u de server stopt, worden alle actieve verbindingen verwijderd. Wanneer u de server later weer online wilt zetten, kunt u de [Azure Portal](../mysql/how-to-stop-start-server.md) of [cli](../mysql/how-to-stop-start-server.md)gebruiken.
+
+Wanneer de server zich in de status **gestopt** bevindt, wordt de compute van de server niet gefactureerd. Opslag blijft echter gefactureerd omdat de opslag ruimte van de server bewaard blijft om ervoor te zorgen dat gegevens bestanden beschikbaar zijn wanneer de server weer wordt gestart.
+
+> [!IMPORTANT]
+> Wanneer u de server **stopt** , blijft deze voor de volgende zeven dagen in een stretch-status. Als u deze niet hand matig **Start** , wordt de server aan het eind van 7 dagen automatisch gestart. U kunt ervoor kiezen om deze opnieuw te **stoppen** als u de-server niet gebruikt.
+
+Tijdens de tijd server wordt gestopt, kunnen er geen beheer bewerkingen worden uitgevoerd op de server. Als u de configuratie-instellingen op de server wilt wijzigen, moet u [de server starten](../mysql/how-to-stop-start-server.md).
+
+### <a name="limitations-of-stopstart-operation"></a>Beperkingen van de bewerking stoppen/starten
+- Niet ondersteund bij het lezen van replica configuraties (zowel bron-als replica).
 
 ## <a name="how-do-i-manage-a-server"></a>Hoe kan ik een server beheren?
 U kunt Azure Database for MariaDB servers beheren door gebruik te maken van de Azure Portal of de Azure CLI.

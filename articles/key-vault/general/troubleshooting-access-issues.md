@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 1437ef8675d0ddc96eb7fc641b3663b66c3ea11b
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: f9bbf6e9d1d932f7225807613b789821c1462932
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285243"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94441848"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>Problemen met het toegangsbeleid voor Azure Key Vault oplossen
 
@@ -53,7 +53,7 @@ De toepassing moet ook ten minste één IAM-rol (Identiteits- en toegangsbeheer)
 
 Op dit moment wordt elk toegangsbeleid in Key Vault verwijderd en vervangen door het toegangsbeleid in de ARM-sjabloon als u Key Vault opnieuw implementeert. Er is geen incrementele optie voor Key Vault-toegangsbeleid. Als u het toegangsbeleid in Key Vault wilt behouden, moet u het bestaande toegangsbeleid lezen in Key Vault en de ARM-sjabloon vullen met dit beleid om eventuele toegangsstoringen te voorkomen.
 
-Een andere optie die u kan helpen bij dit scenario, is het gebruik van RBAC-rollen als alternatief voor toegangsbeleid. Met RBAC kunt u de sleutelkluis opnieuw implementeren zonder het beleid opnieuw op te geven. [Hier](./rbac-guide.md) kunt u meer lezen over deze oplossing.
+Een andere optie die u kan helpen bij dit scenario, is het gebruik van Azure RBAC en rollen als alternatief voor toegangsbeleid. Met Azure RBAC kunt u de sleutelkluis opnieuw implementeren zonder het beleid opnieuw op te geven. [Hier](./rbac-guide.md) kunt u meer lezen over deze oplossing.
 
 ### <a name="recommended-troubleshooting-steps-for-following-error-types"></a>Aanbevolen stappen voor probleemoplossing voor de volgende fouttypen
 

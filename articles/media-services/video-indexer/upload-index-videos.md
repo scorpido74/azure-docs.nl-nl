@@ -8,15 +8,15 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 02/18/2020
+ms.date: 11/10/2020
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8ea1df2937c6ae771407e4adf839c9ff0fa9f7f5
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: a5106e1089e2353d2db884977eb51a4fd2717b99
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92218952"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506172"
 ---
 # <a name="upload-and-index-your-videos"></a>Uw video's uploaden en indexeren  
 
@@ -26,7 +26,7 @@ Wanneer u video's uploadt met de Video Indexer-API, hebt u de volgende opties vo
 * het videobestand verzenden als een bytematrix in de aanvraagbody.
 * Bestaande Azure Media Services-assets gebruiken door de [asset-id](../latest/assets-concept.md) op te geven (alleen ondersteund in betaalde accounts).
 
-Als uw video eenmaal is geüpload, wordt de video door Video Indexer (optioneel) codeert (eventueel beschreven in het artikel). Wanneer u een Video Indexer-account maakt, kunt u kiezen uit een gratis proefversie (waarmee u een bepaald aantal gratis minuten indexering krijgt) of een betaalde optie (zonder quotumlimiet). Bij de gratis proefversie biedt Video Indexer websitegebruikers maximaal 600 minuten aan gratis indexering en API-gebruikers maximaal 2400 minuten gratis indexering. Met de betaalde versie maakt u een Video Indexer-account dat is [gekoppeld aan uw Azure-abonnement en een Azure Media Services-account](connect-to-azure.md). U betaalt zowel voor de geïndexeerde minuten als voor kosten verbonden aan het Media-account. 
+Als uw video eenmaal is geüpload, wordt de video door Video Indexer (optioneel) codeert (eventueel beschreven in het artikel). Wanneer u een Video Indexer-account maakt, kunt u kiezen uit een gratis proefversie (waarmee u een bepaald aantal gratis minuten indexering krijgt) of een betaalde optie (zonder quotumlimiet). Bij de gratis proefversie biedt Video Indexer websitegebruikers maximaal 600 minuten aan gratis indexering en API-gebruikers maximaal 2400 minuten gratis indexering. Met de betaalde versie maakt u een Video Indexer-account dat is [gekoppeld aan uw Azure-abonnement en een Azure Media Services-account](connect-to-azure.md). U betaalt voor minuten voor de index. Zie [Media Services prijzen](https://azure.microsoft.com/pricing/details/media-services/)voor meer informatie.
 
 In dit artikel wordt beschreven hoe u Video's uploadt en indexeert met de volgende opties:
 
@@ -79,8 +79,8 @@ Zie het artikel [invoercontainer/bestandsindelingen](../latest/media-encoder-sta
 1. Zodra uw video is geüpload, start Video Indexer met het indexeren en analyseren van de video.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/video-indexer-get-started/progress.png" alt-text="Uploaden":::
-1. Zodra Video Indexer klaar is met analyseren, ontvangt u een e-mail met een koppeling naar uw video en een korte beschrijving van wat er in uw video is gevonden. Bijvoorbeeld: mensen, onderwerpen, OCR's.
+    > :::image type="content" source="./media/video-indexer-get-started/progress.png" alt-text="Voortgang van het uploaden":::
+1. Wanneer Video Indexer klaar is met analyseren, ontvangt u een e-mailbericht met een link naar uw video en een korte beschrijving van wat is gevonden in uw video. Bijvoorbeeld: mensen, onderwerpen, OCR's.
 
 ## <a name="upload-and-index-with-api"></a><a name="apis"></a>Uploaden en indexeren met API
 
@@ -118,7 +118,7 @@ Een URL die wordt gebruikt om de klant (met een POST-aanvraag) op de hoogte te s
         
     - Voor beeld: https: \/ /test.com/notifyme?projectName=MyProject&id = 1234abcd&FaceId = 12&knownPersonId = CCA84350-89B7-4262-861C-3CAC796542A5&persoons naam = Inigo_Montoya 
 
-##### <a name="notes"></a>Notities
+##### <a name="other-considerations"></a>Andere overwegingen
 
 - Video Indexer retourneert alle bestaande parameters die zijn opgegeven in de oorspronkelijke URL.
 - De opgegeven URL moet worden gecodeerd.
@@ -140,7 +140,7 @@ De prijs is afhankelijk van de geselecteerde optie voor indexering.
 
 #### <a name="priority"></a>priority
 
-Video's worden geïndexeerd door Video Indexer op basis van de prioriteit. Gebruik de parameter **priority** voor het specificeren van de indexeringsprioriteit. De volgende waarden zijn geldig: **Laag**, **Normaal** (standaard) en **Hoog**.
+Video's worden geïndexeerd door Video Indexer op basis van de prioriteit. Gebruik de parameter **priority** voor het specificeren van de indexeringsprioriteit. De volgende waarden zijn geldig: **Laag** , **Normaal** (standaard) en **Hoog**.
 
 De parameter **priority** wordt alleen ondersteund voor betaalde accounts.
 
@@ -177,7 +177,7 @@ Nadat u deze code naar uw ontwikkel platform hebt gekopieerd, moet u twee para m
 
     * Ga naar https://api-portal.videoindexer.ai/
     * Aanmelden
-    * Naar het **Products**  ->  abonnement voor**verificatie**  ->  **autorisatie** van producten
+    * Naar het **Products**  ->  abonnement voor **verificatie**  ->  **autorisatie** van producten
     * De **primaire sleutel** kopiëren
 * Video-URL: een URL van het video-of audio bestand dat moet worden geïndexeerd. De URL moet verwijzen naar een mediabestand (HTML-pagina's worden niet ondersteund). Het bestand kan worden beveiligd door een toegangstoken dat is geleverd als onderdeel van de URI en het eindpunt voor het bestand moet worden beveiligd met TLS 1.2 of hoger. De URL moet worden gecodeerd.
 

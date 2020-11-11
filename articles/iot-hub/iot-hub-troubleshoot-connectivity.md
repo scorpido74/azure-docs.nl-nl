@@ -13,12 +13,14 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - 'Role: Technical Support'
-ms.openlocfilehash: f7073fbf39344fe39e179d55a5a8f395a6ba6240
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+- fasttrack-edit
+- iot
+ms.openlocfilehash: b179bb3566cc19b8033a56348db34cd1f05cee10
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357389"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506393"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-disconnects-with-azure-iot-hub"></a>De verbinding met Azure IoT Hub controleren, vaststellen en problemen oplossen
 
@@ -159,6 +161,11 @@ AzureDiagnostics
 Als webontwikkelaar of-operator van IoT-oplossingen moet u op de hoogte zijn van dit gedrag om het verbinden/verbreken van gebeurtenissen en gerelateerde fouten in Logboeken te interpreteren. Als u de levens duur van het token of het vernieuwings gedrag voor apparaten wilt wijzigen, controleert u of het apparaat een dubbele instelling voor een apparaat of een apparaat-methode implementeert waardoor dit mogelijk is.
 
 Als u de verbindingen met Event hub bewaken, moet u ervoor zorgen dat u de periodieke verbreken van de verbinding door de vernieuwing van SAS-tokens uitfiltert. bijvoorbeeld: door geen acties te activeren op basis van het verbreken van de verbinding, zolang de gebeurtenis Disconnect wordt gevolgd door een verbindings gebeurtenis binnen een bepaalde periode.
+
+> [!NOTE]
+> IoT Hub ondersteunt slechts één actieve MQTT-verbinding per apparaat. Een nieuwe MQTT-verbinding namens dezelfde apparaat-ID leidt ertoe IoT Hub de bestaande verbinding te verwijderen.
+>
+> 400027 ConnectionForcefullyClosedOnNewConnection wordt aangemeld bij IoT Hub-logboeken
 
 ## <a name="i-tried-the-steps-but-they-didnt-work"></a>Ik heb de stappen uitgevoerd, maar deze zijn niet uitgevoerd
 

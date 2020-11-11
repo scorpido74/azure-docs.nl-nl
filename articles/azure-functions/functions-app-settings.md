@@ -3,12 +3,12 @@ title: Naslaginformatie over app-instellingen voor Azure Functions
 description: Referentie documentatie voor de Azure Functions app-instellingen of omgevings variabelen.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 3d3def7057eeb022b3e207cbecf06ee3074a91af
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 2b71bee620ab7d5b1ef98b60013d1978f49d127f
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043233"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505883"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Naslaginformatie over app-instellingen voor Azure Functions
 
@@ -131,11 +131,11 @@ Hiermee geeft u de opslag plaats of provider op die moet worden gebruikt voor sl
 
 |Sleutel|Voorbeeldwaarde|
 |---|------------|
-|AzureWebJobsSecretStorageType|Bestanden|
+|AzureWebJobsSecretStorageType|Files|
 
 ## <a name="azurewebjobsstorage"></a>AzureWebJobsStorage
 
-De Azure Functions runtime gebruikt dit opslag account connection string voor alle functies, met uitzonde ring van HTTP-geactiveerde functies. Het opslag account moet een algemeen doel zijn dat blobs, wacht rijen en tabellen ondersteunt. Zie vereisten voor [opslag accounts](functions-infrastructure-as-code.md#storage-account) en [opslag accounts](storage-considerations.md#storage-account-requirements).
+De Azure Functions runtime gebruikt dit opslag account connection string voor een normale werking. Enkele voor beelden van het gebruik van dit opslag account zijn sleutel beheer, timer trigger beheer en Event Hubs controle punten. Het opslag account moet een algemeen doel zijn dat blobs, wacht rijen en tabellen ondersteunt. Zie vereisten voor [opslag accounts](functions-infrastructure-as-code.md#storage-account) en [opslag accounts](storage-considerations.md#storage-account-requirements).
 
 |Sleutel|Voorbeeldwaarde|
 |---|------------|

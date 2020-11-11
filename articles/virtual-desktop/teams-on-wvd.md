@@ -3,15 +3,15 @@ title: Micro soft teams op virtueel bureau blad van Windows-Azure
 description: Micro soft teams gebruiken op het virtuele bureau blad van Windows.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 07/28/2020
+ms.date: 11/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: cae40b9aeed4058ab2082a1d1360558c1c656e1d
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 101b3a05591a7815ba28756bb5b07e855b64e769
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131765"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505543"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Micro soft teams gebruiken op het virtuele bureau blad van Windows
 
@@ -32,7 +32,6 @@ Voordat u micro soft teams kunt gebruiken op het virtuele bureau blad van Window
 - [Bereid uw netwerk](/microsoftteams/prepare-network/) voor op micro soft teams.
 - Installeer de [Windows desktop-client](connect-windows-7-10.md) op een Windows 10-of Windows 10 IOT Enter prise-apparaat dat voldoet aan de hardwarevereisten voor teams van micro soft teams [op een Windows-PC](/microsoftteams/hardware-requirements-for-the-teams-app#hardware-requirements-for-teams-on-a-windows-pc/).
 - Verbinding maken met een Windows 10-of Windows 10 Enter prise virtual machine (VM).
-- [Down load](https://www.microsoft.com/microsoft-365/microsoft-teams/download-app) en installeer de teams bureau blad-app op de host met behulp van installatie per computer. Voor media optimalisatie voor micro soft-teams is teams 1.3.00.4461 of hoger vereist.
 
 ## <a name="install-the-teams-desktop-app"></a>De teams bureau blad-app installeren
 
@@ -42,7 +41,8 @@ In deze sectie wordt uitgelegd hoe u de teams bureau blad-app kunt installeren o
 
 Als u media optimalisatie voor teams wilt inschakelen, stelt u de volgende register sleutel op de host in:
 
-1. Voer in het menu Start **regedit** uit als Administrator. Navigeer naar **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Teams**.
+1. Voer in het menu Start **regedit** uit als Administrator. Navigeer naar **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Teams**. Maak de team sleutel als deze nog niet bestaat.
+
 2. Maak de volgende waarde voor de sleutel teams:
 
 | Naam             | Type   | Gegevens/waarde  |
@@ -51,7 +51,7 @@ Als u media optimalisatie voor teams wilt inschakelen, stelt u de volgende regis
 
 ### <a name="install-the-teams-websocket-service"></a>De teams-WebSocket-service installeren
 
-Installeer de nieuwste [WebSocket-service](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4AQBt) op uw VM-installatie kopie. Als er een installatie fout optreedt, installeert u de [meest recente versie van micro soft Visual C++ Redistributable](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) en probeert u het opnieuw.
+Installeer de meest recente [extern bureaublad WebRTC-Redirector-service](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4AQBt) op uw VM-installatie kopie. Als er een installatie fout optreedt, installeert u de [meest recente versie van micro soft Visual C++ Redistributable](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) en probeert u het opnieuw.
 
 #### <a name="latest-websocket-service-versions"></a>Nieuwste versies van de WebSocket-service
 
@@ -94,7 +94,7 @@ U kunt de teams bureau blad-app implementeren met behulp van een installatie per
 
         Hiermee worden teams geïnstalleerd in de map Program Files (x86) op een 32-bits besturings systeem en in de map Program Files op een 64-bits besturings systeem. Op dit moment is de installatie van de gouden installatie kopie voltooid. Het installeren van teams per computer is vereist voor niet-permanente Setup.
 
-        Er zijn twee vlaggen die kunnen worden ingesteld bij het installeren van teams, **ALLUSER = 1** en **ALLUSERS = 1**. Het is belang rijk dat u begrijpt wat het verschil is tussen deze para meters. De para meter **ALLUSER = 1** wordt alleen gebruikt in VDI-omgevingen om een installatie per computer op te geven. De para meter **ALLUSERS = 1** kan worden gebruikt in niet-VDI-en VDI-omgevingen. Wanneer u deze para meter instelt, wordt het installatie programma van teams Machine-Wide weer gegeven in Program Ma's en onderdelen in het configuratie scherm, evenals apps & functies in Windows-instellingen. Alle gebruikers met beheerders referenties op de computer kunnen teams verwijderen.
+        Er zijn twee vlaggen die kunnen worden ingesteld bij het installeren van teams, **ALLUSER = 1** en **ALLUSERS = 1**. Het is belang rijk dat u begrijpt wat het verschil is tussen deze para meters. De para meter **ALLUSER = 1** wordt alleen gebruikt in VDI-omgevingen om een installatie per computer op te geven. De para meter **ALLUSERS = 1** kan worden gebruikt in niet-VDI-en VDI-omgevingen. Wanneer u deze para meter instelt, wordt het installatie programma van **Teams Machine-Wide** weer gegeven in Program Ma's en onderdelen in het configuratie scherm, evenals apps & functies in Windows-instellingen. Alle gebruikers met beheerders referenties op de computer kunnen teams verwijderen.
 
         > [!NOTE]
         > Gebruikers en beheerders kunnen de functie voor het automatisch starten van teams tijdens het aanmelden op dit moment niet uitschakelen.
@@ -114,14 +114,19 @@ U kunt de teams bureau blad-app implementeren met behulp van een installatie per
 
 Na de installatie van de WebSocket-service en de bureau blad-app teams, voert u de volgende stappen uit om te controleren of teams media optimalisaties zijn geladen:
 
-1. Selecteer de installatie kopie van uw gebruikers profiel en selecteer vervolgens **info**.
-2. Selecteer **versie**.
+1. Sluit de team toepassing en start deze opnieuw.
 
-      Als media optimalisaties zijn geladen, wordt in de banner weer gegeven dat u de **WVD-media hebt geoptimaliseerd**. Als in het vaandel wordt weer gegeven dat u **WVD media niet hebt verbonden**, sluit u de app teams en probeert u het opnieuw.
+2. Selecteer de installatie kopie van uw gebruikers profiel en selecteer vervolgens **info**.
 
-3. Selecteer de installatie kopie van uw gebruikers profiel en selecteer vervolgens **instellingen**.
+3. Selecteer **versie**.
 
-      Als media optimalisaties zijn geladen, worden de audio apparaten en camera's die lokaal beschikbaar zijn, geïnventariseerd in het menu apparaat. Als in het menu **externe audio**wordt weer gegeven, sluit u de app teams en probeert u het opnieuw. Als de apparaten nog steeds niet worden weer gegeven in het menu, controleert u de privacy-instellingen op uw lokale PC. Zorg ervoor dat de machtigingen onder **instellingen**  >  **Privacy**-  >  **app** de instelling **toestaan dat apps toegang hebben tot uw microfoon** **in**-of uitgeschakeld. Verbreek de verbinding met de externe sessie en maak opnieuw verbinding en controleer de audio-en video apparaten opnieuw. Als u aanroepen en vergaderingen wilt samen voegen met video, moet u ook toestemming geven voor apps om toegang te krijgen tot uw camera.
+      Als media optimalisaties zijn geladen, wordt in de banner weer gegeven dat u de **WVD-media hebt geoptimaliseerd**. Als in het vaandel wordt weer gegeven dat u **WVD media niet hebt verbonden** , sluit u de app teams en probeert u het opnieuw.
+
+4. Selecteer de installatie kopie van uw gebruikers profiel en selecteer vervolgens **instellingen**.
+
+      Als media optimalisaties zijn geladen, worden de audio apparaten en camera's die lokaal beschikbaar zijn, geïnventariseerd in het menu apparaat. Als in het menu **externe audio** wordt weer gegeven, sluit u de app teams en probeert u het opnieuw. Als de apparaten nog steeds niet worden weer gegeven in het menu, controleert u de privacy-instellingen op uw lokale PC. Zorg ervoor dat de machtigingen onder **instellingen**  >  **Privacy** -  >  **app** de instelling **toestaan dat apps toegang hebben tot uw microfoon** **in** -of uitgeschakeld. Verbreek de verbinding met de externe sessie en maak opnieuw verbinding en controleer de audio-en video apparaten opnieuw. Als u aanroepen en vergaderingen wilt samen voegen met video, moet u ook toestemming geven voor apps om toegang te krijgen tot uw camera.
+
+      Als optimalisaties niet worden geladen, verwijdert u de teams opnieuw en voert u de controle opnieuw uit.
 
 ## <a name="known-issues-and-limitations"></a>Bekende problemen en beperkingen
 

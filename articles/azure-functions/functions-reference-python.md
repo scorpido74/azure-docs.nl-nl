@@ -4,12 +4,12 @@ description: Meer informatie over het ontwikkelen van functies met python
 ms.topic: article
 ms.date: 11/4/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: cc99a8c10ecefc063fdb89c61bdaeb0e686b1a82
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: ce8abf439c44e06134113dd562ebadc62b803a28
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358045"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506070"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Ontwikkelaarshandleiding voor Azure Functions Python
 
@@ -312,10 +312,10 @@ Een sleutel voor het verbeteren van de prestaties is te weten hoe uw app resourc
 
 De standaard configuraties zijn geschikt voor de meeste toepassingen van Azure Functions. U kunt de prestaties van de door Voer van uw toepassingen echter verbeteren door configuraties te gebruiken op basis van uw werkbelasting profiel. De eerste stap is het begrijpen van het type werk belasting dat u uitvoert.
 
-|&nbsp;| I/O-gebonden werk belasting | CPU-gebonden werk belasting |
+| | I/O-gebonden werk belasting | CPU-gebonden werk belasting |
 |--| -- | -- |
-|Kenmerken van functie-app| <ul><li>De app moet veel gelijktijdige aanroepen verwerken.</li> <li> Met de app worden een groot aantal I/O-gebeurtenissen verwerkt, zoals netwerk aanroepen en lees-en schrijf bewerkingen van de schijf.</li> </ul>| <ul><li>App voert langlopende berekeningen uit, zoals het wijzigen van de grootte van afbeeldingen.</li> <li>App maakt gegevens transformatie.</li> </ul> |
-|Voorbeelden| <ul><li>Web-API's</li><ul> | <ul><li>Gegevensverwerking</li><li> Machine learning-interferentie</li><ul>|
+|**Kenmerken van functie-app**| <ul><li>De app moet veel gelijktijdige aanroepen verwerken.</li> <li> Met de app worden een groot aantal I/O-gebeurtenissen verwerkt, zoals netwerk aanroepen en lees-en schrijf bewerkingen van de schijf.</li> </ul>| <ul><li>App voert langlopende berekeningen uit, zoals het wijzigen van de grootte van afbeeldingen.</li> <li>App maakt gegevens transformatie.</li> </ul> |
+|**Voorbeelden**| <ul><li>Web-API's</li><ul> | <ul><li>Gegevensverwerking</li><li> Machine learning-interferentie</li><ul>|
 
 
 > [!NOTE]

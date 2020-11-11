@@ -8,21 +8,21 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 09/03/2020
+ms.date: 11/10/2020
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 85d392323b24df3cede196d2c68f05c9522b2293
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cfaef4460df040ecc9b055fba83d33a3b687b200
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89458294"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505373"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>Zelfstudie: de Video Indexer-API gebruiken
 
 Video Indexer consolideert diverse AI-technologieën (audio en video kunst matige intelligentie) die door micro soft worden aangeboden in één geïntegreerde service, waardoor ontwikkeling eenvoudiger wordt. De Api's zijn zodanig ontworpen dat ontwikkel aars zich kunnen richten op het gebruik van media AI-technologieën zonder dat u zich zorgen hoeft te maken over schaal, wereld wijd bereik, Beschik baarheid en betrouw baarheid van Cloud platforms. U kunt de API gebruiken om uw bestanden te uploaden, gedetailleerde video inzichten te verkrijgen, Url's van een Inge sloten Insight-en speler-widgets op te halen en meer.
 
-Wanneer u een Video Indexer-account maakt, kunt u kiezen uit een gratis proefversie (waarmee u een bepaald aantal gratis minuten indexering krijgt) of een betaalde optie (zonder quotumlimiet). Bij een gratis proefversie biedt Video Indexer websitegebruikers maximaal 600 minuten aan gratis indexering en API-gebruikers maximaal 2400 minuten gratis indexering. Met een betaalde optie maakt u een Video Indexer-account dat is [verbonden met uw Azure-abonnement en een Azure Media Services-account](connect-to-azure.md). U betaalt zowel voor de geïndexeerde minuten als voor kosten verbonden aan het Azure Media Services-account.
+Wanneer u een Video Indexer-account maakt, kunt u kiezen uit een gratis proefversie (waarmee u een bepaald aantal gratis minuten indexering krijgt) of een betaalde optie (zonder quotumlimiet). Bij een gratis proefversie biedt Video Indexer websitegebruikers maximaal 600 minuten aan gratis indexering en API-gebruikers maximaal 2400 minuten gratis indexering. Met een betaalde optie maakt u een Video Indexer-account dat is [verbonden met uw Azure-abonnement en een Azure Media Services-account](connect-to-azure.md). U betaalt voor minuten voor de index. Zie [Media Services prijzen](https://azure.microsoft.com/pricing/details/media-services/)voor meer informatie.
 
 In dit artikel wordt uitgelegd hoe ontwikkelaars kunnen profiteren van de [Video Indexer-API](https://api-portal.videoindexer.ai/).
 
@@ -62,9 +62,9 @@ Elke aanroep naar de Operations-API moet worden gekoppeld aan een toegangstoken 
 - Account niveau: toegangs tokens op account niveau bieden u de mogelijkheid om bewerkingen uit te voeren op het niveau van de **account** of het **video** niveau. Upload bijvoorbeeld video, vermeld alle Video's, haal video inzichten op, enzovoort.
 - Video niveau: toegangs tokens op video niveau bieden u de mogelijkheid om bewerkingen uit te voeren op een specifieke **video**. U kunt bijvoorbeeld video inzichten verkrijgen, bijschriften downloaden, widgets ophalen, enzovoort.
 
-U kunt bepalen of deze tokens alleen-lezen zijn of dat ze het bewerken toestaan door **allowEdit = True/False**op te geven.
+U kunt bepalen of deze tokens alleen-lezen zijn of dat ze het bewerken toestaan door **allowEdit = True/False** op te geven.
 
-Voor de meeste server-naar-server-scenario's gebruikt u waarschijnlijk hetzelfde **account** token, omdat de **account bewerkingen en** **video** bewerkingen worden behandeld. Als u echter van plan bent om aan client zijde aanroepen naar Video Indexer te maken (bijvoorbeeld van Java script), zou u een **video** toegangs token willen gebruiken om te voor komen dat clients toegang krijgen tot het hele account. Dit is ook de reden dat bij het insluiten van Video Indexer client code in uw client (bijvoorbeeld met behulp van de **widget Get Insights** of het ophalen van een **speler**), een token voor **video** toegang moet worden verstrekt.
+Voor de meeste server-naar-server-scenario's gebruikt u waarschijnlijk hetzelfde **account** token, omdat de **account bewerkingen en** **video** bewerkingen worden behandeld. Als u echter van plan bent om aan client zijde aanroepen naar Video Indexer te maken (bijvoorbeeld van Java script), zou u een **video** toegangs token willen gebruiken om te voor komen dat clients toegang krijgen tot het hele account. Dit is ook de reden dat bij het insluiten van Video Indexer client code in uw client (bijvoorbeeld met behulp van de **widget Get Insights** of het ophalen van een **speler** ), een token voor **video** toegang moet worden verstrekt.
 
 Om het eenvoudiger te maken, kunt u **Authorization-API** > **GetAccounts** gebruiken om uw accounts op te halen zonder eerst een gebruikerstoken te verkrijgen. U kunt verzoeken om de accounts op te halen met behulp van geldige tokens, zodat u een extra aanroep om een accounttoken op te halen kunt overslaan.
 
@@ -103,9 +103,9 @@ De parameter Account-id is vereist in alle operationele API-aanroepen. Account-i
 
 In deze sectie vindt u enkele aanbevelingen bij het gebruik van de Video Indexer-API.
 
-- Als u van plan bent om een video te uploaden, is het raadzaam om het bestand in een open bare netwerk locatie (bijvoorbeeld OneDrive) te plaatsen. Haal de link naar de video op en geef de URL op als de parameter van het uploadbestand.
+- Als u van plan bent een video te uploaden, is het raadzaam om het bestand in een open bare netwerk locatie te plaatsen (bijvoorbeeld een Azure Blob Storage-account). Haal de link naar de video op en geef de URL op als de parameter van het uploadbestand.
 
-    De URL die is opgegeven met Video Indexer moet verwijzen naar een mediabestand (audio of video). Sommige links die worden gegenereerd door OneDrive zijn voor een HTML-pagina die het bestand bevat. Een eenvoudige verificatie voor de URL is om deze in een browser te plakken: als het downloaden van het bestand wordt gestart, is het waarschijnlijk een goede URL. Als de browser een bepaalde visualisatie weergeeft, is het waarschijnlijk geen koppeling naar een bestand maar naar een HTML-pagina.
+    De URL die is opgegeven met Video Indexer moet verwijzen naar een mediabestand (audio of video). Een eenvoudige verificatie voor de URL (of SAS-URL) is om deze in een browser te plakken als het bestand wordt afgespeeld of gedownload, is dit waarschijnlijk een goede URL. Als de browser een bepaalde visualisatie weergeeft, is het waarschijnlijk geen koppeling naar een bestand maar naar een HTML-pagina.
 
 - Als u de API die video-inzichten ophaalt voor de opgegeven video aanroept, krijgt u gedetailleerde JSON-uitvoer als resultaat. [Informatie over de geretourneerde JSON in dit onderwerp](video-indexer-output-json-v2.md).
 
@@ -207,7 +207,7 @@ Debug.WriteLine(playerWidgetLink);
 
 ```
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 - [Overzicht van Video Indexer](video-indexer-overview.md)
 - [Regio's](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)
@@ -215,5 +215,5 @@ Debug.WriteLine(playerWidgetLink);
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Details van de JSON van de uitvoer bekijken](video-indexer-output-json-v2.md)
-- Bekijk de [voorbeeld code](https://github.com/Azure-Samples/media-services-video-indexer) die belang rijk aspect van het uploaden en indexeren van een video toont. Na de code wordt krijgt u een goed idee hoe u onze API kunt gebruiken voor basis functionaliteiten. Lees de opmerkingen in inline en noteer de aanbevelingen voor best practices.
+- Bekijk de [voorbeeld code](https://github.com/Azure-Samples/media-services-video-indexer) die belang rijk aspect van het uploaden en indexeren van een video toont. Met de volgende code krijgt u een goed idee van het gebruik van onze API voor basis functionaliteit. Lees de opmerkingen in inline en noteer de aanbevelingen voor best practices.
 

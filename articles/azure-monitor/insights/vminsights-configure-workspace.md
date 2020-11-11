@@ -7,12 +7,12 @@ ms.custom: references_regions
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: ecfeebb9ce86d717531310c2ad1a33a3d27f4c0a
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 9827f79f8407bd04468f1b4456aec9d6a8793a6f
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91995732"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506291"
 ---
 # <a name="configure-log-analytics-workspace-for-azure-monitor-for-vms"></a>Log Analytics-werkruimte voor Azure Monitor voor VM's configureren
 Azure Monitor voor VM's verzamelt gegevens uit een of meer Log Analytics-werk ruimten in Azure Monitor. Voordat u agents voorbereidt, moet u een werk ruimte maken en configureren. In dit artikel worden de vereisten van de werk ruimte beschreven en om deze voor Azure Monitor voor VM's te configureren.
@@ -20,10 +20,10 @@ Azure Monitor voor VM's verzamelt gegevens uit een of meer Log Analytics-werk ru
 ## <a name="overview"></a>Overzicht
 Een abonnement kan gebruikmaken van een wille keurig aantal werk ruimten, afhankelijk van uw vereisten, is de enige vereiste van de werk ruimte dat deze zich op een ondersteunde locatie bevindt en wordt geconfigureerd met de *VMInsights* -oplossing.
 
-Nadat de werk ruimte is geconfigureerd, kunt u een van de beschik bare opties gebruiken om de vereiste agents op VM en VMMS te installeren en een werk ruimte op te geven waarmee ze hun gegevens kunnen verzenden. Azure Monitor voor VM's verzamelt gegevens van elke geconfigureerde werk ruimte in het abonnement.
+Nadat de werk ruimte is geconfigureerd, kunt u een van de beschik bare opties gebruiken om de vereiste agents te installeren op de VM en VMSS en een werk ruimte op te geven waarmee ze hun gegevens kunnen verzenden. Azure Monitor voor VM's verzamelt gegevens van elke geconfigureerde werk ruimte in het abonnement.
 
 > [!NOTE]
-> Wanneer u Azure Monitor voor VM's op één virtuele machine of VMMS inschakelt met behulp van de Azure Portal, krijgt u de optie om een bestaande werk ruimte te selecteren of een nieuwe te maken. Als dit nog niet is gebeurd, wordt de *VMInsights* -oplossing in deze werk ruimte geïnstalleerd. U kunt deze werk ruimte vervolgens gebruiken voor andere agents.
+> Wanneer u Azure Monitor voor VM's op één virtuele machine of VMSS inschakelt met behulp van de Azure Portal, krijgt u de mogelijkheid om een bestaande werk ruimte te selecteren of een nieuwe te maken. Als dit nog niet is gebeurd, wordt de *VMInsights* -oplossing in deze werk ruimte geïnstalleerd. U kunt deze werk ruimte vervolgens gebruiken voor andere agents.
 
 
 ## <a name="create-log-analytics-workspace"></a>Een Log Analytics-werkruimte maken
@@ -43,7 +43,7 @@ U kunt een nieuwe Log Analytics-werk ruimte maken met behulp van een van de volg
 * [PowerShell](../platform/powershell-workspace-configuration.md)
 * [Azure Resource Manager](../samples/resource-manager-workspace.md)
 
-## <a name="supported-regions"></a>Ondersteunde regio’s
+## <a name="supported-regions"></a>Ondersteunde regio's
 
 Azure Monitor voor VM's ondersteunt Log Analytics-werk ruimten in de volgende regio's, hoewel u virtuele machines in elke regio kunt bewaken. De virtuele machines zelf zijn niet beperkt tot de regio's die worden ondersteund door de Log Analytics-werk ruimte.
 
@@ -64,7 +64,7 @@ Azure Monitor voor VM's ondersteunt Log Analytics-werk ruimten in de volgende re
 - Azië - oost
 - Azië - zuidoost
 - India - centraal
-- Japan East
+- Japan - oost
 - Australië - oost
 - Australië - zuidoost
 
@@ -89,7 +89,7 @@ Als u meerdere werk ruimten wilt configureren, selecteert u het tabblad **werkru
 [![Werkruimteconfiguratie](media/vminsights-enable-at-scale-policy/workspace-configuration.png)](media/vminsights-enable-at-scale-policy/workspace-configuration.png#lightbox)
 
 
-Wanneer u Azure Monitor voor VM's op één virtuele machine of VMMS inschakelt met behulp van de Azure Portal, krijgt u de optie om een bestaande werk ruimte te selecteren of een nieuwe te maken. Als dit nog niet is gebeurd, wordt de *VMInsights* -oplossing in deze werk ruimte geïnstalleerd. U kunt deze werk ruimte vervolgens gebruiken voor andere agents.
+Wanneer u Azure Monitor voor VM's op één virtuele machine of VMSS inschakelt met behulp van de Azure Portal, krijgt u de mogelijkheid om een bestaande werk ruimte te selecteren of een nieuwe te maken. Als dit nog niet is gebeurd, wordt de *VMInsights* -oplossing in deze werk ruimte geïnstalleerd. U kunt deze werk ruimte vervolgens gebruiken voor andere agents.
 
 [![Eén virtuele machine in de portal inschakelen](media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png)](media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png#lightbox)
 

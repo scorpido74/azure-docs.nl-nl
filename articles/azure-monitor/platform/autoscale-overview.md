@@ -4,12 +4,12 @@ description: Automatisch schalen in Microsoft Azure
 ms.subservice: autoscale
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: e89cf36e59ab26ec220d1125162a841fc10f0e47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bd7c1582cdb4b2b1b72d3f969ad08879d208785f
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91567261"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505834"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure"></a>Overzicht van automatische schaalaanpassing in Microsoft Azure
 In dit artikel wordt beschreven wat Microsoft Azure automatisch schalen is, wat de voor delen zijn en hoe u het kunt gaan gebruiken.  
@@ -63,9 +63,9 @@ Voor automatisch schalen worden de volgende terminologie en structuur gebruikt.
 
   - Een **profiel voor automatisch schalen** is een combi natie van een:
 
-    - de **capaciteits instelling**, waarmee de minimum-, maximum-en standaard waarden voor het aantal exemplaren worden aangegeven.
-    - **set met regels**, elk met een trigger (tijd of metrische waarde) en een schaal actie (omhoog of omlaag).
-    - **terugkeer patroon**, waarmee wordt aangegeven wanneer dit profiel door automatisch schalen moet worden geplaatst.
+    - de **capaciteits instelling** , waarmee de minimum-, maximum-en standaard waarden voor het aantal exemplaren worden aangegeven.
+    - **set met regels** , elk met een trigger (tijd of metrische waarde) en een schaal actie (omhoog of omlaag).
+    - **terugkeer patroon** , waarmee wordt aangegeven wanneer dit profiel door automatisch schalen moet worden geplaatst.
 
       U kunt meerdere profielen hebben, zodat u rekening moet houden met verschillende overlappende vereisten. U kunt bijvoorbeeld verschillende profielen voor automatisch schalen hebben voor verschillende tijdstippen van de dag of dagen van de week.
 
@@ -102,7 +102,7 @@ U kunt automatisch schalen instellen via
 | Virtual Machines: klassiek |[De beschik baarheid van klassieke virtuele machines schalen](/archive/blogs/kaevans/autoscaling-azurevirtual-machines) |
 | Virtual Machines: Windows-schaal sets |[Schaal sets voor virtuele machines in Windows schalen](../../virtual-machine-scale-sets/tutorial-autoscale-powershell.md) |
 | Virtual Machines: Linux-schaal sets |[Schaal sets voor virtuele machines in Linux schalen](../../virtual-machine-scale-sets/tutorial-autoscale-cli.md) |
-| Virtual Machines: Windows-voor beeld |[Geavanceerde configuratie voor automatisch schalen met Resource Manager-sjablonen voor VM Scale Sets](../../azure-monitor/platform/autoscale-virtual-machine-scale-sets.md) |
+| Virtual Machines: Windows-voor beeld |[Geavanceerde configuratie voor automatisch schalen met Resource Manager-sjablonen voor VM Scale Sets](autoscale-virtual-machine-scale-sets.md) |
 | Azure App Service |[Een app omhoog schalen in Azure-app service](../../app-service/manage-scale-up.md)|
 | API Management-service|[Exemplaar van Azure API Management automatisch schalen](../../api-management/api-management-howto-autoscale.md)
 | Azure Data Explorer-clusters|[Het schalen van Azure Data Explorer-clusters beheren voor het wijzigen van de vraag](/azure/data-explorer/manage-cluster-horizontal-scaling)|

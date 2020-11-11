@@ -160,6 +160,8 @@
         - name: Overzicht van Enterprise-beveiliging
           displayName: authorization authentication encryption aad azure active directory
           href: concept-enterprise-security.md
+        - name: Gegevensversleuteling
+          href: concept-data-encryption.md
         - name: Beveiligingsbasislijn
           href: security-baseline.md
     - name: Verantwoordelijke ML
@@ -182,12 +184,15 @@
       items:
         - name: Identiteits- en toegangsbeheer
           items:
-            - name: Verificatie instellen
+            - name: Werkruimteverificatie
               displayName: 'authentication, auth, oauth'
               href: how-to-setup-authentication.md
-            - name: Gebruikers en rollen beheren
+            - name: Web-serviceverificatie
+              displayName: 'authentication, model, web service'
+              href: how-to-authenticate-web-service.md
+            - name: Toegang beheren (autorisatie)
               href: how-to-assign-roles.md
-            - name: Beheerde identiteit gebruiken voor toegangsbeheer
+            - name: Beheerde identiteiten voor toegangsbeheer
               href: how-to-use-managed-identities.md
             - name: Azure AD-identiteit gebruiken in AKS-implementaties
               href: how-to-use-azure-ad-identity.md

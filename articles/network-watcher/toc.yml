@@ -29,7 +29,7 @@
 - name: Concepten
   items:
     - name: Verbindingsmonitor (preview)
-      href: connection-monitor-preview.md
+      href: connection-monitor-overview.md
     - name: Een probleem met een VM-filter voor netwerkverkeer vaststellen
       href: network-watcher-ip-flow-verify-overview.md
     - name: NSG-regels en filteren van verkeer diagnosticeren
@@ -61,9 +61,9 @@
     - name: Verbindingsmonitor maken (preview)
       items:
         - name: Azure Portal gebruiken
-          href: connection-monitor-preview-create-using-portal.md
+          href: connection-monitor-create-using-portal.md
         - name: ARMClient gebruiken
-          href: connection-monitor-preview-create-using-arm-client.md
+          href: connection-monitor-create-using-template.md
         - name: PowerShell gebruiken
           href: connection-monitor-create-using-powershell.md
     - name: Migreren naar verbindingsmonitor (preview)

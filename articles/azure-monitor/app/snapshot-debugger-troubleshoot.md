@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cweining
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: bb2ac221169cea84205d087cbe0aadfd035d22db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49a4ab0315dad539a594a20e53eae9fd2890e551
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91760509"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94504965"
 ---
 # <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a> Problemen oplossen met het inschakelen van Application Insights Snapshot Debugger of het weer geven van moment opnamen
 Als u Application Insights Snapshot Debugger voor uw toepassing hebt ingeschakeld, maar geen moment opnamen voor uitzonde ringen ziet, kunt u deze instructies gebruiken om problemen op te lossen. Er kunnen veel verschillende redenen zijn waarom momentopnamen niet worden gegenereerd. U kunt de status controle van de moment opname uitvoeren om enkele van de mogelijke veelvoorkomende oorzaken te identificeren.
@@ -57,19 +57,21 @@ Als u de instelling wilt controleren, opent u het web.config-bestand en gaat u n
 > Als de targetFramework 4,7 of hoger is, worden de beschik bare protocollen door Windows bepaald. In Azure App Service is TLS 1,2 beschikbaar. Als u echter uw eigen virtuele machine gebruikt, moet u mogelijk TLS 1,2 inschakelen in het besturings systeem.
 
 ## <a name="preview-versions-of-net-core"></a>Preview-versies van .NET core
-Als de toepassing gebruikmaakt van een preview-versie van .NET core en Snapshot Debugger is ingeschakeld via het [deel venster Application Insights](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json) in de portal, wordt Snapshot debugger mogelijk niet gestart. Volg de instructies in [enable snapshot debugger voor andere omgevingen](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) eerst om het [micro soft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet-pakket met de toepassing toe te voegen, naast het inschakelen ***van*** het [deel venster Application Insights](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json).
+Als de toepassing gebruikmaakt van een preview-versie van .NET core en Snapshot Debugger is ingeschakeld via het [deel venster Application Insights](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json) in de portal, wordt Snapshot debugger mogelijk niet gestart. Volg de instructies op [enable snapshot debugger voor andere omgevingen](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) eerst om het [micro soft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet-pakket op te laten voegen met de toepassing * naast het inschakelen **van** het [Application Insights deel venster](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json).
 
 
 ## <a name="upgrade-to-the-latest-version-of-the-nuget-package"></a>Upgrade uitvoeren naar de nieuwste versie van het NuGet-pakket
 
 Als Snapshot Debugger is ingeschakeld via het [deel venster Application Insights in de portal](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json), moet uw toepassing al het meest recente NuGet-pakket uitvoeren. Als Snapshot Debugger is ingeschakeld door het pakket [micro soft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet op te nemen, gebruikt u Visual Studio NuGet Package Manager om te controleren of u de nieuwste versie van micro soft. ApplicationInsights. SnapshotCollector gebruikt.
 
+[Raadpleeg de opmerkingen bij de release](./snapshot-collector-release-notes.md)voor de nieuwste updates en oplossingen voor problemen.
+
 ## <a name="check-the-uploader-logs"></a>Raadpleeg de uploader-logboeken
 
 Nadat een moment opname is gemaakt, wordt er een mini dump bestand (. dmp) gemaakt op de schijf. Met een afzonderlijk Uploader-proces wordt dit bestand met de mini dump gemaakt en geüpload, samen met eventuele gekoppelde PDBs, om Snapshot Debugger opslag te Application Insights. Nadat het mini maal is geüpload, wordt het verwijderd van de schijf. De logboek bestanden voor het Uploader-proces worden op schijf bewaard. In een App Service omgeving kunt u deze logboeken vinden in `D:\Home\LogFiles` . Gebruik de kudu-beheer site voor App Service om deze logboek bestanden te vinden.
 
 1. Open uw App Service-toepassing in de Azure Portal.
-2. Klik op **geavanceerde hulp middelen**of zoek naar **kudu**.
+2. Klik op _ * geavanceerde hulp middelen * * of zoek naar **kudu**.
 3. Klik op **Go**.
 4. Selecteer in de vervolg keuzelijst **debug-console** de optie **cmd**.
 5. Klik op **logboek bestanden**.

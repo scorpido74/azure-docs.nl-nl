@@ -1,0 +1,73 @@
+### YamlMime:Landing
+title: Migreren naar Azure SQL
+summary: 'Vind documentatie over hoe u migreer naar de Azure SQL-productfamilie van SQL Server-database-engine in de Cloud: Azure SQL Database, Azure SQL Managed Instance en SQL Server in Azure VM. '
+metadata:
+  title: Migreren naar Azure SQL
+  description: Zoek documentatie om u te helpen naar Azure SQL te migreren, een productfamilie van SQL Server-database-engines in de cloud, van een volledig beheerde database in Azure SQL Database en een volledig beheerd exemplaar in Azure SQL Managed Instance, tot SQL Server dat wordt geïnstalleerd in virtuele Azure-machines.
+  services: sql-database
+  ms.service: sql-database
+  ms.subservice: service
+  ms.tgt_pltfrm: na
+  ms.devlang: 
+  ms.topic: landing-page
+  author: MashaMSFT
+  ms.author: mathoma
+  ms.reviewer: sstein
+  ms.date: 11/06/2020
+  ms.openlocfilehash: 940f28fa76a8f735318010eab4b55d464295c25a
+  ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 11/11/2020
+  ms.locfileid: "94495273"
+landingContent:
+- title: Azure SQL Database
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Overzicht
+      url: database/sql-server-to-sql-database-overview.md
+    - text: Vanaf SQL Server
+      url: database/sql-server-to-sql-database-guide.md
+    - text: Vanaf DB2
+      url: database/db2-to-sql-database-guide.md
+- title: Azure SQL Managed Instance
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Overzicht
+      url: managed-instance/sql-server-to-managed-instance-overview.md
+    - text: Vanaf SQL Server
+      url: managed-instance/sql-server-to-managed-instance-guide.md
+    - text: Vanaf DB2
+      url: managed-instance/db2-to-managed-instance-guide.md
+- title: SQL Server op virtuele Azure-machine
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Overzicht
+      url: virtual-machines/sql-server-to-sql-on-azure-vm-migration-overview.md
+    - text: Vanaf SQL Server
+      url: virtual-machines/sql-server-to-sql-on-azure-vm-individual-databases-guide.md
+    - text: Vanaf DB2
+      url: virtual-machines/db2-to-sql-on-azure-vm-guide.md
+- title: Hulpprogramma's voor migratie
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: Azure Migrate
+      url: /azure/migrate/migrate-services-overview
+    - text: Azure Database Migration Service (DMS)
+      url: /azure/dms/dms-overview
+    - text: Data Migration Assistant (DMA)
+      url: /sql/dma/dma-migrateonpremsqltosqldb
+    - text: Transactionele replicatie
+      url: /sql/relational-databases/replication/transactional/transactional-replication
+    - text: Import- en exportservice / BACPAC
+      url: ../database/database-import.md
+    - text: Bulksgewijs kopiëren
+      url: /sql/relational-databases/import-export/import-and-export-bulk-data-by-using-the-bcp-utility-sql-server
+    - text: Azure Data Factory
+      url: /azure/data-factory/connector-azure-sql-database
+    - text: SQL Data Sync
+      url: ../database/sql-data-sync-data-sql-server-sql-database.md

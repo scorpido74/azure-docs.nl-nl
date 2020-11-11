@@ -114,15 +114,7 @@
     - name: Gegevensbronnen
       href: platform/data-sources.md
     - name: Gegevensplatform
-      items:
-        - name: Overzicht
-          href: platform/data-platform.md
-        - name: Logboeken
-          href: platform/data-platform-logs.md
-        - name: Metrische gegevens
-          href: platform/data-platform-metrics.md
-        - name: Gegevens streamen naar Event Hubs
-          href: platform/stream-monitoring-data-event-hubs.md
+      href: platform/data-platform.md
     - name: Gegevensbeveiliging
       items:
         - name: Logboekgegevens
@@ -188,98 +180,13 @@
               href: app/pricing.md
             - name: Gegevensgebruik en kosten vastleggen
               href: platform/manage-cost-storage.md
-    - name: Platformlogboeken
+    - name: Azure Monitor-logboeken
       items:
         - name: Overzicht
-          displayName: 'Platform logs, Resource logs, Activity log'
-          href: platform/platform-logs-overview.md
-        - name: Activiteitenlogboek
-          href: platform/activity-log.md
-        - name: Resourcelogboeken
-          href: platform/resource-logs.md
-        - name: Diagnostische instellingen
-          displayName: 'Platform logs, Resource logs, Activity log'
-          href: platform/diagnostic-settings.md
-    - name: Log Analytics
-      items:
-        - name: Overzicht
-          displayname: 'Log Analytics, log query, log queries, query, queries'
-          href: log-query/log-query-overview.md
-        - name: Zelfstudie
-          displayname: 'Log Analytics workspace, log query, log queries, query, queries'
-          href: log-query/get-started-portal.md
-        - name: Querybereik
-          href: log-query/scope.md
-        - name: Query's uitvoeren met Azure Data Explorer
-          href: platform/azure-data-explorer-monitor-proxy.md
-        - name: Logboekquery's
-          items:
-            - name: Standaardkolommen
-              href: platform/log-standard-columns.md
-            - name: Query's controleren
-              href: log-query/query-audit.md
-            - name: Query's optimaliseren
-              href: log-query/query-optimization.md
-            - name: Functions
-              href: log-query/functions.md
-            - name: Tekstgegevens parseren
-              href: log-query/parse-text.md
-            - name: Voorbeelden van query's
-              href: log-query/saved-queries.md
-            - name: Computergroepen
-              href: platform/computer-groups.md
-        - name: Querytaal
-          items:
-            - name: KQL-verwijzing
-              href: /azure/data-explorer/kusto/query/
-            - name: Verschil met Azure Data Explorer
-              href: log-query/data-explorer-difference.md
-            - name: Voorbeelden
-              href: log-query/examples.md
-            - name: Voorbeelden van slimme analyses
-              href: log-query/smart-analytics.md
-            - name: Lessen
-              items:
-                - name: Tekenreeksbewerkingen
-                  href: log-query/string-operations.md
-                - name: Datum- en tijdbewerkingen
-                  href: log-query/datetime-operations.md
-                - name: Aggregatiefuncties
-                  href: log-query/aggregations.md
-                - name: Geavanceerde aggregaties
-                  href: log-query/advanced-aggregations.md
-                - name: Samenvoegingen
-                  href: log-query/joins.md
-                - name: JSON en gegevensstructuren
-                  href: log-query/json-data-structures.md
-                - name: Geavanceerde query's schrijven
-                  href: log-query/advanced-query-writing.md
-                - name: Grafieken en diagrammen
-                  href: log-query/charts.md
-                - name: Zoekquery 's
-                  href: log-query/search-queries.md
-            - name: Cheatsheets
-              items:
-                - name: SQL
-                  href: log-query/sql-cheatsheet.md
-                - name: Splunk
-                  href: log-query/splunk-cheatsheet.md
-        - name: Query's voor meerdere resources
-          items:
-            - name: Overzicht
-              href: log-query/cross-workspace-query.md
-            - name: app-expressie
-              href: log-query/app-expression.md
-            - name: werkruimte-expressie
-              href: log-query/workspace-expression.md
-            - name: resource-expressie
-              href: log-query/resource-expression.md
-            - name: Resources voor toepassingsgegevens samenbundelen
-              href: log-query/unify-app-resource-data.md
+          displayname: 'Azure Monitor Logs, Logs, Log Analytics, log query, log queries, query, queries'
+          href: platform/data-platform-logs.md
         - name: Werkruimten en clusters
           items:
-            - name: Een werkruimte-implementatie ontwerpen
-              href: platform/design-logs-deployment.md
             - name: Een werkruimte maken
               items:
                 - name: Azure Portal
@@ -288,6 +195,8 @@
                   href: learn/quick-create-workspace-cli.md
                 - name: PowerShell
                   href: platform/powershell-workspace-configuration.md
+            - name: Een werkruimte-implementatie ontwerpen
+              href: platform/design-logs-deployment.md
             - name: Een werkruimte bewaken
               href: platform/monitor-workspace.md
             - name: Een werkruimte verwijderen en herstellen
@@ -301,6 +210,50 @@
               href: platform/service-providers.md
             - name: Toegewezen clusters
               href: log-query/logs-dedicated-clusters.md
+        - name: Log Analytics
+          items:
+            - name: Overzicht
+              displayname: 'Log Analytics, log query, log queries, query, queries'
+              href: log-query/log-analytics-overview.md
+            - name: Zelfstudie
+              displayname: 'Log Analytics workspace, log query, log queries, query, queries'
+              href: log-query/log-analytics-tutorial.md
+            - name: Querybereik
+              href: log-query/scope.md
+            - name: Voorbeelden van query's
+              href: log-query/example-queries.md
+        - name: Logboekquery's
+          items:
+            - name: Overzicht
+              displayname: 'log query, log queries, query, queries'
+              href: log-query/log-query-overview.md
+            - name: KQL-verwijzing
+              href: /azure/data-explorer/kusto/query/
+            - name: Voorbeeldquery's
+              href: /azure/data-explorer/kusto/query/samples?&pivots=azuremonitor
+            - name: Standaardkolommen
+              href: platform/log-standard-columns.md
+            - name: Query's optimaliseren
+              href: log-query/query-optimization.md
+            - name: Functions
+              href: log-query/functions.md
+            - name: Tekstgegevens parseren
+              href: log-query/parse-text.md
+            - name: Computergroepen
+              href: platform/computer-groups.md
+            - name: Query's voor meerdere resources
+              items:
+                - name: Overzicht
+                  displayname: cross-resource queries
+                  href: log-query/cross-workspace-query.md
+                - name: app-expressie
+                  href: log-query/app-expression.md
+                - name: werkruimte-expressie
+                  href: log-query/workspace-expression.md
+                - name: resource-expressie
+                  href: log-query/resource-expression.md
+                - name: Resources voor toepassingsgegevens samenbundelen
+                  href: log-query/unify-app-resource-data.md
         - name: Gegevensexport
           items:
             - name: Export van werkruimtegegevens
@@ -309,16 +262,33 @@
               href: platform/logs-export-logic-app.md
             - name: Query's uitvoeren op geëxporteerde gegevens met Data Explorer
               href: platform/azure-data-explorer-query-storage.md
-    - name: Metrics-explorer
+    - name: Metrische gegevens van Azure Monitor
       items:
-        - name: Aan de slag met Metrics Explorer
-          href: platform/metrics-getting-started.md
-        - name: Geavanceerde functies van Metrics Explorer
-          href: platform/metrics-charts.md
-        - name: Voorbeelden van grafieken met metrische gegevens
-          href: platform/metric-chart-samples.md
-        - name: Problemen met grafieken met metrische gegevens oplossen
-          href: platform/metrics-troubleshoot.md
+        - name: Overzicht
+          displayname: Metrics
+          href: platform/data-platform-metrics.md
+        - name: Metrics-explorer
+          items:
+            - name: Aan de slag met Metrics Explorer
+              href: platform/metrics-getting-started.md
+            - name: Geavanceerde functies van Metrics Explorer
+              href: platform/metrics-charts.md
+            - name: Voorbeelden van grafieken met metrische gegevens
+              href: platform/metric-chart-samples.md
+            - name: Problemen met grafieken met metrische gegevens oplossen
+              href: platform/metrics-troubleshoot.md
+    - name: Platformlogboeken
+      items:
+        - name: Overzicht
+          displayName: 'Platform logs, Resource logs, Activity log'
+          href: platform/platform-logs-overview.md
+        - name: Activiteitenlogboek
+          href: platform/activity-log.md
+        - name: Resourcelogboeken
+          href: platform/resource-logs.md
+        - name: Diagnostische instellingen
+          displayName: 'Platform logs, Resource logs, Activity log'
+          href: platform/diagnostic-settings.md
     - name: Gegevens verzamelen
       items:
         - name: Gegevensverzamelingsregels

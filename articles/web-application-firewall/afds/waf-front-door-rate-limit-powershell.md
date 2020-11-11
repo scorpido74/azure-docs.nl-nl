@@ -7,18 +7,21 @@ ms.topic: article
 services: web-application-firewall
 ms.date: 02/26/2020
 ms.author: victorh
-ms.openlocfilehash: 29f50b2cf9523b9266de2f73607b0099f32852e1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b8aa72c7b77da8fdde9925325587b67411de8d8
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87005409"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506410"
 ---
 # <a name="configure-a-web-application-firewall-rate-limit-rule-using-azure-powershell"></a>Een regel voor het instellen van een firewall frequentie van webtoepassingen met behulp van Azure PowerShell
 De frequentie limiet regel voor Azure Web Application firewall (WAF) voor Azure front-deur bepaalt het aantal aanvragen dat is toegestaan van clients gedurende een duur van één minuut.
 In dit artikel wordt beschreven hoe u een regel voor frequentie limiet voor WAF configureert waarmee het aantal aanvragen dat is toegestaan van clients naar een webtoepassing met */promo* in de URL met behulp van Azure PowerShell, wordt beheerd.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+
+> [!NOTE]
+> Frequentie limieten worden toegepast voor elk client-IP-adres. Als er meerdere clients toegang hebben tot de voor deur van verschillende IP-adressen, worden de eigen frequentie limieten toegepast.
 
 ## <a name="prerequisites"></a>Vereisten
 Voordat u begint met het instellen van een beleid voor frequentie limieten, stelt u uw Power shell-omgeving in en maakt u een voor deur profiel.
@@ -73,9 +76,7 @@ Stel een frequentie limiet in met behulp van [New-AzFrontDoorWafCustomRuleObject
 
 Zoek de naam van de resourcegroep die het Front Door-profiel bevat met behulp van `Get-AzureRmResourceGroup`. Configureer vervolgens een beveiligings beleid met een aangepaste frequentie limiet regel met [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) in de opgegeven resource groep die het voorste deur profiel bevat.
 
-In het onderstaande voor beeld wordt de naam van de resource groep *myResourceGroupFD1* met de veronderstelling dat u het voorste deur profiel hebt gemaakt met behulp van de instructies in de [Quick Start: een front deur](../../frontdoor/quickstart-create-front-door.md) -artikel maken.
-
- met behulp van [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy).
+In het onderstaande voor beeld wordt de naam van de resource groep *myResourceGroupFD1* met de veronderstelling dat u het voorste deur profiel hebt gemaakt met behulp van de instructies in de [Snelstartgids: een front-deur maken](../../frontdoor/quickstart-create-front-door.md) , met behulp van [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy).
 
 ```powershell-interactive
    $ratePolicy = New-AzFrontDoorWafPolicy `

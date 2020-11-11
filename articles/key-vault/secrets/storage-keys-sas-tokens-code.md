@@ -9,19 +9,19 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0d2d28a525f38aad3f48e439992a23abde0b7718
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 2a0202c5259ccebedf03ade217f57b6305b9fa1b
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92786068"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444925"
 ---
 # <a name="create-sas-definition-and-fetch-shared-access-signature-tokens-in-code"></a>SAS-definitie maken en gedeelde toegangstokens ophalen in code
 
 U kunt uw opslagaccount met SAS-tokens (Shared Access Signature) beheren die zijn opgeslagen in uw sleutelkluis. Zie [Beperkte toegang verlenen tot Azure Storage-resources via SAS](../../storage/common/storage-sas-overview.md) voor meer informatie.
 
 > [!NOTE]
-> U kunt het beste [Op rollen gebaseerd toegangsbeheer (RBAC)](../../storage/common/storage-auth-aad.md) gebruiken om uw opslagaccount te beveiligen voor betere beveiliging en het gebruiksgemak van gedeelde-sleutelverificatie.
+> U kunt het beste [Op rollen gebaseerd toegangsbeheer (Azure RBAC)](../../storage/common/storage-auth-aad.md) gebruiken om uw opslagaccount te beveiligen voor betere beveiliging en het gebruiksgemak van gedeelde-sleutelverificatie.
 
 In dit artikel vindt u voorbeelden van .NET-code waarmee een SAS-definitie wordt gemaakt en SAS-tokens worden opgehaald. Bekijk ons [ShareLink](/samples/azure/azure-sdk-for-net/share-link/)-voorbeeld voor volledige informatie, inclusief de gegenereerde client voor met Key Vault beheerde opslagaccounts. Voor informatie over het maken en opslaan van SAS-tokens, raadpleegt u [Sleutels voor opslagaccounts beheren met Key Vault en de Azure CLI](overview-storage-keys.md) of [Sleutels voor opslagaccounts beheren met Key Vault en Azure PowerShell](overview-storage-keys-powershell.md).
 

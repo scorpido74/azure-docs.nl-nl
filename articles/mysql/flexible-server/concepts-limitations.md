@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/1/2020
-ms.openlocfilehash: 6fff7f22e7d265eb9b15bcec8604eeab692ac1c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a064b2b2d0bad5fc8ded9a59b66d84a361facec9
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91650286"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94504336"
 ---
 # <a name="limitations-in-azure-database-for-mysql---flexible-server-preview"></a>Beperkingen in Azure Database for MySQL flexibele server (preview-versie)
 
@@ -23,9 +23,9 @@ In dit artikel worden de beperkingen in de Azure Database for MySQL flexibele Se
 ## <a name="server-parameters"></a>Serverparameters
 
 > [!NOTE]
-> Als u op zoek bent naar de minimale/maximale waarden voor server parameters zoals `max_connections` en `innodb_buffer_pool_size` , wordt deze informatie verplaatst naar de concepten van server parameters <!-- **[server parameters](./concepts-server-parameters.md)** --> .
+> Als u op zoek bent naar de minimale/maximale waarden voor server `max_connections` parameters `innodb_buffer_pool_size` , zoals en, is deze informatie verplaatst naar het artikel [server parameters](./concepts-server-parameters.md) concepten-hoofd artikelen.
 
-Azure Database for MySQL biedt ondersteuning voor het afstemmen van de waarden van server parameters. De minimum-en maximum waarde van sommige para meters (bijvoorbeeld `max_connections`, `join_buffer_size` , `query_cache_size` ) wordt bepaald door de compute-laag en de reken grootte van de server. Raadpleeg de concepten van server parameters <!-- [server parameters](./concepts-server-parameters.md)--> voor meer informatie over deze limieten.
+Azure Database for MySQL biedt ondersteuning voor het afstemmen van de waarden van server parameters. De minimum-en maximum waarde van sommige para meters (bijvoorbeeld `max_connections`, `join_buffer_size` , `query_cache_size` ) wordt bepaald door de compute-laag en de reken grootte van de server. Raadpleeg [server parameters](./concepts-server-parameters.md) voor meer informatie over deze limieten.
 
 De invoeg toepassingen voor wacht woorden, zoals ' validate_password ' en ' caching_sha2_password ', worden niet ondersteund door de service.
 
@@ -68,7 +68,7 @@ Het volgende wordt niet ondersteund:
 - Niet ondersteund in een Burstive Compute-laag.
 
 ### <a name="networking"></a>Netwerken
-- De verbindings methode kan niet worden gewijzigd na het maken van de server. Als de server is gemaakt met *persoonlijke toegang (VNet-integratie)*, kan deze niet meer worden gewijzigd in *open bare toegang (toegestane IP-adressen)* na het maken, en andersom
+- De verbindings methode kan niet worden gewijzigd na het maken van de server. Als de server is gemaakt met *persoonlijke toegang (VNet-integratie)* , kan deze niet meer worden gewijzigd in *open bare toegang (toegestane IP-adressen)* na het maken, en andersom
 - TLS/SSL is standaard ingeschakeld en kan niet worden uitgeschakeld.
 - De minimale TLS-versie die op de server wordt ondersteund, is TLS 1.2. Raadpleeg [verbinding maken met behulp van TLS/SSL](./how-to-connect-tls-ssl.md) voor meer informatie.
 

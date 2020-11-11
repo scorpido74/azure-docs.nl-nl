@@ -171,7 +171,7 @@
           href: sql/overview-features.md
         - name: Modellen voor resourceverbruik
           href: sql/resource-consumption-models.md
-        - name: Verwerkte gegevens
+        - name: Kostenbeheer voor serverloze SQL-pool
           href: sql/data-processed.md
         - name: Best practices voor serverloze SQL-pools
           href: sql/best-practices-sql-on-demand.md
@@ -996,6 +996,8 @@
       href: /powershell/module/az.synapse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: REST-API’s
       href: /rest/api/synapse/
+    - name: Microsoft Spark Utilities
+      href: ./spark/microsoft-spark-utilities.md
     - name: Voorbeelden
       href: 'https://github.com/Azure-Samples/Synapse'
     - name: Systeemweergaven

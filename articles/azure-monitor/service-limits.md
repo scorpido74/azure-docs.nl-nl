@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/10/2019
-ms.openlocfilehash: d2a2230613f9e4be3e0c9359a082843a4701b6f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fffdc88e1d54622ec17d27cdb3bc574d4ced1111
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77657908"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505751"
 ---
 # <a name="azure-monitor-service-limits"></a>Servicebeperkingen van Azure Monitor
 
@@ -24,6 +24,10 @@ In dit artikel vindt u een overzicht van de limieten op verschillende gebieden v
 ## <a name="action-groups"></a>Actiegroepen
 
 [!INCLUDE [monitoring-limits](../../includes/azure-monitor-limits-action-groups.md)]
+
+## <a name="autoscale"></a>Automatisch schalen
+
+[!INCLUDE [monitoring-limits](../../includes/azure-monitor-limits-autoscale.md)]
 
 ## <a name="log-queries-and-language"></a>Query's en taal in logboek registreren
 
@@ -39,6 +43,6 @@ In dit artikel vindt u een overzicht van de limieten op verschillende gebieden v
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Prijzen van Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/)
+- [Prijzen voor Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/)
 - [Gebruik en geschatte kosten in Azure Monitor bewaken](platform/usage-estimated-costs.md)
 - [Het gebruik en de kosten van Application Insights beheren](app/pricing.md)

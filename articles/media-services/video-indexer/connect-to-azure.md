@@ -10,16 +10,16 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: juliako
-ms.openlocfilehash: a101afb2089e4ab1fa32bd0668c60b477039b566
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 0d954123b0d48a4b78c0dcda98898b7ab539d502
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94330577"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94504500"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Een Video Indexer-account maken dat is verbonden met Azure
 
-Wanneer u een Video Indexer-account maakt, kunt u kiezen uit een gratis proefversie (waarmee u een bepaald aantal gratis minuten indexering krijgt) of een betaalde optie (zonder quotumlimiet). Bij een gratis proefversie biedt Video Indexer websitegebruikers maximaal 600 minuten aan gratis indexering en API-gebruikers maximaal 2400 minuten gratis indexering. Met de betaalde versie maakt u een Video Indexer-account dat is gekoppeld aan uw Azure-abonnement en een Azure Media Services-account. U betaalt zowel voor de geïndexeerde minuten als voor kosten verbonden aan het media-account.
+Wanneer u een Video Indexer-account maakt, kunt u kiezen uit een gratis proefversie (waarmee u een bepaald aantal gratis minuten indexering krijgt) of een betaalde optie (zonder quotumlimiet). Bij een gratis proefversie biedt Video Indexer websitegebruikers maximaal 600 minuten aan gratis indexering en API-gebruikers maximaal 2400 minuten gratis indexering. Met de betaalde optie maakt u een Video Indexer-account dat is verbonden met uw Azure-abonnement. U betaalt voor minuten voor de index. Zie [Media Services prijzen](https://azure.microsoft.com/pricing/details/media-services/)voor meer informatie.
 
 In dit artikel wordt beschreven hoe u een Video Indexer-account maakt dat is gekoppeld aan een Azure-abonnement en een Azure Media Services-account. Het onderwerp bevat stappen voor het maken van verbinding met Azure met behulp van de automatische stroom (standaard). Ook wordt uitgelegd hoe u hand matig verbinding maakt met Azure (Geavanceerd).
 

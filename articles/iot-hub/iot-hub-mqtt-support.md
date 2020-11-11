@@ -13,12 +13,14 @@ ms.custom:
 - 'Role: IoT Device'
 - 'Role: Cloud Development'
 - contperfq1
-ms.openlocfilehash: 9f063b147fbddaeaa7888af755dba8f325d4fe0f
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+- fasttrack-edit
+- iot
+ms.openlocfilehash: 4e06edaf6323c13b3a5af037b5b85b5b0acecc79
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92899105"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505645"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Communiceren met uw IoT-hub met het MQTT-protocol
 
@@ -44,7 +46,7 @@ De MQTT-poort (8883) is geblokkeerd in veel bedrijfs-en educatieve netwerk omgev
 
 ## <a name="using-the-device-sdks"></a>De apparaat-Sdk's gebruiken
 
-[Apparaat-sdk's](https://github.com/Azure/azure-iot-sdks) die het MQTT-protocol ondersteunen, zijn beschikbaar voor Java, Node.js, C, C# en python. De Sdk's van het apparaat maken gebruik van de Standard-IoT Hub connection string om een verbinding met een IoT-hub tot stand te brengen. Als u het MQTT-protocol wilt gebruiken, moet de para meter client protocol worden ingesteld op **MQTT** . U kunt ook MQTT via web sockets opgeven in de para meter client protocol. De Sdk's van het apparaat maken standaard verbinding met een IoT Hub met de vlag **CleanSession** ingesteld op **0** en gebruiken **QoS 1** voor berichten uitwisseling met de IOT-hub. Hoewel het mogelijk is om **QoS 0** te configureren voor een snellere uitwisseling van berichten, moet u er rekening mee houden dat de levering niet gegarandeerd noch bevestigd wordt. Daarom wordt **QoS 0** vaak aangeduid als brand en verg eten.
+[Apparaat-sdk's](https://github.com/Azure/azure-iot-sdks) die het MQTT-protocol ondersteunen, zijn beschikbaar voor Java, Node.js, C, C# en python. De Sdk's van het apparaat maken gebruik van de Standard-IoT Hub connection string om een verbinding met een IoT-hub tot stand te brengen. Als u het MQTT-protocol wilt gebruiken, moet de para meter client protocol worden ingesteld op **MQTT**. U kunt ook MQTT via web sockets opgeven in de para meter client protocol. De Sdk's van het apparaat maken standaard verbinding met een IoT Hub met de vlag **CleanSession** ingesteld op **0** en gebruiken **QoS 1** voor berichten uitwisseling met de IOT-hub. Hoewel het mogelijk is om **QoS 0** te configureren voor een snellere uitwisseling van berichten, moet u er rekening mee houden dat de levering niet gegarandeerd noch bevestigd wordt. Daarom wordt **QoS 0** vaak aangeduid als brand en verg eten.
 
 Wanneer een apparaat is verbonden met een IoT-hub, bieden de Sdk's van het apparaat methoden die het apparaat in staat stellen om berichten uit te wisselen met een IoT-hub.
 
@@ -79,11 +81,11 @@ Om ervoor te zorgen dat een client/IoT Hub verbinding actief blijft, worden zowe
 
 |Taal  |Standaard interval voor Keep-Alive  |Configureerbaar  |
 |---------|---------|---------|
-|Node.js     |   180 seconden      |     No    |
-|Java     |    230 seconden     |     No    |
+|Node.js     |   180 seconden      |     Nee    |
+|Java     |    230 seconden     |     Nee    |
 |C     | 240 seconden |  [Ja](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md#mqtt-transport)   |
 |C#     | 300 seconden |  [Ja](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/src/Transport/Mqtt/MqttTransportSettings.cs#L89)   |
-|Python   | 60 seconden |  No   |
+|Python   | 60 seconden |  Nee   |
 
 Na de [MQTT](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718081)-IOT hub specificatie is het Keep-Alive ping-interval van 1,5 keer de client Keep-Alive waarde. IoT Hub beperkt echter de maximale time-out aan de server zijde tot 29,45 minuten (1767 seconden), omdat alle Azure-Services zijn gebonden aan de Azure load balancer TCP-time-out voor inactiviteit, 29,45 minuten. 
 
@@ -162,7 +164,7 @@ Als een apparaat de Sdk's van het apparaat niet kan gebruiken, kan het nog steed
 
 1. Vouw het tabblad **apparaten van Azure IOT hub** uit in de linkerbovenhoek van Visual Studio code.
   
-2. Klik met de rechter muisknop op uw apparaat en selecteer **SAS-token voor apparaat genereren** .
+2. Klik met de rechter muisknop op uw apparaat en selecteer **SAS-token voor apparaat genereren**.
   
 3. Stel de **verval tijd** in en druk op ENTER.
   
@@ -283,7 +285,7 @@ client.connect(iot_hub_name+".azure-devices.net", port=8883)
 
 ## <a name="sending-device-to-cloud-messages"></a>Apparaat-naar-Cloud-berichten verzenden
 
-Na een geslaagde verbinding kan een apparaat berichten verzenden naar IoT Hub met `devices/{device_id}/messages/events/` of `devices/{device_id}/messages/events/{property_bag}` als **onderwerpnaam** . Met het- `{property_bag}` element kan het apparaat berichten verzenden met aanvullende eigenschappen in een indeling met URL-code ring. Bijvoorbeeld:
+Na een geslaagde verbinding kan een apparaat berichten verzenden naar IoT Hub met `devices/{device_id}/messages/events/` of `devices/{device_id}/messages/events/{property_bag}` als **onderwerpnaam**. Met het- `{property_bag}` element kan het apparaat berichten verzenden met aanvullende eigenschappen in een indeling met URL-code ring. Bijvoorbeeld:
 
 ```text
 RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-encoded(<PropertyName2>)=RFC 2396-encoded(<PropertyValue2>)…
@@ -298,13 +300,14 @@ Hier volgt een lijst met IoT Hub implementatie-specifieke gedragingen:
 
 * IoT Hub blijven geen berichten behouden. Als een apparaat een bericht verzendt waarbij de vlag **bewaren** is ingesteld op 1, IOT hub voegt de eigenschap **mqtt-retain** toe aan het bericht. In dit geval wordt in plaats van het behouden bericht te blijven IoT Hub door gegeven aan de back-end-app.
 
-* IoT Hub ondersteunt slechts één actieve MQTT-verbinding per apparaat. Een nieuwe MQTT-verbinding namens dezelfde apparaat-ID leidt ertoe IoT Hub de bestaande verbinding te verwijderen.
+* IoT Hub ondersteunt slechts één actieve MQTT-verbinding per apparaat. Een nieuwe MQTT-verbinding namens dezelfde apparaat-ID leidt ertoe IoT Hub de bestaande verbinding te verwijderen en **400027 ConnectionForcefullyClosedOnNewConnection** wordt geregistreerd in IOT hub logboeken
+
 
 Zie voor meer informatie [de hand leiding voor SMS-ontwikkel aars](iot-hub-devguide-messaging.md).
 
 ## <a name="receiving-cloud-to-device-messages"></a>Cloud-naar-apparaat-berichten ontvangen
 
-Als u berichten van IoT Hub wilt ontvangen, moet een apparaat zich abonneren met `devices/{device_id}/messages/devicebound/#` als een **onderwerps filter** . Het Joker teken op meerdere niveaus `#` in het onderwerps filter wordt alleen gebruikt om het apparaat in staat te stellen extra eigenschappen in de onderwerpnaam te ontvangen. IoT Hub staat het gebruik van de of- `#` `?` joker tekens voor het filteren van subonderwerpen niet toe. Omdat IoT Hub geen pub-submessa ging Broker voor algemeen gebruik is, worden alleen de gedocumenteerde onderwerps namen en onderwerps filters ondersteund.
+Als u berichten van IoT Hub wilt ontvangen, moet een apparaat zich abonneren met `devices/{device_id}/messages/devicebound/#` als een **onderwerps filter**. Het Joker teken op meerdere niveaus `#` in het onderwerps filter wordt alleen gebruikt om het apparaat in staat te stellen extra eigenschappen in de onderwerpnaam te ontvangen. IoT Hub staat het gebruik van de of- `#` `?` joker tekens voor het filteren van subonderwerpen niet toe. Omdat IoT Hub geen pub-submessa ging Broker voor algemeen gebruik is, worden alleen de gedocumenteerde onderwerps namen en onderwerps filters ondersteund.
 
 Het apparaat ontvangt geen berichten van IoT Hub totdat het is geabonneerd op het apparaat-specifieke eind punt, vertegenwoordigd door het `devices/{device_id}/messages/devicebound/#` onderwerps filter. Nadat een abonnement is ingesteld, ontvangt het apparaat Cloud-naar-apparaat-berichten die zijn verzonden na het tijdstip van het abonnement. Als het apparaat verbinding maakt met de vlag **CleanSession** ingesteld op **0** , wordt het abonnement gehandhaafd in verschillende sessies. In dit geval wordt de volgende keer dat het apparaat verbinding maakt met **CleanSession 0** alle openstaande berichten ontvangen die worden verzonden terwijl de verbinding is verbroken. Als het apparaat gebruikmaakt van een **CleanSession** -vlag ingesteld op **1** , worden er geen berichten van IOT hub ontvangen totdat deze zich op het eind punt van het apparaat abonneert.
 
@@ -312,7 +315,7 @@ IoT Hub levert berichten met de **onderwerpnaam** `devices/{device_id}/messages/
 
 In Cloud-naar-apparaat-berichten worden de waarden in de eigenschappen verzameling weer gegeven, zoals in de volgende tabel:
 
-| Eigenschaps waarde | Wijze | Description |
+| Eigenschaps waarde | Wijze | Beschrijving |
 |----|----|----|
 | `null` | `key` | Alleen de sleutel wordt weer gegeven in de eigenschappen verzameling |
 | lege teken reeks | `key=` | De sleutel gevolgd door een gelijkteken zonder waarde |
@@ -328,7 +331,7 @@ Wanneer een apparaat-app zich abonneert op een onderwerp met **QoS 2** , geeft I
 
 ## <a name="retrieving-a-device-twins-properties"></a>De eigenschappen van een onderliggend apparaat ophalen
 
-Eerst wordt een apparaat geabonneerd op om `$iothub/twin/res/#` de reacties van de bewerking te ontvangen. Vervolgens wordt er een leeg bericht naar het onderwerp verzonden `$iothub/twin/GET/?$rid={request id}` met een ingevuld waarde voor **aanvraag-id** . De service verzendt vervolgens een antwoord bericht met daarin het apparaat dubbele gegevens over `$iothub/twin/res/{status}/?$rid={request id}` het onderwerp, waarbij dezelfde **aanvraag-id** wordt gebruikt als voor de aanvraag.
+Eerst wordt een apparaat geabonneerd op om `$iothub/twin/res/#` de reacties van de bewerking te ontvangen. Vervolgens wordt er een leeg bericht naar het onderwerp verzonden `$iothub/twin/GET/?$rid={request id}` met een ingevuld waarde voor **aanvraag-id**. De service verzendt vervolgens een antwoord bericht met daarin het apparaat dubbele gegevens over `$iothub/twin/res/{status}/?$rid={request id}` het onderwerp, waarbij dezelfde **aanvraag-id** wordt gebruikt als voor de aanvraag.
 
 De aanvraag-ID kan bestaan uit een geldige waarde voor de waarde van een bericht eigenschap, zoals wordt weer gegeven in de [hand leiding voor ontwikkel aars van IOT hub berichten](iot-hub-devguide-messaging.md)en de status wordt gevalideerd als een geheel getal.
 

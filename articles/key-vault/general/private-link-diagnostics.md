@@ -7,12 +7,12 @@ ms.date: 09/30/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: c4873bded750186f072dd39ddcb8d78941848586
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 870a55e5bc2701df5c03e142522e8490612b2917
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289364"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506053"
 ---
 # <a name="diagnose-private-links-configuration-issues-on-azure-key-vault"></a>Configuratieproblemen met Private Links diagnosticeren in Azure Key Vault
 
@@ -142,21 +142,29 @@ Deze sectie is bedoeld voor Learning doeleinden. Wanneer de sleutel kluis geen p
 
 Windows:
 
-    C:\> nslookup fabrikam.vault.azure.net
+```console
+C:\> nslookup fabrikam.vault.azure.net
+```
 
-    Non-authoritative answer:
-    Address:  52.168.109.101
-    Aliases:  fabrikam.vault.azure.net
-              data-prod-eus.vaultcore.azure.net
-              data-prod-eus-region.vaultcore.azure.net
+```output
+Non-authoritative answer:
+Address:  52.168.109.101
+Aliases:  fabrikam.vault.azure.net
+          data-prod-eus.vaultcore.azure.net
+          data-prod-eus-region.vaultcore.azure.net
+```
 
 Linux:
 
-    joe@MyUbuntu:~$ host fabrikam.vault.azure.net
+```console
+joe@MyUbuntu:~$ host fabrikam.vault.azure.net
+```
 
-    fabrikam.vault.azure.net is an alias for data-prod-eus.vaultcore.azure.net.
-    data-prod-eus.vaultcore.azure.net is an alias for data-prod-eus-region.vaultcore.azure.net.
-    data-prod-eus-region.vaultcore.azure.net has address 52.168.109.101
+```output
+fabrikam.vault.azure.net is an alias for data-prod-eus.vaultcore.azure.net.
+data-prod-eus.vaultcore.azure.net is an alias for data-prod-eus-region.vaultcore.azure.net.
+data-prod-eus-region.vaultcore.azure.net has address 52.168.109.101
+```
 
 U kunt zien dat de naam wordt omgezet in een openbaar IP-adres en dat er geen `privatelink` alias is. De alias wordt later uitgelegd. u hoeft dit nu niet te doen.
 
@@ -168,23 +176,24 @@ Wanneer de sleutel kluis een of meer verbindingen met een privé-eind punt in de
 
 Windows:
 
-    C:\> nslookup fabrikam.vault.azure.net
+```console
+C:\> nslookup fabrikam.vault.azure.net
+```
 
-    Non-authoritative answer:
-    Address:  52.168.109.101
-    Aliases:  fabrikam.vault.azure.net
-              fabrikam.privatelink.vaultcore.azure.net
-              data-prod-eus.vaultcore.azure.net
-              data-prod-eus-region.vaultcore.azure.net
-
+Niet-bindende antwoord: adres: 52.168.109.101 aliassen: fabrikam.vault.azure.net fabrikam.privatelink.vaultcore.azure.net data-prod-eus.vaultcore.azure.net data-prod-eus-region.vaultcore.azure.net
+```
 Linux:
 
-    joe@MyUbuntu:~$ host fabrikam.vault.azure.net
+```console
+joe@MyUbuntu:~$ host fabrikam.vault.azure.net
+```
 
-    fabrikam.vault.azure.net is an alias for fabrikam.privatelink.vaultcore.azure.net.
-    fabrikam.privatelink.vaultcore.azure.net is an alias for data-prod-eus.vaultcore.azure.net.
-    data-prod-eus.vaultcore.azure.net is an alias for data-prod-eus-region.vaultcore.azure.net.
-    data-prod-eus-region.vaultcore.azure.net has address 52.168.109.101
+```output
+fabrikam.vault.azure.net is an alias for fabrikam.privatelink.vaultcore.azure.net.
+fabrikam.privatelink.vaultcore.azure.net is an alias for data-prod-eus.vaultcore.azure.net.
+data-prod-eus.vaultcore.azure.net is an alias for data-prod-eus-region.vaultcore.azure.net.
+data-prod-eus-region.vaultcore.azure.net has address 52.168.109.101
+```
 
 Het belangrijkste verschil van het vorige scenario is dat er een nieuwe alias met de waarde is `{vaultname}.privatelink.vaultcore.azure.net` . Dit betekent dat het sleutel kluis-gegevens vlak gereed is om aanvragen van persoonlijke koppelingen te accepteren.
 
@@ -198,19 +207,27 @@ Wanneer de sleutel kluis een of meer verbindingen met een privé-eind punt in de
 
 Windows:
 
-    C:\> nslookup fabrikam.vault.azure.net
+```console
+C:\> nslookup fabrikam.vault.azure.net
+```
 
-    Non-authoritative answer:
-    Address:  10.1.2.3
-    Aliases:  fabrikam.vault.azure.net
-              fabrikam.privatelink.vaultcore.azure.net
+```output
+Non-authoritative answer:
+Address:  10.1.2.3
+Aliases:  fabrikam.vault.azure.net
+          fabrikam.privatelink.vaultcore.azure.net
+```
 
 Linux:
 
-    joe@MyUbuntu:~$ host fabrikam.vault.azure.net
+```console
+joe@MyUbuntu:~$ host fabrikam.vault.azure.net
+```
 
-    fabrikam.vault.azure.net is an alias for fabrikam.privatelink.vaultcore.azure.net.
-    fabrikam.privatelink.vaultcore.azure.net has address 10.1.2.3
+```output
+fabrikam.vault.azure.net is an alias for fabrikam.privatelink.vaultcore.azure.net.
+fabrikam.privatelink.vaultcore.azure.net has address 10.1.2.3
+```
 
 Er zijn twee belang rijke verschillen. Eerst wordt de naam omgezet in een privé-IP-adres. Dit moet het IP-adres zijn dat we hebben gevonden in de [bijbehorende sectie](#find-the-key-vault-private-ip-address-in-the-virtual-network) van dit artikel. Ten tweede zijn er geen andere aliassen aanwezig `privatelink` . Dit gebeurt omdat de DNS-servers van Virtual Network de keten van aliassen *onderschept* en het privé-IP-adres rechtstreeks vanuit de naam retour neren `fabrikam.privatelink.vaultcore.azure.net` . Deze vermelding is eigenlijk een `A` record in een privé-DNS zone. Meer informatie vindt u hier.
 
@@ -227,7 +244,7 @@ Als de DNS-omzetting niet werkt zoals beschreven in de vorige sectie, is er moge
 
 Uw Azure-abonnement moet een [privé-DNS zone](../../dns/private-dns-privatednszone.md) resource met deze exacte naam hebben:
 
-    privatelink.vaultcore.azure.net
+`privatelink.vaultcore.azure.net`
 
 U kunt controleren of deze resource aanwezig is door naar de pagina abonnement in de portal te gaan en ' resources ' te selecteren in het menu aan de linkerkant. De resource naam moet zijn `privatelink.vaultcore.azure.net` en het resource type moet **privé-DNS zone** zijn.
 
@@ -282,37 +299,48 @@ Uw sleutel kluis biedt het `/healthstatus` eind punt dat kan worden gebruikt voo
 
 Windows (Power shell):
 
-    PS C:\> $(Invoke-WebRequest -UseBasicParsing -Uri https://fabrikam.vault.azure.net/healthstatus).Headers
+```powershell
+PS C:\> $(Invoke-WebRequest -UseBasicParsing -Uri https://fabrikam.vault.azure.net/healthstatus).Headers
+```
 
-    Key                           Value
-    ---                           -----
-    Pragma                        no-cache
-    x-ms-request-id               3729ddde-eb6d-4060-af2b-aac08661d2ec
-    x-ms-keyvault-service-version 1.2.27.0
-    x-ms-keyvault-network-info    addr=10.4.5.6;act_addr_fam=InterNetworkV6;
-    Strict-Transport-Security     max-age=31536000;includeSubDomains
-    Content-Length                4
-    Cache-Control                 no-cache
-    Content-Type                  application/json; charset=utf-8
+```output
+Key                           Value
+---                           -----
+Pragma                        no-cache
+x-ms-request-id               3729ddde-eb6d-4060-af2b-aac08661d2ec
+x-ms-keyvault-service-version 1.2.27.0
+x-ms-keyvault-network-info    addr=10.4.5.6;act_addr_fam=InterNetworkV6;
+Strict-Transport-Security     max-age=31536000;includeSubDomains
+Content-Length                4
+Cache-Control                 no-cache
+Content-Type                  application/json; charset=utf-8
+```
 
 Linux of een recente versie van Windows 10, waaronder `curl` :
 
-    joe@MyUbuntu:~$ curl -i https://fabrikam.vault.azure.net/healthstatus
-    HTTP/1.1 200 OK
-    Cache-Control: no-cache
-    Pragma: no-cache
-    Content-Type: application/json; charset=utf-8
-    x-ms-request-id: 6c090c46-0a1c-48ab-b740-3442ce17e75e
-    x-ms-keyvault-service-version: 1.2.27.0
-    x-ms-keyvault-network-info: addr=10.4.5.6;act_addr_fam=InterNetworkV6;
-    Strict-Transport-Security: max-age=31536000;includeSubDomains
-    Content-Length: 4
+```console
+joe@MyUbuntu:~$ curl -i https://fabrikam.vault.azure.net/healthstatus
+```
+
+```output
+HTTP/1.1 200 OK
+Cache-Control: no-cache
+Pragma: no-cache
+Content-Type: application/json; charset=utf-8
+x-ms-request-id: 6c090c46-0a1c-48ab-b740-3442ce17e75e
+x-ms-keyvault-service-version: 1.2.27.0
+x-ms-keyvault-network-info: addr=10.4.5.6;act_addr_fam=InterNetworkV6;
+Strict-Transport-Security: max-age=31536000;includeSubDomains
+Content-Length: 4
+```
 
 Als u geen uitvoer ziet die vergelijkbaar is met dat, of als er een netwerk fout optreedt, betekent dit dat uw sleutel kluis niet toegankelijk is via de hostnaam die u hebt opgegeven ( `fabrikam.vault.azure.net` in het voor beeld). De hostnaam wordt niet omgezet naar het juiste IP-adres of u hebt een connectiviteits probleem op de transportlaag. Dit kan worden veroorzaakt door routerings problemen, pakket drup pels en andere redenen. U moet verder onderzoeken.
 
 Het antwoord moet header bevatten `x-ms-keyvault-network-info` :
 
-    x-ms-keyvault-network-info: addr=10.4.5.6;act_addr_fam=InterNetworkV6;
+```console
+x-ms-keyvault-network-info: addr=10.4.5.6;act_addr_fam=InterNetworkV6;
+```
 
 `addr`In het veld in de `x-ms-keyvault-network-info` koptekst wordt het IP-adres van de oorsprong van de aanvraag weer gegeven. Dit IP-adres kan een van de volgende zijn:
 
@@ -330,11 +358,15 @@ Het antwoord moet header bevatten `x-ms-keyvault-network-info` :
 
 Als u een recente versie van Power shell hebt geïnstalleerd, kunt u gebruiken `-SkipCertificateCheck` om HTTPS-certificaat controles over te slaan. vervolgens kunt u het [IP-adres van de sleutel kluis](#find-the-key-vault-private-ip-address-in-the-virtual-network) rechtstreeks richten:
 
-    PS C:\> $(Invoke-WebRequest -SkipCertificateCheck -Uri https://10.1.2.3/healthstatus).Headers
+```powershell
+PS C:\> $(Invoke-WebRequest -SkipCertificateCheck -Uri https://10.1.2.3/healthstatus).Headers
+```
 
 Als u gebruikt `curl` , kunt u hetzelfde doen met het `-k` argument:
 
-    joe@MyUbuntu:~$ curl -i -k https://10.1.2.3/healthstatus
+```console
+joe@MyUbuntu:~$ curl -i -k https://10.1.2.3/healthstatus
+```
 
 De antwoorden moeten hetzelfde zijn als de vorige sectie, wat betekent dat deze de `x-ms-keyvault-network-info` koptekst met dezelfde waarde moet bevatten. Het `/healthstatus` eind punt is niet van belang als u de sleutel kluis hostnaam of het IP-adres gebruikt.
 

@@ -1,7 +1,11 @@
 - name: Documentatie voor Azure SQL
   href: index.yml
-- name: Wat is Azure SQL?
-  href: azure-sql-iaas-vs-paas-what-is-overview.md
+- name: Azure SQL
+  items:
+    - name: Wat is Azure SQL?
+      href: azure-sql-iaas-vs-paas-what-is-overview.md
+    - name: Migreren naar Azure SQL
+      href: migration-guides/index.yml
 - name: Gedeelde SQL-database en SQL MI-documenten
   items:
     - name: Aankoopmodellen
@@ -301,6 +305,16 @@
               href: database/sql-data-sync-sql-server-configure.md
             - name: SQLite migreren naar serverloos
               href: database/migrate-sqlite-db-to-azure-sql-serverless-offline-tutorial.md
+    - name: Migratiehandleidingen
+      items:
+        - name: Vanaf DB2
+          href: migration-guides/database/db2-to-sql-database-guide.md
+        - name: Vanaf SQL Server
+          items:
+            - name: Overzicht
+              href: migration-guides/database/sql-server-to-sql-database-overview.md
+            - name: Migrate
+              href: migration-guides/database/sql-server-to-sql-database-guide.md
     - name: Concepten
       items:
         - name: Connectiviteitsarchitectuur
@@ -696,6 +710,18 @@
               href: managed-instance/replication-between-two-instances-configure-tutorial.md
             - name: 'MI-pub, MI-dist, SQL-sub'
               href: managed-instance/replication-two-instances-and-sql-server-configure-tutorial.md
+    - name: Migratiehandleidingen
+      items:
+        - name: Vanaf DB2
+          href: migration-guides/managed-instance/db2-to-managed-instance-guide.md
+        - name: Vanaf SQL Server
+          items:
+            - name: Overzicht
+              href: migration-guides/managed-instance/sql-server-to-managed-instance-overview.md
+            - name: Migrate
+              href: migration-guides/managed-instance/sql-server-to-managed-instance-guide.md
+            - name: Prestatiebasislijn
+              href: migration-guides/managed-instance/sql-server-to-managed-instance-performance-baseline.md
     - name: Concepten
       items:
         - name: Bronlimieten
@@ -946,7 +972,7 @@
           href: database/arm-templates-content-guide.md?tabs=managed-instance
         - name: Codevoorbeelden
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
-- name: SQL Server op virtuele Azure-machine
+- name: SQL Server in Azure VM's
   items:
     - name: Documentatie
       href: virtual-machines/index.yml
@@ -1171,6 +1197,14 @@
               href: 'https://azure.microsoft.com/roadmap/?category=compute'
             - name: Stack Overflow
               href: 'https://stackoverflow.com/search?q=%5Bazure-virtual-machine%5D+sql+server'
+    - name: Migratiehandleidingen
+      items:
+        - name: Overzicht
+          href: migration-guides/virtual-machines/sql-server-to-sql-on-azure-vm-migration-overview.md
+        - name: Vanaf SQL Server
+          href: migration-guides/virtual-machines/sql-server-to-sql-on-azure-vm-individual-databases-guide.md
+        - name: Vanaf DB2
+          href: migration-guides/virtual-machines/db2-to-sql-on-azure-vm-guide.md
 - name: Naslaginformatie
   items:
     - name: Naslaginformatie voor de taal T-SQL

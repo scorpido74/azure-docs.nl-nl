@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 07/22/2019
 ms.author: bwren
 ms.custom: include file
-ms.openlocfilehash: 83754842eeb4b5d609596045c11451e898960b9a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 83e046ca97ceee249e707e30f478fad89345f4de
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90064843"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94504115"
 ---
 ### <a name="general-query-limits"></a>Algemene querylimieten
 
 | Limiet | Beschrijving |
 |:---|:---|
 | Querytaal | Azure Monitor gebruikt dezelfde [Kusto-querytaal](/azure/kusto/query/) als Azure Data Explorer. Zie [Verschillen in Azure Monitor-logboekquerytaal](../articles/azure-monitor/log-query/data-explorer-difference.md) voor KQL-taalelementen die niet worden ondersteund in Azure Monitor. |
-| Azure-regio's | Logboekquery's kunnen overmatige overhead ondervinden wanneer gegevens Log Analytics-werkruimten in meerdere Azure-regio's omvatten. Zie [Querylimieten](../articles/azure-monitor/log-query/scope.md#query-limits) voor meer informatie. |
+| Azure-regio's | Logboekquery's kunnen overmatige overhead ondervinden wanneer gegevens Log Analytics-werkruimten in meerdere Azure-regio's omvatten. Zie [Querylimieten](../articles/azure-monitor/log-query/scope.md#query-scope-limits) voor meer informatie. |
 | Query's voor meerdere resources | Het maximum aantal Application Insights-resources en Log Analytics-werkruimten in één query is beperkt tot 100.<br>Query's voor meerdere resources worden niet ondersteund in View Designer.<br>Query's voor meerdere resources in logboekwaarschuwingen worden ondersteund in de nieuwe cheduledQueryRules-API.<br>Zie [Limieten voor query's voor meerdere resources](../articles/azure-monitor/log-query/cross-workspace-query.md#cross-resource-query-limits) voor meer informatie. |
 
 ### <a name="user-query-throttling"></a>Beperking van gebruikersquery's

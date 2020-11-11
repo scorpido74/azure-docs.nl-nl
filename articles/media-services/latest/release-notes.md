@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: d825a30cf43b3e7f9017638138df91d5145d280e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: cdc6cbbea8b222007d94ecac99902bc4498a42fe
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791593"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505254"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Release opmerkingen bij Azure Media Services v3
 
@@ -56,6 +56,11 @@ Live-gebeurtenissen hebben nu de status stand-by.  Bekijk [Live Events en live o
 Een live-gebeurtenis ondersteunt het ontvangen van verschillende invoer hoogte-breedte verhoudingen. Met de stretch-modus kunnen klanten het stretch gedrag voor de uitvoer opgeven.
 
 Met Live Encoding wordt nu de mogelijkheid toegevoegd voor het uitvoeren van vaste-sleutel frame-interval fragmenten tussen 0,5 en 20 seconden.
+
+## <a name="accounts"></a>Accounts
+
+> [!WARNING]
+> Als u een Media Services-account maakt met de 2020-05-01 API-versie, werkt dit niet met RESTv2 
 
 ## <a name="august-2020"></a>Augustus 2020
 
@@ -109,7 +114,7 @@ Azure Media Player documenten zijn gemigreerd naar de [Azure-documentatie](../az
 
 ### <a name="azure-government-cloud-updates"></a>Cloud updates Azure Government
 
-Media Services GA'ed in de volgende Azure Government regio's: *USGov Arizona* en *USGov Texas* .
+Media Services GA'ed in de volgende Azure Government regio's: *USGov Arizona* en *USGov Texas*.
 
 ## <a name="december-2019"></a>December 2019
 
@@ -275,10 +280,10 @@ U moet het MPI-bestand niet wijzigen of verwijderen of afhankelijk van de aanwez
 
 Updates van de GA-versie van de V3 API zijn onder andere:
        
-* De **PresentationTimeRange** -eigenschappen zijn niet meer vereist voor **Asset filters** en **account filters** . 
+* De **PresentationTimeRange** -eigenschappen zijn niet meer vereist voor **Asset filters** en **account filters**. 
 * De query opties $top en $skip voor **taken** en **trans formaties** zijn verwijderd en $OrderBy is toegevoegd. Als onderdeel van het toevoegen van de nieuwe ordenings functionaliteit werd ontdekt dat de opties voor $top en $skip per ongeluk werden weer gegeven, zelfs als ze niet zijn geïmplementeerd.
 * De Enumeration-uitbreid baarheid is opnieuw ingeschakeld. Deze functie is ingeschakeld in de Preview-versies van de SDK en is per ongeluk uitgeschakeld in de GA-versie.
-* Er zijn twee vooraf gedefinieerde stroomsgewijze beleids regels gewijzigd. **SecureStreaming** is nu **MultiDrmCencStreaming** . **SecureStreamingWithFairPlay** is nu **Predefined_MultiDrmStreaming** .
+* Er zijn twee vooraf gedefinieerde stroomsgewijze beleids regels gewijzigd. **SecureStreaming** is nu **MultiDrmCencStreaming**. **SecureStreamingWithFairPlay** is nu **Predefined_MultiDrmStreaming**.
 
 ## <a name="november-2018"></a>November 2018
 
@@ -422,7 +427,7 @@ De volgende functies zijn aanwezig in de .NET SDK:
 
 Ga naar het artikel van de [Azure Media Services-community](media-services-community.md) voor verschillende manieren om vragen te stellen, feedback te geven en updates voor Media Services op te halen.
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 [Migratie richtlijnen voor het overstappen van Media Services versie 2 naar v3](migrate-from-v2-to-v3.md#known-issues).
 

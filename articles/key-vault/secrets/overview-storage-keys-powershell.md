@@ -9,12 +9,12 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 18bf8d865a5bb4d96fb55199137b38ec30861dbe
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 50fbaf5092e793369daaa71fc7364dfd406e03b3
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92793038"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444891"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>Sleutels voor opslagaccounts beheren met Key Vault en Azure PowerShell
 
@@ -33,13 +33,13 @@ We adviseren om Azure Storage-integratie te gebruiken met Azure Active Directory
 
 Met Azure AD kunt u uw clienttoepassing verifiëren met behulp van een toepassings- of gebruikers-id in plaats van de referenties van het opslagaccount. U kunt een [beheerde identiteit van Azure AD](../../active-directory/managed-identities-azure-resources/index.yml) gebruiken wanneer u met Azure werkt. Door beheerde identiteiten te gebruiken, zijn clientverificatie en opslag van referenties in of met uw toepassing niet meer nodig.
 
-Azure AD gebruikt op rollen gebaseerd toegangsbeheer (RBAC) voor het beheer van autorisatie, wat ook door Key Vault wordt ondersteund.
+Azure AD gebruikt op rollen gebaseerd toegangsbeheer van Azure (Azure RBAC) voor het beheer van autorisatie, wat ook door Key Vault wordt ondersteund.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="service-principal-application-id"></a>Toepassings-id in de vorm van een service-principal
 
-Een Azure AD-tenant voorziet elke geregistreerde toepassing van een [service-principal](../../active-directory/develop/developer-glossary.md#service-principal-object). De service-principal fungeert als de toepassings-id, die wordt gebruikt tijdens het instellen van de autorisatie voor toegang tot andere Azure-resources via RBAC.
+Een Azure AD-tenant voorziet elke geregistreerde toepassing van een [service-principal](../../active-directory/develop/developer-glossary.md#service-principal-object). De service-principal fungeert als de toepassings-id, die wordt gebruikt tijdens het instellen van de autorisatie voor toegang tot andere Azure-resources via Azure RBAC.
 
 Key Vault is een Microsoft-toepassing die vooraf wordt geregistreerd in alle Azure AD-tenants. Key Vault wordt in elke Azure-cloud geregistreerd onder dezelfde toepassings-id.
 

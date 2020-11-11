@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/13/2019
 author: trkeya
 ms.author: trkeya
-ms.openlocfilehash: b3f46f934241d924789b97c24cf9b68213d94d63
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 6faecdd561d7c434d2948e70886d6f1b19115d9f
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/11/2020
-ms.locfileid: "94490080"
+ms.locfileid: "94504829"
 ---
 # <a name="test-drive-technical-configuration"></a>Technische configuratie van test drive
 
@@ -93,9 +93,10 @@ De optie voor het **testen van stations** vindt u op het tabblad **test station*
 
 Als u uw test drive momenteel in partner centrum maakt, selecteert u **concept opslaan** voordat u doorgaat.
 
+## <a name="additional-resources"></a>Aanvullende resources
+
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Aanbevolen procedures testen](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
 - [Overzicht](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)(PDF; Controleer of de pop-upblokkering is uitgeschakeld)
 - [Een bestaande aanbieding bijwerken in de commerciële Marketplace](partner-center-portal/update-existing-offer.md)
-- [Feedback forum voor Azure Marketplace](https://feedback.azure.com/forums/216369-azure-marketplace)

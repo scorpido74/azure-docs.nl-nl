@@ -178,6 +178,8 @@
           href: connect-threat-intelligence.md
         - name: Verbinding maken met virtuele Azure Stack-machines
           href: connect-azure-stack.md
+        - name: Gegevensverbindingsstatus bewaken
+          href: monitor-data-connector-health.md
     - name: Analyse van gebruikers- en entiteitsgedrag inschakelen
       href: enable-entity-behavior-analytics.md
     - name: Meerdere tenants beheren (MSSP)

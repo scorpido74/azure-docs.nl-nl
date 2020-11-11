@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
-ms.date: 07/22/2020
-ms.openlocfilehash: 265828cc34d73409b91c55be64b087d22f1a11f6
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 11/10/2020
+ms.openlocfilehash: 65ef118fde57a7b72903d502a06644024939923f
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789587"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506019"
 ---
 # <a name="features-comparison-azure-sql-database-and-azure-sql-managed-instance"></a>Vergelijking van functies: Azure SQL Database en Azure SQL Managed instance
 
@@ -72,7 +72,7 @@ De volgende tabel geeft een overzicht van de belangrijkste functies van SQL Serv
 | [Filestream](/sql/relational-databases/blob/filestream-sql-server) | Nee | [Nee](../managed-instance/transact-sql-tsql-differences-sql-server.md#filestream-and-filetable) |
 | [Zoek opdracht in volledige tekst (FT'S)](/sql/relational-databases/search/full-text-search) |  Ja, maar woord afbreekers van derden worden niet ondersteund | Ja, maar [woord afbreekers van derden worden niet ondersteund](../managed-instance/transact-sql-tsql-differences-sql-server.md#full-text-semantic-search) |
 | [Functies](/sql/t-sql/functions/functions) | De meeste-Zie afzonderlijke functies | Ja, Zie [opgeslagen procedures, functies, triggers-verschillen](../managed-instance/transact-sql-tsql-differences-sql-server.md#stored-procedures-functions-and-triggers) |
-| [Optimalisatie in het geheugen](/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) | Ja, [Premium en bedrijfskritiek lagen alleen](../in-memory-oltp-overview.md) beperkte ondersteuning voor niet-permanente In-Memory-objecten, zoals tabel typen | Ja, [alleen bedrijfskritiek laag](../managed-instance/sql-managed-instance-paas-overview.md) |
+| [Optimalisatie in het geheugen](/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) | Ja in [Premium-en bedrijfskritiek-service lagen](../in-memory-oltp-overview.md).</br> Beperkte ondersteuning voor niet-permanente In-Memory OLTP-objecten, zoals tabellen die zijn geoptimaliseerd voor geheugen, in [grootschalige](service-tier-hyperscale.md).| Ja in [bedrijfskritiek](../managed-instance/sql-managed-instance-paas-overview.md) servicelaag |
 | [Taalelementen](/sql/t-sql/language-elements/language-elements-transact-sql) | De meeste-Zie afzonderlijke elementen |  Ja, Zie [T-SQL-verschillen](../managed-instance/transact-sql-tsql-differences-sql-server.md) |
 | [Gekoppelde servers](/sql/relational-databases/linked-servers/linked-servers-database-engine) | Nee, Zie [elastische query's](elastic-query-horizontal-partitioning.md) | Ja. Alleen voor [SQL Server en SQL database](../managed-instance/transact-sql-tsql-differences-sql-server.md#linked-servers) zonder gedistribueerde trans acties. |
 | [Gekoppelde servers](/sql/relational-databases/linked-servers/linked-servers-database-engine) die van bestanden worden gelezen (CSV, Excel)| Nee. Gebruik [Bulk Insert](/sql/t-sql/statements/bulk-insert-transact-sql#e-importing-data-from-a-csv-file) of [OpenRowSet](/sql/t-sql/functions/openrowset-transact-sql#g-accessing-data-from-a-csv-file-with-a-format-file) als alternatief voor CSV-indeling. | Nee. Gebruik [Bulk Insert](/sql/t-sql/statements/bulk-insert-transact-sql#e-importing-data-from-a-csv-file) of [OpenRowSet](/sql/t-sql/functions/openrowset-transact-sql#g-accessing-data-from-a-csv-file-with-a-format-file) als alternatief voor CSV-indeling. Deze aanvragen volgen voor het feedback-item van een [SQL Managed instance](https://feedback.azure.com/forums/915676-sql-managed-instance/suggestions/35657887-linked-server-to-non-sql-sources)|

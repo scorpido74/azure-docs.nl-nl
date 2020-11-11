@@ -2,16 +2,16 @@
 title: Azure Event Grid-partner evenementen
 description: Verzend gebeurtenissen van derden Event Grid SaaS-en PaaS-partners rechtstreeks naar Azure-Services met Azure Event Grid.
 ms.topic: conceptual
-ms.date: 10/29/2020
-ms.openlocfilehash: 87d1d40b3696229344b0b5c20d06d9d993a514a4
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.date: 11/10/2020
+ms.openlocfilehash: 31a5fe611871eb4734b6a68e3818592028ebc75c
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93102993"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506142"
 ---
 # <a name="partner-events-in-azure-event-grid-preview"></a>Partner gebeurtenissen in Azure Event Grid (preview-versie)
-Met de functie voor **partner gebeurtenissen** kan een SaaS-provider van derden gebeurtenissen van zijn Services publiceren om ze beschikbaar te maken voor gebruikers die zich op die gebeurtenissen kunnen abonneren. Het biedt een eerste ervaring voor gebeurtenis bronnen van derden door een [onderwerp](concepts.md#topics) , een **partner onderwerp** , te tonen dat abonnees gebruiken om gebeurtenissen te consumeren. Het biedt ook een schoon pub-submodel door problemen en eigendom van resources die worden gebruikt door gebeurtenis uitgevers en abonnees, te scheiden.
+Met de functie voor **partner gebeurtenissen** kan een SaaS-provider van derden gebeurtenissen van zijn Services publiceren zodat gebruikers zich op deze gebeurtenissen kunnen abonneren. Deze functie biedt een eerste ervaring voor gebeurtenis bronnen van derden door een [onderwerp](concepts.md#topics) , een **partner onderwerp** , weer te geven. Abonnees maken abonnementen op dit onderwerp om gebeurtenissen te gebruiken. Het biedt ook een schoon pub-submodel door problemen en eigendom van resources die worden gebruikt door gebeurtenis uitgevers en abonnees, te scheiden.
 
 > [!NOTE]
 > Als u geen ervaring hebt met het gebruik van Event Grid, raadpleegt u [overzicht](overview.md), [concepten](concepts.md)en [gebeurtenis-handlers](event-handlers.md).
@@ -75,6 +75,20 @@ Een gebeurtenis kanaal is een gespiegelde resource naar een partner onderwerp. W
 
 ## <a name="resources-managed-by-subscribers"></a>Resources die worden beheerd door abonnees 
 Abonnees kunnen de onderwerpen van de partner gebruiken die zijn gedefinieerd door een uitgever en het enige type resource dat ze zien en beheren. Zodra een partner onderwerp is gemaakt, kan een abonnee van een gebruiker gebeurtenis abonnementen maken om filter regels te definiëren voor [bestemmingen/gebeurtenis-handlers](overview.md#event-handlers). Voor abonnees bieden een partner onderwerp en de bijbehorende gebeurtenis abonnementen dezelfde uitgebreide functionaliteit als [aangepaste onderwerpen](custom-topics.md) en zijn gerelateerde abonnementen met één belang rijk verschil: partner onderwerpen ondersteunen alleen het [schema voor Cloud gebeurtenissen 1,0](cloudevents-schema.md), dat een uitgebreidere set mogelijkheden biedt dan andere ondersteunde schema's.
+
+In de volgende afbeelding wordt de stroom van besturings vlak bewerkingen weer gegeven.
+
+:::image type="content" source="./media/partner-events-overview/partner-control-plane-flow.png" alt-text="Partner gebeurtenissen-vliegtuig stroom beheren":::
+
+1. Er wordt een **partner registratie** gemaakt. Partner registraties zijn algemeen. Dat wil zeggen dat ze niet zijn gekoppeld aan een bepaalde Azure-regio. Deze stap is optioneel.
+1. Er wordt een **partner naam ruimte** in een specifieke regio gemaakt.
+1. Wanneer abonnee 1 probeert een partner onderwerp te maken, wordt eerst een **gebeurtenis kanaal** , gebeurtenis kanaal 1, gemaakt in het Azure-abonnement van de uitgever.
+1. Vervolgens wordt er **een partner onderwerp,** partner onderwerp 1, gemaakt in het Azure-abonnement van de abonnee. De abonnee moet het partner onderwerp activeren. 
+1. Abonnee 1 maakt een **Azure Logic apps abonnement** op partner onderwerp 1.
+1. Abonnee 1 maakt een **Azure Blob Storage-abonnement** op onderwerp 1 van de partner. 
+1. Wanneer abonnee 2 probeert een partner onderwerp te maken, wordt eerst een ander **gebeurtenis kanaal** , gebeurtenis kanaal 2, gemaakt in het Azure-abonnement van de uitgever. 
+1. Het **partner** onderwerp, partner onderwerp 2, wordt vervolgens gemaakt in het Azure-abonnement van de tweede abonnee. De abonnee moet het partner onderwerp activeren. 
+1. Abonnee 2 maakt een **Azure functions abonnement** op partner onderwerp 2. 
 
 ## <a name="pricing"></a>Prijzen
 Partner onderwerpen worden in rekening gebracht op basis van het aantal bewerkingen dat wordt uitgevoerd wanneer Event Grid wordt gebruikt. Zie [Event grid prijzen](https://azure.microsoft.com/pricing/details/event-grid/)voor meer informatie over alle soorten bewerkingen die worden gebruikt als basis voor facturerings-en gedetailleerde prijs informatie.

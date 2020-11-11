@@ -5,16 +5,16 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 09/01/2020
-ms.openlocfilehash: 363af72df89be9104e4d946bf8da0d44908382d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef5476ade205109f5dfede1b3bb2c3a4ae2e81a7
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776218"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506002"
 ---
-# <a name="question-and-answer-pair-concepts"></a>Concepten van vraag-en antwoord paren
+# <a name="question-and-answer-pair"></a>Vraag-en antwoord paar
 
-Een Knowledge Base bestaat uit vraag-en antwoord paren (QnA).  Elk paar heeft één antwoord en een paar bevat alle informatie die aan het _antwoord_is gekoppeld. Een antwoord kan een Data Base-rij of een gegevens structuur-exemplaar in een keer lijken.
+Een Knowledge Base bestaat uit vraag-en antwoord paren (QnA).  Elk paar heeft één antwoord en een paar bevat alle informatie die aan het _antwoord_ is gekoppeld. Een antwoord kan een Data Base-rij of een gegevens structuur-exemplaar in een keer lijken.
 
 ## <a name="question-and-answer-pairs"></a>Vraag-en-antwoord-paren
 
@@ -28,8 +28,8 @@ Elk paar wordt vertegenwoordigd door een **id**.
 De **optionele** instellingen voor een paar zijn onder andere:
 
 * **Alternatieve vormen van de vraag** : dit helpt QnA Maker het juiste antwoord te retour neren voor een groter aantal vraag frasen
-* **Meta gegevens**: meta gegevens zijn tags die zijn gekoppeld aan een QnA paar en worden weer gegeven als sleutel-waardeparen. Tags voor meta gegevens worden gebruikt voor het filteren van QnA-paren en het beperken van de set waarover overeenkomende query's worden uitgevoerd.
-* **Vragen over meerdere schakelingen**, gebruikt om door te gaan met een gesprek op meerdere locaties
+* **Meta gegevens** : meta gegevens zijn tags die zijn gekoppeld aan een QnA paar en worden weer gegeven als sleutel-waardeparen. Tags voor meta gegevens worden gebruikt voor het filteren van QnA-paren en het beperken van de set waarover overeenkomende query's worden uitgevoerd.
+* **Vragen over meerdere schakelingen** , gebruikt om door te gaan met een gesprek op meerdere locaties
 
 ![Knowledge Base van QnA Maker](media/qnamaker-concepts-knowledgebase/knowledgebase.png)
 
