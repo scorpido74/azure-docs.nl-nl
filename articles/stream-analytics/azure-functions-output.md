@@ -7,18 +7,18 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: f3f6e33c7c37089f7a9e87ab61bb00c966d8ccc7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ffaf66cbb5d9fa0b294f5749a1923684f16c2979
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90881911"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488084"
 ---
 # <a name="azure-functions-output-from-azure-stream-analytics"></a>Azure Functions uitvoer van Azure Stream Analytics
 
 Azure Functions is een serverloze compute-service die u kunt gebruiken om code op aanvraag uit te voeren zonder expliciet een infra structuur in te richten of te beheren. Hiermee kunt u code implementeren die wordt geactiveerd door gebeurtenissen die optreden in azure of partner services. Dankzij deze mogelijkheid van Azure Functions om op Triggers te reageren, is het een natuurlijke uitvoer voor Azure Stream Analytics. Met deze uitvoer adapter kunnen gebruikers Stream Analytics verbinding maken met Azure Functions en een script of stukje code uitvoeren als reactie op verschillende gebeurtenissen.
 
-Azure Functions uitvoer van Stream Analytics is momenteel niet beschikbaar in de regio's 21Vianet en Azure Duitsland (T-Systems International) van Azure China.
+Azure Functions uitvoer van Stream Analytics is niet beschikbaar in de regio's in azure China 21Vianet en Azure Duitsland (T-Systems International). Verbinding met Azure Functions in een virtueel netwerk (VNet) vanuit een Stream Analytics-taak die wordt uitgevoerd in een cluster met meerdere tenants wordt ook niet ondersteund.
 
 Azure Stream Analytics roept Azure Functions aan via HTTP-triggers. De Azure Functions uitvoer adapter is beschikbaar met de volgende Configureer bare eigenschappen:
 

@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 9e1b666e8929309778fc7b72e034a425c841fc2f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 8d5352a79d2920701c96289f6162c1466f0f9f75
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095914"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367570"
 ---
 # <a name="tutorial-get-search-suggestions-on-a-web-page"></a>Zelfstudie: Zoeksuggesties weergeven op een webpagina
 
@@ -358,4 +358,4 @@ Open de webpagina in uw browser. Voer bij de prompt de abonnementssleutel voor d
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Vereisten voor gebruik en weergave](../UseAndDisplayRequirements.md)
+> [Vereisten voor gebruik en weergave](../../bing-web-search/use-display-requirements.md)

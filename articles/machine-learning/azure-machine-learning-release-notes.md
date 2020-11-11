@@ -9,18 +9,62 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: 5054451b181223d3d6deece6812358cfd08b1e30
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 0afd1f2f8dd06c3c224d64304eec2e18489a7e81
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445078"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489128"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Opmerkingen bij de release Azure Machine Learning
 
 In dit artikel vindt u meer informatie over Azure Machine Learning releases.  Ga voor de volledige SDK-referentie-inhoud naar de hoofd pagina van de hand leiding van de Azure Machine Learning van de [**SDK voor python**](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) .
 
 Zie [de lijst met bekende problemen](resource-known-issues.md) met bekende bugs en tijdelijke oplossingen.
+
+
+## <a name="2020-11-09"></a>2020-11-09
+
+### <a name="azure-machine-learning-sdk-for-python-v1180"></a>Azure Machine Learning SDK voor python v-1.18.0
++ **Oplossingen en verbeteringen voor oplossingen**
+  + **azureml-automl-core**
+    +  Verbeterde verwerking van korte tijd reeksen door opvullingen met Gaussiaans ruis toe te staan.
+  + **azureml-automl-runtime**
+    + ConfigException genereren als de kolom DateTime een OutOfBoundsDatetime-waarde heeft
+    + Verbeterde verwerking van korte tijd reeksen door opvullingen met Gaussiaans ruis toe te staan.
+    + Zorg ervoor dat elke tekst kolom gebruik kan maken van char-gram Transform met het n-gram-bereik op basis van de lengte van de teken reeksen in die tekst kolom
+    + Onbewerkte functie verklaringen bieden voor de beste modus voor AutoML experimenten die worden uitgevoerd op de lokale computer van de gebruiker
+  + **azureml-core**
+    + Het pakket vastmaken: pyjwt om te voor komen dat de versies in de komende releases worden gebroken.
+    + Bij het maken van een experiment wordt het actieve of laatste gearchiveerde experiment geretourneerd met dezelfde gegeven naam als dit experiment bestaat of een nieuw experiment.
+    + Als get_experiment op naam wordt aangeroepen, wordt het actieve of laatste gearchiveerde experiment geretourneerd met de betreffende naam.
+    + Gebruikers kunnen de naam van een experiment niet wijzigen terwijl het opnieuw wordt geactiveerd.
+    + Verbeterd fout bericht om mogelijke oplossingen op te halen wanneer een gegevensset onjuist wordt door gegeven aan een experiment (bijvoorbeeld ScriptRunConfig). 
+    + Verbeterde documentatie voor `OutputDatasetConfig.register_on_complete` om te bepalen wat er gebeurt wanneer de naam al bestaat.
+    + Het opgeven van invoer-en uitvoer namen van een gegevensset die de kans op conflicten met gemeen schappelijke omgevings variabelen hebben, resulteren nu in een waarschuwing
+    + De para meter is opnieuw bedoelt `grant_workspace_access` bij het registreren van gegevens opslag. Stel deze in op `True` om toegang te krijgen tot gegevens achter het virtuele netwerk vanaf machine learning Studio.
+      [Meer informatie](https://docs.microsoft.com/azure/machine-learning/how-to-enable-studio-virtual-network)
+    + De API van de gekoppelde service is verfijnd. In plaats van een resource-id op te geven, hebben we drie afzonderlijke para meters sub_id, RG en de naam gedefinieerd in de configuratie.
+    + Als u wilt dat klanten zelf problemen met token beschadiging kunnen oplossen, kunt u de synchronisatie van werk ruimte-tokens op een open bare manier inschakelen.
+    + Met deze wijziging kan een lege teken reeks worden gebruikt als waarde voor een script_param
+  + **azureml-pipeline-core**
+    + SDK ter ondersteuning van SynapseCompute-type en SynapseSparkStep. Klanten kunnen experimenteren en pijplijn uitvoeringen uitvoeren op Synapse Spark-pool.
+  + **azureml-pipeline-steps**
+    + SDK ter ondersteuning van SynapseCompute-type en SynapseSparkStep. Klanten kunnen experimenteren en pijplijn uitvoeringen uitvoeren op Synapse Spark-pool.
+  + **azureml-Synapse**
+    + Voeg Synapse Magic en SparkMonitor toe om Syanpse-taak te verzenden in te scha kelen en de taak voortgang in notebook te bekijken.
+  + **azureml-train-automl-client**
+    +  Verbeterde verwerking van korte tijd reeksen door opvullingen met Gaussiaans ruis toe te staan.
+  + **azureml-train-automl-runtime**
+    + ConfigException genereren als de kolom DateTime een OutOfBoundsDatetime-waarde heeft
+    + Er is ondersteuning toegevoegd voor het leveren van onbewerkte functie verklaringen voor het beste model voor AutoML experimenten die worden uitgevoerd op de lokale computer van de gebruiker
+    + Verbeterde verwerking van korte tijd reeksen door opvullingen met Gaussiaans ruis toe te staan.
+  + **azureml-train-core**
+    + Met deze wijziging kan een lege teken reeks worden gebruikt als waarde voor een script_param
+  + **azureml-Train-restclients-Hyperdrive**
+    + Leesmij is gewijzigd om meer context te bieden
+  + **azureml-widgets**
+    + Teken reeks ondersteuning toevoegen aan grafieken/parallelle coördinaten bibliotheek voor widget.
 
 ## <a name="2020-11-05"></a>2020-11-05
 
@@ -29,6 +73,7 @@ Zie [de lijst met bekende problemen](resource-known-issues.md) met bekende bugs 
 Het project type van de afbeeldings exemplaar segmentatie (polygoon aantekeningen) in gegevens labeling is nu beschikbaar, zodat gebruikers kunnen tekenen en aantekeningen maken met veelhoeken rond de contour van de objecten in de afbeeldingen. Gebruikers kunnen een klasse en een veelhoek toewijzen aan elk object dat van belang is binnen een afbeelding.
 
 Meer informatie over de [segmentatie van afbeeldings instanties](how-to-label-images.md).
+
 
 
 ## <a name="2020-10-26"></a>2020-10-26
@@ -53,7 +98,7 @@ Meer informatie over de [segmentatie van afbeeldings instanties](how-to-label-im
     + Het pakket voor de azureml-uitleg-model is officieel afgeschaft
   + **azureml-mlflow**
     + Er is een fout opgelost in mlflow. projects. kan niet worden uitgevoerd op de azureml-back-end, waarbij de voltooiings status niet correct is verwerkt.
-  + **azureml-pijp lijn-kern**
+  + **azureml-pipeline-core**
     + Voeg ondersteuning toe voor het maken, weer geven en ophalen van een pipeline-eind punt op basis van een pijplijn.
     +  De documentatie van PipelineData.as_dataset is verbeterd met een ongeldig gebruik voor beeld: als u PipelineData.as_dataset onjuist gebruikt, wordt er nu een ValueException gegenereerd
     + De HyperDriveStep pipelines-notebook is gewijzigd om het beste model binnen een PipelineStep te registreren, direct nadat de HyperDriveStep is uitgevoerd.
@@ -380,7 +425,7 @@ Meer informatie over de [segmentatie van afbeeldings instanties](how-to-label-im
     + _With_auth param uit ws.get_mlflow_tracking_uri ()
   + **azureml-opendatasets**
     + Recent gepubliceerde Covid-19 tracking-gegevens sets zijn nu beschikbaar met de SDK
-  + **azureml-pipeline-core**
+  + **azureml-pijp lijn-kern**
     + Waarschuwing voor afmelden als ' azureml-defaults ' niet is opgenomen als onderdeel van PIP-afhankelijkheid
     + De weer gave van notities verbeteren.
     + Er is ondersteuning toegevoegd voor geciteerde regel einden bij het parseren van bestanden met scheidings tekens in PipelineOutputFileDataset.
@@ -417,7 +462,7 @@ Meer informatie over de [segmentatie van afbeeldings instanties](how-to-label-im
     + Reken type van CmAk wordt ondersteund. U kunt uw eigen AKS-cluster toevoegen aan de werk ruimte voor trainings taken.
   + **azureml-contrib-notebook**
     + Doc-verbeteringen in het contrib-notebook pakket.
-  + **azureml-contrib-pipeline-steps**
+  + **azureml-contrib-pijp lijn-stappen**
     + Doc-verbeteringen in het pakket voor azureml-contrib--pipeline-Steps.
   + **azureml-core**
     + Set_connection toevoegen, get_connection, list_connections, delete_connection functies voor de klant voor het uitvoeren van de werk ruimte verbindings resource
@@ -608,7 +653,7 @@ Meer informatie over de [segmentatie van afbeeldings instanties](how-to-label-im
   + **azureml-opendatasets**
     + Geen retour waarde wanneer er geen gegevens zijn geretourneerd.
     + Verbeter de prestaties van to_pandas_dataframe.
-  + **azureml-pijp lijn-kern**
+  + **azureml-pipeline-core**
     + Snelle oplossing voor ParallelRunStep, waarbij het laden van YAML is verbroken
     + ParallelRunStep wordt uitgebracht voor algemene Beschik baarheid-azureml. contrib. pipeline. stappen hebben een kennisgeving met betrekking tot de afschaffing. pijp lijn. stappen: nieuwe functies zijn: 1. Gegevens sets als PipelineParameter 2. Nieuwe para meter run_max_retry 3. Configureer bare append_row uitvoer bestands naam
   + **azureml-pipeline-steps**
@@ -704,7 +749,7 @@ Meer informatie over de [segmentatie van afbeeldings instanties](how-to-label-im
     + Bugfix voor zeldzame uitleg gemaakt met behulp van een lineair surrogaat model met de gesimuleerde uitleger.
   + **azureml-opendatasets**
     + Het oplossen van het probleem van de kolommen van de MNIST wordt geparseerd als teken reeks, die int moet zijn.
-  + **azureml-pijp lijn-kern**
+  + **azureml-pipeline-core**
     + De optie voor het regenerate_outputs van het gebruik van een module die is inge sloten in een ModuleStep.
   + **azureml-train-automl-client**
     + Afgeschafte tensor flow-modellen voor AutoML.
@@ -1004,7 +1049,7 @@ Toegang tot de volgende webgebaseerde hulp middelen voor ontwerpen vanuit Studio
   + **azureml-interpret**
     + uitzonde ringen voor azureml-stijl toegevoegd aan azureml-interprete
     + vaste DeepScoringExplainer-serialisatie voor Keras-modellen
-  + **azureml-pijp lijn-kern**
+  + **azureml-pipeline-core**
     + Pipeline batch Score notebook maakt nu gebruik van ParallelRunStep
   + **azureml-pipeline-steps**
     + De `AutoMLStep` in het pakket is verplaatst `azureml-pipeline-steps` . Afgeschaft `AutoMLStep` in `azureml-train-automl-runtime` .
@@ -1039,7 +1084,7 @@ Toegang tot de volgende webgebaseerde hulp middelen voor ontwerpen vanuit Studio
     + Er is een fout opgelost waarbij PythonScriptStep resultaten onjuist opnieuw kunnen worden gebruikt, ondanks het wijzigen van de lijst met argumenten
   + **azureml-pipeline-steps**
     + Voor beeld van toegevoegde documentatie voor gegevensset als PythonScriptStep-invoer
-  + **azureml-contrib-pipeline-steps**
+  + **azureml-contrib-pijp lijn-stappen**
     + Para meters die in ParallelRunConfig worden door gegeven, kunnen worden overschreven door de pijplijn parameters nu door te geven. Nieuwe pijplijn parameters die worden ondersteund aml_mini_batch_size, aml_error_threshold, aml_logging_level, aml_run_invocation_timeout (aml_node_count en aml_process_count_per_node maken al deel uit van een eerdere versie).
   
 ## <a name="2020-01-21"></a>2020-01-21
@@ -1050,7 +1095,7 @@ Toegang tot de volgende webgebaseerde hulp middelen voor ontwerpen vanuit Studio
   + **azureml-core**
     + Het huidige kern gebruik en de quotum limiet voor AmlCompute-resources in een bepaalde werk ruimte en een abonnement ophalen
   
-  + **azureml-contrib-pipeline-steps**
+  + **azureml-contrib-pijp lijn-stappen**
     + Gebruikers toestaan om tabellaire gegevensset door te geven als een tussentijds resultaat van de vorige stap naar parallelrunstep
 
 + **Oplossingen en verbeteringen voor oplossingen**
@@ -1437,7 +1482,7 @@ Azure Machine Learning is nu een resource provider voor Event Grid, kunt u machi
     + De naam van het pakket voor AzureML-uitleggen-model wordt gewijzigd in AzureML-interpreteren, waarbij het oude pakket wordt gehandhaafd voor achterwaartse compatibiliteit voor nu
     + Er is een opgeloste `automl` bug met onbewerkte uitleg ingesteld op de classificatie taak in plaats van regressie standaard bij het downloaden van ExplanationClient
     + Voeg ondersteuning toe voor `ScoringExplainer` om direct te worden gemaakt met `MimicWrapper`
-  + **azureml-pipeline-core**
+  + **azureml-pijp lijn-kern**
     + Verbeterde prestaties voor het maken van een grote pijp lijn
   + **azureml-train-core**
     + Tensor Flow 2,0-ondersteuning is toegevoegd in tensor flow estimator
@@ -1559,7 +1604,7 @@ Het tabblad experiment in de [nieuwe werkruimte Portal](https://ml.azure.com) is
   + **azureml-Train-automl**
     + Ondersteund training_data, validation_data, label_column_name, weight_column_name als invoer indeling voor gegevens
     + Er is een afschaffing bericht toegevoegd voor explain_model () en retrieve_model_explanations ()
-  + **[azureml-pipeline-core](/python/api/azureml-pipeline-core)**
+  + **[azureml-pijp lijn-kern](/python/api/azureml-pipeline-core)**
     + Er is een [notitie blok](https://aka.ms/pl-modulestep) toegevoegd om [module](/python/api/azureml-pipeline-core/azureml.pipeline.core.module%28class%29), [ModuleVersion en [ModuleStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.modulestep), te beschrijven.
   + **[azureml-pipeline-steps](/python/api/azureml-pipeline-steps)**
     + [RScriptStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.rscriptstep) toegevoegd ter ondersteuning van het uitvoeren van R-script via AML-pijp lijn.
@@ -1696,7 +1741,7 @@ Op het moment van deze release worden de volgende browsers ondersteund: Chrome, 
     + Versie controle toegevoegd aan lightgbm met afgedrukte waarschuwing als onderstaande ondersteunde versie
     + Geoptimaliseerd geheugen gebruik bij de batch verwerking van uitleg
     + AutoML-modellen retour neren nu AutoMLExceptions
-  + **azureml-pipeline-core**
+  + **azureml-pijp lijn-kern**
     + Er is ondersteuning toegevoegd om PipelineDrafts te maken, bij te werken en te gebruiken-kan worden gebruikt om onveranderlijke pijplijn definities te onderhouden en ze interactief te gebruiken om uit te voeren
   + **azureml-Train-automl**
     + Er is een functie gemaakt voor het installeren van specifieke versies van GPU-capable pytorch v 1.1.0, :::no-loc text="cuda"::: toolkit 9,0, pytorch-trans formaties, die vereist zijn om Bert/XLNet in te scha kelen in de externe python-runtime omgeving.

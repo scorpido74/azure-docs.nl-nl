@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 10/16/2020
+ms.date: 11/05/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1485c2abd24022dbfa6476e3c5a530413b9cb4f2
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.openlocfilehash: e85f36f1b970a4848ee132fe37bd1b0f4f4fdc82
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93233794"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489519"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Procedure: verouderde verificatie naar Azure AD blok keren met voorwaardelijke toegang   
 
@@ -80,8 +80,8 @@ Zie voor meer informatie over deze verificatie protocollen en-services [aanmeldi
 
 Voordat u verouderde verificatie in uw Directory kunt blok keren, moet u eerst begrijpen of uw gebruikers apps hebben die gebruikmaken van verouderde verificatie en hoe dit van invloed is op uw algemene Directory. Aanmeld logboeken van Azure AD kunnen worden gebruikt om te begrijpen of u gebruikmaakt van verouderde verificatie.
 
-1. Navigeer naar het **Azure Portal**  >  **Azure Active Directory**  >  **-Azure Active Directory aanmeldingen** .
-1. Voeg de kolom client toepassing toe als deze niet wordt weer gegeven door te klikken op de client-app **Columns**  >  **Client App** .
+1. Navigeer naar het **Azure Portal**  >  **Azure Active Directory**  >  **-Azure Active Directory aanmeldingen**.
+1. Voeg de kolom client toepassing toe als deze niet wordt weer gegeven door te klikken op de client-app **Columns**  >  **Client App**.
 1. **Filters toevoegen**  >  **Client-App** > alle verouderde verificatie protocollen selecteren. Selecteer buiten het dialoog venster filteren om uw selecties toe te passen en sluit het dialoog venster.
 
 Bij filteren worden alleen de aanmeldings pogingen weer gegeven die zijn gemaakt door verouderde verificatie protocollen. Als u op elke afzonderlijke aanmeldings poging klikt, wordt er meer informatie weer gegeven. In het veld **client-app** onder het tabblad **basis informatie** wordt aangegeven welk verouderde verificatie protocol is gebruikt.
@@ -116,6 +116,10 @@ Het configureren van een beleid voor **andere clients** blokkeert de hele organi
 Het kan tot 24 uur duren voordat het beleid van kracht wordt.
 
 U kunt alle beschik bare granting-besturings elementen voor de andere voor waarden van de **clients** selecteren. de ervaring van de eind gebruiker is echter altijd dezelfde toegang die wordt geblokkeerd.
+
+### <a name="sharepoint-online-and-b2b-guest-users"></a>Share point online en B2B-gast gebruikers
+
+Om B2B-gebruikers toegang te blok keren via verouderde verificatie naar share point online, moeten organisaties verouderde verificatie uitschakelen in share point met de `Set-SPOTenant` Power shell-opdracht en de `-LegacyAuthProtocolsEnabled` para meter instellen op `$false` . Meer informatie over het instellen van deze para meter vindt u in het referentie document van share point Power shell over [set-SPOTenant](/powershell/module/sharepoint-online/set-spotenant?view=sharepoint-ps)
 
 ## <a name="next-steps"></a>Volgende stappen
 

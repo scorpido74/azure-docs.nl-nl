@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 03/31/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: acb32e2fe3dae45cc4a95cea1b9fa4ea01d576c0
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: f68618c4387bc5105914eccc4e6149650119fd0f
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93102176"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366074"
 ---
 # <a name="tutorial-find-similar-images-from-previous-searches-using-an-image-insights-token"></a>Zelfstudie: Vergelijkbare afbeeldingen als in vorige zoekopdrachten vinden met behulp van inzichttokens
 
@@ -44,7 +44,7 @@ De volledige broncode voor deze zelfstudie is beschikbaar op [GitHub](https://gi
 
 ## <a name="get-the-imageinsightstoken-from-the-bing-image-search-client-library"></a>ImageInsightsToken ophalen uit de Bing Image Search-clientbibliotheek
 
-Deze toepassing maakt gebruik van een `ImageInsightsToken` die is verkregen via de [Bing Image Search-clientbibliotheek](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-sdk-quickstart). Maak in een nieuwe C#-consoletoepassing een client om de API aan te roepen met behulp van `ImageSearchClient()`. Gebruik vervolgens `SearchAsync()` met uw query:
+Deze toepassing maakt gebruik van een `ImageInsightsToken` die is verkregen via de [Bing Image Search-clientbibliotheek](../bing-image-search/quickstarts/client-libraries.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp). Maak in een nieuwe C#-consoletoepassing een client om de API aan te roepen met behulp van `ImageSearchClient()`. Gebruik vervolgens `SearchAsync()` met uw query:
 
 ```csharp
 var client = new ImageSearchClient(new Microsoft.Azure.CognitiveServices.Search.ImageSearch.ApiKeyServiceClientCredentials(subKey));
@@ -129,7 +129,7 @@ Voor het ophalen van de werkelijke afbeeldings-URL's van actietypen is een cast 
     }
 ```
 
-Zie [Afbeeldingen - Visual Search](https://docs.microsoft.com/rest/api/cognitiveservices/bingvisualsearch/images/visualsearch) voor meer informatie over deze gegevenstypen.
+Zie [Afbeeldingen - Visual Search](/rest/api/cognitiveservices/bingvisualsearch/images/visualsearch) voor meer informatie over deze gegevenstypen.
 
 ## <a name="returned-urls"></a>Geretourneerde URL's
 

@@ -5,15 +5,18 @@ author: ambhatna
 ms.author: ambhatna
 ms.service: mysql
 ms.topic: how-to
-ms.date: 10/20/2020
-ms.openlocfilehash: 9568dfc2cfd678d0ce2dea8475328358906e16d1
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.date: 11/10/2020
+ms.openlocfilehash: 7733a6211363b4f1c9e9006f757b4d152c7af7f5
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92525137"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489553"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>Configureer Server parameters in Azure Database for MySQL-flexibele server met behulp van de Azure Portal
+
+> [!IMPORTANT] 
+> Azure Database for MySQL - Flexible Server is momenteel beschikbaar als openbare preview.
 
 U kunt Azure Database for MySQL flexibele server configuratie beheren met server parameters. De server parameters worden geconfigureerd met de standaard-en aanbevolen waarde bij het maken van de server.  
 
@@ -28,13 +31,13 @@ In dit artikel wordt beschreven hoe u server parameters kunt weer geven en confi
 2. Klik onder de sectie **instellingen** op **server parameters** om de pagina server parameters voor de Azure database for MySQL flexibele server te openen.
 [:::image type="content" source="./media/how-to-server-parameters/azure-portal-server-parameters.png" alt-text="Pagina Azure Portal Server parameters":::](./media/how-to-server-parameters/azure-portal-server-parameters.png#lightbox)
 3. Zoek een wille keurige server parameter op die u wilt aanpassen. Bekijk de kolom **Beschrijving** om inzicht te krijgen in het doel en de toegestane waarden.
-[:::image type="content" source="./media/how-to-server-parameters/3-toggle-parameter.png" alt-text="Pagina Azure Portal Server parameters":::](./media/how-to-server-parameters/3-toggle-parameter.png#lightbox)
+[:::image type="content" source="./media/how-to-server-parameters/3-toggle-parameter.png" alt-text="Vervolg keuzelijst opsommen":::](./media/how-to-server-parameters/3-toggle-parameter.png#lightbox)
 4. Klik op  **Opslaan** om uw wijzigingen op te slaan.
-[:::image type="content" source="./media/how-to-server-parameters/4-save-parameters.png" alt-text="Pagina Azure Portal Server parameters":::](./media/how-to-server-parameters/4-save-parameters.png#lightbox)
-5. De statische para meters die vereist zijn voor het opnieuw opstarten van de server, moeten van kracht worden. Als u de statische para meter wijzigt, wordt u gevraagd de **computer nu opnieuw** op te starten of **later opnieuw**op te starten.
-[:::image type="content" source="./media/how-to-server-parameters/5-save-parameter.png" alt-text="Pagina Azure Portal Server parameters":::](./media/how-to-server-parameters/5-save-parameter.png#lightbox)
-6. Als u nieuwe waarden voor de para meters hebt opgeslagen, kunt u altijd terugkeren naar de standaard waarden door **alles opnieuw instellen op de standaard**waarde te selecteren.
-[:::image type="content" source="./media/how-to-server-parameters/6-reset-parameters.png" alt-text="Pagina Azure Portal Server parameters":::](./media/how-to-server-parameters/6-reset-parameters.png#lightbox)
+[:::image type="content" source="./media/how-to-server-parameters/4-save-parameters.png" alt-text="Wijzigingen opslaan of negeren":::](./media/how-to-server-parameters/4-save-parameters.png#lightbox)
+5. De statische para meters die vereist zijn voor het opnieuw opstarten van de server, moeten van kracht worden. Als u de statische para meter wijzigt, wordt u gevraagd de **computer nu opnieuw** op te starten of **later opnieuw** op te starten.
+[:::image type="content" source="./media/how-to-server-parameters/5-save-parameter.png" alt-text="Opnieuw opstarten bij statisch opslaan van para meters":::](./media/how-to-server-parameters/5-save-parameter.png#lightbox)
+6. Als u nieuwe waarden voor de para meters hebt opgeslagen, kunt u altijd terugkeren naar de standaard waarden door **alles opnieuw instellen op de standaard** waarde te selecteren.
+[:::image type="content" source="./media/how-to-server-parameters/6-reset-parameters.png" alt-text="Alles opnieuw instellen op standaard waarden":::](./media/how-to-server-parameters/6-reset-parameters.png#lightbox)
 
 ## <a name="setting-non-modifiable-server-parameters"></a>Niet-aanpas bare server parameters instellen
 
@@ -48,7 +51,7 @@ Als de para meter van de server die u wilt bijwerken niet kan worden gewijzigd, 
 4. Klik op **Opslaan** om uw wijzigingen op te slaan.
 
 >[!Note]
-> `init_connect` kan worden gebruikt om parameters te wijzigen die geen SUPER-bevoegdhed(en) op sessieniveau vereisen. Als u wilt weten of u de parameter kunt instellen met `init_connect`, voert u de opdracht `set session parameter_name=YOUR_DESIRED_VALUE;` uit. Als er fouten optreden met het foutbericht **Toegang geweigerd; u hebt SUPER-privileges(s) nodig**, dan kunt u de parameter niet instellen met init_connect.
+> `init_connect` kan worden gebruikt om parameters te wijzigen die geen SUPER-bevoegdhed(en) op sessieniveau vereisen. Als u wilt weten of u de parameter kunt instellen met `init_connect`, voert u de opdracht `set session parameter_name=YOUR_DESIRED_VALUE;` uit. Als er fouten optreden met het foutbericht **Toegang geweigerd; u hebt SUPER-privileges(s) nodig** , dan kunt u de parameter niet instellen met init_connect.
 
 ## <a name="working-with-the-time-zone-parameter"></a>Werken met de para meter tijd zone
 
@@ -76,7 +79,7 @@ SELECT name FROM mysql.time_zone_name;
 
 De tijd zone op het globale niveau kan worden ingesteld op de pagina **server parameters** in de Azure Portal. In het onderstaande voor de globale tijd zone wordt de waarde ' VS/Pacific ' ingesteld.
 
-[:::image type="content" source="./media/how-to-server-parameters/timezone.png" alt-text="Pagina Azure Portal Server parameters":::](./media/how-to-server-parameters/timezone.png#lightbox)
+[:::image type="content" source="./media/how-to-server-parameters/timezone.png" alt-text="De para meter voor de tijd zone instellen":::](./media/how-to-server-parameters/timezone.png#lightbox)
 
 ### <a name="setting-the-session-level-time-zone"></a>De tijd zone op sessie niveau instellen
 

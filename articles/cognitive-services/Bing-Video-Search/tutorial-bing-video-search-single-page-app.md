@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 02/03/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 1b750554ec231cddd0403c89a33f2af4349ff188
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b6d9ec0760cc8d95f712cfc7a5478de1a99465ef
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098992"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94379868"
 ---
 # <a name="tutorial-single-page-video-search-app"></a>Zelfstudie: Video's zoeken-app met één pagina
 
@@ -47,7 +47,7 @@ In deze zelfstudie-app ziet u hoe u de volgende acties kunt uitvoeren:
 
 De zelfstudiepagina staat volledig op zichzelf. Er worden geen externe frameworks, opmaakmodellen of afbeeldingsbestanden gebruikt. Er wordt alleen gebruikgemaakt van ondersteunde taalfuncties voor JavaScript en het werkt met actuele versies van alle bekende webbrowsers.
 
-In deze zelfstudie worden geselecteerde gedeelten van de broncode besproken. De volledige [broncode](tutorial-bing-video-search-single-page-app-source.md) is beschikbaar. Als u het voorbeeld wilt uitvoeren, kopieert en plakt u de broncode in een teksteditor en slaat u deze op als `bing.html`.
+In deze zelfstudie worden geselecteerde gedeelten van de broncode besproken. De volledige [broncode]() is beschikbaar. Als u het voorbeeld wilt uitvoeren, kopieert en plakt u de broncode in een teksteditor en slaat u deze op als `bing.html`.
 
 ## <a name="app-components"></a>App-onderdelen
 Net zoals andere web-apps met één pagina bestaat de toepassing in deze zelfstudie uit drie onderdelen:

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/24/2020
 ms.author: b-juche
-ms.openlocfilehash: d0a16dc639fb3206b480c1091a66686955cbb11d
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 9740506da2c03996db756175551867ed43575a7c
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932342"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488176"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Een SMB-volume maken voor Azure NetApp Files
 
@@ -119,10 +119,10 @@ Er zijn aanvullende AADDS-overwegingen van toepassing op Azure NetApp Files:
 
 Wanneer u een Active Directory verbinding maakt, moet u rekening houden met de volgende specifieke voor AADDS:
 
-* In het menu AADDS vindt u informatie over de **primaire**DNS-, **secundaire DNS**-en **AD DNS-domein naam** .  
+* In het menu AADDS vindt u informatie over de **primaire** DNS-, **secundaire DNS** -en **AD DNS-domein naam** .  
 Voor DNS-servers worden er twee IP-adressen gebruikt voor het configureren van de Active Directory-verbinding. 
 * Het **pad voor de organisatie-eenheid** is `OU=AADDC Computers` .  
-Deze instelling wordt geconfigureerd in de **Active Directory verbindingen** onder **NetApp-account**:
+Deze instelling wordt geconfigureerd in de **Active Directory verbindingen** onder **NetApp-account** :
 
   ![Pad naar de organisatie-eenheid](../media/azure-netapp-files/azure-netapp-files-org-unit-path.png)
 
@@ -131,7 +131,7 @@ Deze instelling wordt geconfigureerd in de **Active Directory verbindingen** ond
 
 ## <a name="create-an-active-directory-connection"></a>Een Active Directory verbinding maken
 
-1. Klik vanuit uw NetApp-account op **Active Directory verbindingen**en klik vervolgens op **lid worden**.  
+1. Klik vanuit uw NetApp-account op **Active Directory verbindingen** en klik vervolgens op **lid worden**.  
 
     ![Active Directory verbindingen](../media/azure-netapp-files/azure-netapp-files-active-directory-connections.png)
 
@@ -146,7 +146,7 @@ Deze instelling wordt geconfigureerd in de **Active Directory verbindingen** ond
     * **AD DNS-domein naam**  
         Dit is de domein naam van de Active Directory Domain Services die u wilt toevoegen.
     * **AD-site naam**  
-        Dit is de naam van de site die de detectie van de domein controller beperkt is.
+        Dit is de naam van de site die de detectie van de domein controller beperkt is. Dit moet overeenkomen met de naam van de site in Active Directory-sites en-services.
     * **Voor voegsel van SMB-server (computer-account)**  
         Dit is het naam voorvoegsel voor het machine account in Active Directory dat Azure NetApp Files gebruikt voor het maken van nieuwe accounts.
 

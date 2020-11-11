@@ -5,14 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 08/13/2019
-author: keferna
-ms.author: keferna
-ms.openlocfilehash: bf253c4e3b273bc1500e5abbd4dfc045a7909ffd
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+author: trkeya
+ms.author: trkeya
+ms.openlocfilehash: b3f46f934241d924789b97c24cf9b68213d94d63
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93125679"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490080"
 ---
 # <a name="test-drive-technical-configuration"></a>Technische configuratie van test drive
 
@@ -74,7 +74,7 @@ Als u wilt dat micro soft de test drive namens u kan implementeren, maakt en ver
 
 - **Azure AD-App-ID** (vereist): voer uw Azure Active Directory (AD) [-toepassings-id](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)) in. Als u deze ID wilt vinden, meldt u zich aan bij de [Azure Portal](https://portal.azure.com/), selecteert u het tabblad Active Directory in het menu aan de linkerkant, selecteert u **app-registraties** en zoekt u naar de weer gegeven **toepassings-id** (zoals `50c464d3-4930-494c-963c-1e951d15360e` ).
 
-- **Azure AD-App-client geheim** (vereist): Voer uw Azure AD-toepassings [client geheim](../active-directory/develop/howto-create-service-principal-portal.md#option-2-create-a-new-application-secret)in. Als u deze waarde wilt vinden, meldt u zich aan bij de [Azure Portal](https://portal.azure.com/). Selecteer in het linkermenu het tabblad **Azure Active Directory** , selecteer **app-registraties** en selecteer uw test drive-app. Selecteer vervolgens **certificaten en geheimen** , selecteer **Nieuw client geheim** , voer een beschrijving in, selecteer **nooit** onder **verloopt** en kies **toevoegen** . Zorg ervoor dat u de waarde kopieert. Navigeer niet weg van de pagina voordat u de waarde kopieert.
+- **Azure AD-App-client geheim** (vereist): Voer uw Azure AD-toepassings [client geheim](../active-directory/develop/howto-create-service-principal-portal.md#option-2-create-a-new-application-secret)in. Als u deze waarde wilt vinden, meldt u zich aan bij de [Azure Portal](https://portal.azure.com/). Selecteer in het linkermenu het tabblad **Azure Active Directory** , selecteer **app-registraties** en selecteer uw test drive-app. Selecteer vervolgens **certificaten en geheimen** , selecteer **Nieuw client geheim** , voer een beschrijving in, selecteer **nooit** onder **verloopt** en kies **toevoegen**. Zorg ervoor dat u de waarde kopieert. Navigeer niet weg van de pagina voordat u de waarde kopieert.
 
 ## <a name="test-drive-listings"></a>Test stations
 
@@ -98,9 +98,4 @@ Als u uw test drive momenteel in partner centrum maakt, selecteert u **concept o
 - [Aanbevolen procedures testen](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
 - [Overzicht](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)(PDF; Controleer of de pop-upblokkering is uitgeschakeld)
 - [Een bestaande aanbieding bijwerken in de commerciële Marketplace](partner-center-portal/update-existing-offer.md)
-
-## <a name="additional-resources"></a>Aanvullende resources
-
-## <a name="feedback"></a>Feedback
-
-Feedback verzenden en weer geven voor [dit product](https://feedback.azure.com/forums/216369-azure-marketplace)
+- [Feedback forum voor Azure Marketplace](https://feedback.azure.com/forums/216369-azure-marketplace)

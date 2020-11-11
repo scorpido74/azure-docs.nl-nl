@@ -4,15 +4,15 @@ description: Meer informatie over uw ondersteunings opties in Partner Center, in
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: keferna
-ms.author: keferna
+author: navits09
+ms.author: navits
 ms.date: 09/18/2020
-ms.openlocfilehash: 983f7e400a33cb36f30505e5a8a28811d9d4cdfb
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: b042d1e1f38b2a4a84522d58ad482d4262f69a4a
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92284251"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488890"
 ---
 # <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>Ondersteuning voor het Commercial Marketplace-programma in Partner Center
 
@@ -61,13 +61,13 @@ Wanneer u het gewenste onderwerp hebt gevonden, selecteert u **oplossingen contr
 De volgende opties worden beschikbaar:
 
 - Als u een ander onderwerp wilt selecteren, selecteert u een andere koppeling onder **geselecteerd probleem**.
-- Lees de beschrijving van dit probleem, indien beschikbaar.  Dit is de tekst die boven de **Aanbevolen stappen**wordt weer gegeven.
-- Bekijk de **Aanbevolen stappen**, indien beschikbaar.
-- Bekijk **Aanbevolen documenten**, indien beschikbaar.
+- Lees de beschrijving van dit probleem, indien beschikbaar.  Dit is de tekst die boven de **Aanbevolen stappen** wordt weer gegeven.
+- Bekijk de **Aanbevolen stappen** , indien beschikbaar.
+- Bekijk **Aanbevolen documenten** , indien beschikbaar.
 
 ![Aanbevolen oplossingen](./media/support/recommended-solutions.png)
 
-Als u uw antwoord niet in de **Aanbevolen oplossingen**kunt vinden, selecteert u **Details van probleem opgeven**. Vul alle vereiste velden in om het oplossings proces te versnellen en selecteer vervolgens **verzenden**.
+Als u uw antwoord niet in de **Aanbevolen oplossingen** kunt vinden, selecteert u **Details van probleem opgeven**. Vul alle vereiste velden in om het oplossings proces te versnellen en selecteer vervolgens **verzenden**.
 
 >[!Note]
 >Als u het partner centrum niet hebt aangemeld en het onderwerp verificatie vereist, wordt u gevraagd om u aan te melden voordat u kunt door gaan.  Voor open bare onderwerpen is verificatie niet vereist.
@@ -85,10 +85,10 @@ Als ondersteuning voor agents om het probleem op te lossen, kunt u een HTTP-Arch
 
 ### <a name="microsoft-edge-and-google-chrome"></a>Micro soft Edge en Google Chrome
 
-Een HAR-bestand genereren met behulp van **micro soft Edge** of **Google Chrome**:
+Een HAR-bestand genereren met behulp van **micro soft Edge** of **Google Chrome** :
 
 1. Ga naar de webpagina waar het probleem zich voordoet.
-2. Selecteer in de rechter bovenhoek van het venster het pictogram met het weglatings teken en vervolgens **meer hulpprogram ma's**voor  >  **ontwikkel aars**. U kunt op F12 drukken als een snelkoppeling.
+2. Selecteer in de rechter bovenhoek van het venster het pictogram met het weglatings teken en vervolgens **meer hulpprogram ma's** voor  >  **ontwikkel aars**. U kunt op F12 drukken als een snelkoppeling.
 3. Selecteer in het deel venster ontwikkel hulpprogramma's het tabblad **netwerk** .
 4. Selecteer **registreren netwerk logboek stoppen** en **wissen** om bestaande logboeken te verwijderen. Het record pictogram wordt grijs weer gegeven.
 
@@ -100,13 +100,13 @@ Een HAR-bestand genereren met behulp van **micro soft Edge** of **Google Chrome*
 
 6. Reproduceer het probleem dat u wilt oplossen.
 7. Nadat u het probleem hebt gereproduceerd, selecteert u **opname netwerk logboek stoppen**.
-8. Selecteer **exporteren har**, gemarkeerd met een pijl-omlaag en sla het bestand op.
+8. Selecteer **exporteren har** , gemarkeerd met een pijl-omlaag en sla het bestand op.
 
     ![Een HAR-bestand exporteren in micro soft Edge of Google Chrome](media/support/chromium-network-export-har.png)
 
 ### <a name="mozilla-firefox"></a>Mozilla Firefox
 
-Een HAR-bestand genereren met behulp van **Mozilla Firefox**:
+Een HAR-bestand genereren met behulp van **Mozilla Firefox** :
 
 1. Ga naar de webpagina waar het probleem zich voordoet.
 1. Selecteer in de rechter bovenhoek van het venster het pictogram met het weglatings teken en schakel vervolgens de **webontwikkelaar**  >  **in**. U kunt op F12 drukken als een snelkoppeling.
@@ -121,11 +121,11 @@ Een HAR-bestand genereren met behulp van **Mozilla Firefox**:
 
 ### <a name="apple-safari"></a>Apple Safari
 
-Een HAR-bestand genereren met behulp van **Safari**:
+Een HAR-bestand genereren met behulp van **Safari** :
 
 1. Schakel de ontwikkel hulpprogramma's in Safari in: Selecteer **Safari**  >  **voor keuren**. Ga naar het tabblad **Geavanceerd** en selecteer vervolgens het **menu ontwikkelen weer geven in de menu balk**.
 1. Ga naar de webpagina waar het probleem zich voordoet.
-1. Selecteer **ontwikkelen**en selecteer vervolgens **Web-Inspector weer geven**.
+1. Selecteer **ontwikkelen** en selecteer vervolgens **Web-Inspector weer geven**.
 1. Selecteer het tabblad **netwerk** en selecteer vervolgens **netwerk items wissen** om bestaande logboeken te verwijderen.
 
     ![Bestaande logboeken verwijderen in Safari](media/support/safari-clear-session.png)

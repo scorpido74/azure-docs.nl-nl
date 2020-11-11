@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 83db314070f4c8857ebaa10b26d0adf51372776f
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: d5da6576258d3e33296781bbc262494220140ddc
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94447657"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489281"
 ---
 # <a name="connect-a-downstream-iot-edge-device-to-an-azure-iot-edge-gateway-preview"></a>Een downstream-IoT Edge apparaat verbinden met een Azure IoT Edge gateway (preview-versie)
 
@@ -43,7 +43,7 @@ Alle stappen in dit artikel zijn gebaseerd op die in [een IOT edge apparaat conf
 
 * Een gratis of standaard IoT-hub.
 * Ten minste twee **IOT edge apparaten** , een als het hoogste laag apparaat en een of meer apparaten met een lagere laag. Als IoT Edge apparaten niet beschikbaar zijn, kunt u [Azure IOT Edge uitvoeren op virtuele Ubuntu-machines](how-to-install-iot-edge-ubuntuvm.md).
-* Als u de Azure CLI gebruikt om apparaten te maken en te beheren, moet u Azure CLI v 2.3.1 met de Azure IoT-extensie v 0.9.10 of hoger hebben geïnstalleerd.
+* Als u de Azure CLI gebruikt om apparaten te maken en te beheren, moet u Azure CLI v 2.3.1 met de Azure IoT-extensie v 0.10.6 of hoger hebben geïnstalleerd.
 
 In dit artikel vindt u gedetailleerde stappen en opties om u te helpen de juiste gateway hiërarchie te maken voor uw scenario. Zie [een hiërarchie van IOT edge apparaten met behulp van gateways maken](tutorial-nested-iot-edge.md)voor een begeleide zelf studie.
 

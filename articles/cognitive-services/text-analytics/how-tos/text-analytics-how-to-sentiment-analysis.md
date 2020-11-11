@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 10/16/2020
 ms.author: aahi
-ms.openlocfilehash: 2b13ac02a8a276b2ef46c8ffd5f13846e394d938
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 3bc2d339ade7dade3cf3be6e63e150c77d3c44b4
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92166927"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366754"
 ---
 # <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>Procedure: Sentiment detecteren met behulp van de Text Analytics API
 
@@ -23,7 +23,7 @@ De functie Sentimentanalyse van de Text Analytics API evalueert tekst en retourn
 
 Na verzending van een aanvraag voor sentimentanalyse retourneert de API sentimentlabels (zoals 'negatief', 'neutraal' en 'positief') en betrouwbaarheidsscores op zins- en documentniveau.
 
-Sentimentanalyse ondersteunt een breed scala aan talen, met meer in preview-versie. Zie voor meer informatie [Ondersteunde talen](../text-analytics-supported-languages.md).
+Sentimentanalyse ondersteunt een breed scala aan talen, met meer in preview-versie. Zie voor meer informatie [Ondersteunde talen](../language-support.md).
 
 ## <a name="sentiment-analysis-versions-and-features"></a>Versies en functies van Sentimentanalyse
 
@@ -40,7 +40,7 @@ Sentimentanalyse ondersteunt een breed scala aan talen, met meer in preview-vers
 
 In Sentimentanalyse v3 worden sentimentlabels toegepast op tekst, die worden geretourneerd op zins- en documentniveau. Elk label heeft ook een betrouwbaarheidsscore. 
 
-De labels zijn *positief*, *negatief* en *neutraal*. Op documentniveau kan ook het *gemengde* sentimentlabel worden geretourneerd. Het sentiment van het document wordt hieronder bepaald:
+De labels zijn *positief* , *negatief* en *neutraal*. Op documentniveau kan ook het *gemengde* sentimentlabel worden geretourneerd. Het sentiment van het document wordt hieronder bepaald:
 
 | Sentiment in zin                                                                            | Geretourneerd documentlabel |
 |-----------------------------------------------------------------------------------------------|-------------------------|
@@ -93,7 +93,7 @@ Maak een POST-aanvraag. Gebruik [Postman](text-analytics-how-to-call-api.md) of 
 Stel het HTTPS-eindpunt voor sentimentanalyse in met behulp van een Text Analytics-resource in Azure of een geïnstantieerde [Text Analytics-container](text-analytics-how-to-install-containers.md). In de aanvraag moet u de juiste URL opnemen voor de versie die u wilt gebruiken. Bijvoorbeeld:
 
 > [!NOTE]
-> U vindt de sleutel en het eindpunt voor uw Text Analytics-resource in Azure Portal. U vindt deze op de **Quickstart**-pagina van de resource, onder **Resourcebeheer**. 
+> U vindt de sleutel en het eindpunt voor uw Text Analytics-resource in Azure Portal. U vindt deze op de **Quickstart** -pagina van de resource, onder **Resourcebeheer**. 
 
 #### <a name="version-31-preview1"></a>[Versie 3.1-preview.1](#tab/version-3-1)
 

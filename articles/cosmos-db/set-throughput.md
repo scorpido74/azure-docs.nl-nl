@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/14/2020
-ms.openlocfilehash: 4d03e651006661a2fa82901d64f8fb6ac2236210
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.date: 11/10/2020
+ms.openlocfilehash: 0dc55f4d77fde48590b1fbf206ed988e8fb9ec0e
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098770"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490267"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Inleiding tot ingerichte door Voer in Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -73,7 +73,7 @@ Als uw Azure Cosmos DB-account al een Data Base met gedeelde door Voer bevat met
 
 Als uw workloads het verwijderen en opnieuw maken van alle verzamelingen in een Data Base vereisen, is het raadzaam om de lege data base weg te halen en opnieuw een nieuwe Data Base te maken voordat u de verzameling maakt. In de volgende afbeelding ziet u hoe een fysieke partitie een of meer logische partities kan hosten die deel uitmaken van verschillende containers in een Data Base:
 
-:::image type="content" source="./media/set-throughput/resource-partition2.png" alt-text="Fysieke partitie die als host fungeert voor een of meer logische partities van een container" border="false":::
+:::image type="content" source="./media/set-throughput/resource-partition2.png" alt-text="Fysieke partitie die als host fungeert voor een of meer logische partities die deel uitmaken van verschillende containers " border="false":::
 
 ## <a name="set-throughput-on-a-database-and-a-container"></a>Door Voer instellen voor een Data Base en een container
 
@@ -82,9 +82,9 @@ U kunt de twee modellen combi neren. De door Voer voor de data base en de contai
 * U kunt een Azure Cosmos-data base met de naam *Z* maken met de standaard (hand matig) ingerichte door Voer van *"K"* RUs. 
 * Maak vervolgens vijf containers met de naam *A* , *B* , *C* , *D* en *E* in de-data base. Zorg ervoor dat u bij het maken van container B een **specifieke door Voer inrichten voor deze container** optie inschakelt en expliciet *' P '* RUs van ingerichte door Voer voor deze container configureert. U kunt gedeelde en toegewezen door Voer alleen configureren bij het maken van de data base en container. 
 
-   :::image type="content" source="./media/set-throughput/coll-level-throughput.png" alt-text="Fysieke partitie die als host fungeert voor een of meer logische partities van een container":::
+   :::image type="content" source="./media/set-throughput/coll-level-throughput.png" alt-text="De door Voer op container niveau instellen":::
 
-* De *"K"* RUs-door Voer wordt gedeeld in de vier containers *A* , *C* , *D* en *E* . De exacte hoeveelheid door Voer die beschikbaar is voor *A* , *C* , *D* of *E* , varieert. Er zijn geen service overeenkomsten voor de door Voer van elke afzonderlijke container.
+* De *"K"* RUs-door Voer wordt gedeeld in de vier containers *A* , *C* , *D* en *E*. De exacte hoeveelheid door Voer die beschikbaar is voor *A* , *C* , *D* of *E* , varieert. Er zijn geen service overeenkomsten voor de door Voer van elke afzonderlijke container.
 * De container met de naam *B* is gegarandeerd dat de *"P"* RUs-door Voer altijd wordt opgehaald. Er wordt een back-up gemaakt van service overeenkomsten.
 
 > [!NOTE]
@@ -109,7 +109,7 @@ Het antwoord van deze methoden bevat ook de [minimale ingerichte door Voer](conc
 De werkelijke minimale RU/s kan variëren, afhankelijk van de configuratie van uw account. Maar in het algemeen is het het maximum van:
 
 * 400 RU/s 
-* Huidige opslag in GB * 10 RU/s
+* Huidige opslag in GB * 10 RU/s (tenzij uw container of data base meer dan 1 TB aan gegevens bevat, raadpleegt u ons [programma voor hoge opslag/laag door Voer](#high-storage-low-throughput-program))
 * De hoogste RU/s die zijn ingericht voor de data base of container/100
 * Aantal containers * 100 RU/s (alleen gedeelde doorvoer database)
 

@@ -11,19 +11,19 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 7fa09ee40ca646be6ee104c7b2d4428c92934337
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: f725a4095103a7dcfc3dcdbdcefdc84d16501632
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93084626"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366530"
 ---
 # <a name="tutorial-single-page-web-app"></a>Zelfstudie: Web-app van één pagina
 
 > [!WARNING]
-> Bing Search-API's worden van Cognitive Services naar Bing Search Services verplaatst. Vanaf **30 oktober 2020** moeten nieuwe instanties van Bing Search worden ingericht volgens het proces dat [hier](https://aka.ms/cogsvcs/bingmove) is beschreven.
+> Bing Search-API's worden van Cognitive Services naar Bing Search Services verplaatst. Vanaf **30 oktober 2020** moeten nieuwe instanties van Bing Search worden ingericht volgens het proces dat [hier](/bing/search-apis/bing-web-search/create-bing-search-service-resource) is beschreven.
 > Bing Search-API's ingericht met behulp van Cognitive Services, worden voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst afloopt.
-> Zie [Bing Search Services](https://aka.ms/cogsvcs/bingmigration) voor migratie-instructies.
+> Zie [Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource) voor migratie-instructies.
 
 Met de Bing Entiteiten zoeken-API kunt u op internet zoeken naar informatie over *entiteiten* en *plaatsen*. U kunt in een query een van beide soorten resultaten opvragen of beide. Hieronder vindt u de definities van plaatsen en entiteiten.
 
@@ -57,7 +57,7 @@ In de zelfstudie-app leert u het volgende:
 
 De zelfstudiepagina staat volledig op zichzelf. Er worden geen externe frameworks, opmaakmodellen of afbeeldingsbestanden gebruikt. Er wordt alleen gebruikgemaakt van ondersteunde taalfuncties voor JavaScript en het werkt met actuele versies van alle bekende webbrowsers.
 
-In deze zelfstudie bespreken we alleen bepaalde gedeelten van de broncode. De volledige broncode is beschikbaar [op een afzonderlijke pagina](tutorial-bing-entities-search-single-page-app-source.md). Kopieer en plak deze code in een teksteditor en sla deze op als `bing.html`.
+In deze zelfstudie bespreken we alleen bepaalde gedeelten van de broncode. De volledige broncode is beschikbaar [op een afzonderlijke pagina](). Kopieer en plak deze code in een teksteditor en sla deze op als `bing.html`.
 
 > [!NOTE]
 > Deze zelfstudie is in grote lijnen vergelijkbaar met de [zelfstudie over het maken van een app met één pagina met de Bing Webzoekopdrachten-API](../Bing-Web-Search/tutorial-bing-web-search-single-page-app.md), alleen worden hier alleen de zoekresultaten voor entiteiten behandeld.
@@ -405,7 +405,7 @@ Fouten worden afgehandeld door `renderErrorMessage()` aan te roepen met eventuel
 
 ## <a name="displaying-search-results"></a>Zoekresultaten weergeven
 
-De Bing Entiteiten zoeken-API [vereist dat u resultaten weergeeft in een bepaalde volgorde](use-display-requirements.md). Omdat de API twee verschillende soorten antwoorden kan retourneren, is het niet voldoende om de verzameling `Entities` of `Places` op het hoogste niveau in het JSON-antwoord te doorlopen en die resultaten weer te geven. (Als u slechts één type resultaat wilt, gebruikt u de queryparameter `responseFilter`.)
+De Bing Entiteiten zoeken-API [vereist dat u resultaten weergeeft in een bepaalde volgorde](../bing-web-search/use-display-requirements.md). Omdat de API twee verschillende soorten antwoorden kan retourneren, is het niet voldoende om de verzameling `Entities` of `Places` op het hoogste niveau in het JSON-antwoord te doorlopen en die resultaten weer te geven. (Als u slechts één type resultaat wilt, gebruikt u de queryparameter `responseFilter`.)
 
 In plaats daarvan gebruiken we de verzameling `rankingResponse` in de zoekresultaten om de resultaten te ordenen voor weergave. Dit object verwijst naar items in de verzameling `Entitiess` en/of `Places`.
 

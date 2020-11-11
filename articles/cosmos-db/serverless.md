@@ -5,13 +5,13 @@ author: ThomasWeiss
 ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/19/2020
-ms.openlocfilehash: 75d22a5021c7c8ae3a12f25644f2875e0ccf8cdd
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.date: 11/10/2020
+ms.openlocfilehash: c811a2ea5c06250068e7c0276e4b79e9108d920d
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098753"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490352"
 ---
 # <a name="azure-cosmos-db-serverless-preview"></a>Azure Cosmos DB serverloze (preview-versie)
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -50,9 +50,6 @@ Zie de [keuze tussen ingerichte door Voer en serverloos](throughput-serverless.m
 ## <a name="using-serverless-resources"></a>Serverloze bronnen gebruiken
 
 Serverloos is een nieuw Azure Cosmos-account type. Dit betekent dat u moet kiezen tussen **ingerichte door Voer** en **serverloos** bij het maken van een nieuw account. U moet een nieuw serverloze account maken om aan de slag te gaan met serverloos. Tijdens de preview-versie is de enige ondersteunde manier om een nieuw serverloze account te maken [met behulp van de Azure Portal](create-cosmosdb-resources-portal.md). Het migreren van bestaande accounts naar/van de serverloze modus wordt momenteel niet ondersteund.
-
-> [!NOTE]
-> Serverloze wordt momenteel alleen ondersteund door de Azure Cosmos DB core-API (SQL).
 
 Een container die is gemaakt in een serverloze account, is een serverloze container. Serverloze containers bieden dezelfde mogelijkheden als containers die zijn gemaakt in de ingerichte doorvoer modus, zodat u uw gegevens op exact dezelfde manier kunt lezen, schrijven en doorzoeken. Serverloze accounts en containers hebben echter ook specifieke kenmerken:
 

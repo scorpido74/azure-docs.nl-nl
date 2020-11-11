@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 1/28/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9a69ca707577ceddc56ae691d6e5e701458cae28
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 4adf0b8a7c12abed9689b9ac0cc9c5d5c8c3f980
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93346598"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488431"
 ---
 # <a name="read-input-in-any-format-using-net-custom-deserializers"></a>Invoer in elke indeling lezen met aangepaste .net-deserialisatie
 
@@ -249,9 +249,9 @@ Deze functionaliteit wordt niet ondersteund. Als u deze mogelijkheid nodig hebt,
 
 Wanneer u uw deserializer hebt geïmplementeerd, kunt u anderen helpen door deze te delen met de community. Verzend uw code naar het [Azure stream Analytics github opslag plaats](https://github.com/Azure/azure-stream-analytics/tree/master/CustomDeserializers).
 
-### <a name="what-are-the-other-limitation-of-using-custom-deserializers-in-stream-analytics"></a>Wat is de andere beperking van het gebruik van aangepaste deserialers in Stream Analytics?
+### <a name="what-are-the-other-limitations-of-using-custom-deserializers-in-stream-analytics"></a>Wat zijn de andere beperkingen van het gebruik van aangepaste deserialers in Stream Analytics?
 
-Als de invoer van de protobuf-indeling met het schema met het MapField-type is, kunt u geen aangepaste deserialisatie implementeren. Er wordt aan gewerkt om dit type verder te ondersteunen.
+Als de invoer van de protobuf-indeling met een schema met `MapField` type is, kunt u geen aangepaste deserialisatie implementeren. Aangepaste deserialers ondersteunen ook geen voorbeeld gegevens of voorbeeld gegevens. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

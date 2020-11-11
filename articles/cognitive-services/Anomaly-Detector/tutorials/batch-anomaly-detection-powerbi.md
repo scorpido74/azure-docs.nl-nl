@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: mbullwin
-ms.openlocfilehash: 887e7432151569eb07e3c9256c7f126e7f884d54
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: a17301e0807877662ae1bf34ade48e90a1d30c0c
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92017621"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368641"
 ---
 # <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>Zelfstudie: Afwijkingen visualiseren met batchgewijs detecteren en Power BI
 
@@ -119,7 +119,7 @@ Roep de query aan op uw gegevensblad door `Sheet1` onder **Parameter invoeren** 
 ## <a name="data-source-privacy-and-authentication"></a>Privacy en verificatie van gegevensbronnen
 
 > [!NOTE]
-> Houd rekening met het beleid van uw organisatie voor privacy en toegang tot gegevens. Zie [Power BI Desktop-privacyniveaus](https://docs.microsoft.com/power-bi/desktop-privacy-levels) voor meer informatie.
+> Houd rekening met het beleid van uw organisatie voor privacy en toegang tot gegevens. Zie [Power BI Desktop-privacyniveaus](/power-bi/desktop-privacy-levels) voor meer informatie.
 
 Er wordt mogelijk een waarschuwing weergegeven wanneer u probeert de query uit te voeren, omdat deze een externe gegevensbron gebruikt.
 

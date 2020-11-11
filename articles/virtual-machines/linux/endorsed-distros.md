@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: conceptual
 ms.date: 10/09/2020
 ms.author: guybo
-ms.openlocfilehash: 0236644930af699180cf26b4baee7bb591d8bbaa
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b27b7344d84ce1361d8294fa4f3490c50afbb4c3
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978931"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489655"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Officiële Linux-distributies op Azure
 
@@ -70,11 +70,11 @@ Micro soft heeft twee (2) migratie kanalen voor CoreOS-gebruikers.
 - Flatcar by Kinvolk (Zie de vermelding ' Flatcar container Linux by Kinvolk '.)
 - [Fedora Core-besturings systeem](https://docs.fedoraproject.org/en-US/fedora-coreos/provisioning-azure/) (klanten moeten hun eigen installatie kopie uploaden. Hier vindt u de [migratie documentatie](https://docs.fedoraproject.org/en-US/fedora-coreos/migrate-cl/)).
 
-### <a name="credativ"></a>Credativ
+### <a name="credativ"></a>credativ
 
-[https://www.credativ.co.uk/credativ-blog/debian-images-microsoft-azure](https://www.credativ.co.uk/credativ-blog/debian-images-microsoft-azure)
+[https://www.credativ.de/en/portfolio/support/open-source-support-center/](https://www.credativ.de/en/portfolio/support/open-source-support-center/)
 
-Credativ is een onafhankelijke Consulting-en service maatschappij die is gespecialiseerd in de ontwikkeling en implementatie van professionele oplossingen door gebruik te maken van gratis software. Als toonaangevende open-source specialisten heeft Credativ internationale herkenning met veel IT-afdelingen die hun ondersteuning gebruiken. In combi natie met micro soft wordt Credativ momenteel de bijbehorende Debian-installatie kopieën voor Debian 8 (Jessie) en Debian voor 7 (Wheezy) voor bereid. Beide installatie kopieën zijn speciaal ontworpen om te worden uitgevoerd op Azure en kunnen eenvoudig worden beheerd via het platform. Credativ biedt ook ondersteuning voor de lange termijn onderhoud en het bijwerken van de Debian-installatie kopieën voor Azure via de open source-ondersteunings centra.
+Credativ is een onafhankelijke Consulting-en service maatschappij die is gespecialiseerd in de ontwikkeling en implementatie van professionele oplossingen door gebruik te maken van gratis software. Als toonaangevende open-source specialisten heeft Credativ internationale herkenning met veel IT-afdelingen die hun ondersteuning gebruiken. In combi natie met micro soft Credativ de Debian-installatie kopieën voor. De installatie kopieën zijn speciaal ontworpen om te worden uitgevoerd op Azure en kunnen eenvoudig worden beheerd via het platform. Credativ biedt ook ondersteuning voor de lange termijn onderhoud en het bijwerken van de Debian-installatie kopieën voor Azure via de open source-ondersteunings centra.
 
 ### <a name="kinvolk"></a>Kinvolk
 [https://www.kinvolk.io/flatcar-container-linux/](https://www.kinvolk.io/flatcar-container-linux/)

@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f88548b57cee9b5f637247fda1536488382ae2f6
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: bc811ab3cab4b79b81b16dd94a2c72225046e35a
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92042606"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488275"
 ---
 # <a name="define-a-conditional-access-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Een technisch profiel voor voorwaardelijke toegang definiëren in een Azure Active Directory B2C aangepast beleid
 
@@ -130,7 +130,7 @@ Het **InputClaimsTransformations** -element kan een verzameling **InputClaimsTra
 
 ### <a name="output-claims"></a>Uitvoer claims
 
-De provider van het voorwaardelijke toegangs protocol retourneert geen **OutputClaims**, dus u hoeft geen uitvoer claims op te geven. U kunt echter claims gebruiken die niet worden geretourneerd door de provider van het voorwaardelijke toegangs protocol zolang u het kenmerk hebt ingesteld `DefaultValue` .
+De provider van het voorwaardelijke toegangs protocol retourneert geen **OutputClaims** , dus u hoeft geen uitvoer claims op te geven. U kunt echter claims gebruiken die niet worden geretourneerd door de provider van het voorwaardelijke toegangs protocol zolang u het kenmerk hebt ingesteld `DefaultValue` .
 
 Het **OutputClaimsTransformations** -element kan een verzameling **OutputClaimsTransformation** -elementen bevatten die worden gebruikt voor het wijzigen van de uitvoer claims of voor het genereren van nieuwe.
 
@@ -428,7 +428,7 @@ Voeg een gebruikers traject toe die gebruikmaakt van de nieuwe claims, zoals wor
             </Precondition>
             <Precondition Type="ClaimEquals" ExecuteActionsIf="true">
               <Value>CAChallengeIsMfa</Value>
-              <Value>false</Value>
+              <Value>False</Value>
               <Action>SkipThisOrchestrationStep</Action>
             </Precondition>
           </Preconditions>
@@ -458,7 +458,7 @@ Voeg een gebruikers traject toe die gebruikmaakt van de nieuwe claims, zoals wor
             </Precondition>
             <Precondition Type="ClaimEquals" ExecuteActionsIf="false">
               <Value>CAChallengeIsBlock</Value>
-              <Value>true</Value>
+              <Value>True</Value>
               <Action>SkipThisOrchestrationStep</Action>
             </Precondition>
           </Preconditions>

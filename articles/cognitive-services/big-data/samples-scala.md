@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: sample
 ms.date: 07/06/2020
 ms.author: marhamil
-ms.openlocfilehash: 4546ef03c82f19d188a71a86f6964ca87c0f834e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c47aa803774343b39efeabe3452f1b256cc64c0d
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90524960"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363269"
 ---
 # <a name="quick-examples"></a>Snelle voorbeelden
 
@@ -49,7 +49,7 @@ val location = "eastus"
 
 ## <a name="text-analytics"></a>Tekstanalyse
 
-De service [Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) biedt verschillende algoritmen voor het extraheren van intelligente inzichten uit tekst. We kunnen bijvoorbeeld het gevoel van een bepaald stuk ingevoerde tekst vinden. De service retourneert een score tussen `0.0` en `1.0`, waarbij een lage score een negatief gevoel aangeeft en een hoge score een positief gevoel.  In het voorbeeld hieronder worden drie eenvoudige zinnen gebruikt en wordt het gevoel van elk ervan geretourneerd.
+De service [Text Analytics](../text-analytics/index.yml) biedt verschillende algoritmen voor het extraheren van intelligente inzichten uit tekst. We kunnen bijvoorbeeld het gevoel van een bepaald stuk ingevoerde tekst vinden. De service retourneert een score tussen `0.0` en `1.0`, waarbij een lage score een negatief gevoel aangeeft en een hoge score een positief gevoel.  In het voorbeeld hieronder worden drie eenvoudige zinnen gebruikt en wordt het gevoel van elk ervan geretourneerd.
 
 ```scala
 import org.apache.spark.sql.functions.col
@@ -81,7 +81,7 @@ display(sentiment.transform(df).select(col("text"), col("sentiment")(0).getItem(
 
 ## <a name="computer-vision"></a>Computer Vision
 
-[Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/) analyseert afbeeldingen om structuur (zoals gezichten), objecten en beschrijvingen in natuurlijke taal te herkennen.
+[Computer Vision](../computer-vision/index.yml) analyseert afbeeldingen om structuur (zoals gezichten), objecten en beschrijvingen in natuurlijke taal te herkennen.
 In dit voorbeeld wordt een lijst met afbeeldingen van een tag voorzien. Tags zijn omschrijvingen van één woord van dingen in de afbeelding, zoals herkenbare voorwerpen, personen, taferelen en acties.
 
 ```scala
@@ -118,7 +118,7 @@ display(analysis.transform(df).select(col("image"), col("results").getItem("tags
 
 ## <a name="bing-image-search"></a>Bing Afbeeldingen zoeken
 
-[Bing Image Search](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview) doorzoekt het web om afbeeldingen op te halen die zijn gerelateerd aan de query in natuurlijke taal van een gebruiker. In dit voorbeeld gebruiken we een tekstquery die naar afbeeldingen met citaten zoekt. Er wordt een lijst met afbeeldings-URL's geretourneerd die foto's bevatten waarop de query betrekking heeft.
+[Bing Image Search](../bing-image-search/overview.md) doorzoekt het web om afbeeldingen op te halen die zijn gerelateerd aan de query in natuurlijke taal van een gebruiker. In dit voorbeeld gebruiken we een tekstquery die naar afbeeldingen met citaten zoekt. Er wordt een lijst met afbeeldings-URL's geretourneerd die foto's bevatten waarop de query betrekking heeft.
 
 
 ```scala
@@ -163,7 +163,7 @@ display(pipeline.fit(df).transform(df))
 
 ## <a name="speech-to-text"></a>Spraak naar tekst
 
-Met de service [Spraak-naar-tekst](https://docs.microsoft.com/azure/cognitive-services/speech-service/index-speech-to-text) worden streams of bestanden met gesproken tekst naar leesbare tekst geconverteerd. In dit voorbeeld worden twee audiobestanden getranscribeerd. Het eerste bestand is eenvoudig te begrijpen; het tweede is moeilijker.
+Met de service [Spraak-naar-tekst](../speech-service/index-speech-to-text.yml) worden streams of bestanden met gesproken tekst naar leesbare tekst geconverteerd. In dit voorbeeld worden twee audiobestanden getranscribeerd. Het eerste bestand is eenvoudig te begrijpen; het tweede is moeilijker.
 
 ```scala
 import org.apache.spark.sql.functions.col
@@ -196,7 +196,7 @@ display(speechToText.transform(df).select(col("url"), col("text").getItem("Displ
 
 ## <a name="anomaly-detector"></a>Anomaly Detector
 
-[Anomaly Detector](https://docs.microsoft.com/azure/cognitive-services/anomaly-detector/) is geschikt voor het detecteren van onregelmatigheden in uw tijdreeksen. In dit voorbeeld gebruiken we de service om afwijkingen in de gehele tijdreeks te zoeken.
+[Anomaly Detector](../anomaly-detector/index.yml) is geschikt voor het detecteren van onregelmatigheden in uw tijdreeksen. In dit voorbeeld gebruiken we de service om afwijkingen in de gehele tijdreeks te zoeken.
 
 ```scala
 import org.apache.spark.sql.functions.{col, lit}

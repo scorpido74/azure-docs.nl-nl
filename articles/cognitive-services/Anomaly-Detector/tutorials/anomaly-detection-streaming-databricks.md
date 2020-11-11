@@ -11,12 +11,12 @@ ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: mbullwin
-ms.openlocfilehash: 8ef5d8e049ac4a779d5139945bf1073f38eb434c
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 0982f89d59f2ef9a282a46a93b98801b9df00a40
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92017655"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368709"
 ---
 # <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>Zelfstudie: Detectie van afwijkingen in streaming-gegevens met behulp van Azure Databricks
 
@@ -47,7 +47,7 @@ Maak een [Azure-abonnement](https://azure.microsoft.com/free/cognitive-services)
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een [Azure Event Hubs-naamruimte](https://docs.microsoft.com/azure/event-hubs/event-hubs-create) en een Event Hub.
+- Een [Azure Event Hubs-naamruimte](../../../event-hubs/event-hubs-create.md) en een Event Hub.
 
 - De [verbindingsreeks](../../../event-hubs/event-hubs-get-connection-string.md) voor toegang tot de Event Hubs-naamruimte. De verbindingsreeks moet een vergelijkbare indeling hebben als:
 
@@ -95,7 +95,7 @@ In deze sectie gaat u een Azure Databricks-werkruimte maken met behulp van [Azur
     Accepteer alle andere standaardwaarden, anders dan de volgende:
 
    * Voer een naam in voor het cluster.
-   * Maak voor dit artikel een cluster met de **5.2**-runtime. Selecteer NIET de **5.3**-runtime.
+   * Maak voor dit artikel een cluster met de **5.2** -runtime. Selecteer NIET de **5.3** -runtime.
    * Zorg ervoor dat het selectievakje **Beëindigen na\_\_ minuten van inactiviteit** is geselecteerd. Geef een duur (in minuten) op waarna het cluster moet worden beëindigd als het cluster niet wordt gebruikt.
 
      Selecteer **Cluster maken**.
@@ -172,7 +172,7 @@ In deze zelfstudie gebruikt u de [Anomaly Detector-API's van Azure Cognitive Ser
 
      Selecteer **Maken**.
 
-5. Nadat de resource is gemaakt, kopieert u op het tabblad **Overzicht** de **Eindpunt**-URL en slaat u deze op, zoals wordt weergegeven op de schermopname. Selecteer vervolgens **Toegangssleutels weergeven**.
+5. Nadat de resource is gemaakt, kopieert u op het tabblad **Overzicht** de **Eindpunt** -URL en slaat u deze op, zoals wordt weergegeven op de schermopname. Selecteer vervolgens **Toegangssleutels weergeven**.
 
     ![Toegangssleutels weergeven](../media/tutorials/cognitive-services-get-access-keys.png "Toegangssleutels weergeven")
 
@@ -184,8 +184,8 @@ In deze zelfstudie gebruikt u de [Anomaly Detector-API's van Azure Cognitive Ser
 
 In deze sectie gaat u in de Databricks-werkruimte twee notitieblokken met de volgende namen maken
 
-- **SendTweetsToEventHub**: een notitieblok voor producenten waarmee u tweets kunt ophalen uit Twitter die u kunt streamen naar Event Hubs.
-- **AnalyzeTweetsFromEventHub**: een notitieblok voor consumenten waarmee u de tweets uit Event Hubs kunt lezen en afwijkingsdetectie kunt uitvoeren.
+- **SendTweetsToEventHub** : een notitieblok voor producenten waarmee u tweets kunt ophalen uit Twitter die u kunt streamen naar Event Hubs.
+- **AnalyzeTweetsFromEventHub** : een notitieblok voor consumenten waarmee u de tweets uit Event Hubs kunt lezen en afwijkingsdetectie kunt uitvoeren.
 
 1. Selecteer in de Azure Databricks-werkruimte de optie **Werkruimte** in het linkerdeelvenster. Selecteer **Maken** in de vervolgkeuzelijst **Werkruimte** en selecteer **Notitieblok**.
 
@@ -323,7 +323,7 @@ Voor het uitvoeren van het notitieblok, drukt u op **SHIFT + ENTER**. De volgend
 
 ## <a name="read-tweets-from-event-hubs"></a>Tweets lezen van Event Hubs
 
-Plak in het notitieblok **AnalyzeTweetsFromEventHub** de volgende code en vervang de tijdelijke aanduiding door waarden voor uw Anomaly Detector-resource die u eerder hebt gemaakt. Dit notitieblok leest de tweets die u eerder hebt gestreamd naar Event Hubs met behulp van het **SendTweetsToEventHub**-notitieblok.
+Plak in het notitieblok **AnalyzeTweetsFromEventHub** de volgende code en vervang de tijdelijke aanduiding door waarden voor uw Anomaly Detector-resource die u eerder hebt gemaakt. Dit notitieblok leest de tweets die u eerder hebt gestreamd naar Event Hubs met behulp van het **SendTweetsToEventHub** -notitieblok.
 
 Schrijf eerst een client om de Anomaly Detector aan te roepen.
 ```scala
@@ -554,7 +554,7 @@ U hebt nu in bijna realtime gegevens van Azure Event Hubs naar Azure Databricks 
 
 ## <a name="run-anomaly-detection-on-tweets"></a>Afwijkingsdetectie uitvoeren op tweets
 
-In dit gedeelte voert u afwijkingsdetectie uit op de tweets die zijn ontvangen met behulp van de Anomaly Detector-API. Voor deze sectie voegt u de codefragmenten aan hetzelfde **AnalyzeTweetsFromEventHub**-notitieblok toe.
+In dit gedeelte voert u afwijkingsdetectie uit op de tweets die zijn ontvangen met behulp van de Anomaly Detector-API. Voor deze sectie voegt u de codefragmenten aan hetzelfde **AnalyzeTweetsFromEventHub** -notitieblok toe.
 
 Als u afwijkingsdetectie wilt uitvoeren, moet u eerst het aantal metrische gegevens per uur samenvoegen.
 ```scala
@@ -684,7 +684,7 @@ In deze zelfstudie is de granulariteit elk uur, maar u kunt de granulariteit op 
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Nadat u de zelfstudie hebt voltooid, kunt u het cluster beëindigen. Dit doet u door vanuit de Azure Databricks-werkruimte in het linkerdeelvenster **Clusters** te selecteren. Voor het cluster dat u wilt beëindigen, plaatst u de cursor op het weglatingsteken onder de kolom **Acties**, selecteert u het pictogram **Beëindigen** en selecteert u **Bevestigen**.
+Nadat u de zelfstudie hebt voltooid, kunt u het cluster beëindigen. Dit doet u door vanuit de Azure Databricks-werkruimte in het linkerdeelvenster **Clusters** te selecteren. Voor het cluster dat u wilt beëindigen, plaatst u de cursor op het weglatingsteken onder de kolom **Acties** , selecteert u het pictogram **Beëindigen** en selecteert u **Bevestigen**.
 
 ![Een Databricks-cluster stoppen](../media/tutorials/terminate-databricks-cluster.png "Een Databricks-cluster stoppen")
 

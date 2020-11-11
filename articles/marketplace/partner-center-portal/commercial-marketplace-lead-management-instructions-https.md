@@ -4,15 +4,15 @@ description: Meer informatie over het gebruik van energie automatisering en een 
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: keferna
-ms.author: keferna
+author: trkeya
+ms.author: trkeya
 ms.date: 03/30/2020
-ms.openlocfilehash: 3cdbe1f3428418f082d53febca950a6a443fe5ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4dabee6a725fd02b7be6dd12c8a032e3d816835
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86120362"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489366"
 ---
 # <a name="use-an-https-endpoint-to-manage-commercial-marketplace-leads"></a>Een HTTPS-eind punt gebruiken om leads voor commerciële Marketplace te beheren
 
@@ -31,11 +31,11 @@ In dit artikel wordt uitgelegd hoe u een nieuwe stroom maakt in automatische ene
 
     ![Meld u aan bij mijn stromen](./media/commercial-marketplace-lead-management-instructions-https/my-flows-automated.png)
 
-1. Onder **+ Nieuw**selecteert u **+ direct, leeg**.
+1. Onder **+ Nieuw** selecteert u **+ direct, leeg**.
 
     ![Mijn stromen + geautomatiseerd--leeg](./media/commercial-marketplace-lead-management-instructions-https/https-myflows-create-fromblank.png)
 
-1. Geef uw stroom een naam en selecteer vervolgens onder **kiezen hoe deze stroom moet worden geactiveerd**, **Wanneer een HTTP-aanvraag wordt ontvangen**.
+1. Geef uw stroom een naam en selecteer vervolgens onder **kiezen hoe deze stroom moet worden geactiveerd** , **Wanneer een HTTP-aanvraag wordt ontvangen**.
 
     ![Een automatische stroom venster knop overs Laan maken](./media/commercial-marketplace-lead-management-instructions-https/https-myflows-pick-request-trigger.png)
 
@@ -43,7 +43,7 @@ In dit artikel wordt uitgelegd hoe u een nieuwe stroom maakt in automatische ene
 
     ![De stroom stap uitvouwen](./media/commercial-marketplace-lead-management-instructions-https/expand-flow-step.png)
 
-1. Gebruik een van de volgende methoden om het JSON-schema van de **aanvraag tekst**te configureren:
+1. Gebruik een van de volgende methoden om het JSON-schema van de **aanvraag tekst** te configureren:
 
     - Kopieer het JSON-schema in het tekstvak aanvraag tekst van **JSON-schema** .
     - Selecteer **Voorbeeldnettolading om een schema te genereren**. Plak in het tekstvak **een voor beeld van een JSON-nettolading invoeren of plakken** in het JSON-voor beeld. Selecteer **gereed** om het schema te maken.
@@ -133,7 +133,7 @@ In dit artikel wordt uitgelegd hoe u een nieuwe stroom maakt in automatische ene
 ### <a name="connect-to-a-crm-system"></a>Verbinding maken met een CRM-systeem
 
 1. Selecteer **+ nieuwe stap**.
-1. Kies het CRM-systeem van uw keuze door ernaar te zoeken waar **Zoek connectors en acties**worden vermeld. Selecteer deze op het tabblad **acties** met de actie om een nieuwe record te maken. In het volgende scherm ziet u **een nieuwe record (Dynamics 365)** als voor beeld.
+1. Kies het CRM-systeem van uw keuze door ernaar te zoeken waar **Zoek connectors en acties** worden vermeld. Selecteer deze op het tabblad **acties** met de actie om een nieuwe record te maken. In het volgende scherm ziet u **een nieuwe record (Dynamics 365)** als voor beeld.
 
     ![Een nieuwe record maken](./media/commercial-marketplace-lead-management-instructions-https/create-new-record.png)
 
@@ -152,7 +152,7 @@ In dit artikel wordt uitgelegd hoe u een nieuwe stroom maakt in automatische ene
 ### <a name="set-up-email-notification"></a>E-mail melding instellen
 
 1. Nu u het JSON-schema hebt voltooid, selecteert u **+ nieuwe stap**.
-1. Onder **Kies een actie**selecteert u **acties**.
+1. Onder **Kies een actie** selecteert u **acties**.
 1. Selecteer **een E-mail verzenden (Office 365 Outlook)** op het tabblad **acties** .
 
     >[!NOTE]
@@ -162,15 +162,15 @@ In dit artikel wordt uitgelegd hoe u een nieuwe stroom maakt in automatische ene
 
 1. Configureer in het venster **een E-mail verzenden** de volgende vereiste velden:
 
-   - **Aan**: Voer ten minste één geldig e-mail adres in waarnaar de leads worden verzonden.
-   - **Onderwerp**: energie automatisering biedt u de mogelijkheid om dynamische inhoud toe te voegen, zoals **LeadSource** weer gegeven in het volgende scherm. Begin door een veld naam in te voeren. Selecteer vervolgens de lijst met dynamische inhoud in het pop-upvenster. 
+   - **Aan** : Voer ten minste één geldig e-mail adres in waarnaar de leads worden verzonden.
+   - **Onderwerp** : energie automatisering biedt u de mogelijkheid om dynamische inhoud toe te voegen, zoals **LeadSource** weer gegeven in het volgende scherm. Begin door een veld naam in te voeren. Selecteer vervolgens de lijst met dynamische inhoud in het pop-upvenster. 
 
         >[!NOTE] 
         > Wanneer u veld namen toevoegt, kunt u elke naam volgen met een dubbele punt (:) en selecteer vervolgens **Enter** om een nieuwe rij te maken. Nadat u de veld namen hebt toegevoegd, kunt u elke gekoppelde para meter toevoegen uit de dynamische keuze lijst.
 
         ![Een e-mail actie toevoegen met behulp van dynamische inhoud](./media/commercial-marketplace-lead-management-instructions-https/add-email-using-dynamic-content.png)
 
-   - **Hoofd tekst**: Voeg de gewenste informatie toe aan de hoofd tekst van het e-mail bericht in de lijst met dynamische inhoud. Gebruik bijvoorbeeld LastName, FirstName, email en Company. Wanneer u klaar bent met het instellen van de e-mail melding, ziet u in het voor beeld in het volgende scherm.
+   - **Hoofd tekst** : Voeg de gewenste informatie toe aan de hoofd tekst van het e-mail bericht in de lijst met dynamische inhoud. Gebruik bijvoorbeeld LastName, FirstName, email en Company. Wanneer u klaar bent met het instellen van de e-mail melding, ziet u in het voor beeld in het volgende scherm.
 
 
        ![Voorbeeld van e-mailmelding](./media/commercial-marketplace-lead-management-instructions-https/send-an-email.png)
@@ -202,7 +202,7 @@ U kunt uw configuratie testen met behulp van [postman](https://app.getpostman.co
 1. Ga terug naar [Automatische stroom](https://flow.microsoft.com/). Zoek de stroom die u hebt gemaakt voor het verzenden van leads door naar **mijn stromen** te gaan via de menu balk voor het automatisch uitvoeren van de stroom. Selecteer het beletsel teken naast de naam van de stroom om meer opties weer te geven en selecteer **bewerken**.
 
 
-1. Selecteer in de rechter bovenhoek de optie **testen** , selecteer **Ik voer de trigger actie uit**en selecteer vervolgens **testen**. Boven aan het scherm ziet u een indicatie dat de test is gestart.
+1. Selecteer in de rechter bovenhoek de optie **testen** , selecteer **Ik voer de trigger actie uit** en selecteer vervolgens **testen**. Boven aan het scherm ziet u een indicatie dat de test is gestart.
 
    ![Ik voer de trigger actie optie uit](./media/commercial-marketplace-lead-management-instructions-https/test-flow-trigger-action.png)
 
@@ -233,10 +233,10 @@ Wanneer u klaar bent om de informatie over het beheer van leads voor uw aanbiedi
 
     :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-https/customer-leads.png" alt-text="Leads van klanten":::
 
-1. Selecteer in het pop-upvenster **verbindings Details** het **https-eind punt** voor de **doel locatie**van de lead. Plak de URL van de HTTP POST uit de stroom die u hebt gemaakt door eerdere stappen in het veld **https-eind punt URL** te volgen.
+1. Selecteer in het pop-upvenster **verbindings Details** het **https-eind punt** voor de **doel locatie** van de lead. Plak de URL van de HTTP POST uit de stroom die u hebt gemaakt door eerdere stappen in het veld **https-eind punt URL** te volgen.
     ![Verbindings gegevens contact opnemen met e-mail](./media/commercial-marketplace-lead-management-instructions-https/https-connection-details.png)
 
-1. Voer onder **contact-e-mail**de e-mail adressen in voor personen in uw bedrijf die e-mail meldingen moeten ontvangen wanneer er een nieuwe lead wordt ontvangen. U kunt meerdere e-mail berichten opgeven door deze te scheiden met een punt komma.
+1. Voer onder **contact-e-mail** de e-mail adressen in voor personen in uw bedrijf die e-mail meldingen moeten ontvangen wanneer er een nieuwe lead wordt ontvangen. U kunt meerdere e-mail berichten opgeven door deze te scheiden met een punt komma.
 
 1. Selecteer **OK**.
 

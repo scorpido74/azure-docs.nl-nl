@@ -4,12 +4,12 @@ description: Hier vindt u antwoorden op enkele veelgestelde vragen over de Azure
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: dikamath
-ms.openlocfilehash: 9f0eb1ec7c979e6f35c21f49cad9ab9975a221fc
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 33250b0ba9209f7806346668dac0ef308101e7c2
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357284"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94487785"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Veelgestelde vragen over de Azure VMware-oplossing
 
@@ -194,6 +194,12 @@ Nee. Netwerk verkeer van het Internet rechtstreeks naar persoonlijke Clouds is n
 
 Ja. U moet NSX-T-beheer gebruiken om een firewall te maken waarmee de toegang tot internet wordt beperkt.
 
+
+#### <a name="can-azure-vmware-solution-use-azure-virtual-wan-hosted-expressroute-gateways"></a>Kan de Azure VMware-oplossing Azure Virtual WAN hosted ExpressRoute-gateways gebruiken?
+Ja.
+
+#### <a name="can-transit-connectivity-be-established-between-on-premises-and-azure-vmware-solution-through-azure-virtual-wan-over-expressroute-global-reach"></a>Kan Transit connectiviteit tot stand worden gebracht tussen on-premises en Azure VMware-oplossing via Azure Virtual WAN via ExpressRoute Global Reach?
+Virtuele WAN-verbindingen van Azure bieden geen transitieve route ring tussen twee verbonden ExpressRoute-circuits en een niet-virtuele WAN ExpressRoute-gateway. Met behulp van ExpressRoute Global Reach maakt u verbinding tussen de on-premises en Azure VMware-oplossing, maar gaat u door het wereld wijde netwerk van micro soft in plaats van de virtuele WAN-hub.
 
 
 ## <a name="accounts-and-privileges"></a>Accounts en bevoegdheden

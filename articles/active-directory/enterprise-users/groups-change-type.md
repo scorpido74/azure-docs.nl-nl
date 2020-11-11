@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 381ee08f44ad8fb4dade9b6229f5a5925cf2b6b7
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: a17143045b368038e24ac40f131325a623fc934d
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375526"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489604"
 ---
 # <a name="change-static-group-membership-to-dynamic-in-azure-active-directory"></a>Statisch groepslid maatschap wijzigen in Azure Active Directory
 
@@ -32,7 +32,7 @@ U kunt het lidmaatschap van een groep wijzigen van statisch in dynamisch (of omg
 
 ## <a name="change-the-membership-type-for-a-group"></a>Het lidmaatschaps type voor een groep wijzigen
 
-1. Meld u aan bij het [Azure AD-beheer centrum](https://aad.portal.azure.com) met een account dat een globale beheerder of een gebruikers beheerder in uw Azure AD-organisatie is.
+1. Meld u aan bij het [Azure AD-beheer centrum](https://aad.portal.azure.com) met een account dat een globale beheerder, gebruikers beheerder of groeps beheerder in uw Azure AD-organisatie is.
 2. Selecteer **Groepen**.
 3. Open de groep die u wilt wijzigen in de lijst **alle groepen** .
 4. Selecteer **Eigenschappen**.
@@ -40,11 +40,11 @@ U kunt het lidmaatschap van een groep wijzigen van statisch in dynamisch (of omg
 
 De volgende stappen zijn een voor beeld van het wijzigen van een groep van statisch naar dynamisch lidmaatschap voor een groep gebruikers.
 
-1. Selecteer op de pagina **Eigenschappen** voor de geselecteerde groep het **lidmaatschaps type** **dynamisch gebruiker**en selecteer vervolgens Ja in het dialoog venster met uitleg over de wijzigingen in het groepslid maatschap om door te gaan. 
+1. Selecteer op de pagina **Eigenschappen** voor de geselecteerde groep het **lidmaatschaps type** **dynamisch gebruiker** en selecteer vervolgens Ja in het dialoog venster met uitleg over de wijzigingen in het groepslid maatschap om door te gaan. 
   
    ![lidmaatschaps type van dynamische gebruiker selecteren](./media/groups-change-type/select-group-to-convert.png)
   
-2. Selecteer **dynamische query toevoegen**en geef vervolgens de regel op.
+2. Selecteer **dynamische query toevoegen** en geef vervolgens de regel op.
   
    ![de regel voor de dynamische groep invoeren](./media/groups-change-type/enter-rule.png)
   

@@ -9,18 +9,18 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: metang
-ms.openlocfilehash: 73084f5116083b190b6fa31e504ffc5e8f6f39f6
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: d8ee6b2344f0c953233195a693e774e410a8a8ea
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636490"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368199"
 ---
 # <a name="tutorial-create-an-ios-app-that-launches-the-immersive-reader-with-content-from-a-photo-swift"></a>Zelfstudie: Een iOS-app maken die de Insluitende lezer start met inhoud van een foto (Swift)
 
 De [Insluitende lezer](https://www.onenote.com/learningtools) is een inclusief ontworpen hulpprogramma waarmee bewezen technieken worden geïmplementeerd om de leesvaardigheid te verbeteren.
 
-De [Read-API van Computer Vision Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text) detecteert tekstinhoud in een afbeelding met behulp van de nieuwste herkenningsmodellen van Microsoft en converteert de geïdentificeerde tekst naar een stroom tekens die kan worden gelezen door machines.
+De [Read-API van Computer Vision Cognitive Services](../computer-vision/concept-recognizing-text.md) detecteert tekstinhoud in een afbeelding met behulp van de nieuwste herkenningsmodellen van Microsoft en converteert de geïdentificeerde tekst naar een stroom tekens die kan worden gelezen door machines.
 
 In deze zelfstudie maakt u een nieuwe iOS-app en integreert u de Read-API, en de Insluitende lezer met behulp van de Immersive Reader-SDK. U vindt [hier](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/ios) een volledig werkend voorbeeld van deze zelfstudie.
 
@@ -38,7 +38,7 @@ Maak een nieuw project in Xcode.
 
 ![Nieuw project](./media/ios/xcode-create-project.png)
 
-Kies **Single View App** .
+Kies **Single View App**.
 
 ![Nieuwe app voor één weergave](./media/ios/xcode-single-view-app.png)
 

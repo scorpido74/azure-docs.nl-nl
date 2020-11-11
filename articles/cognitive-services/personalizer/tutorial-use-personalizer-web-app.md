@@ -6,12 +6,12 @@ ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 06/10/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e06d191573219df44631f6ffaee86f895166de57
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c004887e3883ae711974b544510dff16a98d4ef9
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777255"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363915"
 ---
 # <a name="tutorial-add-personalizer-to-a-net-web-app"></a>Zelfstudie: Personalizer toevoegen aan een .NET-web-app
 
@@ -156,9 +156,9 @@ private string GetUsersTastePreference()
 
 De web-app gebruikt Personalizer om de beste actie te selecteren in de lijst met opties voor voedingsmiddelen. Dit doet de web-app door de volgende informatie te verzenden bij elke Rank API-aanroep:
 * **acties** met hun functies, zoals `taste` en `spiceLevel`
-* **context**functies, zoals `time` van de dag, de voorkeuren voor `taste` van de gebruiker en de gegevens van de gebruikersagent van de browser en contextfuncties
-* **uit te sluiten acties**, zoals juice
-* **eventId**, die verschillend is voor elke aanroep van de Rank API.
+* **context** functies, zoals `time` van de dag, de voorkeuren voor `taste` van de gebruiker en de gegevens van de gebruikersagent van de browser en contextfuncties
+* **uit te sluiten acties** , zoals juice
+* **eventId** , die verschillend is voor elke aanroep van de Rank API.
 
 ## <a name="personalizer-model-features-in-a-web-app"></a>Personalizer-modelfuncties in een web-app
 
@@ -187,7 +187,7 @@ Deze app maakt gebruik van de HTTP-aanvraagfuncties vanuit de browser. Dit begin
 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/530.99 (KHTML, like Gecko) Chrome/80.0.3900.140 Safari/537.36
 ```
 
-De klassebibliotheek **HttpRequestFeatures** generaliseert deze tekenreeks in een **userAgentInfo**-object met afzonderlijke waarden. Waarden die te specifiek zijn, worden ingesteld op een lege tekenreeks. Wanneer de contextfuncties voor de aanvraag worden verzonden, heeft deze de volgende JSON-indeling:
+De klassebibliotheek **HttpRequestFeatures** generaliseert deze tekenreeks in een **userAgentInfo** -object met afzonderlijke waarden. Waarden die te specifiek zijn, worden ingesteld op een lege tekenreeks. Wanneer de contextfuncties voor de aanvraag worden verzonden, heeft deze de volgende JSON-indeling:
 
 ```JSON
 {
@@ -216,7 +216,7 @@ Installeer de volgende software:
 
 * [.NET Core 2.1](https://dotnet.microsoft.com/download/dotnet-core/2.1): de voorbeeld-back-endserver gebruikt .NET core
 * [Node. js](https://nodejs.org/): de client/front-end is afhankelijk van deze toepassing
-* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) of [.NET Core SLI](https://docs.microsoft.com/dotnet/core/tools/): gebruik de ontwikkelomgeving van Visual Studio 2019 of de .NET Core SLI om de app te bouwen en uit te voeren
+* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) of [.NET Core SLI](/dotnet/core/tools/): gebruik de ontwikkelomgeving van Visual Studio 2019 of de .NET Core SLI om de app te bouwen en uit te voeren
 
 ### <a name="set-up-the-sample"></a>Het voorbeeld instellen
 1. Kloon de opslagplaats met Azure Personalizer-voorbeelden.
@@ -235,7 +235,7 @@ Installeer de volgende software:
 
 1. Zoek in de Azure-portal de `Endpoint` en een `Key1` of `Key2` (beide werken) op het tabblad **Sleutels en eindpunten**. Dit zijn uw `PersonalizerServiceEndpoint` en uw `PersonalizerApiKey`.
 1. Vul de `PersonalizerServiceEndpoint` in **appsettings.json** in.
-1. Configureer de `PersonalizerApiKey` als een [app-geheim](https://docs.microsoft.com/aspnet/core/security/app-secrets) op een van de volgende manieren:
+1. Configureer de `PersonalizerApiKey` als een [app-geheim](/aspnet/core/security/app-secrets) op een van de volgende manieren:
 
     * Als u de .NET Core CLI gebruikt, kunt u de opdracht `dotnet user-secrets set "PersonalizerApiKey" "<API Key>"` gebruiken.
     * Als u Visual Studio gebruikt, kunt u met de rechtermuisknop op het project klikken en de menuoptie **Gebruikersgeheimen beheren** selecteren om de Personalizer-sleutels te configureren. Als u dit doet, wordt in Visual Studio een `secrets.json`-bestand geopend waaraan u de sleutels als volgt kunt toevoegen:
@@ -275,7 +275,7 @@ U kunt via een webbrowser een Rank-aanvraag en een Reward-aanvraag verzenden en 
 
 ## <a name="understand-the-sample-web-app"></a>De voorbeeld-web-app begrijpen
 
-De voorbeeld-web-app bevat een **C# .NET**-server, die het verzamelen van functies en het verzenden en ontvangen van HTTP-aanroepen naar uw Personalizer-eindpunt beheert.
+De voorbeeld-web-app bevat een **C# .NET** -server, die het verzamelen van functies en het verzenden en ontvangen van HTTP-aanroepen naar uw Personalizer-eindpunt beheert.
 
 De voorbeeld-web-app maakt gebruik van een **knockout front-end clienttoepassing** om functies vast te leggen en acties voor de gebruikersinterface te verwerken, zoals het klikken op knoppen en het verzenden van gegevens naar de .NET-server.
 

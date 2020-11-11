@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 03/31/2019
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d62ea00246123dedb386f168355cbf2834efc2ef
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 14b32e4d666a81b8cba0e23c99b5878b1d9d4351
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93088791"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368063"
 ---
 # <a name="tutorial-crop-an-image-with-the-bing-visual-search-sdk-for-c"></a>Zelfstudie: Een afbeelding bijsnijden met de Bing Visual Search-SDK voor C#
 
@@ -119,4 +119,4 @@ Voor het ophalen van de werkelijke afbeeldings-URL's is een cast vereist die een
 > [Een Visual Search-web-app met één pagina maken](tutorial-bing-visual-search-single-page-app.md)
 
 ## <a name="see-also"></a>Zie ook
-> [Wat is de Bing Visual Search-API?](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/overview)
+> [Wat is de Bing Visual Search-API?](./overview.md)

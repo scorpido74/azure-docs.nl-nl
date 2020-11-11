@@ -16,12 +16,12 @@ ms.date: 11/05/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f337a66f50338692508ab2e5b4b7d489c735aa20
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: eccc0e71c73fb8bd2a5a50ebd0dda048d34dbea0
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420480"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488397"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Vereisten voor Azure AD Connect
 In dit artikel worden de vereisten en de hardwarevereisten voor Azure Active Directory (Azure AD)-verbinding beschreven.
@@ -102,7 +102,7 @@ We raden u aan uw Azure AD Connect-server te beveiligen om het beveiligings risi
 ### <a name="connectivity"></a>Connectiviteit
 * De Azure AD Connect-server moet de DNS-omzetting voor intranet en Internet hebben. De DNS-server moet namen kunnen omzetten naar uw on-premises Active Directory en de Azure AD-eind punten.
 * Als u firewalls op uw intranet hebt en u poorten wilt openen tussen de Azure AD Connect servers en uw domein controllers, raadpleegt u [Azure AD Connect poorten](reference-connect-ports.md) voor meer informatie.
-* Als uw proxy of firewall beperkingen heeft voor de toegang tot Url's, moeten de Url's die worden beschreven in [Office 365-url's en IP-](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) adresbereiken worden geopend.
+* Als uw proxy of firewall beperkingen heeft voor de toegang tot Url's, moeten de Url's die worden beschreven in [Office 365-url's en IP-](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) adresbereiken worden geopend. Zie ook [Safelist de Azure Portal url's op uw firewall of proxy server](../../azure-portal/azure-portal-safelist-urls.md?tabs=public-cloud).
   * Als u de micro soft-Cloud in Duitsland of de Microsoft Azure Government Cloud gebruikt, raadpleegt u [Azure AD Connect Sync Service instances-overwegingen](reference-connect-instances.md) voor url's.
 * Azure AD Connect (versie 1.1.614.0 en After) maakt standaard gebruik van TLS 1,2 voor het versleutelen van de communicatie tussen de synchronisatie-engine en Azure AD. Als TLS 1,2 niet beschikbaar is in het onderliggende besturings systeem, wordt Azure AD Connect incrementeel terugvallen op oudere protocollen (TLS 1,1 en TLS 1,0).
 * Vóór versie 1.1.614.0 maakt Azure AD Connect standaard gebruik van TLS 1,0 voor het versleutelen van de communicatie tussen de synchronisatie-engine en Azure AD. Als u wilt overschakelen naar TLS 1,2, volgt u de stappen in [tls 1,2 inschakelen voor Azure AD Connect](#enable-tls-12-for-azure-ad-connect).

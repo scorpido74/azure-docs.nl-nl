@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 11/06/2020
-ms.openlocfilehash: 1414f2ce53d1764e788749fc2d225c56f624bcdc
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 6f92c138a02c9dbdc1d22ca04c733cfbee69dcd0
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94370083"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488516"
 ---
 # <a name="how-to-configure-your-azure-application-offer-properties"></a>De eigenschappen van uw Azure-toepassing-aanbod configureren
 
@@ -76,10 +76,6 @@ U kunt ervoor kiezen om uw eigen voor waarden op te geven in plaats van het stan
 
 1. Zorg ervoor dat het selectie vakje **het standaard contract voor commerciële Marketplace van micro soft gebruiken** is uitgeschakeld onder **juridisch**.
 1. Voer in het vak voor **waarden** maxi maal 10.000 tekens tekst in.
-
-   > [!NOTE]
-   > Als u een langere beschrijving nodig hebt, voert u één webadres in dat verwijst naar waar uw voor waarden kunnen worden gevonden. Het wordt weer gegeven voor klanten als een actieve koppeling.
-
 1. Selecteer **concept opslaan** voordat u doorgaat naar het volgende tabblad: aanbieding aanbieden.
 
 ## <a name="next-steps"></a>Volgende stappen

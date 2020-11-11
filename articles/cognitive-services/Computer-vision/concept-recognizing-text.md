@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 34a7cd8669c1545361bc7cd9579cfb6140c0c946
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: ac3edc466d640fdb98fd38ba59938aa13fe00f73
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331699"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489145"
 ---
 # <a name="optical-character-recognition-ocr"></a>Optische tekenherkenning (OCR)
 
@@ -73,6 +73,9 @@ De tweede stap is het aanroepen van de bewerking [Lees resultaten ophalen](https
 
 Wanneer het veld **status** de waarde **geslaagd** heeft, bevat het JSON-antwoord de geëxtraheerde tekst inhoud van uw afbeelding of document. De JSON-respons houdt de oorspronkelijke regel groeperingen van herkende woorden bij. Het bevat de geëxtraheerde tekst regels en de coördinaten van het begrenzingsvak. Elke tekst regel bevat alle geëxtraheerde woorden met hun coördinaten en betrouwbaarheids scores.
 
+> [!NOTE]
+> De gegevens die naar de `Read` bewerking worden verzonden, worden tijdelijk versleuteld en opgeslagen in rust en binnen 48 uur verwijderd. Hiermee kunnen uw toepassingen de geëxtraheerde tekst ophalen als onderdeel van de service reactie.
+
 ## <a name="sample-json-output"></a>Voor beeld van JSON-uitvoer
 
 Zie het volgende voor beeld van een geslaagde JSON-reactie:
@@ -87,7 +90,6 @@ Zie het volgende voor beeld van een geslaagde JSON-reactie:
     "readResults": [
       {
         "page": 1,
-        "language": "en",
         "angle": 0.8551,
         "width": 2661,
         "height": 1901,

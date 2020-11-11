@@ -6,16 +6,20 @@ ms.author: ambhatna
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: how-to
-ms.date: 10/19/2020
+ms.date: 11/10/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 87ec99a68c538e8133d64351cdecbbf8b10459e6
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 58e7c024d6494aee745884997e42b527c51ab237
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92525101"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489536"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mysql-flexible-server-using-the-azure-cli"></a>Server parameters configureren in Azure Database for MySQL flexibele server met behulp van de Azure CLI
+
+> [!IMPORTANT] 
+> Azure Database for MySQL - Flexible Server is momenteel beschikbaar als openbare preview.
+
 U kunt de para meters voor een Azure Database for MySQL flexibele server weer geven, tonen en bijwerken met behulp van Azure CLI, het opdracht regel programma van Azure. De server parameters worden geconfigureerd met de standaard-en aanbevolen waarde bij het maken van de server.  
 
 In dit artikel wordt beschreven hoe u server parameters kunt weer geven, tonen en bijwerken met behulp van de Azure CLI.
@@ -66,7 +70,7 @@ Werk de para meter **init \_ Connect** server van server **mydemoserver.mysql.da
 az mysql flexible-server parameter set --name init_connect --resource-group myresourcegroup --server-name mydemoserver --value "SET character_set_client=utf8;SET character_set_database=utf8mb4;SET character_set_connection=latin1;SET character_set_results=latin1;"
 ```
 >[!Note]
-> `init_connect` kan worden gebruikt om parameters te wijzigen die geen SUPER-bevoegdhed(en) op sessieniveau vereisen. Als u wilt weten of u de parameter kunt instellen met `init_connect`, voert u de opdracht `set session parameter_name=YOUR_DESIRED_VALUE;` uit. Als er fouten optreden met het foutbericht **Toegang geweigerd; u hebt SUPER-privileges(s) nodig**, dan kunt u de parameter niet instellen met init_connect.
+> `init_connect` kan worden gebruikt om parameters te wijzigen die geen SUPER-bevoegdhed(en) op sessieniveau vereisen. Als u wilt weten of u de parameter kunt instellen met `init_connect`, voert u de opdracht `set session parameter_name=YOUR_DESIRED_VALUE;` uit. Als er fouten optreden met het foutbericht **Toegang geweigerd; u hebt SUPER-privileges(s) nodig** , dan kunt u de parameter niet instellen met init_connect.
 
 ## <a name="working-with-the-time-zone-parameter"></a>Werken met de para meter tijd zone
 
@@ -94,7 +98,7 @@ SELECT name FROM mysql.time_zone_name;
 
 De tijd zone globaal niveau kan worden ingesteld met behulp van de opdracht [AZ mysql Flexible-server para meter set](/cli/azure/mysql/flexible-server/parameter) .
 
-Met de volgende opdracht wordt **de \_ time zone** server-para meter van server **mydemoserver.mysql.database.Azure.com** onder resource groep **myresourcegroup** naar **VS/Pacific**bijgewerkt.
+Met de volgende opdracht wordt **de \_ time zone** server-para meter van server **mydemoserver.mysql.database.Azure.com** onder resource groep **myresourcegroup** naar **VS/Pacific** bijgewerkt.
 
 ```azurecli-interactive
 az mysql flexible-server parameter set --name time_zone --resource-group myresourcegroup --server-name mydemoserver --value "US/Pacific"

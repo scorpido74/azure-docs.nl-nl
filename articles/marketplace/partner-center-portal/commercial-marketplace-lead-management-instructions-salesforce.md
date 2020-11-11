@@ -4,15 +4,15 @@ description: Meer informatie over het gebruik van Sales Force voor het configure
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: keferna
-ms.author: keferna
+author: trkeya
+ms.author: trkeya
 ms.date: 03/30/2020
-ms.openlocfilehash: c3667de6a9bf85109a94201aa8e144869e4b033f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 73caf848ab5c6f8e973469066ce4612a075a52f5
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86117112"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489315"
 ---
 # <a name="configure-lead-management-for-salesforce"></a>Beheer van leads voor Sales Force configureren
 
@@ -52,7 +52,7 @@ In dit artikel wordt beschreven hoe u uw Sales Force-systeem zo instelt dat verk
 
     ![Setup van Sales Force Web-to-lead](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-3.png)
 
-1. Zorg er bij het **maken van een web-naar-lead-formulier**voor dat de `Include reCAPTCHA in HTML` instelling is uitgeschakeld en selecteer **genereren**.
+1. Zorg er bij het **maken van een web-naar-lead-formulier** voor dat de `Include reCAPTCHA in HTML` instelling is uitgeschakeld en selecteer **genereren**.
 
     ![Sales Force een formulier deel venster voor het maken van een web-naar-lead](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-4.png)
 
@@ -78,11 +78,11 @@ Wanneer u klaar bent om de informatie over het beheer van leads voor uw aanbiedi
 
     ![Pop-upvenster verbindings Details het vak e-mail adres van contact persoon valideren](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-connection-details.png)
 
-1. Voer onder **contact-e-mail**de e-mail adressen in voor personen in uw bedrijf die e-mail meldingen moeten ontvangen wanneer er een nieuwe lead wordt ontvangen. U kunt meerdere e-mail berichten opgeven door deze te scheiden met een punt komma.
+1. Voer onder **contact-e-mail** de e-mail adressen in voor personen in uw bedrijf die e-mail meldingen moeten ontvangen wanneer er een nieuwe lead wordt ontvangen. U kunt meerdere e-mail berichten opgeven door deze te scheiden met een punt komma.
 
 1. Selecteer **OK**.
 
-Selecteer **valideren**om ervoor te zorgen dat u verbinding hebt gemaakt met een doel van de lead. Als dat lukt, hebt u een test lead in de doel locatie van de lead.
+Selecteer **valideren** om ervoor te zorgen dat u verbinding hebt gemaakt met een doel van de lead. Als dat lukt, hebt u een test lead in de doel locatie van de lead.
 
 >[!NOTE]
 >U moet de configuratie van de rest van de aanbieding volt ooien en publiceren voordat u leads voor de aanbieding kunt ontvangen.

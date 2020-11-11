@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 03/31/2020
 ms.author: scottwhi
 ms.custom: devx-track-js
-ms.openlocfilehash: 8ecea9dce3509e064d9244a8b725add21747a03e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a0afee57eaaa0708ebde2a2aeaced76f008ebd9f
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93102201"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366125"
 ---
 # <a name="tutorial-upload-images-to-the-bing-visual-search-api"></a>Zelfstudie: Afbeeldingen uploaden naar de Bing Visual Search-API
 
@@ -477,7 +477,7 @@ function addDivContent(div, tag, json) {
 
 ## <a name="display-insights-for-different-actions"></a>Inzichten voor verschillende acties weergeven
 
-De volgende functies geven inzichten voor verschillende acties weer. De functies bieden een afbeelding of koppeling waarop kan worden geklikt om naar een webpagina te gaan met meer informatie over de afbeelding. Deze pagina wordt gehost door Bing.com of de oorspronkelijke website van de afbeelding. Niet alle gegevens van de inzichten worden in deze toepassing weergegeven. Raadpleeg de verwijzing [Afbeeldingen - Visual Search](https://aka.ms/bingvisualsearchreferencedoc) om alle beschikbare velden voor een inzicht te zien.
+De volgende functies geven inzichten voor verschillende acties weer. De functies bieden een afbeelding of koppeling waarop kan worden geklikt om naar een webpagina te gaan met meer informatie over de afbeelding. Deze pagina wordt gehost door Bing.com of de oorspronkelijke website van de afbeelding. Niet alle gegevens van de inzichten worden in deze toepassing weergegeven. Raadpleeg de verwijzing [Afbeeldingen - Visual Search](/rest/api/cognitiveservices/bingvisualsearch/images/visualsearch) om alle beschikbare velden voor een inzicht te zien.
 
 > [!NOTE]
 > Op de pagina moet een minimale hoeveelheid inzichtgegevens worden weergegeven. Bekijk de [Vereisten voor gebruik en weergave van Bing Search-API](../bing-web-search/use-display-requirements.md) voor meer.

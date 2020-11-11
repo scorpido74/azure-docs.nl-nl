@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: sample
 ms.date: 07/06/2020
 ms.author: marhamil
-ms.openlocfilehash: caf492c2cd3940fd7f37e2a4462c8376a127f393
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 590ddef27315f37719da5b28c68b6c402371e986
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86189303"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363252"
 ---
 # <a name="python-samples-for-cognitive-services-for-big-data"></a>Python-voorbeelden voor Cognitive Services voor big data
 
@@ -33,7 +33,7 @@ De voorbeelden in dit artikel maken gebruik van de volgende services van Cogniti
 1. Nadat u een nieuw notebook in Azure Databricks hebt gemaakt, kopieert u de onderstaande **gedeelde code** en plakt u deze in een nieuwe cel in uw notebook.
 1. Kies hieronder een voorbeeld van een service, kopieer deze en plak deze in een tweede nieuwe cel in uw notebook.
 1. Vervang een tijdelijke aanduiding met de serviceabonnementssleutel door uw eigen sleutel.
-1. Kies de knop Uitvoeren (pictogram met driehoek) in de rechterbovenhoek van de cel en selecteer **Cel uitvoeren** .
+1. Kies de knop Uitvoeren (pictogram met driehoek) in de rechterbovenhoek van de cel en selecteer **Cel uitvoeren**.
 1. Bekijk de resultaten in een tabel onder de cel.
 
 ## <a name="shared-code"></a>Gedeelde code
@@ -56,7 +56,7 @@ assert service_key != "ADD_YOUR_SUBSCRIPION_KEY"
 
 ## <a name="text-analytics-sample"></a>Voorbeeld in Text Analytics
 
-De service [Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) biedt verschillende algoritmen voor het extraheren van intelligente inzichten uit tekst. We kunnen bijvoorbeeld het gevoel van een bepaald stuk ingevoerde tekst vinden. De service retourneert een score tussen 0,0 en 1,0, waarbij een lage score een negatief gevoel aangeeft en een hoge score een positief gevoel.  In dit voorbeeld worden drie eenvoudige zinnen gebruikt en wordt het gevoel van elk ervan geretourneerd.
+De service [Text Analytics](../text-analytics/index.yml) biedt verschillende algoritmen voor het extraheren van intelligente inzichten uit tekst. We kunnen bijvoorbeeld het gevoel van een bepaald stuk ingevoerde tekst vinden. De service retourneert een score tussen 0,0 en 1,0, waarbij een lage score een negatief gevoel aangeeft en een hoge score een positief gevoel.  In dit voorbeeld worden drie eenvoudige zinnen gebruikt en wordt het gevoel van elk ervan geretourneerd.
 
 ```python
 from pyspark.sql.functions import col
@@ -78,20 +78,20 @@ sentiment = (TextSentiment()
     .setLanguageCol("language"))
 
 # Show the results of your text query in a table format
-display(sentiment.transform(df).select("text", col("sentiment")[0].getItem("score").alias("sentiment")))
+display(sentiment.transform(df).select("text", col("sentiment")[0].getItem("sentiment").alias("sentiment")))
 ```
 
 ### <a name="expected-result"></a>Verwacht resultaat
 
 | tekst                                      | gevoel                                             |
 |:------------------------------------------|:------------------------------------------------------|
-| I am so happy today, its sunny! (Ik ben zo blij vandaag, de zon schijnt!)           | 0,9789592027664185                                    |
-| I am frustrated by this rush hour traffic (Ik ben geïrriteerd vanwege het verkeer in de spits) | 0,023795604705810547                                  |
-| The cognitive services on spark aint bad (De cognitieve services in Spark zijn niet slecht)  | 0,8888956308364868                                    |
+| I am so happy today, its sunny! (Ik ben zo blij vandaag, de zon schijnt!)           | positief                                              |
+| I am frustrated by this rush hour traffic (Ik ben geïrriteerd vanwege het verkeer in de spits) | negatief                                              |
+| The cognitive services on spark aint bad (De cognitieve services in Spark zijn niet slecht)  | positief                                              |
 
 ## <a name="computer-vision-sample"></a>Voorbeeld in Computer Vision
 
-[Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/) analyseert afbeeldingen om structuur (zoals gezichten), objecten en beschrijvingen in natuurlijke taal te herkennen. In dit voorbeeld wordt een lijst met afbeeldingen van een tag voorzien. Tags zijn omschrijvingen van één woord van dingen in de afbeelding, zoals herkenbare voorwerpen, personen, taferelen en acties.
+[Computer Vision](../computer-vision/index.yml) analyseert afbeeldingen om structuur (zoals gezichten), objecten en beschrijvingen in natuurlijke taal te herkennen. In dit voorbeeld wordt een lijst met afbeeldingen van een tag voorzien. Tags zijn omschrijvingen van één woord van dingen in de afbeelding, zoals herkenbare voorwerpen, personen, taferelen en acties.
 
 ```python
 
@@ -126,7 +126,7 @@ display(analysis.transform(df).select("image", "analysis_results.description.tag
 
 ## <a name="bing-image-search-sample"></a>Voorbeeld in Bing Image Search
 
-[Bing Image Search](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview) doorzoekt het web om afbeeldingen op te halen die zijn gerelateerd aan de query in natuurlijke taal van een gebruiker. In dit voorbeeld gebruiken we een tekstquery die naar afbeeldingen met citaten zoekt. Er wordt een lijst met afbeeldings-URL's geretourneerd die foto's bevatten waarop de query betrekking heeft.
+[Bing Image Search](../bing-image-search/overview.md) doorzoekt het web om afbeeldingen op te halen die zijn gerelateerd aan de query in natuurlijke taal van een gebruiker. In dit voorbeeld gebruiken we een tekstquery die naar afbeeldingen met citaten zoekt. Er wordt een lijst met afbeeldings-URL's geretourneerd die foto's bevatten waarop de query betrekking heeft.
 
 ```python
 from pyspark.ml import PipelineModel
@@ -171,7 +171,7 @@ display(pipeline.transform(bingParameters))
 
 
 ## <a name="speech-to-text-sample"></a>Spraak-naar-tekst-voorbeeld
-Met de service [Spraak-naar-tekst](https://docs.microsoft.com/azure/cognitive-services/speech-service/index-speech-to-text) worden streams of bestanden met gesproken tekst naar leesbare tekst geconverteerd. In dit voorbeeld worden twee audiobestanden getranscribeerd. Het eerste bestand is eenvoudig te begrijpen; het tweede is moeilijker.
+Met de service [Spraak-naar-tekst](../speech-service/index-speech-to-text.yml) worden streams of bestanden met gesproken tekst naar leesbare tekst geconverteerd. In dit voorbeeld worden twee audiobestanden getranscribeerd. Het eerste bestand is eenvoudig te begrijpen; het tweede is moeilijker.
 
 ```python
 
@@ -205,7 +205,7 @@ display(speech_to_text.transform(df).select("url", "text.DisplayText"))
 
 ## <a name="anomaly-detector-sample"></a>Voorbeeld in Anomaly Detector
 
-[Anomaly Detector](https://docs.microsoft.com/azure/cognitive-services/anomaly-detector/) is geschikt voor het detecteren van onregelmatigheden in uw tijdreeksen. In dit voorbeeld gebruiken we de service om afwijkingen in de gehele tijdreeks te zoeken.
+[Anomaly Detector](../anomaly-detector/index.yml) is geschikt voor het detecteren van onregelmatigheden in uw tijdreeksen. In dit voorbeeld gebruiken we de service om afwijkingen in de gehele tijdreeks te zoeken.
 
 ```python
 from pyspark.sql.functions import lit

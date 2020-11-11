@@ -1,20 +1,20 @@
 ---
-title: Gebruiks dashboard in micro soft Commercial Marketplace Analytics, Azure Marketplace en Microsoft AppSource
-description: Meer informatie over het gebruik van toegang tot alle virtuele machines biedt metrische gegevens over facturering en data limieten. Ga naar het gebruiks dashboard in partner centrum onder commerciële Marketplace.
+title: Gebruiks dashboard in commerciële Marketplace-analyse | Azure Marketplace
+description: Lees hoe u toegang hebt tot alle metrische gegevens over gebruik en gefactureerde facturering voor aanbiedingen die naar Azure Marketplace worden gepubliceerd.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 11/09/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 9a1b6197241b93edf778295f196ccc92c45d85d6
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 1ae30d97e64dc17086e199c3fcc8188f54e6ab69
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94414572"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490114"
 ---
-# <a name="usage-dashboard-in-microsoft-commercial-marketplace-analytics"></a>Gebruiks dashboard in micro soft Commercial Marketplace Analytics
+# <a name="usage-dashboard-in-commercial-marketplace-analytics"></a>Dashboard Gebruik in Commerciële marketplace-analyses
 
 Dit artikel bevat informatie over het gebruiks dashboard in partner centrum. In dit dash board wordt alle virtuele machine (VM) weer gegeven met genormaliseerd gebruik, onbewerkt gebruik en metrische facturerings gegevens op drie afzonderlijke tabbladen: genormaliseerd gebruik van de VM, het onbewerkte gebruik van de VM en het facturerings gebruik met data limiet.
 

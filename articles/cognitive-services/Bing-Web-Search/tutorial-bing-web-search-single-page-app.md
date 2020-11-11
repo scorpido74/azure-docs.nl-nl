@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 010b65a170d05fb0d2cc55e7519fd27df8b751e1
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: c47a4fbf51b14d9a13237f77c75dbf2839fb5f80
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095438"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94381283"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Zelfstudie: Een app van één pagina maken met de Bing Webzoekopdrachten-API
 
@@ -36,7 +36,7 @@ Met deze voorbeeld-app kunt u:
 > * Abonnementssleutels beheren
 > * Fouten verwerken
 
-Voor het gebruik van deze app is een [Azure Cognitive Services-account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) met Bing Zoeken-API's vereist.
+Voor het gebruik van deze app is een [Azure Cognitive Services-account](../cognitive-services-apis-create-account.md) met Bing Zoeken-API's vereist.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -86,7 +86,7 @@ Deze zelfstudie is gericht op `scripts.js` en de logica die is vereist om de Bin
 
 ## <a name="query-options"></a>Queryopties
 
-Het HTML-formulier bevat opties waarmee queryparameters worden toegewezen in de [Bing Webzoekopdrachten-API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query-parameters). Deze tabel bevat een overzicht van de manier waarop gebruikers zoekresultaten kunnen filteren met behulp van de voorbeeld-app:
+Het HTML-formulier bevat opties waarmee queryparameters worden toegewezen in de [Bing Webzoekopdrachten-API v7](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query-parameters). Deze tabel bevat een overzicht van de manier waarop gebruikers zoekresultaten kunnen filteren met behulp van de voorbeeld-app:
 
 | Parameter | Beschrijving |
 |-----------|-------------|
@@ -99,7 +99,7 @@ Het HTML-formulier bevat opties waarmee queryparameters worden toegewezen in de 
 | `offset` | Verborgen veld. De verschuiving van het eerste zoekresultaat in de aanvraag. Dit wordt gebruikt voor wisselgeheugengebruik. Deze waarde wordt bij elke nieuwe aanvraag opnieuw ingesteld op `0`. |
 
 > [!NOTE]
-> De Bing Webzoekopdrachten-API biedt aanvullende queryparameters om de zoekresultaten te verfijnen. In dit voorbeeld worden er maar een paar gebruikt. Zie de [Bing Webzoekopdrachten-API v7-naslag](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query-parameters) voor een complete lijst met beschikbare parameters.
+> De Bing Webzoekopdrachten-API biedt aanvullende queryparameters om de zoekresultaten te verfijnen. In dit voorbeeld worden er maar een paar gebruikt. Zie de [Bing Webzoekopdrachten-API v7-naslag](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query-parameters) voor een complete lijst met beschikbare parameters.
 
 Met de functie `bingSearchOptions()` converteert u deze opties zodat ze overeenkomen met de indeling die voor de Bing Zoeken-API is vereist.
 
@@ -303,7 +303,7 @@ Fouten worden verwerkt door `renderErrorMessage()` aan te roepen. Als het antwoo
 
 ## <a name="display-search-results"></a>Zoekresultaten weergeven
 
-Er zijn [gebruiks- en weergavevereisten](useanddisplayrequirements.md) voor resultaten die door de Bing Webzoekopdrachten-API worden geretourneerd. Aangezien een antwoord diverse resultaattypen kan bevatten, is alleen het herhalen van de `WebPages`-verzameling op het hoogste niveau niet voldoende. In plaats daarvan gebruikt de voorbeeld-app `RankingResponse` om de resultaten op specificaties te sorteren.
+Er zijn [gebruiks- en weergavevereisten](./use-display-requirements.md) voor resultaten die door de Bing Webzoekopdrachten-API worden geretourneerd. Aangezien een antwoord diverse resultaattypen kan bevatten, is alleen het herhalen van de `WebPages`-verzameling op het hoogste niveau niet voldoende. In plaats daarvan gebruikt de voorbeeld-app `RankingResponse` om de resultaten op specificaties te sorteren.
 
 > [!NOTE]
 > Als u maar één resultaattype wilt krijgen, gebruikt u de `responseFilter`-queryparameter, of gebruik u een van de andere Bing zoeken-eindpunten, zoals Bing Image Search.

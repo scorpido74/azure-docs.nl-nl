@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: d5467537e105225541ffc501d345fd2fa57e0803
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 689de4d9fbd9eafeda54b8c157e5174d200c93da
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324555"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94338253"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Zelfstudie: Een end-to-end-oplossing bouwen
 
@@ -286,8 +286,8 @@ Open in een nieuw Visual Studio-venster (vanuit de map met de gedownloade oploss
 Selecteer in het deelvenster *Solution Explorer* in dit nieuwe Visual Studio-venster _DeviceSimulator/ **AzureIoTHub.cs**_ om het te openen in het bewerkingsvenster. Wijzig de volgende verbindingsreekswaarden in de waarden die u hierboven hebt verzameld:
 
 ```csharp
-connectionString = <Iot-hub-connection-string>
-deviceConnectionString = <device-connection-string>
+iotHubConnectionString = <your-hub-connection-string>
+deviceConnectionString = <your-device-connection-string>
 ```
 
 Sla het bestand op.

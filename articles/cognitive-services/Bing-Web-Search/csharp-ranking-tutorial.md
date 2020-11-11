@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 06/24/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9131dbff9b732ecfc7f6edb62b42959abcc17da8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: c6b6aea6a3b0856b3db345e20b87d2a12ad055e1
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93078676"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380327"
 ---
 # <a name="build-a-console-app-search-client-in-c"></a>Een zoekclient voor console-app maken in C#
 
@@ -228,7 +228,7 @@ Bekijk een voorbeeld van een reactie op een webzoekopdracht voordat u kijkt naar
 }
 ```
 
-In het `rankingResponse` JSON-object ([documentatie](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse)) wordt de juiste weergavevolgorde voor zoekresultaten beschreven. Het bevat een of meer van de volgende groepen met prioriteit:
+In het `rankingResponse` JSON-object ([documentatie](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse)) wordt de juiste weergavevolgorde voor zoekresultaten beschreven. Het bevat een of meer van de volgende groepen met prioriteit:
 
 - `pole`: De zoekresultaten voor het verkrijgen van de meest zichtbare behandeling (bijvoorbeeld weergegeven boven de mainline en navigatiekolom).
 - `mainline`: De zoekresultaten worden weergegeven in de mainline.

@@ -11,14 +11,14 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 11/03/2020
 ms.custom: how-to, contperfq1, devx-track-python, data4ml
-ms.openlocfilehash: f60d864bd367b5f44869abc9ccac4e4cc266075a
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 7f2c7e99117c338d07abc2ed8760c2be18955d66
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93358096"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489298"
 ---
-# <a name="connect-to-storage-services-azure"></a>Verbinding maken met Storage services Azure
+# <a name="connect-to-storage-services-on-azure"></a>Verbinding maken met Storage services in azure
 
 In dit artikel leert u hoe u **verbinding kunt maken met Storage services op Azure via Azure machine learning gegevens opslag**. Data stores maken een beveiligde verbinding met uw Azure Storage-service zonder dat uw verificatie referenties en de integriteit van de oorspronkelijke gegevens bron risico lopen. Er worden verbindings gegevens opgeslagen, zoals uw abonnements-ID en Token autorisatie in uw [Key Vault](https://azure.microsoft.com/services/key-vault/) die aan de werk ruimte zijn gekoppeld, zodat u veilig toegang kunt krijgen tot uw opslag zonder dat u deze hoeft te coderen in uw scripts. U kunt de [Azure machine learning python-SDK](#python) of de [Azure machine learning Studio](how-to-connect-data-ui.md) gebruiken om gegevens opslag te maken en te registreren.
 
@@ -254,7 +254,7 @@ Azure Machine Learning biedt verschillende manieren om uw modellen te gebruiken 
 | Methode | Toegang tot Data Store | Beschrijving |
 | ----- | :-----: | ----- |
 | [Batchvoorspelling](./tutorial-pipeline-batch-scoring-classification.md) | ✔ | Doe asynchroon voorspellingen op grote hoeveelheden gegevens. |
-| [Webservice](how-to-deploy-and-where.md) | &nbsp; | Implementeer modellen als een webservice. |
+| [-Webservice](how-to-deploy-and-where.md) | &nbsp; | Implementeer modellen als een webservice. |
 | [Module Azure IoT Edge](how-to-deploy-and-where.md) | &nbsp; | Implementeer modellen om apparaten te IoT Edge. |
 
 In situaties waarin de SDK geen toegang biedt tot gegevens opslag, kunt u mogelijk aangepaste code maken met behulp van de relevante Azure SDK om toegang te krijgen tot de data. De [Azure Storage SDK voor python](https://github.com/Azure/azure-storage-python) is bijvoorbeeld een client bibliotheek die u kunt gebruiken om toegang te krijgen tot gegevens die zijn opgeslagen in blobs of bestanden.
