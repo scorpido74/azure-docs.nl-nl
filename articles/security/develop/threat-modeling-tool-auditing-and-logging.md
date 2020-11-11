@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: bac17073650736df9ec48e951290852e082e9417
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d3f3ca7b5d4516c2ad5dc9cb19a2eaed0a8a4a8
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87542990"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94518274"
 ---
 # <a name="security-frame-auditing-and-logging--mitigations"></a>Beveiligings frame: controle en logboek registratie | Oplossingen 
 
@@ -131,7 +131,7 @@ ms.locfileid: "87542990"
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
-| **Referenties**              | [Aanmeldingscontrole configureren](https://msdn.microsoft.com/library/ms175850.aspx) |
+| **Referenties**              | [Aanmeldingscontrole configureren](/sql/ssms/configure-login-auditing-sql-server-management-studio) |
 | **Stappen** | <p>De controle van de database server aanmelding moet zijn ingeschakeld voor het detecteren/bevestigen van wacht woorden. Het is belang rijk om mislukte aanmeldings pogingen vast te leggen. Het vastleggen van zowel geslaagde als mislukte aanmeldings pogingen biedt een extra voor deel tijdens forensische onderzoek</p>|
 
 ## <a name="enable-threat-detection-on-azure-sql"></a><a id="threat-detection"></a>Bedreigings detectie op Azure SQL inschakelen
@@ -142,7 +142,7 @@ ms.locfileid: "87542990"
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | SQL Azure |
 | **Kenmerken**              | SQL-versie-V12 |
-| **Referenties**              | [Aan de slag met SQL Database detectie van bedreigingen](https://azure.microsoft.com/documentation/articles/sql-database-threat-detection-get-started/)|
+| **Referenties**              | [Aan de slag met SQL Database detectie van bedreigingen](../../azure-sql/database/threat-detection-configure.md)|
 | **Stappen** |<p>Met detectie van bedreigingen worden afwijkende database activiteiten gedetecteerd die potentiële beveiligings dreigingen voor de data base aangeven. Het biedt een nieuwe beveiligingslaag, waarmee klanten potentiële bedreigingen kunnen detecteren en erop reageren zodra ze zich voordoen door beveiligings waarschuwingen te geven over afwijkende activiteiten.</p><p>Gebruikers kunnen de verdachte gebeurtenissen verkennen met behulp van Azure SQL Database controle om te bepalen of ze het resultaat zijn van een poging toegang te krijgen tot gegevens in de data base.</p><p>Met detectie van bedreigingen kunt u eenvoudig mogelijke dreigingen voor de data base aanpakken zonder dat u een beveiligings expert hoeft te zijn of om geavanceerde beveiligings bewakings systemen te beheren</p>|
 
 ## <a name="use-azure-storage-analytics-to-audit-access-of-azure-storage"></a><a id="analytics"></a>Azure Opslaganalyse gebruiken om de toegang van Azure Storage te controleren
@@ -153,7 +153,7 @@ ms.locfileid: "87542990"
 | **SDL-fase**               | Implementatie |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t. |
-| **Referenties**              | [Het verificatie type bewaken met behulp van Opslaganalyse](https://azure.microsoft.com/documentation/articles/storage-security-guide/#storage-analytics) |
+| **Referenties**              | [Het verificatie type bewaken met behulp van Opslaganalyse](../../storage/blobs/security-recommendations.md#loggingmonitoring) |
 | **Stappen** | <p>Voor elk opslag account kan een Azure Opslaganalyse in staat stellen om gegevens in het logboek in te voeren en op te slaan. De logboeken van de opslag analyse bevatten belang rijke informatie zoals de verificatie methode die door iemand wordt gebruikt bij het openen van opslag.</p><p>Dit kan erg nuttig zijn als u de toegang tot opslag nauw keurig kunt beveiligen. In Blob Storage kunt u bijvoorbeeld alle containers instellen op privé en het gebruik van een SAS-service in uw toepassingen implementeren. Vervolgens kunt u de logboeken regel matig controleren om te zien of de blobs toegankelijk zijn via de sleutels voor het opslag account, die kunnen wijzen op een schending van de beveiliging, of als de blobs openbaar zijn, maar ze niet moeten worden gebruikt.</p>|
 
 ## <a name="implement-sufficient-logging"></a><a id="sufficient-logging"></a>Voldoende logboek registratie implementeren
@@ -164,7 +164,7 @@ ms.locfileid: "87542990"
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | .NET Framework |
 | **Kenmerken**              | N.v.t.  |
-| **Referenties**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Konink rijk](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_insufficient_logging) |
+| **Referenties**              | [MSDN](/previous-versions/msp-n-p/ff648500(v=pandp.10)), [Fortify Konink rijk](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_insufficient_logging) |
 | **Stappen** | <p>Het ontbreken van een juiste audittrail na een veiligheids incident kan forensischee inspanningen belemmeren. Windows Communication Foundation (WCF) biedt de mogelijkheid om geslaagde en/of mislukte verificatie pogingen te registreren.</p><p>Bij het vastleggen van mislukte verificatie pogingen kunnen beheerders worden gewaarschuwd voor mogelijke beveiligings aanvallen. Op dezelfde manier kan het vastleggen van geslaagde verificatie gebeurtenissen een nuttig controlepad bieden wanneer een rechtmatig account is aangetast. De beveiligings controle functie van de WCF-service inschakelen |
 
 ### <a name="example"></a>Voorbeeld
@@ -193,7 +193,7 @@ Hier volgt een voor beeld van een configuratie waarvoor controle is ingeschakeld
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | .NET Framework |
 | **Kenmerken**              | N.v.t.  |
-| **Referenties**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Konink rijk](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_insufficient_audit_failure_handling) |
+| **Referenties**              | [MSDN](/previous-versions/msp-n-p/ff648500(v=pandp.10)), [Fortify Konink rijk](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_insufficient_audit_failure_handling) |
 | **Stappen** | <p>De ontwikkelde oplossing is zo geconfigureerd dat er geen uitzonde ring wordt gegenereerd wanneer er niet naar een audit logboek kan worden geschreven. Als WCF zodanig is geconfigureerd dat er geen uitzonde ring optreedt wanneer het niet kan schrijven naar een audit logboek, wordt het programma niet op de hoogte gesteld van de fout en controle van kritieke beveiligings gebeurtenissen.</p>|
 
 ### <a name="example"></a>Voorbeeld
@@ -242,5 +242,5 @@ Configureer WCF om het programma op de hoogte te stellen wanneer het niet kan sc
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
-| **Referenties**              | [Inleiding tot de bewaking van IoT Hub bewerkingen](https://azure.microsoft.com/documentation/articles/iot-hub-operations-monitoring/) |
+| **Referenties**              | [Inleiding tot de bewaking van IoT Hub bewerkingen](../../iot-hub/iot-hub-operations-monitoring.md) |
 | **Stappen** | <p>Ontwerp voor het verzamelen en opslaan van controle gegevens die zijn verzameld via IoT Hub Operations-bewaking. De volgende bewakings categorieën inschakelen:</p><ul><li>Bewerkingen voor apparaat-id's</li><li>Communicatie tussen apparaat en Cloud</li><li>Communicatie tussen Cloud en apparaat</li><li>Verbindingen</li><li>Uploads van bestanden</li></ul>|

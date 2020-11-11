@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8f68bc5e4604f35f9c4c45cd3e38ddaf8d24cd03
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 41532e554623c47e9728c6ccab92d99500e42021
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89004456"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517424"
 ---
 # <a name="security-frame-exception-management--mitigations"></a>Beveiligings frame: uitzonderings beheer | Oplossingen 
 | Product/service | Artikel |
@@ -38,7 +38,7 @@ ms.locfileid: "89004456"
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen, NET Framework 3 |
 | **Kenmerken**              | N.v.t.  |
-| **Referenties**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Konink rijk](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_debug_information) |
+| **Referenties**              | [MSDN](/previous-versions/msp-n-p/ff648500(v=pandp.10)), [Fortify Konink rijk](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_debug_information) |
 | **Stappen** | WCF-services (Windows Communication Framework) kunnen worden geconfigureerd om fout opsporingsgegevens weer te geven. Fout opsporingsgegevens mogen niet worden gebruikt in productie omgevingen. De `<serviceDebug>` tag definieert of de functie fout opsporingsgegevens is ingeschakeld voor een WCF-service. Als het kenmerk includeExceptionDetailInFaults is ingesteld op True, worden er uitzonderings gegevens van de toepassing geretourneerd aan clients. Aanvallers kunnen gebruikmaken van de aanvullende informatie die ze van de uitvoer van de fout opsporing gebruiken om aanvallen te koppelen die zijn gericht op het Framework, de data base of andere bronnen die door de toepassing worden gebruikt. |
 
 ### <a name="example"></a>Voorbeeld
@@ -62,7 +62,7 @@ Fout opsporingsgegevens in de service uitschakelen. Dit kan worden bereikt door 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | Algemeen, NET Framework 3 |
-| **Referenties**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Konink rijk](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_service_enumeration) |
+| **Referenties**              | [MSDN](/previous-versions/msp-n-p/ff648500(v=pandp.10)), [Fortify Konink rijk](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_service_enumeration) |
 | **Stappen** | Openbaar weer geven van informatie over een service kan kwaadwillende personen een waardevol inzicht bieden in de manier waarop ze de service kunnen exploiteren. Met de `<serviceMetadata>` tag wordt de functie voor het publiceren van meta gegevens ingeschakeld. Meta gegevens van de service kunnen gevoelige informatie bevatten die niet openbaar toegankelijk moeten zijn. Geef mini maal alleen vertrouwde gebruikers toegang tot de meta gegevens en zorg ervoor dat er geen onnodige informatie beschikbaar is. Nog beter, de mogelijkheid om meta gegevens te publiceren volledig uitschakelen. Een veilige WCF-configuratie bevat geen `<serviceMetadata>` tag. |
 
 ## <a name="ensure-that-proper-exception-handling-is-done-in-aspnet-web-api"></a><a id="exception"></a>Zorg ervoor dat de juiste uitzonde ring wordt verwerkt in de ASP.NET-Web-API
@@ -202,7 +202,7 @@ Controleer de koppelingen in het gedeelte met verwijzingen voor meer informatie 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
-| **Referenties**              | [Het dialoogvenster Instellingen voor ASP.NET-foutpagina's bewerken](https://technet.microsoft.com/library/dd569096(WS.10).aspx) |
+| **Referenties**              | [Het dialoogvenster Instellingen voor ASP.NET-foutpagina's bewerken](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd569096(v=ws.10)) |
 | **Stappen** | <p>Wanneer een ASP.NET-toepassing mislukt en een interne server fout van HTTP/1. x 500 veroorzaakt, of een functie configuratie (zoals het filteren van aanvragen) voor komt dat een pagina wordt weer gegeven, wordt er een fout bericht gegenereerd. Beheerders kunnen kiezen of de toepassing een vriendelijk bericht moet weer geven voor de client, een gedetailleerd fout bericht naar de client of een gedetailleerd fout bericht dat alleen wordt localhost. De `<customErrors>` tag in de web.config heeft drie modi:</p><ul><li>**Op:** Hiermee geeft u op dat aangepaste fouten worden ingeschakeld. Als er geen defaultRedirect-kenmerk is opgegeven, zien gebruikers een algemene fout. De aangepaste fouten worden weer gegeven op de externe clients en op de lokale host</li><li>**Uit:** Hiermee geeft u op dat aangepaste fouten moeten worden uitgeschakeld. De gedetailleerde ASP.NET-fouten worden weer gegeven op de externe clients en op de lokale host</li><li>**RemoteOnly:** Hiermee geeft u op dat aangepaste fouten alleen worden weer gegeven voor de externe clients en dat er ASP.NET-fouten worden weer gegeven aan de lokale host. Dit is de standaard waarde</li></ul><p>Open het `web.config` bestand voor de toepassing/site en zorg ervoor dat het label ofwel `<customErrors mode="RemoteOnly" />` of is `<customErrors mode="On" />` gedefinieerd.</p>|
 
 ## <a name="set-deployment-method-to-retail-in-iis"></a><a id="deployment"></a>Implementatie methode instellen op Retail in IIS
@@ -213,7 +213,7 @@ Controleer de koppelingen in het gedeelte met verwijzingen voor meer informatie 
 | **SDL-fase**               | Implementatie |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
-| **Referenties**              | [implementatie-element (ASP.NET-instellingen schema)](https://msdn.microsoft.com/library/ms228298(VS.80).aspx) |
+| **Referenties**              | [implementatie-element (ASP.NET-instellingen schema)](/previous-versions/dotnet/netframework-2.0/ms228298(v=vs.80)) |
 | **Stappen** | <p>De `<deployment retail>` Switch is bedoeld voor gebruik door de productie-IIS-servers. Deze schakel optie wordt gebruikt om toepassingen te helpen uitvoeren met de best mogelijke prestaties en beveiligings lekken die kunnen worden gelekt door de mogelijkheid van de toepassing om tracerings uitvoer op een pagina te genereren uit te scha kelen, om gedetailleerde fout berichten weer te geven voor eind gebruikers en de schakel optie voor fout opsporing uit te scha kelen.</p><p>Vaak worden de switches en opties die gericht zijn op ontwikkel aars, zoals het traceren van mislukte aanvragen en fout opsporing, ingeschakeld tijdens de actieve ontwikkeling. Het is raadzaam om de implementatie methode op een productie server in te stellen op retail. Open het machine.config-bestand en zorg ervoor dat het is `<deployment retail="true" />` ingesteld op waar.</p>|
 
 ## <a name="exceptions-should-fail-safely"></a><a id="fail"></a>Uitzonde ringen moeten veilig mislukken
@@ -268,4 +268,4 @@ Controleer de koppelingen in het gedeelte met verwijzingen voor meer informatie 
             }
         }
 ```
-Met de bovenstaande methode wordt altijd waar geretourneerd als er een uitzonde ring optreedt. Als de eind gebruiker een onjuist gevormde URL biedt, de browser respecteert, maar de `Uri()` constructor niet, wordt er een uitzonde ring gegenereerd en wordt het slacht offer naar de geldige, maar onjuist gevormde URL geleid. 
+Met de bovenstaande methode wordt altijd waar geretourneerd als er een uitzonde ring optreedt. Als de eind gebruiker een onjuist gevormde URL biedt, de browser respecteert, maar de `Uri()` constructor niet, wordt er een uitzonde ring gegenereerd en wordt het slacht offer naar de geldige, maar onjuist gevormde URL geleid.

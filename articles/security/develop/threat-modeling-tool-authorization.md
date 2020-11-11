@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 51d8b740ba1275b23bc17a58284141dce0d48fe0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4d99295fbb355b3efa22a64c9adc04311508e474
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89299997"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517560"
 ---
 # <a name="security-frame-authorization--mitigations"></a>Beveiligings frame: autorisatie | Oplossingen 
 | Product/service | Artikel |
@@ -147,7 +147,7 @@ Een mogelijke aanvaller kan nu niet knoeien en de bewerking van de toepassing wi
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
-| **Referenties**              | [Hiërarchie van SQL-machtigingen](https://docs.microsoft.com/sql/relational-databases/security/permissions-hierarchy-database-engine), [SQL-Beveilig bare items](https://docs.microsoft.com/sql/relational-databases/security/securables) |
+| **Referenties**              | [Hiërarchie van SQL-machtigingen](/sql/relational-databases/security/permissions-hierarchy-database-engine), [SQL-Beveilig bare items](/sql/relational-databases/security/securables) |
 | **Stappen** | U moet mini maal privileged accounts gebruiken om verbinding te maken met de data base. Het aanmelden van een toepassing moet worden beperkt in de-data base en moet alleen geselecteerde opgeslagen procedures uitvoeren. De aanmelding van de toepassing mag geen directe toegang tot de tabel hebben. |
 
 ## <a name="implement-row-level-security-rls-to-prevent-tenants-from-accessing-each-others-data"></a><a id="rls-tenants"></a>Implementeer beveiliging op RIJNIVEAU om te voor komen dat tenants toegang krijgen tot de gegevens van elkaar
@@ -158,7 +158,7 @@ Een mogelijke aanvaller kan nu niet knoeien en de bewerking van de toepassing wi
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | SQL Azure, premises |
 | **Kenmerken**              | SQL-versie-V12, SQL-versie-MsSQL2016 |
-| **Referenties**              | [SQL Server Row-Level Security (beveiliging op RIJNIVEAU)](https://msdn.microsoft.com/library/azure/dn765131.aspx) |
+| **Referenties**              | [SQL Server Row-Level Security (beveiliging op RIJNIVEAU)](/sql/relational-databases/security/row-level-security) |
 | **Stappen** | <p>Met beveiliging op rijniveau kunnen klanten de toegang tot rijen in een databasetabel beheren op basis van de kenmerken van de gebruiker die een query uitvoert (bijvoorbeeld groepslidmaatschap of uitvoeringscontext).</p><p>Row-Level Security (beveiliging op RIJNIVEAU) vereenvoudigt het ontwerp en de code ring van beveiliging in uw toepassing. Met RLS kunt u beperkingen instellen voor de toegang tot gegevens in rijen. U kunt bijvoorbeeld bepalen dat werkrollen alleen toegang hebben tot de rijen met gegevens die relevant zijn voor hun afdeling, of de toegang van klanten beperken tot de gegevens die relevant zijn voor hun bedrijf.</p><p>De logica van de toegangs beperking bevindt zich in de database laag, in plaats van dat de gegevens in een andere toepassingslaag worden verwijderd. Het database systeem past de toegangs beperkingen telkens toe wanneer de toegang tot gegevens vanuit een wille keurige laag wordt gestart. Dit maakt het beveiligings systeem betrouwbaarder en betrouwbaarder door de surface area van het beveiligings systeem te verminderen.</p><p>|
 
 Houd er rekening mee dat beveiliging op rijniveau als een out-of-the-box-database functie alleen van toepassing is op SQL Server begin 2016, Azure SQL Database en SQL Managed instance. Als de out-of-Box-functie voor beveiliging op rijniveau niet is geïmplementeerd, moet worden gegarandeerd dat gegevens toegang is beperkt met behulp van weer gaven en procedures
@@ -171,7 +171,7 @@ Houd er rekening mee dat beveiliging op rijniveau als een out-of-the-box-databas
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
-| **Referenties**              | [Hiërarchie van SQL-machtigingen](https://docs.microsoft.com/sql/relational-databases/security/permissions-hierarchy-database-engine), [SQL-Beveilig bare items](https://docs.microsoft.com/sql/relational-databases/security/securables) |
+| **Referenties**              | [Hiërarchie van SQL-machtigingen](/sql/relational-databases/security/permissions-hierarchy-database-engine), [SQL-Beveilig bare items](/sql/relational-databases/security/securables) |
 | **Stappen** | Leden van de vaste serverrol SysAdmin moeten zeer beperkt zijn en nooit accounts bevatten die door toepassingen worden gebruikt.  Controleer de lijst met gebruikers in de rol en Verwijder overbodige accounts|
 
 ## <a name="connect-to-cloud-gateway-using-least-privileged-tokens"></a><a id="cloud-least-privileged"></a>Verbinding maken met de Cloud gateway met behulp van de tokens met minimale privileges
@@ -182,7 +182,7 @@ Houd er rekening mee dat beveiliging op rijniveau als een out-of-the-box-databas
 | **SDL-fase**               | Implementatie |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | Gateway keuze-Azure IoT Hub |
-| **Referenties**              | [IOT hub-Access Control](https://azure.microsoft.com/documentation/articles/iot-hub-devguide/#Security) |
+| **Referenties**              | [IOT hub-Access Control](../../iot-hub/iot-hub-devguide.md) |
 | **Stappen** | Geef mini maal bevoegdheden machtigingen voor verschillende onderdelen die verbinding maken met Cloud gateway (IoT Hub). Typisch voor beeld is: het onderdeel voor Apparaatbeheer/inrichting maakt gebruik van registryread/write, gebeurtenis processor (ASA) maakt gebruik van service Connect. Afzonderlijke apparaten maken verbinding met de referenties van het apparaat|
 
 ## <a name="use-a-send-only-permissions-sas-key-for-generating-device-tokens"></a><a id="sendonly-sas"></a>Een SAS-sleutel voor alleen-lezen toegang gebruiken voor het genereren van de tokens van het apparaat
@@ -193,7 +193,7 @@ Houd er rekening mee dat beveiliging op rijniveau als een out-of-the-box-databas
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
-| **Referenties**              | [Overzicht van Event Hubs verificatie en beveiligings model](https://azure.microsoft.com/documentation/articles/event-hubs-authentication-and-security-model-overview/) |
+| **Referenties**              | [Overzicht van Event Hubs verificatie en beveiligings model](../../event-hubs/authenticate-shared-access-signature.md) |
 | **Stappen** | Een SAS-sleutel wordt gebruikt voor het genereren van afzonderlijke tokens voor apparaten. Een SAS-sleutel met machtigingen voor verzenden gebruiken tijdens het genereren van het token voor een bepaalde uitgever|
 
 ## <a name="do-not-use-access-tokens-that-provide-direct-access-to-the-event-hub"></a><a id="access-tokens-hub"></a>Gebruik geen toegangs tokens die directe toegang bieden tot de Event hub
@@ -204,7 +204,7 @@ Houd er rekening mee dat beveiliging op rijniveau als een out-of-the-box-databas
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
-| **Referenties**              | [Overzicht van Event Hubs verificatie en beveiligings model](https://azure.microsoft.com/documentation/articles/event-hubs-authentication-and-security-model-overview/) |
+| **Referenties**              | [Overzicht van Event Hubs verificatie en beveiligings model](../../event-hubs/authenticate-shared-access-signature.md) |
 | **Stappen** | Een token dat directe toegang verleent aan de Event Hub, mag niet aan het apparaat worden verstrekt. Het gebruik van een token met minimale bevoegdheden voor het apparaat dat alleen toegang geeft tot een uitgever, helpt het te identificeren en toe te staan als er een Rogue of aangetast apparaat wordt aangetroffen.|
 
 ## <a name="connect-to-event-hub-using-sas-keys-that-have-the-minimum-permissions-required"></a><a id="sas-minimum-permissions"></a>Verbinding maken met Event hub met SAS-sleutels waarvoor de minimale machtigingen zijn vereist
@@ -215,7 +215,7 @@ Houd er rekening mee dat beveiliging op rijniveau als een out-of-the-box-databas
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
-| **Referenties**              | [Overzicht van Event Hubs verificatie en beveiligings model](https://azure.microsoft.com/documentation/articles/event-hubs-authentication-and-security-model-overview/) |
+| **Referenties**              | [Overzicht van Event Hubs verificatie en beveiligings model](../../event-hubs/authenticate-shared-access-signature.md) |
 | **Stappen** | Geef ten minste bevoegdheden aan voor verschillende back-end-toepassingen die verbinding maken met de Event hub. Genereer afzonderlijke SAS-sleutels voor elke back-endtoepassing en geef alleen de vereiste machtigingen: verzenden, ontvangen of beheren.|
 
 ## <a name="use-resource-tokens-to-connect-to-cosmos-db-whenever-possible"></a><a id="resource-docdb"></a>Resource tokens gebruiken om waar mogelijk verbinding te maken met Cosmos DB
@@ -237,7 +237,7 @@ Houd er rekening mee dat beveiliging op rijniveau als een out-of-the-box-databas
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
-| **Referenties**              | [Roltoewijzingen gebruiken voor het beheer van de toegang tot de resources van uw Azure-abonnement](https://azure.microsoft.com/documentation/articles/role-based-access-control-configure/)  |
+| **Referenties**              | [Roltoewijzingen gebruiken voor het beheer van de toegang tot de resources van uw Azure-abonnement](../../role-based-access-control/role-assignments-portal.md)  |
 | **Stappen** | Met op rollen gebaseerd toegangs beheer op basis van Azure (Azure RBAC) hebt u verfijnd toegang tot Azure. Met RBAC kunt u alleen de toegangsrechten aan gebruikers verlenen die ze nodig hebben om hun taken uit te voeren.|
 
 ## <a name="restrict-clients-access-to-cluster-operations-using-rbac"></a><a id="cluster-rbac"></a>De toegang van clients tot cluster bewerkingen beperken met RBAC
@@ -248,7 +248,7 @@ Houd er rekening mee dat beveiliging op rijniveau als een out-of-the-box-databas
 | **SDL-fase**               | Implementatie |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | Omgeving-Azure |
-| **Referenties**              | [Op rollen gebaseerd toegangs beheer voor Service Fabric-clients](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security-roles/) |
+| **Referenties**              | [Op rollen gebaseerd toegangs beheer voor Service Fabric-clients](../../service-fabric/service-fabric-cluster-security-roles.md) |
 | **Stappen** | <p>Azure Service Fabric ondersteunt twee verschillende typen toegangs beheer voor clients die zijn verbonden met een Service Fabric cluster: beheerder en gebruiker. Met toegangs beheer kan de Cluster beheerder de toegang tot bepaalde cluster bewerkingen voor verschillende groepen gebruikers beperken, waardoor het cluster beter is beveiligd.</p><p>Beheerders hebben volledige toegang tot beheer mogelijkheden (inclusief Lees-en schrijf mogelijkheden). Gebruikers hebben standaard alleen lees toegang tot beheer mogelijkheden (bijvoorbeeld query mogelijkheden) en de mogelijkheid om toepassingen en services op te lossen.</p><p>U geeft de twee client rollen (beheerder en client) op het moment van maken van een cluster op door afzonderlijke certificaten te bieden.</p>|
 
 ## <a name="perform-security-modeling-and-use-field-level-security-where-required"></a><a id="modeling-field"></a>Beveiligings modellering uitvoeren en beveiliging op veld niveau gebruiken indien vereist
@@ -281,7 +281,7 @@ Houd er rekening mee dat beveiliging op rijniveau als een out-of-the-box-databas
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | Para-tabel |
-| **Referenties**              | [Toegang tot objecten in uw Azure Storage-account delegeren met SAS](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_data-plane-security) |
+| **Referenties**              | [Toegang tot objecten in uw Azure Storage-account delegeren met SAS](../../storage/blobs/security-recommendations.md#identity-and-access-management) |
 | **Stappen** | In bepaalde bedrijfs scenario's kan Azure Table Storage vereist zijn om gevoelige gegevens op te slaan die aan verschillende partijen zijn opgelegd. Bijvoorbeeld gevoelige gegevens die betrekking hebben op verschillende landen/regio's. In dergelijke gevallen kunnen SAS-hand tekeningen worden samengesteld door de partitie-en rijlabels op te geven, zodat een gebruiker toegang heeft tot gegevens die specifiek zijn voor een bepaald land of bepaalde regio.| 
 
 ## <a name="enable-role-based-access-control-rbac-to-azure-storage-account-using-azure-resource-manager"></a><a id="rbac-azure-manager"></a>Role-Based Access Control (RBAC) naar Azure Storage-account inschakelen met behulp van Azure Resource Manager
@@ -292,7 +292,7 @@ Houd er rekening mee dat beveiliging op rijniveau als een out-of-the-box-databas
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
-| **Referenties**              | [Uw opslag account beveiligen met Role-Based Access Control (RBAC)](https://azure.microsoft.com/documentation/articles/storage-security-guide/#management-plane-security) |
+| **Referenties**              | [Uw opslag account beveiligen met Role-Based Access Control (RBAC)](../../storage/blobs/security-recommendations.md) |
 | **Stappen** | <p>Wanneer u een nieuw opslag account maakt, selecteert u een implementatie model van klassiek of Azure Resource Manager. Het klassieke model voor het maken van resources in azure staat alleen de toegang tot het abonnement toe, en is op zijn beurt het opslag account.</p><p>Met het Azure Resource Manager model plaatst u het opslag account in een resource groep en beheert u de toegang tot het beheer vlak van het betreffende opslag account met behulp van Azure Active Directory. U kunt bijvoorbeeld specifieke gebruikers de mogelijkheid geven om toegang te krijgen tot de sleutels van het opslag account, terwijl andere gebruikers informatie over het opslag account kunnen bekijken, maar geen toegang hebben tot de sleutel van het opslag account.</p>|
 
 ## <a name="implement-implicit-jailbreak-or-rooting-detection"></a><a id="rooting-detection"></a>Impliciete detectie van jailbreak of DFS implementeren
@@ -314,7 +314,7 @@ Houd er rekening mee dat beveiliging op rijniveau als een out-of-the-box-databas
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen, NET Framework 3 |
 | **Kenmerken**              | N.v.t.  |
-| **Referenties**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Konink rijk](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference) |
+| **Referenties**              | [MSDN](/previous-versions/msp-n-p/ff648500(v=pandp.10)), [Fortify Konink rijk](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference) |
 | **Stappen** | <p>Het systeem gebruikt een zwakke klasse-verwijzing, waardoor een aanvaller niet-geautoriseerde code kan uitvoeren. Het programma verwijst naar een door de gebruiker gedefinieerde klasse die niet uniek is geïdentificeerd. Wanneer .NET deze zwakst geïdentificeerde klasse laadt, zoekt het laad programma voor het CLR-type naar de klasse op de volgende locaties in de opgegeven volg orde:</p><ol><li>Als de assembly van het type bekend is, doorzoekt de loader de omleidings locaties van het configuratie bestand, GAC, de huidige assembly met configuratie-informatie en de map Application base</li><li>Als de assembly onbekend is, zoekt het laad programma de huidige assembly, mscorlib en de locatie die wordt geretourneerd door de gebeurtenis-handler TypeResolve</li><li>Deze CLR-Zoek volgorde kan worden gewijzigd met hooks, zoals het type door sturen en de AppDomain. TypeResolve-gebeurtenis</li></ol><p>Als een aanvaller de CLR-Zoek volgorde exploiteert door een alternatieve klasse te maken met dezelfde naam en deze te plaatsen op een andere locatie waar de CLR eerst wordt geladen, wordt de door de aanvaller geleverde code per ongeluk uitgevoerd</p>|
 
 ### <a name="example"></a>Voorbeeld
@@ -351,7 +351,7 @@ Het `<behaviorExtensions/>` element van het WCF-configuratie bestand hieronder g
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen, NET Framework 3 |
 | **Kenmerken**              | N.v.t.  |
-| **Referenties**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Konink rijk](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference) |
+| **Referenties**              | [MSDN](/previous-versions/msp-n-p/ff648500(v=pandp.10)), [Fortify Konink rijk](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference) |
 | **Stappen** | <p>Deze service maakt geen gebruik van een autorisatie besturings element. Wanneer een client een bepaalde WCF-service aanroept, biedt WCF verschillende autorisatie schema's waarmee wordt gecontroleerd of de aanroeper gemachtigd is om de service methode op de server uit te voeren. Als autorisatie besturings elementen niet zijn ingeschakeld voor WCF-services, kan een geverifieerde gebruiker de escalatie van bevoegdheden behaalt.</p>|
 
 ### <a name="example"></a>Voorbeeld

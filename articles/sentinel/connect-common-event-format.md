@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: e8d1704b7f6048c14528b784f22d60b01592b54f
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: fd08e6cc953f9d8526174fc96dd4e4d1dc9063f5
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93347604"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517968"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>Verbind uw externe oplossing met de algemene gebeurtenis indeling
 
@@ -27,14 +27,14 @@ Wanneer u verbinding maakt met een externe oplossing die CEF berichten verzendt,
 
 STAP 1: [verbinding maken met CEF met behulp van een syslog/CEF-doorstuur server](connect-cef-agent.md) stap 2: [oplossingen uitvoeren-specifieke stappen](connect-cef-solution-config.md) stap 3: de [verbinding controleren](connect-cef-verify.md)
 
-In dit artikel wordt beschreven hoe de verbinding werkt, aan de hand van vereisten en de stappen voor het implementeren van de agent op beveiligings oplossingen die algemene Event Format-berichten (CEF) boven op syslog worden verzonden. 
+In dit artikel wordt beschreven hoe de verbinding werkt, een lijst met vereisten en de stappen voor het implementeren van een mechanisme voor beveiligings oplossingen om algemene Event Format-berichten (CEF) boven op syslog te verzenden. 
 
 > [!NOTE] 
 > Gegevens worden opgeslagen op de geografische locatie van de werk ruimte waarop u Azure Sentinel uitvoert.
 
 Als u deze verbinding wilt maken, moet u een syslog-doorstuur server implementeren ter ondersteuning van de communicatie tussen het apparaat en de onderverklikker van Azure.  De server bestaat uit een toegewezen Linux-machine (VM of on-premises) met de Log Analytics-agent voor Linux geïnstalleerd. 
 
-In het volgende diagram worden de instellingen in het geval van een virtuele Linux-machine in azure beschreven:
+In het volgende diagram wordt de installatie beschreven in het geval van een virtuele Linux-machine in Azure:
 
  ![CEF in azure](./media/connect-cef/cef-syslog-azure.png)
 
@@ -53,18 +53,18 @@ Als u TLS-communicatie tussen de syslog-bron en de syslog-doorstuur server wilt 
 Zorg ervoor dat de Linux-machine die u als een logboek-doorstuur server gebruikt, een van de volgende besturings systemen wordt uitgevoerd:
 
 - 64-bits
-  - CentOS 7 en 8, inclusief subversies (niet 6)
+  - CentOS 7 en 8, inclusief secundaire versies (niet 6)
   - Amazon Linux 2017,09
   - Oracle Linux 7
-  - Red Hat Enterprise Linux (RHEL) Server 7 en 8, inclusief subversies (niet 6)
+  - Red Hat Enterprise Linux (RHEL) Server 7 en 8, inclusief secundaire versies (niet 6)
   - Debian GNU/Linux 8 en 9
   - Ubuntu Linux 14,04 LTS, 16,04 LTS en 18,04 LTS
   - SUSE Linux Enterprise Server 12, 15
 
 - 32-bits
-  - CentOS 7 en 8, inclusief subversies (niet 6)
+  - CentOS 7 en 8, inclusief secundaire versies (niet 6)
   - Oracle Linux 7
-  - Red Hat Enterprise Linux (RHEL) Server 7 en 8, inclusief subversies (niet 6)
+  - Red Hat Enterprise Linux (RHEL) Server 7 en 8, inclusief secundaire versies (niet 6)
   - Debian GNU/Linux 8 en 9
   - Ubuntu Linux 14,04 LTS en 16,04 LTS
  
@@ -82,7 +82,7 @@ Zorg ervoor dat uw computer ook aan de volgende vereisten voldoet:
   - U moet over verhoogde machtigingen (sudo) beschikken op uw computer. 
 
 - Softwarevereisten
-  - Zorg ervoor dat python 2,7 op uw computer wordt uitgevoerd.
+  - Zorg ervoor dat python 2,7 of 3 op uw computer wordt uitgevoerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 

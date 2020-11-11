@@ -9,12 +9,12 @@ ms.author: tchladek
 ms.date: 10/26/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 336e708334778e107331f5f393476c4b3dbb98a3
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 996f138a14923319381738e7a55cd7ba4e8c4320
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/11/2020
-ms.locfileid: "94507453"
+ms.locfileid: "94517764"
 ---
 # <a name="identity-model"></a>Identiteits model
 
@@ -59,3 +59,9 @@ Het draaien van toegangs sleutels van de Azure communication-service leidt ertoe
 We raden u aan toegangs tokens te verlenen aan de server zijde en niet in de toepassing van de client. De reden hiervoor is dat de verlenende toegangs sleutel of een beheerde identiteit vereist is. Het wordt niet aanbevolen om veiligheids redenen om de toegangs sleutels te delen met de toepassing van de client. De client toepassing moet gebruikmaken van een vertrouwd service-eind punt dat uw clients kan verifiëren en namens hen toegangs tokens kan verlenen. Meer informatie over de architectuur vindt u [hier](./client-and-server-architecture.md).
 
 Als u toegangs tokens in de cache opslaat voor een back-upopslag, kunt u het beste versleuteling gebruiken. Het toegangs token is gevoelige gegevens en kan worden gebruikt voor schadelijke activiteiten als deze niet zijn beveiligd. Met het bezit van het toegangs token kunt u de SDK initialiseren en toegang krijgen tot de API. De toegankelijke API wordt alleen beperkt op basis van scopes die het toegangs token heeft. We raden u aan toegangs tokens alleen te verlenen met scopes die vereist zijn.
+
+## <a name="next-steps"></a>Volgende stappen
+
+* Zie [toegangs tokens maken en beheren](https://docs.microsoft.com/azure/communication-services/quickstarts/access-tokens) voor een inleiding tot het beheren van toegangs tokens
+* Zie [verifiëren bij Azure Communication Services](https://docs.microsoft.com/azure/communication-services/concepts/authentication) voor een inleiding tot verificatie
+* Zie [Beschik baarheid van regio's en gegevens locatie](https://docs.microsoft.com/azure/communication-services/concepts/privacy) voor een inleiding tot het locatie en de privacy van gegevens.

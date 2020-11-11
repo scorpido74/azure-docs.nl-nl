@@ -3,12 +3,12 @@ title: De functionaliteit van het open bare IP-adres in azure VMware gebruiken
 description: In dit artikel wordt uitgelegd hoe u de open bare IP-functionaliteit in azure Virtual WAN kunt gebruiken.
 ms.topic: how-to
 ms.date: 10/28/2020
-ms.openlocfilehash: 7ff1debe7b52599a2e4f20378f385359325be2f7
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 036ec00077720e9dc3197bf9235bea34b77fb5f4
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/11/2020
-ms.locfileid: "94504404"
+ms.locfileid: "94517900"
 ---
 # <a name="how-to-use-the-public-ip-functionality-in-azure-vmware-solution"></a>De functionaliteit van het open bare IP-adres in azure VMware gebruiken
 
@@ -39,14 +39,14 @@ In dit artikel wordt beschreven hoe u de open bare IP-functionaliteit in virtuel
 
 :::image type="content" source="media/public-ip-usage/public-ip-architecture-diagram.png" alt-text="Diagram van open bare IP-architectuur" border="false" lightbox="media/public-ip-usage/public-ip-architecture-diagram.png":::
 
-In het architectuur diagram ziet u een webserver die wordt gehost in de Azure VMware-oplossings omgeving en die is geconfigureerd met persoonlijke IP-adressen van RFC1918.  De webservice wordt beschikbaar gesteld op Internet via de open bare IP-functionaliteit voor virtuele WAN-verkeer.  Het open bare IP-adres is doorgaans een NAT-bestemming in Azure Firewall. Met DNAT-regels worden open bare IP-adres aanvragen door het firewall beleid omgezet naar een privé adres (webserver) met een poort.
+In het architectuur diagram ziet u een webserver die wordt gehost in de Azure VMware-oplossings omgeving en die is geconfigureerd met persoonlijke IP-adressen van RFC1918.  De webservice wordt beschikbaar gesteld op Internet via de open bare IP-functionaliteit voor virtuele WAN-verkeer.  Het open bare IP-adres is doorgaans een NAT-bestemming in Azure Firewall. Met DNAT-regels worden de open bare IP-adres aanvragen door het firewall beleid omgezet naar een privé adres (webserver) met een poort.
 
 Gebruikers aanvragen hebben de firewall op een openbaar IP-adres dat op zijn beurt wordt omgezet naar privé-IP met behulp van DNAT-regels in de Azure Firewall. De firewall controleert de NAT-tabel en als de aanvraag overeenkomt met een vermelding, wordt het verkeer doorgestuurd naar het vertaalde adres en de poort in de Azure VMware-oplossings omgeving.
 
 De webserver ontvangt de aanvraag en beantwoordt met de aangevraagde informatie of pagina aan de firewall, waarna de firewall de informatie doorstuurt naar de gebruiker op het open bare IP-adres.
 
 ## <a name="test-case"></a>Testcase
-In dit scenario moet u de IIS-webserver publiceren op internet. Gebruik de open bare IP-functie in de Azure VMware-oplossing om de website te publiceren op een openbaar IP-adres.  We configureren NAT-regels op de firewall en benaderen Azure VMware Solution resource (Vm's met een webserver) met een openbaar IP-adres.
+In dit scenario publiceert u de IIS-webserver naar het internet. Gebruik de open bare IP-functie in de Azure VMware-oplossing om de website te publiceren op een openbaar IP-adres.  U configureert ook NAT-regels op de firewall en benaderen Azure VMware Solution resource (Vm's met een webserver) met een openbaar IP-adres.
 
 ## <a name="deploy-virtual-wan"></a>Virtual WAN implementeren
 
@@ -66,9 +66,9 @@ In dit scenario moet u de IIS-webserver publiceren op internet. Gebruik de open 
 
 1. Accepteer de standaard waarden of wijzig deze en selecteer **maken**.
 
-   - Resource groep voor virtueel Wide Area Network
+   - Virtuele WAN-resource groep
 
-   - Naam van virtueel Wide Area Network
+   - Virtuele WAN-naam
 
    - Virtual hub-adres blok (met behulp van een nieuw niet-overlappend IP-bereik)
 
@@ -142,7 +142,7 @@ Zodra alle onderdelen zijn geïmplementeerd, kunt u ze weer geven in de toegevoe
 
 1. Selecteer een hub in de lijst en selecteer **toevoegen**.
 
-   :::image type="content" source="media/public-ip-usage/secure-hubs-with-azure-firewall-polcy.png" alt-text="Scherm opname van de geselecteerde hubs die worden geconverteerd naar Scecured virtuele hubs." border="true" lightbox="media/public-ip-usage/secure-hubs-with-azure-firewall-polcy.png":::
+   :::image type="content" source="media/public-ip-usage/secure-hubs-with-azure-firewall-polcy.png" alt-text="Scherm opname waarin de geselecteerde hubs worden weer gegeven die worden geconverteerd naar beveiligde virtuele hubs." border="true" lightbox="media/public-ip-usage/secure-hubs-with-azure-firewall-polcy.png":::
 
 1. Selecteer **Volgende: Labels**. 
 

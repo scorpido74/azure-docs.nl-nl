@@ -17,12 +17,12 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 9a68ec82ea5e924916cbe8b07c11a4f8f62199a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8cbe6b39bda0815c4981c497c07750136bcc9dba
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317953"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517481"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>Beveiligings frame: configuratie beheer | Oplossingen 
 | Product/service | Artikel |
@@ -88,7 +88,7 @@ Example: var str="alert(1)"; eval(str);
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
-| **Referenties**              | Overzicht van [ASP.net-fout opsporing](https://msdn.microsoft.com/library/ms227556.aspx), [overzicht van ASP.net tracering](https://msdn.microsoft.com/library/bb386420.aspx), [procedures: tracering inschakelen voor een ASP.NET-toepassing](https://msdn.microsoft.com/library/0x5wc973.aspx), [How to: fout opsporing voor ASP.NET-toepassingen inschakelen](https://msdn.microsoft.com/library/e8z01xdh(VS.80).aspx) |
+| **Referenties**              | Overzicht van [ASP.net-fout opsporing](/previous-versions/ms227556(v=vs.140)), [overzicht van ASP.net tracering](/previous-versions/bb386420(v=vs.140)), [procedures: tracering inschakelen voor een ASP.NET-toepassing](/previous-versions/0x5wc973(v=vs.140)), [How to: fout opsporing voor ASP.NET-toepassingen inschakelen](https://msdn.microsoft.com/library/e8z01xdh(VS.80).aspx) |
 | **Stappen** | Wanneer tracering is ingeschakeld voor de pagina, verkrijgt elke browser die de aanvraag aanvraagt ook de tracerings informatie die gegevens bevat over de interne server status en-werk stroom. Deze informatie kan gevoelig zijn voor beveiliging. Als fout opsporing is ingeschakeld voor de pagina, hebben fouten die zich voordoen op de server tot gevolg dat er een volledige stack-tracerings gegevens aan de browser worden gepresenteerd. Deze gegevens kunnen beveiligings gevoelige informatie over de werk stroom van de server bloot stellen. |
 
 ## <a name="access-third-party-javascripts-from-trusted-sources-only"></a><a id="js-trusted"></a>Toegang tot Java script van derden alleen vanuit vertrouwde bronnen
@@ -110,7 +110,7 @@ Example: var str="alert(1)"; eval(str);
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
-| **Referenties**              | [OWASP Klik-Jack Cheat-werk blad](https://cheatsheetseries.owasp.org/cheatsheets/Clickjacking_Defense_Cheat_Sheet.html), de [interne beveiliging van IE-gevechten Klik-Jack, met X-frame-opties](https://blogs.msdn.microsoft.com/ieinternals/2010/03/30/combating-clickjacking-with-x-frame-options/) |
+| **Referenties**              | [OWASP Klik-Jack Cheat-werk blad](https://cheatsheetseries.owasp.org/cheatsheets/Clickjacking_Defense_Cheat_Sheet.html), de [interne beveiliging van IE-gevechten Klik-Jack, met X-frame-opties](/archive/blogs/ieinternals/combating-clickjacking-with-x-frame-options) |
 | **Stappen** | <p>Klik op Jack, ook wel bekend als ' UI-aanval ', wanneer een aanvaller meerdere transparante of ondoorzichtige lagen gebruikt om een gebruiker te laten klikken op een knop of koppeling op een andere pagina wanneer deze op de pagina op het hoogste niveau is geklikt.</p><p>Deze laag wordt bereikt door een schadelijke pagina te bewerken met een IFRAME, waarmee de pagina van het slacht offer wordt geladen. Daarom is de aanvaller in staat om te klikken op de pagina en deze te routeren naar een andere pagina. Dit is waarschijnlijk het eigendom van een andere toepassing, domein of beide. Als u wilt voor komen dat er op aanvallen wordt geklikt, stelt u de juiste X-frame-opties HTTP-antwoord headers in die aangeven dat de browser geen frames van andere domeinen mag toestaan</p>|
 
 ### <a name="example"></a>Voorbeeld
@@ -213,7 +213,7 @@ De functie voor het valideren van aanvragen wordt niet ondersteund en maakt geen
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
-| **Referenties**              | [Beveiligings deel van IE8 V: uitgebreide beveiliging](https://docs.microsoft.com/archive/blogs/ie/ie8-security-part-v-comprehensive-protection), [MIME-type](https://en.wikipedia.org/wiki/Mime_type) |
+| **Referenties**              | [Beveiligings deel van IE8 V: uitgebreide beveiliging](/archive/blogs/ie/ie8-security-part-v-comprehensive-protection), [MIME-type](https://en.wikipedia.org/wiki/Mime_type) |
 | **Stappen** | De X-content-type-Options-header is een HTTP-header waarmee ontwikkel aars kunnen opgeven dat hun inhoud niet MIME-sniffing mag zijn. Deze header is ontworpen om MIME-Sniffing-aanvallen te verhelpen. Voor elke pagina die door de gebruiker te raden inhoud kan bevatten, moet u de HTTP-header X-content-type-Options: sniffe gebruiken. Als u de vereiste header globaal wilt inschakelen voor alle pagina's in de toepassing, kunt u een van de volgende handelingen uitvoeren:|
 
 ### <a name="example"></a>Voorbeeld
@@ -289,7 +289,7 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | SQL Azure, premises |
 | **Kenmerken**              | N.v.t., SQL-versie-V12 |
-| **Referenties**              | [Een Azure SQL database firewall configureren](https://azure.microsoft.com/documentation/articles/sql-database-firewall-configure/), [een Windows Firewall configureren voor toegang tot de data base-engine](https://msdn.microsoft.com/library/ms175043) |
+| **Referenties**              | [Een Azure SQL database firewall configureren](../../azure-sql/database/firewall-configure.md), [een Windows Firewall configureren voor toegang tot de data base-engine](/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access) |
 | **Stappen** | Firewallsystemen helpen onbevoegde toegang tot computerresources te voorkomen. Als u via een firewall toegang wilt krijgen tot een exemplaar van de SQL Server data base-engine, moet u de firewall configureren op de computer met SQL Server om toegang toe te staan |
 
 ## <a name="ensure-that-only-trusted-origins-are-allowed-if-cors-is-enabled-on-aspnet-web-api"></a><a id="cors-api"></a>Zorg ervoor dat alleen vertrouwde oorsprongen zijn toegestaan als CORS is ingeschakeld op de ASP.NET-Web-API
@@ -300,7 +300,7 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | MVC 5 |
 | **Kenmerken**              | N.v.t.  |
-| **Referenties**              | Het [inschakelen van cross-Origin-aanvragen in ASP.net Web API 2](https://www.asp.net/web-api/overview/security/enabling-cross-origin-requests-in-web-api), [ASP.net Web API-CORS-ondersteuning in ASP.net Web API 2](https://msdn.microsoft.com/magazine/dn532203.aspx) |
+| **Referenties**              | Het [inschakelen van cross-Origin-aanvragen in ASP.net Web API 2](https://www.asp.net/web-api/overview/security/enabling-cross-origin-requests-in-web-api), [ASP.net Web API-CORS-ondersteuning in ASP.net Web API 2](/archive/msdn-magazine/2013/december/asp-net-web-api-cors-support-in-asp-net-web-api-2) |
 | **Stappen** | <p>Browserbeveiliging voorkomt dat een webpagina AJAX-aanvragen indient bij een ander domein. Deze beperking wordt hetzelfde-Origin-beleid genoemd en voor komt dat een schadelijke site gevoelige gegevens van een andere site leest. Soms moet het echter nodig zijn om Api's veilig zichtbaar te maken die andere sites kunnen gebruiken. Cross Origin Resource Sharing (CORS) is een W3C-standaard waarmee een server hetzelfde-Origin-beleid kan versoepelen.</p><p>Door CORS te gebruiken, kan een server bepaalde cross-Origin-aanvragen expliciet toestaan tijdens het afwijzen van andere. CORS is veiliger en flexibeler dan eerdere technieken, zoals JSONP.</p>|
 
 ### <a name="example"></a>Voorbeeld
@@ -488,7 +488,7 @@ Als u CORS wilt uitschakelen voor een controller of actie, gebruikt u het kenmer
 | **SDL-fase**               | Implementatie |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
-| **Referenties**              | [Procedure: Configuratie secties versleutelen in ASP.NET 2,0 met behulp van DPAPI](https://msdn.microsoft.com/library/ff647398.aspx), [een beveiligde configuratie provider opgeven](https://msdn.microsoft.com/library/68ze1hb2.aspx) [met behulp van Azure Key Vault om toepassings geheimen te beveiligen](https://azure.microsoft.com/documentation/articles/guidance-multitenant-identity-keyvault/) |
+| **Referenties**              | [Procedure: Configuratie secties versleutelen in ASP.NET 2,0 met behulp van DPAPI](/previous-versions/msp-n-p/ff647398(v=pandp.10)), [een beveiligde configuratie provider opgeven](/previous-versions/68ze1hb2(v=vs.140)) [met behulp van Azure Key Vault om toepassings geheimen te beveiligen](/azure/architecture/multitenant-identity/web-api) |
 | **Stappen** | Configuratie bestanden zoals de Web.config, appsettings.jsop worden vaak gebruikt om gevoelige informatie te bewaren, zoals gebruikers namen, wacht woorden, database verbindings reeksen en versleutelings sleutels. Als u deze informatie niet beveiligt, is uw toepassing kwetsbaar voor aanvallen of kwaadwillende gebruikers die gevoelige informatie verkrijgen, zoals gebruikers namen en wacht woorden voor accounts, database namen en server namen. Op basis van het implementatie type (Azure/on-premises) versleutelt u de gevoelige secties van de configuratie bestanden met behulp van DPAPI of services als Azure Key Vault. |
 
 ## <a name="ensure-that-all-admin-interfaces-are-secured-with-strong-credentials"></a><a id="admin-strong"></a>Zorg ervoor dat alle beheer interfaces zijn beveiligd met sterke referenties
@@ -510,7 +510,7 @@ Als u CORS wilt uitschakelen voor een controller of actie, gebruikt u het kenmer
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
-| **Referenties**              | [Het inschakelen van veilige opstart-en BitLocker-Apparaatversleuteling in Windows 10 IoT core](https://docs.microsoft.com/windows/iot-core/secure-your-device/securebootandbitlocker) |
+| **Referenties**              | [Het inschakelen van veilige opstart-en BitLocker-Apparaatversleuteling in Windows 10 IoT core](/windows/iot-core/secure-your-device/securebootandbitlocker) |
 | **Stappen** | UEFI Secure boot beperkt het systeem zodat er alleen binaire bestanden kunnen worden uitgevoerd die zijn ondertekend door een opgegeven instantie. Deze functie voor komt dat onbekende code wordt uitgevoerd op het platform en de beveiligings-postuur mogelijk verzwakt. Schakel UEFI Secure boot in en beperk de lijst met certificerings instanties die worden vertrouwd voor het ondertekenen van code. Onderteken alle code die op het apparaat is geïmplementeerd met behulp van een van de vertrouwde instanties. |
 
 ## <a name="encrypt-os-and-additional-partitions-of-iot-device-with-bit-locker"></a><a id="partition-iot"></a>Versleutelen van het besturings systeem en extra partities van IoT-apparaten met de bits-kluis
@@ -565,7 +565,7 @@ Als u CORS wilt uitschakelen voor een controller of actie, gebruikt u het kenmer
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | Gateway keuze-Azure IoT Hub |
-| **Referenties**              | [Overzicht van IOT hub Apparaatbeheer](https://azure.microsoft.com/documentation/articles/iot-hub-device-management-overview/), [het bijwerken](../../iot-hub/tutorial-firmware-update.md) van de firmware van een apparaat |
+| **Referenties**              | [Overzicht van IOT hub Apparaatbeheer](../../iot-hub/iot-hub-device-management-overview.md), [het bijwerken](../../iot-hub/tutorial-firmware-update.md) van de firmware van een apparaat |
 | **Stappen** | LWM2M is een protocol van de Open Mobile Alliance voor IoT Device Management. Azure IoT-Apparaatbeheer maakt het mogelijk om met behulp van apparaatfuncties te communiceren met fysieke apparaten. Zorg ervoor dat de Cloud gateway een proces implementeert om het apparaat en andere configuratie gegevens regel matig up-to-date te houden met behulp van Azure IoT Hub Device Management. |
 
 ## <a name="ensure-that-devices-have-end-point-security-controls-configured-as-per-organizational-policies"></a><a id="controls-policies"></a>Zorg ervoor dat het beveiligings beheer voor apparaten op het eind punt is geconfigureerd volgens het beleid van de organisatie
@@ -587,7 +587,7 @@ Als u CORS wilt uitschakelen voor een controller of actie, gebruikt u het kenmer
 | **SDL-fase**               | Implementatie |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
-| **Referenties**              | [Azure Storage beveiligings handleiding: de sleutels van uw opslag account beheren](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_managing-your-storage-account-keys) |
+| **Referenties**              | [Azure Storage beveiligings handleiding: de sleutels van uw opslag account beheren](../../storage/blobs/security-recommendations.md#identity-and-access-management) |
 | **Stappen** | <p>Sleutel opslag: het wordt aanbevolen om de Azure Storage toegangs sleutels in Azure Key Vault als geheim op te slaan en de toepassingen de sleutel van de sleutel kluis te laten ophalen. Dit wordt aanbevolen vanwege de volgende redenen:</p><ul><li>De toepassing beschikt nooit over de opslag sleutel die is opgeslagen in een configuratie bestand, waardoor dat verloopt van iemand die toegang krijgt tot de sleutels zonder specifieke toestemming</li><li>Toegang tot de sleutels kan worden beheerd met behulp van Azure Active Directory. Dit betekent dat de eigenaar van een account toegang kan verlenen tot de toepassingen die de sleutels moeten ophalen uit Azure Key Vault. Andere toepassingen hebben geen toegang tot de sleutels zonder specifiek toestemming te verlenen</li><li>Sleutel opnieuw genereren: het wordt aanbevolen een proces te hebben om de toegangs sleutels voor Azure Storage om veiligheids redenen opnieuw te genereren. Informatie over waarom en hoe u moet plannen voor het opnieuw genereren van sleutels, wordt beschreven in het artikel Azure Storage Security Guide Reference</li></ul>|
 
 ## <a name="ensure-that-only-trusted-origins-are-allowed-if-cors-is-enabled-on-azure-storage"></a><a id="cors-storage"></a>Zorg ervoor dat alleen vertrouwde oorsprongen zijn toegestaan als CORS is ingeschakeld in azure Storage
@@ -598,7 +598,7 @@ Als u CORS wilt uitschakelen voor een controller of actie, gebruikt u het kenmer
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
-| **Referenties**              | [CORS-ondersteuning voor Azure Storage Services](https://msdn.microsoft.com/library/azure/dn535601.aspx) |
+| **Referenties**              | [CORS-ondersteuning voor Azure Storage Services](/rest/api/storageservices/Cross-Origin-Resource-Sharing--CORS--Support-for-the-Azure-Storage-Services) |
 | **Stappen** | Met Azure Storage kunt u CORS inschakelen: cross-Origin resource delen. Voor elk opslag account kunt u domeinen opgeven die toegang hebben tot de bronnen in dat opslag account. CORS is standaard uitgeschakeld voor alle services. U kunt CORS inschakelen met behulp van de REST API of de Storage-client bibliotheek om een van de methoden voor het instellen van het service beleid aan te roepen. |
 
 ## <a name="enable-wcfs-service-throttling-feature"></a><a id="throttling"></a>De functie voor het beperken van WCF-service inschakelen
@@ -609,7 +609,7 @@ Als u CORS wilt uitschakelen voor een controller of actie, gebruikt u het kenmer
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | .NET Framework 3 |
 | **Kenmerken**              | N.v.t.  |
-| **Referenties**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Konink rijk](https://vulncat.fortify.com) |
+| **Referenties**              | [MSDN](/previous-versions/msp-n-p/ff648500(v=pandp.10)), [Fortify Konink rijk](https://vulncat.fortify.com) |
 | **Stappen** | <p>Als u geen limiet voor het gebruik van systeem bronnen plaatst, kan dit leiden tot bron uitputting en uiteindelijk een denial of service.</p><ul><li>**Uitleg:** Windows Communication Foundation (WCF) biedt de mogelijkheid om service aanvragen te beperken. Als u te veel client aanvragen toestaat, kan dit een systeem overlaten en de bronnen ervan uitgeput raken. Als u daarentegen slechts een klein aantal aanvragen voor een service toestaat, kan het gebruik van de service door legitieme gebruikers worden voor komen. Elke service moet afzonderlijk worden afgestemd op en geconfigureerd om de juiste hoeveelheid resources toe te staan.</li><li>**Aanbevelingen** Schakel de service beperkings functie van WCF in en stel de benodigde limieten in voor uw toepassing.</li></ul>|
 
 ### <a name="example"></a>Voorbeeld
@@ -632,7 +632,7 @@ Hier volgt een voor beeld van een configuratie met beperking ingeschakeld:
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | .NET Framework 3 |
 | **Kenmerken**              | N.v.t.  |
-| **Referenties**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Konink rijk](https://vulncat.fortify.com) |
+| **Referenties**              | [MSDN](/previous-versions/msp-n-p/ff648500(v=pandp.10)), [Fortify Konink rijk](https://vulncat.fortify.com) |
 | **Stappen** | Meta gegevens kunnen kwaadwillende personen meer informatie geven over het systeem en een vorm van een aanval plannen. WCF-services kunnen worden geconfigureerd om meta gegevens zichtbaar te maken. Meta gegevens bieden gedetailleerde informatie over de service beschrijving en mogen niet worden uitgezonden in productie omgevingen. De `HttpGetEnabled`  /  `HttpsGetEnabled` Eigenschappen van de klasse ServiceMetaData bepalen of een service de meta gegevens beschikbaar maakt | 
 
 ### <a name="example"></a>Voorbeeld

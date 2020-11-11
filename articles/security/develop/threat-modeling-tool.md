@@ -7,12 +7,12 @@ ms.service: security
 ms.subservice: security-develop
 ms.topic: article
 ms.date: 02/16/2017
-ms.openlocfilehash: dcf782a41dbb09135f7a4cd767a94ff90578b6ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a637dc431b0f9cd8c40cfa1c048559a56a6b97f
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87169358"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94518053"
 ---
 # <a name="microsoft-threat-modeling-tool"></a>Microsoft Threat Modeling Tool
 
@@ -49,7 +49,7 @@ De volgende tabel bevat belang rijke koppelingen om aan de slag te gaan met de T
 
 Hier volgen enkele oudere artikelen die momenteel nog steeds relevant zijn voor bedreigings modellen:
 
-* [Artikel over het belang van bedreigings modellen](https://docs.microsoft.com/archive/msdn-magazine/2009/january/security-briefs-getting-started-with-the-sdl-threat-modeling-tool)
+* [Artikel over het belang van bedreigings modellen](/archive/msdn-magazine/2009/january/security-briefs-getting-started-with-the-sdl-threat-modeling-tool)
 * [Training gepubliceerd door Trustworthy Computing](https://www.microsoft.com/download/details.aspx?id=16420)
 
 Bekijk wat Threat Modeling Tool experts hebben gedaan:

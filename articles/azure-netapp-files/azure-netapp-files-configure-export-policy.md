@@ -8,12 +8,12 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: how-to
 ms.date: 07/27/2020
-ms.openlocfilehash: 4a20a223932f82c80ad5831ef3a02bad803e26e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77630ddcd61d17f3b47e6cb5d43396c1a6f0e904
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87533195"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517866"
 ---
 # <a name="configure-export-policy-for-an-nfs-volume"></a>Exportbeleid voor een NFS-volume configureren
 
@@ -21,39 +21,32 @@ U kunt beleid voor exporteren configureren om de toegang tot een Azure NetApp Fi
 
 U kunt Maxi maal vijf export beleids regels maken.
 
-## <a name="steps"></a>Stappen 
+## <a name="configure-the-policy"></a>Het beleid configureren 
 
-1.  Selecteer op de pagina volumes het volume waarvoor u het export beleid wilt configureren en klik op **beleid exporteren**. 
+1.  Selecteer op de pagina **volumes** het volume waarvoor u het export beleid wilt configureren en selecteer vervolgens **beleid exporteren**. U kunt het export beleid ook configureren tijdens het maken van het volume.
 
-    U kunt het export beleid ook configureren tijdens het maken van het volume.
+2.  Als u een beleids regel voor exporteren wilt maken, geeft u de volgende informatie op:   
+    * **Index** : Geef het index nummer voor de regel op.  
+      
+      Een exportbeleid kan uit maximaal vijf regels bestaan. Regels worden geëvalueerd volgens hun volgorde in de lijst met indexnummers. Regels met lagere indexnummers worden als eerste geëvalueerd. De regel met indexnummer 1 wordt bijvoorbeeld geëvalueerd vóór de regel met indexnummer 2. 
 
-2.  Geef voor de volgende velden informatie op om een exportbeleidsregel te maken:   
-    *  **TabIndex**   
-        Geef het indexnummer voor de regel op.  
-        Een exportbeleid kan uit maximaal vijf regels bestaan. Regels worden geëvalueerd volgens hun volgorde in de lijst met indexnummers. Regels met lagere indexnummers worden als eerste geëvalueerd. De regel met indexnummer 1 wordt bijvoorbeeld geëvalueerd vóór de regel met indexnummer 2. 
+    * **Toegestane clients** : Geef de waarde op in een van de volgende indelingen:  
+      * IPv4-adres. Voorbeeld: `10.1.12.24`
+      * IPv4-adres met een subnetmasker uitgedrukt als een aantal bits. Voorbeeld: `10.1.12.10/4`
+      * Door komma's gescheiden IP-adressen. U kunt meerdere host-Ip's opgeven in één regel door deze te scheiden met komma's. Voorbeeld: `10.1.12.25,10.1.12.28,10.1.12.29`
 
-    * **Toegestane clients**   
-        Geef de waarde in een van de volgende indelingen op:  
-        * IPv4-adres, bijvoorbeeld `10.1.12.24` 
-        * IPv4-adres met een subnetmasker dat wordt uitgedrukt als een aantal bits, bijvoorbeeld `10.1.12.10/4`
+    * **Toegang** : Selecteer een van de volgende toegangs typen:  
+      * Geen toegang 
+      * Lezen en schrijven
+      * Alleen-lezen
 
-    * **Toegang**  
-        Selecteer een van de volgende toegangstypen:  
-        * Geen toegang 
-        * Lezen en schrijven
-        * Alleen-lezen
+    * **Alleen-lezen** en **lezen/schrijven** : als u Kerberos-versleuteling met nfsv 4.1 gebruikt, volgt u de instructies in [Configure nfsv 4.1 Kerberos Encryption](configure-kerberos-encryption.md).  Zie [prestaties beïnvloeden van Kerberos op nfsv 4.1](configure-kerberos-encryption.md#kerberos_performance)voor de prestaties van Kerberos. 
 
-    * **Alleen-lezen** en **lezen/schrijven**  
-        Als u Kerberos-versleuteling met NFSv 4.1 gebruikt, volgt u de instructies in [Configure nfsv 4.1 Kerberos Encryption](configure-kerberos-encryption.md).  Zie [prestaties beïnvloeden van Kerberos op nfsv 4.1](configure-kerberos-encryption.md#kerberos_performance)voor de prestaties van Kerberos. 
+      ![Kerberos-beveiligings opties](../media/azure-netapp-files/kerberos-security-options.png) 
 
-        ![Kerberos-beveiligings opties](../media/azure-netapp-files/kerberos-security-options.png) 
+    * **Hoofd toegang** : Hiermee geeft u op of het `root` account toegang heeft tot het volume.  Hoofd toegang is standaard ingesteld **op aan** en het `root` account heeft toegang tot het volume.
 
-    * **Hoofd toegang**  
-        Geef op of het `root` account toegang heeft tot het volume.  Hoofd toegang is standaard ingesteld **op aan**en het `root` account heeft toegang tot het volume.
-
-![Exportbeleid](../media/azure-netapp-files/azure-netapp-files-export-policy.png) 
-
-
+      ![Exportbeleid](../media/azure-netapp-files/azure-netapp-files-export-policy.png) 
 
 ## <a name="next-steps"></a>Volgende stappen 
 * [Een volume voor virtuele machines koppelen of ontkoppelen](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)

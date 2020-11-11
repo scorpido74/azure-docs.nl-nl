@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: has-adal-ref, devx-track-js, devx-track-csharp
-ms.openlocfilehash: c26acb1460516781b34a5dcc861164e9ef87a37a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1f4d4a3bb78da82753d651e1a73cf244096d5df
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91331621"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94518098"
 ---
 # <a name="security-frame-session-management"></a>Beveiligings kader: sessie beheer
 | Product/service | Artikel |
@@ -159,7 +159,7 @@ Ook moet de gebruikers sessie worden vernietigd door de methode Session. Abandon
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | EnvironmentType-premises |
-| **Referenties**              | [httpCookies-element (ASP.net-instellingen schema)](https://msdn.microsoft.com/library/ms228262(v=vs.100).aspx), [HttpCookie. Secure, eigenschap](https://msdn.microsoft.com/library/system.web.httpcookie.secure.aspx) |
+| **Referenties**              | [httpCookies-element (ASP.net-instellingen schema)](/previous-versions/dotnet/netframework-4.0/ms228262(v=vs.100)), [HttpCookie. Secure, eigenschap](/dotnet/api/system.web.httpcookie.secure) |
 | **Stappen** | Cookies zijn normaal gesp roken alleen toegankelijk voor het domein waarvoor ze zijn bereik. De definitie van ' Domain ' bevat helaas niet het Protocol, dus cookies die via HTTPS worden gemaakt, zijn toegankelijk via HTTP. Het kenmerk ' Secure ' geeft aan de browser aan dat de cookie alleen via HTTPS beschikbaar moet worden gemaakt. Zorg ervoor dat alle cookies die via HTTPS zijn ingesteld, gebruikmaken van het kenmerk **Secure** . De vereiste kan worden afgedwongen in het web.config bestand door het kenmerk requireSSL in te stellen op True. Het is de voorkeurs benadering omdat hiermee het **beveiligde** kenmerk wordt afgedwongen voor alle huidige en toekomstige cookies zonder dat er extra code wijzigingen hoeven te worden aangebracht.|
 
 ### <a name="example"></a>Voorbeeld
@@ -221,7 +221,7 @@ Alle HTTP-toepassingen die gebruikmaken van cookies, moeten HttpOnly opgeven in 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Webformulieren |
 | **Kenmerken**              | N.v.t.  |
-| **Referenties**              | [Eigenschap FormsAuthentication. RequireSSL](https://msdn.microsoft.com/library/system.web.security.formsauthentication.requiressl.aspx) |
+| **Referenties**              | [Eigenschap FormsAuthentication. RequireSSL](/dotnet/api/system.web.security.formsauthentication.requiressl) |
 | **Stappen** | De waarde van de eigenschap RequireSSL is ingesteld in het configuratie bestand voor een ASP.NET-toepassing met behulp van het kenmerk requireSSL van het configuratie-element. U kunt in het Web.config-bestand opgeven voor uw ASP.NET-toepassing, ongeacht of Transport Layer Security (TLS), voorheen bekend als SSL (Secure Sockets Layer), is vereist om de cookie voor formulier verificatie te retour neren naar de server door het kenmerk requireSSL in te stellen.|
 
 ### <a name="example"></a>Voorbeeld 
@@ -238,7 +238,7 @@ In het volgende code voorbeeld wordt het kenmerk requireSSL in het Web.config-be
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | MVC5 |
 | **Kenmerken**              | EnvironmentType-premises |
-| **Referenties**              | [Configuratie van Windows Identity Foundation (WIF) – deel II](https://blogs.msdn.microsoft.com/alikl/2011/02/01/windows-identity-foundation-wif-configuration-part-ii-cookiehandler-chunkedcookiehandler-customcookiehandler/) |
+| **Referenties**              | [Configuratie van Windows Identity Foundation (WIF) – deel II](/archive/blogs/alikl/windows-identity-foundation-wif-configuration-part-ii-cookiehandler-chunkedcookiehandler-customcookiehandler) |
 | **Stappen** | HideFromCsript kenmerk waarde moet worden ingesteld op True om het kenmerk httpOnly in te stellen voor FedAuth-cookies. |
 
 ### <a name="example"></a>Voorbeeld
@@ -358,7 +358,7 @@ void ValidateRequestHeader(HttpRequestMessage request)
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Webformulieren |
 | **Kenmerken**              | N.v.t.  |
-| **Referenties**              | [Profiteer van ASP.NET ingebouwde functies om webaanvalen uit te Fend](https://msdn.microsoft.com/library/ms972969.aspx#securitybarriers_topic2) |
+| **Referenties**              | [Profiteer van ASP.NET ingebouwde functies om webaanvalen uit te Fend](/previous-versions/dotnet/articles/ms972969(v=msdn.10)#securitybarriers_topic2) |
 | **Stappen** | CSRF-aanvallen in webformulieren kunnen worden verholpen door ViewStateUserKey in te stellen op een wille keurige teken reeks die varieert voor elke gebruiker-gebruikers-ID of, nog beter, sessie-ID. Voor een aantal technische en sociale redenen is sessie-ID veel beter, omdat een sessie-ID niet te voors pellen, een time-out optreedt en per gebruiker verschilt.|
 
 ### <a name="example"></a>Voorbeeld
@@ -378,7 +378,7 @@ void Page_Init (object sender, EventArgs e) {
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
-| **Referenties**              | [Eigenschap HttpSessionState. timeout](https://msdn.microsoft.com/library/system.web.sessionstate.httpsessionstate.timeout(v=vs.110).aspx) |
+| **Referenties**              | [Eigenschap HttpSessionState. timeout](/dotnet/api/system.web.sessionstate.httpsessionstate.timeout) |
 | **Stappen** | Sessietime time-out vertegenwoordigt de gebeurtenis die optreedt wanneer een gebruiker geen actie uitvoert op een website gedurende een interval (gedefinieerd door de webserver). De gebeurtenis, op server zijde, wijzigt u de status van de gebruikers sessie in ' ongeldig ' (bijvoorbeeld ' niet meer gebruikt ') en geeft de webserver de instructie om deze te vernietigen (waarbij alle gegevens erin worden verwijderd). In het volgende code voorbeeld wordt het sessie kenmerk time-out ingesteld op 15 minuten in het Web.config bestand.|
 
 ### <a name="example"></a>Voorbeeld
@@ -398,7 +398,7 @@ void Page_Init (object sender, EventArgs e) {
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Webformulieren |
 | **Kenmerken**              | N.v.t.  |
-| **Referenties**              | [Formulier element voor verificatie (ASP.NET-instellingen schema)](https://msdn.microsoft.com/library/1d3t3c61(v=vs.100).aspx) |
+| **Referenties**              | [Formulier element voor verificatie (ASP.NET-instellingen schema)](/previous-versions/dotnet/netframework-4.0/1d3t3c61(v=vs.100)) |
 | **Stappen** | Stel de cookie-time-out voor Forms-verificatie ticket in op 15 minuten|
 
 ### <a name="example"></a>Voorbeeld

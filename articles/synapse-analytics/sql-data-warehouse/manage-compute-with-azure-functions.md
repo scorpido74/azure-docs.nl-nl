@@ -1,6 +1,6 @@
 ---
 title: 'Zelf studie: Compute beheren met Azure Functions'
-description: Azure functions gebruiken voor het beheren van de reken kracht van uw SQL-groep in azure Synapse Analytics.
+description: Azure Functions gebruiken om de reken kracht van uw SQL-groep in azure Synapse Analytics te beheren.
 services: synapse-analytics
 author: julieMSFT
 manager: craigg
@@ -11,12 +11,12 @@ ms.date: 04/27/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 1683977d5c8be965cb329611c5a7fd6602a1cd97
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: bc615322c11a456699d2364cf44cad40e086e851
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043365"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517883"
 ---
 # <a name="use-azure-functions-to-manage-compute-resources-in-azure-synapse-analytics-sql-pool"></a>Azure Functions gebruiken om reken resources te beheren in azure Synapse Analytics SQL-groep
 
@@ -52,7 +52,7 @@ Nadat u de sjabloon hebt geïmplementeerd, moet u drie nieuwe resources vinden: 
 
    ![Integreren als functie selecteren](./media/manage-compute-with-azure-functions/select-integrate.png)
 
-3. De waarde die momenteel moeten worden weergegeven is *%ScaleDownTime%* of *%ScaleUpTime%* . Deze waarden geven aan dat de planning is gebaseerd op waarden die zijn gedefinieerd in de [Toepassingsinstellingen](../../azure-functions/functions-how-to-use-azure-function-app-settings.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). U kunt deze waarde nu negeren en de planning wijzigen in uw voorkeurs tijd op basis van de volgende stappen.
+3. De waarde die momenteel moeten worden weergegeven is *%ScaleDownTime%* of *%ScaleUpTime%*. Deze waarden geven aan dat de planning is gebaseerd op waarden die zijn gedefinieerd in de [Toepassingsinstellingen](../../azure-functions/functions-how-to-use-azure-function-app-settings.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). U kunt deze waarde nu negeren en de planning wijzigen in uw voorkeurs tijd op basis van de volgende stappen.
 
 4. Voeg in het plannings gebied het tijdstip toe waarop de CRON-expressie u wilt weer geven hoe vaak Azure Synapse Analytics moet worden geschaald.
 
@@ -78,7 +78,7 @@ Nadat u de sjabloon hebt geïmplementeerd, moet u drie nieuwe resources vinden: 
 
 ## <a name="use-pause-or-resume-instead-of-scale"></a>Onderbreken of Hervatten gebruiken in plaats van Schalen
 
-De functies die momenteel standaard zijn ingeschakeld zijn *DWScaleDownTrigger* en *DWScaleUpTrigger* . Als u in plaats daarvan de functies voor onderbreken en hervatten wilt gebruiken, kunt u *DWPauseTrigger* of *DWResumeTrigger* inschakelen.
+De functies die momenteel standaard zijn ingeschakeld zijn *DWScaleDownTrigger* en *DWScaleUpTrigger*. Als u in plaats daarvan de functies voor onderbreken en hervatten wilt gebruiken, kunt u *DWPauseTrigger* of *DWResumeTrigger* inschakelen.
 
 1. Ga naar het deelvenster Functies.
 
@@ -99,7 +99,7 @@ Er zijn momenteel slechts twee schaalfuncties in de sjabloon opgenomen. Met deze
 
    ![Scherm opname van het menu ' functie-apps ' met het pictogram ' plus ' naast ' functies ' geselecteerd.](./media/manage-compute-with-azure-functions/create-new-function.png)
 
-2. Selecteer vanuit taal *Java script* en selecteer vervolgens *Timer trigger* .
+2. Selecteer vanuit taal *Java script* en selecteer vervolgens *Timer trigger*.
 
    ![Nieuwe functie maken](./media/manage-compute-with-azure-functions/timertrigger-js.png)
 
@@ -167,6 +167,6 @@ Omhoog schalen op 8 a.m. naar DW1000c, omlaag schalen naar DW600c op 4 p.m. op d
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over Azure-functies die door een [timertrigger](../../azure-functions/functions-create-scheduled-function.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) worden geactiveerd.
+Meer informatie over [Timer trigger](../../azure-functions/functions-create-scheduled-function.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) Azure functions.
 
 De [opslag plaats voor beelden](https://github.com/Microsoft/sql-data-warehouse-samples)van SQL-pool wordt uitgecheckt.

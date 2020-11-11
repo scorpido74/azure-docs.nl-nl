@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 7de0cad91e01187a1ed84257c9e3a7cd8106951a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7af115d8f1244253e461f796c5665609d3b84b21
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87539948"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517441"
 ---
 # <a name="security-frame-cryptography--mitigations"></a>Beveiligings frame: crypto grafie | Oplossingen 
 
@@ -119,7 +119,7 @@ ms.locfileid: "87539948"
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
-| **Referenties**              | [Een versleutelings algoritme kiezen](https://technet.microsoft.com/library/ms345262(v=sql.130).aspx) |
+| **Referenties**              | [Een versleutelings algoritme kiezen](/sql/relational-databases/security/encryption/choose-an-encryption-algorithm) |
 | **Stappen** | Versleutelings algoritmen definiëren gegevens transformaties die niet eenvoudig kunnen worden teruggedraaid door onbevoegde gebruikers. Met SQL Server kunnen beheerders en ontwikkel aars kiezen uit verschillende algoritmen, waaronder DES, Triple DES, TRIPLE_DES_3KEY, RC2, RC4, 128-bits RC4, DESX, 128-bits AES, 192-bits AES en 256-bits AES |
 
 ## <a name="ssis-packages-should-be-encrypted-and-digitally-signed"></a><a id="ssis-signed"></a>SSIS-pakketten moeten worden versleuteld en digitaal ondertekend
@@ -130,7 +130,7 @@ ms.locfileid: "87539948"
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
-| **Referenties**              | [De bron van pakketten met digitale hand tekeningen](https://msdn.microsoft.com/library/ms141174.aspx), [bedreiging en beveiligings problemen (integratie Services)](https://msdn.microsoft.com/library/bb522559.aspx) identificeren |
+| **Referenties**              | [De bron van pakketten met digitale hand tekeningen](/sql/integration-services/security/identify-the-source-of-packages-with-digital-signatures), [bedreiging en beveiligings problemen (integratie Services)](/sql/integration-services/security/security-overview-integration-services) identificeren |
 | **Stappen** | De bron van een pakket is de persoon of organisatie die het pakket heeft gemaakt. Het uitvoeren van een pakket van een onbekende of niet-vertrouwde bron kan riskant zijn. Digitale hand tekeningen moeten worden gebruikt om ongeoorloofde manipulatie van SSIS-pakketten te voor komen. Om ervoor te zorgen dat de pakketten tijdens Storage/Transit geheim blijven, moeten SSIS-pakketten ook worden versleuteld |
 
 ## <a name="add-digital-signature-to-critical-database-securables"></a><a id="securables-db"></a>Digitale hand tekening toevoegen aan kritieke data base-Beveilig bare items
@@ -141,7 +141,7 @@ ms.locfileid: "87539948"
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
-| **Referenties**              | [HAND tekening toevoegen (Transact-SQL)](https://msdn.microsoft.com/library/ms181700) |
+| **Referenties**              | [HAND tekening toevoegen (Transact-SQL)](/sql/t-sql/statements/add-signature-transact-sql) |
 | **Stappen** | In gevallen waarin de integriteit van een kritieke data base moet worden geverifieerd, moeten digitale hand tekeningen worden gebruikt. Data base-Beveilig bare items zoals een opgeslagen procedure, functie, assembly of trigger kunnen digitaal worden ondertekend. Hieronder ziet u een voor beeld van wanneer dit nuttig kan zijn: laten we zeggen dat een ISV (Independent Software Vendor) ondersteuning biedt voor een software die aan een van hun klanten wordt geleverd. Voordat de ondersteuning wordt geboden, wil de ISV er zeker van zijn dat een in de software beveiligte data base niet per ongeluk of met een schadelijke poging is geknoeid. Als de Beveilig bare digitaal is ondertekend, kan de ISV de digitale hand tekening controleren en de integriteit ervan valideren.| 
 
 ## <a name="use-sql-server-ekm-to-protect-encryption-keys"></a><a id="ekm-keys"></a>SQL Server EKM gebruiken om versleutelings sleutels te beveiligen
@@ -152,7 +152,7 @@ ms.locfileid: "87539948"
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
-| **Referenties**              | [SQL Server voor Extensible Key Management (EKM)](https://msdn.microsoft.com/library/bb895340), [uitbreidbaar sleutel beheer met behulp van Azure Key Vault (SQL Server)](https://msdn.microsoft.com/library/dn198405) |
+| **Referenties**              | [SQL Server voor Extensible Key Management (EKM)](/sql/relational-databases/security/encryption/extensible-key-management-ekm), [uitbreidbaar sleutel beheer met behulp van Azure Key Vault (SQL Server)](/sql/relational-databases/security/encryption/extensible-key-management-using-azure-key-vault-sql-server) |
 | **Stappen** | SQL Server Extensible Key Management kunnen de versleutelings sleutels waarmee de database bestanden worden beveiligd, worden opgeslagen in een off-box apparaat, zoals een Smart Card, een USB-apparaat of een EKM/HSM-module. Hiermee wordt ook de gegevens bescherming van database beheerders (behalve leden van de groep sysadmin) ingeschakeld. Gegevens kunnen worden versleuteld met behulp van versleutelings sleutels die alleen toegankelijk zijn voor de database gebruiker in de externe EKM/HSM-module. |
 
 ## <a name="use-alwaysencrypted-feature-if-encryption-keys-should-not-be-revealed-to-database-engine"></a><a id="keys-engine"></a>De functie AlwaysEncrypted gebruiken als de versleutelings sleutels niet moeten worden getoond in de data base-engine
@@ -163,7 +163,7 @@ ms.locfileid: "87539948"
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | SQL Azure, premises |
 | **Kenmerken**              | SQL-versie-V12, MsSQL2016 |
-| **Referenties**              | [Always Encrypted (data base-engine)](https://msdn.microsoft.com/library/mt163865) |
+| **Referenties**              | [Always Encrypted (data base-engine)](/sql/relational-databases/security/encryption/always-encrypted-database-engine) |
 | **Stappen** | Always Encrypted is een functie die is ontworpen om gevoelige gegevens te beveiligen, zoals creditcard nummers of nationale identificatie nummers (bijvoorbeeld Amerikaanse sociale-beveiligings nummers), opgeslagen in Azure SQL Database of SQL Server data bases. Met Always Encrypted kunnen clients gevoelige gegevens binnen client toepassingen versleutelen en de versleutelings sleutels niet aan de data base-engine (SQL Database of SQL Server) tonen. Als gevolg hiervan biedt Always Encrypted een schei ding tussen degenen die eigenaar zijn van de gegevens (en deze kunnen bekijken) en degenen die de gegevens beheren (maar geen toegang mogen hebben) |
 
 ## <a name="store-cryptographic-keys-securely-on-iot-device"></a><a id="keys-iot"></a>Cryptografische sleutels veilig opslaan op IoT-apparaat
@@ -174,7 +174,7 @@ ms.locfileid: "87539948"
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | Device OS-Windows IoT core, connectiviteit van apparaten-Sdk's van Azure IoT-apparaat |
-| **Referenties**              | [TPM op Windows IOT core](https://developer.microsoft.com/windows/iot/docs/tpm), [TPM instellen op Windows IOT core](https://docs.microsoft.com/windows/iot-core/secure-your-device/setuptpm), [Azure IOT Device SDK TPM](https://github.com/Azure/azure-iot-hub-vs-cs/wiki/Device-Provisioning-with-TPM) |
+| **Referenties**              | [TPM op Windows IOT core](/windows/iot-core/secure-your-device/TPM), [TPM instellen op Windows IOT core](/windows/iot-core/secure-your-device/setuptpm), [Azure IOT Device SDK TPM](https://github.com/Azure/azure-iot-hub-vs-cs/wiki/Device-Provisioning-with-TPM) |
 | **Stappen** | Symmetrische of persoonlijke sleutels van certificaten veilig in een hardwarematig beveiligde opslag, zoals TPM-of Smart Card-chips. Windows 10 IoT core ondersteunt de gebruiker van een TPM en er zijn verschillende compatibele Tpm's die kunnen worden gebruikt: https://docs.microsoft.com/windows/iot-core/secure-your-device/tpm#discrete-tpm-dtpm . Het is raadzaam om een firmware of een aparte TPM te gebruiken. Een software-TPM mag alleen worden gebruikt voor ontwikkelings-en test doeleinden. Als er een TPM beschikbaar is en de sleutels hierin worden ingericht, moet de code die het token genereert, worden geschreven zonder dat hierin gevoelige gegevens worden gecodeerd. | 
 
 ### <a name="example"></a>Voorbeeld
