@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/15/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 9dfdbbd982503acc063ff88c74dfccde8677eaac
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 4d21bfa69022cbebdcbf80c3bee4aec76bf99c53
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380229"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491117"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>Problemen met Azure Files prestaties oplossen
 
@@ -111,7 +111,7 @@ Geen ondersteuning voor Directory-leases.
 
 - Vermijd zo min mogelijk overmatige opening/afsluit ingang in dezelfde map binnen een korte periode.
 - Voor Linux Vm's verhoogt u de time-out voor de cachemap door **actimeo \<sec> =** als een koppelings optie op te geven. Het is standaard één seconde, zodat u een grotere waarde als drie of vijf kunt helpen.
-- Voor virtuele Linux-machines moet u de kernel upgraden naar 4,20 of hoger.
+- Voor RHEL/CentOS Vm's, moet u het systeem upgraden naar RHEL/CentOS 8,2. Voor andere virtuele Linux-machines moet u de kernel upgraden naar 5,0 of hoger.
 
 ## <a name="low-iops-on-centosrhel"></a>Lage IOPS op CentOS/RHEL
 
@@ -229,7 +229,7 @@ Zie [overzicht van waarschuwingen in Microsoft Azure]( https://docs.microsoft.co
 
 Zie [overzicht van waarschuwingen in Microsoft Azure]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)voor meer informatie over het configureren van waarschuwingen in azure monitor.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 * [Problemen met Azure Files in Windows oplossen](storage-troubleshoot-windows-file-connection-problems.md)
 * [Problemen met Azure Files in Linux oplossen](storage-troubleshoot-linux-file-connection-problems.md)
 * [Lees de veelgestelde vragen (FAQ) over Azure Files](storage-files-faq.md)

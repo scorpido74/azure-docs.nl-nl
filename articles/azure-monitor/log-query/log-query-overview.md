@@ -1,101 +1,82 @@
 ---
-title: Overzicht van logboek query's in Azure Monitor | Microsoft Docs
-description: Beantwoordt veelgestelde vragen met betrekking tot logboek query's en haalt u aan de slag.
+title: Query's in Azure Monitor vastleggen
+description: Naslag informatie voor de Kusto-query taal die wordt gebruikt door Azure Monitor. Bevat extra elementen die specifiek zijn voor Azure Monitor en elementen die niet worden ondersteund in Azure Monitor-logboek query's.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 06/19/2019
-ms.openlocfilehash: 55463f6af47ef8eda712b1787a89a710c08c1fe6
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.date: 10/09/2020
+ms.openlocfilehash: 6174bcbe5a014cff8dbd8dff242880d7f0ef7aa0
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91995211"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491389"
 ---
-# <a name="overview-of-log-queries-in-azure-monitor"></a>Overzicht van logboek query's in Azure Monitor
-Met logboek query's kunt u de waarde van de gegevens die in [Azure monitor logboeken](../platform/data-platform-logs.md)worden verzameld, volledig benutten. Met een krachtige query taal kunt u gegevens uit meerdere tabellen samen voegen, grote gegevens sets verzamelen en complexe bewerkingen met minimale code uitvoeren. Vrijwel elke vraag kan worden beantwoord en de analyse wordt uitgevoerd zolang de ondersteunende gegevens zijn verzameld en u begrijpt hoe u de juiste query kunt bouwen.
+# <a name="log-queries-in-azure-monitor"></a>Query's in Azure Monitor vastleggen
+Azure Monitor Logboeken is gebaseerd op Azure Data Explorer en logboek query's worden geschreven met dezelfde Kusto query language (KQL). Dit is een uitgebreide taal, ontworpen om gemakkelijk te lezen en te schrijven, zodat u met een aantal basis richtlijnen query's kunt starten.
 
-Sommige functies in Azure Monitor, zoals [inzichten](../insights/insights-overview.md) en [oplossingen](../monitor-reference.md) , verwerken logboek gegevens zonder dat u de onderliggende query's hoeft aan te bieden. Als u andere functies van Azure Monitor volledig wilt benutten, moet u weten hoe query's worden samengesteld en hoe u deze kunt gebruiken om gegevens in Azure Monitor logboeken interactief te analyseren.
+In de gebieden in Azure Monitor u de volgende query's gaat gebruiken:
 
-Gebruik dit artikel als uitgangs punt voor het leren over logboek query's in Azure Monitor. De oplossing beantwoordt veelgestelde vragen en bevat koppelingen naar andere documentatie met meer informatie en lessen.
+- [Log Analytics](../log-query/log-analytics-overview.md). Primair hulp programma in de Azure Portal voor het bewerken van logboek query's en het interactief analyseren van de resultaten. Zelfs als u van plan bent om een logboek query ergens anders in Azure Monitor te gebruiken, moet u deze doorgaans in Log Analytics schrijven en testen voordat u deze naar de uiteindelijke locatie kopieert.
+- [Waarschuwings regels in logboek registreren](../platform/alerts-overview.md). Proactief problemen identificeren van gegevens in uw werk ruimte.  Elke waarschuwings regel is gebaseerd op een logboek query die automatisch regel matig wordt uitgevoerd.  De resultaten worden gecontroleerd om te bepalen of er een waarschuwing moet worden gemaakt.
+- [Werkmappen](../platform/workbooks-overview.md). Neem de resultaten van logboek query's op met behulp van verschillende visualisaties in interactieve visuele rapporten in de Azure Portal.
+- [Azure-Dash boards](../learn/tutorial-logs-dashboards.md). De resultaten van een query in een Azure-dash board vastmaken, waarmee u logboek-en metrische gegevens gezamenlijk kunt visualiseren en optioneel kunt delen met andere Azure-gebruikers.
+- [Logic apps](../platform/logicapp-flow-connector.md).  Gebruik de resultaten van een logboek query in een geautomatiseerde werk stroom met behulp van Logic Apps.
+- [PowerShell](/powershell/module/az.operationalinsights/get-azoperationalinsightssearchresult). Gebruik de resultaten van een logboek query in een Power shell-script vanaf een opdracht regel of een Azure Automation runbook dat gebruikmaakt van Get-AzOperationalInsightsSearchResults.
+- [API voor Azure monitor-logboeken](https://dev.loganalytics.io). Logboek gegevens uit de werk ruimte ophalen van een REST API-client.  De API-aanvraag bevat een query die wordt uitgevoerd op Azure Monitor om te bepalen welke gegevens moeten worden opgehaald.
 
-## <a name="how-can-i-learn-how-to-write-queries"></a>Hoe kan ik zien hoe ik query's kan schrijven?
-Als u direct naar dingen wilt gaan, kunt u beginnen met de volgende zelf studies:
+## <a name="getting-started"></a>Aan de slag
+De beste manier om aan de slag te gaan met het schrijven van logboek query's met behulp van KQL is de beschik bare zelf studies en voor beelden.
 
-- Aan de [slag met log Analytics in azure monitor](get-started-portal.md).
-- Aan de [slag met logboek query's in azure monitor](get-started-queries.md).
-
-Wanneer u de basis principes hebt, kunt u meerdere lessen door lopen met uw eigen gegevens of gegevens uit onze demo omgeving, te beginnen met: 
-
-- [Werken met teken reeksen in Azure Monitor-logboek query's](string-operations.md)
- 
-## <a name="what-language-do-log-queries-use"></a>Welke taal gebruiken logboek query's?
-Azure Monitor Logboeken is gebaseerd op [Azure Data Explorer](/azure/data-explorer)en logboek query's worden geschreven met dezelfde Kusto query language (KQL). Dit is een uitgebreide taal, ontworpen om gemakkelijk te lezen en te schrijven, en u kunt deze met minimale richt lijnen gaan gebruiken.
-
-Zie de [documentatie van Azure Data Explorer KQL](/azure/kusto/query) voor volledige documentatie over KQL en naslag informatie over de verschillende beschik bare functies.<br>
-Zie [aan de slag met logboek query's in azure monitor](get-started-queries.md) voor een snelle walkthrough van de taal met gegevens uit Azure monitor Logboeken.
-Zie [Azure monitor taal verschillen in de logboeken](data-explorer-difference.md) voor kleine verschillen in de versie van KQL die door Azure monitor wordt gebruikt.
-
-## <a name="what-data-is-available-to-log-queries"></a>Welke gegevens zijn beschikbaar voor logboek query's?
-Alle gegevens die in Azure Monitor logboeken zijn verzameld, kunnen worden opgehaald en geanalyseerd in logboek query's. Met verschillende gegevens bronnen worden de gegevens naar verschillende tabellen geschreven, maar u kunt meerdere tabellen in één query toevoegen om gegevens te analyseren over meerdere bronnen. Wanneer u een query bouwt, moet u eerst bepalen welke tabellen de gegevens bevatten die u zoekt. Zie de [structuur van Azure monitor logboeken](../platform/data-platform-logs.md) voor een uitleg van de manier waarop de gegevens worden gestructureerd.
-
-## <a name="what-does-a-log-query-look-like"></a>Hoe ziet een logboek query eruit?
-Een query kan net zo eenvoudig zijn als een enkele tabel naam voor het ophalen van alle records uit de tabel:
-
-```Kusto
-Syslog
-```
-
-U kunt ook filteren op bepaalde records, deze samenvatten en de resultaten in een grafiek visualiseren:
-
-```
-SecurityEvent
-| where TimeGenerated > ago(7d)
-| where EventID == 4625
-| summarize count() by Computer, bin(TimeGenerated, 1h)
-| render timechart 
-```
-
-Voor complexere analyses kunt u gegevens uit meerdere tabellen ophalen met behulp van een koppeling om de resultaten samen te analyseren.
-
-```Kusto
-app("ContosoRetailWeb").requests
-| summarize count() by bin(timestamp,1hr)
-| join kind= inner (Perf
-    | summarize avg(CounterValue) 
-      by bin(TimeGenerated,1hr))
-on $left.timestamp == $right.TimeGenerated
-```
-Zelfs als u niet bekend bent met KQL, moet u in staat zijn om ten minste de basis logica te gebruiken die wordt gebruikt door deze query's. Ze beginnen met de naam van een tabel en voegen vervolgens meerdere opdrachten toe om die gegevens te filteren en verwerken. Een query kan elk wille keurig aantal opdrachten gebruiken en u kunt complexere query's schrijven wanneer u vertrouwd raakt met de verschillende KQL-opdrachten die beschikbaar zijn.
-
-Zie [aan de slag met logboek query's in azure monitor](get-started-queries.md) voor een zelf studie over logboek query's waarmee de taal en algemene functies worden geïntroduceerd.<br>
+- [Log Analytics zelf studie](log-analytics-tutorial.md) : zelf studie over het gebruik van de functies van log Analytics. Dit is het hulp programma dat u in de Azure Portal gebruikt om query's te bewerken en uit te voeren. U kunt hiermee ook eenvoudige query's schrijven zonder rechtstreeks met de query taal te werken. Als u nog geen Log Analytics eerder hebt gebruikt, kunt u hier beginnen, zodat u begrijpt welk hulp programma u met de andere zelf studies en voor beelden kunt gebruiken.
+- [KQL-zelf studie](/azure/data-explorer/kusto/query/tutorial?pivots=azuremonitor) : begeleide Walk via Basic KQL-concepten en algemene Opera tors. Dit is de beste plek om snel aan de slag te gaan met de taal zelf en de structuur van logboek query's. 
+- [Voorbeeld query's](example-queries.md) : beschrijving van de beschik bare voorbeeld query's in log Analytics. U kunt de query's zonder aanpassing gebruiken of ze als voor beelden gebruiken om KQL te leren.
+- [Query voorbeelden](/azure/data-explorer/kusto/query/samples?pivots=azuremonitor) : voorbeeld query's die verschillende concepten illustreren.
 
 
-## <a name="what-is-log-analytics"></a>Wat is Log Analytics?
-Log Analytics is het primaire hulpprogramma in de Azure Portal voor het schrijven van logboekquery's en het interactief analyseren van de resultaten. Zelfs als een logboekquery elders in Azure Monitor wordt gebruikt, moet u de query doorgaans eerst schrijven en testen met behulp van Log Analytics.
 
-U kunt Log Analytics vanaf verschillende locaties in de Azure Portal starten. Het bereik van de beschik bare gegevens voor Log Analytics is afhankelijk van hoe u het start. Zie [query bereik](scope.md) voor meer informatie.
+## <a name="reference-documentation"></a>Referentie documentatie
+[Documentatie voor KQL](/azure/data-explorer/kusto/query/) , met inbegrip van de naslag informatie voor alle opdrachten en Opera Tors, is beschikbaar in de documentatie van Azure Data Explorer. Zelfs wanneer u gewend bent met KQL, gebruikt u nog steeds de referentie om nieuwe opdrachten en scenario's te onderzoeken die u nog niet eerder hebt gebruikt.
 
-- Selecteer **Logboeken** in het menu **Azure monitor** of **log Analytics werk ruimte** menu.
-- Selecteer **Logboeken** op de pagina **overzicht** van een Application Insights-toepassing.
-- Selecteer **Logboeken** in het menu van een Azure-resource.
 
-![Log Analytics](media/log-query-overview/log-analytics.png)
+## <a name="language-differences"></a>Verschillen in taal
+Hoewel Azure Monitor dezelfde KQL gebruikt als Azure Data Explorer, zijn er enkele verschillen. In de KQL-documentatie worden de Opera tors opgegeven die niet worden ondersteund door Azure Monitor of die andere functionaliteit hebben. Opera tors die specifiek zijn voor Azure Monitor, worden beschreven in de Azure Monitor-inhoud. In de volgende secties vindt u een lijst met de verschillen tussen versies van de taal voor snelle naslag doeleinden.
 
-Zie [aan de slag met log Analytics in azure monitor](get-started-portal.md) voor een zelfstudie overzicht van log Analytics waarin verschillende functies worden geïntroduceerd.
+### <a name="statements-not-supported-in-azure-monitor"></a>Instructies worden niet ondersteund in Azure Monitor
 
-## <a name="where-else-are-log-queries-used"></a>Waar worden ook logboek query's gebruikt?
-Naast het interactief werken met logboek query's en hun resultaten in Log Analytics, zijn de volgende gebieden in Azure Monitor waar u query's gaat gebruiken:
+* [Toe](/azure/kusto/query/aliasstatement)
+* [Query parameters](/azure/kusto/query/queryparametersstatement)
 
-- **Waarschuwings regels.** [Waarschuwings regels](../platform/alerts-overview.md) identificeren proactief problemen van gegevens in uw werk ruimte.  Elke waarschuwings regel is gebaseerd op een zoek opdracht in logboeken die automatisch regel matig wordt uitgevoerd.  De resultaten worden gecontroleerd om te bepalen of er een waarschuwing moet worden gemaakt.
-- **Dash boards.** U kunt de resultaten van een wille keurige query vastmaken aan een [Azure-dash board](../learn/tutorial-logs-dashboards.md) , zodat u logboek-en metrische gegevens samenvoegt en optioneel kunt delen met andere Azure-gebruikers.
-- **Weergaven.**  U kunt visualisaties van gegevens maken die moeten worden opgenomen in gebruikers dashboards met de [weer gave Designer](../platform/view-designer.md).  Logboek query's bieden de gegevens die worden gebruikt door [tegels](../platform/view-designer-tiles.md) en [visualisatie onderdelen](../platform/view-designer-parts.md) in elke weer gave.  
-- **Gegevensexporttabel.**  Wanneer u logboek gegevens importeert van Azure Monitor naar Excel of [Power bi](../platform/powerbi.md), kunt u een logboek query maken om de gegevens te definiëren die moeten worden geëxporteerd.
-- **Zo.** U kunt een Power shell-script uitvoeren vanaf een opdracht regel of een Azure Automation runbook dat gebruikmaakt van [Get-AzOperationalInsightsSearchResults](/powershell/module/az.operationalinsights/get-azoperationalinsightssearchresult) om logboek gegevens op te halen van Azure monitor.  Voor deze cmdlet is een query vereist om te bepalen welke gegevens moeten worden opgehaald.
-- **API voor Azure Monitor-Logboeken.**  Met de [API voor Azure monitor-logboeken](https://dev.loganalytics.io) kan elke rest API-client logboek gegevens uit de werk ruimte ophalen.  De API-aanvraag bevat een query die wordt uitgevoerd op Azure Monitor om te bepalen welke gegevens moeten worden opgehaald.
+### <a name="functions-not-supported-in-azure-monitor"></a>Functies die niet worden ondersteund in Azure Monitor
 
+* [cluster()](/azure/kusto/query/clusterfunction)
+* [cursor_after()](/azure/kusto/query/cursorafterfunction)
+* [cursor_before_or_at()](/azure/kusto/query/cursorbeforeoratfunction)
+* [cursor_current (), current_cursor ()](/azure/kusto/query/cursorcurrent)
+* [Data Base ()](/azure/kusto/query/databasefunction)
+* [current_principal()](/azure/kusto/query/current-principalfunction)
+* [extent_id()](/azure/kusto/query/extentidfunction)
+* [extent_tags()](/azure/kusto/query/extenttagsfunction)
+
+### <a name="operators-not-supported-in-azure-monitor"></a>Opera tors worden niet ondersteund in Azure Monitor
+
+* [Cross-cluster-koppeling](/azure/kusto/query/joincrosscluster)
+
+### <a name="plugins-not-supported-in-azure-monitor"></a>Invoeg toepassingen die niet worden ondersteund in Azure Monitor
+
+* [Python-invoeg toepassing](/azure/kusto/query/pythonplugin)
+* [Invoegtoepassing voor sql_request](/azure/kusto/query/sqlrequestplugin)
+
+
+### <a name="additional-operators-in-azure-monitor"></a>Extra Opera tors in Azure Monitor
+De volgende Opera tors ondersteunen specifieke Azure Monitor functies en zijn niet beschikbaar buiten Azure Monitor.
+
+* [app ()](app-expression.md)
+* [resource ()](resource-expression.md)
+* [werk ruimte ()](workspace-expression.md)
 
 ## <a name="next-steps"></a>Volgende stappen
-- Door loop een [zelf studie over het gebruik van log Analytics in het Azure Portal](get-started-portal.md).
-- Door loop een [zelf studie over het schrijven van query's](get-started-queries.md).
+- Door loop een [zelf studie over het schrijven van query's](/azure/data-explorer/kusto/query/tutorial?pivots=azuremonitor).
+- Open de volledige [referentie documentatie voor de Kusto-query taal](/azure/kusto/query/).
+

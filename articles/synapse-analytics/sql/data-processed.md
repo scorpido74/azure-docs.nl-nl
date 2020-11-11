@@ -1,6 +1,6 @@
 ---
-title: Gegevens die worden verwerkt met behulp van serverloze SQL-groep
-description: In dit document wordt beschreven hoe het verwerkte bedrag wordt berekend wanneer u gegevens opvraagt in uw data Lake.
+title: Kosten beheer voor serverloze SQL-groep
+description: In dit document wordt beschreven hoe u de kosten van een serverloze SQL-pool beheert en hoe de verwerkte gegevens worden berekend bij het opvragen van gegevens in azure Storage.
 services: synapse analytics
 author: filippopovic
 ms.service: synapse-analytics
@@ -9,14 +9,22 @@ ms.subservice: sql
 ms.date: 11/05/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: a108e5fdd30c21cdb7771e3f683dad22773653a4
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 8a26f8ced5e91810f8cadff0a27796dc817e6517
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94381198"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491566"
 ---
-# <a name="data-processed-by-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Gegevens die worden verwerkt met behulp van serverloze SQL-groep in azure Synapse Analytics
+# <a name="cost-management-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Kosten beheer voor serverloze SQL-groepen in azure Synapse Analytics
+
+In dit artikel wordt uitgelegd hoe u kosten kunt ramen en beheren voor een serverloze SQL-groep in azure Synapse Analytics:
+- Geschatte hoeveelheid gegevens die is verwerkt voordat een query wordt uitgegeven
+- Kosten beheer functie gebruiken om het budget in te stellen
+
+U begrijpt dat de kosten voor serverloze SQL-groepen in azure Synapse Analytics slechts een deel van de maandelijkse kosten in uw Azure-factuur zijn. Als u andere Azure-Services gebruikt, wordt u gefactureerd voor alle Azure-Services en-resources die worden gebruikt in uw Azure-abonnement, inclusief de services van derden. In dit artikel wordt uitgelegd hoe u kosten voor een serverloze SQL-groep plant en beheert in azure Synapse Analytics.
+
+## <a name="data-processed"></a>Verwerkte gegevens
 
 De gegevens die worden *verwerkt* , zijn de hoeveelheid gegevens die het systeem tijdelijk opslaat tijdens het uitvoeren van een query. De gegevens die worden verwerkt, bestaan uit de volgende aantallen:
 
@@ -84,6 +92,53 @@ Met deze query worden alle kolommen gelezen en worden alle gegevens overgebracht
 Met deze query worden hele bestanden gelezen. De totale grootte van de bestanden in de opslag voor deze tabel is 100 KB. Knoop punten verwerken fragmenten van deze tabel en de som voor elk fragment wordt tussen knoop punten overgedragen. Het eind totaal wordt overgedragen naar uw eind punt. 
 
 Met deze query worden iets meer dan 100 KB aan gegevens verwerkt. De hoeveelheid gegevens die voor deze query wordt verwerkt, wordt tot 10 MB afgerond, zoals is opgegeven in de sectie [afronding](#rounding) van dit artikel.
+
+## <a name="cost-control"></a>Kosten beheer
+
+Met de functie voor kosten beheer in een serverloze SQL-pool kunt u het budget instellen voor de hoeveelheid verwerkte gegevens. U kunt het budget instellen in TB aan gegevens die worden verwerkt voor een dag, week en maand. Op hetzelfde moment kunt u een of meer budgetten instellen. Als u kosten beheer wilt configureren voor een serverloze SQL-groep, kunt u Synapse Studio of T-SQL gebruiken.
+
+## <a name="configure-cost-control-for-serverless-sql-pool-in-synapse-studio"></a>Kosten beheer voor een serverloze SQL-groep configureren in Synapse Studio
+ 
+Voor het configureren van kosten beheer voor een serverloze SQL-groep in Synapse Studio navigeert u naar items in het menu aan de linkerkant te beheren, dan selecteert u het item SQL-groep onder Analytics-Pools. Wanneer u de serverloze SQL-pool aanwijst, ziet u een pictogram voor Cost Control-klik op dit pictogram.
+
+![Kosten beheer navigatie](./media/data-processed/cost-control-menu.png)
+
+Wanneer u op het pictogram kosten beheer klikt, wordt er een kantlijn balk weer gegeven:
+
+![Configuratie van kosten beheer](./media/data-processed/cost-control-sidebar.png)
+
+Als u een of meer budgetten wilt instellen, klikt u eerst op keuze rondje inschakelen voor een budget dat u wilt instellen, dan voert u de waarde geheel getal in het tekstvak in. Eenheid voor de waarde is TBs. Wanneer u de gewenste budgetten hebt geconfigureerd, klikt u op de knop Toep assen onder aan de balk aan de zijkant. Dat is alles, u kunt budget nu instellen.
+
+## <a name="configure-cost-control-for-serverless-sql-pool-in-t-sql"></a>Kosten beheer voor een serverloze SQL-groep configureren in T-SQL
+
+Als u kosten beheer wilt configureren voor een SQL-groep zonder server in T-SQL, moet u een of meer van de volgende opgeslagen procedures uitvoeren.
+
+```sql
+sp_set_data_processed_limit
+    @type = N'daily',
+    @limit_tb = 1
+
+sp_set_data_processed_limit
+    @type= N'weekly',
+    @limit_tb = 2
+
+sp_set_data_processed_limit
+    @type= N'monthly',
+    @limit_tb = 3334
+```
+
+Voer de volgende T-SQL-instructie uit om de huidige configuratie te bekijken:
+
+```sql
+SELECT * FROM sys.configurations
+WHERE name like 'Data processed %';
+```
+
+Voer de volgende T-SQL-instructie uit om na te gaan hoeveel gegevens er zijn verwerkt tijdens de huidige dag, week of maand:
+
+```sql
+SELECT * FROM sys.dm_external_data_processed
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 

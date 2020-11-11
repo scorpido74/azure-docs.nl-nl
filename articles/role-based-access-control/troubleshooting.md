@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 09/18/2020
+ms.date: 11/10/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1, devx-track-azurecli
-ms.openlocfilehash: 325931ea024221bc89df3b2e25f3e7844130f4dc
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 53628f5aa0bc5ab5dedde5deb9950c7b13fb4bf6
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92741075"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490743"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Problemen met Azure RBAC oplossen
 
@@ -59,7 +59,7 @@ $ras.Count
     az role assignment create --assignee "userupn" --role "Contributor"  --scope "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}"
     ```
 
-    Als u het fout bericht ' onvoldoende bevoegdheden om de bewerking te volt ooien ' krijgt, komt dit waarschijnlijk doordat Azure CLI probeert de identiteit van de toegewezen gebruiker te zoeken in azure AD en de Service-Principal standaard geen Azure AD kan lezen.
+    Als u de fout melding ' onvoldoende bevoegdheden om de bewerking te volt ooien ' krijgt, wordt de identiteit van de toegewezen persoon in azure AD waarschijnlijk niet door Azure CLI gezocht en kan Azure AD niet standaard door de service-principal worden gelezen.
 
     Er zijn twee manieren om deze fout op te lossen. De eerste manier is het toewijzen van de rol van de [Directory lezers](../active-directory/roles/permissions-reference.md#directory-readers) aan de Service-Principal zodat deze gegevens in de map kan lezen.
 
@@ -68,6 +68,7 @@ $ras.Count
     ```azurecli
     az role assignment create --assignee-object-id 11111111-1111-1111-1111-111111111111  --role "Contributor" --scope "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}"
     ```
+- Als u probeert de toewijzing van de laatste eigenaar voor een abonnement te verwijderen, ziet u mogelijk de fout "kan de laatste RBAC-beheer toewijzing niet verwijderen." Het verwijderen van de roltoewijzing voor de laatste eigenaar voor een abonnement wordt niet ondersteund om zwevende het abonnement te voor komen. Als u uw abonnement wilt annuleren, raadpleegt u [uw Azure-abonnement annuleren](../cost-management-billing/manage/cancel-azure-subscription.md).
 
 ## <a name="problems-with-custom-roles"></a>Problemen met aangepaste rollen
 
@@ -120,7 +121,7 @@ Als u onlangs een gebruiker hebt uitgenodigd bij het maken van een roltoewijzing
 
 Als deze beveiligingsprincipal echter geen recent uitgenodigde gebruiker is, is het mogelijk een verwijderde beveiligingsprincipal. Als u een rol toewijst aan een beveiligingsprincipal en vervolgens die beveiligingsprincipal verwijdert zonder eerst de roltoewijzing te verwijderen, wordt de beveiligingsprincipal vermeld als **identiteit niet gevonden** en een **onbekend** type.
 
-Als u deze roltoewijzing met Azure PowerShell vermeldt, ziet u mogelijk een lege `DisplayName` en een `ObjectType` ingesteld op **onbekend** . [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) retourneert bijvoorbeeld een roltoewijzing die vergelijkbaar is met de volgende uitvoer:
+Als u deze roltoewijzing met Azure PowerShell vermeldt, ziet u mogelijk een lege `DisplayName` en een `ObjectType` ingesteld op **onbekend**. [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) retourneert bijvoorbeeld een roltoewijzing die vergelijkbaar is met de volgende uitvoer:
 
 ```
 RoleAssignmentId   : /subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/roleAssignments/22222222-2222-2222-2222-222222222222
@@ -239,7 +240,7 @@ Als u geen toegang hebt tot deze tegels, vraagt u uw beheerder om toegang tot de
 
 ## <a name="azure-functions-and-write-access"></a>Azure Functions en schrijf toegang
 
-Voor sommige functies van [Azure functions](../azure-functions/functions-overview.md) is schrijf toegang vereist. Als een gebruiker bijvoorbeeld de rol [lezer](built-in-roles.md#reader) krijgt toegewezen, kunnen ze de functies in een functie-app niet weer geven. De portal wordt weer gegeven **(geen toegang)** .
+Voor sommige functies van [Azure functions](../azure-functions/functions-overview.md) is schrijf toegang vereist. Als een gebruiker bijvoorbeeld de rol [lezer](built-in-roles.md#reader) krijgt toegewezen, kunnen ze de functies in een functie-app niet weer geven. De portal wordt weer gegeven **(geen toegang)**.
 
 ![Functie-apps zonder toegang](./media/troubleshooting/functionapps-noaccess.png)
 

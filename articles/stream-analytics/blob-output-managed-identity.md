@@ -6,12 +6,12 @@ ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/11/2020
-ms.openlocfilehash: 7eb610f741681be89ef44f8288ed47674c1d6440
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: f14ded89ad294abbfaf9861e5f4caf17dd82fb98
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348573"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490709"
 ---
 # <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage-output"></a>Beheerde identiteit gebruiken om uw Azure Stream Analytics-taak te verifiëren bij Azure Blob Storage-uitvoer
 
@@ -223,6 +223,10 @@ Bij het configureren van **firewalls en virtuele netwerken** van uw opslag accou
 3.    Als u het hebt ingeschakeld, klikt u op **Opslaan**.
 
    ![VNET-toegang inschakelen](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-vnet-exception.png)
+
+## <a name="remove-managed-identity"></a>Beheerde identiteit verwijderen
+
+De beheerde identiteit die is gemaakt voor een Stream Analytics taak wordt alleen verwijderd wanneer de taak wordt verwijderd. Het is niet mogelijk om de beheerde identiteit te verwijderen zonder de taak te verwijderen. Als u de beheerde identiteit niet meer wilt gebruiken, kunt u de verificatie methode voor de uitvoer wijzigen. De beheerde identiteit blijft bestaan totdat de taak is verwijderd en wordt gebruikt als u ervoor kiest beheerde identiteits verificatie opnieuw te gebruiken.
 
 ## <a name="limitations"></a>Beperkingen
 Hieronder vindt u de huidige beperkingen van deze functie:

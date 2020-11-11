@@ -9,12 +9,12 @@ ms.date: 10/29/2020
 ms.author: alkohli
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7d969392c3245eb81ed07889bd956d2b8e8fb82f
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.openlocfilehash: 859325bffe1db9cd6a7afc7e5013681c88209eff
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93234088"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491780"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Azure Import/Export-service gebruiken om gegevens te importeren naar Azure Files
 
@@ -51,7 +51,7 @@ Voer de volgende stappen uit om de stations voor te bereiden.
 2. Maak één NTFS-volume op elk station. Wijs een stationsletter aan het volume toe. Gebruik mountpoints niet.
 3. Wijzig het *dataset.csv* -bestand in de hoofdmap waar het hulp programma zich bevindt. Afhankelijk van of u een bestand of map of beide wilt importeren, voegt u in het *dataset.csv* -bestand vermeldingen toe die vergelijkbaar zijn met de volgende voor beelden.
 
-   - **Een bestand importeren** : in het volgende voor beeld bevindt de te kopiëren gegevens zich in het station F:. Uw bestands *MyFile1.txt*  wordt gekopieerd naar de hoofdmap van de *MyAzureFileshare1* . Als de *MyAzureFileshare1* niet bestaat, wordt deze in het Azure Storage-account gemaakt. De mapstructuur wordt behouden.
+   - **Een bestand importeren** : in het volgende voor beeld bevindt de te kopiëren gegevens zich in het station F:. Uw bestands *MyFile1.txt*  wordt gekopieerd naar de hoofdmap van de *MyAzureFileshare1*. Als de *MyAzureFileshare1* niet bestaat, wordt deze in het Azure Storage-account gemaakt. De mapstructuur wordt behouden.
 
        ```
            BasePath,DstItemPathOrPrefix,ItemType,Disposition,MetadataFile,PropertiesFile
@@ -97,7 +97,7 @@ Voer de volgende stappen uit om de stations voor te bereiden.
 5. Gebruik de `PrepImport` optie om gegevens naar het schijf station te kopiëren en voor te bereiden. Voer de volgende opdracht uit voor de eerste Kopieer sessie om directory's en/of bestanden te kopiëren met een nieuwe Kopieer sessie:
 
     ```cmd
-    .\WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> [/logdir:<LogDirectory>] [/sk:<StorageAccountKey>] [/silentmode] [/InitialDriveSet:<driveset.csv>] DataSet:<dataset.csv>
+    .\WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> [/logdir:<LogDirectory>] [/sk:<StorageAccountKey>] [/silentmode] [/InitialDriveSet:<driveset.csv>]/DataSet:<dataset.csv>
     ```
 
    Hieronder ziet u een voor beeld van een import.
@@ -119,17 +119,17 @@ Voor extra voor beelden gaat u naar [voor beelden van logboek bestanden](#sample
 
 Voer de volgende stappen uit om een import taak te maken in de Azure Portal.
 1. Meld u aan bij https://portal.azure.com/ .
-2. Ga naar **alle services > opslag > import/export-taken** .
+2. Ga naar **alle services > opslag > import/export-taken**.
 
     ![Ga naar importeren/exporteren](./media/storage-import-export-data-to-blobs/import-to-blob1.png)
 
-3. Klik op **import/export-taak maken** .
+3. Klik op **import/export-taak maken**.
 
     ![Klik op import/export-taak](./media/storage-import-export-data-to-blobs/import-to-blob2.png)
 
 4. In de **basis beginselen** :
 
-    - Selecteer **importeren in azure** .
+    - Selecteer **importeren in azure**.
     - Voer een beschrijvende naam in voor de import taak. Gebruik deze naam om uw taken bij te houden terwijl ze worden uitgevoerd en zodra ze zijn voltooid.
         -  Deze naam mag alleen kleine letters, cijfers, afbreek streepjes en onderstrepings tekens bevatten.
         -  De naam moet beginnen met een letter en mag geen spaties bevatten.
@@ -165,7 +165,7 @@ Voer de volgende stappen uit om een import taak te maken in de Azure Portal.
 
         ![Import taak maken-stap 4](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
 
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 Gebruik de volgende stappen om een import taak te maken in de Azure CLI.
 

@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
-ms.openlocfilehash: 01021530c491fd25a199f32475c031a0e7f6cd0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26f0006ad2b26757e335ba1819c2b82ba519f8cc
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89376635"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491440"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>Azure-wachtrij opslag trigger voor Azure Functions
 
@@ -163,7 +163,7 @@ Er wordt een opslag wachtrij trigger gedefinieerd in *function.js* waarvoor *typ
 }
 ```
 
-De code * _ \_ init_ \_ . py* declareert een para meter zoals `func.QueueMessage` , waarmee u het wachtrij bericht in uw functie kunt lezen.
+De code *_\_ init_ \_ . py* declareert een para meter zoals `func.QueueMessage` , waarmee u het wachtrij bericht in uw functie kunt lezen.
 
 ```python
 import logging
@@ -361,7 +361,7 @@ Met de [Queue trigger](/java/api/com.microsoft.azure.functions.annotation.queuet
 
 ## <a name="message-metadata"></a>Meta gegevens van bericht
 
-De trigger van de wachtrij biedt verschillende [Eigenschappen van meta gegevens](./functions-bindings-expressions-patterns.md#trigger-metadata). Deze eigenschappen kunnen worden gebruikt als onderdeel van binding expressies in andere bindingen of als para meters in uw code. De eigenschappen zijn leden van de klasse [CloudQueueMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) .
+De trigger van de wachtrij biedt verschillende [Eigenschappen van meta gegevens](./functions-bindings-expressions-patterns.md#trigger-metadata). Deze eigenschappen kunnen worden gebruikt als onderdeel van bindingsexpressies in andere bindingen of als parameters in uw code. De eigenschappen zijn leden van de klasse [CloudQueueMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) .
 
 |Eigenschap|Type|Beschrijving|
 |--------|----|-----------|
@@ -375,7 +375,7 @@ De trigger van de wachtrij biedt verschillende [Eigenschappen van meta gegevens]
 
 ## <a name="poison-messages"></a>Verontreinigde berichten
 
-Wanneer een functie voor het activeren van een wachtrij mislukt, Azure Functions de functie tot vijf keer opnieuw geprobeerd voor een gegeven wachtrij bericht, met inbegrip van de eerste try. Als alle vijf de pogingen mislukken, voegt de functions-runtime een bericht toe aan een wachtrij met de naam * &lt; originalqueuename>-Poison*. U kunt een functie schrijven om berichten uit de verontreinigde wachtrij te verwerken door ze te registreren of om een melding te verzenden dat er hand matige aandacht nodig is.
+Wanneer een functie voor het activeren van een wachtrij mislukt, Azure Functions de functie tot vijf keer opnieuw geprobeerd voor een gegeven wachtrij bericht, met inbegrip van de eerste try. Als alle vijf de pogingen mislukken, voegt de functions-runtime een bericht toe aan een wachtrij met de naam *&lt; originalqueuename>-Poison*. U kunt een functie schrijven om berichten uit de verontreinigde wachtrij te verwerken door ze te registreren of om een melding te verzenden dat er hand matige aandacht nodig is.
 
 Als u verontreinigde berichten hand matig wilt verwerken, controleert u de [dequeueCount](#message-metadata) van het bericht in de wachtrij.
 
@@ -408,7 +408,7 @@ De [host.jsin](functions-host-json.md#queues) het bestand bevat instellingen die
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Blob-opslag berichten schrijven (uitvoer binding)](./functions-bindings-storage-blob-output.md)
+- [Wachtrij opslag berichten schrijven (uitvoer binding)](./functions-bindings-storage-queue-output.md)
 
 <!-- LINKS -->
 

@@ -6,12 +6,12 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 02/20/2020
 ms.author: cshoe
-ms.openlocfilehash: 7fa49583c17c198642d4ad6d72a0faa19dcfe659
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8bb07e650c99f18cfecbc7b7674e0ca0e5a01dae
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91323325"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491457"
 ---
 # <a name="signalr-service-output-binding-for-azure-functions"></a>Uitvoer binding van de signaal/service voor Azure Functions
 
@@ -116,7 +116,7 @@ Voor beeld function.jsop:
 ```json
 {
   "type": "signalR",
-  "name": "out_message",
+  "name": "outMessage",
   "hubName": "<hub_name>",
   "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
   "direction": "out"
@@ -126,9 +126,9 @@ Voor beeld function.jsop:
 Dit is de Python-code:
 
 ```python
-def main(req: func.HttpRequest, out_message: func.Out[str]) -> func.HttpResponse:
+def main(req: func.HttpRequest, outMessage: func.Out[str]) -> func.HttpResponse:
     message = req.get_json()
-    out_message.set(json.dumps({
+    outMessage.set(json.dumps({
         'target': 'newMessage',
         'arguments': [ message ]
     }))
@@ -248,7 +248,7 @@ Voor beeld function.jsop:
 ```json
 {
   "type": "signalR",
-  "name": "out_message",
+  "name": "outMessage",
   "hubName": "<hub_name>",
   "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
   "direction": "out"
@@ -258,9 +258,9 @@ Voor beeld function.jsop:
 Dit is de Python-code:
 
 ```python
-def main(req: func.HttpRequest, out_message: func.Out[str]) -> func.HttpResponse:
+def main(req: func.HttpRequest, outMessage: func.Out[str]) -> func.HttpResponse:
     message = req.get_json()
-    out_message.set(json.dumps({
+    outMessage.set(json.dumps({
         #message will only be sent to this user ID
         'userId': 'userId1',
         'target': 'newMessage',
@@ -383,7 +383,7 @@ Voor beeld function.jsop:
 ```json
 {
   "type": "signalR",
-  "name": "out_message",
+  "name": "outMessage",
   "hubName": "<hub_name>",
   "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
   "direction": "out"
@@ -393,9 +393,9 @@ Voor beeld function.jsop:
 Dit is de Python-code:
 
 ```python
-def main(req: func.HttpRequest, out_message: func.Out[str]) -> func.HttpResponse:
+def main(req: func.HttpRequest, outMessage: func.Out[str]) -> func.HttpResponse:
     message = req.get_json()
-    out_message.set(json.dumps({
+    outMessage.set(json.dumps({
         #message will only be sent to this group
         'groupName': 'myGroup',
         'target': 'newMessage',
@@ -734,7 +734,7 @@ De volgende tabel bevat informatie over de bindingsconfiguratie-eigenschappen di
 |**direction**| N.v.t. | Moet worden ingesteld op `in`.|
 |**name**| N.v.t. | De naam van de variabele die wordt gebruikt in de functie code voor het verbindings info-object. |
 |**hubName**|**HubName**| Deze waarde moet worden ingesteld op de naam van de seingevings hub waarvoor de verbindings gegevens worden gegenereerd.|
-|**Naam**|**UserId**| Optioneel: de waarde van de claim voor de gebruikers-id die moet worden ingesteld in het toegangs sleutel token. |
+|**userId**|**Naam**| Optioneel: de waarde van de claim voor de gebruikers-id die moet worden ingesteld in het toegangs sleutel token. |
 |**connectionStringSetting**|**ConnectionStringSetting**| De naam van de app-instelling die de seingevings service connection string bevat (standaard ingesteld op ' AzureSignalRConnectionString ') |
 
 ### <a name="signalr"></a>SignalR

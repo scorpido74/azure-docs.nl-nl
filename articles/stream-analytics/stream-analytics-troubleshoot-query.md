@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: c2c199b2366f2708af19c1868cce09e0ba38fc96
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: ef03560cff704255d2779a747d124e0b39a1c657
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130252"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491304"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Problemen met Azure Stream Analytics query's oplossen
 
@@ -25,7 +25,7 @@ In dit artikel worden veelvoorkomende problemen met het ontwikkelen van Azure St
 
 1.  Controleer fouten door lokaal te testen:
 
-    - Selecteer op Azure Portal op het tabblad **query** de optie **testen** . Gebruik de gedownloade voorbeeld gegevens om [de query te testen](stream-analytics-test-query.md). Controleer eventuele fouten en probeer deze te corrigeren.   
+    - Selecteer op Azure Portal op het tabblad **query** de optie **testen**. Gebruik de gedownloade voorbeeld gegevens om [de query te testen](stream-analytics-test-query.md). Controleer eventuele fouten en probeer deze te corrigeren.   
     - U kunt [uw query ook lokaal testen](stream-analytics-live-data-local-testing.md) met Azure stream Analytics-hulpprogram Ma's voor Visual Studio of [Visual Studio code](visual-studio-code-local-run-live-input.md). 
 
 2.  [Debug-query's stap voor stap lokaal met behulp van taak diagram](debug-locally-using-job-diagram-vs-code.md) in azure stream Analytics-hulpprogram Ma's voor Visual Studio code. In het taak diagram wordt weer gegeven hoe gegevens stromen van invoer bronnen (Event hub, IoT Hub, enzovoort) via meerdere query stappen worden uitgevoerd en tot slot naar uitvoer-Sinks. Elke query stap wordt toegewezen aan een tijdelijke resultatenset die in het script is gedefinieerd met behulp van de instructie WITH. U kunt de gegevens in elke tussenliggende resultatenset weer geven, evenals de metrieken, om de bron van het probleem te vinden.
@@ -50,6 +50,8 @@ In dit artikel worden veelvoorkomende problemen met het ontwikkelen van Azure St
 ## <a name="resource-utilization-is-high"></a>Het resource gebruik is hoog
 
 Zorg ervoor dat u in Azure Stream Analytics kunt profiteren van parallel Lise ring. U kunt de [schaal aanpassen met query parallel Lise ring](stream-analytics-parallelization.md) van stream Analytics-taken door het configureren van invoer partities en het afstemmen van de definitie van de analyse query.
+
+Als het resource gebruik consistent is dan 80%, wordt de vertraging van het water merk verhoogd en wordt het aantal achterstands gebeurtenissen Oplopend. Overweeg streaming-eenheden te verhogen. Hoog gebruik geeft aan dat de taak de Maxi maal toegewezen bronnen gebruikt.
 
 ## <a name="debug-queries-progressively"></a>Fouten progressief opsporen in query's
 

@@ -15,12 +15,12 @@ ms.date: 11/13/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 11/13/2019
-ms.openlocfilehash: 85ebb7f5ac52f4eea25f9e6f1a2b1b5ac6f4caa5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d476b1db645ed1f91b62fcf11464f7077a8fb3c
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87077918"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491423"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Push meldingen met Azure Notification Hubs: veelgestelde vragen
 
@@ -34,16 +34,16 @@ Azure Notification Hubs heeft twee resource niveaus: hubs en naam ruimten. Een h
 
 De meest recente prijs informatie vindt u op de pagina met [Notification hubs prijzen] . Notification Hubs wordt in rekening gebracht op het niveau van de naam ruimte. (Zie ' wat is de resource structuur van Notification Hubs? ' voor de definitie van een naam ruimte. Notification Hubs biedt drie lagen:
 
-* **Gratis**: deze laag is een goed uitgangs punt voor het verkennen van push mogelijkheden. Het wordt niet aanbevolen voor productie-apps. U krijgt 500-apparaten en 1.000.000 pushes per naam ruimte per maand, zonder service level agreement SLA-garantie.
-* **Basis**: deze laag (of de Standard-laag) wordt aanbevolen voor kleinere productie-apps. U krijgt 200.000-apparaten en 10.000.000 pushes per naam ruimte per maand als basis lijn.
-* **Standaard**: deze laag wordt aanbevolen voor middel grote tot grootschalige productie-apps. U krijgt 10.000.000-apparaten en 10.000.000 pushes per naam ruimte per maand als basis lijn. Inclusief uitgebreide telemetrie (aanvullende gegevens over de geleverde push status).
+* **Gratis** : deze laag is een goed uitgangs punt voor het verkennen van push mogelijkheden. Het wordt niet aanbevolen voor productie-apps. U krijgt 500-apparaten en 1.000.000 pushes per naam ruimte per maand, zonder service level agreement SLA-garantie.
+* **Basis** : deze laag (of de Standard-laag) wordt aanbevolen voor kleinere productie-apps. U krijgt 200.000-apparaten en 10.000.000 pushes per naam ruimte per maand als basis lijn.
+* **Standaard** : deze laag wordt aanbevolen voor middel grote tot grootschalige productie-apps. U krijgt 10.000.000-apparaten en 10.000.000 pushes per naam ruimte per maand als basis lijn. Inclusief uitgebreide telemetrie (aanvullende gegevens over de geleverde push status).
 
 Functies van de Standard-laag:
 
-* **Uitgebreide telemetrie**: u kunt notification hubs per bericht-telemetrie gebruiken om Push aanvragen en platform Notification System feedback voor fout opsporing bij te houden.
-* **Multitenancy: u**kunt werken met platform Notification System referenties op een niveau van de naam ruimte. Met deze optie kunt u eenvoudig tenants splitsen in hubs binnen dezelfde naam ruimte.
-* **Geplande push**: u kunt plannen dat er op elk moment meldingen worden verzonden.
-* **Bulk bewerkingen**: Hiermee schakelt u de functionaliteit voor het exporteren/importeren van gegevens in, zoals wordt beschreven in het document [registraties exporteren/importeren] .
+* **Uitgebreide telemetrie** : u kunt notification hubs per bericht-telemetrie gebruiken om Push aanvragen en platform Notification System feedback voor fout opsporing bij te houden.
+* **Multitenancy: u** kunt werken met platform Notification System referenties op een niveau van de naam ruimte. Met deze optie kunt u eenvoudig tenants splitsen in hubs binnen dezelfde naam ruimte.
+* **Geplande push** : u kunt plannen dat er op elk moment meldingen worden verzonden.
+* **Bulk bewerkingen** : Hiermee schakelt u de functionaliteit voor het exporteren/importeren van gegevens in, zoals wordt beschreven in het document [registraties exporteren/importeren] .
 
 ### <a name="what-is-the-notification-hubs-sla"></a>Wat is de Notification Hubs SLA?
 
@@ -151,7 +151,7 @@ Alle verbindingen, van de afzender naar de Azure-Notification Hubs naar de PNS, 
 
 Als u gevoelige nettoladingen wilt verzenden, kunt u het beste een beveiligd push patroon gebruiken. De afzender levert een ping-melding met een bericht-id aan het apparaat zonder de gevoelige nettolading. Wanneer de app op het apparaat de payload ontvangt, roept de app een beveiligde API rechtstreeks aan om de bericht gegevens op te halen. Ga voor een hand leiding voor het implementeren van dit patroon naar de pagina [veilige push-zelf studie van Notification hubs] .
 
-## <a name="operations"></a>Operations
+## <a name="operations"></a>Bewerkingen
 
 ### <a name="what-support-is-provided-for-disaster-recovery"></a>Welke ondersteuning wordt geboden voor herstel na nood gevallen?
 
@@ -159,15 +159,12 @@ We bieden een nood herstel op basis van meta gegevens op het einde (de Notificat
 
 1. Een secundaire meldingen hub maken in een ander Data Center. We raden u aan een van de begin tot afscherming te maken van een nood herstel gebeurtenis die van invloed kan zijn op uw beheer mogelijkheden. U kunt er ook een maken op het moment van de gebeurtenis nood herstel.
 
-2. Vul de secundaire notification hub in met de registraties van uw primaire notification hub. Het wordt niet aanbevolen om registraties op beide hubs te onderhouden en ze gesynchroniseerd te houden als registraties worden geleverd in. Deze procedure werkt niet goed vanwege de inherente tendens van registraties die aan de PNS-zijde verlopen. Notification Hubs deze opschoont omdat er PNS feedback over verlopen of ongeldige registraties wordt ontvangen.  
+2. Zorg ervoor dat de secundaire notification hub synchroon loopt met de primaire notification hub met behulp van een van de volgende opties:
 
-Er zijn twee aanbevelingen voor app-back-ends:
+   * Gebruik een app-back-end die gelijktijdig installaties maakt en bijwerkt in beide notification hubs. Met installaties kunt u uw eigen unieke apparaat-id opgeven, zodat deze geschikter is voor het replicatie scenario. Zie voor meer informatie deze [voorbeeld code](https://github.com/Azure/azure-notificationhubs-dotnet/tree/main/Samples/RedundantHubSample).
+   * Gebruik een app-back-end die een reguliere dump van registraties van de primaire notification hub als back-up ophaalt. Vervolgens kan het bulksgewijs worden ingevoegd in de secundaire notification hub.
 
-* Gebruik een back-end van een app die een bepaalde set registraties aan het eind houdt. Vervolgens kan het bulksgewijs worden ingevoegd in de secundaire notification hub.
-* Gebruik een app-back-end die een reguliere dump van registraties van de primaire notification hub als back-up ophaalt. Vervolgens kan het bulksgewijs worden ingevoegd in de secundaire notification hub.
-
-> [!NOTE]
-> De beschik bare registraties voor exporteren/importeren in de laag standaard worden beschreven in het document [registraties exporteren/importeren] .
+De secundaire notification hub kan eindigen op verlopen installaties/registraties. Wanneer de push naar een verlopen ingang wordt gemaakt Notification Hubs, wordt de bijbehorende installatie/registratie record automatisch opgeschoond op basis van het antwoord dat is ontvangen van de PNS-server. Als u verlopen records van een secundaire notification hub wilt opschonen, voegt u aangepaste logica toe die de feedback van elke verzen ding verwerkt. Verloopt vervolgens de installatie/registratie in de secundaire notification hub.
 
 Als u niet beschikt over een back-end wanneer de app wordt gestart op doel apparaten, voert deze een nieuwe registratie uit in de secundaire notification hub. Uiteindelijk heeft de secundaire notification hub alle actieve apparaten geregistreerd.
 
@@ -200,7 +197,7 @@ U kunt ook programmatisch toegang krijgen tot metrische gegevens. Raadpleeg voor
 > [!NOTE]
 > Geslaagde meldingen betekenen gewoon dat push meldingen zijn bezorgd bij de externe PNS (bijvoorbeeld APNs voor iOS en macOS of FCM voor Android-apparaten). Het is de verantwoordelijkheid van de PNS om de meldingen te leveren aan doel apparaten. Normaal gesp roken worden door de PNS geen metrische gegevens over levering aan derden blootgesteld.  
 
-[Azure-portal]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com
 [Notification Hubs prijzen]: https://azure.microsoft.com/pricing/details/notification-hubs/
 [Notification Hubs SLA]: https://azure.microsoft.com/support/legal/sla/
 [REST API's voor Notification Hubs]: /previous-versions/azure/reference/dn530746(v=azure.100)

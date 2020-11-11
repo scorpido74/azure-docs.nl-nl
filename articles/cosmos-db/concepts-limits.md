@@ -5,13 +5,13 @@ author: abhijitpai
 ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/02/2020
-ms.openlocfilehash: e8b13369cb961d4be49f0045805a805fda38a59c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 11/10/2020
+ms.openlocfilehash: cac14687c6193d58069240529955e69fc680b2e8
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319824"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491814"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Service quota's Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -44,8 +44,8 @@ U kunt de door Voer inrichten op container niveau of op database niveau in terme
 Een Cosmos-container (of een gedeelde doorvoer database) moet een minimale door Voer van 400 RU/s hebben. Naarmate de container groeit, is de mini maal ondersteunde door Voer ook afhankelijk van de volgende factoren:
 
 * De maximale door Voer is ooit ingericht op de container. Als uw door Voer bijvoorbeeld is verhoogd naar 50.000 RU/s, zou de laagst mogelijke ingerichte door Voer 500 RU/s zijn.
-* De huidige opslag in GB in de container. Als uw container bijvoorbeeld 100 GB opslag ruimte heeft, zou de laagst mogelijke ingerichte door Voer 1000 RU/s zijn.
-* De minimale door Voer voor een Data Base met gedeelde door Voer is ook afhankelijk van het totale aantal containers dat u ooit hebt gemaakt in een gedeelde doorvoer database, gemeten op basis van 100 RU/s per container. Als u bijvoorbeeld vijf containers hebt gemaakt in een gedeelde doorvoer database, moet de door Voer ten minste 500 RU/s zijn
+* De huidige opslag in GB in de container. Als uw container bijvoorbeeld 100 GB opslag ruimte heeft, zou de laagst mogelijke ingerichte door Voer 1000 RU/s zijn. **Opmerking:** als uw container of data base meer dan 1 TB aan gegevens bevat, komt uw account mogelijk in aanmerking voor het [programma hoge opslag/lage door Voer](set-throughput.md#high-storage-low-throughput-program).
+* De minimale door Voer voor een Data Base met gedeelde door Voer is ook afhankelijk van het totale aantal containers dat u ooit hebt gemaakt in een gedeelde doorvoer database, gemeten op basis van 100 RU/s per container. Als u bijvoorbeeld vijf containers hebt gemaakt in een gedeelde doorvoer database, moet de door Voer ten minste 500 RU/s zijn.
 
 De huidige en minimale door Voer van een container of een Data Base kunnen worden opgehaald uit de Azure Portal of de Sdk's. Zie [door Voer inrichten voor containers en data bases](set-throughput.md)voor meer informatie. 
 
@@ -68,8 +68,8 @@ Zonder [Server](serverless.md) kunt u uw Azure Cosmos DB-resources op basis van 
 
 | Resource | Limiet |
 | --- | --- |
-| Maximum aantal RU/s per container | 5\.000 |
-| Maxi maal aantal RU/s per (logische) partitie | 5\.000 |
+| Maximum aantal RU/s per container | 5.000 |
+| Maxi maal aantal RU/s per (logische) partitie | 5.000 |
 | Maximale opslag ruimte in alle items per (logische) partitie | 20 GB |
 | Maximum aantal afzonderlijke (logische) partitie sleutels | Onbeperkt |
 | Maximale opslag per container | 50 GB |

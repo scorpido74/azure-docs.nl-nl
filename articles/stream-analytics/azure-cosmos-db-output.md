@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: e322135cfdb7aaff331367e84c603e8344436528
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a086d9fe150766c6b31210f29bf802a75e0ee4ec
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906254"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491729"
 ---
 # <a name="azure-cosmos-db-output-from-azure-stream-analytics"></a>Azure Cosmos DB uitvoer van Azure Stream Analytics
 
@@ -34,12 +34,12 @@ In de volgende tabel worden de eigenschappen beschreven voor het maken van een A
 | Account-id | De naam of eind punt-URI van het Azure Cosmos DB-account. |
 | Accountsleutel | De gedeelde toegangs sleutel voor het Azure Cosmos DB-account. |
 | Database | De naam van de Azure Cosmos DB-Data Base. |
-| Containernaam | De container naam die moet worden gebruikt, die voor komt in Cosmos DB. Voorbeeld:  <br /><ul><li> _MyContainer_: er moet een container met de naam ' MyContainer ' bestaan.</li>|
+| Containernaam | De container naam die moet worden gebruikt, die voor komt in Cosmos DB. Voorbeeld:  <br /><ul><li> _MyContainer_ : er moet een container met de naam ' MyContainer ' bestaan.</li>|
 | Document-ID |Optioneel. De naam van het veld in uitvoer gebeurtenissen dat wordt gebruikt om de primaire sleutel op te geven waarop invoeg-of update bewerkingen zijn gebaseerd.
 
 ## <a name="partitioning"></a>Partitionering
 
-De partitie sleutel is gebaseerd op de component PARTITION BY in de query. Het aantal schrijvers van de uitvoer volgt de invoer partities voor [volledig parallelle query's](stream-analytics-scale-jobs.md). Stream Analytics converteert de Cosmos DB uitvoer partitie sleutel naar een teken reeks. Als u bijvoorbeeld een partitie sleutel hebt met de waarde 1 van het type bigint, wordt deze geconverteerd naar 1 van het type teken reeks.
+De partitie sleutel is gebaseerd op de component PARTITION BY in de query. Het aantal schrijvers van de uitvoer volgt de invoer partities voor [volledig parallelle query's](stream-analytics-scale-jobs.md). Stream Analytics converteert de Cosmos DB uitvoer partitie sleutel naar een teken reeks. Als u bijvoorbeeld een partitie sleutel hebt met de waarde 1 van het type bigint, wordt deze geconverteerd naar 1 van het type teken reeks. Deze conversie vindt altijd plaats ongeacht of de eigenschap Partition naar Cosmos DB wordt geschreven.
 
 ## <a name="output-batch-size"></a>Grootte van uitvoer batch
 

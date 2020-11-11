@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: cdddbce3e9eb0a5c933ace186607186265197dc4
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: f8e0d49c2a35a1e97c79e6d4b8c867a4a8ab88b3
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123503"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491519"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>Meer informatie over Stream Analytics taak bewaking en het bewaken van query's
 
@@ -43,7 +43,7 @@ Het venster wordt weer gegeven zoals hieronder weer gegeven:
 | Out-of-order gebeurtenissen    | Het aantal gebeurtenissen dat in de juiste volg orde is ontvangen en dat is verwijderd of een aangepast tijds tempel heeft gegeven, op basis van het beleid voor het best Ellen van gebeurtenissen. Dit kan worden beïnvloed door de configuratie van de instelling voor het verouderde tolerantie venster. |
 | Uitvoer gebeurtenissen          | De hoeveelheid gegevens die door de Stream Analytics taak wordt verzonden naar het uitvoer doel, in aantal gebeurtenissen. |
 | Runtime-fouten         | Totaal aantal fouten met betrekking tot de verwerking van query's (zonder fouten gevonden tijdens het opnemen van gebeurtenissen of het uitvoeren van resultaten) |
-| % Gebruik       | Het gebruik van de streaming-eenheid (en) die zijn toegewezen aan een taak op het tabblad schaal van de taak. Als deze indicator 80% of hoger bereikt, is er een hoge waarschijnlijkheid dat de verwerking van gebeurtenissen kan worden vertraagd of gestopt. |
+| % Gebruik       | Als het resource gebruik consistent is dan 80%, wordt de vertraging van het water merk verhoogd en wordt het aantal achterstands gebeurtenissen Oplopend. Overweeg streaming-eenheden te verhogen. Hoog gebruik geeft aan dat de taak de Maxi maal toegewezen bronnen gebruikt. |
 | Watermerk vertraging       | De maximale vertraging voor het water merk over alle partities van alle uitvoer in de taak. |
 
 U kunt deze metrische gegevens gebruiken om [de prestaties van uw stream Analytics-taak te bewaken](./stream-analytics-set-up-alerts.md#scenarios-to-monitor). 

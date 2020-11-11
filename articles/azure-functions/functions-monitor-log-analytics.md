@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 51c611b2565ae0a5a054a45f0aedcb039351b46b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 582dafba40012e9ff9c59bc09adb1a0831e999f5
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88208371"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491219"
 ---
 # <a name="monitoring-azure-functions-with-azure-monitor-logs"></a>Azure Functions controleren met Azure Monitor-logboeken
 
@@ -22,23 +22,23 @@ Met Azure Monitor Logboeken kunt u logboeken van verschillende resources in deze
 Azure Monitor gebruikt een versie van de [Kusto-querytaal](/azure/kusto/query/) (KQL) die door Azure Data Explorer wordt gebruikt en die geschikt is voor eenvoudige logboekquery's maar die ook geavanceerde functies bevat, zoals aggregaties, joins en slimme analyse. Via [diverse lessen](../azure-monitor/log-query/get-started-queries.md) kunt u de querytaal snel leren.
 
 > [!NOTE]
-> Integratie met Azure Monitor Logboeken is momenteel beschikbaar als open bare Preview voor functie-apps die worden uitgevoerd op Windows-verbruiks-, Premium-en speciale hosting abonnementen.
+> Integratie met Azure Monitor-Logboeken is momenteel een open bare Preview voor v2-en V3-functie-apps die worden uitgevoerd op Windows-verbruiks-, Premium-en speciale hosting abonnementen.
 
 ## <a name="setting-up"></a>Instellen
 
-1. Selecteer in de sectie **bewaking** van de functie-app [Azure portal](https://portal.azure.com)in het Azure Portal **Diagnostische instellingen**en selecteer vervolgens **Diagnostische instelling toevoegen**.
+1. Selecteer in de sectie **bewaking** van de functie-app [Azure portal](https://portal.azure.com)in het Azure Portal **Diagnostische instellingen** en selecteer vervolgens **Diagnostische instelling toevoegen**.
 
    :::image type="content" source="media/functions-monitor-log-analytics/diagnostic-settings-add.png" alt-text="Diagnostische instellingen selecteren":::
 
-1. Kies op de pagina **Diagnostische instellingen** onder **categorie Details** en **logboek**de optie **FunctionAppLogs**.
+1. Kies op de pagina **Diagnostische instellingen** onder **categorie Details** en **logboek** de optie **FunctionAppLogs**.
 
    De tabel **FunctionAppLogs** bevat de gewenste Logboeken.
 
-1. Klik onder **Details van bestemming**op **verzenden naar log Analytics**en selecteer vervolgens uw **log Analytics werk ruimte**. 
+1. Klik onder **Details van bestemming** op **verzenden naar log Analytics** en selecteer vervolgens uw **log Analytics werk ruimte**. 
 
-1. Voer een naam in voor de **Diagnostische instellingen**en selecteer vervolgens **Opslaan**.
+1. Voer een naam in voor de **Diagnostische instellingen** en selecteer vervolgens **Opslaan**.
 
-   :::image type="content" source="media/functions-monitor-log-analytics/choose-table.png" alt-text="Diagnostische instellingen selecteren":::
+   :::image type="content" source="media/functions-monitor-log-analytics/choose-table.png" alt-text="Een diagnostische instelling toevoegen":::
 
 ## <a name="user-generated-logs"></a>Door de gebruiker gegenereerde logboeken
 
@@ -81,7 +81,7 @@ logging.info('My app logs here.')
 
 Query's uitvoeren op de gegenereerde logboeken:
  
-1. Selecteer **Diagnostische instellingen**uit de functie-app. 
+1. Selecteer **Diagnostische instellingen** uit de functie-app. 
 
 1. Selecteer in de lijst **Diagnostische instellingen** de log Analytics werk ruimte die u hebt geconfigureerd voor het verzenden van de functie Logboeken naar. 
 
@@ -89,7 +89,7 @@ Query's uitvoeren op de gegenereerde logboeken:
 
    Azure Functions schrijft alle logboeken naar de tabel **FunctionAppLogs** onder **LogManagement**. 
 
-   :::image type="content" source="media/functions-monitor-log-analytics/querying.png" alt-text="Diagnostische instellingen selecteren":::
+   :::image type="content" source="media/functions-monitor-log-analytics/querying.png" alt-text="Query venster in Log Analytics werk ruimte":::
 
 Hier volgen enkele voor beelden van query's:
 
@@ -125,4 +125,4 @@ FunctionAppLogs
 
 - Bekijk het [Azure functions overzicht](functions-overview.md).
 - Meer informatie over [Azure monitor-logboeken](../azure-monitor/platform/data-platform-logs.md).
-- Meer informatie over de [querytaal](../azure-monitor/log-query/get-started-queries.md).
+- Lees meer over de [querytaal](../azure-monitor/log-query/get-started-queries.md).

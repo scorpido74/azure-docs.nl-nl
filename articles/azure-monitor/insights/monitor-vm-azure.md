@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: 85c4807d5bf71078e3cfb26bbc27e9eecc10c041
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84db7f58c292cf0a9d01cf90da4b847691f601fb
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90029458"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491627"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>Virtuele Azure-machines bewaken met Azure Monitor
 In dit artikel wordt beschreven hoe u Azure Monitor kunt gebruiken om bewakings gegevens van virtuele Azure-machines te verzamelen en analyseren om hun status te behouden. Virtuele machines kunnen worden bewaakt voor Beschik baarheid en prestaties met Azure Monitor zoals elke [andere Azure-resource](monitor-azure-resource.md), maar ze zijn uniek van andere resources, aangezien u ook de gast besturingssystemen en het systeem en de werk belastingen die hierop worden uitgevoerd, moet bewaken. 
@@ -50,7 +50,7 @@ Als u gegevens wilt verzamelen uit het gast besturingssysteem van een virtuele m
 - [Telegrafie-agent](../platform/collect-custom-metrics-linux-telegraf.md) : Verzamel prestatie gegevens van virtuele Linux-machines in azure monitor meet waarden.
 
 
-## <a name="configuration-requirements"></a>Configuratie vereisten
+## <a name="configuration-requirements"></a>Configuratievereisten
 Als u alle functies van Azure Monitor voor het bewaken van een virtuele machine wilt inschakelen, moet u bewakings gegevens van de virtuele-machinehost en het gast besturingssysteem verzamelen voor zowel [Azure monitor metrieken](../platform/data-platform-logs.md) als [Azure monitor logboeken](../platform/data-platform-logs.md). De volgende tabel geeft een lijst van de configuratie die moet worden uitgevoerd om deze verzameling in te scha kelen. U kunt ervoor kiezen om niet al deze stappen uit te voeren, afhankelijk van uw specifieke vereisten.
 
 | Configuratie stap | Acties voltooid | Functies ingeschakeld |
@@ -139,7 +139,7 @@ Wanneer u de verzameling van bewakings gegevens voor een virtuele machine hebt g
 | Metrische gegevens | Open [Metrics Explorer](../platform/metrics-getting-started.md) met de scope die is ingesteld op de huidige virtuele machine. |
 | Diagnostische instellingen | De [uitbrei ding voor diagnostische gegevens](../platform/diagnostics-extension-overview.md) voor de huidige virtuele machine inschakelen en configureren. |
 | Advisor-aanbevelingen | Aanbevelingen voor de huidige virtuele machine van [Azure Advisor](../../advisor/index.yml). |
-| Logboeken | Open [log Analytics](../log-query/log-query-overview.md#what-is-log-analytics) met de [Scope](../log-query/scope.md) die is ingesteld op de huidige virtuele machine. |
+| Logboeken | Open [log Analytics](../log-query/log-analytics-overview.md) met de [Scope](../log-query/scope.md) die is ingesteld op de huidige virtuele machine. |
 | Verbindings monitor | Open [Network Watcher verbindings monitor](../../network-watcher/connection-monitor-preview.md) om de verbindingen tussen de huidige virtuele machine en andere virtuele machines te bewaken. |
 
 
@@ -170,7 +170,7 @@ Azure Monitor voor VM's kunt het verzamelen van een vooraf vastgestelde set pres
 
 
 > [!NOTE]
-> Prestatie gegevens die door de Log Analytics agent worden verzameld, worden naar de *prestatie* tabel geschreven terwijl Azure monitor voor VM's deze verzamelt naar de tabel *InsightsMetrics* . Dit zijn dezelfde gegevens, maar de tabellen hebben een andere structuur. Als u bestaande query's op basis van *perf*hebt, moet de worden herschreven om *InsightsMetrics*te gebruiken.
+> Prestatie gegevens die door de Log Analytics agent worden verzameld, worden naar de *prestatie* tabel geschreven terwijl Azure monitor voor VM's deze verzamelt naar de tabel *InsightsMetrics* . Dit zijn dezelfde gegevens, maar de tabellen hebben een andere structuur. Als u bestaande query's op basis van *perf* hebt, moet de worden herschreven om *InsightsMetrics* te gebruiken.
 
 
 ## <a name="alerts"></a>Waarschuwingen

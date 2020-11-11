@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 0a5c788b4429b5048a1b94fa8adfb2d9367982da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0591825bf187648293d5aabc88597b19ab2436e
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90033469"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491049"
 ---
 # <a name="deploy-azure-monitor"></a>Azure Monitor implementeren
 Het inschakelen van Azure Monitor voor het bewaken van al uw Azure-resources is een combi natie van het configureren van Azure Monitor onderdelen en het configureren van Azure-resources voor het genereren van bewakings gegevens voor Azure Monitor voor het verzamelen van In dit artikel worden de verschillende stappen beschreven die nodig zijn voor een volledige implementatie van Azure Monitor met behulp van een gemeen schappelijke configuratie om alle resources in uw Azure-abonnement te controleren. De basis beschrijvingen voor elke stap worden verstrekt met koppelingen naar andere documentatie voor gedetailleerde configuratie vereisten.
@@ -118,7 +118,7 @@ Zie de [Windows Azure Diagnostics-extensie (WAD) installeren en configureren](pl
 Azure Monitor bewaakt uw aangepaste toepassingen met behulp van [Application Insights](app/app-insights-overview.md), die u moet configureren voor elke toepassing die u wilt bewaken. Het configuratie proces verschilt, afhankelijk van het type toepassing dat wordt bewaakt en het type bewaking dat u wilt uitvoeren. Gegevens die door Application Insights worden verzameld, worden opgeslagen in Azure Monitor metrieken, Azure Monitor logboeken en Azure Blob-opslag, afhankelijk van de functie. Prestatie gegevens worden opgeslagen in zowel Azure Monitor metrieken als Azure Monitor logboeken zonder dat er aanvullende configuratie is vereist.
 
 ### <a name="create-an-application-resource"></a>Een toepassings bron maken
-U moet een resource in Application Insights maken voor elke toepassing die u wilt bewaken. Logboek gegevens die door Application Insights worden verzameld, worden opgeslagen in Azure Monitor logboeken voor een toepassing op basis van een werk ruimte. Logboek gegevens voor klassieke toepassingen worden gescheiden van uw Log Analytics-werk ruimte opgeslagen, zoals wordt beschreven in de [structuur van gegevens](platform/data-platform-logs.md#structure-of-data).
+U moet een resource in Application Insights maken voor elke toepassing die u wilt bewaken. Logboek gegevens die door Application Insights worden verzameld, worden opgeslagen in Azure Monitor logboeken voor een toepassing op basis van een werk ruimte. Logboek gegevens voor klassieke toepassingen worden gescheiden van uw Log Analytics-werk ruimte opgeslagen, zoals beschreven in de [gegevens structuur](platform/data-platform-logs.md#data-structure).
 
  Wanneer u de toepassing maakt, moet u selecteren of u klassiek of op werk ruimte gebaseerde wilt gebruiken. Zie [een Application Insights resource maken](app/create-new-resource.md) om een klassieke toepassing te maken. Zie [Application Insights resources op basis van een werk ruimte (preview)](app/create-workspace-resource.md) om een op werk ruimte gebaseerde toepassing te maken.
 

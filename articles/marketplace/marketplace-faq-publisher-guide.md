@@ -4,15 +4,15 @@ description: Krijg antwoorden op veelgestelde vragen over Azure Marketplace en M
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: keferna
-ms.author: keferna
+author: trkeya
+ms.author: trkeya
 ms.date: 09/11/2020
-ms.openlocfilehash: a5c5d7ae4dbf1126d171c78bbd4e353f11402260
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: e72acb532a33d0b3751bb8ad5051b1a3df4d7514
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93126716"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491474"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Veelgestelde vragen over de micro soft Commercial Marketplace
 
@@ -58,10 +58,10 @@ Als u zich wilt aanmelden als een commerciële Marketplace-Uitgever, gaat u naar
 
 De manieren waarop klanten uw commerciële Marketplace-aanbieding kunnen gebruiken, zijn afhankelijk van hoe u de aanbiedingen maakt.
 
-- Voor oplossingen die u automatisch geeft, ongeacht of ze worden betaald, uw eigen licentie (BYOL) of gratis, worden klanten gevraagd om *dit nu te doen* .
-- Aanbiedingen die ondersteuning bieden voor een test drive (demo) aanvragen van de klant om het *station te testen* . 
-- SaaS-aanbiedingen (Software as a Service) die een proef versie bieden buiten de commerciële Marketplace *gratis proef versie* .
-- Met eenvoudige vermeldingen kan de klant *contact met mij opnemen* .
+- Voor oplossingen die u automatisch geeft, ongeacht of ze worden betaald, uw eigen licentie (BYOL) of gratis, worden klanten gevraagd om *dit nu te doen*.
+- Aanbiedingen die ondersteuning bieden voor een test drive (demo) aanvragen van de klant om het *station te testen*. 
+- SaaS-aanbiedingen (Software as a Service) die een proef versie bieden buiten de commerciële Marketplace *gratis proef versie*.
+- Met eenvoudige vermeldingen kan de klant *contact met mij opnemen*.
 
 ### <a name="how-do-i-create-offers-for-the-commercial-marketplace"></a>Hoe kan ik aanbiedingen voor de commerciële Marketplace maken?
 

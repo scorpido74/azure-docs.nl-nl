@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 04/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 551f0065f1547e94d93993a38795234f455b9eef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b20391c4d856a5c52b6017ae892ec0b86873dbca
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86044393"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491882"
 ---
 # <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities"></a>Stream Analytics verifiëren voor het Azure Data Lake Storage Gen1 met behulp van beheerde identiteiten
 
@@ -34,11 +34,11 @@ In dit artikel ziet u drie manieren om beheerde identiteit in te scha kelen voor
 
    ![Service-Principal-ID Stream Analytics](./media/stream-analytics-managed-identities-adls/stream-analytics-principal-id.png)
  
-   De service-principal heeft dezelfde naam als de Stream Analytics taak. Als de naam van uw taak bijvoorbeeld **MyASAJob**is, is de naam van de service-principal die is gemaakt ook **MyASAJob**.
+   De service-principal heeft dezelfde naam als de Stream Analytics taak. Als de naam van uw taak bijvoorbeeld **MyASAJob** is, is de naam van de service-principal die is gemaakt ook **MyASAJob**.
 
 3. Klik in het venster uitvoer eigenschappen van de ADLS Gen1 uitvoer Sink op de vervolg keuzelijst verificatie modus en selecteer * * beheerde identiteit * *.
 
-4. Vul de rest van de eigenschappen in. Zie [een Data Lake Store-uitvoer maken met Stream Analytics](../data-lake-store/data-lake-store-stream-analytics.md)voor meer informatie over het maken van een ADLS-uitvoer. Klik op **Opslaan**als u klaar bent.
+4. Vul de rest van de eigenschappen in. Zie [een Data Lake Store-uitvoer maken met Stream Analytics](../data-lake-store/data-lake-store-stream-analytics.md)voor meer informatie over het maken van een ADLS-uitvoer. Klik op **Opslaan** als u klaar bent.
 
    ![Azure Data Lake Storage configureren](./media/stream-analytics-managed-identities-adls/stream-analytics-configure-adls.png)
  
@@ -175,12 +175,16 @@ In dit artikel ziet u drie manieren om beheerde identiteit in te scha kelen voor
 
    Raadpleeg de documentatie van [set-AzDataLakeStoreItemAclEntry](/powershell/module/az.datalakestore/set-azdatalakestoreitemaclentry) voor meer informatie over de bovenstaande Power shell-opdracht.
 
+## <a name="remove-managed-identity"></a>Beheerde identiteit verwijderen
+
+De beheerde identiteit die is gemaakt voor een Stream Analytics taak wordt alleen verwijderd wanneer de taak wordt verwijderd. Het is niet mogelijk om de beheerde identiteit te verwijderen zonder de taak te verwijderen. Als u de beheerde identiteit niet meer wilt gebruiken, kunt u de verificatie methode voor de uitvoer wijzigen. De beheerde identiteit blijft bestaan totdat de taak is verwijderd en wordt gebruikt als u ervoor kiest beheerde identiteits verificatie opnieuw te gebruiken.
+
 ## <a name="limitations"></a>Beperkingen
 Deze functie biedt geen ondersteuning voor het volgende:
 
-1. **Multi tenant-toegang**: de service-principal die is gemaakt voor een bepaalde stream Analytics taak bevindt zich op de Azure Active Directory Tenant waarop de taak is gemaakt en kan niet worden gebruikt voor een resource die zich op een andere Azure Active Directory Tenant bevindt. Daarom kunt u alleen MSI gebruiken op ADLS gen 1-resources die zich in dezelfde Azure Active Directory Tenant bevinden als uw Azure Stream Analytics-taak. 
+1. **Multi tenant-toegang** : de service-principal die is gemaakt voor een bepaalde stream Analytics taak bevindt zich op de Azure Active Directory Tenant waarop de taak is gemaakt en kan niet worden gebruikt voor een resource die zich op een andere Azure Active Directory Tenant bevindt. Daarom kunt u alleen MSI gebruiken op ADLS gen 1-resources die zich in dezelfde Azure Active Directory Tenant bevinden als uw Azure Stream Analytics-taak. 
 
-2. Door **[gebruiker toegewezen identiteit](../active-directory/managed-identities-azure-resources/overview.md)**: wordt niet ondersteund. Dit betekent dat de gebruiker niet in staat is om hun eigen Service-Principal in te voeren om te worden gebruikt door hun Stream Analytics-taak. De service-principal wordt gegenereerd door Azure Stream Analytics.
+2. Door **[gebruiker toegewezen identiteit](../active-directory/managed-identities-azure-resources/overview.md)** : wordt niet ondersteund. Dit betekent dat de gebruiker niet in staat is om hun eigen Service-Principal in te voeren om te worden gebruikt door hun Stream Analytics-taak. De service-principal wordt gegenereerd door Azure Stream Analytics.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -3,12 +3,12 @@ title: 'Concept: een implementatie van een Azure VMware-oplossing integreren in 
 description: Meer informatie over het integreren van een implementatie van een Azure VMware-oplossing in een hub-en spoke-architectuur in Azure.
 ms.topic: conceptual
 ms.date: 10/26/2020
-ms.openlocfilehash: 93c11ad9253fe78e1935da7b40e7251788f1f037
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 0895e9c97f79e433b0383f0a99fbeeb124fd9064
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92674688"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490811"
 ---
 # <a name="integrate-azure-vmware-solution-in-a-hub-and-spoke-architecture"></a>Azure VMware-oplossing integreren in een hub-en spoke-architectuur
 
@@ -36,30 +36,29 @@ In het diagram ziet u een voor beeld van een hub-en spoke-implementatie in azure
 
 De architectuur heeft de volgende hoofd onderdelen:
 
--   **On-premises site:** On-premises data centers van de klant die zijn verbonden met Azure via een ExpressRoute-verbinding.
+- **On-premises site:** On-premises data centers van de klant die zijn verbonden met Azure via een ExpressRoute-verbinding.
 
--   **Privécloud van Azure VMware-oplossing:** Azure VMware-oplossing SDDC gevormd door een of meer vSphere-clusters, elk met Maxi maal 16 knoop punten.
+- **Privécloud van Azure VMware-oplossing:** Azure VMware-oplossing SDDC gevormd door een of meer vSphere-clusters, elk met Maxi maal 16 knoop punten.
 
--   **ExpressRoute-gateway:** Hiermee schakelt u de communicatie tussen de privécloud-oplossing van Azure VMware, gedeelde services op het virtuele hub-netwerk en workloads die worden uitgevoerd op spoke virtuele netwerken.
+- **ExpressRoute-gateway:** Hiermee schakelt u de communicatie tussen de privécloud-oplossing van Azure VMware, gedeelde services op het virtuele hub-netwerk en workloads die worden uitgevoerd op spoke virtuele netwerken.
 
--   **ExpressRoute Global Reach:** Hiermee schakelt u de connectiviteit tussen on-premises en Azure VMware-oplossing privécloud.
-
-
-  > [!NOTE]
-  > **Overwegingen voor S2S-VPN:** Voor implementaties van Azure VMware-oplossingen productie wordt Azure S2S VPN niet ondersteund vanwege netwerk vereisten voor VMware-HCX. U kunt het echter gebruiken voor een haalbaarheids implementatie.
+- **ExpressRoute Global Reach:** Hiermee schakelt u de connectiviteit tussen on-premises en Azure VMware-oplossing privécloud. De connectiviteit tussen de Azure VMware-oplossing en de Azure-infra structuur is alleen ExpressRoute Global Reach. U kunt geen optie selecteren buiten het snelle pad ExpressRoute.  ExpressRoute direct wordt niet ondersteund.
 
 
--   **Virtueel netwerk hub:** Fungeert als het centrale punt van connectiviteit naar uw on-premises netwerk en Azure VMware-oplossing privécloud.
+- **Overwegingen voor S2S-VPN:** Voor implementaties van Azure VMware-oplossingen productie wordt Azure S2S VPN niet ondersteund vanwege netwerk vereisten voor VMware-HCX. U kunt het echter gebruiken voor een haalbaarheids implementatie.
 
--   **Spoke-virtueel netwerk**
 
-    -   **IaaS Spaak:** Een IaaS-spoke fungeert als host voor Azure IaaS-workloads, waaronder VM-beschikbaarheids sets en schaal sets voor virtuele machines en de bijbehorende netwerk onderdelen.
+- **Virtueel netwerk hub:** Fungeert als het centrale punt van connectiviteit naar uw on-premises netwerk en Azure VMware-oplossing privécloud.
 
-    -   **PaaS Spaak:** Een PaaS Spaak fungeert als host voor Azure PaaS Services met privé-adres Sering dankzij het [persoonlijke eind punt](../private-link/private-endpoint-overview.md) en de [persoonlijke koppeling](../private-link/private-link-overview.md).
+- **Spoke-virtueel netwerk**
 
--   **Azure firewall:** Fungeert als het centrale stuk om het verkeer tussen de spokes en de Azure VMware-oplossing te segmenteren.
+    - **IaaS Spaak:** Een IaaS-spoke fungeert als host voor Azure IaaS-workloads, waaronder VM-beschikbaarheids sets en schaal sets voor virtuele machines en de bijbehorende netwerk onderdelen.
 
--   **Application Gateway:** Beschrijft en beveiligt web-apps die worden uitgevoerd op Azure IaaS/PaaS of virtuele machines met Azure VMware-oplossingen. Het is geïntegreerd met andere services, zoals API Management.
+    - **PaaS Spaak:** Een PaaS Spaak fungeert als host voor Azure PaaS Services met privé-adres Sering dankzij het [persoonlijke eind punt](../private-link/private-endpoint-overview.md) en de [persoonlijke koppeling](../private-link/private-link-overview.md).
+
+- **Azure firewall:** Fungeert als het centrale stuk om het verkeer tussen de spokes en de Azure VMware-oplossing te segmenteren.
+
+- **Application Gateway:** Beschrijft en beveiligt web-apps die worden uitgevoerd op Azure IaaS/PaaS of virtuele machines met Azure VMware-oplossingen. Het is geïntegreerd met andere services, zoals API Management.
 
 ## <a name="network-and-security-considerations"></a>Netwerk-en beveiligings overwegingen
 
@@ -69,12 +68,12 @@ Omdat een ExpressRoute-gateway geen transitieve route ring biedt tussen de verbo
 
 * **Verkeers stroom van on-premises naar Azure VMware-oplossing**
 
-  :::image type="content" source="./media/hub-spoke/on-premises-azure-vmware-solution-traffic-flow.png" alt-text="Implementatie van Azure VMware Solution hub en spoke-integratie" border="false" lightbox="./media/hub-spoke/on-premises-azure-vmware-solution-traffic-flow.png":::
+  :::image type="content" source="./media/hub-spoke/on-premises-azure-vmware-solution-traffic-flow.png" alt-text="Verkeers stroom van on-premises naar Azure VMware-oplossing" border="false" lightbox="./media/hub-spoke/on-premises-azure-vmware-solution-traffic-flow.png":::
 
 
 * **Azure VMware-oplossing voor hub VNET-verkeers stroom**
 
-  :::image type="content" source="./media/hub-spoke/azure-vmware-solution-hub-vnet-traffic-flow.png" alt-text="Implementatie van Azure VMware Solution hub en spoke-integratie" border="false" lightbox="./media/hub-spoke/azure-vmware-solution-hub-vnet-traffic-flow.png":::
+  :::image type="content" source="./media/hub-spoke/azure-vmware-solution-hub-vnet-traffic-flow.png" alt-text="Azure VMware-oplossing voor het hub-verkeer van virtuele netwerken" border="false" lightbox="./media/hub-spoke/azure-vmware-solution-hub-vnet-traffic-flow.png":::
 
 
 Meer informatie over de netwerk-en connectiviteits concepten van Azure VMware Solution vindt u in de [product documentatie van de Azure VMware-oplossing](./concepts-networking.md).
@@ -85,7 +84,7 @@ Meer informatie over de netwerk-en connectiviteits concepten van Azure VMware So
 
 Maak route tabellen om het verkeer naar Azure Firewall te sturen.  Maak voor de spoke-virtuele netwerken een route waarmee de standaard route wordt ingesteld op de interne interface van Azure Firewall. Op deze manier kan de firewall, wanneer een werk belasting in de Virtual Network de adres ruimte van de Azure VMware-oplossing moet bereiken, deze evalueren en de bijbehorende verkeers regel Toep assen om deze toe te staan of te weigeren.  
 
-:::image type="content" source="media/hub-spoke/create-route-table-to-direct-traffic.png" alt-text="Implementatie van Azure VMware Solution hub en spoke-integratie" lightbox="media/hub-spoke/create-route-table-to-direct-traffic.png":::
+:::image type="content" source="media/hub-spoke/create-route-table-to-direct-traffic.png" alt-text="Route tabellen maken voor het omleiden van verkeer naar Azure Firewall" lightbox="media/hub-spoke/create-route-table-to-direct-traffic.png":::
 
 
 > [!IMPORTANT]
@@ -93,7 +92,7 @@ Maak route tabellen om het verkeer naar Azure Firewall te sturen.  Maak voor de 
 
 Routes instellen voor specifieke netwerken op de bijbehorende route tabel. Bijvoorbeeld: routes voor het bereiken van Azure VMware-oplossings beheer en werk belastingen IP-voor voegsels van de spoke-workloads en de andere manier.
 
-:::image type="content" source="media/hub-spoke/specify-gateway-subnet-for-route-table.png" alt-text="Implementatie van Azure VMware Solution hub en spoke-integratie" lightbox="media/hub-spoke/specify-gateway-subnet-for-route-table.png":::
+:::image type="content" source="media/hub-spoke/specify-gateway-subnet-for-route-table.png" alt-text="Routes instellen voor specifieke netwerken op de bijbehorende route tabel" lightbox="media/hub-spoke/specify-gateway-subnet-for-route-table.png":::
 
 Een tweede niveau van Traffic segmentatie met behulp van de netwerk beveiligings groepen binnen de spokes en de hub om een meer gedetailleerd verkeers beleid te maken.
 
@@ -106,7 +105,7 @@ Azure-toepassing gateway v1 en v2 zijn getest met web apps die worden uitgevoerd
 
 Raadpleeg het artikel over de Azure VMware-oplossing op [Application Gateway](./protect-azure-vmware-solution-with-application-gateway.md) voor de details en vereisten.
 
-:::image type="content" source="media/hub-spoke/azure-vmware-solution-second-level-traffic-segmentation.png" alt-text="Implementatie van Azure VMware Solution hub en spoke-integratie" border="false":::
+:::image type="content" source="media/hub-spoke/azure-vmware-solution-second-level-traffic-segmentation.png" alt-text="Tweede niveau van verkeers segmentatie met behulp van de netwerk beveiligings groepen" border="false":::
 
 
 ### <a name="jump-box-and-azure-bastion"></a>Jump box en Azure Bastion
@@ -122,7 +121,7 @@ Implementeer [Microsoft Azure Bastion](../bastion/index.yml) -service in het vir
 > Geef geen openbaar IP-adres toe aan de VM met het Jump box of stel de poort 3389/TCP beschikbaar op het open bare Internet. 
 
 
-:::image type="content" source="media/hub-spoke/azure-bastion-hub-vnet.png" alt-text="Implementatie van Azure VMware Solution hub en spoke-integratie" border="false":::
+:::image type="content" source="media/hub-spoke/azure-bastion-hub-vnet.png" alt-text="Virtueel Azure Bastion hub-netwerk" border="false":::
 
 
 ## <a name="azure-dns-resolution-considerations"></a>Overwegingen voor Azure DNS oplossingen
@@ -139,11 +138,7 @@ Als algemene ontwerp aanbeveling gebruikt u de bestaande Azure DNS-infra structu
 
 U kunt Azure Privé-DNS gebruiken, waarbij de Azure Privé-DNS-zone aan het virtuele netwerk is gekoppeld.  De DNS-servers worden gebruikt als hybride resolvers met voorwaardelijke door sturen naar een on-premises of Azure VMware-oplossing die gebruikmaakt van de Azure Privé-DNS-infra structuur van de klant. 
 
-Er zijn verschillende aandachtspunten voor het Azure DNS van particuliere zones:
-
-* Automatische registratie moet zijn ingeschakeld om Azure DNS de levens cyclus van de DNS-records automatisch te beheren voor de Vm's die zijn geïmplementeerd in spoke Virtual Networks.
-* Het maximum aantal privé-DNS-zones waaraan een virtueel netwerk kan worden gekoppeld met de functie voor registratie is ingeschakeld, is slechts één.
-* Het maximum aantal privé-DNS-zones waaraan een virtueel netwerk kan worden gekoppeld, is 1000 zonder dat de registratie is ingeschakeld.
+Als u de levens cyclus van de DNS-records voor de Vm's die zijn geïmplementeerd in de spoke-virtuele netwerken automatisch wilt beheren, schakelt u automatische registratie in. Wanneer deze functie is ingeschakeld, is het maximum aantal privé-DNS-zones slechts één. Als deze is uitgeschakeld, is het maximum aantal 1000.
 
 On-premises en Azure VMware-oplossingen kunnen worden geconfigureerd met voorwaardelijke doorstuur servers voor het oplossen van Vm's in azure voor de Azure Privé-DNS-zone.
 

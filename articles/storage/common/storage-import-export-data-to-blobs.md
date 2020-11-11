@@ -9,12 +9,12 @@ ms.date: 10/29/2020
 ms.author: alkohli
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 32187b7aedd43a57ffe77c2f8524c54049ba10ae
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.openlocfilehash: d23560e8ee387ca8bc9cb4bba4211f6c8272addd
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93234117"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490879"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>De Azure import/export-service gebruiken om gegevens te importeren in Azure Blob Storage
 
@@ -71,7 +71,7 @@ Voer de volgende stappen uit om de stations voor te bereiden.
 7. Voer de volgende opdracht uit om de schijf voor te bereiden. **Afhankelijk van de gegevens grootte kan dit enkele uren tot dagen duren.**
 
     ```powershell
-    ./WAImportExport.exe PrepImport /j:<journal file name> /id:session#<session number> /t:<Drive letter> /bk:<BitLocker key> /srcdir:<Drive letter>:\ /dstdir:<Container name>/ /blobtype:<BlockBlob or PageBlob> /skipwrite
+    ./WAImportExport.exe PrepImport /j:<journal file name> /id:session<session number> /t:<Drive letter> /bk:<BitLocker key> /srcdir:<Drive letter>:\ /dstdir:<Container name>/ /blobtype:<BlockBlob or PageBlob> /skipwrite
     ```
 
     Er wordt een logboek bestand gemaakt in dezelfde map waarin u het hulp programma hebt uitgevoerd. Er worden ook twee andere bestanden gemaakt: een *. XML* -bestand (de map waarin u het hulp programma uitvoert) en een *drive-manifest.xml* bestand (de map waarin de gegevens zich bevinden).
@@ -101,17 +101,17 @@ Voer de volgende stappen uit om de stations voor te bereiden.
 Voer de volgende stappen uit om een import taak te maken in de Azure Portal.
 
 1. Meld u aan bij https://portal.azure.com/ .
-2. Ga naar **alle services > opslag > import/export-taken** .
+2. Ga naar **alle services > opslag > import/export-taken**.
 
     ![Ga naar import/export-taken](./media/storage-import-export-data-to-blobs/import-to-blob1.png)
 
-3. Klik op **import/export-taak maken** .
+3. Klik op **import/export-taak maken**.
 
     ![Klik op import/export-taak maken](./media/storage-import-export-data-to-blobs/import-to-blob2.png)
 
 4. In de **basis beginselen** :
 
-   * Selecteer **importeren in azure** .
+   * Selecteer **importeren in azure**.
    * Voer een beschrijvende naam in voor de import taak. Gebruik de naam om de voortgang van uw taken bij te houden.
        * De naam mag alleen kleine letters, cijfers en afbreek streepjes bevatten.
        * De naam moet beginnen met een letter en mag geen spaties bevatten.
@@ -146,7 +146,7 @@ Voer de volgende stappen uit om een import taak te maken in de Azure Portal.
 
      ![Import taak maken-stap 4](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
 
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 Gebruik de volgende stappen om een import taak te maken in de Azure CLI.
 

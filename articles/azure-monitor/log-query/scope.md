@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/09/2020
-ms.openlocfilehash: 2036505dea134a59e7dc0c75a030175b15dac0b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 066e9cf6c63c9f2073ba869e8b40e25bfc993cd8
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90031939"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491372"
 ---
 # <a name="log-query-scope-and-time-range-in-azure-monitor-log-analytics"></a>Query bereik en tijds bereik in Azure Monitor vastleggen Log Analytics
 Wanneer u een [logboek query](log-query-overview.md) uitvoert in [Log Analytics in het Azure Portal](get-started-portal.md), is de set gegevens die door de query wordt geëvalueerd, afhankelijk van het bereik en het tijds bereik dat u selecteert. In dit artikel worden de bereik-en tijds periode beschreven en wordt uitgelegd hoe u deze kunt instellen, afhankelijk van uw vereisten. Ook wordt het gedrag van verschillende soorten bereiken beschreven.
@@ -51,9 +51,7 @@ U kunt de volgende opdrachten niet gebruiken in een query wanneer het bereik is 
 - [werk ruimte](workspace-expression.md)
  
 
-## <a name="query-limits"></a>Querylimieten
-Mogelijk hebt u zakelijke vereisten voor een Azure-resource om gegevens te schrijven naar meerdere Log Analytics-werk ruimten. De werk ruimte hoeft zich niet in dezelfde regio te bevinden als de resource en er kunnen in één werk ruimte gegevens worden verzameld van resources in verschillende regio's.  
-
+## <a name="query-scope-limits"></a>Limieten voor query bereik
 Het instellen van het bereik op een resource of set resources is een bijzonder krachtige functie van Log Analytics, omdat u hiermee automatisch gedistribueerde gegevens kunt samen voegen in één query. Dit kan een grote invloed hebben op de prestaties, maar als er gegevens moeten worden opgehaald uit werk ruimten in meerdere Azure-regio's.
 
 Log Analytics biedt beveiliging tegen buitensporige overhead van query's die werk ruimten in meerdere regio's omvatten door een waarschuwing of fout te geven wanneer een bepaald aantal regio's wordt gebruikt. In de query wordt een waarschuwing weer gegeven als het bereik werk ruimten in vijf of meer regio's bevat. het wordt nog steeds uitgevoerd, maar het kan veel tijd kosten om te volt ooien.
@@ -66,28 +64,24 @@ De uitvoering van uw query wordt geblokkeerd als het bereik werk ruimten in 20 o
 
 
 ## <a name="time-range"></a>Tijdsbereik
-Met het tijds bereik wordt de set records opgegeven die voor de query worden geëvalueerd op basis van het moment waarop de record is gemaakt. Dit wordt gedefinieerd door een standaard kolom op elke record in de werk ruimte of toepassing, zoals opgegeven in de volgende tabel.
+Met het tijds bereik wordt de set records opgegeven die voor de query worden geëvalueerd op basis van het moment waarop de record is gemaakt. Dit wordt gedefinieerd door de kolom **TimeGenerated** op elke record in de werk ruimte of toepassing zoals opgegeven in de volgende tabel. Voor een klassieke Application Insights toepassing wordt de **Time Stamp** -kolom gebruikt voor het tijds bereik.
 
-| Locatie | Kolom |
-|:---|:---|
-| Log Analytics-werkruimte          | TimeGenerated |
-| Application Insights toepassing | tijdstempel     |
 
 Stel het tijds bereik in door het te selecteren in de tijd kiezer boven aan het Log Analytics-venster.  U kunt een vooraf gedefinieerde periode selecteren of **aangepast** selecteren om een specifiek tijds bereik op te geven.
 
 ![Tijdkiezer](media/scope/time-picker.png)
 
-Als u een filter instelt in de query die gebruikmaakt van de standaard tijd kolom zoals weer gegeven in de bovenstaande tabel, wordt de tijd kiezer gewijzigd **in de query**en wordt de tijd kiezer uitgeschakeld. In dit geval is het het meest efficiënt om het filter boven aan de query te plaatsen, zodat alle volgende verwerkingen alleen met de gefilterde records hoeven te werken.
+Als u een filter instelt in de query die gebruikmaakt van de standaard tijd kolom zoals weer gegeven in de bovenstaande tabel, wordt de tijd kiezer gewijzigd **in de query** en wordt de tijd kiezer uitgeschakeld. In dit geval is het het meest efficiënt om het filter boven aan de query te plaatsen, zodat alle volgende verwerkingen alleen met de gefilterde records hoeven te werken.
 
 ![Gefilterde query](media/scope/query-filtered.png)
 
-Als u de [werk ruimte](workspace-expression.md) -of [app](app-expression.md) -opdracht gebruikt om gegevens op te halen uit een andere werk ruimte of toepassing, kan het zijn dat de tijd kiezer anders werkt. Als het bereik een Log Analytics-werk ruimte is en u **app**gebruikt, of als het bereik een Application Insights toepassing is en u de **werk ruimte**gebruikt, moet log Analytics mogelijk niet begrijpen dat de kolom die in het filter wordt gebruikt, het tijd filter kan bepalen.
+Als u de [werk ruimte](workspace-expression.md) -of [app](app-expression.md) -opdracht voor het ophalen van gegevens uit een andere werk ruimte of klassieke toepassing gebruikt, kan het zijn dat de tijd kiezer anders werkt. Als het bereik een Log Analytics-werk ruimte is en u **app** gebruikt, of als het bereik een klassieke Application Insights toepassing is en u de **werk ruimte** gebruikt, moet log Analytics mogelijk niet begrijpen dat de kolom die in het filter wordt gebruikt, het tijd filter kan bepalen.
 
 In het volgende voor beeld wordt de scope ingesteld op een Log Analytics-werk ruimte.  De query gebruikt de **werk ruimte** om gegevens op te halen uit een andere log Analytics-werk ruimte. De tijd kiezer verandert **in een query** , omdat er een filter wordt gezien dat de verwachte **TimeGenerated** -kolom gebruikt.
 
 ![Query met werk ruimte](media/scope/query-workspace.png)
 
-Als de query gebruik maakt van de **app** om gegevens op te halen uit een Application Insights-toepassing, wordt de **Time Stamp** -kolom in het filter niet door log Analytics herkend en blijft de tijd kiezer ongewijzigd. In dit geval worden beide filters toegepast. In het voor beeld worden alleen records die in de afgelopen 24 uur zijn gemaakt, opgenomen in de query, zelfs als deze 7 dagen opgeeft in de **where** -component.
+Als de query gebruik maakt van de **app** om gegevens op te halen uit een klassieke Application Insights toepassing, wordt de **Time Stamp** -kolom in het filter niet door log Analytics herkend en blijft de tijd kiezer ongewijzigd. In dit geval worden beide filters toegepast. In het voor beeld worden alleen records die in de afgelopen 24 uur zijn gemaakt, opgenomen in de query, zelfs als deze 7 dagen opgeeft in de **where** -component.
 
 ![Query's uitvoeren met app](media/scope/query-app.png)
 

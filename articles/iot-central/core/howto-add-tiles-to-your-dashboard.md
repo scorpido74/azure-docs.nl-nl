@@ -1,18 +1,17 @@
 ---
-title: Tegels toevoegen aan uw Azure IoT Central-dash board | Microsoft Docs
+title: Configureren voor uw Azure IoT Central-dash board | Microsoft Docs
 description: Als ontwerper leert u hoe u de standaard Azure IoT Central Application dash board kunt configureren met tegels.
-author: Haley-Rowland
-ms.author: harowl
-ms.date: 05/27/2020
+author: TheJasonAndrew
+ms.author: v-anjaso
+ms.date: 11/06/2020
 ms.topic: how-to
 ms.service: iot-central
-services: iot-central
-ms.openlocfilehash: 5276f9b8c6dd3bdc305142e5b9452cd9c5d60bce
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 2ea2dd18cd5816c7c1406ac201421a2983e431a3
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376980"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491976"
 ---
 # <a name="configure-the-application-dashboard"></a>Het toepassings dashboard configureren
 
@@ -29,23 +28,26 @@ In de volgende scherm afbeelding ziet u het dash board in een toepassing die is 
 
 Nadat u **bewerken** of **Nieuw** hebt geselecteerd, bevindt het dash board zich in de *bewerkings* modus. U kunt de hulpprogram ma's in het deel venster **dash board bewerken** gebruiken om tegels aan het dash board toe te voegen en tegels op het dash board zelf aan te passen en te verwijderen. Als u bijvoorbeeld een **telemetrie** -tegel wilt toevoegen om de huidige Tempe ratuur weer te geven die wordt gerapporteerd door een of meer apparaten:
 
-1. Selecteer een **apparaatgroep** in het deel venster **dash board bewerken** .
-1. Selecteer een of meer apparaten in de vervolg keuzelijst **apparaten** om weer te geven op de tegel. U ziet nu de beschik bare telemetrie, eigenschappen en opdrachten van de apparaten.
-1. Selecteer **Tempe ratuur** in het gedeelte telemetrie en selecteer vervolgens **tegel toevoegen**. De tegel wordt nu weer gegeven op het dash board, waar u de visualisatie kunt wijzigen, het formaat van de tegel wijzigt en deze configureert:
+1. Selecteer een **apparaatgroep** en kies vervolgens uw apparaten in de vervolg keuzelijst **apparaten** om weer te geven op de tegel. U ziet nu de beschik bare telemetrie, eigenschappen en opdrachten van de apparaten.
+
+1. Als dat nodig is, gebruikt u de vervolg keuzelijst om een telemetrie-waarde te selecteren die op de tegel moet worden weer gegeven. U kunt meer items aan de tegel toevoegen door **+ telemetrie** , **+ eigenschap** of **+ Cloud** in te scha kelen.
 
 :::image type="content" source="media/howto-add-tiles-to-your-dashboard/device-details.png" alt-text="Een tweemetrische temperatuur tegel toevoegen aan het dash board":::
 
-Wanneer u klaar bent met het toevoegen en aanpassen van tegels op het dash board, selecteert u **Opslaan**.
+Wanneer u alle waarden hebt geselecteerd die u wilt weer geven op de tegel, klikt u op **tegel toevoegen.** De tegel wordt nu weer gegeven op het dash board, waar u de visualisatie kunt wijzigen, het formaat ervan wijzigt, het item verplaatst en configureert.
+
+Wanneer u klaar bent met het toevoegen en aanpassen van tegels op het dash board, selecteert u **Opslaan** om de wijzigingen in het dash board op te slaan, waardoor u de bewerkings modus kunt verlaten.
 
 ## <a name="customize-tiles"></a>Tegels aanpassen
 
-Als u een tegel op het dash board wilt aanpassen, moet het dash board zich in de bewerkings modus bevindt. De beschik bare aanpassings opties zijn afhankelijk van het [type tegel](#tile-types):
+Als u een tegel wilt bewerken, moet u zich in de bewerkings modus bevindt.  De beschik bare aanpassings opties zijn afhankelijk van het [type tegel](#tile-types):
 
-* Met het pictogram liniaal op een tegel kunt u de visualisatie wijzigen. Visualisaties zijn onder andere lijn diagrammen, laatste bekende waarden en heatmap.
+* Met het pictogram liniaal op een tegel kunt u de visualisatie wijzigen. Visualisaties zijn onder andere lijn diagrammen, staaf diagrammen, cirkel diagrammen, laatste bekende waarden, Key Performance Indica tors (of Kpi's), Heatmaps en Maps.
 
 * Met het pictogram met het vier kant kunt u het formaat van de tegel wijzigen.
 
 * Met het tandwiel pictogram kunt u de visualisatie configureren. Voor een lijn diagram visualisatie kunt u bijvoorbeeld kiezen om de legenda en assen weer te geven en het tijds bereik te kiezen dat u wilt uitzetten.
+
 
 ## <a name="tile-types"></a>Tegel typen
 
@@ -91,11 +93,16 @@ Voor numerieke **kpi's** , de **laatste bekende waarde** en **Eigenschappen** te
 
 Voeg uw regels voor voorwaardelijke opmaak toe:
 
-:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-2.png" alt-text="Scherm opname van regels met voorwaardelijke opmaak voor de gemiddelde stroom. Er zijn drie regels: minder dan tha 20 groen, kleiner dan 50 is geel, en iets meer dan 50 is rood":::
-
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-2.png" alt-text="Scherm opname van regels met voorwaardelijke opmaak voor de gemiddelde stroom. Er zijn drie regels: minder dan 20 is groen, kleiner dan 50 is geel en iets meer dan 50 is rood":::
+   
 Op de volgende scherm afbeelding ziet u het effect van de regel voor voorwaardelijke opmaak:
 
-:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-3.png" alt-text="Scherm afbeelding van de gele achtergrond kleur op de tegel gemiddelde water stroom. Het aantal op de tegel is 40,84":::
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-3.png" alt-text="Scherm afbeelding met de rode achtergrond kleur op de tegel gemiddelde water stroom. Het aantal op de tegel is 50,54":::
+
+### <a name="tile-formatting"></a>opmaak van Tegel
+Met deze functie, die beschikbaar is in KPI-, LKV-en eigenschappen tegels, kunnen gebruikers de teken grootte aanpassen, decimale precisie kiezen, numerieke waarden afkorten (bijvoorbeeld notatie 1.700 als 1.7 K) of teken reeks waarden in hun tegels afronden.
+
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/tile-format.png" alt-text="Tegel indeling":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: 4dd592cb1b0037e2e1054bb24d987d4456f15e2c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d90c9b9b2c9aa97083e17d5ab7d20fc6b471658
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89380778"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94492120"
 ---
 # <a name="how-to-configure-your-saas-offer-properties"></a>De eigenschappen van uw SaaS-aanbod configureren
 
@@ -23,11 +23,11 @@ Op het tabblad **Eigenschappen** definieert u de categorieën en branches die va
 
 ## <a name="select-a-category-for-your-offer"></a>Selecteer een categorie voor uw aanbieding
 
-Selecteer onder **categorie**ten minste één en Maxi maal twee categorieën voor het groeperen van uw aanbieding in de juiste Zoek gebieden voor Marketplace. Op basis van de gekozen categorieën bepalen we welke online winkels uw aanbieding vermelden: Azure Marketplace, Microsoft AppSource of beide.
+Selecteer onder **categorie** ten minste één en Maxi maal twee categorieën voor het groeperen van uw aanbieding in de juiste Zoek gebieden voor Marketplace. Op basis van de gekozen categorieën bepalen we welke online winkels uw aanbieding vermelden: Azure Marketplace, Microsoft AppSource of beide.
 
 ## <a name="select-industries-optional"></a>Branches selecteren (optioneel)
 
-Onder **branches**kunt u Maxi maal twee branches en Maxi maal twee subbranches (ook wel verticalen genoemd) selecteren voor elke branche. Deze branches worden gebruikt om uw aanbieding weer te geven wanneer klanten hun zoek opdracht op branches en subsectoren filteren in de online winkel.
+Onder **branches** kunt u Maxi maal twee branches en Maxi maal twee subbranches (ook wel verticalen genoemd) selecteren voor elke branche. Deze branches worden gebruikt om uw aanbieding weer te geven wanneer klanten hun zoek opdracht op branches en subsectoren filteren in de online winkel.
 
 > [!NOTE]
 > Als uw aanbieding niet specifiek is voor de branche, laat u deze sectie leeg.
@@ -43,7 +43,7 @@ Onder **branches**kunt u Maxi maal twee branches en Maxi maal twee subbranches (
 
 ## <a name="provide-terms-and-conditions"></a>Voor waarden opgeven
 
-Geef onder **juridisch**recht voor waarden op voor uw aanbieding. U hebt hiervoor twee opties:
+Geef onder **juridisch** recht voor waarden op voor uw aanbieding. U hebt hiervoor twee opties:
 
 - [Het standaard contract gebruiken met optionele wijzigingen](#use-the-standard-contract)
 - [Gebruik uw eigen voor waarden](#use-your-own-terms-and-conditions)
@@ -73,11 +73,11 @@ Voer in de voor **waarden voor universele wijzigingen in het standaard contract 
 
 #### <a name="add-one-or-more-custom-amendments"></a>Een of meer aangepaste wijzigingen toevoegen
 
-1. Onder aanpassingen **aan het standaard contract voor de commerciële Marketplace van micro soft**, selecteert u de koppeling **aangepaste wijzigings termijn toevoegen (max. 10)** .
+1. Onder aanpassingen **aan het standaard contract voor de commerciële Marketplace van micro soft** , selecteert u de koppeling **aangepaste wijzigings termijn toevoegen (max. 10)** .
 1. Voer in het vak **aangepaste wijzigings voorwaarden** uw wijzigings voorwaarden in.
 1. Voer in het vak **Tenant-id** een Tenant-id in. Alleen klanten die zijn gekoppeld aan de Tenant-Id's die u voor deze aangepaste voor waarden opgeeft, worden weer gegeven in de inkoop stroom van de aanbieding in de Azure Portal.
    > [!TIP]
-   > Een Tenant-ID identificeert uw klant in Azure. U kunt uw klant vragen voor deze id en ze kunnen deze vinden door naar [**https://portal.azure.com**](https://portal.azure.com)  >  **Azure Active Directory**  >  **Eigenschappen**te gaan. De waarde van de Directory-ID is de Tenant-ID (bijvoorbeeld `50c464d3-4930-494c-963c-1e951d15360e` ). U kunt ook de Tenant-ID van de organisatie zoeken met behulp van de domein naam-URL op [Wat is mijn Microsoft Azure en Office 365-Tenant-id?](https://www.whatismytenantid.com/).
+   > Een Tenant-ID identificeert uw klant in Azure. U kunt uw klant vragen voor deze id en ze kunnen deze vinden door naar [**https://portal.azure.com**](https://portal.azure.com)  >  **Azure Active Directory**  >  **Eigenschappen** te gaan. De waarde van de Directory-ID is de Tenant-ID (bijvoorbeeld `50c464d3-4930-494c-963c-1e951d15360e` ). U kunt ook de Tenant-ID van de organisatie zoeken met behulp van de domein naam-URL op [Wat is mijn Microsoft Azure en Office 365-Tenant-id?](https://www.whatismytenantid.com/).
 1. Voer desgewenst in het vak **Beschrijving** een beschrijvende beschrijving in voor de Tenant-id. Deze beschrijving helpt u bij het identificeren van de klant die u wilt richten op de wijziging.
 1. Als u nog een Tenant-ID wilt toevoegen, selecteert u de koppeling **toevoegen van de Tenant-id van een klant** en herhaalt u stap 3 en 4. U kunt Maxi maal 20 Tenant-Id's toevoegen.
 1. Herhaal de stappen 1 tot en met 5 om een andere wijzigings termijn toe te voegen. U kunt Maxi maal tien aangepaste voor waarden per aanbieding opgeven. 
@@ -89,10 +89,6 @@ U kunt ervoor kiezen om uw eigen voor waarden op te geven in plaats van het stan
 
 1. Zorg ervoor dat het selectie vakje **het standaard contract voor commerciële Marketplace van micro soft gebruiken** is uitgeschakeld onder **juridisch**.
 1. Voer in het vak voor **waarden** maxi maal 10.000 tekens tekst in.
-
-   > [!NOTE]
-   > Als u een langere beschrijving nodig hebt, voert u één webadres in dat verwijst naar waar uw voor waarden kunnen worden gevonden. Het wordt weer gegeven voor klanten als een actieve koppeling.
-
 1. Selecteer **concept opslaan** voordat u doorgaat naar het volgende tabblad **aanbieding**.
 
 ## <a name="next-steps"></a>Volgende stappen

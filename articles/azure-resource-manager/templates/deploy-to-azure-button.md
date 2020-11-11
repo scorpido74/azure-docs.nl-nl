@@ -2,13 +2,13 @@
 title: De knop Implementeren in Azure
 description: Gebruik de knop om Azure Resource Manager sjablonen te implementeren vanuit een GitHub-opslag plaats.
 ms.topic: conceptual
-ms.date: 10/22/2020
-ms.openlocfilehash: 62a0a8b0336d9a7fcf00efb172775b9606bcef98
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 11/10/2020
+ms.openlocfilehash: 7d002508f6b2402f8cff40fb0369896080ecbbad
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675394"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490896"
 ---
 # <a name="use-a-deployment-button-to-deploy-templates-from-github-repository"></a>Een implementatie knop gebruiken voor het implementeren van sjablonen uit de GitHub-opslag plaats
 
@@ -35,7 +35,7 @@ De afbeelding wordt weer gegeven als:
 
 ## <a name="create-url-for-deploying-template"></a>URL maken voor het implementeren van de sjabloon
 
-Als u de URL voor uw sjabloon wilt maken, begint u met de onbewerkte URL naar de sjabloon in uw opslag plaats. Als u de onbewerkte URL wilt zien, selecteert u **RAW** .
+Als u de URL voor uw sjabloon wilt maken, begint u met de onbewerkte URL naar de sjabloon in uw opslag plaats. Als u de onbewerkte URL wilt zien, selecteert u **RAW**.
 
 :::image type="content" source="./media/deploy-to-azure-button/select-raw.png" alt-text="RAW selecteren":::
 
@@ -71,6 +71,14 @@ https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.github
 
 U hebt de volledige URL voor de koppeling.
 
+Als u Git gebruikt [met Azure opslag plaatsen](/azure/devops/repos/git/) in plaats van een github opslag plaats, kunt u nog steeds de knop implementeren in azure gebruiken. Zorg ervoor dat uw opslag plaats openbaar is. Gebruik de [bewerking items](/rest/api/azure/devops/git/items/get) om de sjabloon op te halen. Uw aanvraag moet de volgende indeling hebben:
+
+```http
+https://dev.azure.com/{organization-name}/{project-name}/_apis/git/repositories/{repository-name}/items?scopePath={url-encoded-path}&api-version=6.0
+```
+
+Deze aanvraag-URL versleutelen.
+
 ## <a name="create-deploy-to-azure-button"></a>Knop voor implementeren naar Azure maken
 
 Ten slotte plaatst u de koppeling en de afbeelding samen.
@@ -87,6 +95,12 @@ Gebruik voor HTML:
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-storage-account-create%2Fazuredeploy.json" target="_blank">
   <img src="https://aka.ms/deploytoazurebutton"/>
 </a>
+```
+
+Voor git met Azure opslag plaats heeft de knop de volgende indeling:
+
+```markdown
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fdev.azure.com%2Forgname%2Fprojectname%2F_apis%2Fgit%2Frepositories%2Freponame%2Fitems%3FscopePath%3D%252Freponame%252Fazuredeploy.json%26api-version%3D6.0)
 ```
 
 ## <a name="deploy-the-template"></a>De sjabloon implementeren

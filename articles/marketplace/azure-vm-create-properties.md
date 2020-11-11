@@ -7,12 +7,12 @@ ms.topic: how-to
 author: emuench
 ms.author: mingshen
 ms.date: 10/19/2020
-ms.openlocfilehash: cc5702d973150b80188354719333fb7cf22d58b3
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 30e5ea4df3de0b8a10c9c1f3b4b27a9e0a19359e
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92284363"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491202"
 ---
 # <a name="how-to-configure-virtual-machine-offer-properties"></a>Eigenschappen van de aanbieding van virtuele machines configureren
 
@@ -29,7 +29,7 @@ Bekijk de volledige lijst met categorieën en subcategorieën in [Aanbevolen pro
 
 ## <a name="provide-terms-and-conditions"></a>Voor waarden opgeven
 
-Geef onder **juridisch**recht voor waarden op voor uw aanbieding. U hebt hiervoor twee opties:
+Geef onder **juridisch** recht voor waarden op voor uw aanbieding. U hebt hiervoor twee opties:
 
 - [Het standaard contract gebruiken met optionele wijzigingen](#use-the-standard-contract)
 - [Gebruik uw eigen voor waarden](#use-your-own-terms-and-conditions)
@@ -59,11 +59,11 @@ Voer in de voor **waarden voor universele wijzigingen in het standaard contract 
 
 #### <a name="add-one-or-more-custom-amendments"></a>Een of meer aangepaste wijzigingen toevoegen
 
-1. Onder aanpassingen **aan het standaard contract voor de commerciële Marketplace van micro soft**, selecteert u de koppeling **aangepaste wijzigings termijn toevoegen (max. 10)** .
+1. Onder aanpassingen **aan het standaard contract voor de commerciële Marketplace van micro soft** , selecteert u de koppeling **aangepaste wijzigings termijn toevoegen (max. 10)** .
 1. Voer in het vak **aangepaste wijzigings voorwaarden** uw wijzigings voorwaarden in.
 1. Voer in het vak **Tenant-id** een Tenant-id in. Alleen klanten die zijn gekoppeld aan de Tenant-Id's die u voor deze aangepaste voor waarden opgeeft, worden weer gegeven in de inkoop stroom van de aanbieding in de Azure Portal.
    > [!TIP]
-   > Een Tenant-ID identificeert uw klant in Azure. U kunt uw klant vragen voor deze id en ze kunnen deze vinden door naar [**https://portal.azure.com**](https://portal.azure.com)  >  **Azure Active Directory**  >  **Eigenschappen**te gaan. De waarde van de Directory-ID is de Tenant-ID (bijvoorbeeld `50c464d3-4930-494c-963c-1e951d15360e` ). U kunt ook de Tenant-ID van de organisatie zoeken met behulp van de domein naam-URL op [Wat is mijn Microsoft Azure en Office 365-Tenant-id?](https://www.whatismytenantid.com/).
+   > Een Tenant-ID identificeert uw klant in Azure. U kunt uw klant vragen voor deze id en ze kunnen deze vinden door naar [**https://portal.azure.com**](https://portal.azure.com)  >  **Azure Active Directory**  >  **Eigenschappen** te gaan. De waarde van de Directory-ID is de Tenant-ID (bijvoorbeeld `50c464d3-4930-494c-963c-1e951d15360e` ). U kunt ook de Tenant-ID van de organisatie zoeken met behulp van de domein naam-URL op [Wat is mijn Microsoft Azure en Office 365-Tenant-id?](https://www.whatismytenantid.com/).
 1. Voer desgewenst in het vak **Beschrijving** een beschrijvende beschrijving in voor de Tenant-id. Deze beschrijving helpt u bij het identificeren van de klant die u wilt richten op de wijziging.
 1. Als u nog een Tenant-ID wilt toevoegen, selecteert u de koppeling **toevoegen van de Tenant-id van een klant** en herhaalt u stap 3 en 4. U kunt Maxi maal 20 Tenant-Id's toevoegen.
 1. Herhaal de stappen 1 tot en met 5 om een andere wijzigings termijn toe te voegen. U kunt Maxi maal tien aangepaste voor waarden per aanbieding opgeven. 
@@ -75,12 +75,8 @@ U kunt ervoor kiezen om uw eigen voor waarden op te geven in plaats van het stan
 
 1. Zorg ervoor dat het selectie vakje **het standaard contract voor commerciële Marketplace van micro soft gebruiken** is uitgeschakeld onder **juridisch**.
 1. Voer in het vak voor **waarden** maxi maal 10.000 tekens tekst in.
-
-   > [!NOTE]
-   > Als u een langere beschrijving nodig hebt, voert u één webadres in dat verwijst naar waar uw voor waarden kunnen worden gevonden. Het wordt weer gegeven voor klanten als een actieve koppeling.
-
 1. Selecteer **concept opslaan** voordat u doorgaat naar het volgende tabblad **aanbieding**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Aanbieding van de VM-aanbieding configureren](azure-vm-create-listing.md)
+- [Vermelding voor een VM-aanbieding configureren](azure-vm-create-listing.md)

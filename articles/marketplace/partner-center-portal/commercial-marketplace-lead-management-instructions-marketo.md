@@ -4,15 +4,15 @@ description: Meer informatie over het gebruik van een Marketo CRM-systeem voor h
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: keferna
-ms.author: keferna
+author: trkeya
+ms.author: trkeya
 ms.date: 03/30/2020
-ms.openlocfilehash: be1f21f927b01d66e19dc5e97b38e5c35e6664cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cbd12481312d310add15bf3d41e21e9c416f1c39
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86120259"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491072"
 ---
 # <a name="use-marketo-to-manage-commercial-marketplace-leads"></a>Marketo gebruiken om leads voor commerciële Marketplace te beheren
 
@@ -40,7 +40,7 @@ In dit artikel wordt beschreven hoe u uw Marketo CRM-systeem zo instelt dat verk
 
 1.  Goed keuren en sluiten.
 
-1. Selecteer **code insluiten**op het tabblad **MarketplaceLeadBackend** . 
+1. Selecteer **code insluiten** op het tabblad **MarketplaceLeadBackend** . 
 
     ![Marketo-invoeg code](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-6.png)
 
@@ -75,19 +75,19 @@ Wanneer u klaar bent om de informatie over het beheer van leads voor uw aanbiedi
 
     :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-marketo/customer-leads.png" alt-text="Leads van klanten":::
 
-1. Selecteer in het pop-upvenster **verbindings Details** de optie **marketo** voor de **doel locatie**van de lead.
+1. Selecteer in het pop-upvenster **verbindings Details** de optie **marketo** voor de **doel locatie** van de lead.
 
     ![Kies een doel voor een potentiële klant](./media/commercial-marketplace-lead-management-instructions-marketo/choose-lead-destination.png)
 
-1. Geef de **Server-id**, de **Munchkin-account-id**en de **formulier-id**op.
+1. Geef de **Server-id** , de **Munchkin-account-id** en de **formulier-id** op.
 
     > [!NOTE]
     > U moet de configuratie van de rest van de aanbieding volt ooien en publiceren voordat u leads voor de aanbieding kunt ontvangen. 
 
-1. Voer onder **contact-e-mail**de e-mail adressen in voor personen in uw bedrijf die e-mail meldingen moeten ontvangen wanneer er een nieuwe lead wordt ontvangen. U kunt meerdere e-mail adressen opgeven door deze te scheiden met een punt komma.
+1. Voer onder **contact-e-mail** de e-mail adressen in voor personen in uw bedrijf die e-mail meldingen moeten ontvangen wanneer er een nieuwe lead wordt ontvangen. U kunt meerdere e-mail adressen opgeven door deze te scheiden met een punt komma.
 
 1. Selecteer **OK**.
 
-   Selecteer **valideren**om ervoor te zorgen dat u verbinding hebt gemaakt met een doel van de lead. Als dat lukt, hebt u een test lead in de doel locatie van de lead.
+   Selecteer **valideren** om ervoor te zorgen dat u verbinding hebt gemaakt met een doel van de lead. Als dat lukt, hebt u een test lead in de doel locatie van de lead.
 
    ![Pop-upvenster voor verbindings Details](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-connection-details.png)

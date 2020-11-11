@@ -3,12 +3,12 @@ title: Azure Functions beveiligen
 description: Meer informatie over hoe u de functie code die wordt uitgevoerd in azure beter kunt beveiligen tegen veelvoorkomende aanvallen.
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: cd97193fdf6549e667578e36f0be9104e4381d30
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: ee54ff8c1efaee00999888891e6de255060aa416
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102303"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491321"
 ---
 # <a name="securing-azure-functions"></a>Azure Functions beveiligen
 
@@ -28,7 +28,7 @@ Security Center integreert met uw functie-app in de portal. Het biedt gratis een
 
 ### <a name="log-and-monitor"></a>Logboeken en bewaking
 
-Een voor het detecteren van aanvallen is via activiteit voor activiteiten bewaking en logboek registratie. Functies worden geïntegreerd met Application Insights om logboek-, prestatie-en fout gegevens voor uw functie-app te verzamelen. Application Insights detecteert automatisch prestatie afwijkingen en bevat krachtige analyse hulpprogramma's waarmee u problemen kunt vaststellen en inzicht krijgt in de manier waarop uw functies worden gebruikt. Zie [Azure functions bewaken](functions-monitoring.md)voor meer informatie.
+Een manier om aanvallen te detecteren is via activiteiten voor activiteit bewaking en logboek registratie. Functies worden geïntegreerd met Application Insights om logboek-, prestatie-en fout gegevens voor uw functie-app te verzamelen. Application Insights detecteert automatisch prestatie afwijkingen en bevat krachtige analyse hulpprogramma's waarmee u problemen kunt vaststellen en inzicht krijgt in de manier waarop uw functies worden gebruikt. Zie [Azure functions bewaken](functions-monitoring.md)voor meer informatie.
 
 Functies kunnen ook worden geïntegreerd met Azure Monitor logboeken, zodat u de logboeken van de functie-app kunt samen voegen met systeem gebeurtenissen voor een eenvoudige analyse. U kunt Diagnostische instellingen gebruiken voor het configureren van het exporteren van streaming van platform logboeken en metrische gegevens voor uw functies naar het doel van uw keuze, zoals een werk ruimte voor logboek analyse. Zie [Azure functions bewaken met Azure monitor-logboeken](functions-monitor-log-analytics.md)voor meer informatie. 
 

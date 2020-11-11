@@ -4,15 +4,15 @@ description: In dit artikel worden de criteria en vereisten voor het publiceren 
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: keferna
-ms.author: keferna
+author: trkeya
+ms.author: trkeya
 ms.date: 09/04/2020
-ms.openlocfilehash: 0b4941d326359a51ff6a75385a74a8bcdabfa075
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 17b53d656d0344e4178b3034a972e26d6aa0bc15
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93128994"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94492103"
 ---
 # <a name="determine-your-publishing-option"></a>Uw publicatieoptie bepalen
 
@@ -54,9 +54,9 @@ De beschik bare aanbiedings opties bieden een gedifferentieerde klant betrokkenh
 | **Publicatie optie**    | **Beschrijving**  |
 | :------------------- | :-------------------|
 | **List** | Eenvoudige vermelding van uw toepassing of service waarmee een commerciële Marketplace-gebruiker u kan vragen verbinding te maken met de klant via de aanbiedings opties voor **contact opnemen** . |
-| **Proefversie** | Gebruik de commerciële Marketplace voor het verbeteren van de detectie en het automatiseren van het inrichten van de proef ervaring van uw oplossing, waardoor potentiële gebruikers uw SaaS, IaaS of micro soft in-app-ervaring gratis kunnen gebruiken voor een beperkte periode voordat ze worden gekocht. De aanbiedings opties die worden gebruikt voor de optie voor het publiceren van de proef versie zijn een **gratis proef versie** of een **test station** . |
-| **BYOL (Bring Your Own License)** | Gebruik de commerciële Marketplace om de detectie en het automatiseren van de inrichting van uw oplossing te verbeteren en de financiële trans actie afzonderlijk te volt ooien. BYOL-aanbiedings typen zijn ideaal voor on-premises naar Cloud migraties. De optie aanbieding is **nu downloaden** .
-| **Transact** | Aanbiedingen voor de Transact worden verkocht via de commerciële Marketplace. Micro soft is verantwoordelijk voor facturering en verzamelingen. De optie aanbieding is **nu downloaden** .|
+| **Proefversie** | Gebruik de commerciële Marketplace voor het verbeteren van de detectie en het automatiseren van het inrichten van de proef ervaring van uw oplossing, waardoor potentiële gebruikers uw SaaS, IaaS of micro soft in-app-ervaring gratis kunnen gebruiken voor een beperkte periode voordat ze worden gekocht. De aanbiedings opties die worden gebruikt voor de optie voor het publiceren van de proef versie zijn een **gratis proef versie** of een **test station**. |
+| **BYOL (Bring Your Own License)** | Gebruik de commerciële Marketplace om de detectie en het automatiseren van de inrichting van uw oplossing te verbeteren en de financiële trans actie afzonderlijk te volt ooien. BYOL-aanbiedings typen zijn ideaal voor on-premises naar Cloud migraties. De optie aanbieding is **nu downloaden**.
+| **Transact** | Aanbiedingen voor de Transact worden verkocht via de commerciële Marketplace. Micro soft is verantwoordelijk voor facturering en verzamelingen. De optie aanbieding is **nu downloaden**.|
 
 > [!Note]
 > Wanneer u de optie voor het publiceren van Transact gebruikt, is het belang rijk om inzicht te krijgen in de overwegingen met betrekking tot prijzen, facturering, facturering en betaling voordat u een aanbiedings type selecteert en uw aanbieding maakt. Raadpleeg het artikel [Commercial Marketplace Transact-mogelijkheden](./marketplace-commercial-transaction-capabilities-and-considerations.md)voor meer informatie.

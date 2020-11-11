@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 3/6/2020
 ms.custom: seodec18
-ms.openlocfilehash: 524b34c48146dc9e6102ed8d20ff8d1076706ba7
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 8e08c4c34495b58c105560dba9d818be9ebf5e34
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444959"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490964"
 ---
 # <a name="test-an-azure-stream-analytics-job-in-the-portal"></a>Een Azure Stream Analytics-taak testen in de portal
 
@@ -101,8 +101,8 @@ In plaats van live data te gebruiken, kunt u voorbeeld gegevens uit een lokaal b
 
 1.  Tijd beleid wordt niet ondersteund bij het testen van de portal:
 
-   * Out-of-order: alle binnenkomende gebeurtenissen worden gerangschikt.
-   * Late aankomst: er is geen gebeurtenis voor een latere aankomst, omdat Stream Analytics alleen bestaande gegevens voor testen kan gebruiken.
+    * Out-of-order: alle binnenkomende gebeurtenissen worden gerangschikt.
+    * Late aankomst: er is geen gebeurtenis voor een latere aankomst, omdat Stream Analytics alleen bestaande gegevens voor testen kan gebruiken.
    
 2.  C# UDF wordt niet ondersteund.
 
@@ -112,6 +112,7 @@ In plaats van live data te gebruiken, kunt u voorbeeld gegevens uit een lokaal b
 
 5.  Machine learning wordt niet ondersteund.
 
+6. De voorbeeld gegevens-API wordt beperkt na vijf aanvragen in een venster van 15 minuten. Na het einde van het venster van 15 minuten kunt u meer voorbeeld gegevens aanvragen uitvoeren. Deze beperking wordt toegepast op het abonnements niveau.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 

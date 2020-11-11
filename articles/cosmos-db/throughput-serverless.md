@@ -5,13 +5,13 @@ author: ThomasWeiss
 ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/19/2020
-ms.openlocfilehash: d16343864d9602d644b31d34a2b66e39211b6ece
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.date: 11/10/2020
+ms.openlocfilehash: f6fbd963966dd1a5c433a97cb8d37ae22998be4c
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93079335"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491185"
 ---
 # <a name="how-to-choose-between-provisioned-throughput-and-serverless"></a>Kiezen tussen ingerichte door Voer en serverloos
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -19,9 +19,6 @@ ms.locfileid: "93079335"
 Azure Cosmos DB is beschikbaar in twee verschillende capaciteits modi: [ingerichte door Voer](set-throughput.md) en [serverloos](serverless.md). U kunt exact dezelfde database bewerkingen uitvoeren in beide modi, maar de manier waarop deze bewerkingen worden gefactureerd, is een wortel verschil. In de volgende video worden de belangrijkste verschillen tussen deze modi beschreven en hoe deze worden aangepast aan verschillende soorten workloads:
 
 > [!VIDEO https://www.youtube.com/embed/CgYQo6uHyt0]
-
-> [!NOTE]
-> Serverloze wordt momenteel alleen ondersteund door de Azure Cosmos DB core-API (SQL).
 
 ## <a name="detailed-comparison"></a>Gedetailleerde vergelijking
 

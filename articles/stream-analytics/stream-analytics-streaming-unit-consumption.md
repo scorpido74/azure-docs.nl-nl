@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/28/2020
-ms.openlocfilehash: 70b5e85c99184b890d2b5269f483785a82340255
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 38f649fbff9ea2c1182adb613b9302768708a4c4
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127549"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490947"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>Streaming-eenheden begrijpen en aanpassen
 
@@ -20,14 +20,14 @@ Streaming-eenheden (SUs) vertegenwoordigt de computer resources die zijn toegewe
 
 Om verwerking met lage latentie te bereiken, voeren Azure Stream Analytics-taken alle verwerking in het geheugen uit. Als er onvoldoende geheugen beschikbaar is, mislukt de streaming-taak. Als gevolg hiervan is het belang rijk om voor een productie taak het resource gebruik van een streaming-taak te controleren en ervoor te zorgen dat er voldoende resources zijn toegewezen om te zorgen dat de taken met 24/7 worden uitgevoerd.
 
-De metrische gegevens van het gebruik SU%, die tussen 0% en 100% liggen, beschrijft het geheugen verbruik van uw workload. Voor een streaming-taak met minimale footprint is deze metriek meestal tussen 10% en 20%. Als SU% gebruik hoog is (boven 80%), of als de invoer gebeurtenissen een achterstand ontvangen (zelfs met een laag verbruik van minder dan het CPU-gebruik), zijn voor uw werk belasting waarschijnlijk meer reken bronnen vereist, waarmee u het aantal SUs kunt verhogen. Het is het beste om de SU-metriek onder 80% te hand haven voor incidentele pieken. Micro soft raadt u aan om een waarschuwing in te stellen voor de metriek van 80% SU-gebruik om te voor komen dat de resource wordt uitgeput Zie [zelf studie: waarschuwingen instellen voor Azure stream Analytics taken](stream-analytics-set-up-alerts.md)voor meer informatie.
+De metrische gegevens van het gebruik SU%, die tussen 0% en 100% liggen, beschrijft het geheugen verbruik van uw workload. Voor een streaming-taak met minimale footprint is deze metriek meestal tussen 10% en 20%. Als SU% gebruik hoog is (boven 80%), of als de invoer gebeurtenissen een achterstand ontvangen (zelfs met een laag verbruik van minder dan het CPU-gebruik), zijn voor uw werk belasting waarschijnlijk meer reken bronnen vereist, waarmee u het aantal SUs kunt verhogen. Het is het beste om de SU-metriek onder 80% te hand haven voor incidentele pieken. Als u wilt reageren op verhoogde werk belastingen en streaming-eenheden wilt verhogen, kunt u een waarschuwing instellen van 80% op de metrische gegevens van het SU-gebruik. U kunt ook het watermerk vertraging en de metrische gegevens voor de achterstand gebruiken om te zien of er sprake is van een impact.
 
 ## <a name="configure-stream-analytics-streaming-units-sus"></a>Stream Analytics streaming-eenheden configureren (SUs)
-1. Aanmelden bij [Azure Portal](https://portal.azure.com/)
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 2. Zoek in de lijst met resources de Stream Analytics-taak die u wilt schalen en open deze. 
 
-3. Selecteer op de pagina taak onder de kop **configureren** de optie **schalen** . Het standaard aantal SUs is 3 bij het maken van een taak.
+3. Selecteer op de pagina taak onder de kop **configureren** de optie **schalen**. Het standaard aantal SUs is 3 bij het maken van een taak.
 
     ![Configuratie van Stream Analytics taak Azure Portal][img.stream.analytics.preview.portal.settings.scale]
     
@@ -125,12 +125,12 @@ Wanneer de query is gepartitioneerd, wordt deze verspreid over verschillende kno
 ## <a name="temporal-analytic-functions"></a>Tijdelijke analyse functies
 Het verbruikte geheugen (status grootte) van een tijdelijke analytische functie is evenredig met de gebeurtenis frequentie vermenigvuldigd met de duur. Het geheugen dat wordt gebruikt door de analytische functies, is niet evenredig met de venster grootte, maar in elk tijd venster wordt het aantal partities in de meeste gevallen gepartitioneerd.
 
-Het herstel is vergelijkbaar met een tijdelijke samen voeging. U kunt de query uitschalen met behulp **van Partition by** . 
+Het herstel is vergelijkbaar met een tijdelijke samen voeging. U kunt de query uitschalen met behulp **van Partition by**. 
 
 ## <a name="out-of-order-buffer"></a>Buffer buiten bestelling 
 Gebruiker kan de maximale buffer grootte configureren in het configuratie venster voor gebeurtenis ordening. De buffer wordt gebruikt om invoer voor de duur van het venster te bewaren en de volg orde te wijzigen. De grootte van de buffer is evenredig met de invoer frequentie van de gebeurtenis, vermenigvuldigd met de grootte van het buitenste volg orde venster. De standaard venster grootte is 0. 
 
-Als u een overloop van de out-of-order buffer wilt herstellen, kunt u de query uitbreiden met behulp van **Partition by** . Wanneer de query is gepartitioneerd, wordt deze verspreid over verschillende knooppunten. Als gevolg hiervan wordt het aantal gebeurtenissen in elk knoop punt verminderd, waardoor het aantal gebeurtenissen in elke bestel buffer kleiner wordt. 
+Als u een overloop van de out-of-order buffer wilt herstellen, kunt u de query uitbreiden met behulp van **Partition by**. Wanneer de query is gepartitioneerd, wordt deze verspreid over verschillende knooppunten. Als gevolg hiervan wordt het aantal gebeurtenissen in elk knoop punt verminderd, waardoor het aantal gebeurtenissen in elke bestel buffer kleiner wordt. 
 
 ## <a name="input-partition-count"></a>Aantal invoer partities 
 Elke invoer partitie van een taak invoer heeft een buffer. Hoe groter het aantal invoer partities, hoe meer resources de taak verbruikt. Voor elke streaming-eenheid kan Azure Stream Analytics ongeveer 1 MB/s aan invoer verwerken. Daarom kunt u optimaliseren door het aantal Stream Analytics streaming-eenheden te vergelijken met het aantal partities in de Event hub. 

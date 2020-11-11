@@ -5,14 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 06/19/2020
-ms.author: keferna
-author: keferna
-ms.openlocfilehash: 1af2793bc32c1f3cdbdcd016562b761e05427073
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.author: trkeya
+author: trkeya
+ms.openlocfilehash: 0b445f9d4fdda0b1fac9dcdb4344533cfd7d37a9
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93125135"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491236"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager test drive
 
@@ -76,7 +76,7 @@ U kunt een geldige naam voor de para meters gebruiken. test drive herkent parame
 | Meta gegevens type   | Parameter type  | Beschrijving     | Voorbeeld waarde    |
 |---|---|---|---|
 | **baseuri**     | tekenreeks          | Basis-URI van uw implementatie pakket| `https:\//\<\..\>.blob.core.windows.net/\<\..\>` |
-| **gebruikers**    | tekenreeks          | Nieuwe wille keurige gebruikers naam.| admin68876      |
+| **gebruikersnaam**    | tekenreeks          | Nieuwe wille keurige gebruikers naam.| admin68876      |
 | **password**    | beveiligde teken reeks    | Nieuw wille keurig wacht woord | LP! ACS \^ 2kh     |
 | **sessie-id**   | tekenreeks          | Unieke test drive sessie-ID (GUID)    | b8c8693e-5673-449c-badd-257a405a6dee |
 
@@ -309,14 +309,14 @@ De laatste sectie die u moet volt ooien, is om automatisch de test stations te k
 3. **Azure AD-App-ID** : een nieuwe toepassing maken en registreren. Deze toepassing wordt gebruikt voor het uitvoeren van bewerkingen op uw test drive-exemplaar.
 
    1. Ga naar de zojuist gemaakte map of al een bestaande map en selecteer Azure Active Directory in het deel venster filter.
-   2. Zoek **app-registraties** en selecteer **toevoegen** .
+   2. Zoek **app-registraties** en selecteer **toevoegen**.
    3. Geef een toepassings naam op.
-   4. Selecteer het **type** **Web-app/API** .
+   4. Selecteer het **type** **Web-app/API**.
    5. Geef een wille keurige waarde op in de aanmeldings-URL. dit veld wordt niet gebruikt.
-   6. Selecteer **Maken** .
-   7. Nadat de toepassing is gemaakt, selecteert u **Eigenschappen**  >  **de toepassing instellen als multi tenant** en vervolgens **Opslaan** .
+   6. Selecteer **Maken**.
+   7. Nadat de toepassing is gemaakt, selecteert u **Eigenschappen**  >  **de toepassing instellen als multi tenant** en vervolgens **Opslaan**.
 
-4. Selecteer **Opslaan** .
+4. Selecteer **Opslaan**.
 
 5. Kopieer de toepassings-ID voor deze geregistreerde app en plak deze in het veld test drive.
 
@@ -326,7 +326,7 @@ De laatste sectie die u moet volt ooien, is om automatisch de test stations te k
 
    1. Selecteer het type **abonnement** dat u voor de test drive gebruikt.
    1. Klik op **Toegangsbeheer (IAM)** .
-   1. Selecteer het tabblad **roltoewijzingen** en vervolgens **functie toewijzing toevoegen** .
+   1. Selecteer het tabblad **roltoewijzingen** en vervolgens **functie toewijzing toevoegen**.
 
       ![Een nieuwe Access Control Principal toevoegen](media/test-drive/access-control-principal.jpg)
 
@@ -334,9 +334,9 @@ De laatste sectie die u moet volt ooien, is om automatisch de test stations te k
 
       ![De machtigingen toevoegen](media/test-drive/access-control-permissions.jpg)
 
-   1. Selecteer **Opslaan** .
+   1. Selecteer **Opslaan**.
 
-7. Genereer een **Azure AD-App** verificatie sleutel. Voeg onder **sleutels** een **sleutel beschrijving** toe, stel de duur in op **nooit verlopen** (een verlopen sleutel verbreekt uw test drive in productie) en selecteer vervolgens **Opslaan** . Kopieer en plak deze waarde in uw vereiste test drive veld.
+7. Genereer een **Azure AD-App** verificatie sleutel. Voeg onder **sleutels** een **sleutel beschrijving** toe, stel de duur in op **nooit verlopen** (een verlopen sleutel verbreekt uw test drive in productie) en selecteer vervolgens **Opslaan**. Kopieer en plak deze waarde in uw vereiste test drive veld.
 
 ![Hiermee worden de sleutels voor de Azure AD-toepassing weer gegeven](media/test-drive/azure-ad-app-keys.png)
 

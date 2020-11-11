@@ -1,22 +1,22 @@
 ---
-title: Wat is risico? Azure AD Identity Protection
+title: Wat is risico? Azure AD-identiteitsbeveiliging
 description: Risico's in Azure AD Identity Protection uitleggen
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 09/10/2020
+ms.date: 11/09/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87239e361b518a85cf30352374e7a9b5e530928e
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 32d9683012a5900569740080d61ac21b464a5cd4
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042624"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490607"
 ---
 # <a name="what-is-risk"></a>Wat is risico?
 
@@ -24,14 +24,14 @@ Risico detecties in Azure AD Identity Protection omvatten alle geïdentificeerde
 
 Identiteits beveiliging biedt organisaties toegang tot krachtige bronnen om snel deze verdachte acties te bekijken en te beantwoorden. 
 
->**Opmerking:** Identiteits beveiliging genereert alleen risico detecties wanneer de juiste referenties worden gebruikt. Als er onjuiste referenties worden gebruikt voor een aanmelding, vertegenwoordigt het geen risico van inbreuk op referenties.
-
 ![Beveiligings overzicht met Risk ante gebruikers en aanmeldingen](./media/concept-identity-protection-risks/identity-protection-security-overview.png)
 
+> [!NOTE]
+> Identiteits beveiliging genereert alleen risico detecties wanneer de juiste referenties worden gebruikt. Als er onjuiste referenties worden gebruikt voor een aanmelding, vertegenwoordigt het geen risico van inbreuk op referenties.
 
 ## <a name="risk-types-and-detection"></a>Risico typen en detectie
 
-Er zijn twee soorten risico **gebruiker** en **aanmelding** , en twee typen detectie of berekeningen in **realtime** en **offline** .
+Er zijn twee soorten risico **gebruiker** en **aanmelding** , en twee typen detectie of berekeningen in **realtime** en **offline**.
 
 Realtime detecties kunnen vijf tot tien minuten niet worden weer gegeven in rapportage. Offline detecties kunnen niet twee tot twintig uur worden weer gegeven in rapportage.
 
@@ -77,6 +77,10 @@ Deze Risico's kunnen in realtime worden berekend of offline worden berekend met 
 Met Identity Protection wordt het risico gecategoriseerd in drie niveaus: laag, gemiddeld en hoog. 
 
 Microsoft biedt geen specifieke details over de manier waarop het risico wordt berekend, maar hoe hoger het niveau is, hoe betrouwbaarder het is dat de gebruiker of het aanmelden is gecompromitteerd. Een voorbeeld: één geval van onbekende aanmeldingseigenschappen voor een gebruiker kan minder bedreigend zijn dan gelekte referenties voor een andere gebruiker.
+
+### <a name="password-hash-synchronization"></a>Wachtwoord-hashsynchronisatie
+
+Risico detecties zoals gelekte referenties en wachtwoord spray vereisen de aanwezigheid van wacht woord-hashes voor detectie. Zie het artikel [wachtwoord hash-synchronisatie implementeren met Azure AD Connect Sync](../hybrid/how-to-connect-password-hash-synchronization.md)voor meer informatie over het synchroniseren van wacht woord-hashes.
 
 ### <a name="leaked-credentials"></a>Gelekte referenties
 

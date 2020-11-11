@@ -11,12 +11,12 @@ author: jpe316
 ms.date: 09/24/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq2, devx-track-python, deploy
-ms.openlocfilehash: 6ac28e430681f35d9935cf0f484529074403bf54
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 9ec82dcd7578744dc7443d48dc28820413f14005
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324963"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491695"
 ---
 # <a name="deploy-ml-models-to-field-programmable-gate-arrays-fpgas-with-azure-machine-learning"></a>ML-modellen implementeren op veld-Programmeer bare poort matrices (Fpga's) met Azure Machine Learning 
 
@@ -362,6 +362,8 @@ converted_model.delete()
 ## <a name="next-steps"></a>Volgende stappen
 
 + Meer informatie over het [beveiligen van uw webservices](how-to-secure-web-service.md) -document.
+
++ Meer informatie over de [prijzen en kosten](https://azure.microsoft.com/pricing/details/machine-learning/)voor FPGA en Azure machine learning.
 
 + [Grootschalige-hardware: ML op schaal boven op Azure + FPGA: Build 2018 (video)](https://channel9.msdn.com/events/Build/2018/BRK3202)
 

@@ -4,15 +4,15 @@ description: Meer informatie over het gebruik van Azure Blob voor het configurer
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: keferna
-ms.author: keferna
+author: trkeya
+ms.author: trkeya
 ms.date: 05/01/2020
-ms.openlocfilehash: dea9c0eec275c6a0596636c8625e52b8978bb9a6
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: bd2f3d40b1aea1c0133f95e069ebfd527d30bd59
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130541"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491100"
 ---
 # <a name="use-azure-blob-storage-to-manage-commercial-marketplace-leads"></a>Azure Blob-opslag gebruiken om leads voor commerciële Marketplace te beheren
 
@@ -53,7 +53,7 @@ ms.locfileid: "93130541"
 
     ![Scherm opname van de pagina ' toegangs sleutels ' met het tekstvak ' verbindings reeks ' gemarkeerd.](./media/commercial-marketplace-lead-management-instructions-azure-blob/azure-storage-keys-2.png)
 
-6. Selecteer op de pagina opslag account de optie **blobs** .
+6. Selecteer op de pagina opslag account de optie **blobs**.
 
    ![Scherm afbeelding van de pagina Azure Storage-account met blobs geselecteerd](./media/commercial-marketplace-lead-management-instructions-azure-blob/select-blobs.png)
 
@@ -63,7 +63,7 @@ ms.locfileid: "93130541"
 
     Sla deze waarde op omdat dit de waarde voor de *container naam* is die u in de portal voor publiceren moet opgeven om leads voor uw Marketplace-aanbieding te ontvangen.
 
-9. Stel het niveau van open bare toegang tot de container in als **privé (geen anonieme toegang)** .
+9. Stel het niveau van open bare toegang tot de container in als **privé (geen anonieme toegang)**.
 
 10. Selecteer **OK** om de container te maken.
 
@@ -74,7 +74,7 @@ ms.locfileid: "93130541"
 Wanneer u klaar bent om de informatie over het beheer van leads voor uw aanbieding te configureren in de portal voor publiceren, volgt u de onderstaande stappen:
 
 1. Navigeer naar de pagina voor het instellen van de **aanbieding** voor uw aanbieding.
-2. Selecteer in het gedeelte **klant leads** de optie **verbinding maken** .
+2. Selecteer in het gedeelte **klant leads** de optie **verbinding maken**.
 
     :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-azure-blob/customer-leads.png" alt-text="Leads van klanten":::
 
@@ -87,7 +87,7 @@ Wanneer u klaar bent om de informatie over het beheer van leads voor uw aanbiedi
     * Container naam voor beeld: `marketplaceleadcontainer`
     * Voor beeld van verbindings reeks voor opslag account: `DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net` ![ Details van verbinding](./media/commercial-marketplace-lead-management-instructions-azure-blob/connection-details.png) 
 
-5. Selecteer **Opslaan** .
+5. Selecteer **Opslaan**.
 
     > [!NOTE]
     > U moet de configuratie van de rest van de aanbieding volt ooien en publiceren voordat u leads voor de aanbieding kunt ontvangen.

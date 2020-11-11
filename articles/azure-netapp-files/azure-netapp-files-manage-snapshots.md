@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/05/2020
+ms.date: 11/10/2020
 ms.author: b-juche
-ms.openlocfilehash: 0d7839b11e48e3e260f4d6b1323d1831e28222de
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: e578e377e322e6b6a23f0990ca1fa0285a4ec87d
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421860"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491644"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Momentopnamen beheren met behulp van Azure NetApp Files
 
@@ -108,6 +108,8 @@ Als u wilt dat een volume het momentopname beleid gebruikt, moet u [het beleid T
 
 Als u wilt dat een volume een momentopname beleid gebruikt dat u hebt gemaakt, moet u het beleid Toep assen op het volume. 
 
+U kunt geen momentopname beleid Toep assen op een doel volume in replicatie tussen regio's.  
+
 1.  Ga naar de pagina **volumes** , klik met de rechter muisknop op het volume waarop u een momentopname beleid wilt Toep assen en selecteer **bewerken**.
 
     ![Het menu voor volumes met de rechter muisknop](../media/azure-netapp-files/volume-right-cick-menu.png) 
@@ -172,6 +174,8 @@ Als u [de volledige moment opname niet wilt herstellen naar een volume](#restore
 Het gekoppelde volume bevat een map met moment opnamen met  `.snapshot` de naam (in NFS-clients) of `~snapshot` (in SMB-clients) die toegankelijk is voor de client. De map met moment opnamen bevat submappen die overeenkomen met de moment opnamen van het volume. Elke submap bevat de bestanden van de moment opname. Als u per ongeluk een bestand verwijdert of overschrijft, kunt u het bestand herstellen naar de bovenliggende map voor lezen/schrijven door het bestand te kopiëren van een submap voor een moment opname naar de map lezen/schrijven. 
 
 Als u het selectie vakje pad naar moment opname verbergen hebt geselecteerd tijdens het maken van het volume, wordt de map met moment opnamen verborgen. U kunt de status van het pad naar de moment opname verbergen van het volume bekijken door het volume te selecteren. U kunt de optie pad naar moment opname verbergen bewerken door te klikken op **bewerken** op de pagina van het volume.  
+
+Voor een doel volume in replicatie tussen verschillende regio's is het pad naar de moment opname verbergen standaard ingeschakeld en kan de instelling niet worden gewijzigd.
 
 ![Opties voor volume momentopname bewerken](../media/azure-netapp-files/volume-edit-snapshot-options.png) 
 
