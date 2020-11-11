@@ -18,6 +18,8 @@
   href: color-materials.md
 - name: Contourweergave
   href: outlines.md
+- name: Shell-weergave
+  href: shell-effect.md
 - name: Rendering met één zijde
   href: single-sided-rendering.md
 - name: Ruimtelijke query's

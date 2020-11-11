@@ -1,5 +1,5 @@
 ---
-title: Een virtuele machine maken met een statisch openbaar IP-adres-Azure Portal | Microsoft Docs
+title: Een virtuele machine maken met een statisch openbaar IP-adres-Azure Portal
 description: Meer informatie over het maken van een virtuele machine met een statisch openbaar IP-adres met behulp van de Azure Portal.
 services: virtual-network
 documentationcenter: na
@@ -11,77 +11,91 @@ ms.devlang: ''
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/08/2018
+ms.date: 11/12/2020
 ms.author: allensu
-ms.openlocfilehash: 9e06e4079a5118e0aa9dedb1fca719f0b28e5716
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ae0b869b24c4e05c88b936eceb1b9b1db3a9405
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448630"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506308"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-the-azure-portal"></a>Maak een virtuele machine met een statisch openbaar IP-adres met behulp van de Azure Portal
 
-U kunt een virtuele machine maken met een statisch openbaar IP-adres. Met een openbaar IP-adres kunt u via internet communiceren met een virtuele machine. Wijs een statisch openbaar IP-adres in plaats van een dynamisch adres toe om ervoor te zorgen dat het adres nooit wordt gewijzigd. Meer informatie over [statische open bare IP-adressen](virtual-network-ip-addresses-overview-arm.md#allocation-method). Zie [IP-adressen toevoegen, wijzigen of verwijderen](virtual-network-network-interface-addresses.md)voor meer informatie over het wijzigen van een openbaar IP-adres dat is toegewezen aan een bestaande virtuele machine van dynamisch naar statisch of voor gebruik van privé-IP-adressen. Open bare IP-adressen hebben een [nominale belasting](https://azure.microsoft.com/pricing/details/ip-addresses)en er geldt een [limiet](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) voor het aantal open bare IP-adressen dat u per abonnement kunt gebruiken.
+Met een openbaar IP-adres kunt u via internet communiceren met een virtuele machine. 
+
+Wijs een statisch openbaar IP-adres in plaats van een dynamisch adres toe om ervoor te zorgen dat het adres nooit wordt gewijzigd.   
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij Azure Portal op https://portal.azure.com.
+Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 ## <a name="create-a-virtual-machine"></a>Een virtuele machine maken
 
-1. Selecteer **+ Een resource maken** in de linkerbovenhoek van Azure Portal.
-2. Selecteer **Compute**en selecteer vervolgens **Windows Server 2016 VM**of een ander besturings systeem van uw keuze.
-3. Voer de volgende informatie in of selecteer deze, accepteer de standaardwaarden voor de overige instellingen en selecteer **OK**:
+1. Selecteer in de linkerbovenhoek van het portaal de optie **Een resource maken** > **Compute** > **Virtuele machine** of zoek naar **Virtuele machine** via het zoekvak.
+   
+2. In **Een virtuele machine maken** typt of selecteert u de waarden op het tabblad **Basisinformatie** :
 
-    |Instelling|Waarde|
-    |---|---|
-    |Naam|myVM|
-    |Gebruikersnaam| Voer een gebruikersnaam naar keuze in.|
-    |Wachtwoord| Voer een wachtwoord naar keuze in. Het wachtwoord moet minstens 12 tekens lang zijn en moet voldoen aan de [gedefinieerde complexiteitsvereisten](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
-    |Abonnement| Selecteer uw abonnement.|
-    |Resourcegroep| Selecteer **Bestaande gebruiken** en selecteer **myResourceGroup**.|
-    |Locatie| Selecteer **VS - oost**|
+    | Instelling | Waarde                                          |
+    |-----------------------|----------------------------------|
+    | **Projectgegevens** |  |
+    | Abonnement | Selecteer uw Azure-abonnement |
+    | Resourcegroep | Selecteer **Nieuw maken**. </br> Voer bij **naam** **myResourceGroup** in. </br> Selecteer **OK**. |
+    | **Exemplaardetails** |  |
+    | Naam van de virtuele machine | Open **myVM** |
+    | Region | Selecteer **VS - oost** |
+    | Beschikbaarheidsopties | Selecteer **Geen infrastructuurredundantie vereist** |
+    | Installatiekopie | Selecteer **Windows Server 2019 Datacenter - Gen1** |
+    | Azure Spot-exemplaar | Selecteer **Nee** |
+    | Grootte | Kies een VM-grootte of kies de standaardinstelling |
+    | **Beheerdersaccount** |  |
+    | Gebruikersnaam | Voer een gebruikersnaam in |
+    | Wachtwoord | Voer een wachtwoord in |
+    | Wachtwoord bevestigen | Voer het wachtwoord opnieuw in |
 
-4. Selecteer een grootte voor de virtuele machine en selecteer **Selecteren**.
-5. Selecteer onder **instellingen**het **open bare IP-adres**.
-6. Voer *myPublicIpAddress*in, selecteer **static**en selecteer **OK**, zoals wordt weer gegeven in de volgende afbeelding:
+3. Selecteer het tabblad **Netwerken** of selecteer **Volgende: Schijven** en vervolgens **Volgende: Netwerken**.
+  
+4. Op het tabblad Netwerken selecteert u of voert u het volgende in:
 
-   ![Statisch selecteren](./media/virtual-network-deploy-static-pip-arm-portal/select-static.png)
+    | Instelling | Waarde |
+    |-|-|
+    | **Netwerkinterface** |  |
+    | Virtueel netwerk | Accepteer de standaard naam van het netwerk. |
+    | Subnet | Accepteer de standaard-subnet-configuratie. |
+    | Openbare IP | Selecteer **Nieuw maken**. </br> In **openbaar IP-adres maken** typt u in de naam **myPublicIP**. </br> Selecteer voor **SKU** de optie **standaard**. </br> **Toewijzing** , selecteer **statisch**. </br> Selecteer **OK**.  |
+    | NIC-netwerkbeveiligingsgroep | Selecteer **Basic**|
+    | Openbare poorten voor inkomend verkeer | Selecteer **Geselecteerde poorten toestaan**. |
+    | Binnenkomende poorten selecteren | Selecteer **RDP (3389)** |
 
-   Als het open bare IP-adres een standaard-SKU moet zijn, selecteert u **Standard** onder **SKU**. Meer informatie over [open bare IP-adres-sku's](virtual-network-ip-addresses-overview-arm.md#sku). Als de virtuele machine wordt toegevoegd aan de back-end-groep van een openbaar Azure Load Balancer, moet de SKU van het open bare IP-adres van de virtuele machine overeenkomen met de SKU van het open bare IP-adres van de load balancer. Zie [Azure Load Balancer](../load-balancer/skus.md)voor meer informatie.
-
-6. Selecteer een poort of geen poorten onder **Selecteer open bare binnenkomende poorten**. Portal 3389 is geselecteerd om externe toegang tot de virtuele Windows Server-machine via internet in te scha kelen. Het openen van poort 3389 van Internet wordt niet aanbevolen voor productie werkbelastingen.
-
-   ![Poort selecteren](./media/virtual-network-deploy-static-pip-arm-portal/select-port.png)
-
-7. Accepteer de overige standaard instellingen en selecteer **OK**.
-8. Op de pagina**Overzicht** selecteert u **Maken**. De implementatie van de virtuele machine duurt een paar minuten.
-9. Wanneer de virtuele machine is geïmplementeerd, voert u *myPublicIpAddress* in het zoekvak boven aan de portal in. Wanneer **myPublicIpAddress** wordt weer gegeven in de zoek resultaten, selecteert u dit.
-10. U kunt het open bare IP-adres weer geven dat is toegewezen en dat het adres is toegewezen aan de virtuele **myVM** -machine, zoals wordt weer gegeven in de volgende afbeelding:
-
-    ![Scherm afbeelding toont het deel venster open bare mijn P-adres met het I P-adres en de naam. ](./media/virtual-network-deploy-static-pip-arm-portal/public-ip-overview.png)
-
-    Azure heeft een openbaar IP-adres toegewezen op basis van adressen die worden gebruikt in de regio waarin u de virtuele machine hebt gemaakt. U kunt de lijst met bereiken (voorvoegsels) downloaden voor de Azure-clouds [Openbaar](https://www.microsoft.com/download/details.aspx?id=56519), [US government](https://www.microsoft.com/download/details.aspx?id=57063), [China](https://www.microsoft.com/download/details.aspx?id=57062) en [Duitsland](https://www.microsoft.com/download/details.aspx?id=57064).
-
-11. Selecteer **configuratie** om te bevestigen dat de toewijzing **statisch**is.
-
-    ![Scherm afbeelding toont het deel venster open bare I P-adres waarvoor het configuratie-item is geselecteerd.](./media/virtual-network-deploy-static-pip-arm-portal/public-ip-configuration.png)
-
-> [!WARNING]
-> Wijzig de IP-adres instellingen in het besturings systeem van de virtuele machine niet. Het besturings systeem is niet op de hoogte van open bare IP-adressen van Azure. Hoewel u persoonlijke IP-adres instellingen kunt toevoegen aan het besturings systeem, wordt aangeraden dit niet te doen, tenzij dit nodig is, en pas na het lezen van [een privé-IP-adres toevoegen aan een besturings systeem](virtual-network-network-interface-addresses.md#private).
+    > [!WARNING]
+    > Portal 3389 is geselecteerd om externe toegang tot de virtuele Windows Server-machine via internet in te scha kelen. Het openen van poort 3389 voor Internet wordt niet aanbevolen voor het beheren van productie werkbelastingen. </br> Zie **[Wat is Azure Bastion?](/azure/bastion/bastion-overview) voor beveiligde toegang tot Azure virtual machines.**
+   
+5. Selecteer **Controleren + maken**. 
+  
+6. Controleer de instellingen en selecteer vervolgens **Maken**.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
 U kunt de resourcegroep en alle gerelateerde resources die deze bevat verwijderen wanneer u deze niet meer nodig hebt:
 
-1. Voer *myResourceGroup* in het vak **Zoeken** bovenaan de portal in. Wanneer u **myResourceGroup** ziet in de zoekresultaten, selecteert u deze.
+1. Voer **myResourceGroup** in het vak **Zoeken** bovenaan de portal in. Wanneer u **myResourceGroup** ziet in de zoekresultaten, selecteert u deze.
 2. Selecteer **Resourcegroep verwijderen**.
-3. Voer *myResourceGroup* in voor **TYP DE RESOURCEGROEPNAAM:** en selecteer **Verwijderen**.
+3. Voer **myResourceGroup** in voor **TYP DE RESOURCEGROEPNAAM:** en selecteer **Verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [open bare IP-adressen](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) in azure
-- Meer informatie over alle [open bare IP-adres instellingen](virtual-network-public-ip-address.md#create-a-public-ip-address)
-- Meer informatie over [privé-IP-adressen](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses) en het toewijzen van een [statisch privé-IP-adres](virtual-network-network-interface-addresses.md#add-ip-addresses) aan een virtuele Azure-machine
-- Meer informatie over het maken van virtuele [Linux](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) -en [Windows](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) -machines
+Zie [IP-adressen toevoegen, wijzigen of verwijderen](virtual-network-network-interface-addresses.md):
+
+* Een openbaar IP-adres wijzigen van dynamisch in statisch.
+* Werken met privé-IP-adressen.
+
+Open bare IP-adressen hebben een [nominale belasting](https://azure.microsoft.com/pricing/details/ip-addresses). Er is een [limiet](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) voor het aantal open bare IP-adressen dat u per abonnement kunt gebruiken.
+
+De SKU van het open bare IP-adres van de virtuele machine moet overeenkomen met de open bare IP-SKU van Azure Load Balancer wanneer deze wordt toegevoegd aan een back-end-groep. Zie [Azure Load Balancer](../load-balancer/skus.md)voor meer informatie.
+
+U kunt de lijst met bereiken (voorvoegsels) downloaden voor de Azure-clouds [Openbaar](https://www.microsoft.com/download/details.aspx?id=56519), [US government](https://www.microsoft.com/download/details.aspx?id=57063), [China](https://www.microsoft.com/download/details.aspx?id=57062) en [Duitsland](https://www.microsoft.com/download/details.aspx?id=57064).
+
+- Meer informatie over [statische open bare IP-adressen](virtual-network-ip-addresses-overview-arm.md#allocation-method).
+- Meer informatie over [open bare IP-adressen](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) in Azure.
+- Meer informatie over alle [open bare IP-adres instellingen](virtual-network-public-ip-address.md#create-a-public-ip-address).
+- Meer informatie over [privé-IP-adressen](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses) en het toewijzen van een [statisch privé-IP-adres](virtual-network-network-interface-addresses.md#add-ip-addresses) aan een virtuele Azure-machine.

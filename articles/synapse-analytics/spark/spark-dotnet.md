@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 05/01/2020
 ms.author: mamccrea
 ms.reviewer: jrasnick
-ms.openlocfilehash: 44c9dbb0eed5e8f7a868832af93a3b841f67f784
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: d0ae4ef48bfb79130180cc477eb2a6fbeb470eb6
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93310705"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506427"
 ---
 # <a name="use-net-for-apache-spark-with-azure-synapse-analytics"></a>.NET gebruiken voor Apache Spark met Azure Synapse Analytics
 
@@ -48,15 +48,15 @@ Ga naar de zelf studie voor meer informatie over het gebruik van Azure Synapse A
 
     **In Windows:**
 
-Gebruik een extractie programma, zoals [7-zip](https://www.7-zip.org/) of [WinZip](https://www.winzip.com/), om het bestand uit te pakken in de bin-map met alle gepubliceerde binaire bestanden.
+    Gebruik een extractie programma, zoals [7-zip](https://www.7-zip.org/) of [WinZip](https://www.winzip.com/), om het bestand uit te pakken in de bin-map met alle gepubliceerde binaire bestanden.
 
-     **On Linux:**
+    **Op Linux:**
 
-     1. Open a bash shell and cd into the bin directory with all the published binaries and run the following command.
+    Open een bash-shell en-cd in de bin-map met alle gepubliceerde binaire bestanden en voer de volgende opdracht uit.
 
-       ```bash
-       zip -r publish.zip
-       ```
+    ```bash
+    zip -r publish.zip
+    ```
 
 ## <a name="net-for-apache-spark-in-azure-synapse-analytics-notebooks"></a>.NET voor Apache Spark in azure Synapse Analytics-notebooks 
 
