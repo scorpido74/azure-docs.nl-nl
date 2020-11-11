@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/14/2020
 ms.author: nitinme
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 1c7587a4434a84c6934179393baa5ae684f9b1fd
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: cef5aaae58797e38745b3f5164c171581a005562
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92116791"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94371969"
 ---
 [Insluitende lezer](https://www.onenote.com/learningtools) is een inclusief ontworpen hulpprogramma dat bewezen technieken implementeert om begrijpend lezen te verbeteren voor beginnende lezers, mensen die een taal willen leren en mensen met leerproblemen, zoals dyslexie. U kunt de Insluitende lezer in uw toepassingen gebruiken om tekst te isoleren voor het verbeteren van de focus, het weergeven van afbeeldingen voor veelgebruikte woorden, het markeren van bepaalde secties, het hardop voorlezen van geselecteerde tekst, het vertalen van woorden en zinsdelen in realtime en meer.
 
@@ -42,7 +42,7 @@ Maak een nieuw project in Visual Studio met behulp van de sjabloon voor ASP.NET 
 
 ### <a name="configure-authentication-values"></a>Verificatietypewaarden configureren
 
-Klik met de rechtermuisknop op het project in de _Solution Explorer_ en kies **Gebruikersgeheimen beheren** . Hiermee opent u een bestand met de naam _Secrets.json_ . Dit bestand is niet ingecheckt in broncodebeheer. Klik [hier](https://docs.microsoft.com/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows&preserve-view=true) voor meer informatie. Vervang de inhoud van _secrets.json_ met het volgende, waarbij u de waarden opgeeft die zijn verstrekt bij het maken van uw Insluitende lezer-resource.
+Klik met de rechtermuisknop op het project in de _Solution Explorer_ en kies **Gebruikersgeheimen beheren**. Hiermee opent u een bestand met de naam _Secrets.json_. Dit bestand is niet ingecheckt in broncodebeheer. Klik [hier](/aspnet/core/security/app-secrets?preserve-view=true&tabs=windows&view=aspnetcore-3.1) voor meer informatie. Vervang de inhoud van _secrets.json_ met het volgende, waarbij u de waarden opgeeft die zijn verstrekt bij het maken van uw Insluitende lezer-resource.
 
 ```json
 {
@@ -71,7 +71,7 @@ Open _Controllers\HomeController.cs_ en voeg de volgende code toe na de _met beh
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 ```
 
-Nu gaan we de controller configureren voor het verkrijgen van de Azure AD-waarden van _secrets.json_ . Voeg de volgende code toe aan de bovenkant van de klasse _HomeController_ na ```public class HomeController : Controller {```.
+Nu gaan we de controller configureren voor het verkrijgen van de Azure AD-waarden van _secrets.json_. Voeg de volgende code toe aan de bovenkant van de klasse _HomeController_ na ```public class HomeController : Controller {```.
 
 ```csharp
 private readonly string TenantId;     // Azure subscription TenantId
@@ -142,7 +142,7 @@ public async Task<JsonResult> GetTokenAndSubdomain()
 ```
 
 ## <a name="add-sample-content"></a>Voorbeeldinhoud toevoegen
-Open eerst _Views\Shared\Layout.cshtml_ . Voeg voor de regel in ```</head>``` de volgende code toe:
+Open eerst _Views\Shared\Layout.cshtml_. Voeg voor de regel in ```</head>``` de volgende code toe:
 
 ```html
 @RenderSection("Styles", required: false)
@@ -218,7 +218,7 @@ U ziet dat alle tekst een **taal** -kenmerk bevat waarmee de talen van de tekst 
 
 ## <a name="add-javascript-to-handle-launching-immersive-reader"></a>Javascript toevoegen aan de ingang voor het starten van Insluitende lezer
 
-De bibliotheek voor insluitende lezers biedt functionaliteiten zoals het starten van de Insluitende lezer en het weergeven van Insluitende lezer-knoppen. Klik [hier](https://docs.microsoft.com/azure/cognitive-services/immersive-reader/reference) voor meer informatie.
+De bibliotheek voor insluitende lezers biedt functionaliteiten zoals het starten van de Insluitende lezer en het weergeven van Insluitende lezer-knoppen. Klik [hier](../../reference.md) voor meer informatie.
 
 Voeg aan de onderkant van _Views\Home\Index.cshtml_ de volgende code toe:
 

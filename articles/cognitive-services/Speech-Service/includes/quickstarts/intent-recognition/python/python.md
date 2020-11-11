@@ -6,12 +6,12 @@ ms.date: 04/04/2020
 ms.topic: include
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 7572e5c5621b514c375e44ca44ddfc4102f5d714
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 44c4427540e1b94ebcaf00e6875723e0a654e9ef
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87298827"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94425456"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -41,14 +41,14 @@ Voordat u een `IntentRecognizer`-object kunt initialiseren, moet u een configura
 Voeg deze code toe in `quickstart.py`. Zorg ervoor dat u deze waarden bijwerkt:
 
 * Vervang `"YourLanguageUnderstandingSubscriptionKey"` door de LUIS-voorspellingssleutel.
-* Vervang `"YourLanguageUnderstandingServiceRegion"` door de locatie van uw LUIS. Gebruik **Regio-id** uit [regio](https://aka.ms/speech/sdkregion)
+* Vervang `"YourLanguageUnderstandingServiceRegion"` door de locatie van uw LUIS. Gebruik **Regio-id** uit [regio](../../../../regions.md)
 
 >[!TIP]
 > Als u hulp nodig hebt bij het vinden van deze waarden, raadpleegt u [Een LUIS-app maken voor intentieherkenning](#create-a-luis-app-for-intent-recognition).
 
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=12)]
 
-Met dit voorbeeld wordt het object `SpeechConfig` gebouwd met behulp van de LUIS-sleutel en-regio. Zie [SpeechConfig Class](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig) voor een volledige lijst met beschikbare methoden.
+Met dit voorbeeld wordt het object `SpeechConfig` gebouwd met behulp van de LUIS-sleutel en-regio. Zie [SpeechConfig Class](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig) voor een volledige lijst met beschikbare methoden.
 
 De Speech-SDK probeert taal standaard te herkennen in en-US. Zie [De brontaal voor spraak-naar-tekst opgeven](../../../../how-to-specify-source-language.md) voor informatie over het kiezen van de brontaal.
 

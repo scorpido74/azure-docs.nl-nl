@@ -9,16 +9,16 @@ ms.topic: include
 ms.date: 03/26/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: be06154c95b14443024c6f163c955769f5b05d07
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: a87a5f7208e4966b6afba0b939be42726ca20365
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91377273"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94371991"
 ---
 In deze quickstart leert u hoe u met de JavaScript-clientbibliotheek afbeeldingsinzichten krijgt uit de Bing Visual Search-service. Hoewel Bing Visual Search een REST API heeft die compatibel is met de meeste programmeertalen, biedt de clientbibliotheek een eenvoudige manier om de service in uw toepassingen te integreren. De broncode voor dit voorbeeld is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/visualSearch.js). 
 
-[Referentiedocumentatie](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-visualsearch/?view=azure-node-latest&preserve-view=true) | [Bibliotheekbroncode](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-visualsearch) | [Pakket (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-visualsearch) | [Voorbeelden](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/)
+[Referentiedocumentatie](/javascript/api/@azure/cognitiveservices-visualsearch/?preserve-view=true&view=azure-node-latest) | [Bibliotheekbroncode](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-visualsearch) | [Pakket (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-visualsearch) | [Voorbeelden](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/)
 
 ## <a name="prerequisites"></a>Vereisten
 

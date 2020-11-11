@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/15/2020
 ms.author: trbye
-ms.openlocfilehash: eae4aece79cd387aaa7e708591ca31442eaa05c3
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 0e2324f7e524567b07f0228e046605b781bc4916
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93136205"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94425145"
 ---
 In deze gids ontdekt u hoe u de [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) kunt installeren voor Python. Als u enkel de pakketnaam nodig heeft om zelf aan de slag te gaan, voer dan `pip install azure-cognitiveservices-speech` uit.
 
@@ -90,7 +90,7 @@ Updates voor het Python Speech-SDK-pakket worden gedistribueerd via PyPI en aang
 Als een nieuwe versie beschikbaar is, kunt u een update naar deze versie uitvoeren met behulp van de opdracht `pip install --upgrade azure-cognitiveservices-speech`.
 U kunt controleren welke versie momenteel is geïnstalleerd door de variabele `azure.cognitiveservices.speech.__version__` te bekijken.
 
-Zie [opties voor ondersteuning en hulp](~/articles/cognitive-services/speech-service/support.md) als er een probleem is of als er een functie ontbreekt.
+Zie [opties voor ondersteuning en hulp](../../../../cognitive-services-support-options.md?context=%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext%253fcontext%253d%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext) als er een probleem is of als er een functie ontbreekt.
 
 ## <a name="next-steps"></a>Volgende stappen
 

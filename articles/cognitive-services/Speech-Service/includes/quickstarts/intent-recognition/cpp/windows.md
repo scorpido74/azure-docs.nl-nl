@@ -6,12 +6,12 @@ ms.date: 04/04/2020
 ms.topic: include
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 9c0c2673acf12ddf80b77be57acc5af55e7f160c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d1fab57adfb675e8cc4ea604980e6f04a3f4a89f
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87298833"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94424649"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -46,14 +46,14 @@ Voordat u een `IntentRecognizer`-object kunt initialiseren, moet u een configura
 Voeg deze code toe in de methode `recognizeIntent()`. Zorg ervoor dat u deze waarden bijwerkt:
 
 * Vervang `"YourLanguageUnderstandingSubscriptionKey"` door de LUIS-voorspellingssleutel.
-* Vervang `"YourLanguageUnderstandingServiceRegion"` door de locatie van uw LUIS.  Gebruik **Regio-id** uit [regio](https://aka.ms/speech/sdkregion).
+* Vervang `"YourLanguageUnderstandingServiceRegion"` door de locatie van uw LUIS.  Gebruik **Regio-id** uit [regio](../../../../regions.md).
 
 >[!TIP]
 > Als u hulp nodig hebt bij het vinden van deze waarden, raadpleegt u [Een LUIS-app maken voor intentieherkenning](#create-a-luis-app-for-intent-recognition).
 
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/intent-recognition/helloworld/helloworld.cpp?range=25)]
 
-In dit voorbeeld wordt de methode `FromSubscription()` gebruikt om de `SpeechConfig` te maken. Zie [SpeechConfig Class](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig) voor een volledige lijst met beschikbare methoden.
+In dit voorbeeld wordt de methode `FromSubscription()` gebruikt om de `SpeechConfig` te maken. Zie [SpeechConfig Class](/cpp/cognitive-services/speech/speechconfig) voor een volledige lijst met beschikbare methoden.
 
 De Speech-SDK probeert taal standaard te herkennen in en-US. Zie [De brontaal voor spraak-naar-tekst opgeven](../../../../how-to-specify-source-language.md) voor informatie over het kiezen van de brontaal.
 
@@ -105,9 +105,9 @@ Op dit punt moet uw code er als volgt uitzien:
 
 U bent nu klaar om uw app te bouwen en de spraakherkenning te testen met behulp van de Speech-service.
 
-1. **De code compileren**: kies in de menubalk van Visual Studio **Build** > **Build Solution**.
-2. **Start uw app**: kies in de menubalk **Debug** > **Start Debugging** of druk op <kbd>F5</kbd>.
-3. **Herkenning starten**: u wordt gevraagd om een woordgroep uit te spreken in het Engels. Uw spraak wordt verzonden naar de Speech-service, getranscribeerd als tekst en weergegeven in de console.
+1. **De code compileren** : kies in de menubalk van Visual Studio **Build** > **Build Solution**.
+2. **Start uw app** : kies in de menubalk **Debug** > **Start Debugging** of druk op <kbd>F5</kbd>.
+3. **Herkenning starten** : u wordt gevraagd om een woordgroep uit te spreken in het Engels. Uw spraak wordt verzonden naar de Speech-service, getranscribeerd als tekst en weergegeven in de console.
 
 ## <a name="next-steps"></a>Volgende stappen
 

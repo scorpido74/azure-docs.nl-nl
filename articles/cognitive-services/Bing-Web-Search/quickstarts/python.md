@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018, devx-track-python
-ms.openlocfilehash: 9d6de9b29f0e68d48eab0b2c4081470858d3d69c
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 63706eefd4f46c055e8bcbd58a86fdded6f3527d
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93076432"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94381045"
 ---
 # <a name="quickstart-use-python-to-call-the-bing-web-search-api"></a>Snelstartgids: Python gebruiken voor het aanroepen van de Bing Webzoekopdrachten-API  
 
@@ -62,7 +62,7 @@ Dit voorbeeld wordt uitgevoerd als een Jupyter-notitieblok in [MyBinder](https:/
 
 Deze code maakt gebruik van de `requests`-bibliotheek om de Bing Web Search-API aan te roepen en de resultaten als een JSON-object te retourneren. De API-sleutel wordt doorgegeven in de `headers`-woordenlijst, en de zoekterm en queryparameters worden doorgegeven in de `params`-woordenlijst. 
 
-Raadpleeg [Bing Web Search-API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) voor een volledige lijst met opties en parameters.
+Raadpleeg [Bing Web Search-API v7](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) voor een volledige lijst met opties en parameters.
 
 ```python
 import requests

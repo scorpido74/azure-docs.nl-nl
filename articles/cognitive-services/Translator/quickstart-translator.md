@@ -12,12 +12,12 @@ ms.date: 09/14/2020
 ms.author: erhopf
 ms.custom: cog-serv-seo-aug-2020
 keywords: translator, translator-service, tekst vertalen, tekst transliteren, taaldetectie
-ms.openlocfilehash: 8250141c2baa92478c5929a300ec7b17b8ed7131
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 68bbb31ae87ebbb84cda752c2f4a7c1bd1116dda
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322510"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369525"
 ---
 # <a name="quickstart-get-started-with-translator"></a>Quickstart: Aan de slag met Translator
 
@@ -105,7 +105,7 @@ Wanneer u de Translator-service via REST aanroept, moet u ervoor zorgen dat de v
   <th>Beschrijving</th>
   <tr>
     <td>Verificatieheader(s)</td>
-    <td><em>Vereiste aanvraagheader</em>.<br/><code>Ocp-Apim-Subscription-Key</code><br/><br/><em>De vereiste aanvraagheader als er een Cognitive Services-resource wordt gebruikt. Optioneel als er een Translator-resource wordt gebruikt</em>.<br/><code>Ocp-Apim-Subscription-Region</code><br/><br/>Zie <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">Beschikbare opties voor verificatie</a>.</td>
+    <td><em>Vereiste aanvraagheader</em>.<br/><code>Ocp-Apim-Subscription-Key</code><br/><br/><em>De vereiste aanvraagheader als er een Cognitive Services-resource wordt gebruikt. Optioneel als er een Translator-resource wordt gebruikt</em>.<br/><code>Ocp-Apim-Subscription-Region</code><br/><br/>Zie <a href="/azure/cognitive-services/translator/reference/v3-0-reference#authentication">Beschikbare opties voor verificatie</a>.</td>
   </tr>
   <tr>
     <td>Content-Type</td>
@@ -123,7 +123,7 @@ Wanneer u de Translator-service via REST aanroept, moet u ervoor zorgen dat de v
 
 ## <a name="keys-and-endpoints"></a>Sleutels en eindpunten
 
-De voorbeelden op deze pagina gebruiken voor het gemak in code vastgelegde sleutels en eindpunten. Vergeet niet **de sleutel uit uw code te verwijderen wanneer u klaar bent** , en **maak deze sleutel nooit openbaar**. Overweeg om voor productie een veilige manier te gebruiken voor het opslaan en openen van uw referenties. Zie het artikel Cognitive Services [Beveiliging](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security) voor meer informatie.
+De voorbeelden op deze pagina gebruiken voor het gemak in code vastgelegde sleutels en eindpunten. Vergeet niet **de sleutel uit uw code te verwijderen wanneer u klaar bent** , en **maak deze sleutel nooit openbaar**. Overweeg om voor productie een veilige manier te gebruiken voor het opslaan en openen van uw referenties. Zie het artikel Cognitive Services [Beveiliging](../cognitive-services-security.md) voor meer informatie.
 
 ## <a name="translate-text"></a>Tekst vertalen 
 
@@ -686,7 +686,7 @@ Na een geslaagde aanroep ziet u het volgende antwoord:
 
 ### <a name="detect-source-language-without-translation"></a>Brontaal detecteren zonder vertaling
 
-Het is mogelijk de Translator-service te gebruiken om de taal van de brontekst te detecteren zonder een vertaling uit te voeren. U kunt dit doen door het [`/detect`](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect)-eindpunt te gebruiken. 
+Het is mogelijk de Translator-service te gebruiken om de taal van de brontekst te detecteren zonder een vertaling uit te voeren. U kunt dit doen door het [`/detect`](./reference/v3-0-detect.md)-eindpunt te gebruiken. 
 
 # <a name="c"></a>[C#](#tab/csharp)
 

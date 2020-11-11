@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 4db81571fe4b77382ccf269351ddbf46ef5f06e2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: c19aca20b1b5dff53630c0b51c75689394ad3d53
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93076704"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94381079"
 ---
 # <a name="quickstart-use-java-to-search-the-web-with-the-bing-web-search-rest-api-an-azure-cognitive-service"></a>Quickstart: Java gebruiken om op internet te zoeken met de Bing Web Search REST API, een cognitieve service van Azure
 
@@ -25,13 +25,13 @@ ms.locfileid: "93076704"
 > Bing Search-API's die zijn ingericht met Cognitive Services, worden voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst afloopt.
 > Raadpleeg [Bing Search Services](https://aka.ms/cogsvcs/bingmigration) voor migratie-instructies.
 
-In deze quickstart gebruikt u een Java-app om de Bing Web Search API voor het eerst aan te roepen.Deze Java-app verzendt een zoekaanvraag naar de API en geeft het JSON-antwoord weer. Deze Java-app verzendt een zoekaanvraag naar de API en geeft het JSON-antwoord weer. Hoewel deze app in Java is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
+In deze quickstart gebruikt u een Java-app om de Bing Web Search API voor het eerst aan te roepen.Deze Java-app verzendt een zoekaanvraag naar de API en geeft het JSON-antwoord weer. Deze Java-app verzendt een zoekaanvraag naar de API en geeft het JSON-antwoord weer. Hoewel deze toepassing in Java is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
 
 ## <a name="prerequisites"></a>Vereisten
 
 Voordat u verdergaat met deze snelstart moet u beschikken over:
 
-* [JDK 7 of 8](https://aka.ms/azure-jdks)
+* [JDK 7 of 8](/azure/developer/java/fundamentals/java-jdk-long-term-support)
 * [GSON-bibliotheek](https://github.com/google/gson)
 * Een abonnementssleutel
 
@@ -333,4 +333,4 @@ Antwoorden afkomstig van de Bing Webzoekopdrachten-API worden geretourneerd in d
 > [!div class="nextstepaction"]
 > [Zelfstudie voor de app met één pagina voor de Bing Web Search API](../tutorial-bing-web-search-single-page-app.md)
 
-[!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]  
+[!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]

@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
 ms.custom: devx-track-python
-ms.openlocfilehash: 569b9b8b7141c767e8ec7e813029b73c8485dcbd
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 1b7c19c06e663fc959389a26710c5c748a9654e8
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93084675"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369134"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-python"></a>Quickstart: Een zoekaanvraag verzenden naar de REST-API van Bing Entiteiten zoeken met behulp van Python
 
@@ -152,5 +152,5 @@ Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien
 > [!div class="nextstepaction"]
 > [Een web-app van één pagina maken](../tutorial-bing-entities-search-single-page-app.md).
 
-* [Wat is de Bing Entiteiten zoeken-API?](../search-the-web.md)
-* [Naslaghandleiding Bing Entiteiten zoeken-API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference).
+* [Wat is de Bing Entiteiten zoeken-API?](../overview.md)
+* [Naslaghandleiding Bing Entiteiten zoeken-API](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference).

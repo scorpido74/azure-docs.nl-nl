@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/09/2020
 ms.author: v-jawe
-ms.openlocfilehash: 029cb1e59876eb01c609ef8b7ba0412ed35a2a1b
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 8a877e1773431053c5ad7344209076cb868a0ee3
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940737"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94425027"
 ---
 In deze quickstart leert u hoe u tekst naar spraak kunt converteren met behulp van de Speech-service en cURL.
 
@@ -26,7 +26,7 @@ Voer de volgende opdracht uit bij een opdrachtprompt: U moet de volgende waarden
 - De regio voor de Speech-service.
 
 Mogelijk wilt u ook de volgende waarden wijzigen.
-- De waarde van de `X-Microsoft-OutputFormat`-header, waarmee de indeling van de audio-uitvoer wordt bepaald. Een lijst met ondersteunde indelingen voor audio-uitvoer vindt u in de [referentie voor tekst-naar-spraak REST API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-text-to-speech#audio-outputs).
+- De waarde van de `X-Microsoft-OutputFormat`-header, waarmee de indeling van de audio-uitvoer wordt bepaald. Een lijst met ondersteunde indelingen voor audio-uitvoer vindt u in de [referentie voor tekst-naar-spraak REST API](../../../rest-text-to-speech.md#audio-outputs).
 - De stem voor de uitvoer. Zie de volgende sectie voor een lijst met stemmen die beschikbaar zijn voor uw Speech-eindpunt.
 - Het uitvoerbestand. In dit voorbeeld wordt het antwoord van de server naar het bestand `output.wav` gestuurd.
 

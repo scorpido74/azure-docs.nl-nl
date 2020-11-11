@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: overview
 ms.date: 12/19/2019
 ms.author: scottwhi
-ms.openlocfilehash: 2eab79d79a287bc8a92133c6901c420dfaee2fd5
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 50db66d54993a4b5ee8afb4756be6b1f4387a1d0
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93082042"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369338"
 ---
 # <a name="what-is-the-bing-visual-search-api"></a>Wat is Bing Visual Search-API?
 
@@ -53,7 +53,7 @@ De resultaten van Bing Visual Search bevatten ook begrenzingsvakken voor interes
 
 Bing Visual Search-API is een RESTful-webservice die eenvoudig kan worden aangeroepen vanuit elke programmeertaal waarmee HTTP-aanvragen kunnen worden gedaan en JSON kan worden geparseerd. U kunt de REST API of de SDK gebruiken voor de service.
 
-1. Maak een [account voor Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) met toegang tot de Bing Search-API's. Als u geen Azure-abonnement hebt, kunt u [gratis een account maken](https://azure.microsoft.com/free/cognitive-services/).
+1. Maak een [account voor Cognitive Services](../cognitive-services-apis-create-account.md) met toegang tot de Bing Search-API's. Als u geen Azure-abonnement hebt, kunt u [gratis een account maken](https://azure.microsoft.com/free/cognitive-services/).
 2. Verzend een aanvraag naar de API met een geldige zoekquery.
 3. Verwerk de API-reactie door het geretourneerde JSON-bericht te parseren.
 
@@ -74,8 +74,8 @@ Zie deze quickstarts om snel aan de slag te gaan met uw eerste aanvraag:
 
 ## <a name="see-also"></a>Zie ook
 
-* De documentatie voor [Afbeeldingen - Visueel zoeken](https://docs.microsoft.com/rest/api/cognitiveservices/bingvisualsearch/images/visualsearch) bevat beschrijvingen van de definities en informatie over de eindpunten, aanvraagheaders, antwoorden en queryparameters waarmee u afbeeldingszoekresultaten kunt opvragen.
+* De documentatie voor [Afbeeldingen - Visueel zoeken](/rest/api/cognitiveservices/bingvisualsearch/images/visualsearch) bevat beschrijvingen van de definities en informatie over de eindpunten, aanvraagheaders, antwoorden en queryparameters waarmee u afbeeldingszoekresultaten kunt opvragen.
 
 * In de [vereisten voor gebruik en weergave van de Bing Search-API](../bing-web-search/use-display-requirements.md) staan het acceptabele gebruik van de inhoud en informatie die is verkregen via de Bing Search-API's.
 
-* Bezoek de [hubpagina voor de Bing Search-API](../bing-web-search/search-the-web.md) om de andere beschikbare API's te verkennen.
+* Bezoek de [hubpagina voor de Bing Search-API](../bing-web-search/overview.md) om de andere beschikbare API's te verkennen.

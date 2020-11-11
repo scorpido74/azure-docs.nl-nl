@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 10/19/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9dbed0de3cf6cc911111825a75430d0c616f4dc4
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: d391586ade9e9a58344f9b1666802a453770152a
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217577"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94386480"
 ---
 Met de Bing Web Search-clientbibliotheek kunt u Bing Web Search eenvoudig integreren in uw C#-toepassing. In deze snelstartgids leert u hoe u een instantie maakt voor een client, een aanvraag verzendt en het antwoord weergeeft.
 
@@ -36,7 +36,7 @@ Voordat u verdergaat met deze snelstart moet u beschikken over:
 > [!TIP]
 > Haal de nieuwste code als Visual Studio-oplossing op uit [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/).
 
-De eerste stap bestaat uit het maken van een nieuw consoleproject. Als u hulp nodig hebt bij het opzetten van een consoleproject, raadpleegt u [Hello World: uw eerste programma (C#-programmeerhandleiding)](https://docs.microsoft.com/dotnet/csharp/programming-guide/inside-a-program/hello-world-your-first-program). Als u de Bing Web Search SDK wilt gebruiken in uw toepassing, moet u `Microsoft.Azure.CognitiveServices.Search.WebSearch` installeren met behulp van NuGet Package Manager.
+De eerste stap bestaat uit het maken van een nieuw consoleproject. Als u hulp nodig hebt bij het opzetten van een consoleproject, raadpleegt u [Hello World: uw eerste programma (C#-programmeerhandleiding)](/dotnet/csharp/programming-guide/inside-a-program/hello-world-your-first-program). Als u de Bing Web Search SDK wilt gebruiken in uw toepassing, moet u `Microsoft.Azure.CognitiveServices.Search.WebSearch` installeren met behulp van NuGet Package Manager.
 
 Met het [Web Search SDK-pakket](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.WebSearch/1.2.0) wordt ook het volgende geïnstalleerd:
 
@@ -424,4 +424,3 @@ Wanneer u klaar bent met dit project, moet u uw abonnementssleutel verwijderen u
 
 > [!div class="nextstepaction"]
 > [Voorbeelden voor Cognitive Services Node.js SDK](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/)
-                                    

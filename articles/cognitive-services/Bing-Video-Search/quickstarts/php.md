@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: 6bcfb9057739277c1f57b5ebd98b99877f759e9b
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 8362f5b4d3436e83cbd033fcc3cd088d52122b58
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93094095"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94379851"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-php"></a>Snelstart: Video's zoeken met de Bing Video's zoeken-REST API en PHP
 
@@ -36,7 +36,7 @@ Hoewel deze toepassing in PHP is geschreven, is de API een RESTful-webservice di
 
 ## <a name="running-the-application"></a>De toepassing uitvoeren
 
-Met de [Bing Video’s zoeken-API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) worden videoresultaten geretourneerd uit de zoekmachine van Bing.
+Met de [Bing Video’s zoeken-API](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) worden videoresultaten geretourneerd uit de zoekmachine van Bing.
 
 1. Schakel veilige HTTP-ondersteuning voor het `php.ini`-bestand in door de opmerkingen bij regel `;extension=php_openssl.dll` te verwijderen, zoals beschreven in de volgende code.
 2. Maak een nieuw PHP-project in uw favoriete IDE of editor.

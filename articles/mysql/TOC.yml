@@ -471,6 +471,8 @@
               href: flexible-server/concepts-high-availability.md
         - name: Bewaking en logboeken
           items:
+            - name: Serverparameters
+              href: flexible-server/concepts-server-parameters.md
             - name: Logboeken voor langzame query's
               href: flexible-server/concepts-slow-query-logs.md
             - name: Auditlogboeken

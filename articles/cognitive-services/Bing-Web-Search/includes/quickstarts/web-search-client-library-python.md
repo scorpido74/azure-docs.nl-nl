@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: bdbd183ba161c96e0ed8e160ce602da2ec30dfb7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 13e08d2c273b242a902203abf0879fd11fbdf801
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85940410"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94386630"
 ---
 Met de Bing Web Search-clientbibliotheek kunt u Bing Web Search eenvoudig integreren in uw Python-toepassing. In deze snelstartgids leert u hoe u een aanvraag verzendt, een JSON-antwoord ontvangt en de resultaten filtert en parseert.
 
@@ -177,7 +177,7 @@ Nu u uw eerste aanroep hebt gedaan voor de Bing Web Search-API, gaan we eens een
 
 ### <a name="limit-the-number-of-results-returned-by-bing"></a>Het aantal resultaten beperken dat door Bing wordt geretourneerd
 
-In dit voorbeeld worden de parameters `count` en `offset` gebruikt voor het beperken van het aantal resultaten dat wordt geretourneerd met de [`search`-methode](https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python) van de SDK. De `name` en `url` voor het eerste resultaat worden weergegeven.
+In dit voorbeeld worden de parameters `count` en `offset` gebruikt voor het beperken van het aantal resultaten dat wordt geretourneerd met de [`search`-methode](/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python) van de SDK. De `name` en `url` voor het eerste resultaat worden weergegeven.
 
 1. Voeg deze code toe aan uw Python-project:
 
@@ -266,7 +266,7 @@ In dit voorbeeld worden de parameters `response_filter` en `freshness` gebruikt 
 
 ### <a name="use-safe-search-answer-count-and-the-promote-filter"></a>Gebruik de parameters voor veilig zoeken, aantal antwoorden en het filter voor het promoten van zoekresultaten
 
-In dit voorbeeld worden de parameters `answer_count`, `promote` en `safe_search` gebruikt om de zoekresultaten te filteren met de [`search`-methode](https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python) van de SDK. De `name` en `url` voor het eerste resultaat worden weergegeven.
+In dit voorbeeld worden de parameters `answer_count`, `promote` en `safe_search` gebruikt om de zoekresultaten te filteren met de [`search`-methode](/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python) van de SDK. De `name` en `url` voor het eerste resultaat worden weergegeven.
 
 1. Voeg deze code toe aan uw Python-project:
 
@@ -320,4 +320,4 @@ Wanneer u klaar bent met dit project, moet u uw abonnementssleutel verwijderen u
 
 ## <a name="see-also"></a>Zie ook
 
-* [Naslaginformatie over Azure Python SDK](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/websearch)
+* [Naslaginformatie over Azure Python SDK](/python/api/azure-cognitiveservices-search-websearch/?view=azure-python)
