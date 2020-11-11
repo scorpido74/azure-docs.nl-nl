@@ -7,24 +7,24 @@ ms.author: karler
 ms.date: 10/14/2019
 ms.topic: quickstart
 zone_pivot_groups: java-build-tools-set
-ms.openlocfilehash: faa4df8633c34b23703a3fe9fa405bad959ec894
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: b4381c4acbea8a3b7d86d9c32aaf9cea24cf15fa
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167199"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422651"
 ---
 # <a name="connect-your-java-function-to-azure-storage"></a>Uw Java-functie verbinden met Azure Storage
 
 [!INCLUDE [functions-add-storage-binding-intro](../../includes/functions-add-storage-binding-intro.md)]
 
-In dit artikel leest u hoe u de functie die u in het [vorige quickstart-artikel](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java&tabs=bash,browser) hebt gemaakt, met een Azure Storage-wachtrij kunt integreren. De uitvoerbinding die u aan deze functie toevoegt, schrijft gegevens van een HTTP-aanvraag naar een bericht in de wachtrij.
+In dit artikel leest u hoe u de functie die u in het [vorige quickstart-artikel](./create-first-function-cli-java.md?tabs=bash,browser) hebt gemaakt, met een Azure Storage-wachtrij kunt integreren. De uitvoerbinding die u aan deze functie toevoegt, schrijft gegevens van een HTTP-aanvraag naar een bericht in de wachtrij.
 
 Voor de meeste bindingen is een opgeslagen verbindingsreeks vereist die Functions gebruikt om toegang te krijgen tot de gebonden service. Om de verbinding makkelijker te kunnen maken, gebruikt u het Storage-account dat u voor uw functie-app hebt gemaakt. De verbinding met dit account is al opgeslagen in een app-instelling met de naam `AzureWebJobsStorage`.  
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u aan dit artikel begint, voert u de stappen in [deel 1 van de Java-quickstart](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java&tabs=bash,browser) uit.
+Voordat u aan dit artikel begint, voert u de stappen in [deel 1 van de Java-quickstart](./create-first-function-cli-java.md?tabs=bash,browser) uit.
 
 ## <a name="download-the-function-app-settings"></a>De instellingen voor functie-apps downloaden
 

@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/20/2017
+ms.date: 11/03/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 646be410cceb214efad19757378c74f086e58578
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8166e2a937b905ae153e6b86cb026ff2be2415a8
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89263062"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360544"
 ---
 # <a name="use-a-windows-vm-system-assigned-managed-identity-to-access-resource-manager"></a>Een door het Windows-VM-systeem toegewezen beheerde identiteit gebruiken voor toegang tot Resource Manager
 
@@ -37,13 +37,14 @@ In deze zelfstudie ziet u hoe u toegang krijgt tot de Azure Resource Manager-API
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
 ## <a name="grant-your-vm-access-to-a-resource-group-in-resource-manager"></a>Uw virtuele machine toegang verlenen tot een resourcegroep in Resource Manager
+
 Met behulp van beheerde identiteiten voor Azure-resources kan uw code toegangstokens ophalen voor verificatie bij resources die ondersteuning bieden voor Microsoft Azure AD-verificatie.  Azure Resource Manager biedt ondersteuning voor Azure AD-verificatie.  Eerst moeten we de door het systeem toegewezen beheerde identiteit van deze VM toegang verlenen tot een resource in Resource Manager, in dit geval de resourcegroep waarin de VM is opgenomen.  
 
 1.  Navigeer naar het tabblad **Resourcegroepen**. 
 2.  Selecteer de specifieke **resourcegroep** die u eerder voor uw **virtuele Windows-machine** hebt gemaakt. 
 3.  Ga naar **Toegangsbeheer (IAM)** in het linkerpaneel. 
 4.  Kies vervolgens **Roltoewijzing toevoegen** om een nieuwe roltoewijzing voor de **virtuele Windows-machine** toe te voegen.  Kies **Rol** als **lezer**. 
-5.  Stel in de volgende vervolgkeuzelijst, **Toegang toewijzen aan**, de resource in op **Virtuele machine**. 
+5.  Stel in de volgende vervolgkeuzelijst, **Toegang toewijzen aan** , de resource in op **Virtuele machine**. 
 6.  Controleer vervolgens of het juiste abonnement wordt weergegeven in de vervolgkeuzelijst **Abonnement**. Bij **Resourcegroep** selecteert u **Alle resourcegroepen**. 
 7.  Kies ten slotte bij **Selecteren** uw virtuele Windows-machine in de vervolgkeuzelijst en klik op **Opslaan**.
 
@@ -53,8 +54,8 @@ Met behulp van beheerde identiteiten voor Azure-resources kan uw code toegangsto
 
 In dit gedeelte moet u **PowerShell** gebruiken.  Als **Powershell** nog niet is geïnstalleerd, downloadt u het [hier](/powershell/azure/). 
 
-1.  Navigeer in Azure Portal naar **Virtuele machines**, ga naar uw virtuele Windows-machine en klik op de pagina **Overzicht** op **Verbinden**. 
-2.  Voer uw referenties (**gebruikersnaam** en **wachtwoord**) in die u hebt toegevoegd bij het maken van de virtuele Windows-machine. 
+1.  Navigeer in Azure Portal naar **Virtuele machines** , ga naar uw virtuele Windows-machine en klik op de pagina **Overzicht** op **Verbinden**. 
+2.  Voer uw referenties ( **gebruikersnaam** en **wachtwoord** ) in die u hebt toegevoegd bij het maken van de virtuele Windows-machine. 
 3.  Nu u een **Verbinding met extern bureaublad** met de virtuele machine hebt gemaakt, opent u **PowerShell** in de externe sessie. 
 4.  Dien met behulp van de cmdlet Invoke-WebRequest een aanvraag in bij de lokaal beheerde identiteit om een toegangstoken voor Azure Resource Manager op te halen voor het Azure-resource-eindpunt.
 

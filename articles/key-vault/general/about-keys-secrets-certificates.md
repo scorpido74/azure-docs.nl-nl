@@ -6,15 +6,16 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: general
 ms.topic: overview
 ms.date: 04/17/2020
 ms.author: mbaldwin
-ms.openlocfilehash: c02a2658325fdd88ef1052937edc3b84c4545872
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 78f228a5e188bc930a9e7484f4c982ba746331dd
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91296834"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357773"
 ---
 # <a name="azure-key-vault-keys-secrets-and-certificates-overview"></a>Overzicht van sleutels, geheimen en certificaten in Azure Key Vault
 
@@ -45,10 +46,10 @@ Geheimen|/secrets|Ondersteund|Niet ondersteund
 Certificaten|/certificates|Ondersteund|Niet ondersteund
 Opslagaccountsleutels|/storageaccount|Ondersteund|Niet ondersteund
 |||
-- **Cryptografische sleutels**: Ondersteunt meerdere sleuteltypen en algoritmen en maakt het gebruik mogelijk van met software beveiligde en met HSM beveiligde sleutels. Zie [Over sleutels](../keys/about-keys.md) voor meer informatie.
-- **Geheimen**: Biedt beveiligde opslag van geheimen, zoals wachtwoorden en databaseverbindingsreeksen. Zie [Over geheimen](../secrets/about-secrets.md) voor meer informatie.
-- **Certificaten**: Ondersteunt certificaten, die worden gebouwd op basis van sleutels en geheimen en een functie voor automatisch verlengen toevoegen. Zie [Over certificaten](../certificates/about-certificates.md) voor meer informatie.
-- **Azure Storage-accountsleutels**: Kan sleutels van een Azure Storage-account voor u beheren. Intern kan Key Vault sleutels synchroniseren met een Azure Storage-account en de sleutels periodiek opnieuw genereren (rouleren). Zie [Opslagaccountsleutels beheren met Key Vault](../secrets/overview-storage-keys.md) voor meer informatie.
+- **Cryptografische sleutels** : Ondersteunt meerdere sleuteltypen en algoritmen en maakt het gebruik mogelijk van met software beveiligde en met HSM beveiligde sleutels. Zie [Over sleutels](../keys/about-keys.md) voor meer informatie.
+- **Geheimen** : Biedt beveiligde opslag van geheimen, zoals wachtwoorden en databaseverbindingsreeksen. Zie [Over geheimen](../secrets/about-secrets.md) voor meer informatie.
+- **Certificaten** : Ondersteunt certificaten, die worden gebouwd op basis van sleutels en geheimen en een functie voor automatisch verlengen toevoegen. Zie [Over certificaten](../certificates/about-certificates.md) voor meer informatie.
+- **Azure Storage-accountsleutels** : Kan sleutels van een Azure Storage-account voor u beheren. Intern kan Key Vault sleutels synchroniseren met een Azure Storage-account en de sleutels periodiek opnieuw genereren (rouleren). Zie [Opslagaccountsleutels beheren met Key Vault](../secrets/overview-storage-keys.md) voor meer informatie.
 
 Zie [Over Azure Key Vault](overview.md) voor meer algemene informatie over Azure Key Vault. Zie [Wat is beheerde HSM van Azure Key Vault?](../managed-hsm/overview.md) voor meer informatie over beheerde HSM-pools.
 
@@ -57,16 +58,16 @@ Zie [Over Azure Key Vault](overview.md) voor meer algemene informatie over Azure
 
 Raadpleeg de JOSE-specificaties voor relevante gegevenstypen voor sleutels, versleuteling en ondertekening.  
 
--   **algorithm**: een ondersteund algoritme voor een sleutelbewerking, bijvoorbeeld RSA1_5  
--   **ciphertext-value**: ciphertekstoctetten, gecodeerd met Base64URL  
--   **digest-value**: de uitvoer van een hash-algoritme, gecodeerd met Base64URL  
--   **key-type**: een van de ondersteunde sleuteltypen, bijvoorbeeld RSA (Rivest-Shamir-Adleman).  
+-   **algorithm** : een ondersteund algoritme voor een sleutelbewerking, bijvoorbeeld RSA1_5  
+-   **ciphertext-value** : ciphertekstoctetten, gecodeerd met Base64URL  
+-   **digest-value** : de uitvoer van een hash-algoritme, gecodeerd met Base64URL  
+-   **key-type** : een van de ondersteunde sleuteltypen, bijvoorbeeld RSA (Rivest-Shamir-Adleman).  
 -   **plaintext-value** - niet-versleutelde-tekstoctetten, gecodeerd met Base64URL  
--   **signature-value**: uitvoer van een handtekeningalgoritme, gecodeerd met Base64URL  
--   **base64URL**: een met Base64URL [RFC4648] gecodeerde binaire waarde  
--   **boolean**: waar of onwaar  
--   **Identity**: een identiteit van AAD (Azure Active Directory).  
--   **IntDate**: een decimale JSON-waarde die het aantal seconden van 1970-01-01T0:0: 0Z UTC tot de opgegeven UTC-datum/-tijd vertegenwoordigt. Zie RFC3339 voor meer informatie over datums/tijden in het algemeen en UTC in het bijzonder.  
+-   **signature-value** : uitvoer van een handtekeningalgoritme, gecodeerd met Base64URL  
+-   **base64URL** : een met Base64URL [RFC4648] gecodeerde binaire waarde  
+-   **boolean** : waar of onwaar  
+-   **Identity** : een identiteit van AAD (Azure Active Directory).  
+-   **IntDate** : een decimale JSON-waarde die het aantal seconden van 1970-01-01T0:0: 0Z UTC tot de opgegeven UTC-datum/-tijd vertegenwoordigt. Zie RFC3339 voor meer informatie over datums/tijden in het algemeen en UTC in het bijzonder.  
 
 ## <a name="objects-identifiers-and-versioning"></a>Objecten, id's en versiebeheer
 
@@ -80,9 +81,9 @@ Zie [Verificatie, aanvragen en antwoorden](authentication-requests-and-responses
 
 Een object-id heeft de volgende algemene indeling (afhankelijk van het containertype):  
 
-- **Voor kluizen**: `https://{vault-name}.vault.azure.net/{object-type}/{object-name}/{object-version}`  
+- **Voor kluizen** : `https://{vault-name}.vault.azure.net/{object-type}/{object-name}/{object-version}`  
 
-- **Voor beheerde HSM-pools**: `https://{hsm-name}.managedhsm.azure.net/{object-type}/{object-name}/{object-version}`  
+- **Voor beheerde HSM-pools** : `https://{hsm-name}.managedhsm.azure.net/{object-type}/{object-name}/{object-version}`  
 
 > [!NOTE]
 > Zie [Objecttypeondersteuning](#object-types) voor de typen objecten die door elk containertype worden ondersteund.

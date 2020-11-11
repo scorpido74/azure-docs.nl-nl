@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.reviewer: dineshm
-ms.openlocfilehash: 11c6cdff852a0695d4b2071f1d0a60c05dba2410
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0ee3d9c26d6972da9e528660d034432ce696aa45
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88213491"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93347196"
 ---
 # <a name="quickstart-create-a-queue-and-add-a-message-with-the-azure-portal"></a>Quickstart: Een wachtrij maken en een bericht toevoegen met de Azure-portal
 
@@ -55,9 +55,9 @@ Nadat u een bericht hebt toegevoegd, wordt in de Azure-portal een lijst van alle
 
 ## <a name="dequeue-a-message"></a>Een bericht uit de wachtrij verwijderen
 
-U kunt vanuit de Azure-portal een bericht uit het begin van de wachtrij verwijderen. Wanneer u een bericht uit de wachtrij verwijdert, is de verwijdering definitief. 
+U kunt vanuit de Azure-portal een bericht uit het begin van de wachtrij verwijderen. Wanneer u een bericht uit de wachtrij verwijdert, is de verwijdering definitief.
 
-Bij het verwijderen van berichten uit de wachtrij wordt altijd het oudste bericht in de wachtrij verwijderd. 
+Bij het verwijderen van berichten uit de wachtrij wordt altijd het oudste bericht in de wachtrij verwijderd.
 
 ![Schermopname van het verwijderen van een bericht uit de portal](media/storage-quickstart-queues-portal/dequeue-message.png)
 

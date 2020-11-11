@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/27/2020
 ms.author: sngun
 ms.custom: include file
-ms.openlocfilehash: 1f36f2f26b65fc6078b99a43b6f0bae9a8a8e9f5
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 736ab630b035ae1a668332eb5ab5aa9530ef0e88
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91578377"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94504035"
 ---
 1. Meld u in een nieuw browservenster aan bij [Azure Portal](https://portal.azure.com/).
 
@@ -26,7 +26,7 @@ ms.locfileid: "91578377"
    ![Het deelvenster Databases in de Azure-portal](./media/cosmos-db-create-dbaccount-graph/create-nosql-db-databases-json-tutorial-1.png)
    
    > [!TIP]
-   > Als u Azure Cosmos DB niet in de lijst ziet, typt u het in het zoekvak bovenaan de pagina en drukt u op de _Enter_-toets. 
+   > Als u Azure Cosmos DB niet in de lijst ziet, typt u het in het zoekvak bovenaan de pagina en drukt u op de _Enter_ -toets. 
 
 3. Voer op de pagina **Azure Cosmos DB-account maken** de instellingen in voor het nieuwe Azure Cosmos DB-account. 
  
@@ -37,6 +37,7 @@ ms.locfileid: "91578377"
     Accountnaam|Voer een unieke naam in|Voer een unieke naam in om uw Azure Cosmos DB-account te identificeren. Uw account-URI wordt *gremlin.azure.com* toegevoegd aan uw unieke accountnaam.<br><br>De accountnaam moet tussen de 3 en 31 tekens lang zijn en mag alleen kleine letters, cijfers en afbreekstreepjes bevatten.
     API|Gremlin (grafiek)|De API bepaalt het type te maken account. Azure Cosmos DB heeft vijf API's: Core(SQL) voor documentdatabases, Gremlin voor grafiekdatabases, MongoDB voor documentdatabases, Azure Table en Cassandra. U moet voor elke API een afzonderlijk account maken. <br><br>Selecteer **Gremlin (grafiek)** , omdat u in deze snelstartgids een tabel maakt die geschikt is voor de Gremlin-API. <br><br>[Meer informatie over de Gremlin API](../articles/cosmos-db/graph-introduction.md).|
     Locatie|Selecteer de regio het dichtst in de buurt van uw gebruikers|Selecteer een geografische locatie waar u het Azure Cosmos DB-account wilt hosten. Gebruik de locatie die zich het dichtst bij uw gebruikers bevindt, zodat ze de snelst mogelijke toegang tot de gegevens hebben.
+    Capaciteitsmodus|Ingerichte doorvoer of serverloos|Selecteer **Ingerichte doorvoer** om een account te maken in de modus [Ingerichte doorvoer](../articles/cosmos-db/set-throughput.md). Selecteer **Serverloos** om een account te maken in de modus [serverloos](../articles/cosmos-db/serverless.md).
 
     Selecteer **Beoordelen en maken**. U kunt de secties **Netwerk** en **Tags** overslaan. 
 

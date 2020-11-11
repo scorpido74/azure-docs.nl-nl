@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: ff14f8a9f236701889aea95911f2a1e381eabf83
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: fce098767fffd36376399bbd9396699e3d9fbfd3
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90943648"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392075"
 ---
 # <a name="deploy-azure-sql-edge-with-docker"></a>Azure SQL Edge implementeren met behulp van Docker
 
@@ -28,7 +28,7 @@ Deze installatiekopie bestaat uit Azure SQL Edge op basis van Ubuntu 18.04. Het 
 - Docker-stuurprogramma voor opslag **overlay2**. Dit is de standaardinstelling voor de meeste gebruikers. Als u merkt dat u deze opslagprovider niet gebruikt en moet wijzigen, raadpleegt u de instructies en waarschuwingen in de [Docker-documentatie voor het configureren van overlay2](https://docs.docker.com/storage/storagedriver/overlayfs-driver/#configure-docker-with-the-overlay-or-overlay2-storage-driver).
 - Minimaal 10 GB schijfruimte.
 - Minimaal 1 GB aan RAM-geheugen.
-- [Hardwarevereisten voor Azure SQL Edge](https://docs.microsoft.com/azure/azure-sql-edge/features#hardware-support).
+- [Hardwarevereisten voor Azure SQL Edge](./features.md#hardware-support).
 
 
 ## <a name="pull-and-run-the-container-image"></a>De containerinstallatiekopie ophalen en uitvoeren
@@ -70,7 +70,7 @@ Met de vorige opdracht worden de laatste containerinstallatiekopieën van de Azu
     | Parameter | Beschrijving |
     |-----|-----|
     | **-e "ACCEPT_EULA=Y"** |  De variabele **ACCEPT_EULA** instellen op een willekeurige waarde om te bevestigen dat u de [Licentieovereenkomst voor eindgebruikers](https://go.microsoft.com/fwlink/?linkid=2139274) hebt geaccepteerd. Vereiste instelling voor de Azure SQL Edge-installatiekopie. |
-    | **-e "MSSQL_SA_PASSWORD=yourStrong(!)Password"** | Een eigen sterk wachtwoord opgeven dat uit ten minste 8 tekens bestaat en aan de [vereisten voor het Azure SQL Edge-wachtwoord](https://docs.microsoft.com/sql/relational-databases/security/password-policy) voldoet. Vereiste instelling voor de Azure SQL Edge-installatiekopie. |
+    | **-e "MSSQL_SA_PASSWORD=yourStrong(!)Password"** | Een eigen sterk wachtwoord opgeven dat uit ten minste 8 tekens bestaat en aan de [vereisten voor het Azure SQL Edge-wachtwoord](/sql/relational-databases/security/password-policy) voldoet. Vereiste instelling voor de Azure SQL Edge-installatiekopie. |
     | **-p 1433:1433** | Een TCP-poort in de hostomgeving (eerste waarde) toewijzen aan een TCP-poort in de container (tweede waarde). In dit voorbeeld luistert Azure SQL Edge op TCP 1433 in de container en wordt dit weergegeven voor de poort, 1433, op de host. |
     | **--name azuresqledge** | Een aangepaste naam voor de container opgeven in plaats van een willekeurig gegenereerde naam. Als u meer dan één container uitvoert, kunt u deze naam niet opnieuw gebruiken. |
     | **-d** | De container op de achtergrond uitvoeren (daemon) |
@@ -100,7 +100,7 @@ Met de vorige opdracht worden de laatste containerinstallatiekopieën van de Azu
 
 ## <a name="change-the-sa-password"></a>Het SA-wachtwoord wijzigen
 
-Het **SA**-account is een systeembeheerder op het exemplaar van de Azure SQL Edge dat tijdens de installatie wordt gemaakt. Nadat u de Azure SQL Edge-container hebt gemaakt, kan de door u opgegeven omgevingsvariabele `MSSQL_SA_PASSWORD` worden gedetecteerd door `echo $SA_PASSWORD` in de container uit te voeren. Wijzig het SA-wachtwoord om veiligheidsredenen.
+Het **SA** -account is een systeembeheerder op het exemplaar van de Azure SQL Edge dat tijdens de installatie wordt gemaakt. Nadat u de Azure SQL Edge-container hebt gemaakt, kan de door u opgegeven omgevingsvariabele `MSSQL_SA_PASSWORD` worden gedetecteerd door `echo $SA_PASSWORD` in de container uit te voeren. Wijzig het SA-wachtwoord om veiligheidsredenen.
 
 1. Kies een sterk wachtwoord voor de SA-gebruiker.
 
@@ -114,7 +114,7 @@ Het **SA**-account is een systeembeheerder op het exemplaar van de Azure SQL Edg
 
 ## <a name="connect-to-azure-sql-edge"></a>Verbinding maken met Azure SQL Edge
 
-In de volgende stappen wordt het Azure SQL Edge-opdrachtregelprogramma, **sqlcmd**, in de container gebruikt om verbinding te maken met Azure SQL Edge.
+In de volgende stappen wordt het Azure SQL Edge-opdrachtregelprogramma, **sqlcmd** , in de container gebruikt om verbinding te maken met Azure SQL Edge.
 
 > [!NOTE]
 > Het hulpprogramma sqlcmd is niet beschikbaar in de ARM64-versie van SQL Edge-containers.
@@ -134,7 +134,7 @@ In de volgende stappen wordt het Azure SQL Edge-opdrachtregelprogramma, **sqlcmd
    > [!TIP]
    > U kunt het wachtwoord op de opdrachtregel weglaten om te worden gevraagd het in te voeren.
 
-3. Als dit is gelukt, krijgt u een opdrachtprompt voor **sqlcmd**: `1>`.
+3. Als dit is gelukt, krijgt u een opdrachtprompt voor **sqlcmd** : `1>`.
 
 ## <a name="create-and-query-data"></a>Gegevens maken en er query's op uitvoeren
 
@@ -204,7 +204,7 @@ Voer nu een query uit om gegevens op te halen uit de tabel `Inventory`.
 
 ### <a name="exit-the-sqlcmd-command-prompt"></a>De sqlcmd-opdrachtprompt afsluiten
 
-1. Als u uw **sqlcmd**-sessie wilt beëindigen, typt u `QUIT`:
+1. Als u uw **sqlcmd** -sessie wilt beëindigen, typt u `QUIT`:
 
    ```sql
    QUIT

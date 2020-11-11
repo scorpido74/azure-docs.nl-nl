@@ -8,12 +8,12 @@ ms.date: 09/10/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: b6be3c0f3b7ff8e44bd9dda089c803a27e883383
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 25b6bdcb293379e3206cc6714fae65fe40f6e6c5
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92783433"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93345598"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-java"></a>Quickstart: Azure Queue Storage-clientbibliotheek v12 voor Java
 
@@ -21,26 +21,26 @@ Ga aan de slag met de Azure Queue Storage-clientbibliotheek versie 12 voor Java.
 
 Gebruik de Azure Queue Storage-clientbibliotheek v12 voor Java om:
 
-* Een wachtrij maken
-* Berichten aan een wachtrij toevoegen
-* Berichten in een wachtrij bekijken
-* Een bericht in een wachtrij bijwerken
-* Berichten uit een wachtrij ontvangen en verwijderen
-* Een wachtrij verwijderen
+- Een wachtrij maken
+- Berichten aan een wachtrij toevoegen
+- Berichten in een wachtrij bekijken
+- Een bericht in een wachtrij bijwerken
+- Berichten uit een wachtrij ontvangen en verwijderen
+- Een wachtrij verwijderen
 
 Aanvullende bronnen:
 
-* [API-referentiedocumentatie](/java/api/overview/azure/storage-queue-readme)
-* [Broncode van bibliotheek](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue)
-* [Pakket (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-queue)
-* [Voorbeelden](../common/storage-samples-java.md?toc=%252fazure%252fstorage%252fqueues%252ftoc.json#queue-samples)
+- [API-referentiedocumentatie](/java/api/overview/azure/storage-queue-readme)
+- [Broncode van bibliotheek](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue)
+- [Pakket (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-queue)
+- [Voorbeelden](../common/storage-samples-java.md?toc=%252fazure%252fstorage%252fqueues%252ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>Vereisten
 
-* [Java Development Kit (JDK)](/java/azure/jdk/)-versie 8 of hoger
-* [Apache Maven](https://maven.apache.org/download.cgi)
-* Azure-abonnement: [u kunt een gratis abonnement nemen](https://azure.microsoft.com/free/)
-* Azure Storage-account: [maak een opslagaccount](../common/storage-account-create.md)
+- [Java Development Kit (JDK)](/java/azure/jdk/)-versie 8 of hoger
+- [Apache Maven](https://maven.apache.org/download.cgi)
+- Azure-abonnement: [u kunt een gratis abonnement nemen](https://azure.microsoft.com/free/)
+- Azure Storage-account: [maak een opslagaccount](../common/storage-account-create.md)
 
 ## <a name="setting-up"></a>Instellen
 
@@ -48,9 +48,9 @@ In dit gedeelte wordt uitgelegd hoe u een project voorbereidt voor gebruik met d
 
 ### <a name="create-the-project"></a>Het project maken
 
-Maak een Java-toepassing met de naam *queues-quickstart-v12* .
+Maak een Java-toepassing met de naam *queues-quickstart-v12*.
 
-1. Gebruik in een consolevenster (zoals cmd, PowerShell of Bash) Maven om een nieuwe console-app te maken met de naam *queues-quickstart-v12* . Typ de volgende **mvn** -opdracht om een 'Hallo wereld!' te maken. Java-project.
+1. Gebruik in een consolevenster (zoals cmd, PowerShell of Bash) Maven om een nieuwe console-app te maken met de naam *queues-quickstart-v12*. Typ de volgende **mvn** -opdracht om een 'Hallo wereld!' te maken. Java-project.
 
    ```console
    mvn archetype:generate -DgroupId=com.queues.quickstart \
@@ -97,7 +97,7 @@ Maak een Java-toepassing met de naam *queues-quickstart-v12* .
     [INFO] ------------------------------------------------------------------------
     ```
 
-1. Schakel over naar de zojuist gemaakte map *queues-quickstart-v12* .
+1. Schakel over naar de zojuist gemaakte map *queues-quickstart-v12*.
 
    ```console
    cd queues-quickstart-v12
@@ -151,9 +151,9 @@ public class App
 
 Azure Queue Storage is een service om grote aantallen berichten op te slaan. Een wachtrijbericht kan maximaal 64 KB groot zijn. Een wachtrij kan miljoenen berichten bevatten, tot aan de totale capaciteitslimiet van een opslagaccount. Wachtrijen worden vaak gebruikt om een voorraad werk te maken dat asynchroon moet worden verwerkt. Queue Storage biedt drie typen resources:
 
-* Het opslagaccount
-* Een wachtrij in het opslagaccount
-* Berichten in de wachtrij
+- Het opslagaccount
+- Een wachtrij in het opslagaccount
+- Berichten in de wachtrij
 
 Het volgende diagram geeft de relatie tussen deze resources weer.
 
@@ -161,22 +161,22 @@ Het volgende diagram geeft de relatie tussen deze resources weer.
 
 Gebruik de volgende Java-klassen om te communiceren met deze resources:
 
-* [QueueClientBuilder](/java/api/com.azure.storage.queue.queueclientbuilder): De `QueueClientBuilder`-klasse configureert en instantieert een `QueueClient`-object.
-* [QueueServiceClient](/java/api/com.azure.storage.queue.queueserviceclient): Met de `QueueServiceClient` kunt u alle wachtrijen in uw opslagaccount beheren.
-* [QueueClient](/java/api/com.azure.storage.queue.queueclient): Met de `QueueClient`-klasse kunt u een afzonderlijke wachtrij en de bijbehorende berichten beheren en bewerken.
-* [QueueMessageItem](/java/api/com.azure.storage.queue.models.queuemessageitem): De `QueueMessageItem`-klasse vertegenwoordigt de afzonderlijke objecten die worden geretourneerd wanneer [receiveMessages](/java/api/com.azure.storage.queue.queueclient.receivemessages) wordt aangeroepen voor een wachtrij.
+- [QueueClientBuilder](/java/api/com.azure.storage.queue.queueclientbuilder): De `QueueClientBuilder`-klasse configureert en instantieert een `QueueClient`-object.
+- [QueueServiceClient](/java/api/com.azure.storage.queue.queueserviceclient): Met de `QueueServiceClient` kunt u alle wachtrijen in uw opslagaccount beheren.
+- [QueueClient](/java/api/com.azure.storage.queue.queueclient): Met de `QueueClient`-klasse kunt u een afzonderlijke wachtrij en de bijbehorende berichten beheren en bewerken.
+- [QueueMessageItem](/java/api/com.azure.storage.queue.models.queuemessageitem): De `QueueMessageItem`-klasse vertegenwoordigt de afzonderlijke objecten die worden geretourneerd wanneer [receiveMessages](/java/api/com.azure.storage.queue.queueclient.receivemessages) wordt aangeroepen voor een wachtrij.
 
 ## <a name="code-examples"></a>Codevoorbeelden
 
 Deze voorbeeldcodefragmenten laten zien hoe u de volgende acties kunt uitvoeren met de Azure Queue Storage-clientbibliotheek voor Java:
 
-* [De verbindingsreeks ophalen](#get-the-connection-string)
-* [Een wachtrij maken](#create-a-queue)
-* [Berichten aan een wachtrij toevoegen](#add-messages-to-a-queue)
-* [Berichten in een wachtrij bekijken](#peek-at-messages-in-a-queue)
-* [Een bericht in een wachtrij bijwerken](#update-a-message-in-a-queue)
-* [Berichten uit een wachtrij ontvangen en verwijderen](#receive-and-delete-messages-from-a-queue)
-* [Een wachtrij verwijderen](#delete-a-queue)
+- [De verbindingsreeks ophalen](#get-the-connection-string)
+- [Een wachtrij maken](#create-a-queue)
+- [Berichten aan een wachtrij toevoegen](#add-messages-to-a-queue)
+- [Berichten in een wachtrij bekijken](#peek-at-messages-in-a-queue)
+- [Een bericht in een wachtrij bijwerken](#update-a-message-in-a-queue)
+- [Berichten uit een wachtrij ontvangen en verwijderen](#receive-and-delete-messages-from-a-queue)
+- [Een wachtrij verwijderen](#delete-a-queue)
 
 ### <a name="get-the-connection-string"></a>De verbindingsreeks ophalen
 
@@ -202,7 +202,6 @@ Verzin een naam voor de nieuwe wachtrij. Met de onderstaande code wordt een GUID
 
 > [!IMPORTANT]
 > Wachtrijnamen mogen alleen kleine letters, cijfers en afbreekstreepjes bevatten en moeten beginnen met een letter of cijfer. Elk afbreekstreepje moet worden voorafgegaan en gevolgd door een cijfer of letter. De naam moet bovendien tussen 3 en 63 tekens lang zijn. Zie [Naamgeving van wachtrijen en metagegevens](/rest/api/storageservices/naming-queues-and-metadata) voor meer informatie over de naamgeving van wachtrijen.
-
 
 Maak een instantie van de klasse [QueueClient](/java/api/com.azure.storage.queue.queueclient). Roep vervolgens de methode [create](/java/api/com.azure.storage.queue.queueclient.create) aan om de wachtrij in uw opslagaccount te maken.
 
@@ -266,7 +265,7 @@ System.out.println("\nUpdating the third message in the queue...");
 // Update a message using the result that
 // was saved when sending the message
 queueClient.updateMessage(result.getMessageId(),
-                          result.getPopReceipt(), 
+                          result.getPopReceipt(),
                           "Third message has been updated",
                           Duration.ofSeconds(1));
 ```
@@ -374,4 +373,4 @@ Voor zelfstudies, voorbeelden, quickstarts en andere documentatie gaat u naar:
 > [!div class="nextstepaction"]
 > [Azure voor Java-cloudontwikkelaars](/azure/developer/java/)
 
-* Ga door naar [Voorbeelden van Azure Queue Storage SDK v12 Java-clientbibliotheken](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue) om meer Azure Queue Storage-voorbeeld-apps te zien.
+- Ga door naar [Voorbeelden van Azure Queue Storage SDK v12 Java-clientbibliotheken](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue) om meer Azure Queue Storage-voorbeeld-apps te zien.

@@ -6,12 +6,13 @@ ms.topic: quickstart
 ms.date: 08/01/2020
 ms.custom: mvc, devcenter, seodec18
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: f105acaa4e2801ca6dc8c33b404fdb9f9d65adc8
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+adobe-target: true
+ms.openlocfilehash: b42abfda863ed38eb3c29004630f905edef075c4
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92633719"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359099"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Een Node.js-web-app maken in Azure
 
@@ -72,14 +73,14 @@ In deze sectie implementeert u de Node.js-app in Azure met behulp van VS Code en
 
     :::image type="content" source="media/quickstart-nodejs/deploy.png" alt-text="Schermopname van de Azure App Service in VS Code, waarbij het pictogram met de blauwe pijl is geselecteerd.":::
         
-1. Kies de map *nodejs-docs-hello-world* .
+1. Kies de map *nodejs-docs-hello-world*.
 
 1. Kies een optie voor het maken van een web-app op basis van het besturingssysteem waarnaar u wilt implementeren:
 
     - Linux: Kies **Nieuwe web-app maken**
     - Windows: Kies **Nieuwe web-app maken... Geavanceerd**
 
-1. Typ een unieke naam voor uw web-app en druk op **Enter** . De naam moet uniek zijn binnen Azure en mag alleen alfanumerieke tekens (‘A-Z’, ‘a-z’ en ‘0-9’) en afbreekstreepjes (‘-’) bevatten.
+1. Typ een unieke naam voor uw web-app en druk op **Enter**. De naam moet uniek zijn binnen Azure en mag alleen alfanumerieke tekens (‘A-Z’, ‘a-z’ en ‘0-9’) en afbreekstreepjes (‘-’) bevatten.
 
 1. Als u Linux gebruikt, selecteert u een node.js-versie wanneer hierom wordt gevraagd. Een **LTS** -versie wordt aanbevolen.
 
@@ -136,13 +137,13 @@ U kunt wijzigingen in deze app implementeren door wijzigingen in VS Code aan te 
 
 U kunt de uitvoer van logboeken (aanroepen naar `console.log`) van de app rechtstreeks bekijken in het uitvoervenster van VS Code.
 
-1. Klik in de verkenner van **AZURE APP SERVICE** met de rechtermuisknop op het app-knooppunt en kies **Streaminglogboeken starten** .
+1. Klik in de verkenner van **AZURE APP SERVICE** met de rechtermuisknop op het app-knooppunt en kies **Streaminglogboeken starten**.
 
     ![Streaminglogboeken starten](media/quickstart-nodejs/view-logs.png)
 
 1. Wanneer u hierom wordt gevraagd, kiest u ervoor om logboekregistratie in te schakelen en start u de toepassing opnieuw. Zodra de app opnieuw is opgestart, wordt het uitvoervenster van VS Code geopend met een verbinding met de logboekstroom. 
 
-    :::image type="content" source="media/quickstart-nodejs/enable-restart.png" alt-text="Schermopname van de Azure App Service in VS Code, waarbij het pictogram met de blauwe pijl is geselecteerd.":::
+    :::image type="content" source="media/quickstart-nodejs/enable-restart.png" alt-text="Schermopname van de Visual Studio Code-prompt om logboekregistratie in te schakelen en de toepassing opnieuw te starten, waarbij de knop Ja is geselecteerd.":::
 
 1. Na enkele seconden wordt in het uitvoervenster een bericht weergegeven dat aangeeft dat u bent verbonden met de streamservice voor logboekregistratie. U kunt meer uitvoeractiviteiten genereren door de pagina in de browser te vernieuwen.
 
@@ -206,7 +207,7 @@ Als het probleem niet wordt opgelost door de omgevingsvariabelen in te stellen, 
 
 Voordat u doorgaat, moet u controleren of alle vereiste onderdelen zijn geïnstalleerd en geconfigureerd.
 
-In VS Code ziet u uw Azure-e-mailadres in de statusbalk, en uw abonnement in de verkenner van **AZURE APP SERVICE** .
+In VS Code ziet u uw Azure-e-mailadres in de statusbalk, en uw abonnement in de verkenner van **AZURE APP SERVICE**.
 
 > [!div class="nextstepaction"]
 > [Er is een fout opgetreden](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=getting-started)
@@ -264,28 +265,28 @@ code .
 
 Selecteer in de verkenner van **AZURE APP SERVICE** het pictogram met de blauwe pijl omhoog om uw app te implementeren in Azure.
 
-:::image type="content" source="./media/quickstart-nodejs/deploy.png" alt-text="Schermopname van de Azure App Service in VS Code, waarbij het pictogram met de blauwe pijl is geselecteerd.":::
+:::image type="content" source="./media/quickstart-nodejs/deploy.png" alt-text="Schermopname van het Azure App Service-menu in Visual Studio Code, waarbij de blauwe implementatiepijl is geselecteerd.":::
 
 > [!TIP]
 > U kunt ook implementeren vanuit het **Opdrachtpalet** (Ctrl + Shift + P) door 'implementeren naar web-app' te typen en de opdracht **Azure App Service: Implementeren naar web-app** uit te voeren.
 
 1. Kies de map die momenteel is geopend, `myExpressApp`.
 
-1. Kies **Nieuwe web-app maken** . Hiermee wordt standaard geïmplementeerd in App Service op Linux.
+1. Kies **Nieuwe web-app maken**. Hiermee wordt standaard geïmplementeerd in App Service op Linux.
 
 1. Typ een globaal unieke naam voor de web-app en druk op Enter. Geldige tekens voor een app-naam zijn: a-z, 0-9, en -.
 
-1. Kies de **Node.js-versie** . (LTS wordt aanbevolen.)
+1. Kies de **Node.js-versie**. (LTS wordt aanbevolen.)
 
     Het meldingskanaal toont de Azure-resources die worden gemaakt voor uw app.
 
 1. Selecteer **Ja** wanneer u wordt gevraagd de configuratie bij te werken om `npm install` uit te voeren op de Linux-doelserver. De app wordt vervolgens geïmplementeerd.
 
-    :::image type="content" source="./media/quickstart-nodejs/server-build.png" alt-text="Schermopname van de Azure App Service in VS Code, waarbij het pictogram met de blauwe pijl is geselecteerd.":::
+    :::image type="content" source="./media/quickstart-nodejs/server-build.png" alt-text="Schermopname van de prompt om uw configuratie op de doelserver bij te werken, waarbij de knop Ja is geselecteerd.":::
 
 1. Wanneer de implementatie start, wordt u gevraagd om uw werkruimte bij te werken zodat latere implementaties automatisch gericht zijn op dezelfde Azure Service-web-app. Kies **Ja** om ervoor te zorgen dat uw wijzigingen worden geïmplementeerd in de juiste app.
 
-    :::image type="content" source="./media/quickstart-nodejs/save-configuration.png" alt-text="Schermopname van de Azure App Service in VS Code, waarbij het pictogram met de blauwe pijl is geselecteerd.":::
+    :::image type="content" source="./media/quickstart-nodejs/save-configuration.png" alt-text="Schermopname van de prompt om uw werkruimte bij te werken, waarbij de knop Ja is geselecteerd.":::
 
 > [!TIP]
 > Zorg ervoor dat de toepassing luistert op de poort die is opgegeven met de PORT-omgevingsvariabele: `process.env.PORT`.
@@ -309,13 +310,13 @@ U kunt wijzigingen in deze app implementeren met behulp van hetzelfde proces. Al
 
 In deze sectie leert u hoe u de logboeken kunt weergeven vanuit de actieve App Service-app. Alle aanroepen naar `console.log` in de app worden weergegeven in het uitvoervenster van Visual Studio Code.
 
-Ga naar de app in de verkenner van **AZURE APP SERVICE** , klik met de rechtermuisknop op de app, en kies **Streaminglogboeken weergeven** .
+Ga naar de app in de verkenner van **AZURE APP SERVICE** , klik met de rechtermuisknop op de app, en kies **Streaminglogboeken weergeven**.
 
 Het uitvoervenster van VS Code wordt geopend met een verbinding naar de logboekstroom.
 
 ![Streaminglogboeken weergeven](./media/quickstart-nodejs/view-logs.png)
 
-:::image type="content" source="./media/quickstart-nodejs/enable-restart.png" alt-text="Schermopname van de Azure App Service in VS Code, waarbij het pictogram met de blauwe pijl is geselecteerd.":::
+:::image type="content" source="./media/quickstart-nodejs/enable-restart.png" alt-text="Schermopname van de VS Code-prompt om logboekregistratie voor bestanden in te schakelen en de web-app opnieuw te starten, waarbij de knop Ja is geselecteerd.":::
 
 Na enkele seconden ziet u een bericht waarin staat dat u bent verbonden met de streamingservice voor logboeken. Vernieuw de pagina enkele keren om meer activiteiten te zien.
 

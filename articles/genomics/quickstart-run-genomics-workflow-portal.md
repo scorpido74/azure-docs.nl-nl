@@ -9,12 +9,12 @@ ms.service: genomics
 ms.topic: quickstart
 ms.date: 01/11/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 7720238bb7e2ff133935b9af545628f744d828d1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4beb1c31f34ec4e8d26228cfe4f30f5109a1b60c
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88642313"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394540"
 ---
 # <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>Quickstart: Een werkstroom uitvoeren via de Microsoft Genomics-service
 
@@ -36,7 +36,7 @@ Configureer uw Genomics-account met de volgende informatie, zoals weergegeven in
  |**Instelling**          |  **Voorgestelde waarde**  | **Beschrijving van veld** |
  |:-------------       |:-------------         |:----------            |
  |Abonnement         | De naam van uw abonnement|Dit is de factureringseenheid voor uw Azure-services; zie [Abonnementen](https://account.azure.com/Subscriptions) voor meer informatie over uw abonnement. |      
- |Resourcegroep       | MyResourceGroup       |  Met resourcegroepen kunt u meerdere Azure-resources (opslagaccount, Genomics-account enzovoort) in één groep indelen voor eenvoudig beheer. Zie [Resourcegroepen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups) voor meer informatie. Zie [Naamgevingsregels](/azure/architecture/best-practices/resource-naming) voor geldige resourcegroepnamen. |
+ |Resourcegroep       | MyResourceGroup       |  Met resourcegroepen kunt u meerdere Azure-resources (opslagaccount, Genomics-account enzovoort) in één groep indelen voor eenvoudig beheer. Zie [Resourcegroepen](../azure-resource-manager/management/overview.md#resource-groups) voor meer informatie. Zie [Naamgevingsregels](/azure/architecture/best-practices/resource-naming) voor geldige resourcegroepnamen. |
  |Accountnaam         | MyGenomicsAccount     |Kies een unieke account-id. Zie [Naamgevingsregels](/azure/architecture/best-practices/resource-naming) voor geldige namen. |
  |Locatie                   | VS - west 2                    |    De service is beschikbaar in VS - west 2, Europa - west en Azië - zuidoost |
 
@@ -86,7 +86,7 @@ msgen list -f "<full path where you saved the config file>"
 
 ## <a name="create-a-microsoft-azure-storage-account"></a>Een Microsoft Azure Storage-account maken 
 De service Microsoft Genomics verwacht dat invoeren worden opgeslagen als blok-blobs in een Azure-opslagaccount. Ook schrijft de service uitvoerbestanden als blok-blobs naar een door de gebruiker opgegeven container in een Azure-opslagaccount. De invoeren en uitvoeren kunnen zich in verschillende opslagaccounts bevinden.
-Als u uw gegevens al in een Azure-opslagaccount hebt, hoeft u alleen ervoor te zorgen dat deze zich op dezelfde locatie bevinden als uw Genomics-account. Anders worden er uitvoerkosten gemaakt wanneer de Microsoft Genomics-service wordt uitgevoerd. Als u nog geen Azure-opslagaccount hebt, dient u er een te maken en uw gegevens te uploaden. U vindt [hier](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account) meer informatie over Azure-opslagaccounts, met inbegrip van wat een opslagaccount is en welke services het biedt. Ga naar [Opslagaccount maken](https://portal.azure.com/#create/Microsoft.StorageAccount-ARM) in Azure Portal om een Azure-opslagaccount te maken.  
+Als u uw gegevens al in een Azure-opslagaccount hebt, hoeft u alleen ervoor te zorgen dat deze zich op dezelfde locatie bevinden als uw Genomics-account. Anders worden er uitvoerkosten gemaakt wanneer de Microsoft Genomics-service wordt uitgevoerd. Als u nog geen Azure-opslagaccount hebt, dient u er een te maken en uw gegevens te uploaden. U vindt [hier](../storage/common/storage-account-create.md) meer informatie over Azure-opslagaccounts, met inbegrip van wat een opslagaccount is en welke services het biedt. Ga naar [Opslagaccount maken](https://portal.azure.com/#create/Microsoft.StorageAccount-ARM) in Azure Portal om een Azure-opslagaccount te maken.  
 
 ![De pagina voor opslagaccount maken](./media/quickstart-run-genomics-workflow-portal/genomics-storage-create-blade1.png "De pagina voor het opslagaccount maken")
 
@@ -98,9 +98,9 @@ Configureer uw opslagaccount met de volgende informatie, zoals weergegeven in de
  |Resourcegroep       | MyResourceGroup       |  U kunt dezelfde resourcegroep als voor uw Genomics-account selecteren. Zie [Naamgevingsregels](/azure/architecture/best-practices/resource-naming) voor geldige resourcegroepnamen |
  |Naam van opslagaccount         | MyStorageAccount     |Kies een unieke account-id. Zie [Naamgevingsregels](/azure/architecture/best-practices/resource-naming) voor geldige namen |
  |Locatie                  | VS - west 2                  | Gebruik dezelfde locatie als de locatie van uw Genomics-account om uitvoerkosten te verminderen en latentie te beperken.  | 
- |Prestaties                  | Standard                   | Standard is de standaardinstelling. Zie [Kennismaking met Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction) voor meer informatie over standaard- en premium-opslagaccounts    |
+ |Prestaties                  | Standard                   | Standard is de standaardinstelling. Zie [Kennismaking met Microsoft Azure Storage](../storage/common/storage-introduction.md) voor meer informatie over standaard- en premium-opslagaccounts    |
  |Soort account       | BlobStorage       |  Blob-opslag kan twee tot vijf keer sneller zijn dan algemeen gebruik voor downloads en uploads. |
- |Replicatie                  | Lokaal redundante opslag                  | Lokaal redundante opslag repliceert uw gegevens in het datacenter in de regio waarin u uw opslagaccount hebt gemaakt. Zie [Azure Storage-replicatie](https://docs.microsoft.com/azure/storage/common/storage-redundancy) voor meer informatie.    |
+ |Replicatie                  | Lokaal redundante opslag                  | Lokaal redundante opslag repliceert uw gegevens in het datacenter in de regio waarin u uw opslagaccount hebt gemaakt. Zie [Azure Storage-replicatie](../storage/common/storage-redundancy.md) voor meer informatie.    |
  |Toegangslaag                  | Warm                   | De toegangslaag Hot geeft aan dat de objecten in het opslagaccount regelmatig worden gebruikt.    |
 
 Selecteer daarna **Beoordelen en maken** om uw opslagaccount te maken. Net als bij het maken van uw Genomics-account, kunt u in de bovenste menubalk **Meldingen** selecteren om het implementatieproces te controleren. 
@@ -112,7 +112,7 @@ De Microsoft Genomics-service verwacht leesbewerkingen voor eindsequenties (FAST
 [https://msgensampledata.blob.core.windows.net/small/chr21_1.fq.gz](https://msgensampledata.blob.core.windows.net/small/chr21_1.fq.gz)
 [https://msgensampledata.blob.core.windows.net/small/chr21_2.fq.gz](https://msgensampledata.blob.core.windows.net/small/chr21_2.fq.gz)
 
-U dient binnen uw opslagaccount een blob-container te maken voor uw invoergegevens en een tweede blob-container voor de uitvoergegevens.  Upload de invoergegevens naar uw blob-container voor invoer. U kunt hiervoor verschillende hulpprogramma's gebruiken, waaronder [Microsoft Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/), [BlobPorter](https://github.com/Azure/blobporter) en [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). 
+U dient binnen uw opslagaccount een blob-container te maken voor uw invoergegevens en een tweede blob-container voor de uitvoergegevens.  Upload de invoergegevens naar uw blob-container voor invoer. U kunt hiervoor verschillende hulpprogramma's gebruiken, waaronder [Microsoft Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/), [BlobPorter](https://github.com/Azure/blobporter) en [AzCopy](../storage/common/storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json). 
 
 ## <a name="run-a-workflow-through-the-microsoft-genomics-service-using-the-msgen-python-client"></a>Een werkstroom uitvoeren via de Microsoft Genomics-service met behulp van de Python-client `msgen`
 
@@ -125,7 +125,7 @@ Als u graag GATK4 wilt uitvoeren, stelt u de parameter `process_name` in op `gat
 
 De Genomics-service voert standaard VCF-bestanden uit. Als u graag gVCF-uitvoer wilt in plaats van VCF-uitvoer (gelijk aan `-emitRefConfidence` in GATK 3.x en `emit-ref-confidence` in GATK 4.x), voegt u de parameter `emit_ref_confidence` toe aan uw *config.txt* en stelt u deze in op `gvcf`, zoals wordt weergegeven in de vorige afbeelding.  Als u weer terug wilt naar VCF-uitvoer, verwijdert u deze uit het bestand *config.txt* of stelt u de parameter `emit_ref_confidence` in op `none`. 
 
-`bgzip` is een hulpprogramma waarmee het VCF- of gVCF-bestand wordt gecomprimeerd en `tabix` een index voor het gecomprimeerde bestand maakt. De Genomics-service voert standaard `bgzip` gevolgd door `tabix` uit voor '.g.vcf'-uitvoer, maar voert deze hulpprogramma's niet standaard uit voor '.vcf '-uitvoer. Wanneer u de service uitvoert, resulteert dit in '.gz'- (bgzip-uitvoer) en 'tbi'-bestanden (tabix-uitvoer). Het argument is een Booleaanse waarde, die standaard is ingesteld op False voor '.vcf'-uitvoer en standaard is ingesteld op True voor '.g.vcf'-uitvoer. Als u dit wilt gebruiken op de opdrachtregel, geeft u `-bz` of `--bgzip-output` op als `true` (voer bgzip en tabix uit) of `false`. Als u dit argument wilt gebruiken in het bestand *config.txt*, voegt u `bgzip_output: true` of `bgzip_output: false` toe aan het bestand.
+`bgzip` is een hulpprogramma waarmee het VCF- of gVCF-bestand wordt gecomprimeerd en `tabix` een index voor het gecomprimeerde bestand maakt. De Genomics-service voert standaard `bgzip` gevolgd door `tabix` uit voor '.g.vcf'-uitvoer, maar voert deze hulpprogramma's niet standaard uit voor '.vcf '-uitvoer. Wanneer u de service uitvoert, resulteert dit in '.gz'- (bgzip-uitvoer) en 'tbi'-bestanden (tabix-uitvoer). Het argument is een Booleaanse waarde, die standaard is ingesteld op False voor '.vcf'-uitvoer en standaard is ingesteld op True voor '.g.vcf'-uitvoer. Als u dit wilt gebruiken op de opdrachtregel, geeft u `-bz` of `--bgzip-output` op als `true` (voer bgzip en tabix uit) of `false`. Als u dit argument wilt gebruiken in het bestand *config.txt* , voegt u `bgzip_output: true` of `bgzip_output: false` toe aan het bestand.
 
 ### <a name="submit-your-workflow-to-the-microsoft-genomics-service-using-the-msgen-python-client"></a>Uw werkstroom verzenden naar de Microsoft Genomics-service met behulp van de Python-client `msgen`
 
@@ -144,4 +144,4 @@ Nadat de werkstroom is voltooid, kunt u de uitvoerbestanden weergeven in uw Azur
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u voorbeeldinvoergegevens geüpload naar Azure Storage en een werkstroom verzonden naar de Microsoft Genomics-service via de Python-client voor `msgen`. Ga voor meer informatie over andere invoerbestandstypen die kunnen worden gebruikt met de Microsoft Genomics-service naar de volgende pagina's: [paired FASTQ](quickstart-input-pair-FASTQ.md) | [BAM](quickstart-input-BAM.md) | [Multiple FASTQ or BAM](quickstart-input-multiple.md) (gekoppelde FASTQ/BAM/Meerdere FASTQ of BAM). U kunt deze zelfstudie ook bekijken met behulp van ons [voorbeeld van Azure Notebooks](https://aka.ms/genomicsnotebook) door het bestand Genomics Tutorial.ipynb te downloaden en een notebooklezer, zoals [Jupyter](https://docs.microsoft.com/azure/notebooks/tutorial-create-run-jupyter-notebook), te gebruiken om het bestand te openen en door te nemen.
+In dit artikel hebt u voorbeeldinvoergegevens geüpload naar Azure Storage en een werkstroom verzonden naar de Microsoft Genomics-service via de Python-client voor `msgen`. Ga voor meer informatie over andere invoerbestandstypen die kunnen worden gebruikt met de Microsoft Genomics-service naar de volgende pagina's: [paired FASTQ](quickstart-input-pair-FASTQ.md) | [BAM](quickstart-input-BAM.md) | [Multiple FASTQ or BAM](quickstart-input-multiple.md) (gekoppelde FASTQ/BAM/Meerdere FASTQ of BAM). U kunt deze zelfstudie ook bekijken met behulp van ons [voorbeeld van Azure Notebooks](https://aka.ms/genomicsnotebook) door het bestand Genomics Tutorial.ipynb te downloaden en een notebooklezer, zoals [Jupyter](../notebooks/tutorial-create-run-jupyter-notebook.md), te gebruiken om het bestand te openen en door te nemen.

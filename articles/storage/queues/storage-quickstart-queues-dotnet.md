@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ca3b218da7835ee9f3e9e8653f4829767a1ffb07
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: a62aa9df818bb6ff7026d95daa625acabe66b990
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92783467"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93345632"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-net"></a>Quickstart: Azure Queue Storage-clientbibliotheek v12 voor .NET
 
@@ -21,26 +21,26 @@ Ga aan de slag met de Azure Queue Storage-clientbibliotheek versie 12 voor .NET.
 
 Gebruik de Azure Queue Storage-clientbibliotheek v12 voor .NET voor het volgende:
 
-* Een wachtrij maken
-* Berichten aan een wachtrij toevoegen
-* Berichten in een wachtrij bekijken
-* Een bericht in een wachtrij bijwerken
-* Berichten van een wachtrij ontvangen
-* Berichten uit een wachtrij verwijderen
-* Een wachtrij verwijderen
+- Een wachtrij maken
+- Berichten aan een wachtrij toevoegen
+- Berichten in een wachtrij bekijken
+- Een bericht in een wachtrij bijwerken
+- Berichten van een wachtrij ontvangen
+- Berichten uit een wachtrij verwijderen
+- Een wachtrij verwijderen
 
 Aanvullende bronnen:
 
-* [API-referentiedocumentatie](/dotnet/api/azure.storage.queues)
-* [Broncode van bibliotheek](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues)
-* [Pakket (NuGet)](https://www.nuget.org/packages/Azure.Storage.Queues/12.0.0)
-* [Voorbeelden](../common/storage-samples-dotnet.md?toc=%252fazure%252fstorage%252fqueues%252ftoc.json#queue-samples)
+- [API-referentiedocumentatie](/dotnet/api/azure.storage.queues)
+- [Broncode van bibliotheek](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues)
+- [Pakket (NuGet)](https://www.nuget.org/packages/Azure.Storage.Queues/12.0.0)
+- [Voorbeelden](../common/storage-samples-dotnet.md?toc=%252fazure%252fstorage%252fqueues%252ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Azure-abonnement: [u kunt een gratis abonnement nemen](https://azure.microsoft.com/free/)
-* Azure Storage-account: [maak een opslagaccount](../common/storage-account-create.md)
-* De huidige versie van de [.NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core) voor uw besturingssysteem. Zorg ervoor dat u de SDK en niet de runtime ophaalt.
+- Azure-abonnement: [u kunt een gratis abonnement nemen](https://azure.microsoft.com/free/)
+- Azure Storage-account: [maak een opslagaccount](../common/storage-account-create.md)
+- De huidige versie van de [.NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core) voor uw besturingssysteem. Zorg ervoor dat u de SDK en niet de runtime ophaalt.
 
 ## <a name="setting-up"></a>Instellen
 
@@ -48,15 +48,15 @@ In dit gedeelte wordt uitgelegd hoe u een project voorbereidt voor gebruik met d
 
 ### <a name="create-the-project"></a>Het project maken
 
-Maak een .NET Core-toepassing met de naam *QueuesQuickstartV12* .
+Maak een .NET Core-toepassing met de naam *QueuesQuickstartV12*.
 
-1. Gebruik in een consolevenster (zoals cmd, PowerShell of Bash) de opdracht `dotnet new` om een nieuwe console-app te maken met de naam *QueuesQuickstartV12* . Met deze opdracht maakt u een eenvoudig Hallo wereld-C#-project met één bronbestand: *Program.cs* .
+1. Gebruik in een consolevenster (zoals cmd, PowerShell of Bash) de opdracht `dotnet new` om een nieuwe console-app te maken met de naam *QueuesQuickstartV12*. Met deze opdracht maakt u een eenvoudig Hallo wereld-C#-project met één bronbestand: *Program.cs*.
 
    ```console
    dotnet new console -n QueuesQuickstartV12
    ```
 
-1. Schakel over naar de zojuist gemaakte map *QueuesQuickstartV12* .
+1. Schakel over naar de zojuist gemaakte map *QueuesQuickstartV12*.
 
    ```console
    cd QueuesQuickstartV12
@@ -78,8 +78,6 @@ Ga als volgt te werk vanuit de projectmap:
 1. Verwijder de instructie `Console.WriteLine("Hello World!");`
 1. Voeg `using`-instructies toe
 1. De declaratie van de `Main`-methode bijwerken [ter ondersteuning van async-code](/dotnet/csharp/whats-new/csharp-7#async-main)
-
-
 
 Hier volgt de code:
 
@@ -107,9 +105,9 @@ namespace QueuesQuickstartV12
 
 Azure Queue Storage is een service om grote aantallen berichten op te slaan. Een wachtrijbericht kan maximaal 64 KB groot zijn. Een wachtrij kan miljoenen berichten bevatten, tot aan de totale capaciteitslimiet van een opslagaccount. Wachtrijen worden vaak gebruikt om een voorraad werk te maken dat asynchroon moet worden verwerkt. Queue Storage biedt drie typen resources:
 
-* Het opslagaccount
-* Een wachtrij in het opslagaccount
-* Berichten in de wachtrij
+- Het opslagaccount
+- Een wachtrij in het opslagaccount
+- Berichten in de wachtrij
 
 Het volgende diagram geeft de relatie tussen deze resources weer.
 
@@ -117,22 +115,22 @@ Het volgende diagram geeft de relatie tussen deze resources weer.
 
 Gebruik de volgende .NET-klassen om te communiceren met deze resources:
 
-* [QueueServiceClient](/dotnet/api/azure.storage.queues.queueserviceclient): Met de `QueueServiceClient` kunt u alle wachtrijen in uw opslagaccount beheren.
-* [QueueClient](/dotnet/api/azure.storage.queues.queueclient): Met de `QueueClient`-klasse kunt u een afzonderlijke wachtrij en de bijbehorende berichten beheren en bewerken.
-* [QueueMessage](/dotnet/api/azure.storage.queues.models.queuemessage): De `QueueMessage`-klasse vertegenwoordigt de afzonderlijke objecten die worden geretourneerd wanneer [ReceiveMessages](/dotnet/api/azure.storage.queues.queueclient.receivemessages) wordt aangeroepen voor een wachtrij.
+- [QueueServiceClient](/dotnet/api/azure.storage.queues.queueserviceclient): Met de `QueueServiceClient` kunt u alle wachtrijen in uw opslagaccount beheren.
+- [QueueClient](/dotnet/api/azure.storage.queues.queueclient): Met de `QueueClient`-klasse kunt u een afzonderlijke wachtrij en de bijbehorende berichten beheren en bewerken.
+- [QueueMessage](/dotnet/api/azure.storage.queues.models.queuemessage): De `QueueMessage`-klasse vertegenwoordigt de afzonderlijke objecten die worden geretourneerd wanneer [ReceiveMessages](/dotnet/api/azure.storage.queues.queueclient.receivemessages) wordt aangeroepen voor een wachtrij.
 
 ## <a name="code-examples"></a>Codevoorbeelden
 
 Deze voorbeeldcodefragmenten laten zien hoe u de volgende acties kunt uitvoeren met de Azure Queue Storage-clientbibliotheek voor .NET:
 
-* [De verbindingsreeks ophalen](#get-the-connection-string)
-* [Een wachtrij maken](#create-a-queue)
-* [Berichten aan een wachtrij toevoegen](#add-messages-to-a-queue)
-* [Berichten in een wachtrij bekijken](#peek-at-messages-in-a-queue)
-* [Een bericht in een wachtrij bijwerken](#update-a-message-in-a-queue)
-* [Berichten van een wachtrij ontvangen](#receive-messages-from-a-queue)
-* [Berichten uit een wachtrij verwijderen](#delete-messages-from-a-queue)
-* [Een wachtrij verwijderen](#delete-a-queue)
+- [De verbindingsreeks ophalen](#get-the-connection-string)
+- [Een wachtrij maken](#create-a-queue)
+- [Berichten aan een wachtrij toevoegen](#add-messages-to-a-queue)
+- [Berichten in een wachtrij bekijken](#peek-at-messages-in-a-queue)
+- [Een bericht in een wachtrij bijwerken](#update-a-message-in-a-queue)
+- [Berichten van een wachtrij ontvangen](#receive-messages-from-a-queue)
+- [Berichten uit een wachtrij verwijderen](#delete-messages-from-a-queue)
+- [Een wachtrij verwijderen](#delete-a-queue)
 
 ### <a name="get-the-connection-string"></a>De verbindingsreeks ophalen
 
@@ -158,7 +156,6 @@ Verzin een naam voor de nieuwe wachtrij. Met de onderstaande code wordt een GUID
 
 > [!IMPORTANT]
 > Wachtrijnamen mogen alleen kleine letters, cijfers en afbreekstreepjes bevatten en moeten beginnen met een letter of cijfer. Elk afbreekstreepje moet worden voorafgegaan en gevolgd door een cijfer of letter. De naam moet bovendien tussen 3 en 63 tekens lang zijn. Zie [Naamgeving van wachtrijen en metagegevens](/rest/api/storageservices/naming-queues-and-metadata) voor meer informatie over de naamgeving van wachtrijen.
-
 
 Maak een instantie van de klasse [QueueClient](/dotnet/api/azure.storage.queues.queueclient). Roep vervolgens de methode [CreateAsync](/dotnet/api/azure.storage.queues.queueclient.createasync) aan om de wachtrij in uw opslagaccount te maken.
 
@@ -336,6 +333,6 @@ Voor zelfstudies, voorbeelden, quickstarts en andere documentatie gaat u naar:
 > [!div class="nextstepaction"]
 > [Azure voor ontwikkelaars van .NET en .NET Core](/dotnet/azure/)
 
-* Zie de [Azure Storage-bibliotheken voor .NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage) voor meer informatie.
-* Ga door naar [Voorbeelden van Azure Queue Storage v12 .NET-clientbibliotheken](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples) om meer Azure Queue Storage-voorbeeld-apps te zien.
-* Zie voor meer informatie over .NET Core [Aan de slag met .NET in 10 minuten](https://www.microsoft.com/net/learn/get-started/).
+- Zie de [Azure Storage-bibliotheken voor .NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage) voor meer informatie.
+- Ga door naar [Voorbeelden van Azure Queue Storage v12 .NET-clientbibliotheken](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples) om meer Azure Queue Storage-voorbeeld-apps te zien.
+- Zie voor meer informatie over .NET Core [Aan de slag met .NET in 10 minuten](https://www.microsoft.com/net/learn/get-started/).

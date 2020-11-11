@@ -9,12 +9,12 @@ ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: queues
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3f6e10d3e5b33a07c223a3913bba0b220df2ff64
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 6e86950581255bd4e3a78b0b4a3f599a24a3cad0
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92787377"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93345751"
 ---
 # <a name="performance-and-scalability-checklist-for-queue-storage"></a>Controlelijst voor prestaties en schaalbaarheid van Queue Storage
 
@@ -60,18 +60,17 @@ Als u het maximumaantal opslagaccounts nadert dat is toegestaan voor een bepaald
 
 ### <a name="capacity-and-transaction-targets"></a>Capaciteits- en transactiedoelen
 
-Als uw toepassing de schaalbaarheidsdoelen voor één opslagaccount nadert, kunt u een van de volgende benaderingen overwegen:  
+Als uw toepassing de schaalbaarheidsdoelen voor één opslagaccount nadert, kunt u een van de volgende benaderingen overwegen:
 
 - Als de schaalbaarheidsdoelen voor wachtrijen niet voldoende zijn voor uw toepassing, moet u meerdere wachtrijen gebruiken en berichten over deze wachtrijen verdelen.
 - Bekijk de workload die ervoor zorgt dat uw toepassing het schaalbaarheidsdoel benadert of overschrijdt. Kunt u het op een andere manier ontwerpen waardoor u minder bandbreedte of capaciteit of minder transacties gebruikt?
 - Als uw toepassing een van de schaalbaarheidsdoelen moet overschrijden, maakt u meerdere opslagaccounts en partitioneert u uw toepassingsgegevens over deze meerdere opslagaccounts. Als u dit patroon gebruikt, moet u ervoor zorgen dat u uw toepassing zo ontwerpt, dat u in de toekomst meer opslagaccounts kunt toevoegen voor de taakverdeling. Opslagaccounts zelf hebben geen andere kosten dan uw gebruik in termen van opgeslagen gegevens, gemaakte transacties of overgedragen gegevens.
-- Als uw toepassing de bandbreedtedoelen nadert, kunt u de gegevens aan de clientzijde comprimeren om de bandbreedte te verminderen die nodig is om de gegevens naar Azure Storage te verzenden.
-    Hoewel met het comprimeren van gegevens bandbreedte kan worden bespaard en de netwerkprestaties worden verbeterd, kan dit ook negatieve gevolgen voor de prestaties hebben. Evalueer de invloed op de prestaties van de extra verwerkingsvereisten voor de compressie en decompressie van gegevens aan de clientzijde. Houd er rekening mee dat het door het opslaan van gecomprimeerde gegevens lastiger wordt om problemen op te lossen, aangezien het lastiger kan zijn om de gegevens te bekijken met behulp van standaardhulpprogramma's.
+- Als uw toepassing de bandbreedtedoelen nadert, kunt u de gegevens aan de clientzijde comprimeren om de bandbreedte te verminderen die nodig is om de gegevens naar Azure Storage te verzenden. Hoewel met het comprimeren van gegevens bandbreedte kan worden bespaard en de netwerkprestaties worden verbeterd, kan dit ook negatieve gevolgen voor de prestaties hebben. Evalueer de invloed op de prestaties van de extra verwerkingsvereisten voor de compressie en decompressie van gegevens aan de clientzijde. Houd er rekening mee dat het door het opslaan van gecomprimeerde gegevens lastiger wordt om problemen op te lossen, aangezien het lastiger kan zijn om de gegevens te bekijken met behulp van standaardhulpprogramma's.
 - Als uw toepassing de schaalbaarheidsdoelen nadert, moet u ervoor zorgen dat u een exponentieel uitstel gebruikt voor nieuwe pogingen. U kunt het beste voorkomen dat u de schaalbaarheidsdoelen bereikt door de aanbevelingen te implementeren die in dit artikel worden beschreven. Als u echter een exponentieel uitstel gebruikt voor nieuwe pogingen, voorkomt u dat uw toepassing snel opnieuw pogingen onderneemt, waarmee de beperkingen ernstiger kunnen worden. Zie de sectie met de titel [Time-out- en server-bezetfouten](#timeout-and-server-busy-errors) voor meer informatie.
 
 ## <a name="networking"></a>Netwerken
 
-De beperkingen van het fysieke netwerk van de toepassing kunnen een grote invloed hebben op de prestaties. In de volgende secties worden enkele beperkingen beschreven die gebruikers kunnen tegenkomen.  
+De beperkingen van het fysieke netwerk van de toepassing kunnen een grote invloed hebben op de prestaties. In de volgende secties worden enkele beperkingen beschreven die gebruikers kunnen tegenkomen.
 
 ### <a name="client-network-capability"></a>Netwerkmogelijkheden van de client
 
@@ -83,11 +82,11 @@ Voor bandbreedte is het probleem vaak de mogelijkheden van de client. Grotere Az
 
 #### <a name="link-quality"></a>Kwaliteit van de koppeling
 
-Net als bij elk netwerkgebruik moet u er rekening mee houden dat de netwerkomstandigheden die fouten en pakketverlies veroorzaken, ervoor zorgen dat de effectieve doorvoer wordt vertraagd.  Het gebruik van WireShark of NetMon kan helpen bij het vaststellen van dit probleem.  
+Net als bij elk netwerkgebruik moet u er rekening mee houden dat de netwerkomstandigheden die fouten en pakketverlies veroorzaken, ervoor zorgen dat de effectieve doorvoer wordt vertraagd. Het gebruik van WireShark of NetMon kan helpen bij het vaststellen van dit probleem.
 
 ### <a name="location"></a>Locatie
 
-Wanneer u de client dicht bij de server plaatst, levert dit in een gedistribueerde omgeving de beste prestaties op. Als u toegang wilt tot Azure Storage met de laagste latentie, bevindt de beste locatie voor uw client zich in dezelfde Azure-regio. Als u bijvoorbeeld een Azure-web-app hebt die gebruikmaakt van Azure Storage, plaatst u deze beide binnen één regio, zoals US - west of Azië - zuidoost. Wanneer u resources bij elkaar plaatst, vermindert u de latentie en de kosten, omdat het bandbreedtegebruik binnen één regio gratis is.  
+Wanneer u de client dicht bij de server plaatst, levert dit in een gedistribueerde omgeving de beste prestaties op. Als u toegang wilt tot Azure Storage met de laagste latentie, bevindt de beste locatie voor uw client zich in dezelfde Azure-regio. Als u bijvoorbeeld een Azure-web-app hebt die gebruikmaakt van Azure Storage, plaatst u deze beide binnen één regio, zoals US - west of Azië - zuidoost. Wanneer u resources bij elkaar plaatst, vermindert u de latentie en de kosten, omdat het bandbreedtegebruik binnen één regio gratis is.
 
 Als clienttoepassingen toegang krijgen tot Azure Storage, maar niet worden gehost in Azure, zoals apps voor mobiele apparaten of on-premises bedrijfsservices, kan de latentie worden verminderd door het opslagaccount in een regio in de buurt van die clients te plaatsen. Als uw clients breed worden gedistribueerd (bijvoorbeeld sommige in Noord-Amerika en sommige in Europa), kunt u een opslagaccount per regio gebruiken. Deze aanpak is eenvoudiger te implementeren als de gegevens die de app opslaat specifiek zijn voor afzonderlijke gebruikers en als er geen replicatie van gegevens nodig is tussen opslagaccounts.
 
@@ -95,17 +94,17 @@ Als clienttoepassingen toegang krijgen tot Azure Storage, maar niet worden gehos
 
 Stel dat u code moet machtigen zoals JavaScript dat wordt uitgevoerd in de webbrowser van een gebruiker of in een app op een mobiele telefoon om toegang te krijgen tot gegevens in Azure Storage. Een aanpak is om een servicetoepassing te compileren die als een proxy fungeert. Het apparaat van de gebruiker wordt geverifieerd bij de service, die op zijn beurt toegang tot Azure Storage-resources verleent. Op deze manier kunt u voorkomen dat de sleutels van uw opslagaccount op onveilige apparaten worden weergegeven. Met deze benadering wordt echter een aanzienlijke overhead op de servicetoepassing geplaatst, omdat alle gegevens die worden overgedragen tussen het apparaat van de gebruiker en Azure Storage via de servicetoepassing moeten worden doorgegeven.
 
-U kunt voorkomen dat een servicetoepassing wordt gebruikt als een proxy voor Azure Storage met behulp van Shared Access Signatures (SAS). Met SAS kunt u het apparaat van uw gebruiker in staat stellen om aanvragen rechtstreeks bij Azure Storage in te dienen met behulp van een beperkt toegangstoken. Als een gebruiker bijvoorbeeld een foto wil uploaden naar uw toepassing, kan uw servicetoepassing een SAS genereren en deze verzenden naar het apparaat van de gebruiker. Het SAS-token kan toestemming geven om naar een Azure Storage-resource te schrijven gedurende een opgegeven tijdsinterval, waarna het SAS-token verloopt. Zie [Beperkte toegang verlenen tot Azure Storage-resources via SAS (Shared Access Signatures)](../common/storage-sas-overview.md) voor meer informatie over SAS.  
+U kunt voorkomen dat een servicetoepassing wordt gebruikt als een proxy voor Azure Storage met behulp van Shared Access Signatures (SAS). Met SAS kunt u het apparaat van uw gebruiker in staat stellen om aanvragen rechtstreeks bij Azure Storage in te dienen met behulp van een beperkt toegangstoken. Als een gebruiker bijvoorbeeld een foto wil uploaden naar uw toepassing, kan uw servicetoepassing een SAS genereren en deze verzenden naar het apparaat van de gebruiker. Het SAS-token kan toestemming geven om naar een Azure Storage-resource te schrijven gedurende een opgegeven tijdsinterval, waarna het SAS-token verloopt. Zie [Beperkte toegang verlenen tot Azure Storage-resources via SAS (Shared Access Signatures)](../common/storage-sas-overview.md) voor meer informatie over SAS.
 
 Normaal gesproken staat een webbrowser geen JavaScript toe op een pagina die wordt gehost door een website op het ene domein om bepaalde bewerkingen, zoals schrijfbewerkingen, uit te voeren op het andere domein. Op basis van dit beleid, dat bekend staat als 'beleid voor zelfde oorsprong', wordt voorkomen dat een schadelijk script op één pagina de toegang tot gegevens op een andere webpagina kan verkrijgen. Hetzelfde 'beleid voor zelfde oorsprong' kan echter een beperking zijn bij het compileren van een oplossing in de cloud. Cross-Origin Resource Sharing (CORS) is een browserfunctie waarmee het doeldomein van het brondomein afkomstige aanvragen kan doorgeven aan een vertrouwde browser.
 
-Stel bijvoorbeeld dat een webtoepassing die in Azure wordt uitgevoerd een aanvraag voor een resource indient bij een Azure Storage-account. De webtoepassing is het brondomein en het opslagaccount is het doeldomein. U kunt CORS voor elk van de Azure Storage-services configureren om met de webbrowser aanvragen door te geven vanuit het brondomein dat worden vertrouwd door Azure Storage. Zie [CORS-ondersteuning (cross-origin resource sharing) voor Azure Storage](/rest/api/storageservices/Cross-Origin-Resource-Sharing--CORS--Support-for-the-Azure-Storage-Services) voor meer informatie over CORS.  
-  
-Met SAS en CORS kunt u voorkomen dat uw webtoepassing onnodig wordt belast.  
+Stel bijvoorbeeld dat een webtoepassing die in Azure wordt uitgevoerd een aanvraag voor een resource indient bij een Azure Storage-account. De webtoepassing is het brondomein en het opslagaccount is het doeldomein. U kunt CORS voor elk van de Azure Storage-services configureren om met de webbrowser aanvragen door te geven vanuit het brondomein dat worden vertrouwd door Azure Storage. Zie [CORS-ondersteuning (cross-origin resource sharing) voor Azure Storage](/rest/api/storageservices/Cross-Origin-Resource-Sharing--CORS--Support-for-the-Azure-Storage-Services) voor meer informatie over CORS.
+
+Met SAS en CORS kunt u voorkomen dat uw webtoepassing onnodig wordt belast.
 
 ## <a name="net-configuration"></a>.NET-configuratie
 
-Als u het .NET Framework gebruikt, worden in deze sectie verschillende snelle configuratie-instellingen weergegeven die u kunt gebruiken om belangrijke verbeteringen in de prestaties aan te brengen.  Als u andere talen gebruikt, controleert u of er soortgelijke concepten van toepassing zijn in de taal die u hebt gekozen.  
+Als u het .NET Framework gebruikt, worden in deze sectie verschillende snelle configuratie-instellingen weergegeven die u kunt gebruiken om belangrijke verbeteringen in de prestaties aan te brengen. Als u andere talen gebruikt, controleert u of er soortgelijke concepten van toepassing zijn in de taal die u hebt gekozen.
 
 ### <a name="use-net-core"></a>.NET Core gebruiken
 
@@ -118,17 +117,17 @@ Raadpleeg de volgende blogberichten voor meer informatie over betere prestaties 
 
 ### <a name="increase-default-connection-limit"></a>De standaardverbindingslimiet verhogen
 
-In .NET wordt via de volgende code de standaardverbindingslimiet (meestal 2 in een clientomgeving of 10 in een serveromgeving) tot 100 verhoogd. Normaal gesproken moet u de waarde instellen op ongeveer het aantal threads dat door uw toepassing wordt gebruikt.  
+In .NET wordt via de volgende code de standaardverbindingslimiet (meestal 2 in een clientomgeving of 10 in een serveromgeving) tot 100 verhoogd. Normaal gesproken moet u de waarde instellen op ongeveer het aantal threads dat door uw toepassing wordt gebruikt.
 
 ```csharp
 ServicePointManager.DefaultConnectionLimit = 100; //(Or More)  
 ```
 
-Stel de verbindingslimiet in voordat u verbindingen opent.  
+Stel de verbindingslimiet in voordat u verbindingen opent.
 
-Raadpleeg voor andere programmeertalen de documentatie van die taal om te bepalen hoe de verbindingslimiet moet worden ingesteld.  
+Raadpleeg voor andere programmeertalen de documentatie van die taal om te bepalen hoe de verbindingslimiet moet worden ingesteld.
 
-Zie voor meer informatie het blogbericht [Webservices: Gelijktijdige verbindingen](/archive/blogs/darrenj/web-services-concurrent-connections).  
+Zie voor meer informatie het blogbericht [Webservices: Gelijktijdige verbindingen](/archive/blogs/darrenj/web-services-concurrent-connections).
 
 ### <a name="increase-minimum-number-of-threads"></a>Minimumaantal threads verhogen
 
@@ -138,11 +137,11 @@ Als u synchrone aanroepen gebruikt in combinatie met asynchrone taken, kunt u mi
 ThreadPool.SetMinThreads(100,100); //(Determine the right number for your application)  
 ```
 
-Zie de methode [ThreadPool.SetMinThreads](/dotnet/api/system.threading.threadpool.setminthreads) voor meer informatie.  
+Zie de methode [ThreadPool.SetMinThreads](/dotnet/api/system.threading.threadpool.setminthreads) voor meer informatie.
 
 ## <a name="unbounded-parallelism"></a>Niet-gebonden parallelle uitvoering
 
-Parallelle uitvoering kan ideaal zijn voor de prestaties, maar wees voorzichtig met het gebruik van een ongebonden parallelle uitvoering, wat betekent dat er geen limiet wordt afgedwongen voor het aantal threads of parallelle aanvragen. Zorg ervoor dat u parallelle aanvragen beperkt tot het uploaden of downloaden van gegevens, om toegang te krijgen tot meerdere partities in hetzelfde opslagaccount of om toegang te krijgen tot meerdere items in dezelfde partitie. Als parallelle uitvoering niet is gebonden, kan uw toepassing de mogelijkheden van het clientapparaat of de schaalbaarheidsdoelen van het opslagaccount overschrijden, wat resulteert in langere latenties en bandbreedtebeperking.  
+Parallelle uitvoering kan ideaal zijn voor de prestaties, maar wees voorzichtig met het gebruik van een ongebonden parallelle uitvoering, wat betekent dat er geen limiet wordt afgedwongen voor het aantal threads of parallelle aanvragen. Zorg ervoor dat u parallelle aanvragen beperkt tot het uploaden of downloaden van gegevens, om toegang te krijgen tot meerdere partities in hetzelfde opslagaccount of om toegang te krijgen tot meerdere items in dezelfde partitie. Als parallelle uitvoering niet is gebonden, kan uw toepassing de mogelijkheden van het clientapparaat of de schaalbaarheidsdoelen van het opslagaccount overschrijden, wat resulteert in langere latenties en bandbreedtebeperking.
 
 ## <a name="client-libraries-and-tools"></a>Clientbibliotheken en hulpprogramma's
 
@@ -154,9 +153,9 @@ Azure Storage retourneert een fout wanneer de service een aanvraag niet kan verw
 
 ### <a name="timeout-and-server-busy-errors"></a>Time-out- en server-bezetfouten
 
-Azure Storage kan uw toepassing beperken als deze de schaalbaarheidslimieten nadert. In sommige gevallen kan Azure Storage mogelijk geen aanvragen verwerken vanwege een tijdelijke omstandigheid. In beide gevallen kan de service de fout 503 (server bezet) of 500 (time-out) retourneren. Deze fouten kunnen zich ook voordoen als de service gegevenspartities opnieuw moet verdelen voor een hogere doorvoer. De clienttoepassing moet meestal de bewerking opnieuw uitvoeren die een van deze fouten heeft veroorzaakt. Als Azure Storage echter uw toepassing beperkt omdat deze de schaalbaarheidsdoelen overschrijdt of als de service om een andere reden zelfs niet aan de aanvraag kan voldoen, kunnen agressieve nieuwe pogingen het probleem erger maken. Het gebruik van een beleid voor opnieuw proberen met exponentieel uitstel wordt aanbevolen. De clientbibliotheken zijn standaard ingesteld op dit gedrag. Uw toepassing kan bijvoorbeeld na 2 seconden een nieuwe poging doen, daarna na 4 seconden, daarna na 10 seconden, daarna na 30 seconden, en vervolgens volledig opgeven. Op deze manier vermindert uw toepassing de belasting van de service aanzienlijk, in plaats van verergerend gedrag te vertonen dat kan leiden tot aanvraagbeperking.  
+Azure Storage kan uw toepassing beperken als deze de schaalbaarheidslimieten nadert. In sommige gevallen kan Azure Storage mogelijk geen aanvragen verwerken vanwege een tijdelijke omstandigheid. In beide gevallen kan de service de fout 503 (server bezet) of 500 (time-out) retourneren. Deze fouten kunnen zich ook voordoen als de service gegevenspartities opnieuw moet verdelen voor een hogere doorvoer. De clienttoepassing moet meestal de bewerking opnieuw uitvoeren die een van deze fouten heeft veroorzaakt. Als Azure Storage echter uw toepassing beperkt omdat deze de schaalbaarheidsdoelen overschrijdt of als de service om een andere reden zelfs niet aan de aanvraag kan voldoen, kunnen agressieve nieuwe pogingen het probleem erger maken. Het gebruik van een beleid voor opnieuw proberen met exponentieel uitstel wordt aanbevolen. De clientbibliotheken zijn standaard ingesteld op dit gedrag. Uw toepassing kan bijvoorbeeld na 2 seconden een nieuwe poging doen, daarna na 4 seconden, daarna na 10 seconden, daarna na 30 seconden, en vervolgens volledig opgeven. Op deze manier vermindert uw toepassing de belasting van de service aanzienlijk, in plaats van verergerend gedrag te vertonen dat kan leiden tot aanvraagbeperking.
 
-Bij connectiviteitsfouten kunnen onmiddellijk nieuwe pogingen worden gedaan, omdat ze niet het gevolg zijn van een beperking en naar verwachting tijdelijk zijn.  
+Bij connectiviteitsfouten kunnen onmiddellijk nieuwe pogingen worden gedaan, omdat ze niet het gevolg zijn van een beperking en naar verwachting tijdelijk zijn.
 
 ### <a name="non-retryable-errors"></a>Fouten waarbij geen nieuwe pogingen mogelijk zijn
 
@@ -170,17 +169,17 @@ Het Nagle-algoritme is breed geïmplementeerd in TCP/IP-netwerken om de netwerkp
 
 ## <a name="message-size"></a>Berichtgrootte
 
-Naarmate de berichtgrootte toeneemt, nemen de wachtrijprestaties en schaalbaarheid af. Plaats in een bericht alleen informatie die de ontvanger daadwerkelijk nodig heeft.  
+Naarmate de berichtgrootte toeneemt, nemen de wachtrijprestaties en schaalbaarheid af. Plaats in een bericht alleen informatie die de ontvanger daadwerkelijk nodig heeft.
 
 ## <a name="batch-retrieval"></a>Bulksgewijs ophalen
 
-U kunt in één bewerking maximaal 32 berichten in een wachtrij ophalen. Door bulksgewijs berichten op te halen, hoeft u minder vaak terug naar de clienttoepassing. Dit is met name handig voor omgevingen met een hoge latentie, zoals mobiele apparaten.  
+U kunt in één bewerking maximaal 32 berichten in een wachtrij ophalen. Door bulksgewijs berichten op te halen, hoeft u minder vaak terug naar de clienttoepassing. Dit is met name handig voor omgevingen met een hoge latentie, zoals mobiele apparaten.
 
 ## <a name="queue-polling-interval"></a>Polling-interval voor de wachtrij
 
-Bij de meeste toepassingen wordt polling naar berichten in een wachtrij uitgevoerd. Dit kan al snel een van de grootste transactiebronnen voor die toepassingen worden. Wees verstandig bij het selecteren van uw polling-interval: door te vaak polling uit te voeren, is de kans groot dat de schaalbaarheidsdoelen voor de wachtrij worden bereikt voor uw toepassing. Maar met 200.000 transacties à USD 0,01 (ten tijde van dit schrijven) zou één processorpolling per seconde gedurende één maand goedkoper zijn dan 15 cent, dus de kosten zijn doorgaans geen factor die invloed heeft op het gekozen polling-interval.  
+Bij de meeste toepassingen wordt polling naar berichten in een wachtrij uitgevoerd. Dit kan al snel een van de grootste transactiebronnen voor die toepassingen worden. Wees verstandig bij het selecteren van uw polling-interval: door te vaak polling uit te voeren, is de kans groot dat de schaalbaarheidsdoelen voor de wachtrij worden bereikt voor uw toepassing. Maar met 200.000 transacties à USD 0,01 (ten tijde van dit schrijven) zou één processorpolling per seconde gedurende één maand goedkoper zijn dan 15 cent, dus de kosten zijn doorgaans geen factor die invloed heeft op het gekozen polling-interval.
 
-Zie [Prijzen voor Azure Storage](https://azure.microsoft.com/pricing/details/storage/) voor de actuele prijsgegevens.  
+Zie [Prijzen voor Azure Storage](https://azure.microsoft.com/pricing/details/storage/) voor de actuele prijsgegevens.
 
 ## <a name="use-update-message"></a>Bericht bijwerken gebruiken
 
@@ -188,10 +187,10 @@ U kunt de bewerking **Bericht bijwerken** gebruiken om de onzichtbaarheidstime-o
 
 ## <a name="application-architecture"></a>Toepassingsarchitectuur
 
-Gebruik wachtrijen om de architectuur van uw toepassing schaalbaar te maken. Hieronder volgt een aantal manieren waarop u uw toepassing met behulp van wachtrijen schaalbaarder kunt maken:  
+Gebruik wachtrijen om de architectuur van uw toepassing schaalbaar te maken. Hieronder volgt een aantal manieren waarop u uw toepassing met behulp van wachtrijen schaalbaarder kunt maken:
 
 - U kunt wachtrijen gebruiken om achterstanden voor verwerking te verzamelen en de workloads in uw toepassing soepeler laten verlopen. U kunt bijvoorbeeld aanvragen van gebruikers in een wachtrij plaatsen om eerst werkzaamheden uit te voeren die veel van de processor vergen, zoals het aanpassen van de grootte van geüploade afbeeldingen.
-- U kunt wachtrijen gebruiken om de koppeling van onderdelen van uw toepassing te verbreken, zodat u de schaal van die onderdelen onafhankelijk kunt aanpassen. Met een webfront kunt u bijvoorbeeld enquêteresultaten van gebruikers in een wachtrij plaatsen, zodat u ze later kunt analyseren en opslaan. U kunt meer werkrolexemplaren toevoegen om de gegevens in de wachtrij naar wens te verwerken.  
+- U kunt wachtrijen gebruiken om de koppeling van onderdelen van uw toepassing te verbreken, zodat u de schaal van die onderdelen onafhankelijk kunt aanpassen. Met een webfront kunt u bijvoorbeeld enquêteresultaten van gebruikers in een wachtrij plaatsen, zodat u ze later kunt analyseren en opslaan. U kunt meer werkrolexemplaren toevoegen om de gegevens in de wachtrij naar wens te verwerken.
 
 ## <a name="next-steps"></a>Volgende stappen
 

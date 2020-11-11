@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/30/2020
-ms.openlocfilehash: 7ec4515d5f1d096cfb83f06c398da4c1254279f6
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 7433c51b45b0d8459ad1959b29f61660537b8851
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099144"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337454"
 ---
 # <a name="quickstart-create-your-first-logic-apps-workflow---azure-portal"></a>Quickstart: Uw eerste werkstroom voor Logic Apps bouwen - Azure Portal
 
@@ -112,7 +112,7 @@ Uw logische app is nu live, maar kan alleen de RSS-feed controleren. [Voeg vervo
 
 ## <a name="add-the-send-email-action"></a>De actie 'E-mail verzenden' toevoegen
 
-Nadat u [een trigger voor uw logische app hebt toegevoegd](#add-rss-trigger), moet u vervolgens een [actie](../logic-apps/logic-apps-overview.md#logic-app-concepts) toevoegen. Dit doet u om het antwoord te bepalen wanneer uw logische app de RSS-feed controleert en er een nieuw item wordt weergegeven. U kunt ook logische apps maken met veel complexere acties, zoals in de zelfstudie voor het [verwerken van e-mails met Logic Apps, Azure Functions en Azure Storage](/tutorial-process-email-attachments-workflow.md).
+Nadat u [een trigger voor uw logische app hebt toegevoegd](#add-rss-trigger), moet u vervolgens een [actie](../logic-apps/logic-apps-overview.md#logic-app-concepts) toevoegen. Dit doet u om het antwoord te bepalen wanneer uw logische app de RSS-feed controleert en er een nieuw item wordt weergegeven. U kunt ook logische apps maken met veel complexere acties, zoals in de zelfstudie voor het [verwerken van e-mails met Logic Apps, Azure Functions en Azure Storage](/azure/logic-apps/tutorial-process-email-attachments-workflow).
 
 > [!NOTE]
 > In dit voorbeeld wordt gebruikgemaakt van Office 365 Outlook als e-mailservice. Als u een andere, ondersteunde e-mail service in uw logische app gebruikt, kan de gebruikersinterface er anders uitzien. De basisconcepten voor het maken van verbinding met een andere e-mailservice blijven echter ongewijzigd.

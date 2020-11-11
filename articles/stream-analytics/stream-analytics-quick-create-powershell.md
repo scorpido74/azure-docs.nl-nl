@@ -7,12 +7,12 @@ ms.date: 12/20/2018
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: b36a71899be43f40ec16c76b5e53c8c3e7fb3552
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 2ea92ad2e9c81b568e11ff97d7b6a88eeb4f188e
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124523"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346567"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>Quickstart: Een Stream Analytics-taak maken met behulp van Azure PowerShell
 
@@ -28,7 +28,7 @@ De voorbeeldtaak leest streaminggegevens vanaf een IoT Hub-apparaat. De invoerge
 
 * Voor deze quickstart is de Azure PowerShell-module vereist. Voer `Get-Module -ListAvailable Az` uit om de versie op te zoeken die op uw lokale computer is geïnstalleerd. Als u PowerShell wilt installeren of upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-Az-ps).
 
-* Sommige IoT Hub acties worden niet ondersteund door Azure PowerShell en moeten worden voltooid met behulp van Azure CLI-versie 2.0.70 of hoger en de IoT-extensie voor Azure CLI. [Installeer de Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) en gebruik `az extension add --name azure-iot` voor het installeren van de IoT-extensie.
+* Sommige IoT Hub acties worden niet ondersteund door Azure PowerShell en moeten worden voltooid met behulp van Azure CLI-versie 2.0.70 of hoger en de IoT-extensie voor Azure CLI. [Installeer de Azure CLI](/cli/azure/install-azure-cli) en gebruik `az extension add --name azure-iot` voor het installeren van de IoT-extensie.
 
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
@@ -68,9 +68,9 @@ Voordat u de Stream Analytics-taak definieert, moet u de gegevens voorbereiden d
 
 In het volgende codeblok van de Azure CLI worden meerdere opdrachten uitgevoerd om de invoergegevens voor te bereiden die nodig zijn voor de taak. Bekijk de secties om de code te begrijpen.
 
-1. Voer in het PowerShell-venster de opdracht [az login](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) uit om u aan te melden bij uw Azure-account.
+1. Voer in het PowerShell-venster de opdracht [az login](/cli/azure/authenticate-azure-cli) uit om u aan te melden bij uw Azure-account.
 
-    Wanneer u bent aangemeld, retourneert de Azure CLI een lijst met uw abonnementen. Kopieer het abonnement dat u gebruikt voor deze quickstart en voer de opdracht [az account set](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#change-the-active-subscription) uit om dat abonnement te selecteren. Kies het abonnement dat u hebt geselecteerd in de vorige sectie met PowerShell. Vergeet niet om `<your subscription name>` te vervangen door de naam van uw abonnement.
+    Wanneer u bent aangemeld, retourneert de Azure CLI een lijst met uw abonnementen. Kopieer het abonnement dat u gebruikt voor deze quickstart en voer de opdracht [az account set](/cli/azure/manage-azure-subscriptions-azure-cli#change-the-active-subscription) uit om dat abonnement te selecteren. Kies het abonnement dat u hebt geselecteerd in de vorige sectie met PowerShell. Vergeet niet om `<your subscription name>` te vervangen door de naam van uw abonnement.
 
     ```azurecli
     az login
@@ -84,7 +84,7 @@ In het volgende codeblok van de Azure CLI worden meerdere opdrachten uitgevoerd 
     az iot hub create --name "<your IoT Hub name>" --resource-group $resourceGroup --sku S1
     ```
 
-    Zodra de IoT Hub is gemaakt, vraagt u de verbindingsreeks voor IoT Hub op met de opdracht [az iot hub show-connection-string](/cli/azure/iot/hub?view=azure-cli-latest). Kopieer de volledige verbindingsreeks en bewaar deze totdat u de IoT Hub als invoer gaat toevoegen aan uw Stream Analytics-taak.
+    Zodra de IoT Hub is gemaakt, vraagt u de verbindingsreeks voor IoT Hub op met de opdracht [az iot hub show-connection-string](/cli/azure/iot/hub). Kopieer de volledige verbindingsreeks en bewaar deze totdat u de IoT Hub als invoer gaat toevoegen aan uw Stream Analytics-taak.
 
     ```azurecli
     az iot hub show-connection-string --hub-name "MyASAIoTHub"

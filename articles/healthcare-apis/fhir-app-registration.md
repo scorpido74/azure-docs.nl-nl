@@ -9,12 +9,12 @@ ms.reviewer: dseven
 ms.author: matjazl
 author: matjazl
 ms.date: 10/13/2019
-ms.openlocfilehash: 22f31cf3911b5ea24e8798fb226e389071fadd0b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: aa95dc5cc052fbff6c553de50f4f52dc5df850a5
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87848975"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93398110"
 ---
 # <a name="register-the-azure-active-directory-apps-for-azure-api-for-fhir"></a>De Azure Active Directory-apps registreren voor de Azure-API voor FHIR
 
@@ -31,9 +31,9 @@ Een toepassing moet geregistreerd zijn om met Azure AD te kunnen werken. In de c
 
 *Clienttoepassingen* zijn registraties van de clients die tokens zullen opvragen. In OAuth 2.0 maken we vaak onderscheid tussen ten minste drie verschillende soorten toepassingen:
 
-1. **Vertrouwelijke clients**, ook wel bekend als web-apps in Azure AD. Vertrouwelijke clients zijn toepassingen die gebruikmaken van de [verificatiecodestroom](https://docs.microsoft.com/azure/active-directory/develop/v1-protocols-oauth-code) om een token op te halen namens een aangemelde gebruiker die geldige referenties opgeeft. Ze worden vertrouwelijke clients genoemd omdat ze een geheim kunnen bewaren en dit geheim aan Azure AD zullen weergeven wanneer de verificatiecode wordt omgeruild voor een token. Aangezien vertrouwelijke clients zichzelf kunnen verifiëren via het clientgeheim, worden ze meer vertrouwd dan openbare clients en kunnen ze tokens met een langere levensduur hebben en een vernieuwingstoken krijgen. Meer informatie over hoe u [een vertrouwelijke client registreert](register-confidential-azure-ad-client-app.md). Het is belangrijk de antwoord-URL te registreren waarop de client de verificatiecode zal ontvangen.
+1. **Vertrouwelijke clients** , ook wel bekend als web-apps in Azure AD. Vertrouwelijke clients zijn toepassingen die gebruikmaken van de [verificatiecodestroom](../active-directory/azuread-dev/v1-protocols-oauth-code.md) om een token op te halen namens een aangemelde gebruiker die geldige referenties opgeeft. Ze worden vertrouwelijke clients genoemd omdat ze een geheim kunnen bewaren en dit geheim aan Azure AD zullen weergeven wanneer de verificatiecode wordt omgeruild voor een token. Aangezien vertrouwelijke clients zichzelf kunnen verifiëren via het clientgeheim, worden ze meer vertrouwd dan openbare clients en kunnen ze tokens met een langere levensduur hebben en een vernieuwingstoken krijgen. Meer informatie over hoe u [een vertrouwelijke client registreert](register-confidential-azure-ad-client-app.md). Het is belangrijk de antwoord-URL te registreren waarop de client de verificatiecode zal ontvangen.
 1. **Openbare clients**. Dit zijn clients die geen geheim kunnen bewaren. Meestal is dit een toepassing op een mobiel apparaat of een JavaScript-toepassing met één pagina, waar een geheim in de client zou kunnen worden ontdekt door een gebruiker. Openbare clients maken ook gebruik van de verificatiecodestroom, maar ze mogen een geheim niet weergeven wanneer ze een token ophalen en ze hebben mogelijk tokens met een kortere levensduur en geen vernieuwingstoken. Meer informatie over hoe u [een openbare client registreert](register-public-azure-ad-client-app.md).
-1. Serviceclients. Deze clients halen tokens op namens zichzelf (niet namens een gebruiker) met behulp van de [clientreferentiestroom](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow). Dit zijn meestal toepassingen die op een niet-interactieve manier toegang krijgen tot de FHIR-server. Een voorbeeld hiervan is een gegevensopnameproces. Wanneer u een serviceclient gebruikt, is het niet nodig het proces te starten voor het ophalen van een token met een aanroep naar het `/authorize`-eindpunt. Een serviceclient kan rechtstreeks naar het `/token`-eindpunt gaan en de client-id en het clientgeheim weergeven om een token op te halen. Meer informatie over hoe u [een serviceclient registreert](register-service-azure-ad-client-app.md).
+1. Serviceclients. Deze clients halen tokens op namens zichzelf (niet namens een gebruiker) met behulp van de [clientreferentiestroom](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md). Dit zijn meestal toepassingen die op een niet-interactieve manier toegang krijgen tot de FHIR-server. Een voorbeeld hiervan is een gegevensopnameproces. Wanneer u een serviceclient gebruikt, is het niet nodig het proces te starten voor het ophalen van een token met een aanroep naar het `/authorize`-eindpunt. Een serviceclient kan rechtstreeks naar het `/token`-eindpunt gaan en de client-id en het clientgeheim weergeven om een token op te halen. Meer informatie over hoe u [een serviceclient registreert](register-service-azure-ad-client-app.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 

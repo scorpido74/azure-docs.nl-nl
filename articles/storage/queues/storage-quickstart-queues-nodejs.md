@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: 1446b501b9d91c94c12c82755d0e31f361f8cd8f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: f72d8b332f00b3d298f4d5a1a04937f562647f9e
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92783416"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93347145"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-javascript"></a>Quickstart: Azure Queue Storage-clientbibliotheek v12 voor JavaScript
 
@@ -21,26 +21,26 @@ Ga aan de slag met de Azure Queue Storage-clientbibliotheek versie 12 voor JavaS
 
 Gebruik de Azure Queue Storage-clientbibliotheek v12 voor JavaScript om:
 
-* Een wachtrij maken
-* Berichten aan een wachtrij toevoegen
-* Berichten in een wachtrij bekijken
-* Een bericht in een wachtrij bijwerken
-* Berichten van een wachtrij ontvangen
-* Berichten uit een wachtrij verwijderen
-* Een wachtrij verwijderen
+- Een wachtrij maken
+- Berichten aan een wachtrij toevoegen
+- Berichten in een wachtrij bekijken
+- Een bericht in een wachtrij bijwerken
+- Berichten van een wachtrij ontvangen
+- Berichten uit een wachtrij verwijderen
+- Een wachtrij verwijderen
 
 Aanvullende bronnen:
 
-* [API-referentiedocumentatie](/javascript/api/@azure/storage-queue/)
-* [Broncode van bibliotheek](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue)
-* [Pakket (Node Package Manager)](https://www.npmjs.com/package/@azure/storage-queue)
-* [Voorbeelden](../common/storage-samples-javascript.md?toc=%252fazure%252fstorage%252fqueues%252ftoc.json#queue-samples)
+- [API-referentiedocumentatie](/javascript/api/@azure/storage-queue/)
+- [Broncode van bibliotheek](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue)
+- [Pakket (Node Package Manager)](https://www.npmjs.com/package/@azure/storage-queue)
+- [Voorbeelden](../common/storage-samples-javascript.md?toc=%252fazure%252fstorage%252fqueues%252ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Azure-abonnement: [u kunt een gratis abonnement nemen](https://azure.microsoft.com/free/)
-* Azure Storage-account: [maak een opslagaccount](../common/storage-account-create.md)
-* De huidige versie van [Node.js](https://nodejs.org/en/download/) voor uw besturingssysteem.
+- Azure-abonnement: [u kunt een gratis abonnement nemen](https://azure.microsoft.com/free/)
+- Azure Storage-account: [maak een opslagaccount](../common/storage-account-create.md)
+- De huidige versie van [Node.js](https://nodejs.org/en/download/) voor uw besturingssysteem.
 
 ## <a name="setting-up"></a>Instellen
 
@@ -48,7 +48,7 @@ In dit gedeelte wordt uitgelegd hoe u een project voorbereidt voor gebruik met d
 
 ### <a name="create-the-project"></a>Het project maken
 
-Maak een Node.js-toepassing met de naam *queues-quickstart-v12* .
+Maak een Node.js-toepassing met de naam *queues-quickstart-v12*.
 
 1. Maak in een consolevenster (zoals cmd, PowerShell of Bash) een nieuwe map voor het project.
 
@@ -56,13 +56,13 @@ Maak een Node.js-toepassing met de naam *queues-quickstart-v12* .
     mkdir queues-quickstart-v12
     ```
 
-1. Schakel over naar de zojuist gemaakte map *queues-quickstart-v12* .
+1. Schakel over naar de zojuist gemaakte map *queues-quickstart-v12*.
 
     ```console
     cd queues-quickstart-v12
     ```
 
-1. Maak een nieuw tekstbestand met de naam *package.json* . Dit bestand definieert het Node.js-project. Sla dit bestand op in de map *queues-quickstart-v12* . Hier is de inhoud van het bestand:
+1. Maak een nieuw tekstbestand met de naam *package.json*. Dit bestand definieert het Node.js-project. Sla dit bestand op in de map *queues-quickstart-v12*. Hier is de inhoud van het bestand:
 
     ```json
     {
@@ -118,7 +118,7 @@ Ga als volgt te werk vanuit de projectmap:
 
     ```
 
-1. Sla het nieuwe bestand op als *queues-quickstart-v12.js* in de map *queues-quickstart-v12* .
+1. Sla het nieuwe bestand op als *queues-quickstart-v12.js* in de map *queues-quickstart-v12*.
 
 [!INCLUDE [storage-quickstart-credentials-include](../../../includes/storage-quickstart-credentials-include.md)]
 
@@ -126,9 +126,9 @@ Ga als volgt te werk vanuit de projectmap:
 
 Azure Queue Storage is een service om grote aantallen berichten op te slaan. Een wachtrijbericht kan maximaal 64 KB groot zijn. Een wachtrij kan miljoenen berichten bevatten, tot aan de totale capaciteitslimiet van een opslagaccount. Wachtrijen worden vaak gebruikt om een voorraad werk te maken dat asynchroon moet worden verwerkt. Queue Storage biedt drie typen resources:
 
-* Het opslagaccount
-* Een wachtrij in het opslagaccount
-* Berichten in de wachtrij
+- Het opslagaccount
+- Een wachtrij in het opslagaccount
+- Berichten in de wachtrij
 
 Het volgende diagram geeft de relatie tussen deze resources weer.
 
@@ -136,22 +136,22 @@ Het volgende diagram geeft de relatie tussen deze resources weer.
 
 Gebruik de volgende JavaScript-klassen om te communiceren met deze resources:
 
-* [QueueServiceClient](/javascript/api/@azure/storage-queue/queueserviceclient): Met de `QueueServiceClient` kunt u alle wachtrijen in uw opslagaccount beheren.
-* [QueueClient](/javascript/api/@azure/storage-queue/queueclient): Met de `QueueClient`-klasse kunt u een afzonderlijke wachtrij en de bijbehorende berichten beheren en bewerken.
-* [QueueMessage](/javascript/api/@azure/storage-queue/queuemessage): De `QueueMessage`-klasse vertegenwoordigt de afzonderlijke objecten die worden geretourneerd wanneer [receiveMessages](/javascript/api/@azure/storage-queue/queueclient#receivemessages-queuereceivemessageoptions-) wordt aangeroepen voor een wachtrij.
+- [QueueServiceClient](/javascript/api/@azure/storage-queue/queueserviceclient): Met de `QueueServiceClient` kunt u alle wachtrijen in uw opslagaccount beheren.
+- [QueueClient](/javascript/api/@azure/storage-queue/queueclient): Met de `QueueClient`-klasse kunt u een afzonderlijke wachtrij en de bijbehorende berichten beheren en bewerken.
+- [QueueMessage](/javascript/api/@azure/storage-queue/queuemessage): De `QueueMessage`-klasse vertegenwoordigt de afzonderlijke objecten die worden geretourneerd wanneer [receiveMessages](/javascript/api/@azure/storage-queue/queueclient#receivemessages-queuereceivemessageoptions-) wordt aangeroepen voor een wachtrij.
 
 ## <a name="code-examples"></a>Codevoorbeelden
 
 Deze voorbeeldcodefragmenten laten zien hoe u de volgende acties kunt uitvoeren met de Azure Queue Storage-clientbibliotheek voor JavaScript:
 
-* [De verbindingsreeks ophalen](#get-the-connection-string)
-* [Een wachtrij maken](#create-a-queue)
-* [Berichten aan een wachtrij toevoegen](#add-messages-to-a-queue)
-* [Berichten in een wachtrij bekijken](#peek-at-messages-in-a-queue)
-* [Een bericht in een wachtrij bijwerken](#update-a-message-in-a-queue)
-* [Berichten van een wachtrij ontvangen](#receive-messages-from-a-queue)
-* [Berichten uit een wachtrij verwijderen](#delete-messages-from-a-queue)
-* [Een wachtrij verwijderen](#delete-a-queue)
+- [De verbindingsreeks ophalen](#get-the-connection-string)
+- [Een wachtrij maken](#create-a-queue)
+- [Berichten aan een wachtrij toevoegen](#add-messages-to-a-queue)
+- [Berichten in een wachtrij bekijken](#peek-at-messages-in-a-queue)
+- [Een bericht in een wachtrij bijwerken](#update-a-message-in-a-queue)
+- [Berichten van een wachtrij ontvangen](#receive-messages-from-a-queue)
+- [Berichten uit een wachtrij verwijderen](#delete-messages-from-a-queue)
+- [Een wachtrij verwijderen](#delete-a-queue)
 
 ### <a name="get-the-connection-string"></a>De verbindingsreeks ophalen
 
@@ -249,7 +249,7 @@ console.log("Message updated, requestId:", updateMessageResponse.requestId);
 
 ### <a name="receive-messages-from-a-queue"></a>Berichten van een wachtrij ontvangen
 
-Download eerder toegevoegde berichten door de methode [receiveMessages](/javascript/api/@azure/storage-queue/queueclient#receivemessages-queuereceivemessageoptions-) aan te roepen.  Geef in het veld `numberOfMessages` het maximumaantal berichten op dat voor deze aanroep moet worden ontvangen.
+Download eerder toegevoegde berichten door de methode [receiveMessages](/javascript/api/@azure/storage-queue/queueclient#receivemessages-queuereceivemessageoptions-) aan te roepen. Geef in het veld `numberOfMessages` het maximumaantal berichten op dat voor deze aanroep moet worden ontvangen.
 
 Voeg deze code toe aan het einde van de functie `main`:
 
@@ -356,5 +356,5 @@ Voor zelfstudies, voorbeelden, quickstarts en andere documentatie gaat u naar:
 > [!div class="nextstepaction"]
 > [Documentatie over Azure voor JavaScript](/azure/developer/javascript/)
 
-* Zie de [Azure Storage Queue-clientbibliotheek voor JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue)voor meer informatie.
-* Ga door naar [Voorbeelden van Azure Queue Storage-clientbibliotheek v12 voor JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue/samples) om meer Azure Queue Storage-voorbeeld-apps te zien.
+- Zie de [Azure Storage Queue-clientbibliotheek voor JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue)voor meer informatie.
+- Ga door naar [Voorbeelden van Azure Queue Storage-clientbibliotheek v12 voor JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue/samples) om meer Azure Queue Storage-voorbeeld-apps te zien.
