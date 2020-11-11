@@ -4,18 +4,18 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: eaa7efe761490a639acabd9fd6d91378e1259a67
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff9eca855269597477bc42a319c99c886576d92c
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91779180"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94482777"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
 - Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 
 - Een geïmplementeerde Communication Services-resource. [Een Communication Services maken](../../create-communication-resource.md).
-- A `User Access Token` om de aanroep-client in te scha kelen. Voor meer informatie over [het verkrijgen van een `User Access Token` ](../../access-tokens.md)
+- Een `User Access Token` om de aanroepende client in te schakelen. Voor meer informatie over het [verkrijgen van een `User Access Token`](../../access-tokens.md)
 - Optioneel: Voltooi de Snelstartgids om aan de [slag te gaan met het toevoegen van een oproep aan uw toepassing](../getting-started-with-calling.md)
 
 ## <a name="setting-up"></a>Instellen
@@ -37,7 +37,7 @@ De volgende klassen en interfaces verwerken enkele van de belangrijkste functies
 
 | Naam                             | Beschrijving                                                                                                                                 |
 | ---------------------------------| ------------------------------------------------------------------------------------------------------------------------------------------- |
-| CallClient                       | De CallClient is het belangrijkste invoerpunt voor de clientbibliotheek voor aanroepen.                                                                       |
+| CallClient                       | De CallClient is het belangrijkste ingangspunt voor de clientbibliotheek voor oproepen.                                                                       |
 | CallAgent                        | De CallAgent wordt gebruikt om oproepen te starten en te beheren.                                                                                            |
 | AzureCommunicationUserCredential | De klasse AzureCommunicationUserCredential implementeert de CommunicationUserCredential-interface die wordt gebruikt om de CallAgent te instantiëren. |
 
@@ -99,7 +99,7 @@ const call = callAgent.call(['acsUserId'], placeCallOptions);
 
 ```
 
-### <a name="join-a-group-call"></a>Aan een groeps aanroep toevoegen
+### <a name="join-a-group-call"></a>Deelnemen aan een groepsgesprek
 Als u een nieuwe groeps oproep wilt starten of lid wilt worden van een doorlopende groep, gebruikt u de methode ' samen voegen ' en geeft u een object door met een `groupId` eigenschap. De waarde moet een GUID zijn.
 ```js
 
@@ -147,7 +147,8 @@ Hiermee wordt een teken reeks geretourneerd die de huidige status van een aanroe
 * Verbonden: de oproep is verbonden
 * Hold-aanroep is in de wacht stand gezet, geen medium loopt tussen het lokale eind punt en de externe deel nemer (s)
 * ' Verbinding verbreken '-de status van de overdracht van de aanroep is verbroken
-* ' Verbinding verbroken '-laatste gespreks status
+* ' Verbinding verbroken '-laatste aanroep status.
+   * Als de netwerk verbinding is verbroken, wordt de status na ongeveer 2 minuten verbroken.
 
 
 * Inspecteer de eigenschap om te zien waarom een bepaalde aanroep is beëindigd `callEndReason` .
@@ -233,6 +234,9 @@ const source callClient.getDeviceManager().getCameraList()[1];
 localVideoStream.switchSource(source);
 
 ```
+### <a name="faq"></a>Veelgestelde vragen
+ * Als de netwerk verbinding is verbroken, wordt de status van de aanroep gewijzigd in ' losgekoppeld '?
+    * Ja, als de netwerk verbinding langer dan twee minuten verloren is gegaan, wordt de aanroep overgezet naar de niet-verbonden status en wordt de aanroep beëindigd.
 
 ## <a name="remote-participants-management"></a>Beheer van externe deel nemers
 
@@ -270,7 +274,8 @@ Status kan een van
 * Verbonden: de deel nemer is verbonden met de oproep
 * Hold-deel nemer is in de wacht stand
 * ' EarlyMedia ': de aankondiging wordt afgespeeld voordat de deel nemer is verbonden met de oproep
-* ' Verbinding verbroken ': eind status-de deel nemer is losgekoppeld van de aanroep
+* ' Verbinding verbroken ': eind status: de deel nemer is losgekoppeld van de aanroep.
+   * Als de externe deel nemer hun netwerk verbinding verliest, wordt de status van de externe deel nemer na ongeveer twee minuten niet meer verbonden.
 
 Als u wilt weten waarom de deel nemer de oproep heeft verlaten, inspecteert u de `callEndReason` eigenschap:
 ```js
@@ -410,7 +415,9 @@ U kunt de schaal modus later bijwerken door de methode aan te roepen `updateScal
 ```js
 view.updateScalingMode('Crop')
 ```
-
+### <a name="faq"></a>Veelgestelde vragen
+* Als een deel nemer de netwerk verbinding verliest, wordt de status ervan gewijzigd in ' losgekoppeld '?
+    * Ja, als een externe deel nemer hun netwerk verbinding langer dan twee minuten kwijtraakt, wordt de status ervan overgezet naar de verbinding verbroken en worden ze verwijderd uit de aanroep.
 ## <a name="device-management"></a>Apparaatbeheer
 
 `DeviceManager` Hiermee kunt u lokale apparaten opsommen die kunnen worden gebruikt in een aanroep om uw audio/video-streams te verzenden. U kunt hiermee ook machtigingen aanvragen van een gebruiker om toegang te krijgen tot hun microfoon en camera met behulp van de systeem eigen browser-API.
