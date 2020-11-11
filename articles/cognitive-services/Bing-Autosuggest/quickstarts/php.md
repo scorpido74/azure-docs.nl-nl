@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: quickstart
 ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: 8a30c053fc004d3e1eae6e876f5fc09c255aec8e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 52f93435376519c4021dd25e23304494546f7425
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101830"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367723"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-php"></a>Snelstart: Zoekquery's voorstellen met de REST API voor Bing Automatische suggesties en PHP
 
@@ -161,4 +161,4 @@ Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien
 ## <a name="see-also"></a>Zie ook
 
 - [Wat is Bing Automatische suggesties?](../get-suggested-search-terms.md)
-- [Naslaghandleiding Bing Automatische suggesties-API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)
+- [Naslaghandleiding Bing Automatische suggesties-API v7](/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)

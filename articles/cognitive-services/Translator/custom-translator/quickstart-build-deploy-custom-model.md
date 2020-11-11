@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 12/09/2019
 ms.author: swmachan
 ms.topic: quickstart
-ms.openlocfilehash: f24c9c372ff91db5836a62ac2d08b569434ff253
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 4fbac2c2d77d838ac7fc4f3caaa73983633c3e03
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761576"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366040"
 ---
 # <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>Snelstart: Een aangepast model voor vertalen bouwen, implementeren en gebruiken
 
@@ -22,14 +22,14 @@ Dit artikel biedt stapsgewijze instructies voor het bouwen van een vertaalsystee
 
 ## <a name="prerequisites"></a>Vereisten
 
-1. Als u de [Custom Translator](https://portal.customtranslator.azure.ai)-portal wilt gebruiken, hebt u een [Microsoft-account](https://signup.live.com) of [Azure AD-account](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) nodig (organisatieaccount gehost in Azure) om u aan te melden.
+1. Als u de [Custom Translator](https://portal.customtranslator.azure.ai)-portal wilt gebruiken, hebt u een [Microsoft-account](https://signup.live.com) of [Azure AD-account](../../../active-directory/fundamentals/active-directory-whatis.md) nodig (organisatieaccount gehost in Azure) om u aan te melden.
 
-2. Een abonnement op de Translator Text-API via de Azure-portal. U hebt de Translator Text-API-abonnementssleutel nodig om uw werkruimte te koppelen in Custom Translator. Zie [registreren voor de Translator Text-API](https://docs.microsoft.com/azure/cognitive-services/translator/translator-text-how-to-signup).
+2. Een abonnement op de Translator Text-API via de Azure-portal. U hebt de Translator Text-API-abonnementssleutel nodig om uw werkruimte te koppelen in Custom Translator. Zie [registreren voor de Translator Text-API](../translator-how-to-signup.md).
 
 3. Wanneer u deze beide hebt, meldt u zich aan bij de [Custom Translator](https://portal.customtranslator.azure.ai)-portal om werkruimten en projecten te maken, bestanden te uploaden en modellen te maken/implementeren.
 
 >[!Note]
->Custom Translator biedt geen ondersteuning voor het maken van werkruimte voor een Translator Text-API-resource die is gemaakt in [Ingeschakeld VNET](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet).
+>Custom Translator biedt geen ondersteuning voor het maken van werkruimte voor een Translator Text-API-resource die is gemaakt in [Ingeschakeld VNET](../../../api-management/api-management-using-with-vnet.md).
 
 ## <a name="create-a-workspace"></a>Een werkruimte maken
 
@@ -92,7 +92,7 @@ Als u een geïmplementeerd model wilt wisselen met een ander geïmplementeerd mo
 
 ## <a name="use-a-deployed-model"></a>Een geïmplementeerd model gebruiken
 
-U hebt toegang tot geïmplementeerde modellen via de Microsoft Translator [Text-API V3 door de Categorie-id op te geven](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl). Meer informatie over de Translator Text-API vindt u op de webpagina [API-referentie](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference).
+U hebt toegang tot geïmplementeerde modellen via de Microsoft Translator [Text-API V3 door de Categorie-id op te geven](../reference/v3-0-translate.md?tabs=curl). Meer informatie over de Translator Text-API vindt u op de webpagina [API-referentie](../reference/v3-0-reference.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -10,17 +10,17 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 07/06/2020
 ms.author: aahi
-ms.openlocfilehash: 3b922dca46b575abc428aa6e76fb920ffc13d6b0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 06f37404db1c07a97aa1bb2d6b7ca88485dc31a5
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86028000"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365177"
 ---
 # <a name="quickstart-using-go-to-call-the-text-analytics-cognitive-service"></a>Quickstart: Go gebruiken om de Text Analytics Cognitive Service aan te roepen 
 <a name="HOLTop"></a>
 
-In dit artikel ziet u hoe u de  [Text Analytics-API's](//go.microsoft.com/fwlink/?LinkID=759711)  met Go kunt gebruiken om [taal te detecteren](#Detect), [sentiment te analyseren](#SentimentAnalysis), [sleuteltermen op te halen](#KeyPhraseExtraction) en [gekoppelde entiteiten te identificeren](#Entities).
+In dit artikel ziet u hoe u de [Text Analytics-API's](//go.microsoft.com/fwlink/?LinkID=759711) met Go kunt gebruiken om [taal te detecteren](#Detect), [sentiment te analyseren](#SentimentAnalysis), [sleuteltermen ophalen](#KeyPhraseExtraction) en [gekoppelde entiteiten te identificeren](#Entities).
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
@@ -442,7 +442,7 @@ Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien
 
 ## <a name="identify-entities"></a>Entiteiten identificeren
 
-De Entities-API identificeert bekende entiteiten in een tekstdocument, met behulp van de [methode Entities](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634). [Entiteiten](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) halen woorden uit tekst, zoals Verenigde Staten, en geven u het type en/of de Wikipedia-koppeling voor dit woord of deze woorden. Het type voor Verenigde Staten is `location` en de koppeling naar Wikipedia is `https://en.wikipedia.org/wiki/United_States`.  In het volgende voorbeeld worden entiteiten geïdentificeerd voor Engelse documenten.
+De Entities-API identificeert bekende entiteiten in een tekstdocument, met behulp van de [methode Entities](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634). [Entiteiten](../how-tos/text-analytics-how-to-entity-linking.md) halen woorden uit tekst, zoals Verenigde Staten, en geven u het type en/of de Wikipedia-koppeling voor dit woord of deze woorden. Het type voor Verenigde Staten is `location` en de koppeling naar Wikipedia is `https://en.wikipedia.org/wiki/United_States`.  In het volgende voorbeeld worden entiteiten geïdentificeerd voor Engelse documenten.
 
 1. Maak een nieuw Go-project in uw favoriete code-editor.
 1. Voeg de onderstaande code toe.

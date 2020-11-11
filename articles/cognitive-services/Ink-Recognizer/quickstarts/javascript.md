@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 08/24/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 13e094b0f5d59e070a96ab4b45dcd37315c46c60
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ca1c18fd1ea8507c8b6a58b5f786b9686b1f3a34
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91327347"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369070"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-javascript"></a>Quickstart: Digitale inkt herkennen met de Ink Recognizer-REST API en JavaScript
 
@@ -167,7 +167,7 @@ Deze toepassing kan in uw webbrowser worden uitgevoerd. Er wordt een geslaagd an
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Naslaginformatie over REST API](https://go.microsoft.com/fwlink/?linkid=2089907)
+> [Naslaginformatie over REST API](/rest/api/cognitiveservices/inkrecognizer/inkrecognizer)
 
 Bekijk de volgende voorbeeldtoepassingen op GitHub voor meer informatie over de werking van de Ink Recognition-API in een app voor digitaal handschrift:
 * [C# en Universal Windows Platform (UWP)](https://go.microsoft.com/fwlink/?linkid=2089803)  

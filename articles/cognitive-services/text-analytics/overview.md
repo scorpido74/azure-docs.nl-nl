@@ -12,18 +12,18 @@ ms.date: 11/02/2020
 ms.author: aahi
 keywords: tekstanalyse, sentimentanalyse, tekst analytics
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: d58c501af3d90fec1eea43d13fa2383c8e847f18
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 6d10161609abda321ed1be9dfda0acabf2030c9e
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289697"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365292"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Wat is Text Analytics-API?
 
 De Text Analytics-API is een op de cloud gebaseerde service die NLP-functies (natuurlijke taalverwerking) biedt voor tekstanalyse, waaronder: sentimentanalyse, meninganalyse, sleuteltermextractie, taaldetectie en herkenning van benoemde entiteiten.
 
-De API maakt deel uit van [Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/), een verzameling van machine learning- en AI-algoritmen in de cloud, die kunnen worden gebruikt in uw ontwikkelprojecten. U kunt deze functies gebruiken met de [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/) of met de [clientbibliotheek](quickstarts/text-analytics-sdk.md).
+De API maakt deel uit van [Azure Cognitive Services](../index.yml), een verzameling van machine learning- en AI-algoritmen in de cloud, die kunnen worden gebruikt in uw ontwikkelprojecten. U kunt deze functies gebruiken met de [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/) of met de [clientbibliotheek](quickstarts/text-analytics-sdk.md).
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Understanding-Text-using-Cognitive-Services/player]
 
@@ -73,18 +73,18 @@ U kunt de Text Analytics-API in uw processen gaan gebruiken, ook als u niet veel
 
 * Minimaal programmeren vereist:
     * [Informatie extraheren in Excel met behulp van Text Analytics en Power Automate](tutorials/extract-excel-information.md)
-    * [De Text Analytics-API en MS Flow gebruiken om het sentiment van opmerkingen in een Yammer-groep te identificeren](https://docs.microsoft.com/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure?toc=%2F%2Fazure%2Fcognitive-services%2Ftext-analytics%2Ftoc.json&bc=%2F%2Fazure%2Fbread%2Ftoc.json)
+    * [De Text Analytics-API en MS Flow gebruiken om het sentiment van opmerkingen in een Yammer-groep te identificeren](/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure?bc=%252f%252fazure%252fbread%252ftoc.json&toc=%252f%252fazure%252fcognitive-services%252ftext-analytics%252ftoc.json)
     * [Power BI integreren met de Text Analytics-API voor het analyseren van feedback van klanten](tutorials/tutorial-power-bi-key-phrases.md)
 * Aanbevolen programmeerervaring:
-    * [Sentimentanalyse over het streamen van gegevens met behulp van Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/databricks-sentiment-analysis-cognitive-services?toc=%2F%2Fazure%2Fcognitive-services%2Ftext-analytics%2Ftoc.json&bc=%2F%2Fazure%2Fbread%2Ftoc.json)
-    * [Een Flask-app maken om tekst te vertalen, gevoel te analyseren en spraak na te bootsen](https://docs.microsoft.com/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis?toc=%2F%2Fazure%2Fcognitive-services%2Ftext-analytics%2Ftoc.json&bc=%2F%2Fazure%2Fbread%2Ftoc.json)
+    * [Sentimentanalyse over het streamen van gegevens met behulp van Azure Databricks](/azure/databricks/scenarios/databricks-sentiment-analysis-cognitive-services?bc=%252f%252fazure%252fbread%252ftoc.json&toc=%252f%252fazure%252fcognitive-services%252ftext-analytics%252ftoc.json)
+    * [Een Flask-app maken om tekst te vertalen, gevoel te analyseren en spraak na te bootsen](../translator/tutorial-build-flask-app-translation-synthesis.md?bc=%252f%252fazure%252fbread%252ftoc.json&toc=%252f%252fazure%252fcognitive-services%252ftext-analytics%252ftoc.json)
 
 
 <a name="supported-languages"></a>
 
 ## <a name="supported-languages"></a>Ondersteunde talen
 
-Deze sectie is voor betere zichtbaarheid verplaatst naar een afzonderlijk artikel. Raadpleeg [Ondersteunde talen in de Text Analytics-API](text-analytics-supported-languages.md) voor deze inhoud.
+Deze sectie is voor betere zichtbaarheid verplaatst naar een afzonderlijk artikel. Raadpleeg [Ondersteunde talen in de Text Analytics-API](./language-support.md) voor deze inhoud.
 
 <a name="data-limits"></a>
 
@@ -94,7 +94,7 @@ Alle eindpunten van de Text Analytics-API accepteren onbewerkte tekstgegevens. Z
 
 ## <a name="unicode-encoding"></a>Unicode-codering
 
-De Text Analytics-API maakt gebruik van Unicode-codering voor tekstweergave en het berekenen van het aantal tekens. Aanvragen kunnen worden ingediend in UTF-8 en UTF-16, zonder meetbare verschillen in het aantal tekens. Unicode-codepunten worden gebruikt als de heuristiek voor tekenlengte en worden wat de gegevenslimieten voor tekstanalyse betreft als gelijkwaardig beschouwd. Als u [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements) gebruikt om het aantal tekens te verkrijgen, gebruikt u dezelfde methode als voor het meten van de gegevensgrootte.
+De Text Analytics-API maakt gebruik van Unicode-codering voor tekstweergave en het berekenen van het aantal tekens. Aanvragen kunnen worden ingediend in UTF-8 en UTF-16, zonder meetbare verschillen in het aantal tekens. Unicode-codepunten worden gebruikt als de heuristiek voor tekenlengte en worden wat de gegevenslimieten voor tekstanalyse betreft als gelijkwaardig beschouwd. Als u [`StringInfo.LengthInTextElements`](/dotnet/api/system.globalization.stringinfo.lengthintextelements) gebruikt om het aantal tekens te verkrijgen, gebruikt u dezelfde methode als voor het meten van de gegevensgrootte.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -104,6 +104,6 @@ De Text Analytics-API maakt gebruik van Unicode-codering voor tekstweergave en h
 
 + Zie [wat er nieuw is in de Text Analytics-API](whats-new.md) voor meer informatie over nieuwe releases en functies.
 
-+ U kunt meer leren met deze [zelfstudie over sentimentanalyse](https://docs.microsoft.com/azure/azure-databricks/databricks-sentiment-analysis-cognitive-services) met behulp van Azure Databricks.
++ U kunt meer leren met deze [zelfstudie over sentimentanalyse](/azure/databricks/scenarios/databricks-sentiment-analysis-cognitive-services) met behulp van Azure Databricks.
 
 + Bekijk onze lijst met blogposts en meer video's over hoe u de Text Analytics-API gebruikt met andere hulpprogramma's en technologieën in onze [pagina Externe en community-inhoud](text-analytics-resource-external-community.md).

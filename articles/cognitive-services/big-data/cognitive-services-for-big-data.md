@@ -8,59 +8,59 @@ ms.service: cognitive-services
 ms.topic: overview
 ms.date: 07/09/2020
 ms.author: marhamil
-ms.openlocfilehash: 030fb4b4e5fa10304167f8d6bc2307c5b93c6d58
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 1b08925db12edffdaf5c85f1fa6f5934a412d81f
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776626"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363303"
 ---
 # <a name="azure-cognitive-services-for-big-data"></a>Azure Cognitive Services voor Big Data
 
 ![Azure Cognitive Services voor Big Data](media/cognitive-services-big-data-overview.svg)
 
-Met Azure Cognitive Services voor Big Data kunnen gebruikers terabytes aan gegevens doorvoeren via Cognitive Services met behulp van [Apache Spark&trade;](https://docs.microsoft.com/dotnet/spark/what-is-spark). Met de Cognitive Services voor Big Data kunt u eenvoudig intelligente toepassingen op grote schaal maken met elke gegevensopslag.
+Met Azure Cognitive Services voor Big Data kunnen gebruikers terabytes aan gegevens doorvoeren via Cognitive Services met behulp van [Apache Spark&trade;](/dotnet/spark/what-is-spark). Met de Cognitive Services voor Big Data kunt u eenvoudig intelligente toepassingen op grote schaal maken met elke gegevensopslag.
 
 Met Cognitive Services voor Big data kunt u intelligente modellen rechtstreeks in Apache Spark&trade; en SQL-berekeningen opnemen. Dankzij hulpprogramma's moeten ontwikkelaars zich niet meer bezighouden met netwerkdetails op laag niveau, zodat ze zich kunnen richten op het maken van slimme, gedistribueerde toepassingen.
 
 ## <a name="features-and-benefits"></a>Functies en -voordelen
 
-Cognitive Services voor Big Data kunnen gebruikmaken van services uit elke regio in de wereld, alsook [in een container geplaatste Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-container-support). Containers ondersteunen weinig of geen connectiviteitsimplementaties met ultralage latentiereacties. In een container geplaatste Cognitive Services kunnen lokaal worden uitgevoerd, rechtstreeks op de werkknooppunten van uw Spark-cluster of op een externe orchestrator zoals Kubernetes.
+Cognitive Services voor Big Data kunnen gebruikmaken van services uit elke regio in de wereld, alsook [in een container geplaatste Cognitive Services](../cognitive-services-container-support.md). Containers ondersteunen weinig of geen connectiviteitsimplementaties met ultralage latentiereacties. In een container geplaatste Cognitive Services kunnen lokaal worden uitgevoerd, rechtstreeks op de werkknooppunten van uw Spark-cluster of op een externe orchestrator zoals Kubernetes.
 
 ## <a name="supported-services"></a>Ondersteunde services
 
-[Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/), die toegankelijk zijn via API's en SDK's, helpen ontwikkelaars intelligente toepassingen bouwen zonder vaardigheden op het gebied van AI of gegevenswetenschap. Met Cognitie Services kunnen uw toepassingen zien, horen, spreken, begrijpen en nadenken. Om Cognitive Services te gebruiken moet uw toepassing gegevens versturen naar de service via het netwerk. Zodra deze ontvangen zijn, stuurt de service een intelligent antwoord terug. De volgende services zijn beschikbaar voor big data-workloads:
+[Cognitive Services](../index.yml), die toegankelijk zijn via API's en SDK's, helpen ontwikkelaars intelligente toepassingen bouwen zonder vaardigheden op het gebied van AI of gegevenswetenschap. Met Cognitie Services kunnen uw toepassingen zien, horen, spreken, begrijpen en nadenken. Om Cognitive Services te gebruiken moet uw toepassing gegevens versturen naar de service via het netwerk. Zodra deze ontvangen zijn, stuurt de service een intelligent antwoord terug. De volgende services zijn beschikbaar voor big data-workloads:
 
 ### <a name="vision"></a>Vision
 
 |Servicenaam|Beschrijving van de service|
 |:-----------|:------------------|
-|[Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/ "Computer Vision")| De Computer Vision-service geeft u toegang tot geavanceerde algoritmen voor het verwerken van afbeeldingen en het retourneren van informatie. |
-|[Face](https://docs.microsoft.com/azure/cognitive-services/face/ "Face")| De Face-service biedt toegang tot geavanceerde gezichtsalgoritmen, waardoor detectie en herkenning van gezichtskenmerken mogelijk worden. |
+|[Computer Vision](../computer-vision/index.yml "Computer Vision")| De Computer Vision-service geeft u toegang tot geavanceerde algoritmen voor het verwerken van afbeeldingen en het retourneren van informatie. |
+|[Face](../face/index.yml "Face")| De Face-service biedt toegang tot geavanceerde gezichtsalgoritmen, waardoor detectie en herkenning van gezichtskenmerken mogelijk worden. |
 
 ### <a name="speech"></a>Speech
 
 |Servicenaam|Beschrijving van de service|
 |:-----------|:------------------|
-|[Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/ "Speech Service")|De Speech-service biedt toegang tot functies zoals spraakherkenning, spraaksynthese, spraakomzetting en verificatie en identificatie van de spreker.|
+|[Speech Service](../speech-service/index.yml "Speech Service")|De Speech-service biedt toegang tot functies zoals spraakherkenning, spraaksynthese, spraakomzetting en verificatie en identificatie van de spreker.|
 
 ### <a name="decision"></a>Besluit
 
 |Servicenaam|Beschrijving van de service|
 |:-----------|:------------------|
-|[Anomaliedetectie](https://docs.microsoft.com/azure/cognitive-services/anomaly-detector/ "Anomaly Detector") | Met de anomaliedetectieservice (preview) kunt u afwijkingen in uw tijdreeksgegevens controleren en detecteren.|
+|[Anomaliedetectie](../anomaly-detector/index.yml "Anomaly Detector") | Met de anomaliedetectieservice (preview) kunt u afwijkingen in uw tijdreeksgegevens controleren en detecteren.|
 
 ### <a name="language"></a>Taal
 
 |Servicenaam|Beschrijving van de service|
 |:-----------|:------------------|
-|[Tekstanalyse](https://docs.microsoft.com/azure/cognitive-services/text-analytics/ "Tekstanalyse")| De Text Analytics-servicee biedt natuurlijke taalverwerking via onbewerkte tekst voor sentimentanalyse, sleuteltermextractie en taaldetectie.|
+|[Tekstanalyse](../text-analytics/index.yml "Tekstanalyse")| De Text Analytics-servicee biedt natuurlijke taalverwerking via onbewerkte tekst voor sentimentanalyse, sleuteltermextractie en taaldetectie.|
 
 ### <a name="search"></a>Search
 
 |Servicenaam|Beschrijving van de service|
 |:-----------|:------------------|
-|[Bing Afbeeldingen zoeken](https://docs.microsoft.com/azure/cognitive-services/bing-image-search "Bing Afbeeldingen zoeken")|De Bing Image Search-service retourneert een weergave van afbeeldingen die relevant zijn voor de query van de gebruiker.|
+|[Bing Afbeeldingen zoeken](/azure/cognitive-services/bing-image-search "Bing Afbeeldingen zoeken")|De Bing Image Search-service retourneert een weergave van afbeeldingen die relevant zijn voor de query van de gebruiker.|
 
 ## <a name="supported-programming-languages-for-cognitive-services-for-big-data"></a>Ondersteunde programmeertalen voor Cognitive Services voor Big Data
 
@@ -80,19 +80,19 @@ De Cognitive Services voor Big Data vereisen Apache Spark. Er zijn verschillende
 
 ### <a name="azure-databricks"></a>Azure Databricks
 
-[Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/what-is-azure-databricks) is een op Apache Spark gebaseerd analyseplatform, geoptimaliseerd voor het Microsoft Azure-platform voor cloudservices. Het biedt installatie met één klik, gestroomlijnde werkstromen en een interactieve werkruimte waarmee gegevenswetenschappers, gegevenstechnici en bedrijfsanalisten samen kunnen werken.
+[Azure Databricks](/azure/databricks/scenarios/what-is-azure-databricks) is een op Apache Spark gebaseerd analyseplatform, geoptimaliseerd voor het Microsoft Azure-platform voor cloudservices. Het biedt installatie met één klik, gestroomlijnde werkstromen en een interactieve werkruimte waarmee gegevenswetenschappers, gegevenstechnici en bedrijfsanalisten samen kunnen werken.
 
 ### <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
 
-[Azure Synapse Analytics](https://docs.microsoft.com/azure/databricks/data/data-sources/azure/synapse-analytics) (voorheen SQL Data Warehouse) is een zakelijke datawarehouse die parallelle verwerking op grote schaal gebruikt. Met Synapse Analytics kunt u snel complexe query's uitvoeren op petabytes aan gegevens. Azure Synapse Analytics biedt beheerde Spark Pools om Spark-taken uit te voeren met een intuïtieve Jupyter Notebook-interface.
+[Azure Synapse Analytics](/azure/databricks/data/data-sources/azure/synapse-analytics) (voorheen SQL Data Warehouse) is een zakelijke datawarehouse die parallelle verwerking op grote schaal gebruikt. Met Synapse Analytics kunt u snel complexe query's uitvoeren op petabytes aan gegevens. Azure Synapse Analytics biedt beheerde Spark Pools om Spark-taken uit te voeren met een intuïtieve Jupyter Notebook-interface.
 
 ### <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
 
-[Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/) organiseert Docker-containers en gedistribueerde toepassingen op grote schaal. AKS is een beheerde Kubernetes-aanbieding die het gebruik van Kubernetes in Azure vereenvoudigt. Met Kubernetes kunt u de schaal, latentie en netwerken van Cognitive Service nauwkeurig controleren. We raden u echter aan Azure Databricks of Synapse Analytics te gebruiken als u niet bekend bent met Apache Spark.
+[Azure Kubernetes Service (AKS)](../../aks/index.yml) organiseert Docker-containers en gedistribueerde toepassingen op grote schaal. AKS is een beheerde Kubernetes-aanbieding die het gebruik van Kubernetes in Azure vereenvoudigt. Met Kubernetes kunt u de schaal, latentie en netwerken van Cognitive Service nauwkeurig controleren. We raden u echter aan Azure Databricks of Synapse Analytics te gebruiken als u niet bekend bent met Apache Spark.
 
 ### <a name="data-connectors"></a>Gegevensconnectors
 
-Zodra u een Spark-cluster hebt, is de volgende stap om verbinding te maken met uw gegevens. Apache Spark heeft een brede verzameling database-connectors. Met deze connectors kunnen toepassingen werken met grote gegevenssets, ongeacht waar ze zijn opgeslagen. Zie de [lijst met ondersteunde gegevensbronnen voor Azure Databricks](https://docs.microsoft.com/azure/databricks/data/data-sources/) voor meer informatie over ondersteunde databases en connectors.
+Zodra u een Spark-cluster hebt, is de volgende stap om verbinding te maken met uw gegevens. Apache Spark heeft een brede verzameling database-connectors. Met deze connectors kunnen toepassingen werken met grote gegevenssets, ongeacht waar ze zijn opgeslagen. Zie de [lijst met ondersteunde gegevensbronnen voor Azure Databricks](/azure/databricks/data/data-sources/) voor meer informatie over ondersteunde databases en connectors.
 
 ## <a name="concepts"></a>Concepten
 

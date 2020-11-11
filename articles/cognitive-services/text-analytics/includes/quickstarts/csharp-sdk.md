@@ -9,26 +9,26 @@ ms.topic: include
 ms.date: 10/07/2020
 ms.author: aahi
 ms.reviewer: assafi
-ms.openlocfilehash: b5249850a572090a32b0d3515cbeaec9bfb112ae
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b8c7e419c9497e8111530e62bd9117581da7141a
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977796"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94371549"
 ---
 <a name="HOLTop"></a>
 
 # <a name="version-31-preview"></a>[Versie 3.1: preview](#tab/version-3-1)
 
-[v3.1-referentiedocumentatie](https://docs.microsoft.com/dotnet/api/azure.ai.textanalytics?view=azure-dotnet-previews&preserve-view=true) | [Broncode voor v3.1-bibliotheek](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics) | [v3.1-pakket (NuGet)](https://www.nuget.org/packages/Azure.AI.TextAnalytics/5.1.0-beta.1) | [v3.1-voorbeelden](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples)
+[v3.1-referentiedocumentatie](/dotnet/api/azure.ai.textanalytics?preserve-view=true&view=azure-dotnet-previews) | [Broncode voor v3.1-bibliotheek](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics) | [v3.1-pakket (NuGet)](https://www.nuget.org/packages/Azure.AI.TextAnalytics/5.1.0-beta.1) | [v3.1-voorbeelden](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples)
 
 # <a name="version-30"></a>[Versie 3.0](#tab/version-3)
 
-[v3-referentiedocumentatie](https://aka.ms/azsdk-net-textanalytics-ref-docs) | [Broncode voor v3-bibliotheek](https://github.com/Azure/azure-sdk-for-net/tree/Azure.AI.TextAnalytics_5.0.0/sdk/textanalytics/Azure.AI.TextAnalytics) | [v3-pakket (NuGet)](https://www.nuget.org/packages/Azure.AI.TextAnalytics) | [v3-voorbeelden](https://github.com/Azure/azure-sdk-for-net/tree/Azure.AI.TextAnalytics_5.0.0/sdk/textanalytics/Azure.AI.TextAnalytics/samples)
+[v3-referentiedocumentatie](/dotnet/api/azure.ai.textanalytics) | [Broncode voor v3-bibliotheek](https://github.com/Azure/azure-sdk-for-net/tree/Azure.AI.TextAnalytics_5.0.0/sdk/textanalytics/Azure.AI.TextAnalytics) | [v3-pakket (NuGet)](https://www.nuget.org/packages/Azure.AI.TextAnalytics) | [v3-voorbeelden](https://github.com/Azure/azure-sdk-for-net/tree/Azure.AI.TextAnalytics_5.0.0/sdk/textanalytics/Azure.AI.TextAnalytics/samples)
 
 # <a name="version-21"></a>[Versie 2.1](#tab/version-2)
 
-[v2-referentiedocumentatie](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/textanalytics) | [Broncode voor v2-bibliotheek](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Language.TextAnalytics) | [v2-pakket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics/) | [v2-voorbeelden](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples)
+[v2-referentiedocumentatie](/dotnet/api/overview/azure/cognitiveservices/client/textanalytics) | [Broncode voor v2-bibliotheek](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Language.TextAnalytics) | [v2-pakket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics/) | [v2-voorbeelden](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples)
 
 ---
 
@@ -48,11 +48,11 @@ Maak een nieuwe console-app in .NET Core met behulp van de Visual Studio IDE. Hi
 
 # <a name="version-31-preview"></a>[Versie 3.1: preview](#tab/version-3-1)
 
-Installeer de clientbibliotheek door met de rechtermuisknop op de oplossing te klikken in **Solution Explorer** en **NuGet-pakketten beheren** te selecteren. Selecteer in Package Manager dat wordt geopend de optie **Bladeren** en zoek naar `Azure.AI.TextAnalytics`. Schakel het vakje **prerelease toevoegen** in, selecteer versie `5.1.0-beta.1` en selecteer **Installeren**. U kunt ook de [Package Manager-console](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package) gebruiken.
+Installeer de clientbibliotheek door met de rechtermuisknop op de oplossing te klikken in **Solution Explorer** en **NuGet-pakketten beheren** te selecteren. Selecteer in Package Manager dat wordt geopend de optie **Bladeren** en zoek naar `Azure.AI.TextAnalytics`. Schakel het vakje **prerelease toevoegen** in, selecteer versie `5.1.0-beta.1` en selecteer **Installeren**. U kunt ook de [Package Manager-console](/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package) gebruiken.
 
 # <a name="version-30"></a>[Versie 3.0](#tab/version-3)
 
-Installeer de clientbibliotheek door met de rechtermuisknop op de oplossing te klikken in **Solution Explorer** en **NuGet-pakketten beheren** te selecteren. Selecteer in Package Manager dat wordt geopend de optie **Bladeren** en zoek naar `Azure.AI.TextAnalytics`. Selecteer versie `5.0.0` en vervolgens **Installeren**. U kunt ook de [Package Manager-console](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package) gebruiken.
+Installeer de clientbibliotheek door met de rechtermuisknop op de oplossing te klikken in **Solution Explorer** en **NuGet-pakketten beheren** te selecteren. Selecteer in Package Manager dat wordt geopend de optie **Bladeren** en zoek naar `Azure.AI.TextAnalytics`. Selecteer versie `5.0.0` en vervolgens **Installeren**. U kunt ook de [Package Manager-console](/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package) gebruiken.
 
 
 > [!TIP]
@@ -60,7 +60,7 @@ Installeer de clientbibliotheek door met de rechtermuisknop op de oplossing te k
 
 # <a name="version-21"></a>[Versie 2.1](#tab/version-2)
 
-Installeer de clientbibliotheek door met de rechtermuisknop op de oplossing te klikken in **Solution Explorer** en **NuGet-pakketten beheren** te selecteren. Selecteer in de package manager die wordt geopend de optie **Bladeren** en zoek naar `Microsoft.Azure.CognitiveServices.Language.TextAnalytics`. Klik erop en vervolgens op **Install**. U kunt ook de [Package Manager-console](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package) gebruiken.
+Installeer de clientbibliotheek door met de rechtermuisknop op de oplossing te klikken in **Solution Explorer** en **NuGet-pakketten beheren** te selecteren. Selecteer in de package manager die wordt geopend de optie **Bladeren** en zoek naar `Microsoft.Azure.CognitiveServices.Language.TextAnalytics`. Klik erop en vervolgens op **Install**. U kunt ook de [Package Manager-console](/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package) gebruiken.
 
 > [!TIP]
 > Wilt u het codebestand voor de quickstart in één keer weergeven? U kunt het vinden [op GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/samples/TextAnalytics/synchronous/Program.cs), dat de codevoorbeelden in deze quickstart bevat. 
@@ -205,7 +205,7 @@ Maak een nieuwe klasse `ApiKeyServiceClientCredentials` om de referenties op te 
 
 [!code-csharp[Client class](~/cognitive-services-dotnet-sdk-samples/samples/TextAnalytics/synchronous/Program.cs?name=clientClass)]
 
-Maak een methode voor het instantiëren van het [TextAnalyticsClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.textanalyticsclient)-object met uw eindpunt en een `ApiKeyServiceClientCredentials`-object dat uw sleutel bevat.
+Maak een methode voor het instantiëren van het [TextAnalyticsClient](/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.textanalyticsclient)-object met uw eindpunt en een `ApiKeyServiceClientCredentials`-object dat uw sleutel bevat.
 
 [!code-csharp[Client authentication](~/cognitive-services-dotnet-sdk-samples/samples/TextAnalytics/synchronous/Program.cs?name=authentication)]
 
@@ -461,7 +461,7 @@ Document sentiment: Positive
 
 # <a name="version-21"></a>[Versie 2.1](#tab/version-2)
 
-Maak een nieuwe functie met de naam `SentimentAnalysisExample()` waarvoor de client wordt gebruikt die u eerder hebt gemaakt en roep de functie [Sentiment()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.textanalyticsclientextensions.sentiment) van de nieuwe functie aan. Het geretourneerde [SentimentResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.models.sentimentresult)-object bevat het sentiment `Score` als de aanroep is gelukten een `errorMessage` als dat niet het geval is. 
+Maak een nieuwe functie met de naam `SentimentAnalysisExample()` waarvoor de client wordt gebruikt die u eerder hebt gemaakt en roep de functie [Sentiment()](/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.textanalyticsclientextensions.sentiment) van de nieuwe functie aan. Het geretourneerde [SentimentResult](/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.models.sentimentresult)-object bevat het sentiment `Score` als de aanroep is gelukten een `errorMessage` als dat niet het geval is. 
 
 Een score dichter bij 0 wijst op een negatief gevoel, terwijl een score dichter bij 1 op een positief gevoel wijst.
 
@@ -525,7 +525,7 @@ Language:
 
 # <a name="version-21"></a>[Versie 2.1](#tab/version-2)
 
-Maak een nieuwe functie met de naam `languageDetectionExample()` waarvoor de client wordt gebruikt die u eerder hebt gemaakt en roep de functie [DetectLanguage()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.textanalyticsclientextensions.detectlanguage#Microsoft_Azure_CognitiveServices_Language_TextAnalytics_TextAnalyticsClientExtensions_DetectLanguage_Microsoft_Azure_CognitiveServices_Language_TextAnalytics_ITextAnalyticsClient_System_String_System_String_System_Nullable_System_Boolean__System_Threading_CancellationToken_) aan van de nieuwe functie. Het geretourneerde [LanguageResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.models.languageresult)-object bevat de lijst met gedetecteerde talen in `DetectedLanguages` als de aanroep is gelukt en een `errorMessage` als dat niet het geval is. Gebruik print met de eerste geretourneerde taal.
+Maak een nieuwe functie met de naam `languageDetectionExample()` waarvoor de client wordt gebruikt die u eerder hebt gemaakt en roep de functie [DetectLanguage()](/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.textanalyticsclientextensions.detectlanguage#Microsoft_Azure_CognitiveServices_Language_TextAnalytics_TextAnalyticsClientExtensions_DetectLanguage_Microsoft_Azure_CognitiveServices_Language_TextAnalytics_ITextAnalyticsClient_System_String_System_String_System_Nullable_System_Boolean__System_Threading_CancellationToken_) aan van de nieuwe functie. Het geretourneerde [LanguageResult](/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.models.languageresult)-object bevat de lijst met gedetecteerde talen in `DetectedLanguages` als de aanroep is gelukt en een `errorMessage` als dat niet het geval is. Gebruik print met de eerste geretourneerde taal.
 
 > [!Tip]
 > In sommige gevallen kan het lastig zijn om talen ondubbelzinnig te karakteriseren op basis van de invoer. U kunt parameter `countryHint` gebruiken om een land- of regionummer van twee letters op te geven. Standaard gebruikt de API de standaard-countryHint US. Als u dit gedrag wilt verwijderen, kunt u deze parameter opnieuw instellen door deze waarde in te stellen op de lege tekenreeks `countryHint = ""`.
@@ -806,7 +806,7 @@ Linked Entities:
 > [!NOTE]
 > In versie 2.1 wordt entiteitskoppeling opgenomen in het NER-antwoord.
 
-Maak een nieuwe functie met de naam `RecognizeEntitiesExample()` waarvoor de client wordt gebruikt die u eerder hebt gemaakt en roep de bijbehorende functie [Entities()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.textanalyticsclientextensions.entities#Microsoft_Azure_CognitiveServices_Language_TextAnalytics_TextAnalyticsClientExtensions_Entities_Microsoft_Azure_CognitiveServices_Language_TextAnalytics_ITextAnalyticsClient_System_String_System_String_System_Nullable_System_Boolean__System_Threading_CancellationToken_) aan. Herhaal de resultaten. Het geretourneerde object [EntitiesResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.models.entitiesresult) bevat de lijst met gedetecteerde entiteiten in `Entities` als de aanroep is gelukt en een `errorMessage` als dat niet het geval is. Voor elke gedetecteerde entiteit wordt het type, subtype en de Wikipedia-naam (indien deze bestaan) weergegeven, evenals de locaties in de oorspronkelijke tekst.
+Maak een nieuwe functie met de naam `RecognizeEntitiesExample()` waarvoor de client wordt gebruikt die u eerder hebt gemaakt en roep de bijbehorende functie [Entities()](/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.textanalyticsclientextensions.entities#Microsoft_Azure_CognitiveServices_Language_TextAnalytics_TextAnalyticsClientExtensions_Entities_Microsoft_Azure_CognitiveServices_Language_TextAnalytics_ITextAnalyticsClient_System_String_System_String_System_Nullable_System_Boolean__System_Threading_CancellationToken_) aan. Herhaal de resultaten. Het geretourneerde object [EntitiesResult](/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.models.entitiesresult) bevat de lijst met gedetecteerde entiteiten in `Entities` als de aanroep is gelukt en een `errorMessage` als dat niet het geval is. Voor elke gedetecteerde entiteit wordt het type, subtype en de Wikipedia-naam (indien deze bestaan) weergegeven, evenals de locaties in de oorspronkelijke tekst.
 
 [!code-csharp[Entity Recognition example](~/cognitive-services-dotnet-sdk-samples/samples/TextAnalytics/synchronous/Program.cs?name=entityRecognition)]
 
@@ -871,7 +871,7 @@ Key phrases:
 
 # <a name="version-21"></a>[Versie 2.1](#tab/version-2)
 
-Maak een nieuwe functie met de naam `KeyPhraseExtractionExample()` waarvoor de client wordt gebruikt die u eerder hebt gemaakt en roep de bijbehorende functie [KeyPhrases()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.textanalyticsclientextensions.keyphrases#Microsoft_Azure_CognitiveServices_Language_TextAnalytics_TextAnalyticsClientExtensions_KeyPhrases_Microsoft_Azure_CognitiveServices_Language_TextAnalytics_ITextAnalyticsClient_System_String_System_String_System_Nullable_System_Boolean__System_Threading_CancellationToken_) aan. Het resultaat bevat de lijst met gedetecteerde sleuteltermen in `KeyPhrases` als de aanroep is gelukt en een `errorMessage` als dat niet het geval is. Geef alle gedetecteerde sleuteltermen weer.
+Maak een nieuwe functie met de naam `KeyPhraseExtractionExample()` waarvoor de client wordt gebruikt die u eerder hebt gemaakt en roep de bijbehorende functie [KeyPhrases()](/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.textanalyticsclientextensions.keyphrases#Microsoft_Azure_CognitiveServices_Language_TextAnalytics_TextAnalyticsClientExtensions_KeyPhrases_Microsoft_Azure_CognitiveServices_Language_TextAnalytics_ITextAnalyticsClient_System_String_System_String_System_Nullable_System_Boolean__System_Threading_CancellationToken_) aan. Het resultaat bevat de lijst met gedetecteerde sleuteltermen in `KeyPhrases` als de aanroep is gelukt en een `errorMessage` als dat niet het geval is. Geef alle gedetecteerde sleuteltermen weer.
 
 [!code-csharp[Key phrase extraction example](~/cognitive-services-dotnet-sdk-samples/samples/TextAnalytics/synchronous/Program.cs?name=keyPhraseExtraction)]
 

@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 12/16/2019
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3304cc36c37a548eabd3aa6ddc32255f3d09dffb
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b2df7bab9bceaefae5793e4802eba6a6aa218e96
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93083725"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94364799"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-sdk-for-c"></a>Quickstart: Spellingcontrole met de Bing Spellingcontrole-SDK voor C#
 
@@ -110,4 +110,4 @@ Bouw uw project en voer het uit. Als u Visual Studio gebruikt, drukt u op **F5**
 > [Een web-app met één pagina maken](tutorials/spellcheck.md)
 
 - [Wat is de Bing Spellingcontrole-API?](overview.md)
-- [Bing Spellingcontrole C# SDK Reference guide](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingspellcheck?view=azure-dotnet)
+- [Bing Spellingcontrole C# SDK Reference guide](/dotnet/api/overview/azure/cognitiveservices/client/bingspellcheck?view=azure-dotnet)

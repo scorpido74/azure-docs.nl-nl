@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 08/24/2020
 ms.author: aahi
 ms.custom: devx-track-java
-ms.openlocfilehash: b73f5013fdbef34344ece672bacff90db9bac60b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: dea46a07a7357be6079c52634be8ea2ff79cc8f3
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89051573"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369117"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-java"></a>Quickstart: Digitale inkt herkennen met de Ink Recognizer-REST API en Java
 
@@ -94,7 +94,7 @@ Voer de toepassing uit. Er wordt een geslaagd antwoord geretourneerd in JSON-ind
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Naslaginformatie over REST API](https://go.microsoft.com/fwlink/?linkid=2089907)
+> [Naslaginformatie over REST API](/rest/api/cognitiveservices/inkrecognizer/inkrecognizer)
 
 
 Bekijk de volgende voorbeeldtoepassingen op GitHub voor meer informatie over de werking van de Ink Recognition-API in een app voor digitaal handschrift:

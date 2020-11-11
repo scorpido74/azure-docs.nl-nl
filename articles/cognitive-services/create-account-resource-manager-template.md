@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 09/14/2020
 ms.author: aahi
 ms.custom: subject-armqs
-ms.openlocfilehash: d88d613b6edfc6b08d08410cdc7cf481d973512d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9ca92bf81acd72260d89404051f941b317ee3e1d
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91348004"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363388"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-an-arm-template"></a>Quickstart: Een Cognitive Services-resource maken met behulp van een ARM-sjabloon
 
@@ -45,7 +45,7 @@ De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure-quickstartsja
 :::code language="json" source="~/quickstart-templates/101-cognitive-services-universalkey/azuredeploy.json":::
 
 Er is één Azure-resource gedefinieerd in de sjabloon:
-* [Microsoft.CognitiveServices/accounts](https://docs.microsoft.com/azure/templates/microsoft.cognitiveservices/accounts): hiermee wordt een Cognitive Services-resource gemaakt.
+* [Microsoft.CognitiveServices/accounts](/azure/templates/microsoft.cognitiveservices/accounts): hiermee wordt een Cognitive Services-resource gemaakt.
 
 ## <a name="deploy-the-template"></a>De sjabloon implementeren
 
@@ -60,7 +60,7 @@ Er is één Azure-resource gedefinieerd in de sjabloon:
     |Waarde  |Beschrijving  |
     |---------|---------|
     | **Abonnement** | Selecteer een Azure-abonnement. |
-    | **Resourcegroep** | Selecteer **Nieuwe maken**, geef een unieke naam op voor de resourcegroep en klik vervolgens op **OK**. |
+    | **Resourcegroep** | Selecteer **Nieuwe maken** , geef een unieke naam op voor de resourcegroep en klik vervolgens op **OK**. |
     | **Regio** | Selecteer een regio.  Bijvoorbeeld **VS - Oost** |
     | **Naam van Cognitive Service** | Vervang dit door een unieke naam voor de resource. U hebt de naam nodig in de volgende sectie, wanneer u de implementatie valideert. |
     | **Locatie** | Vervang dit door de hierboven gebruikte regio. |
@@ -73,9 +73,9 @@ Er is één Azure-resource gedefinieerd in de sjabloon:
 # <a name="azure-cli"></a>[Azure-CLI](#tab/CLI)
 
 > [!NOTE]
-> Voor het maken van `az deployment group` is Azure CLI-versie 2.6 of hoger vereist. Typ `az --version` om de versie weer te geven. Raadpleeg de [documentatie](https://docs.microsoft.com/cli/azure/deployment/group) voor meer informatie.
+> Voor het maken van `az deployment group` is Azure CLI-versie 2.6 of hoger vereist. Typ `az --version` om de versie weer te geven. Raadpleeg de [documentatie](/cli/azure/deployment/group) voor meer informatie.
 
-Voer het volgende script uit met behulp van de Azure CLI (opdrachtregelinterface), [op de lokale computer](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) of in een browser met de knop **Uitproberen**. Voer een naam en locatie (bijvoorbeeld `centralus`) in voor een nieuwe resourcegroep. De ARM-sjabloon wordt vervolgens gebruikt om in deze groep een Cognitive Services-resource te implementeren. Onthoud de naam die u gebruikt. Deze naam hebt u later nodig om de implementatie te valideren.
+Voer het volgende script uit met behulp van de Azure CLI (opdrachtregelinterface), [op de lokale computer](/cli/azure/install-azure-cli?view=azure-cli-latest) of in een browser met de knop **Uitproberen**. Voer een naam en locatie (bijvoorbeeld `centralus`) in voor een nieuwe resourcegroep. De ARM-sjabloon wordt vervolgens gebruikt om in deze groep een Cognitive Services-resource te implementeren. Onthoud de naam die u gebruikt. Deze naam hebt u later nodig om de implementatie te valideren.
 
 
 ```azurecli-interactive
@@ -140,6 +140,6 @@ az group delete --name $resourceGroupName
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Aanvragen verifiëren bij Azure Cognitive Services](authentication.md)
-* [Wat is Azure Cognitive Services?](Welcome.md)
+* [Wat is Azure Cognitive Services?](./what-are-cognitive-services.md)
 * [Ondersteuning voor natuurlijke taal](language-support.md)
 * [Ondersteuning voor Docker-container](cognitive-services-container-support.md)

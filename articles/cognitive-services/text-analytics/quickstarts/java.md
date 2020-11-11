@@ -11,17 +11,17 @@ ms.topic: quickstart
 ms.date: 07/06/2020
 ms.author: aahi
 ms.custom: seo-java-july2019, seo-java-august2019, devx-track-java
-ms.openlocfilehash: 6c3c613f8733c8f786d121ab33b09afab244b09e
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 26ddbf4cf97f5b9161be8b6b4ac3c31f801e82a3
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90532270"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365156"
 ---
 # <a name="quickstart-use-java-to-call-the-azure-text-analytics-cognitive-service"></a>Java gebruiken om de Text Analytics Cognitive Service van Azure aan te roepen
 <a name="HOLTop"></a>
 
-In dit artikel ziet u hoe u de  [Text Analytics-API's](//go.microsoft.com/fwlink/?LinkID=759711)  met Java kunt gebruiken om [taal te detecteren](#Detect), [sentiment te analyseren](#SentimentAnalysis), [sleuteltermen op te halen](#KeyPhraseExtraction) en [gekoppelde entiteiten te identificeren](#Entities).
+In dit artikel ziet u hoe u de [Text Analytics-API's](//go.microsoft.com/fwlink/?LinkID=759711) met Java kunt gebruiken om [taal te detecteren](#Detect), [gevoel te analyseren](#SentimentAnalysis), [sleuteltermen op te halen](#KeyPhraseExtraction) en [gekoppelde entiteiten te identificeren](#Entities).
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
@@ -35,7 +35,7 @@ U moet ook de [eindpunt- en toegangssleutel](../../cognitive-services-apis-creat
 
 ## <a name="detect-language"></a>Taal detecteren
 
-Met de Taaldetectie-API wordt de taal van een tekstdocument gedetecteerd met behulp van de  [methode Taal detecteren](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7).
+Met de Language Detection-API wordt de taal van een tekstdocument gedetecteerd met behulp van de [methode Detect Language](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7).
 
 1. Maak een nieuw Java-project in uw favoriete IDE (of een nieuwe map op uw bureaublad). Maak een klasse met de naam `DetectLanguage.java`.
 1. Voeg de onderstaande code toe aan uw klasse.
@@ -553,7 +553,7 @@ Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien
 
 ## <a name="identify-entities"></a>Entiteiten identificeren
 
-De Entities-API identificeert bekende entiteiten in een tekstdocument, met behulp van de [methode Entities](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634). [Entiteiten](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) halen woorden uit tekst, zoals Verenigde Staten, en geven u het type en/of de Wikipedia-koppeling voor dit woord of deze woorden. Het type voor Verenigde Staten is `location` en de koppeling naar Wikipedia is `https://en.wikipedia.org/wiki/United_States`.  In het volgende voorbeeld worden entiteiten geïdentificeerd voor Engelse documenten.
+De Entities-API identificeert bekende entiteiten in een tekstdocument, met behulp van de [methode Entities](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634). [Entiteiten](../how-tos/text-analytics-how-to-entity-linking.md) halen woorden uit tekst, zoals Verenigde Staten, en geven u het type en/of de Wikipedia-koppeling voor dit woord of deze woorden. Het type voor Verenigde Staten is `location` en de koppeling naar Wikipedia is `https://en.wikipedia.org/wiki/United_States`.  In het volgende voorbeeld worden entiteiten geïdentificeerd voor Engelse documenten.
 
 1. Maak een nieuw Java-project in uw favoriete IDE (of een nieuwe map op uw bureaublad). Maak een klasse met de naam `GetEntities.java`.
 1. Voeg de onderstaande code toe aan uw klasse.

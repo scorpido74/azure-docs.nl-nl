@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: 6d994282d2c8d2b97110d57362b95254945daa14
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: eab9492c9d47b87887d486a7c5e7d949ce91fcdf
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93084692"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368403"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-php"></a>Snelstart: Een zoekaanvraag verzenden naar de Bing Entity Search REST-API met PHP
 
@@ -159,4 +159,4 @@ Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien
 > [Een web-app van één pagina maken](../tutorial-bing-entities-search-single-page-app.md).
 
 * [Wat is de Bing Entiteiten zoeken-API?](../overview.md )
-* [Naslaghandleiding Bing Entiteiten zoeken-API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference).
+* [Naslaghandleiding Bing Entiteiten zoeken-API](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference).

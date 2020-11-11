@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: quickstart
 ms.date: 07/06/2020
 ms.author: marhamil
-ms.openlocfilehash: 444b76a594e768face892462da12a1cbb35a5106
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 37239f9c7857a8e72bb293cfa3caeb429962a542
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324679"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363337"
 ---
 # <a name="getting-started"></a>Aan de slag
 
@@ -31,7 +31,7 @@ Als u de Big Data Cognitive Services wilt gebruiken, moet u eerst een Cognitive 
 
 ### <a name="cloud-services"></a>Cloud services
 
-Cloudgebaseerde Cognitive Services zijn intelligente algoritmen die worden gehost in Azure. Deze services zijn klaar voor gebruik zonder training. U hebt hiervoor alleen een internetverbinding nodig. U kunt [een Cognitive Service maken in het Azure-portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account?tabs=multiservice%2Cwindows) of met de [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli?tabs=windows).
+Cloudgebaseerde Cognitive Services zijn intelligente algoritmen die worden gehost in Azure. Deze services zijn klaar voor gebruik zonder training. U hebt hiervoor alleen een internetverbinding nodig. U kunt [een Cognitive Service maken in het Azure-portal](../cognitive-services-apis-create-account.md?tabs=multiservice%2Cwindows) of met de [Azure CLI](../cognitive-services-apis-create-account-cli.md?tabs=windows).
 
 ### <a name="containerized-services-optional"></a>In een container geplaatste services (optioneel)
 
@@ -45,7 +45,7 @@ Als uw toepassing of workload grote gegevenssets gebruikt, een particulier netwe
 
 * **Hoge schaalbaarheid** : In een container geplaatste services hebben geen 'frequentielimieten' en worden uitgevoerd op computers die worden beheerd door de gebruiker. U kunt dus Cognitive Services schalen zonder veel grotere workloads te verwerken.
 
-Volg [deze handleiding](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-container-support?tabs=luis) voor het maken van een in een container geplaatste Cognitive Service.
+Volg [deze handleiding](../cognitive-services-container-support.md?tabs=luis) voor het maken van een in een container geplaatste Cognitive Service.
 
 ## <a name="create-an-apache-spark-cluster"></a>Een Apache Spark-cluster maken
 
@@ -55,8 +55,8 @@ Volg [deze handleiding](https://docs.microsoft.com/azure/cognitive-services/cogn
 
 Azure Databricks is een op Apache Spark gebaseerd analyseplatform dat met één klik geconfigureerd kan worden, gestroomlijnde werkstromen en een interactieve werkruimte heeft. Het wordt vaak gebruikt om samen te werken tussen gegevenswetenschappers, technici en bedrijfsanalisten. Als u de Big Data Cognitive Services in Azure Databricks wilt gebruiken, volgt u deze stappen:
 
-1. [Een Azure Databricks-werkruimte maken](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal#create-an-azure-databricks-workspace)
-1. [Een Spark-cluster maken in Databricks](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal#create-a-spark-cluster-in-databricks)
+1. [Een Azure Databricks-werkruimte maken](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal#create-an-azure-databricks-workspace)
+1. [Een Spark-cluster maken in Databricks](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal#create-a-spark-cluster-in-databricks)
 1. De Big Data Cognitive Services installeren
     * Maak een nieuwe bibliotheek in uw databricks-werkruimte  
        <img src="media/create-library.png" alt="Create library" width="50%"/>
@@ -69,8 +69,8 @@ Azure Databricks is een op Apache Spark gebaseerd analyseplatform dat met één 
 
 U kunt Synapse Analytics ook gebruiken om een Spark-cluster te maken. Azure Synapse Analytics brengt datawarehousing voor ondernemingen en big data-analyses samen. Deze geeft u de vrijheid om op schaal gegevens op te vragen over uw voorwaarden, met behulp van serverloze on-demand of ingerichte resources. Voer de volgende stappen uit om aan de slag te gaan met Synapse Analytics:
 
-1. [Maak een Synapse-werkruimte (preview)](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace).
-1. [Maak een nieuwe serverloze Apache Spark-pool (preview) met behulp van Azure Portal](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-apache-spark-pool-portal).
+1. [Maak een Synapse-werkruimte (preview)](../../synapse-analytics/quickstart-create-workspace.md).
+1. [Maak een nieuwe serverloze Apache Spark-pool (preview) met behulp van Azure Portal](../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md).
 
 Big data voor Cognitive Services is standaard geïnstalleerd in Synapse Analytics.
 
@@ -80,9 +80,9 @@ Als u in een container geplaatste Cognitive Services gebruikt, is de Azure Kuber
 
 Om aan de slag te gaan met Azure Kubernetes Service, volgt u deze stappen:
 
-1. [Een AKS-cluster (Azure Kubernetes Service) implementeren met behulp van de Azure-portal](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal)
+1. [Een AKS-cluster (Azure Kubernetes Service) implementeren met behulp van de Azure-portal](../../aks/kubernetes-walkthrough-portal.md)
 1. [Installeer de Helm-grafiek van Apache Spark 2.4.0](https://hub.helm.sh/charts/microsoft/spark)
-1. [Installeer een Cognitive Service-container met behulp van Helm](https://docs.microsoft.com/azure/cognitive-services/computer-vision/deploy-computer-vision-on-premises)
+1. [Installeer een Cognitive Service-container met behulp van Helm](../computer-vision/deploy-computer-vision-on-premises.md)
 
 ## <a name="try-a-sample"></a>Een voorbeeld uitproberen
 

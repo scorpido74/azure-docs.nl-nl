@@ -10,28 +10,28 @@ ms.date: 10/07/2020
 ms.author: aahi
 ms.reviewer: sumeh, assafi
 ms.custom: devx-track-js
-ms.openlocfilehash: c24a50926fe028dcbf42d3642ae3ec5c9ae84f5b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 60b7a87b4673fd1f5b1d95e5e2835878c263e784
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977799"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94371604"
 ---
 <a name="HOLTop"></a>
 
 # <a name="version-31-preview"></a>[Versie 3.1: preview](#tab/version-3-1)
 
-[v3-referentiedocumentatie](https://aka.ms/azsdk-js-textanalytics-ref-docs) | [broncode voor v3-bibliotheek](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics) | [v3-pakket (NPM)](https://www.npmjs.com/package/@azure/ai-text-analytics) | [v3-voorbeelden](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples)
+[v3-referentiedocumentatie](/javascript/api/overview/azure/ai-text-analytics-readme) | [broncode voor v3-bibliotheek](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics) | [v3-pakket (NPM)](https://www.npmjs.com/package/@azure/ai-text-analytics) | [v3-voorbeelden](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples)
 
 
 # <a name="version-30"></a>[Versie 3.0](#tab/version-3)
 
-[v3-referentiedocumentatie](https://aka.ms/azsdk-js-textanalytics-ref-docs) | [broncode voor v3-bibliotheek](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics) | [v3-pakket (NPM)](https://www.npmjs.com/package/@azure/ai-text-analytics) | [v3-voorbeelden](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples)
+[v3-referentiedocumentatie](/javascript/api/overview/azure/ai-text-analytics-readme) | [broncode voor v3-bibliotheek](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics) | [v3-pakket (NPM)](https://www.npmjs.com/package/@azure/ai-text-analytics) | [v3-voorbeelden](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples)
 
 
 # <a name="version-21"></a>[Versie 2.1](#tab/version-2)
 
-[v2-referentiedocumentatie](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics) | [broncode voor v2-bibliotheek](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/cognitiveServicesTextAnalytics) | [v2-pakket (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-textanalytics) | [v2-voorbeelden](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/)
+[v2-referentiedocumentatie](/javascript/api/@azure/cognitiveservices-textanalytics) | [broncode voor v2-bibliotheek](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/cognitiveServicesTextAnalytics) | [v2-pakket (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-textanalytics) | [v2-voorbeelden](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/)
 
 ---
 
@@ -174,7 +174,7 @@ const textAnalyticsClient = new TextAnalyticsClient(endpoint,  new AzureKeyCrede
 
 # <a name="version-21"></a>[Versie 2.1](#tab/version-2)
 
-Maak een nieuw [TextAnalyticsClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient)-object met `credentials` en `endpoint` als parameters.
+Maak een nieuw [TextAnalyticsClient](/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient)-object met `credentials` en `endpoint` als parameters.
 
 [!code-javascript[Authentication and client creation](~/cognitive-services-node-sdk-samples/Samples/textAnalytics.js?name=authentication)]
 
@@ -353,7 +353,7 @@ ID: 0
 
 # <a name="version-21"></a>[Versie 2.1](#tab/version-2)
 
-Maak een lijst met woordenlijstobjecten die de documenten bevat die u wilt analyseren. Roep de methode [sentiment()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient#sentiment-models-textanalyticsclientsentimentoptionalparams-) van de client aan en haal het geretourneerde [SentimentBatchResult](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/sentimentbatchresult) op. Blader door de lijst met resultaten en druk voor elk document de id en gevoelsscore af. Een score dichter bij 0 wijst op een negatief gevoel, terwijl een score dichter bij 1 op een positief gevoel wijst.
+Maak een lijst met woordenlijstobjecten die de documenten bevat die u wilt analyseren. Roep de methode [sentiment()](/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient#sentiment-models-textanalyticsclientsentimentoptionalparams-) van de client aan en haal het geretourneerde [SentimentBatchResult](/javascript/api/@azure/cognitiveservices-textanalytics/sentimentbatchresult) op. Blader door de lijst met resultaten en druk voor elk document de id en gevoelsscore af. Een score dichter bij 0 wijst op een negatief gevoel, terwijl een score dichter bij 1 op een positief gevoel wijst.
 
 [!code-javascript[Sentiment analysis](~/cognitive-services-node-sdk-samples/Samples/textAnalytics.js?name=sentimentAnalysis)]
 
@@ -432,7 +432,7 @@ ID: 0
 
 # <a name="version-21"></a>[Versie 2.1](#tab/version-2)
 
-Maak een lijst met woordenlijstobjecten die uw documenten bevat. Roep de methode [detectLanguage()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient#detectlanguage-models-textanalyticsclientdetectlanguageoptionalparams-) van de client aan en haal het geretourneerde [LanguageBatchResult](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/languagebatchresult) op. Blader vervolgens door de resultaten en druk voor elk document id en taal af.
+Maak een lijst met woordenlijstobjecten die uw documenten bevat. Roep de methode [detectLanguage()](/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient#detectlanguage-models-textanalyticsclientdetectlanguageoptionalparams-) van de client aan en haal het geretourneerde [LanguageBatchResult](/javascript/api/@azure/cognitiveservices-textanalytics/languagebatchresult) op. Blader vervolgens door de resultaten en druk voor elk document id en taal af.
 
 [!code-javascript[Language detection](~/cognitive-services-node-sdk-samples/Samples/textAnalytics.js?name=languageDetection)]
 
@@ -702,7 +702,7 @@ Document ID: 0
 > [!NOTE]
 > In versie 2.1 wordt entiteitskoppeling opgenomen in het NER-antwoord.
 
-Maak een lijst met objecten die uw documenten bevat. Roep de methode [entities()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient#entities-models-textanalyticscliententitiesoptionalparams-) van de client aan en haal het [EntitiesBatchResult](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/entitiesbatchresult)-object op. Blader door de lijst met resultaten en druk voor elk document de id af. Voor elke gedetecteerde entiteit drukt u bijbehorende Wikipedia-naam, type en subtypen (indien deze bestaan) af, en ook de locaties in de oorspronkelijke tekst.
+Maak een lijst met objecten die uw documenten bevat. Roep de methode [entities()](/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient#entities-models-textanalyticscliententitiesoptionalparams-) van de client aan en haal het [EntitiesBatchResult](/javascript/api/@azure/cognitiveservices-textanalytics/entitiesbatchresult)-object op. Blader door de lijst met resultaten en druk voor elk document de id af. Voor elke gedetecteerde entiteit drukt u bijbehorende Wikipedia-naam, type en subtypen (indien deze bestaan) af, en ook de locaties in de oorspronkelijke tekst.
 
 [!code-javascript[Entity recognition](~/cognitive-services-node-sdk-samples/Samples/textAnalytics.js?name=entityRecognition)]
 
@@ -802,7 +802,7 @@ ID: 0
 
 # <a name="version-21"></a>[Versie 2.1](#tab/version-2)
 
-Maak een lijst met objecten die uw documenten bevat. Roep de methode [keyPhrases()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient#keyphrases-models-textanalyticsclientkeyphrasesoptionalparams-) van de client aan en haal het [KeyPhraseBatchResult](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/keyphrasebatchresult)-object op. Blader door de resultaten en druk voor elk document de id en gedetecteerde sleuteltermen af.
+Maak een lijst met objecten die uw documenten bevat. Roep de methode [keyPhrases()](/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient#keyphrases-models-textanalyticsclientkeyphrasesoptionalparams-) van de client aan en haal het [KeyPhraseBatchResult](/javascript/api/@azure/cognitiveservices-textanalytics/keyphrasebatchresult)-object op. Blader door de resultaten en druk voor elk document de id en gedetecteerde sleuteltermen af.
 
 [!code-javascript[Key phrase extraction](~/cognitive-services-node-sdk-samples/Samples/textAnalytics.js?name=keyPhraseExtraction)]
 

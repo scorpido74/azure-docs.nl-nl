@@ -8,17 +8,17 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/30/2020
 ms.author: mbullwin
-ms.openlocfilehash: 74e5373ebafbd39748f8b002069eaa6d732be069
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 5148114da7fcc654b1f0af431440ce74c7bc8d31
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018441"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94371764"
 ---
 ### <a name="create-an-environment-variable"></a>Een omgevingsvariabele maken
 
 >[!NOTE]
-> De eindpunten voor niet-proefversie-resources die zijn gemaakt na 1 juli 2019, gebruiken de aangepaste indeling voor subdomeinen die hieronder wordt weergegeven. Zie [Aangepaste subdomeinnamen voor Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains) voor meer informatie en een volledige lijst met regionale eindpunten. 
+> De eindpunten voor niet-proefversie-resources die zijn gemaakt na 1 juli 2019, gebruiken de aangepaste indeling voor subdomeinen die hieronder wordt weergegeven. Zie [Aangepaste subdomeinnamen voor Cognitive Services](../../cognitive-services-custom-subdomains.md) voor meer informatie en een volledige lijst met regionale eindpunten. 
 
 Maak met uw sleutel en eindpunt van de resource die u hebt gemaakt, twee omgevingsvariabelen voor verificatie:
 

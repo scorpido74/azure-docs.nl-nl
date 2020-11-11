@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: overview
 ms.date: 12/19/2019
 ms.author: aahi
-ms.openlocfilehash: 905ae56ab8d64f7342c4ee6b9f25d188c907710d
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: c0453fa99376cb6a5dba1e427cdc0deccb3e03de
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93084184"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367043"
 ---
 # <a name="what-is-the-bing-spell-check-api"></a>Wat is de Bing Spellingcontrole-API?
 
@@ -49,4 +49,4 @@ Probeer eerst de [interactieve demo](https://azure.microsoft.com/services/cognit
 
 Wanneer u klaar bent om de API aan te roepen, maakt u een [account voor Cognitive Services-API](../../cognitive-services/cognitive-services-apis-create-account.md). Als u geen Azure-abonnement hebt, kunt u gratis [een account maken](https://azure.microsoft.com/free/cognitive-services/).
 
-U kunt ook de [hubpagina voor Bing Search API](../bing-web-search/search-the-web.md) bezoeken om de andere beschikbare API's te verkennen.
+U kunt ook de [hubpagina voor Bing Search API](../bing-web-search/overview.md) bezoeken om de andere beschikbare API's te verkennen.

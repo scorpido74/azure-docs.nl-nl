@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: overview
 ms.date: 07/17/2020
-ms.openlocfilehash: 5e3606ac04d5023e28bc2304aba79a8211c58881
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a62c7dc8238b642aeaa59a7b470266378832e26e
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87133075"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363881"
 ---
 # <a name="whats-new-in-personalizer"></a>Nieuwe functies in Personalizer
 
@@ -31,7 +31,7 @@ Meer informatie over nieuwe functies in de service. Dit kunnen releaseopmerkinge
 
 ### <a name="may-2020---build-conference"></a>Mei 2020 - //Build Conference
 
-De volgende opties zijn beschikbaar in **openbare preview**:
+De volgende opties zijn beschikbaar in **openbare preview** :
 
  * [Leerlingmodus](concept-apprentice-mode.md) als leergedrag.
 
@@ -62,5 +62,5 @@ De volgende preview-functies zijn uitgebracht op de Build 2019 Conference:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Snelstart: een feedback-lus maken in C#](csharp-quickstart-commandline-feedback-loop.md)
+* [Snelstart: een feedback-lus maken in C#](./quickstart-personalizer-sdk.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp)
 * [De interactieve demo gebruiken](https://personalizationdemo.azurewebsites.net/)

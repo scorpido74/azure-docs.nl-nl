@@ -3,12 +3,12 @@ author: PatrickFarley
 ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 10/25/2020
-ms.openlocfilehash: 5b39e1988a798adde8a07a39d7724f50d7a4f851
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 69f492ad73e60f8478772dc8b5b22bc19a5fb0e4
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92756086"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94341034"
 ---
 Aan de slag met de Custom Vision-clientbibliotheek voor Python. Volg deze stappen om het pakket te installeren en de voorbeeldcode voor het bouwen van een model voor de classificatie van afbeeldingen uit te proberen. U maakt een project, voegt tags toe, traint het project en gebruikt de voorspellingseindpunt-URL van het project om het programmatisch te testen. Gebruik dit voorbeeld als een sjabloon om uw eigen beeldherkennings-app te maken.
 
@@ -51,7 +51,7 @@ Maak een nieuw Python-bestand en importeer de volgende bibliotheken.
 [!code-python[](~/cognitive-services-quickstart-code/python/CustomVision/ImageClassification/CustomVisionQuickstart.py?name=snippet_imports)]
 
 > [!TIP]
-> Wilt u het codebestand voor de quickstart in één keer weergeven? Die is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/CustomVision/ImageClassification/CustomVisionQuickstart.cs), waar de codevoorbeelden uit deze quickstart zich bevinden.
+> Wilt u het codebestand voor de quickstart in één keer weergeven? Die is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/CustomVision/ImageClassification/CustomVisionQuickstart.py), waar de codevoorbeelden uit deze quickstart zich bevinden.
 
 Maak variabelen voor het Azure-eindpunt en de abonnementssleutels van uw resource.
 
@@ -173,5 +173,5 @@ U hebt nu gezien hoe elke stap van het afbeeldingsclassificatieproces in code ka
 > [Een model testen en opnieuw trainen](../../test-your-model.md)
 
 * Wat is Custom Vision?
-* De broncode voor dit voorbeeld is te vinden [op GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/CustomVision/ImageClassification/CustomVisionQuickstart.cs)
+* De broncode voor dit voorbeeld is te vinden [op GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/CustomVision/ImageClassification/CustomVisionQuickstart.py)
 * [SDK-naslagdocumentatie](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/customvision?view=azure-python)

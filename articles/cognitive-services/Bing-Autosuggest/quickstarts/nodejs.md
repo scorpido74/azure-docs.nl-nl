@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/06/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: e1a0cd42407963acd0d631777ad95a7b35845f89
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: fdb5d5825310de66d45e77a9904b273c656b500d
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101847"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367771"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-nodejs"></a>Quickstart: Zoekquery's voorstellen met de REST API voor Bing Automatische suggesties en Node.js
 
@@ -43,7 +43,7 @@ Volg deze quickstart voor meer informatie over het aanroepen van de Automatische
     let https = require ('https');
     ```
 
-2. Maak variabelen voor de host en het pad van het API-eindpunt, uw abonnementssleutel, [marktcode](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes) en een zoekterm. Gebruik het globale eindpunt in de volgende code of het eindpunt voor een [aangepast subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weergegeven in Azure Portal voor uw resource.
+2. Maak variabelen voor de host en het pad van het API-eindpunt, uw abonnementssleutel, [marktcode](/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes) en een zoekterm. Gebruik het globale eindpunt in de volgende code of het eindpunt voor een [aangepast subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weergegeven in Azure Portal voor uw resource.
 
     ```javascript
     // Replace the subscriptionKey string value with your valid subscription key.
@@ -198,4 +198,4 @@ A successful response is returned in JSON, as shown in the following example:
 > [Een web-app met één pagina maken](../tutorials/autosuggest.md)
 
 - [Wat is Bing Automatische suggesties?](../get-suggested-search-terms.md)
-- [Naslaghandleiding Bing Automatische suggesties-API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)
+- [Naslaghandleiding Bing Automatische suggesties-API v7](/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)

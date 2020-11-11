@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 08/14/2020
 ms.author: aahi
 ms.reviewer: chtufts
-ms.openlocfilehash: 068c2dc698e9f0b6d6f2f6486dff863c1343b178
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 905dde6932afb440c34bcccb563bfda98f23eb7c
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88258285"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363830"
 ---
 # <a name="data-and-rate-limits-for-the-text-analytics-api"></a>Gegevens- en frequentielimieten voor de Text Analytics-API
 <a name="data-limits"></a>
@@ -31,7 +31,7 @@ Lees dit artikel voor informatie over de limieten voor de grootte en de frequent
 
 | Limiet | Waarde |
 |------------------------|---------------|
-| Maximale grootte van één document | 5\.120 tekens, gemeten volgens [StringInfo.LengthInTextElements](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements). Geldt ook voor de Text Analytics voor de statuscontainer. |
+| Maximale grootte van één document | 5\.120 tekens, gemeten volgens [StringInfo.LengthInTextElements](/dotnet/api/system.globalization.stringinfo.lengthintextelements). Geldt ook voor de Text Analytics voor de statuscontainer. |
 | Maximale grootte van de hele aanvraag | 1 MB. Geldt ook voor de Text Analytics voor de statuscontainer. |
 
 Het maximumaantal documenten dat u in één aanvraag kunt verzenden, is afhankelijk van de API-versie en functie die u gebruikt.

@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/22/2020
 ms.author: mbullwin
-ms.openlocfilehash: c0c766753fe7c865fe15af992817379b3a7f6e13
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: c06cb7143756eed3d50fe1d2d03ce7ba8d6d9d4d
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018440"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94371642"
 ---
 Ga aan de slag met de Anomaly Detector-clientbibliotheek voor Python. Voer de volgende stappen uit om het pakket te installeren en de algoritmen te gaan gebruiken die door de service worden geleverd. Met de Anomaly Detector-service kunt u afwijkingen in uw tijdreeksgegevens vinden door hierop automatisch de best passende modellen uit te voeren, ongeacht de branche, het scenario of het gegevensvolume.
 
@@ -59,11 +59,11 @@ pip install --upgrade azure-ai-anomalydetector
 
 ## <a name="object-model"></a>Objectmodel
 
-De Anomaly Detector-client is een [AnomalyDetectorClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python)-object dat met behulp van uw sleutel wordt geverifieerd bij Azure. De client kan anomaliedetectie uitvoeren op een hele gegevensset met behulp van [entire_detect()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#entire-detect-body--custom-headers-none--raw-false----operation-config-), of op het laatste gegevenspunt met behulp van [Last_detect()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#last-detect-body--custom-headers-none--raw-false----operation-config-). De functie [ChangePointDetectAsync](https://go.microsoft.com/fwlink/?linkid=2090370) detecteert punten die wijzigingen in een trend markeren.
+De Anomaly Detector-client is een [AnomalyDetectorClient](/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python)-object dat met behulp van uw sleutel wordt geverifieerd bij Azure. De client kan anomaliedetectie uitvoeren op een hele gegevensset met behulp van [entire_detect()](/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#entire-detect-body--custom-headers-none--raw-false----operation-config-), of op het laatste gegevenspunt met behulp van [Last_detect()](/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#last-detect-body--custom-headers-none--raw-false----operation-config-). De functie [ChangePointDetectAsync](https://go.microsoft.com/fwlink/?linkid=2090370) detecteert punten die wijzigingen in een trend markeren.
 
-Tijdreeksgegevens worden verzonden als een reeks [punten](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.point?view=azure-python) in een [aanvraagobject](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.request?view=azure-python). Het `Request`-object bevat eigenschappen die de gegevens beschrijven ([granulariteit](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.granularity?view=azure-python) bijvoorbeeld) en parameters voor de anomaliedetectie.
+Tijdreeksgegevens worden verzonden als een reeks [punten](/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.point?view=azure-python) in een [aanvraagobject](/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.request?view=azure-python). Het `Request`-object bevat eigenschappen die de gegevens beschrijven ([granulariteit](/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.granularity?view=azure-python) bijvoorbeeld) en parameters voor de anomaliedetectie.
 
-Het antwoord van Anomaly Detector is een [LastDetectResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.lastdetectresponse?view=azure-python)-, [EntireDetectResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.entiredetectresponse?view=azure-python)- of [ChangePointDetectResponse](https://go.microsoft.com/fwlink/?linkid=2090370)-object afhankelijk van de gebruikte methode.
+Het antwoord van Anomaly Detector is een [LastDetectResponse](/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.lastdetectresponse?view=azure-python)-, [EntireDetectResponse](/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.entiredetectresponse?view=azure-python)- of [ChangePointDetectResponse](https://go.microsoft.com/fwlink/?linkid=2090370)-object afhankelijk van de gebruikte methode.
 
 ## <a name="code-examples"></a>Codevoorbeelden
 
@@ -90,23 +90,23 @@ Download de voorbeeldgegevens voor deze quickstart van [GitHub](https://github.c
 
 Deze tijdreeksgegevens worden opgemaakt als CSV-bestand en worden verzonden naar de Anomaly Detector-API.
 
-Laad uw gegevensbestand met de `read_csv()`-methode van de Pandas-bibliotheek en maak een lege lijstvariabele om uw gegevensreeksen op te slaan. Herhaal het bestand en voeg de gegevens toe als [punt](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.point?view=azure-python)-object. Dit object bevat de tijdstempel en de numerieke waarde van de rijen van uw CSV-gegevensbestand.
+Laad uw gegevensbestand met de `read_csv()`-methode van de Pandas-bibliotheek en maak een lege lijstvariabele om uw gegevensreeksen op te slaan. Herhaal het bestand en voeg de gegevens toe als [punt](/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.point?view=azure-python)-object. Dit object bevat de tijdstempel en de numerieke waarde van de rijen van uw CSV-gegevensbestand.
 
 [!code-python[Load the data file](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=loadDataFile)]
 
-Maak een [aanvraag](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.request?view=azure-python)object met uw tijdreeks en de [granulariteit](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.granularity?view=azure-python) (of periodiciteit) van de gegevenspunten. Bijvoorbeeld `Granularity.daily`.
+Maak een [aanvraag](/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.request?view=azure-python)object met uw tijdreeks en de [granulariteit](/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.granularity?view=azure-python) (of periodiciteit) van de gegevenspunten. Bijvoorbeeld `Granularity.daily`.
 
 [!code-python[Create the request object](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=request)]
 
 ## <a name="detect-anomalies-in-the-entire-data-set"></a>Anomalieën in de volledige gegevensset detecteren
 
-Roep de API aan om anomalieën te detecteren via de volledige tijdreeksgegevens met behulp van de [entire_detect()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#entire-detect-body--custom-headers-none--raw-false----operation-config-)-methode van de client. Sla het geretourneerde [EntireDetectResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.entiredetectresponse?view=azure-python)-object op. Herhaal de `is_anomaly`-lijst van de reactie en druk de index van alle `true`-waarden af. Deze waarden komen overeen met de index van afwijkende gegevenspunten, als die zijn gevonden.
+Roep de API aan om anomalieën te detecteren via de volledige tijdreeksgegevens met behulp van de [entire_detect()](/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#entire-detect-body--custom-headers-none--raw-false----operation-config-)-methode van de client. Sla het geretourneerde [EntireDetectResponse](/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.entiredetectresponse?view=azure-python)-object op. Herhaal de `is_anomaly`-lijst van de reactie en druk de index van alle `true`-waarden af. Deze waarden komen overeen met de index van afwijkende gegevenspunten, als die zijn gevonden.
 
 [!code-python[Batch anomaly detection sample](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=detectAnomaliesBatch)]
 
 ## <a name="detect-the-anomaly-status-of-the-latest-data-point"></a>De anomaliestatus van het laatste gegevenspunt detecteren
 
-Roep de Anomaly Detector-API aan om te bepalen of uw laatste gegevenspunt een anomalie is met behulp van de [last_detect()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#last-detect-body--custom-headers-none--raw-false----operation-config-)-methode van de client en sla het geretourneerde [LastDetectResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.lastdetectresponse?view=azure-python)-object op. De `is_anomaly`-waarde van het antwoord is een booleaanse waarde die de afwijkingsstatus van het punt opgeeft.  
+Roep de Anomaly Detector-API aan om te bepalen of uw laatste gegevenspunt een anomalie is met behulp van de [last_detect()](/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#last-detect-body--custom-headers-none--raw-false----operation-config-)-methode van de client en sla het geretourneerde [LastDetectResponse](/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.lastdetectresponse?view=azure-python)-object op. De `is_anomaly`-waarde van het antwoord is een booleaanse waarde die de afwijkingsstatus van het punt opgeeft.  
 
 [!code-python[Batch anomaly detection sample](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=latestPointDetection)]
 

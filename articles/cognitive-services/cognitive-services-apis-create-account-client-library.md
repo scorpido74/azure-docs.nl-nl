@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 09/14/2020
 ms.author: pafarley
 zone_pivot_groups: programming-languages-set-ten
-ms.openlocfilehash: e8628d051db7f5066a81171567f6f7e54fb0ab97
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1fd748a0184c1718ac9450aaca3e2db1a185051a
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91262447"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368947"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-management-client-library"></a>Quickstart: Een Cognitive Services-resource maken met behulp van de Azure Management-clientbibliotheek
 
@@ -24,7 +24,7 @@ Gebruik deze quickstart om Cognitive Services-resources te maken en beheren met 
 
 Azure Cognitive Services bestaat uit cloudservices met REST API's en clientbibliotheek-SDK's waarmee ontwikkelaars cognitieve intelligentie in toepassingen kunnen bouwen zonder directe kennis of vaardigheden op het gebied van kunstmatige intelligentie (AI) of gegevenswetenschap. Met Azure Cognitive Services kunnen ontwikkelaars eenvoudig cognitieve functies toevoegen aan hun toepassingen met cognitieve oplossingen die kunnen zien, horen, spreken en begrijpen. Er zijn zelfs al toepassingen die beginnen te redeneren.
 
-Afzonderlijke AI-services worden vertegenwoordigd door Azure[-resources](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal) die u onder uw Azure-abonnement hebt gemaakt. Nadat u een resource hebt gemaakt, kunt u de sleutels en het eindpunt gebruiken die zijn gegenereerd om uw toepassingen te verifiëren.
+Afzonderlijke AI-services worden vertegenwoordigd door Azure[-resources](../azure-resource-manager/management/manage-resources-portal.md) die u onder uw Azure-abonnement hebt gemaakt. Nadat u een resource hebt gemaakt, kunt u de sleutels en het eindpunt gebruiken die zijn gegenereerd om uw toepassingen te verifiëren.
 
 ::: zone pivot="programming-language-csharp"
 

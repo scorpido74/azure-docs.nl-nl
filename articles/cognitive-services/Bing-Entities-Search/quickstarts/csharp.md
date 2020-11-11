@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 10/19/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 52efd103bf510e7cca8a1e4a1d682948b498d64c
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 1b0cac94ac3a0c8dff24cf154e4dd7ab7ddf4dd9
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93084847"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368420"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-c"></a>Quickstart: Een zoekaanvraag naar de REST-API van Bing Entiteiten zoeken sturen met C#
 
@@ -185,4 +185,4 @@ Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien
 > [Een web-app van één pagina maken](../tutorial-bing-entities-search-single-page-app.md).
 
 * [Wat is de Bing Entiteiten zoeken-API?](../overview.md )
-* [Naslaghandleiding Bing Entiteiten zoeken-API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference).
+* [Naslaghandleiding Bing Entiteiten zoeken-API](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference).

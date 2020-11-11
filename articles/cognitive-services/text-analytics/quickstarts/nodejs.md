@@ -11,17 +11,17 @@ ms.topic: quickstart
 ms.date: 07/06/2020
 ms.author: aahi
 ms.custom: seo-javascript-september2019, devx-track-js
-ms.openlocfilehash: 00026066c90520f59700c7c5ddc33557099b3e8a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 912434f20d00d276bde23803f4560ebd528872d9
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91309010"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365122"
 ---
 # <a name="quickstart-use-nodejs-to-call-the-text-analytics-cognitive-service"></a>Quickstart: Node.js gebruiken om de Text Analytics Cognitive Service aan te roepen  
 <a name="HOLTop"></a>
 
-In dit artikel ziet u hoe u de  [Text Analytics-API's](//go.microsoft.com/fwlink/?LinkID=759711)  met Node.js kunt gebruiken om [taal te detecteren](#Detect), [sentiment te analyseren](#SentimentAnalysis), [sleuteltermen op te halen](#KeyPhraseExtraction) en [gekoppelde entiteiten te identificeren](#Entities).
+In dit artikel ziet u hoe u de [Text Analytics-API's](//go.microsoft.com/fwlink/?LinkID=759711) met Node.js kunt gebruiken om [taal te detecteren](#Detect), [sentiment te analyseren](#SentimentAnalysis), [sleuteltermen op te halen](#KeyPhraseExtraction) en [gekoppelde entiteiten te identificeren](#Entities).
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
@@ -366,7 +366,7 @@ Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien
 
 ## <a name="identify-linked-entities"></a>Gekoppelde entiteiten identificeren
 
-De Entities-API identificeert bekende entiteiten in een tekstdocument, met behulp van de [methode Entities](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634). [Entiteiten](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) halen woorden uit tekst, zoals Verenigde Staten, en geven u het type en/of de Wikipedia-koppeling voor dit woord of deze woorden. Het type voor Verenigde Staten is `location` en de koppeling naar Wikipedia is `https://en.wikipedia.org/wiki/United_States`.  In het volgende voorbeeld worden entiteiten geïdentificeerd voor Engelse documenten.
+De Entities-API identificeert bekende entiteiten in een tekstdocument, met behulp van de [methode Entities](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634). [Entiteiten](../how-tos/text-analytics-how-to-entity-linking.md) halen woorden uit tekst, zoals Verenigde Staten, en geven u het type en/of de Wikipedia-koppeling voor dit woord of deze woorden. Het type voor Verenigde Staten is `location` en de koppeling naar Wikipedia is `https://en.wikipedia.org/wiki/United_States`.  In het volgende voorbeeld worden entiteiten geïdentificeerd voor Engelse documenten.
 
 1. Maak een nieuw Node.js-project in uw favoriete IDE of een map op uw bureaublad.
 1. Voeg de onderstaande code toe aan een nieuw `.js`-bestand.

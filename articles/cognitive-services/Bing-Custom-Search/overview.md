@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: overview
 ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: 83a398b114a8bf0ac25d875e037208d775debc4b
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 4490142a278d5e724fade42e697d8cf2206c0da8
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93077337"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367332"
 ---
 # <a name="what-is-the-bing-custom-search-api"></a>Wat is de Bing Custom Search-API?
 
@@ -50,16 +50,15 @@ Zie [Uw eerste Bing Custom Search-exemplaar maken](quick-start.md) om snel aan d
 
 Zie [Een exemplaar voor aangepast zoeken definiëren](define-your-custom-view.md) voor informatie over het aanpassen van uw zoekexemplaar.
 
-Lees eerst [Vereisten voor gebruik en weergave in Bing](./use-and-display-requirements.md) voor het gebruik van zoekresultaten in uw services en toepassingen.
+Lees eerst [Vereisten voor gebruik en weergave in Bing](../bing-web-search/use-display-requirements.md) voor het gebruik van zoekresultaten in uw services en toepassingen.
 
-Bezoek de [hubpagina voor de Bing Search-API](../bing-web-search/search-the-web.md) om de andere beschikbare API's te verkennen.
+Bezoek de [hubpagina voor de Bing Search-API](../bing-web-search/overview.md) om de andere beschikbare API's te verkennen.
 
 Lees u in in de referentie-inhoud van alle aangepaste zoekeindpunten. De handleiding bevat de eindpunten, headers en queryparameters die u nodig hebt om zoekresultaten op te vragen. Daarnaast vindt u hier definities van de responsobjecten.
 
 [!INCLUDE [cognitive-services-bing-url-note](../../../includes/cognitive-services-bing-url-note.md)]
 
-- [Custom Search API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference)
-- [Custom Image-API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-images-api-v7-reference)
-- [Aangepaste Video-API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-videos-api-v7-reference)
-- [Custom Autosuggest-API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-autosuggest-api-v7-reference)
-
+- [Custom Search API](/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference)
+- [Custom Image-API](/rest/api/cognitiveservices-bingsearch/bing-custom-images-api-v7-reference)
+- [Aangepaste Video-API](/rest/api/cognitiveservices-bingsearch/bing-custom-videos-api-v7-reference)
+- [Custom Autosuggest-API](/rest/api/cognitiveservices-bingsearch/bing-custom-autosuggest-api-v7-reference)

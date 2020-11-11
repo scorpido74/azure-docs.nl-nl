@@ -9,20 +9,20 @@ ms.subservice: translator-text
 ms.date: 12/09/2019
 ms.author: swmachan
 ms.topic: overview
-ms.openlocfilehash: d84a0190e13d7bb7664e8792e0047338fe4bf5e2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 55555d81eb531ae5a4d946fa3f661796b3294897
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85961231"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365496"
 ---
 # <a name="what-is-custom-translator"></a>Wat is Custom Translator?
 
 [Custom Translator](https://portal.customtranslator.azure.ai) is een functie van de service Microsoft Translator. Hiermee kunnen vertaalondernemingen, app-ontwikkelaars en aanbieders van taaldiensten aangepaste systemen voor neurale machinevertalingen bouwen. De aangepaste vertaalsystemen integreren naadloos met bestaande toepassingen, werkstromen en websites. [Custom Translator](https://portal.customtranslator.azure.ai/) biedt vergelijkbare mogelijkheden als [Microsoft Translator Hub](https://hub.microsofttranslator.com/) voor statistische machinevertalingen (SMT), maar dan uitsluitend voor systemen voor neurale machinevertalingen (NMT).
 
-Vertaalsystemen die zijn gebouwd met [Custom Translator](https://portal.customtranslator.azure.ai) zijn beschikbaar via dezelfde [beveiligde](https://cognitive.uservoice.com/knowledgebase/articles/1147537-api-and-customization-confidentiality), krachtige en uiterst schaalbare Microsoft Translator [Text-API V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl) in de cloud, die elke dag wordt gebruikt voor miljarden vertalingen.
+Vertaalsystemen die zijn gebouwd met [Custom Translator](https://portal.customtranslator.azure.ai) zijn beschikbaar via dezelfde [beveiligde](https://cognitive.uservoice.com/knowledgebase/articles/1147537-api-and-customization-confidentiality), krachtige en uiterst schaalbare Microsoft Translator [Text-API V3](../reference/v3-0-translate.md?tabs=curl) in de cloud, die elke dag wordt gebruikt voor miljarden vertalingen.
 
-Custom Translator biedt ondersteuning voor meer dan 36 talen en is rechtstreeks gekoppeld aan de beschikbare talen voor NMT. Zie de [talen van Microsoft Translator](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization) voor een volledige lijst.
+Custom Translator biedt ondersteuning voor meer dan 36 talen en is rechtstreeks gekoppeld aan de beschikbare talen voor NMT. Zie de [talen van Microsoft Translator](../language-support.md#customization) voor een volledige lijst.
 
 ## <a name="features"></a>Functies
 
@@ -34,7 +34,7 @@ Custom Translator biedt verschillende mogelijkheden voor het bouwen van een aang
 |[Bouw systemen met uw eigen vaktermen](what-are-parallel-documents.md)     |  Bouw vertaalsystemen en pas vertaalsystemen aan met behulp van parallelle documenten in de terminologie van uw eigen bedrijf en bedrijfstak.       |
 |[Een woordenlijst gebruiken om uw modellen te bouwen](what-is-dictionary.md)     |   Als u geen set met trainingsgegevens hebt, kunt u een model trainen met alleen de gegevens van een woordenlijst.       |
 |[Werk samen met anderen](how-to-manage-settings.md#share-your-workspace)     |   Werk samen met uw team door uw werk te delen met andere personen.     |
-|[Toegang tot uw aangepaste vertaalmodel](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)     |  Uw aangepaste vertaalmodel kan op elk gewenst moment worden geopend door uw bestaande toepassingen/programma's via Microsoft Translator Text-API V3.       |
+|[Toegang tot uw aangepaste vertaalmodel](../reference/v3-0-translate.md?tabs=curl)     |  Uw aangepaste vertaalmodel kan op elk gewenst moment worden geopend door uw bestaande toepassingen/programma's via Microsoft Translator Text-API V3.       |
 
 ## <a name="get-better-translations"></a>Betere vertalingen verkrijgen
 

@@ -10,12 +10,12 @@ ms.subservice: bing-local-business
 ms.topic: overview
 ms.date: 03/24/2020
 ms.author: aahi
-ms.openlocfilehash: 6b715d4b801159b451957c30ee9ef7b406f3a2f4
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: ee31eac55298c86a7bdd784ea54c9a0c8caa47a4
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095370"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94364612"
 ---
 # <a name="what-is-bing-local-business-search"></a>Wat is Bing Local Business Search?
 
@@ -35,7 +35,7 @@ De Bing Local Business Search-API is een RESTful-service waarmee uw toepassingen
 ## <a name="workflow"></a>Werkstroom
 Roep de Bing Local Business Search-API aan vanuit een programmeertaal waarmee HTTP-aanvragen kunnen worden gedaan en JSON-antwoorden kunnen worden geparseerd. Deze service is toegankelijk via de REST API.
  
-1. Maak een [account voor de Cognitive Services-API](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) met toegang tot de Bing Search-API's. Als u geen Azure-abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/cognitive-services/) maken.   
+1. Maak een [account voor de Cognitive Services-API](../cognitive-services-apis-create-account.md) met toegang tot de Bing Search-API's. Als u geen Azure-abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/cognitive-services/) maken.   
 2. Pas URL-codering toe op uw zoektermen voor de zoekopdrachtparameter `q=""`. Bijvoorbeeld `q=nearby+restaurant` of `q=nearby%20restaurant`. Stel indien nodig ook de paginering in. 
 3. Stuur een [aanvraag naar de Bing Local Business Search-API](quickstarts/local-quickstart.md). 
 4. Het JSON-antwoord parseren 
@@ -49,4 +49,4 @@ Roep de Bing Local Business Search-API aan vanuit een programmeertaal waarmee HT
 - [Zoekopdrachten en antwoorden](local-search-query-response.md)
 - [Quickstart over Business Search](quickstarts/local-quickstart.md)
 - [Referentie voor de Bing-API voor zoeken naar lokale bedrijven](local-search-reference.md)
-- [Vereisten voor gebruik en weergave](use-display-requirements.md)
+- [Vereisten voor gebruik en weergave](../bing-web-search/use-display-requirements.md)

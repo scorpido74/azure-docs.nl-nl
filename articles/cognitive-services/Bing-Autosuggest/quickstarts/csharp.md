@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/06/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9d199a6c0246379100db0d3bb412dcde4d73a17e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: c47ef99d5e7e78710f8be4b967e262262f205a39
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101881"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367876"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-c"></a>Quickstart: Zoekquery's voorstellen met de REST API voor Bing Automatische suggesties en C#
 
@@ -46,7 +46,7 @@ Volg deze quickstart voor meer informatie over het aanroepen van de Automatische
     using System.Text;
     ```
 
-2. Maak in een nieuwe klasse variabelen voor uw API-host en -pad, [marktcode](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes) en een gedeeltelijke zoekquery. Gebruik het globale eindpunt in de volgende code of het eindpunt voor een [aangepast subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weergegeven in Azure Portal voor uw resource.
+2. Maak in een nieuwe klasse variabelen voor uw API-host en -pad, [marktcode](/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes) en een gedeeltelijke zoekquery. Gebruik het globale eindpunt in de volgende code of het eindpunt voor een [aangepast subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weergegeven in Azure Portal voor uw resource.
 
     ```csharp
     static string host = "https://api.cognitive.microsoft.com";
@@ -172,4 +172,4 @@ Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien
 ## <a name="see-also"></a>Zie ook
 
 - [Wat is Bing Automatische suggesties?](../get-suggested-search-terms.md)
-- [Naslaghandleiding Bing Automatische suggesties-API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)
+- [Naslaghandleiding Bing Automatische suggesties-API v7](/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)

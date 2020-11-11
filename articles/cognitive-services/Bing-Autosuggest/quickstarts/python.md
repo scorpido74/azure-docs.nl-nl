@@ -11,19 +11,19 @@ ms.topic: quickstart
 ms.date: 05/06/2020
 ms.author: aahi
 ms.custom: devx-track-python
-ms.openlocfilehash: 5bd929d64d7b877e4b17952eaf4d4d0f2c0e3dff
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a893a239640dfe691a25ab515319493357305e48
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101813"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367655"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-python"></a>Quickstart: Zoekquery's voorstellen met de Bing Automatische suggesties-API en Python
 
 > [!WARNING]
-> Bing Search-API's worden van Cognitive Services naar Bing Search Services verplaatst. Vanaf **30 oktober 2020** moeten nieuwe instanties van Bing Search worden ingericht volgens het proces dat [hier](https://aka.ms/cogsvcs/bingmove) is beschreven.
-> Bing Search-API's ingericht met behulp van Cognitive Services, worden voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst afloopt.
-> Zie [Bing Search Services](https://aka.ms/cogsvcs/bingmigration) voor migratie-instructies.
+> Bing Search-API's worden van Cognitive Services naar Bing Search Services overgezet. Vanaf **30 oktober 2020** moeten nieuwe instanties van Bing Search worden ingericht overeenkomstig het proces dat [hier](https://aka.ms/cogsvcs/bingmove) is beschreven.
+> Bing Search-API's die zijn ingericht met Cognitive Services, worden voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst afloopt.
+> Raadpleeg [Bing Search Services](https://aka.ms/cogsvcs/bingmigration) voor migratie-instructies.
 
 Volg deze quickstart voor meer informatie over het aanroepen van de Automatische suggestie-API voor Bing en het lezen van de JSON-reactie. Met deze eenvoudige Python-toepassing wordt een gedeeltelijke zoekquery naar de API verzonden en worden suggesties voor zoekopdrachten geretourneerd. Hoewel deze toepassing in Python is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal. De broncode voor dit voorbeeld is beschikbaar [op GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingAutosuggestv7.py)
 
@@ -41,7 +41,7 @@ Volg deze quickstart voor meer informatie over het aanroepen van de Automatische
     import http.client, urllib.parse, json
     ```
 
-2. Maak variabelen voor uw API-host en -pad, [marktcode](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes) en gedeeltelijke zoekquery. Gebruik het globale eindpunt in de volgende code of het eindpunt voor een [aangepast subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weergegeven in Azure Portal voor uw resource.
+2. Maak variabelen voor uw API-host en -pad, [marktcode](/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes) en gedeeltelijke zoekquery. Gebruik het globale eindpunt in de volgende code of het eindpunt voor een [aangepast subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weergegeven in Azure Portal voor uw resource.
 
     ```python
     subscriptionKey = 'enter key here'
@@ -157,4 +157,4 @@ Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien
 ## <a name="see-also"></a>Zie ook
 
 - [Wat is Bing Automatische suggesties?](../get-suggested-search-terms.md)
-- [Naslaghandleiding Bing Automatische suggesties-API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)
+- [Naslaghandleiding Bing Automatische suggesties-API v7](/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)

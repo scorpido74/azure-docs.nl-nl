@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/22/2020
 ms.custom: devx-track-java
 ms.author: scottwhi
-ms.openlocfilehash: f33b5f5274fcaf8f64f898e2b7aebe8a27470033
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 7ad674b9326f3e55d8e17f738fd68faf26bd1c9a
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93086530"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368114"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-java"></a>Quickstart: Afbeeldingsinzichten krijgen met behulp van de Bing Visual Search REST-API en Java
 
@@ -29,7 +29,7 @@ Gebruik deze quickstart om uw eerste aanroep naar de Bing Visual Search-API te m
 
 ## <a name="prerequisites"></a>Vereisten
 
-* De [Java Development Kit (JDK) 7 of 8](https://aka.ms/azure-jdks)
+* De [Java Development Kit (JDK) 7 of 8](/azure/developer/java/fundamentals/java-jdk-long-term-support)
 * De [Gson Java-bibliotheek](https://github.com/google/gson)
 * [Apache HttpComponents](https://hc.apache.org/downloads.cgi)
 
