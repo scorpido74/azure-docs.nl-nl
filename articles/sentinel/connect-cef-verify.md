@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: ba14e2c475611ed77661060d6e17ae0bcbf0a6ca
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: f0c38e72231fb343cb9b27def520f73d923a70f6
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92744218"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94515707"
 ---
 # <a name="step-3-validate-connectivity"></a>STAP 3: connectiviteit valideren
 
@@ -29,10 +29,10 @@ Nadat u uw logboek doorstuur server (in stap 1) hebt geïmplementeerd en uw beve
 
 - U moet een verhoogde machtigingen (sudo) hebben op uw logboek-doorstuur machine.
 
-- **Python 2,7** moet zijn geïnstalleerd op uw logboek-doorstuur machine.<br>
+- **Python 2,7** of **3** moet zijn geïnstalleerd op uw logboek-doorstuur machine.<br>
 Gebruik de `python –version` opdracht om te controleren.
 
-- Mogelijk hebt u de werk ruimte-ID en de primaire sleutel voor de werk ruimte op een bepaald moment in dit proces nodig. U vindt deze in de werkruimte resource onder **agent beheer** .
+- Mogelijk hebt u de werk ruimte-ID en de primaire sleutel voor de werk ruimte op een bepaald moment in dit proces nodig. U vindt deze in de werkruimte resource onder **agent beheer**.
 
 ## <a name="how-to-validate-connectivity"></a>Connectiviteit valideren
 

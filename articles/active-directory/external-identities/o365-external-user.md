@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 06/24/2020
+ms.date: 11/11/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0950c92b5a7bb1e782537aa46acad2e949e565c7
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 35ffae55e749c7493b9cd8af13dfd5216abf5822
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441790"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94515503"
 ---
 # <a name="microsoft-365-external-sharing-and-azure-active-directory-azure-ad-b2b-collaboration"></a>Microsoft 365 extern delen en Azure Active Directory (Azure AD) B2B-samen werking
 
@@ -32,7 +32,7 @@ OneDrive/share point online heeft een afzonderlijke uitnodigings Manager. Onders
 
 - Uitgenodigde Azure AD B2B-samenwerkings verbanden kunnen worden gekozen in de dialoog vensters van OneDrive/share point online delen. Gebruikers van OneDrive/share point online worden ook in azure AD weer gegeven na het inwisselen van hun uitnodigingen.
 
-- De licentie vereisten verschillen. Voor elke betaalde Azure AD-licentie kunt u Maxi maal vijf gast gebruikers toegang bieden tot uw betaalde Azure AD-functies. Zie voor meer informatie over licentie verlening [Azure AD B2B-licenties](./external-identities-pricing.md) en [' wat is een externe gebruiker? ' in het overzicht van extern delen in share point online](/sharepoint/external-sharing-overview#what-happens-when-users-share).
+- De licentie vereisten verschillen. Zie voor meer informatie over licentie verlening [Azure AD B2B-licenties](./external-identities-pricing.md) en [' wat is een externe gebruiker? ' in het overzicht van extern delen in share point online](/sharepoint/external-sharing-overview#what-happens-when-users-share).
 
 Als u extern delen in OneDrive of share point online wilt beheren met Azure AD B2B-samen werking, stelt u de instelling voor extern delen van OneDrive/share point online in op **alleen delen toestaan met de externe gebruikers die al bestaan in de adres lijst van uw organisatie**. Gebruikers kunnen naar extern gedeelde sites gaan en kiezen uit externe deel nemers die de beheerder heeft toegevoegd. De beheerder kan de externe deel nemers toevoegen via de uitnodiging-Api's voor B2B-samen werking.
 

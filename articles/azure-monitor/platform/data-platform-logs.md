@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 10/22/2020
 ms.author: bwren
-ms.openlocfilehash: 462242b001da5a5a6d2eba8e4bd06315c0b263a6
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 35ed275419cc4319e7edfed608340853c986a927
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491852"
+ms.locfileid: "94515622"
 ---
 # <a name="azure-monitor-logs-overview"></a>Overzicht van Azure Monitor logboeken
 Azure Monitor-Logboeken is een functie van Azure Monitor waarmee logboek-en prestatie gegevens van [bewaakte bronnen](../monitor-reference.md)worden verzameld en ingedeeld. Gegevens uit verschillende bronnen, zoals [platform logboeken](platform-logs-overview.md) van Azure-Services, logboek-en prestatie gegevens van [virtuele machines](agents-overview.md), en gebruiks-en prestatie gegevens van [toepassingen](../app/app-insights-overview.md) kunnen worden geconsolideerd in één werk ruimte, zodat ze kunnen worden geanalyseerd met behulp van een geavanceerde query taal die snel miljoenen records kan analyseren. U kunt een eenvoudige query uitvoeren waarbij alleen een specifieke set records wordt opgehaald of een geavanceerde gegevens analyse uit te voeren om essentiële patronen in uw bewakings gegevens te identificeren. Werk met logboek query's en hun resultaten interactief met behulp van Log Analytics, gebruik deze in een waarschuwings regel voor het proactief ontvangen van problemen of het visualiseren van de resultaten in een werkmap of dash board.

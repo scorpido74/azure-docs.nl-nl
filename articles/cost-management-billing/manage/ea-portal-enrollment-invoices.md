@@ -3,21 +3,102 @@ title: Facturen voor Azure Enterprise-inschrijvingen
 description: In dit artikel wordt uitgelegd hoe u uw Azure Enterprise-factuur kunt beheren en erop kunt reageren.
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2020
+ms.date: 09/23/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: fec013395af9aeb3d83f86ab47cc52b3fedd7a1f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.custom: contperfq1
+ms.openlocfilehash: 57ada2ca760ffff2124582c31fdd095d04d4375f
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91316134"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410950"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Facturen voor Azure Enterprise-inschrijvingen
 
 In dit artikel wordt uitgelegd hoe u uw Azure EA (Azure Enterprise Agreement) kunt beheren en erop kunt reageren. Uw factuur is een afspiegeling van de kosten die u hebt gemaakt. Controleer de nauwkeurigheid van de factuur. Raak ook vertrouwd met andere taken die u nodig kunt hebben om uw factuur te beheren.
+
+## <a name="view-usage-summary-and-download-reports"></a>Gebruiksoverzicht weergeven en rapporten downloaden
+
+Ondernemingsbeheerders kunnen een overzicht van hun gebruiksgegevens, gebruikte Azure-vooruitbetaling en de kosten voor aanvullend gebruik bekijken in de Azure Enterprise-portal. De kosten worden weergegeven op overzichtsniveau voor alle accounts en abonnementen.
+
+Als u het gedetailleerde gebruik voor specifieke accounts wilt bekijken, downloadt u het gebruiksgegevensrapport:
+
+1. Meld u aan bij de Azure Enterprise-portal.
+1. Selecteer **Rapporten**.
+1. Selecteer het tabblad **Gebruiksgegevens downloaden**.
+1. Selecteer in de lijst met rapporten de optie **Downloaden** voor het maandelijkse rapport dat u wilt downloaden.
+
+   > [!NOTE]
+   > Het gebruiksgegevensrapport bevat geen toepasselijke belastingen.
+   >
+   > Het duurt maximaal acht uur voordat gebruik wordt weergegeven in het rapport.
+
+U kunt als volgt rapporten en grafieken met het gebruiksoverzicht weergeven:
+
+1. Meld u aan bij de Azure Enterprise-portal.
+
+1. Selecteer een vooruitbetalingsperiode.
+
+   Als u de periode voor **Gebruiksoverzicht** wilt wijzigen, schakelt u rechtsboven van **M** (Maandelijks) naar **A** (Aangepast). Geef vervolgens de aangepaste begin- en einddatums op.
+
+   ![Gebruiksoverzicht maken en weergeven en rapporten downloaden in aangepaste weergave](./media/ea-portal-enrollment-invoices/create-ea-view-usage-summary-and-download-reports-custom-view.png)
+1. Selecteer een periode of maand in de grafiek om aanvullende gegevens weer te geven.
+
+   - De grafiek toont het MoM-gebruik (maand over maand), uitgesplitst in ingezet voor gebruik, te veel in rekening gebrachte service, afzonderlijke gefactureerde kosten en Azure Marketplace-kosten.
+   - U kunt voor de geselecteerde maand gebruikmaken van de velden onder de grafiek om te filteren op afdelingen, accounts en abonnementen.
+   - U kunt schakelen tussen **Kosten per services** en **Kosten per hiërarchie**.
+   - U kunt gegevens over **Azure-services** , **afzonderlijk gefactureerde kosten** en **Azure Marketplace** bekijken door de betreffende gedeelten uit te breiden.
+
+Bekijk deze video voor meer informatie over hoe u gebruik kunt weergeven:
+
+> [!VIDEO https://www.youtube.com/embed/Cv2IZ9QCn9E]
+
+### <a name="download-csv-reports"></a>CSV-rapporten downloaden
+
+Ondernemingsbeheerders gebruiken de pagina Maandelijks rapport downloaden om de volgende rapporten te downloaden als CSV-bestanden:
+
+- Saldo en kosten
+- Gebruiksgegevens
+- Kosten voor Azure Marketplace
+- Prijzenoverzicht
+
+Rapporten downloaden:
+
+1. Selecteer in de Azure Enterprise-portal **Rapporten**.
+2. Selecteer bovenaan de pagina **Gebruiksgegevens downloaden**.
+3. Selecteer naast het maandrapport de optie **Downloaden**.
+
+   > [!NOTE]
+   > Het kan na de werkelijke gebruiksdatum nog maximaal vijf dagen duren voordat het gebruik wordt weergegeven in de rapporten.
+   >
+   > Gebruikers die CSV-bestanden met Safari downloaden naar Excel, ervaren mogelijk indelingsfouten. Open het bestand met een teksteditor om fouten te voorkomen.
+
+![Voorbeeld met de pagina Gebruiksgegevens downloaden](./media/ea-portal-enrollment-invoices/create-ea-download-csv-reports.png)
+
+Bekijk deze video waarin wordt uitgelegd hoe u gebruiksgegevens downloadt:
+
+> [!VIDEO https://www.youtube.com/embed/eY797htT1qg]
+
+### <a name="advanced-report-download"></a>Geavanceerde rapporten downloaden
+
+Gebruik de optie Geavanceerde rapporten downloaden om rapporten te downloaden voor specifieke perioden of accounts. Het uitvoerbestand heeft de indeling CSV, waardoor het geschikt is voor grote recordsets.
+
+1. Selecteer in de Azure Enterprise-portal **Geavanceerde rapporten downloaden**.
+1. Selecteer de relevante periode en accounts.
+1. Selecteer **Gebruiksgegevens aanvragen**.
+1. Selecteer de knop **Vernieuwen** totdat de rapportstatus wordt bijgewerkt naar **Downloaden**.
+1. Download het rapport.
+
+### <a name="download-usage-reports-and-billing-information-for-a-prior-enrollment"></a>Gebruiksrapporten en factureringsgegevens downloaden voor een eerdere inschrijving
+
+U kunt gebruiksrapporten en factureringsgegevens voor een eerdere inschrijving downloaden nadat de inschrijving is overgedragen. Historische rapportage is beschikbaar in de Azure Enterprise-portal en kostenbeheer.
+
+Inactieve inschrijvingen worden niet weergegeven in de Azure Enterprise-portal. Verwijder het vinkje uit het vak **Actief** om inactieve overgedragen inschrijvingen weer te geven.  
+
+![Vinkje uit het vak Actief verwijderen zodat de gebruiker inactieve inschrijvingen kan zien](./media/ea-portal-enrollment-invoices/unchecked-active-box.png)
 
 ## <a name="change-a-po-number-for-an-upcoming-overage-invoice"></a>Een inkoopordernummer wijzigen voor een aanstaande overschrijdingsfactuur
 
@@ -32,7 +113,7 @@ In de Azure Enterprise-portal wordt automatisch een standaardnummer voor een ink
 
    U kunt een inkoopordernummer nog gedurende 7 dagen nadat u een factuurmelding hebt ontvangen bewerken, mits dit is vóórdat u de factuur hebt betaald.
 1. Voer een nieuw inkoopordernummer in het veld **Inkoopordernummer** in.
-1. Selecteer**Opslaan** om de wijziging te verzenden.
+1. Selecteer **Opslaan** om de wijziging te verzenden.
 
 ### <a name="to-update-the-azure-marketplace-purchase-order-number"></a>Het inkoopordernummer voor Azure Marketplace bijwerken:
 
@@ -43,7 +124,7 @@ In de Azure Enterprise-portal wordt automatisch een standaardnummer voor een ink
 
    U kunt een inkoopordernummer nog gedurende 7 dagen nadat u een factuurmelding hebt ontvangen bewerken, mits dit is vóórdat u de factuur hebt betaald.
 1. Voer een nieuw inkoopordernummer in het veld **Inkoopordernummer** in.
-1. Selecteer**Opslaan** om de wijziging te verzenden.
+1. Selecteer **Opslaan** om de wijziging te verzenden.
 
 ## <a name="azure-enterprise-billing-frequency"></a>Factureringsfrequentie van Azure Enterprise
 
@@ -61,20 +142,20 @@ Uw factureringsinterval is afhankelijk van hoe u vooruitbetaalde aankopen wilt d
 
 De datum waarop u de overschrijdingsfactuur ontvangt, is afhankelijk van de startdatum en de opzet van de inschrijving:
 
-- **Directe inschrijvingen met een startdatum vóór 1 mei 2018**:
+- **Directe inschrijvingen met een startdatum vóór 1 mei 2018** :
   - Als u gebruikmaakt van een directe EA (Enterprise Agreement), hebt u een jaarlijkse factureringsperiode voor Azure-services, met uitzondering van Azure Marketplace-services. De factureringsperiode is gebaseerd op de jubileumdatum: de datum waarop de overeenkomst van kracht werd.
   - Als u de drempelwaarde van uw Azure-vooruitbetaling voor EA met 150% overschrijdt, wordt de factureringsperiode automatisch geconverteerd naar per kwartaal, gebaseerd op de jubileumdatum. U ontvangt ook een overschrijdingsfactuur voor de Azure-service.
   - Als u de drempelwaarde van uw Azure-vooruitbetaling niet met 150% overschrijdt, behoudt de inschrijving een jaarlijkse factureringsperiode. De overschrijdingsfactuur ontvangt u aan het einde van het vooruitbetaalde jaar.
 
-- **Directe inschrijvingen met een startdatum na 1 mei 2018**:
+- **Directe inschrijvingen met een startdatum na 1 mei 2018** :
   - Uw Azure-verbruik en de kosten worden afzonderlijk in rekening gebracht tijdens een maandelijkse factureringsperiode.
   - Kosten die niet onder uw Azure-vooruitbetaling vallen, vallen onder de overschrijdingsbetaling.  
 
-- **Indirecte inschrijvingen die zijn gestart vóór 1 mei 2018**:
+- **Indirecte inschrijvingen die zijn gestart vóór 1 mei 2018** :
 
   Als u een indirecte EA-klant (Enterprise Agreement) bent met een begindatum van vóór 1 mei 2018, hebt u een factureringsperiode van een kwartaal. De kanaalpartner (CP) brengt kosten rechtstreeks bij u in rekening.  
 
-- **Indirecte inschrijvingen met een startdatum na 1 mei 2018**:
+- **Indirecte inschrijvingen met een startdatum na 1 mei 2018** :
 
   U hebt een maandelijkse factureringsperiode.  
 
@@ -88,9 +169,9 @@ Voor overschrijding wordt u gefactureerd voor het gebruik of de reserveringen di
 
 Voor elk item op de factuur ziet u het volgende:
 
-- **Berekend bedrag**: de totale kosten
-- **Vooruitbetaald gebruik**: het vooruitbetaalde bedrag dat wordt gebruikt om de kosten te dekken
-- **Nettobedrag**: de kosten die de vooruitbetaling overschrijden
+- **Berekend bedrag** : de totale kosten
+- **Vooruitbetaald gebruik** : het vooruitbetaalde bedrag dat wordt gebruikt om de kosten te dekken
+- **Nettobedrag** : de kosten die de vooruitbetaling overschrijden
 
 Toepasselijke belastingen worden alleen berekend over het nettobedrag dat de vooruitbetaling overschrijdt.
 

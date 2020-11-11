@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 301bc64bee291fa25506e7f435e923be7e244cd4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d083607782f96744ecbd7d23976f77ee53fec49d
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91267513"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94515566"
 ---
 # <a name="scenario-azure-firewall---custom"></a>Scenario: Azure Firewall-aangepast
 
@@ -28,10 +28,10 @@ Als u wilt weten hoeveel route tabellen er nodig zijn, kunt u een verbindings ma
 
 | Van           | Aan:      | *VNets*      | *Vertakkingen*    | *Internet*   |
 |---             |---       |---           |---            |---           |
-| **VNets**      |   &#8594;|     X        |     AzFW      |     AzFW     |
-| **Vertakkingen**   |   &#8594;|    AzFW      |       X       |       X      |
+| **VNets**      |   &#8594;|    Direct    |     AzFW      |     AzFW     |
+| **Vertakkingen**   |   &#8594;|    AzFW      |    Direct     |    Direct    |
 
-In de vorige tabel vertegenwoordigt een ' X ' een rechtstreekse verbinding tussen twee verbindingen zonder het verkeer dat de Azure Firewall in virtuele WAN gaat passeren, en ' AzFW ' geeft aan dat de stroom de Azure Firewall doorloopt. Omdat er twee verschillende verbindings patronen in de matrix zijn, hebben we twee route tabellen nodig die als volgt worden geconfigureerd:
+In de vorige tabel vertegenwoordigt een ' directe ' directe connectiviteit tussen twee verbindingen zonder het verkeer dat de Azure Firewall in virtuele WAN gaat passeren, en ' AzFW ' geeft aan dat de stroom de Azure Firewall doorloopt. Omdat er twee verschillende verbindings patronen in de matrix zijn, hebben we twee route tabellen nodig die als volgt worden geconfigureerd:
 
 * Virtuele netwerken:
   * Gekoppelde route tabel: **RT_VNet**

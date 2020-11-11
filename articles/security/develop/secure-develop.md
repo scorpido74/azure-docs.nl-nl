@@ -13,15 +13,15 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 7818ae36c785311466d2fb26ce45dcf50983145d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ca0513f95bc490087f3c84eeecc4ea623f64604
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87283483"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517084"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Beveiligde toepassingen ontwikkelen in Azure
-In dit artikel bieden we beveiligings activiteiten en-controles waarmee u rekening moet houden bij het ontwikkelen van toepassingen voor de Cloud. Beveiligings vragen en-concepten waarmee u rekening moet houden tijdens de implementatie-en verificatie fasen van micro soft [Security Development Lifecycle (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) vallen onder de dekking. Het doel is om u te helpen bij het definiëren van activiteiten en Azure-Services die u kunt gebruiken om een veiligere toepassing te ontwikkelen.
+In dit artikel bieden we beveiligings activiteiten en-controles waarmee u rekening moet houden bij het ontwikkelen van toepassingen voor de Cloud. Beveiligings vragen en-concepten waarmee u rekening moet houden tijdens de implementatie-en verificatie fasen van micro soft [Security Development Lifecycle (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) vallen onder de dekking. Het doel is om u te helpen bij het definiëren van activiteiten en Azure-Services die u kunt gebruiken om een veiligere toepassing te ontwikkelen.
 
 In dit artikel komen de volgende SDL-fasen aan bod:
 
@@ -34,11 +34,11 @@ Stel dat uw toepassing wordt gebruikt op een manier die u niet wilt gebruiken. Z
 
 ### <a name="perform-code-reviews"></a>Code beoordelingen uitvoeren
 
-Voordat u code incheckt, voert u [code beoordelingen](https://docs.microsoft.com/azure/devops/learn/devops-at-microsoft/code-reviews-not-primarily-finding-bugs) uit om de algehele code kwaliteit te verbeteren en het risico op het maken van fouten te verminderen. U kunt [Visual Studio](https://docs.microsoft.com/azure/devops/repos/tfvc/get-code-reviewed-vs?view=vsts) gebruiken om het code controle proces te beheren.
+Voordat u code incheckt, voert u [code beoordelingen](/azure/devops/learn/devops-at-microsoft/code-reviews-not-primarily-finding-bugs) uit om de algehele code kwaliteit te verbeteren en het risico op het maken van fouten te verminderen. U kunt [Visual Studio](/azure/devops/repos/tfvc/get-code-reviewed-vs?view=vsts) gebruiken om het code controle proces te beheren.
 
 ### <a name="perform-static-code-analysis"></a>Statische codeanalyse uitvoeren
 
-[Statische code analyse](https://owasp.org/www-community/controls/Static_Code_Analysis) (ook wel bekend als *broncode analyse*) wordt gewoonlijk uitgevoerd als onderdeel van een code controle. Statische code analyse verwijst doorgaans naar het uitvoeren van hulpprogram ma's voor statische code analyse om mogelijke beveiligings problemen in niet-actieve code te vinden met behulp van technieken als [Taint-controle](https://en.wikipedia.org/wiki/Taint_checking) en [gegevens stroom analyse](https://en.wikipedia.org/wiki/Data-flow_analysis).
+[Statische code analyse](https://owasp.org/www-community/controls/Static_Code_Analysis) (ook wel bekend als *broncode analyse* ) wordt gewoonlijk uitgevoerd als onderdeel van een code controle. Statische code analyse verwijst doorgaans naar het uitvoeren van hulpprogram ma's voor statische code analyse om mogelijke beveiligings problemen in niet-actieve code te vinden met behulp van technieken als [Taint-controle](https://en.wikipedia.org/wiki/Taint_checking) en [gegevens stroom analyse](https://en.wikipedia.org/wiki/Data-flow_analysis).
 
 Azure Marketplace biedt [ontwikkel hulpprogramma's](https://azuremarketplace.microsoft.com/marketplace/apps/category/developer-tools?page=1&search=code%20review) voor het uitvoeren van een statische code analyse en hulp bij het evalueren van code.
 
@@ -62,7 +62,7 @@ Doe dit op de-server, niet aan de client zijde (of op de-server en aan de client
 
 ### <a name="verify-your-applications-outputs"></a>De uitvoer van uw toepassing controleren
 
-Een uitvoer die u visueel of in een document bevindt, moet altijd worden gecodeerd en ontsnapeerd. [Escapes](https://owasp.org/www-community/Injection_Theory#Escaping_.28aka_Output_Encoding.29), ook wel bekend als *uitvoer codering*, wordt gebruikt om ervoor te zorgen dat niet-vertrouwde gegevens geen voer tuig zijn voor een injectie aanval. Escapes, gecombineerd met gegevens validatie, bieden gelaagde beveiligingen voor een betere beveiliging van het systeem als geheel.
+Een uitvoer die u visueel of in een document bevindt, moet altijd worden gecodeerd en ontsnapeerd. [Escapes](https://owasp.org/www-community/Injection_Theory#Escaping_.28aka_Output_Encoding.29), ook wel bekend als *uitvoer codering* , wordt gebruikt om ervoor te zorgen dat niet-vertrouwde gegevens geen voer tuig zijn voor een injectie aanval. Escapes, gecombineerd met gegevens validatie, bieden gelaagde beveiligingen voor een betere beveiliging van het systeem als geheel.
 
 Bij het maken van een Escape wordt gecontroleerd of alles wordt weer gegeven als *uitvoer.* Bij het maken van een Escape kan de interpreter ook weten dat de gegevens niet zijn bedoeld om te worden uitgevoerd. dit voor komt dat aanvallen werken. Dit is een andere veelvoorkomende aanvals techniek die *cross-site scripting* (XSS) wordt genoemd.
 
@@ -99,7 +99,7 @@ Als de toepassing automatisch wacht woorden moet genereren, zorgt u ervoor dat d
 
 Als uw toepassing [uploads van bestanden](https://owasp.org/www-community/vulnerabilities/Unrestricted_File_Upload)toestaat, moet u rekening houden met voorzorgsmaatregelen die u voor deze Risk ante activiteit kunt nemen. De eerste stap in veel aanvallen is het verkrijgen van schadelijke code in een systeem dat wordt aangevallen. Als u een bestand uploadt, helpt de aanvaller dit te doen. OWASP biedt oplossingen voor het valideren van een bestand om ervoor te zorgen dat het bestand dat u uploadt veilig is.
 
-Met antimalware Protection kunt u virussen, spyware en andere schadelijke software identificeren en verwijderen. U kunt [micro soft antimalware](../fundamentals/antimalware.md) of een Endpoint Protection-oplossing van micro soft partner ([Trend Micro](https://www.trendmicro.com/azure/), [Broadcom](https://www.broadcom.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)en [Endpoint Protection](https://docs.microsoft.com/configmgr/protect/deploy-use/endpoint-protection)) installeren.
+Met antimalware Protection kunt u virussen, spyware en andere schadelijke software identificeren en verwijderen. U kunt [micro soft antimalware](../fundamentals/antimalware.md) of een Endpoint Protection-oplossing van micro soft partner ([Trend Micro](https://www.trendmicro.com/azure/), [Broadcom](https://www.broadcom.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)en [Endpoint Protection](/configmgr/protect/deploy-use/endpoint-protection)) installeren.
 
 [Micro soft antimalware](../fundamentals/antimalware.md) bevat functies als realtime-beveiliging, geplande scans, malware-herstel, handtekening updates, engine-updates, voor beelden van rapporten en uitsluitings gebeurtenissen verzamelen. U kunt micro soft antimalware en partner oplossingen integreren met [Azure Security Center](../../security-center/security-center-partner-integration.md) voor een gemakkelijke implementatie en ingebouwde detecties (waarschuwingen en incidenten).
 

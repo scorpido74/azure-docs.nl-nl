@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: feaa2471f2867257deb06ab32ed5fc0a26a0d37e
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 8437c83faf8dfcec0a21add2006b6cf627447dd1
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443429"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94516438"
 ---
 # <a name="public-preview-azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>Open bare Preview: Azure Hybrid Benefit: hoe dit geldt voor Linux Virtual Machines
 
@@ -53,10 +53,12 @@ Azure Hybrid Benefit (voor Linux) bevindt zich nu in de open bare preview-fase. 
 
 ### <a name="red-hat-customers"></a>Red Hat-klanten
 
-1.    Registreren bij het [Red Hat Cloud Access-programma](https://aka.ms/rhel-cloud-access)
-1.    Schakel uw Azure-abonnement (en) in voor Cloud toegang en schakel de abonnementen in die de Vm's bevatten waarvoor u het voor deel wilt gebruiken
-1.    Pas het voor deel toe op uw bestaande Vm's via Azure CLI
-1.    Registreer uw Vm's om het voor deel te ontvangen met een afzonderlijke bron van updates
+Azure Hybrid Benefit voor RHEL is beschikbaar voor klanten met een actief/ongebruikte RHEL-abonnement die in aanmerking komen voor gebruik in Azure en waarvoor een of meer van deze abonnementen zijn ingeschakeld voor gebruik in azure met het [Red Hat Cloud Access](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) Program. 
+
+1.  Schakel een of meer van uw in aanmerking komende RHEL-abonnementen in voor gebruik in azure met behulp van de [Red Hat Cloud Access-klant interface](https://access.redhat.com/management/cloud).
+1.  De Azure-abonnement (en) die u hebt ingevoerd tijdens het activerings proces van Red Hat Cloud Access, kunnen vervolgens de functie Azure Hybrid Benefit gebruiken.
+1.  Pas de Azure Hybrid Benefit toe op een van uw bestaande RHEL PAYG-Vm's en op alle nieuwe RHEL Vm's die u implementeert vanuit Azure Marketplace PAYG-installatie kopieën.
+1.  Volg de aanbevolen [volgende stappen](https://access.redhat.com/articles/5419341) voor het configureren van update bronnen voor uw RHEL-vm's en voor RHEL-nalevings richtlijnen voor het abonnement.
 
 
 ### <a name="suse-customers"></a>SUSE-klanten
@@ -124,7 +126,19 @@ Vanuit de VM zelf kunt u een query uitvoeren op de IMDS Attestende meta gegevens
 
 ### <a name="red-hat"></a>Red Hat
 
-Als u Azure Hybrid Benefit voor uw RHEL-Vm's wilt gebruiken, moet u eerst zijn geregistreerd bij het Red Hat Cloud Access-programma. U kunt dit doen via de site voor Red Hat Cloud Access hier. Zodra u het voor deel op uw virtuele machine hebt ingeschakeld, moet u de virtuele machine registreren bij uw eigen bron van updates, met een Red Hat Subscription Manager of een Red Hat Satellite. Bij het registreren voor updates zorgt u ervoor dat u een ondersteunde status behoudt.
+Klanten die gebruikmaken van de Azure Hybrid Benefit voor RHEL, komen overeen met de standaard [juridische voor waarden](http://www.redhat.com/licenses/cloud_CSSA/Red_Hat_Cloud_Software_Subscription_Agreement_for_Microsoft_Azure.pdf) en [privacyverklaring](http://www.redhat.com/licenses/cloud_CSSA/Red_Hat_Privacy_Statement_for_Microsoft_Azure.pdf) die zijn gekoppeld aan de Azure Marketplace RHEL-aanbiedingen.
+
+Klanten die Azure Hybrid Benefit voor RHEL gebruiken, hebben drie opties voor het leveren van software-updates en-patches voor deze Vm's:
+
+1.  [Red Hat Update infrastructure (RHUI)](../workloads/redhat/redhat-rhui.md) (standaard optie)
+1.  Red Hat Satellite-Server
+1.  Red Hat Subscription Manager
+
+Klanten die de RHUI-optie kiezen, kunnen RHUI blijven gebruiken als de belangrijkste update bron voor hun AHB RHEL-Vm's, zonder dat er RHEL-abonnementen aan deze Vm's worden gekoppeld.  Klanten die de RHUI-optie kiezen, zijn verantwoordelijk voor het garanderen van de naleving van het RHEL-abonnement.
+
+Klanten die een Red Hat Satellite-Server of Red Hat Subscription manager kiezen, moeten de RHUI-configuratie verwijderen en vervolgens een RHEL-abonnement voor Cloud toegang toevoegen aan hun AHB RHEL VM ('s).  
+
+Meer informatie over de naleving van Red Hat-abonnementen, software-updates en bronnen voor AHB RHEL Vm's vindt u [hier](https://access.redhat.com/articles/5419341).
 
 ### <a name="suse"></a>SUSE
 

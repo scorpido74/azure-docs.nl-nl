@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: 6ab02cc7e60870852666c8c01ccc17a1b1102a62
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 2f90a7c954fc8930f69dfee3e7b56b394225405a
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742835"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94516734"
 ---
 # <a name="step-1-deploy-the-log-forwarder"></a>Stap 1: de logboek-doorstuur server implementeren
 
@@ -38,15 +38,15 @@ In deze stap wijst en configureert u de Linux-computer waarmee de logboeken word
 
 - U moet een verhoogde machtigingen (sudo) hebben op de aangewezen Linux-machine.
 
-- **Python 2,7** moet zijn geïnstalleerd op de Linux-computer.<br>Gebruik de `python -version` opdracht om te controleren.
+- **Python 2,7** of **3** moet zijn geïnstalleerd op de Linux-computer.<br>Gebruik de `python -version` opdracht om te controleren.
 
 - De Linux-machine mag niet worden verbonden met een Azure-werk ruimte voordat u de Log Analytics-Agent installeert.
 
-- Mogelijk hebt u de werk ruimte-ID en de primaire sleutel voor de werk ruimte op een bepaald moment in dit proces nodig. U vindt deze in de werkruimte resource onder **agent beheer** .
+- Mogelijk hebt u de werk ruimte-ID en de primaire sleutel voor de werk ruimte op een bepaald moment in dit proces nodig. U vindt deze in de werkruimte resource onder **agent beheer**.
 
 ## <a name="run-the-deployment-script"></a>Het implementatiescript uitvoeren
  
-1. Klik in het navigatie menu van de Azure-Sentinel op **Data connectors** . Klik in de lijst met connectors op de tegel **algemene gebeurtenis indeling (CEF)** en klik vervolgens op de knop **pagina connector openen** op de rechter benedenhoek. 
+1. Klik in het navigatie menu van de Azure-Sentinel op **Data connectors**. Klik in de lijst met connectors op de tegel **algemene gebeurtenis indeling (CEF)** en klik vervolgens op de knop **pagina connector openen** op de rechter benedenhoek. 
 
 1. Onder **1,2 Installeer de CEF-Collector op de Linux-computer** , kopieer de koppeling die u hebt gemaakt onder **Voer het volgende script uit om de CEF-Collector te installeren en toe te passen** , of uit de onderstaande tekst (waarbij de werk ruimte-id en de primaire sleutel worden toegepast in plaats van de tijdelijke aanduidingen):
 

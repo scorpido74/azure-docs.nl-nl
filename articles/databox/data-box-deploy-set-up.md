@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/10/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 53309023a838f4b256327a37866408f556c81d29
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: ac87d5040cd572635d81be51308f48a57ddd38e3
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924153"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335465"
 ---
 ::: zone target="docs"
 
@@ -119,7 +119,7 @@ Voer de volgende stappen uit om uw apparaat in te stellen met behulp van de loka
 2. Maak verbinding met de MGMT-poort van uw apparaat en open de lokale webgebruikersinterface van het apparaat op \://192.168.100.10. Dit kan tot 5 minuten duren nadat u het apparaat hebt ingeschakeld.
 3. Klik op **Details** en klik vervolgens op **Ga verder naar de webpagina**.
 
-   ![Verbinding maken met de lokale webgebruikersinterface](media/data-box-deploy-set-up/data-box-connect-local-web-ui.png) 
+   ![Verbinding maken met de lokale webgebruikersinterface](media/data-box-deploy-set-up/data-box-connect-local-web-ui.png)
 
 4. U ziet een pagina **Aanmelden** voor de lokale webgebruikersinterface. Zorg ervoor dat het serienummer van het apparaat overeenkomt in zowel de gebruikersinterface van de portal als de lokale webgebruikersinterface. Het apparaat is op dit moment vergrendeld.
 5. Meld u aan bij de [Azure Portal](https://portal.azure.com).

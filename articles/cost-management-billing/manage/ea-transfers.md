@@ -6,14 +6,15 @@ ms.reviewer: baolcsva
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.topic: conceptual
-ms.date: 09/03/2020
+ms.date: 10/05/2020
 ms.author: banders
-ms.openlocfilehash: 140fc450623f0dcb6c7cf1bf08a8cfc43b094763
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.custom: contperfq1
+ms.openlocfilehash: 3222c934998febe79c36121ca816f949b78d374e
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371895"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94411555"
 ---
 # <a name="azure-enterprise-transfers"></a>Azure Enterprise-overdrachten
 
@@ -93,21 +94,25 @@ De Azure-vooruitbetaling is niet overdraagbaar tussen inschrijvingen. De Azure-v
 
 Er is geen downtime tijdens de overdracht van accounts en inschrijvingen. Indien alle vereiste gegevens worden verstrekt, kan de overdracht nog op de dag van uw aanvraag worden voltooid.
 
+## <a name="transfer-an-enterprise-subscription-to-a-pay-as-you-go-subscription"></a>Een ondernemingsabonnement overzetten naar een abonnement met betalen per gebruik
+
+Als u een ondernemingsabonnement wilt overzetten naar een afzonderlijk abonnement dat wordt betaald naar gebruik, moet u een nieuwe ondersteuningsaanvraag maken in de Azure Enterprise-portal. Ga naar het gedeelte **Help en ondersteuning** en selecteer **+ Nieuwe ondersteuningsaanvraag** om een ondersteuningsaanvraag te maken.
+
 ## <a name="change-account-owner"></a>Accounteigenaar wijzigen
 
-In Azure EA Portal kunnen abonnementen worden overdragen van de ene accounteigenaar naar de andere. Zie [Accounteigenaar wijzigen](ea-portal-get-started.md#change-account-owner) voor meer informatie.
+In Azure EA Portal kunnen abonnementen worden overdragen van de ene accounteigenaar naar de andere. Zie [Accounteigenaar wijzigen](ea-portal-administration.md#change-account-owner) voor meer informatie.
 
 ## <a name="subscription-transfer-effects"></a>Gevolgen van een abonnementsoverdracht
 
 Wanneer een Azure-abonnement wordt overgedragen naar een account in dezelfde Azure Active Directory-tenant, blijft de toegang behouden voor alle gebruikers, groepen en service-principals die [op Azure-rollen gebaseerde toegang (Azure RBAC)](../../role-based-access-control/overview.md) hadden om de resources te beheren.
 
-Gebruikers met Azure RBAC-toegang tot het abonnement weergeven:
+Gebruikers met RBAC-toegang tot het abonnement weergeven:
 
 1. Open in Azure Portal **Abonnementen**.
 2. Selecteer het abonnement dat u wilt weergeven en selecteer vervolgens **Toegangsbeheer (IAM)** .
-3. Selecteer **Roltoewijzingen**. De pagina met roltoewijzingen bevat een overzicht van alle gebruikers met Azure RBAC-toegang tot het abonnement.
+3. Selecteer **Roltoewijzingen**. De pagina met roltoewijzingen bevat een overzicht van alle gebruikers met RBAC-toegang tot het abonnement.
 
-Als het abonnement wordt overgedragen naar een account in een andere Azure AD-tenant, _verliezen_ alle gebruikers, groepen en service-principals met [Azure RBAC](../../role-based-access-control/overview.md) om resources te beheren, hun toegang. Hoewel er geen Azure RBAC-toegang aanwezig is, is het abonnement mogelijk toegankelijk via een beveiligingsmechanisme, inclusief:
+Als het abonnement wordt overgedragen naar een account in een andere Azure AD-tenant, verliezen alle gebruiker, groepen en service-principals met [RBAC](../../role-based-access-control/overview.md) om resources te beheren, _hun toegang_. Hoewel er geen RBAC-toegang aanwezig is, is het abonnement mogelijk toegankelijk via een beveiligingsmechanisme, inclusief:
 
 - Beheercertificaten die de gebruiker beheerdersrechten verlenen voor de abonnementsresources. Zie [Een beheercertificaat voor Azure maken en uploaden](../../cloud-services/cloud-services-certs-create.md) voor meer informatie.
 - Toegangssleutels voor services zoals Storage. Zie [Overzicht van Azure-opslagaccount](../../storage/common/storage-account-overview.md) voor meer informatie.

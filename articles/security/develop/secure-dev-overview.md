@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: c4314a0dcbbcb907ef4d6de0a2788cf04dfe1641
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: baaa311620f5c10948aa3494002ce359cc5dab28
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68934868"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517169"
 ---
 # <a name="secure-development-best-practices-on-azure"></a>Best practices voor veilige ontwikkeling op Azure
 Deze reeks artikelen bevat beveiligings activiteiten en-besturings elementen waarmee u rekening moet houden bij het ontwikkelen van toepassingen voor de Cloud. De fasen van de micro soft Security Development Lifecycle (SDL) en beveiligings vragen en concepten die u tijdens elke fase van de levens cyclus kunt overwegen, worden behandeld. Het doel is om u te helpen bij het definiëren van activiteiten en Azure-Services die u in elke fase van de levens cyclus kunt gebruiken om een veiligere toepassing te ontwerpen, ontwikkelen en implementeren.
@@ -37,7 +37,7 @@ De volgende aanbevolen procedures voor het ontwikkelen van beveiligde software v
 
 Hoe later u een probleem in uw ontwikkelings levenscyclus verhelpt, hoe meer deze oplossing u kunt kosten. Beveiligings problemen zijn geen uitzonde ring. Als u geen beveiligings problemen hebt in de vroege fasen van uw software ontwikkeling, kan elke fase die volgt, de beveiligings problemen van de voor gaande fase overnemen. Het uiteindelijke product heeft meerdere beveiligings problemen opgebouwd en de mogelijkheid van schending. Door beveiliging in elke fase van de ontwikkelings levenscyclus te maken, kunt u tijdig problemen ondervangen en kunt u de ontwikkelings kosten verlagen.
 
-We volgen de fasen van de micro soft [Security Development Lifecycle (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) om activiteiten en Azure-Services uit te voeren die u kunt gebruiken om in elke fase van de levens cyclus te voldoen aan de veilige procedures voor het ontwikkelen van software.
+We volgen de fasen van de micro soft [Security Development Lifecycle (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) om activiteiten en Azure-Services uit te voeren die u kunt gebruiken om in elke fase van de levens cyclus te voldoen aan de veilige procedures voor het ontwikkelen van software.
 
 De SDL-fasen zijn:
 
@@ -63,7 +63,7 @@ We begrijpen dat veel lezers mogelijk geen beveiligings-of nalevings team hebben
 
 Gebruik de volgende bronnen voor meer informatie over het ontwikkelen van beveiligde toepassingen en voor het beveiligen van uw toepassingen in Azure:
 
-[Micro soft Security Development Lifecycle (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) : SDL is een software ontwikkelings proces van micro soft waarmee ontwikkel aars beter beveiligde software kunnen bouwen. Het helpt u bij het oplossen van vereisten voor beveiligings naleving terwijl de ontwikkelings kosten worden verminderd.
+[Micro soft Security Development Lifecycle (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) : SDL is een software ontwikkelings proces van micro soft waarmee ontwikkel aars beter beveiligde software kunnen bouwen. Het helpt u bij het oplossen van vereisten voor beveiligings naleving terwijl de ontwikkelings kosten worden verminderd.
 
 [Open Web Application Security project (OWASP)](https://www.owasp.org/index.php/Main_Page) : OWASP is een online community die vrij beschik bare artikelen, methodologieën, Documentatie, hulpprogram ma's en technologieën produceert in het veld van de beveiliging van webtoepassingen.
 

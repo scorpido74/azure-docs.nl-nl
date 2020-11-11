@@ -11,24 +11,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
-ms.openlocfilehash: d868a2d9bc88be7faea161779c35110f13e2b2ac
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 3e6e060f4af2addba66ed02e82d76dd520375f25
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91939050"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94516404"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-azure-cli"></a>Snelstartgids: een openbaar IP-adres maken met behulp van Azure CLI
 
 In dit artikel wordt beschreven hoe u een open bare IP-adres bron maakt met behulp van Azure CLI. Zie [open bare IP-adressen](https://docs.microsoft.com/azure/virtual-network/public-ip-addresses)voor meer informatie over de resources waaraan dit kan worden gekoppeld, het verschil tussen de basis-en standaard-SKU en andere gerelateerde informatie.  In dit voor beeld richten we zich alleen op IPv4-adressen. Zie voor meer informatie over IPv6-adressen [IPv6 voor Azure VNet](https://docs.microsoft.com/azure/virtual-network/ipv6-overview).
 
-## <a name="prerequisites"></a>Vereisten
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-- Azure CLI lokaal geïnstalleerd of Azure Cloud Shell
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
-
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze quickstart versie 2.0.28 of hoger van Azure CLI uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren]( /cli/azure/install-azure-cli).
+- Voor dit artikel is versie 2.0.28 of hoger van de Azure CLI vereist. Als u Azure Cloud Shell gebruikt, is de nieuwste versie al geïnstalleerd.
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
@@ -60,7 +56,7 @@ Gebruik [AZ Network Public-IP Create](https://docs.microsoft.com/cli/azure/netwo
 > Voor versies van de API ouder dan 2020-08-01 voert u de bovenstaande opdracht uit zonder een zone parameter op te geven om een zone-redundant IP-adres te maken. 
 >
 
-Gebruik de volgende opdracht om een openbaar IP-adres voor de standaard zonegebonden te maken in Zone 2 met de naam **myStandardZonalPublicIP** in **myResourceGroup**:
+Gebruik de volgende opdracht om een openbaar IP-adres voor de standaard zonegebonden te maken in Zone 2 met de naam **myStandardZonalPublicIP** in **myResourceGroup** :
 
 ```azurecli-interactive
   az network public-ip create \

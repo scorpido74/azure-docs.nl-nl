@@ -6,12 +6,12 @@ ms.author: jegeib
 ms.service: security
 ms.topic: article
 ms.date: 07/14/2020
-ms.openlocfilehash: 8cea0ab15b79a94f76350c2264b24e6c258490a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60ab9290dd204b9e65fcc612d1b590785450ebed
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317868"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94516863"
 ---
 # <a name="threat-modeling-tool-update-release-73007142---07142020"></a>Threat Modeling Tool Update release 7.3.00714.2-07/14/2020
 
@@ -30,7 +30,7 @@ Versie 7.3.00714.2 van de Microsoft Threat Modeling Tool (TMT) is uitgebracht op
 
 ## <a name="documentation-and-feedback"></a>Documentatie en feedback
 
-- Documentatie voor de Threat Modeling Tool bevindt zich op [docs.Microsoft.com](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool)en bevat informatie [over het gebruik van het hulp programma](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool-getting-started).
+- Documentatie voor de Threat Modeling Tool bevindt zich op [docs.Microsoft.com](./threat-modeling-tool.md)en bevat informatie [over het gebruik van het hulp programma](./threat-modeling-tool-getting-started.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 

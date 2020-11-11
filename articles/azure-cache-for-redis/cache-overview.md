@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: overview
 ms.date: 05/12/2020
-ms.openlocfilehash: 3bea474ae61ba4a0213d880934d9536d6ad71796
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 1b8b95ea318dd7a82d9512908838209bc5cc2995
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131629"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93349100"
 ---
 # <a name="azure-cache-for-redis"></a>Azure Cache voor Redis
 Azure Cache voor Redis biedt gegevensopslag in het geheugen op basis van de [Redis](https://redis.io/)-software. Redis verbetert de prestaties en schaalbaarheid van toepassingen die gebruik maken van back-end-gegevensarchieven. Het kan grote hoeveelheden toepassingsaanvragen verwerken door vaak gebruikte gegevens in het servergeheugen te bewaren zodat deze snel kunnen worden geschreven en gelezen. Redis is een essentiële oplossing voor gegevensopslag met lage latentie en hoge doorvoer voor moderne toepassingen.
@@ -35,9 +35,6 @@ Azure Cache voor Redis verbetert de prestaties van toepassingen door veelgebruik
 
 Azure Cache voor Redis ondersteunt OSS Redis versie 4.x en, als preview, 6.0. We hebben besloten Redis 5.0 over te slaan om u te voorzien van de nieuwste versie. Voorheen werd in Azure Cache voor Redis slechts één Redis-versie bijhouden. Het biedt een nieuwere, grote release-upgrade en ten minste één oudere, stabiele versie die langer wordt ondersteund. U kunt [kiezen welke versie](cache-how-to-version.md) het beste werkt voor uw toepassing.
 
-> [!NOTE]
-> Redis 6.0 is momenteel beschikbaar als preview: [neem contact met ons op](mailto:azurecache@microsoft.com) als u geïnteresseerd bent. Deze preview wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
->
 
 ## <a name="service-tiers"></a>Servicelagen
 Azure Cache voor Redis is beschikbaar in de volgende lagen:
