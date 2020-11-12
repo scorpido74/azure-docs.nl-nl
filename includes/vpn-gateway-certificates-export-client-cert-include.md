@@ -8,22 +8,22 @@ ms.topic: include
 ms.date: 03/19/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 3031ec6ba17c61c780351169c4e8c2e5e94ab257
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 018cf621c65e86877a76c9861c999caf67f3b8cf
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90606315"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94553102"
 ---
 Wanneer u een client certificaat genereert, wordt het automatisch geïnstalleerd op de computer die u hebt gebruikt om het te genereren. Als u het client certificaat op een andere client computer wilt installeren, moet u het door u gegenereerde client certificaat exporteren.
 
-1. Als u een clientcertificaat wilt exporteren, opent u **Gebruikerscertificaten beheren**. De client certificaten die u hebt gegenereerd, zijn standaard opgeslagen in ' certificaten-huidige Gebruiker\persoonlijk\certificaten '. Klik met de rechter muisknop op het client certificaat dat u wilt exporteren, klik op **alle taken**en klik vervolgens op **exporteren** om de **wizard Certificaat exporteren**te openen.
+1. Als u een clientcertificaat wilt exporteren, opent u **Gebruikerscertificaten beheren**. De client certificaten die u hebt gegenereerd, zijn standaard opgeslagen in ' certificaten-huidige Gebruiker\persoonlijk\certificaten '. Klik met de rechter muisknop op het client certificaat dat u wilt exporteren, klik op **alle taken** en klik vervolgens op **exporteren** om de **wizard Certificaat exporteren** te openen.
 
-   ![Scherm afbeelding toont het venster certificaten voor de huidige gebruiker met geselecteerde certificaten en een context menu met alle taken en vervolgens exporteren geselecteerd.](./media/vpn-gateway-certificates-export-client-cert-include/export.png)
+   ![Scherm afbeelding toont het venster certificaten voor de huidige gebruiker waarbij certificaten zijn geselecteerd en exporteren geselecteerd uit alle taken.](./media/vpn-gateway-certificates-export-client-cert-include/export.png)
 2. Klik in de wizard Certificaat exporteren op **volgende** om door te gaan.
 
    ![Scherm afbeelding toont het welkomst bericht van de wizard Certificaat exporteren.](./media/vpn-gateway-certificates-export-client-cert-include/next.png)
-3. Selecteer **Ja, de persoonlijke sleutel exporteren**en klik vervolgens op **volgende**.
+3. Selecteer **Ja, de persoonlijke sleutel exporteren** en klik vervolgens op **volgende**.
 
    ![persoonlijke sleutel exporteren](./media/vpn-gateway-certificates-export-client-cert-include/privatekeyexport.png)
 4. Laat op de pagina **Bestandsindeling voor export** de standaardinstellingen geselecteerd. Zorg ervoor dat **en mogelijk alle certificaten in het certificeringspad opnemen** is geselecteerd. Met deze instelling exporteert u ook de basis certificaat gegevens die nodig zijn voor geslaagde client authenticatie. Zonder deze reden mislukt de client verificatie, omdat de client niet over het vertrouwde basis certificaat beschikt. Klik op **Volgende**.
@@ -37,4 +37,4 @@ Wanneer u een client certificaat genereert, wordt het automatisch geïnstalleerd
    ![te exporteren bestand](./media/vpn-gateway-certificates-export-client-cert-include/filetoexport.png)
 7. Klik op **Voltooien** om het certificaat te exporteren.
 
-   ![Scherm afbeelding toont de laatste pagina van de wizard Certificaat exporteren met de geselecteerde instellingen.](./media/vpn-gateway-certificates-export-client-cert-include/finish.png)
+   ![Scherm afbeelding toont de wizard Certificaat exporteren met de opgegeven instellingen.](./media/vpn-gateway-certificates-export-client-cert-include/finish.png)

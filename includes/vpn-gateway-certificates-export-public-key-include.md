@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 03/19/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: f71703dcb6afb5ce7610bf1c5374de1cc98816b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12e9bec0c560f1b068b07a1b6afe218a112e439f
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90606425"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94553078"
 ---
 Nadat u een zelfondertekend basis certificaat hebt gemaakt, exporteert u het bestand met de open bare sleutel van het basis certificaat (niet de persoonlijke sleutel). U kunt dit bestand later uploaden naar Azure. Met de volgende stappen kunt u het. cer-bestand voor uw zelfondertekende basis certificaat exporteren:
 
 1. Als u een CER-bestand wilt genereren van het certificaat, opent u **Gebruikerscertificaten beheren**. Zoek het zelfondertekende basiscertificaat, meestal in 'Certificaten - Huidige gebruiker\Persoonlijk\Certificaten', en klik er met de rechtermuisknop op. Klik op **Alle taken** en vervolgens op **Exporteren**. Hiermee opent u de **Wizard Certificaat exporteren**. Als u het certificaat niet kunt vinden onder de huidige Gebruiker\persoonlijk\certificaten, hebt u mogelijk per ongeluk ' certificaten-lokale computer ' geopend, in plaats van ' certificaten-huidige gebruiker '). Als u certificaat beheer wilt openen in het huidige gebruikers bereik met behulp van Power shell, typt u *certmgr* in het console venster.
 
-   ![Scherm afbeelding toont het venster certificaten voor de huidige gebruiker met geselecteerde certificaten en een context menu met alle taken en vervolgens exporteren geselecteerd.](./media/vpn-gateway-certificates-export-public-key-include/export.png)
+   ![Scherm afbeelding toont het venster certificaten voor de huidige gebruiker waarbij certificaten zijn geselecteerd en een context menu met export geselecteerd uit alle taken.](./media/vpn-gateway-certificates-export-public-key-include/export.png)
 2. Klik in de wizard op **volgende**.
 
    ![Certificaat exporteren](./media/vpn-gateway-certificates-export-public-key-include/exportwizard.png)
@@ -29,12 +29,12 @@ Nadat u een zelfondertekend basis certificaat hebt gemaakt, exporteert u het bes
 4. Selecteer op de pagina **Bestandsindeling voor export** de optie **Met Base64 gecodeerde X.509 (*.CER)** en klik op **Volgende**.
 
    ![Base-64-code ring](./media/vpn-gateway-certificates-export-public-key-include/base64.png)
-5. Als u het **bestand wilt exporteren**, **bladert** u naar de locatie waarnaar u het certificaat wilt exporteren. Geef bij **Bestandsnaam** de naam van het certificaatbestand op. Klik op **Volgende**.
+5. Als u het **bestand wilt exporteren** , **bladert** u naar de locatie waarnaar u het certificaat wilt exporteren. Geef bij **Bestandsnaam** de naam van het certificaatbestand op. Klik op **Volgende**.
 
    ![Scherm afbeelding toont de wizard Certificaat exporteren met het tekstvak bestands naam en een Blader optie.](./media/vpn-gateway-certificates-export-public-key-include/browse.png)
 6. Klik op **Voltooien** om het certificaat te exporteren.
 
-   ![Scherm afbeelding toont de laatste pagina van de wizard Certificaat exporteren met de geselecteerde instellingen.](./media/vpn-gateway-certificates-export-public-key-include/finish.png)
+   ![Scherm afbeelding toont de wizard Certificaat exporteren met de geselecteerde instellingen.](./media/vpn-gateway-certificates-export-public-key-include/finish.png)
 7. Het certificaat is geëxporteerd.
 
    ![Scherm afbeelding toont een bericht dat de export is geslaagd.](./media/vpn-gateway-certificates-export-public-key-include/success.png)

@@ -4,25 +4,25 @@ description: bestand opnemen
 services: digital-twins
 ms.service: digital-twins
 ms.topic: include
-ms.date: 07/09/2020
+ms.date: 11/11/2020
 author: deepakpalled
 ms.author: dpalled
 manager: diviso
 ms.custom: include file
-ms.openlocfilehash: 7259e1981f873c8385a02fe4f353dcdda495f823
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5ec1f71d13d5d2fb3af86c1c63d5e61ce13d2c82
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91287407"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94553164"
 ---
 ### <a name="property-limits"></a>Eigenschaps limieten
 
-Azure Time Series Insights eigenschaps limieten zijn verhoogd tot 1.000 van een maximale limiet van 800 in gen1. De opgegeven gebeurtenis eigenschappen hebben bijbehorende JSON-, CSV-en grafiek kolommen die u kunt weer geven in de [Azure time series Insights Gen2 Explorer](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-quickstart).
+Azure Time Series Insights eigenschaps limieten zijn verhoogd tot 1.000 voor warme opslag en geen eigenschaps limiet voor koude opslag. De opgegeven gebeurtenis eigenschappen hebben bijbehorende JSON-, CSV-en grafiek kolommen die u kunt weer geven in de [Azure time series Insights Gen2 Explorer](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-quickstart).
 
 | SKU | Maximum aantal eigenschappen |
 | --- | --- |
-| Gen2 (L1) | 1.000-eigenschappen (kolommen) |
+| Gen2 (L1) | 1.000 eigenschappen (kolommen) voor warme opslag en onbeperkt voor koude opslag|
 | Gen1 (S1) | 600-eigenschappen (kolommen) |
 | Gen1 (S2) | 800-eigenschappen (kolommen) |
 
