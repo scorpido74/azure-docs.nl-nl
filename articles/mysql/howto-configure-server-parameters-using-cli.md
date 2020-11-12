@@ -1,19 +1,19 @@
 ---
 title: Server parameters configureren-Azure CLI-Azure Database for MySQL
 description: In dit artikel wordt beschreven hoe u de service parameters in Azure Database for MySQL kunt configureren met behulp van het Azure CLI-opdracht regel programma.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 10/1/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: dfb1d59335f2e35ce3d4661f043b6eed53d2a109
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5a84d93400e713f66545387fd146148ee735c06
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91627156"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541535"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mysql-using-the-azure-cli"></a>Server parameters configureren in Azure Database for MySQL met behulp van de Azure CLI
 U kunt configuratie parameters voor een Azure Database for MySQL server weer geven, tonen en bijwerken met behulp van Azure CLI, het opdracht regel programma van Azure. Een subset van de engine configuraties wordt weer gegeven op server niveau en kan worden gewijzigd. 
@@ -53,7 +53,7 @@ Als u de waarde van een configuratie parameter opnieuw wilt instellen, laat u de
 ```azurecli-interactive
 az mysql server configuration set --name slow_query_log --resource-group myresourcegroup --server mydemoserver
 ```
-Met deze code wordt de langzame configuratie van het ** \_ query \_ logboek** opnieuw ingesteld op de **standaard waarde.** 
+Met deze code wordt de langzame configuratie van het **\_ query \_ logboek** opnieuw ingesteld op de **standaard waarde.** 
 
 ## <a name="setting-parameters-not-listed"></a>Ingestelde para meters niet vermeld
 Als de server parameter die u wilt bijwerken niet wordt weer gegeven in de Azure Portal, kunt u eventueel de para meter instellen op het verbindings niveau met `init_connect` . Hiermee stelt u de server parameters in voor elke client die verbinding maakt met de server. 
@@ -89,7 +89,7 @@ SELECT name FROM mysql.time_zone_name;
 
 De tijd zone globaal niveau kan worden ingesteld met behulp van de opdracht [AZ mysql server configuration set](/cli/azure/mysql/server/configuration#az-mysql-server-configuration-set) .
 
-Met de volgende opdracht wordt de configuratie parameter van de **tijd \_ zone** server van server **mydemoserver.mysql.database.Azure.com** onder resource groep **myresourcegroup** naar **VS/Pacific**bijgewerkt.
+Met de volgende opdracht wordt de configuratie parameter van de **tijd \_ zone** server van server **mydemoserver.mysql.database.Azure.com** onder resource groep **myresourcegroup** naar **VS/Pacific** bijgewerkt.
 
 ```azurecli-interactive
 az mysql server configuration set --name time_zone --resource-group myresourcegroup --server mydemoserver --value "US/Pacific"

@@ -1,17 +1,17 @@
 ---
 title: Lees replica's beheren-Azure Portal-Azure Database for MySQL
 description: Meer informatie over het instellen en beheren van Lees replica's in Azure Database for MySQL met behulp van de Azure Portal.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 6/10/2020
-ms.openlocfilehash: 63ce078cc80b856fe09f3d2bbad1c6e96615eae8
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 26b503e7d55ed3d2f9bd06837551655e7af05a17
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546803"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541937"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-portal"></a>Lees replica's maken en beheren in Azure Database for MySQL met behulp van de Azure Portal
 
@@ -35,19 +35,19 @@ Een lees replica-server kan worden gemaakt met behulp van de volgende stappen:
 
 2. Selecteer de bestaande Azure Database for MySQL-server die u wilt gebruiken als een Master. Met deze actie wordt de pagina **overzicht** geopend.
 
-3. Selecteer **replicatie** in het menu onder **instellingen** .
+3. Selecteer **replicatie** in het menu onder **instellingen**.
 
-4. Selecteer **replica toevoegen** .
+4. Selecteer **replica toevoegen**.
 
    :::image type="content" source="./media/howto-read-replica-portal/add-replica.png" alt-text="Azure Database for MySQL-replicatie":::
 
 5. Voer een naam in voor de replica server.
 
-    :::image type="content" source="./media/howto-read-replica-portal/replica-name.png" alt-text="Azure Database for MySQL-replicatie":::
+    :::image type="content" source="./media/howto-read-replica-portal/replica-name.png" alt-text="Azure Database for MySQL-replica naam":::
 
 6. Selecteer de locatie voor de replica server. De standaard locatie is dezelfde als die van de bron server.
 
-    :::image type="content" source="./media/howto-read-replica-portal/replica-location.png" alt-text="Azure Database for MySQL-replicatie":::
+    :::image type="content" source="./media/howto-read-replica-portal/replica-location.png" alt-text="Azure Database for MySQL-replica locatie":::
 
    > [!NOTE]
    > Ga naar het [artikel concepten van replica's lezen](concepts-read-replicas.md)voor meer informatie over de regio's die u kunt maken in de replica. 
@@ -59,7 +59,7 @@ Een lees replica-server kan worden gemaakt met behulp van de volgende stappen:
 
 Zodra de replica server is gemaakt, kan deze worden weer gegeven op de Blade **replicatie** .
 
-   :::image type="content" source="./media/howto-read-replica-portal/list-replica.png" alt-text="Azure Database for MySQL-replicatie":::
+   :::image type="content" source="./media/howto-read-replica-portal/list-replica.png" alt-text="Azure Database for MySQL-lijst replica's":::
 
 ## <a name="stop-replication-to-a-replica-server"></a>Replicatie naar een replica server stoppen
 
@@ -70,19 +70,19 @@ Als u de replicatie tussen een bron en een replica server van de Azure Portal wi
 
 1. Selecteer uw bron Azure Database for MySQL server in het Azure Portal. 
 
-2. Selecteer **replicatie** in het menu onder **instellingen** .
+2. Selecteer **replicatie** in het menu onder **instellingen**.
 
 3. Selecteer de replica server waarvoor u de replicatie wilt stoppen.
 
-   :::image type="content" source="./media/howto-read-replica-portal/stop-replication-select.png" alt-text="Azure Database for MySQL-replicatie":::
+   :::image type="content" source="./media/howto-read-replica-portal/stop-replication-select.png" alt-text="Azure Database for MySQL-replicatie stoppen server selecteren":::
 
-4. Selecteer **Replicatie stoppen** .
+4. Selecteer **Replicatie stoppen**.
 
-   :::image type="content" source="./media/howto-read-replica-portal/stop-replication.png" alt-text="Azure Database for MySQL-replicatie":::
+   :::image type="content" source="./media/howto-read-replica-portal/stop-replication.png" alt-text="Azure Database for MySQL-replicatie stoppen":::
 
 5. Bevestig dat u de replicatie wilt stoppen door op **OK** te klikken.
 
-   :::image type="content" source="./media/howto-read-replica-portal/stop-replication-confirm.png" alt-text="Azure Database for MySQL-replicatie":::
+   :::image type="content" source="./media/howto-read-replica-portal/stop-replication-confirm.png" alt-text="Azure Database for MySQL-replicatie stoppen bevestigen":::
 
 ## <a name="delete-a-replica-server"></a>Een replica server verwijderen
 
@@ -90,19 +90,19 @@ Voer de volgende stappen uit om een lees replica-server te verwijderen uit de Az
 
 1. Selecteer uw bron Azure Database for MySQL server in het Azure Portal.
 
-2. Selecteer **replicatie** in het menu onder **instellingen** .
+2. Selecteer **replicatie** in het menu onder **instellingen**.
 
 3. Selecteer de replica server die u wilt verwijderen.
 
-   :::image type="content" source="./media/howto-read-replica-portal/delete-replica-select.png" alt-text="Azure Database for MySQL-replicatie":::
+   :::image type="content" source="./media/howto-read-replica-portal/delete-replica-select.png" alt-text="Azure Database for MySQL-replica verwijderen server selecteren":::
 
 4. **Replica verwijderen** selecteren
 
-   :::image type="content" source="./media/howto-read-replica-portal/delete-replica.png" alt-text="Azure Database for MySQL-replicatie":::
+   :::image type="content" source="./media/howto-read-replica-portal/delete-replica.png" alt-text="Azure Database for MySQL-replica verwijderen":::
 
 5. Typ de naam van de replica en klik op **verwijderen** om de verwijdering van de replica te bevestigen.  
 
-   :::image type="content" source="./media/howto-read-replica-portal/delete-replica-confirm.png" alt-text="Azure Database for MySQL-replicatie":::
+   :::image type="content" source="./media/howto-read-replica-portal/delete-replica-confirm.png" alt-text="Azure Database for MySQL-replica verwijderen bevestigen":::
 
 ## <a name="delete-a-source-server"></a>Een bron server verwijderen
 
@@ -113,13 +113,13 @@ Gebruik de volgende stappen om een bron server te verwijderen uit de Azure Porta
 
 1. Selecteer uw bron Azure Database for MySQL server in het Azure Portal.
 
-2. Selecteer **verwijderen** in het **overzicht** .
+2. Selecteer **verwijderen** in het **overzicht**.
 
-   :::image type="content" source="./media/howto-read-replica-portal/delete-master-overview.png" alt-text="Azure Database for MySQL-replicatie":::
+   :::image type="content" source="./media/howto-read-replica-portal/delete-master-overview.png" alt-text="Azure Database for MySQL-Master verwijderen":::
 
 3. Typ de naam van de bron server en klik op **verwijderen** om de verwijdering van de bron server te bevestigen.  
 
-   :::image type="content" source="./media/howto-read-replica-portal/delete-master-confirm.png" alt-text="Azure Database for MySQL-replicatie":::
+   :::image type="content" source="./media/howto-read-replica-portal/delete-master-confirm.png" alt-text="Azure Database for MySQL-Master verwijderen bevestigen":::
 
 ## <a name="monitor-replication"></a>Replicatie controleren
 
@@ -129,15 +129,15 @@ Gebruik de volgende stappen om een bron server te verwijderen uit de Azure Porta
 
 3. Selecteer **replicatie vertraging in seconden in** de vervolg keuzelijst met beschik bare metrische gegevens.
 
-   :::image type="content" source="./media/howto-read-replica-portal/monitor-select-replication-lag.png" alt-text="Azure Database for MySQL-replicatie":::
+   :::image type="content" source="./media/howto-read-replica-portal/monitor-select-replication-lag.png" alt-text="Replicatie vertraging selecteren":::
 
 4. Selecteer het tijds bereik dat u wilt weer geven. In de onderstaande afbeelding wordt een tijds bereik van 30 minuten geselecteerd.
 
-   :::image type="content" source="./media/howto-read-replica-portal/monitor-replication-lag-time-range.png" alt-text="Azure Database for MySQL-replicatie":::
+   :::image type="content" source="./media/howto-read-replica-portal/monitor-replication-lag-time-range.png" alt-text="Tijds bereik selecteren":::
 
 5. De replicatie vertraging voor het geselecteerde tijds bereik weer geven. In de onderstaande afbeelding wordt de laatste 30 minuten weer gegeven.
 
-   :::image type="content" source="./media/howto-read-replica-portal/monitor-replication-lag-time-range-thirty-mins.png" alt-text="Azure Database for MySQL-replicatie":::
+   :::image type="content" source="./media/howto-read-replica-portal/monitor-replication-lag-time-range-thirty-mins.png" alt-text="Selecteer een tijds bereik van 30 minuten":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

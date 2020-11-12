@@ -1,7 +1,7 @@
 ---
 title: Een reken instantie maken en beheren
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het maken en beheren van een reken instantie in uw Azure Machine Learning-werk ruimte. Gebruik het reken proces als uw ontwikkel omgeving of voor training en het afleiden van dev/test-doel einden.
+description: Meer informatie over het maken en beheren van een Azure Machine Learning Compute-instantie. Gebruiken als uw ontwikkel omgeving of als reken doel voor dev/test-doel einden.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 6e0d80c35a4822ad46973c94b32cf71b129ad1e1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: bdae8d77dc5e51cf4a181459ab2e159f31f06e31
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93318020"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94543099"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>Een Azure Machine Learning Compute-exemplaar maken en beheren
 

@@ -1,18 +1,18 @@
 ---
 title: 'Zelfstudie: Een Azure Database for MariaDB ontwerpen - Azure Portal'
 description: In deze zelfstudie wordt uitgelegd hoe u een Azure Database for MariaDB-server en -database maakt en beheert via de Azure-portal.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: tutorial
 ms.date: 3/18/2020
 ms.custom: mvc
-ms.openlocfilehash: 3e6cac09ff304e02e24b482dc834d8199329c1c0
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: fe503d0e579e30b0c355d3be3e8d02b2bd7a44a8
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424882"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542436"
 ---
 # <a name="tutorial-design-an-azure-database-for-mariadb-database-by-using-the-azure-portal"></a>Zelfstudie: een Azure Database for MariaDB-database ontwerpen met de Azure-portal
 
@@ -41,17 +41,17 @@ U maakt een Azure Database for MariaDB-server met een gedefinieerde set [reken- 
 
 1. Selecteer de knop **Een resource maken** (+) in de linkerbovenhoek van de portal.
 
-2. Selecteer **Databases** > **Azure Database for MariaDB** . U kunt ook **MariaDB** in het zoekvak typen om de service te vinden.
+2. Selecteer **Databases** > **Azure Database for MariaDB**. U kunt ook **MariaDB** in het zoekvak typen om de service te vinden.
 
    ![MySQL openen](./media/tutorial-design-database-using-portal/1-Navigate-to-mariadb.png)
 
-3. Selecteer de tegel **Azure Database for MariaDB** . Voer de vereiste informatie in of selecteer deze.
+3. Selecteer de tegel **Azure Database for MariaDB**. Voer de vereiste informatie in of selecteer deze.
 
    ![Formulier Maken](./media/tutorial-design-database-using-portal/2-create-form.png)
 
     Instelling | Voorgestelde waarde | Beschrijving van veld
     ---|---|---
-    Servernaam | *een unieke servernaam* | Kies een unieke naam ter identificatie van de Azure Database for MariaDB-server. Bijvoorbeeld **mydemoserver** . De domeinnaam *.mariadb.database.azure.com* wordt toegevoegd aan de servernaam die u opgeeft. De servernaam mag alleen kleine letters, cijfers en het koppelteken (-) bevatten. Dit wachtwoord moet tussen 3 en 63 tekens bevatten.
+    Servernaam | *een unieke servernaam* | Kies een unieke naam ter identificatie van de Azure Database for MariaDB-server. Bijvoorbeeld **mydemoserver**. De domeinnaam *.mariadb.database.azure.com* wordt toegevoegd aan de servernaam die u opgeeft. De servernaam mag alleen kleine letters, cijfers en het koppelteken (-) bevatten. Dit wachtwoord moet tussen 3 en 63 tekens bevatten.
     Abonnement | *uw abonnement* | Selecteer het Azure-abonnement dat u wilt gebruiken voor uw server. Als u meerdere abonnementen hebt, kiest u het abonnement waarin u wordt gefactureerd voor de resource.
     Resourcegroep | **myresourcegroup** | Voer een nieuwe resourcegroepnaam in of selecteer een bestaande resourcegroep.
     Bron selecteren | **Leeg** | Selecteer **Leeg** om een nieuwe server te maken. (Selecteer **Back-up** als u een server maakt op basis van een geo-back-up van een bestaande Azure Database for MariaDB-server.)
@@ -60,20 +60,20 @@ U maakt een Azure Database for MariaDB-server met een gedefinieerde set [reken- 
     Wachtwoord bevestigen | *uw keuze*| Bevestig het wachtwoord voor het beheerdersaccount.
     Locatie | *de regio het dichtst bij uw gebruikers*| Kies de locatie die zich het dichtst bij uw gebruikers of uw andere Azure-toepassingen bevindt.
     Versie | *de nieuwste versie*| De nieuwste versie (tenzij u specifieke vereisten hebt voor het gebruik van een andere versie).
-    Prijscategorie | Zie de beschrijving. | De reken-, opslag- en back-upconfiguraties voor de nieuwe server. Selecteer **Prijscategorie** > **Algemeen gebruik** . Behoud de standaardwaarden voor de volgende instellingen:<br><ul><li>**Bewerking voor compute** (Gen 5)</li><li>**vCore** (4 vCores)</li><li>**Opslag** (100 GB)</li><li>**Bewaarperiode voor back-ups** (7 dagen)</li></ul><br>Als u serverback-ups in geografisch redundante opslag wilt inschakelen, selecteert u **Geografisch redundant** in het gedeelte **Redundantieopties voor back-up** . <br><br>Selecteer **OK** om deze geselecteerde prijscategorie op te slaan. Deze selecties worden afgebeeld in de volgende schermopname.
+    Prijscategorie | Zie de beschrijving. | De reken-, opslag- en back-upconfiguraties voor de nieuwe server. Selecteer **Prijscategorie** > **Algemeen gebruik**. Behoud de standaardwaarden voor de volgende instellingen:<br><ul><li>**Bewerking voor compute** (Gen 5)</li><li>**vCore** (4 vCores)</li><li>**Opslag** (100 GB)</li><li>**Bewaarperiode voor back-ups** (7 dagen)</li></ul><br>Als u serverback-ups in geografisch redundante opslag wilt inschakelen, selecteert u **Geografisch redundant** in het gedeelte **Redundantieopties voor back-up**. <br><br>Selecteer **OK** om deze geselecteerde prijscategorie op te slaan. Deze selecties worden afgebeeld in de volgende schermopname.
     
    ![Prijscategorie](./media/tutorial-design-database-using-portal/3-pricing-tier.png)
 
    > [!TIP]
    > Als **automatische groei** voor uw server is ingeschakeld, hebt u meer opslagruimte als u de toewijzingslimiet nadert. Dit is niet van invloed op de workload.
 
-4. Klik op **Controleren + maken** . Klik op de knop **Meldingen** op de werkbalk om het implementatieproces te volgen. De implementatie kan twintig minuten duren.
+4. Klik op **Controleren + maken**. Klik op de knop **Meldingen** op de werkbalk om het implementatieproces te volgen. De implementatie kan twintig minuten duren.
 
 ## <a name="configure-the-firewall"></a>De firewall configureren
 
 Azure Database for MariaDB wordt beveiligd door een firewall. Standaard worden alle verbindingen met de server en de databases op de server geweigerd. Voordat u voor het eerst verbinding maakt met Azure Database for MariaDB moet u de firewall configureren en het openbare netwerk-IP-adres van de clientcomputer (of het IP-adresbereik) toevoegen.
 
-1. Klik op uw zojuist gemaakte server en klik vervolgens op **Verbindingsbeveiliging** .
+1. Klik op uw zojuist gemaakte server en klik vervolgens op **Verbindingsbeveiliging**.
 
    ![Verbindingsbeveiliging](./media/tutorial-design-database-using-portal/1-Connection-security.png)
 2. U kunt **Mijn IP toevoegen** kiezen of hier firewallregels configureren. Vergeet niet om **Opslaan** te selecteren nadat u regels hebt gemaakt.
@@ -87,13 +87,13 @@ U kunt nu verbinding maken met de server met behulp van het opdrachtregelprogram
 
 Ga naar de Azure-portal om de volledig gekwalificeerde **servernaam** en de **aanmeldingsnaam van de serverbeheerder** op te halen voor uw Azure Database for MariaDB-server. U gebuikt de volledig gekwalificeerde servernaam om verbinding met uw server te maken via het opdrachtregelprogramma mysql.
 
-1. Selecteer in het meest linkse menu van de [Azure-portal](https://portal.azure.com/) de optie **Alle resources** . Voer de servernaam in en zoek naar uw Azure Database for MariaDB-server. Selecteer de naam van de server om de serverdetails te bekijken.
+1. Selecteer in het meest linkse menu van de [Azure-portal](https://portal.azure.com/) de optie **Alle resources**. Voer de servernaam in en zoek naar uw Azure Database for MariaDB-server. Selecteer de naam van de server om de serverdetails te bekijken.
 
 2. Op de pagina **Overzicht** bekijkt u de waarden bij **Servernaam** en **Aanmeldingsnaam van de serverbeheerder** en noteert u deze. U kunt ook op de knop **Kopiëren** naast elk veld klikken om de gegevens naar het klembord te kopiëren.
 
    ![Servereigenschappen](./media/tutorial-design-database-using-portal/2-server-properties.png)
 
-In dit voorbeeld is de servernaam **mydemoserver.mariadb.database.azure.com** . De aanmeldingsnaam van de serverbeheerder is **myadmin\@mydemoserver** .
+In dit voorbeeld is de servernaam **mydemoserver.mariadb.database.azure.com**. De aanmeldingsnaam van de serverbeheerder is **myadmin\@mydemoserver**.
 
 ## <a name="connect-to-the-server-by-using-mysql"></a>Verbinding maken met de server met behulp van mysql
 
@@ -166,7 +166,7 @@ SELECT * FROM inventory;
 
 Stel dat u per ongeluk een belangrijke databasetabel hebt verwijderd en dat de gegevens niet gemakkelijk kunnen worden hersteld. Azure Database for MariaDB biedt de mogelijkheid om de server te herstellen naar een eerder tijdstip, door het maken van een kopie van de databases op de nieuwe server. U kunt deze nieuwe server dan gebruiken om de verwijderde gegevens te herstellen. Met de volgende stappen wordt de voorbeeldserver hersteld naar een tijdstip waarop de tabel nog niet was toegevoegd:
 
-1. Zoek uw Azure Database voor MariaDB-server in Azure Portal. Selecteer op de pagina **Overzicht** de optie **Herstellen** .
+1. Zoek uw Azure Database voor MariaDB-server in Azure Portal. Selecteer op de pagina **Overzicht** de optie **Herstellen**.
 
    ![Een database herstellen](./media/tutorial-design-database-using-portal/1-restore-a-db.png)
 

@@ -1,17 +1,17 @@
 ---
 title: Replicatie van gegevens configureren-Azure Database for MySQL
 description: In dit artikel wordt beschreven hoe u Replicatie van inkomende gegevens instelt voor Azure Database for MySQL.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/29/2020
-ms.openlocfilehash: 58df34ae6a6ff3304304da192b429ac83c1b55c3
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: b7f1f16b5182658f42ad6594aace22fb5a1a80fc
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544032"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541399"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Azure Database for MySQL Replicatie van inkomende gegevens configureren
 
@@ -20,7 +20,7 @@ In dit artikel wordt beschreven hoe u [replicatie van inkomende gegevens](concep
 > [!NOTE]
 > Oordeelloze communicatie
 >
-> Microsoft biedt ondersteuning voor een gevarieerde en insluitende omgeving. Dit artikel bevat verwijzingen naar het woord _slaaf_ . In de [stijlgids voor oordeelloze communicatie](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) wordt dit woord herkend als uitsluitend. Het woord wordt in dit artikel gebruikt voor consistentie, omdat het momenteel het woord is dat wordt weergegeven in de software. Wanneer de software is bijgewerkt om het woord te verwijderen, wordt dit artikel ook bijgewerkt zodat het is afgestemd.
+> Microsoft biedt ondersteuning voor een gevarieerde en insluitende omgeving. Dit artikel bevat verwijzingen naar het woord _slaaf_. In de [stijlgids voor oordeelloze communicatie](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) wordt dit woord herkend als uitsluitend. Het woord wordt in dit artikel gebruikt voor consistentie, omdat het momenteel het woord is dat wordt weergegeven in de software. Wanneer de software is bijgewerkt om het woord te verwijderen, wordt dit artikel ook bijgewerkt zodat het is afgestemd.
 >
 
 Voor het maken van een replica in de Azure Database for MySQL-service, [replicatie van inkomende gegevens](concepts-data-in-replication.md)  synchroniseert gegevens van een bron-mysql-server on-premises, in virtuele machines (vm's) of in Cloud database services. Replicatie van binnenkomende gegevens is gebaseerd op het binaire logbestand (binlog) met replicatie op basis van positie eigen aan MySQL. Meer informatie over binlog-replicatie vindt u in het [overzicht van MySQL binlog-replicatie](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html).
@@ -134,17 +134,17 @@ De volgende stappen maken en configureren van de MySQL-server die on-premises wo
 
    **MySQL Workbench**
 
-   Als u de replicatie functie in MySQL Workbench wilt maken, opent u het paneel **gebruikers en bevoegdheden** vanuit het deel venster **beheer** . Klik vervolgens op **account toevoegen** . 
+   Als u de replicatie functie in MySQL Workbench wilt maken, opent u het paneel **gebruikers en bevoegdheden** vanuit het deel venster **beheer** . Klik vervolgens op **account toevoegen**. 
  
    :::image type="content" source="./media/howto-data-in-replication/users_privileges.png" alt-text="Gebruikers en bevoegdheden":::
 
    Typ de gebruikers naam in het veld **aanmeldings naam** . 
 
-   :::image type="content" source="./media/howto-data-in-replication/syncuser.png" alt-text="Gebruikers en bevoegdheden":::
+   :::image type="content" source="./media/howto-data-in-replication/syncuser.png" alt-text="Gebruiker synchroniseren":::
  
-   Klik op het paneel **beheerders rollen** en selecteer vervolgens **replicatie-slave** in de lijst met **globale bevoegdheden** . Klik vervolgens op **Toep assen** om de replicatie functie te maken.
+   Klik op het paneel **beheerders rollen** en selecteer vervolgens **replicatie-slave** in de lijst met **globale bevoegdheden**. Klik vervolgens op **Toep assen** om de replicatie functie te maken.
 
-   :::image type="content" source="./media/howto-data-in-replication/replicationslave.png" alt-text="Gebruikers en bevoegdheden":::
+   :::image type="content" source="./media/howto-data-in-replication/replicationslave.png" alt-text="Replicatie-slave":::
 
 1. Stel de bron server in op de modus alleen-lezen
 
@@ -164,7 +164,7 @@ De volgende stappen maken en configureren van de MySQL-server die on-premises wo
    ```
    De resultaten moeten er als volgt uitzien. Noteer de naam van het binaire bestand zoals deze wordt gebruikt in latere stappen.
 
-   :::image type="content" source="./media/howto-data-in-replication/masterstatus.png" alt-text="Gebruikers en bevoegdheden":::
+   :::image type="content" source="./media/howto-data-in-replication/masterstatus.png" alt-text="Resultaten van de hoofd status":::
  
 ## <a name="dump-and-restore-source-server"></a>Bron server dumpen en herstellen
 

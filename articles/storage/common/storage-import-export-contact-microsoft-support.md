@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/29/2018
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: ee30e9bba35ad39606fbe201c49e4eed3e656c97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fdee5420fa6a50974250c45260a3727755bfcba7
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88548270"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542589"
 ---
 # <a name="open-a-support-ticket-for-an-importexport-job"></a>Open een ondersteunings ticket voor een import/export-taak
 
@@ -30,34 +30,34 @@ Voer de volgende stappen uit om een ondersteunings aanvraag te maken:
      
     ![Basisbeginselen](./media/storage-import-export-contact-microsoft-support/import-export-support1.png)
    
-2. In **nieuwe ondersteunings aanvraag**selecteert u **basis principes**. Voer de volgende stappen uit in de **basis beginselen**:
+2. In **nieuwe ondersteunings aanvraag** selecteert u **basis principes**. Voer de volgende stappen uit in de **basis beginselen** :
     
     1. Selecteer in de vervolg keuzelijst **probleem type** de optie **technisch**.
     2. Kies uw **abonnement**.
-    3. Onder **service**, Controleer **Mijn services**. In de vervolg keuzelijst kunt u een van de opties voor het beheer van het **opslag account**, de **BLOB**of het **bestand**selecteren. 
-        - Als u **beheer van opslag accounts**kiest, selecteert u **resource**en **ondersteunings plan**.
+    3. Onder **service** , Controleer **Mijn services**. In de vervolg keuzelijst kunt u een van de opties voor het beheer van het **opslag account** , de **BLOB** of het **bestand** selecteren. 
+        - Als u **beheer van opslag accounts** kiest, selecteert u **resource** en **ondersteunings plan**.
             ![Opslag account beheer kiezen](./media/storage-import-export-contact-microsoft-support/import-export-support3.png)
-        - Als u **BLOB**kiest, selecteert u **resource**, **container namen** (optioneel) en **ondersteunings schema**.
+        - Als u **BLOB** kiest, selecteert u **resource** , **container namen** (optioneel) en **ondersteunings schema**.
             ![BLOB kiezen](./media/storage-import-export-contact-microsoft-support/import-export-support2.png)
-        - Als u **bestand**kiest, selecteert u **resource**, **Bestands share namen** (optioneel) en **ondersteunings plan** ![ bestand kiezen](./media/storage-import-export-contact-microsoft-support/import-export-support4.png)
-    4. Selecteer **Next**.
+        - Als u **bestand** kiest, selecteert u **resource** , **Bestands share namen** (optioneel) en **ondersteunings plan** ![ bestand kiezen](./media/storage-import-export-contact-microsoft-support/import-export-support4.png)
+    4. Selecteer **Volgende**.
 
-3. Selecteer in **nieuwe ondersteunings aanvraag** **stap 2-probleem**. Voer de volgende stappen uit om het **probleem te verhelpen**:
+3. Selecteer in **nieuwe ondersteunings aanvraag** **stap 2-probleem**. Voer de volgende stappen uit om het **probleem te verhelpen** :
     
     1. Kies de **Ernst** als een **C-minimale impact**. Ondersteuning wordt indien nodig bijgewerkt.
     2. Selecteer het **probleem type** als **gegevens migratie**.
     3. Kies de **categorie** als **import-export**.
     4. Geef een **titel** op voor het probleem en meer **Details**.
     5. Geef de begin datum en-tijd op voor het probleem.
-    6. Selecteer in het **bestand uploaden**het mappictogram om te bladeren naar de andere bestanden die u wilt uploaden.
+    6. Selecteer in het **bestand uploaden** het mappictogram om te bladeren naar de andere bestanden die u wilt uploaden.
     7. Controleer de **Diagnostische gegevens voor delen**.
-    8. Selecteer **Next**.
+    8. Selecteer **Volgende**.
 
        ![Probleem](./media/storage-import-export-contact-microsoft-support/import-export-support5.png)
 
-4. In **nieuwe ondersteunings aanvraag**selecteert u **stap 3-contact gegevens**. Voer bij **contact gegevens**de volgende stappen uit:
+4. In **nieuwe ondersteunings aanvraag** selecteert u **stap 3-contact gegevens**. Voer bij **contact gegevens** de volgende stappen uit:
 
-   1. Geef in de **contact opties**uw favoriete contact wijze op (telefoon of e-mail) en de taal. De reactie tijd wordt automatisch geselecteerd op basis van uw abonnement.
+   1. Geef in de **contact opties** uw favoriete contact wijze op (telefoon of e-mail) en de taal. De reactie tijd wordt automatisch geselecteerd op basis van uw abonnement.
    2. Geef in de contact gegevens uw naam, e-mail adres, optionele contact persoon, land/regio. Selecteer het selectie vakje **wijzigingen in contact persoon opslaan voor toekomstige ondersteunings aanvragen** .
    3. Selecteer **Maken**.
    
@@ -74,15 +74,15 @@ Nadat u een ondersteuningsticket hebt gemaakt, kunt u de voortgang van het ticke
 
 1. Als u naar de pagina Help en ondersteuning wilt gaan, bladert u naar **> Help en ondersteuning**.
 
-    ![Ondersteunings aanvragen beheren](./media/storage-import-export-contact-microsoft-support/manage-support-ticket2.png)   
+    ![Scherm afbeelding toont het dialoog venster Help.](./media/storage-import-export-contact-microsoft-support/manage-support-ticket2.png)   
 
-2. In **Help en ondersteuning**wordt een lijst in tabel vorm met **recente ondersteunings aanvragen** weer gegeven.
+2. In **Help en ondersteuning** wordt een lijst in tabel vorm met **recente ondersteunings aanvragen** weer gegeven.
 
-    ![Ondersteunings aanvragen beheren](./media/storage-import-export-contact-microsoft-support/manage-support-ticket1.png) 
+    ![Scherm afbeelding toont de pagina Help en ondersteuning met uw ondersteunings aanvraag in een open status.](./media/storage-import-export-contact-microsoft-support/manage-support-ticket1.png) 
 
 3. Selecteer en klik op een ondersteunings aanvraag. U kunt de status en de Details voor deze aanvraag bekijken. Selecteer **+ Nieuw bericht** als u deze aanvraag wilt opvolgen.
 
-    ![Ondersteunings aanvragen beheren](./media/storage-import-export-contact-microsoft-support/manage-support-ticket3.png) 
+    ![Scherm afbeelding toont nieuw bericht geselecteerd voor deze aanvraag.](./media/storage-import-export-contact-microsoft-support/manage-support-ticket3.png) 
 
 
 ## <a name="next-steps"></a>Volgende stappen

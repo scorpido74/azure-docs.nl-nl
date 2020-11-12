@@ -1,17 +1,17 @@
 ---
 title: Server parameters-Azure Database for MariaDB
 description: Dit onderwerp bevat richt lijnen voor het configureren van server parameters in Azure Database for MariaDB.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: b5064e3cef7def1aca5aa0c97d031d519fd610cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4432178d5908d4360cda05a62b62d05687be4235
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91626391"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541127"
 ---
 # <a name="server-parameters-in-azure-database-for-mariadb"></a>Server parameters in Azure Database for MariaDB
 
@@ -82,7 +82,7 @@ Raadpleeg de [MariaDB-documentatie](https://mariadb.com/kb/en/innodb-system-vari
 
 MariaDB slaat de InnoDB-tabel op in verschillende tablespaces op basis van de configuratie die u hebt gemaakt tijdens het maken van de tabel. De [systeem-tabel ruimte](https://mariadb.com/kb/en/innodb-system-tablespaces/) is het opslag gebied voor de InnoDB-data dictionary. Een [bestand-per-tabel tabel ruimte](https://mariadb.com/kb/en/innodb-file-per-table-tablespaces/) bevat gegevens en indexen voor één InnoDB-tabel en wordt opgeslagen in het bestands systeem in een eigen gegevens bestand. Dit gedrag wordt bepaald door de `innodb_file_per_table` para meter server. Instelling `innodb_file_per_table` om `OFF` ervoor te zorgen dat InnoDB tabellen maakt in de ruimte van het systeem. Anders maakt InnoDB tabellen in file-per-tabel tablespaces.
 
-Azure Database for MariaDB ondersteunt Maxi maal **1 TB**in één gegevens bestand. Als de grootte van de data base groter is dan 1 TB, maakt u de tabel in [innodb_file_per_table](https://mariadb.com/kb/en/innodb-system-variables/#innodb_file_per_table) tabel ruimte. Als u één tabel grootte hebt die groter is dan 1 TB, moet u de partitie tabel gebruiken.
+Azure Database for MariaDB ondersteunt Maxi maal **1 TB** in één gegevens bestand. Als de grootte van de data base groter is dan 1 TB, maakt u de tabel in [innodb_file_per_table](https://mariadb.com/kb/en/innodb-system-variables/#innodb_file_per_table) tabel ruimte. Als u één tabel grootte hebt die groter is dan 1 TB, moet u de partitie tabel gebruiken.
 
 ### <a name="join_buffer_size"></a>join_buffer_size
 
@@ -106,7 +106,7 @@ Raadpleeg de [MariaDB-documentatie](https://mariadb.com/kb/en/server-system-vari
 
 ### <a name="max_connections"></a>max_connections
 
-|**Prijscategorie**|**vCore (s)**|**Standaardwaarde**|**Minimumwaarde**|**Maximumwaarde**|
+|**Prijscategorie**|**vCore (s)**|**Standaardwaarde**|**Minimum waarde**|**Maximum waarde**|
 |---|---|---|---|---|
 |Basic|1|50|10|50|
 |Basic|2|100|10|100|

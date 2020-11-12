@@ -1,18 +1,18 @@
 ---
 title: Lees replica's beheren-Azure PowerShell-Azure Database for MySQL
 description: Meer informatie over het instellen en beheren van Lees replica's in Azure Database for MySQL met behulp van Power shell.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 8/24/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e9c8ce7519c6e2c84ef47fc78897c4b67b89e56a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe33730fc11bfc18b7d67471e1077fb9490385d4
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540996"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541926"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-powershell"></a>Lees replica's maken en beheren in Azure Database for MySQL met behulp van Power shell
 
@@ -54,10 +54,10 @@ Get-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 
 Voor de `New-AzMySqlReplica` opdracht zijn de volgende para meters vereist:
 
-| Instelling | Voorbeeldwaarde | Beschrijving  |
+| Instelling | Voorbeeldwaarde | Beschrijving  |
 | --- | --- | --- |
-| ResourceGroupName |  myResourceGroup |  De resource groep waar de replica-server is gemaakt.  |
-| Naam | mydemoreplicaserver | De naam van de nieuwe replica server die wordt gemaakt. |
+| ResourceGroupName |  myResourceGroup |  De resource groep waar de replica-server is gemaakt.  |
+| Name | mydemoreplicaserver | De naam van de nieuwe replica server die wordt gemaakt. |
 
 Gebruik de **locatie** parameter om een lees replica te maken. In het volgende voor beeld wordt een replica gemaakt in de regio **VS-West** .
 
@@ -83,9 +83,9 @@ Get-AzMySqlReplica -ResourceGroupName myresourcegroup -ServerName mydemoserver
 
 Voor de `Get-AzMySqlReplica` opdracht zijn de volgende para meters vereist:
 
-| Instelling | Voorbeeldwaarde | Beschrijving  |
+| Instelling | Voorbeeldwaarde | Beschrijving  |
 | --- | --- | --- |
-| ResourceGroupName |  myResourceGroup |  De resource groep waar de replica-server wordt gemaakt.  |
+| ResourceGroupName |  myResourceGroup |  De resource groep waar de replica-server wordt gemaakt.  |
 | ServerName | mydemoserver | De naam of ID van de bron server. |
 
 ### <a name="delete-a-replica-server"></a>Een replica server verwijderen

@@ -1,19 +1,19 @@
 ---
 title: Firewall regels beheren-Azure CLI-Azure Database for MariaDB
 description: In dit artikel wordt beschreven hoe u Azure Database for MariaDB firewall regels maakt en beheert met behulp van de Azure CLI-opdracht regel.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2ffbacd9167f6c73fb2815f76f56bfe2ae08eca9
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: ef04e2b4c820c14ea7df6c35ecb0189ef31ef7dc
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425945"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540896"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-firewall-rules-by-using-the-azure-cli"></a>Azure Database for MariaDB firewall regels maken en beheren met behulp van de Azure CLI
 Firewall regels op server niveau kunnen worden gebruikt om de toegang tot een Azure Database for MariaDB server te beheren vanuit een specifiek IP-adres of een bereik met IP-adressen. Met behulp van handige Azure CLI-opdrachten kunt u firewall regels maken, bijwerken, verwijderen en weer geven om uw server te beheren. Zie [Azure database for MariaDB Server firewall-regels](./concepts-firewall-rules.md)voor een overzicht van Azure database for MariaDB firewalls.
@@ -28,11 +28,11 @@ Regels voor Virtual Network (VNet) kunnen ook worden gebruikt voor het beveilige
 De opdracht **AZ mariadb Server firewall-Rule** wordt gebruikt vanuit de Azure CLI om firewall regels te maken, verwijderen, weer geven en bijwerken.
 
 Opdrachten:
-- **maken**: Maak een firewall regel voor Azure MariaDB server.
-- **verwijderen**: Verwijder een Azure MariaDB Server-firewall regel.
-- **lijst**: Geef de firewall regels van de Azure MariaDB-server weer.
-- **weer geven**: de details van een Azure MariaDB Server-firewall regel weer geven.
-- **Update**: een Azure MariaDB Server-firewall regel bijwerken.
+- **maken** : Maak een firewall regel voor Azure MariaDB server.
+- **verwijderen** : Verwijder een Azure MariaDB Server-firewall regel.
+- **lijst** : Geef de firewall regels van de Azure MariaDB-server weer.
+- **weer geven** : de details van een Azure MariaDB Server-firewall regel weer geven.
+- **Update** : een Azure MariaDB Server-firewall regel bijwerken.
 
 ## <a name="sign-in-to-azure-and-list-your-azure-database-for-mariadb-servers"></a>Meld u aan bij Azure en vermeld uw Azure Database for MariaDB-servers
 Maak veilig verbinding met Azure CLI met uw Azure-account met behulp van de opdracht **AZ login** .

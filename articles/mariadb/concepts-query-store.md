@@ -1,17 +1,17 @@
 ---
 title: Query Store-Azure Database for MariaDB
 description: Meer informatie over de functie query Store in Azure Database for MariaDB om de prestaties na verloop van tijd bij te houden.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: a502638744009fc34a7f0a27f8034b89d2c8fa26
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bca995f8b2cea33266e032b543abb18ee7140f3f
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79527806"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541178"
 ---
 # <a name="monitor-azure-database-for-mariadb-performance-with-query-store"></a>Azure Database for MariaDB prestaties bewaken met query Store
 
@@ -36,12 +36,12 @@ Query Store is een opt-in-functie, waardoor deze niet standaard actief is op een
 1. Meld u aan bij de Azure Portal en selecteer uw Azure Database for MariaDB-server.
 1. Selecteer **server parameters** in de sectie **instellingen** van het menu.
 1. Zoek de para meter query_store_capture_mode.
-1. Stel de waarde in op alles en **Sla**deze op.
+1. Stel de waarde in op alles en **Sla** deze op.
 
 Wachtende statistieken in het query archief inschakelen:
 
 1. Zoek de para meter query_store_wait_sampling_capture_mode.
-1. Stel de waarde in op alles en **Sla**deze op.
+1. Stel de waarde in op alles en **Sla** deze op.
 
 Maxi maal 20 minuten toestaan dat de eerste batch met gegevens persistent is in de MySQL-data base.
 
@@ -87,7 +87,7 @@ Wanneer query Store is ingeschakeld, worden gegevens opgeslagen in een periode v
 
 De volgende opties zijn beschikbaar voor het configureren van query Store-para meters.
 
-| **Parameter** | **Beschrijving** | **Prijs** | **Bereik** |
+| **Parameter** | **Beschrijving** | **Standaard** | **Bereik** |
 |---|---|---|---|
 | query_store_capture_mode | De functie query Store in-of uitschakelen op basis van de waarde. Opmerking: als performance_schema is uitgeschakeld, wordt performance_schema en een subset van de performance schema-instrumenten die voor deze functie zijn vereist query_store_capture_mode, ingeschakeld. | ALL | GEEN, ALLE |
 | query_store_capture_interval | De interval voor het vastleggen van de query opslag in minuten. Hiermee kunt u het interval opgeven waarin de metrische gegevens van de query worden geaggregeerd | 15 | 5 - 60 |
@@ -96,7 +96,7 @@ De volgende opties zijn beschikbaar voor het configureren van query Store-para m
 
 De volgende opties zijn specifiek van toepassing op wacht statistieken.
 
-| **Parameter** | **Beschrijving** | **Prijs** | **Bereik** |
+| **Parameter** | **Beschrijving** | **Standaard** | **Bereik** |
 |---|---|---|---|
 | query_store_wait_sampling_capture_mode | Hiermee kunt u de wacht statistieken in-of uitschakelen. | GEEN | GEEN, ALLE |
 | query_store_wait_sampling_frequency | Wijzigt de frequentie van wacht-sampling in seconden. 5 tot 300 seconden. | 30 | 5-300 |

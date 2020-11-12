@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: 0afd1f2f8dd06c3c224d64304eec2e18489a7e81
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 54b15d5865b1abb0d624628ed4b5c9892ab04d41
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489128"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542130"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Opmerkingen bij de release Azure Machine Learning
 
@@ -98,7 +98,7 @@ Meer informatie over de [segmentatie van afbeeldings instanties](how-to-label-im
     + Het pakket voor de azureml-uitleg-model is officieel afgeschaft
   + **azureml-mlflow**
     + Er is een fout opgelost in mlflow. projects. kan niet worden uitgevoerd op de azureml-back-end, waarbij de voltooiings status niet correct is verwerkt.
-  + **azureml-pipeline-core**
+  + **azureml-pijp lijn-kern**
     + Voeg ondersteuning toe voor het maken, weer geven en ophalen van een pipeline-eind punt op basis van een pijplijn.
     +  De documentatie van PipelineData.as_dataset is verbeterd met een ongeldig gebruik voor beeld: als u PipelineData.as_dataset onjuist gebruikt, wordt er nu een ValueException gegenereerd
     + De HyperDriveStep pipelines-notebook is gewijzigd om het beste model binnen een PipelineStep te registreren, direct nadat de HyperDriveStep is uitgevoerd.
@@ -107,6 +107,16 @@ Meer informatie over de [segmentatie van afbeeldings instanties](how-to-label-im
   + **azureml-train-automl-client**
     + Er is een probleem opgelost waarbij get_output een XGBoostError kan veroorzaken.
 
+### <a name="azure-machine-learning-studio-notebooks-experience-october-update"></a>Ervaring met Azure Machine Learning Studio notitie blokken (update van oktober)
++ **Nieuwe functies**
+  + [Volledige ondersteuning voor virtueel netwerk](https://docs.microsoft.com/azure/machine-learning/how-to-enable-studio-virtual-network)
+  + [Focus modus](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#focus-mode)
+  + Notitie blokken opslaan CTRL-S
+  + Regel nummers
+
++ **Oplossingen en verbeteringen voor oplossingen**
+  + Verbetering van de snelheid en kernel-betrouw baarheid
+  + UI-updates voor Jupyter-widget
 
 ## <a name="2020-10-12"></a>2020-10-12
 
@@ -158,7 +168,7 @@ Meer informatie over de [segmentatie van afbeeldings instanties](how-to-label-im
     + het visualisatie dashboard is verwijderd uit het contrib-pakket, de uitleg-client is verplaatst naar het pakket voor de azureml-interpreter en afgeschaft in het pakket en de notebooks die zijn bijgewerkt met een verbeterde API
     + pakket voor azureml-interpretes bijgewerkt zodat het afhankelijk is van interpreteren-Community 0.15.0
     + pypi-pakket beschrijvingen voor azureml interpreteren, azureml-uitleggen-model, azureml-contrib-interpreteren en azureml-tensorboard
-  + **azureml-pijp lijn-kern**
+  + **azureml-pipeline-core**
     +  Probleem met de vaste pijp lijn waarbij `OutputFileDatasetConfig` het systeem niet meer reageert wanneer het `register_on_complete` wordt aangeroepen met de `name` para meter die is ingesteld op een vooraf bestaande gegevenssetnaam.
   + **azureml-pipeline-steps**
     + Verouderde databricks-notebooks verwijderd.
@@ -202,7 +212,7 @@ Meer informatie over de [segmentatie van afbeeldings instanties](how-to-label-im
     + Ondersteuning voor MLflow-model register
     + Toegevoegde RBAC-ondersteuning voor AzureML-MLflow bewerkingen 
     
-  + **azureml-pipeline-core**
+  + **azureml-pijp lijn-kern**
     + De documentatie van de PipelineOutputFileDataset.parse_ *-methoden is verbeterd.
     + Nieuwe Kusto-stap en Kusto Compute-doel.
     + De gegeven Swaggerurl-eigenschap voor pijplijn entiteit via die gebruiker kan de schema definitie voor het gepubliceerde pipeline-eind punt zien.
@@ -249,7 +259,7 @@ Meer informatie over de [segmentatie van afbeeldings instanties](how-to-label-im
     + Los een fout op in Dataset.get_by_name waarmee de labels voor de nieuwste gegevensset-versie worden weer gegeven, zelfs wanneer een specifieke oudere versie is opgehaald.
   + **azureml-interpret**
     + Er zijn waarschijnlijke uitvoer waarden toegevoegd aan Shap Score-uitleg in azureml-Interpreting op basis van shap_values_output para meter van de oorspronkelijke uitleger.
-  + **azureml-pijp lijn-kern**
+  + **azureml-pipeline-core**
     + Verbeterde `PipelineOutputAbstractDataset.register` documentatie.
   + **azureml-train-automl-client**
     + Geüpgraded AutoML-afhankelijkheden: `scikit-learn` (nu 0.22.1), `pandas` (nu 0.25.1), `numpy` (nu 1.18.2).
@@ -425,7 +435,7 @@ Meer informatie over de [segmentatie van afbeeldings instanties](how-to-label-im
     + _With_auth param uit ws.get_mlflow_tracking_uri ()
   + **azureml-opendatasets**
     + Recent gepubliceerde Covid-19 tracking-gegevens sets zijn nu beschikbaar met de SDK
-  + **azureml-pijp lijn-kern**
+  + **azureml-pipeline-core**
     + Waarschuwing voor afmelden als ' azureml-defaults ' niet is opgenomen als onderdeel van PIP-afhankelijkheid
     + De weer gave van notities verbeteren.
     + Er is ondersteuning toegevoegd voor geciteerde regel einden bij het parseren van bestanden met scheidings tekens in PipelineOutputFileDataset.
@@ -462,7 +472,7 @@ Meer informatie over de [segmentatie van afbeeldings instanties](how-to-label-im
     + Reken type van CmAk wordt ondersteund. U kunt uw eigen AKS-cluster toevoegen aan de werk ruimte voor trainings taken.
   + **azureml-contrib-notebook**
     + Doc-verbeteringen in het contrib-notebook pakket.
-  + **azureml-contrib-pijp lijn-stappen**
+  + **azureml-contrib-pipeline-steps**
     + Doc-verbeteringen in het pakket voor azureml-contrib--pipeline-Steps.
   + **azureml-core**
     + Set_connection toevoegen, get_connection, list_connections, delete_connection functies voor de klant voor het uitvoeren van de werk ruimte verbindings resource
@@ -490,7 +500,7 @@ Meer informatie over de [segmentatie van afbeeldings instanties](how-to-label-im
     + Voegt ondersteuning toe voor het AML-model register met MLFlow.
   + **azureml-opendatasets**
     + Ondersteuning toegevoegd voor python 3,8
-  + **azureml-pipeline-core**
+  + **azureml-pijp lijn-kern**
     + `PipelineDataset`De documentatie is bijgewerkt om er een interne klasse van te maken.
     + ParallelRunStep-updates om meerdere waarden voor één argument te accepteren, bijvoorbeeld: '--group_column_names ', ' Kol1 ', ' col2 ', ' Col3 '
     + De passthru_automl_config vereiste voor het gebruik van tussenliggende gegevens met AutoMLStep in pijp lijnen is verwijderd.
@@ -814,7 +824,7 @@ Toegang tot de volgende webgebaseerde hulp middelen voor ontwerpen vanuit Studio
     + Er is een bovengrens voor de bestands grootte van de visualisatie gegevens op geüploade uitleg toegevoegd.
   + **azureml-train-automl-client**
     + Expliciet controleren op label_column_name & weight_column_name para meters voor AutoMLConfig is van het type teken reeks.
-  + **azureml-contrib-pijp lijn-stappen**
+  + **azureml-contrib-pipeline-steps**
     + ParallelRunStep ondersteunt nu dataset als pijplijn parameter. De gebruiker kan een pijp lijn maken met de voorbeeld gegevensset en kan de invoer gegevensset van hetzelfde type (bestand of tabellaire) wijzigen voor een nieuwe pijplijn uitvoering.
 
   
@@ -1080,11 +1090,11 @@ Toegang tot de volgende webgebaseerde hulp middelen voor ontwerpen vanuit Studio
     + De gebruiker kan nu een waarde opgeven voor de verificatie sleutel bij het opnieuw genereren van sleutels voor webservices.
   + **azureml-interpret**
     + Bijgewerkt azureml-interpreteren om afhankelijk te zijn van interprete-Community 0.5.0
-  + **azureml-pipeline-core**
+  + **azureml-pijp lijn-kern**
     + Er is een fout opgelost waarbij PythonScriptStep resultaten onjuist opnieuw kunnen worden gebruikt, ondanks het wijzigen van de lijst met argumenten
   + **azureml-pipeline-steps**
     + Voor beeld van toegevoegde documentatie voor gegevensset als PythonScriptStep-invoer
-  + **azureml-contrib-pijp lijn-stappen**
+  + **azureml-contrib-pipeline-steps**
     + Para meters die in ParallelRunConfig worden door gegeven, kunnen worden overschreven door de pijplijn parameters nu door te geven. Nieuwe pijplijn parameters die worden ondersteund aml_mini_batch_size, aml_error_threshold, aml_logging_level, aml_run_invocation_timeout (aml_node_count en aml_process_count_per_node maken al deel uit van een eerdere versie).
   
 ## <a name="2020-01-21"></a>2020-01-21
@@ -1095,7 +1105,7 @@ Toegang tot de volgende webgebaseerde hulp middelen voor ontwerpen vanuit Studio
   + **azureml-core**
     + Het huidige kern gebruik en de quotum limiet voor AmlCompute-resources in een bepaalde werk ruimte en een abonnement ophalen
   
-  + **azureml-contrib-pijp lijn-stappen**
+  + **azureml-contrib-pipeline-steps**
     + Gebruikers toestaan om tabellaire gegevensset door te geven als een tussentijds resultaat van de vorige stap naar parallelrunstep
 
 + **Oplossingen en verbeteringen voor oplossingen**
@@ -1166,7 +1176,7 @@ Toegang tot de volgende webgebaseerde hulp middelen voor ontwerpen vanuit Studio
     + Er is een fout opgelost waarbij een probleem `TabularDataset.to_pandas_dataframe` niet meer wordt weer gegeven in een alternatieve lezer en een waarschuwing wordt afgedrukt.
   + **azureml-uitleg-model**
     + Shap-afhankelijkheid uitstellen om te interpreteren-community van azureml-interpret
-  + **azureml-pipeline-core**
+  + **azureml-pijp lijn-kern**
     + Nieuwe stap voor de pijp lijn toegevoegd `NotebookRunnerStep` voor het uitvoeren van een lokaal notitie blok als een stap in de pijp lijn.
     + Afgeschafte get_all functies verwijderd voor PublishedPipelines, planningen en PipelineEndpoints
   + **azureml-train-automl-client**
@@ -1282,7 +1292,7 @@ Toegang tot de volgende webgebaseerde hulp middelen voor ontwerpen vanuit Studio
     + Voeg logboek registratie toe van de uitzonde ring die ervoor zorgt dat een lokale uitvoering voor tijdig mislukt.
   + **azureml-train-core**
     + U kunt resume_from uitvoeren in de berekening van de best onderliggende uitvoeringen van automatische afstemming-afstemming.
-  + **azureml-pipeline-core**
+  + **azureml-pijp lijn-kern**
     + Vaste parameter verwerking in pijplijn argument constructie.
     + De pijplijn beschrijving en de yaml-para meter voor het stap type zijn toegevoegd.
     + Nieuwe YAML-indeling voor pijplijn stap en toegevoegde waarschuwing voor afschaffing van oude indeling.
@@ -1411,7 +1421,7 @@ Azure Machine Learning is nu een resource provider voor Event Grid, kunt u machi
     + Ondersteuning voor wekelijkse en maandelijkse monitor planning, naast dagelijks voor gegevensset-monitors.
     + Ondersteuning voor backfill voor het analyseren van historische gegevens voor gegevensset-monitors.
     + Verschillende oplossingen voor oplossingen
-  + [**azureml-pipeline-core**](/python/api/azureml-pipeline-core)
+  + [**azureml-pijp lijn-kern**](/python/api/azureml-pipeline-core)
     + azureml-dataprep is niet meer nodig om een Azure Machine Learning pijp lijn uit te voeren vanuit het pijplijn `yaml` bestand.
   + [**azureml-Train-automl**](/python/api/azureml-train-automl-runtime/)
     + Voeg de standaard waarden van azureml toe aan automatisch gegenereerde Conda env om het model implementatie fout op te lossen
@@ -1596,7 +1606,7 @@ Het tabblad experiment in de [nieuwe werkruimte Portal](https://ml.azure.com) is
     + Verbeterde documentatie voor uitleg over uitvoer in het classificatie scenario.
     + De mogelijkheid voor het uploaden van de voorspelde y-waarden is toegevoegd voor de uitleg voor de evaluatie voorbeelden. Hiermee ontgrendelt u nuttige visualisaties.
     + Er is een uitleg eigenschap toegevoegd aan MimicWrapper om het ophalen van de onderliggende MimicExplainer in te scha kelen.
-  + **azureml-pipeline-core**
+  + **azureml-pijp lijn-kern**
     + Er is een notitie blok toegevoegd om module, ModuleVersion en ModuleStep te beschrijven
   + **azureml-pipeline-steps**
     + RScriptStep toegevoegd ter ondersteuning van het uitvoeren van R-script via AML-pijp lijn.
@@ -1604,7 +1614,7 @@ Het tabblad experiment in de [nieuwe werkruimte Portal](https://ml.azure.com) is
   + **azureml-Train-automl**
     + Ondersteund training_data, validation_data, label_column_name, weight_column_name als invoer indeling voor gegevens
     + Er is een afschaffing bericht toegevoegd voor explain_model () en retrieve_model_explanations ()
-  + **[azureml-pijp lijn-kern](/python/api/azureml-pipeline-core)**
+  + **[azureml-pipeline-core](/python/api/azureml-pipeline-core)**
     + Er is een [notitie blok](https://aka.ms/pl-modulestep) toegevoegd om [module](/python/api/azureml-pipeline-core/azureml.pipeline.core.module%28class%29), [ModuleVersion en [ModuleStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.modulestep), te beschrijven.
   + **[azureml-pipeline-steps](/python/api/azureml-pipeline-steps)**
     + [RScriptStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.rscriptstep) toegevoegd ter ondersteuning van het uitvoeren van R-script via AML-pijp lijn.
@@ -1741,7 +1751,7 @@ Op het moment van deze release worden de volgende browsers ondersteund: Chrome, 
     + Versie controle toegevoegd aan lightgbm met afgedrukte waarschuwing als onderstaande ondersteunde versie
     + Geoptimaliseerd geheugen gebruik bij de batch verwerking van uitleg
     + AutoML-modellen retour neren nu AutoMLExceptions
-  + **azureml-pijp lijn-kern**
+  + **azureml-pipeline-core**
     + Er is ondersteuning toegevoegd om PipelineDrafts te maken, bij te werken en te gebruiken-kan worden gebruikt om onveranderlijke pijplijn definities te onderhouden en ze interactief te gebruiken om uit te voeren
   + **azureml-Train-automl**
     + Er is een functie gemaakt voor het installeren van specifieke versies van GPU-capable pytorch v 1.1.0, :::no-loc text="cuda"::: toolkit 9,0, pytorch-trans formaties, die vereist zijn om Bert/XLNet in te scha kelen in de externe python-runtime omgeving.
@@ -2032,7 +2042,7 @@ Op het moment van deze release worden de volgende browsers ondersteund: Chrome, 
     + Verbeterd resource gebruik van externe uitvoeringen die gebruikmaken van azureml. mlflow.
     + De documentatie van het pakket voor de azureml-mlflow is verbeterd.
     + Er is een probleem opgelost waarbij mlflow.log_artifacts (' my_dir ') artefacten opslaat onder ' my_dir/artifact-paths ' in plaats van ' artefact paden '.
-  + **azureml-pipeline-core**
+  + **azureml-pijp lijn-kern**
     + De para meter hash_paths voor alle pijplijn stappen is afgeschaft en wordt in de toekomst verwijderd. Standaard wordt de inhoud van de source_directory gehasht (behalve de bestanden in `.amlignore` of `.gitignore` )
     + Herverbetering van module en ModuleStep ter ondersteuning van Compute-specifieke modules, voor bereiding op RunConfiguration-integratie en andere wijzigingen voor het ontgrendelen van het gebruik van reken type-specifiek module in pijp lijnen.
   + **azureml-pipeline-steps**

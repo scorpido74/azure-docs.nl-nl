@@ -2,13 +2,13 @@
 title: Concepten-API Management
 description: Meer informatie over hoe API Management Api's beschermt die worden uitgevoerd op virtuele machines van Azure VMware Solution (Vm's)
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: f412ee81fc77435f2586a31c1bf6f6bdf22c66e2
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 10/27/2020
+ms.openlocfilehash: 958cc52c48d1121a69dca2fc901289ad1ed671cb
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92670334"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541960"
 ---
 # <a name="api-management-to-publish-and-protect-apis-running-on-azure-vmware-solution-based-vms"></a>API Management voor het publiceren en beveiligen van Api's die worden uitgevoerd op op Azure VMware-oplossingen gebaseerde Vm's
 
@@ -59,4 +59,4 @@ In een interne implementatie worden Api's blootgesteld aan hetzelfde API Managem
 * Extern verkeer voert Azure in via Application Gateway, dat gebruikmaakt van de externe beveiligingslaag voor API Management.
 
 
-:::image type="content" source="media/api-management/internal-deployment.png" alt-text="Externe implementatie-API Management voor Azure VMware-oplossing" lightbox="media/api-management/internal-deployment.png":::
+:::image type="content" source="media/api-management/internal-deployment.png" alt-text="Interne implementatie-API Management voor Azure VMware-oplossing" lightbox="media/api-management/internal-deployment.png":::

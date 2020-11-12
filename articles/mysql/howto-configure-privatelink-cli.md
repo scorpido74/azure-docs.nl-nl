@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 01/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a2ec1c609fc0562c6c8181a934e742daa9a5a4f9
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: da6a2b97d2656d56fa2aa0e7259fba433bd7b81e
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93241545"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541637"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-cli"></a>Een persoonlijke koppeling voor Azure Database for MySQL maken en beheren met CLI
 
@@ -21,11 +21,9 @@ Een privé-eindpunt is de fundamentele bouwsteen voor een Private Link in Azure.
 > [!NOTE]
 > De functie voor persoonlijke koppelingen is alleen beschikbaar voor Azure Database for MySQL servers in de prijs Categorieën Algemeen of geoptimaliseerd voor geheugen. Zorg ervoor dat de database server zich in een van deze prijs categorieën bevindt.
 
-## <a name="prerequisites"></a>Vereisten
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-Als u ervoor kiest om Azure CLI lokaal te installeren en te gebruiken, moet u voor deze snelstart versie 2.0.28 of hoger van Azure CLI uitvoeren. Voer `az --version` uit om na te gaan welke versie er is geïnstalleerd. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) voor installatie- of upgrade-informatie.
+- Voor dit artikel is versie 2.0.28 of hoger van de Azure CLI vereist. Als u Azure Cloud Shell gebruikt, is de nieuwste versie al geïnstalleerd.
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
@@ -130,9 +128,9 @@ Maak als volgt verbinding met de VM *myVm* van Internet:
 
 1. Voer in de zoekbalk van de portal *myVm* in.
 
-1. Selecteer de knop **Verbinding maken** . Na het selecteren van de knop **Verbinden** wordt **Verbinden met virtuele machine** geopend.
+1. Selecteer de knop **Verbinding maken**. Na het selecteren van de knop **Verbinden** wordt **Verbinden met virtuele machine** geopend.
 
-1. Selecteer **RDP-bestand downloaden** . In Azure wordt een *RDP* -bestand (Remote Desktop Protocol) gemaakt en het bestand wordt gedownload naar de computer.
+1. Selecteer **RDP-bestand downloaden**. In Azure wordt een *RDP* -bestand (Remote Desktop Protocol) gemaakt en het bestand wordt gedownload naar de computer.
 
 1. Open het *downloaded.rdp* -bestand.
 
@@ -143,15 +141,15 @@ Maak als volgt verbinding met de VM *myVm* van Internet:
         > [!NOTE]
         > Mogelijk moet u **Meer opties** > **Een ander account gebruiken** selecteren om de referenties op te geven die u hebt ingevoerd tijdens het maken van de VM.
 
-1. Selecteer **OK** .
+1. Selecteer **OK**.
 
-1. Er wordt mogelijk een certificaatwaarschuwing weergegeven tijdens het aanmelden. Als er een certificaatwaarschuwing wordt weergegeven, selecteert u **Ja** of **Doorgaan** .
+1. Er wordt mogelijk een certificaatwaarschuwing weergegeven tijdens het aanmelden. Als er een certificaatwaarschuwing wordt weergegeven, selecteert u **Ja** of **Doorgaan**.
 
 1. Wanneer het VM-bureaublad wordt weergegeven, minimaliseert u het om terug te gaan naar het lokale bureaublad.  
 
 ## <a name="access-the-mysql-server-privately-from-the-vm"></a>De MySQL-server privé openen vanuit de VM
 
-1. Open Power shell in de Extern bureaublad van *myVM* .
+1. Open Power shell in de Extern bureaublad van *myVM*.
 
 2. Voer  `nslookup mydemomysqlserver.privatelink.mysql.database.azure.com` in. 
 

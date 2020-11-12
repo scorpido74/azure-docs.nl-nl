@@ -1,19 +1,19 @@
 ---
 title: 'Zelfstudie: Een server ontwerpen - Azure PowerShell - Azure Database for MariaDB'
 description: In deze zelfstudie wordt uitgelegd hoe u een Azure Database for MariaDB-server en -database maakt en beheert met PowerShell.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.devlang: azurepowershell
 ms.topic: tutorial
 ms.date: 05/26/2020
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 8087da173c8d1df225456aea6efbdbe5ed8c48be
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 9b4500df459e4d4ef67f97dc4fa923988f30401b
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424927"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542470"
 ---
 # <a name="tutorial-design-an-azure-database-for-mariadb-using-powershell"></a>Zelfstudie: Een Azure Database for MariaDB ontwerpen met PowerShell
 
@@ -56,7 +56,7 @@ Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
 
 Maak een [Azure-resourcegroep](../azure-resource-manager/management/overview.md) met de cmdlet [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en groepsgewijs worden beheerd.
 
-In het volgende voorbeeld wordt een resourcegroep met de naam **myresourcegroup** gemaakt in de regio **US – West** .
+In het volgende voorbeeld wordt een resourcegroep met de naam **myresourcegroup** gemaakt in de regio **US – West**.
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myresourcegroup -Location westus
@@ -66,7 +66,7 @@ New-AzResourceGroup -Name myresourcegroup -Location westus
 
 Maak een Azure Database for MariaDB-server met de `New-AzMariaDbServer` cmdlet. Een server kan meerdere databases beheren. Een aparte database wordt doorgaans gebruikt voor elk project of voor elke gebruiker.
 
-In het volgende voorbeeld wordt een MariaDB-server gemaakt in de regio **US - west** . De server heeft de naam **mydemoserver** en bevindt zich in de resourcegroep **myresourcegroup** . De severbeheerder kan zich aanmelden met **myadmin** . De server is een Gen 5-server in de prijscategorie Algemeen en beschikt over twee vCores. Daarnaast is geografisch redundante back-ups ingeschakeld. Noteer het wachtwoord dat in de eerste regel van het voorbeeld wordt gebruikt, aangezien dit het wachtwoord voor het beheerdersaccount van de MariaDB-server is.
+In het volgende voorbeeld wordt een MariaDB-server gemaakt in de regio **US - west**. De server heeft de naam **mydemoserver** en bevindt zich in de resourcegroep **myresourcegroup**. De severbeheerder kan zich aanmelden met **myadmin**. De server is een Gen 5-server in de prijscategorie Algemeen en beschikt over twee vCores. Daarnaast is geografisch redundante back-ups ingeschakeld. Noteer het wachtwoord dat in de eerste regel van het voorbeeld wordt gebruikt, aangezien dit het wachtwoord voor het beheerdersaccount van de MariaDB-server is.
 
 > [!TIP]
 > Een servernaam wordt toegewezen aan een DNS-naam en moet wereldwijd uniek zijn in Azure.
@@ -104,7 +104,7 @@ New-AzMariaDbFirewallRule -Name AllowMyIP -ResourceGroupName myresourcegroup -Se
 
 ## <a name="get-the-connection-information"></a>De verbindingsgegevens ophalen
 
-Als u verbinding met uw server wilt maken, moet u hostgegevens en toegangsreferenties opgeven. Gebruik het volgende voorbeeld om de verbindingsgegevens te bepalen. Noteer de waarden voor **FullyQualifiedDomainName** en de **AdministratorLogin** .
+Als u verbinding met uw server wilt maken, moet u hostgegevens en toegangsreferenties opgeven. Gebruik het volgende voorbeeld om de verbindingsgegevens te bepalen. Noteer de waarden voor **FullyQualifiedDomainName** en de **AdministratorLogin**.
 
 ```azurepowershell-interactive
 Get-AzMariaDbServer -Name mydemoserver -ResourceGroupName myresourcegroup |

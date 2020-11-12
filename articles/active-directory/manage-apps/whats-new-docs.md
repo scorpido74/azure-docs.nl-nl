@@ -9,13 +9,12 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: CelesteDG
-services: active-directory
-ms.openlocfilehash: 257057c4688fcf75651df4250c601eb1f1a2e8a3
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 7c011c55728db53f0c64ac063c3372a610ef8f2f
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422600"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542453"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory toepassings beheer: wat is er nieuw
 
@@ -44,7 +43,7 @@ Welkom bij wat er nieuw is in Azure Active Directory documentatie voor toepassin
 ### <a name="new-articles"></a>Nieuwe artikelen
 - [Quickstart: Eenmalige aanmelding (SSO) op basis van OIDC instellen voor een toepassing in uw Azure Active Directory-tenant (Azure AD)](add-application-portal-setup-oidc-sso.md)
 - [Quickstart: Gebruikers toewijzen aan een app die gebruikmaakt van Azure AD als een id-provider](add-application-portal-assign-users.md)
-- [Wat is er nieuw in docs?](whats-new-docs.md)
+- [Wat is er nieuw in Docs?](whats-new-docs.md)
 
 
 ### <a name="updated-articles"></a>Bijgewerkte artikelen

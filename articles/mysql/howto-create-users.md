@@ -1,17 +1,17 @@
 ---
 title: Data bases en gebruikers maken-Azure Database for MySQL
 description: In dit artikel wordt beschreven hoe u nieuwe gebruikers accounts maakt om te communiceren met een Azure Database for MySQL-server.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 10/1/2020
-ms.openlocfilehash: 3e1f24b3ae6133241660751293f52fec63dfbe73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e934ede193d6efb9cc795c6b63cb485b88f792e
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91766878"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541416"
 ---
 # <a name="create-databases-and-users-in-azure-database-for-mysql"></a>Data bases en gebruikers maken in Azure Database for MySQL
 
@@ -20,9 +20,9 @@ ms.locfileid: "91766878"
 In dit artikel wordt beschreven hoe u gebruikers maakt in Azure Database for MySQL.
 
 > [!NOTE]
-> **Afwijking-vrije communicatie**
+> **Oordeelloze communicatie**
 >
-> Micro soft biedt ondersteuning voor een gevarieerde en inbegrips omgeving. Dit artikel bevat verwijzingen naar het woord *Slave*. De micro soft- [stijl gids voor beschik bare communicatie](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) herkent deze als een uitsluitend woord. Het woord wordt in dit artikel gebruikt voor consistentie omdat het het woord is dat momenteel wordt weer gegeven in de software. Wanneer de software is bijgewerkt om het woord te verwijderen, wordt dit artikel zodanig bijgewerkt dat het in uitlijning is.
+> Microsoft biedt ondersteuning voor een gevarieerde en insluitende omgeving. Dit artikel bevat verwijzingen naar het woord *slaaf*. In de [stijlgids voor oordeelloze communicatie](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) wordt dit woord herkend als uitsluitend. Het woord wordt in dit artikel gebruikt voor consistentie omdat het het woord is dat momenteel wordt weer gegeven in de software. Wanneer de software is bijgewerkt om het woord te verwijderen, wordt dit artikel ook bijgewerkt zodat het is afgestemd.
 >
 
 Wanneer u uw Azure Database for MySQL server voor het eerst hebt gemaakt, hebt u de gebruikers naam en het wacht woord voor de server beheerder opgegeven. Zie voor meer informatie deze [Snelstartgids](quickstart-create-mysql-server-database-using-azure-portal.md). U kunt de gebruikers naam van de server beheerder bepalen in de Azure Portal.
@@ -94,7 +94,7 @@ Nadat u een Azure Database for MySQL server hebt gemaakt, kunt u de eerste serve
    
    Als u niet zeker weet hoe u verbinding kunt maken, raadpleegt u [MySQL Workbench gebruiken om verbinding te maken en gegevens op te vragen](./connect-workbench.md).
 
-3. Bewerk de volgende SQL-code en voer deze uit. Vervang de waarde van de tijdelijke aanduiding door `new_master_user` de nieuwe gebruikers naam. Met deze syntaxis worden de vermelde bevoegdheden verleend voor alle database schema's (*.*) aan de gebruiker ( `new_master_user` in dit voor beeld).
+3. Bewerk de volgende SQL-code en voer deze uit. Vervang de waarde van de tijdelijke aanduiding door `new_master_user` de nieuwe gebruikers naam. Met deze syntaxis worden de vermelde bevoegdheden verleend voor alle database schema's ( *.* ) aan de gebruiker ( `new_master_user` in dit voor beeld).
 
    ```sql
    CREATE USER 'new_master_user'@'%' IDENTIFIED BY 'StrongPassword!';

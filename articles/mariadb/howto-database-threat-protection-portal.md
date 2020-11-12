@@ -1,17 +1,17 @@
 ---
 title: Advanced Threat Protection-Azure Portal-Azure Database for MariaDB
 description: Bedreigings beveiliging voor Azure Database for MariaDB detecteert afwijkende database activiteiten die duiden op mogelijke beveiligings dreigingen voor de data base.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 1b5a16a014892764ee26b524489a82744fe6ca82
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 7734feddabb1a4a86e7932da3ef4adc57352637e
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425960"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542691"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-mariadb"></a>Advanced Threat Protection voor Azure Database for MariaDB
 

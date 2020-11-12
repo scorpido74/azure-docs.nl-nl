@@ -1,7 +1,7 @@
 ---
 title: Wat is een werk ruimte?
 titleSuffix: Azure Machine Learning
-description: De werk ruimte is de resource op het hoogste niveau voor Azure Machine Learning. Het houdt een geschiedenis bij van alle trainings runs, waaronder Logboeken, metrische gegevens, uitvoer en een moment opname van uw scripts. U gebruikt deze informatie om te bepalen welke trainings uitvoering het beste model produceert
+description: De werk ruimte is de resource op het hoogste niveau voor Azure Machine Learning. Het houdt een geschiedenis bij van alle trainings runs, met Logboeken, metrische gegevens, uitvoer en een moment opname van uw scripts.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/22/2020
-ms.openlocfilehash: 1076b49a101d5657397ef12b8fac672d37e477b0
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 65cdf444386d1b10cf225010c55170e5b47b3eb4
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324793"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541348"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Wat is een Azure Machine Learning-werkruimte?
 

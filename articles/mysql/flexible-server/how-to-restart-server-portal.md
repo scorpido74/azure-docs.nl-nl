@@ -1,17 +1,17 @@
 ---
 title: Server opnieuw starten-Azure Portal-Azure Database for MySQL-flexibele server
 description: In dit artikel wordt beschreven hoe u een Azure Database for MySQL flexibele server opnieuw kunt opstarten met behulp van de Azure Portal.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 10/26/2020
-ms.openlocfilehash: c44e1da46b969b2d359a225e9d310160ce2092ce
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 88a1524875f168b49f50f1684c650d5bc178bf38
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92681559"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542657"
 ---
 # <a name="restart-azure-database-for-mysql-flexible-server-using-azure-portal"></a>Azure Database for MySQL flexibele server opnieuw opstarten met Azure Portal
 In dit onderwerp wordt beschreven hoe u een Azure Database for MySQL flexibele server opnieuw kunt opstarten. Mogelijk moet u de server opnieuw opstarten om onderhouds redenen te zorgen, waardoor er een korte storing optreedt terwijl de server de bewerking uitvoert.
@@ -30,21 +30,21 @@ De MySQL-server wordt opnieuw gestart met de volgende stappen:
 
 1. Selecteer uw Azure Database for MySQL flexibele server in de Azure Portal.
 
-2. Klik op de werk balk van de pagina **overzicht** van de server op **opnieuw opstarten** .
+2. Klik op de werk balk van de pagina **overzicht** van de server op **opnieuw opstarten**.
 
    :::image type="content" source="./media/how-to-restart-server-portal/2-server.png" alt-text="Azure Database for MySQL-overzicht-knop opnieuw opstarten":::
 
 3. Klik op **Ja** om te bevestigen dat de server opnieuw wordt opgestart.
 
-   :::image type="content" source="./media/how-to-restart-server-portal/3-restart-confirm.png" alt-text="Azure Database for MySQL-overzicht-knop opnieuw opstarten":::
+   :::image type="content" source="./media/how-to-restart-server-portal/3-restart-confirm.png" alt-text="Azure Database for MySQL-opnieuw opstarten bevestigen":::
 
 4. Houd er rekening mee dat de server status wordt gewijzigd in opnieuw opstarten.
 
-   :::image type="content" source="./media/how-to-restart-server-portal/4-restarting-status.png" alt-text="Azure Database for MySQL-overzicht-knop opnieuw opstarten":::
+   :::image type="content" source="./media/how-to-restart-server-portal/4-restarting-status.png" alt-text="Azure Database for MySQL-start status":::
 
 5. Het opnieuw opstarten van de server is voltooid.
 
-   :::image type="content" source="./media/how-to-restart-server-portal/5-restart-success.png" alt-text="Azure Database for MySQL-overzicht-knop opnieuw opstarten":::
+   :::image type="content" source="./media/how-to-restart-server-portal/5-restart-success.png" alt-text="Azure Database for MySQL: opnieuw opstarten geslaagd":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

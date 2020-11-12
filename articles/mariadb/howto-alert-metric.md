@@ -1,17 +1,17 @@
 ---
 title: Metrische waarschuwingen configureren-Azure Portal-Azure Database for MariaDB
 description: In dit artikel wordt beschreven hoe u metrische waarschuwingen voor Azure Database for MariaDB kunt configureren en benaderen vanuit de Azure Portal.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: c972bd3b770f42353d285d0c69aacef56d6e04d5
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: e108ca3aa346af20b31ff446130014e1250f49c0
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426111"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541076"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mariadb"></a>Gebruik de Azure Portal om waarschuwingen in te stellen voor Azure Database for MariaDB
 
@@ -25,7 +25,7 @@ U kunt een waarschuwing configureren om de volgende acties uit te voeren wanneer
 * Een webhook aanroepen
 
 U kunt informatie over waarschuwings regels configureren en ophalen met behulp van:
-* [Azure Portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
+* [Azure-portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
 * [Azure-CLI](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
 * [Azure Monitor REST API](/rest/api/monitor/metricalerts)
 
@@ -42,13 +42,13 @@ U kunt informatie over waarschuwings regels configureren en ophalen met behulp v
 
    ![Formulier voor metrische waarschuwing toevoegen](./media/howto-alert-metric/4-add-rule-form.png)
 
-5. Selecteer **voor waarde toevoegen**in de sectie **voor waarde** .
+5. Selecteer **voor waarde toevoegen** in de sectie **voor waarde** .
 
 6. Selecteer een waarde in de lijst met signalen waarop u wilt worden gewaarschuwd. In dit voor beeld selecteert u ' opslag percentage '.
    
    ![Metrische waarde selecteren](./media/howto-alert-metric/6-configure-signal-logic.png)
 
-7. Configureer de waarschuwings logica met inbegrip van de **voor waarde** (bijvoorbeeld ' Groter dan '), **drempel waarde** (bijvoorbeeld 85 procent), **tijd aggregatie**, **periode waarbinnen** de metrische regel moet worden voldaan voordat de waarschuwingen worden geactiveerd (bijvoorbeeld ' In de afgelopen 30 minuten ') en **frequentie**.
+7. Configureer de waarschuwings logica met inbegrip van de **voor waarde** (bijvoorbeeld ' Groter dan '), **drempel waarde** (bijvoorbeeld 85 procent), **tijd aggregatie** , **periode waarbinnen** de metrische regel moet worden voldaan voordat de waarschuwingen worden geactiveerd (bijvoorbeeld ' In de afgelopen 30 minuten ') en **frequentie**.
    
    Selecteer **gereed** wanneer u klaar bent.
 

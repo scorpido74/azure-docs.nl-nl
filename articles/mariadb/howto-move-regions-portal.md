@@ -1,18 +1,18 @@
 ---
 title: Azure-regio's verplaatsen-Azure Portal-Azure Database for MariaDB
 description: Verplaats een Azure Database for MariaDB-server van de ene Azure-regio naar de andere met behulp van een lees replica en de Azure Portal.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/29/2020
-ms.openlocfilehash: 75fabeeb7fa879a0f2843538d34f85e5ccec40e4
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: f4ce34bc1a1af7b2c0ee57a3297415bd9d033517
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425905"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540821"
 ---
 # <a name="move-an-azure-database-for-mariadb-server-to-another-region-by-using-the-azure-portal"></a>Een Azure Database for MariaDB-server naar een andere regio verplaatsen met behulp van de Azure Portal
 
@@ -33,7 +33,7 @@ U kunt een Azure Database for MariaDB [Kruis regio lezen replica](concepts-read-
 
 Als u in de doel regio een cross-Region replica server wilt maken met behulp van de Azure Portal, gebruikt u de volgende stappen:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 1. Selecteer de bestaande Azure Database for MariaDB-server die u wilt gebruiken als de bron server. Met deze actie wordt de pagina **overzicht** geopend.
 1. Selecteer **replicatie** in het menu onder **instellingen**.
 1. Selecteer **replica toevoegen**.
@@ -56,7 +56,7 @@ De replicatie naar de replica server wordt gestopt, waardoor deze een zelfstandi
 1. Selecteer **replicatie** in het menu onder **instellingen**.
 1. Selecteer de replica server.
 1. Selecteer **Replicatie stoppen**.
-1. Bevestig dat u de replicatie wilt stoppen door op **OK**te klikken.
+1. Bevestig dat u de replicatie wilt stoppen door op **OK** te klikken.
 
 ## <a name="clean-up-source-server"></a>Bron server opschonen
 

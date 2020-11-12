@@ -1,17 +1,17 @@
 ---
 title: Langzame query logboeken-Azure Database for MySQL-flexibele server
 description: Hierin worden de langzame query Logboeken beschreven die beschikbaar zijn in Azure Database for MySQL flexibele server.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: 512a103f5ac116f1f4eb18631cdc8e4a8b9380c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dde9575a70ea80ad262bc01bb9d5d0015c803427
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399207"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94543014"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql-flexible-server-preview"></a>Trage query Logboeken in Azure Database for MySQL flexibele server (preview-versie)
 
@@ -27,10 +27,10 @@ Het logboek voor langzame query's is standaard uitgeschakeld. Als u logboeken wi
 
 Andere para meters die u kunt aanpassen om het gedrag van logboek registratie voor langzame query's te beheren, zijn:
 
-- **long_query_time**: een query vastleggen als deze langer duurt dan `long_query_time` (in seconden). De standaardinstelling is 10 seconden.
-- **log_slow_admin_statements**: bepaalt of administratieve instructies (bijvoorbeeld `ALTER_TABLE`, `ANALYZE_TABLE` ) worden geregistreerd.
-- **log_queries_not_using_indexes**: bepaalt of query's die geen indexen gebruiken, worden geregistreerd.
-- **log_throttle_queries_not_using_indexes**: beperkt het aantal niet-geïndexeerde query's dat naar het langzame query logboek kan worden geschreven. Deze para meter `log_queries_not_using_indexes` wordt van kracht wanneer is ingesteld op *op*
+- **long_query_time** : een query vastleggen als deze langer duurt dan `long_query_time` (in seconden). De standaardinstelling is 10 seconden.
+- **log_slow_admin_statements** : bepaalt of administratieve instructies (bijvoorbeeld `ALTER_TABLE`, `ANALYZE_TABLE` ) worden geregistreerd.
+- **log_queries_not_using_indexes** : bepaalt of query's die geen indexen gebruiken, worden geregistreerd.
+- **log_throttle_queries_not_using_indexes** : beperkt het aantal niet-geïndexeerde query's dat naar het langzame query logboek kan worden geschreven. Deze para meter `log_queries_not_using_indexes` wordt van kracht wanneer is ingesteld op *op*
 
 > [!IMPORTANT]
 > Als uw tabellen niet zijn geïndexeerd, worden het `log_queries_not_using_indexes` instellen `log_throttle_queries_not_using_indexes` van de para meters op **in** mogelijk beïnvloed door de MySQL-prestaties, omdat alle query's die worden uitgevoerd op deze niet-geïndexeerde tabellen, worden geschreven naar het logboek voor langzame query's.

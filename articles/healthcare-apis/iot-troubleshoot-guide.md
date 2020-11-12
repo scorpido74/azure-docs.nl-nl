@@ -6,14 +6,14 @@ author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: troubleshooting
-ms.date: 09/16/2020
+ms.date: 11/09/2020
 ms.author: jasteppe
-ms.openlocfilehash: a843ee15d4e7c67bcf69609067d70f592b9b50d6
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 124c3b3667e847a5ee1bb8034ef01088c629d503
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93394217"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540940"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-troubleshooting-guide"></a>Gids voor probleem oplossing van Azure IoT connector voor FHIR (preview)
 
@@ -68,7 +68,7 @@ In deze sectie vindt u meer informatie over het validatie proces dat door Azure 
 |Het account bestaat niet.|API|Poging een Azure IoT-connector voor FHIR toe te voegen en de Azure API voor FHIR-resource bestaat niet.|Maak de Azure API voor de FHIR-resource en probeer het opnieuw.|
 |De Azure-API voor de FHIR-resource FHIR-versie wordt niet ondersteund voor IoT-connector.|API|Er wordt geprobeerd een Azure IoT-connector te gebruiken voor FHIR met een incompatibele versie van de Azure API voor FHIR-resource.|Maak een nieuwe Azure-API voor de FHIR-resource (versie R4) of gebruik een bestaande Azure API voor FHIR-resource (versie R4).
 
-##  <a name="why-is-my-azure-iot-connector-for-fhir-preview-data-not-showing-up-in-azure-api-for-fhir"></a>Waarom is mijn Azure IoT connector voor FHIR (preview)-gegevens die niet worden weer gegeven in de Azure-API voor FHIR?
+## <a name="why-is-my-azure-iot-connector-for-fhir-preview-data-not-showing-up-in-azure-api-for-fhir"></a>Waarom is mijn Azure IoT connector voor FHIR (preview)-gegevens die niet worden weer gegeven in de Azure-API voor FHIR?
 
 |Potentiële problemen|Oplossingen|
 |----------------|-----|
@@ -82,7 +82,74 @@ In deze sectie vindt u meer informatie over het validatie proces dat door Azure 
 
 * Naslag informatie voor [Quick Start: implementeer Azure IOT connector (preview) met behulp van Azure Portal](iot-fhir-portal-quickstart.md#create-new-azure-iot-connector-for-fhir-preview) voor een functionele beschrijving van de Azure IOT-connector voor FHIR-oplossings typen (bijvoorbeeld: zoeken of maken).
 
+## <a name="use-metrics-to-troubleshoot-issues-in-azure-iot-connector-for-fhir-preview"></a>Metrische gegevens gebruiken voor het oplossen van problemen in azure IoT connector voor FHIR (preview)
+
+Azure IoT connector voor FHIR genereert meerdere metrische gegevens om inzicht te krijgen in het gegevensstroom proces. Een van de ondersteunde metrische gegevens wordt een *Totaal aantal fouten* genoemd. Dit biedt het aantal voor alle fouten die zich voordoen binnen een exemplaar van Azure IOT connector voor FHIR.
+
+Elke fout wordt geregistreerd met een aantal bijbehorende eigenschappen. Elke eigenschap biedt een ander aspect van de fout, die u kan helpen bij het identificeren en oplossen van problemen. In deze sectie vindt u verschillende eigenschappen die zijn vastgelegd voor elke fout in de metrische gegevens van het *totale aantal fouten* en mogelijke waarden voor deze eigenschappen.
+
+> [!NOTE]
+> U kunt *naar de metrische* gegevens voor een exemplaar van Azure IOT connector voor FHIR (preview) navigeren, zoals wordt beschreven op de pagina met metrische gegevens van de [Azure IOT-connector voor FHIR (preview)](iot-metrics-display.md).
+
+Klik op de grafiek *Totaal aantal fouten* en klik vervolgens op de knop *filter toevoegen* om de fout metriek te segmenteren en te dobbelten met een van de hieronder vermelde eigenschappen.
+
+### <a name="the-operation-performed-by-the-azure-iot-connector-for-fhir-preview"></a>De bewerking die wordt uitgevoerd door de Azure IoT-connector voor FHIR (preview)
+
+Deze eigenschap vertegenwoordigt de bewerking die wordt uitgevoerd door IoT-connector wanneer de fout is opgetreden. Een bewerking duidt doorgaans op de gegevens stroom fase tijdens het verwerken van een apparaat. Hier volgt een lijst met mogelijke waarden voor deze eigenschap.
+
+> [!NOTE]
+> U kunt [hier](iot-data-flow.md)meer lezen over de verschillende stadia van de gegevens stroom in azure IOT connector voor FHIR (preview).
+
+|Gegevens stroom fase|Beschrijving|
+|---------------|-----------|
+|Instellen|Bewerking specifiek voor het instellen van uw exemplaar van IoT connector|
+|Normaliserings|Gegevens stroom fase waar apparaatgegevens worden genormaliseerd|
+|Shapes|Gegevens stroom fase waar genormaliseerde gegevens worden gegroepeerd|
+|FHIRConversion|Gegevens stroom fase waarin gegroepeerde genormaliseerde gegevens worden omgezet in een FHIR-resource|
+|Onbekend|Het bewerkings type is onbekend wanneer er een fout is opgetreden|
+
+### <a name="the-severity-of-the-error"></a>De ernst van de fout
+
+Deze eigenschap vertegenwoordigt de ernst van de opgetreden fout. Hier volgt een lijst met mogelijke waarden voor deze eigenschap.
+
+|Ernst|Beschrijving|
+|---------------|-----------|
+|Waarschuwing|Er is een probleem opgetreden in het gegevensstroom proces, maar de verwerking van het bericht van het apparaat wordt niet gestopt|
+|Fout|Er is een fout opgetreden bij het verwerken van een specifiek apparaat bericht en andere berichten kunnen worden uitgevoerd zoals verwacht|
+|Kritiek|Er is een probleem met het systeem niveau met de IoT-connector en er worden geen berichten verwacht die worden verwerkt|
+
+### <a name="the-type-of-the-error"></a>Het type fout
+
+Met deze eigenschap wordt een categorie aangegeven voor een bepaalde fout, wat in principe een logische groepering voor vergelijk bare type fouten vertegenwoordigt. Hier volgt een lijst met mogelijke waarden voor deze eigenschap.
+
+|Fout type|Beschrijving|
+|----------|-----------|
+|DeviceTemplateError|Fouten met betrekking tot apparaattoewijzing|
+|DeviceMessageError|Er zijn fouten opgetreden bij het verwerken van een specifiek apparaat bericht|
+|FHIRTemplateError|Fouten met betrekking tot FHIR-toewijzings sjablonen|
+|FHIRConversionError|Er zijn fouten opgetreden bij het transformeren van een bericht in een FHIR-resource|
+|FHIRResourceError|Fouten met betrekking tot bestaande resources op de FHIR-server waarnaar wordt verwezen door IoT-connector|
+|FHIRServerError|Fouten die optreden tijdens het communiceren met de FHIR-server|
+|GeneralError|Alle andere typen fouten|
+
+### <a name="the-name-of-the-error"></a>De naam van de fout
+
+Deze eigenschap geeft de naam op voor een specifieke fout. Hier volgt een lijst met alle fout namen met de bijbehorende beschrijving en bijbehorende fout typen, ernst en gegevens stroom fase ('s).
+
+|Fout naam|Beschrijving|Fout type (n)|Ernst van fout|Gegevens stroom fase ('s)|
+|----------|-----------|-------------|--------------|------------------|
+|MultipleResourceFoundException|Er is een fout opgetreden bij het vinden van meerdere patiënt-of apparaatgegevens in de FHIR-server voor de bijbehorende id's in het apparaats bericht|FHIRResourceError|Fout|FHIRConversion|
+|TemplateNotFoundException|Een sjabloon voor het toewijzen van een apparaat of FHIR is niet geconfigureerd met het exemplaar van IoT-connector|DeviceTemplateError, FHIRTemplateError|Kritiek|Normalisatie, FHIRConversion|
+|CorrelationIdNotDefinedException|Correlatie-ID is niet opgegeven in de toewijzings sjabloon voor apparaten. CorrelationIdNotDefinedException is een voorwaardelijke fout die alleen zou optreden wanneer FHIR-waarneming meet waarden van apparaten groepeert met behulp van een correlatie-ID, maar niet correct is geconfigureerd.|DeviceMessageError|Fout|Normaliserings|
+|PatientDeviceMismatchException|Deze fout treedt op wanneer de bron van het apparaat op de FHIR-server een verwijzing bevat naar een patiënt resource die niet overeenkomt met de patiënt-id in het bericht|FHIRResourceError|Fout|FHIRConversionError|
+|PatientNotFoundException|Er wordt naar geen enkele patiënt FHIR-resource verwezen door de FHIR-bron van het apparaat die is gekoppeld aan de apparaat-id die aanwezig is in het apparaat. Opmerking Deze fout treedt alleen op wanneer een IoT-connector exemplaar is geconfigureerd met het type van de *Zoek* oplossing|FHIRConversionError|Fout|FHIRConversion|
+|DeviceNotFoundException|Er bestaat geen apparaat-resource op de FHIR-server die is gekoppeld aan de apparaat-id die aanwezig is in het apparaat bericht|DeviceMessageError|Fout|Normaliserings|
+|PatientIdentityNotDefinedException|Deze fout treedt op wanneer de expressie voor het parseren van de patiënt-id van het apparaat bericht niet is geconfigureerd op de apparaattoewijzing of de patiënt-id niet aanwezig is in het apparaat-bericht. Opmerking Deze fout treedt alleen op wanneer het resolutie type van de IoT-connector is ingesteld op *maken*|DeviceTemplateError|Kritiek|Normaliserings|
+|DeviceIdentityNotDefinedException|Deze fout treedt op wanneer de expressie voor het parseren van de apparaat-id van het apparaat bericht niet is geconfigureerd op de apparaattoewijzing of de id van het apparaat niet aanwezig is in het apparaat bericht|DeviceTemplateError|Kritiek|Normaliserings|
+|NotSupportedException|Er is een fout opgetreden bij het ontvangen van het apparaat met een niet-ondersteunde indeling|DeviceMessageError|Fout|Normaliserings|
+
 ## <a name="creating-copies-of-the-azure-iot-connector-for-fhir-preview-conversion-mapping-json"></a>Maken van kopieën van de JSON-conversie toewijzing van Azure IoT connector voor FHIR (preview)
+
 Het kopiëren van Azure IoT connector voor FHIR toewijzings bestanden kan handig zijn voor het bewerken en archiveren van buiten de Azure Portal-website.
 
 Het toewijzings bestand moet worden voorzien van de technische ondersteuning van Azure bij het openen van een ondersteunings ticket om problemen op te lossen.

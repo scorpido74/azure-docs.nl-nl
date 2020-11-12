@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 3bd54d8a23aca7e493cd3c0ddb7f057a6e1f5362
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e7f2e445c3e4e8df7420c0587e156968f3a2c92
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761478"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542674"
 ---
 # <a name="sizing-guidance"></a>Richt lijnen voor grootte
 
@@ -89,6 +89,7 @@ Elk SQL-beheerd exemplaar moet de volgende minimale resource aanvragen hebben:
 - Kernen: 1
 
 Elk exemplaar van SQL Managed instance pod dat wordt gemaakt, heeft drie containers:
+
 |Containernaam|CPU-aanvraag|Geheugen aanvraag|CPU-limiet|Geheugen limiet|Notities|
 |---|---|---|---|---|---|
 |fluentbit|100 miljoen|100Mi|Niet opgegeven|Niet opgegeven|De fluentbit container resource aanvragen bevinden zich _naast_ de aanvragen die zijn opgegeven voor het SQL Managed instance.||
@@ -104,6 +105,7 @@ Elk PostgreSQL grootschalige-server groeps knooppunt moet de volgende minimale r
 - Kernen: 1
 
 Elke PostgreSQL grootschalige-server groeps coördinator of werk pod die wordt gemaakt, heeft drie containers:
+
 |Containernaam|CPU-aanvraag|Geheugen aanvraag|CPU-limiet|Geheugen limiet|Notities|
 |---|---|---|---|---|---|
 |fluentbit|100 miljoen|100Mi|Niet opgegeven|Niet opgegeven|De fluentbit-container resource aanvragen bevinden zich _naast_ de aanvragen die zijn opgegeven voor de knoop punten van de postgresql grootschalige-Server groep.|
@@ -122,9 +124,9 @@ Hier volgt een voor beeld van een berekenings grootte.
 
 Vereisten:
 
-- **"SQL1"**: 1 SQL Managed instance met 16 GB RAM, 4 kern geheugens
-- **"SQL2"**: 1 SQL Managed instance met 256 GB RAM, 16 kernen
-- **"Postgres1"**: 1 postgresql grootschalige-Server groep met vier werk nemers van 12 GB aan RAM-geheugen, 4 kernen
+- **"SQL1"** : 1 SQL Managed instance met 16 GB RAM, 4 kern geheugens
+- **"SQL2"** : 1 SQL Managed instance met 256 GB RAM, 16 kernen
+- **"Postgres1"** : 1 postgresql grootschalige-Server groep met vier werk nemers van 12 GB aan RAM-geheugen, 4 kernen
 
 Grootte berekeningen:
 

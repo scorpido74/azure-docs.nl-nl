@@ -1,24 +1,24 @@
 ---
 title: Server parameters configureren-Azure Portal-Azure Database for MySQL
 description: In dit artikel wordt beschreven hoe u MySQL-server parameters configureert in Azure Database for MySQL met behulp van de Azure Portal.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 10/1/2020
-ms.openlocfilehash: c28f0edafd72794a60ef577fc3177e4436157950
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 363be8b34f230b812bc24276e1f3925faf0cdc1c
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631474"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540838"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mysql-using-the-azure-portal"></a>Configureer Server parameters in Azure Database for MySQL met behulp van de Azure Portal
 
 Azure Database for MySQL ondersteunt de configuratie van sommige server parameters. In dit artikel wordt beschreven hoe u deze para meters configureert met behulp van de Azure Portal. Niet alle server parameters kunnen worden aangepast.
 
 >[!Note]
-> Server parameters kunnen globaal worden bijgewerkt op server niveau, gebruik de [Azure cli](./howto-configure-server-parameters-using-cli.md), [power shell](./howto-configure-server-parameters-using-powershell.md)of [Azure Portal](./howto-server-parameters.md).
+> Serverparameters kunnen globaal worden bijgewerkt op serverniveau via de [Azure CLI](./howto-configure-server-parameters-using-cli.md), [PowerShell](./howto-configure-server-parameters-using-powershell.md) of [Azure Portal](./howto-server-parameters.md).
 
 ## <a name="configure-server-parameters"></a>Parameters van de server configureren
 
@@ -26,11 +26,11 @@ Azure Database for MySQL ondersteunt de configuratie van sommige server paramete
 2. Klik onder de sectie **instellingen** op **server parameters** om de pagina server parameters voor de Azure database for mysql-server te openen.
 :::image type="content" source="./media/howto-server-parameters/auzre-portal-server-parameters.png" alt-text="Pagina Azure Portal Server parameters":::
 3. Zoek alle instellingen die u moet aanpassen. Bekijk de kolom **Beschrijving** om inzicht te krijgen in het doel en de toegestane waarden.
-:::image type="content" source="./media/howto-server-parameters/3-toggle_parameter.png" alt-text="Pagina Azure Portal Server parameters":::
+:::image type="content" source="./media/howto-server-parameters/3-toggle_parameter.png" alt-text="Vervolg keuzelijst opsommen":::
 4. Klik op  **Opslaan** om uw wijzigingen op te slaan.
-:::image type="content" source="./media/howto-server-parameters/4-save_parameters.png" alt-text="Pagina Azure Portal Server parameters":::
-5. Als u nieuwe waarden voor de para meters hebt opgeslagen, kunt u altijd terugkeren naar de standaard waarden door **alles opnieuw instellen op de standaard**waarde te selecteren.
-:::image type="content" source="./media/howto-server-parameters/5-reset_parameters.png" alt-text="Pagina Azure Portal Server parameters":::
+:::image type="content" source="./media/howto-server-parameters/4-save_parameters.png" alt-text="Wijzigingen opslaan of negeren":::
+5. Als u nieuwe waarden voor de para meters hebt opgeslagen, kunt u altijd terugkeren naar de standaard waarden door **alles opnieuw instellen op de standaard** waarde te selecteren.
+:::image type="content" source="./media/howto-server-parameters/5-reset_parameters.png" alt-text="Alles opnieuw instellen op standaard waarden":::
 
 ## <a name="setting-parameters-not-listed"></a>Ingestelde para meters niet vermeld
 
@@ -44,7 +44,7 @@ Als de server parameter die u wilt bijwerken niet wordt weer gegeven in de Azure
 4. Klik op **Opslaan** om uw wijzigingen op te slaan.
 
 >[!Note]
-> `init_connect` kan worden gebruikt om parameters te wijzigen die geen SUPER-bevoegdhed(en) op sessieniveau vereisen. Als u wilt weten of u de parameter kunt instellen met `init_connect`, voert u de opdracht `set session parameter_name=YOUR_DESIRED_VALUE;` uit. Als er fouten optreden met het foutbericht **Toegang geweigerd; u hebt SUPER-privileges(s) nodig**, dan kunt u de parameter niet instellen met init_connect.
+> `init_connect` kan worden gebruikt om parameters te wijzigen die geen SUPER-bevoegdhed(en) op sessieniveau vereisen. Als u wilt weten of u de parameter kunt instellen met `init_connect`, voert u de opdracht `set session parameter_name=YOUR_DESIRED_VALUE;` uit. Als er fouten optreden met het foutbericht **Toegang geweigerd; u hebt SUPER-privileges(s) nodig** , dan kunt u de parameter niet instellen met init_connect.
 
 ## <a name="working-with-the-time-zone-parameter"></a>Werken met de para meter tijd zone
 
@@ -72,7 +72,7 @@ SELECT name FROM mysql.time_zone_name;
 
 De tijd zone op het globale niveau kan worden ingesteld op de pagina **server parameters** in de Azure Portal. In het onderstaande voor de globale tijd zone wordt de waarde ' VS/Pacific ' ingesteld.
 
-:::image type="content" source="./media/howto-server-parameters/timezone.png" alt-text="Pagina Azure Portal Server parameters":::
+:::image type="content" source="./media/howto-server-parameters/timezone.png" alt-text="De para meter voor de tijd zone instellen":::
 
 ### <a name="setting-the-session-level-time-zone"></a>De tijd zone op sessie niveau instellen
 

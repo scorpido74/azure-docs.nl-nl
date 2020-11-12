@@ -1,17 +1,17 @@
 ---
 title: Replicatie van gegevens-in-Azure Database for MySQL
 description: Meer informatie over het gebruik van replicatie van gegevens in een externe server naar de Azure Database for MySQL-service.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 8/7/2020
-ms.openlocfilehash: e84f0c9beaee8a755499467925d28a83ba3139fc
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 99beddba470f73d6eadb448dfe1b77453ce6426d
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544049"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541586"
 ---
 # <a name="replicate-data-into-azure-database-for-mysql"></a>Gegevens repliceren naar Azure Database for MySQL
 
@@ -46,7 +46,7 @@ Raadpleeg de [MySQL-documentatie](https://dev.mysql.com/doc/refman/8.0/en/replic
 - Zorg ervoor dat de computer die de bron server host, zowel binnenkomend als uitgaand verkeer op poort 3306 toestaat.
 - Controleer of de bron server een **openbaar IP-adres** heeft, of de DNS openbaar toegankelijk is of een Fully QUALIFIED domain name (FQDN) heeft.
 
-### <a name="other"></a>Overig
+### <a name="other"></a>Anders
 - Replicatie van gegevens wordt alleen ondersteund in de Algemeen en de prijs categorieën die zijn geoptimaliseerd voor geheugen.
 - Algemene trans actie-id's (GTID) worden niet ondersteund.
 

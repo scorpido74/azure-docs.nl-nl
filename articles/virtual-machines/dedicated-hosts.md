@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 07/28/2020
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: 3b407ae18316071d77cc87992a70a4fba857ab64
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 0b0e198075455f697c87ad48741a770e6f78b5a5
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979016"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542147"
 ---
 # <a name="azure-dedicated-hosts"></a>Met Azure toegewezen hosts
 
@@ -44,7 +44,7 @@ Voor maximale Beschik baarheid implementeert u meerdere Vm's, verspreid over mee
 
 ### <a name="use-availability-zones-for-fault-isolation"></a>Beschikbaarheidszones gebruiken voor fout isolatie
 
-Beschikbaarheids zones zijn unieke fysieke locaties binnen een Azure-regio. Elke zone bestaat uit een of meer datacenters die zijn voorzien van een onafhankelijke stroomvoorziening, koeling en netwerken. Er wordt een hostgroep gemaakt in één beschikbaarheids zone. Nadat deze is gemaakt, worden alle hosts in die zone geplaatst. Als u een hoge Beschik baarheid in meerdere zones wilt bezorgen, moet u meerdere hostgroepen maken (één per zone) en de hosts vervolgens dienovereenkomstig verspreiden.
+Beschikbaarheidszones zijn unieke, fysieke locaties binnen een Azure-regio. Elke zone bestaat uit een of meer datacenters die zijn voorzien van een onafhankelijke stroomvoorziening, koeling en netwerken. Er wordt een hostgroep gemaakt in één beschikbaarheids zone. Nadat deze is gemaakt, worden alle hosts in die zone geplaatst. Als u een hoge Beschik baarheid in meerdere zones wilt bezorgen, moet u meerdere hostgroepen maken (één per zone) en de hosts vervolgens dienovereenkomstig verspreiden.
 
 Als u een hostgroep toewijst aan een beschikbaarheids zone, moeten alle Vm's die op die host worden gemaakt, in dezelfde zone worden gemaakt.
 
@@ -84,7 +84,6 @@ Bekende problemen en beperkingen bij het gebruik van automatische plaatsing van 
 
 - U kunt geen hybride voor delen van Azure Toep assen op uw toegewezen hosts.
 - U kunt uw virtuele machine niet opnieuw implementeren. 
-- U kunt de onderhouds werkzaamheden voor uw toegewezen hosts niet beheren.
 - U kunt geen Lsv2-, NVasv4-, NVsv3-, Msv2-of M-serie Vm's met toegewezen hosts gebruiken 
 
 
@@ -120,7 +119,7 @@ Niet alle instellingen voor indelings-en optimalisatie van schaal sets worden on
 
 De infra structuur die uw virtuele machines ondersteunt, kan af en toe worden bijgewerkt om de betrouw baarheid, prestaties en beveiliging te verbeteren en om nieuwe functies te kunnen starten. Het Azure-platform probeert de impact van platform onderhoud zoveel mogelijk te minimaliseren, maar klanten met *onderhoud gevoelige* workloads kunnen zelfs enkele seconden niet verdragen dat de virtuele machine moet worden bevroren of ontkoppeld voor onderhoud.
 
-**Onderhouds beheer** biedt klanten een optie voor het overs laan van regel matige platform updates die zijn gepland op hun toegewezen hosts en pas deze toe op het tijdstip van hun keuze in een voortschrijdende periode van 35 dagen.
+**Onderhouds beheer** biedt klanten een optie voor het overs laan van regel matige platform updates die zijn gepland op hun toegewezen hosts en pas deze toe op het tijdstip van hun keuze in een voortschrijdende periode van 35 dagen. Binnen het onderhouds venster kunt u het beheer direct op het niveau van de host Toep assen, in een wille keurige volg orde. Zodra het onderhouds venster is afgelopen, wordt door micro soft het wachtend onderhoud op de hosts toegepast in een bestelling die mogelijk niet voldoet aan de door de gebruiker gedefinieerde fout domeinen.
 
 Zie [platform updates beheren met onderhouds beheer](./maintenance-control.md)voor meer informatie.
 

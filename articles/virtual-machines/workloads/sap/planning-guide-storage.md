@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 06/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 819ac1f01cc182c79571de35ec0753f694dc7722
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ed99145a2d3860849c4a8117a93a9a0f24d227c
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88653610"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540923"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>Azure Storage-typen voor SAP-workload
 Azure heeft talloze opslag typen die in de mogelijkheden, door Voer, latentie en prijzen aanzienlijk verschillen. Sommige opslag typen zijn niet of zijn beperkt bruikbaar voor SAP-scenario's. Dat zijn verschillende Azure Storage-typen goed geschikt of geoptimaliseerd voor specifieke SAP-werkbelasting scenario's. Met name voor SAP HANA hebben sommige Azure Storage-typen gecertificeerd voor het gebruik met SAP HANA. In dit document gaan we de verschillende soorten opslag door lopen en de mogelijkheden en bruikbaarheid van SAP-workloads en SAP-onderdelen beschrijven.
@@ -273,7 +273,7 @@ Aanvullende ingebouwde functionaliteit van ANF-opslag:
 - Klonen van ANF-volumes van moment opnamen
 - Volumes herstellen vanaf moment opnamen (module-herstellen)
 
-**Samen vatting**: Azure NetApp files is een Hana-gecertificeerde opslag met lage LATENTIE waarmee NFS-en SMB-volumes of-shares kunnen worden geïmplementeerd. De opslag wordt geleverd met drie verschillende service niveaus die een verschillende door Voer en IOPS bieden op lineaire wijze per GiB capaciteit van het volume. De ANF-opslag wordt ingeschakeld voor het implementeren van SAP HANA scale-out scenario's met een stand-by-knoop punt. De opslag is geschikt voor het leveren van bestands shares die nodig zijn voor de/sapmnt of de globale transport Directory van SAP. ANF Storage wordt geleverd met functionaliteits beschikbaarheid die beschikbaar is als systeem eigen NetApp-functionaliteit.  
+**Samen vatting** : Azure NetApp files is een Hana-gecertificeerde opslag met lage LATENTIE waarmee NFS-en SMB-volumes of-shares kunnen worden geïmplementeerd. De opslag wordt geleverd met drie verschillende service niveaus die een verschillende door Voer en IOPS bieden op lineaire wijze per GiB capaciteit van het volume. De ANF-opslag wordt ingeschakeld voor het implementeren van SAP HANA scale-out scenario's met een stand-by-knoop punt. De opslag is geschikt voor het leveren van bestands shares die nodig zijn voor de/sapmnt of de globale transport Directory van SAP. ANF Storage wordt geleverd met functionaliteits beschikbaarheid die beschikbaar is als systeem eigen NetApp-functionaliteit.  
 
 
 
@@ -335,8 +335,8 @@ In het tegenovergestelde van on-premises scenario's speelt het afzonderlijke VM-
 
 | Opslagtype| Linux | Windows | Opmerkingen |
 | --- | --- | --- | --- |
-| Standard HDD | [Grootten voor virtuele Linux-machines in azure](../../sizes.md) | [Grootten voor virtuele Windows-machines in azure](../../sizes.md) | De opslag limieten van medium of grote Vm's zijn waarschijnlijk hard. |
-| Standard SSD | [Grootten voor virtuele Linux-machines in azure](../../sizes.md) | [Grootten voor virtuele Windows-machines in azure](../../sizes.md) | De opslag limieten van medium of grote Vm's zijn waarschijnlijk hard. |
+| Standard - HDD | [Grootten voor virtuele Linux-machines in azure](../../sizes.md) | [Grootten voor virtuele Windows-machines in azure](../../sizes.md) | De opslag limieten van medium of grote Vm's zijn waarschijnlijk hard. |
+| Standard - SSD | [Grootten voor virtuele Linux-machines in azure](../../sizes.md) | [Grootten voor virtuele Windows-machines in azure](../../sizes.md) | De opslag limieten van medium of grote Vm's zijn waarschijnlijk hard. |
 | Premium Storage | [Grootten voor virtuele Linux-machines in azure](../../sizes.md) | [Grootten voor virtuele Windows-machines in azure](../../sizes.md) | Onbeperkte limieten voor IOPS of VM-doorvoer opslag met opslag configuratie |
 | Ultra Disk-opslag | [Grootten voor virtuele Linux-machines in azure](../../sizes.md) | [Grootten voor virtuele Windows-machines in azure](../../sizes.md) | Onbeperkte limieten voor IOPS of VM-doorvoer opslag met opslag configuratie |
 | Azure NetApp Files | [Grootten voor virtuele Linux-machines in azure](../../sizes.md) | [Grootten voor virtuele Windows-machines in azure](../../sizes.md) | Opslag verkeer maakt gebruik van netwerk doorvoer bandbreedte en geen opslag bandbreedte. |
@@ -352,11 +352,10 @@ Als u virtuele Azure-machines in de levens cyclus van een SAP-systeem up-to-size
 
 
 ## <a name="striping-or-not-striping"></a>Striping of geen striping
-Als u een Stripe-set van meerdere Azure-schijven in één groter volume maakt, kunt u de IOPS en door Voer van de afzonderlijke schijven in één volume verzamelen. Het wordt alleen gebruikt voor Azure Standard-opslag en Azure Premium Storage. Met de volledige schijf van Azure kunt u de door Voer en IOPS onafhankelijk van de capaciteit van een schijf configureren. het gebruik van stripesets is niet vereist. Gedeelde volumes die zijn gebaseerd op NFS of SMB, kunnen niet worden gestripd. Als gevolg van de niet-lineaire aard van Azure Premium Storage-door Voer en IOPS, kunt u kleinere capaciteit inrichten met dezelfde IOPS en door voer dan grote enkele Azure Premium-opslag schijven. Dit is de methode voor een hogere door Voer of IOPS bij lagere kosten met Azure Premium Storage. Bijvoorbeeld:
+Als u een Stripe-set van meerdere Azure-schijven in één groter volume maakt, kunt u de IOPS en door Voer van de afzonderlijke schijven in één volume verzamelen. Het wordt alleen gebruikt voor Azure Standard-opslag en Azure Premium Storage. Met de volledige schijf van Azure kunt u de door Voer en IOPS onafhankelijk van de capaciteit van een schijf configureren. het gebruik van stripesets is niet vereist. Gedeelde volumes die zijn gebaseerd op NFS of SMB, kunnen niet worden gestripd. Als gevolg van de niet-lineaire aard van Azure Premium Storage-door Voer en IOPS, kunt u kleinere capaciteit inrichten met dezelfde IOPS en door voer dan grote enkele Azure Premium-opslag schijven. Dit is de methode voor een hogere door Voer of IOPS bij lagere kosten met Azure Premium Storage. Met een striping over twee P15 Premium-opslag schijven krijgt u bijvoorbeeld de volgende mogelijkheden: 
 
-- Over twee P15 Premium-opslag schijven krijgt u een door Voer van 
 - 250-MiB per seconde. Een dergelijk volume gaat over 512 GiB-capaciteit. Als u één schijf wilt hebben die u 250 MiB-door Voer per seconde krijgt, moet u een P40-schijf kiezen met 2 TiB-capaciteit. 
-- Of u kunt een door Voer van 400 MiB per seconde belopen door vier P10 Premium-opslag schijven te verwijderen met een totale capaciteit van 512 GiB door striping. Als u één schijf met een minimum van 500 MiB-door Voer per seconde wilt hebben, moet u een P60 Premium-opslag schijf kiezen met 8 TiB. Omdat kosten-of Premium-opslag bijna lineair is met de capaciteit, kunt u de kosten besparen door gebruik te maken van striping.
+- 400 MiB per seconde door het verwijderen van vier P10 Premium-opslag schijven met een totale capaciteit van 512 GiB door strepen. Als u één schijf met een minimum van 500 MiB-door Voer per seconde wilt hebben, moet u een P60 Premium-opslag schijf kiezen met 8 TiB. Omdat de kosten van Premium Storage bijna lineair zijn met de capaciteit, kunt u de kosten besparen door gebruik te maken van striping.
 
 Sommige regels moeten worden gevolgd voor Stripe:
 

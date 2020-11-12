@@ -1,17 +1,17 @@
 ---
 title: Server-Azure Portal-Azure Database for MySQL beheren
 description: Meer informatie over het beheren van een Azure Database for MySQL-server vanuit de Azure Portal.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: a9dba7c85ded7add1a9f1494d88a3f8a1f62f175
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e29e823834ec813a8389cea220cffc7633aa7103
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90882460"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541450"
 ---
 # <a name="manage-an-azure-database-for-mysql-server-using-the-azure-portal"></a>Een Azure Database for MySQL-server beheren met behulp van de Azure Portal
 
@@ -33,9 +33,9 @@ Nadat de server is gemaakt, kunt u de schaal aanpassen tussen de lagen Algemeen 
 
 U kunt schalen van Algemeen naar geoptimaliseerd voor geheugen en vice versa. Wijzigen van en van de Basic-laag nadat het maken van de server niet wordt ondersteund.
 
-1. Selecteer uw server in de Azure Portal. Selecteer de **prijs categorie**die u in de sectie **instellingen** bevindt.
+1. Selecteer uw server in de Azure Portal. Selecteer de **prijs categorie** die u in de sectie **instellingen** bevindt.
 
-2. Selecteer **Algemeen** of **geoptimaliseerd geheugen**, afhankelijk van wat u wilt schalen.
+2. Selecteer **Algemeen** of **geoptimaliseerd geheugen** , afhankelijk van wat u wilt schalen.
 
    :::image type="content" source="./media/howto-create-manage-server-portal/change-pricing-tier.png" alt-text="Scherm opname van Azure Portal om de laag basis, Algemeen of geoptimaliseerd voor geheugen te kiezen in Azure Database for MySQL":::
 
@@ -46,11 +46,11 @@ U kunt schalen van Algemeen naar geoptimaliseerd voor geheugen en vice versa. Wi
 
 ### <a name="scale-vcores-up-or-down"></a>VCores omhoog of omlaag schalen
 
-1. Selecteer uw server in de Azure Portal. Selecteer de **prijs categorie**die u in de sectie **instellingen** bevindt.
+1. Selecteer uw server in de Azure Portal. Selecteer de **prijs categorie** die u in de sectie **instellingen** bevindt.
 
 2. Wijzig de instelling **vCore** door de schuif regelaar naar de gewenste waarde te verplaatsen.
 
-    :::image type="content" source="./media/howto-create-manage-server-portal/scaling-compute.png" alt-text="Scherm opname van Azure Portal om de laag basis, Algemeen of geoptimaliseerd voor geheugen te kiezen in Azure Database for MySQL":::
+    :::image type="content" source="./media/howto-create-manage-server-portal/scaling-compute.png" alt-text="Scherm opname van Azure Portal om de optie vCore te kiezen in Azure Database for MySQL":::
 
     > [!NOTE]
     > Het schalen van vCores zorgt ervoor dat de server opnieuw wordt opgestart.
@@ -59,11 +59,11 @@ U kunt schalen van Algemeen naar geoptimaliseerd voor geheugen en vice versa. Wi
 
 ### <a name="scale-storage-up"></a>Opslag omhoog schalen
 
-1. Selecteer uw server in de Azure Portal. Selecteer de **prijs categorie**die u in de sectie **instellingen** bevindt.
+1. Selecteer uw server in de Azure Portal. Selecteer de **prijs categorie** die u in de sectie **instellingen** bevindt.
 
 2. Wijzig de **opslag** instelling door de schuif regelaar omhoog te verplaatsen naar de gewenste waarde.
 
-   :::image type="content" source="./media/howto-create-manage-server-portal/scaling-storage.png" alt-text="Scherm opname van Azure Portal om de laag basis, Algemeen of geoptimaliseerd voor geheugen te kiezen in Azure Database for MySQL":::
+   :::image type="content" source="./media/howto-create-manage-server-portal/scaling-storage.png" alt-text="Scherm opname van Azure Portal voor het kiezen van opslag schaal in Azure Database for MySQL":::
 
    > [!NOTE]
    > De opslag kan niet omlaag worden geschaald.
@@ -74,13 +74,13 @@ U kunt schalen van Algemeen naar geoptimaliseerd voor geheugen en vice versa. Wi
 
 U kunt het wacht woord van de beheerdersrol wijzigen met behulp van de Azure Portal.
 
-1. Selecteer uw server in de Azure Portal. Selecteer **wacht woord opnieuw instellen**in het venster **overzicht** .
+1. Selecteer uw server in de Azure Portal. Selecteer **wacht woord opnieuw instellen** in het venster **overzicht** .
 
-   :::image type="content" source="./media/howto-create-manage-server-portal/overview-reset-password.png" alt-text="Scherm opname van Azure Portal om de laag basis, Algemeen of geoptimaliseerd voor geheugen te kiezen in Azure Database for MySQL":::
+   :::image type="content" source="./media/howto-create-manage-server-portal/overview-reset-password.png" alt-text="Scherm opname van Azure Portal om het wacht woord in Azure Database for MySQL opnieuw in te stellen":::
 
 2. Voer een nieuw wachtwoord in en bevestig het wachtwoord. In het tekstvak wordt u gevraagd om de vereisten voor wachtwoord complexiteit.
 
-   :::image type="content" source="./media/howto-create-manage-server-portal/reset-password.png" alt-text="Scherm opname van Azure Portal om de laag basis, Algemeen of geoptimaliseerd voor geheugen te kiezen in Azure Database for MySQL":::
+   :::image type="content" source="./media/howto-create-manage-server-portal/reset-password.png" alt-text="Scherm opname van Azure Portal om uw wacht woord opnieuw in te stellen en op te slaan in Azure Database for MySQL":::
 
 3. Selecteer **OK** om het nieuwe wacht woord op te slaan.
 
@@ -88,13 +88,13 @@ U kunt het wacht woord van de beheerdersrol wijzigen met behulp van de Azure Por
 
 U kunt uw server verwijderen als u deze niet meer nodig hebt.
 
-1. Selecteer uw server in de Azure Portal. Selecteer **verwijderen**in het venster **overzicht** .
+1. Selecteer uw server in de Azure Portal. Selecteer **verwijderen** in het venster **overzicht** .
 
-   :::image type="content" source="./media/howto-create-manage-server-portal/overview-delete.png" alt-text="Scherm opname van Azure Portal om de laag basis, Algemeen of geoptimaliseerd voor geheugen te kiezen in Azure Database for MySQL":::
+   :::image type="content" source="./media/howto-create-manage-server-portal/overview-delete.png" alt-text="Scherm opname van Azure Portal om de server in Azure Database for MySQL te verwijderen":::
 
 2. Typ de naam van de server in het invoervak om te bevestigen dat dit de server is die u wilt verwijderen.
 
-   :::image type="content" source="./media/howto-create-manage-server-portal/confirm-delete.png" alt-text="Scherm opname van Azure Portal om de laag basis, Algemeen of geoptimaliseerd voor geheugen te kiezen in Azure Database for MySQL":::
+   :::image type="content" source="./media/howto-create-manage-server-portal/confirm-delete.png" alt-text="Scherm opname van Azure Portal om het verwijderen van de server in Azure Database for MySQL te bevestigen":::
 
    > [!NOTE]
    > Het verwijderen van een server is onomkeerbaar.

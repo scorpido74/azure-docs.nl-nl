@@ -1,25 +1,25 @@
 ---
 title: Gebruikers maken-Azure Database for MariaDB
 description: In dit artikel wordt beschreven hoe u nieuwe gebruikers accounts kunt maken om te communiceren met een Azure Database for MariaDB-server.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 10/1/2020
-ms.openlocfilehash: 7a3515850027963dcabbf2cef4efd8bf43802cbe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 882c8365bda87e97bfbc3bee9bdd320b312b4114
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653057"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542708"
 ---
 # <a name="create-users-in-azure-database-for-mariadb"></a>Create users in Azure Database for MariaDB (Gebruikers maken in Azure Database for MariaDB) 
 In dit artikel wordt beschreven hoe u gebruikers kunt maken in Azure Database for MariaDB.
 
 > [!NOTE]
-> Afwijking-vrije communicatie
+> Oordeelloze communicatie
 >
-> Micro soft biedt ondersteuning voor een gevarieerde en inbegrips omgeving. Dit artikel bevat verwijzingen naar het woord _Slave_. De micro soft- [stijl gids voor beschik bare communicatie](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) herkent deze als een uitsluitend woord. Het woord wordt in dit artikel gebruikt voor consistentie omdat het momenteel het woord is dat wordt weer gegeven in de software. Wanneer de software is bijgewerkt om het woord te verwijderen, wordt dit artikel zodanig bijgewerkt dat het in uitlijning is.
+> Microsoft biedt ondersteuning voor een gevarieerde en insluitende omgeving. Dit artikel bevat verwijzingen naar het woord _slaaf_. In de [stijlgids voor oordeelloze communicatie](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) wordt dit woord herkend als uitsluitend. Het woord wordt in dit artikel gebruikt voor consistentie, omdat het momenteel het woord is dat wordt weergegeven in de software. Wanneer de software is bijgewerkt om het woord te verwijderen, wordt dit artikel ook bijgewerkt zodat het is afgestemd.
 >
 
 Wanneer u uw Azure Database for MariaDB voor het eerst hebt gemaakt, hebt u de gebruikers naam en het wacht woord van de server beheerder aangemeld. Voor meer informatie kunt u de [Snelstartgids](quickstart-create-mariadb-server-database-using-azure-portal.md)volgen. U kunt de gebruikers naam van de server beheerder aanmelden via de Azure Portal.
@@ -39,7 +39,7 @@ Zodra de Azure Database for MariaDB-server is gemaakt, kunt u het eerste gebruik
 2. Gebruik het beheerders account en-wacht woord om verbinding te maken met uw database server. Gebruik het client hulpprogramma van uw voor keur, zoals MySQL Workbench, mysql.exe, HeidiSQL of anderen. 
    Als u niet zeker weet hoe u verbinding kunt maken, raadpleegt u [MySQL Workbench gebruiken om verbinding te maken en gegevens op te vragen](./connect-workbench.md)
 
-3. Bewerk de volgende SQL-code en voer deze uit. Vervang de nieuwe gebruikers naam voor de waarde van de tijdelijke aanduiding `new_master_user` . Met deze syntaxis worden de vermelde bevoegdheden voor alle database schema's (*.*) verleend aan de gebruikers naam (new_master_user in dit voor beeld). 
+3. Bewerk de volgende SQL-code en voer deze uit. Vervang de nieuwe gebruikers naam voor de waarde van de tijdelijke aanduiding `new_master_user` . Met deze syntaxis worden de vermelde bevoegdheden voor alle database schema's ( *.* ) verleend aan de gebruikers naam (new_master_user in dit voor beeld). 
 
    ```sql
    CREATE USER 'new_master_user'@'%' IDENTIFIED BY 'StrongPassword!';

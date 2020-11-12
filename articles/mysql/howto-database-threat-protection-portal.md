@@ -1,17 +1,17 @@
 ---
 title: Advanced Threat Protection-Azure Portal-Azure Database for MySQL
 description: Meer informatie over het configureren van geavanceerde beveiliging tegen bedreigingen voor het detecteren van afwijkende database activiteiten die duiden op mogelijke beveiligings dreigingen voor de data base.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 96f6993f92192a1149e3b243c68fdf5fe96fdc66
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: b30bd36dca6f866b8f3e6e8a0b133a6dd61b239b
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92541448"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541433"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-mysql"></a>Advanced Threat Protection voor Azure Database for MySQL
 
@@ -28,11 +28,11 @@ Advanced Threat Protection maakt deel uit van de Advanced Data Security-aanbiedi
 
 ## <a name="set-up-threat-detection"></a>Detectie van bedreigingen instellen
 1. Start de Azure Portal op [https://portal.azure.com](https://portal.azure.com) .
-2. Ga naar de configuratie pagina van de Azure Database for MySQL-server die u wilt beveiligen. Selecteer in de beveiligings instellingen **Advanced Threat Protection (preview)** .
+2. Ga naar de configuratie pagina van de Azure Database for MySQL-server die u wilt beveiligen. Selecteer in de beveiligings instellingen **Advanced Threat Protection (preview)**.
 3. Op de configuratie pagina **Advanced Threat Protection (preview)** :
 
    - Geavanceerde beveiliging tegen bedreigingen inschakelen op de-server.
-   - Geef in het tekstvak **waarschuwingen verzenden naar** een lijst met e-mail berichten op voor het ontvangen van beveiligings waarschuwingen bij de detectie van afwijkende database activiteiten in de **instellingen voor geavanceerde beveiliging tegen bedreigingen** .
+   - Geef in het tekstvak **waarschuwingen verzenden naar** een lijst met e-mail berichten op voor het ontvangen van beveiligings waarschuwingen bij de detectie van afwijkende database activiteiten in de **instellingen voor geavanceerde beveiliging tegen bedreigingen**.
   
    :::image type="content" source="./media/howto-database-threat-protection-portal/set-up-threat-protection.png" alt-text="Detectie van bedreigingen instellen":::
 
@@ -42,15 +42,15 @@ U ontvangt een e-mail melding wanneer er afwijkende database activiteiten worden
  
 1. Klik op de koppeling **recente waarschuwingen weer geven** in het e-mail bericht om de Azure portal te starten en de pagina Azure Security Center waarschuwingen weer te geven. Deze bevat een overzicht van actieve bedreigingen die zijn gedetecteerd op de SQL database.
     
-    :::image type="content" source="./media/howto-database-threat-protection-portal/anomalous-activity-report.png" alt-text="Detectie van bedreigingen instellen":::
+    :::image type="content" source="./media/howto-database-threat-protection-portal/anomalous-activity-report.png" alt-text="Rapport afwijkende activiteiten":::
 
     Actieve bedreigingen weer geven:
 
-    :::image type="content" source="./media/howto-database-threat-protection-portal/active-threats.png" alt-text="Detectie van bedreigingen instellen":::
+    :::image type="content" source="./media/howto-database-threat-protection-portal/active-threats.png" alt-text="Actieve bedreigingen":::
 
 2. Klik op een specifieke waarschuwing voor aanvullende details en acties voor het onderzoeken van deze dreiging en het oplossen van toekomstige bedreigingen.
     
-    :::image type="content" source="./media/howto-database-threat-protection-portal/specific-alert.png" alt-text="Detectie van bedreigingen instellen":::
+    :::image type="content" source="./media/howto-database-threat-protection-portal/specific-alert.png" alt-text="Specifieke waarschuwing":::
 
 ## <a name="explore-threat-detection-alerts"></a>Waarschuwingen voor detectie van dreigingen verkennen
 
@@ -58,7 +58,7 @@ SQL Database detectie van bedreigingen integreert de waarschuwingen met [Azure S
 
 Klik op **waarschuwing bedreigingen detectie** om de pagina Azure Security Center waarschuwingen te starten en een overzicht te krijgen van actieve SQL-bedreigingen die zijn gedetecteerd op de data base.
 
-   :::image type="content" source="./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png" alt-text="Detectie van bedreigingen instellen":::
+   :::image type="content" source="./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png" alt-text="Waarschuwing voor detectie van bedreigingen":::
    
 
 ## <a name="next-steps"></a>Volgende stappen

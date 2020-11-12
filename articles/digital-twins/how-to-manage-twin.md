@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 929181f9a4d159892956274a7958b1daa95cbc10
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 9e00e0e5a34eecd6974e8919ce0d0e16f48757f3
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360068"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540965"
 ---
 # <a name="manage-digital-twins"></a>Digitale tweelingen beheren
 
@@ -26,6 +26,10 @@ Dit artikel richt zich op het beheren van digitale apparaatdubbels; Zie [*How-to
 ## <a name="prerequisites"></a>Vereisten
 
 [!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
+
+## <a name="ways-to-manage-twins"></a>Manieren om apparaatdubbels te beheren
+
+[!INCLUDE [digital-twins-ways-to-manage.md](../../includes/digital-twins-ways-to-manage.md)]
 
 ## <a name="create-a-digital-twin"></a>Een digitale dubbele
 
@@ -187,6 +191,17 @@ foreach (string prop in twin.Contents.Keys)
 ```
 
 Meer informatie over de hulp klassen voor serialisatie vindt u in [*How to: gebruik de Azure Digital Apparaatdubbels api's en sdk's*](how-to-use-apis-sdks.md).
+
+## <a name="view-all-digital-twins"></a>Alle digitale apparaatdubbels weer geven
+
+Als u alle digitale apparaatdubbels in uw exemplaar wilt weer geven, gebruikt u een [query](how-to-query-graph.md). U kunt een query uitvoeren met de [query-api's](/rest/api/digital-twins/dataplane/query) of de [cli-opdrachten](how-to-use-cli.md).
+
+Dit is de hoofd tekst van de basis query waarmee een lijst met alle digitale apparaatdubbels in het exemplaar wordt geretourneerd:
+
+```sql
+SELECT *
+FROM DIGITALTWINS
+``` 
 
 ## <a name="update-a-digital-twin"></a>Een digital twin bijwerken
 
@@ -360,7 +375,7 @@ async Task FindAndDeleteIncomingRelationshipsAsync(string dtId)
 
 Voor een voor beeld van het verwijderen van alle apparaatdubbels in een keer, downloadt u de voor beeld-app die wordt gebruikt in de [_Tutorial: Verken de basis principes met een voor beeld-client-app *](tutorial-command-line-app.md). Het *CommandLoop.cs* -bestand doet dit in een `CommandDeleteAllTwins()` functie.
 
-## <a name="manage-twins-using-runnable-code-sample"></a>Apparaatdubbels beheren met uitvoer bare-code voorbeeld
+## <a name="runnable-digital-twin-code-sample"></a>Voor beeld van uitvoer bare digitale dubbele code
 
 U kunt het uitvoer bare-code voorbeeld hieronder gebruiken om een dubbele, bijwerkings gegevens te maken en de dubbele te verwijderen. 
 
@@ -535,22 +550,6 @@ Hier volgt de console-uitvoer van het bovenstaande programma:
 
 :::image type="content" source="./media/how-to-manage-twin/console-output-manage-twins.png" alt-text="Console-uitvoer waarin wordt weer gegeven dat de dubbele is gemaakt, bijgewerkt en verwijderd" lightbox="./media/how-to-manage-twin/console-output-manage-twins.png":::
 
-## <a name="manage-twins-with-cli"></a>Apparaatdubbels beheren met CLI
-
-Apparaatdubbels kan ook worden beheerd met behulp van de Azure Digital Apparaatdubbels CLI. De opdrachten zijn te vinden in [_How: gebruik de Azure Digital APPARAATDUBBELS cli *](how-to-use-cli.md).
-
-## <a name="view-all-digital-twins"></a>Alle digitale apparaatdubbels weer geven
-
-Als u alle digitale apparaatdubbels in uw exemplaar wilt weer geven, gebruikt u een [query](how-to-query-graph.md). U kunt een query uitvoeren met de [query-api's](/rest/api/digital-twins/dataplane/query) of de [cli-opdrachten](how-to-use-cli.md).
-
-Dit is de hoofd tekst van de basis query waarmee een lijst met alle digitale apparaatdubbels in het exemplaar wordt geretourneerd:
-
-```sql
-SELECT *
-FROM DIGITALTWINS
-``` 
-
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie relaties tussen uw digitale apparaatdubbels maken en beheren:
-* [*Instructies: de dubbele grafiek met relaties beheren*](how-to-manage-graph.md)
+Zie relaties tussen uw digitale apparaatdubbels maken en beheren: _ [ *instructies: de dubbele grafiek met relaties beheren*](how-to-manage-graph.md)

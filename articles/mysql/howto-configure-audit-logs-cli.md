@@ -1,18 +1,18 @@
 ---
 title: Access-controle logboeken-Azure CLI-Azure Database for MySQL
 description: In dit artikel wordt beschreven hoe u de audit Logboeken in Azure Database for MySQL kunt configureren en openen vanuit de Azure CLI.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 6/24/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 568f49565c6e6d8062f8869566cf3879b7c97eaa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: db7ffabae785a589bacf349356079f6046039f9c
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87503324"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541994"
 ---
 # <a name="configure-and-access-audit-logs-in-the-azure-cli"></a>Controle logboeken configureren en openen in de Azure CLI
 
@@ -20,14 +20,13 @@ U kunt de [Azure database for MySQL audit logboeken](concepts-audit-logs.md) con
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u deze hand leiding wilt door lopen, hebt u het volgende nodig:
+U kunt deze hand leiding door lopen:
 
-- [Azure Database for MySQL server](quickstart-create-mysql-server-database-using-azure-portal.md)
+- U hebt een [Azure database for mysql-server](quickstart-create-mysql-server-database-using-azure-portal.md)nodig.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-> [!IMPORTANT]
-> Voor deze hand leiding moet u Azure CLI versie 2,0 of hoger gebruiken. Als u de versie wilt bevestigen, typt u bij de opdracht prompt van Azure CLI `az --version` . Zie [Azure CLI installeren]( /cli/azure/install-azure-cli) als u CLI wilt installeren of upgraden.
+- Voor dit artikel is versie 2,0 of hoger van de Azure CLI vereist. Als u Azure Cloud Shell gebruikt, is de nieuwste versie al geïnstalleerd.
 
 ## <a name="configure-audit-logging"></a>Controle logboek registratie configureren
 

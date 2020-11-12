@@ -2,17 +2,17 @@
 title: Verbindings problemen oplossen-Azure Database for MySQL
 description: Meer informatie over het oplossen van verbindings problemen met Azure Database for MySQL, waaronder tijdelijke fouten die moeten worden herhaald, Firewall problemen en storingen.
 keywords: MySQL-verbinding, connection string, connectiviteits problemen, tijdelijke fout, verbindings fout
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 3/18/2020
-ms.openlocfilehash: e4afcb8756f64ab9b66044a1bf1304427330e365
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: da500087aeb4ad5e2bf516c3d0ce3cceaf8396af
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82100886"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540770"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mysql"></a>Verbindingsproblemen met Azure Databases for MySQL oplossen
 
@@ -48,7 +48,7 @@ Als de toepassing permanent geen verbinding kan maken met Azure Database for MyS
 
 * Server firewall configuratie: Zorg ervoor dat de firewall van de Azure Database for MySQL-server zo is geconfigureerd dat verbindingen van uw client worden toegestaan, inclusief proxy servers en gateways.
 * Firewall configuratie van de client: de firewall op uw client moet verbindingen met uw database server toestaan. IP-adressen en poorten van de server die u niet wilt toestaan en toepassings namen zoals MySQL in sommige firewalls.
-* Gebruikers fout: mogelijk hebt u een type verbindings parameter, zoals de server naam in de connection string of een ontbrekend * \@ Server* achtervoegsel in de gebruikers naam.
+* Gebruikers fout: mogelijk hebt u een type verbindings parameter, zoals de server naam in de connection string of een ontbrekend *\@ Server* achtervoegsel in de gebruikers naam.
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Stappen voor het oplossen van problemen met de permanente verbinding
 

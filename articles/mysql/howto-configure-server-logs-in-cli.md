@@ -1,19 +1,19 @@
 ---
 title: Toegang tot langzame query logboeken-Azure CLI-Azure Database for MySQL
 description: In dit artikel wordt beschreven hoe u de logboeken voor trage query's in Azure Database for MySQL kunt openen met behulp van de Azure CLI.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 4/13/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a662fe9300d78591cc7ae1fcff67f9b3f93ab8c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 945a67f81010a61adf814f6f6f422eba5001b48d
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87501215"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541569"
 ---
 # <a name="configure-and-access-slow-query-logs-by-using-azure-cli"></a>Langzame query logboeken configureren en openen met behulp van Azure CLI
 U kunt de Azure Database for MySQL langzame query logboeken downloaden met behulp van Azure CLI, het opdracht regel programma van Azure.
@@ -25,8 +25,8 @@ Als u deze hand leiding wilt door lopen, hebt u het volgende nodig:
 
 ## <a name="configure-logging"></a>Logboek registratie configureren
 U kunt de server configureren voor toegang tot het langzame Slow-query logboek door de volgende stappen uit te voeren:
-1. Schakel logboek registratie voor langzame query's in door de langzame para meter voor ** \_ query \_ Logboeken** in te stellen op on.
-2. Selecteer waar de logboeken moeten worden uitgevoerd om de **logboek \_ uitvoer**te gebruiken. Selecteer **bestand**om logboeken naar zowel lokale opslag als Azure monitor Diagnostische logboeken te verzenden. Als u Logboeken alleen naar Azure Monitor logboeken wilt verzenden, selecteert u **geen**
+1. Schakel logboek registratie voor langzame query's in door de langzame para meter voor **\_ query \_ Logboeken** in te stellen op on.
+2. Selecteer waar de logboeken moeten worden uitgevoerd om de **logboek \_ uitvoer** te gebruiken. Selecteer **bestand** om logboeken naar zowel lokale opslag als Azure monitor Diagnostische logboeken te verzenden. Als u Logboeken alleen naar Azure Monitor logboeken wilt verzenden, selecteert u **geen**
 3. Pas andere para meters aan, zoals **lange \_ query \_ tijd** en **logboek \_ langzame \_ beheer \_ instructies**.
 
 Zie [server parameters configureren](howto-configure-server-parameters-using-cli.md)voor meer informatie over het instellen van de waarde van deze para meters via Azure cli.

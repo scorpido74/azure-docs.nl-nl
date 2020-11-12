@@ -1,7 +1,7 @@
 ---
 title: Een trainings uitvoering configureren
 titleSuffix: Azure Machine Learning
-description: Train uw machine learning model op verschillende trainings omgevingen (reken doelen). U kunt eenvoudig overschakelen tussen trainings omgevingen. Start training lokaal. Als u wilt uitschalen, gaat u naar een compute-doel op basis van de Cloud.
+description: Train uw machine learning model op verschillende trainings omgevingen (reken doelen). U kunt eenvoudig overschakelen tussen trainings omgevingen.
 services: machine-learning
 author: sdgilley
 ms.author: sgilley
@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 8280af20d63da969504cda8ffe875405d4bf0218
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: cb10eb0f89ce37bc484c8570995ebaa098c696f1
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324723"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541297"
 ---
 # <a name="configure-and-submit-training-runs"></a>Trainingsuitvoering configureren en verzenden
 

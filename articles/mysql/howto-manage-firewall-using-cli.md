@@ -1,19 +1,19 @@
 ---
 title: Firewall regels beheren-Azure CLI-Azure Database for MySQL
 description: In dit artikel wordt beschreven hoe u Azure Database for MySQL firewall regels maakt en beheert met behulp van de Azure CLI-opdracht regel.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: cb7f8547419b45314ad044b41957a53085cdbe13
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: eaddd8b2979b30251301ad041ea4b872c23d680b
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546395"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541331"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-cli"></a>Azure Database for MySQL firewall regels maken en beheren met behulp van de Azure CLI
 Firewall regels op server niveau kunnen worden gebruikt om de toegang tot een Azure Database for MySQL server te beheren vanuit een specifiek IP-adres of een bereik met IP-adressen. Met behulp van handige Azure CLI-opdrachten kunt u firewall regels maken, bijwerken, verwijderen en weer geven om uw server te beheren. Zie [Azure database for MySQL Server firewall-regels](./concepts-firewall-rules.md)voor een overzicht van Azure database for MySQL firewalls.

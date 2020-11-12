@@ -1,18 +1,18 @@
 ---
 title: Server opnieuw opstarten-Azure CLI-Azure Database for MySQL
 description: In dit artikel wordt beschreven hoe u een Azure Database for MySQL server opnieuw kunt opstarten met behulp van de Azure CLI.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9707aaa911fc8ceb8c03b369bd6479646ca3418c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77f20bba76ee3a37e6a72481e0b3d13c9904b106
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87500722"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541824"
 ---
 # <a name="restart-azure-database-for-mysql-server-using-the-azure-cli"></a>Azure Database for MySQL server opnieuw opstarten met behulp van de Azure CLI
 In dit onderwerp wordt beschreven hoe u een Azure Database for MySQL server opnieuw kunt starten. Mogelijk moet u de server opnieuw opstarten om onderhouds redenen te zorgen, waardoor er een korte storing optreedt terwijl de server de bewerking uitvoert.
@@ -22,14 +22,14 @@ Het opnieuw opstarten van de server wordt geblokkeerd als de service bezet is. D
 De tijd die nodig is om opnieuw op te starten, is afhankelijk van het MySQL-herstel proces. Om de herstarttijd te verlagen, raden we u aan om de hoeveelheid activiteit die op de server plaatsvindt, te minimaliseren voordat de computer opnieuw wordt opgestart.
 
 ## <a name="prerequisites"></a>Vereisten
-U hebt het volgende nodig om deze hand leiding te volt ooien:
-- Een [Azure database for mysql server](quickstart-create-server-up-azure-cli.md)
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+Voor het volt ooien van deze hand leiding:
 
-> [!IMPORTANT]
-> Voor deze hand leiding moet u Azure CLI versie 2,0 of hoger gebruiken. Als u de versie wilt bevestigen, typt u bij de opdracht prompt van Azure CLI `az --version` . Zie [Azure CLI installeren]( /cli/azure/install-azure-cli) als u CLI wilt installeren of upgraden.
+- U hebt een [Azure database for mysql-server](quickstart-create-server-up-azure-cli.md)nodig.
+ 
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
+- Voor dit artikel is versie 2,0 of hoger van de Azure CLI vereist. Als u Azure Cloud Shell gebruikt, is de nieuwste versie al geïnstalleerd.
 
 ## <a name="restart-the-server"></a>Start de server opnieuw
 

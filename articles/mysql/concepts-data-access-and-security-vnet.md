@@ -1,17 +1,17 @@
 ---
 title: VNet-service-eind punten-Azure Database for MySQL
 description: Hierin wordt beschreven hoe VNet-service-eind punten werken voor uw Azure Database for MySQL-server.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 7/17/2020
-ms.openlocfilehash: dba6b3f2137230ebe95f1bc89156cf6b127c8f52
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 225afcbafeaf7213b4f040a07d709d33e46b44f4
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428138"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540804"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mysql"></a>Service-eindpunten en -regels voor virtuele netwerken gebruiken voor Azure Database for MySQL
 
@@ -35,7 +35,7 @@ U kunt ook een [persoonlijke koppeling](concepts-data-access-security-private-li
 
 **Subnet:** Een virtueel netwerk bevat **subnetten**. Alle Azure virtual machines (Vm's) die u hebt toegewezen aan subnetten. Eén subnet kan meerdere Vm's of andere reken knooppunten bevatten. Reken knooppunten die zich buiten uw virtuele netwerk bevinden, hebben geen toegang tot het virtuele netwerk tenzij u de beveiliging zo configureert dat toegang wordt toegestaan.
 
-**Service-eind punt Virtual Network:** Een [Virtual Network Service-eind punt][vm-virtual-network-service-endpoints-overview-649d] is een subnet waarvan de eigenschaps waarden een of meer formele namen van Azure-service typen bevatten. In dit artikel bent u geïnteresseerd in de type naam van **micro soft. SQL**, die verwijst naar de Azure-service met de naam SQL database. Deze servicetag is ook van toepassing op de Azure Database for MySQL-en PostgreSQL-Services. Het is belang rijk te weten wanneer u de code van de **micro soft. SQL** -service toepast op een VNet-service-eind punt Hiermee wordt het verkeer van service-eind punten geconfigureerd voor alle Azure SQL Database, Azure Database for MySQL en Azure database for PostgreSQL servers in het subnet. 
+**Service-eind punt Virtual Network:** Een [Virtual Network Service-eind punt][vm-virtual-network-service-endpoints-overview-649d] is een subnet waarvan de eigenschaps waarden een of meer formele namen van Azure-service typen bevatten. In dit artikel bent u geïnteresseerd in de type naam van **micro soft. SQL** , die verwijst naar de Azure-service met de naam SQL database. Deze servicetag is ook van toepassing op de Azure Database for MySQL-en PostgreSQL-Services. Het is belang rijk te weten wanneer u de code van de **micro soft. SQL** -service toepast op een VNet-service-eind punt Hiermee wordt het verkeer van service-eind punten geconfigureerd voor alle Azure SQL Database, Azure Database for MySQL en Azure database for PostgreSQL servers in het subnet. 
 
 **Regel voor virtueel netwerk:** Een regel voor het virtuele netwerk voor uw Azure Database for MySQL-server is een subnet dat wordt vermeld in de toegangs beheer lijst (ACL) van uw Azure Database for MySQL-server. Het subnet moet de naam van het **micro soft. SQL** -type bevatten in de ACL voor uw Azure database for mysql-server.
 
@@ -130,7 +130,7 @@ Als u communicatie van uw circuit naar Azure Database for MySQL wilt toestaan, m
 
 ## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>Een VNET-firewall regel toevoegen aan uw server zonder de VNET-service-eind punten in te scha kelen
 
-Als u alleen een VNet-firewall regel instelt, kunt u de server niet beveiligen met het VNet. U moet ook VNet-service-eind punten **inschakelen om de beveiliging van kracht** te laten worden. Wanneer u service-eind punten inschakelt, wordt de **downtime van uw**VNet- **subnet in stand**gezet totdat de overgang van **uit** naar wordt voltooid. Dit geldt met name in de context van grote VNets. U kunt de vlag **IgnoreMissingServiceEndpoint** gebruiken om de downtime te verminderen of te elimineren tijdens de overgang.
+Als u alleen een VNet-firewall regel instelt, kunt u de server niet beveiligen met het VNet. U moet ook VNet-service-eind punten **inschakelen om de beveiliging van kracht** te laten worden. Wanneer u service-eind punten inschakelt, wordt de **downtime van uw** VNet- **subnet in stand** gezet totdat de overgang van **uit** naar wordt voltooid. Dit geldt met name in de context van grote VNets. U kunt de vlag **IgnoreMissingServiceEndpoint** gebruiken om de downtime te verminderen of te elimineren tijdens de overgang.
 
 U kunt de vlag **IgnoreMissingServiceEndpoint** instellen met behulp van de Azure CLI of portal.
 

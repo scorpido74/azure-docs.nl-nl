@@ -1,17 +1,17 @@
 ---
 title: Audit logboeken-Azure Database for MariaDB
 description: Beschrijft de audit logboeken die beschikbaar zijn in Azure Database for MariaDB en de beschik bare para meters voor het inschakelen van logboek registratie niveaus.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 6/24/2020
-ms.openlocfilehash: 7c9d59eee1e1ce69394301023b108952eaf46790
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e66eaf62b54759222421b17ebc7e33b82e018338
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85362421"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541756"
 ---
 # <a name="audit-logs-in-azure-database-for-mariadb"></a>Audit Logboeken in Azure Database for MariaDB
 
