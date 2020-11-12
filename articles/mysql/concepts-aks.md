@@ -1,17 +1,17 @@
 ---
 title: Verbinding maken met de Azure Kubernetes-service-Azure Database for MySQL
 description: Meer informatie over het verbinden van Azure Kubernetes service met Azure Database for MySQL
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: bc40903de09ebfe04858c631eee0233561784418
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 5c4a5f5d792a60ed3fef07797fdbdfa0c9cfb8fe
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546905"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94534327"
 ---
 # <a name="connecting-azure-kubernetes-service-and-azure-database-for-mysql"></a>Verbinding maken met Azure Kubernetes service en Azure Database for MySQL
 
@@ -26,7 +26,7 @@ Vanaf november 2018 ondersteunt AKS versneld netwerken op die ondersteunde VM-ex
 U kunt controleren of uw AKS-cluster versneld netwerken heeft:
 1. Ga naar de Azure Portal en selecteer uw AKS-cluster.
 2. Selecteer het tabblad Properties.
-3. Kopieer de naam van de **infrastructuur resource groep** .
+3. Kopieer de naam van de **infrastructuur resource groep**.
 4. Gebruik de zoek balk van de portal om de resource groep voor de infra structuur te zoeken en te openen.
 5. Selecteer een virtuele machine in die resource groep.
 6. Ga naar het tabblad **netwerken** van de VM.

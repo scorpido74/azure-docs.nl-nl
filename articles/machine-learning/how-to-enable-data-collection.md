@@ -1,7 +1,7 @@
 ---
 title: Gegevens verzamelen in uw productie modellen
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het verzamelen van gegevens uit een geïmplementeerd Azure Machine Learning model
+description: Meer informatie over het verzamelen van gegevens uit een Azure Machine Learning model dat is geïmplementeerd op een AKS-cluster (Azure Kubernetes service).
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,16 +11,14 @@ author: lostmygithubaccount
 ms.date: 07/14/2020
 ms.topic: conceptual
 ms.custom: how-to, data4ml
-ms.openlocfilehash: 9a9ef4dbe7f6b97675d395baf441530e5bd79320
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: c6b9dc95e1d50481ac5353460910032ca1711ab1
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93357640"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94532814"
 ---
 # <a name="collect-data-from-models-in-production"></a>Gegevens verzamelen van modellen in productie
-
-
 
 In dit artikel wordt uitgelegd hoe u gegevens kunt verzamelen van een Azure Machine Learning model dat is geïmplementeerd op een AKS-cluster (Azure Kubernetes service). De verzamelde gegevens worden vervolgens opgeslagen in Azure Blob-opslag.
 

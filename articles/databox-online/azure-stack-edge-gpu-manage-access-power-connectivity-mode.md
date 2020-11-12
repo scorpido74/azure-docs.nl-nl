@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 09/09/2020
 ms.author: alkohli
-ms.openlocfilehash: 99dd3da3f9e8434f9c859afd347bd19d10628083
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b66a184abce53c31fade19fc9e10ffe4c7ff8415
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90935738"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94532440"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge-pro-gpu"></a>Toegang, kracht en connectiviteits modus beheren voor uw Azure Stack Edge Pro GPU
 
@@ -47,14 +47,14 @@ Volg deze stappen in de lokale gebruikers interface om het wacht woord van het a
 
 Voor de werk stroom opnieuw instellen is niet vereist dat de gebruiker het oude wacht woord intrekt en is nuttig wanneer het wacht woord verloren is gegaan. Deze werk stroom wordt uitgevoerd in de Azure Portal.
 
-1. Ga in het Azure Portal naar **overzicht > het beheerders wachtwoord opnieuw**in te stellen.
+1. Ga in het Azure Portal naar **overzicht > het beheerders wachtwoord opnieuw** in te stellen.
 
-    ![Wachtwoord opnieuw instellen](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-1.png)
+    ![Scherm afbeelding toont het apparaat waarvoor het wacht woord van het apparaat opnieuw is ingesteld.](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-1.png)
 
 
 2. Voer het nieuwe wacht woord in en bevestig het. Het opgegeven wacht woord moet tussen 8 en 16 tekens lang zijn. Het wacht woord moet drie van de volgende tekens bevatten: hoofd letters, kleine letters, cijfers en speciale tekens. Selecteer **Opnieuw instellen**.
 
-    ![Wachtwoord opnieuw instellen](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-2.png)
+    ![Scherm afbeelding wordt weer gegeven in het dialoog venster wacht woord voor apparaat opnieuw instellen.](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-2.png)
 
 ## <a name="manage-resource-access"></a>Toegang tot de bedrijfsresources
 
@@ -115,7 +115,7 @@ Naast de standaard modus volledig verbonden, kan het apparaat ook worden uitgevo
 Voer de volgende stappen uit om de modus apparaat te wijzigen:
 
 1. Ga in de lokale web-UI van uw apparaat naar **configuratie > Cloud**.
-2. Selecteer in de vervolg keuzelijst de modus waarin u het apparaat wilt bedienen. U kunt een **volledig verbonden**, **gedeeltelijk verbonden**en **volledig losgekoppelde**selectie selecteren. Als u het apparaat wilt uitvoeren in een gedeeltelijk niet-verbonden modus, schakelt u **Azure Portal-beheer**in.
+2. Selecteer in de vervolg keuzelijst de modus waarin u het apparaat wilt bedienen. U kunt een **volledig verbonden** , **gedeeltelijk verbonden** en **volledig losgekoppelde** selectie selecteren. Als u het apparaat wilt uitvoeren in een gedeeltelijk niet-verbonden modus, schakelt u **Azure Portal-beheer** in.
 
  
 ## <a name="manage-power"></a>Energie beheren

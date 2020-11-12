@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 6bea4ee4452675a50ef9144da300c3e15652a81f
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 75428b28095b0e425a1670caffcf960aa6ae58f6
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91952162"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94504448"
 ---
 # <a name="tutorial-transform-data-with-azure-stack-edge-pro"></a>Zelfstudie: Gegevens transformeren met Azure Stack Edge Pro
 
@@ -90,7 +90,7 @@ Voor de eenvoudige implementatie in deze zelfstudie hebt u twee shares nodig: é
 
     3. Geef op de blade **Share toevoegen** een naam op voor de share en selecteer het sharetype.
     4. Als u de Edge-share wilt koppelen, schakelt u het selectievakje voor **De share met Edge-rekenproces** gebruiken.
-    5. Selecteer de **Storage-account**, **Storage-service**, een bestaande gebruiker en selecteer **Maken**.
+    5. Selecteer de **Storage-account** , **Storage-service** , een bestaande gebruiker en selecteer **Maken**.
 
         ![Een Edge-share toevoegen](./media/azure-stack-edge-j-series-deploy-configure-compute/add-edge-share-1.png) 
 
@@ -152,19 +152,19 @@ Doe het volgende om te controleren of de module wordt uitgevoerd:
 
     ![Geïmplementeerde module weergeven](./media/azure-stack-edge-j-series-deploy-configure-compute/add-module-3.png)
  
-1.   Maak via Verkenner verbinding met zowel de lokale Edge-share als de Edge-shares die u eerder hebt gemaakt.
+1. Maak via Verkenner verbinding met zowel de lokale Edge-share als de Edge-shares die u eerder hebt gemaakt.
 
     ![Gegevenstransformatie controleren](./media/azure-stack-edge-j-series-deploy-configure-compute/verify-data-2.png) 
  
-1.   Voeg gegevens toe aan de lokale share.
+1. Voeg gegevens toe aan de lokale share.
 
     ![Gegevenstransformatie controleren](./media/azure-stack-edge-j-series-deploy-configure-compute/verify-data-3.png) 
  
-    De gegevens worden verplaatst naar de cloudshare.
+   De gegevens worden verplaatst naar de cloudshare.
 
     ![Gegevenstransformatie controleren](./media/azure-stack-edge-j-series-deploy-configure-compute/verify-data-4.png)  
 
-    De gegevens worden vervolgens vanuit de cloudshare naar het opslagaccount gepusht. U kunt Storage Explorer gebruiken om de gegevens te bekijken.
+   De gegevens worden vervolgens vanuit de cloudshare naar het opslagaccount gepusht. U kunt Storage Explorer gebruiken om de gegevens te bekijken.
 
     <!--![Verify data transform](./media/azure-stack-edge-j-series-deploy-configure-compute/verify-data-5.png)-->
  

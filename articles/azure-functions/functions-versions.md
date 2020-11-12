@@ -4,19 +4,19 @@ description: Azure Functions ondersteunt meerdere versies van de runtime. Meer i
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 12/09/2019
-ms.openlocfilehash: 6641461e63d7c9452351f3b0b99a274d2714a92e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c67708b5c23667a7b0a1603b756d564b35fa0c3f
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88208108"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94533732"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Overzicht van Azure Functions runtime versies
 
 Azure Functions ondersteunt momenteel drie versies van de runtime host: 1. x, 2. x en 3. x. Alle drie de versies worden ondersteund voor productie scenario's.  
 
 > [!IMPORTANT]
-> Versie 1. x bevindt zich in de onderhouds modus en ondersteunt alleen de ontwikkeling van de Azure Portal of lokaal op Windows-computers. Uitbrei dingen worden alleen opgenomen in latere versies. 
+> Versie 1. x bevindt zich in de onderhouds modus en ondersteunt alleen de ontwikkeling van de Azure Portal, Azure Stack hub portal of lokaal op Windows-computers. Uitbrei dingen worden alleen opgenomen in latere versies. 
 
 In dit artikel worden enkele van de verschillen tussen de verschillende versies beschreven, hoe u elke versie kunt maken en hoe u versies wijzigt.
 
@@ -196,8 +196,8 @@ In de volgende tabel ziet u welke bindingen worden ondersteund in elke runtime v
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de volgende bronnen voor meer informatie:
+Zie de volgende resources voor meer informatie:
 
-* [Azure-functies lokaal programmeren en testen](functions-run-local.md)
+* [Code-en test Azure Functions lokaal](functions-run-local.md)
 * [Azure Functions runtime-versies instellen](set-runtime-version.md)
-* [Opmerkingen bij de release](https://github.com/Azure/azure-functions-host/releases)
+* [Releaseopmerkingen](https://github.com/Azure/azure-functions-host/releases)

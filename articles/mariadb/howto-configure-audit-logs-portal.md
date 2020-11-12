@@ -1,17 +1,17 @@
 ---
 title: Access-controle logboeken-Azure Portal-Azure Database for MariaDB
 description: In dit artikel wordt beschreven hoe u de audit Logboeken in Azure Database for MariaDB kunt configureren en openen vanuit de Azure Portal.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/24/2020
-ms.openlocfilehash: 30ca62305c325943e17ee574873cfbbbaee97f77
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f1f3cda4ed9cdac6f6e03e88601b0a35d5c53faf
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86113034"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94533443"
 ---
 # <a name="configure-and-access-audit-logs-in-the-azure-portal"></a>Controle logboeken configureren en openen in de Azure Portal
 
@@ -30,7 +30,7 @@ Als u deze hand leiding wilt door lopen, hebt u het volgende nodig:
 
 Controle logboek registratie inschakelen en configureren.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 1. Selecteer uw Azure Database for MariaDB-server.
 
@@ -46,7 +46,7 @@ Controle logboek registratie inschakelen en configureren.
 1. Voeg MariaDB-gebruikers toe die moeten worden uitgesloten van logboek registratie door de para meter **audit_log_exclude_users** bij te werken. Geef gebruikers op door hun MariaDB-gebruikers naam op te geven.
     ![Gebruikers met controle logboek uitsluiten](./media/howto-configure-audit-logs-portal/audit-log-exclude-users.png)
 
-1. Wanneer u de para meters hebt gewijzigd, kunt u op **Opslaan**klikken. Of u kunt uw wijzigingen **negeren** .
+1. Wanneer u de para meters hebt gewijzigd, kunt u op **Opslaan** klikken. Of u kunt uw wijzigingen **negeren** .
     ![Opslaan](./media/howto-configure-audit-logs-portal/save-parameters.png)
 
 ## <a name="set-up-diagnostic-logs"></a>Diagnostische logboeken instellen
@@ -62,7 +62,7 @@ Controle logboek registratie inschakelen en configureren.
 1. Selecteer ' MySqlAuditLogs ' als het logboek type.
 ![Diagnostische instelling configureren](./media/howto-configure-audit-logs-portal/configure-diagnostic-setting.png)
 
-1. Zodra u de gegevens sinks hebt geconfigureerd om de controle logboeken te pipeen naar, kunt u op **Opslaan**klikken.
+1. Zodra u de gegevens sinks hebt geconfigureerd om de controle logboeken te pipeen naar, kunt u op **Opslaan** klikken.
 ![Diagnostische instelling opslaan](./media/howto-configure-audit-logs-portal/save-diagnostic-setting.png)
 
 1. Open de audit logboeken door ze te verkennen in de gegevens-sinks die u hebt geconfigureerd. Het kan tot tien minuten duren voordat de logboeken worden weer gegeven.

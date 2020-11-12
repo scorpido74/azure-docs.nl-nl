@@ -15,12 +15,12 @@ ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a0e661cb3c3bafa92a060b0fdfd899aa152b46a5
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 3bd6f298ad2bb01503492b52c2d50dec82ec0ca5
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977456"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94534038"
 ---
 # <a name="install-updates-on-your-storsimple-virtual-array---azure-portal"></a>Installeer updates op uw StorSimple Virtual array-Azure Portal
 
@@ -77,26 +77,26 @@ Gebruik deze methode om updates te installeren op een apparaat met GA of update 
 
 1. Ga in de lokale web-UI naar **onderhouds**  >  **Software-update**.
    
-    ![apparaat 1 bijwerken](./media/storsimple-virtual-array-install-update/update1m.png)
+    ![Scherm afbeelding toont software-update die is geselecteerd in het menu onderhoud.](./media/storsimple-virtual-array-install-update/update1m.png)
 
-2. In **pad van update bestand**voert u de bestands naam in voor de update of de hotfix. U kunt ook naar het installatie bestand van de update of hotfix bladeren als u dit op een netwerk share plaatst. Klik op **Toepassen**.
+2. In **pad van update bestand** voert u de bestands naam in voor de update of de hotfix. U kunt ook naar het installatie bestand van de update of hotfix bladeren als u dit op een netwerk share plaatst. Klik op **Toepassen**.
    
-    ![apparaat 2 bijwerken](./media/storsimple-virtual-array-install-update/update2m.png)
+    ![Scherm afbeelding toont het tekstvak pad van het bestand bijwerken op de pagina software-update.](./media/storsimple-virtual-array-install-update/update2m.png)
 
 3. Er wordt een waarschuwing weer gegeven. Gezien dit is een apparaat met één knoop punt, nadat de update is toegepast, het apparaat opnieuw wordt opgestart en er uitval tijd is. Klik op het vinkje.
    
-   ![apparaat 3 bijwerken](./media/storsimple-virtual-array-install-update/update3m.png)
+   ![Scherm afbeelding toont een dialoog venster waarschuwing over uitval tijd.](./media/storsimple-virtual-array-install-update/update3m.png)
 
 4. De update wordt gestart. Nadat het apparaat is bijgewerkt, wordt het opnieuw opgestart. De lokale gebruikers interface is niet toegankelijk in deze duur.
    
-    ![apparaat bijwerken 4](./media/storsimple-virtual-array-install-update/update5m.png)
+    ![Scherm afbeelding toont een geslaagd bericht voor de update.](./media/storsimple-virtual-array-install-update/update5m.png)
 
-5. Wanneer het opnieuw opstarten is voltooid, wordt u naar de **aanmeldings** pagina geleid. Als u wilt controleren of de software van het apparaat is bijgewerkt, gaat u naar **onderhouds**  >  **Software-update**in de lokale web-UI. De weer gegeven software versie moet **10.0.0.0.0.10288.0** zijn voor Update 0,3.
+5. Wanneer het opnieuw opstarten is voltooid, wordt u naar de **aanmeldings** pagina geleid. Als u wilt controleren of de software van het apparaat is bijgewerkt, gaat u naar **onderhouds**  >  **Software-update** in de lokale web-UI. De weer gegeven software versie moet **10.0.0.0.0.10288.0** zijn voor Update 0,3.
    
    > [!NOTE]
    > De software versies worden op een iets andere manier gerapporteerd in de lokale web-UI en de Azure Portal. De lokale web-UI rapporteert bijvoorbeeld **10.0.0.0.0.10288** en de Azure Portal rapport **10.0.10288.0** voor dezelfde versie.
    
-    ![apparaat 5 bijwerken](./media/storsimple-virtual-array-install-update/update6m.png)
+    ![Scherm afbeelding toont de software-update pagina met de huidige software versie.](./media/storsimple-virtual-array-install-update/update6m.png)
 
 ## <a name="use-the-azure-portal"></a>Azure Portal gebruiken
 
@@ -104,7 +104,7 @@ Als u update 0,2 uitvoert, wordt u aangeraden updates te installeren via de Azur
 
 [!INCLUDE [storsimple-virtual-array-install-update-via-portal](../../includes/storsimple-virtual-array-install-update-via-portal.md)]
 
-Nadat de installatie is voltooid (zoals aangegeven door de taak status bij 100%), gaat u naar de StorSimple-Apparaatbeheer service. Selecteer **apparaten** en selecteer en klik vervolgens op het apparaat dat u wilt bijwerken in de lijst met apparaten die zijn verbonden met deze service. Ga op de Blade **instellingen** naar de sectie **beheren** en selecteer **updates voor apparaten**. De weer gegeven software versie moet **10.0.10288.0**zijn.
+Nadat de installatie is voltooid (zoals aangegeven door de taak status bij 100%), gaat u naar de StorSimple-Apparaatbeheer service. Selecteer **apparaten** en selecteer en klik vervolgens op het apparaat dat u wilt bijwerken in de lijst met apparaten die zijn verbonden met deze service. Ga op de Blade **instellingen** naar de sectie **beheren** en selecteer **updates voor apparaten**. De weer gegeven software versie moet **10.0.10288.0** zijn.
 
 
 ## <a name="next-steps"></a>Volgende stappen

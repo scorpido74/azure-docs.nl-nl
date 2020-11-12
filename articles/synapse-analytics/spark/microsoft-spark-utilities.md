@@ -4,33 +4,36 @@ description: Zelf studie over het gebruik van MSSparkutils in azure Synapse Anal
 author: ruxu
 services: synapse-analytics
 ms.service: synapse-analytics
-ms.topic: conceptual
+ms.topic: reference
 ms.subservice: spark
 ms.date: 09/10/2020
 ms.author: ruxu
 ms.reviewer: ''
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: 648c5b75f125725ebda2966d3ebc4200ee76b98c
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: c03d8e744598386db3d6d03a71e4d1b735d9d71f
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94428617"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94533273"
 ---
 # <a name="introduction-of-microsoft-spark-utilities"></a>Introductie van micro soft Spark-Hulpprogram Ma's
-Micro soft Spark-Hulpprogram Ma's (MSSparkUtils) is een ingebouwd pakket waarmee u eenvoudig veelvoorkomende taken kunt uitvoeren. U kunt MSSparkUtils gebruiken om efficiënt met het bestands systeem te werken, omgevings variabelen op te halen en te werken met geheimen. MSSparkUtils zijn beschikbaar in `PySpark (Python)` , `Scala` , en `.NET Spark (C#)` notebooks en Synapse-pijp lijnen.
+
+Micro soft Spark-Hulpprogram Ma's (MSSparkUtils) is een ingebouwd pakket waarmee u eenvoudig veelvoorkomende taken kunt uitvoeren. U kunt MSSparkUtils gebruiken om te werken met bestands systemen, omgevings variabelen op te halen en te werken met geheimen. MSSparkUtils zijn beschikbaar in `PySpark (Python)` , `Scala` , en `.NET Spark (C#)` notebooks en Synapse-pijp lijnen.
 
 ## <a name="pre-requisites"></a>Vereisten
+
 ### <a name="configure-access-to-azure-data-lake-storage-gen2"></a>Toegang tot Azure Data Lake Storage Gen2 configureren 
+
 Synapse-notebooks gebruiken Azure Active Directory (Azure AD) pass-through om toegang te krijgen tot de ADLS Gen2 accounts. U moet een **Blob Storage Inzender** zijn om toegang te krijgen tot het ADLS Gen2 account (of de map). 
 
-Synapse-pipelines gebruiken werk ruimte-identiteit (MSI) voor toegang tot de opslag accounts. Als u MSSparkUtils in uw pijplijn activiteiten wilt gebruiken, moet uw werkruimte identiteit een **Blob Storage Inzender** zijn om toegang te krijgen tot het ADLS Gen2 account (of de map).
+Synapse-pipelines gebruiken werk ruimte-identiteit (MSI) voor toegang tot de opslag accounts. Als u MSSparkUtils in uw pijplijn activiteiten wilt gebruiken, moet uw werkruimte identiteit worden **Blob Storage Inzender** om toegang te krijgen tot het ADLS Gen2 account (of de map).
 
 Volg deze stappen om ervoor te zorgen dat uw Azure AD-en Workspace MSI toegang hebben tot het ADLS Gen2-account:
 1. Open de [Azure Portal](https://portal.azure.com/) en het opslag account dat u wilt openen. U kunt naar de specifieke container navigeren die u wilt openen.
 2. Selecteer **toegangs beheer (IAM)** in het linkerdeel venster.
-3. Wijs **uw Azure ad-account** en **de identiteit van uw werk ruimte** toe aan de rol voor het maken van **blobgegevens** in het opslag account (hetzelfde als de naam van uw werk ruimte) of zorg ervoor dat deze al is toegewezen. 
-4. Klik op **Opslaan**.
+3. Wijs **uw Azure ad-account** en **de identiteit van uw werk ruimte** (hetzelfde als de naam van uw werk ruimte) toe aan de rol voor het overdragen van **blobgegevens** op het opslag account als deze nog niet is toegewezen. 
+4. Selecteer **Opslaan**.
 
 U kunt toegang krijgen tot gegevens op ADLS Gen2 met Synapse Spark via de volgende URL:
 
@@ -45,10 +48,10 @@ Volg deze stappen om een nieuwe gekoppelde service voor een Azure Blob Storage-a
 1. Open [Azure Synapse Studio](https://web.azuresynapse.net/).
 2. Selecteer **beheren** in het linkerdeel venster en selecteer **gekoppelde services** onder de **externe verbindingen**.
 3. Zoek in **Azure Blob Storage** in het deel venster **nieuwe gekoppelde service** aan de rechter kant.
-4. Klik op **Doorgaan**.
+4. Selecteer **Doorgaan**.
 5. Selecteer de Azure Blob Storage-account om de naam van de gekoppelde service te openen en te configureren. Suggesties voor het gebruik van de **account sleutel** voor de **verificatie methode**.
-6. Klik op **verbinding testen** om te controleren of de instellingen juist zijn.
-7. Klik eerst op **maken** en klik op **Alles publiceren** om uw wijzigingen op te slaan. 
+6. Selecteer **verbinding testen** om te controleren of de instellingen juist zijn.
+7. Selecteer eerste **maken** en klik op **Alles publiceren** om uw wijzigingen op te slaan. 
 
 U kunt toegang krijgen tot gegevens op Azure Blob Storage met Synapse Spark via de volgende URL:
 
@@ -103,25 +106,25 @@ U kunt een Azure Key Vault toevoegen als een gekoppelde service om uw referentie
 2. Selecteer **beheren** in het linkerdeel venster en selecteer **gekoppelde services** onder de **externe verbindingen**.
 3. Zoek **Azure Key Vault** in het deel venster **nieuwe gekoppelde service** aan de rechter kant.
 4. Selecteer het Azure Key Vault-account om de naam van de gekoppelde service te openen en te configureren.
-5. Klik op **verbinding testen** om te controleren of de instellingen juist zijn.
-6. Klik eerst op **maken** en klik op **Alles publiceren** om de wijziging op te slaan. 
+5. Selecteer **verbinding testen** om te controleren of de instellingen juist zijn.
+6. Selecteer eerste **maken** en klik op **Alles publiceren** om de wijziging op te slaan. 
 
 Synapse-notebooks gebruiken Azure Active Directory (Azure AD) pass-through om toegang te krijgen tot Azure Key Vault. Synapse-pipelines gebruiken werk ruimte-identiteit (MSI) voor toegang tot Azure Key Vault. Om ervoor te zorgen dat uw code zowel in notebook als in Synapse-pijp lijn werkt, kunt u het beste een geheime toegangs machtiging verlenen voor zowel uw Azure AD-account als uw werk ruimte-id.
 
 Voer de volgende stappen uit om de identiteit van uw werk ruimte geheim te geven:
 1. Open de [Azure Portal](https://portal.azure.com/) en de Azure Key Vault die u wilt openen. 
 2. Selecteer het **toegangs beleid** in het linkerdeel venster.
-3. Klik op **toegangs beleid toevoegen** : 
+3. Selecteer **toegangs beleid toevoegen** : 
     - Kies **sleutel, geheim, & certificaat beheer** als configuratie sjabloon.
     - Selecteer **uw Azure ad-account** en **uw werk ruimte-id** (hetzelfde als de naam van uw werk ruimte) in de principal selecteren of zorg ervoor dat deze al is toegewezen. 
-4. Klik op **selecteren** en **toevoegen**.
-5. Klik op de knop **Opslaan** om wijzigingen door te voeren.  
+4. Selecteer **selecteren** en **toevoegen**.
+5. Selecteer de knop **Opslaan** om wijzigingen door te voeren.  
 
 ## <a name="file-system-utilities"></a>Hulpprogram ma's voor bestands systeem
 
 `mssparkutils.fs` voorziet in hulpprogram ma's voor het werken met verschillende bestands systemen, waaronder Azure Data Lake Storage Gen2 (ADLS Gen2) en Azure Blob Storage. Zorg ervoor dat u de toegang tot [Azure data Lake Storage Gen2](#configure-access-to-azure-data-lake-storage-gen2) en [Azure-Blob Storage](#configure-access-to-azure-blob-storage) op de juiste manier configureert.
 
-Voer de volgende opdracht uit om een overzicht te krijgen van de beschik bare methoden:
+Voer de volgende opdrachten uit voor een overzicht van de beschik bare methoden:
 
 :::zone pivot = "programming-language-python"
 
@@ -196,7 +199,7 @@ FS.Ls("Your directory path")
 
 
 ### <a name="view-file-properties"></a>Bestands eigenschappen weer geven
-Retourneert bestands eigenschappen, inclusief de bestands naam, het bestandspad, de bestands grootte, of het een map is en of het een bestand is.
+Retourneert bestands eigenschappen, inclusief de bestands naam, het bestandspad, de bestands grootte en of het een map en een bestand is.
 
 :::zone pivot = "programming-language-python"
 
@@ -230,7 +233,8 @@ foreach(var File in Files) {
 ::: zone-end
 
 ### <a name="create-new-directory"></a>Nieuwe map maken
-Hiermee maakt u de gegeven map als deze nog niet bestaat, waarbij u ook de benodigde bovenliggende mappen maakt.
+
+Maakt de gegeven map als deze nog niet bestaat en alle benodigde bovenliggende mappen bevat.
 
 :::zone pivot = "programming-language-python"
 
@@ -256,7 +260,8 @@ FS.Mkdirs("new directory name")
 ::: zone-end
 
 ### <a name="copy-file"></a>Bestand kopiëren
-Hiermee wordt een bestand of map gekopieerd en wordt er ondersteuning geboden voor kopieën op bestands systemen.
+
+Hiermee wordt een bestand of map gekopieerd. Ondersteunt kopiëren over bestands systemen.
 
 :::zone pivot = "programming-language-python"
 
@@ -282,6 +287,7 @@ FS.Cp("source file or directory", "destination file or directory", true) // Set 
 ::: zone-end
 
 ### <a name="preview-file-content"></a>Voor beeld van bestands inhoud
+
 Retourneert de eerste ' maxBytes ' bytes van het opgegeven bestand als een teken reeks die is gecodeerd in UTF-8.
 
 :::zone pivot = "programming-language-python"
@@ -308,7 +314,8 @@ FS.Head("file path", maxBytes to read)
 ::: zone-end
 
 ### <a name="move-file"></a>Bestand verplaatsen
-Hiermee verplaatst u een bestand of map. ondersteuning gaat over op alle bestands systemen.
+
+Hiermee verplaatst u een bestand of map. Ondersteunt verplaatsen tussen bestands systemen.
 
 :::zone pivot = "programming-language-python"
 
@@ -334,6 +341,7 @@ FS.Mv("source file or directory", "destination directory", true)
 ::: zone-end
 
 ### <a name="write-file"></a>Bestand schrijven
+
 Schrijft de gegeven teken reeks naar een bestand dat is gecodeerd in UTF-8.
 
 :::zone pivot = "programming-language-python"
@@ -360,6 +368,7 @@ FS.Put("file path", "content to write", true) // Set the last parameter as True 
 ::: zone-end
 
 ### <a name="append-content-to-a-file"></a>Inhoud toevoegen aan een bestand
+
 Hiermee wordt de opgegeven teken reeks toegevoegd aan een bestand, gecodeerd in UTF-8.
 
 :::zone pivot = "programming-language-python"
@@ -386,6 +395,7 @@ FS.Append("file path","content to append",true) // Set the last parameter as Tru
 ::: zone-end
 
 ### <a name="delete-file-or-directory"></a>Bestand of map verwijderen
+
 Hiermee verwijdert u een bestand of map.
 
 :::zone pivot = "programming-language-python"
@@ -414,7 +424,7 @@ FS.Rm("file path", true) // Set the last parameter as True to remove all files a
 
 ## <a name="credentials-utilities"></a>Hulpprogram ma's voor referenties
 
-U kunt MSSparkUtils-referentie Hulpprogramma's gebruiken om de toegangs tokens van gekoppelde services te verkrijgen en geheimen in Azure Key Vault te beheren. 
+U kunt de MSSparkUtils-Hulpprogram Ma's voor referenties gebruiken voor het ophalen van de toegangs tokens van gekoppelde services en het beheren van geheimen in Azure Key Vault. 
 
 Voer de volgende opdracht uit om een overzicht te krijgen van de beschik bare methoden:
 
@@ -454,6 +464,7 @@ putSecret(akvName, secretName, secretValue): puts AKV secret for a given akvName
 ```
 
 ### <a name="get-token"></a>Token ophalen
+
 Retourneert een Azure AD-token voor een bepaalde doel groep, naam (optioneel). In de volgende tabel worden alle beschik bare typen doel groepen weer gegeven: 
 
 |Type doel groep|Sleutel van doel groep|
@@ -492,6 +503,7 @@ mssparkutils.credentials.getToken("audience Key")
 
 
 ### <a name="validate-token"></a>Token valideren
+
 Retourneert waar als het token niet is verlopen.
 
 :::zone pivot = "programming-language-python"
@@ -519,6 +531,7 @@ mssparkutils.credentials.isValidToken("your token")
 
 
 ### <a name="get-connection-string-or-credentials-for-linked-service"></a>connection string of referenties voor de gekoppelde service ophalen
+
 Retourneert connection string of referenties voor de gekoppelde service. 
 
 :::zone pivot = "programming-language-python"
@@ -546,6 +559,7 @@ mssparkutils.credentials.getConnectionStringOrCreds("linked service name")
 
 
 ### <a name="get-secret-using-workspace-identity"></a>Geheim ophalen met werkruimte identiteit
+
 Retourneert Azure Key Vault geheim voor een opgegeven Azure Key Vault naam, geheime naam en gekoppelde service naam met behulp van werk ruimte-identiteit. Zorg ervoor dat u de toegang tot [Azure Key Vault](#configure-access-to-azure-key-vault) op de juiste manier configureert.
 
 :::zone pivot = "programming-language-python"
@@ -573,6 +587,7 @@ mssparkutils.credentials.getSecret("azure key vault name","secret name","linked 
 
 
 ### <a name="get-secret-using-user-credentials"></a>Geheim ophalen met gebruikers referenties
+
 Retourneert Azure Key Vault geheim voor een opgegeven Azure Key Vault naam, geheime naam en gekoppelde service naam met behulp van gebruikers referenties. 
 
 :::zone pivot = "programming-language-python"
@@ -599,6 +614,7 @@ mssparkutils.credentials.getSecret("azure key vault name","secret name")
 ::: zone-end
 
 ### <a name="put-secret-using-workspace-identity"></a>Geheim zetten met werkruimte identiteit
+
 Hiermee wordt Azure Key Vault geheim geplaatst voor een bepaalde Azure Key Vault naam, geheime naam en gekoppelde service naam met behulp van werk ruimte-identiteit. Zorg ervoor dat u de toegang tot [Azure Key Vault](#configure-access-to-azure-key-vault) op de juiste manier configureert.
 
 :::zone pivot = "programming-language-python"
@@ -626,6 +642,7 @@ mssparkutils.credentials.putSecret("azure key vault name","secret name","secret 
 
 
 ### <a name="put-secret-using-user-credentials"></a>Geheim zetten met gebruikers referenties
+
 Plaatst Azure Key Vault geheim voor een bepaalde Azure Key Vault naam, geheime naam en gekoppelde service naam met behulp van gebruikers referenties. 
 
 :::zone pivot = "programming-language-python"
@@ -654,7 +671,7 @@ mssparkutils.credentials.putSecret("azure key vault name","secret name","secret 
 
 ## <a name="environment-utilities"></a>Omgevings hulpprogramma's 
 
-Voer de volgende opdracht uit om een overzicht te krijgen van de beschik bare methoden:
+Voer de volgende opdrachten uit om een overzicht te krijgen van de beschik bare methoden:
 
 :::zone pivot = "programming-language-python"
 
@@ -689,6 +706,7 @@ getClusterId(): returns cluster id
 ```
 
 ### <a name="get-user-name"></a>Gebruikers naam ophalen
+
 Hiermee wordt de huidige gebruikers naam geretourneerd.
 
 :::zone pivot = "programming-language-python"
@@ -715,6 +733,7 @@ mssparkutils.env.getUserName()
 ::: zone-end
 
 ### <a name="get-user-id"></a>Gebruikers-ID ophalen
+
 Retourneert de huidige gebruikers-ID.
 
 :::zone pivot = "programming-language-python"
@@ -741,6 +760,7 @@ mssparkutils.env.getUserId()
 ::: zone-end
 
 ### <a name="get-job-id"></a>Taak-ID ophalen
+
 Retourneert de taak-ID.
 
 :::zone pivot = "programming-language-python"
@@ -767,6 +787,7 @@ mssparkutils.env.getJobId()
 ::: zone-end
 
 ### <a name="get-workspace-name"></a>Werkruimte naam ophalen
+
 Retourneert de naam van een werk ruimte.
 
 :::zone pivot = "programming-language-python"
@@ -793,6 +814,7 @@ mssparkutils.env.getWorkspaceName()
 ::: zone-end
 
 ### <a name="get-pool-name"></a>Groeps naam ophalen
+
 Retourneert de naam van de Spark-groep.
 
 :::zone pivot = "programming-language-python"
@@ -819,6 +841,7 @@ mssparkutils.env.getPoolName()
 ::: zone-end
 
 ### <a name="get-cluster-id"></a>Cluster-ID ophalen
+
 Hiermee wordt de huidige cluster-ID geretourneerd.
 
 :::zone pivot = "programming-language-python"
@@ -845,6 +868,7 @@ mssparkutils.env.getClusterId()
 ::: zone-end
 
 ## <a name="next-steps"></a>Volgende stappen
+
 - [Voor beelden van Synapse-voorbeeld notitieblokken bekijken](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks)
 - [Quickstart: Een Apache Spark-pool (preview) maken in Azure Synapse Analytics met behulp van webhulpprogramma's](../quickstart-apache-spark-notebook.md)
 - [Wat is Apache Spark in Azure Synapse Analytics?](apache-spark-overview.md)

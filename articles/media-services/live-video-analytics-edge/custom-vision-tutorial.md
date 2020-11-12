@@ -3,12 +3,13 @@ title: Live video analyseren met Live Video Analytics op IoT Edge en Azure Custo
 description: Meer informatie over het gebruik van Azure Custom Vision om een containermodel te bouwen dat een speelgoedwagen kan detecteren en de AI-uitbreidbaarheid van Azure Live Video Analytics op Azure IoT Edge kan gebruiken om het model op de rand te implementeren om speelgoedwagens te detecteren in een live-videostream.
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: 52678d66bd4a91c9308a3cc48fbf784e89a5cfe8
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+zone_pivot_groups: ams-lva-edge-programming-languages
+ms.openlocfilehash: 685aab603b2589a97b4c80ef0f8c5860617f1147
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92171512"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358259"
 ---
 # <a name="tutorial-analyze-live-video-with-live-video-analytics-on-iot-edge-and-azure-custom-vision"></a>Zelfstudie: Live video analyseren met Live Video Analytics op IoT Edge en Azure Custom Vision
 
@@ -16,7 +17,13 @@ In deze zelfstudie leert u Azure [Custom Vision](https://azure.microsoft.com/ser
 
 We laten u zien hoe u Custom Vision kunt inzetten om een computervisiemodel te maken en te trainen door enkele afbeeldingen te uploaden en er labels aan toe te voegen. U hebt geen kennis nodig van datawetenschappen, machine learning of AI. U leert ook de mogelijkheden van Live Video Analytics kennen om gemakkelijk een aangepast model te implementeren als een container aan de rand en een gesimuleerde live video-feed te analyseren.
 
-In deze zelfstudie wordt een virtuele machine (VM) van Azure gebruikt als IoT Edge-apparaat. Dit is gebaseerd op voorbeeldcode die is geschreven in C#. De informatie in deze zelfstudie is gebaseerd op de quickstart [Beweging detecteren en gebeurtenissen verzenden](detect-motion-emit-events-quickstart.md).
+::: zone pivot="programming-language-csharp"
+[!INCLUDE [header](includes/custom-vision-tutorial/csharp/header.md)]
+::: zone-end
+
+::: zone pivot="programming-language-python"
+[!INCLUDE [header](includes/custom-vision-tutorial/python/header.md)]
+::: zone-end
 
 In deze zelfstudie leert u het volgende:
 
@@ -29,7 +36,7 @@ In deze zelfstudie leert u het volgende:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="suggested-pre-reading"></a>Aanbevolen om te lezen
+## <a name="suggested-pre-reading"></a>Aanbevolen om te lezen  
 
 Lees de volgende artikelen voordat u begint:
 
@@ -44,19 +51,16 @@ Lees de volgende artikelen voordat u begint:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Vereisten voor deze zelfstudie:
 
-* [Visual Studio Code](https://code.visualstudio.com/) op uw ontwikkelcomputer met de extensies [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) en [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp).
+::: zone pivot="programming-language-csharp"
+[!INCLUDE [prerequisites](includes/custom-vision-tutorial/csharp/prerequisites.md)]
+::: zone-end
 
-    > [!TIP]
-    > U wordt mogelijk gevraagd om Docker te installeren. U kunt deze prompt negeren.
-* [.NET Core 3.1 SDK](https://dotnet.microsoft.com/download/dotnet-core/thank-you/sdk-3.1.201-windows-x64-installer) op uw ontwikkelcomputer.
-* Zorg ervoor dat u:
-    
-    * [Azure-resources instellen](detect-motion-emit-events-quickstart.md#set-up-azure-resources)
-    * [De ontwikkelomgeving instellen](detect-motion-emit-events-quickstart.md#set-up-your-development-environment)
-
+::: zone pivot="programming-language-python"
+[!INCLUDE [prerequisites](includes/custom-vision-tutorial/python/prerequisites.md)]
+::: zone-end
 ## <a name="review-the-sample-video"></a>De voorbeeldvideo bekijken
+
 
 In deze zelfstudie wordt gebruikgemaakt van een bestand met een [video van een speelgoedwagen](https://lvamedia.blob.core.windows.net/public/t2.mkv) om een livestream te simuleren. U kunt de video bekijken via een toepassing zoals [VLC Media Player](https://www.videolan.org/vlc/). Selecteer **CTRL + N** en plak vervolgens een link naar de [video van een speelgoedwagen](https://lvamedia.blob.core.windows.net/public/t2.mkv) om het afspelen te starten. U zult zien dat na 36 seconden in de video een speelgoedwagen verschijnt. Het aangepaste model is getraind om deze specifieke speelgoedwagen te detecteren. In deze zelfstudie gebruikt u Live Video Analytics op IoT Edge om dergelijke speelgoedwagens te detecteren en bijbehorende deductiegebeurtenissen te publiceren naar de IoT Edge-hub.
 
@@ -69,7 +73,7 @@ Dit diagram laat zien hoe de signalen in deze zelfstudie stromen. Een [Edge-modu
 
 Het knooppunt HTTP-extensie speelt de rol van een proxy. Het converteert videoframes naar het opgegeven afbeeldingstype. Vervolgens wordt de afbeelding via REST doorgestuurd naar een andere Edge-module die een AI-model achter een HTTP-eindpunt uitvoert. In dit voorbeeld is die Edge-module het detectormodel van de speelgoedwagen, gebouwd met behulp van Custom Vision. Het HTTP-extensieprocessor-knooppunt verzamelt de detectieresultaten en publiceert de gebeurtenissen naar het [Azure IoT Hub Sink](media-graph-concept.md#iot-hub-message-sink)-knooppunt. Het knooppunt verzendt die gebeurtenissen vervolgens naar de [IoT Edge-hub](../../iot-edge/iot-edge-glossary.md#iot-edge-hub).
 
-## <a name="build-and-deploy-a-custom-vision-toy-detection-model"></a>Een Custom Vision-detectiemodel voor speelgoed maken en implementeren
+## <a name="build-and-deploy-a-custom-vision-toy-detection-model"></a>Een Custom Vision-detectiemodel voor speelgoed bouwen en implementeren 
 
 Zoals de naam Custom Vision doet vermoeden, kunt u deze toepassing gebruiken om uw eigen aangepaste objectdetector of classificatie te bouwen in de cloud. De toepassing heeft een eenvoudige, gebruiksvriendelijke en intuïtieve interface voor het bouwen van Custom Vision-modellen die via containers kunnen worden geïmplementeerd in de cloud of aan de rand.
 
@@ -80,10 +84,36 @@ Aanvullende opmerkingen:
 * Gebruik voor deze zelfstudie niet de voorbeeldafbeeldingen uit de [sectie Vereisten](../../cognitive-services/custom-vision-service/get-started-build-detector.md#prerequisites) van het quickstart-artikel. In plaats daarvan hebben we een bepaalde afbeelding gebruikt om een Custom Vision-model voor een speelgoeddetector te maken. Gebruik [deze afbeeldingen](https://lvamedia.blob.core.windows.net/public/ToyCarTrainingImages.zip) wanneer u wordt gevraagd [trainingsafbeeldingen](../../cognitive-services/custom-vision-service/get-started-build-detector.md#choose-training-images) in de quickstart te kiezen.
 * Zorg er in de sectie Afbeelding labelen van de quickstart voor dat u de speelgoedwagen in de foto labelt als 'bestelwagen'.
 
-Wanneer u klaar bent, kunt u het model exporteren naar een Docker-container met behulp van de knop **Exporteren** op het tabblad **Prestaties** . Zorg ervoor dat u Linux kiest als containerplatformtype. Dit is het platform waarop de container wordt uitgevoerd. De computer waarop u de container downloadt, kan Windows of Linux zijn. De volgende instructies zijn gebaseerd op een containerbestand dat op een Windows-computer gedownload is.
+Wanneer u klaar bent, kunt u het model exporteren naar een Docker-container met behulp van de knop **Exporteren** op het tabblad **Prestaties**. Zorg ervoor dat u Linux kiest als containerplatformtype. Dit is het platform waarop de container wordt uitgevoerd. De computer waarop u de container downloadt, kan Windows of Linux zijn. De volgende instructies zijn gebaseerd op een containerbestand dat op een Windows-computer gedownload is.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/custom-vision-tutorial/docker-file.png" alt-text="Diagram met een Custom Vision-overzicht."   13 hours ago        Up 25 seconds       127.0.0.1:80->80/tcp   practical_cohen
+> :::image type="content" source="./media/custom-vision-tutorial/docker-file.png" alt-text="Schermopname met Dockerfile geselecteerd.":::
+ 
+1. U moet een zip-bestand downloaden naar de lokale computer met de naam `<projectname>.DockerFile.Linux.zip`. 
+1. Controleer of Docker is geïnstalleerd. Als dat niet het geval is, installeert u [Docker](https://docs.docker.com/get-docker/) voor uw Windows-bureaublad.
+1. Pak het gedownloade bestand uit op een locatie naar keuze. Gebruik de opdrachtregel om naar de uitgepakte map te gaan.
+    
+    Voer de volgende opdrachten uit:
+    
+    1. `docker build -t cvtruck` 
+    
+        Met deze opdracht worden veel pakketten gedownload, wordt de Docker-installatiekopie gebouwd en gelabeld als `cvtruck:latest`.
+    
+        > [!NOTE]
+        > Als dat is gelukt, ziet u de volgende berichten: `Successfully built <docker image id>` en `Successfully tagged cvtruck:latest`. Als de opdracht mislukt, probeert u het opnieuw. Soms worden afhankelijkheidspakketten niet meteen de eerste keer gedownload.
+    1. `docker  image ls`
+
+        Met deze opdracht wordt gecontroleerd of de nieuwe installatiekopie zich in het lokale register bevindt.
+    1. `docker run -p 127.0.0.1:80:80 -d cvtruck`
+    
+        Deze opdracht publiceert de opengestelde poort (80) van Docker naar de poort van uw lokale machine (80).
+    1. `docker container ls`
+    
+        Deze opdracht controleert de toewijzing van de poorten, en of de Docker-container correct wordt uitgevoerd op uw machine. De uitvoer moet er ongeveer als volgt uitzien:
+
+        ```
+        CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                      NAMES
+        8b7505398367        cvtruck             "/bin/sh -c 'python …"   13 hours ago        Up 25 seconds       127.0.0.1:80->80/tcp   practical_cohen
         ```
       1. `curl -X POST http://127.0.0.1:80/image -F imageData=@<path to any image file that has the toy delivery truck in it>`
             
@@ -97,20 +127,15 @@ Wanneer u klaar bent, kunt u het model exporteren naar een Docker-container met 
 
 ## <a name="examine-the-sample-files"></a>De voorbeeldbestanden bekijken
 
-1. Blader in Visual Studio code naar src/edge. U ziet het. env-bestand dat u hebt gemaakt, samen met een paar sjabloonbestanden voor de implementatie.
 
-    De implementatiesjabloon verwijst naar het implementatiemanifest voor het edge-apparaat met enkele tijdelijke waarden. Het. env-bestand bevat de waarden voor die variabelen.
-1. Blader vervolgens naar de map src/cloud-to-device-console-app. Hier ziet u het bestand appsettings.json dat u hebt gemaakt, samen met enkele andere bestanden:
+::: zone pivot="programming-language-csharp"
+[!INCLUDE [examine-sample-files](includes/custom-vision-tutorial/csharp/examine-sample-files.md)]
+::: zone-end
 
-    * c2d-console-app.csproj: het projectbestand voor Visual Studio Code.
-    * operations.json: dit bestand bevat de verschillende bewerkingen die u het programma wilt laten uitvoeren.
-    * Program.cs: deze voorbeeldcode van het programma:
+::: zone pivot="programming-language-python"
+[!INCLUDE [examine-sample-files](includes/custom-vision-tutorial/python/examine-sample-files.md)]
+::: zone-end
 
-        * De app-instellingen laden.
-        * De Live Video Analytics aanroepen op de directe methodes van de IoT Edge-module om een topologie te maken, de grafiek te instantiëren en de grafiek te activeren.
-        * Pauzeren zodat u de uitvoer van de grafiek in het **TERMINAL** -venster en de gebeurtenissen die naar de IoT-hub zijn verzonden in het **OUTPUT** -venster kunt onderzoeken.
-        * De grafiekinstantie deactiveren, de grafiekinstantie verwijderen en de grafiektopologie verwijderen.
-        
 ## <a name="generate-and-deploy-the-deployment-manifest"></a>Het implementatiemanifest genereren en implementeren
 
 1. Ga in Visual Studio Code naar src/cloud-to-device-console-app/operations.json.
@@ -121,10 +146,10 @@ Wanneer u klaar bent, kunt u het model exporteren naar een Docker-container met 
     1. En voeg het volgende toe bovenaan de matrix met parameters: `{"name": "inferencingUrl","value": "http://cv:80/image"},`
     1. Wijzig de waarde van de `rtspUrl`-parameter in `"rtsp://rtspsim:554/media/t2.mkv"`.
 1. Controleer of `GraphTopologyDelete` is ingesteld op `"name": "InferencingWithHttpExtension"`.
-1. Klik met de rechtermuisknop op het bestand src/edge/deployment.customvision.template.json en selecteer **IoT Edge-implementatiemanifest genereren** .
+1. Klik met de rechtermuisknop op het bestand src/edge/deployment.customvision.template.json en selecteer **IoT Edge-implementatiemanifest genereren**.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/custom-vision-tutorial/deployment-template-json.png" alt-text="Diagram met een Custom Vision-overzicht.":::
+    > :::image type="content" source="./media/custom-vision-tutorial/deployment-template-json.png" alt-text="Schermopname van IoT Edge-implementatiemanifest genereren.":::
   
     Hiermee maakt u een manifestbestand in de map src/edge/config met de naam deployment.customvision.amd64.json.
 1. Open het bestand src/edge/ deployment.customvision.template.json en zoek het JSON-blok `registryCredentials`. In dit blok vindt u het adres van uw Azure-containerregister samen met de gebruikersnaam en het wachtwoord.
@@ -143,14 +168,14 @@ Wanneer u klaar bent, kunt u het model exporteren naar een Docker-container met 
 
         Als het goed is, wordt `Pushed` in de opdrachtregel weergegeven samen met de SHA voor de installatiekopie.
     1. U kunt ook bevestigen door uw Azure Container Registry te controleren in de Azure-portal. Hier ziet u de naam van de opslagplaats samen met het label.
-1. Stel de IoT Hub-verbindingsreeks in door naast het deelvenster **AZURE IOT HUB** in de linkerbenedenhoek te klikken op het pictogram **Meer acties** . U kunt de tekenreeks uit het bestand appsettings.json kopiëren. (Hier volgt een andere aanbevolen methode om ervoor te zorgen dat u de juiste IoT Hub hebt geconfigureerd in Visual Studio code via de opdracht [IOT Hub selecteren](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Select-IoT-Hub)).
+1. Stel de IoT Hub-verbindingsreeks in door naast het deelvenster **AZURE IOT HUB** in de linkerbenedenhoek te klikken op het pictogram **Meer acties**. U kunt de tekenreeks uit het bestand appsettings.json kopiëren. (Hier volgt een andere aanbevolen methode om ervoor te zorgen dat u de juiste IoT Hub hebt geconfigureerd in Visual Studio code via de opdracht [IOT Hub selecteren](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Select-IoT-Hub)).
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/custom-vision-tutorial/connection-string.png" alt-text="Diagram met een Custom Vision-overzicht.":::
-1. Klik vervolgens met de rechtermuisknop op src/edge/config/ deployment.customvision.amd64.json en selecteer **Implementatie voor één apparaat maken** .
+    > :::image type="content" source="./media/custom-vision-tutorial/connection-string.png" alt-text="Schermopname van IoT Hub-verbindingsreeks instellen.":::
+1. Klik vervolgens met de rechtermuisknop op src/edge/config/ deployment.customvision.amd64.json en selecteer **Implementatie voor één apparaat maken**.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/custom-vision-tutorial/deployment-amd64-json.png" alt-text="Diagram met een Custom Vision-overzicht.":::
+    > :::image type="content" source="./media/custom-vision-tutorial/deployment-amd64-json.png" alt-text="Schermopname van Implementatie voor één apparaat maken.":::
 1. Vervolgens wordt u gevraagd om een IoT Hub-apparaat te selecteren. Selecteer **lva-sample-device** in de vervolgkeuzelijst.
 1. Vernieuw de Azure IoT-hub na ongeveer 30 seconden in de sectie linksonder. U ziet dat op het edge-apparaat de volgende modules zijn geïmplementeerd:
 
@@ -160,24 +185,55 @@ Wanneer u klaar bent, kunt u het model exporteren naar een Docker-container met 
 
 ## <a name="prepare-for-monitoring-events"></a>Bewakingsgebeurtenissen voorbereiden
 
-Klik met de rechtermuisknop op het Live Video Analytics-apparaat en selecteer **Bewaking van ingebouwd gebeurteniseindpunt starten** . Deze stap is nodig om de IoT Hub-gebeurtenissen te controleren in het venster **UITVOER** van Visual Studio Code.
+Klik met de rechtermuisknop op het Live Video Analytics-apparaat en selecteer **Bewaking van ingebouwd gebeurteniseindpunt starten**. Deze stap is nodig om de IoT Hub-gebeurtenissen te controleren in het venster **UITVOER** van Visual Studio Code.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/custom-vision-tutorial/start-monitoring.png" alt-text="Diagram met een Custom Vision-overzicht.":::
+> :::image type="content" source="./media/custom-vision-tutorial/start-monitoring.png" alt-text="Schermopname van Bewaking van ingebouwd gebeurteniseindpunt starten.":::
 
 ## <a name="run-the-sample-program"></a>Het voorbeeldprogramma uitvoeren
 
 Als u de grafiektopologie voor deze zelfstudie in een browser opent, ziet u dat de waarde van `inferencingUrl` is ingesteld op `http://cv:80/image`. Deze instelling betekent dat de deductieserver resultaten retourneert na het detecteren van speelgoedwagens, als die er zijn, in de live video.
 
 1. Open in Visual Studio Code het tabblad **Extensies** (of druk op **Ctrl+Shift+X** ) en zoek naar Azure IoT Hub.
-1. Klik met de rechtermuisknop en selecteer **Extensie-instellingen** .
+1. Klik met de rechtermuisknop en selecteer **Extensie-instellingen**.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Diagram met een Custom Vision-overzicht.":::
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Schermopname met Extensie-instellingen geselecteerd.":::
 1. Zoek **Uitgebreid bericht tonen** en schakel deze optie in.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Diagram met een Custom Vision-overzicht."
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Schermopname van Uitgebreid bericht tonen.":::
+1. Selecteer de toets **F5** om een foutopsporingssessie te starten. U ziet de berichten die worden afgedrukt in het venster **TERMINAL**.
+1. De code operations.json wordt gestart met aanroepen naar de directe methoden `GraphTopologyList` en `GraphInstanceList`. Als u na het voltooien van vorige quickstarts resources hebt opgeschoond, worden er lege lijsten geretourneerd en wordt het proces gepauzeerd. Selecteer de **Enter** -toets om door te gaan.
+    
+   In het **TERMINAL** -venster wordt de volgende set aanroepen van directe methoden weergegeven:
+    
+   * Een aanroep van `GraphTopologySet` waarin gebruik wordt gemaakt van de voorgaande `topologyUrl`.
+   * Een aanroep van `GraphInstanceSet` waarin gebruik wordt gemaakt van de volgende hoofdtekst:
+        
+   ```
+        {
+          "@apiVersion": "1.0",
+          "name": "Sample-Graph-1",
+          "properties": {
+            "topologyName": "CustomVisionWithHttpExtension",
+            "description": "Sample graph description",
+            "parameters": [
+              { 
+                "name": "inferencingUrl",
+                "value": "http://cv:80/image"
+              },
+              {
+                "name": "rtspUrl",
+                "value": "rtsp://rtspsim:554/media/t2.mkv"
+              },
+              {
+                "name": "rtspUserName",
+                "value": "testuser"
+              },
+              {
+                "name": "rtspPassword",
+                "value": "testpassword"
               }
             ]
           }
@@ -187,9 +243,9 @@ Als u de grafiektopologie voor deze zelfstudie in een browser opent, ziet u dat 
    * Een aanroep van `GraphInstanceActivate` waarmee de instantie van de grafiek en de videostroom worden gestart.
    * Een tweede aanroep van `GraphInstanceList` waarmee wordt weergegeven dat het grafiekexemplaar wordt uitgevoerd.
     
-1. De uitvoer in het **TERMINAL** -venster wordt onderbroken met de prompt **Druk op Enter om door te gaan** . Druk nog niet op **Enter** . Schuif omhoog om de nettoladingen voor het JSON-antwoord te zien voor de directe methoden die u hebt aangeroepen.
+1. De uitvoer in het **TERMINAL** -venster wordt onderbroken met de prompt **Druk op Enter om door te gaan**. Druk nog niet op **Enter**. Schuif omhoog om de nettoladingen voor het JSON-antwoord te zien voor de directe methoden die u hebt aangeroepen.
 1. Schakel naar het **UITVOER** -venster in Visual Studio Code. Er zijn berichten te zien die door de module Live Video Analytics in IoT Edge worden verzonden naar de IoT-hub. In de volgende sectie van deze zelfstudie worden deze berichten besproken.
-1. Het uitvoeren van de mediagraaf wordt vervolgd en de resultaten worden afgedrukt. Via de RTSP-simulator wordt de bronvideo continu herhaald. Als u de mediagrafiek wilt stoppen, keert u terug naar het **TERMINAL** -venster en drukt u op **Enter** .
+1. Het uitvoeren van de mediagraaf wordt vervolgd en de resultaten worden afgedrukt. Via de RTSP-simulator wordt de bronvideo continu herhaald. Als u de mediagrafiek wilt stoppen, keert u terug naar het **TERMINAL** -venster en drukt u op **Enter**.
 Met de volgende reeks aanroepen worden resources opgeschoond:
     
    * Met een aanroep van `GraphInstanceDeactivate` wordt het graafexemplaar gedeactiveerd.

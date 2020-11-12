@@ -8,14 +8,15 @@ ms.topic: sample
 ms.date: 10/07/2019
 author: sakash279
 ms.author: akshanka
-ms.openlocfilehash: 50a34f2572e5e9feea0b5adc3e12f72451e5728b
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 79b58b76954cf15289e85dbf763b7a399897635d
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92477331"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489876"
 ---
 # <a name="how-to-use-azure-table-storage-and-azure-cosmos-db-table-api-with-c"></a>Azure-tabelopslag en Azure Cosmos DB Table-API gebruiken met C++
+[!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
@@ -94,7 +95,7 @@ Gebruik de naam van uw Azure Cosmos DB-account voor `<your_cosmos_db_account>`. 
 Als u uw toepassing op uw lokale Windows-computer wilt testen, kunt u de Azure-opslagemulator gebruiken die met de [Azure SDK](https://azure.microsoft.com/downloads/) is geïnstalleerd. De opslagemulator is een hulpprogramma dat de Azure Blob-, Queue- en Table-services simuleert die beschikbaar zijn op uw lokale ontwikkelcomputer. In het volgende voorbeeld ziet u hoe u een statisch veld kunt declareren voor het opslaan van de verbindingsreeks naar uw lokale opslagemulator:  
 
 ```cpp
-// Define the connection string with Azure storage emulator.
+// Define the connection string with Azure Storage Emulator.
 const utility::string_t storage_connection_string(U("UseDevelopmentStorage=true;"));  
 ```
 
@@ -501,9 +502,9 @@ else
 
 Voor Visual Studio Community Edition: als er opbouwfouten voor uw project ontstaan vanwege de insluitbestanden *storage_account.h* en *table.h* , moet u de **/permissive-** -compileerschakelaar verwijderen:
 
-1. Klik in **Solution Explorer** met de rechtermuisknop op het project en selecteer **Properties** .
-1. Vouw in het dialoogvenster **Eigenschappenpagina’s** de optie **Configuratie-eigenschappen** en vervolgens **C/C++** uit en selecteer **Taal** .
-1. Stel **Overeenstemmingsmodus** in op **Nee** .
+1. Klik in **Solution Explorer** met de rechtermuisknop op het project en selecteer **Properties**.
+1. Vouw in het dialoogvenster **Eigenschappenpagina’s** de optie **Configuratie-eigenschappen** en vervolgens **C/C++** uit en selecteer **Taal**.
+1. Stel **Overeenstemmingsmodus** in op **Nee**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

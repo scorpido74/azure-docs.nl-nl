@@ -1,17 +1,17 @@
 ---
 title: Audit logboeken-Azure Database for MySQL
 description: Beschrijft de audit logboeken die beschikbaar zijn in Azure Database for MySQL en de beschik bare para meters voor het inschakelen van logboek registratie niveaus.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/24/2020
-ms.openlocfilehash: 8b12e1bd7bd67c3d22bdb62255b481d81976b969
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aac8e6e04b8bac7a1d27fefc780fb9fadb3122dc
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85362122"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94534174"
 ---
 # <a name="audit-logs-in-azure-database-for-mysql"></a>Audit Logboeken in Azure Database for MySQL
 

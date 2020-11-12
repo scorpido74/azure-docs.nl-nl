@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 49626d418f90f8b4bc7288a6d2f7d195cd906f7a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 950c159ed4d2c57796f33b9505e6931dbec983ba
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91961354"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94532372"
 ---
 # <a name="display-controls"></a>Besturings elementen weer geven
 
@@ -27,8 +27,6 @@ Een **Weergave besturings element** is een gebruikers interface-element met spec
 In de volgende afbeelding ziet u een zelf-bevestigde aanmeldings pagina met twee besturings elementen voor weer gave waarmee een primair en secundair e-mail adres wordt gevalideerd.
 
 ![Voor beeld van weer gave-besturings element](media/display-controls/display-control-email.png)
-
-[!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -78,7 +76,7 @@ In het volgende voor beeld wordt het e-mail adres dat is gecontroleerd met het a
 
 Elk type weergave besturings element vereist een andere set weer gave claims, [uitvoer claims](#output-claims)en [acties](#display-control-actions) die moeten worden uitgevoerd.
 
-Net als de **weer gave-claims** die in een niet [-bevestigd technisch profiel](self-asserted-technical-profile.md#display-claims)zijn gedefinieerd, vertegenwoordigen de weer gave claims de claims die moeten worden verzameld van de gebruiker in het besturings element voor weer gave. Voor het element **claim** type waarnaar wordt verwezen, moet het **UserInputType** -element worden opgegeven voor een gebruikers invoer die wordt ondersteund door Azure AD B2C, zoals `TextBox` of `DropdownSingleSelect` . Als een aanvraag waarde voor weer geven vereist is voor een **actie**, stelt u het **vereiste** kenmerk in op `true` om te zorgen dat de gebruiker een waarde voor die specifieke weergave claim opgeeft.
+Net als de **weer gave-claims** die in een niet [-bevestigd technisch profiel](self-asserted-technical-profile.md#display-claims)zijn gedefinieerd, vertegenwoordigen de weer gave claims de claims die moeten worden verzameld van de gebruiker in het besturings element voor weer gave. Voor het element **claim** type waarnaar wordt verwezen, moet het **UserInputType** -element worden opgegeven voor een gebruikers invoer die wordt ondersteund door Azure AD B2C, zoals `TextBox` of `DropdownSingleSelect` . Als een aanvraag waarde voor weer geven vereist is voor een **actie** , stelt u het **vereiste** kenmerk in op `true` om te zorgen dat de gebruiker een waarde voor die specifieke weergave claim opgeeft.
 
 Bepaalde weergave claims zijn vereist voor bepaalde typen weergave besturings elementen. **VerificationCode** is bijvoorbeeld vereist voor het besturings element weer gave van het type **VerificationControl**. Gebruik het kenmerk **ControlClaimType** om op te geven welke DisplayClaim is aangewezen voor die vereiste claim. Bijvoorbeeld:
 
@@ -96,7 +94,7 @@ Als u de uitvoer claims wilt samen stellen aan de volgende indelings stap, gebru
 
 De **acties** van een weergave besturings element zijn procedures die zich voordoen in de Azure AD B2C back-end wanneer een gebruiker een bepaalde actie uitvoert aan de client zijde (de browser). Bijvoorbeeld de validaties die moeten worden uitgevoerd wanneer de gebruiker een knop op de pagina selecteert.
 
-Een actie definieert een lijst met **technische profielen voor validatie**. Ze worden gebruikt voor het valideren van enkele of alle weer gave claims van het besturings element voor weer gave. Het validatie-technische profiel valideert de gebruikers invoer en retourneert mogelijk een fout naar de gebruiker. U kunt **ContinueOnError**, **ContinueOnSuccess**en **voor waarden** in de actie voor het weer geven van besturings elementen gebruiken die vergelijkbaar zijn met de manier waarop ze worden gebruikt bij [validatie van technische profielen](validation-technical-profile.md) in een zelf bevestigd technisch profiel.
+Een actie definieert een lijst met **technische profielen voor validatie**. Ze worden gebruikt voor het valideren van enkele of alle weer gave claims van het besturings element voor weer gave. Het validatie-technische profiel valideert de gebruikers invoer en retourneert mogelijk een fout naar de gebruiker. U kunt **ContinueOnError** , **ContinueOnSuccess** en **voor waarden** in de actie voor het weer geven van besturings elementen gebruiken die vergelijkbaar zijn met de manier waarop ze worden gebruikt bij [validatie van technische profielen](validation-technical-profile.md) in een zelf bevestigd technisch profiel.
 
 #### <a name="actions"></a>Acties
 

@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e42c889277f937a33e72eaf57819385166d6a409
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bd90be6d93dc5ca399ac87daba0ca44fa7e88ff8
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85202311"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94532491"
 ---
 # <a name="verification-display-control"></a>Besturings element voor verificatie weergave
 
@@ -30,11 +30,9 @@ Het besturings element voor controle weergave bestaat uit twee stappen (acties):
 
     ![Voorbeeld pagina voor de actie code verzenden](media/display-control-verification/display-control-verification-email-action-01.png)
 
-1. Nadat de code is verzonden, leest de gebruiker het bericht, voert de verificatie code in het besturings element van het weergave besturings element in en selecteert **code controleren**. Als u **code controleren**selecteert, wordt de **actie VerifyCode** uitgevoerd om de code te controleren die aan het adres is gekoppeld. Als de gebruiker **nieuwe code verzenden**selecteert, wordt de eerste actie opnieuw uitgevoerd.
+1. Nadat de code is verzonden, leest de gebruiker het bericht, voert de verificatie code in het besturings element van het weergave besturings element in en selecteert **code controleren**. Als u **code controleren** selecteert, wordt de **actie VerifyCode** uitgevoerd om de code te controleren die aan het adres is gekoppeld. Als de gebruiker **nieuwe code verzenden** selecteert, wordt de eerste actie opnieuw uitgevoerd.
 
     ![Voorbeeld pagina voor het controleren van code actie](media/display-control-verification/display-control-verification-email-action-02.png)
-
-[!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
 ## <a name="verificationcontrol-required-elements"></a>Vereiste elementen VerificationControl
 
@@ -49,7 +47,7 @@ De **VerificationControl** moet de volgende elementen bevatten:
   - **SendCode** : stuurt een code naar de gebruiker. Deze actie bevat doorgaans twee technische validatie profielen, waarmee een code kan worden gegenereerd en verzonden.
   - **VerifyCode** : verifieert de code. Deze actie bevat meestal een technische profiel voor validatie.
 
-In het onderstaande voor beeld wordt een tekstvak voor **e-mail** op de pagina weer gegeven. Wanneer de gebruiker zijn of haar e-mail adres invoert en **SendCode**selecteert, wordt de actie **SendCode** geactiveerd in de back-end van Azure AD B2C.
+In het onderstaande voor beeld wordt een tekstvak voor **e-mail** op de pagina weer gegeven. Wanneer de gebruiker zijn of haar e-mail adres invoert en **SendCode** selecteert, wordt de actie **SendCode** geactiveerd in de back-end van Azure AD B2C.
 
 Vervolgens voert de gebruiker de **verificationCode** in en selecteert **VerifyCode** om de **VerifyCode** -actie in de back-end te activeren. Als alle validaties worden door gegeven, wordt de **VerificationControl** beschouwd als voltooid en kan de gebruiker door gaan met de volgende stap.
 

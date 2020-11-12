@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7788d45a9cc30cb688d33a629fbb6e53f5ca16cb
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: e2ebc0033f2d2d55571ba45a38b5e0061716673d
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92214903"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94532474"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Opmerkingen voor ontwikkel aars voor aangepast beleid in Azure Active Directory B2C
 
@@ -108,16 +108,6 @@ Mogelijkheden voor aangepast beleid/identiteits ervaring zijn onder constante en
 | [Besturings elementen weer geven](display-controls.md) |  |X  |  |  |
 
 
-### <a name="page-layout-versions"></a>Versie van pagina-indeling
-
-| Functie | Ontwikkeling | Preview | Algemene beschikbaarheid | Notities |
-| ------- | :-----------: | :-------: | :--: | ----- |
-| [2.0.0](page-layout.md) |  | X |  |  |
-| [1.2.0](page-layout.md) |  | X |  |  |
-| [1.1.0](page-layout.md) |  |  | X |  |
-| [1.0.0](page-layout.md) |  |  | X |  |
-| [Java script-ondersteuning](javascript-samples.md) |  | X |  |  |
-
 ### <a name="app-ief-integration"></a>App-IEF-integratie
 
 | Functie | Ontwikkeling | Preview | Algemene beschikbaarheid | Notities |
@@ -127,6 +117,7 @@ Mogelijkheden voor aangepast beleid/identiteits ervaring zijn onder constante en
 | JSON invoegen in gebruikers traject via `client_assertion` | X |  |  | Wordt afgeschaft. |
 | JSON invoegen in de gebruikers reis als `id_token_hint` |  | X |  | Go-Forward-benadering voor het door geven van JSON. |
 | [ID-provider token door geven aan de toepassing](idp-pass-through-custom.md) |  | X |  | Bijvoorbeeld van Facebook naar app. |
+
 
 ### <a name="session-management"></a>Sessie beheer
 

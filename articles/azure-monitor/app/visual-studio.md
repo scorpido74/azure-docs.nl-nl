@@ -4,12 +4,12 @@ description: Analyse van web-app-prestaties en diagnostische gegevens tijdens fo
 ms.topic: conceptual
 ms.date: 03/17/2017
 ms.custom: vs-azure
-ms.openlocfilehash: a3937719fd47ba988cf1e0a93f4c06fcc8112d3e
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: d2de29d897c84496fd44d74d88d58decbc64b7f8
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932206"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94532899"
 ---
 # <a name="debug-your-applications-with-azure-application-insights-in-visual-studio"></a>Fouten opsporen in uw toepassingen met Azure-toepassing Insights in Visual Studio
 In Visual Studio (2015 en hoger) kunt u de prestaties analyseren en problemen in uw ASP.NET web-app identificeren tijdens de foutopsporing en algemeen gebruik. Dit gebeurt aan de hand van telemetrie uit [Azure Application Insights](./app-insights-overview.md).
@@ -53,12 +53,12 @@ Uitzonderingsrapporten worden weergegeven in het venster Zoeken. (In enkele oude
 
 Klik op een uitzondering voor een stack-trace. Als de code van de app in Visual Studio is geopend, kunt u via de stack-trace doorklikken naar de relevante coderegel.
 
-![Uitzondering voor stack-trace](./media/visual-studio/17.png)
+![Scherm afbeelding toont het object about in een stack-trace.](./media/visual-studio/17.png)
 
 ## <a name="view-request-and-exception-summaries-in-the-code"></a>Samen vattingen van aanvragen en uitzonde ringen in de code weer geven
 In de lens regel van de code boven elke handler-methode ziet u het aantal aanvragen en uitzonde ringen dat door Application Insights in de afgelopen 24 uur is geregistreerd.
 
-![Uitzondering voor stack-trace](./media/visual-studio/21.png)
+![Scherm afbeelding toont een uitzonde ring in het dialoog venster context.](./media/visual-studio/21.png)
 
 > [!NOTE] 
 > Code Lens toont alleen Application Insights-gegevens als u [uw app hebt geconfigureerd om telemetrie te verzenden naar de Application Insights-portal](./asp-net.md).

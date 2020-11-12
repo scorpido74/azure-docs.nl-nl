@@ -3,17 +3,17 @@ title: Prestaties van Java-Web-apps op Linux bewaken-Azure | Microsoft Docs
 description: Uitgebreide bewaking van de toepassings prestaties van uw Java-website met de verzamelde-invoeg toepassing voor Application Insights.
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 63b64226c9e788e060298050a74d9009c8035b89
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: a4ce1ad6a8248680b8bdeec8a98195c3dbfe31a1
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379006"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94532865"
 ---
-# <a name="collectd-linux-performance-metrics-in-application-insights"></a>verzamelde: metrische gegevens voor Linux-prestaties in Application Insights
+# <a name="collectd-linux-performance-metrics-in-application-insights-deprecated"></a>verzamelde: metrische gegevens over Linux-prestaties in Application Insights [afgeschaft]
 
 > [!IMPORTANT]
-> De aanbevolen benadering voor het bewaken van Java-toepassingen is het gebruik van de automatische instrumentatie zonder de code te wijzigen. Volg de richt lijnen voor [Application Insights Java 3,0-agent](./java-in-process-agent.md).
+> De **aanbevolen benadering** voor het bewaken van Java-toepassingen is het gebruik van de automatische instrumentatie zonder de code te wijzigen. Volg de richt lijnen voor **[Application Insights Java 3,0-agent](./java-in-process-agent.md)**.
 
 Als u de metrische gegevens voor Linux-systeem prestaties in [Application Insights](./app-insights-overview.md)wilt verkennen, installeert u [verzamelde](https://collectd.org/)samen met de Application Insights-invoeg toepassing. Deze open source-oplossing verzamelt diverse systeem-en netwerk statistieken.
 

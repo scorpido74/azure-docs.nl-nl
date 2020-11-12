@@ -9,24 +9,26 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 10/01/2020
-ms.openlocfilehash: b8ca96dd0b11f7a4c76f7a954959ef5005fb4a40
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a77f9c8f7e37d2c5a040a48b6bd96bef11d51f14
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323975"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94533477"
 ---
 # <a name="monitor-azure-machine-learning"></a>Azure Machine Learning bewaken
 
 Wanneer u belang rijke toepassingen en bedrijfs processen hebt die afhankelijk zijn van Azure-resources, wilt u deze resources controleren op hun Beschik baarheid, prestaties en werking. In dit artikel worden de bewakings gegevens beschreven die worden gegenereerd door Azure Machine Learning en hoe u deze gegevens kunt analyseren en er waarschuwingen op kunt volgen met behulp van Azure Monitor.
 
 > [!TIP]
-> De informatie in dit document is hoofd zakelijk bedoeld voor beheerders, omdat hierin de bewaking wordt beschreven voor de Azure Machine Learning op het niveau van de *werk ruimte* . Als u een Data-wetenschapper of-ontwikkelaar bent en informatie wilt bewaken die specifiek is voor uw *model training-uitvoeringen* , raadpleegt u de volgende documenten:
+> De informatie in dit document is hoofd zakelijk bedoeld voor __beheerders__ , omdat hierin de bewaking voor de Azure machine learning-service en de bijbehorende Azure-Services wordt beschreven. Als u een __Data-wetenschapper__ of- __ontwikkelaar__ bent en informatie wilt bewaken die specifiek is voor uw *model training-uitvoeringen* , raadpleegt u de volgende documenten:
 >
 > * [Trainings uitvoeringen starten, controleren en annuleren](how-to-manage-runs.md)
 > * [Metrische gegevens registreren voor trainingsuitvoeringen](how-to-track-experiments.md)
 > * [Experimenten bijhouden met MLflow](how-to-use-mlflow.md)
 > * [Uitvoeringen visualiseren met TensorBoard](how-to-monitor-tensorboard.md)
+>
+> Als u gegevens wilt bewaken die zijn gegenereerd door modellen die zijn geïmplementeerd als webservices of IoT Edge modules, raadpleegt u [model gegevens verzamelen](how-to-enable-data-collection.md) en [controleren met Application Insights](how-to-enable-app-insights.md).
 
 ## <a name="what-is-azure-monitor"></a>Wat is Azure Monitor?
 
