@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: b1a361b2c1b1010c6593defa37ef92a3c36b0693
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d53f13cb740b3feb39dc64ce012ff320afbb1db5
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89015608"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130490"
 ---
 # <a name="tutorial-write-a-c-user-defined-function-for-azure-stream-analytics-job-preview"></a>Zelfstudie: Een door de gebruiker gedefinieerde C#-functie schrijven voor een Azure Stream Analytics-taak (preview)
 
@@ -36,7 +36,7 @@ Voordat u begint, moet aan de volgende vereisten zijn voldaan:
 
 ## <a name="create-a-container-in-your-azure-storage-account"></a>Een container in uw Azure Storage-account maken
 
-De container die u maakt, wordt gebruikt om het gecompileerde C#-pakket op te slaan. Als u een Edge-taak aanmaakt, wordt dit opslagaccount ook gebruikt voor het implementeren van het pakket op uw IoT Edge-apparaat. Gebruik een specifieke container voor elke Stream Analytics-taak. Hergebruik van dezelfde container voor meerdere Stream Analytics Edge-taken wordt niet ondersteund. Als u al een opslagaccount met bestaande containers hebt, kunt u die gebruiken. Zo niet, [maak dan een nieuwe container](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal). 
+De container die u maakt, wordt gebruikt om het gecompileerde C#-pakket op te slaan. Als u een Edge-taak aanmaakt, wordt dit opslagaccount ook gebruikt voor het implementeren van het pakket op uw IoT Edge-apparaat. Gebruik een specifieke container voor elke Stream Analytics-taak. Hergebruik van dezelfde container voor meerdere Stream Analytics Edge-taken wordt niet ondersteund. Als u al een opslagaccount met bestaande containers hebt, kunt u die gebruiken. Zo niet, [maak dan een nieuwe container](../storage/blobs/storage-quickstart-blobs-portal.md). 
 
 ## <a name="create-a-stream-analytics-project-in-visual-studio"></a>Een Stream Analytics-project in Visual Studio aanmaken
 
@@ -44,9 +44,9 @@ De container die u maakt, wordt gebruikt om het gecompileerde C#-pakket op te sl
 
 2. Selecteer **Bestand > Nieuw > Project**.
 
-3. Selecteer **Stream Analytics**in de sjablonenlijst aan de linkerkant en selecteer vervolgens **Azure Stream Analytics Edge Application** of **Azure Stream Analytics Application**.
+3. Selecteer **Stream Analytics** in de sjablonenlijst aan de linkerkant en selecteer vervolgens **Azure Stream Analytics Edge Application** of **Azure Stream Analytics Application**.
 
-4.  Voer de **Naam**, **Locatie**en **Oplossingsnaam** van het project in en selecteer **OK**.
+4.  Voer de **Naam** , **Locatie** en **Oplossingsnaam** van het project in en selecteer **OK**.
 
     ![Een Azure Stream Analytics Edge-project in Visual Studio maken](./media/stream-analytics-edge-csharp-udf/stream-analytics-create-edge-app.png)
 
@@ -144,7 +144,7 @@ Nadat u de query lokaal hebt getest, selecteert u **Verzenden naar Azure** in de
 ![Uw Stream Analytics Edge-taak verzenden naar Azure vanuit Visual Studio](./media/stream-analytics-edge-csharp-udf/stream-analytics-udf-submit-job.png)
 
 ## <a name="deploy-to-iot-edge-devices"></a>Implementeren naar IoT Edge-apparaten
-Als u een Stream Analytics Edge-taak wilt compileren, kan dit nu worden geïmplementeerd als een IoT Edge-module. Volg de [IoT Edge-snelstart](https://docs.microsoft.com/azure/iot-edge/quickstart) om een IoT Hub te maken, een IoT Edge-apparaat te registeren en de IoT Edge-runtime op uw apparaat te installeren en starten. Volg vervolgens de zelfstudie [de taak implementeren](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics#deploy-the-job) om uw Stream Analytics-taak als een IoT Edge-module te implementeren. 
+Als u een Stream Analytics Edge-taak wilt compileren, kan dit nu worden geïmplementeerd als een IoT Edge-module. Volg de [IoT Edge-snelstart](../iot-edge/quickstart.md) om een IoT Hub te maken, een IoT Edge-apparaat te registeren en de IoT Edge-runtime op uw apparaat te installeren en starten. Volg vervolgens de zelfstudie [de taak implementeren](../iot-edge/tutorial-deploy-stream-analytics.md#deploy-the-job) om uw Stream Analytics-taak als een IoT Edge-module te implementeren. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

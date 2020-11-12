@@ -14,12 +14,12 @@ ms.service: azure
 ms.tgt_pltfrm: multiple
 ms.topic: tutorial
 ms.workload: web
-ms.openlocfilehash: 5d4ac5435281f521c71556123f77d737ee6916e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 65d8ade438228d7af71de1fc66639e5b6de2edda
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73161777"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040805"
 ---
 # <a name="create-a-pivotal-cloud-foundry-cluster-on-azure"></a>Een Pivotal Cloud Foundry-cluster maken op Azure
 
@@ -36,13 +36,13 @@ Er zijn verschillende manieren om een openbare SSH-sleutel te genereren met behu
 ssh-keygen -t rsa -b 2048
 ```
 
-Zie voor meer informatie, [SSH-sleutels gebruiken met Windows op Azure](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows).
+Zie voor meer informatie, [SSH-sleutels gebruiken met Windows op Azure](../virtual-machines/linux/ssh-from-windows.md).
 
 ## <a name="create-a-service-principal"></a>Een service-principal maken
 
 > [!NOTE]
 >
-> Voor het maken van een service-principal is een machtiging voor het eigenaarsaccount vereist. U kunt bovendien een script schrijven om het maken van de service-principal te automatiseren. Bijvoorbeeld met behulp van de Azure CLI-opdracht [az ad sp create-for-rbac](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest).
+> Voor het maken van een service-principal is een machtiging voor het eigenaarsaccount vereist. U kunt bovendien een script schrijven om het maken van de service-principal te automatiseren. Bijvoorbeeld met behulp van de Azure CLI-opdracht [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest).
 
 1. Meld u aan bij uw Azure-account.
 
@@ -84,7 +84,7 @@ Zie voor meer informatie, [SSH-sleutels gebruiken met Windows op Azure](https://
 
     `az login --service-principal -u {appId} -p {your-password}  --tenant {tenantId}`
 
-7. Maak een JSON-bestand in de volgende indeling. Gebruik de waarden van **abonnements-id**, **tenantID**, **clientID** en **clientSecret** die u eerder hebt gekopieerd. Sla het bestand op.
+7. Maak een JSON-bestand in de volgende indeling. Gebruik de waarden van **abonnements-id** , **tenantID** , **clientID** en **clientSecret** die u eerder hebt gekopieerd. Sla het bestand op.
 
     ```json
     {
@@ -128,4 +128,3 @@ Voer de parameters in en maak uw PCF-cluster.
 5. In PCF Ops Manager worden de geïmplementeerde Azure-exemplaren weergeven. Nu kunt u uw toepassingen hier implementeren en beheren.
                
     ![Geïmplementeerd Azure-exemplaar in Pivotal](media/deploy/ops-mgr.png )
- 

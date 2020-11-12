@@ -8,14 +8,15 @@ ms.subservice: cosmosdb-table
 ms.devlang: php
 ms.topic: sample
 ms.date: 07/23/2020
-ms.openlocfilehash: 26381d03598485598f0f72242862edd191e9bd30
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d059c899e4a64d4d2c1b880b2a1d0f89258f33b
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91318752"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93079628"
 ---
 # <a name="how-to-use-azure-storage-table-service-or-the-azure-cosmos-db-table-api-from-php"></a>De Azure Storage-tabelservice of de Azure Cosmos DB Table-API gebruiken in PHP
+[!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
@@ -258,7 +259,7 @@ echo $entity->getPartitionKey().":".$entity->getRowKey();
 
 ## <a name="retrieve-all-entities-in-a-partition"></a>Alle entiteiten in een partitie ophalen
 
-Entiteitsquery's worden samengesteld met filters (zie [Query's uitvoeren op tabellen en entiteiten][filters] voor meer informatie). Als u alle entiteiten in de partitie wilt ophalen, gebruikt u het filter 'PartitionKey eq *partition_name*'. In het volgende voorbeeld wordt getoond hoe u alle entiteiten in de partitie `tasksSeattle` ophaalt door een filter door te geven aan de methode **queryEntities**.
+Entiteitsquery's worden samengesteld met filters (zie [Query's uitvoeren op tabellen en entiteiten][filters] voor meer informatie). Als u alle entiteiten in de partitie wilt ophalen, gebruikt u het filter 'PartitionKey eq *partition_name* '. In het volgende voorbeeld wordt getoond hoe u alle entiteiten in de partitie `tasksSeattle` ophaalt door een filter door te geven aan de methode **queryEntities**.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -430,7 +431,7 @@ U kunt voor gelijktijdigheidscontroles de Etag zo instellen dat een entiteit wor
 
 ## <a name="batch-table-operations"></a>Batchbewerkingen voor tabellen
 
-Met de methode **TableRestProxy->batch** kunt u meerdere bewerkingen uitvoeren in één aanvraag. In dit patroon worden bewerkingen toegevoegd aan het object **BatchRequest** en wordt vervolgens het object **BatchRequest** doorgegeven aan de methode **TableRestProxy->batch**. Als u een bewerking wilt toevoegen aan een **BatchRequest**-object, kunt u een van de volgende methoden meerdere keren aanroepen:
+Met de methode **TableRestProxy->batch** kunt u meerdere bewerkingen uitvoeren in één aanvraag. In dit patroon worden bewerkingen toegevoegd aan het object **BatchRequest** en wordt vervolgens het object **BatchRequest** doorgegeven aan de methode **TableRestProxy->batch**. Als u een bewerking wilt toevoegen aan een **BatchRequest** -object, kunt u een van de volgende methoden meerdere keren aanroepen:
 
 * **addInsertEntity** (hiermee wordt een insertEntity-bewerking toegevoegd)
 * **addUpdateEntity** (hiermee wordt een updateEntity-bewerking toegevoegd)

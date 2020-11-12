@@ -10,14 +10,15 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18, devx-track-js
 ms.reviewer: sngun
-ms.openlocfilehash: c16d7ccba24680604bc7f083f7242edd53abe102
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 181af5cf26d19a9f51e8d456e777badf7efa224d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91282898"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097818"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---build-the-ui-with-angular"></a>Een Angular-app maken met de API voor MongoDB van Azure Cosmos DB - De gebruikersinterface maken met Angular
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 In deze meerdelige zelfstudie leert u hoe u een app maakt die is geschreven in Node.js met Express en Angular, en hoe u deze app verbindt met uw [Cosmos-account dat is geconfigureerd met de API van Cosmos DB voor MongoDB](mongodb-introduction.md).
 
@@ -62,7 +63,7 @@ Voltooi de stappen in [deel 2](tutorial-develop-mongodb-nodejs-part2.md) van de 
 
 4. Open in dezelfde map het bestand **app.module.ts**. U ziet dat `HeroesComponent` aan de declaraties in regel 5 is toegevoegd en dat het ook in regel 10 is geïmporteerd.
 
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/app-module-file.png" alt-text="Hero-component installeren":::
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/app-module-file.png" alt-text="Het bestand app-module.ts openen":::
 
 5. Ga terug naar het bestand **heroes.component.html** en kopieer er de volgende code in. `<div>` is de container voor de hele pagina. In de container bevindt zich een lijst met hero's die we moeten maken, zodat als u op een ervan klikt, u deze kunt selecteren en in de gebruikersinterface bewerken of verwijderen. In de HTML staat de stijl, zodat u weet welke is geselecteerd. Er is ook een bewerkingsgebied, waar u een nieuwe hero kunt toevoegen of een bestaande hero kunt bewerken. 
 
@@ -103,7 +104,7 @@ Voltooi de stappen in [deel 2](tutorial-develop-mongodb-nodejs-part2.md) van de 
     </div>
     ```
 
-7. Met de HTML op de juiste plaats voegen we deze toe aan het bestand **heroes.component.ts**, waarna we interactie kunnen aangaan met de sjabloon. Met de volgende code wordt de sjabloon aan het componentbestand toegevoegd. Er is een constructor toegevoegd waarmee enkele hero's worden opgehaald en de hero-servicecomponent wordt geïnitialiseerd om alle gegevens op te halen. De code voegt ook alle vereiste methoden toe voor het afhandelen van gebeurtenissen in de gebruikersinterface. U kunt de volgende code over de bestaande code in **heroes.component.ts** heen kopiëren. U ziet nu waarschijnlijk fouten in de gebieden Hero en HeroService omdat de bijbehorende componenten nog niet zijn geïmporteerd. U lost deze fouten op in de volgende sectie. 
+7. Met de HTML op de juiste plaats voegen we deze toe aan het bestand **heroes.component.ts** , waarna we interactie kunnen aangaan met de sjabloon. Met de volgende code wordt de sjabloon aan het componentbestand toegevoegd. Er is een constructor toegevoegd waarmee enkele hero's worden opgehaald en de hero-servicecomponent wordt geïnitialiseerd om alle gegevens op te halen. De code voegt ook alle vereiste methoden toe voor het afhandelen van gebeurtenissen in de gebruikersinterface. U kunt de volgende code over de bestaande code in **heroes.component.ts** heen kopiëren. U ziet nu waarschijnlijk fouten in de gebieden Hero en HeroService omdat de bijbehorende componenten nog niet zijn geïmporteerd. U lost deze fouten op in de volgende sectie. 
 
     ```ts
     import { Component, OnInit } from '@angular/core';
@@ -192,7 +193,7 @@ Voltooi de stappen in [deel 2](tutorial-develop-mongodb-nodejs-part2.md) van de 
 
 1. Open in het deelvenster Explorer het bestand **src/styles.scss**.
 
-2. Kopieer de volgende code in het bestand **styles.scss**, waarmee u de bestaande inhoud van het bestand vervangt.
+2. Kopieer de volgende code in het bestand **styles.scss** , waarmee u de bestaande inhoud van het bestand vervangt.
 
     ```css
     /* You can add global styles to this file, and also import other style files */
@@ -374,7 +375,7 @@ Hoe kunnen we de component nu op het scherm weergeven? We gaan de standaardcompo
 
     ```
 
-2. **heroes.components.ts** bevat andere componenten waarnaar wordt verwezen, bijvoorbeeld de component Hero, dus die moeten we ook maken. Gebruik in de Angular CLI-opdrachtprompt de volgende opdracht om een hero-model en een bestand te maken met de naam **hero.ts**, waarin g=genereren, cl=klasse en hero=naam van de klasse.
+2. **heroes.components.ts** bevat andere componenten waarnaar wordt verwezen, bijvoorbeeld de component Hero, dus die moeten we ook maken. Gebruik in de Angular CLI-opdrachtprompt de volgende opdracht om een hero-model en een bestand te maken met de naam **hero.ts** , waarin g=genereren, cl=klasse en hero=naam van de klasse.
 
     ```bash
     ng g cl hero
@@ -394,7 +395,7 @@ Hoe kunnen we de component nu op het scherm weergeven? We gaan de standaardcompo
 
 5. Klik op de term `Hero` en links van het codeblok wordt een gloeilamppictogram weergegeven. 
 
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/light-bulb.png" alt-text="Hero-component installeren":::
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/light-bulb.png" alt-text="Gloeilamp in Visual Studio Code":::
 
 6. Klik op de gloeilamp en klik op **Import Hero from "/app/hero".** of **Import Hero from "./hero".** (Het bericht dat u ziet, is afhankelijk van uw instellingen)
 
@@ -408,7 +409,7 @@ Hoe kunnen we de component nu op het scherm weergeven? We gaan de standaardcompo
 
 ## <a name="create-the-service"></a>De service maken
 
-1. Voer na de opdrachtprompt in Angular CLI de volgende opdracht in om een hero-service te maken in **app.module.ts**, waarin g=genereren, s=service, hero=naam van de service, -m=invoeren in app.module.
+1. Voer na de opdrachtprompt in Angular CLI de volgende opdracht in om een hero-service te maken in **app.module.ts** , waarin g=genereren, s=service, hero=naam van de service, -m=invoeren in app.module.
 
     ```bash
     ng g s hero -m app.module
@@ -490,7 +491,7 @@ Hoe kunnen we de component nu op het scherm weergeven? We gaan de standaardcompo
 
 3. Open vervolgens een internetbrowser en ga naar **localhost:3000** om te zien hoe de app lokaal wordt uitgevoerd.
 
-     :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/azure-cosmos-db-mongodb-mean-app.png" alt-text="Hero-component installeren":::
+     :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/azure-cosmos-db-mongodb-mean-app.png" alt-text="Hero-app wordt lokaal uitgevoerd":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

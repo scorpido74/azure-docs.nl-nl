@@ -8,14 +8,15 @@ ms.subservice: cosmosdb-mongo
 ms.topic: tutorial
 ms.date: 12/03/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 5283916194d407cebd30ef072907c56ded1c6cb0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f93ec39e7a2e3b5829c0d6205404c6c5c4af6189
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85848945"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93074315"
 ---
 # <a name="query-data-by-using-azure-cosmos-dbs-api-for-mongodb"></a>Query's uitvoeren met behulp van de API van Azure Cosmos DB voor MongoDB
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 De [Azure Cosmos DB-API voor MongoDB](mongodb-introduction.md) ondersteunt [MongoDB-query’s](https://docs.mongodb.com/manual/tutorial/query-documents/). 
 

@@ -10,14 +10,15 @@ ms.date: 09/05/2018
 ms.author: jopapa
 ms.reviewer: sngun
 ms.custom: devx-track-js
-ms.openlocfilehash: 06c309de5054887a64e61d61345190c776835709
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: cdb8612bb04d52df3603aa4520cad4cbacb661da
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92476583"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93074077"
 ---
 # <a name="create-a-mongodb-app-with-react-and-azure-cosmos-db"></a>Een MongoDB-app maken met React en Azure Cosmos DB  
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 In deze meerdelige zelfstudie op video wordt gedemonstreerd hoe u een app voor het volgen van hero's maakt met een React-frontend. De app gebruikt Node en Express voor de server, maakt verbinding met de Cosmos-database die is geconfigureerd met de [API voor MongoDB van Azure Cosmos DB](mongodb-introduction.md), en verbindt vervolgens de React-frontend met het servergedeelte van de app. In deze zelfstudie wordt ook gedemonstreerd hoe u met aanwijzen en klikken schaling van Cosmos DB uitvoert in de Azure-portal en hoe u de app implementeert op internet, zodat gebruikers hun favoriete hero's kunnen volgen. 
 
@@ -91,7 +92,7 @@ In deze video ziet u hoe u de app voltooit en de gebruikersinterface ten slotte 
 Als u deze app verder niet gaat gebruiken, kunt u met de volgende stappen alle resources verwijderen die met deze zelfstudies in Azure Portal zijn gemaakt. 
 
 1. Klik in het menu aan de linkerkant in Azure Portal op **Resourcegroepen** en klik vervolgens op de resource die u hebt gemaakt. 
-2. Klik op de pagina van uw resourcegroep op **Verwijderen** , typ de naam van de resource die u wilt verwijderen in het tekstvak en klik vervolgens op **Verwijderen** .
+2. Klik op de pagina van uw resourcegroep op **Verwijderen** , typ de naam van de resource die u wilt verwijderen in het tekstvak en klik vervolgens op **Verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

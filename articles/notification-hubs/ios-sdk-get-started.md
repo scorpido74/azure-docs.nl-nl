@@ -3,17 +3,17 @@ title: Pushmeldingen verzenden naar iOS met Azure Notification Hubs en de iOS-SD
 description: In deze zelfstudie leert u hoe u met Azure Notification Hubs en de Apple-service voor pushmeldingen verzendt naar iOS-apparaten.
 author: sethmanheim
 ms.author: sethm
-ms.date: 08/10/2020
+ms.date: 10/30/2020
 ms.topic: tutorial
 ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 06/01/2020
-ms.openlocfilehash: 3ec96ff0fdebc0ac862af00c699ec489567a7144
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: c920c9b3b28df7f5bf3bf169ef88ab967f23649e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426766"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93085374"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>Zelfstudie: Pushmeldingen verzenden naar iOS-apps met Azure Notification Hubs
 
@@ -309,4 +309,4 @@ U hebt nu uw Notification Hub geconfigureerd met APNS. U beschikt ook over de be
 
 In deze zelfstudie hebt u een Notification Hub gemaakt en geconfigureerd in Azure en deze zo geconfigureerd dat meldingen naar uw toepassing kunnen worden verzonden via Apple Push Notification Service (APNS). Vervolgens maken we een voorbeeld van een iOS-toepassing en integreren we de Azure Notification Hubs-SDK zodat deze pushmeldingen kan ontvangen die via de Azure-portal worden verzonden. Ga naar de volgende zelfstudie op basis van de taal van uw keuze:
 
-- [Zelfstudie: Integreren met een iOS-app met behulp van Swift]()
+- [Zelfstudie: Pushmeldingen verzenden naar iOS-apps met Azure Notification Hubs](ios-sdk-300.md)

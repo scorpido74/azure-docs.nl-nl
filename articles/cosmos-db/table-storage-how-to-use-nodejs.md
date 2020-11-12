@@ -9,14 +9,15 @@ ms.date: 07/23/2020
 author: sakash279
 ms.author: akshanka
 ms.custom: devx-track-js
-ms.openlocfilehash: 43ac175e2c1caa39bfe88a7c1a5f42318db343fb
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 2d40b70d49b1934c9dd2d911369245b1b2e4f2ff
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92477280"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93079696"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Azure Table Storage of de Azure Cosmos DB Table-API van Node.js gebruiken
+[!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
@@ -299,7 +300,7 @@ var query = new azure.TableQuery()
   .where('PartitionKey eq ?', 'hometasks');
 ```
 
-Omdat **select** niet wordt gebruikt, worden alle velden geretourneerd. Als u de query wilt uitvoeren op een tabel, gebruikt u **queryEntities** . In het volgende voorbeeld wordt deze query gebruikt om entiteiten te retourneren uit 'mytable'.
+Omdat **select** niet wordt gebruikt, worden alle velden geretourneerd. Als u de query wilt uitvoeren op een tabel, gebruikt u **queryEntities**. In het volgende voorbeeld wordt deze query gebruikt om entiteiten te retourneren uit 'mytable'.
 
 ```javascript
 tableSvc.queryEntities('mytable',query, null, function(error, result, response) {
@@ -314,7 +315,7 @@ Als dit lukt, bevat `result.entries` een matrix van entiteiten die overeenkomen 
 ### <a name="query-a-subset-of-entity-properties"></a>Een query uitvoeren op een subset van entiteitseigenschappen
 
 Met een query naar een tabel kunnen slechts enkele velden van een entiteit worden opgehaald.
-Dit verbruikt minder bandbreedte en kan de queryprestaties verbeteren, vooral bij grote entiteiten. Gebruik de **select** -component en geef de namen door van de velden die moeten worden geretourneerd. De volgende query retourneert bijvoorbeeld alleen de velden **description** en **dueDate** .
+Dit verbruikt minder bandbreedte en kan de queryprestaties verbeteren, vooral bij grote entiteiten. Gebruik de **select** -component en geef de namen door van de velden die moeten worden geretourneerd. De volgende query retourneert bijvoorbeeld alleen de velden **description** en **dueDate**.
 
 ```javascript
 var query = new azure.TableQuery()
@@ -357,7 +358,7 @@ tableSvc.deleteTable('mytable', function(error, response){
 });
 ```
 
-Als u niet zeker weet of de tabel bestaat, gebruikt u **deleteTableIfExists** .
+Als u niet zeker weet of de tabel bestaat, gebruikt u **deleteTableIfExists**.
 
 ## <a name="use-continuation-tokens"></a>Vervolgtokens gebruiken
 
@@ -455,7 +456,7 @@ var sharedAccessPolicy = {
 };
 ```
 
-In het volgende voorbeeld wordt de huidige ACL voor de **hometasks** -tabel opgehaald en vervolgens het nieuwe beleid toegevoegd met behulp van **setTableAcl** . Deze aanpak biedt u de volgende mogelijkheid:
+In het volgende voorbeeld wordt de huidige ACL voor de **hometasks** -tabel opgehaald en vervolgens het nieuwe beleid toegevoegd met behulp van **setTableAcl**. Deze aanpak biedt u de volgende mogelijkheid:
 
 ```javascript
 var extend = require('extend');

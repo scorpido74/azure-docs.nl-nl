@@ -9,14 +9,15 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18, devx-track-java
-ms.openlocfilehash: 902980d7c145d5150214b7d4f4433e5da344e30b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eb057637ff546356cde6e0ef107fe784fed2e610
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570050"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099875"
 ---
 # <a name="tutorial-create-a-cassandra-api-account-in-azure-cosmos-db-by-using-a-java-application-to-store-keyvalue-data"></a>Zelfstudie: een Cassandra-API-account maken in Azure Cosmos DB met behulp van een Java-toepassing om sleutel-/waardegegevens op te slaan
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 Als ontwikkelaar hebt u mogelijk toepassingen die gebruikmaken van sleutel-/waardeparen. U kunt een Cassandra-API-account in Azure Cosmos DB gebruiken om de sleutel-/waardegegevens op te slaan. In deze zelfstudie wordt beschreven hoe u met een Java-toepassing een Cassandra-API-account maakt in Azure Cosmos DB en een database (ook wel een keyspace genoemd) en een tabel toevoegt. De Java-toepassing gebruikt het [Java-stuurprogramma](https://github.com/datastax/java-driver) om een gebruikersdatabase te maken die gegevens bevat, zoals gebruikers-id, gebruikersnaam en plaats van de gebruiker.  
 
@@ -49,7 +50,7 @@ Deze zelfstudie bestaat uit de volgende taken:
    |Instelling   |Voorgestelde waarde  |Beschrijving  |
    |---------|---------|---------|
    |Id   |   Voer een unieke naam in    | Voer een unieke naam in om dit Azure Cosmos-account te identificeren. <br/><br/>Omdat cassandra.cosmosdb.azure.com wordt toegevoegd aan de id die u opgeeft om het contactpunt te maken, moet u een unieke, maar herkenbare id gebruiken.         |
-   |API    |  Cassandra   |  De API bepaalt het type te maken account. <br/> Selecteer **Cassandra**, aangezien u in dit artikel u een wide-column-database maakt waarop een query kan worden uitgevoerd met de syntaxis van Cassandra Query Language (CQL).  |
+   |API    |  Cassandra   |  De API bepaalt het type te maken account. <br/> Selecteer **Cassandra** , aangezien u in dit artikel u een wide-column-database maakt waarop een query kan worden uitgevoerd met de syntaxis van Cassandra Query Language (CQL).  |
    |Abonnement    |  Uw abonnement        |  Selecteer het Azure-abonnement dat u wilt gebruiken voor dit Azure Cosmos-account.        |
    |Resourcegroep   | Voer een naam in    |  Selecteer **Nieuwe maken** en voer een naam voor de nieuwe resourcegroep voor uw account in. Gebruik dezelfde naam als uw id om het uzelf gemakkelijk te maken.    |
    |Locatie    |  Selecteer de regio het dichtst in de buurt van uw gebruikers    |  Selecteer de geografische locatie waar u het Azure Cosmos-account gaat hosten. Gebruik de locatie die zich het dichtst bij uw gebruikers bevindt, zodat ze de snelst mogelijke toegang tot de gegevens hebben.    |
@@ -66,7 +67,7 @@ Haal de gegevens van de verbindingsreeks op uit de Azure-portal en kopieer deze 
 
 2. Open het deelvenster **Verbindingsreeks**.  
 
-3. Kopieer de waarden voor **CONTACTPUNT**, **POORT**, **GEBRUIKERSNAAM** en **PRIMAIR WACHTWOORD** voor gebruik in de volgende stappen.
+3. Kopieer de waarden voor **CONTACTPUNT** , **POORT** , **GEBRUIKERSNAAM** en **PRIMAIR WACHTWOORD** voor gebruik in de volgende stappen.
 
 ## <a name="create-the-project-and-the-dependencies"></a>Project en afhankelijkheden maken 
 

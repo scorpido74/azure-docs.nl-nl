@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 2dff68f98e2922d5fc7a4fca1e6de8740bc2ae68
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 11/01/2020
 ms.locfileid: "92459676"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itrp"></a>Zelfstudie: Azure Active Directory-integratie met ITRP
@@ -60,7 +60,7 @@ Om de integratie van ITRP in Azure AD te configureren, moet u ITRP uit de galeri
 
     ![Selecteer Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ **ITRP** in het zoekvak. Selecteer **ITRP** in de zoekresultaten en selecteer vervolgens **Toevoegen** .
+4. Typ **ITRP** in het zoekvak. Selecteer **ITRP** in de zoekresultaten en selecteer vervolgens **Toevoegen**.
 
      ![Zoekresultaten](common/search-new-app.png)
 
@@ -123,11 +123,11 @@ Voer deze stappen uit om eenmalige aanmelding van Azure AD met ITRP te configure
 
     ![De configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
-    1. **Aanmeldings-URL** .
+    1. **Aanmeldings-URL**.
 
-    1. **Azure AD-id** .
+    1. **Azure AD-id**.
 
-    1. **Afmeldings-URL** .
+    1. **Afmeldings-URL**.
 
 ### <a name="configure-itrp-single-sign-on"></a>Eenmalige aanmelding voor ITRP configureren
 
@@ -147,7 +147,7 @@ Voer deze stappen uit om eenmalige aanmelding van Azure AD met ITRP te configure
 
     ![Schermopname van de sectie Eenmalige aanmelding, waarin u de informatie kunt toevoegen die in deze stap is beschreven.](./media/itrp-tutorial/ic775573.png "Sectie ‘Eenmalige aanmelding’")
 
-    1. Selecteer **Ingeschakeld** .
+    1. Selecteer **Ingeschakeld**.
 
     1. Plak in het vak **URL voor externe afmelding** de **Afmeldings-URL** die u hebt gekopieerd uit de Azure-portal.
 
@@ -155,7 +155,7 @@ Voer deze stappen uit om eenmalige aanmelding van Azure AD met ITRP te configure
 
     1. Plak in het vak **Certificaatvingerafdruk** de waarde van **Vingerafdruk** die u hebt gekopieerd uit de Azure-portal.
 
-    1. Selecteer **Opslaan** .
+    1. Selecteer **Opslaan**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
@@ -179,13 +179,13 @@ In deze sectie gaat u een testgebruiker met de naam Britta Simon maken in de Azu
 
     1. Selecteer **Wachtwoord weergeven** en noteer de waarde die in het vak **Wachtwoord** wordt getoond.
 
-    1. Selecteer **Maken** .
+    1. Selecteer **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
 In deze sectie stelt u Britta Simon in staat om eenmalige aanmelding van Azure te gebruiken door haar toegang te verlenen tot ITRP.
 
-1. Selecteer in de Azure-portal achtereenvolgens **Bedrijfstoepassingen** , **Alle toepassingen** en **ITRP** .
+1. Selecteer in de Azure-portal achtereenvolgens **Bedrijfstoepassingen** , **Alle toepassingen** en **ITRP**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -197,15 +197,15 @@ In deze sectie stelt u Britta Simon in staat om eenmalige aanmelding van Azure t
 
     ![Gebruikers en groepen selecteren](common/users-groups-blade.png)
 
-4. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen** .
+4. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
 
     ![Gebruiker toevoegen selecteren](common/add-assign-user.png)
 
 5. Selecteer **Britta Simon** in de gebruikerslijst van het dialoogvenster **Gebruikers en groepen** en klik vervolgens op de knop **Selecteren** onderaan het venster.
 
-6. Als u een rolwaarde verwacht in de SAML-assertie, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst. Klik onderaan het venster op de knop **Selecteren** .
+6. Als u een rolwaarde verwacht in de SAML-assertie, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst. Klik onderaan het venster op de knop **Selecteren**.
 
-7. Selecteer **Toewijzen** in het dialoogvenster **Toewijzing toevoegen** .
+7. Selecteer **Toewijzen** in het dialoogvenster **Toewijzing toevoegen**.
 
 ### <a name="create-an-itrp-test-user"></a>Een testgebruiker voor ITRP maken
 
@@ -233,7 +233,7 @@ Voer deze stappen uit om een gebruikersaccount te maken:
 
     1. Voer de naam en het e-mailadres in van een geldig Azure AD-account dat u wilt toevoegen.
 
-    1. Selecteer **Opslaan** .
+    1. Selecteer **Opslaan**.
 
 > [!NOTE]
 > U kunt ook alle andere door ITRP geleverde hulpprogramma's of API's voor het maken van gebruikersaccounts gebruiken om Azure AD-gebruikersaccounts in te richten.

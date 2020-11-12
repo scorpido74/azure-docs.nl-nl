@@ -8,16 +8,16 @@ ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc, devx-track-js
 ms.date: 06/16/2020
-ms.openlocfilehash: 7df244ee024b0d67ba678e296b882fbb08c3e16b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aac85fdab157d581285af91c4c818258a5f1790b
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317715"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124778"
 ---
 # <a name="javascript-user-defined-functions-in-azure-stream-analytics"></a>Door gebruiker gedefinieerde JavaScript-functies in Stream Analytics
  
-Azure Stream Analytics ondersteunt door de gebruiker gedefinieerde functies die zijn geschreven in JavaScript. Met de uitgebreide set van **String**-, **RegExp**-, **Math**-, **Array**- en **Date**-methoden van JavaScript kunt u gemakkelijker complexe gegevenstransformaties maken met Stream Analytics-taken.
+Azure Stream Analytics ondersteunt door de gebruiker gedefinieerde functies die zijn geschreven in JavaScript. Met de uitgebreide set van **String** -, **RegExp** -, **Math** -, **Array** - en **Date** -methoden van JavaScript kunt u gemakkelijker complexe gegevenstransformaties maken met Stream Analytics-taken.
 
 ## <a name="overview"></a>Overzicht
 
@@ -26,7 +26,7 @@ Door de gebruiker gedefinieerde JavaScript-functies ondersteunen staatloze, scal
 Hier volgen enkele scenario's waarin door de gebruiker gedefinieerde JavaScript-functies mogelijk interessant kunnen zijn:
 * Het parseren en manipuleren van tekenreeksen die functies met reguliere expressies bevatten, bijvoorbeeld **Regexp_Replace()** en **Regexp_Extract()**
 * Het (de)coderen van gegevens, bijvoorbeeld bij een conversie van binair naar hexadecimaal
-* Het maken van rekenkundige berekeningen met **Math**-functies van JavaScript
+* Het maken van rekenkundige berekeningen met **Math** -functies van JavaScript
 * Het maken van matrixbewerkingen zoals sorteren, samenvoegen, zoeken en vullen
 
 Hier volgen enkele dingen die u met een door de gebruiker gedefinieerde JavaScript-functie niet kunt doen in Stream Analytics:
@@ -55,7 +55,7 @@ Vervolgens moet u de volgende eigenschappen opgeven en **Opslaan** selecteren.
 
 ## <a name="test-and-troubleshoot-javascript-udfs"></a>JavaScript-UDF’s testen en fouten oplossen 
 
-U kunt uw JavaScript UDF-logica testen en fouten opsporen in elke browser. Fouten opsporen en testen van de logica van deze door de gebruiker gedefinieerde functies wordt momenteel niet ondersteund in de Stream Analytics-portal. Zodra de functie werkt zoals verwacht, kunt u deze toevoegen aan de Stream Analytics-taak zoals hierboven wordt vermeld en vervolgens rechtstreeks vanuit uw query aanroepen. U kunt uw query-logica testen met JavaScript UDF met [Stream Analytics-hulpprogramma's voor Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-install).
+U kunt uw JavaScript UDF-logica testen en fouten opsporen in elke browser. Fouten opsporen en testen van de logica van deze door de gebruiker gedefinieerde functies wordt momenteel niet ondersteund in de Stream Analytics-portal. Zodra de functie werkt zoals verwacht, kunt u deze toevoegen aan de Stream Analytics-taak zoals hierboven wordt vermeld en vervolgens rechtstreeks vanuit uw query aanroepen. U kunt uw query-logica testen met JavaScript UDF met [Stream Analytics-hulpprogramma's voor Visual Studio](./stream-analytics-tools-for-visual-studio-install.md).
 
 JavaScript-runtime-fouten worden beschouwd als onherstelbaar en worden weergegeven via het activiteitenlogboek. U haalt het logboek op door in Azure Portal naar uw project te gaan en **Activiteitenlogboek** te selecteren.
 
@@ -188,5 +188,5 @@ FROM
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [UDF van Machine Learning](https://docs.microsoft.com/azure/stream-analytics/machine-learning-udf)
-* [C#-UDF](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-edge-csharp-udf-methods)
+* [UDF van Machine Learning](./machine-learning-udf.md)
+* [C#-UDF](./stream-analytics-edge-csharp-udf-methods.md)

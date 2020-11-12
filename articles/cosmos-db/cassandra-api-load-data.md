@@ -8,14 +8,15 @@ ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 2a1e91b4c801b573e566a95950d150a2b3c4788e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad3dfc8c86d22e58377ebfbdb94b2beb004ded56
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91564915"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93092463"
 ---
 # <a name="tutorial-load-sample-data-into-a-cassandra-api-table-in-azure-cosmos-db"></a>Zelfstudie: Voorbeeldgegevens laden in een Cassandra-API-tabel in Azure Cosmos DB
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 Als ontwikkelaar hebt u mogelijk toepassingen die gebruikmaken van sleutel-/waardeparen. U kunt een Cassandra-API-account gebruiken in Azure Cosmos DB om de sleutel-/waardegegevens op te slaan en te beheren. Deze zelfstudie laat zien hoe voorbeeldgegevens van een gebruiker worden geladen in een tabel van een Cassandra-API-account in Azure Cosmos DB met behulp van een Java-toepassing. De Java-toepassing maakt gebruik van het [Java-stuurprogramma](https://github.com/datastax/java-driver) en laadt gebruikersgegevens zoals gebruikers-id, gebruikersnaam, en woonplaats van de gebruiker. 
 

@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 18ab9a4108d6d9effaa25fe69ce42a18ca4ba0dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e87432ad4437f41e70d988e7e2b3cd82aa3bd82
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90903840"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123384"
 ---
 # <a name="tutorial-deploy-an-azure-stream-analytics-job-with-cicd-using-azure-pipelines"></a>Zelfstudie: Een Azure Stream Analytics-taak met CI/CD implementeren met behulp van Azure Pipelines
 This tutorial descriIn deze zelfstudie wordt beschreven hoe u continue integratie en implementatie instelt voor een Azure Stream Analytics-taak met behulp van Azure Pipelines. 
@@ -35,7 +35,7 @@ Zorg ervoor dat u de volgende stappen hebt uitgevoerd voordat u begint:
 
 * Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan.
 * Installeer [Visual Studio](stream-analytics-tools-for-visual-studio-install.md) en de workload **Azure-ontwikkeling** of **Gegevensopslag en verwerking**.
-* Maak een [Stream Analytics-project in Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-vs).
+* Maak een [Stream Analytics-project in Visual Studio](./stream-analytics-quick-create-vs.md).
 * Maak een [Azure DevOps](https://visualstudio.microsoft.com/team-services/)-organisatie.
 
 ## <a name="configure-nuget-package-dependency"></a>Afhankelijkheid van NuGet-pakket configureren
@@ -56,7 +56,7 @@ Deel de bronbestanden van uw toepassing met een project in Azure DevOps zodat u 
 
 1. Maak een nieuwe Git-opslagplaats voor uw project door op de statusbalk in de linkeronderhoek van Visual Studio **Add to Source Control** en vervolgens **Git** te selecteren. 
 
-2. Ga naar de **Synchronization**-weergave in **Team Explorer** en selecteer onder **Push to Azure DevOps Services** de knop **Publish Git Repo**.
+2. Ga naar de **Synchronization** -weergave in **Team Explorer** en selecteer onder **Push to Azure DevOps Services** de knop **Publish Git Repo**.
 
    ![De knop Publish Git Repo onder Push to Azure DevOps Services](./media/stream-analytics-tools-visual-studio-cicd-vsts/publish-git-repo-devops.png)
 
@@ -67,9 +67,9 @@ Deel de bronbestanden van uw toepassing met een project in Azure DevOps zodat u 
     Als u de opslagplaats pusht, wordt er een nieuw project voor uw organisatie gemaakt met dezelfde naam als de lokale opslagplaats. Als u de opslagplaats in een bestaand project wilt maken, klikt u naast de **naam van de opslagplaats** op **Advanced** en selecteert u een teamproject. U kunt uw code in de browser weergeven door **See it on the web** te selecteren.
  
 ## <a name="configure-continuous-delivery-with-azure-devops"></a>Continue levering configureren met Azure DevOps
-Een build-pijplijn van Azure Pipelines beschrijft een werkstroom die bestaat uit build-stappen die achtereenvolgens worden uitgevoerd. Meer informatie over [build-pijplijnen van Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav&preserve-view=true).
+Een build-pijplijn van Azure Pipelines beschrijft een werkstroom die bestaat uit build-stappen die achtereenvolgens worden uitgevoerd. Meer informatie over [build-pijplijnen van Azure Pipelines](/azure/devops/pipelines/get-started-designer?preserve-view=true&tabs=new-nav&view=vsts).
 
-Een release-pijplijn van Azure Pipelines beschrijft een werkstroom waarmee een toepassingspakket in een cluster wordt geïmplementeerd. Als de build- en release-pijplijnen samen worden gebruikt, wordt hiermee de hele werkstroom uitgevoerd, te beginnen met bronbestanden en te eindigen met het uitvoeren van een toepassing in uw cluster. Meer informatie over [release-pijplijnen](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts&preserve-view=true) van Azure Pipelines.
+Een release-pijplijn van Azure Pipelines beschrijft een werkstroom waarmee een toepassingspakket in een cluster wordt geïmplementeerd. Als de build- en release-pijplijnen samen worden gebruikt, wordt hiermee de hele werkstroom uitgevoerd, te beginnen met bronbestanden en te eindigen met het uitvoeren van een toepassing in uw cluster. Meer informatie over [release-pijplijnen](/azure/devops/pipelines/release/define-multistage-release-process?preserve-view=true&view=vsts) van Azure Pipelines.
 
 ### <a name="create-a-build-pipeline"></a>Een build-pijplijn maken
 Open een webbrowser en navigeer naar het project dat u zojuist hebt gemaakt in [Azure DevOps](https://app.vsaex.visualstudio.com/). 
@@ -92,7 +92,7 @@ Open een webbrowser en navigeer naar het project dat u zojuist hebt gemaakt in [
     
     ![Agentwachtrij selecteren in het taakmenu](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-agent-queue-task.png) 
 
-6. Klik in **Phase 1** op **+** en voeg een **NuGet**-taak toe.
+6. Klik in **Phase 1** op **+** en voeg een **NuGet** -taak toe.
     
     ![Een NuGet-taak aan de agentwachtrij toevoegen](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-add-nuget-task.png)
 
@@ -100,7 +100,7 @@ Open een webbrowser en navigeer naar het project dat u zojuist hebt gemaakt in [
 
    ![NuGet-hersteltaak configureren](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-nuget-restore-config.png)
 
-8. Klik in **Phase 1** op **+** en voeg een **MSBuild**-taak toe.
+8. Klik in **Phase 1** op **+** en voeg een **MSBuild** -taak toe.
 
    ![Een MSBuild-taak aan de agentwachtrij toevoegen](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-add-msbuild-task.png)
 
@@ -112,7 +112,7 @@ Open een webbrowser en navigeer naar het project dat u zojuist hebt gemaakt in [
 
    ![MSBuild-taak in DevOps configureren](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-config-msbuild-task.png)
 
-10. Klik in **Phase 1** op **+** en voeg een **Azure Resource Group Deployment**-taak toe. 
+10. Klik in **Phase 1** op **+** en voeg een **Azure Resource Group Deployment** -taak toe. 
     
     ![Een Azure Resource Group Deployment-taak toevoegen](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-add-resource-group-deployment.png)
 
@@ -134,7 +134,7 @@ Open een webbrowser en navigeer naar het project dat u zojuist hebt gemaakt in [
     ![Build opslaan en in de wachtrij plaatsen in DevOps](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-save-and-queue-build.png)
 
 ### <a name="failed-build-process"></a>Mislukt buildproces
-Mogelijk ontvangt u fouten wegens implementatieparameters van null als u geen sjabloonparameters hebt overschreven in de **Azure Resource Group Deployment**-taak van uw build-pijplijn. Ga terug naar de build-pijplijn en overschrijf de parameters van null om de fout op te lossen.
+Mogelijk ontvangt u fouten wegens implementatieparameters van null als u geen sjabloonparameters hebt overschreven in de **Azure Resource Group Deployment** -taak van uw build-pijplijn. Ga terug naar de build-pijplijn en overschrijf de parameters van null om de fout op te lossen.
 
    ![Mislukt DevOps Stream Analytics-buildproces](./media/stream-analytics-tools-visual-studio-cicd-vsts/devops-build-process-failed.png)
 
@@ -158,7 +158,7 @@ Als u de wijzigingen naar Azure DevOps Services pusht, wordt er automatisch een 
 Wanneer u een resourcegroep niet meer nodig hebt, verwijdert u de resourcegroep, de streamingtaak en alle gerelateerde resources. Door de taak te verwijderen, voorkomt u dat de streaming-eenheden die door de taak worden verbruikt, in rekening worden gebracht. Als u denkt dat u de taak in de toekomst nog gaat gebruiken, kunt u deze stoppen en later opnieuw starten wanneer dat nodig is. Als u deze taak niet meer gaat gebruiken, verwijdert u alle resources die in deze zelfstudie zijn gemaakt. Daarvoor voert u de volgende stappen uit:
 
 1. Klik in het menu aan de linkerkant in Azure Portal op **Resourcegroepen** en klik vervolgens op de resource die u hebt gemaakt.  
-2. Klik op de pagina van uw resourcegroep op **Verwijderen**, typ de naam van de resource die u wilt verwijderen in het tekstvak en klik vervolgens op **Verwijderen**.
+2. Klik op de pagina van uw resourcegroep op **Verwijderen** , typ de naam van de resource die u wilt verwijderen in het tekstvak en klik vervolgens op **Verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

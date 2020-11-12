@@ -9,14 +9,15 @@ ms.topic: tutorial
 ms.date: 05/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 74a4178cc6b9645f3cb22bf3d1c7c0ee942c3f5f
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 774c829b3f9c36cef33f8f334825440b92582f4e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92485287"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097303"
 ---
 # <a name="tutorial-build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Zelfstudie: Een Java-webtoepassing maken met Azure Cosmos DB en de SQL-API
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)
@@ -67,7 +68,7 @@ De JSP-toepassing maken:
 
 1. Als eerste moet u een Java-project maken. Start Eclipse en klik achtereenvolgens op **File** (Bestand), **New** (Nieuw) en **Dynamic Web Project** (Dynamisch webproject). Als er geen **dynamisch webproject** beschikbaar is, gaat u als volg te werk: klik achtereenvolgens op **File** (Bestand), **New** (Nieuw), **Project** , vouw **Web** uit en klik op **Dynamic Web Project** (Dynamische webproject) en **Next** (Volgende).
    
-    :::image type="content" source="./media/sql-api-java-application/image10.png" alt-text="De Java-toepassing My ToDo List":::
+    :::image type="content" source="./media/sql-api-java-application/image10.png" alt-text="JSP Java-toepassing ontwikkelen":::
 
 1. Voer in het vak **Project name** (Projectnaam) een projectnaam in en selecteer in de vervolgkeuzelijst **Target Runtime** (Doelruntime) eventueel een waarde (bijvoorbeeld Apache Tomcat v7.0) en klik vervolgens op **Finish** (Voltooien). Door een doelruntime te selecteren, kunt u het project lokaal via Eclipse uitvoeren.
 
@@ -75,7 +76,7 @@ De JSP-toepassing maken:
 
 1. Geef in het dialoogvenster **New JSP File** (Nieuw JSP-bestand) de naam **index.jsp** voor het bestand op. Bewaar de bovenliggende map als **WebContent** , zoals weergegeven in de volgende afbeelding, en klik vervolgens op **Next** (Volgende).
    
-    :::image type="content" source="./media/sql-api-java-application/image11.png" alt-text="De Java-toepassing My ToDo List":::
+    :::image type="content" source="./media/sql-api-java-application/image11.png" alt-text="Een nieuw JSP-bestand maken - Zelfstudie Java-webtoepassing":::
 
 1. Selecteer voor deze zelfstudie in het dialoogvenster **Select JSP Template** (JSP-sjabloon selecteren) de optie **New JSP File (html)** (Nieuw JSP-bestand (html)) en klik vervolgens op **Finish** (Voltooien).
 
@@ -91,7 +92,7 @@ De JSP-toepassing maken:
 
 1. Als u een doelruntime in stap 2 hebt ingesteld, kunt u achtereenvolgens op **Project** en **Run** klikken om uw JSP-toepassing lokaal uit te voeren:
 
-   :::image type="content" source="./media/sql-api-java-application/image12.png" alt-text="De Java-toepassing My ToDo List":::
+   :::image type="content" source="./media/sql-api-java-application/image12.png" alt-text="Hello World: zelfstudie Java-toepassing":::
 
 ## <a name="install-the-sql-java-sdk"></a><a id="InstallSDK"></a>De SQL Java SDK installeren
 
@@ -99,7 +100,7 @@ De eenvoudigste manier om de SQL Java SDK en de bijbehorende afhankelijkheden op
 
 1. Klik met de rechtermuisknop in de Projectverkenner, klik op **Configure** (Configureren) en klik vervolgens op **Convert to Maven Project** (Configureren naar een Maven-project).
 
-1. Accepteer in het venster **Nieuwe POM maken** de standaardinstellingen en klik op **Voltooien** .
+1. Accepteer in het venster **Nieuwe POM maken** de standaardinstellingen en klik op **Voltooien**.
 
 1. Ga naar de **Projectverkenner** en open het bestand pom.xml.
 
@@ -129,7 +130,7 @@ U kunt nu de modellen, weergaven en controllers toevoegen aan uw webtoepassing.
 
 ### <a name="add-a-model"></a>Een model toevoegen
 
-Eerst gaan we een model definiëren in een nieuw bestand *TodoItem.java* . Met de `TodoItem`-klasse wordt het schema van een item gedefinieerd, samen met de ophaal- en installatiemethoden:
+Eerst gaan we een model definiëren in een nieuw bestand *TodoItem.java*. Met de `TodoItem`-klasse wordt het schema van een item gedefinieerd, samen met de ophaal- en installatiemethoden:
 
 :::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/documentdb/sample/model/TodoItem.java":::
 
@@ -189,13 +190,13 @@ Nu het merendeel van het werk is voltooid, hoeven we alleen nog maar een gebruik
 
 Met Azure Web Sites kunt u heel eenvoudig, alsof u de toepassing als een WAR-bestand exporteert, Java-toepassingen implementeren en uploaden via broncodebeheer (bijvoorbeeld Git) of FTP.
 
-1. Als u de toepassing wilt exporteren als een WAR-bestand, klikt u met de rechtermuisknop op uw project in **Projectverkenner** en klikt u achtereenvolgens op **Exporteren** en **WAR-bestand** .
+1. Als u de toepassing wilt exporteren als een WAR-bestand, klikt u met de rechtermuisknop op uw project in **Projectverkenner** en klikt u achtereenvolgens op **Exporteren** en **WAR-bestand**.
 
 1. Ga in het venster **WAR exporteren** als volgt te werk:
    
    * Typ in het vak Webproject azure-documentdb-java-sample.
    * Kies in het vak Doel de bestemming waarnaar u het WAR-bestand wilt opslaan.
-   * Klik op **Voltooien** .
+   * Klik op **Voltooien**.
 
 1. Nu u over een WAR-bestand beschikt, kunt u dit uploaden naar de map **webapps** voor Azure Web Sites. Zie [Een Java-toepassing aan Azure App Service Web Apps toevoegen](../app-service/quickstart-java.md) voor instructies over het uploaden van het bestand. Wanneer het WAR-bestand is geüpload naar de map webapps, detecteert de runtime-omgeving dat u het bestand hebt toegevoegd en wordt het bestand automatisch geladen.
 
@@ -215,7 +216,7 @@ Alle voorbeelden in deze zelfstudie zijn opgenomen in het [todo](https://github.
 
 1. Klik in het venster **Select Repository Source** (Opslagplaatsbron selecteren) op **Clone URI** (URI klonen).
 
-1. Voer op het scherm **Git-opslagplaats voor broncode** in het vak **URI** het webadres https://github.com/Azure-Samples/documentdb-java-todo-app.git in en klik vervolgens op **Volgende** .
+1. Voer op het scherm **Git-opslagplaats voor broncode** in het vak **URI** het webadres https://github.com/Azure-Samples/documentdb-java-todo-app.git in en klik vervolgens op **Volgende**.
 
 1. Zorg er in het scherm **Branch Selection** (Vertakking selecteren) voor dat **master** is geselecteerd en klik op **Next** (Volgende).
 
@@ -227,23 +228,23 @@ Alle voorbeelden in deze zelfstudie zijn opgenomen in het [todo](https://github.
 
 1. Navigeer in **Projectverkenner** naar azure-documentdb-java-sample\src\com.microsoft.azure.documentdb.sample.dao\DocumentClientFactory.java en vervang de waarden voor HOST en MASTER_KEY door de URI en PRIMAIRE SLEUTEL voor uw Azure Cosmos DB-account en sla het bestand vervolgens op. Zie [Stap 1: Een Azure Cosmos-databaseaccount maken](#CreateDB).
 
-1. Klik in **Projectverkenner** met de rechtermuisknop op **azure-documentdb-java-sample** , klik op **Opbouwpad** en vervolgens op **Opbouwpad configureren** .
+1. Klik in **Projectverkenner** met de rechtermuisknop op **azure-documentdb-java-sample** , klik op **Opbouwpad** en vervolgens op **Opbouwpad configureren**.
 
-1. Selecteer in het rechterdeelvenster van het scherm **Java Build Path** (Java-opbouwpad) het tabblad **Libraries** (Bibliotheken) en klik vervolgens op **Add External JARs** (Externe JAR's toevoegen). Navigeer naar de locatie van het bestand lombok.jar en klik op **Open** (Openen) en **OK** .
+1. Selecteer in het rechterdeelvenster van het scherm **Java Build Path** (Java-opbouwpad) het tabblad **Libraries** (Bibliotheken) en klik vervolgens op **Add External JARs** (Externe JAR's toevoegen). Navigeer naar de locatie van het bestand lombok.jar en klik op **Open** (Openen) en **OK**.
 
 1. Gebruik stap 12 om het venster **Properties** (Eigenschappen) opnieuw te openen en klik in het linkerdeelvenster vervolgens op **Targeted Runtimes** (Beoogde runtimes).
 
-1. Klik in het scherm **Targeted Runtimes** (Beoogde runtimes) op **New** (Nieuw), selecteer **Apache Tomcat v7.0** en klik vervolgens op **OK** .
+1. Klik in het scherm **Targeted Runtimes** (Beoogde runtimes) op **New** (Nieuw), selecteer **Apache Tomcat v7.0** en klik vervolgens op **OK**.
 
 1. Gebruik stap 12 om het venster **Properties** (Eigenschappen) opnieuw te openen en klik in het linkerdeelvenster vervolgens op **Project Facets** (Projectfacetten).
 
-1. Selecteer in het scherm **Project Facets** (Projectfacetten) achtereenvolgens **Dynamic Web Module** (Dynamische webmodule) en **Java** en klik vervolgens op **OK** .
+1. Selecteer in het scherm **Project Facets** (Projectfacetten) achtereenvolgens **Dynamic Web Module** (Dynamische webmodule) en **Java** en klik vervolgens op **OK**.
 
 1. Klik op het tabblad **Servers** onder aan het scherm met de rechtermuisknop op **Tomcat v7.0 Server at localhost** (Tomcat v7.0 Server op localhost) en klik vervolgens op **Add and Remove** (Toevoegen en verwijderen).
 
 1. Verplaats in het venster **Add and Remove** (Toevoegen en verwijderen) **azure-documentdb-java-sample** naar het vak **Configured** (Geconfigureerd) en klik vervolgens op **Finish** (Voltooien).
 
-1. Klik op het tabblad **Servers** met de rechtermuisknop op **Tomcat v7.0-server op localhost** en klik vervolgens op **Opnieuw starten** .
+1. Klik op het tabblad **Servers** met de rechtermuisknop op **Tomcat v7.0-server op localhost** en klik vervolgens op **Opnieuw starten**.
 
 1. Ga in een browser naar `http://localhost:8080/azure-documentdb-java-sample/` en begin met het toevoegen van taken aan uw takenlijst. Als u de standaardpoortwaarden hebt gewijzigd, wijzigt u 8080 in de waarde die u hebt geselecteerd.
 
