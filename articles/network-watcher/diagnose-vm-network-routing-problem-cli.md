@@ -17,32 +17,34 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: damendo
 ms.custom: ''
-ms.openlocfilehash: 5fa083626135170a05844a5e4434b608a1fabe60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d5f6f9cfaff722245f6105b5e86390b8aeb769f
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91302244"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94539699"
 ---
 # <a name="diagnose-a-virtual-machine-network-routing-problem---azure-cli"></a>Een probleem met de netwerk routering van een virtuele machine diagnosticeren-Azure CLI
 
 In dit artikel implementeert u een virtuele machine (VM) en controleert u de communicatie met een IP-adres en een URL. U stelt de oorzaak van mislukte communicatie vast en leert hoe u dit probleem kunt oplossen.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Als u ervoor kiest om de Azure CLI lokaal te installeren en te gebruiken, moet u voor dit artikel de Azure CLI-versie 2.0.28 of hoger uitvoeren. Voer `az --version` uit om na te gaan welke versie er is geïnstalleerd. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli). Nadat u de Azure CLI-versie hebt gecontroleerd, voert u `az login` uit om een verbinding met Azure te maken. De Azure CLI-opdrachten in dit artikel zijn ingedeeld om te worden uitgevoerd in een bash-shell.
+- Voor dit artikel is versie 2,0 of hoger van de Azure CLI vereist. Als u Azure Cloud Shell gebruikt, is de nieuwste versie al geïnstalleerd. 
+
+- De Azure CLI-opdrachten in dit artikel zijn ingedeeld om te worden uitgevoerd in een bash-shell.
 
 ## <a name="create-a-vm"></a>Een virtuele machine maken
 
-Voordat u een VM kunt maken, maakt u eerst een resourcegroep die de VM bevat. Maak een resourcegroep maken met [az group create](/cli/azure/group#az-group-create). In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *eastus*:
+Voordat u een VM kunt maken, maakt u eerst een resourcegroep die de VM bevat. Maak een resourcegroep maken met [az group create](/cli/azure/group#az-group-create). In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *eastus* :
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-Maak een VM met [az vm create](/cli/azure/vm#az-vm-create). Als SSH-sleutels niet al bestaan op de standaardlocatie van de sleutel, worden ze met deze opdracht gemaakt. Als u een specifieke set sleutels wilt gebruiken, gebruikt u de optie `--ssh-key-value`. In het volgende voorbeeld wordt een VM gemaakt met de naam *myVm*:
+Maak een VM met [az vm create](/cli/azure/vm#az-vm-create). Als SSH-sleutels niet al bestaan op de standaardlocatie van de sleutel, worden ze met deze opdracht gemaakt. Als u een specifieke set sleutels wilt gebruiken, gebruikt u de optie `--ssh-key-value`. In het volgende voorbeeld wordt een VM gemaakt met de naam *myVm* :
 
 ```azurecli-interactive
 az vm create \
@@ -85,7 +87,7 @@ az network watcher show-next-hop \
   --out table
 ```
 
-Na een paar seconden is de uitvoer informeert dat de **NextHopType** **Internet**is en dat de **routeTableId** **systeem route**is. Dit leidt ertoe dat u weet dat er een geldige route naar de bestemming is.
+Na een paar seconden is de uitvoer informeert dat de **NextHopType** **Internet** is en dat de **routeTableId** **systeem route** is. Dit leidt ertoe dat u weet dat er een geldige route naar de bestemming is.
 
 Uitgaande communicatie van de VM naar 172.31.0.100 testen:
 
@@ -99,7 +101,7 @@ az network watcher show-next-hop \
   --out table
 ```
 
-De uitvoer heeft informeert dat **geen** **nextHopType**is en dat de **routeTableId** ook **systeem routes**zijn. Hieruit kunt u afleiden dat er wel een geldige systeemroute is naar de bestemming, maar dat er geen volgende hop is voor het routeren van het verkeer naar de bestemming.
+De uitvoer heeft informeert dat **geen** **nextHopType** is en dat de **routeTableId** ook **systeem routes** zijn. Hieruit kunt u afleiden dat er wel een geldige systeemroute is naar de bestemming, maar dat er geen volgende hop is voor het routeren van het verkeer naar de bestemming.
 
 ## <a name="view-details-of-a-route"></a>Details van een route weergeven
 
@@ -113,7 +115,7 @@ az network nic show-effective-route-table \
 
 De volgende tekst is opgenomen in de geretourneerde uitvoer:
 
-```
+```console
 {
   "additionalProperties": {
     "disableBgpRoutePropagation": false
@@ -133,7 +135,7 @@ Wanneer u de opdracht hebt gebruikt `az network watcher show-next-hop` voor het 
 
 Wanneer u de opdracht hebt gebruikt `az network watcher show-next-hop` voor het testen van uitgaande communicatie naar 172.31.0.100, heeft het resultaat gemeld dat er geen type voor de volgende hop is. In de geretourneerde uitvoer ziet u ook de volgende tekst:
 
-```
+```console
 {
   "additionalProperties": {
     "disableBgpRoutePropagation": false

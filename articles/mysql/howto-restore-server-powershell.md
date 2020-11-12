@@ -1,19 +1,19 @@
 ---
 title: Backup en Restore-Azure PowerShell-Azure Database for MySQL
 description: Meer informatie over het maken van een back-up en het herstellen van een server in Azure Database for MySQL met behulp van Azure PowerShell.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.devlang: azurepowershel
 ms.topic: how-to
 ms.date: 4/28/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 5571d5a937fc48030c38ebe78c86ef27d6727a67
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43ce39a1fc05c8ffedd1ae8404cc20c1a498a73f
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87837272"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94539004"
 ---
 # <a name="how-to-back-up-and-restore-an-azure-database-for-mysql-server-using-powershell"></a>Een back-up van Azure Database for MySQL-server maken en deze terugzetten met behulp van PowerShell
 
@@ -41,7 +41,7 @@ Bij het maken van de server maakt u de keuze tussen het configureren van uw serv
 > [!NOTE]
 > Nadat een server is gemaakt, is het soort redundantie die het heeft, geografisch redundant versus lokaal redundant en kan niet worden gewijzigd.
 
-Tijdens het maken van een server via de `New-AzMySqlServer` opdracht, bepaalt de para meter **GeoRedundantBackup** de optie voor de redundantie van back-ups. Als deze functie is **ingeschakeld**, worden er geo redundante back-ups gemaakt. Als deze functie is **uitgeschakeld**, worden er lokaal redundante back-ups gemaakt.
+Tijdens het maken van een server via de `New-AzMySqlServer` opdracht, bepaalt de para meter **GeoRedundantBackup** de optie voor de redundantie van back-ups. Als deze functie is **ingeschakeld** , worden er geo redundante back-ups gemaakt. Als deze functie is **uitgeschakeld** , worden er lokaal redundante back-ups gemaakt.
 
 De Bewaar periode voor back-ups is ingesteld met de para meter **BackupRetentionDay** .
 
@@ -75,10 +75,10 @@ Get-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 
 De para meters set **PointInTimeRestore** van de `Restore-AzMySqlServer` cmdlet vereist de volgende para meters:
 
-| Instelling | Voorgestelde waarde | Beschrijving  |
+| Instelling | Voorgestelde waarde | Beschrijving  |
 | --- | --- | --- |
-| ResourceGroupName |  myResourceGroup |  De resource groep waar de bron server zich bevindt.  |
-| Naam | mydemoserver-restored | De naam van de nieuwe server die door de opdracht restore is gemaakt. |
+| ResourceGroupName |  myResourceGroup |  De resource groep waar de bron server zich bevindt.  |
+| Name | mydemoserver-restored | De naam van de nieuwe server die door de opdracht restore is gemaakt. |
 | RestorePointInTime | 2020-03-13T13:59:00Z | Selecteer een punt in de tijd om te herstellen. Deze datum en tijd moet binnen de back-upretentieperiode van de bronserver vallen. Gebruik de ISO8601 datum-en tijd notatie. U kunt bijvoorbeeld uw eigen lokale tijd zone gebruiken, zoals **2020-03-13T05:59:00-08:00**. U kunt ook de UTC Zulu-indeling gebruiken, bijvoorbeeld **2018-03-13T13:59:00Z**. |
 | UsePointInTimeRestore | `<SwitchParameter>` | Gebruik de punt-in-time-modus om te herstellen. |
 
@@ -106,7 +106,7 @@ Get-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
   Restore-AzMySqlServer -Name mydemoserver-georestored -ResourceGroupName myresourcegroup -Location eastus -Sku GP_Gen5_8 -UseGeoRestore
 ```
 
-In dit voor beeld wordt een nieuwe-server met de naam **mydemoserver-restored** gemaakt in de regio VS-Oost die hoort bij **myresourcegroup**. Het is een Algemeen, Gen 5-server met 8 vCores. De-server wordt gemaakt op basis van de geo-redundante back-up van **mydemoserver**, ook in de resource groep **myresourcegroup**.
+In dit voor beeld wordt een nieuwe-server met de naam **mydemoserver-restored** gemaakt in de regio VS-Oost die hoort bij **myresourcegroup**. Het is een Algemeen, Gen 5-server met 8 vCores. De-server wordt gemaakt op basis van de geo-redundante back-up van **mydemoserver** , ook in de resource groep **myresourcegroup**.
 
 Als u de nieuwe server in een andere resource groep wilt maken op basis van de bestaande server, geeft u de naam van de nieuwe resource groep op met behulp van de para meter **ResourceGroupName** , zoals weer gegeven in het volgende voor beeld:
 
@@ -117,10 +117,10 @@ Get-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 
 Voor de para meters set **Restore** van de `Restore-AzMySqlServer` cmdlet zijn de volgende para meters vereist:
 
-| Instelling | Voorgestelde waarde | Beschrijving  |
+| Instelling | Voorgestelde waarde | Beschrijving  |
 | --- | --- | --- |
 |ResourceGroupName | myResourceGroup | De naam van de resource groep waartoe de nieuwe server behoort.|
-|Naam | mydemoserver-geoterugzet bewerking | De naam van de nieuwe server. |
+|Name | mydemoserver-geoterugzet bewerking | De naam van de nieuwe server. |
 |Locatie | eastus | De locatie van de nieuwe server. |
 |UseGeoRestore | `<SwitchParameter>` | Gebruik de geo-modus om te herstellen. |
 

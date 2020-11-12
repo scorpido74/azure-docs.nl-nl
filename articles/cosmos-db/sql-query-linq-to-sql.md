@@ -5,19 +5,19 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 7/29/2020
+ms.date: 11/11/2020
 ms.author: tisande
-ms.openlocfilehash: 38d37d03c99bd3a39b00276da110ea0ef6bb962e
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 35f212ea246e03be02fa082ef1b55dcb7cae1575
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93332369"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94538645"
 ---
 # <a name="linq-to-sql-translation"></a>LINQ to SQL-omzetting
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-De Azure Cosmos DB-query provider voert een beste toewijzing van een LINQ-query in een Cosmos DB SQL-query uit. Als u de SQL-query wilt ophalen die wordt vertaald van LINQ, gebruikt u de `ToString()` methode voor het gegenereerde `IQueryable` object. In de volgende beschrijving wordt uitgegaan van een basis kennis van [LINQ](/dotnet/csharp/programming-guide/concepts/linq/introduction-to-linq-queries).
+De Azure Cosmos DB-query provider voert een beste toewijzing van een LINQ-query in een Cosmos DB SQL-query uit. Als u de SQL-query wilt ophalen die wordt vertaald van LINQ, gebruikt u de `ToString()` methode voor het gegenereerde `IQueryable` object. In de volgende beschrijving wordt uitgegaan van een basis kennis van [LINQ](/dotnet/csharp/programming-guide/concepts/linq/introduction-to-linq-queries). Naast LINQ biedt Azure Cosmos DB ook ondersteuning voor [Entity Framework Core](/ef/core/providers/cosmos/?tabs=dotnet-core-cli) die werkt met SQL API.
 
 Het query provider type systeem ondersteunt alleen de JSON-primitieve typen: numeric, Boolean, String en null.
 

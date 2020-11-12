@@ -1,17 +1,17 @@
 ---
 title: Aanbevelingen voor prestaties-Azure Database for MySQL
 description: In dit artikel wordt de functie aanbevolen prestatie aanbeveling in Azure Database for MySQL
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/3/2020
-ms.openlocfilehash: 6f41863f45bdc90cb9fe589ba0a5011dea84a67c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1445ad3d6be020326c34d60c555c24c435548fd0
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84485207"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537642"
 ---
 # <a name="performance-recommendations-in-azure-database-for-mysql"></a>Aanbevelingen in Azure Database for MySQL voor prestaties
 
@@ -35,7 +35,7 @@ Selecteer **analyseren** en kies een Data Base, waarmee de analyse wordt gestart
 
 In het venster **aanbevelingen** wordt een lijst met aanbevelingen weer gegeven als deze zijn gevonden en de gerelateerde query-id die deze aanbeveling heeft gegenereerd. Met de query-ID kunt u de weer gave [mysql.query_store](concepts-query-store.md#mysqlquery_store) gebruiken voor meer informatie over de query.
 
-:::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-result.png" alt-text="Landingspagina van Prestatieaanbevelingen":::
+:::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-result.png" alt-text="Nieuwe pagina prestatie aanbevelingen":::
 
 Aanbevelingen worden niet automatisch toegepast. Als u de aanbeveling wilt Toep assen, kopieert u de query tekst en voert u deze uit vanaf de client van uw keuze. Vergeet niet om te testen en te controleren om de aanbeveling te evalueren.
 

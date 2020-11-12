@@ -1,17 +1,17 @@
 ---
 title: Verbindings problemen oplossen-Azure Database for MariaDB
 description: Meer informatie over het oplossen van verbindings problemen met Azure Database for MariaDB, waaronder tijdelijke fouten die moeten worden herhaald, Firewall problemen en storingen.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: troubleshooting
 ms.date: 3/18/2020
-ms.openlocfilehash: 521853fd361007159d7e497eb7e7c1f3d200731c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9a670472529dccd51cbfa71e385151bc63cff9b
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82101447"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94539376"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mariadb"></a>Verbindingsproblemen met Azure Database for MariaDB oplossen
 
@@ -47,7 +47,7 @@ Als de toepassing permanent geen verbinding kan maken met Azure Database for Mar
 
 * Firewall configuratie: de Azure Database for MariaDB server of firewall van de client blokkeert verbindingen.
 * Herconfiguratie van het netwerk aan de client zijde: er is een nieuw IP-adres of een proxy server toegevoegd.
-* Gebruikers fout: u hebt bijvoorbeeld mogelijk een type verbindings parameter, zoals de server naam in de connection string of een ontbrekend * \@ Server* achtervoegsel in de gebruikers naam.
+* Gebruikers fout: u hebt bijvoorbeeld mogelijk een type verbindings parameter, zoals de server naam in de connection string of een ontbrekend *\@ Server* achtervoegsel in de gebruikers naam.
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Stappen voor het oplossen van problemen met de permanente verbinding
 

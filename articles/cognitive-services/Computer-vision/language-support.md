@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 9bd7e7dab5384ecd3e1e87d763d4b8f081b669be
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: b065b36103b69f0601daa1388b45865856543d2b
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92329829"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540515"
 ---
 # <a name="language-support-for-computer-vision"></a>Taal ondersteuning voor Computer Vision
 
@@ -56,9 +56,9 @@ De OCR-Api's van Computer Vision ondersteunen verschillende talen. U hoeft geen 
 
 ## <a name="image-analysis"></a>Afbeeldingsanalyse
 
-Sommige acties van de [analyse-image-](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API kunnen resultaten retour neren in andere talen, opgegeven met de `language` query-para meter. Andere acties retour neren resultaten in het Engels, ongeacht de taal die is opgegeven, en anderen genereren een uitzonde ring voor niet-ondersteunde talen. Acties zijn opgegeven met de `visualFeatures` `details` para meters en query; Zie het [overzicht](overview.md) voor een lijst met alle acties die u kunt uitvoeren met afbeeldings analyse.
+Sommige acties van de [analyse-image-](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) API kunnen resultaten retour neren in andere talen, opgegeven met de `language` query-para meter. Andere acties retour neren resultaten in het Engels, ongeacht de taal die is opgegeven, en anderen genereren een uitzonde ring voor niet-ondersteunde talen. Acties zijn opgegeven met de `visualFeatures` `details` para meters en query; Zie het [overzicht](overview.md) voor een lijst met alle acties die u kunt uitvoeren met afbeeldings analyse.
 
-|Taal | Taalcode | Categorieën | Tags | Beschrijving | Volwassene | Merken | Kleur | Gezichten | ImageType | Objecten | Beroemdheden | Oriëntatiepunten |
+|Taal | Taalcode | Categorieën | Tags | Beschrijving | Volwassene | Merken | Color | Gezichten | ImageType | Objecten | Beroemdheden | Oriëntatiepunten |
 |:---|:---:|:----:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |Chinees | `zh`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |Engels | `en`   | ✔ | ✔| ✔|✔|✔|✔|✔|✔|✔|✔|✔|

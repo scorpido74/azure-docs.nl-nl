@@ -1,24 +1,24 @@
 ---
 title: Server parameters configureren-Azure Portal-Azure Database for MariaDB
 description: In dit artikel wordt beschreven hoe u MariaDB-server parameters in Azure Database for MariaDB kunt configureren met behulp van de Azure Portal.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 10/1/2020
-ms.openlocfilehash: 9d0b6865c7fb5b59f379568d15bd9b96883202e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7081535bb709e6731a9a15436334e8742e7bdd08
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91626425"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94539453"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mariadb-using-the-azure-portal"></a>Configureer Server parameters in Azure Database for MariaDB met behulp van de Azure Portal
 
 Azure Database for MariaDB ondersteunt de configuratie van sommige server parameters. In dit artikel wordt beschreven hoe u deze para meters configureert met behulp van de Azure Portal. Niet alle server parameters kunnen worden aangepast.
 
 >[!Note]
-> Server parameters kunnen globaal worden bijgewerkt op server niveau, gebruik de [Azure cli](./howto-configure-server-parameters-cli.md), [power shell](./howto-configure-server-parameters-using-powershell.md)of [Azure Portal](./howto-server-parameters.md).
+> Serverparameters kunnen globaal worden bijgewerkt op serverniveau via de [Azure CLI](./howto-configure-server-parameters-cli.md), [PowerShell](./howto-configure-server-parameters-using-powershell.md) of [Azure Portal](./howto-server-parameters.md).
 
 ## <a name="configure-server-parameters"></a>Parameters van de server configureren
 
@@ -29,7 +29,7 @@ Azure Database for MariaDB ondersteunt de configuratie van sommige server parame
 ![Vervolg keuzelijst opsommen](./media/howto-server-parameters/3-toggle_parameter.png)
 4. Klik op  **Opslaan** om uw wijzigingen op te slaan.
 ![Wijzigingen opslaan of negeren](./media/howto-server-parameters/4-save_parameters.png)
-5. Als u nieuwe waarden voor de para meters hebt opgeslagen, kunt u altijd terugkeren naar de standaard waarden door **alles opnieuw instellen op de standaard**waarde te selecteren.
+5. Als u nieuwe waarden voor de para meters hebt opgeslagen, kunt u altijd terugkeren naar de standaard waarden door **alles opnieuw instellen op de standaard** waarde te selecteren.
 ![Alles opnieuw instellen op standaard waarden](./media/howto-server-parameters/5-reset_parameters.png)
 
 ## <a name="setting-parameters-not-listed"></a>Ingestelde para meters niet vermeld

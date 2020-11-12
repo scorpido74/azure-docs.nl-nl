@@ -1,18 +1,18 @@
 ---
 title: Lees replica's beheren-Azure CLI, REST API-Azure Database for MySQL
 description: Meer informatie over het instellen en beheren van Lees replica's in Azure Database for MySQL met behulp van de Azure CLI of REST API.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 6/10/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 747b8bc1abbf19c861e180faf17e2fa1a143a237
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 1a5bc9638e2e6eeff8f2176247f579b64beede90
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546310"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540209"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-cli-and-rest-api"></a>Lees replica's maken en beheren in Azure Database for MySQL met behulp van de Azure CLI en REST API
 
@@ -45,7 +45,7 @@ Voor de `az mysql server replica create` opdracht zijn de volgende para meters v
 | Instelling | Voorbeeldwaarde | Beschrijving  |
 | --- | --- | --- |
 | resource-group |  myResourceGroup |  De resource groep waar de replica-server wordt gemaakt.  |
-| name | mydemoreplicaserver | De naam van de nieuwe replica server die wordt gemaakt. |
+| naam | mydemoreplicaserver | De naam van de nieuwe replica server die wordt gemaakt. |
 | source-server | mydemoserver | De naam of ID van de bestaande bron server waaruit moet worden gerepliceerd. |
 
 Gebruik de para meter om een lees replica te maken `--location` . In het CLI-voor beeld hieronder wordt de replica in VS West gemaakt.
@@ -92,7 +92,7 @@ Voor de `az mysql server replica stop` opdracht zijn de volgende para meters ver
 | Instelling | Voorbeeldwaarde | Beschrijving  |
 | --- | --- | --- |
 | resource-group |  myResourceGroup |  De resource groep waar de replica-server bestaat.  |
-| name | mydemoreplicaserver | De naam van de replica server waarvoor replicatie moet worden gestopt. |
+| naam | mydemoreplicaserver | De naam van de replica server waarvoor replicatie moet worden gestopt. |
 
 ### <a name="delete-a-replica-server"></a>Een replica server verwijderen
 

@@ -10,22 +10,18 @@ ms.tgt_pltfrm: na
 ms.workload: Infrastructure-services
 ms.date: 05/2/2020
 ms.author: derekol
-ms.openlocfilehash: ef573817927cf732da3426d802f8f26e2e9cd4ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e7b696ba052b2aca9e14628327c07275845607ad
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91398994"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540583"
 ---
 # <a name="register-a-peering-service-connection-by-using-the-azure-cli"></a>Een peering service-verbinding registreren met behulp van de Azure CLI
 
 Azure Peering Service is een netwerkservice die de klantconnectiviteit verbetert met Microsoft-cloudservices, zoals Microsoft 365, Dynamics 365, SaaS-services (Software as a Service), Azure of een andere Microsoft-service die toegankelijk is via openbaar internet. In dit artikel leert u hoe u een peering service-verbinding kunt registreren met behulp van de Azure CLI.
 
-Als u nog geen Azure-abonnement hebt, maakt u nu een [account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit artikel gebruikmaken van Azure CLI versie 2.0.28 of hoger. Voer `az --version` uit om de versie te bekijken. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli).
+- Voor dit artikel is versie 2.0.28 of hoger van de Azure CLI vereist. Voer [az version](/cli/azure/reference-index#az_version) uit om de geïnstalleerde versie en afhankelijke bibliotheken te vinden. Voer [az upgrade](/cli/azure/reference-index#az_upgrade) uit om te upgraden naar de nieuwste versie.
 
 ## <a name="prerequisites"></a>Vereisten 
 
@@ -41,19 +37,11 @@ U kunt samenwerken met een internetprovider of een Internet Exchange-partner om 
 
 Zorg ervoor dat de connectiviteitsproviders een partnerschap hebben met Microsoft.
 
-### <a name="1-sign-in-to-your-azure-account-and-select-your-subscription"></a>1. Meld u aan bij uw Azure-account en selecteer uw abonnement
+[!INCLUDE [azure-cli-prepare-your-environment-h3.md](../../includes/azure-cli-prepare-your-environment-h3.md)]
 
-Meld u aan bij uw Azure-account om de configuratie te starten. Als u de optie Cloud Shell **proberen** te gebruiken, bent u automatisch aangemeld. Gebruik de volgende voor beelden om u te helpen verbinding te maken.
+- Voor dit artikel is versie 2.0.28 of hoger van de Azure CLI vereist. Als u Azure Cloud Shell gebruikt, is de nieuwste versie al geïnstalleerd.
 
-```azurecli-interactive
-az login
-```
-
-Controleer de abonnementen voor het account.
-
-```azurecli-interactive
-az account list
-```
+### <a name="1-select-your-subscription"></a>1. Selecteer uw abonnement
 
 Selecteer het abonnement waarvoor u de peering service-verbinding wilt registreren.
 
@@ -61,7 +49,7 @@ Selecteer het abonnement waarvoor u de peering service-verbinding wilt registrer
 az account set --subscription "<subscription ID>"
 ```
 
-Als u nog geen resource groep hebt, moet u er een maken voordat u de verbinding van de peering-service registreert. U kunt een resource groep maken door de volgende opdracht uit te voeren:
+Als u nog geen resource groep hebt, moet u er een maken voordat u de verbinding van de peering-service registreert. U kunt een resourcegroep maken door de volgende opdracht uit te voeren:
 
 ```azurecli-interactive
 az group create -n MyResourceGroup -l "West US"

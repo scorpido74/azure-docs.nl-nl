@@ -1,17 +1,17 @@
 ---
 title: Server-Azure Portal-Azure Database for MariaDB beheren
 description: Meer informatie over het beheren van een Azure Database for MariaDB-server vanuit de Azure Portal.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 24481abb6606d9ce830e5b65285b31637417cbd7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ade70c884a3ef01db45273e4789f34b629473661
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90562448"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537982"
 ---
 # <a name="manage-an-azure-database-for-mariadb-server-using-the-azure-portal"></a>Een Azure Database for MariaDB-server beheren met behulp van de Azure Portal
 Dit artikel laat u zien hoe u uw Azure Database for MariaDB-servers kunt beheren. Beheer taken zijn onder andere berekening en opslag schalen, beheerders wachtwoord opnieuw instellen en server details weer geven.
@@ -30,9 +30,9 @@ Nadat de server is gemaakt, kunt u de schaal aanpassen tussen de lagen Algemeen 
 
 U kunt schalen van Algemeen naar geoptimaliseerd voor geheugen en vice versa. Wijzigen van en van de Basic-laag nadat het maken van de server niet wordt ondersteund. 
 
-1. Selecteer uw server in de Azure Portal. Selecteer de **prijs categorie**die u in de sectie **instellingen** bevindt.
+1. Selecteer uw server in de Azure Portal. Selecteer de **prijs categorie** die u in de sectie **instellingen** bevindt.
 
-2. Selecteer **Algemeen** of **geoptimaliseerd geheugen**, afhankelijk van wat u wilt schalen. 
+2. Selecteer **Algemeen** of **geoptimaliseerd geheugen** , afhankelijk van wat u wilt schalen. 
 
     ![Scherm afbeelding toont de Azure Portal waarvoor de prijs categorie is geselecteerd en de waarde voor geoptimaliseerd geheugen is geselecteerd.](./media/howto-create-manage-server-portal/change-pricing-tier.png)
 
@@ -44,7 +44,7 @@ U kunt schalen van Algemeen naar geoptimaliseerd voor geheugen en vice versa. Wi
 
 ### <a name="scale-vcores-up-or-down"></a>VCores omhoog of omlaag schalen
 
-1. Selecteer uw server in de Azure Portal. Selecteer de **prijs categorie**die u in de sectie **instellingen** bevindt.
+1. Selecteer uw server in de Azure Portal. Selecteer de **prijs categorie** die u in de sectie **instellingen** bevindt.
 
 2. Wijzig de instelling **vCore** door de schuif regelaar naar de gewenste waarde te verplaatsen.
 
@@ -58,7 +58,7 @@ U kunt schalen van Algemeen naar geoptimaliseerd voor geheugen en vice versa. Wi
 
 ### <a name="scale-storage-up"></a>Opslag omhoog schalen
 
-1. Selecteer uw server in de Azure Portal. Selecteer de **prijs categorie**die u in de sectie **instellingen** bevindt.
+1. Selecteer uw server in de Azure Portal. Selecteer de **prijs categorie** die u in de sectie **instellingen** bevindt.
 
 2. Wijzig de **opslag** instelling door de schuif regelaar omhoog te verplaatsen naar de gewenste waarde.
 
@@ -73,7 +73,7 @@ U kunt schalen van Algemeen naar geoptimaliseerd voor geheugen en vice versa. Wi
 ## <a name="update-admin-password"></a>Beheerders wachtwoord bijwerken
 U kunt het wacht woord van de beheerdersrol wijzigen met behulp van de Azure Portal.
 
-1. Selecteer uw server in de Azure Portal. Selecteer **wacht woord opnieuw instellen**in het venster **overzicht** .
+1. Selecteer uw server in de Azure Portal. Selecteer **wacht woord opnieuw instellen** in het venster **overzicht** .
 
    ![overview](./media/howto-create-manage-server-portal/overview-reset-password.png)
 
@@ -88,7 +88,7 @@ U kunt het wacht woord van de beheerdersrol wijzigen met behulp van de Azure Por
 
 U kunt uw server verwijderen als u deze niet meer nodig hebt. 
 
-1. Selecteer uw server in de Azure Portal. Selecteer **verwijderen**in het venster **overzicht** .
+1. Selecteer uw server in de Azure Portal. Selecteer **verwijderen** in het venster **overzicht** .
 
     ![delete](./media/howto-create-manage-server-portal/overview-delete.png)
 

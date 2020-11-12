@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/12/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5f32ec82c2b4c6d8b902195782b286cca82befb0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a24890f42b795bb4b9a7d187f74ceb9a4f8557f5
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85507633"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94539222"
 ---
 # <a name="use-storsimple-device-manager-to-manage-alerts-for-the-storsimple-virtual-array"></a>StorSimple-Apparaatbeheer gebruiken voor het beheren van waarschuwingen voor de virtuele StorSimple-matrix
 
@@ -48,25 +48,25 @@ Nadat u e-mail meldingen voor een virtuele matrix hebt ingeschakeld, ontvangen l
     ![waarschuwings instellingen](./media/storsimple-virtual-array-manage-alerts/alerts2.png)
 2. Hiermee opent u de Blade **instellingen** . Selecteer in de sectie **Apparaatinstellingen** de optie **Algemeen**. Hiermee opent u de Blade **algemene instellingen** .
    
-    ![configuratie van waarschuwings meldingen](./media/storsimple-virtual-array-manage-alerts/alerts4.png)
+    ![Scherm afbeelding toont het deel venster Apparaatinstellingen met het gebied waarschuwings instellingen met de naam.](./media/storsimple-virtual-array-manage-alerts/alerts4.png)
 3. Ga op de Blade **algemene instellingen** naar de sectie **waarschuwings instellingen** en stel het volgende in:
    
    1. Selecteer in het veld **e-mail melding inschakelen** de optie **Ja**.
    2. Selecteer in het veld **e-mail Service Administrators** de optie **Ja** als u wilt dat de service beheerder en alle mede beheerders de waarschuwings meldingen ontvangen.
-   3. Voer in het veld **extra e-mail ontvangers** de e-mail adressen in van alle andere ontvangers die de meldingen moeten ontvangen. Voer de namen in de indeling *iemand \@ somewhere.com*in. Gebruik punt komma's om de e-mail adressen van elkaar te scheiden. U kunt Maxi maal 20 e-mail adressen per virtueel apparaat configureren.
+   3. Voer in het veld **extra e-mail ontvangers** de e-mail adressen in van alle andere ontvangers die de meldingen moeten ontvangen. Voer de namen in de indeling *iemand \@ somewhere.com* in. Gebruik punt komma's om de e-mail adressen van elkaar te scheiden. U kunt Maxi maal 20 e-mail adressen per virtueel apparaat configureren.
       
-       ![configuratie van waarschuwings meldingen](./media/storsimple-virtual-array-manage-alerts/alerts6.png)
+       ![Scherm afbeelding toont de instellingen van de waarschuwing met de instellingen die in deze stap worden beschreven.](./media/storsimple-virtual-array-manage-alerts/alerts6.png)
    4. Als u een melding voor een test bericht wilt verzenden, klikt u op **test bericht verzenden**. In de StorSimple-Apparaatbeheer service worden status berichten weer gegeven wanneer de test melding wordt doorgestuurd.
       
-       ![E-mail meldingen test melding verzonden](./media/storsimple-virtual-array-manage-alerts/alerts7.png)
+       ![Scherm afbeelding toont een informatief dialoog venster waarin de test-e-mail wordt gecontroleerd.](./media/storsimple-virtual-array-manage-alerts/alerts7.png)
       
       > [!NOTE]
-      > Als het bericht van de test melding niet kan worden verzonden, wordt in de StorSimple-Apparaatbeheer-service een geschikt bericht weer gegeven. Klik op **OK**, wacht enkele minuten en probeer het bericht over het testen opnieuw te verzenden.
+      > Als het bericht van de test melding niet kan worden verzonden, wordt in de StorSimple-Apparaatbeheer-service een geschikt bericht weer gegeven. Klik op **OK** , wacht enkele minuten en probeer het bericht over het testen opnieuw te verzenden.
       >
       >
    5. Klik onder aan de pagina op **Opslaan** om uw configuratie op te slaan. Klik op **Ja** als u om bevestiging wordt gevraagd.
       
-      ![E-mail meldingen test melding verzonden](./media/storsimple-virtual-array-manage-alerts/alerts10.png)
+      ![Scherm afbeelding toont het deel venster instellingen met de geselecteerde knop Opslaan.](./media/storsimple-virtual-array-manage-alerts/alerts10.png)
 
 ## <a name="common-alert-conditions"></a>Algemene waarschuwings voorwaarden
 
@@ -101,7 +101,7 @@ Klik op een waarschuwing in de lijst voor meer informatie over de waarschuwing, 
 
 U kunt de waarschuwings Details naar een tekst bestand kopiëren als u de informatie naar Microsoft Ondersteuning moet verzenden. Nadat u de aanbeveling hebt gevolgd en de on-premises waarschuwings voorwaarde hebt opgelost, moet u de waarschuwing in de lijst wissen. Selecteer de waarschuwing in de lijst en klik vervolgens op **wissen**. Als u meerdere waarschuwingen wilt wissen, selecteert u elke waarschuwing, klikt u op een wille keurige kolom, behalve de kolom **waarschuwing** , en klikt u vervolgens op **wissen** nadat u alle waarschuwingen hebt geselecteerd die moeten worden gewist.
 
-Wanneer u op **wissen**klikt, kunt u opmerkingen over de waarschuwing geven en de stappen die u hebt genomen om het probleem op te lossen.
+Wanneer u op **wissen** klikt, kunt u opmerkingen over de waarschuwing geven en de stappen die u hebt genomen om het probleem op te lossen.
 
 ![waarschuwings opmerkingen](./media/storsimple-virtual-array-manage-alerts/alerts17.png)
 
@@ -130,21 +130,21 @@ De volgende tabellen geven een lijst van enkele van de StorSimple-waarschuwingen
 
 | Waarschuwings tekst | Gebeurtenis | Meer informatie/aanbevolen acties |
 |:--- |:--- |:--- |
-| Apparaat-<*apparaatnaam*> is niet verbonden met de Cloud. |Het apparaat met de naam kan geen verbinding maken met de Cloud. |Kan geen verbinding maken met de Cloud. Dit kan een van de volgende oorzaken hebben:<ul><li>Er is mogelijk een probleem met de netwerk instellingen op het apparaat.</li><li>Er is mogelijk een probleem met de referenties van het opslag account.</li></ul>Ga naar de [lokale web-UI](storsimple-ova-web-ui-admin.md) van het apparaat voor meer informatie over het oplossen van verbindings problemen. |
+| Apparaat-< *apparaatnaam* > is niet verbonden met de Cloud. |Het apparaat met de naam kan geen verbinding maken met de Cloud. |Kan geen verbinding maken met de Cloud. Dit kan een van de volgende oorzaken hebben:<ul><li>Er is mogelijk een probleem met de netwerk instellingen op het apparaat.</li><li>Er is mogelijk een probleem met de referenties van het opslag account.</li></ul>Ga naar de [lokale web-UI](storsimple-ova-web-ui-admin.md) van het apparaat voor meer informatie over het oplossen van verbindings problemen. |
 
 ### <a name="configuration-alerts"></a>Configuratie waarschuwingen
 
 | Waarschuwings tekst | Gebeurtenis | Meer informatie/aanbevolen acties |
 |:--- |:--- |:--- |
 | Configuratie van on-premises virtuele apparaten wordt niet ondersteund. |Trage prestaties. |De huidige configuratie kan leiden tot verminderde prestaties. Zorg ervoor dat uw server voldoet aan de minimale configuratie vereisten. Ga voor meer informatie naar [StorSimple Virtual array-vereisten](storsimple-ova-system-requirements.md). |
-| Er is onvoldoende ingerichte schijf ruimte beschikbaar op <*apparaatnaam* \> . |Waarschuwing voor schijf ruimte. |Er is weinig ingerichte schijf ruimte beschikbaar. Om ruimte vrij te maken, kunt u werk belastingen verplaatsen naar een ander volume of gegevens delen of verwijderen. |
+| Er is onvoldoende ingerichte schijf ruimte beschikbaar op < *apparaatnaam* \> . |Waarschuwing voor schijf ruimte. |Er is weinig ingerichte schijf ruimte beschikbaar. Om ruimte vrij te maken, kunt u werk belastingen verplaatsen naar een ander volume of gegevens delen of verwijderen. |
 
 ### <a name="job-failure-alerts"></a>Taak fout meldingen
 
 | Waarschuwings tekst | Gebeurtenis | Meer informatie/aanbevolen acties |
 |:--- |:--- |:--- |
-| Kan geen back-up van <*apparaatnaam* \> volt ooien. |De back-uptaak is mislukt. |Kan geen back-up maken. Overweeg een van de volgende:<ul><li>De back-upbewerking kan niet worden voltooid vanwege verbindings problemen. Zorg ervoor dat er geen verbindings problemen zijn. Voor meer informatie over het oplossen van verbindings problemen gaat u naar de [lokale web-UI](storsimple-ova-web-ui-admin.md) voor uw virtuele apparaat.</li><li>U hebt de beschik bare opslag limiet bereikt. Om ruimte vrij te maken, kunt u overwegen om back-ups te verwijderen die niet meer nodig zijn.</li></ul> Los de problemen op, Wis de waarschuwing en voer de bewerking opnieuw uit. |
-| De kloon van <*apparaatnaam* \> kan niet worden voltooid. |Fout bij het klonen van de taak. |Kan geen kloon maken. Overweeg een van de volgende:<ul><li>De back-uplijst is mogelijk niet geldig. Vernieuw de lijst om te controleren of deze nog geldig is.</li><li>Connectiviteits problemen kunnen ertoe leiden dat de kloon bewerking niet kan worden voltooid. Zorg ervoor dat er geen verbindings problemen zijn.</li><li>U hebt de beschik bare opslag limiet bereikt. Om ruimte vrij te maken, kunt u overwegen om back-ups te verwijderen die niet meer nodig zijn.</li></ul>Los de problemen op, Wis de waarschuwing en voer de bewerking opnieuw uit. |
+| Kan geen back-up van < *apparaatnaam* \> volt ooien. |De back-uptaak is mislukt. |Kan geen back-up maken. Overweeg een van de volgende:<ul><li>De back-upbewerking kan niet worden voltooid vanwege verbindings problemen. Zorg ervoor dat er geen verbindings problemen zijn. Voor meer informatie over het oplossen van verbindings problemen gaat u naar de [lokale web-UI](storsimple-ova-web-ui-admin.md) voor uw virtuele apparaat.</li><li>U hebt de beschik bare opslag limiet bereikt. Om ruimte vrij te maken, kunt u overwegen om back-ups te verwijderen die niet meer nodig zijn.</li></ul> Los de problemen op, Wis de waarschuwing en voer de bewerking opnieuw uit. |
+| De kloon van < *apparaatnaam* \> kan niet worden voltooid. |Fout bij het klonen van de taak. |Kan geen kloon maken. Overweeg een van de volgende:<ul><li>De back-uplijst is mogelijk niet geldig. Vernieuw de lijst om te controleren of deze nog geldig is.</li><li>Connectiviteits problemen kunnen ertoe leiden dat de kloon bewerking niet kan worden voltooid. Zorg ervoor dat er geen verbindings problemen zijn.</li><li>U hebt de beschik bare opslag limiet bereikt. Om ruimte vrij te maken, kunt u overwegen om back-ups te verwijderen die niet meer nodig zijn.</li></ul>Los de problemen op, Wis de waarschuwing en voer de bewerking opnieuw uit. |
 
 ### <a name="networking-alerts"></a>Netwerk waarschuwingen
 
@@ -157,13 +157,13 @@ De volgende tabellen geven een lijst van enkele van de StorSimple-waarschuwingen
 | Waarschuwings tekst | Gebeurtenis | Meer informatie/aanbevolen acties |
 |:--- |:--- |:--- |
 | U ondervindt onverwachte vertragingen bij de gegevens overdracht. |Trage gegevens overdracht. |Beperkings fouten treden op wanneer u de schaalbaarheids doelen van een opslag service overschrijdt. De opslag service doet dit om er zeker van te zijn dat er geen enkele client of Tenant is die de service bij de kosten van anderen kan gebruiken. Ga voor meer informatie over het oplossen van problemen met uw Azure-opslag account naar [Microsoft Azure Storage controleren, vaststellen en problemen oplossen](../storage/common/storage-monitoring-diagnosing-troubleshooting.md). |
-| U hebt onvoldoende lokale reserve ring schijf ruimte op <*apparaatnaam* \> . |Trage reactie tijd. |10% van de totale ingerichte grootte voor de <*apparaatnaam* \> is gereserveerd op het lokale apparaat en u hebt nu weinig ruimte vrij. De werk belasting op <*apparaatnaam* \> genereert een hogere frequentie van verloop of u hebt onlangs een grote hoeveelheid gegevens gemigreerd. Dit kan leiden tot verminderde prestaties. Overweeg een van de volgende acties om dit probleem op te lossen:<ul><li>Verhoog de Cloud bandbreedte naar dit apparaat.</li><li>Werk belastingen beperken of verplaatsen naar een ander volume of een andere share.</li></ul> |
+| U hebt onvoldoende lokale reserve ring schijf ruimte op < *apparaatnaam* \> . |Trage reactie tijd. |10% van de totale ingerichte grootte voor de < *apparaatnaam* \> is gereserveerd op het lokale apparaat en u hebt nu weinig ruimte vrij. De werk belasting op < *apparaatnaam* \> genereert een hogere frequentie van verloop of u hebt onlangs een grote hoeveelheid gegevens gemigreerd. Dit kan leiden tot verminderde prestaties. Overweeg een van de volgende acties om dit probleem op te lossen:<ul><li>Verhoog de Cloud bandbreedte naar dit apparaat.</li><li>Werk belastingen beperken of verplaatsen naar een ander volume of een andere share.</li></ul> |
 
 ### <a name="security-alerts"></a>Beveiligingswaarschuwingen
 
 | Waarschuwings tekst | Gebeurtenis | Meer informatie/aanbevolen acties |
 |:--- |:--- |:--- |
-| Het wacht woord voor de <*apparaatnaam* \> verloopt over <*aantal* \> dagen. |Wachtwoord waarschuwing. |Uw wacht woord verloopt over <*aantal* \> dagen. Overweeg uw wacht woord te wijzigen. Ga voor meer informatie naar [het StorSimple-wacht woord van de virtuele matrix van het apparaat wijzigen](storsimple-virtual-array-change-device-admin-password.md). |
+| Het wacht woord voor de < *apparaatnaam* \> verloopt over < *aantal* \> dagen. |Wachtwoord waarschuwing. |Uw wacht woord verloopt over < *aantal* \> dagen. Overweeg uw wacht woord te wijzigen. Ga voor meer informatie naar [het StorSimple-wacht woord van de virtuele matrix van het apparaat wijzigen](storsimple-virtual-array-change-device-admin-password.md). |
 
 ## <a name="next-steps"></a>Volgende stappen
 

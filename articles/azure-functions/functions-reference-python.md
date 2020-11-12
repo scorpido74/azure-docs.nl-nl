@@ -4,12 +4,12 @@ description: Meer informatie over het ontwikkelen van functies met python
 ms.topic: article
 ms.date: 11/4/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: ce8abf439c44e06134113dd562ebadc62b803a28
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 7d97405a0b75129ddb0da581955728b393bf49ca
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506070"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94539070"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Ontwikkelaarshandleiding voor Azure Functions Python
 
@@ -723,6 +723,8 @@ Zie de volgende resources voor meer informatie:
 * [HTTP-en webhook-bindingen](functions-bindings-http-webhook.md)
 * [Wachtrij opslag bindingen](functions-bindings-storage-queue.md)
 * [Timertrigger](functions-bindings-timer.md)
+
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/python-functions-ref-survey)
 
 
 [HttpRequest]: /python/api/azure-functions/azure.functions.httprequest?view=azure-python&preserve-view=true

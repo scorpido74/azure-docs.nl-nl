@@ -1,18 +1,18 @@
 ---
 title: SSL-Azure Database for MariaDB configureren
 description: Instructies voor het correct configureren van Azure Database for MariaDB en gekoppelde toepassingen om SSL-verbindingen correct te gebruiken
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 07/08/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1b7127fd4807e1ddd3d5181d73c7f8e77f10cf77
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f505ad3090470d2afeb9b16ffbe5c872cb9586b
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90055982"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94538101"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mariadb"></a>SSL-connectiviteit in uw toepassing configureren om veilig verbinding te maken met Azure Database for MariaDB
 Azure Database for MariaDB ondersteunt het verbinden van uw Azure Database for MariaDB server met client toepassingen met behulp van Secure Sockets Layer (SSL). Het afdwingen van SSL-verbindingen tussen uw databaseserver en clienttoepassingen zorgt dat u bent beschermt tegen 'man in the middle'-aanvallen omdat de gegevensstroom tussen de server en uw toepassing wordt versleuteld.

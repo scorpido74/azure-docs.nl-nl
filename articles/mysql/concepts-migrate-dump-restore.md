@@ -1,17 +1,17 @@
 ---
 title: Migreren met dump en Restore-Azure Database for MySQL
 description: In dit artikel worden twee algemene manieren uitgelegd voor het maken van back-ups en het herstellen van data bases in uw Azure Database for MySQL, met behulp van hulpprogram ma's zoals mysqldump, MySQL Workbench en PHPMyAdmin.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/30/2020
-ms.openlocfilehash: 336021792b7e5340e35a0c59e0f113d4dad9307d
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: f21587fe6a48d042ed98c126beb2a7dcaa39b7d8
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93128960"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537914"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>Uw MySQL-database migreren naar Azure Database voor MySQL met behulp van dumpen en terugzetten
 
@@ -39,7 +39,7 @@ Meest voorkomende gebruiks voorbeelden zijn:
 
 - **Overstappen van een andere beheerde service provider** : de meeste beheerde service provider biedt mogelijk geen toegang tot het fysieke opslag bestand om veiligheids redenen, dus is logische back-up en herstellen de enige optie om te migreren.
 - **Migratie van on-premises omgeving of virtuele machine** -Azure database for MySQL biedt geen ondersteuning voor het herstellen van fysieke back-ups, waardoor logische back-ups en herstel bewerkingen als enige benadering worden uitgevoerd.
-- **Als u uw back-upopslag verplaatst van lokaal redundant naar geografisch redundante opslag** -Azure database for MySQL kunt het configureren van lokaal redundante of geografisch redundante opslag voor back-up alleen toestaan tijdens het maken van de server. Zodra de server is ingericht, kunt u de optie voor opslag redundantie van back-ups niet meer wijzigen. Als u uw back-upopslag wilt verplaatsen van lokaal redundante opslag naar geo-redundante opslag, is dump en Restore de enige optie. 
+- **Als u uw back-upopslag verplaatst van lokaal redundant naar geografisch redundante opslag** -Azure database for MySQL kunt het configureren van lokaal redundante of geografisch redundante opslag voor back-up alleen toestaan tijdens het maken van de server. Zodra de server is ingericht, kunt u de optie voor redundantie van back-upopslag niet meer wijzigen. Als u uw back-upopslag wilt verplaatsen van lokaal redundante opslag naar geo-redundante opslag, is dump en Restore de enige optie. 
 -  **Migratie van alternatieve opslag engines naar InnoDB** -Azure database for MySQL ondersteunt alleen InnoDB-opslag engine en biedt daarom geen ondersteuning voor alternatieve opslag engines. Als uw tabellen zijn geconfigureerd met andere opslag engines, converteert u deze naar de InnoDB-engine-indeling voordat u de migratie naar Azure Database for MySQL.
 
     Als u bijvoorbeeld een WordPress of WebApp met behulp van de MyISAM-tabellen hebt, moet u deze tabellen eerst converteren door de migratie naar de InnoDB-indeling voordat u naar Azure Database for MySQL herstelt. Gebruik de-component `ENGINE=InnoDB` om de engine in te stellen die wordt gebruikt bij het maken van een nieuwe tabel en vervolgens de gegevens over te dragen naar de compatibele tabel vóór de herstel bewerking.
@@ -73,7 +73,7 @@ Als u verbinding wilt krijgen, zoekt u de verbindings gegevens in het **overzich
 
 Voeg de verbindings gegevens toe aan uw MySQL Workbench.
 
-:::image type="content" source="./media/concepts-migrate-dump-restore/2_setup-new-connection.png" alt-text="De verbindings gegevens in de Azure Portal zoeken":::
+:::image type="content" source="./media/concepts-migrate-dump-restore/2_setup-new-connection.png" alt-text="MySQL Workbench-verbindings reeks":::
 
 ## <a name="preparing-the-target-azure-database-for-mysql-server-for-fast-data-loads"></a>De doel Azure Database for MySQL server voorbereiden voor het snel laden van gegevens
 De volgende server parameters en configuratie moeten worden gewijzigd om de doel Azure Database for MySQL server voor te bereiden voor sneller laden van gegevens.

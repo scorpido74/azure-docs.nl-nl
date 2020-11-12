@@ -10,18 +10,18 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/09/2020
-ms.openlocfilehash: 2234b1507e6e0fdb0b668fc18a7c8533e3ea7cc1
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: eaaedc4404419e6028250a994077dd3df20b83d4
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94441780"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94539648"
 ---
 # <a name="enterprise-security-and-governance-for-azure-machine-learning"></a>Enter prise Security en governance voor Azure Machine Learning
 
 In dit artikel vindt u informatie over de beschik bare beveiligings functies voor Azure Machine Learning.
 
-Wanneer u een Cloud service gebruikt, is een best practice het beperken van de toegang tot alleen de gebruikers die er behoefte aan hebben. Begin met het verificatie-en autorisatie model dat door de service wordt gebruikt. U kunt ook de netwerk toegang beperken of bronnen veilig samen voegen in uw on-premises netwerk met de Cloud. Gegevens versleuteling is ook cruciaal, zowel op rest als tijdens het verplaatsen van gegevens tussen services. U kunt ook beleids regels maken om bepaalde configuraties of Logboeken af te dwingen wanneer niet-compatibele configuraties worden gemaakt. Ten slotte moet u de service kunnen bewaken en een audit logboek maken van alle activiteiten.
+Wanneer u een Cloud service gebruikt, is een best practice het beperken van de toegang tot alleen de gebruikers die er behoefte aan hebben. Begin met het verificatie-en autorisatie model dat door de service wordt gebruikt. U kunt ook de netwerk toegang beperken of bronnen veilig samen voegen in uw on-premises netwerk met de Cloud. Gegevens versleuteling is ook cruciaal, zowel op rest als tijdens het verplaatsen van gegevens tussen services. U kunt ook beleids regels maken voor het afdwingen van bepaalde configuraties of Logboeken wanneer niet-compatibele configuraties worden gemaakt. Ten slotte moet u de service kunnen bewaken en een audit logboek maken van alle activiteiten.
 
 > [!NOTE]
 > De informatie in dit artikel werkt met de Azure Machine Learning python SDK-versie 1.0.83.1 of hoger.
@@ -123,10 +123,11 @@ U kunt ook [Diagnostische gegevens die vanuit uw geïmplementeerde eind punt zij
 
 Er zijn verschillende bewakings scenario's met Azure Machine Learning, afhankelijk van de rol en wat wordt bewaakt.
 
-| Rol | Bewaking die moet worden gebruikt |
-| ---- | ----- |
-| Beheerder, DevOps, MLOps | [Azure monitor metrische gegevens](#azure-monitor), [activiteiten logboek](#activity-log), het [scannen van beveiligings problemen](#vulnerability-scanning) |
-| Data wetenschapper, MLOps | [Monitors worden uitgevoerd](#monitor-runs) |
+| Rol | Bewaking die moet worden gebruikt | Beschrijving |
+| ---- | ----- | ----- |
+| Beheerder, DevOps, MLOps | [Azure monitor metrische gegevens](#azure-monitor), [activiteiten logboek](#activity-log), het [scannen van beveiligings problemen](#vulnerability-scanning) | Informatie over service niveau |
+| Data wetenschapper, MLOps | [Monitors worden uitgevoerd](#monitor-runs) | Informatie die is vastgelegd tijdens de trainings uitvoeringen |
+| MLOps | [Model gegevens verzamelen](how-to-enable-data-collection.md), [controleren met Application Insights](how-to-enable-app-insights.md) | Informatie vastgelegd door modellen die zijn geïmplementeerd als webservices of IoT Edge modules|
 
 ### <a name="monitor-runs"></a>Monitors worden uitgevoerd
 

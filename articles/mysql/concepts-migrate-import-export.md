@@ -1,17 +1,17 @@
 ---
 title: Importeren en exporteren-Azure Database for MySQL
 description: In dit artikel worden algemene manieren uitgelegd voor het importeren en exporteren van data bases in Azure Database for MySQL, met behulp van hulpprogram ma's zoals MySQL Workbench.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/30/2020
-ms.openlocfilehash: 1b4959cbf082a589c90034f48d597907c9b7e6cc
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: af9f0f65e01a786d478fac0adde6174b8f03b2fd
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93128926"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537897"
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>Uw MySQL-data base migreren met behulp van importeren en exporteren
 [!INCLUDE[applies-to-single-flexible-server](includes/applies-to-single-flexible-server.md)]
@@ -33,7 +33,7 @@ Als u verbinding wilt krijgen, zoekt u de verbindings gegevens in het **overzich
 
 Voeg de verbindings gegevens toe aan MySQL Workbench.
 
-:::image type="content" source="./media/concepts-migrate-import-export/2_setup-new-connection.png" alt-text="De verbindings gegevens in de Azure Portal zoeken":::
+:::image type="content" source="./media/concepts-migrate-import-export/2_setup-new-connection.png" alt-text="MySQL Workbench connection string":::
 
 ## <a name="determine-when-to-use-import-and-export-techniques"></a>Bepalen wanneer de technieken voor importeren en exporteren worden gebruikt
 
@@ -47,7 +47,7 @@ Gebruik MySQL-hulpprogram ma's voor het importeren en exporteren van data bases 
 - Wanneer u gegevens migreert uit externe gegevens bronnen, met uitzonde ring van een MySQL-data base, maakt u platte bestanden en importeert u deze met behulp van [mysqlimport](https://dev.mysql.com/doc/refman/5.7/en/mysqlimport.html).
 
 > [!Important]
-> Zowel één server als flexibele server bieden **alleen ondersteuning voor de InnoDB-opslag engine** . Zorg ervoor dat alle tabellen in de data base de InnoDB-opslag engine gebruiken wanneer u gegevens laadt in Azure Database for MySQL.
+> Zowel één server als flexibele server bieden **alleen ondersteuning voor de InnoDB-opslag engine**. Zorg ervoor dat alle tabellen in de data base de InnoDB-opslag engine gebruiken wanneer u gegevens laadt in Azure Database for MySQL.
 > Als uw bron database een andere opslag engine gebruikt, moet u deze converteren naar de InnoDB-engine voordat u de data base migreert. Als u bijvoorbeeld een WordPress-of web-app hebt die gebruikmaakt van de MyISAM-engine, moet u de tabellen eerst converteren door de gegevens te migreren naar InnoDB-tabellen. Gebruik de-component `ENGINE=INNODB` om de engine in te stellen voor het maken van een tabel en vervolgens de gegevens over te dragen naar de compatibele tabel vóór de migratie.
 
    ```sql
@@ -70,33 +70,33 @@ Er zijn twee manieren om gegevens te exporteren en te importeren in MySQL Workbe
 > - Voor een flexibele MySQL-server kunt u ' gebruikers naam ' alleen gebruiken als u ' username@servername ' gebruikt om verbinding te maken, mislukt de verbinding.
 
 ### <a name="table-data-export-and-import-wizards-from-the-object-browsers-context-menu"></a>Wizards voor het exporteren en importeren van tabel gegevens in het context menu van het object browser
-:::image type="content" source="./media/concepts-migrate-import-export/p1.png" alt-text="De verbindings gegevens in de Azure Portal zoeken":::
+:::image type="content" source="./media/concepts-migrate-import-export/p1.png" alt-text="MySQL Workbench-wizards in het context menu van het object browser":::
 
 De wizards voor tabel gegevens ondersteunen import-en export bewerkingen door gebruik te maken van CSV-en JSON-bestanden. Ze bevatten verschillende configuratie opties, zoals scheidings tekens, kolom selectie en coderings selectie. U kunt elke wizard uitvoeren op een lokaal of extern aangesloten MySQL-servers. De import actie bevat tabel-, kolom-en type toewijzing.
 
-U kunt deze wizards openen vanuit het context menu van het object browser door met de rechter muisknop te klikken op een tabel. Kies vervolgens de **wizard tabel gegevens exporteren** of de **wizard tabel gegevens importeren** .
+U kunt deze wizards openen vanuit het context menu van het object browser door met de rechter muisknop te klikken op een tabel. Kies vervolgens de **wizard tabel gegevens exporteren** of de **wizard tabel gegevens importeren**.
 
 #### <a name="table-data-export-wizard"></a>Wizard tabel gegevens exporteren
 In het volgende voor beeld wordt de tabel geëxporteerd naar een CSV-bestand:
 1. Klik met de rechter muisknop op de tabel van de data base die u wilt exporteren.
-2. Selecteer de **wizard tabel gegevens exporteren** . Selecteer de kolommen die u wilt exporteren, verschuiving van rij (indien aanwezig) en aantal (indien van toepassing).
-3. Klik op de pagina **gegevens selecteren voor exporteren** op **volgende** . Selecteer het bestandspad, CSV of JSON-bestands type. Selecteer ook het regel scheidings teken, de methode van insluitende teken reeksen en het scheidings teken voor velden.
-4. Klik op de pagina **locatie van uitvoer bestand selecteren** op **volgende** .
-5. Klik op de pagina **gegevens exporteren** op **volgende** .
+2. Selecteer de **wizard tabel gegevens exporteren**. Selecteer de kolommen die u wilt exporteren, verschuiving van rij (indien aanwezig) en aantal (indien van toepassing).
+3. Klik op de pagina **gegevens selecteren voor exporteren** op **volgende**. Selecteer het bestandspad, CSV of JSON-bestands type. Selecteer ook het regel scheidings teken, de methode van insluitende teken reeksen en het scheidings teken voor velden.
+4. Klik op de pagina **locatie van uitvoer bestand selecteren** op **volgende**.
+5. Klik op de pagina **gegevens exporteren** op **volgende**.
 
 #### <a name="table-data-import-wizard"></a>Wizard tabel gegevens importeren
 In het volgende voor beeld wordt de tabel uit een CSV-bestand geïmporteerd:
 1. Klik met de rechter muisknop op de tabel van de data base die u wilt importeren.
-2. Blader naar en selecteer het CSV-bestand dat u wilt importeren en klik vervolgens op **volgende** .
-3. Selecteer de doel tabel (nieuw of bestaand) en schakel het selectie vakje **tabel afkappen vóór importeren** in of uit. Klik op **Volgende** .
-4. Selecteer code ring en de kolommen die u wilt importeren en klik vervolgens op **volgende** .
-5. Klik op de pagina **gegevens importeren** op **volgende** . De wizard importeert de gegevens dienovereenkomstig.
+2. Blader naar en selecteer het CSV-bestand dat u wilt importeren en klik vervolgens op **volgende**.
+3. Selecteer de doel tabel (nieuw of bestaand) en schakel het selectie vakje **tabel afkappen vóór importeren** in of uit. Klik op **Volgende**.
+4. Selecteer code ring en de kolommen die u wilt importeren en klik vervolgens op **volgende**.
+5. Klik op de pagina **gegevens importeren** op **volgende**. De wizard importeert de gegevens dienovereenkomstig.
 
 ### <a name="sql-data-export-and-import-wizards-from-the-navigator-pane"></a>Wizards voor het exporteren en importeren van SQL-gegevens vanuit het deel venster navigator
-Gebruik een wizard voor het exporteren of importeren van SQL die is gegenereerd vanuit MySQL Workbench of wordt gegenereerd met de opdracht mysqldump. Open deze wizards vanuit het deel venster **Navigator** of door **Server** te selecteren in het hoofd menu. Selecteer vervolgens **gegevens export** of **gegevens import** .
+Gebruik een wizard voor het exporteren of importeren van SQL die is gegenereerd vanuit MySQL Workbench of wordt gegenereerd met de opdracht mysqldump. Open deze wizards vanuit het deel venster **Navigator** of door **Server** te selecteren in het hoofd menu. Selecteer vervolgens **gegevens export** of **gegevens import**.
 
 #### <a name="data-export"></a>Gegevensexport
-:::image type="content" source="./media/concepts-migrate-import-export/p2.png" alt-text="De verbindings gegevens in de Azure Portal zoeken":::
+:::image type="content" source="./media/concepts-migrate-import-export/p2.png" alt-text="Gegevens export van MySQL Workbench met behulp van het deel venster navigator":::
 
 U kunt het tabblad **gegevens export** gebruiken om uw MySQL-gegevens te exporteren.
 1. Selecteer elk schema dat u wilt exporteren, eventueel specifieke schema objecten/tabellen uit elk schema kiezen en de export genereren. Configuratie opties zijn onder andere exporteren naar een projectmap of een zelf opgenomen SQL-bestand, opgeslagen routines en gebeurtenissen dumpen of tabel gegevens overs Laan.
@@ -109,7 +109,7 @@ U kunt het tabblad **gegevens export** gebruiken om uw MySQL-gegevens te exporte
 
 
 #### <a name="data-import"></a>Gegevens importeren
-:::image type="content" source="./media/concepts-migrate-import-export/p3.png" alt-text="De verbindings gegevens in de Azure Portal zoeken":::
+:::image type="content" source="./media/concepts-migrate-import-export/p3.png" alt-text="Gegevens import van MySQL Workbench met behulp van beheer Navigator":::
 
 U kunt het tabblad **gegevens importeren** gebruiken om geëxporteerde gegevens te importeren of te herstellen uit de bewerking voor het exporteren van gegevens of vanuit de mysqldump-opdracht.
 1. Kies de projectmap of het zelf opgenomen SQL-bestand, kies het schema dat u wilt importeren of kies **Nieuw** om een nieuw schema te definiëren.

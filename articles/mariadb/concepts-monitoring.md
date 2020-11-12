@@ -1,18 +1,18 @@
 ---
 title: Bewaking-Azure Database for MariaDB
 description: In dit artikel worden de metrische gegevens beschreven voor bewaking en waarschuwingen voor Azure Database for MariaDB, inclusief CPU-, opslag-en verbindings statistieken.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 10/21/2020
-ms.openlocfilehash: d2d34e95642308dcdacba20879945f2c965db955
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 5790094571563d3ca8576480a6296a73756fb6a6
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425200"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540413"
 ---
 # <a name="monitoring-in-azure-database-for-mariadb"></a>Bewaking in Azure Database for MariaDB
 Het bewaken van gegevens over uw servers helpt u bij het oplossen en optimaliseren van uw werk belasting. Azure Database for MariaDB biedt diverse metrische gegevens die inzicht geven in het gedrag van uw server.

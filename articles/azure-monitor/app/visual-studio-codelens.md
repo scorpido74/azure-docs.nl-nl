@@ -4,12 +4,12 @@ description: Krijg snel toegang tot uw Application Insights-aanvraag en uitzonde
 ms.topic: conceptual
 ms.date: 03/17/2017
 ms.custom: vs-azure
-ms.openlocfilehash: 92879e9dc7b9de7ef5862f30241f2b80e6aac9e8
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 2cfc4e06dcb5671f34ff98794c9569b6ed5ddae7
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932648"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94538492"
 ---
 # <a name="application-insights-telemetry-in-visual-studio-codelens"></a>Application Insights Telemetry in Visual Studio CodeLens
 De methoden in de code van uw webtoepassing kunnen worden voorzien van aantekeningen met telemetrie over runtime-uitzonderingen en reactietijden voor aanvragen. Als u [Azure Application Insights](./app-insights-overview.md) installeert in uw toepassing, wordt de telemetrie weergegeven in Visual Studio [CodeLens](/visualstudio/ide/find-code-changes-and-other-history-with-codelens?view=vs-2015): het opmerkingengedeelte boven aan elke functie, waar u doorgaans handige informatie ziet, zoals vanaf hoeveel plaatsen er wordt verwezen naar de functie en wie de toepassing voor het laatst heeft bewerkt.
@@ -30,7 +30,7 @@ Zoek naar Application Insights Telemetry in de CodeLens-indicatoren van de openb
 > 
 
 ## <a name="exceptions-in-codelens"></a>Uitzonderingen in CodeLens
-![NOG TE BEPALEN](./media/visual-studio-codelens/codelens-exceptions.png)
+![Scherm opname toont 47 uitzonde ringen die worden weer gegeven in code lens.](./media/visual-studio-codelens/codelens-exceptions.png)
 
 De CodeLens-uitzonderingsindicator geeft aan hoeveel uitzonderingen er zijn opgetreden in de afgelopen 24 uur. U ziet de 15 uitzonderingen die het meest zijn optreden in uw toepassing gedurende die periode tijdens het verwerken van de aanvraag van de methode.
 
@@ -52,7 +52,7 @@ Voor meer informatie klikt u op de CodeLens-uitzonderingsindicator:
 > 
 
 ## <a name="requests-in-codelens"></a>Aanvragen in CodeLens
-![NOG TE BEPALEN](./media/visual-studio-codelens/codelens-requests.png)
+![Scherm opname toont details van 684 aanvragen, waaronder 7% fouten.](./media/visual-studio-codelens/codelens-requests.png)
 
 De CodeLens-aanvraagindicator toont het aantal HTTP-aanvragen dat de afgelopen 24 uur is verwerkt door een methode, plus het percentage van deze aanvragen dat is mislukt.
 

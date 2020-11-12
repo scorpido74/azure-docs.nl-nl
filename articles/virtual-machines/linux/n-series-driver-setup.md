@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: vikancha
-ms.openlocfilehash: 9b6e752f8352db565239aba4a990752b1c397f5f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: b80a09c82b1e932fb93b4c85ee250773aa7d3c38
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517256"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94539750"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>NVIDIA GPU-Stuur Programma's installeren op Vm's met N-serie waarop Linux wordt uitgevoerd
 
@@ -98,7 +98,9 @@ sudo reboot
   
    sudo reboot
 
-2. Install the latest [Linux Integration Services for Hyper-V and Azure](https://www.microsoft.com/download/details.aspx?id=55106).
+2. Install the latest [Linux Integration Services for Hyper-V and Azure](https://www.microsoft.com/download/details.aspx?id=55106). Check if LIS is required by verifying the results of lspci. If all GPU devices are listed as expected, installing LIS is not required.
+
+Skip this step if you plan to use CentOS 7.8(or higher) as LIS is no longer required for these versions.
 
    ```bash
    wget https://aka.ms/lis
@@ -150,7 +152,7 @@ Als het stuur programma is geïnstalleerd, ziet u uitvoer die vergelijkbaar is m
 
 ## <a name="rdma-network-connectivity"></a>RDMA-netwerk verbinding
 
-RDMA-netwerk connectiviteit kan worden ingeschakeld voor virtuele machines van de N-serie die geschikt zijn voor RDMA, zoals NC24r geïmplementeerd in dezelfde beschikbaarheidsset of in één plaatsings groep in een virtuele-machiine (VM)-schaalset. Het RDMA-netwerk ondersteunt MPI-verkeer (Message Passing Interface) voor toepassingen die worden uitgevoerd met Intel MPI 5. x of een latere versie. Aanvullende vereisten zijn als volgt:
+RDMA-netwerk connectiviteit kan worden ingeschakeld voor virtuele machines van de N-serie die geschikt zijn voor RDMA, zoals NC24r geïmplementeerd in dezelfde beschikbaarheidsset of in één plaatsings groep in een VM-schaalset (virtuele machine). Het RDMA-netwerk ondersteunt MPI-verkeer (Message Passing Interface) voor toepassingen die worden uitgevoerd met Intel MPI 5. x of een latere versie. Aanvullende vereisten zijn als volgt:
 
 ### <a name="distributions"></a>Distributies
 
@@ -225,7 +227,7 @@ Als u NVIDIA-raster Stuur Programma's wilt installeren op de virtuele machines v
    sudo ./NVIDIA-Linux-x86_64-grid.run
    ``` 
 
-6. Selecteer **Ja**als u wordt gevraagd of u het hulp programma voor nvidia-xconfig wilt uitvoeren om uw X-configuratie bestand bij te werken.
+6. Selecteer **Ja** als u wordt gevraagd of u het hulp programma voor nvidia-xconfig wilt uitvoeren om uw X-configuratie bestand bij te werken.
 
 7. Nadat de installatie is voltooid, kopieert u/etc/NVIDIA/gridd.conf.template naar een nieuw bestand in raster. conf op locatie/etc/NVIDIA/
 
@@ -264,7 +266,7 @@ Als u NVIDIA-raster Stuur Programma's wilt installeren op de virtuele machines v
    sudo yum install hyperv-daemons
    ```
 
-2. Schakel het Nouveau-kernelstuurprogramma uit, dat niet compatibel is met het NVIDIA-stuur programma. (Gebruik alleen het NVIDIA-stuur programma op NV-of NV2-Vm's.) Als u dit wilt doen, maakt u een bestand `/etc/modprobe.d` `nouveau.conf` met de naam met de volgende inhoud:
+2. Schakel het Nouveau-kernelstuurprogramma uit, dat niet compatibel is met het NVIDIA-stuur programma. (Gebruik alleen het NVIDIA-stuur programma op NV-of NV3-Vm's.) Als u dit wilt doen, maakt u een bestand `/etc/modprobe.d` `nouveau.conf` met de naam met de volgende inhoud:
 
    ```
    blacklist nouveau
@@ -272,7 +274,9 @@ Als u NVIDIA-raster Stuur Programma's wilt installeren op de virtuele machines v
    blacklist lbm-nouveau
    ```
  
-3. Start de VM opnieuw op, maak opnieuw verbinding en installeer de meest recente [Linux-integratie Services voor Hyper-V en Azure](https://www.microsoft.com/download/details.aspx?id=55106).
+3. Start de VM opnieuw op, maak opnieuw verbinding en installeer de meest recente [Linux-integratie Services voor Hyper-V en Azure](https://www.microsoft.com/download/details.aspx?id=55106). Controleer of LIS is vereist door de resultaten van lspci te controleren. Als alle GPU-apparaten worden weer gegeven zoals verwacht, is het installeren van LIS niet vereist. 
+
+Deze stap overs laan is dat u CentOS/RHEL 7,8 en hoger gebruikt.
  
    ```bash
    wget https://aka.ms/lis
@@ -298,7 +302,7 @@ Als u NVIDIA-raster Stuur Programma's wilt installeren op de virtuele machines v
 
    sudo ./NVIDIA-Linux-x86_64-grid.run
    ``` 
-6. Selecteer **Ja**als u wordt gevraagd of u het hulp programma voor nvidia-xconfig wilt uitvoeren om uw X-configuratie bestand bij te werken.
+6. Selecteer **Ja** als u wordt gevraagd of u het hulp programma voor nvidia-xconfig wilt uitvoeren om uw X-configuratie bestand bij te werken.
 
 7. Nadat de installatie is voltooid, kopieert u/etc/NVIDIA/gridd.conf.template naar een nieuw bestand in raster. conf op locatie/etc/NVIDIA/
   
@@ -373,6 +377,7 @@ Maak vervolgens een vermelding voor uw update script in `/etc/rc.d/rc3.d` zodat 
 
 * U kunt de modus voor persistentie instellen met behulp `nvidia-smi` van zodat de uitvoer van de opdracht sneller is als u behoefte hebt aan een query uit te voeren op kaarten. Voer uit om de modus voor persistentie in te stellen `nvidia-smi -pm 1` . Houd er rekening mee dat als de virtuele machine opnieuw wordt opgestart, de instelling van de modus verdwijnt. U kunt de modus instelling altijd scripteren om uit te voeren bij het opstarten.
 * Als u de NVIDIA CUDA-Stuur Programma's hebt bijgewerkt naar de nieuwste versie en RDMA-connectiviteit niet meer werkt, [installeert u de RDMA-Stuur Programma's opnieuw](#rdma-network-connectivity) om die verbinding opnieuw tot stand te brengen. 
+* Als een bepaalde versie van het besturings systeem CentOS/RHEL (of kernel) niet wordt ondersteund voor LIS, treedt er een fout op met de niet-ondersteunde kernel-versie. Meld deze fout samen met de versie van het besturings systeem en de kernel.
 
 ## <a name="next-steps"></a>Volgende stappen
 

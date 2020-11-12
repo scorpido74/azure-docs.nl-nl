@@ -8,20 +8,23 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: cdc17f84ed7d91d130faf0049b8f2730a13ce35b
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: ac8dcad9c8057f833327ffcde1bc1f42331ddb98
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242157"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540345"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-vnet-service-endpoints-using-azure-cli"></a>Azure Database for MySQL VNet-service-eind punten maken en beheren met Azure CLI
 Service-eindpunten en -regels voor virtuele netwerken (VNets) breiden de privé-adresruimte van een virtueel netwerk uit naar uw Azure Database for MySQL-server. Met de handige CLI-opdrachten (opdracht regel Interface) van Azure kunt u VNet-service-eind punten en-regels maken, bijwerken, verwijderen en weer geven om uw server te beheren. Zie [Azure database for mysql server VNet-service-eind punten](concepts-data-access-and-security-vnet.md)voor een overzicht van Azure database for MySQL VNet-service-eind punten, met inbegrip van beperkingen. VNet-service-eind punten zijn beschikbaar in alle ondersteunde regio's voor Azure Database for MySQL.
 
-## <a name="prerequisites"></a>Vereisten
-Als u deze hand leiding wilt door lopen, hebt u het volgende nodig:
-- Installeer [de Azure cli](/cli/azure/install-azure-cli) of gebruik de Azure Cloud shell in de browser.
-- Een [Azure database for mysql-server en-data base](quickstart-create-mysql-server-database-using-azure-cli.md).
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
+
+- U hebt een [Azure database for mysql-server en-data base](quickstart-create-mysql-server-database-using-azure-cli.md)nodig.
+ 
+- Voor dit artikel is versie 2,0 of hoger van de Azure CLI vereist. Als u Azure Cloud Shell gebruikt, is de nieuwste versie al geïnstalleerd.
 
 > [!NOTE]
 > Ondersteuning voor VNet-service-eind punten is alleen voor servers met Algemeen en geoptimaliseerd voor geheugen.
@@ -30,18 +33,7 @@ Als u deze hand leiding wilt door lopen, hebt u het volgende nodig:
 ## <a name="configure-vnet-service-endpoints-for-azure-database-for-mysql"></a>Vnet-service-eind punten voor Azure Database for MySQL configureren
 De opdracht [AZ Network vnet](/cli/azure/network/vnet) wordt gebruikt voor het configureren van virtuele netwerken.
 
-Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
-
-[!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
-
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit artikel gebruikmaken van Azure CLI versie 2.0 of hoger. Voer de opdracht `az --version` uit om de geïnstalleerde versie te zien. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren]( /cli/azure/install-azure-cli). 
-
-Als u de CLI lokaal uitvoert, moet u zich aanmelden bij uw account met behulp van de opdracht [az login](/cli/azure/authenticate-azure-cli). Let op de **id** -eigenschap van de opdrachtuitvoer voor de naam van het desbetreffende abonnement.
-```azurecli-interactive
-az login
-```
-
-Als u meerdere abonnementen hebt, kiest u het juiste abonnement waarin de resource moet worden gefactureerd. Selecteer de specifieke abonnements-id in uw account met de opdracht [az account set](/cli/azure/account#az-account-set). Gebruik de **id** -eigenschap uit de **az login** -uitvoer voor uw abonnement in de tijdelijke aanduiding voor de abonnement-id.
+Als u meerdere abonnementen hebt, kiest u het juiste abonnement waarin de resource moet worden gefactureerd. Selecteer de specifieke abonnements-id in uw account met de opdracht [az account set](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-set). Vervang de **id-** eigenschap van de **AZ-aanmeld** uitvoer voor uw abonnement in de tijdelijke aanduiding voor de abonnements-id.
 
 - Het account moet beschikken over de benodigde machtigingen voor het maken van een virtueel netwerk en een service-eindpunt.
 

@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 4e6c2db5333962d7ae43534998ffc1c48b0dba45
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6623693a7079056cfe107fc8246e0fd43e2c0b8c
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80244559"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94538187"
 ---
 # <a name="detecting-image-types-with-computer-vision"></a>Afbeeldings typen detecteren met Computer Vision
 
-Met de API voor het [analyseren](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) van afbeeldingen kunt Computer Vision het inhouds type van installatie kopieën analyseren om aan te geven of een afbeelding een illustratie of een lijn tekening is.
+Met de API voor het [analyseren](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) van afbeeldingen kunt Computer Vision het inhouds type van installatie kopieën analyseren om aan te geven of een afbeelding een illustratie of een lijn tekening is.
 
 ## <a name="detecting-clip-art"></a>Illustraties detecteren
 
@@ -115,7 +115,7 @@ In de volgende JSON-antwoorden ziet u wat Computer Vision retourneert wanneer wo
 
 ## <a name="use-the-api"></a>De API gebruiken
 
-De functie detectie van het afbeeldings type maakt deel uit van de API voor het [analyseren van afbeeldingen](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) . U kunt deze API aanroepen via een systeem eigen SDK of via REST-aanroepen. Neem `ImageType` in de query parameter **visualFeatures** op. Wanneer u vervolgens het volledige JSON-antwoord krijgt, parseert u de teken reeks voor de inhoud van de `"imageType"` sectie.
+De functie detectie van het afbeeldings type maakt deel uit van de API voor het [analyseren van afbeeldingen](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) . U kunt deze API aanroepen via een systeem eigen SDK of via REST-aanroepen. Neem `ImageType` in de query parameter **visualFeatures** op. Wanneer u vervolgens het volledige JSON-antwoord krijgt, parseert u de teken reeks voor de inhoud van de `"imageType"` sectie.
 
 * [Snelstartgids: Computer Vision .NET SDK](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
 * [Quick Start: een afbeelding analyseren (REST API)](./quickstarts/csharp-analyze.md)

@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 11/03/2020
 ms.custom: how-to, contperfq1, devx-track-python, data4ml
-ms.openlocfilehash: 7f2c7e99117c338d07abc2ed8760c2be18955d66
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 30ece529b141f3a50191c532d85265d8e9555b34
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489298"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94538594"
 ---
 # <a name="connect-to-storage-services-on-azure"></a>Verbinding maken met Storage services in azure
 
@@ -180,7 +180,7 @@ file_datastore = Datastore.register_azure_file_share(workspace=ws,
 
 Gebruik [register_azure_data_lake_gen2 ()](/python/api/azureml-core/azureml.core.datastore.datastore?preserve-view=true&view=azure-ml-py#&preserve-view=trueregister-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-) voor het registreren van een Azure data Lake Storage Generation 2 (ADLS gen 2) om het opslaan van referenties die zijn verbonden met een Azure DataLake gen 2-opslag met [Service-Principal-machtigingen](../active-directory/develop/howto-create-service-principal-portal.md).  
 
-Als u de Service-Principal wilt gebruiken, moet u [uw toepassing registreren](../active-directory/develop/app-objects-and-service-principals.md) en de service-principal met toegang tot **BLOB-gegevens lezer** verlenen. Meer informatie over [toegangs beheer dat is ingesteld voor ADLS gen 2](../storage/blobs/data-lake-storage-access-control.md). 
+Als u de Service-Principal wilt gebruiken, moet u [uw toepassing registreren](../active-directory/develop/app-objects-and-service-principals.md) en de Service Principal Data Access verlenen via op rollen gebaseerd toegangs beheer (Azure RBAC) of Access Control Lists (ACL). Meer informatie over [toegangs beheer dat is ingesteld voor ADLS gen 2](../storage/blobs/data-lake-storage-access-control-model.md). 
 
 Met de volgende code wordt het gegevens archief gemaakt en geregistreerd `adlsgen2_datastore_name` in de `ws` werk ruimte. Deze Data Store heeft toegang tot het bestands systeem `test` in het `account_name` opslag account met behulp van de gegeven referenties voor de Service-Principal. Raadpleeg de sectie [machtigingen voor opslag toegang &](#storage-access-and-permissions) voor hulp bij scenario's voor virtuele netwerken en waar u de vereiste verificatie referenties kunt vinden. 
 

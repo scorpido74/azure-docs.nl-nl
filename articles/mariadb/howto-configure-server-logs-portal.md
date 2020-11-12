@@ -1,17 +1,17 @@
 ---
 title: Toegang tot langzame query logboeken-Azure Portal-Azure Database for MariaDB
 description: In dit artikel wordt beschreven hoe u de langzame query Logboeken in Azure Database for MariaDB kunt configureren en openen vanuit de Azure Portal.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 4/13/2020
-ms.openlocfilehash: a2642ebbad7c8d7a2e092a6e00929e32b72b52d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c5ee948daecafc061910f36d2ac95d15338bfb38
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86104976"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94539937"
 ---
 # <a name="configure-and-access-azure-database-for-maria-db-slow-query-logs-from-the-azure-portal"></a>Een langzame query logboeken van Azure Data Base voor Maria DB configureren en gebruiken vanuit de Azure Portal
 
@@ -23,7 +23,7 @@ Voor de stappen in dit artikel moet [Azure database for MariaDB server](quicksta
 ## <a name="configure-logging"></a>Logboek registratie configureren
 Configureer de toegang tot het logboek voor langzame query's. 
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 2. Selecteer uw Azure Database for MariaDB-server.
 
@@ -32,9 +32,9 @@ Configureer de toegang tot het logboek voor langzame query's.
 
 4. Selecteer om de server parameters weer te geven de optie **Klik hier om Logboeken in te scha kelen en logboek parameters te configureren**.
 
-5. Schakel **slow_query_log** in **op**aan.
+5. Schakel **slow_query_log** in **op** aan.
 
-6. Selecteer waar u de logboeken wilt uitvoeren met **log_output**. Selecteer **bestand**om logboeken naar zowel lokale opslag als Azure monitor Diagnostische logboeken te verzenden. 
+6. Selecteer waar u de logboeken wilt uitvoeren met **log_output**. Selecteer **bestand** om logboeken naar zowel lokale opslag als Azure monitor Diagnostische logboeken te verzenden. 
 
 7. Wijzig alle andere para meters die nodig zijn. 
 
@@ -66,7 +66,7 @@ Nadat de logboek registratie is gestart, kunt u een lijst met beschik bare langz
 
 ## <a name="set-up-diagnostic-logs"></a>Diagnostische logboeken instellen
 
-1. Selecteer in de sectie **bewaking** van de zijbalk **Diagnostische instellingen**diagnostische  >  **instelling toevoegen**.
+1. Selecteer in de sectie **bewaking** van de zijbalk **Diagnostische instellingen** diagnostische  >  **instelling toevoegen**.
 
    ![Scherm opname van opties voor Diagnostische instellingen](./media/howto-configure-server-logs-portal/add-diagnostic-setting.png)
 

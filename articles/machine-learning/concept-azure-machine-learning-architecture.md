@@ -1,7 +1,7 @@
 ---
 title: Belangrijkste concepten van architectuur &
 titleSuffix: Azure Machine Learning
-description: Meer informatie over de architectuur, voor waarden en concepten van Azure Machine Learning.
+description: In dit artikel vindt u meer informatie over de architectuur, termen en concepten van Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: f17cdd42c892f6c0d218875cf304846937ba58d7
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: a36481b2496060cb12bd755f56680915ec1074bb
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444794"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540175"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Hoe Azure Machine Learning werkt: architectuur en concepten
 
@@ -267,6 +267,18 @@ De [Azure machine learning cli](reference-azure-machine-learning-cli.md) is een 
 U gebruikt [machine learning pijp lijnen](concept-ml-pipelines.md) voor het maken en beheren van werk stromen die samen een machine learning fasen opdoen. Een pijp lijn kan bijvoorbeeld bestaan uit gegevens voorbereiding, model training, model implementatie en fase ring/scores. Elke fase kan meerdere stappen omvatten, die elk zonder toezicht kunnen worden uitgevoerd in verschillende reken doelen. 
 
 U kunt de stappen van de pijp lijn herbruikbaresen en uitvoeren zonder de vorige stappen opnieuw uit te voeren als de uitvoer van deze stappen niet is gewijzigd. U kunt bijvoorbeeld een model opnieuw trainen zonder de stappen voor het voorbereiden van de kosten voor het opnieuw uitvoeren van gegevens als de gegevens niet zijn gewijzigd. Door pijp lijnen kunnen gegevens wetenschappers ook samen werken terwijl ze werken op verschillende gebieden van een machine learning werk stroom.
+
+## <a name="monitoring-and-logging"></a>Bewaking en registratie
+
+Azure Machine Learning biedt de volgende mogelijkheden voor bewaking en logboek registratie:
+
+* Voor __gegevens wetenschappers__ kunt u uw experimenten en logboek gegevens van uw trainings uitvoeringen bewaken. Raadpleeg voor meer informatie de volgende artikelen:
+   * [Trainings uitvoeringen starten, controleren en annuleren](how-to-manage-runs.md)
+   * [Metrische gegevens registreren voor trainingsuitvoeringen](how-to-track-experiments.md)
+   * [Experimenten bijhouden met MLflow](how-to-use-mlflow.md)
+   * [Uitvoeringen visualiseren met TensorBoard](how-to-monitor-tensorboard.md)
+* Voor __beheerders__ kunt u informatie over de werk ruimte, verwante Azure-resources en gebeurtenissen, zoals het maken en verwijderen van resources, bewaken met behulp van Azure monitor. Zie [Azure machine learning bewaken](monitor-azure-machine-learning.md)voor meer informatie.
+* Voor __DevOps__ of __MLOps__ kunt u gegevens controleren die zijn gegenereerd door modellen die zijn geïmplementeerd als webservices of IOT Edge modules om problemen met de implementaties te identificeren en gegevens te verzamelen die naar de service worden verzonden. Zie voor meer informatie [model gegevens verzamelen](how-to-enable-data-collection.md) en [bewaken met Application Insights](how-to-enable-app-insights.md).
 
 ## <a name="interacting-with-your-workspace"></a>Interactie met uw werk ruimte
 

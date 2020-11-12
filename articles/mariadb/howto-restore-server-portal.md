@@ -1,17 +1,17 @@
 ---
 title: Backup en Restore-Azure Portal-Azure Database for MariaDB
 description: In dit artikel wordt beschreven hoe u een server in Azure Database for MariaDB kunt herstellen met behulp van de Azure Portal.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/30/2020
-ms.openlocfilehash: 6d050a8bd351617a6ab567243c5b1ef8d9f93ded
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a5f2cc4cbf73f5c13533a94f1454022d3538880
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86115907"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94539622"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-portal"></a>Een back-up maken en herstellen van een server in Azure Database for MariaDB met behulp van de Azure Portal
 
@@ -64,10 +64,10 @@ Met de volgende stappen wordt de voorbeeld server hersteld naar een bepaald tijd
 3. Vul in het formulier Restore de vereiste gegevens in:
 
    ![Azure Database for MariaDB-herstel informatie](./media/howto-restore-server-portal/3-restore.png)
-   - **Herstel punt**: Selecteer het tijdstip waarop u wilt herstellen.
-   - **Doel server**: Geef een naam op voor de nieuwe server.
-   - **Locatie**: u kunt de regio niet selecteren. Het is standaard hetzelfde als de bron server.
-   - **Prijs categorie**: u kunt deze para meters niet wijzigen wanneer u een herstel bewerking op een bepaald tijdstip uitvoert. Deze is hetzelfde als de bronserver. 
+   - **Herstel punt** : Selecteer het tijdstip waarop u wilt herstellen.
+   - **Doel server** : Geef een naam op voor de nieuwe server.
+   - **Locatie** : u kunt de regio niet selecteren. Het is standaard hetzelfde als de bron server.
+   - **Prijs categorie** : u kunt deze para meters niet wijzigen wanneer u een herstel bewerking op een bepaald tijdstip uitvoert. Deze is hetzelfde als de bronserver. 
 
 4. Klik op **OK** om de server te herstellen om naar een bepaald tijdstip te herstellen. 
 
@@ -89,7 +89,7 @@ Als u uw server voor geografisch redundante back-ups hebt geconfigureerd, kan ee
 
 3. Selecteer **back-up** als **gegevens bron**. Met deze actie wordt een vervolg keuzelijst geladen die een lijst met servers bevat waarvoor geo redundante back-ups zijn ingeschakeld.
    
-   :::image type="content" source="./media/howto-restore-server-portal/3-geo-restore.png" alt-text="Navigeer naar Azure Database for MariaDB.":::
+   :::image type="content" source="./media/howto-restore-server-portal/3-geo-restore.png" alt-text="Selecteer een gegevens bron.":::
     
    > [!NOTE]
    > Wanneer een server voor het eerst wordt gemaakt, is deze mogelijk niet onmiddellijk beschikbaar voor geo Restore. Het kan enkele uren duren voordat de benodigde meta gegevens zijn gevuld.
@@ -97,21 +97,21 @@ Als u uw server voor geografisch redundante back-ups hebt geconfigureerd, kan ee
 
 4. Selecteer de vervolg keuzelijst **back-up** .
    
-   :::image type="content" source="./media/howto-restore-server-portal/4-geo-restore-backup.png" alt-text="Navigeer naar Azure Database for MariaDB.":::
+   :::image type="content" source="./media/howto-restore-server-portal/4-geo-restore-backup.png" alt-text="Selecteer vervolg keuzelijst voor back-up.":::
 
 5. Selecteer de bron server waarvan u wilt herstellen.
    
-   :::image type="content" source="./media/howto-restore-server-portal/5-select-backup.png" alt-text="Navigeer naar Azure Database for MariaDB.":::
+   :::image type="content" source="./media/howto-restore-server-portal/5-select-backup.png" alt-text="Selecteer back-up.":::
 
-6. De server wordt standaard ingesteld op waarden voor het aantal **vCores**, de **Bewaar periode voor back-ups**, de optie voor de **redundantie van back-ups**, de **Engine versie**en de **beheerders referenties**. Selecteer **Doorgaan**. 
+6. De server wordt standaard ingesteld op waarden voor het aantal **vCores** , de **Bewaar periode voor back-ups** , de optie voor de **redundantie van back-ups** , de **Engine versie** en de **beheerders referenties**. Selecteer **Doorgaan**. 
    
-   :::image type="content" source="./media/howto-restore-server-portal/6-accept-backup.png" alt-text="Navigeer naar Azure Database for MariaDB.":::
+   :::image type="content" source="./media/howto-restore-server-portal/6-accept-backup.png" alt-text="Ga door met de back-up.":::
 
-7. Vul de rest van het formulier in met uw voor keuren. U kunt een wille keurige **locatie**selecteren.
+7. Vul de rest van het formulier in met uw voor keuren. U kunt een wille keurige **locatie** selecteren.
 
-    Nadat u de locatie hebt geselecteerd, kunt **u server configureren** selecteren om de **generatie** van de berekening bij te werken (indien beschikbaar in de regio die u hebt gekozen), het aantal **vCores**, de **Bewaar periode voor back-ups**en de optie voor de **redundantie van back-ups**. Het wijzigen van de **prijs categorie** (Basic, algemeen of Optimized memory) of **opslag** grootte tijdens het terugzetten wordt niet ondersteund.
+    Nadat u de locatie hebt geselecteerd, kunt **u server configureren** selecteren om de **generatie** van de berekening bij te werken (indien beschikbaar in de regio die u hebt gekozen), het aantal **vCores** , de **Bewaar periode voor back-ups** en de optie voor de **redundantie van back-ups**. Het wijzigen van de **prijs categorie** (Basic, algemeen of Optimized memory) of **opslag** grootte tijdens het terugzetten wordt niet ondersteund.
 
-   :::image type="content" source="./media/howto-restore-server-portal/7-create.png" alt-text="Navigeer naar Azure Database for MariaDB."::: 
+   :::image type="content" source="./media/howto-restore-server-portal/7-create.png" alt-text="Formulier opvulling."::: 
 
 8. Selecteer **Beoordelen en maken** om uw selecties te controleren. 
 

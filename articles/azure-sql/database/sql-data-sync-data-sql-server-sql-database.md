@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: fdeddfb0a09151ea010d4e95a2954200dd9371dc
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 01c5d4395eb584631efb9b3b956b9a987e46b0db
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791423"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540617"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Wat is SQL Data Sync voor Azure?
 
@@ -68,11 +68,11 @@ Gegevens synchronisatie is niet de aanbevolen oplossing voor de volgende scenari
 
 
 
-## <a name="how-it-works"></a>Hoe het werkt
+## <a name="how-it-works"></a>Uitleg
 
 - **Wijzigingen in de gegevens bijhouden:** Gegevens synchronisatie houdt wijzigingen bij met behulp van INSERT-, update-en delete-triggers. De wijzigingen worden vastgelegd in een tabel aan de kant van de gebruikers database. Houd er rekening mee dat BULK INSERT triggers niet standaard wordt geactiveerd. Als FIRE_TRIGGERS niet is opgegeven, worden er geen invoeg triggers uitgevoerd. Voeg de FIRE_TRIGGERS optie toe, zodat gegevens synchronisatie deze toevoegingen kan bijhouden. 
 - **Gegevens synchroniseren:** Gegevens synchronisatie is ontworpen in een hub-en spoke-model. De hub wordt met elk lid afzonderlijk gesynchroniseerd. Wijzigingen van de hub worden gedownload naar het lid en vervolgens worden wijzigingen van het lid geüpload naar de hub.
-- **Conflicten oplossen:** Gegevens synchronisatie biedt twee opties voor het oplossen van conflicten, *hub WINS* of *lid van WINS* .
+- **Conflicten oplossen:** Gegevens synchronisatie biedt twee opties voor het oplossen van conflicten, *hub WINS* of *lid van WINS*.
   - Als u *hub WINS* selecteert, worden wijzigingen in het lid altijd overschreven door de wijzigingen in de hub.
   - Als u *lid bent van WINS* , worden wijzigingen in het lid overschreven in de hub. Als er meer dan één lid is, is de uiteindelijke waarde afhankelijk van welk lid het eerst synchroniseert.
 
@@ -166,7 +166,7 @@ Met gegevens synchronisatie kunnen alleen-lezen of door het systeem gegenereerde
 | Tabellen in een synchronisatie groep                                          | 500                    | Meerdere synchronisatie groepen maken |
 | Kolommen in een tabel in een synchronisatie groep                              | 1000                   |                             |
 | Grootte van gegevensrij in een tabel                                        | 24 MB                  |                             |
-| Interval voor minimale synchronisatie frequentie                                 | 5 minuten              |                             |
+| Minimum interval voor synchronisatie frequentie (sinds vorige synchronisatie is gestart)     | 5 minuten              |                             |
 
 > [!NOTE]
 > Er kunnen Maxi maal 30 eind punten in één synchronisatie groep bestaan als er slechts één synchronisatie groep is. Als er meer dan één synchronisatie groep is, kan het totale aantal eind punten voor alle synchronisatie groepen niet meer dan 30 zijn. Als een Data Base deel uitmaakt van meerdere synchronisatie groepen, wordt deze als meerdere eind punten geteld, niet een.
@@ -175,7 +175,7 @@ Met gegevens synchronisatie kunnen alleen-lezen of door het systeem gegenereerde
 
 Wanneer de synchronisatie groep tot stand is gebracht, moet de Data Sync-service verbinding maken met de hub-data base. Op het moment dat u de synchronisatie groep instelt, moet de Azure SQL-Server de volgende configuratie hebben in de `Firewalls and virtual networks` instellingen:
 
- * *Toegang tot open bare netwerk weigeren* moet worden ingesteld op *uit* .
+ * *Toegang tot open bare netwerk weigeren* moet worden ingesteld op *uit*.
  * *Toestaan dat Azure-Services en-resources toegang hebben tot deze server* moet zijn ingesteld op *Ja* of moet u IP-regels maken voor de [IP-adressen die worden gebruikt door de Data Sync-Service](network-access-controls-overview.md#data-sync).
 
 Zodra de synchronisatie groep is gemaakt en ingericht, kunt u deze instellingen uitschakelen. De synchronisatie agent maakt rechtstreeks verbinding met de hub-data base en u kunt de [Firewall-IP-regels](firewall-configure.md) of [particuliere eind punten](private-endpoint-overview.md) van de server gebruiken om de agent toegang te geven tot de hub-server.
@@ -240,7 +240,7 @@ De Federatie hoofd database kan worden gebruikt in de SQL Data Sync-Service zond
 
 ### <a name="can-i-use-data-sync-to-sync-data-exported-from-dynamics-365-using-bring-your-own-database-byod-feature"></a>Kan ik gegevens synchronisatie gebruiken om gegevens te synchroniseren die zijn geëxporteerd uit Dynamics 365 met de functie uw eigen data base (BYOD) gebruiken?
 
-Met de Dynamics 365-functie van uw eigen data base kunnen beheerders gegevens entiteiten van de toepassing exporteren naar hun eigen Microsoft Azure SQL database. Gegevens synchronisatie kan worden gebruikt om deze gegevens te synchroniseren met andere data bases als gegevens worden geëxporteerd met een **incrementele push** (volledige push wordt niet ondersteund) en **Triggers inschakelen in doel database** is ingesteld op **Ja** .
+Met de Dynamics 365-functie van uw eigen data base kunnen beheerders gegevens entiteiten van de toepassing exporteren naar hun eigen Microsoft Azure SQL database. Gegevens synchronisatie kan worden gebruikt om deze gegevens te synchroniseren met andere data bases als gegevens worden geëxporteerd met een **incrementele push** (volledige push wordt niet ondersteund) en **Triggers inschakelen in doel database** is ingesteld op **Ja**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

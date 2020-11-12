@@ -12,12 +12,12 @@ ms.date: 10/22/2020
 ms.author: aahi
 ms.custom: seodec18, cog-serv-seo-aug-2020
 keywords: on-premises, OCR, docker, container
-ms.openlocfilehash: 07440b99d887ee6cb4b6d505ed7fb79f4c12c784
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 33fc13722a4d0f26c71aa85809a605188b610014
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677208"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94539007"
 ---
 # <a name="install-read-ocr-docker-containers-preview"></a>Lees de OCR docker-containers (preview) installeren 
 
@@ -411,6 +411,6 @@ In dit artikel hebt u concepten en werk stromen geleerd om Computer Vision conta
 
 * Controleer [Containers configureren](computer-vision-resource-container-config.md) voor configuratie-instellingen
 * Bekijk [Overzicht van Computer Vision ](overview.md) voor meer informatie over het herkennen van gedrukte en handgeschreven tekst
-* Raadpleeg de [Computer Vision-API](//westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) voor meer informatie over de methoden die door de container worden ondersteund.
+* Raadpleeg de [Computer Vision-API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) voor meer informatie over de methoden die door de container worden ondersteund.
 * Raadpleeg [Veelgestelde vragen (FAQ)](FAQ.md) voor het oplossen van problemen met betrekking tot de functionaliteit van Computer Vision.
 * Gebruik meer [Cognitive Services-containers](../cognitive-services-container-support.md)
