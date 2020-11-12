@@ -7,6 +7,8 @@
       href: overview.md
     - name: Technisch en functieoverzicht
       href: technical-overview.md
+    - name: Wat is er nieuw in Docs?
+      href: whats-new-docs.md
 - name: Snelstartgidsen
   expanded: true
   items:

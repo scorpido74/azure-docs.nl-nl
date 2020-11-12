@@ -6,14 +6,15 @@ ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.topic: conceptual
-ms.date: 09/03/2020
+ms.date: 09/23/2020
 ms.author: banders
-ms.openlocfilehash: 13b344d3f13993dc7b6acf7bfe9a0ccdea0c866b
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.custom: contperfq1
+ms.openlocfilehash: e712b44f22a8080b14a2cc2532cadf2dd4738b76
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371351"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94409196"
 ---
 # <a name="managing-azure-enterprise-roles"></a>Azure Enterprise-rollen beheren
 
@@ -34,6 +35,86 @@ De eerste inschrijvingsbeheerder die wordt ingesteld tijdens het inrichten van d
 Als het initiële verificatietype bijvoorbeeld is ingesteld op Gemengd, wordt de EA als een Microsoft-account toegevoegd en krijgt de factuurcontact alleen-lezen EA-beheerdersbevoegdheden. Als de EA-beheerder de Microsoft-accountautorisatie voor een bestaand factuurcontact niet goedkeurt, kan de EA-beheerder de betreffende gebruiker verwijderen en de klant vragen de gebruiker weer toe te voegen als een alleen-lezen beheerder met een werk- of schoolaccount dat alleen is ingesteld op inschrijvingsniveau in de EA-portal.
 
 Deze rollen zijn specifiek voor het beheren van Azure Enterprise Agreements en zijn een aanvulling op de ingebouwde rollen waarover Azure beschikt om toegang tot resources te beheren. Zie [Ingebouwde rollen in Azure](../../role-based-access-control/built-in-roles.md) voor meer informatie.
+
+## <a name="azure-enterprise-portal-hierarchy"></a>Hiërarchie van de Azure Enterprise-portal
+
+De hiërarchie van de Azure Enterprise-portal bestaat uit de volgende elementen:
+
+- **Azure Enterprise-portal** : een online beheerportal waarmee u de kosten van uw Azure EA-services kunt beheren. U kunt:
+
+  - Een Azure EA-hiërarchie maken met afdelingen, accounts en abonnementen.
+  - De kosten van de gebruikte services afstemmen, gebruiksrapporten downloaden en prijslijsten bekijken.
+  - API-sleutels voor uw inschrijving maken.
+
+- Met **afdelingen** kunt u de kosten segmenteren in logische groepen. U kunt een budget of quotum instellen op afdelingsniveau.
+
+- **Accounts** zijn organisatie-eenheden in de Azure Enterprise-portal. U kunt accounts gebruiken om abonnementen te beheren en rapporten te bekijken.
+
+- **Abonnementen** vormen de kleinste eenheid in de Azure Enterprise-portal. Abonnementen zijn containers voor Azure-services die worden beheerd door de servicebeheerder.
+
+In het volgende diagram ziet u eenvoudige Azure EA-hiërarchieën.
+
+![Diagram van een eenvoudige Azure EA-hiërarchie](./media/understand-ea-roles/ea-hierarchies.png)
+
+## <a name="enterprise-user-roles"></a>Enterprise-gebruikersrollen
+
+De volgende typen beheerdersgebruikers maken deel uit van uw Enterprise-inschrijving:
+
+- Ondernemingsbeheerder
+- Afdelingsbeheerder
+- Accounteigenaar
+- Servicebeheerder
+- Contactpersoon voor meldingen
+
+Rollen zijn in twee verschillende portals actief om taken te voltooien. U gebruikt de [Azure Enterprise-portal](https://ea.azure.com) om facturering en kosten te beheren. In de [Azure-portal](https://portal.azure.com) beheert u Azure-services.
+
+Gebruikersrollen zijn gekoppeld aan een gebruikersaccount. Voor het valideren van de authenticiteit van de gebruiker moet elke gebruiker een geldig werk-, school- of Microsoft-account hebben. Zorg ervoor dat elk account is gekoppeld aan een e-mailadres dat actief wordt gecontroleerd. Accountmeldingen worden verzonden naar het e-mailadres.
+
+Als u gebruikers gaat instellen, kunt u meerdere accounts toewijzen aan de rol van ondernemingsbeheerder. De rol van accounteigenaar kan slechts aan één account worden toegewezen. Het is ook mogelijk om de rol van ondernemingsbeheerder en accounteigenaar aan hetzelfde account toe te wijzen.
+
+### <a name="enterprise-administrator"></a>Ondernemingsbeheerder
+
+Gebruikers met deze rol hebben het hoogste toegangsniveau. Ze kunnen:
+
+- Accounts en accounteigenaren beheren.
+- Andere ondernemingsbeheerders beheren.
+- Afdelingsbeheerders beheren.
+- Contactpersonen voor meldingen beheren.
+- Gebruik voor alle accounts weergeven.
+- Niet-gefactureerde kosten voor alle accounts weergeven.
+
+U kunt meerdere ondernemingsbeheerders hebben voor elke Enterprise-inschrijving. U kunt alleen-lezentoegang verlenen aan ondernemingsbeheerders. Ze nemen allemaal de rol van afdelingsbeheerder over.
+
+### <a name="department-administrator"></a>Afdelingsbeheerder
+
+Gebruikers met de rol kunnen:
+
+- Afdelingen maken en beheren.
+- Nieuwe accounteigenaren maken.
+- Gebruiksgegevens bekijken voor de afdelingen die ze beheren.
+- Kosten bekijken, indien ze over de benodigde machtigingen beschikken.
+
+U kunt meerdere afdelingsbeheerders hebben voor elke Enterprise-inschrijving.
+
+U kunt afdelingsbeheerders alleen-lezen toegang geven wanneer u een afdelingsbeheerder maakt of bewerkt. Stel de optie voor alleen-lezen in op **Ja**.
+
+### <a name="account-owner"></a>Accounteigenaar
+
+Gebruikers met de rol kunnen:
+
+- Abonnementen maken en beheren.
+- Servicebeheerders beheren.
+- Gebruik weergeven voor abonnementen.
+
+Voor elk account is een uniek werk-, school-of Microsoft-account vereist. Zie [Inzicht in Azure Enterprise Agreement-beheerdersrollen in Azure](understand-ea-roles.md) voor meer informatie over beheerdersrollen voor de Azure Enterprise-portal.
+
+### <a name="service-administrator"></a>Servicebeheerder
+
+De rol Servicebeheerder heeft machtigingen om services te beheren in de Azure-portal en gebruikers toe te wijzen aan de rol Co-beheerder.
+
+### <a name="notification-contact"></a>Contactpersoon voor meldingen
+
+De contactpersoon voor meldingen ontvangt gebruiksmeldingen met betrekking tot de inschrijving.
 
 In de volgende secties worden de beperkingen en mogelijkheden van elke rol beschreven.
 
@@ -69,7 +150,7 @@ In de volgende secties worden de beperkingen en mogelijkheden van elke rol besch
 
 ## <a name="add-a-new-enterprise-administrator"></a>Een nieuwe ondernemingsbeheerder toevoegen
 
-Ondernemingsbeheerders beschikken over de meeste bevoegdheden voor het beheren van een Azure EA-inschrijving. De eerste Azure EA-beheerder is gemaakt toen de EA-overeenkomst is gesloten. U kunt echter op elk moment nieuwe beheerders toevoegen of verwijderen. Nieuwe beheerders kunnen alleen worden toegevoegd door bestaande beheerders. Zie [Een andere ondernemingsbeheerder maken](ea-portal-get-started.md#create-another-enterprise-administrator) voor meer informatie over het toevoegen van ondernemingsbeheerders. Zie [Rollen en taken voor factureringsprofiel ](understand-mca-roles.md#billing-profile-roles-and-tasks) voor meer informatie over de rollen en taken voor het factureringsprofiel.
+Ondernemingsbeheerders beschikken over de meeste bevoegdheden voor het beheren van een Azure EA-inschrijving. De eerste Azure EA-beheerder is gemaakt toen de EA-overeenkomst is gesloten. U kunt echter op elk moment nieuwe beheerders toevoegen of verwijderen. Nieuwe beheerders kunnen alleen worden toegevoegd door bestaande beheerders. Zie [Een andere ondernemingsbeheerder maken](ea-portal-administration.md#create-another-enterprise-administrator) voor meer informatie over het toevoegen van ondernemingsbeheerders. Zie [Rollen en taken voor factureringsprofiel ](understand-mca-roles.md#billing-profile-roles-and-tasks) voor meer informatie over de rollen en taken voor het factureringsprofiel.
 
 ## <a name="update-account-owner-state-from-pending-to-active"></a>De status van een accounteigenaar bijwerken van in behandeling naar actief
 
@@ -79,7 +160,7 @@ Wanneer nieuwe accounteigenaren (AO) voor de eerste keer worden toegevoegd aan e
 
 Nadat een Azure EA-beheerder een afdeling heeft gemaakt, kan de Azure Enterprise-beheerder afdelingsbeheerders toevoegen en deze koppelen aan een afdeling. Een afdelingsbeheerder kan nieuwe accounts maken. Nieuwe accounts zijn nodig om nieuwe Azure EA-abonnementen te maken.
 
-Raadpleeg [Een Azure EA-afdelingsbeheerder](ea-portal-get-started.md#add-a-department-administrator) maken voor meer informatie over het toevoegen van een afdelingsbeheerder.
+Raadpleeg [Een Azure EA-afdelingsbeheerder](ea-portal-administration.md#add-a-department-administrator) maken voor meer informatie over het toevoegen van een afdelingsbeheerder.
 
 ## <a name="usage-and-costs-access-by-role"></a>Toegang tot gebruik en kosten per rol
 
@@ -114,12 +195,12 @@ In de volgende tabel ziet u de relatie tussen de Enterprise Agreement-beheerders
 |Accounteigenaar of afdelingsbeheerder|✘ Uitgeschakeld |geen|Geen prijzen|
 |Geen|Niet van toepassing |Eigenaar|Retailprijzen|
 
-U stelt de zakelijke beheerdersrol en beleidsregels voor weergavekosten in via de zakelijke portal. De Azure-rol kan worden bijgewerkt in de Azure-portal. Zie [Azure-roltoewijzingen toevoegen of verwijderen met behulp van de Azure-portal](../../role-based-access-control/role-assignments-portal.md) voor meer informatie.
+U stelt de zakelijke beheerdersrol en beleidsregels voor weergavekosten in via de zakelijke portal. De Azure-rol kan worden bijgewerkt in de Azure-portal. Zie [Toegang beheren met op rollen gebaseerd toegangsbeheer en Azure Portal](../../role-based-access-control/role-assignments-portal.md) voor meer informatie.
 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Toegang tot factureringsgegevens beheren voor Azure](manage-billing-access.md)
-- [Azure-roltoewijzingen toevoegen of verwijderen met behulp van de Azure-portal](../../role-based-access-control/role-assignments-portal.md)
+- [Toegang beheren met op rollen gebaseerd toegangsbeheer en Azure Portal](../../role-based-access-control/role-assignments-portal.md)
 - [Ingebouwde Azure-rollen](../../role-based-access-control/built-in-roles.md)
