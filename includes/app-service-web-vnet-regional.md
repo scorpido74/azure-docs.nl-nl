@@ -2,14 +2,14 @@
 author: ccompy
 ms.service: app-service-web
 ms.topic: include
-ms.date: 06/08/2020
+ms.date: 10/21/2020
 ms.author: ccompy
-ms.openlocfilehash: 14b9d9fe0eb9dfe2f25373c2d87d9b4af15dd0d9
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 1a9f468b8e2f9fff20b9b26b8890d485e426b691
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94371769"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94523722"
 ---
 Door gebruik te maken van regionale VNet-integratie kan uw app toegang tot:
 
@@ -42,10 +42,10 @@ Standaard stuurt uw app alleen RFC1918-verkeer naar uw VNet. Als u al het uitgaa
 Er zijn enkele beperkingen bij het gebruik van VNet-integratie met VNets in dezelfde regio:
 
 * U kunt geen resources bereiken via globale peering-verbindingen.
-* De functie is alleen beschikbaar vanuit nieuwere Azure App Service schaal eenheden die ondersteuning bieden voor PremiumV2 App Service-plannen. Houd er rekening mee dat *uw app niet moet worden uitgevoerd op een PremiumV2 prijs categorie* , alleen dat deze moet worden uitgevoerd op een app service plan waarbij de optie PremiumV2 beschikbaar is (wat impliceert dat het een nieuwere schaal eenheid is waar deze VNet-integratie functie vervolgens ook beschikbaar is).
+* De functie is beschikbaar vanaf alle App Service schaal eenheden in Premium v2 en Premium v3. Het is ook beschikbaar in standaard, maar alleen vanaf nieuwere App Service schaal eenheden. Als u zich op een oudere schaal eenheid bevindt, kunt u de functie alleen gebruiken vanuit een Premium v2 App Service-abonnement. Als u het gebruik van de functie in een Standard App Service-abonnement wilt kunnen gebruiken, maakt u uw app in een Premium v3-App Service plan. Deze abonnementen worden alleen ondersteund op onze nieuwste schaal eenheden. U kunt omlaag schalen als u dat wilt.  
 * Het integratie subnet kan slechts door één App Service schema worden gebruikt.
 * De functie kan niet worden gebruikt door toepassingen van het geïsoleerde abonnement in een App Service Environment.
-* Voor de functie is een ongebruikt subnet met een/27 met 32-adressen of groter vereist in een Azure Resource Manager VNet.
+* De functie vereist een ongebruikt subnet dat een/28 of groter is in een Azure Resource Manager VNet.
 * De app en het VNet moeten zich in dezelfde regio bevinden.
 * U kunt een VNet met een geïntegreerde app niet verwijderen. Verwijder de integratie voordat u het VNet verwijdert.
 * U kunt alleen integreren met VNets in hetzelfde abonnement als de app.
@@ -53,7 +53,21 @@ Er zijn enkele beperkingen bij het gebruik van VNet-integratie met VNets in deze
 * U kunt het abonnement van een app of een abonnement niet wijzigen terwijl er een app is die gebruikmaakt van regionale VNet-integratie.
 * Uw app kan geen adressen omzetten in Azure DNS Private Zones zonder configuratie wijzigingen
 
-Er wordt één adres gebruikt voor elk exemplaar van het abonnement. Als u uw app schaalt naar vijf instanties, worden er vijf adressen gebruikt. Aangezien de grootte van het subnet niet kan worden gewijzigd na toewijzing, moet u een subnet gebruiken dat groot genoeg is om te kunnen voldoen aan de schaal van uw app. Een/26 met 64-adressen is de aanbevolen grootte. Een/26 met 64-adressen is geschikt voor een Premium-abonnement met 30 exemplaren. Wanneer u een plan omhoog of omlaag schaalt, hebt u twee keer zoveel adressen nodig voor een korte periode.
+VNet-integratie is afhankelijk van het gebruik van een toegewezen subnet.  Wanneer u een subnet inricht, verliest het Azure-subnet 5 Ip's voor van het begin. Er wordt één adres gebruikt vanuit het integratie-subnet voor elk exemplaar van het abonnement. Als u uw app schaalt naar vier instanties, worden er vier adressen gebruikt. De debet van 5 adressen uit de grootte van het subnet betekent dat de Maxi maal beschik bare adressen per CIDR-blok:
+
+- /28 heeft 11 adressen
+- /27 heeft 27 adres
+- /26 heeft 59 adressen
+
+Als u omhoog of omlaag schaalt, hebt u een dubbele tijd nodig voor een korte periode. De maximale grootte betekent dat de daad werkelijke beschik bare ondersteunde instanties per subnet grootte als uw subnet een:
+
+- /28, uw maximale horizontale schaal is 5 exemplaren
+- /27, uw maximale horizontale schaal is 13 instanties
+- /26, uw maximale horizontale schaal is 29 instanties
+
+De limieten die worden aangegeven bij de maximale horizontale schaal, wordt ervan uitgegaan dat u op een bepaald moment omhoog of omlaag moet schalen. 
+
+Aangezien de grootte van het subnet niet kan worden gewijzigd na toewijzing, gebruikt u een subnet dat groot genoeg is voor de schaal van uw app. Om problemen met de capaciteit van het subnet te voor komen, is een/26 met 64-adressen de aanbevolen grootte.  
 
 Als u wilt dat uw apps in een ander abonnement een VNet bereiken dat al is verbonden met apps in een ander abonnement, selecteert u een ander subnet dan het subnetwerk dat wordt gebruikt door de bestaande VNet-integratie.
 
@@ -82,21 +96,15 @@ Border Gateway Protocol (BGP)-routes hebben ook invloed op uw app-verkeer. Als u
 
 ### <a name="azure-dns-private-zones"></a>Azure DNS Private Zones 
 
-Nadat uw app met uw VNet is geïntegreerd, maakt deze gebruik van dezelfde DNS-server die is geconfigureerd voor uw VNet. Uw app werkt standaard niet met Azure DNS Private Zones. Als u met Azure DNS Private Zones wilt werken, moet u de volgende app-instellingen toevoegen:
-
-1. WEBSITE_DNS_SERVER met waarde 168.63.129.16
-1. WEBSITE_VNET_ROUTE_ALL met waarde 1
-
-Met deze instellingen worden alle uitgaande oproepen vanuit uw app naar uw VNet verzonden. Daarnaast wordt de app in staat stellen om Azure DNS te gebruiken door de Privé-DNS zone op werk niveau te doorzoeken. Deze functionaliteit moet worden gebruikt wanneer een actieve app toegang tot een Privé-DNS zone heeft.
-
-> [!NOTE]
->Het is niet mogelijk om een aangepast domein toe te voegen aan een web-app met behulp van Privé-DNS zone, maar niet met de VNET-integratie. De aangepaste domein validatie wordt uitgevoerd op het niveau van de controller, niet op het niveau van de werk nemer, waardoor de DNS-records niet zichtbaar zijn. Als u een aangepast domein van een Privé-DNS zone wilt gebruiken, moet de validatie worden omzeild met een Application Gateway of ILB App Service Environment.
-
-
+Nadat uw app met uw VNet is geïntegreerd, maakt deze gebruik van dezelfde DNS-server die is geconfigureerd voor uw VNet. U kunt dit gedrag voor uw app negeren door de app-instelling WEBSITE_DNS_SERVER te configureren met het adres van de gewenste DNS-server. Als u een aangepaste DNS-server hebt geconfigureerd met uw VNet, maar u wilt dat uw app gebruikmaakt van Azure DNS particuliere zones, moet u WEBSITE_DNS_SERVER instellen met de waarde 168.63.129.16. 
 
 ### <a name="private-endpoints"></a>Privé-eindpunten
 
-Als u aanroepen naar [persoonlijke eind punten][privateendpoints]wilt maken, moet u de integratie met Azure DNS private zones of het persoonlijke eind punt beheren in de DNS-server die door uw app wordt gebruikt. 
+Als u aanroepen naar [persoonlijke eind punten][privateendpoints]wilt maken, moet u ervoor zorgen dat uw DNS-Zoek opdrachten worden omgezet naar het persoonlijke eind punt. Om ervoor te zorgen dat de DNS-zoek acties van uw app naar uw persoonlijke eind punten verwijzen, kunt u het volgende doen:
+
+* Integreer met Azure DNS Private Zones. Als uw VNet geen aangepaste DNS-server heeft, wordt dit automatisch
+* beheer het persoonlijke eind punt in de DNS-server die door uw app wordt gebruikt. Als u dit wilt doen, moet u het adres van het persoonlijke eind punt weten en vervolgens het eind punt aanwijzen dat u wilt bereiken met een record.
+* uw eigen DNS-server configureren om door te sturen naar Azure DNS particuliere zones
 
 <!--Image references-->
 [4]: ../includes/media/web-sites-integrate-with-vnet/vnetint-appsetting.png
