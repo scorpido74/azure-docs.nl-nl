@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: eb17b8286ce994146c1fa9867cd8131a909c8ace
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: d04f689dec3a3c182c0da23007247c20c4f8063d
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146685"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94504387"
 ---
 # <a name="always-on-availability-group-on-sql-server-on-azure-vms"></a>AlwaysOn-beschikbaarheidsgroep op SQL Server op Azure-VM's
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -72,13 +72,13 @@ Raadpleeg [een DNN-listener configureren](availability-group-distributed-network
 
 Er zijn meerdere opties voor het implementeren van een beschikbaarheidsgroep voor SQL Server op virtuele Azure-machines, waarbij sommige opties geautomatiseerder zijn dan andere. 
 
-De volgende tabel bevat een vergelijking van de beschikbare opties: 
+De volgende tabel bevat een vergelijking van de beschikbare opties:
 
-| |**[Azure Portal](availability-group-azure-portal-configure.md)**|**[Azure CLI / PowerShell](./availability-group-az-commandline-configure.md)**|**[Quickstartsjablonen](availability-group-quickstart-template-configure.md)**|**[Handmatig](availability-group-manually-configure-prerequisites-tutorial.md)** | 
-|---------|---------|---------|--------- |---------|
+| | Azure Portal | Azure CLI / PowerShell | Quickstartsjablonen | Handmatig |
+|---------|---------|---------|---------|---------|
 |**SQL Server-versie** |2016 + |2016 +|2016 +|2012 +|
 |**SQL Server-editie** |Enterprise |Enterprise |Enterprise |Enterprise, Standard|
-|**Windows Server-versie**| 2016 + | 2016 + | 2016 + | Alles| 
+|**Windows Server-versie**| 2016 + | 2016 + | 2016 + | Alles|
 |**Het cluster wordt voor u gemaakt**|Ja|Ja | Ja |Nee|
 |**De beschikbaarheidsgroep wordt voor u gemaakt** |Ja |Nee|Nee|Nee|
 |**De listener en load balancer worden onafhankelijk van elkaar gemaakt** |Nee|Nee|Nee|Ja|
@@ -90,9 +90,8 @@ De volgende tabel bevat een vergelijking van de beschikbare opties:
 |**Herstel na noodgeval met multizone in dezelfde regio**|Ja|Ja|Ja|Ja|
 |**Gedistribueerde beschikbaarheidsgroep zonder AD**|Nee|Nee|Nee|Ja|
 |**Gedistribueerde beschikbaarheidsgroep zonder cluster** |Nee|Nee|Nee|Ja|
-||||||
 
-
+Raadpleeg [Azure Portal](availability-group-azure-portal-configure.md), [Azure CLI/PowerShell](./availability-group-az-commandline-configure.md), [Quickstart-sjablonen](availability-group-quickstart-template-configure.md) en [Handleiding](availability-group-manually-configure-prerequisites-tutorial.md) voor meer informatie.
 
 ## <a name="considerations"></a>Overwegingen 
 
