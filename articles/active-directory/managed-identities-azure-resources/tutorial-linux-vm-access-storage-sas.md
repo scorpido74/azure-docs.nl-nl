@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/20/2017
+ms.date: 11/03/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b0bb70b82e8c34c50743bf56069488e2d4c4e39
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3edc63a1532bb6889fc490e400dbb57e7bce10d0
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90968776"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360408"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-identity-to-access-azure-storage-via-a-sas-credential"></a>Zelfstudie: Toegang krijgen tot Azure Storage via SAS-referenties met een door het systeem toegewezen identiteit voor een virtuele Linux-machine (VM)
 
@@ -68,7 +68,7 @@ Later zullen we een bestand uploaden en downloaden naar het nieuwe opslagaccount
 
     ![Opslagcontainer maken](./media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
 
-## <a name="grant-your-vms-system-assigned-managed-identity-access-to-use-a-storage-sas"></a>De door het systeem toegewezen beheerde identiteit voor uw VM toegang verlenen tot het gebruik van een SAS-opslag 
+## <a name="grant-your-vms-system-assigned-managed-identity-access-to-use-a-storage-sas"></a>De door het systeem toegewezen beheerde identiteit voor uw VM toegang verlenen tot het gebruik van een SAS-opslag
 
 Azure Storage biedt geen systeemeigen ondersteuning voor Azure AD-verificatie.  U kunt echter een door het systeem toegewezen beheerde identiteit voor uw VM gebruiken om een opslag-SAS op te halen uit Resource Manager, en vervolgens de SAS gebruiken om toegang tot de opslag te krijgen.  In deze stap verleent u de door het systeem toegewezen beheerde identiteit voor uw VM toegang tot de SAS voor uw opslagaccount.   
 
@@ -77,7 +77,7 @@ Azure Storage biedt geen systeemeigen ondersteuning voor Azure AD-verificatie.  
 3. Klik op **+ Roltoewijzing toevoegen** boven aan de pagina om een nieuwe roltoewijzing voor de VM toe te voegen
 4. Stel **Rol** in op 'Inzender voor opslagaccounts', aan de rechterkant van de pagina. 
 5. Stel in de volgende vervolgkeuzelijst **Toegang toewijzen aan** de resource in op Virtuele machine.  
-6. Controleer vervolgens of het juiste abonnement wordt weergegeven in de vervolgkeuzelijst **Abonnement**, en stel **Resourcegroep** in op Alle resourcegroepen.  
+6. Controleer vervolgens of het juiste abonnement wordt weergegeven in de vervolgkeuzelijst **Abonnement** , en stel **Resourcegroep** in op Alle resourcegroepen.  
 7. Kies ten slotte onder **Selecteren** uw virtuele Linux-machine in de vervolgkeuzelijst en klik op **Opslaan**.  
 
     ![Alt-tekst voor afbeelding](./media/msi-tutorial-linux-vm-access-storage/msi-storage-role-sas.png)
@@ -88,7 +88,7 @@ Voor de rest van de zelfstudie werken we op de virtuele machine die we eerder he
 
 U hebt een SSH-client nodig om deze stappen uit te voeren. Als u Windows gebruikt, kunt u de SSH-client in het [Windows-subsysteem voor Linux](/windows/wsl/install-win10) gebruiken. Zie [De sleutels van uw SSH-client gebruiken onder Windows in Azure](../../virtual-machines/linux/ssh-from-windows.md) of [Een sleutelpaar met een openbare SSH-sleutel en een privé-sleutel maken en gebruiken voor virtuele Linux-machines in Azure](../../virtual-machines/linux/mac-create-ssh-keys.md) als u hulp nodig hebt bij het configureren van de sleutels van uw SSH-client.
 
-1. In Azure Portal navigeert u naar **Virtuele machines**, gaat u naar uw virtuele Linux-machine, klikt u vervolgens boven aan de pagina **Overzicht** op **Verbinden**. Kopieer de verbindingsreeks voor uw virtuele machine. 
+1. In Azure Portal navigeert u naar **Virtuele machines** , gaat u naar uw virtuele Linux-machine, klikt u vervolgens boven aan de pagina **Overzicht** op **Verbinden**. Kopieer de verbindingsreeks voor uw virtuele machine. 
 2. Maak verbinding met uw virtuele machine via de SSH-client.  
 3. Vervolgens wordt u gevraagd om het **wachtwoord** in te voeren dat u hebt toegevoegd bij het maken van de **Linux-VM**. Als het goed is, bent u daarna aangemeld.  
 4. Gebruik CURL om een toegangstoken voor Azure Resource Manager op te halen.  

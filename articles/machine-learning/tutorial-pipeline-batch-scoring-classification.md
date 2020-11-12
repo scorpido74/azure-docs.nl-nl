@@ -11,12 +11,12 @@ ms.author: laobri
 ms.reviewer: laobri
 ms.date: 10/13/2020
 ms.custom: contperfq4, devx-track-python
-ms.openlocfilehash: 3f131e1f8d5604e566c8d7b41fa9d45cb7d2a7a2
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: f7d1cffb44914535fe218980c750270ebba14445
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92054879"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309456"
 ---
 # <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>Zelfstudie: Een Azure Machine Learning-pijplijn bouwen voor batchgewijs scoren
 
@@ -63,7 +63,7 @@ ws = Workspace.from_config()
 
 Haal op het `pipelinedata`-account het voorbeeld van de openbare gegevens van de ImageNet-evaluatie op uit de openbare blob-container van `sampledata`. Roep `register_azure_blob_container()` aan om de gegevens beschikbaar te maken voor de werkruimte onder de naam `images_datastore`. Stel vervolgens het standaard gegevensarchief voor de werkruimte in als het gegevensarchief voor uitvoer. Gebruik het gegevensarchief voor uitvoer om uitvoer in de pijplijn te scoren.
 
-Zie [Toegang krijgen tot gegevens](https://docs.microsoft.com/azure/machine-learning/how-to-access-data#python-sdk) voor meer informatie over toegang tot gegevens.
+Zie [Toegang krijgen tot gegevens](./how-to-access-data.md) voor meer informatie over toegang tot gegevens.
 
 ```python
 from azureml.core.datastore import Datastore
@@ -142,7 +142,7 @@ model = Model.register(model_path="models/inception_v3.ckpt",
 
 Machine learning-pijplijnen kunnen niet lokaal worden uitgevoerd, dus u kunt ze uitvoeren op cloudresources of *externe rekendoelen*. Een extern rekendoel is een herbruikbare virtuele rekenomgeving waarin u experimenten en machine learning-werkstromen kunt uitvoeren. 
 
-Voer de volgende code uit om een [`AmlCompute`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py&preserve-view=true)-doel met GPU te maken en deze vervolgens aan uw werkruimte te koppelen. Zie het [conceptuele artikel](https://docs.microsoft.com/azure/machine-learning/concept-compute-target) voor meer informatie over rekendoelen.
+Voer de volgende code uit om een [`AmlCompute`](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?preserve-view=true&view=azure-ml-py)-doel met GPU te maken en deze vervolgens aan uw werkruimte te koppelen. Zie het [conceptuele artikel](./concept-compute-target.md) voor meer informatie over rekendoelen.
 
 
 ```python
@@ -305,7 +305,7 @@ Een pijplijnstap is een object dat alles inkapselt dat u nodig hebt om een pijpl
 * Invoer- en uitvoergegevens en eventuele aangepaste parameters
 * Verwijzing naar een script of SDK-logica om uit te voeren tijdens de stap
 
-Meerdere klassen worden overgenomen van de bovenliggende klasse [`PipelineStep`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?view=azure-ml-py&preserve-view=true). U kunt klassen kiezen om specifieke frameworks of stacks te gebruiken om een stap te maken. In dit voorbeeld gebruikt u de klasse `ParallelRunStep` om uw staplogica te definiëren met behulp van een aangepast Python-script. Als een argument voor uw script een invoer of een uitvoer is van de stap, moet het argument worden gedefinieerd in *zowel* de `arguments`-matrix *als* in de `input`- of `output`-parameter. 
+Meerdere klassen worden overgenomen van de bovenliggende klasse [`PipelineStep`](/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?preserve-view=true&view=azure-ml-py). U kunt klassen kiezen om specifieke frameworks of stacks te gebruiken om een stap te maken. In dit voorbeeld gebruikt u de klasse `ParallelRunStep` om uw staplogica te definiëren met behulp van een aangepast Python-script. Als een argument voor uw script een invoer of een uitvoer is van de stap, moet het argument worden gedefinieerd in *zowel* de `arguments`-matrix *als* in de `input`- of `output`-parameter. 
 
 In scenario's waarin er meer dan één stap is, wordt een objectverwijzing in de matrix `outputs` beschikbaar als *invoer* voor een volgende pijplijnstap.
 
@@ -329,7 +329,7 @@ batch_score_step = ParallelRunStep(
 )
 ```
 
-Voor een lijst met alle klassen die u voor verschillende typen stappen kunt gebruiken, raadpleegt u het [stappenpakket](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps?view=azure-ml-py&preserve-view=true).
+Voor een lijst met alle klassen die u voor verschillende typen stappen kunt gebruiken, raadpleegt u het [stappenpakket](/python/api/azureml-pipeline-steps/azureml.pipeline.steps?preserve-view=true&view=azure-ml-py).
 
 ## <a name="submit-the-pipeline"></a>De pijplijn indienen
 
@@ -386,9 +386,9 @@ published_pipeline
 
 Als u de pijplijn vanuit het REST-eindpunt wilt uitvoeren, hebt u een OAuth2-verificatieheader nodig. In het volgende voorbeeld wordt gebruikgemaakt van interactieve verificatie (ter illustratie), maar voor de meeste productiescenario's waarvoor geautomatiseerde of headless verificatie is vereist, gebruikt u verificatie met de service-principal, zoals [beschreven in dit artikel](how-to-setup-authentication.md).
 
-Voor verificatie met de service-principal moet u een *app-registratie* maken in *Azure Active Directory*. Eerst genereert u een clientgeheim en vervolgens verleent u uw service-principal *roltoegang* tot uw machine learning-werkruimte. Gebruik de [`ServicePrincipalAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py&preserve-view=true)-klasse om uw verificatiestroom te beheren. 
+Voor verificatie met de service-principal moet u een *app-registratie* maken in *Azure Active Directory*. Eerst genereert u een clientgeheim en vervolgens verleent u uw service-principal *roltoegang* tot uw machine learning-werkruimte. Gebruik de [`ServicePrincipalAuthentication`](/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?preserve-view=true&view=azure-ml-py)-klasse om uw verificatiestroom te beheren. 
 
-Zowel [`InteractiveLoginAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.interactiveloginauthentication?view=azure-ml-py&preserve-view=true) als `ServicePrincipalAuthentication` worden overgenomen van `AbstractAuthentication`. In beide gevallen gebruikt u de functie [`get_authentication_header()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.abstractauthentication?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-authentication-header--) op dezelfde manier om de header op te halen:
+Zowel [`InteractiveLoginAuthentication`](/python/api/azureml-core/azureml.core.authentication.interactiveloginauthentication?preserve-view=true&view=azure-ml-py) als `ServicePrincipalAuthentication` worden overgenomen van `AbstractAuthentication`. In beide gevallen gebruikt u de functie [`get_authentication_header()`](/python/api/azureml-core/azureml.core.authentication.abstractauthentication?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-authentication-header--) op dezelfde manier om de header op te halen:
 
 ```python
 from azureml.core.authentication import InteractiveLoginAuthentication

@@ -1,6 +1,6 @@
 ---
-title: bestand opnemen
-description: bestand opnemen
+title: Include-bestand
+description: Include-bestand
 services: notification-hubs
 author: spelluru
 ms.service: notification-hubs
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/06/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: a7d0a899b4a2ef86153e82a4e3f04e7ec430a1bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b32ff0926aa2b797bdb8dfcbb01cf845080a0ce9
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67176627"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376238"
 ---
 1. Navigeer naar [Google Cloud Console](https://console.developers.google.com/cloud-resource-manager) en meld u aan met de referenties voor uw Google-account. 
 2. Selecteer **Project maken** op de werkbalk. 
@@ -43,7 +43,7 @@ ms.locfileid: "67176627"
     ![Knop Referenties maken](./media/mobile-services-enable-google-cloud-messaging/create-credentials-button.png)
 11. Selecteer de link **API-sleutel maken** op de pagina **Referenties aan uw project toevoegen**. 
 
-    ![Knop Referenties maken](./media/mobile-services-enable-google-cloud-messaging/api-key-button.png)    
+    ![Referenties toevoegen](./media/mobile-services-enable-google-cloud-messaging/api-key-button.png)    
 12. Selecteer **Maken/Opslaan** op de pagina **API-sleutel**. In het volgende voorbeeld is de optie **IP-adressen** geselecteerd, en is **0.0.0.0/0** ingevoerd voor de toegestane IP-adressen. U moet de API-sleutel dan op de juiste manier beperken. 
 
     ![Knop API-sleutel maken](./media/mobile-services-enable-google-cloud-messaging/api-key-create-button.png)

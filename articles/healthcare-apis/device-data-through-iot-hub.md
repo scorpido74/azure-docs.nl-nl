@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: tutorial
 ms.date: 08/03/2020
 ms.author: punagpal
-ms.openlocfilehash: 3b2e4a1ae5ff43283893b286dafb38491a1181b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee286540d4fd740c5e7c1f8bd693fddd625eeae2
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91308221"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93398144"
 ---
 # <a name="tutorial-receive-device-data-through-azure-iot-hub"></a>Zelfstudie: Apparaatgegevens ontvangen via Azure IoT Hub
 
@@ -23,7 +23,7 @@ Azure IoT Connector for FHIR* biedt u de mogelijkheid om gegevens van Internet o
 
 - Een actief Azure-abonnement - [Een gratis abonnement maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 - Azure API for FHIR-resource met ten minste één Azure IoT Connector for FHIR - [Azure IoT Connector for FHIR (preview) implementeren met de Azure-portal](iot-fhir-portal-quickstart.md)
-- Azure IoT Hub-resource verbonden met een of meer gesimuleerde apparaat/apparaten - [Een IoT-hub maken met behulp van de Azure-portal](https://docs.microsoft.com/azure/iot-hub/quickstart-send-telemetry-dotnet)
+- Azure IoT Hub-resource verbonden met een of meer gesimuleerde apparaat/apparaten - [Een IoT-hub maken met behulp van de Azure-portal](../iot-hub/quickstart-send-telemetry-dotnet.md)
 
 > [!TIP]
 > Als u een met Azure IoT Hub gesimuleerde apparaat-app gebruikt, kunt u de gewenste toepassing kiezen in verschillende ondersteunde talen en systemen.
@@ -36,15 +36,15 @@ Azure IoT Connector for FHIR gebruikt een Azure Event Hub-exemplaar voor het ont
 
 ## <a name="connect-azure-iot-hub-with-the-azure-iot-connector-for-fhir-preview"></a>Azure IoT Hub verbinden met Azure IoT Connector for FHIR (preview)
 
-Azure IoT Hub ondersteunt een functie met de naam [berichtroutering](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c) die de mogelijkheid biedt om gegevens van apparaten te verzenden naar verschillende Azure-Services zoals Event Hub, Opslagaccount en Service Bus. Azure IoT Connector for FHIR gebruikt deze functie om apparaatgegevens te verbinden en te verzenden vanuit Azure IoT Hub naar het Event Hub-eindpunt.
+Azure IoT Hub ondersteunt een functie met de naam [berichtroutering](../iot-hub/iot-hub-devguide-messages-d2c.md) die de mogelijkheid biedt om gegevens van apparaten te verzenden naar verschillende Azure-Services zoals Event Hub, Opslagaccount en Service Bus. Azure IoT Connector for FHIR gebruikt deze functie om apparaatgegevens te verbinden en te verzenden vanuit Azure IoT Hub naar het Event Hub-eindpunt.
 
 > [!NOTE] 
-> Momenteel kunt u PowerShell of CLI-opdrachten alleen gebruiken om [berichtroutering te maken](https://docs.microsoft.com/azure/iot-hub/tutorial-routing) omdat de Event Hub van Azure IoT Connector for FHIR niet wordt gehost op het klantabonnement. Daarom is het voor u niet zichtbaar via de Azure-portal. Hoewel de objecten voor berichtroute worden toegevoegd met PowerShell of CLI, zijn ze zichtbaar op de Azure-portal en kunnen ze vanuit deze locatie worden beheerd.
+> Momenteel kunt u PowerShell of CLI-opdrachten alleen gebruiken om [berichtroutering te maken](../iot-hub/tutorial-routing.md) omdat de Event Hub van Azure IoT Connector for FHIR niet wordt gehost op het klantabonnement. Daarom is het voor u niet zichtbaar via de Azure-portal. Hoewel de objecten voor berichtroute worden toegevoegd met PowerShell of CLI, zijn ze zichtbaar op de Azure-portal en kunnen ze vanuit deze locatie worden beheerd.
 
 Het instellen van een berichtroutering bestaat uit twee stappen.
 
 ### <a name="add-an-endpoint"></a>Een eindpunt toevoegen
-Deze stap definieert een eindpunt waar de IoT Hub de gegevens aan zou routeren. Maak dit eindpunt met behulp van PowerShell-opdracht [add-AzIotHubRoutingEndpoint](https://docs.microsoft.com/powershell/module/az.iothub/Add-AzIotHubRoutingEndpoint) of CLI-opdracht [az iot hub routing-endpoint create](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?#az-iot-hub-routing-endpoint-create), op basis van uw voorkeur.
+Deze stap definieert een eindpunt waar de IoT Hub de gegevens aan zou routeren. Maak dit eindpunt met behulp van PowerShell-opdracht [add-AzIotHubRoutingEndpoint](/powershell/module/az.iothub/Add-AzIotHubRoutingEndpoint) of CLI-opdracht [az iot hub routing-endpoint create](/cli/azure/iot/hub/routing-endpoint#az-iot-hub-routing-endpoint-create), op basis van uw voorkeur.
 
 Hier volgt de lijst met parameters die moeten worden gebruikt met de opdracht voor het maken van een eindpunt:
 
@@ -59,7 +59,7 @@ Hier volgt de lijst met parameters die moeten worden gebruikt met de opdracht vo
 |Connectionstring|connection-string|Verbindingsreeks voor uw Azure IoT Connector for FHIR. Gebruik de waarde die u in de vorige stap hebt verkregen.|
 
 ### <a name="add-a-message-route"></a>Een berichtenroute toevoegen
-In deze stap wordt een berichtroute gedefinieerd op basis van het eindpunt dat hierboven is gemaakt. Maak een route met behulp van PowerShell-opdracht [add-AzIotHubRoute](https://docs.microsoft.com/powershell/module/az.iothub/Add-AzIoTHubRoute) of CLI-opdracht [az iot hub route create](https://docs.microsoft.com/cli/azure/iot/hub/route#az-iot-hub-route-create), op basis van uw voorkeur.
+In deze stap wordt een berichtroute gedefinieerd op basis van het eindpunt dat hierboven is gemaakt. Maak een route met behulp van PowerShell-opdracht [add-AzIotHubRoute](/powershell/module/az.iothub/Add-AzIoTHubRoute) of CLI-opdracht [az iot hub route create](/cli/azure/iot/hub/route#az-iot-hub-route-create), op basis van uw voorkeur.
 
 Hier volgt de lijst met parameters die moeten worden gebruikt met de opdracht om een berichtroute toe te voegen:
 

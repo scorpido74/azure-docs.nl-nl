@@ -7,12 +7,12 @@ ms.topic: sample
 ms.date: 6/7/2019
 ms.author: victorh
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8bf19052c11301412a299c31a2cd73ed2f9ffc7d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 312f052671036d8153dd19fcf4e559e825fd8464
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89079894"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93396988"
 ---
 # <a name="create-web-application-firewall-waf-custom-rules-with-azure-powershell"></a>Aangepaste WAF-regels (Web Application Firewall) maken met Azure PowerShell
 
@@ -70,6 +70,6 @@ In dit script worden de volgende opdrachten gebruikt om de implementatie te make
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [Aangepaste regels voor Web Application Firewall](../custom-waf-rules-overview.md) voor meer informatie over aangepaste WAF-regels
+- Zie [Aangepaste regels voor Web Application Firewall](../../web-application-firewall/ag/custom-waf-rules-overview.md) voor meer informatie over aangepaste WAF-regels
 - Zie voor meer informatie over de Azure PowerShell-module de [documentatie van Azure PowerShell](/powershell/azure/).
 - Voorbeelden van extra PowerShell-voorbeeldscripts voor de toepassingsgateway zijn te vinden in de [documentatie over Azure Application Gateway](../powershell-samples.md).

@@ -1,14 +1,14 @@
 ---
 title: ISO 27001-blauwdrukvoorbeeld implementeren
 description: Implementeer stappen voor het zelfstandige ISO 27001-blauwdrukvoorbeeld, inclusief de parametergegevens voor blauwdrukartefacten.
-ms.date: 07/13/2020
+ms.date: 11/02/2020
 ms.topic: sample
-ms.openlocfilehash: 6580c4f8bc66238ad45fe3d969caa7a4b3b4ce82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75403710ecbfb0cc7046804b45c2da042531e98b
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87006803"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420277"
 ---
 # <a name="deploy-the-iso-27001-blueprint-sample"></a>Het ISO 27001-blauwdrukvoorbeeld implementeren
 
@@ -33,8 +33,8 @@ Implementeer eerst het blauwdrukvoorbeeld door een nieuwe blauwdruk in uw omgevi
 
 1. Voer de _Basisinstellingen_ van het blauwdrukvoorbeeld in:
 
-   - **Naam van blauwdruk**: Geef een naam op voor uw kopie van het ISO 27001-blauwdrukvoorbeeld.
-   - **Definitielocatie**: Gebruik het weglatingsteken en selecteer de beheergroep waarin u uw kopie van het voorbeeld wilt opslaan.
+   - **Naam van blauwdruk** : Geef een naam op voor uw kopie van het ISO 27001-blauwdrukvoorbeeld.
+   - **Definitielocatie** : Gebruik het weglatingsteken en selecteer de beheergroep waarin u uw kopie van het voorbeeld wilt opslaan.
 
 1. Selecteer het tabblad _Artefacten_ boven aan de pagina of kies **Volgende: Artefacten** onder aan de pagina.
 
@@ -42,7 +42,7 @@ Implementeer eerst het blauwdrukvoorbeeld door een nieuwe blauwdruk in uw omgevi
 
 ## <a name="publish-the-sample-copy"></a>De voorbeeldkopie publiceren
 
-Uw kopie van het blauwdrukvoorbeeld is nu gemaakt in uw omgeving. De kopie is gemaakt in de **Concept**-modus en moet worden **Gepubliceerd** voordat deze kan worden toegewezen en geïmplementeerd. De kopie van het blauwdrukvoorbeeld kan worden aangepast aan uw omgeving en behoeften, maar door die aanpassing is het mogelijk dat de kopie niet meer is voldoet aan de ISO 27001-standaard.
+Uw kopie van het blauwdrukvoorbeeld is nu gemaakt in uw omgeving. De kopie is gemaakt in de **Concept** -modus en moet worden **Gepubliceerd** voordat deze kan worden toegewezen en geïmplementeerd. De kopie van het blauwdrukvoorbeeld kan worden aangepast aan uw omgeving en behoeften, maar door die aanpassing is het mogelijk dat de kopie niet meer is voldoet aan de ISO 27001-standaard.
 
 1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **Blauwdrukken**.
 
@@ -52,7 +52,7 @@ Uw kopie van het blauwdrukvoorbeeld is nu gemaakt in uw omgeving. De kopie is ge
 
 ## <a name="assign-the-sample-copy"></a>De voorbeeldkopie toewijzen
 
-Zodra de kopie van het blauwdrukvoorbeeld is **Gepubliceerd**, kan het worden toegewezen aan een abonnement binnen de beheergroep waarin de kopie is opgeslagen. Dit is de stap waarin parameters worden opgegeven om elke implementatie van de kopie van het blauwdrukvoorbeeld uniek te maken.
+Zodra de kopie van het blauwdrukvoorbeeld is **Gepubliceerd** , kan het worden toegewezen aan een abonnement binnen de beheergroep waarin de kopie is opgeslagen. Dit is de stap waarin parameters worden opgegeven om elke implementatie van de kopie van het blauwdrukvoorbeeld uniek te maken.
 
 1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **Blauwdrukken**.
 
@@ -64,11 +64,11 @@ Zodra de kopie van het blauwdrukvoorbeeld is **Gepubliceerd**, kan het worden to
 
    - Basisbeginselen
 
-     - **Abonnementen**: Selecteer een of meer van de abonnementen in de beheergroep waarin u uw kopie van het blauwdrukvoorbeeld hebt opgeslagen. Als u meer dan één abonnement selecteert, wordt een toewijzing gemaakt voor elk abonnement waarvoor de ingevoerde parameters worden gebruikt.
-     - **Naam van toewijzing**: De naam wordt vooraf voor u ingevuld op basis van de naam van de blauwdruk.
+     - **Abonnementen** : Selecteer een of meer van de abonnementen in de beheergroep waarin u uw kopie van het blauwdrukvoorbeeld hebt opgeslagen. Als u meer dan één abonnement selecteert, wordt een toewijzing gemaakt voor elk abonnement waarvoor de ingevoerde parameters worden gebruikt.
+     - **Naam van toewijzing** : De naam wordt vooraf voor u ingevuld op basis van de naam van de blauwdruk.
        Wijzig de naam als dat nodig is of gebruik de opgegeven naam.
-     - **Locatie**: Selecteer een regio waarin u de beheerde identiteit wilt maken. Azure Blueprint gebruikt deze beheerde identiteit om alle artefacten in de toegewezen blauwdruk te implementeren. Zie [Beheerde identiteiten voor Azure-resources](../../../../active-directory/managed-identities-azure-resources/overview.md) voor meer informatie.
-     - **Blauwdrukdefinitieversie**: Kies een **gepubliceerde** versie van uw kopie van het blauwdrukvoorbeeld.
+     - **Locatie** : Selecteer een regio waarin u de beheerde identiteit wilt maken. Azure Blueprint gebruikt deze beheerde identiteit om alle artefacten in de toegewezen blauwdruk te implementeren. Zie [Beheerde identiteiten voor Azure-resources](../../../../active-directory/managed-identities-azure-resources/overview.md) voor meer informatie.
+     - **Blauwdrukdefinitieversie** : Kies een **gepubliceerde** versie van uw kopie van het blauwdrukvoorbeeld.
 
    - Toewijzing vergrendelen
 
@@ -82,7 +82,7 @@ Zodra de kopie van het blauwdrukvoorbeeld is **Gepubliceerd**, kan het worden to
 
      De parameters die in deze sectie worden gedefinieerd, worden door veel van de artefacten in de definitie van de blauwdruk gebruikt om consistentie te bieden.
 
-     - **Toegestane locatie voor resources en resourcegroepen**: Waarde die de toegestane locaties voor resourcegroepen en resources aangeeft.
+     - **Toegestane locatie voor resources en resourcegroepen** : Waarde die de toegestane locaties voor resourcegroepen en resources aangeeft.
 
    - Artefactparameters
 

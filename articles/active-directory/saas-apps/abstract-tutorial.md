@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 233af68e4109e53b6bd841f298e9c2728ca5b116
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: baae0f89165e292408150dd419c6de8dc41a320c
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92313485"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335533"
 ---
 # <a name="tutorial-integrate-abstract-with-azure-active-directory"></a>Zelfstudie: Abstract integreren met Azure Active Directory
 
@@ -70,7 +70,7 @@ Voltooi de volgende stappen om eenmalige aanmelding van Azure AD met Abstract te
 
 Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure Portal.
 
-1. Ga in de [Azure-portal](https://portal.azure.com/) op de integratiepagina van de toepassing **Abstract** naar de sectie **Beheren**, en selecteer **Eenmalige aanmelding**.
+1. Ga in de [Azure-portal](https://portal.azure.com/) op de integratiepagina van de toepassing **Abstract** naar de sectie **Beheren** , en selecteer **Eenmalige aanmelding**.
 1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding**.
 1. Op de pagina **Eenmalige aanmelding instellen met SAML** klikt u op het bewerkings-/penpictogram voor **Standaard-SAML-configuratie** om de instellingen te bewerken.
 
@@ -90,7 +90,7 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 Zorg ervoor dat u uw `App Federation Metadata Url` en de `Azure AD Identifier` ophaalt uit de Azure-portal, omdat u deze nodig hebt om eenmalige aanmelding te configureren voor Abstract.
 
-U vindt deze informatie op de pagina **Eenmalige aanmelding met SAML instellen**:
+U vindt deze informatie op de pagina **Eenmalige aanmelding met SAML instellen** :
 
 * De `App Federation Metadata Url` bevindt zich in de sectie **SAML-handtekeningcertificaat**.
 * De `Azure AD Identifier` bevindt zich in de sectie **Abstract instellen**.
@@ -114,9 +114,9 @@ U bent nu klaar om eenmalige aanmelding te configureren voor Abstract:
 
 In deze sectie gaat u een testgebruiker met de naam B.Simon maken in Azure Portal.
 
-1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker** :
    1. Voer in het veld **Naam**`B.Simon` in.  
    1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
@@ -146,7 +146,7 @@ Eenmalige aanmelding voor Abstract testen:
 
 1. Open de [Abstract-web-app](https://app.abstract.com/).
 2. Ga naar de pagina **Machtigingen** in de linkerzijbalk.
-3. Klik op **Testen met mijn account**. Als de test mislukt, kunt u [contact opnemen met het ondersteuningsteam](https://www.abstract.com/help/contact/).
+3. Klik op **Testen met mijn account**. Als de test mislukt, kunt u [contact opnemen met het ondersteuningsteam](https://help.abstract.com/hc/).
 
 >[!Note]
 >U moet zich verifiëren met de beheerdersaccount van een organisatie om toegang te krijgen tot de instellingen voor eenmalige aanmelding voor Abstract.

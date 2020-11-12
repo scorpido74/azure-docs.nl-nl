@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 09/28/2020
 ms.custom: seodec18, devx-track-python
-ms.openlocfilehash: 40ee7ad74d1a1daaf6df5e76b5e51db52feea304
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 003056ae9d3f236d37ddc10764812c15a3c6c695
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91535066"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321284"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn"></a>Zelfstudie: Modellen voor de classificatie van afbeeldingen trainen met MNIST-gegevens en scikit-learn 
 
@@ -37,7 +37,7 @@ In [deel twee van deze zelfstudie](tutorial-deploy-models-with-aml.md) leert u h
 Als u geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure Machine Learning](https://aka.ms/AMLFree).
 
 >[!NOTE]
-> Code in dit artikel is getest met versie 1.13.0 van de [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true).
+> Code in dit artikel is getest met versie 1.13.0 van de [Azure Machine Learning SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -159,7 +159,7 @@ Voordat u een model gaat trainen, is het belangrijk dat u de gegevens begrijpt d
 
 ### <a name="download-the-mnist-dataset"></a>De MNIST-gegevensset downloaden
 
-Gebruik Azure Open Datasets om de onbewerkte MNIST-gegevensbestanden op te halen. [Azure Open Datasets](https://docs.microsoft.com/azure/open-datasets/overview-what-are-open-datasets) zijn samengestelde openbare gegevenssets die u kunt gebruiken om scenariospecifieke functies toe te voegen aan machine learning-oplossingen voor nauwkeurigere modellen. Elke gegevensset heeft een bijbehorende klasse, in dit geval `MNIST`, om de gegevens op verschillende manieren op te halen.
+Gebruik Azure Open Datasets om de onbewerkte MNIST-gegevensbestanden op te halen. [Azure Open Datasets](../open-datasets/overview-what-are-open-datasets.md) zijn samengestelde openbare gegevenssets die u kunt gebruiken om scenariospecifieke functies toe te voegen aan machine learning-oplossingen voor nauwkeurigere modellen. Elke gegevensset heeft een bijbehorende klasse, in dit geval `MNIST`, om de gegevens op verschillende manieren op te halen.
 
 Met deze code worden de gegevens opgehaald als een `FileDataset`-object, dat een subklasse van `Dataset` is. Een `FileDataset` verwijst naar een of meer bestanden met elke indeling in uw gegevensarchieven of openbare URL's. De klasse biedt u de mogelijkheid om de bestanden te downloaden of te koppelen aan uw rekenresource door een verwijzing naar de locatie van de gegevensbron te maken. Daarnaast registreert u de gegevensset bij uw werkruimte, zodat u deze eenvoudig kunt ophalen tijdens de training.
 
@@ -309,7 +309,7 @@ U ziet hoe met het script gegevens worden opgehaald en modellen worden opgeslage
 
 ### <a name="configure-the-training-job"></a>De trainingstaak configureren
 
-Maak een [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true)-object om de configuratiegegevens van uw trainingstaak op te geven, inclusief het trainingsscript, de omgeving die u wilt gebruiken en het rekendoel om uit te voeren. Configureer de ScriptRunConfig door het volgende op te geven:
+Maak een [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py)-object om de configuratiegegevens van uw trainingstaak op te geven, inclusief het trainingsscript, de omgeving die u wilt gebruiken en het rekendoel om uit te voeren. Configureer de ScriptRunConfig door het volgende op te geven:
 
 * De map met uw scripts. Alle bestanden in deze map worden naar de clusterknooppunten geüpload voor uitvoering.
 * Het rekendoel. In dit geval gebruikt u het Azure Machine Learning-rekencluster dat u hebt gemaakt.
@@ -368,21 +368,21 @@ In totaal duurt de eerste run **ongeveer tien minuten**. Voor latere runs wordt 
 
 Terwijl u wacht, gebeurt het volgende:
 
-- **Afbeelding maken**: Er wordt een Docker-afbeelding gemaakt die overeenkomt met de Python-omgeving die is opgegeven in de Azure ML-omgeving. De afbeelding wordt naar de werkruimte geüpload. Het maken en uploaden van de afbeelding duurt **circa vijf minuten**.
+- **Afbeelding maken** : Er wordt een Docker-afbeelding gemaakt die overeenkomt met de Python-omgeving die is opgegeven in de Azure ML-omgeving. De afbeelding wordt naar de werkruimte geüpload. Het maken en uploaden van de afbeelding duurt **circa vijf minuten**.
 
   Deze fase vindt eenmaal plaats voor elke Python-omgeving, aangezien de container voor volgende runs in de cache wordt opgeslagen. Tijdens het maken van de afbeelding, worden er logboeken gestreamd naar de uitvoeringsgeschiedenis. U kunt de voortgang van het maken van afbeeldingen volgen aan de hand van deze logboeken.
 
-- **Schalen**: Als voor het externe cluster meer knooppunten zijn vereist voor het uitvoeren van de run dan er momenteel beschikbaar zijn, worden er automatisch extra knooppunten toegevoegd. Het schalen duurt meestal **ongeveer vijf minuten.**
+- **Schalen** : Als voor het externe cluster meer knooppunten zijn vereist voor het uitvoeren van de run dan er momenteel beschikbaar zijn, worden er automatisch extra knooppunten toegevoegd. Het schalen duurt meestal **ongeveer vijf minuten.**
 
-- **Uitvoeren**: In deze fase worden de noodzakelijke scripts en bestanden verzonden naar het rekendoel. Vervolgens worden gegevensarchieven gekoppeld of gekopieerd. Ten slotte wordt het **entry_script** uitgevoerd. Terwijl de taak wordt uitgevoerd, worden **stdout** en de map **./logs** naar de uitvoeringsgeschiedenis gestreamd. U kunt de voortgang van de run volgen aan de hand van deze logboeken.
+- **Uitvoeren** : In deze fase worden de noodzakelijke scripts en bestanden verzonden naar het rekendoel. Vervolgens worden gegevensarchieven gekoppeld of gekopieerd. Ten slotte wordt het **entry_script** uitgevoerd. Terwijl de taak wordt uitgevoerd, worden **stdout** en de map **./logs** naar de uitvoeringsgeschiedenis gestreamd. U kunt de voortgang van de run volgen aan de hand van deze logboeken.
 
-- **Nabewerken**: De map **./outputs** van de run wordt naar de uitvoeringsgeschiedenis in uw werkruimte gekopieerd, zodat u deze resultaten kunt bekijken.
+- **Nabewerken** : De map **./outputs** van de run wordt naar de uitvoeringsgeschiedenis in uw werkruimte gekopieerd, zodat u deze resultaten kunt bekijken.
 
 U kunt de voortgang van een actieve taak op verschillende manieren controleren. In deze zelfstudie wordt gebruikgemaakt van een Jupyter-widget en de methode `wait_for_completion`.
 
 ### <a name="jupyter-widget"></a>Jupyter-widget
 
-U kunt de voortgang van de run volgen met een [Jupyter-widget](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true). Net als het indienen van de run, is de widget asynchroon en biedt deze elke 10 tot 15 seconden live updates totdat de taak is voltooid:
+U kunt de voortgang van de run volgen met een [Jupyter-widget](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py). Net als het indienen van de run, is de widget asynchroon en biedt deze elke 10 tot 15 seconden live updates totdat de taak is voltooid:
 
 ```python
 from azureml.widgets import RunDetails
@@ -393,7 +393,7 @@ Aan het einde van de training ziet de widget er als volgt uit:
 
 ![Notebook-widget](./media/tutorial-train-models-with-aml/widget.png)
 
-Als u een uitvoering wilt annuleren, kunt u [deze instructies](https://aka.ms/aml-docs-cancel-run) volgen.
+Als u een uitvoering wilt annuleren, kunt u [deze instructies](./how-to-manage-runs.md) volgen.
 
 ### <a name="get-log-results-upon-completion"></a>Resultaten van logboeken weergeven bij voltooiing
 

@@ -6,12 +6,12 @@ ms.author: cshoe
 ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 06/17/2020
-ms.openlocfilehash: 948e4f74763efd641bc0f089c679cdaf7c2f784e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c87fcf4f56b7092436fa16658a72ead24d9fec2
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91530065"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93423025"
 ---
 # <a name="tutorial-establish-azure-functions-private-site-access"></a>Zelfstudie: Toegang tot privésite van Azure Functions tot stand brengen
 
@@ -90,7 +90,7 @@ De eerste stap in deze zelfstudie is het maken van een nieuwe virtuele machine i
 1. Selecteer **OK** om het virtuele netwerk te maken.
 1. Schakel op het tabblad _Netwerken_ de optie **Geen** in voor _Openbare IP_.
 1. Kies het tabblad _Beheer_ en kies in _Diagnostische opslagaccount_ de optie **Nieuwe maken** om een nieuw opslagaccount te maken.
-1. Behoud de standaardwaarden voor de gedeelten _Identiteit_, _Automatisch afsluiten_ en _Back-up_.
+1. Behoud de standaardwaarden voor de gedeelten _Identiteit_ , _Automatisch afsluiten_ en _Back-up_.
 1. Selecteer _Controleren + maken_. Nadat de validatie is voltooid, selecteert u **Maken**. Het proces voor het maken van de virtuele machine duurt een paar minuten.
 
 ## <a name="configure-azure-bastion"></a>Azure Bastion configureren
@@ -145,7 +145,7 @@ De volgende stap is het maken van een functie-app in Azure met behulp van het [V
     | _Regio_ | VS - noord-centraal | Kies een [regio](https://azure.microsoft.com/regions/) in de buurt of in de buurt van andere services die door uw functie worden gebruikt. |
 
     Selecteer de knop **Volgende: Hosting >** .
-1. Selecteer voor het gedeelte _Hosting_ het juiste _Opslagaccount_, _Besturingssysteem_ en _Abonnement_, zoals wordt beschreven in de volgende tabel.
+1. Selecteer voor het gedeelte _Hosting_ het juiste _Opslagaccount_ , _Besturingssysteem_ en _Abonnement_ , zoals wordt beschreven in de volgende tabel.
 
     | Instelling      | Voorgestelde waarde  | Beschrijving      |
     | ------------ | ---------------- | ---------------- |
@@ -165,8 +165,8 @@ Toegang tot de [privésite](functions-networking-options.md#private-site-access)
 1. De pagina _Netwerken_ is het beginpunt voor het configureren van de Azure Front Door, de Azure CDN en ook toegangsbeperkingen.
 1. Selecteer **Toegangsbeperkingen configureren** om toegang tot privésite te configureren.
 1. Op de pagina _Toegangsbeperkingen_ ziet u alleen de standaardbeperking. De standaardbeperking bevat geen beperkingen voor toegang tot de functie-app.  Selecteer **Regel toevoegen** om een beperkingsconfiguratie voor toegang tot de privésite te maken.
-1. Geef in het deelvenster _Toegangsbeperking toevoegen_ een _Naam_, _Prioriteit_ en _Beschrijving_ op voor de nieuwe regel.
-1. Selecteer **Virtueel netwerk** in de vervolgkeuzelijst _Type_, selecteer het eerder gemaakte virtuele netwerk en selecteer vervolgens het subnet **Zelfstudie**. 
+1. Geef in het deelvenster _Toegangsbeperking toevoegen_ een _Naam_ , _Prioriteit_ en _Beschrijving_ op voor de nieuwe regel.
+1. Selecteer **Virtueel netwerk** in de vervolgkeuzelijst _Type_ , selecteer het eerder gemaakte virtuele netwerk en selecteer vervolgens het subnet **Zelfstudie**. 
     > [!NOTE]
     > Het kan enkele minuten duren om het service-eindpunt in te schakelen.
 1. Op de pagina _Toegangsbeperkingen_ wordt nu een nieuwe beperking weergegeven. Het kan enkele seconden duren voordat de status van het _Eindpunt_ wordt gewijzigd van Uitgeschakeld naar Inrichten tot Ingeschakeld.
@@ -197,7 +197,7 @@ De volgende stap in deze zelfstudie is het maken van een Azure-functie die door 
     * [Visual Studio Code](./functions-create-first-function-vs-code.md)
     * [Visual Studio](./functions-create-your-first-function-visual-studio.md)
     * [Opdrachtregel](./functions-create-first-azure-function-azure-cli.md)
-    * [Maven (Java)](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java&tabs=bash,browser)
+    * [Maven (Java)](./create-first-function-cli-java.md?tabs=bash,browser)
 
 1. Wanneer u uw Azure Functions-project publiceert, kiest u de resource van de functie-app die u eerder in deze zelfstudie hebt gemaakt.
 1. Controleer of de functie is geïmplementeerd.

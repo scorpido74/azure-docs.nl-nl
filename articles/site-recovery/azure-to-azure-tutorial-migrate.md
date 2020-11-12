@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: sharrai
 ms.custom: MVC
-ms.openlocfilehash: 33d1be493cba9fd9f01ecdbad10afb5330256aa0
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 076adbfd4cecf7dae9ffc490e911fcb7ffce48e6
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92045343"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394829"
 ---
 # <a name="move-vms-to-another-azure-region"></a>VM's verplaatsen naar een andere Azure-regio
 
@@ -68,7 +68,7 @@ In deze zelfstudie leert u het volgende:
 - Voor Linux-VM’s volgt u de richtlijnen van de Linux-distributeur voor het verkrijgen van de meest recente basiscertificaten en de certificaatintrekkingslijst op de VM.
 - Zorg ervoor dat u geen verificatieproxy gebruikt om de netwerkverbinding te beheren voor de VM’s die u wilt verplaatsen.
 
-- [Controleer de vereisten](azure-to-azure-tutorial-enable-replication.md#set-up-outbound-network-connectivity-for-vms) als de VM die u wilt verplaatsen, geen toegang tot internet heeft, of een firewallproxy gebruikt voor het beheren van uitgaande toegang.
+- [Controleer de vereisten](azure-to-azure-tutorial-enable-replication.md#set-up-vm-connectivity) als de VM die u wilt verplaatsen, geen toegang tot internet heeft, of een firewallproxy gebruikt voor het beheren van uitgaande toegang.
 
 - Identificeer de bronnetwerkindeling en alle resources die u momenteel gebruikt. Dit omvat, maar is niet beperkt tot load balancers, NSG’s (netwerkbeveiligingsgroepen), en openbare IP-adressen.
 
@@ -116,7 +116,7 @@ In Site Recovery wordt een lijst opgehaald met de VM’s die zijn gekoppeld aan 
 1. Accepteer voor deze zelfstudie de overige standaardinstellingen.
 1. Selecteer **Replicatie inschakelen**. Met deze stap wordt een taak gestart voor het inschakelen van replicatie voor de VM.
 
-    ![Replicatie inschakelen](media/tutorial-migrate-azure-to-azure/settings.png)
+
 
 ## <a name="move"></a>Verplaatsen
 

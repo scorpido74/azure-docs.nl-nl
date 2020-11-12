@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 13d43eb788c750a2f24033a6138ebf00ac57fffe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 123e55202de8a33bca88afcfd1f0dc0c7edeae77
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372563"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320097"
 ---
 # <a name="tutorial-use-your-own-data-part-4-of-4"></a>Zelfstudie: Uw eigen gegevens gebruiken (Deel 4 van 4)
 
@@ -184,7 +184,7 @@ U moet voorkomen dat u de CIFAR10-gegevensset downloadt door een lokaal pad naar
 
 ## <a name="upload-the-data-to-azure"></a>De gegevens uploaden naar Azure
 
-Als u dit script in Azure Machine Learning wilt uitvoeren, moet u uw trainingsgegevens beschikbaar maken in Azure. Uw Azure Machine Learning-werkruimte is voorzien van een _standaard_gegevensopslag. Dit is een Azure Blob Storage-account waarin u uw trainingsgegevens kunt opslaan.
+Als u dit script in Azure Machine Learning wilt uitvoeren, moet u uw trainingsgegevens beschikbaar maken in Azure. Uw Azure Machine Learning-werkruimte is voorzien van een _standaard_ gegevensopslag. Dit is een Azure Blob Storage-account waarin u uw trainingsgegevens kunt opslaan.
 
 >[!NOTE] 
 > Met Azure Machine Learning kunt u verbinding maken met andere gegevensarchieven in de cloud die uw gegevens opslaan. Zie [Documentatie over gegevensarchieven](./concept-data.md) voor meer informatie.  
@@ -202,7 +202,7 @@ datastore.upload(src_dir='./data', target_path='datasets/cifar10', overwrite=Tru
 De waarde `target_path` geeft het pad op naar het gegevensarchief waarnaar de CIFAR10-gegevens worden geüpload.
 
 >[!TIP] 
-> Terwijl u Azure Machine Learning gebruikt om de gegevens te uploaden, kunt u [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) gebruiken om ad-hocbestanden te uploaden. Als u een ETL-hulpprogramma nodig hebt, kunt u [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction) gebruiken om uw gegevens in Azure op te nemen.
+> Terwijl u Azure Machine Learning gebruikt om de gegevens te uploaden, kunt u [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) gebruiken om ad-hocbestanden te uploaden. Als u een ETL-hulpprogramma nodig hebt, kunt u [Azure Data Factory](../data-factory/introduction.md) gebruiken om uw gegevens in Azure op te nemen.
 
 Voer het Python-bestand uit om de gegevens te uploaden. (De upload zou minder dan 60 seconden moeten duren.)
 
@@ -271,7 +271,7 @@ Het besturingsscript is vergelijkbaar met dat van [Deel 3 van deze serie](tutori
       `dataset = Dataset.File.from_files( ... )`
    :::column-end:::
    :::column span="2":::
-      Een [gegevensset](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py&preserve-view=true) wordt gebruikt om te verwijzen naar de gegevens die u hebt geüpload naar Azure Blob Storage. Gegevenssets zijn een abstracte laag bovenop uw gegevens die is ontworpen voor de verbetering van de betrouwbaarheid.
+      Een [gegevensset](/python/api/azureml-core/azureml.core.dataset.dataset?preserve-view=true&view=azure-ml-py) wordt gebruikt om te verwijzen naar de gegevens die u hebt geüpload naar Azure Blob Storage. Gegevenssets zijn een abstracte laag bovenop uw gegevens die is ontworpen voor de verbetering van de betrouwbaarheid.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -279,7 +279,7 @@ Het besturingsscript is vergelijkbaar met dat van [Deel 3 van deze serie](tutori
       `config = ScriptRunConfig(...)`
    :::column-end:::
    :::column span="2":::
-      [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) is gewijzigd en bevat een lijst met argumenten die worden doorgegeven aan `train.py`. Het argument `dataset.as_named_input('input').as_mount()` betekent dat de opgegeven map wordt _gekoppeld_ aan het rekendoel.
+      [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) is gewijzigd en bevat een lijst met argumenten die worden doorgegeven aan `train.py`. Het argument `dataset.as_named_input('input').as_mount()` betekent dat de opgegeven map wordt _gekoppeld_ aan het rekendoel.
    :::column-end:::
 :::row-end:::
 

@@ -4,17 +4,19 @@ description: 'Zelfstudie: Ontdek hoe u ingebouwde Jupyter-notebooks gebruikt om 
 author: deborahc
 ms.topic: tutorial
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.date: 11/05/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 9b2ef5ddb56e3d0422a2a876993ddda0bd97e4ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e16a738264e64e37cfa42722832dac7e34fee899
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85961095"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339492"
 ---
 # <a name="tutorial-create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>Zelfstudie: Een notebook in Azure Cosmos DB maken om de gegevens te analyseren en visualiseren
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 In dit item wordt beschreven hoe u ingebouwde Jupyter-notebooks gebruikt om voorbeeldretailgegevens naar Azure Cosmos DB te importeren. U ziet hoe u de Magic-opdrachten van SQL en Azure Cosmos DB gebruikt om query's uit te voeren, de gegevens te analyseren en de resultaten te visualiseren.
 
@@ -28,7 +30,7 @@ In deze sectie gaat u de Azure Cosmos-database en -container maken en de retailg
 
 1. Navigeer naar uw Azure Cosmos-account en open **Data Explorer.**
 
-1. Ga naar het tabblad **Notebooks**, selecteer `…` naast **Mijn notebooks** en maak een **Nieuwe notebook**. Selecteer **Python 3** als de standaard-Kernel.
+1. Ga naar het tabblad **Notebooks** , selecteer `…` naast **Mijn notebooks** en maak een **Nieuwe notebook**. Selecteer **Python 3** als de standaard-Kernel.
 
    :::image type="content" source="./media/create-notebook-visualize-data/create-new-notebook.png" alt-text="Een nieuwe notebook maken":::
 
@@ -49,7 +51,7 @@ In deze sectie gaat u de Azure Cosmos-database en -container maken en de retailg
 
    Als u een cel wilt uitvoeren, selecteert u `Shift + Enter`. Of selecteer de cel en kies de optie **Actieve cel uitvoeren** op de navigatiebalk van Data Explorer.
 
-   :::image type="content" source="./media/create-notebook-visualize-data/run-active-cell.png" alt-text="Een nieuwe notebook maken":::
+   :::image type="content" source="./media/create-notebook-visualize-data/run-active-cell.png" alt-text="De actieve cel uitvoeren":::
 
    De database en container worden gemaakt in uw huidige Azure Cosmos-account. De container wordt ingericht met 400 RU/s. U ziet de volgende uitvoer nadat de database en container zijn gemaakt. 
 
@@ -60,7 +62,23 @@ In deze sectie gaat u de Azure Cosmos-database en -container maken en de retailg
 
    U kunt ook het tabblad **Gegevens** vernieuwen en de zojuist gemaakte resources bekijken:
 
-   :::image type="content" source="media/create-notebook-visualize-data/refresh-data-tab.png" alt-text="Een nieuwe notebook maken"
+   :::image type="content" source="media/create-notebook-visualize-data/refresh-data-tab.png" alt-text="Het tabblad Gegevens vernieuwen om de nieuwe container weer te geven":::
+
+1. Hierna gaat u de voorbeeldretailgegevens importeren in de Azure Cosmos-container. Hier ziet u de indeling van een item uit de retailgegevens:
+
+   ```json
+    {
+       "CartID":5399,
+       "Action":"Viewed",
+       "Item":"Cosmos T-shirt",
+       "Price":350,
+       "UserName":"Demo.User10",
+       "Country":"Iceland",
+       "EventDate":"2015-06-25T00:00:00",
+       "Year":2015,"Latitude":-66.8673,
+       "Longitude":-29.8214,
+       "Address":"852 Modesto Loop, Port Ola, Iceland",
+       "id":"00ffd39c-7e98-4451-9b91-b2bcf2f9a32d"
     }
    ```
 
@@ -119,20 +137,20 @@ Voer in een nieuwe notebookcel de volgende code uit om de eerste tien items van 
 df_cosmos.head(10)
 ```
 
-:::image type="content" source="./media/create-notebook-visualize-data/run-query-get-top10-items.png" alt-text="Een nieuwe notebook maken":::
+:::image type="content" source="./media/create-notebook-visualize-data/run-query-get-top10-items.png" alt-text="Een query uitvoeren om de tien eerste resultaten op te halen":::
 
 ## <a name="run-queries-and-analyze-your-data"></a>Query's uitvoeren en uw gegevens analyseren
 
 In deze sectie gaat u een aantal query's uitvoeren op de opgehaalde gegevens.
 
-* **Query1**: Voer de opdracht Groeperen op query uit in de DataFrame om de som van de totale verkoopomzet voor elk land/elke regio op te halen en vijf items van de resultaten weer te geven. Voer in een nieuwe notebookcel de volgende code uit:
+* **Query1** : Voer de opdracht Groeperen op query uit in de DataFrame om de som van de totale verkoopomzet voor elk land/elke regio op te halen en vijf items van de resultaten weer te geven. Voer in een nieuwe notebookcel de volgende code uit:
 
    ```python
    df_revenue = df_cosmos.groupby("Country").sum().reset_index()
    display(df_revenue.head(5))
    ```
 
-   :::image type="content" source="./media/create-notebook-visualize-data/total-sales-revenue-output.png" alt-text="Een nieuwe notebook maken":::
+   :::image type="content" source="./media/create-notebook-visualize-data/total-sales-revenue-output.png" alt-text="Uitvoer: totale verkoopomzet":::
 
 * **Query2:** U kunt een lijst met de vijf meest aangeschafte items ophalen door een nieuwe notebookcel te openen en de volgende code uit te voeren:
 
@@ -143,7 +161,7 @@ In deze sectie gaat u een aantal query's uitvoeren op de opgehaalde gegevens.
    pd.DataFrame(df_cosmos[df_cosmos['Action']=='Purchased'].groupby('Item').size().sort_values(ascending=False).head(5), columns=['Count'])
    ```
 
-   :::image type="content" source="./media/create-notebook-visualize-data/top5-purchased-items.png" alt-text="Een nieuwe notebook maken":::
+   :::image type="content" source="./media/create-notebook-visualize-data/top5-purchased-items.png" alt-text="Vijf meest aangeschafte items":::
 
 ## <a name="visualize-your-data"></a>Uw gegevens visualiseren  
 
@@ -219,7 +237,7 @@ In deze sectie gaat u een aantal query's uitvoeren op de opgehaalde gegevens.
 
    Bij de uitvoer wordt de wereldkaart met verschillende kleuren weergegeven. De kleuren van donker naar licht staan voor de landen/regio's met de hoogste naar de laagste omzet.
 
-   :::image type="content" source="./media/create-notebook-visualize-data/countries-revenue-map-visualization.png" alt-text="Een nieuwe notebook maken":::
+   :::image type="content" source="./media/create-notebook-visualize-data/countries-revenue-map-visualization.png" alt-text="Visualisatie op een kaart van de omzet per land/regio":::
 
 1. Laten we eens een andere toepassing van gegevensvisualisatie bekijken. In de WebsiteData-container staat een record van gebruikers die een item hebben bekeken, dit aan hun winkelwagen hebben toegevoegd en het item hebben aangeschaft. Laten we de conversieverhouding van aangeschafte items eens uittekenen. Voer de volgende code uit in een nieuwe cel om de conversieverhouding voor elk item te visualiseren:
 
@@ -270,7 +288,7 @@ In deze sectie gaat u een aantal query's uitvoeren op de opgehaalde gegevens.
    show(p)
    ```
 
-   :::image type="content" source="./media/create-notebook-visualize-data/visualize-purchase-conversion-rate.png" alt-text="Een nieuwe notebook maken":::
+   :::image type="content" source="./media/create-notebook-visualize-data/visualize-purchase-conversion-rate.png" alt-text="De conversieverhouding van aankopen visualiseren":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

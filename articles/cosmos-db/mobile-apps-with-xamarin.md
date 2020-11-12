@@ -3,19 +3,21 @@ title: 'Zelfstudie: Mobiele toepassingen maken met Xamarin en Azure Cosmos DB'
 description: 'Zelfstudie: Een zelfstudie waarmee u een Xamarin iOS-, Android- of Forms-toepassing maakt met behulp van Azure Cosmos DB. Azure Cosmos DB is een snelle clouddatabase op wereldwijde schaal voor mobiele apps.'
 author: SnehaGunda
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2aa4e7d063141f74dc94e5f23cd227fcc16ba84f
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: ec5888ba596579c6bbbf6891ca5e578e80003d80
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487412"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93333270"
 ---
 # <a name="tutorial-build-mobile-applications-with-xamarin-and-azure-cosmos-db"></a>Zelfstudie: Mobiele toepassingen maken met Xamarin en Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)
@@ -46,9 +48,9 @@ Azure Cosmos DB biedt de volgende belangrijke mogelijkheden voor ontwikkelaars v
 In de volgende zelfstudie leest u hoe u een mobiele toepassing bouwt met Xamarin en Azure Cosmos DB. U vindt de volledige broncode voor de zelfstudie op [Xamarin en Azure Cosmos DB op GitHub](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin).
 
 ### <a name="get-started"></a>Aan de slag
-U kunt eenvoudig aan de slag met Azure Cosmos DB. Ga naar Azure Portal en maak een nieuw Azure Cosmos DB-account. Klik op het tabblad **Snel starten** . Download het takenlijstvoorbeeld van Xamarin Forms dat al met uw Azure Cosmos DB-account is verbonden. 
+U kunt eenvoudig aan de slag met Azure Cosmos DB. Ga naar Azure Portal en maak een nieuw Azure Cosmos DB-account. Klik op het tabblad **Snel starten**. Download het takenlijstvoorbeeld van Xamarin Forms dat al met uw Azure Cosmos DB-account is verbonden. 
 
-:::image type="content" source="media/mobile-apps-with-xamarin/cosmos-db-quickstart.png" alt-text="Mogelijkheden van Azure Cosmos DB voor mobiele apps":::
+:::image type="content" source="media/mobile-apps-with-xamarin/cosmos-db-quickstart.png" alt-text="Azure Cosmos DB Snel starten voor mobiele apps":::
 
 Als u een bestaande Xamarin-app hebt, kunt u ook het [Azure Cosmos DB NuGet-pakket](sql-api-sdk-dotnet-core.md) toevoegen. Azure Cosmos DB ondersteunt gedeelde bibliotheken voor Xamarin.iOS, Xamarin.Android en Xamarin Forms.
 
@@ -86,19 +88,19 @@ Volg deze stappen om de takenlijst-app aan te passen aan een takenlijst-app voor
 
 U vindt een volledig codevoorbeeld van dit patroon op [Resource Token Broker op GitHub](https://github.com/kirillg/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems). In dit diagram wordt de oplossing weergegeven:
 
-:::image type="content" source="media/mobile-apps-with-xamarin/documentdb-resource-token-broker.png" alt-text="Mogelijkheden van Azure Cosmos DB voor mobiele apps" border="false":::
+:::image type="content" source="media/mobile-apps-with-xamarin/documentdb-resource-token-broker.png" alt-text="Azure Cosmos DB-gebruikers en machtigingenbroker" border="false":::
 
 Als u wilt dat twee gebruikers toegang hebben tot dezelfde takenlijst, kunt u aanvullende machtigingen toevoegen aan het toegangstoken in Resource Token Broker.
 
 ### <a name="scale-on-demand"></a>Schalen op aanvraag
 Azure Cosmos DB is een beheerde Database as a Service. Wanneer uw gebruikersgroep groeit, hoeft u zich geen zorgen te maken over het inrichten van VM’s of het uitbreiden van het aantal kernen. U hoeft Azure Cosmos DB alleen maar te vertellen hoeveel bewerkingen per seconde (doorvoer) uw app nodig heeft. U kunt de doorvoer opgeven via het tabblad **Schaal aanpassen** met de doorvoermeting Aanvraageenheden (RU’s) per seconde. Voor een leesbewerking van een document van 1 KB is bijvoorbeeld één RU vereist. U kunt ook waarschuwingen toevoegen aan de meetwaarde **Doorvoer** om de groei van het verkeer te bewaken en de doorvoer via programmacode te wijzigen wanneer waarschuwingen worden afgegeven.
 
-:::image type="content" source="media/mobile-apps-with-xamarin/cosmos-db-xamarin-scale.png" alt-text="Mogelijkheden van Azure Cosmos DB voor mobiele apps":::
+:::image type="content" source="media/mobile-apps-with-xamarin/cosmos-db-xamarin-scale.png" alt-text="Azure Cosmos DB-doorvoer op schaal op aanvraag":::
 
 ### <a name="go-planet-scale"></a>Wereldwijde schaal
 Naarmate uw app aan populariteit wint, krijgt u wellicht gebruikers van over de hele wereld. Of misschien wilt u zich voorbereiden op onvoorziene gebeurtenissen. Ga naar Azure Portal en open uw Azure Cosmos DB-account. Klik op de kaart om uw gegevens continu te laten repliceren naar elk willekeurige aantal regio's wereldwijd. Door deze mogelijkheid worden uw gegevens beschikbaar op de locatie waar uw gebruikers zich bevinden. U kunt ook failoverbeleid toevoegen zodat u bent voorbereid op diverse risico’s.
 
-:::image type="content" source="media/mobile-apps-with-xamarin/cosmos-db-xamarin-replicate.png" alt-text="Mogelijkheden van Azure Cosmos DB voor mobiele apps" border="false":::
+:::image type="content" source="media/mobile-apps-with-xamarin/cosmos-db-xamarin-replicate.png" alt-text="De schaal van Azure Cosmos DB aanpassen aan geografische regio's" border="false":::
 
 Gefeliciteerd! U hebt de oplossing voltooid en beschikt over een mobiele app met Xamarin en Azure Cosmos DB. Volg vergelijkbare stappen voor het ontwikkelen van Cordova-apps met de Azure Cosmos DB JavaScript SDK en systeemeigen iOS/Android-apps met Azure Cosmos DB REST API’s.
 

@@ -10,12 +10,12 @@ author: luisquintanilla
 ms.author: luquinta
 ms.date: 07/09/2020
 ms.custom: contperfq4
-ms.openlocfilehash: a13bec5fa557bed1b9ce84836588e6a3e501ddf5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 98ca0f1e82b81c8aad53938a5475f1ece68c0e33
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906690"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321564"
 ---
 # <a name="train-and-deploy-an-image-classification-tensorflow-model-using-the-azure-machine-learning-visual-studio-code-extension-preview"></a>Een TensorFlow-model trainen en implementeren voor de classificatie van afbeeldingen met behulp van de Azure Machine Learning Visual Studio Code-extensie (preview-versie)
 
@@ -97,7 +97,7 @@ Ga als volgt te werk om een rekendoel te maken:
     > ![Een rekendoel maken](./media/tutorial-train-deploy-image-classification-model-vscode/create-compute.png)
 
 1. Selecteer **Azure Machine Learning Compute (AmlCompute)** . Azure Machine Learning Compute is een beheerde-rekeninfrastructuur waarmee de gebruiker eenvoudig een rekenproces met één of meerdere knooppunten kan maken dat met andere gebruikers in uw werkruimte kan worden gebruikt.
-1. Kies een VM-grootte. Selecteer **Standard_F2s_v2** in de lijst met opties. De grootte van uw virtuele machine beïnvloedt de hoeveelheid tijd die nodig is om uw modellen te trainen. Zie [Grootten voor Linux Virtual Machines in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes) voor meer informatie over VM-grootten.
+1. Kies een VM-grootte. Selecteer **Standard_F2s_v2** in de lijst met opties. De grootte van uw virtuele machine beïnvloedt de hoeveelheid tijd die nodig is om uw modellen te trainen. Zie [Grootten voor Linux Virtual Machines in Azure](../virtual-machines/sizes.md) voor meer informatie over VM-grootten.
 1. Noem de compute 'TeamWkspc-com' en druk op **Enter** om uw rekenproces te maken.
 
     Er wordt een bestand in VS Code weergegeven met inhoud die er ongeveer als volgt uitziet:
@@ -287,7 +287,7 @@ Ga als volgt te werk om een Azure Machine Learning-experiment uit te voeren:
 1. Selecteer op de activiteitenbalk van Visual Studio het pictogram **Azure**. De weergave Azure Machine Learning wordt geopend. 
 1. Vouw uw abonnementknooppunt uit. 
 1. Vouw het knooppunt **TeamWorkspace > Experimenten** uit. 
-1. Klik met de rechtermuisknop op het **MNIST**-experiment.
+1. Klik met de rechtermuisknop op het **MNIST** -experiment.
 1. Selecteer **Experiment uitvoeren**.
 
     > [!div class="mx-imgBorder"]
@@ -312,7 +312,7 @@ Ga als volgt te werk om uw model te registreren:
 1. Selecteer op de activiteitenbalk van Visual Studio het pictogram **Azure**. De weergave Azure Machine Learning wordt geopend.
 1. Vouw uw abonnementknooppunt uit. 
 1. Vouw het knooppunt **TeamWorkspace > Experimenten > MNIST** uit.
-1. Haal de modeluitvoer op die is gegenereerd door het trainen van het model. Klik met de rechtermuisknop op het uitvoeringsknooppunt **Run 1**en selecteer **Uitvoer downloaden**. 
+1. Haal de modeluitvoer op die is gegenereerd door het trainen van het model. Klik met de rechtermuisknop op het uitvoeringsknooppunt **Run 1** en selecteer **Uitvoer downloaden**. 
 
     > [!div class="mx-imgBorder"]
     > ![Modeluitvoer downloaden](./media/tutorial-train-deploy-image-classification-model-vscode/download-outputs.png)
@@ -414,4 +414,3 @@ Op dit punt wordt een aanvraag verzonden naar Azure om uw webservice te implemen
 
 * Zie voor een overzicht van het trainen van Azure Machine Learning buiten Visual Studio Code [Zelfstudie: Modellen trainen met Azure Machine Learning](tutorial-train-models-with-aml.md).
 * Voor een overzicht van het lokaal bewerken, uitvoeren en foutopsporing van code raadpleegt u de [zelfstudie over Python hello-world](https://code.visualstudio.com/docs/Python/Python-tutorial).
-

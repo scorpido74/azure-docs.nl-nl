@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 08/14/2020
 ms.author: victorh
-ms.openlocfilehash: 0d0522dd2f206e02ad8b63b13a9537c049232db2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96b33c619ecfde8d1a470069f7fab4d840536b46
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88245737"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397645"
 ---
 # <a name="tutorial-configure-an-application-gateway-with-tls-termination-using-the-azure-portal"></a>Zelfstudie: Een toepassingsgateway configureren met TLS-beëindiging met Azure Portal
 
@@ -36,7 +36,7 @@ Meld u aan bij Azure Portal op [https://portal.azure.com](https://portal.azure.c
 
 ## <a name="create-a-self-signed-certificate"></a>Een zelfondertekend certificaat maken
 
-In deze sectie gebruikt u [New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate) om een zelfondertekend certificaat te maken. U uploadt het certificaat naar Azure Portal wanneer u de listener voor de toepassingsgateway maakt.
+In deze sectie gebruikt u [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) om een zelfondertekend certificaat te maken. U uploadt het certificaat naar Azure Portal wanneer u de listener voor de toepassingsgateway maakt.
 
 Open als beheerder op uw lokale computer een Windows PowerShell-venster. Voer de volgende opdracht uit om het certificaat te maken:
 
@@ -56,7 +56,7 @@ Thumbprint                                Subject
 E1E81C23B3AD33F9B4D1717B20AB65DBB91AC630  CN=www.contoso.com
 ```
 
-Gebruik [Export-PfxCertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) met de vingerafdruk die is geretourneerd om een ​​PFX-bestand uit het certificaat te exporteren. Zorg ervoor dat uw wachtwoord tussen de 4 en 12 tekens lang is:
+Gebruik [Export-PfxCertificate](/powershell/module/pkiclient/export-pfxcertificate) met de vingerafdruk die is geretourneerd om een ​​PFX-bestand uit het certificaat te exporteren. Zorg ervoor dat uw wachtwoord tussen de 4 en 12 tekens lang is:
 
 
 ```powershell
@@ -77,8 +77,8 @@ Export-PfxCertificate `
 
 1. Op het tabblad **Basisinformatie** voert u deze waarden in voor de volgende toepassingsgateway-instellingen:
 
-   - **Resourcegroep**: Selecteer **myResourceGroupAG** als de resourcegroep. Als deze nog niet bestaat, selecteert u **Nieuwe maken** om deze te maken.
-   - **Naam toepassingsgateway**: Typ *myAppGateway* als naam voor de toepassingsgateway.
+   - **Resourcegroep** : Selecteer **myResourceGroupAG** als de resourcegroep. Als deze nog niet bestaat, selecteert u **Nieuwe maken** om deze te maken.
+   - **Naam toepassingsgateway** : Typ *myAppGateway* als naam voor de toepassingsgateway.
 
         ![Nieuwe toepassingsgateway maken: Basisbeginselen](./media/application-gateway-create-gateway-portal/application-gateway-create-basics.png)
 
@@ -86,11 +86,11 @@ Export-PfxCertificate `
 
     Maak onder **Virtueel netwerk configureren** een nieuw virtueel netwerk door **Nieuw netwerk maken** te selecteren. Voer in het venster **Virtueel netwerk maken** dat wordt geopend, de volgende waarden in om het virtuele netwerk en twee subnetten te maken:
 
-    - **Naam**: Typ *myVnet* als naam voor het virtuele netwerk.
+    - **Naam** : Typ *myVnet* als naam voor het virtuele netwerk.
 
     - **Subnetnaam** (subnet van toepassingsgateway): Het raster **Subnetten** geeft een subnet met de naam *Standaard* weer. Wijzig de naam van dit subnet in *myAGSubnet*.<br>Het subnet van de toepassingsgateway kan alleen bestaan uit toepassingsgateways. Andere resources zijn niet toegestaan.
 
-    - **Subnetnaam** (subnet van back-endserver): In de tweede rij van het raster **Subnetten** voert u in de kolom **Subnetnaam**, *myBackendSubnet* in.
+    - **Subnetnaam** (subnet van back-endserver): In de tweede rij van het raster **Subnetten** voert u in de kolom **Subnetnaam** , *myBackendSubnet* in.
 
     - **Adresbereik** (subnet van back-endserver): In de tweede rij van het raster **Subnetten** voert u een adresbereik in dat niet overlapt met het adresbereik van *myAGSubnet*. Als het adresbereik van *myAGSubnet* bijvoorbeeld 10.0.0.0/24 is, voert u *10.0.1.0/24* in voor het adresbereik van *myBackendSubnet*.
 
@@ -120,8 +120,8 @@ De back-endpool word gebruikt om aanvragen te routeren naar de back-endservers d
 
 2. Voer in het venster **Een back-endpool toevoegen** dat wordt geopend, de volgende waarden in om een lege back-endpool te maken:
 
-    - **Naam**: Voer *myBackendPool* in als naam van de back-endpool.
-    - **Een back-endpool zonder doelen toevoegen**: Selecteer **Ja** om een back-endpool zonder doelen te maken. U voegt na het maken van de toepassingsgateway de back-enddoelen toe.
+    - **Naam** : Voer *myBackendPool* in als naam van de back-endpool.
+    - **Een back-endpool zonder doelen toevoegen** : Selecteer **Ja** om een back-endpool zonder doelen te maken. U voegt na het maken van de toepassingsgateway de back-enddoelen toe.
 
 3. Selecteer in het venster **Een back-endpool maken** de optie **Toevoegen** om de configuratie van de back-endpool op te slaan en terug te keren naar het tabblad **Back-ends**.
 
@@ -139,16 +139,16 @@ In het tabblad **Configuratie** verbindt u de front-end- en de back-endpool die 
 
 3. Voor een regel voor doorsturen is een listener vereist. Voer in het tabblad **Listener** in het venster **Een regel voor doorsturen toevoegen** de volgende waarden in voor de listener:
 
-    - **Naam van listener**: Voer *myListener* in als naam van de listener.
-    - **IP van front-end**: Selecteer **Openbaar** om het openbare IP te kiezen dat u voor de front-end hebt gemaakt.
-    - **Protocol**: Selecteer **HTTPS**.
-    - **Poort**: Controleer of 443 is opgegeven voor de poort.
+    - **Naam van listener** : Voer *myListener* in als naam van de listener.
+    - **IP van front-end** : Selecteer **Openbaar** om het openbare IP te kiezen dat u voor de front-end hebt gemaakt.
+    - **Protocol** : Selecteer **HTTPS**.
+    - **Poort** : Controleer of 443 is opgegeven voor de poort.
 
-   Bij **HTTPS-certificaat**:
+   Bij **HTTPS-certificaat** :
 
-   - **PFX-certificaatbestand**: blader naar en het bestand c:\appgwcert.pfx dat u eerder hebt gemaakt en selecteer het bestand.
-   - **Certificaatnaam**: voer *mycert1* in als de naam van het certificaat.
-   - **Wachtwoord**: voer uw wachtwoord in.
+   - **PFX-certificaatbestand** : blader naar en het bestand c:\appgwcert.pfx dat u eerder hebt gemaakt en selecteer het bestand.
+   - **Certificaatnaam** : voer *mycert1* in als de naam van het certificaat.
+   - **Wachtwoord** : voer uw wachtwoord in.
   
         Accepteer de standaardwaarden voor de overige instellingen in het tabblad **Listener** en selecteer vervolgens het tabblad **Back-enddoelen** om de rest van de regel voor doorsturen te configureren.
 
@@ -189,24 +189,24 @@ Hiervoor moet u het volgende doen:
 
 1. Voer deze waarden in op het tabblad **Basisinformatie** voor de volgende instellingen voor de virtuele machine:
 
-    - **Resourcegroep**: Selecteer **myResourceGroupAG** als naam van de resourcegroep.
-    - **Naam van virtuele machine**: Typ *myVM* als naam voor de virtuele machine.
-    - **Gebruikersnaam**: Typ *azureuser* als gebruikersnaam van de beheerder.
-    - **Wachtwoord**: voer een wachtwoord in voor het Administrator-account.
+    - **Resourcegroep** : Selecteer **myResourceGroupAG** als naam van de resourcegroep.
+    - **Naam van virtuele machine** : Typ *myVM* als naam voor de virtuele machine.
+    - **Gebruikersnaam** : Typ *azureuser* als gebruikersnaam van de beheerder.
+    - **Wachtwoord** : voer een wachtwoord in voor het Administrator-account.
 1. Accepteer de overige standaardwaarden en klik op **Volgende: Schijven**.  
 2. Accepteer de standaardwaarden op het tabblad **Schijven** en selecteer **Volgende: Netwerken**.
-3. Zorg ervoor dat, op het tabblad **Netwerken**, **myVNet** is geselecteerd bij **Virtueel netwerk** en dat **Subnet** is ingesteld op **myBackendSubnet**. Accepteer de overige standaardwaarden en klik op **Volgende: Beheer**.
+3. Zorg ervoor dat, op het tabblad **Netwerken** , **myVNet** is geselecteerd bij **Virtueel netwerk** en dat **Subnet** is ingesteld op **myBackendSubnet**. Accepteer de overige standaardwaarden en klik op **Volgende: Beheer**.
 
    Toepassingsgateway kan communiceren met instanties die zich buiten het virtuele netwerk van de gateway bevinden, maar u moet ervoor zorgen dat er een IP-verbinding is.
 1. Op het tabblad **Beheer** stelt u **Diagnostische gegevens over opstarten** in op **Uit**. Accepteer de overige standaardwaarden en selecteer **Beoordelen en maken**.
-2. Controleer de instellingen op het tabblad **Beoordelen en maken**, corrigeer eventuele validatiefouten en selecteer vervolgens **Maken**.
+2. Controleer de instellingen op het tabblad **Beoordelen en maken** , corrigeer eventuele validatiefouten en selecteer vervolgens **Maken**.
 3. Wacht totdat de implementatie is voltooid voordat u doorgaat.
 
 ### <a name="install-iis-for-testing"></a>IIS installeren voor testen
 
 In dit voorbeeld installeert u IIS alleen op de virtuele machines om te controleren of de toepassingsgateway in Azure is gemaakt.
 
-1. Open [Azure PowerShell](https://docs.microsoft.com/azure/cloud-shell/quickstart-powershell). Hiertoe selecteert u **Cloud Shell** in de bovenste navigatiebalk van de Azure-portal en vervolgens **PowerShell** in de vervolgkeuzelijst. 
+1. Open [Azure PowerShell](../cloud-shell/quickstart-powershell.md). Hiertoe selecteert u **Cloud Shell** in de bovenste navigatiebalk van de Azure-portal en vervolgens **PowerShell** in de vervolgkeuzelijst. 
 
     ![Aangepaste extensie installeren](./media/application-gateway-create-gateway-portal/application-gateway-extension.png)
 

@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 04/30/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 3a6ce5860704e6fd16b79fc253650dd45ec743e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f7746f079e740493348731376d0a5a7b1a9e954
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87852613"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317861"
 ---
 # <a name="tutorial-convert-ml-experiments-to-production-python-code"></a>Zelfstudie: ML-experimenten converteren naar de Python-code voor productie
 
@@ -67,7 +67,7 @@ args = {
 }
 
 reg_model = Ridge(**args)
-reg.fit(data["train"]["X"], data["train"]["y"])
+reg_model.fit(data["train"]["X"], data["train"]["y"])
 
 preds = reg_model.predict(data["test"]["X"])
 mse = mean_squared_error(preds, y_test)
@@ -527,5 +527,5 @@ def test_train_model():
 Nu u weet hoe u kunt converteren van een experiment naar productiecode, raadpleegt u de volgende links voor meer informatie en volgende stappen:
 
 + [MLOpsPython](https://github.com/microsoft/MLOpsPython/blob/master/docs/custom_model.md): Bouw een CI/CD-pijplijn om uw eigen model te trainen, evalueren en implementeren met behulp van Azure-pijplijnen en Azure Machine Learning
-+ [Uitvoeringen en metrische gegevens van Azure ML-experimenten bewaken](https://docs.microsoft.com/azure/machine-learning/how-to-track-experiments)
-+ [Gegevens van ML-webservice-eindpunten bewaken en verzamelen](https://docs.microsoft.com/azure/machine-learning/how-to-enable-app-insights)
++ [Uitvoeringen en metrische gegevens van Azure ML-experimenten bewaken](./how-to-track-experiments.md)
++ [Gegevens van ML-webservice-eindpunten bewaken en verzamelen](./how-to-enable-app-insights.md)

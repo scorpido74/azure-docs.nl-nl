@@ -4,18 +4,20 @@ description: Meer informatie over het importeren of opnemen van gegevens in Azur
 author: ealsur
 ms.author: maquaran
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: tutorial
 ms.date: 09/21/2020
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cfab8ba88c7da84efb3f6aed6f95bb100507f8da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e50fe1f5b1658458a2d561f8157f04d1cbceb41
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90981916"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341232"
 ---
 # <a name="bulk-import-data-to-azure-cosmos-db-sql-api-account-by-using-the-net-sdk"></a>Gegevens bulksgewijs importeren in Azure Cosmos DB SQL API-account met behulp van de .NET SDK
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Deze zelfstudie laat zien hoe u een .NET-consoletoepassing bouwt waarmee de ingerichte doorvoer (RU/s) die nodig is voor het importeren van gegevens in Azure Cosmos DB, wordt geoptimaliseerd. In dit artikel leest u gegevens uit een voorbeeldgegevensbron en importeert u deze in een Azure Cosmos-container.
 In deze zelfstudie wordt gebruikgemaakt van [versie 3.0+](https://www.nuget.org/packages/Microsoft.Azure.Cosmos) van de Azure Cosmos DB .NET SDK. Deze is gericht op .NET Framework of .NET Core.

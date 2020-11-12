@@ -9,16 +9,16 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: c2782d15d8be82d07f14f7ada5732b1dbef699c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 59567cf2dc03952a78852f3288e78ba06aa769ee
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91338008"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325678"
 ---
 # <a name="tutorial-2-train-credit-risk-models---azure-machine-learning-studio-classic"></a>Zelfstudie 2: Modellen voor kredietrisico trainen - Azure Machine Learning Studio (klassiek)
 
-**VAN TOEPASSING OP:** ![ja](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (klassiek) ![nee](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+**VAN TOEPASSING OP:** ![ja](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (klassiek) ![nee ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 In deze zelfstudie wordt uitgebreid ingegaan op het ontwikkelingsproces van een predictive analytics-oplossing. U ontwikkelt een eenvoudig model in Machine Learning Studio (klassiek).  Vervolgens implementeert u het model als een Azure Machine Learning-webservice.  Dit geïmplementeerde model kan voorspellingen doen op basis van nieuwe gegevens. Deze zelfstudie is **deel twee van een driedelige reeks**.
@@ -50,7 +50,7 @@ Een van de voordelen van het gebruik van Azure Machine Learning Studio (klassiek
 
 In het experiment dat we ontwikkelen in deze zelfstudie, maakt u twee verschillende soorten modellen en vergelijkt vervolgens hun scoreresultaten om te beslissen welk algoritme u wilt gebruiken in ons laatste experiment.  
 
-Er zijn verschillende modellen waaruit u kunt kiezen. Als u de beschikbare modellen wilt zien, vouwt u het **Machine Learning**-knooppunt uit in het modulepalet en vervolgens **Initialize Model** en de knooppunten eronder. Voor dit experiment selecteert u de modules [Ondersteuningsvectormachine met twee klassen][two-class-support-vector-machine] (SVM) en de module [Versterkte beslissingsstructuur met twee klassen][two-class-boosted-decision-tree].
+Er zijn verschillende modellen waaruit u kunt kiezen. Als u de beschikbare modellen wilt zien, vouwt u het **Machine Learning** -knooppunt uit in het modulepalet en vervolgens **Initialize Model** en de knooppunten eronder. Voor dit experiment selecteert u de modules [Ondersteuningsvectormachine met twee klassen][two-class-support-vector-machine] (SVM) en de module [Versterkte beslissingsstructuur met twee klassen][two-class-boosted-decision-tree].
 
 > [!TIP]
 > Raadpleeg [Algoritmen kiezen voor Microsoft Azure Machine Learning Studio (klassiek)](../how-to-select-algorithms.md) als u informatie nodig hebt om te bepalen welk Machine Learning-algoritme het beste tegemoetkomt aan het specifieke probleem dat u probeert om op te lossen.
@@ -84,11 +84,11 @@ Nu moet u de module [Trainingsmodel][train-model] vertellen dat u wilt dat het m
 
 1. Selecteer de module [Train Model][train-model]. Klik in het deelvenster **Properties** op **Launch column selector**.
 
-1. In het dialoogvenster **Select a single column** typt u "Kredietrisico" in het zoekveld onder **Available Columns**, selecteert u "Kredietrisico" hieronder en klikt u op de rechter pijlknop ( **>** ) om "Kredietrisico’s" naar **Selected Columns** te verplaatsen. 
+1. In het dialoogvenster **Select a single column** typt u "Kredietrisico" in het zoekveld onder **Available Columns** , selecteert u "Kredietrisico" hieronder en klikt u op de rechter pijlknop ( **>** ) om "Kredietrisico’s" naar **Selected Columns** te verplaatsen. 
 
     ![Selecteer de kolom Kredietrisico voor de module Train Model](./media/tutorial-part2-credit-risk-train/train-model-select-column.png)
 
-1. Klik op het **OK**-selectievakje.
+1. Klik op het **OK** -selectievakje.
 
 ### <a name="two-class-support-vector-machine"></a>Two-Class Support Vector Machine
 
@@ -100,7 +100,7 @@ Als u het SVM-model instelt, doe dan het volgende:
 
 1. Zoek de module [Ondersteuningsvectormachine met twee klassen][two-class-support-vector-machine] in het modulepalet en sleep deze naar het canvas.
 
-1. Klik met de rechtermuisknop op de module [Trainingsmodel][train-model], selecteer **Kopiëren**, klik vervolgens met de rechtermuisknop op het canvas en selecteer **Plakken**. De kopie van de module [Trainingsmodel][train-model] bevat dezelfde kolomselectie als het origineel.
+1. Klik met de rechtermuisknop op de module [Trainingsmodel][train-model], selecteer **Kopiëren** , klik vervolgens met de rechtermuisknop op het canvas en selecteer **Plakken**. De kopie van de module [Trainingsmodel][train-model] bevat dezelfde kolomselectie als het origineel.
 
 1. Koppel de uitvoer van de module [Ondersteuningsvectormachine met twee klassen][two-class-support-vector-machine] aan de linkerinvoerpoort van de tweede [Trainingsmodel][train-model]-module.
 
@@ -116,13 +116,13 @@ Zo ziet dit deel van het experiment er ongeveer uit nadat het is uitgevoerd:
 
 Configureer nu de module [Gegevens normaliseren][normalize-data]:
 
-1. Selecteer de module [Gegevens normaliseren][normalize-data]. Selecteer in het **Properties**-venster **Tanh** als parameter voor **Transformation method**.
+1. Selecteer de module [Gegevens normaliseren][normalize-data]. Selecteer in het **Properties** -venster **Tanh** als parameter voor **Transformation method**.
 
-1. Klik op **Launch column selector**, selecteer "No columns" voor **Begin With**, selecteer **Include** in de eerste vervolgkeuzelijst, selecteer **column type** in de tweede vervolgkeuzelijst en selecteer **Numeric** in de derde vervolgkeuzelijst. Hiermee wordt aangegeven dat alle numerieke kolommen (en alleen numerieke) worden getransformeerd.
+1. Klik op **Launch column selector** , selecteer "No columns" voor **Begin With** , selecteer **Include** in de eerste vervolgkeuzelijst, selecteer **column type** in de tweede vervolgkeuzelijst en selecteer **Numeric** in de derde vervolgkeuzelijst. Hiermee wordt aangegeven dat alle numerieke kolommen (en alleen numerieke) worden getransformeerd.
 
 1. Klik op het plusteken (+) aan de rechterkant van deze rij. Hiermee maakt u een rij van de vervolgkeuzelijsten. Selecteer **Exclude** in de eerste vervolgkeuzelijst, selecteer **column names** in de tweede vervolgkeuzelijst en voer "Kredietrisico" in het tekstveld in. Hiermee wordt aangegeven dat de kolom Kredietrisico's moet worden genegeerd (u moet dit doen omdat deze kolom numeriek is en zou worden omgezet als u deze niet uitsluit).
 
-1. Klik op het **OK**-selectievakje.  
+1. Klik op het **OK** -selectievakje.  
 
     ![Selecteer de module Normalize Data](./media/tutorial-part2-credit-risk-train/normalize-data-select-column.png)
 
@@ -195,7 +195,7 @@ De wetenschap en kunst van het interpreteren van deze resultaten en het afstemme
 - [Modelresultaten in Azure Machine Learning Studio (klassiek) interpreteren](interpret-model-results.md)
 
 > [!TIP]
-> Telkens wanneer u het experiment uitvoert, wordt een record van deze iteratie opgeslagen in de uitvoeringsgeschiedenis. U kunt deze iteraties bekijken en ze opnieuw bekijken door te klikken op **VIEW RUN HISTORY** onder het canvas. U kunt ook klikken op **Prior Ru** in het **Properties**-venster om terug te keren naar de iteratie direct vóór de versie die u hebt geopend.
+> Telkens wanneer u het experiment uitvoert, wordt een record van deze iteratie opgeslagen in de uitvoeringsgeschiedenis. U kunt deze iteraties bekijken en ze opnieuw bekijken door te klikken op **VIEW RUN HISTORY** onder het canvas. U kunt ook klikken op **Prior Ru** in het **Properties** -venster om terug te keren naar de iteratie direct vóór de versie die u hebt geopend.
 > 
 > U kunt een kopie van de iteraties van uw experiment maken door te klikken op **SAVE AS** onder het canvas. 
 > Gebruik de eigenschappen **Summary** en **Description** van het experiment om bij te houden wat u hebt geprobeerd in uw iteraties.
@@ -224,14 +224,14 @@ U kunt nu de modellen voor deze gegevens implementeren.
 
 
 <!-- Module References -->
-[execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
-[edit-metadata]: https://msdn.microsoft.com/library/azure/370b6676-c11c-486f-bf73-35349f842a66/
-[split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
-[evaluate-model]: https://msdn.microsoft.com/library/azure/927d65ac-3b50-4694-9903-20f6c1672089/
-[execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
-[normalize-data]: https://msdn.microsoft.com/library/azure/986df333-6748-4b85-923d-871df70d6aaf/
-[score-model]: https://msdn.microsoft.com/library/azure/401b4f92-e724-4d5a-be81-d5b0ff9bdb33/
-[train-model]: https://msdn.microsoft.com/library/azure/5cc7053e-aa30-450d-96c0-dae4be720977/
-[two-class-boosted-decision-tree]: https://msdn.microsoft.com/library/azure/e3c522f8-53d9-4829-8ea4-5c6a6b75330c/
-[two-class-support-vector-machine]: https://msdn.microsoft.com/library/azure/12d8479b-74b4-4e67-b8de-d32867380e20/
+[execute-r-script]: /azure/machine-learning/studio-module-reference/execute-r-script
+[edit-metadata]: /azure/machine-learning/studio-module-reference/edit-metadata
+[split]: /azure/machine-learning/studio-module-reference/split-data
+[evaluate-model]: /azure/machine-learning/studio-module-reference/evaluate-model
+[execute-r-script]: /azure/machine-learning/studio-module-reference/execute-r-script
+[normalize-data]: /azure/machine-learning/studio-module-reference/normalize-data
+[score-model]: /azure/machine-learning/studio-module-reference/score-model
+[train-model]: /azure/machine-learning/studio-module-reference/train-model
+[two-class-boosted-decision-tree]: /azure/machine-learning/studio-module-reference/two-class-boosted-decision-tree
+[two-class-support-vector-machine]: /azure/machine-learning/studio-module-reference/two-class-support-vector-machine
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/

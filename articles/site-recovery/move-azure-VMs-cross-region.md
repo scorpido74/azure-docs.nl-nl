@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: sideeksh
 ms.custom: MVC
-ms.openlocfilehash: 11767e7369648ad2f4dec4480fbad0f6218446fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5ae930240872c00c8dbb45857e4e77d82766eadf
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89425412"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93398059"
 ---
 # <a name="move-azure-vms-to-another-azure-region"></a>Azure-VM’s verplaatsen naar een andere Azure-regio
 
@@ -53,7 +53,7 @@ U wilt mogelijk virtuele Azure IaaS-machines (Infrastructure as a Service) naar 
     - Voor Windows-VM’s installeert u de meest recente Windows-updates, zodat alle vertrouwde basiscertificaten op de machine aanwezig zijn. In een niet-verbonden omgeving moet u de standaardprocedures van Windows Update en de standaardprocedures voor het bijwerken van de certificaten van uw organisatie volgen.
     - Voor Linux-VM’s volgt u de richtlijnen van de Linux-distributeur om de meest recente basiscertificaten en de certificaatintrekkingslijst op te halen.
 2. Zorg ervoor dat u geen verificatieproxy gebruikt om de netwerkverbinding te beheren voor de VM’s die u gaat verplaatsen.
-3. Controleer de [vereisten](azure-to-azure-tutorial-enable-replication.md#set-up-outbound-network-connectivity-for-vms) als een VM die u wilt verplaatsen, geen toegang tot internet heeft en een firewallproxy gebruikt voor het beheren van uitgaande toegang.
+3. Controleer de [vereisten](azure-to-azure-tutorial-enable-replication.md#set-up-vm-connectivity) als een VM die u wilt verplaatsen, geen toegang tot internet heeft en een firewallproxy gebruikt voor het beheren van uitgaande toegang.
 4. Leg ter controle de bronnetwerkindeling vast, en ook alle resources die u momenteel gebruikt, inclusief (maar niet beperkt tot) load balancers, netwerkbeveiligingsgroepen, en openbare IP-adressen.
 
 ## <a name="prepare-the-target-region"></a>De doelregio voorbereiden
@@ -100,7 +100,6 @@ In Site Recovery wordt een lijst opgehaald met de VM’s die zijn gekoppeld aan 
 4. Kies ervoor om de standaarddoelresources te gebruiken of de resources die u vooraf hebt gemaakt.
 5. Selecteer **Replicatie inschakelen** om de taak te starten.
 
-   ![Replicatie inschakelen](media/tutorial-migrate-azure-to-azure/settings.png)
 
  
 
@@ -110,9 +109,9 @@ In Site Recovery wordt een lijst opgehaald met de VM’s die zijn gekoppeld aan 
 1. Ga naar de kluis. Selecteer in **Instellingen** > **Gerepliceerde items** de virtuele machine die u wilt verplaatsen naar de doelregio. Selecteer vervolgens **Failover testen**.
 2. Selecteer in **Failover testen** een herstelpunt om voor de failover te gebruiken:
 
-   - **Laatst verwerkt**: voert een failover van de VM uit naar het laatste herstelpunt dat is verwerkt door de Site Recovery-service. Het tijdstempel wordt weergegeven. Er wordt geen tijd besteed aan het verwerken van gegevens, zodat bij deze optie sprake is van een lage RTO (Recovery Time Objective).
-   - **Laatste toepassingsconsistente punt**: Er wordt een failover uitgevoerd van alle VM's naar het laatste app-consistente herstelpunt. Het tijdstempel wordt weergegeven.
-   - **Aangepast**: selecteer een herstelpunt.
+   - **Laatst verwerkt** : voert een failover van de VM uit naar het laatste herstelpunt dat is verwerkt door de Site Recovery-service. Het tijdstempel wordt weergegeven. Er wordt geen tijd besteed aan het verwerken van gegevens, zodat bij deze optie sprake is van een lage RTO (Recovery Time Objective).
+   - **Laatste toepassingsconsistente punt** : Er wordt een failover uitgevoerd van alle VM's naar het laatste app-consistente herstelpunt. Het tijdstempel wordt weergegeven.
+   - **Aangepast** : selecteer een herstelpunt.
 
 3. Selecteer het Azure-doelnetwerk waar u de Azure VM's naartoe wilt verplaatsen, om de configuratie te testen.
 
@@ -125,7 +124,7 @@ In Site Recovery wordt een lijst opgehaald met de VM’s die zijn gekoppeld aan 
 
 ## <a name="perform-the-move-and-confirm"></a>De verplaatsing uitvoeren en bevestigen
 
-1. Ga naar de kluis in **Instellingen** > **Gerepliceerde items**, selecteer de virtuele machine, en selecteer vervolgens **Failover**.
+1. Ga naar de kluis in **Instellingen** > **Gerepliceerde items** , selecteer de virtuele machine, en selecteer vervolgens **Failover**.
 1. Selecteer voor **Failover** de optie **Meest recent**. 
 2. Selecteer **Sluit de computer af voordat de failover wordt gestart**. Site Recovery probeert de bron-VM af te sluiten voordat de failover wordt geactiveerd. Maar de failover wordt voortgezet, ook als het afsluiten mislukt. U kunt de voortgang van de failover volgen op de pagina **Taken**.
 3. Wanneer de taak is voltooid, controleert u of de VM wordt weergegeven in de Azure-doelregio, zoals verwacht.

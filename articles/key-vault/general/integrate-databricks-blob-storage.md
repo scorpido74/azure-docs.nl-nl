@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 06/16/2020
-ms.openlocfilehash: bb574bb3dd000682090c6c3f861e885761753e19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba80d78cbc7d34b1496daffbd489a1d0dbfed8b4
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88588514"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285663"
 ---
 # <a name="tutorial-access-azure-blob-storage-using-azure-databricks-and-azure-key-vault"></a>Zelfstudie: Toegang tot Azure Blob Storage met Azure Databricks en Azure Key Vault
 
@@ -29,11 +29,11 @@ In deze zelfstudie leert u het volgende:
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
-Voordat u met deze zelfstudie begint, moet u [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest) installeren.
+Voordat u met deze zelfstudie begint, moet u [Azure CLI](/cli/azure/install-azure-cli-windows?view=azure-cli-latest) installeren.
 
 ## <a name="create-a-storage-account-and-blob-container-with-azure-cli"></a>Een opslagaccount en blobcontainer maken met Azure CLI
 
-U moet eerst een opslagaccount voor algemeen gebruik maken om blobs te kunnen gebruiken. Als u geen [resourcegroep](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create) hebt, maakt u er een voordat u de opdracht uitvoert. Met de volgende opdracht worden de metagegevens van de opslagcontainer gemaakt en weergegeven. Kopieer de **id**.
+U moet eerst een opslagaccount voor algemeen gebruik maken om blobs te kunnen gebruiken. Als u geen [resourcegroep](/cli/azure/group?view=azure-cli-latest#az-group-create) hebt, maakt u er een voordat u de opdracht uitvoert. Met de volgende opdracht worden de metagegevens van de opslagcontainer gemaakt en weergegeven. Kopieer de **id**.
 
 ```azurecli
 az storage account create --name contosoblobstorage5 --resource-group contosoResourceGroup --location eastus --sku Standard_ZRS --encryption-services blob
@@ -41,7 +41,7 @@ az storage account create --name contosoblobstorage5 --resource-group contosoRes
 
 ![Console-uitvoer van de bovenstaande opdracht. De id is groen gemarkeerd voor eindgebruikers.](../media/databricks-command-output-1.png)
 
-Voordat u een container kunt maken om daar de blob naartoe te uploaden, moet u de rol [Storage Blob Data Contributor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) aan uzelf toewijzen. In dit voorbeeld wordt de rol toegewezen aan het opslagaccount dat u eerder hebt gemaakt.
+Voordat u een container kunt maken om daar de blob naartoe te uploaden, moet u de rol [Storage Blob Data Contributor](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) aan uzelf toewijzen. In dit voorbeeld wordt de rol toegewezen aan het opslagaccount dat u eerder hebt gemaakt.
 
 ```azurecli
 az role assignment create --role "Storage Blob Data Contributor" --assignee t-trtr@microsoft.com --scope "/subscriptions/885e24c8-7a36-4217-b8c9-eed31e110504/resourceGroups/contosoResourceGroup5/providers/Microsoft.Storage/storageAccounts/contosoblobstorage5
@@ -86,7 +86,7 @@ az keyvault create --name contosoKeyVault10 --resource-group contosoResourceGrou
 ![Afbeelding](../media/databricks-command-output-4.png)
 ![Console-uitvoer van de bovenstaande opdracht. De id en de vaultUri zijn beide groen gemarkeerd ten behoeve van de gebruiker.](../media/databricks-command-output-5.png)
 
-Gebruik de volgende opdracht om het geheim te maken. Stel de waarde van het geheim in op de **key1**-waarde uit uw opslagaccount.
+Gebruik de volgende opdracht om het geheim te maken. Stel de waarde van het geheim in op de **key1** -waarde uit uw opslagaccount.
 
 ```azurecli
 az keyvault secret set --vault-name contosoKeyVault10 --name storageKey --value "value of your key1"
@@ -94,7 +94,7 @@ az keyvault secret set --vault-name contosoKeyVault10 --name storageKey --value 
 
 ## <a name="create-an-azure-databricks-workspace-and-add-key-vault-secret-scope"></a>Een Azure Databricks-werkruimte maken en het bereik voor een Key Vault-geheim toevoegen
 
-Deze sectie kan niet worden uitgevoerd via de opdrachtregel. Volg deze [richtlijn](https://docs.microsoft.com/azure/azure-databricks/store-secrets-azure-key-vault#create-an-azure-databricks-workspace-and-add-a-secret-scope). U hebt toegang tot de [Azure-portal](https://ms.portal.azure.com/#home) nodig om het volgende te doen:
+Deze sectie kan niet worden uitgevoerd via de opdrachtregel. Volg deze [richtlijn](/azure/databricks/scenarios/store-secrets-azure-key-vault#create-an-azure-databricks-workspace-and-add-a-secret-scope). U hebt toegang tot de [Azure-portal](https://ms.portal.azure.com/#home) nodig om het volgende te doen:
 
 1. Uw Azure Databricks-resource maken
 1. Uw werkruimte starten
@@ -102,7 +102,7 @@ Deze sectie kan niet worden uitgevoerd via de opdrachtregel. Volg deze [richtlij
 
 ## <a name="access-your-blob-container-from-azure-databricks-workspace"></a>Toegang tot uw blobcontainer vanuit de Azure Databricks-werkruimte
 
-Deze sectie kan niet worden uitgevoerd via de opdrachtregel. Volg deze [richtlijn](https://docs.microsoft.com/azure/azure-databricks/store-secrets-azure-key-vault#access-your-blob-container-from-azure-databricks). U moet de Azure Databricks-werkruimte gebruiken voor het volgende:
+Deze sectie kan niet worden uitgevoerd via de opdrachtregel. Volg deze [richtlijn](/azure/databricks/scenarios/store-secrets-azure-key-vault#access-your-blob-container-from-azure-databricks). U moet de Azure Databricks-werkruimte gebruiken voor het volgende:
 
 1. Een **nieuw cluster** maken.
 1. Een **nieuwe notebook** maken
@@ -124,4 +124,4 @@ df.show()
 
 Ervoor zorgen dat de Key Vault kan worden hersteld:
 > [!div class="nextstepaction"]
-> [Uw resources opschonen](https://docs.microsoft.com/azure/azure-resource-manager/management/delete-resource-group?tabs=azure-powershell)
+> [Uw resources opschonen](../../azure-resource-manager/management/delete-resource-group.md?tabs=azure-powershell)

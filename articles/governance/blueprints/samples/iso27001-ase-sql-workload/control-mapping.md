@@ -1,20 +1,20 @@
 ---
 title: Beheeropties voor blauwdrukvoorbeeld voor ISO 27001 conforme ASE-/SQL-workloads
 description: Toewijzing van beheeropties van het blauwdrukvoorbeeld voor ISO 27001 conforme App Service Environment-/SQL Database-workloads in Azure Policy en Azure RBAC.
-ms.date: 07/13/2020
+ms.date: 11/05/2020
 ms.topic: sample
-ms.openlocfilehash: 662e5dce9c58cec3be36c3e492d7231ed0e83939
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 438f2af05e0c499e9f002b501b97e291705cee9a
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91929316"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420407"
 ---
 # <a name="control-mapping-of-the-iso-27001-asesql-workload-blueprint-sample"></a>Toewijzing van beheeropties voor blauwdrukvoorbeeld voor ISO 27001 conforme ASE-/SQL Database-workloads
 
 Het volgende artikel bevat details over de manier waarop het blauwdrukvoorbeeld voor Azure Blueprints ISO 27001 conforme ASE-/SQL-workloads wordt toegewezen aan de ISO 27001-beheeropties. Zie [ISO 27001](https://www.iso.org/isoiec-27001-information-security.html) voor meer informatie over de beheeropties.
 
-De volgende toewijzingen zijn voor de **ISO 27001:2013**-beheeropties. Gebruik de navigatie aan de rechterkant om rechtstreeks naar een toewijzing van een specifieke beheeroptie te gaan. Veel van de toegewezen beheeropties worden geïmplementeerd met een [Azure Policy](../../../policy/overview.md)-initiatief. Als u het complete initiatief wilt bekijken, opent u **Beleid** in de Azure-portal en selecteert u de pagina **Definities**. Zoek en selecteer vervolgens het ingebouwde beleidsinitiatief **\[Preview\] ISO 27001:2013-beheeropties controleren en specifieke VM-extensies implementeren ter ondersteuning van de controlevereisten**.
+De volgende toewijzingen zijn voor de **ISO 27001:2013** -beheeropties. Gebruik de navigatie aan de rechterkant om rechtstreeks naar een toewijzing van een specifieke beheeroptie te gaan. Veel van de toegewezen beheeropties worden geïmplementeerd met een [Azure Policy](../../../policy/overview.md)-initiatief. Als u het complete initiatief wilt bekijken, opent u **Beleid** in de Azure-portal en selecteert u de pagina **Definities**. Zoek en selecteer vervolgens het ingebouwde beleidsinitiatief **\[Preview\] ISO 27001:2013-beheeropties controleren en specifieke VM-extensies implementeren ter ondersteuning van de controlevereisten**.
 
 > [!IMPORTANT]
 > Elke beheeroptie hieronder is gekoppeld aan een of meer [Azure Policy](../../../policy/overview.md)-definities. Met deze beleidsregels kunt u de [compliance beoordelen](../../../policy/how-to/get-compliance-data.md) met de beheeroptie. Er is echter vaak geen één-op-één- of volledige overeenkomst tussen een beheeroptie en een of meer beleidsregels. Als zodanig verwijst de term **Conform** in Azure Policy alleen naar de beleidsregels zelf. Dit garandeert niet dat u volledig conform bent met alle vereisten van een beheeroptie. Daarnaast bevat de compliance standaard beheeropties die op dit moment nog niet worden beschreven door Azure Policy-definities. Daarom is compliance in Azure Policy slechts een gedeeltelijke weergave van uw algemene compliancestatus. De koppelingen tussen de beheeropties en Azure Policy definities voor dit blauwdrukvoorbeeld voor compliance kunnen na verloop van tijd veranderen. Als u de wijzigingsgeschiedenis wilt bekijken, raadpleegt u de [GitHub Commit-geschiedenis](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/iso27001-ase-sql-workload/control-mapping.md).
@@ -37,8 +37,6 @@ Met de [service voor evaluatie van SQL-beveiligingsproblemen](../../../../azure-
 In Azure wordt [op rollen gebaseerd toegangsbeheer van Azure (Azure RBAC)](../../../../role-based-access-control/overview.md) geïmplementeerd om te beheren wie toegang heeft tot Azure-resources. Met deze blauwdruk kunt u de toegang tot Azure-resources beheren door zeven [Azure Policy](../../../policy/overview.md)-definities toe te wijzen. Met deze beleidsregels wordt het gebruik van resourcetypen en -configuraties gecontroleerd, waardoor de toegang tot resources kan worden uitgebreid.
 Dankzij meer inzicht in resources die in strijd zijn met deze beleidsregels kunt u corrigerende maatregelen treffen om te garanderen dat toegang tot Azure-resources wordt beperkt tot gemachtigde gebruikers.
 
-- Vereisten implementeren om Linux-VM's met accounts zonder wachtwoorden te controleren
-- Vereisten implementeren om virtuele Linux-machines te controleren waarvoor externe verbindingen met accounts zonder wachtwoorden zijn toegestaan
 - Controleresultaten weergeven van virtuele Linux-machines met accounts zonder wachtwoorden
 - Controleresultaten weergeven van virtuele Linux-machines waarvoor externe verbindingen met accounts zonder wachtwoorden zijn toegestaan
 - Opslagaccounts moeten worden gemigreerd naar nieuwe Azure Resource Manager-resources
@@ -65,7 +63,6 @@ Met deze blauwdruk worden drie [Azure Policy](../../../policy/overview.md)-defin
 - MFA moet zijn ingeschakeld voor accounts met leesmachtigingen voor uw abonnement
 - MFA moet zijn ingeschakeld voor accounts met schrijfmachtigingen voor uw abonnement
 - Controleresultaten weergeven van virtuele Linux-machines waarvoor de machtigingen van het passwd-bestand niet zijn ingesteld op 0644
-- Vereisten implementeren om Linux-VM's te controleren waarvoor de machtigingen van het passwd-bestand niet zijn ingesteld op 0644
 
 ## <a name="a925-review-of-user-access-rights"></a>A.9.2.5 Beoordeling van toegangsrechten voor gebruikers
 
@@ -100,11 +97,6 @@ Met deze blauwdruk kunt u sterke wachtwoorden afdwingen door tien [Azure Policy]
 - Controleresultaten weergeven van virtuele Windows-machines waarvoor geen minimale wachtwoordduur van 1 dag is ingesteld
 - Controleresultaten weergeven van virtuele Windows-machines waarvoor de minimale wachtwoordlengte niet wordt beperkt tot 14 tekens
 - Controleresultaten weergeven van virtuele Windows-machines waarvoor de voorgaande 24 wachtwoorden opnieuw kunnen worden gebruikt
-- Vereisten implementeren om virtuele Windows-machines te controleren waarop de instelling voor wachtwoordcomplexiteit niet is ingeschakeld
-- Vereisten implementeren om virtuele Windows-machines te controleren waarvoor geen maximale wachtwoordduur van 70 dagen is ingesteld
-- Vereisten implementeren om virtuele Windows-machines te controleren waarvoor geen minimale wachtwoordduur van 1 dag is ingesteld
-- Vereisten implementeren om virtuele Windows-machines te controleren waarvoor de minimale wachtwoordlengte niet wordt beperkt tot 14 tekens
-- Vereisten implementeren om virtuele Windows-machines te controleren waarvoor de voorgaande 24 wachtwoorden opnieuw kunnen worden gebruikt
 
 ## <a name="a1011-policy-on-the-use-of-cryptographic-controls"></a>A.10.1.1 Beleid voor het gebruik van cryptografische beheeropties
 
@@ -114,7 +106,6 @@ Wanneer u weet waar uw Azure-resources mogelijk niet-optimale cryptografische co
 - Functie-app mag alleen toegankelijk zijn via HTTPS
 - Webtoepassing mag alleen toegankelijk zijn via HTTPS
 - API-app mag alleen toegankelijk zijn via HTTPS
-- Vereisten implementeren om virtuele Windows-machines te controleren waarop wachtwoorden niet worden opgeslagen met omkeerbare versleuteling
 - Controleresultaten weergeven van virtuele Windows-machines waarop wachtwoorden niet worden opgeslagen met omkeerbare versleuteling
 - Schijfversleuteling moet worden toegepast op virtuele machines
 - Automation-accountvariabelen moeten worden versleuteld

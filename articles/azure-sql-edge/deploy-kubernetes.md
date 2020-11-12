@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: 16ad757fc00439bb390a7e0dea902901c468dd1c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31a454c93ad5192f387306a8ec557c4e4d3ae991
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90929299"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395288"
 ---
 # <a name="deploy-an-azure-sql-edge-container-in-kubernetes"></a>Het implementeren van een Azure SQL Edge-container in Kubernetes
 
@@ -48,7 +48,7 @@ In het volgende diagram is het knooppunt dat als host fungeert voor de `azure-sq
 * **Kubernetes-cluster**
    - Voor de zelfstudie is een Kubernetes-cluster vereist. De stappen gebruiken [kubectl](https://kubernetes.io/docs/user-guide/kubectl/) om het cluster te beheren. 
 
-   - Voor het doel van deze zelfstudie gebruiken we Azure Kubernetes Service voor het implementeren van Azure SQL Edge. Zie [Een AKS-cluster (Azure Kubernetes service) implementeren](https://docs.microsoft.com/azure/aks/tutorial-kubernetes-deploy-cluster) voor het maken en verbinden met een Kubernetes-cluster met één knooppunt in AKS met `kubectl`. 
+   - Voor het doel van deze zelfstudie gebruiken we Azure Kubernetes Service voor het implementeren van Azure SQL Edge. Zie [Een AKS-cluster (Azure Kubernetes service) implementeren](../aks/tutorial-kubernetes-deploy-cluster.md) voor het maken en verbinden met een Kubernetes-cluster met één knooppunt in AKS met `kubectl`. 
 
    >[!NOTE]
    >Ter bescherming tegen storingen in een knooppunt heeft een Kubernetes-cluster meer dan één knooppunt nodig.
@@ -108,7 +108,7 @@ Configureer een [permanent volume](https://kubernetes.io/docs/concepts/storage/p
          storage: 8Gi
    ```
 
-   Sla het bestand op (bijvoorbeeld **pvc.yaml**).
+   Sla het bestand op (bijvoorbeeld **pvc.yaml** ).
 
 2. Maak de permanente volumeclaim in Kubernetes.
 
@@ -241,7 +241,7 @@ spec:
    >[!NOTE]
    >Met behulp van het servicetype `LoadBalancer` is de Azure SQL Edge-instantie extern toegankelijk (via internet) op poort 1433.
 
-   Sla het bestand op (bijvoorbeeld **sqledgedeploy.yaml**).
+   Sla het bestand op (bijvoorbeeld **sqledgedeploy.yaml** ).
 
 2. Maak de implementatie.
 
@@ -318,8 +318,7 @@ In deze zelfstudie hebt u geleerd hoe u Azure SQL Edge-containers kunt implement
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Inleiding tot Kubernetes](https://docs.microsoft.com/azure/aks/intro-kubernetes)
+- [Inleiding tot Kubernetes](../aks/intro-kubernetes.md)
 - [Machine Learning en kunstmatige intelligentie met ONNX in SQL Edge](onnx-overview.md).
 - [Een end-to-end IoT-oplossing bouwen met SQL Edge met behulp van IoT Edge](tutorial-deploy-azure-resources.md).
 - [Gegevensstreaming in Azure SQL Edge](stream-data.md)
-

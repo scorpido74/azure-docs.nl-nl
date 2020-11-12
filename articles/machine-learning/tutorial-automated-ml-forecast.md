@@ -10,12 +10,13 @@ ms.author: sacartac
 ms.reviewer: nibaccam
 author: cartacioS
 ms.date: 07/10/2020
-ms.openlocfilehash: 6ad3e0f3077e6f65642496d4da097fa713bddd53
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: automl
+ms.openlocfilehash: 5577a0d9270f3e4566bf57876b8abc3d1a3ae4be
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979083"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93356498"
 ---
 # <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>Zelfstudie: Vraag voorspellen met automatische machine learning
 
@@ -57,7 +58,7 @@ Voor deze zelfstudie maakt u een geautomatiseerd ML-experiment in Azure Machine 
 
 Voordat u uw experiment gaat configureren, uploadt u uw gegevensbestand naar uw werkruimte in de vorm van een Azure Machine Learning-gegevensset. Als u dit doet, kunt u ervoor zorgen dat uw gegevens op de juiste wijze zijn opgemaakt voor uw experiment.
 
-1. Op het formulier **Gegevensset selecteren**, selecteert u **Uit lokale bestanden** in de keuzelijst **+Gegevensset maken**. 
+1. Op het formulier **Gegevensset selecteren** , selecteert u **Uit lokale bestanden** in de keuzelijst **+Gegevensset maken**. 
 
     1. Geef uw gegevensset een naam en een optionele beschrijving in het formulier **Basisinformatie**. Het type gegevensset moet standaard in **Tabelvorm** zijn, omdat automatische ML in Azure Machine Learning Studio momenteel alleen ondersteuning biedt voor gegevenssets in tabelvorm.
     
@@ -85,7 +86,7 @@ Voordat u uw experiment gaat configureren, uploadt u uw gegevensbestand naar uw 
 
     1. Met het formulier **Schema** kunt u uw gegevens verder configureren voor dit experiment. 
     
-        1. Voor dit voorbeeld negeert u de kolommen **Informeel** en **Geregistreerd**. Deze kolommen vormen een uitsplitsing van de kolom **cnt**, dus we nemen deze niet op.
+        1. Voor dit voorbeeld negeert u de kolommen **Informeel** en **Geregistreerd**. Deze kolommen vormen een uitsplitsing van de kolom **cnt** , dus we nemen deze niet op.
 
         1. Voor dit voorbeeld moet u ook de standaardwaarden voor de **Eigenschappen** en **Type** opgeven. 
         
@@ -144,7 +145,7 @@ Voltooi de installatie voor uw automatische ML-experiment door het taaktype en d
     Primaire metrische gegevens| Evaluatiewaarde waarmee het machine learning-algoritme wordt gemeten.|Genormaliseerde wortel gemiddelde kwadraatfout
     Uitleg geven over het beste model| Hiermee wordt automatisch uitleg gegeven over het beste model dat is gemaakt met geautomatiseerde ML.| Inschakelen
     Geblokkeerde algoritmen | Algoritmen die u niet wilt opnemen in de trainingstaak| Extreme willekeurige structuren
-    Aanvullende prognose-instellingen| Deze instellingen helpen de nauwkeurigheid van het model te verbeteren <br><br> _**Doelvertragingen voor prognose:**_ hoe ver terug u de vertragingen van de doelvariabele wilt maken <br> _**Doorlopend doel**_: hiermee geeft u de grootte van het doorlopende venster op waarover de functies, zoals de *Max, min* en *Som*, worden gegenereerd. | <br><br>Doelvertragingen &nbsp;voor&nbsp;prognose: Geen <br> Formaat&nbsp;doorlopende &nbsp;doelgrootte&nbsp;: Geen
+    Aanvullende prognose-instellingen| Deze instellingen helpen de nauwkeurigheid van het model te verbeteren <br><br> _**Doelvertragingen voor prognose:**_ hoe ver terug u de vertragingen van de doelvariabele wilt maken <br> _**Doorlopend doel**_ : hiermee geeft u de grootte van het doorlopende venster op waarover de functies, zoals de *Max, min* en *Som* , worden gegenereerd. | <br><br>Doelvertragingen &nbsp;voor&nbsp;prognose: Geen <br> Formaat&nbsp;doorlopende &nbsp;doelgrootte&nbsp;: Geen
     Criterium voor afsluiten| Als er aan een criterium is voldaan, wordt de trainingstaak gestopt. |Tijd voor&nbsp;trainingstaak&nbsp; (uur): 3 <br> Drempelwaarde&nbsp;metrische&nbsp;score: Geen
     Validatie | Kies een kruisvalidatietype en een aantal tests.|Validatietype:<br>&nbsp;k-voudige&nbsp;kruisvalidatie <br> <br> Aantal validaties: 5
     Gelijktijdigheid| Het maximum aantal parallelle iteraties uitgevoerd per iteratie| Maximumaantal&nbsp;gelijktijdige&nbsp;iteraties: 6

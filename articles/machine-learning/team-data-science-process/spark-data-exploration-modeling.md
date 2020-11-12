@@ -11,18 +11,18 @@ ms.topic: sample
 ms.date: 06/03/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperfq4
-ms.openlocfilehash: 406092466b7ab5ca729a08f7c703bcb30812901d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7a361319c3fc6c80c6dac80c48fb10155a3ff5b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86027508"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314849"
 ---
 # <a name="data-exploration-and-modeling-with-spark"></a>Met Spark gegevens verkennen en modelleren
 
 Lees hier hoe u HDInsight Spark kunt gebruiken voor het trainen van machine learning-modellen om de prijs te voorspellen van taxiritten met behulp van Spark MLlib.
 
-In dit voorbeeld worden de verschillende stappen in het [Team Data Science Process](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) gedemonstreerd. Er wordt een subset gebruikt van de gegevensset met prijzen voor taxiritten in New York van 2013 om gegevens te laden, te verkennen en voor te bereiden. Vervolgens worden met behulp van Spark MLlib binaire classificatie- en regressiemodellen getraind om te voorspellen of er een fooi zal worden betaald voor de rit en om de hoogte van de fooi te schatten.
+In dit voorbeeld worden de verschillende stappen in het [Team Data Science Process](./index.yml) gedemonstreerd. Er wordt een subset gebruikt van de gegevensset met prijzen voor taxiritten in New York van 2013 om gegevens te laden, te verkennen en voor te bereiden. Vervolgens worden met behulp van Spark MLlib binaire classificatie- en regressiemodellen getraind om te voorspellen of er een fooi zal worden betaald voor de rit en om de hoogte van de fooi te schatten.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -235,7 +235,7 @@ plt.show()
 
 ![Ritten uitgesplitst naar aantal passagiers](./media/spark-data-exploration-modeling/trip-freqency-by-passenger-count.png)
 
-U kunt kiezen uit verschillende soorten visualisaties (tabel, cirkel, lijn, vlak of staaf) met behulp van de **Type**-knoppen in het notebook. Hier ziet u een staafdiagram.
+U kunt kiezen uit verschillende soorten visualisaties (tabel, cirkel, lijn, vlak of staaf) met behulp van de **Type** -knoppen in het notebook. Hier ziet u een staafdiagram.
 
 ### <a name="plot-a-histogram-of-tip-amounts-and-how-tip-amount-varies-by-passenger-count-and-fare-amounts"></a>Een histogram plotten van fooien en hoe fooien verschillen per aantal passagiers en ritbedragen
 
@@ -697,7 +697,7 @@ Benodigde tijd voor het uitvoeren van de bovenstaande cel: 57,61 seconden
 
 **De ROC-curve plotten**
 
-*predictionAndLabelsDF* wordt geregistreerd als een tabel, *tmp_results*, in de vorige cel. *tmp_results* kan worden gebruikt om query's uit te voeren en resultaten uit te voeren in het dataframe sqlResults voor plotten. Dit is de code.
+*predictionAndLabelsDF* wordt geregistreerd als een tabel, *tmp_results* , in de vorige cel. *tmp_results* kan worden gebruikt om query's uit te voeren en resultaten uit te voeren in het dataframe sqlResults voor plotten. Dit is de code.
 
 ```python
 # QUERY RESULTS                              
@@ -1119,4 +1119,4 @@ U hebt nu regressie- en classificatiemodellen gemaakt met de Spark MlLib en bent
 
 **Modelverbruik:** Voor meer informatie over het beoordelen en evalueren van de classificatie- en regressiemodellen die in dit onderwerp zijn gemaakt, raadpleegt u [Operationalize Spark-built machine learning models](spark-model-consumption.md) (In Spark gebouwde machine learning-modellen operationeel maken).
 
-**Kruisvalidatie en sweeping van hyperparameters**: Zie [Advanced data exploration and modeling with Spark](spark-advanced-data-exploration-modeling.md) (Geavanceerde gegevensverkenning en -modellering met Spark) over de manier waarop modellen kunnen worden getraind met behulp van kruisvalidatie en sweeping van hyperparameters.
+**Kruisvalidatie en sweeping van hyperparameters** : Zie [Advanced data exploration and modeling with Spark](spark-advanced-data-exploration-modeling.md) (Geavanceerde gegevensverkenning en -modellering met Spark) over de manier waarop modellen kunnen worden getraind met behulp van kruisvalidatie en sweeping van hyperparameters.
