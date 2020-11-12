@@ -1,17 +1,17 @@
 ---
 title: Query Store-Azure Database for MySQL
 description: Meer informatie over de functie query Store in Azure Database for MySQL om de prestaties na verloop van tijd bij te houden.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 5/12/2020
-ms.openlocfilehash: 12623dccdc298aaad23ad6779caf33d895c5634a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 70e1e5d06ef025801322e15e589d26e31f116fc3
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91766122"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94535075"
 ---
 # <a name="monitor-azure-database-for-mysql-performance-with-query-store"></a>Azure Database for MySQL prestaties bewaken met query Store
 
@@ -36,12 +36,12 @@ Query Store is een opt-in-functie, waardoor deze niet standaard actief is op een
 1. Meld u aan bij de Azure Portal en selecteer uw Azure Database for MySQL-server.
 1. Selecteer **server parameters** in de sectie **instellingen** van het menu.
 1. Zoek de para meter query_store_capture_mode.
-1. Stel de waarde in op alles en **Sla**deze op.
+1. Stel de waarde in op alles en **Sla** deze op.
 
 Wachtende statistieken in het query archief inschakelen:
 
 1. Zoek de para meter query_store_wait_sampling_capture_mode.
-1. Stel de waarde in op alles en **Sla**deze op.
+1. Stel de waarde in op alles en **Sla** deze op.
 
 Maxi maal 20 minuten toestaan dat de eerste batch met gegevens persistent is in de MySQL-data base.
 
@@ -87,7 +87,7 @@ Wanneer query Store is ingeschakeld, worden gegevens opgeslagen in een periode v
 
 De volgende opties zijn beschikbaar voor het configureren van query Store-para meters.
 
-| **Parameter** | **Beschrijving** | **Prijs** | **Bereik** |
+| **Parameter** | **Beschrijving** | **Standaard** | **Bereik** |
 |---|---|---|---|
 | query_store_capture_mode | De functie query Store in-of uitschakelen op basis van de waarde. Opmerking: als performance_schema is uitgeschakeld, wordt performance_schema en een subset van de performance schema-instrumenten die voor deze functie zijn vereist query_store_capture_mode, ingeschakeld. | ALL | GEEN, ALLE |
 | query_store_capture_interval | De interval voor het vastleggen van de query opslag in minuten. Hiermee kunt u het interval opgeven waarin de metrische gegevens van de query worden geaggregeerd | 15 | 5 - 60 |
@@ -96,7 +96,7 @@ De volgende opties zijn beschikbaar voor het configureren van query Store-para m
 
 De volgende opties zijn specifiek van toepassing op wacht statistieken.
 
-| **Parameter** | **Beschrijving** | **Prijs** | **Bereik** |
+| **Parameter** | **Beschrijving** | **Standaard** | **Bereik** |
 |---|---|---|---|
 | query_store_wait_sampling_capture_mode | Hiermee kunt u de wacht statistieken in-of uitschakelen. | GEEN | GEEN, ALLE |
 | query_store_wait_sampling_frequency | Wijzigt de frequentie van wacht-sampling in seconden. 5 tot 300 seconden. | 30 | 5-300 |
@@ -104,7 +104,7 @@ De volgende opties zijn specifiek van toepassing op wacht statistieken.
 > [!NOTE]
 > Op dit moment is **query_store_capture_mode** vervangen door deze configuratie, wat betekent dat zowel **query_store_capture_mode** als **QUERY_STORE_WAIT_SAMPLING_CAPTURE_MODE** moeten worden ingeschakeld om alle wacht statistieken te kunnen gebruiken. Als **query_store_capture_mode** is uitgeschakeld, is de wacht tijd van de statistieken uitgeschakeld, omdat wacht tijden worden gebruikt voor de performance_schema ingeschakeld en de query_text vastgelegd door query Store.
 
-Gebruik de [Azure Portal](howto-server-parameters.md)   of [Azure cli](howto-configure-server-parameters-using-cli.md)   om een andere waarde voor een para meter op te halen of in te stellen.
+Gebruik de [Azure Portal](howto-server-parameters.md) of [Azure cli](howto-configure-server-parameters-using-cli.md) om een andere waarde voor een para meter op te halen of in te stellen.
 
 ## <a name="views-and-functions"></a>Weer gaven en functies
 
@@ -161,7 +161,7 @@ Met deze weer gave worden wachtende gebeurtenis gegevens in query Store geretour
 | `count_star` | bigint (20) | NO| Aantal wacht gebeurtenissen dat wordt voor bereid tijdens het interval voor de query |
 | `sum_timer_wait_ms` | double | NO| Totale wacht tijd (in milliseconden) van deze query tijdens het interval |
 
-### <a name="functions"></a>Functies
+### <a name="functions"></a>Functions
 
 | **Naam**| **Beschrijving** |
 |---|---|

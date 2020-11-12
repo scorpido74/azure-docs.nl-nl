@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: c08e03e6ff77613c0950f17fe5225bccb706524c
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 83e8089073f7e7e7634ddf00f7276e12aaf645b0
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444348"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94536435"
 ---
 # <a name="how-an-iot-edge-device-can-be-used-as-a-gateway"></a>Hoe een IoT Edge-apparaat kan worden gebruikt als gateway
 
@@ -45,21 +45,21 @@ Alle gateway patronen bieden de volgende voor delen:
 
 In het transparante gateway patroon kunnen apparaten die theoretisch verbinding maken met IoT Hub, in plaats daarvan verbinding maken met een gateway apparaat. De downstream-apparaten hebben hun eigen IoT Hub identiteiten en verbinden met behulp van de MQTT-of AMQP-protocollen. Via de gateway wordt simpelweg communicatie tussen de apparaten en IoT Hub doorgegeven. Zowel de apparaten als de gebruikers die met hen communiceren via IoT Hub, zijn niet op de hoogte van de communicatie van een gateway. Dit gebrek aan bewustzijn betekent dat de gateway als *transparant* wordt beschouwd.
 
-<!-- 1.2.0 -->
-::: moniker range=">=iotedge-2020-11"
-
-IoT Edge-apparaten kunnen verbinding maken via transparante gateways, evenals normale IoT-apparaten.
-
-<!-- TODO add a downstream IoT Edge device to graphic -->
-
-::: moniker-end
-
 <!-- 1.0.10 -->
 ::: moniker range="iotedge-2018-06"
 
 IoT Edge apparaten kunnen niet worden downstream van een IoT Edge gateway.
 
 ![Diagram-transparant gateway patroon](./media/iot-edge-as-gateway/edge-as-gateway-transparent.png)
+
+::: moniker-end
+
+<!-- 1.2.0 -->
+::: moniker range=">=iotedge-2020-11"
+
+Vanaf versie 1.2.0 kunnen IoT Edge-apparaten verbinding maken via transparante gateways.
+
+<!-- TODO add a downstream IoT Edge device to graphic -->
 
 ::: moniker-end
 
@@ -102,10 +102,22 @@ Wanneer meerdere IoT Edge gateways met elkaar in een gateway hiërarchie verbind
 
 ### <a name="device-capabilities-behind-transparent-gateways"></a>Mogelijkheden van apparaten achter transparante gateways
 
-
 Alle IoT Hub primitieven die samen werken met de Messa ging-pijp lijn van IoT Edge ondersteunen ook transparante gateway scenario's. Elke IoT Edge gateway heeft opslag-en doorstuur mogelijkheden voor berichten die worden verzonden.
 
 Gebruik de volgende tabel om te zien hoe verschillende IoT Hub mogelijkheden voor apparaten worden ondersteund, vergeleken met apparaten achter gateways.
+
+<!-- 1.0.10 -->
+::: moniker range="iotedge-2018-06"
+
+| Mogelijkheid | IoT-apparaat | IoT achter een gateway |
+| ---------- | ---------- | -------------------- |
+| [Apparaat-naar-Cloud-berichten (D2C)](../iot-hub/iot-hub-devguide-messages-d2c.md) |  ![Ja-IoT-D2C](./media/iot-edge-as-gateway/check-yes.png) | ![Ja, kinder IoT-D2C](./media/iot-edge-as-gateway/check-yes.png) |
+| [Cloud-naar-apparaat-berichten (C2D)](../iot-hub/iot-hub-devguide-messages-c2d.md) | ![Ja-IoT-C2D](./media/iot-edge-as-gateway/check-yes.png) | ![Ja, IoT-onderliggend C2D](./media/iot-edge-as-gateway/check-yes.png) |
+| [Directe methoden](../iot-hub/iot-hub-devguide-direct-methods.md) | ![Yes-IoT direct-methode](./media/iot-edge-as-gateway/check-yes.png) | ![Ja, onderliggende IoT direct-methode](./media/iot-edge-as-gateway/check-yes.png) |
+| [Apparaatdubbels](../iot-hub/iot-hub-devguide-device-twins.md) en [module apparaatdubbels](../iot-hub/iot-hub-devguide-module-twins.md) | ![Ja-IoT-apparaatdubbels](./media/iot-edge-as-gateway/check-yes.png) | ![Ja, kinder IoT-apparaatdubbels](./media/iot-edge-as-gateway/check-yes.png) |
+| [Bestand uploaden](../iot-hub/iot-hub-devguide-file-upload.md) | ![Ja, IoT-bestand uploaden](./media/iot-edge-as-gateway/check-yes.png) | ![Geen-IoT-onderliggend bestand uploaden](./media/iot-edge-as-gateway/crossout-no.png) |
+
+::: moniker-end
 
 <!-- 1.2.0 -->
 ::: moniker range=">=iotedge-2020-11"
@@ -123,19 +135,6 @@ Gebruik de volgende tabel om te zien hoe verschillende IoT Hub mogelijkheden voo
 **Container installatie kopieën** kunnen worden gedownload, opgeslagen en bezorgd van bovenliggende apparaten op onderliggende apparaten.
 
 **Blobs** , waaronder ondersteunings bundels en Logboeken, kunnen worden geüpload van onderliggende apparaten naar bovenliggende apparaten.
-
-::: moniker-end
-
-<!-- 1.0.10 -->
-::: moniker range="iotedge-2018-06"
-
-| Mogelijkheid | IoT-apparaat | IoT achter een gateway |
-| ---------- | ---------- | -------------------- |
-| [Apparaat-naar-Cloud-berichten (D2C)](../iot-hub/iot-hub-devguide-messages-d2c.md) |  ![Ja-IoT-D2C](./media/iot-edge-as-gateway/check-yes.png) | ![Ja, kinder IoT-D2C](./media/iot-edge-as-gateway/check-yes.png) |
-| [Cloud-naar-apparaat-berichten (C2D)](../iot-hub/iot-hub-devguide-messages-c2d.md) | ![Ja-IoT-C2D](./media/iot-edge-as-gateway/check-yes.png) | ![Ja, IoT-onderliggend C2D](./media/iot-edge-as-gateway/check-yes.png) |
-| [Directe methoden](../iot-hub/iot-hub-devguide-direct-methods.md) | ![Yes-IoT direct-methode](./media/iot-edge-as-gateway/check-yes.png) | ![Ja, onderliggende IoT direct-methode](./media/iot-edge-as-gateway/check-yes.png) |
-| [Apparaatdubbels](../iot-hub/iot-hub-devguide-device-twins.md) en [module apparaatdubbels](../iot-hub/iot-hub-devguide-module-twins.md) | ![Ja-IoT-apparaatdubbels](./media/iot-edge-as-gateway/check-yes.png) | ![Ja, kinder IoT-apparaatdubbels](./media/iot-edge-as-gateway/check-yes.png) |
-| [Bestand uploaden](../iot-hub/iot-hub-devguide-file-upload.md) | ![Ja, IoT-bestand uploaden](./media/iot-edge-as-gateway/check-yes.png) | ![Geen-IoT-onderliggend bestand uploaden](./media/iot-edge-as-gateway/crossout-no.png) |
 
 ::: moniker-end
 

@@ -2,13 +2,13 @@
 title: Knoop punten en Pools in Azure Batch
 description: Meer informatie over reken knooppunten en Pools en hoe deze worden gebruikt in een Azure Batch werk stroom vanuit een ontwikkelings oogpunt.
 ms.topic: conceptual
-ms.date: 10/21/2020
-ms.openlocfilehash: c85c50d0b30e30563390d2ffb05942f199047d67
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.date: 11/10/2020
+ms.openlocfilehash: 77f3a1c954f5591537436c9ee747052b3a642ec4
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913803"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537608"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Knoop punten en Pools in Azure Batch
 
@@ -72,9 +72,9 @@ De [batch-knooppunt agent](https://github.com/Azure/Batch/blob/master/changelogs
 
 ### <a name="cloud-services-configuration"></a>Cloud Services configuratie
 
-De **configuratie** van de Cloud Services geeft aan dat de groep bestaat uit Azure Cloud Services knoop punten. Cloud Services biedt *alleen* Windows-reken knooppunten.
+De **configuratie** van de Cloud Services geeft aan dat de groep bestaat uit Azure Cloud Services knoop punten. Cloud Services biedt alleen Windows-reken knooppunten.
 
-Beschikbare besturingssystemen voor Cloud Services-configuratiepools worden weergegeven in de [Azure-compatibiliteitsmatrix voor releases van gastbesturingssystemen en SDK’s](../cloud-services/cloud-services-guestos-update-matrix.md). Wanneer u een pool maakt die Cloud Services knoop punten bevat, moet u de grootte van het knoop punt en de bijbehorende *besturingssysteem familie* opgeven (dit bepaalt welke versies van .net worden geïnstalleerd met het besturings systeem). Cloud Services wordt sneller geïmplementeerd in azure dan virtuele machines waarop Windows wordt uitgevoerd. Als u pools met Windows-rekenknooppunten wilt, zult u merken dat Cloud Services prestatievoordelen biedt wat de implementatietijd betreft.
+Beschik bare besturings systemen voor Cloud Services-configuratie groepen worden weer gegeven in de [Azure Guest OS releases en SDK Compatibility Matrix](../cloud-services/cloud-services-guestos-update-matrix.md)en de beschik bare grootte van reken knooppunten worden weer gegeven in [grootten voor Cloud Services](../cloud-services/cloud-services-sizes-specs.md). Wanneer u een pool maakt die Cloud Services knoop punten bevat, geeft u de grootte van het knoop punt en de bijbehorende *besturingssysteem familie* op (die bepaalt welke versies van .net worden geïnstalleerd met het besturings systeem). Cloud Services wordt sneller geïmplementeerd in azure dan virtuele machines waarop Windows wordt uitgevoerd. Als u pools met Windows-rekenknooppunten wilt, zult u merken dat Cloud Services prestatievoordelen biedt wat de implementatietijd betreft.
 
 Net als bij werkrollen in Cloud Services kan het *type besturingssysteem* worden opgegeven (zie [Overzicht van Cloud Services](../cloud-services/cloud-services-choose-me.md) voor meer informatie over werkrollen). We raden u `Latest (*)` aan voor de versie van het *besturings systeem* op te geven, zodat de knoop punten automatisch worden bijgewerkt en er geen werk vereist is om nieuwe versies vrij te maken. Er wordt voornamelijk voor een specifieke versie van een besturingssysteem gekozen om ervoor te zorgen dat toepassingen compatibel blijven, en om compatibiliteitstests met eerdere versies te kunnen uitvoeren alvorens toe te staan dat de versie mag worden bijgewerkt. Na validatie kan de *versie van het besturings systeem* voor de pool worden bijgewerkt en kan de nieuwe installatie kopie van het besturings systeem worden geïnstalleerd. Actieve taken worden onderbroken en opnieuw in de wachtrij geplaatst.
 
@@ -127,7 +127,7 @@ Een formule voor vergroten/verkleinen kan op de volgende metrische gegevens word
 
 - **Metrische gegevens voor tijd** zijn gebaseerd op statistieken die om de vijf minuten worden verzameld binnen het opgegeven aantal uren.
 - **Metrische gegevens voor resources** zijn gebaseerd op CPU-gebruik, bandbreedtegebruik, geheugengebruik en het aantal knooppunten.
-- **Metrische gegevens voor taken** zijn gebaseerd op de taakstatus, zoals *Actief* (in de wachtrij) *Wordt uitgevoerd* of *Voltooid* .
+- **Metrische gegevens voor taken** zijn gebaseerd op de taakstatus, zoals *Actief* (in de wachtrij) *Wordt uitgevoerd* of *Voltooid*.
 
 Wanneer met automatisch vergroten/verkleinen het aantal rekenknooppunten in een groep vermindert, moet u bedenken hoe taken moeten worden afgehandeld die worden uitgevoerd op het moment van de verkleining. Om dit te kunnen doen, biedt batch een optie voor het [*detoewijzen van knoop punten*](/rest/api/batchservice/pool/removenodes#computenodedeallocationoption) die u in uw formules kunt gebruiken. U kunt bijvoorbeeld opgeven dat actieve taken worden gestopt en vervolgens opnieuw in de wachtrij worden geplaatst om te worden uitgevoerd op een ander knooppunt, of moeten worden voltooid voordat het knooppunt uit de pool wordt verwijderd. Houd er rekening mee dat bij het instellen van de toewijzing van het knoop punt de optie voor het ongedaan maken `taskcompletion` `retaineddata` van de grootte van de groep wordt ingesteld, totdat alle taken zijn voltooid of alle Bewaar perioden van de taak zijn verlopen.
 

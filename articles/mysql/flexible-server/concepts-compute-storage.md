@@ -1,17 +1,17 @@
 ---
 title: Berekenings-en opslag opties-Azure Database for MySQL-flexibele server
 description: In dit artikel worden de berekenings-en opslag opties in Azure Database for MySQL flexibele server beschreven.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/20/2020
-ms.openlocfilehash: 0755ca7e77592a2efd6d8687f9eb19eacc2f0128
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 36f31ee390a6a208b202698ec9bda59b644c9e30
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92315178"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94534667"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-mysql---flexible-server-preview"></a>Berekenings-en opslag opties in Azure Database for MySQL-flexibele server (preview-versie)
 
@@ -76,7 +76,7 @@ Voor meer informatie over de beschik bare reken reeks raadpleegt u de Azure VM-d
 De opslag ruimte die u hebt ingericht, is de opslag capaciteit die beschikbaar is voor uw flexibele server. Opslag wordt gebruikt voor de database bestanden, tijdelijke bestanden, transactie logboeken en de MySQL-server Logboeken. In alle reken lagen is de minimale opslag die wordt ondersteund, 5 GiB en maximum 16 TiB. Opslag wordt geschaald in 1 GiB-stappen en kan worden geschaald nadat de server is gemaakt.
 
 >[!NOTE]
-> Opslag kan alleen omhoog en omlaag worden geschaald.
+> Opslag kan alleen omhoog en niet omlaag worden geschaald.
 
 U kunt uw opslag verbruik in de Azure Portal (met Azure Monitor) bewaken met behulp van de opslag limiet, het opslag percentage en de gebruikte metrische gegevens over opslag. Raadpleeg het [controle artikel](./concepts-monitoring.md) voor meer informatie over metrische gegevens. 
 
@@ -132,7 +132,7 @@ Zie hieronder voor meer informatie over de Max effectief IOPS per reken grootte 
 
 De maximale ingangs limiet is afhankelijk van de Maxi maal beschik bare IOPS per reken grootte. Zie de onderstaande formule en raadpleegt u de kolom Max. niet- *cache geheugen doorvoer: IOPS/Mbps* in de documentatie van de [B-serie](../../virtual-machines/sizes-b-series-burstable.md), [Ddsv4-serie](../../virtual-machines/ddv4-ddsv4-series.md)en [Edsv4-serie](../../virtual-machines/edv4-edsv4-series.md) .
 
-**Max effectief IOPS** = minimum (*"Maxi maal aantal niet-gecachete schijf doorvoer: IOPS/Mbps"* van reken grootte, opslag ingericht in GiB * 3)
+**Max effectief IOPS** = minimum ( *"Maxi maal aantal niet-gecachete schijf doorvoer: IOPS/Mbps"* van reken grootte, opslag ingericht in GiB * 3)
 
 U kunt uw I/O-verbruik in de Azure Portal (met Azure Monitor) bewaken met de metrische waarde voor [io-percentage](./concepts-monitoring.md) . Als u meer IOPS nodig hebt, moet u weten of u beperkt bent door de berekenings grootte of de opslag ingericht. Schaal de berekenings-of opslag capaciteit van uw server dienovereenkomstig.
 
@@ -153,7 +153,7 @@ Het schalen van de opslag en het wijzigen van de Bewaar periode voor back-ups is
 
 ## <a name="pricing"></a>Prijzen
 
-Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/MySQL/)voor services voor de meest actuele prijs informatie. Als u de kosten voor de gewenste configuratie wilt zien, worden in de [Azure Portal](https://portal.azure.com/#create/Microsoft.MySQLServer/flexibleServers) de maandelijkse kosten weer gegeven op het tabblad **berekening en opslag** op basis van de opties die u selecteert. Als u geen Azure-abonnement hebt, kunt u de Azure-prijs calculator gebruiken om een geschatte prijs te krijgen. Selecteer op de website [Azure-prijs calculator](https://azure.microsoft.com/pricing/calculator/) de optie **items toevoegen**, vouw de categorie **data bases** uit, kies **Azure database for MySQL**en **flexibele server** als implementatie type om de opties aan te passen.
+Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/MySQL/)voor services voor de meest actuele prijs informatie. Als u de kosten voor de gewenste configuratie wilt zien, worden in de [Azure Portal](https://portal.azure.com/#create/Microsoft.MySQLServer/flexibleServers) de maandelijkse kosten weer gegeven op het tabblad **berekening en opslag** op basis van de opties die u selecteert. Als u geen Azure-abonnement hebt, kunt u de Azure-prijs calculator gebruiken om een geschatte prijs te krijgen. Selecteer op de website [Azure-prijs calculator](https://azure.microsoft.com/pricing/calculator/) de optie **items toevoegen** , vouw de categorie **data bases** uit, kies **Azure database for MySQL** en **flexibele server** als implementatie type om de opties aan te passen.
 
 Als u de server kosten wilt optimaliseren, kunt u de volgende tips overwegen:
 

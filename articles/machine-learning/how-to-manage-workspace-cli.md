@@ -10,12 +10,12 @@ author: Blackmist
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: 9b55c4873c4d7ee430e7d9ce84d2782a37e522ae
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: dc5dcf20b8c4fb1dae971b9bda4ef1a7552ce9d4
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94442137"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94534735"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Een werk ruimte maken voor Azure Machine Learning met Azure CLI
 
@@ -156,9 +156,12 @@ Zie [Virtual Network-isolatie en privacy overview](how-to-network-security-overv
 
 ### <a name="customer-managed-key-and-high-business-impact-workspace"></a>Door de klant beheerde sleutel en een werk ruimte met hoge bedrijfs impact
 
-Standaard worden metrische gegevens en meta data voor de werk ruimte opgeslagen in een Azure Cosmos DB exemplaar dat door micro soft wordt beheerd. Deze gegevens zijn versleuteld met door micro soft beheerde sleutels. 
+Meta gegevens voor de werk ruimte worden standaard opgeslagen in een Azure Cosmos DB exemplaar dat door micro soft wordt beheerd. Deze gegevens zijn versleuteld met door micro soft beheerde sleutels.
 
-In plaats van de door micro soft beheerde sleutel te gebruiken, kunt u de zelf-sleutel opgeven. Dit maakt het Azure Cosmos DB-exemplaar dat metrische gegevens en meta data opslaat in uw Azure-abonnement. Gebruik de `--cmk-keyvault` para meter om de Azure Key Vault op te geven die de sleutel bevat en `--resource-cmk-uri` om de URL op te geven van de sleutel in de kluis.
+> [!NOTE]
+> Azure Cosmos DB wordt __niet__ gebruikt voor het opslaan van gegevens zoals model prestaties, informatie die is vastgelegd door experimenten of informatie die is vastgelegd in uw model implementaties. Zie de sectie [bewaking en logboek registratie](concept-azure-machine-learning-architecture.md) in het artikel architectuur en concepten voor meer informatie over het bewaken van deze items.
+
+In plaats van de door micro soft beheerde sleutel te gebruiken, kunt u de zelf-sleutel opgeven. Dit maakt het Azure Cosmos DB-exemplaar dat meta gegevens opslaat in uw Azure-abonnement. Gebruik de `--cmk-keyvault` para meter om de Azure Key Vault op te geven die de sleutel bevat en `--resource-cmk-uri` om de URL op te geven van de sleutel in de kluis.
 
 Voordat u de `--cmk-keyvault` `--resource-cmk-uri` para meters en gebruikt, moet u eerst de volgende acties uitvoeren:
 

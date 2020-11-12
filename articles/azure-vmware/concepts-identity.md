@@ -2,25 +2,25 @@
 title: 'Concepten: identiteit en toegang'
 description: Meer informatie over de identiteits-en toegangs concepten van de Azure VMware-oplossing
 ms.topic: conceptual
-ms.date: 05/04/2020
-ms.openlocfilehash: 7127109801d92d2177f6edac3efcaf76ddf217e6
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 11/11/2020
+ms.openlocfilehash: e9c0d62968d94e2b018186f67072b6ae7078db02
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92674644"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94536095"
 ---
 # <a name="azure-vmware-solution-identity-concepts"></a>Concepten van Azure VMware-oplossings identiteiten
 
-Wanneer u een privécloud implementeert, wordt een vCenter-Server en NSX-T-Manager ingericht. U kunt vCenter gebruiken om werk belastingen van virtuele machines (VM) te beheren. U gebruikt NSX-T-beheer voor het uitbreiden van het software-gedefinieerde netwerk van de privécloud.
+Persoonlijke Clouds van Azure VMware-oplossingen worden ingericht met een vCenter-Server en NSX-T-beheer. U kunt vCenter gebruiken om werk belastingen van virtuele machines (VM) te beheren. U gebruikt de NSX-T-Manager om de privécloud uit te breiden.
 
 Toegang en identiteits beheer gebruiken CloudAdmin groeps rechten voor vCenter en beperkte beheerders rechten voor NSX-T-beheer. Zo zorgt u ervoor dat uw persoonlijke Cloud platform automatisch wordt bijgewerkt met de nieuwste functies en patches.  Zie het [artikel concepten van upgrades][concepts-upgrades]van de privécloud voor meer informatie.
 
 ## <a name="vcenter-access-and-identity"></a>toegang tot vCenter en identiteit
 
-Bevoegdheden in vCenter worden gegeven via de groep CloudAdmin. Deze groep kan lokaal worden beheerd in vCenter of via de integratie van eenmalige aanmelding voor vCenter LDAP met Azure Active Directory. U hebt de mogelijkheid om die integratie in te scha kelen nadat u een privécloud hebt geïmplementeerd.
+De CloudAdmin-groep biedt de bevoegdheden in vCenter. U beheert de groep lokaal in vCenter. Een andere optie is de integratie van de single-aanmelding voor vCenter LDAP met Azure Active Directory. U schakelt deze integratie in nadat u uw privécloud hebt geïmplementeerd. 
 
-De CloudAdmin-en CloudGlobalAdmin-bevoegdheden worden weer gegeven in de volgende tabel.
+De tabel bevat de **CloudAdmin** -en **CloudGlobalAdmin** -bevoegdheden.
 
 |  Machtigingenset           | CloudAdmin | CloudGlobalAdmin | Opmerking |
 | :---                     |    :---:   |       :---:      |   :--:  |
@@ -28,7 +28,7 @@ De CloudAdmin-en CloudGlobalAdmin-bevoegdheden worden weer gegeven in de volgend
 |  Automatisch implementeren             |  --  |        --        |  Micro soft beheert hostbeheer.  |
 |  Certificaten            |  --  |        --       |  Micro soft biedt certificaat beheer.  |
 |  Inhoudsbibliotheek         | Een CloudAdmin-gebruiker heeft bevoegdheden voor het maken en gebruiken van bestanden in een inhouds bibliotheek.    |         Ingeschakeld met SSO.         |  Micro soft zal bestanden in de inhouds bibliotheek distribueren naar ESXi-hosts.  |
-|  Datacentrum              |  --  |        --          |  Micro soft voert alle Data Center-bewerkingen uit.  |
+|  Datacenter              |  --  |        --          |  Micro soft voert alle Data Center-bewerkingen uit.  |
 |  Gegevensarchief               | Data Store. AllocateSpace, Data Store. browse, Datastore.Config, Data Store. Delete File, Data Store. File Management, Data Store. UpdateVirtualMachineMetadata     |    --    |   -- |
 |  ESX-agent beheer       |  --  |         --       |  Micro soft voert alle bewerkingen uit.  |
 |  Map                  |  Een CloudAdmin-gebruiker heeft alle machtigingen voor de map.     |  --  |  --  |

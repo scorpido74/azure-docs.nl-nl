@@ -1,17 +1,17 @@
 ---
 title: Opgeslagen procedures voor beheer-Azure Database for MySQL
 description: Informatie over welke opgeslagen procedures in Azure Database for MySQL nuttig zijn om u te helpen bij het configureren van replicatie van gegevens in, het instellen van de tijd zone en het beëindigen van query's.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: e67130516410f64c32eadbf15857ca3ec4c976fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7a1aa061bb8c8be3a676e0e5bb690b2a9749b6c8
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542475"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94536129"
 ---
 # <a name="azure-database-for-mysql-management-stored-procedures"></a>Opgeslagen procedures voor Azure Database for MySQL beheer
 
@@ -23,7 +23,7 @@ Met replicatie van inkomende gegevens kunt u gegevens synchroniseren die afkomst
 
 De volgende opgeslagen procedures worden gebruikt om Replicatie van inkomende gegevens tussen een bron en replica in te stellen of te verwijderen.
 
-|**Naam van opgeslagen procedure**|**Invoerparameters**|**Uitvoer parameters**|**Opmerking over gebruik**|
+|**Naam van opgeslagen procedure**|**Invoer parameters**|**Uitvoer parameters**|**Opmerking over gebruik**|
 |-----|-----|-----|-----|
 |*mysql.az_replication_change_master*|master_host<br/>master_user<br/>master_password<br/>master_port<br/>master_log_file<br/>master_log_pos<br/>master_ssl_ca|N.v.t.|Als u gegevens wilt overdragen met de SSL-modus, geeft u de context van het CA-certificaat door aan de para meter master_ssl_ca. </br><br>Als u gegevens zonder SSL wilt overdragen, geeft u een lege teken reeks door in de para meter master_ssl_ca.|
 |*mysql.az_replication _start*|N.v.t.|N.v.t.|Replicatie wordt gestart.|
@@ -37,7 +37,7 @@ Zie [replicatie van inkomende gegevens configureren voor het](howto-data-in-repl
 
 De volgende opgeslagen procedures zijn beschikbaar in Azure Database for MySQL voor het beheren van uw server.
 
-|**Naam van opgeslagen procedure**|**Invoerparameters**|**Uitvoer parameters**|**Opmerking over gebruik**|
+|**Naam van opgeslagen procedure**|**Invoer parameters**|**Uitvoer parameters**|**Opmerking over gebruik**|
 |-----|-----|-----|-----|
 |*mysql.az_kill*|processlist_id|N.v.t.|Gelijk aan- [`KILL CONNECTION`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) opdracht. De verbinding die is gekoppeld aan de geleverde processlist_id na het beëindigen van een instructie die wordt uitgevoerd, wordt beëindigd.|
 |*mysql.az_kill_query*|processlist_id|N.v.t.|Gelijk aan- [`KILL QUERY`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) opdracht. Hiermee wordt de instructie beëindigd die momenteel wordt uitgevoerd door de verbinding. De verbinding zelf blijft actief.|

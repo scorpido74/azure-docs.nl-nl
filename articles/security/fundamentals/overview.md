@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: 0d893eb2bf7a57e173d7acb8f15104522edbc3bf
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: db7d9e99de8a4ee67e49f8b7568700fc07b1e2fd
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408205"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94536505"
 ---
 # <a name="introduction-to-azure-security"></a>Inleiding tot Azure-beveiliging
 ## <a name="overview"></a>Overzicht
@@ -221,7 +221,7 @@ Als u netwerk verkeer wilt verzenden tussen uw Azure Virtual Network en uw on-pr
 ### <a name="express-route"></a>ExpressRoute
 Microsoft Azure [ExpressRoute](../../expressroute/expressroute-introduction.md) is een specifieke WAN-verbinding waarmee u uw on-premises netwerken in de micro soft-Cloud kunt uitbreiden via een speciale persoonlijke verbinding die wordt vereenvoudigd door een connectiviteits provider.
 
-![ExpressRoute](./media/overview/azure-security-fig1.png)
+![ExpressRoute](./media/overview/azure-security-figure-1.png)
 
 Met ExpressRoute kunt u verbindingen tot stand brengen met micro soft-Cloud Services, zoals Microsoft Azure, Microsoft 365 en CRM Online. Via een connectiviteitsprovider in een co-locatiefaciliteit is connectiviteit mogelijk vanuit een any-to-any (IP VPN) netwerk, een point-to-point Ethernet-netwerk of een virtuele overlappende verbinding.
 
@@ -231,7 +231,7 @@ ExpressRoute-verbindingen gaan niet via het open bare Internet en kunnen worden 
 ### <a name="application-gateway"></a>Application Gateway
 Micro soft [Azure-toepassing gateway](../../application-gateway/overview.md) biedt een [ADC (Application Delivery controller)](https://en.wikipedia.org/wiki/Application_delivery_controller) als een service en biedt verschillende mogelijkheden voor de taak verdeling van laag 7 voor uw toepassing.
 
-![Application Gateway](./media/overview/azure-security-fig2.png)
+![Application Gateway](./media/overview/azure-security-figure-2.png)
 
 Hiermee kunt u de productiviteit van webfarms optimaliseren door de CPU-intensieve TLS-beëindiging te offloaden naar de Application Gateway (ook wel ' TLS-offload ' of ' TLS-bridging ' genoemd). Het biedt ook andere Layer 7-routerings mogelijkheden, waaronder round-robin distributie van binnenkomend verkeer, sessie affiniteit op basis van cookies, op URL gebaseerde route ring en de mogelijkheid om meerdere websites achter één Application Gateway te hosten. Azure Application Gateway is een load balancer in laag 7.
 
@@ -242,7 +242,7 @@ De toepassing biedt veel ADC-functies (Application Delivery controller), waarond
 ### <a name="web-application-firewall"></a>Web Application Firewall
 Web Application firewall is een functie van [Azure-toepassing gateway](../../application-gateway/overview.md) die beveiliging biedt voor webtoepassingen die gebruikmaken van Application Gateway voor standaard ADC-functies (Application Delivery Control). Web Application Firewall doet dit door deze te beschermen tegen het grootste deel van de algemene internetbeveiligingsproblemen uit de OWASP top 10.
 
-![Web Application Firewall](./media/overview/azure-security-fig1.png)
+![Web Application Firewall](./media/overview/azure-security-figure-3.png)
 
 -   Beveiliging tegen SQL-injecties
 

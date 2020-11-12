@@ -1,5 +1,6 @@
 ---
 title: Wat zijn Azure Machine Learning pijp lijnen?
+titleSuffix: Azure Machine Learning
 description: Leer hoe u met machine learning (ML) pijp lijnen machine learning werk stromen kunt bouwen, optimaliseren en beheren.
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +10,12 @@ ms.author: laobri
 author: lobrien
 ms.date: 08/17/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 2ebe3976813c00e92f041faf267ef0d8ae98a909
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c29ee87ab177357f4289134bb39353c764a0d75b
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323020"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94535296"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Wat zijn Azure Machine Learning pijp lijnen?
 
@@ -38,8 +39,8 @@ De Azure-Cloud biedt verschillende andere pijp lijnen, elk met een ander doel. D
 
 | Scenario | Primaire persoon | Azure-aanbieding | OSS-aanbieding | Canonieke pijp | Sterke punten | 
 | -------- | --------------- | -------------- | ------------ | -------------- | --------- | 
-| Model indeling (machine learning) | Gegevenswetenschapper | Azure Machine Learning pijp lijnen | Kubeflow-pijp lijnen | Model voor gegevens > | Distributie, caching, code, opnieuw gebruiken | 
-| Gegevens indeling (gegevens voorbereiding) | Gegevenstechnicus | [Azure Data Factory-pijplijnen](../data-factory/concepts-pipelines-activities.md) | Apache-lucht flow | Gegevens > gegevens | Sterk getypte bewegingen, gegevens gerichte activiteiten |
+| Model indeling (machine learning) | Data scientist | Azure Machine Learning pijp lijnen | Kubeflow-pijp lijnen | Model voor gegevens > | Distributie, caching, code, opnieuw gebruiken | 
+| Gegevens indeling (gegevens voorbereiding) | Gegevensingenieur | [Azure Data Factory-pijplijnen](../data-factory/concepts-pipelines-activities.md) | Apache-lucht flow | Gegevens > gegevens | Sterk getypte bewegingen, gegevens gerichte activiteiten |
 | App-indeling voor code & (CI/CD) | App-ontwikkelaar/OPS | [Azure DevOps-pijp lijnen](https://azure.microsoft.com/services/devops/pipelines/) | Jenkins | Code + model-> app/service | De meeste open en flexibele activiteiten ondersteuning, goedkeurings wachtrijen, fasen met beperking | 
 
 ## <a name="what-can-azure-ml-pipelines-do"></a>Wat kunnen Azure ML-pijp lijnen doen?

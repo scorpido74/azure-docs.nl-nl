@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/22/2020
 ms.author: v-mibufo
-ms.openlocfilehash: ae3d35bea1c75c797447100316ceab9a27fcbe48
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: f2f0177b5fe8bb97773d297319f6c9196d8178d2
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424041"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94536231"
 ---
 # <a name="vm-is-unresponsive-while-waiting-for-the-local-session-manager"></a>De VM reageert niet tijdens het wachten op de lokale sessie beheerder
 
@@ -35,7 +35,7 @@ Er kunnen meerdere redenen zijn waarom een virtuele machine niet op de lokale se
 
 ## <a name="solution"></a>Oplossing
 
-In sommige gevallen wordt het probleem opgelost door simpelweg te wachten totdat het proces is voltooid. Als uw virtuele machine gedurende een uur vastgelopen is op het wacht scherm, moet u een geheugen dump verzamelen en contact opnemen met micro soft ondersteuning.
+In sommige gevallen wordt het probleem opgelost door simpelweg te wachten totdat het proces is voltooid. Als uw virtuele machine niet reageert en gedurende een uur op het wacht scherm blijft, moet u een geheugen dump verzamelen en contact opnemen met micro soft ondersteuning.
 
 ### <a name="collect-the-memory-dump-file"></a>Het geheugen dump bestand verzamelen
 

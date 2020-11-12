@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 3200cfe290cbba208c61e914b17ffa6cd65e6eee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d323504a46cd35525c889a94d2d044193c1471ac
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90899565"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94535942"
 ---
 # <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-pro-gpu"></a>Een niet-beschik bare-gastenboek toepassing met redis implementeren op een Kubernetes-cluster op basis van Azure Stack Edge Pro GPU
 
@@ -79,9 +79,9 @@ Volg deze stappen om de Azure Arc-resource te configureren voor het implementere
 
 1. Ga naar **configuraties** en selecteer **+ Configuratie toevoegen**.
 
-    ![Naar configuraties](media/azure-stack-edge-gpu-connect-powershell-interface/select-configurations-1.png)
+    ![Scherm afbeelding toont het Azure Arc enabled Kubernetes-cluster waarvoor configuratie toevoegen is geselecteerd.](media/azure-stack-edge-gpu-connect-powershell-interface/select-configurations-1.png)
 
-1. Voer in de **Configuratie toevoegen**de juiste waarden in voor de velden en selecteer **Toep assen**.
+1. Voer in de **Configuratie toevoegen** de juiste waarden in voor de velden en selecteer **Toep assen**.
 
     |Parameter  |Beschrijving |
     |---------|---------|
@@ -100,14 +100,14 @@ Volg deze stappen om de Azure Arc-resource te configureren voor het implementere
 
 1. De configuratie-implementatie wordt gestart en de **operator status** wordt weer gegeven als **in behandeling**. 
 
-    ![Naar configuraties](media/azure-stack-edge-gpu-connect-powershell-interface/view-configurations-1.png)
+    ![Scherm afbeelding toont het Azure Arc enabled Kubernetes-cluster met de status in behandeling tijdens het vernieuwen.](media/azure-stack-edge-gpu-connect-powershell-interface/view-configurations-1.png)
 
 1. De implementatie duurt enkele minuten. Wanneer de implementatie is voltooid, wordt de status van de **operator** weer gegeven als **geïnstalleerd**.
 
-    ![Naar configuraties](media/azure-stack-edge-gpu-connect-powershell-interface/view-configurations-2.png)
+    ![Scherm afbeelding toont het Azure Arc enabled Kubernetes-cluster met een geïnstalleerde status.](media/azure-stack-edge-gpu-connect-powershell-interface/view-configurations-2.png)
 
 
-## <a name="verify-deployment"></a>Implementatie verifiëren
+## <a name="verify-deployment"></a>Implementatie controleren
 
 De implementatie via de GitOps-configuratie maakt een `demotestguestbook` naam ruimte zoals opgegeven in de implementatie `yaml` bestanden die zich bevinden in de Git opslag plaats.
 
@@ -154,7 +154,7 @@ De implementatie via de GitOps-configuratie maakt een `demotestguestbook` naam r
 Als u de implementatie wilt verwijderen, kunt u de configuratie uit de Azure Portal verwijderen. Hiermee verwijdert u de objecten die zijn gemaakt, inclusief implementaties en services.
 
 1. Ga in het Azure Portal naar de configuratie van de Azure Arc-resource >. 
-1. Zoek de configuratie die u wilt verwijderen. Selecteer de... om het context menu te openen en **verwijderen**te selecteren.
+1. Zoek de configuratie die u wilt verwijderen. Selecteer de... om het context menu te openen en **verwijderen** te selecteren.
     ![Configuratie verwijderen](media/azure-stack-edge-gpu-connect-powershell-interface/delete-configuration-1.png)
 
 Het kan enkele minuten duren voordat de configuratie is verwijderd.

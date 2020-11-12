@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b31e3d44cc66e97506b29b81cef5b8d981d05e39
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: ca56c285baff9982ff465b0d4115d15eadedb8c9
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93279422"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94534752"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Azure Digital Apparaatdubbels-modellen beheren
 
@@ -23,6 +23,10 @@ Beheer bewerkingen zijn onder andere uploaden, valideren, ophalen en verwijderen
 ## <a name="prerequisites"></a>Vereisten
 
 [!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
+
+## <a name="ways-to-manage-models"></a>Manieren om modellen te beheren
+
+[!INCLUDE [digital-twins-ways-to-manage.md](../../includes/digital-twins-ways-to-manage.md)]
 
 ## <a name="create-models"></a>Modellen maken
 
@@ -73,17 +77,7 @@ U kunt aan de slag met deze methode om modellen te definiëren voor de weers hui
 
 [!INCLUDE [Azure Digital Twins: validate models info](../../includes/digital-twins-validate.md)]
 
-## <a name="manage-models-with-apis"></a>Modellen beheren met Api's
-
-In de volgende secties ziet u hoe u verschillende modellen beheer bewerkingen kunt uitvoeren met behulp van de [Azure Digital Apparaatdubbels api's en sdk's](how-to-use-apis-sdks.md).
-
-> [!NOTE]
-> De volgende voor beelden bevatten geen fout afhandeling voor het boog gebruik. Het wordt echter sterk aanbevolen binnen uw projecten om service aanroepen in try/catch-blokken te laten lopen.
-
-> [!TIP] 
-> Houd er rekening mee dat alle SDK-methoden in synchrone en asynchrone versies worden geleverd. Voor wissel gesprekken retour neren de async-methoden `AsyncPageable<T>` wanneer de synchrone versies retour neren `Pageable<T>` .
-
-### <a name="upload-models"></a>Modellen uploaden
+## <a name="upload-models"></a>Modellen uploaden
 
 Zodra de modellen zijn gemaakt, kunt u deze uploaden naar het Azure Digital Apparaatdubbels-exemplaar.
 
@@ -136,7 +130,7 @@ Model bestanden kunnen meer dan één model bevatten. In dit geval moeten de mod
  
 Bij het uploaden worden model bestanden gevalideerd door de service.
 
-### <a name="retrieve-models"></a>Modellen ophalen
+## <a name="retrieve-models"></a>Modellen ophalen
 
 U kunt modellen weer geven en ophalen die zijn opgeslagen in uw Azure Digital Apparaatdubbels-exemplaar. 
 
@@ -166,13 +160,13 @@ De `RetrieveModelWithDependencies` aanroep retourneert niet alleen het aangevraa
 
 Modellen zijn niet per se geretourneerd in het document formulier waarin ze zijn geüpload. Azure Digital Apparaatdubbels garandeert alleen dat het retour formulier semantisch gelijkwaardig is. 
 
-### <a name="update-models"></a>Modellen bijwerken
+## <a name="update-models"></a>Modellen bijwerken
 
 Zodra een model is geüpload naar uw Azure Digital Apparaatdubbels-exemplaar, is de gehele model interface onveranderbaar. Dit betekent dat er geen traditionele ' editing ' van modellen is. Azure Digital Apparaatdubbels staat ook niet toe om hetzelfde model opnieuw te uploaden.
 
 Als u in plaats daarvan wijzigingen wilt aanbrengen in een model, zoals bijwerken `displayName` of `description` , kunt u dit doen door een **nieuwere versie** van het model te uploaden. 
 
-#### <a name="model-versioning"></a>Versiebeheer model
+### <a name="model-versioning"></a>Versiebeheer model
 
 Begin met het DTDL van het oorspronkelijke model om een nieuwe versie van een bestaand model te maken. Werk de velden die u wilt wijzigen bij, voeg ze toe of verwijder deze.
 
@@ -194,7 +188,7 @@ Upload vervolgens de nieuwe versie van het model naar uw exemplaar.
 
 Deze versie van het model is vervolgens beschikbaar in uw-exemplaar om te gebruiken voor Digital apparaatdubbels. Eerdere versies van het model worden **niet** overschreven, waardoor er meerdere versies van het model in uw exemplaar bestaan, totdat u [deze verwijdert](#remove-models).
 
-#### <a name="impact-on-twins"></a>Impact op apparaatdubbels
+### <a name="impact-on-twins"></a>Impact op apparaatdubbels
 
 Wanneer u een nieuwe twee maakt, omdat de nieuwe model versie en de oude model versie naast elkaar bestaan, kan de nieuwe twee de nieuwe versie van het model of de oudere versie gebruiken.
 
@@ -202,7 +196,7 @@ Dit betekent ook dat het uploaden van een nieuwe versie van een model niet autom
 
 U kunt deze bestaande apparaatdubbels bijwerken naar de nieuwe versie van het model door deze te patchen, zoals wordt beschreven in het gedeelte [*een Digital*](how-to-manage-twin.md#update-a-digital-twins-model) - *navolgende model bijwerken van How-to: Manage Digital apparaatdubbels*. Binnen dezelfde patch moet u de **model-id** (naar de nieuwe versie) bijwerken en **alle velden die moeten worden gewijzigd op de dubbele waarde zodat deze overeenkomt met het nieuwe model**.
 
-### <a name="remove-models"></a>Modellen verwijderen
+## <a name="remove-models"></a>Modellen verwijderen
 
 Modellen kunnen ook worden verwijderd uit de service, op een van de volgende twee manieren:
 * **Buiten gebruik stellen** : zodra een model uit bedrijf is genomen, kunt u het niet meer gebruiken om nieuwe digitale apparaatdubbels te maken. Bestaande digitale apparaatdubbels die al gebruikmaken van dit model, worden niet beïnvloed, zodat u ze nog steeds kunt bijwerken met dingen als eigenschaps wijzigingen en het toevoegen of verwijderen van relaties.
@@ -210,7 +204,7 @@ Modellen kunnen ook worden verwijderd uit de service, op een van de volgende twe
 
 Dit zijn afzonderlijke functies en ze zijn niet van invloed op elkaar, maar ze kunnen samen worden gebruikt om een model geleidelijk te verwijderen. 
 
-#### <a name="decommissioning"></a>Uit bedrijf nemen
+### <a name="decommissioning"></a>Uit bedrijf nemen
 
 Dit is de code voor het buiten gebruik stellen van een model:
 
@@ -223,7 +217,7 @@ client.DecommissionModel(dtmiOfPlanetInterface);
 
 De status van de buiten gebruik stellen van een model is opgenomen in de records die worden `ModelData` geretourneerd door de api's voor het ophalen van het model.
 
-#### <a name="deletion"></a>Verwijdering
+### <a name="deletion"></a>Verwijdering
 
 U kunt alle modellen in uw exemplaar in één keer verwijderen, of u kunt dit op afzonderlijke manieren doen.
 
@@ -231,7 +225,7 @@ Voor een voor beeld van het verwijderen van alle modellen downloadt u de voor be
 
 In de rest van deze sectie wordt de verwijdering van een model dichter bij de details weer gegeven en wordt getoond hoe u dit kunt doen voor een afzonderlijk model.
 
-##### <a name="before-deletion-deletion-requirements"></a>Voor verwijdering: vereisten voor verwijderen
+#### <a name="before-deletion-deletion-requirements"></a>Voor verwijdering: vereisten voor verwijderen
 
 Over het algemeen kunnen modellen op elk gewenst moment worden verwijderd.
 
@@ -239,7 +233,7 @@ De uitzonde ring is modellen waarvan andere modellen afhankelijk zijn, hetzij me
 
 U kunt dit doen door het afhankelijke model bij te werken om de afhankelijkheden te verwijderen, of door het afhankelijke model volledig te verwijderen.
 
-##### <a name="during-deletion-deletion-process"></a>Tijdens verwijderen: verwijderings proces
+#### <a name="during-deletion-deletion-process"></a>Tijdens verwijderen: verwijderings proces
 
 Zelfs als een model voldoet aan de vereisten om het direct te verwijderen, kunt u eerst enkele stappen door lopen om onbedoelde gevolgen voor de apparaatdubbels te voor komen. Hier volgen enkele stappen die u kunnen helpen bij het beheren van het proces:
 1. Buiten gebruik stellen van het model
@@ -255,7 +249,7 @@ Als u een model wilt verwijderen, gebruikt u deze aanroep:
 await client.DeleteModelAsync(IDToDelete);
 ```
 
-##### <a name="after-deletion-twins-without-models"></a>Na verwijdering: Apparaatdubbels zonder modellen
+#### <a name="after-deletion-twins-without-models"></a>Na verwijdering: Apparaatdubbels zonder modellen
 
 Zodra een model is verwijderd, worden alle digitale apparaatdubbels die gebruikmaken van het model, nu beschouwd als zonder model. Houd er rekening mee dat er geen query is waarmee u een lijst met alle apparaatdubbels in deze status kunt geven. u *kunt* echter wel een query uitvoeren op de apparaatdubbels door het verwijderde model om te weten welke apparaatdubbels van toepassing is.
 
@@ -274,17 +268,13 @@ Wat u **niet kunt** doen:
 * Uitgaande relaties (zoals in, relaties *van* deze twee tot andere apparaatdubbels) bewerken
 * Eigenschappen bewerken
 
-##### <a name="after-deletion-re-uploading-a-model"></a>Na verwijdering: een model opnieuw uploaden
+#### <a name="after-deletion-re-uploading-a-model"></a>Na verwijdering: een model opnieuw uploaden
 
 Nadat een model is verwijderd, kunt u later besluiten een nieuw model te uploaden met dezelfde ID als die u hebt verwijderd. Dit is wat er gebeurt in dat geval.
 * In het perspectief van het oplossings archief is dit hetzelfde als het uploaden van een volledig nieuw model. De service is niet meer weet dat de oude is geüpload.   
 * Als er resterende apparaatdubbels zijn in de grafiek die verwijst naar het verwijderde model, worden deze niet meer zwevend. Deze model-ID is opnieuw geldig met de nieuwe definitie. Als de nieuwe definitie voor het model echter anders is dan de model definitie die is verwijderd, kunnen deze apparaatdubbels eigenschappen en relaties hebben die overeenkomen met de verwijderde definitie en die niet geldig zijn voor de nieuwe.
 
 Deze status wordt niet door Azure Digital Apparaatdubbels voor komen. Zorg er daarom voor dat u de apparaatdubbels op juiste wijze patcht om ervoor te zorgen dat ze geldig blijven via de model definitie-switch.
-
-## <a name="manage-models-with-cli"></a>Modellen beheren met CLI
-
-Modellen kunnen ook worden beheerd met behulp van de Azure Digital Apparaatdubbels CLI. De opdrachten zijn te vinden in [*How to: gebruik de Azure Digital APPARAATDUBBELS cli*](how-to-use-cli.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 

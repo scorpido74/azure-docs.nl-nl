@@ -1,17 +1,17 @@
 ---
 title: Problemen met de query prestaties oplossen-Azure Database for MariaDB
 description: Meer informatie over het gebruik van uitleg om de prestaties van query's in Azure Database for MariaDB op te lossen.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: troubleshooting
 ms.date: 3/18/2020
-ms.openlocfilehash: ae3637eb5e9f6f70d0f53d7b1cb97bd348c114bc
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 2b7491723ffcff73e4b243fe54ef18608167d636
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424424"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537234"
 ---
 # <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mariadb"></a>UITLEGGEN hoe u de prestaties van query's in Azure Database for MariaDB kunt bepalen
 **Uitleg** is een handig hulp programma voor het optimaliseren van query's. De instructie uitleg kan worden gebruikt om informatie op te halen over hoe SQL-instructies worden uitgevoerd. In de volgende uitvoer ziet u een voor beeld van de uitvoering van een uitleg-instructie.
@@ -75,7 +75,7 @@ possible_keys: NULL
         Extra: Using where; Using temporary; Using filesort
 ```
 
-Zoals u kunt zien in de uitvoer, worden er door MariaDB geen indexen gebruikt, omdat er geen geschikte indexen beschikbaar zijn. Er wordt ook *gebruikgemaakt van tijdelijke; Het gebruik van bestanden sorteren*, wat betekent dat MariaDB een tijdelijke tabel maakt om te voldoen aan de component **Group by** .
+Zoals u kunt zien in de uitvoer, worden er door MariaDB geen indexen gebruikt, omdat er geen geschikte indexen beschikbaar zijn. Er wordt ook *gebruikgemaakt van tijdelijke; Het gebruik van bestanden sorteren* , wat betekent dat MariaDB een tijdelijke tabel maakt om te voldoen aan de component **Group by** .
  
 Het maken van een index op kolom **C2** heeft alleen geen verschil en MariaDB moet nog steeds een tijdelijke tabel maken:
 
@@ -97,7 +97,7 @@ possible_keys: NULL
         Extra: Using where; Using temporary; Using filesort
 ```
 
-In dit geval kan een **gedekte index** op zowel **C1** als **C2** worden gemaakt, waarbij de waarde **C2**direct in de index wordt toegevoegd om verdere gegevens zoekactie te elimineren.
+In dit geval kan een **gedekte index** op zowel **C1** als **C2** worden gemaakt, waarbij de waarde **C2** direct in de index wordt toegevoegd om verdere gegevens zoekactie te elimineren.
 
 ```sql 
 mysql> ALTER TABLE tb1 ADD KEY covered(c1,c2);

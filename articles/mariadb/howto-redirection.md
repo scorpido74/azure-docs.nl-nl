@@ -1,24 +1,24 @@
 ---
 title: Verbinding maken met omleiding-Azure Database for MariaDB
 description: In dit artikel wordt beschreven hoe u een toepassing kunt configureren om verbinding te maken met Azure Database for MariaDB met behulp van omleiding.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/8/2020
-ms.openlocfilehash: 45d93797b72b3b35dd44cddc22124acb73eb3454
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f26de72839fcaa39bff4d827aba757721736934
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86121092"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537421"
 ---
 # <a name="connect-to-azure-database-for-mariadb-with-redirection"></a>Verbinding maken met Azure Database for MariaDB met behulp van omleiding
 
 In dit onderwerp wordt uitgelegd hoe u met de omleidings modus verbinding maakt met een toepassing op uw Azure Database for MariaDB-server. Omleiding is gericht op het verminderen van de netwerk latentie tussen client toepassingen en MariaDB-servers door toepassingen toe te staan rechtstreeks verbinding te maken met back-end-server knooppunten.
 
 ## <a name="before-you-begin"></a>Voordat u begint
-Meld u aan bij [Azure Portal](https://portal.azure.com). Maak een Azure Database for MariaDB-server met Engine versie 10,2 of 10,3. 
+Meld u aan bij de [Azure-portal](https://portal.azure.com). Maak een Azure Database for MariaDB-server met Engine versie 10,2 of 10,3. 
 
 Zie een Azure Database for MariaDB-server maken met behulp van de [Azure Portal](quickstart-create-mariadb-server-database-using-azure-portal.md) of [Azure cli](quickstart-create-mariadb-server-database-using-azure-cli.md)voor meer informatie.
 

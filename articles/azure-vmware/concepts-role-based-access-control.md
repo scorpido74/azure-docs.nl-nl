@@ -2,13 +2,13 @@
 title: Concepten-op rollen gebaseerd toegangs beheer (RBAC)
 description: Meer informatie over de belangrijkste mogelijkheden van toegangs beheer op basis van rollen voor de Azure VMware-oplossing
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.openlocfilehash: 4fbda24ec6a8c1d08570d7f64270a954eb3d8a35
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.date: 10/23/2020
+ms.openlocfilehash: 6e1864fdfe397325a7c5ba601b625bcc1776174c
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92440940"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94535483"
 ---
 # <a name="role-based-access-control-rbac-for-azure-vmware-solution"></a>Op rollen gebaseerd toegangs beheer (RBAC) voor Azure VMware-oplossing
 
@@ -31,7 +31,7 @@ De gebruiker van de privécloud heeft geen toegang tot en kan geen specifieke be
 U kunt de bevoegdheden weer geven die zijn verleend aan de Azure VMware Solution CloudAdmin-rol in uw Azure VMware-oplossing privécloud-vCenter.
 
 1. Meld u aan bij de SDDC vSphere-client en ga naar **menu**  >  **beheer**.
-1. Onder **Access Control**selecteert u **rollen**.
+1. Onder **Access Control** selecteert u **rollen**.
 1. Selecteer **CloudAdmin** in de lijst met rollen en selecteer vervolgens **bevoegdheden**. 
 
    :::image type="content" source="media/role-based-access-control-cloudadmin-privileges.png" alt-text="De bevoegdheden voor CloudAdmin in vSphere-client weer geven":::
