@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/13/2020
+ms.date: 11/12/2020
 ms.author: b-juche
-ms.openlocfilehash: c79586703c49fe37d4d0915f49b69e6aa842083e
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: d653916c9b50d552825fcb03a860a2a2008b204d
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92017519"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578515"
 ---
 # <a name="metrics-for-azure-netapp-files"></a>Metrische gegevens voor Azure NetApp Files
 
@@ -88,7 +88,8 @@ Azure NetApp Files voorziet in metrische gegevens over de toegewezen opslag, het
 ## <a name="volume-replication-metrics"></a><a name="replication"></a>Metrische gegevens van de volume replicatie
 
 > [!NOTE] 
-> De grootte van de netwerk overdracht (bijvoorbeeld de metrische gegevens van de *totale overdracht van de volume replicatie* ) kan verschillen van de bron-of doel volumes van een replicatie tussen regio's. Dit gedrag is het gevolg van een efficiënte replicatie-engine die wordt gebruikt om de kosten van de netwerk overdracht te minimaliseren.
+> * De grootte van de netwerk overdracht (bijvoorbeeld de metrische gegevens van de *totale overdracht van de volume replicatie* ) kan verschillen van de bron-of doel volumes van een replicatie tussen regio's. Dit gedrag is het gevolg van een efficiënte replicatie-engine die wordt gebruikt om de kosten van de netwerk overdracht te minimaliseren.
+> * De metrische gegevens voor de volume replicatie worden momenteel ingevuld voor de replicatie doel volumes en niet de bron van de replicatie relatie.
 
 - *Is de status van de volume replicatie in orde*   
     De voor waarde van de replicatie relatie. De status in orde wordt aangegeven door `1` . Een slechte status wordt aangegeven door `0` .

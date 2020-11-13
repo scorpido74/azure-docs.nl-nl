@@ -7,12 +7,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: troubleshooting
 ms.date: 10/15/2020
-ms.openlocfilehash: a323dec66a3077784ff85deadd4f12086648fb3a
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: e29c640494a18bb3be2125a5b53b4f943521fe6c
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220455"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579144"
 ---
 # <a name="troubleshoot-common-issues-in-azure-data-share"></a>Veelvoorkomende problemen in Azure Data Share oplossen 
 
@@ -52,11 +52,11 @@ U hebt niet de juiste machtigingen voor x
 
 "Er kunnen geen schrijf machtigingen voor het Azure data share-account worden toegevoegd aan een of meer van de geselecteerde resources"
 
-Als u een van de bovenstaande fouten ontvangt bij het maken van een nieuwe share of het toewijzen van gegevens sets, kan dit worden veroorzaakt door onvoldoende machtigingen voor de Azure-gegevens opslag. Zie de [rollen en vereisten](concepts-roles-permissions.md) voor de vereiste machtigingen. 
+Als u een van de bovenstaande fouten ontvangt tijdens het maken van een nieuwe share, het toevoegen van gegevens sets of toewijzings gegevens sets, kan dit worden veroorzaakt door onvoldoende machtigingen voor de Azure-gegevens opslag. Zie de [rollen en vereisten](concepts-roles-permissions.md) voor de vereiste machtigingen. 
 
-U hebt schrijf machtigingen nodig om gegevens te delen of te ontvangen van een Azure-gegevens archief, dat meestal voor komt in de rol Inzender. 
+U hebt schrijf machtigingen nodig om gegevens te delen of te ontvangen van een Azure-gegevens archief, dat meestal voor komt in de rol **Inzender** . 
 
-Als dit de eerste keer is dat u gegevens uit het Azure-gegevens archief deelt of ontvangt, hebt u ook *micro soft. Authorization/Role Assignments/write* Permission, die meestal voor komt in de rol van eigenaar. Zelfs als u de Azure-gegevens opslag resource hebt gemaakt, wordt de eigenaar van de resource niet automatisch door de bron. Met de juiste machtigingen verleent de Azure data share-service automatisch de beheerde identiteits toegang van de gegevens share bron aan het gegevens archief. Het kan enkele minuten duren voordat dit proces is doorgevoerd. Probeer het over enkele minuten opnieuw als u fouten ondervindt als gevolg van deze vertraging.
+Als dit de eerste keer is dat u gegevens uit het Azure-gegevens archief deelt of ontvangt, hebt u ook *micro soft. Authorization/Role Assignments/write* Permission, die meestal voor komt in de rol van **eigenaar** . Zelfs als u de Azure-gegevens opslag resource hebt gemaakt, wordt de eigenaar van de resource niet automatisch door de bron. Met de juiste machtigingen verleent de Azure data share-service automatisch de beheerde identiteits toegang van de gegevens share bron aan het gegevens archief. Het kan enkele minuten duren voordat dit proces is doorgevoerd. Probeer het over enkele minuten opnieuw als u fouten ondervindt als gevolg van deze vertraging.
 
 Voor delen op basis van SQL zijn aanvullende machtigingen vereist. Zie [share van SQL-bronnen](how-to-share-from-sql.md) voor een gedetailleerde lijst met vereisten.
 
@@ -69,7 +69,7 @@ De moment opname kan om verschillende redenen mislukken. U kunt een gedetailleer
 
 Voor SQL-bronnen zijn de volgende extra oorzaken van momentopname fouten. 
 
-* Het bron-of doel-SQL-script om een gegevens share-machtiging te verlenen, wordt niet uitgevoerd of wordt uitgevoerd met behulp van SQL-verificatie in plaats van Azure Active Directory-verificatie.  
+* Het bron-of doel-SQL-script om een gegevens share-machtiging te verlenen, wordt niet uitgevoerd. Of voor Azure SQL Database of Azure Synapse Analytics (voorheen Azure SQL DW), wordt het uitgevoerd met behulp van SQL-verificatie in plaats van Azure Active Directory-verificatie.  
 * Het bron-of doel-SQL-gegevens archief is onderbroken.
 * SQL-gegevens typen worden niet ondersteund door het momentopname proces of het doel gegevens archief. Raadpleeg de [share van SQL-bronnen](how-to-share-from-sql.md#supported-data-types) voor meer informatie.
 * Het bron-of doel-SQL-gegevens archief is vergrendeld door andere processen. Azure-gegevens share is niet van toepassing op vergren delingen voor de bron-en doel-SQL-gegevens opslag. Bestaande vergren delingen op het bron-en doel-SQL-gegevens archief veroorzaken echter een moment opname.

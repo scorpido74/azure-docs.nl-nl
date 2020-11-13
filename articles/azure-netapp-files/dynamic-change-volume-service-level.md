@@ -12,19 +12,20 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/06/2020
+ms.date: 11/12/2020
 ms.author: b-juche
-ms.openlocfilehash: fe4b2925a34ae7c06bb0b597f0bcdcc3f4d80896
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: e5219e1c87221ade8da68c21209f41b4d6139be2
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94363218"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579076"
 ---
 # <a name="dynamically-change-the-service-level-of-a-volume"></a>Het serviceniveau van een volume dynamisch wijzigen
 
 > [!IMPORTANT] 
-> De registratie van de open bare Preview voor deze functie is in de wacht stand gezet tot verdere kennisgeving. 
+> * De registratie van de open bare Preview voor deze functie is in de wacht stand gezet tot verdere kennisgeving. 
+> * Dynamisch wijzigen van het service niveau van een replicatie doel volume wordt momenteel niet ondersteund.
 
 U kunt het service niveau van een bestaand volume wijzigen door het volume te verplaatsen naar een andere capaciteits groep die gebruikmaakt van het gewenste [service niveau](azure-netapp-files-service-levels.md) voor het volume. Voor deze in-place wijziging van het serviceniveau voor het volume is niet vereist dat u gegevens migreert. Het heeft ook geen invloed op de toegang tot het volume.  
 

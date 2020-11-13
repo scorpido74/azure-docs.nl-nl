@@ -67,9 +67,9 @@
       href: load-balancer-ha-ports-overview.md
     - name: Meerdere frontends
       href: load-balancer-multivip-overview.md
-    - name: Uitgaande proxy
+    - name: SNAT voor uitgaande verbindingen naar het internet
       href: load-balancer-outbound-connections.md
-    - name: Regels voor uitgaand verkeer
+    - name: Regels voor uitgaand verkeer configureren
       href: outbound-rules.md
     - name: TCP opnieuw instellen bij time-out wegens inactiviteit
       href: load-balancer-tcp-reset.md

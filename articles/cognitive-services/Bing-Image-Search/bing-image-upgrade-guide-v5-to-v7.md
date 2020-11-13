@@ -11,19 +11,19 @@ ms.subservice: bing-image-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: scottwhi
-ms.openlocfilehash: a1d233273ced4891c9987ff8ba50e5491ae6071c
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 0e8a3ec38a79edb52031d6c18596038ab4c6a8af
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93084456"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592138"
 ---
 # <a name="bing-image-search-api-v7-upgrade-guide"></a>Upgrade handleiding voor Bing Afbeeldingen zoeken-API V7
 
 > [!WARNING]
-> Bing Zoeken-API's van Cognitive Services naar Bing Search-Services verplaatsen. Vanaf **30 oktober 2020** moeten nieuwe exemplaren van Bing Search worden ingericht volgens het proces dat [hier](https://aka.ms/cogsvcs/bingmove)wordt beschreven.
-> Bing Zoeken-API's ingericht met Cognitive Services wordt voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst gebeurt.
-> Zie [Bing Search Services](https://aka.ms/cogsvcs/bingmigration)voor migratie-instructies.
+> Bing Search-API's worden van Cognitive Services naar Bing Search Services overgezet. Vanaf **30 oktober 2020** moeten nieuwe instanties van Bing Search worden ingericht overeenkomstig het proces dat [hier](https://aka.ms/cogsvcs/bingmove) is beschreven.
+> Bing Search-API's die zijn ingericht met Cognitive Services, worden voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst afloopt.
+> Raadpleeg [Bing Search Services](https://aka.ms/cogsvcs/bingmigration) voor migratie-instructies.
 
 Deze upgrade handleiding bevat de wijzigingen tussen versie 5 en versie 7 van de Bing Afbeeldingen zoeken-API. Gebruik deze hand leiding om u te helpen bij het identificeren van de onderdelen van uw toepassing die u moet bijwerken om versie 7 te gebruiken.
 
@@ -44,7 +44,7 @@ Deze upgrade handleiding bevat de wijzigingen tussen versie 5 en versie 7 van de
 
 - De V5-fout codes zijn vervangen door de volgende mogelijke `code` en `subCode` waarden.
 
-|Code|SubCode|Beschrijving
+|Code|SubCode|Description
 |-|-|-
 |Server Error|UnexpectedError<br/>ResourceError<br/>Niet geïmplementeerd|Bing retourneert server error wanneer een van de voor waarden van de onderliggende code optreedt. Het antwoord bevat deze fouten als de HTTP-status code 500 is.
 |InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Geblokkeerd|Bing retourneert InvalidRequest wanneer een deel van de aanvraag ongeldig is. Een vereiste para meter ontbreekt bijvoorbeeld of een parameter waarde is niet geldig.<br/><br/>Als de fout ParameterMissing of ParameterInvalidValue is, is de HTTP-status code 400.<br/><br/>Als de fout HttpNotAllowed is, wordt de HTTP-status code 410.
@@ -79,83 +79,83 @@ Geblokkeerd|InvalidRequest. blocked
 
 ### <a name="query-parameters"></a>Queryparameters
 
-- De naam van de `modulesRequested` query parameter is gewijzigd in [modules](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference).  
+- De naam van de `modulesRequested` query parameter is gewijzigd in [modules](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference).  
 
-- De naam van de aantekeningen in Tags is gewijzigd. Zie [modules](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference) query parameter naar Tags.  
+- De naam van de aantekeningen in Tags is gewijzigd. Zie [modules](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference) query parameter naar Tags.  
 
-- De lijst met ondersteunde markten van de ShoppingSources-filter waarde is gewijzigd in alleen en-US. Zie [imageType](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagetype).  
+- De lijst met ondersteunde markten van de ShoppingSources-filter waarde is gewijzigd in alleen en-US. Zie [imageType](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagetype).  
 
 
 ### <a name="image-insights-changes"></a>Wijzigingen in image Insights
 
-- De naam van het `annotations` veld van [ImagesInsights](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsightsresponse) is gewijzigd in `imageTags` .  
+- De naam van het `annotations` veld van [ImagesInsights](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsightsresponse) is gewijzigd in `imageTags` .  
 
-- De naam van het `AnnotationModule` object is gewijzigd in [ImageTagsModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagetagsmodule).  
+- De naam van het `AnnotationModule` object is gewijzigd in [ImageTagsModule](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagetagsmodule).  
 
-- De naam van het `Annotation` object is gewijzigd in [Label](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#tag)en het `confidence` veld is verwijderd.  
+- De naam van het `Annotation` object is gewijzigd in [Label](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#tag)en het `confidence` veld is verwijderd.  
 
-- De naam van het `insightsSourcesSummary` veld van het [afbeeldings](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#image) object is gewijzigd in `insightsMetadata` .  
+- De naam van het `insightsSourcesSummary` veld van het [afbeeldings](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#image) object is gewijzigd in `insightsMetadata` .  
 
-- De naam van het `InsightsSourcesSummary` object is gewijzigd in [InsightsMetadata](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightsmetadata).  
+- De naam van het `InsightsSourcesSummary` object is gewijzigd in [InsightsMetadata](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightsmetadata).  
 
 - Het `https://api.cognitive.microsoft.com/bing/v7.0/images/details` eind punt is toegevoegd. Gebruik dit eind punt voor het aanvragen van image Insights in plaats van het/Images/Search-eind punt. Zie [Image Insights](./image-insights.md).
 
 - De volgende query parameters zijn nu alleen geldig voor het `/images/details` eind punt.  
 
-    -   [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightstoken)  
-    -   [modules](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)  
-    -   [imgUrl](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imgurl)  
-    -   [-](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#cab)  
-    -   [overeenkomst](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#cal)  
-    -   [car](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#car)  
-    -   [Cat5](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#cat)  
-    -   [CT](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#ct)  
+    -   [insightsToken](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightstoken)  
+    -   [modules](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)  
+    -   [imgUrl](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imgurl)  
+    -   [-](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#cab)  
+    -   [overeenkomst](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#cal)  
+    -   [car](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#car)  
+    -   [Cat5](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#cat)  
+    -   [CT](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#ct)  
 
-- De naam van het `ImageInsightsResponse` object is gewijzigd in [ImageInsights](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsights).  
+- De naam van het `ImageInsightsResponse` object is gewijzigd in [ImageInsights](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsights).  
 
-- De gegevens typen van de volgende velden in het [ImageInsights](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsights) -object zijn gewijzigd.  
+- De gegevens typen van de volgende velden in het [ImageInsights](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsights) -object zijn gewijzigd.  
 
-    -   Wijzig het type van het `relatedCollections` veld van `ImageGallery[]` in [RelatedCollectionsModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#relatedcollectionsmodule).  
+    -   Wijzig het type van het `relatedCollections` veld van `ImageGallery[]` in [RelatedCollectionsModule](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#relatedcollectionsmodule).  
 
-    -   Wijzig het type van het `pagesIncluding` veld van `Image[]` in [ImagesModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagesmodule).  
+    -   Wijzig het type van het `pagesIncluding` veld van `Image[]` in [ImagesModule](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagesmodule).  
 
-    -   Wijzig het type van het `relatedSearches` veld van `Query[]` in [RelatedSearchesModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#relatedsearchesmodule).  
+    -   Wijzig het type van het `relatedSearches` veld van `Query[]` in [RelatedSearchesModule](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#relatedsearchesmodule).  
 
-    -   Wijzig het type van het `recipes` veld van `Recipe[]` in [RecipesModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#recipesmodule).  
+    -   Wijzig het type van het `recipes` veld van `Recipe[]` in [RecipesModule](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#recipesmodule).  
 
-    -   Wijzig het type van het `visuallySimilarImages` veld van `Image[]` in [ImagesModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagesmodule).  
+    -   Wijzig het type van het `visuallySimilarImages` veld van `Image[]` in [ImagesModule](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagesmodule).  
 
-    -   Wijzig het type van het `visuallySimilarProducts` veld van `ProductSummaryImage[]` in [ImagesModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagesmodule).  
+    -   Wijzig het type van het `visuallySimilarProducts` veld van `ProductSummaryImage[]` in [ImagesModule](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagesmodule).  
 
-    -   Het object is verwijderd `ProductSummaryImage` en de productgerelateerde velden zijn verplaatst naar het [afbeeldings](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#image) object. Het `Image` object bevat alleen de productgerelateerde velden wanneer de afbeelding is opgenomen als onderdeel van visueel vergelijk bare producten in een image Insight-reactie.  
+    -   Het object is verwijderd `ProductSummaryImage` en de productgerelateerde velden zijn verplaatst naar het [afbeeldings](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#image) object. Het `Image` object bevat alleen de productgerelateerde velden wanneer de afbeelding is opgenomen als onderdeel van visueel vergelijk bare producten in een image Insight-reactie.  
 
-    -   Wijzig het type van het `recognizedEntityGroups` veld van `RecognizedEntityGroup[]` in [RecognizedEntitiesModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#recognizedentitiesmodule).  
+    -   Wijzig het type van het `recognizedEntityGroups` veld van `RecognizedEntityGroup[]` in [RecognizedEntitiesModule](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#recognizedentitiesmodule).  
 
--   De naam van het `categoryClassification` veld van [ImageInsights](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsightsresponse) `annotations` is gewijzigd in `AnnotationsModule` .  
+-   De naam van het `categoryClassification` veld van [ImageInsights](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsightsresponse) `annotations` is gewijzigd in `AnnotationsModule` .  
 
 ### <a name="images-answer"></a>Antwoord op installatie kopieën
 
--   De velden displayShoppingSourcesBadges en displayRecipeSourcesBadges zijn verwijderd uit [afbeeldingen](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images).  
+-   De velden displayShoppingSourcesBadges en displayRecipeSourcesBadges zijn verwijderd uit [afbeeldingen](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images).  
 
--   De naam van het `nextOffsetAddCount` veld met [installatie kopieën](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) is gewijzigd in `nextOffset` . De manier waarop u de offset gebruikt, is ook gewijzigd. Voorheen stelt u de [Offset](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#offset) query-para meter in op de `nextOffsetAddCount` waarde plus de vorige offset waarde plus het aantal afbeeldingen in het resultaat. Nu kunt u `offset` de waarde instellen `nextOffset` .  
+-   De naam van het `nextOffsetAddCount` veld met [installatie kopieën](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) is gewijzigd in `nextOffset` . De manier waarop u de offset gebruikt, is ook gewijzigd. Voorheen stelt u de [Offset](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#offset) query-para meter in op de `nextOffsetAddCount` waarde plus de vorige offset waarde plus het aantal afbeeldingen in het resultaat. Nu kunt u `offset` de waarde instellen `nextOffset` .  
 
 
 ## <a name="non-breaking-changes"></a>Niet-brekende wijzigingen
 
 ### <a name="query-parameters"></a>Queryparameters
 
-- Transparant als mogelijke [imageType](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagetype) -filter waarde toegevoegd. Het transparante filter retourneert alleen afbeeldingen met een transparante achtergrond.
+- Transparant als mogelijke [imageType](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagetype) -filter waarde toegevoegd. Het transparante filter retourneert alleen afbeeldingen met een transparante achtergrond.
 
-- De waarde van een mogelijke [licentie](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#license) filter is toegevoegd. Met elk filter worden alleen installatie kopieën geretourneerd die onder licentie vallen.
+- De waarde van een mogelijke [licentie](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#license) filter is toegevoegd. Met elk filter worden alleen installatie kopieën geretourneerd die onder licentie vallen.
 
-- De query parameters [maxFileSize](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#maxfilesize) en [minFileSize](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#minfilesize) zijn toegevoegd. Gebruik deze filters om installatie kopieën te retour neren binnen een bereik van bestands grootten.  
+- De query parameters [maxFileSize](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#maxfilesize) en [minFileSize](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#minfilesize) zijn toegevoegd. Gebruik deze filters om installatie kopieën te retour neren binnen een bereik van bestands grootten.  
 
-- De query parameters [maxHeight](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#maxheight), [minHeight](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#minheight), [MaxWidth](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#maxwidth)en [minWidth](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#minwidth) zijn toegevoegd. Gebruik deze filters om afbeeldingen te retour neren binnen een bereik van hoogten en breedten.  
+- De query parameters [maxHeight](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#maxheight), [minHeight](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#minheight), [MaxWidth](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#maxwidth)en [minWidth](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#minwidth) zijn toegevoegd. Gebruik deze filters om afbeeldingen te retour neren binnen een bereik van hoogten en breedten.  
 
 ### <a name="object-changes"></a>Object wijzigingen
 
-- De `description` velden en zijn toegevoegd `lastUpdated` aan het [aanbiedings](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#offer) object.  
+- De `description` velden en zijn toegevoegd `lastUpdated` aan het [aanbiedings](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#offer) object.  
 
-- Het veld is toegevoegd `name` aan het [ImageGallery](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagegallery) -object.  
+- Het veld is toegevoegd `name` aan het [ImageGallery](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagegallery) -object.  
 
-- Wordt toegevoegd `similarTerms` aan het [afbeeldingen](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) -object. Dit veld bevat een lijst met termen die vergelijkbaar zijn met de query teken reeks van de gebruiker.  
+- Wordt toegevoegd `similarTerms` aan het [afbeeldingen](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) -object. Dit veld bevat een lijst met termen die vergelijkbaar zijn met de query teken reeks van de gebruiker.

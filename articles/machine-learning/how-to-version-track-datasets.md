@@ -11,15 +11,14 @@ ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: b4dc222ed0fc350b680d2696c1faa16d44b84a02
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 496a38e43c7bd624c42f5c7a43ad9cf16f85d166
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93358334"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579569"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>Versie gegevens sets in experimenten bijhouden
-
 
 In dit artikel leert u hoe u Azure Machine Learning gegevens sets voor reproduceer baarheid kunt versie en bijhouden. Het versie beheer van de gegevensset is een manier om de status van uw gegevens te blad maken, zodat u een specifieke versie van de gegevensset kunt Toep assen voor toekomstige experimenten.
 
@@ -116,11 +115,11 @@ dataset2.register(workspace = workspace,
 
 <a name="pipeline"></a>
 
-## <a name="version-a-pipeline-output-dataset"></a>Een gegevensset voor een pijplijn uitvoer
+## <a name="version-an-ml-pipeline-output-dataset"></a>Versie a ML pijp lijn uitvoer gegevensset
 
-U kunt een gegevensset gebruiken als de invoer en uitvoer van elke Machine Learning pijplijn stap. Wanneer u pijp lijnen opnieuw uitvoert, wordt de uitvoer van elke pijplijn stap geregistreerd als een nieuwe gegevensset-versie.
+U kunt een gegevensset gebruiken als de invoer en uitvoer van elke [ml pijplijn](concept-ml-pipelines.md) stap. Wanneer u pijp lijnen opnieuw uitvoert, wordt de uitvoer van elke pijplijn stap geregistreerd als een nieuwe gegevensset-versie.
 
-Omdat Machine Learning pijp lijnen de uitvoer van elke Step Into een nieuwe map elke keer dat de pijp lijn opnieuw wordt uitgevoerd, kunnen de versie-uitvoer gegevens sets worden gereproduceerd. Meer informatie over [gegevens sets in pijp lijnen](how-to-create-your-first-pipeline.md#steps).
+ML-pijp lijnen vullen de uitvoer van elke Step Into een nieuwe map elke keer dat de pijp lijn opnieuw wordt uitgevoerd. Dit gedrag zorgt ervoor dat de uitvoer gegevens sets met versie kunnen worden gereproduceerd. Meer informatie over [gegevens sets in pijp lijnen](how-to-create-your-first-pipeline.md#steps).
 
 ```Python
 from azureml.core import Dataset
@@ -154,9 +153,36 @@ prep_step = PythonScriptStep(script_name="prepare.py",
 
 <a name="track"></a>
 
-## <a name="track-datasets-in-experiments"></a>Gegevens sets bijhouden in experimenten
+## <a name="track-datas-in-your-experiments"></a>Gegevens in uw experimenten bijhouden
 
-Voor elk Machine Learning experiment kunt u eenvoudig de gegevens sets traceren die worden gebruikt als invoer via het `Run` object experiment.
+Azure Machine Learning houdt uw gegevens tijdens het experiment bij als invoer-en uitvoer gegevens sets.  
+
+Hier volgen enkele scenario's waarin uw gegevens worden bijgehouden als een **invoer-gegevensset**. 
+
+* Als een `DatasetConsumptionConfig` object via de `inputs` `arguments` para meter of van uw `ScriptRunConfig` object bij het verzenden van de uitvoering van het experiment. 
+
+* Wanneer methoden als get_by_name () of get_by_id () worden aangeroepen in uw script. Voor dit scenario is de naam die is toegewezen aan de gegevensset wanneer u deze registreert in de werk ruimte, de naam die wordt weer gegeven. 
+
+Hier volgen enkele scenario's waarin uw gegevens worden bijgehouden als een **uitvoer gegevensset**.  
+
+* Geef een `OutputFileDatasetConfig` object door via de `outputs` `arguments` para meter of bij het verzenden van een experiment dat moet worden uitgevoerd. `OutputFileDatasetConfig` objecten kunnen ook worden gebruikt om gegevens op te slaan tussen pijplijn stappen. Zie [gegevens verplaatsen tussen ml-pijplijn stappen.](how-to-move-data-in-out-of-pipelines.md)
+    > [!TIP]
+    > [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) is een open bare preview-klasse met [experimentele](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#&preserve-view=truestable-vs-experimental) preview-functies die op elk gewenst moment kunnen worden gewijzigd.
+
+* Registreer een gegevensset in het script. Voor dit scenario is de naam die is toegewezen aan de gegevensset wanneer u deze registreert in de werk ruimte, de naam die wordt weer gegeven. In het volgende voor beeld `training_ds` is de naam die wordt weer gegeven.
+
+    ```Python
+   training_ds = unregistered_ds.register(workspace = workspace,
+                                     name = 'training_ds',
+                                     description = 'training data'
+                                     )
+    ```
+
+* Onderliggende uitvoering met een niet-geregistreerde gegevensset verzenden in het script. Dit resulteert in een anonieme opgeslagen gegevensset.
+
+### <a name="trace-datasets-in-experiment-runs"></a>Gegevens sets traceren in experiment-uitvoeringen
+
+Voor elk Machine Learning experiment kunt u eenvoudig de gegevens sets traceren die worden gebruikt als invoer met het `Run` object experiment.
 
 De volgende code gebruikt de [`get_details()`](/python/api/azureml-core/azureml.core.run.run?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-details--) methode om bij te houden welke invoer gegevens sets zijn gebruikt bij de uitvoering van het experiment:
 
@@ -169,7 +195,7 @@ input_dataset = inputs[0]['dataset']
 input_dataset.to_path()
 ```
 
-U kunt de van experimenten ook vinden met `input_datasets` behulp van https://ml.azure.com/ . 
+U kunt de van experimenten ook vinden met `input_datasets` behulp van de [Azure machine learning Studio](). 
 
 De volgende afbeelding laat zien waar u de invoer gegevensset van een experiment op Azure Machine Learning Studio kunt vinden. Voor dit voor beeld gaat u naar het deel venster **experimenten** en opent u het tabblad **Eigenschappen** voor een specifieke uitvoering van uw experiment `keras-mnist` .
 
@@ -183,7 +209,7 @@ model = run.register_model(model_name='keras-mlp-mnist',
                            datasets =[('training data',train_dataset)])
 ```
 
-Na de registratie ziet u de lijst met modellen die zijn geregistreerd bij de gegevensset met behulp van python of gaat u naar https://ml.azure.com/ .
+Na de registratie ziet u de lijst met modellen die zijn geregistreerd bij de gegevensset met behulp van python of gaat u naar de [Studio](https://ml.azure.com/).
 
 De volgende weer gave is afkomstig uit het deel venster **gegevens sets** onder **assets**. Selecteer de gegevensset en selecteer vervolgens het tabblad **modellen** voor een lijst van de modellen die zijn geregistreerd bij de gegevensset. 
 

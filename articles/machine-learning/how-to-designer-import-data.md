@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 author: likebupt
 ms.author: keli19
-ms.date: 09/09/2020
+ms.date: 11/13/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 9ce0bb2a30ec4092d0053adf2de711547595c900
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 5569b625b8f0c4ba890c0cd5b1700ca6fe83d968
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94554713"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94591985"
 ---
 # <a name="import-data-into-azure-machine-learning-designer"></a>Gegevens importeren in Azure Machine Learning Designer
 
@@ -53,6 +53,8 @@ Als de gegevens van de module-uitvoer een tabel indeling hebben, moet u ervoor k
 ### <a name="use-a-dataset"></a>Een gegevensset gebruiken
 
 U kunt de geregistreerde gegevens sets vinden in het module palet, onder **gegevens sets**. Als u een gegevensset wilt gebruiken, sleept u deze naar het pijp lijn-canvas. Verbind vervolgens de uitvoer poort van de gegevensset met andere modules op het canvas. 
+
+Als u een bestands gegevensset registreert, is het uitvoer poort type van de gegevensset **AnyDirectory**. Als u een gegevensset in tabel vorm registreert, wordt het type uitvoer poort van de gegevensset als **DataFrameDirectory**. Houd er rekening mee dat als u de uitvoer poort van de gegevensset verbindt met andere modules in de ontwerp functie, het poort type van gegevens sets en modules moet worden uitgelijnd.
 
 ![Scherm opname van de locatie van opgeslagen gegevens sets in het palet voor ontwerpen](media/how-to-designer-import-data/use-datasets-designer.png)
 

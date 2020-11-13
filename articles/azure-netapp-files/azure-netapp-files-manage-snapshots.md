@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/10/2020
+ms.date: 11/12/2020
 ms.author: b-juche
-ms.openlocfilehash: e578e377e322e6b6a23f0990ca1fa0285a4ec87d
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: c64bc8bf265a8e3cc3c490827bdbd79661e3528a
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491644"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94591735"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Momentopnamen beheren met behulp van Azure NetApp Files
 
@@ -144,6 +144,17 @@ U kunt een momentopname beleid verwijderen dat u niet meer wilt blijven gebruike
 
     ![Verwijdering van momentopname beleid bevestigen](../media/azure-netapp-files/snapshot-policy-delete-confirm.png) 
 
+## <a name="edit-the-hide-snapshot-path-option"></a>De optie pad voor moment opname verbergen bewerken
+De optie pad naar moment opname verbergen bepaalt of het pad naar de moment opname van een volume wordt weer gegeven. Tijdens het maken van een [NFS](azure-netapp-files-create-volumes.md#create-an-nfs-volume) -of [SMB](azure-netapp-files-create-volumes-smb.md#add-an-smb-volume) -volume hebt u de optie om op te geven of het pad naar de moment opname moet worden verborgen. U kunt de optie voor het pad van de moment opname verbergen als dat nodig is.  
+
+> [!NOTE]
+> Voor een [doel volume](cross-region-replication-create-peering.md#create-the-data-replication-volume-the-destination-volume) in replicatie tussen verschillende regio's is de optie pad naar moment opname verbergen standaard ingeschakeld en kan de instelling niet worden gewijzigd. 
+
+1. Als u de optie voor het pad van de moment opname verbergen wilt weer geven, selecteert u het volume. In het veld **pad naar moment opname verbergen** wordt weer gegeven of de optie is ingeschakeld.   
+    ![Scherm opname van het veld pad naar moment opname verbergen.](../media/azure-netapp-files/hide-snapshot-path-field.png) 
+2. Als u de optie pad voor moment opname verbergen wilt bewerken, klikt u op **bewerken** op de pagina volume en wijzigt u de optie **pad naar moment opname verbergen** .   
+    ![Scherm afbeelding waarin de optie volume momentopname bewerken wordt beschreven.](../media/azure-netapp-files/volume-edit-snapshot-options.png) 
+
 ## <a name="restore-a-snapshot-to-a-new-volume"></a>Een moment opname herstellen naar een nieuw volume
 
 Op dit moment kunt u een moment opname alleen herstellen naar een nieuw volume. 
@@ -173,11 +184,7 @@ Als u [de volledige moment opname niet wilt herstellen naar een volume](#restore
 
 Het gekoppelde volume bevat een map met moment opnamen met  `.snapshot` de naam (in NFS-clients) of `~snapshot` (in SMB-clients) die toegankelijk is voor de client. De map met moment opnamen bevat submappen die overeenkomen met de moment opnamen van het volume. Elke submap bevat de bestanden van de moment opname. Als u per ongeluk een bestand verwijdert of overschrijft, kunt u het bestand herstellen naar de bovenliggende map voor lezen/schrijven door het bestand te kopiëren van een submap voor een moment opname naar de map lezen/schrijven. 
 
-Als u het selectie vakje pad naar moment opname verbergen hebt geselecteerd tijdens het maken van het volume, wordt de map met moment opnamen verborgen. U kunt de status van het pad naar de moment opname verbergen van het volume bekijken door het volume te selecteren. U kunt de optie pad naar moment opname verbergen bewerken door te klikken op **bewerken** op de pagina van het volume.  
-
-Voor een doel volume in replicatie tussen verschillende regio's is het pad naar de moment opname verbergen standaard ingeschakeld en kan de instelling niet worden gewijzigd.
-
-![Opties voor volume momentopname bewerken](../media/azure-netapp-files/volume-edit-snapshot-options.png) 
+Als u de map met moment opnamen niet ziet, is deze mogelijk verborgen omdat de optie pad naar moment opname verbergen momenteel is ingeschakeld. U kunt [de optie pad naar moment opname verbergen bewerken](#edit-the-hide-snapshot-path-option) om dit uit te scha kelen.  
 
 ### <a name="restore-a-file-by-using-a-linux-nfs-client"></a>Een bestand herstellen met behulp van een Linux NFS-client 
 

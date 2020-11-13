@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: how-to
 ms.date: 05/01/2020
-ms.openlocfilehash: 10e98cd2f0ad4793aa43f9bb3316c522b44f1d2c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57a03b107678f83200b11f408784f6455cbceffd
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91303533"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579288"
 ---
 # <a name="configure-the-personalizer-learning-behavior"></a>Het leer gedrag van Personaler configureren
 
@@ -37,13 +37,13 @@ Als u persoonlijker wilt toevoegen aan uw toepassing, moet u de prioriteits-en b
 
 1. Voeg de [positie-API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank) -aanroep toe na het punt in uw bestaande toepassings logica, waar u de lijst met acties en de bijbehorende functies bepaalt. De eerste actie in de lijst met acties moet de actie zijn die door uw bestaande logica is geselecteerd.
 
-1. Configureer uw code om de actie weer te geven die is gekoppeld aan de **Actie-id**van de positie-API-reactie.
+1. Configureer uw code om de actie weer te geven die is gekoppeld aan de **Actie-id** van de positie-API-reactie.
 
 ### <a name="configure-your-application-to-call-reward-api"></a>Uw toepassing configureren voor het aanroepen van belonings-API
 
 1. Gebruik uw bestaande bedrijfs logica om de **beloning** van de weer gegeven actie te berekenen. De waarde moet tussen 0 en 1 liggen. Verstuur deze vergoeding naar Personaler met behulp van de [belonings-API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward). De belonings waarde wordt niet onmiddellijk verwacht en kan worden vertraagd voor een bepaalde periode, afhankelijk van uw bedrijfs logica.
 
-1. Als u de beloning niet binnen de geconfigureerde **wacht tijd**van de beloning retourneert, wordt in plaats daarvan de standaard beloning gebruikt.
+1. Als u de beloning niet binnen de geconfigureerde **wacht tijd** van de beloning retourneert, wordt in plaats daarvan de standaard beloning gebruikt.
 
 ## <a name="evaluate-apprentice-mode"></a>De leerling-modus evalueren
 
@@ -52,14 +52,10 @@ Bekijk in de Azure Portal op de pagina met **beoordelingen** voor uw persoonlijk
 > [!div class="mx-imgBorder"]
 > ![Scherm opname van het beoordelen van de evaluatie van het leer gedrag van de leerlingen-modus in Azure Portal](media/settings/evaluate-apprentice-mode.png)
 
-De leerling-modus biedt de volgende **metrische gegevens**over de evaluatie:
-* **Basis lijn**: gemiddelde beloning: gemiddelde beloningen van de standaard waarde van de toepassing (basis lijn).
-* **Persoonlijkere – gemiddelde beloning**: gemiddelde van het totale aantal beloningen personaler zou mogelijk zijn bereikt.
-* **Belonings prestaties ten opzichte van de meest recente 1000 gebeurtenissen**: verhouding van de prijs van de basis lijn en personalisatie, genormaliseerd via de meest recente 1000-gebeurtenissen.
-
-## <a name="evaluate-apprentice-mode-features"></a>Functies van de leerlingen-modus evalueren
-
-Evalueer de functies met een [offline-evaluatie](how-to-offline-evaluation.md).
+De leerling-modus biedt de volgende **metrische gegevens** over de evaluatie:
+* **Basis lijn** : gemiddelde beloning: gemiddelde beloningen van de standaard waarde van de toepassing (basis lijn).
+* **Persoonlijkere – gemiddelde beloning** : gemiddelde van het totale aantal beloningen personaler zou mogelijk zijn bereikt.
+* **Belonings prestaties ten opzichte van de meest recente 1000 gebeurtenissen** : verhouding van de prijs van de basis lijn en personalisatie, genormaliseerd via de meest recente 1000-gebeurtenissen.
 
 ## <a name="switch-behavior-to-online-mode"></a>Gedrag van Switch naar online modus
 

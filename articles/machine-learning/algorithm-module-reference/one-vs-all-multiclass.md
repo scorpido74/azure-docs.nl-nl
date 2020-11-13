@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/16/2019
-ms.openlocfilehash: 23077d7d6b476bcca0812dcff8660376568f7dd9
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.date: 11/13/2020
+ms.openlocfilehash: 4dfe284a00052cbd1915d62355e1d7772f3712ab
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376329"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94591866"
 ---
 # <a name="one-vs-all-multiclass"></a>One-vs-All Multiclass
 
@@ -31,6 +31,8 @@ Met deze module wordt de methode één-op-alle toegepast, waarbij een binair mod
 In essentie maakt de module een ensemble van afzonderlijke modellen en voegt de resultaten vervolgens samen om één model te maken waarmee alle klassen worden voor speld. Een binaire classificatie kan worden gebruikt als basis voor een model dat overal en op alle is gebaseerd.  
 
 Stel bijvoorbeeld dat u een [twee klasse ondersteunings vector computer](two-class-support-vector-machine.md) model configureert en als invoer voor de module One-vs-all Multiclass levert. De module maakt met twee klassen ondersteuning vector machine modellen voor alle leden van de klasse output. Vervolgens wordt de methode één-op-alle toegepast om de resultaten voor alle klassen te combi neren.  
+
+De module maakt gebruik van OneVsRestClassifier van sklearn en u vindt [hier](https://scikit-learn.org/stable/modules/generated/sklearn.multiclass.OneVsRestClassifier.html)meer informatie.
 
 ## <a name="how-to-configure-the-one-vs-all-multiclass-classifier"></a>De classificatie van de One-vs-All Multiclass configureren  
 

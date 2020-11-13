@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 09/13/2017
 ms.author: mimckitt
-ms.openlocfilehash: 39564a34eb7a57cbd20e37b90d064917d5bf3b7a
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 23f14e14bea665f838919ae357d11db32bddfa7f
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337526"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579416"
 ---
 # <a name="introduction-to-freebsd-on-azure"></a>Inleiding tot FreeBSD op Azure
 Dit artikel bevat een overzicht van het uitvoeren van een FreeBSD-virtuele machine in Azure.
@@ -119,4 +119,4 @@ U kunt eventueel een basis shell verkrijgen met behulp van `sudo -s` .
 De [Azure VM Guest agent](https://github.com/Azure/WALinuxAgent/) versie 2.2.2 heeft een [bekend probleem](https://github.com/Azure/WALinuxAgent/pull/517) dat ertoe leidt dat de inrichtings fout voor FreeBSD vm in azure wordt veroorzaakt. De oplossing is vastgelegd door de [Azure VM Guest agent](https://github.com/Azure/WALinuxAgent/) versie 2.2.3 en latere versies. 
 
 ## <a name="next-steps"></a>Volgende stappen
-* Ga naar [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD112) om een FreeBSD-VM te maken.
+* Ga naar [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/thefreebsdfoundation.freebsd-12_1?tab=Overview) om een FreeBSD-VM te maken.

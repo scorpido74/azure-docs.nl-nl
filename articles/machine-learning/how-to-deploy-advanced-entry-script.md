@@ -11,12 +11,12 @@ ms.date: 09/17/2020
 ms.author: gopalv
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: 2225ef42d8862935e5cd682a3c11a7ce687babab
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 5b05891500ae5fd66e5ec2381066ccd1d26aa7ec
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325561"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578056"
 ---
 # <a name="advanced-entry-script-authoring"></a>Geavanceerde scriptinvoer ontwerpen
 
@@ -28,7 +28,10 @@ In dit artikel wordt ervan uitgegaan dat u al een getraind machine learning mode
 
 ## <a name="automatically-generate-a-swagger-schema"></a>Automatisch een Swagger-schema genereren
 
-Als u automatisch een schema voor uw webservice wilt genereren, geeft u een voor beeld van de invoer en/of uitvoer in de constructor voor een van de gedefinieerde type-objecten. Het type en het voor beeld worden gebruikt voor het automatisch maken van het schema. Azure Machine Learning maakt vervolgens tijdens de implementatie een [OpenAPI](https://swagger.io/docs/specification/about/) (Swagger)-specificatie voor de webservice.
+Als u automatisch een schema voor uw webservice wilt genereren, geeft u een voor beeld van de invoer en/of uitvoer in de constructor voor een van de gedefinieerde type-objecten. Het type en het voor beeld worden gebruikt voor het automatisch maken van het schema. Azure Machine Learning maakt vervolgens tijdens de implementatie een [OpenAPI](https://swagger.io/docs/specification/about/) (Swagger)-specificatie voor de webservice. 
+
+> [!WARNING]
+> U moet geen gevoelige of persoonlijke gegevens gebruiken voor voorbeeld invoer of-uitvoer. De Swagger-pagina voor de door de AML-hosten beproefde defactorion maakt de voorbeeld gegevens beschikbaar. 
 
 Deze typen worden momenteel ondersteund:
 

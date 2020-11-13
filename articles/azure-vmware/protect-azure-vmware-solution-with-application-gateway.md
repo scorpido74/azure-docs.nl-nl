@@ -2,33 +2,40 @@
 title: Azure-toepassing gateway gebruiken voor het beveiligen van uw web-apps op de Azure VMware-oplossing
 description: Configureer Azure-toepassing gateway zo dat uw web-apps die worden uitgevoerd op een Azure VMware-oplossing, veilig zichtbaar zijn.
 ms.topic: how-to
-ms.date: 07/31/2020
-ms.openlocfilehash: b63b7348419500504cb45917d741cc17e2b8a622
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.date: 10/13/2020
+ms.openlocfilehash: 7956ea51421f5cfa893942401c1d9a5871039689
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951448"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578457"
 ---
 # <a name="use-azure-application-gateway-to-protect-your-web-apps-on-azure-vmware-solution"></a>Azure-toepassing gateway gebruiken voor het beveiligen van uw web-apps op de Azure VMware-oplossing
 
-[Azure-toepassing gateway](https://azure.microsoft.com/services/application-gateway/) is een laag 7-webverkeer Load Balancer waarmee u verkeer naar uw webtoepassingen kunt beheren. Het biedt veel mogelijkheden: sessie affiniteit op basis van cookies, route ring op basis van URL en WAF (Web Application firewall). (Zie [Azure-toepassing gateway functies](../application-gateway/features.md)(Engelstalig) voor een volledige lijst met functies. Het wordt aangeboden in twee versies, v1 en v2. Beide zijn getest met web-apps die worden uitgevoerd op de Azure VMware-oplossing.
+[Azure-toepassing gateway](https://azure.microsoft.com/services/application-gateway/) is een laag 7-webverkeer Load Balancer waarmee u verkeer naar uw webtoepassingen kunt beheren. Het wordt aangeboden in zowel Azure VMware-oplossing v 1.0 als v 2.0. Beide versies getest met web-apps die worden uitgevoerd op de Azure VMware-oplossing.
 
-In dit artikel wordt gebruikgemaakt van een gemeen schappelijk scenario met Application Gateway voor een webserver farm met een reeks configuraties en aanbevelingen voor het beveiligen van een web-app die wordt uitgevoerd op een Azure VMware-oplossing. 
+De mogelijkheden zijn onder andere: 
+- Sessie affiniteit op basis van cookies
+- URL-gebaseerde routering
+- Web Application Firewall (WAF)
+
+Zie [Azure-toepassing gateway functies](../application-gateway/features.md)voor een volledige lijst met functies. 
+
+Dit artikel laat u zien hoe u applicate gateway vóór een webserver farm kunt gebruiken om een web-app te beveiligen die wordt uitgevoerd op de Azure VMware-oplossing. 
 
 ## <a name="topology"></a>Topologie
-Zoals in de volgende afbeelding wordt weer gegeven, kunt Application Gateway worden gebruikt voor het beveiligen van virtuele Azure IaaS-machines, virtuele-machine schaal sets van Azure of on-premises servers. Virtuele Azure VMware-oplossingen worden beschouwd als on-premises servers door Application Gateway.
+In het diagram ziet u hoe Application Gateway wordt gebruikt voor het beveiligen van virtuele machines (Vm's) van Azure IaaS, virtuele-machine schaal sets van Azure of on-premises servers. Application Gateway behandelt Vm's van Azure VMware-oplossing als on-premises servers. 
 
 ![Application Gateway beschermt Vm's van Azure VMware-oplossing.](media/protect-azure-vmware-solution-with-application-gateway/app-gateway-protects.png)
 
 > [!IMPORTANT]
 > Azure-toepassing gateway is momenteel de enige ondersteunde methode om web-apps weer te geven die worden uitgevoerd op virtuele machines van Azure VMware-oplossingen.
 
-In het volgende diagram ziet u het test scenario dat wordt gebruikt om Application Gateway te valideren met Azure VMware Solution-webtoepassingen.
+Het diagram toont het test scenario dat wordt gebruikt om de Application Gateway te valideren met de webtoepassingen van Azure VMware Solution.
 
-![Application Gateway integratie met de Azure VMware-oplossing die web-apps uitvoert.](media/protect-azure-vmware-solution-with-application-gateway/app-gateway-avs-scenario.png)
+:::image type="content" source="media/hub-spoke/azure-vmware-solution-second-level-traffic-segmentation.png" alt-text="Application Gateway integratie met de Azure VMware-oplossing waarmee webtoepassingen worden uitgevoerd" border="false":::
 
-Het Application Gateway exemplaar wordt geïmplementeerd op de hub in een toegewezen subnet. Het heeft een openbaar IP-adres van Azure; het is raadzaam om de standaard DDoS-beveiliging voor het virtuele netwerk te activeren. De webserver wordt gehost op een Azure VMware-oplossing privécloud achter NSX t0 en T1-routers. De Azure VMware-oplossing maakt gebruik van [ExpressRoute Global Reach](../expressroute/expressroute-global-reach.md) om de communicatie met de hub en on-premises systemen mogelijk te maken.
+Het Application Gateway exemplaar wordt geïmplementeerd op de hub in een toegewezen subnet. Het heeft een openbaar IP-adres van Azure. Het is raadzaam om de standaard DDoS-beveiliging voor het virtuele netwerk te activeren. De webserver wordt gehost op een Azure VMware-oplossing privécloud achter NSX t0 en T1-routers. De Azure VMware-oplossing maakt gebruik van [ExpressRoute Global Reach](../expressroute/expressroute-global-reach.md) om communicatie met de hub en on-premises systemen mogelijk te maken.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -43,16 +50,16 @@ Het Application Gateway exemplaar wordt geïmplementeerd op de hub in een toegew
 
     :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/create-app-gateway.png" alt-text="Application Gateway maken":::
 
-3. Kies het type van het frontend-IP-adres. Kies voor openbaar een bestaand openbaar IP-adres of maak een nieuw account. Selecteer **volgende: back **-ends>.
+3. Kies het type van het frontend-IP-adres. Kies voor openbaar een bestaand openbaar IP-adres of maak een nieuw account. Selecteer **volgende: back** -ends>.
 
     > [!NOTE]
     > Alleen standaard-en WAF-Sku's (Web Application firewall) worden ondersteund voor privé-front-end.
 
-4. Voeg vervolgens een back-end-pool toe, waarmee een set exemplaren wordt beschreven die deel uitmaken van de toepassing of service (in dit geval virtuele machines die worden uitgevoerd op de infra structuur van de Azure VMware-oplossing). Geef de details op van webservers die worden uitgevoerd op de Azure VMware-oplossing privécloud en selecteer **toevoegen**; Selecteer vervolgens **volgende: configuratie>**.
+4. Voeg een back-end-groep toe van de virtuele machines die worden uitgevoerd op de infra structuur van Azure VMware-oplossingen. Geef de details op van webservers die worden uitgevoerd in de privécloud van de Azure VMware-oplossing en selecteer **toevoegen**.  Selecteer vervolgens **volgende: configuratie>**.
 
 1. Selecteer op het tabblad **configuratie** **een regel voor het toevoegen van een route ring**.
 
-6. Geef op het tabblad **listener** de details op voor de listener. Als HTTPS is geselecteerd, moet een certificaat worden opgegeven, hetzij vanuit een PFX-bestand of een bestaand certificaat van Azure Key Vault. 
+6. Geef op het tabblad **listener** de details op voor de listener. Als HTTPS is geselecteerd, moet u een certificaat opgeven, hetzij vanuit een PFX-bestand of een bestaand Azure Key Vault certificaat. 
 
 7. Selecteer het tabblad **backend-doelen** en selecteer de back-end-groep die u eerder hebt gemaakt. Selecteer voor het veld **http-instellingen** de optie **nieuwe toevoegen**.
 
@@ -64,85 +71,120 @@ Het Application Gateway exemplaar wordt geïmplementeerd op de hub in een toegew
 
 11. Wanneer u klaar bent met het toevoegen van op het pad gebaseerde regels, selecteert u opnieuw **toevoegen** . Selecteer vervolgens **volgende: labels>**. 
 
-12. Voeg de gewenste labels toe. Selecteer **volgende: controleren +>maken **.
+12. Voeg labels toe en selecteer **volgende: controleren +>maken**.
 
 13. Er wordt een validatie uitgevoerd op uw Application Gateway. Als dit lukt, selecteert u **maken** om te implementeren.
 
 ## <a name="configuration-examples"></a>Configuratie voorbeelden
 
-In deze sectie leert u hoe u Application Gateway kunt configureren met virtuele machines van Azure VMware-oplossingen als back-endservers voor de volgende use-cases: 
+In deze sectie leert u hoe u Application Gateway kunt configureren met virtuele machines van Azure VMware-oplossingen als back-end-Pools voor deze use-cases: 
 
 - [Meerdere sites hosten](#hosting-multiple-sites)
 - [Route ring op URL](#routing-by-url)
 
 ### <a name="hosting-multiple-sites"></a>Meerdere sites hosten
 
-U kunt de Azure Portal gebruiken om meerdere websites te configureren wanneer u een toepassings gateway maakt. In deze zelf studie definieert u de back-end-adres groepen met virtuele machines die worden uitgevoerd op een privécloud van Azure VMware-oplossing op een bestaande toepassings gateway. De toepassings gateway maakt deel uit van een virtuele hub-netwerk zoals beschreven in [Azure VMware-oplossing integreren in een hub-en spoke-architectuur](concepts-hub-and-spoke.md). In deze zelf studie wordt ervan uitgegaan dat u beschikt over meerdere domeinen en maakt gebruik van voor beelden van www.contoso.com en www.fabrikam.com.
+Met deze procedure wordt beschreven hoe u back-mailadres groepen kunt definiëren met behulp van Vm's die worden uitgevoerd op een Azure VMware-oplossing privécloud op een bestaande toepassings gateway. 
 
-1. Maak de virtuele machines. Maak in de privécloud van de Azure VMware-oplossing twee verschillende groepen met virtuele machines. de ene vertegenwoordigt Contoso en de tweede fabrikam. 
+>[!NOTE]
+>Bij deze procedure wordt ervan uitgegaan dat u meerdere domeinen hebt, dus we gebruiken voor beelden van www.contoso.com en www.fabrikam.com.
 
-    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-multi-backend-pool-avs.png" alt-text="Application Gateway maken":::
 
-    Ter illustratie van deze zelf studie hebben we Windows Server 2016 met Internet Information Services (IIS)-rol geïnstalleerd. Wanneer de virtuele machines zijn geïnstalleerd, voert u de volgende Power shell-opdrachten uit om IIS op elke virtuele machine te configureren. 
+1. Maak in uw privécloud twee verschillende groepen Vm's. De ene vertegenwoordigt Contoso en de tweede fabrikam. 
+
+    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-multi-backend-pool-avs.png" alt-text="Maak de Vm's.":::
+
+    We hebben Windows Server 2016 met Internet Information Services-rol (IIS) gebruikt die is geïnstalleerd om deze zelf studie te demonstreren. Zodra de Vm's zijn geïnstalleerd, voert u de volgende Power shell-opdrachten uit om IIS op elk van de virtuele machines te configureren. 
 
     ```powershell
     Install-WindowsFeature -Name Web-Server
     Add-Content -Path C:\inetpub\wwwroot\Default.htm -Value $($env:computername)
     ```
 
-2. Voeg de back-end-Pools toe. Selecteer in een bestaand toepassings gateway-exemplaar **Back-upgroepen** in het linkermenu, selecteer  **toevoegen**en voer de details van de nieuwe groepen in. Selecteer **toevoegen** in het rechterdeel venster.
+2. Selecteer in een bestaand toepassings gateway-exemplaar **Back-upgroepen** in het linkermenu, selecteer  **toevoegen** en voer de details van de nieuwe groepen in. Selecteer **toevoegen** in het rechterdeel venster.
 
-    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-multi-backend-pool-avs-02.png" alt-text="Application Gateway maken" lightbox="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-multi-backend-pool-avs-02.png":::
+    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-multi-backend-pool-avs-02.png" alt-text="Voeg de back-end-Pools toe." lightbox="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-multi-backend-pool-avs-02.png":::
 
 3. Maak in de sectie **listeners** een nieuwe listener voor elke website. Geef de Details voor elke listener op en selecteer **toevoegen**.
 
-4. Selecteer in het linkernavigatievenster de optie **http-instellingen** en selecteer **toevoegen** in het linkerdeel venster. Vul de details in om een nieuwe HTTP-instelling te maken en selecteer **Opslaan**.
+4. Selecteer aan de linkerkant **http-instellingen** en selecteer **toevoegen** in het linkerdeel venster. Vul de details in om een nieuwe HTTP-instelling te maken en selecteer **Opslaan**.
 
-    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-multi-backend-pool-avs-03.png" alt-text="Application Gateway maken" lightbox="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-multi-backend-pool-avs-03.png":::
+    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-multi-backend-pool-avs-03.png" alt-text="Vul de details in om een nieuwe HTTP-instelling te maken en selecteer Opslaan." lightbox="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-multi-backend-pool-avs-03.png":::
 
 5. Maak de regels in het gedeelte **regels** van het menu links. Koppel elke regel aan de bijbehorende listener. Selecteer **Toevoegen**.
 
 6. Configureer de bijbehorende back-end-en HTTP-instellingen. Selecteer **Toevoegen**.
 
-7. Test de verbinding. Open uw favoriete browser en navigeer naar de verschillende websites die worden gehost op uw Azure VMware-oplossings omgeving http://www.fabrikam.com .
+7. Test de verbinding. Open uw favoriete browser en navigeer naar de verschillende websites die worden gehost op uw Azure VMware-oplossings omgeving, bijvoorbeeld http://www.fabrikam.com .
 
-    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-multi-backend-pool-avs-07.png" alt-text="Application Gateway maken":::
+    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-multi-backend-pool-avs-07.png" alt-text="Test de verbinding.":::
 
 ### <a name="routing-by-url"></a>Route ring op URL
 
-U kunt Azure-toepassing gateway gebruiken om op URL-pad gebaseerde routerings regels te configureren. In deze zelf studie definieert u de back-end-adres groepen met virtuele machines die worden uitgevoerd op een privécloud van Azure VMware-oplossing op een bestaande toepassings gateway. De toepassings gateway maakt deel uit van een virtuele hub-netwerk zoals beschreven in [Azure VMware-oplossing Azure native Integration-documentatie](concepts-hub-and-spoke.md). Vervolgens maakt u routeringsregels die ervoor zorgen dat webverkeer wordt omgeleid naar de servers in de pools.
+Met deze procedure wordt beschreven hoe u back-mailadres groepen kunt definiëren met behulp van Vm's die worden uitgevoerd op een Azure VMware-oplossing privécloud op een bestaande toepassings gateway. Vervolgens maakt u routeringsregels die ervoor zorgen dat webverkeer wordt omgeleid naar de servers in de pools.
 
-1. Maak de virtuele machines. Maak in de privécloud van de Azure VMware-oplossing een pool met virtuele machines die de webfarm vertegenwoordigen. 
+1. Maak in uw privécloud een virtuele-machine groep om de webfarm aan te duiden. 
 
-    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-avs.png" alt-text="Application Gateway maken"
+    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-avs.png" alt-text="Maak een groep virtuele machines in de Azure VMware-oplossing.":::
+
+    Windows Server 2016 met IIS-rol geïnstalleerd is gebruikt ter illustratie van deze zelf studie. Zodra de Vm's zijn geïnstalleerd, voert u de volgende Power shell-opdrachten uit om IIS te configureren voor elke VM-zelf studie. 
+
+    De eerste virtuele machine, contoso-Web-01, wordt als host voor de hoofd website gehost.
+
+    ```powershell
+    Install-WindowsFeature -Name Web-Server
+    Add-Content -Path C:\inetpub\wwwroot\Default.htm -Value $($env:computername)
+    ```
+
+    De tweede virtuele machine, contoso-Web-02, fungeert als host voor de site met installatie kopieën.
+ 
+    ```powershell
+    Install-WindowsFeature -Name Web-Server
+    New-Item -Path "C:\inetpub\wwwroot\" -Name "images" -ItemType "directory"
+    Add-Content -Path C:\inetpub\wwwroot\images\test.htm -Value $($env:computername)
+    ```
+
+    De derde virtuele machine, contoso-Web-03, host de video-site.
+
+    ```powershell
+    Install-WindowsFeature -Name Web-Server
+    New-Item -Path "C:\inetpub\wwwroot\" -Name "video" -ItemType "directory"
     Add-Content -Path C:\inetpub\wwwroot\video\test.htm -Value $($env:computername)
     ```
 
-2. Voeg de back-end-Pools toe. U moet drie nieuwe back-endservers toevoegen in een bestaand toepassings gateway-exemplaar. Selecteer **Back-endpools** in het linkermenu. Selecteer **toevoegen** en voer de details in van de eerste groep **Contoso-Web**. Voeg één virtuele machine toe als doel. Selecteer **Toevoegen**. Herhaal dit proces voor **Contoso-afbeeldingen** en **Contoso-video**en voeg één unieke VM toe aan elk als doel. 
+2. Voeg drie nieuwe back-endservers toe aan een bestaand toepassings gateway-exemplaar. 
 
-    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-avs-02.png" alt-text="Application Gateway maken" lightbox="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-avs-02.png":::
+   1. Selecteer **Back-endpools** in het linkermenu. 
+   1. Selecteer **toevoegen** en voer de details in van de eerste groep **Contoso-Web**. 
+   1. Voeg één virtuele machine toe als doel. 
+   1. Selecteer **Toevoegen**. 
+   1. Herhaal dit proces voor **Contoso-images** en **Contoso-video** en voeg één unieke virtuele machine toe als doel. 
+
+    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-avs-02.png" alt-text="Voeg drie nieuwe back-endservers toe." lightbox="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-avs-02.png":::
 
 3. Maak in de sectie **listeners** een nieuwe listener van het type Basic met behulp van poort 8080.
 
 4. Selecteer in het linkernavigatievenster de optie **http-instellingen** en selecteer **toevoegen** in het linkerdeel venster. Vul de details in om een nieuwe HTTP-instelling te maken en selecteer **Opslaan**.
 
-    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-avs-04.png" alt-text="Application Gateway maken":::
+    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-avs-04.png" alt-text="Configuratie van HTP-instellingen.":::
 
 5. Maak de regels in het gedeelte **regels** van het menu links. Koppel elke regel aan de eerder gemaakte listener. Configureer vervolgens de belangrijkste back-end-en HTTP-instellingen. Selecteer **Toevoegen**.
 
-    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-avs-07.png" alt-text="Application Gateway maken":::
+    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-avs-07.png" alt-text="Maak de regels in het gedeelte regels van het menu links.":::
 
-6. Test de configuratie. Open de toepassings gateway op het Azure Portal en kopieer in het gedeelte **overzicht** het openbaar IP-adres. Open vervolgens een nieuw browser venster en voer de URL in `http://<app-gw-ip-address>:8080` . 
+6. Test de configuratie. Toegang tot de toepassings gateway op de Azure Portal en het open bare IP-adres kopiëren in het gedeelte **overzicht** . 
 
-    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-avs-08.png" alt-text="Application Gateway maken":::
+   1. Open een nieuw browser venster en voer de URL in `http://<app-gw-ip-address>:8080` . 
 
-    Wijzig de URL in `http://<app-gw-ip-address>:8080/images/test.htm`.
+      :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-avs-08.png" alt-text="Test de configuratie van de Azure Portal.":::
 
-    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-avs-09.png" alt-text="Application Gateway maken":::
+   1. Wijzig de URL in `http://<app-gw-ip-address>:8080/images/test.htm`.
 
-    Wijzig de URL opnieuw in `http://<app-gw-ip-address>:8080/video/test.htm` .
+      :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-avs-09.png" alt-text="Wijzig de URL.":::
 
-    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-avs-10.png" alt-text="Application Gateway maken":::
+   1. Wijzig de URL opnieuw in `http://<app-gw-ip-address>:8080/video/test.htm` .
+
+      :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-avs-10.png" alt-text="Wijzig de URL opnieuw.":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,6 +1,6 @@
 ---
 title: SCIM synchronisatie met Azure Active Directory
-description: Richt lijnen voor architectuur over het bereiken van dit synchronisatie patroon
+description: Architectuur richtlijnen voor het bereiken van SCIM-synchronisatie met Azure Active Directory.
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1dda465dd675e0f5f519f86289df2621be0b9bb
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: f957070ec94fc4c61089f31fe91261a2f52c4ee4
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367853"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578855"
 ---
 # <a name="scim-synchronization-with-azure-active-directory"></a>SCIM synchronisatie met Azure Active Directory
 
@@ -35,13 +35,13 @@ U wilt gebruikers gegevens automatisch inrichten van een HCM-systeem naar Azure 
 
 ## <a name="components-of-system"></a>Onderdelen van systeem 
 
-* **HCM System**: toepassingen en technologieën waarmee HR-processen kunnen worden ondersteund en geautomatiseerd gedurende de levens cyclus van werk nemers. 
+* **HCM System** : toepassingen en technologieën waarmee HR-processen kunnen worden ondersteund en geautomatiseerd gedurende de levens cyclus van werk nemers. 
 
-* **Azure AD-inrichtings service**: maakt gebruik van het scim 2,0-protocol voor automatische inrichting. De service maakt verbinding met het SCIM-eind punt voor de toepassing en maakt gebruik van het schema voor de SCIM-gebruikers objecten en REST-Api's voor het automatiseren van het inrichten en het ongedaan maken van de inrichting van gebruikers en groepen.  
+* **Azure AD-inrichtings service** : maakt gebruik van het scim 2,0-protocol voor automatische inrichting. De service maakt verbinding met het SCIM-eind punt voor de toepassing en maakt gebruik van het schema voor de SCIM-gebruikers objecten en REST-Api's voor het automatiseren van het inrichten en het ongedaan maken van de inrichting van gebruikers en groepen.  
 
-* **Azure AD**: opslag plaats voor gebruikers die wordt gebruikt voor het beheren van de levens cyclus van identiteiten en hun rechten. 
+* **Azure AD** : opslag plaats voor gebruikers die wordt gebruikt voor het beheren van de levens cyclus van identiteiten en hun rechten. 
 
-* **Doel systeem**: toepassing of systeem met scim-eind punt en werkt met de Azure AD-inrichting om automatische inrichting van gebruikers en groepen in te scha kelen.  
+* **Doel systeem** : toepassing of systeem met scim-eind punt en werkt met de Azure AD-inrichting om automatische inrichting van gebruikers en groepen in te scha kelen.  
 
 ## <a name="implement-scim-with-azure-ad"></a>SCIM implementeren met Azure AD 
 

@@ -1,6 +1,6 @@
 ---
 title: LDAP-synchronisatie met Azure Active Directory
-description: Richt lijnen voor architectuur over het bereiken van dit synchronisatie patroon
+description: Architectuur richtlijnen voor het bereiken van LDAP-synchronisatie met Azure Active Directory.
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a14149551c0fb33906ab7d1a00b387026d827911
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: e617d7ccc14e65c18eb86877b1c7fb1aeef74cd0
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92114175"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578889"
 ---
 # <a name="ldap-synchronization-with-azure-active-directory"></a>LDAP-synchronisatie met Azure Active Directory
 
@@ -34,21 +34,21 @@ U moet identiteits gegevens tussen uw on-premises LDAP v3-directory's en Azure A
 
 ## <a name="components-of-system"></a>Onderdelen van systeem
 
-* **Gebruiker**: heeft toegang tot een toepassing die afhankelijk is van het gebruik van een LDAP v3-Directory voor het sorteren van gebruikers en wacht woorden.
+* **Gebruiker** : heeft toegang tot een toepassing die afhankelijk is van het gebruik van een LDAP v3-Directory voor het sorteren van gebruikers en wacht woorden.
 
-* **Webbrowser**: het onderdeel waarmee de gebruiker communiceert om toegang te krijgen tot de externe URL van de toepassing
+* **Webbrowser** : het onderdeel waarmee de gebruiker communiceert om toegang te krijgen tot de externe URL van de toepassing
 
-* **Web-app**: toepassing met afhankelijkheden op LDAP v3-directory's.
+* **Web-app** : toepassing met afhankelijkheden op LDAP v3-directory's.
 
-* **Azure AD**: Azure AD synchroniseert identiteits gegevens (gebruikers, groepen, wacht woorden) van on-premises LDAP-adres lijsten van de organisatie via Azure AD Connect. 
+* **Azure AD** : Azure AD synchroniseert identiteits gegevens (gebruikers, groepen, wacht woorden) van on-premises LDAP-adres lijsten van de organisatie via Azure AD Connect. 
 
-* **Azure AD Connect**: is een hulp programma voor het verbinden van een on-premises identiteits infrastructuur naar Microsoft Azure AD. De wizard en begeleide ervaringen helpen u bij het implementeren en configureren van vereisten en onderdelen die vereist zijn voor de verbinding. 
+* **Azure AD Connect** : is een hulp programma voor het verbinden van een on-premises identiteits infrastructuur naar Microsoft Azure AD. De wizard en begeleide ervaringen helpen u bij het implementeren en configureren van vereisten en onderdelen die vereist zijn voor de verbinding. 
 
-* **Aangepaste connector**: met een algemene LDAP-connector kunt u de Azure AD Connect-synchronisatie service integreren met een LDAP v3-server. Het is Azure AD Connect.
+* **Aangepaste connector** : met een algemene LDAP-connector kunt u de Azure AD Connect-synchronisatie service integreren met een LDAP v3-server. Het is Azure AD Connect.
 
-* **Active Directory**: Active Directory is een directory service die deel uitmaakt van de meeste Windows Server-besturings systemen. Servers met Active Directory Directory Services worden domein controllers genoemd en kunnen alle gebruikers en computers in een Windows-domein verifiëren en autoriseren.
+* **Active Directory** : Active Directory is een directory service die deel uitmaakt van de meeste Windows Server-besturings systemen. Servers met Active Directory Directory Services worden domein controllers genoemd en kunnen alle gebruikers en computers in een Windows-domein verifiëren en autoriseren.
 
-* **LDAP v3-server**: een LDAP-protocol-compatibele directory waarin zakelijke gebruikers en wacht woorden worden opgeslagen die worden gebruikt voor verificatie van Directory Services.
+* **LDAP v3-server** : een LDAP-protocol-compatibele directory waarin zakelijke gebruikers en wacht woorden worden opgeslagen die worden gebruikt voor verificatie van Directory Services.
 
 ## <a name="implement-ldap-synchronization-with-azure-ad"></a>LDAP-synchronisatie implementeren met Azure AD
 

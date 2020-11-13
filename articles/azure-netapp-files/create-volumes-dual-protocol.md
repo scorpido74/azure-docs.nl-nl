@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 10/12/2020
 ms.author: b-juche
-ms.openlocfilehash: 54be34b2151aa88705559ac2913db4f528ea4492
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 4fa2c724906c8a6bfb294541b6616ddc7ae22df6
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963513"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94591645"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Een NFSv3-en SMB-volume (Dual-Protocol) maken voor Azure NetApp Files
 
@@ -37,7 +37,7 @@ Azure NetApp Files biedt ondersteuning voor het maken van volumes met behulp van
 
 * Zorg ervoor dat u voldoet aan de [vereisten voor Active Directory verbindingen](azure-netapp-files-create-volumes-smb.md#requirements-for-active-directory-connections). 
 * Maak een zone voor reverse lookup op de DNS-server en voeg vervolgens een PTR-record (pointer) van de AD-hostcomputer toe aan de zone voor reverse lookup. Als dat niet het geval is, mislukt het maken van het volume met twee protocollen.
-* Zorg ervoor dat de NFS-client up-to-date is en de meest recente updates voor het besturings systeem uitvoert.
+* Zorg ervoor dat de NFS-client up-to-date is en de meest recente updates voor het besturingssysteem worden uitgevoerd.
 * Zorg ervoor dat de Active Directory (AD) LDAP-server op de AD actief is. U kunt dit doen door de functie [Active Directory Lightweight Directory Services (AD LDS)](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh831593(v=ws.11)) op de AD-machine te installeren en configureren.
 * Zorg ervoor dat er een certificerings instantie (CA) wordt gemaakt in de AD met behulp van de functie voor het [Active Directory Certificate Services (AD CS)](/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority) om het zelfondertekende basis-CA-certificaat te genereren en te exporteren.   
 * Dual-protocol volumes bieden momenteel geen ondersteuning voor Azure Active Directory Domain Services (AADDS).  
@@ -58,7 +58,7 @@ Azure NetApp Files biedt ondersteuning voor het maken van volumes met behulp van
 
     ![Navigeren naar volumes](../media/azure-netapp-files/azure-netapp-files-navigate-to-volumes.png) 
 
-2.  Klik in het venster een volume maken op **maken**en geef informatie op over de volgende velden op het tabblad basis beginselen:   
+2.  Klik in het venster een volume maken op **maken** en geef informatie op over de volgende velden op het tabblad basis beginselen:   
     * **Volume naam**      
         Geef de naam op voor het volume dat u wilt maken.   
 
@@ -135,7 +135,7 @@ Azure NetApp Files biedt ondersteuning voor het maken van volumes met behulp van
 
     ![Wizard Certificaat exporteren](../media/azure-netapp-files/certificate-export-wizard.png)
 
-4. Ga naar het NetApp-account van het Dual-protocol volume, klik op **Active Directory verbindingen**en upload het basis-CA-certificaat met behulp van het venster **lid worden Active Directory** :  
+4. Ga naar het NetApp-account van het Dual-protocol volume, klik op **Active Directory verbindingen** en upload het basis-CA-certificaat met behulp van het venster **lid worden Active Directory** :  
 
     ![Server basis-CA-certificaat](../media/azure-netapp-files/server-root-ca-certificate.png)
 
@@ -161,5 +161,5 @@ Volg de instructies in [een NFS-client configureren voor Azure NetApp files](con
 
 ## <a name="next-steps"></a>Volgende stappen  
 
-* [Veelgestelde vragen over dual-Protocol](azure-netapp-files-faqs.md#dual-protocol-faqs)
 * [Een NFS-client voor Azure NetApp Files configureren](configure-nfs-clients.md)
+* [Problemen met volumes van dubbele protocollen oplossen](troubleshoot-dual-protocol-volumes.md)

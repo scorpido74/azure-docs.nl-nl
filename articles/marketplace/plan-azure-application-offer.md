@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: 61c8127941c54270b938babefaf4eb17627a15f3
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 4cb707896aa7874aa2bf287723e8a53d7d6d974c
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94370049"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94577784"
 ---
 # <a name="plan-an-azure-application-offer-for-the-commercial-marketplace"></a>Een Azure-toepassing aanbieding plannen voor de commerciële Marketplace
 
@@ -33,7 +33,7 @@ Voor het ontwerpen, bouwen en testen van Azure Application-aanbiedingen is techn
 
 Bekijk de volgende resources bij het plannen van uw Azure-toepassings aanbieding voor de commerciële Marketplace.
 
-- [Azure Resource Manager sjablonen begrijpen](/azure/azure-resource-manager/templates/template-syntax.md)
+- [Azure Resource Manager sjablonen begrijpen](/azure/azure-resource-manager/templates/template-syntax)
 - Quickstarts:
     - [Azure-quickstart-sjablonen](https://azure.microsoft.com/documentation/templates/)
     - [Hand leiding voor best practices voor Azure-sjablonen](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md)
@@ -145,7 +145,7 @@ Om uw aanbieding gemakkelijker te maken, moet u enkele van deze items vooraf voo
 - **Korte beschrijving** : maxi maal 256 tekens aan tekst zonder opmaak bevatten. Deze samen vatting wordt weer gegeven op de pagina met details van de aanbieding.
 - **Beschrijving** : deze beschrijving wordt weer gegeven in het overzicht van Azure Marketplace-lijst (en). Overweeg het opnemen van een toegevoegde waarde, de belangrijkste voor delen, de beoogde gebruikers basis, alle categorieën of branche koppelingen, in-app aankoop verkoop kansen, klant behoeften of pijn dat de aanbieding adressen, vereiste informatie en een koppeling voor meer informatie.
 
-    Dit tekstvak bevat besturings elementen voor de RTF-editor die u kunt gebruiken om uw beschrijving effectiever te maken. U kunt ook HTML-tags gebruiken om uw beschrijving op te maken. U kunt Maxi maal 3.000 tekens tekst in dit vak invoeren, inclusief HTML-opmaak en spaties. Zie [een fantastische beschrijving](/windows/uwp/publish/write-a-great-app-description.md) van de app en [HTML-tags schrijven die worden ondersteund in de beschrijvingen van de commerciële Marketplace-aanbieding](supported-html-tags.md)voor aanvullende tips.
+    Dit tekstvak bevat besturings elementen voor de RTF-editor die u kunt gebruiken om uw beschrijving effectiever te maken. U kunt ook HTML-tags gebruiken om uw beschrijving op te maken. U kunt Maxi maal 3.000 tekens tekst in dit vak invoeren, inclusief HTML-opmaak en spaties. Zie [een fantastische beschrijving](/windows/uwp/publish/write-a-great-app-description) van de app en [HTML-tags schrijven die worden ondersteund in de beschrijvingen van de commerciële Marketplace-aanbieding](supported-html-tags.md)voor aanvullende tips.
 
 - **Zoek trefwoorden** (optioneel): Geef Maxi maal drie Zoek trefwoorden op die klanten kunnen gebruiken om uw aanbieding te vinden in de online winkel. Voor de beste resultaten gebruikt u deze tref woorden ook in uw beschrijving. U hoeft de **naam** en **Beschrijving** van de aanbieding niet op te nemen. Deze tekst wordt automatisch opgenomen in de zoek opdracht.
 - **Koppeling Privacybeleid** : de URL voor het privacybeleid van uw bedrijf. U moet een geldig privacybeleid opgeven en zijn verantwoordelijk om ervoor te zorgen dat uw app voldoet aan de wetten en voor schriften van de privacy.
@@ -177,7 +177,7 @@ Om uw aanbieding gemakkelijker te maken, moet u enkele van deze items vooraf voo
   - PNG-bestand
   - Moet een bijschrift bevatten
 - **Media – Video's** (optioneel): u kunt Maxi maal vijf Video's toevoegen aan de volgende vereisten, die uw aanbod demonstreren:
-  - Naam
+  - Name
   - URL: moet alleen worden gehost op YouTube of Vimeo.
   - Miniatuur: 1280 x 720. png-bestand
 
@@ -197,9 +197,9 @@ U definieert de preview-doel groep met behulp van Azure-abonnement-Id's, samen m
 
 Voor beheerde toepassingen die meter gebeurtenissen verzenden met behulp van de Api's van de [Marketplace metering-service](partner-center-portal/marketplace-metering-service-apis.md), moet u de identiteit opgeven die door uw service wordt gebruikt bij het uitzenden van meter gebeurtenissen.
 
-Deze configuratie is vereist als u [batch-gebruiks gebeurtenis](partner-center-portal/marketplace-metering-service-apis.md#metered-billing-batch-usage-event)wilt gebruiken. Als u een [gebruiks gebeurtenis](partner-center-portal/marketplace-metering-service-apis.md#metered-billing-single-usage-event)wilt verzenden, kunt u ook de [meta gegevens service](/azure/active-directory/managed-identities-azure-resources/overview.md) gebruiken om het [JWT-Bearer-token (JSON Web token](partner-center-portal/pc-saas-registration.md#how-to-get-the-publishers-authorization-token)) op te halen.
+Deze configuratie is vereist als u [batch-gebruiks gebeurtenis](partner-center-portal/marketplace-metering-service-apis.md#metered-billing-batch-usage-event)wilt gebruiken. Als u een [gebruiks gebeurtenis](partner-center-portal/marketplace-metering-service-apis.md#metered-billing-single-usage-event)wilt verzenden, kunt u ook de [meta gegevens service](/azure/active-directory/managed-identities-azure-resources/overview) gebruiken om het [JWT-Bearer-token (JSON Web token](partner-center-portal/pc-saas-registration.md#how-to-get-the-publishers-authorization-token)) op te halen.
 
-- **Azure Active Directory Tenant-id** (vereist): in de Azure Portal moet u [een Azure Active Directory (AD)-app maken](/azure/active-directory/develop/howto-create-service-principal-portal.md) zodat de verbinding tussen de twee services achter een geverifieerde communicatie kan worden gevalideerd. Als u de [Tenant-id](/azure/active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) voor uw Azure Active Directory-app (Azure AD) wilt vinden, gaat u naar de blade [App-registraties](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) in uw Azure Active Directory. Selecteer de app in de kolom **weergave naam** . Zoek vervolgens naar **Eigenschappen** en vervolgens naar de **Directory-id (Tenant)** (bijvoorbeeld `50c464d3-4930-494c-963c-1e951d15360e` ).
+- **Azure Active Directory Tenant-id** (vereist): in de Azure Portal moet u [een Azure Active Directory (AD)-app maken](/azure/active-directory/develop/howto-create-service-principal-portal) zodat de verbinding tussen de twee services achter een geverifieerde communicatie kan worden gevalideerd. Als u de [Tenant-id](/azure/active-directory/develop/howto-create-service-principal-portal#get-tenant-and-app-id-values-for-signing-in) voor uw Azure Active Directory-app (Azure AD) wilt vinden, gaat u naar de blade [App-registraties](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) in uw Azure Active Directory. Selecteer de app in de kolom **weergave naam** . Zoek vervolgens naar **Eigenschappen** en vervolgens naar de **Directory-id (Tenant)** (bijvoorbeeld `50c464d3-4930-494c-963c-1e951d15360e` ).
 - **Azure Active Directory toepassings-id** (vereist): u hebt ook uw [toepassings-id](/azure/active-directory/develop/howto-create-service-principal-portal#get-tenant-and-app-id-values-for-signing-in.md) en een verificatie sleutel nodig. Als u de toepassings-ID wilt vinden, gaat u naar de Blade [app-registraties](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) in uw Azure Active Directory. Selecteer de app in de kolom **weergave naam** en zoek vervolgens naar de **toepassing (client)-ID** (bijvoorbeeld `50c464d3-4930-494c-963c-1e951d15360e` ). Ga naar **instellingen** en selecteer **sleutels** om de verificatie sleutel te vinden. U moet een beschrijving en een duur opgeven, en vervolgens een numerieke waarde.
 
 > [!NOTE]
@@ -209,7 +209,7 @@ Deze configuratie is vereist als u [batch-gebruiks gebeurtenis](partner-center-p
 
 U kunt kiezen voor marketing-en verkoop kanalen die door micro soft worden ondersteund. Wanneer u uw aanbieding in Partner Center maakt, ziet u twee tabbladen naar het einde van het proces:
 
-- **Door sturen via csp's** : gebruik deze optie om de partners van Microsoft Cloud Solution Providers (CSP) in staat te stellen uw oplossing door te verkopen als onderdeel van een gebundelde aanbieding. Zie het [Cloud Solution Provider-programma](/azure/marketplace/cloud-solution-providers.md) voor meer informatie.
+- **Door sturen via csp's** : gebruik deze optie om de partners van Microsoft Cloud Solution Providers (CSP) in staat te stellen uw oplossing door te verkopen als onderdeel van een gebundelde aanbieding. Zie het [Cloud Solution Provider-programma](/azure/marketplace/cloud-solution-providers) voor meer informatie.
 - **Samen verkopen met micro soft: met** deze optie kunnen micro soft verkoop teams uw door de klant in aanmerking komende oplossing door nemen bij de evaluatie van de behoeften van uw klanten. Zie [optie voor co-sell in het partner centrum](partner-center-portal/commercial-marketplace-co-sell.md) voor gedetailleerde informatie over het voorbereiden van uw aanbieding voor evaluatie. Zie [Cloud Solution Providers](cloud-solution-providers.md)(Engelstalig) voor meer informatie over het marketing uw aanbod via de micro soft CSP-partner kanalen.
 
 Zie [uw Cloud activiteiten uitbreiden met Azure Marketplace](https://azuremarketplace.microsoft.com/sell)voor meer informatie.
@@ -224,12 +224,12 @@ Voor algemene richt lijnen over plannen, waaronder prijs modellen en privé plan
 
 Er zijn twee soorten Azure-toepassings abonnementen: _oplossings sjabloon_ en _beheerde toepassing_. Beide typen abonnementen ondersteunen het automatiseren van de implementatie en configuratie van een oplossing buiten één virtuele machine (VM). U kunt het proces van het bieden van meerdere resources, waaronder Vm's, netwerken en opslag resources, automatiseren om complexe oplossingen te bieden, zoals IaaS-oplossingen. Beide typen abonnementen kunnen veel verschillende soorten Azure-resources gebruiken, inclusief, maar niet beperkt tot virtuele machines.
 
-- **Oplossingen voor oplossings sjablonen** zijn een van de belangrijkste manieren om een oplossing in de commerciële Marketplace te publiceren. Oplossingen voor oplossings sjablonen zijn niet transactable in de commerciële Marketplace, maar kunnen worden gebruikt voor het implementeren van betaalde VM-aanbiedingen die worden gefactureerd via de commerciële Marketplace. Gebruik het oplossings sjabloon type wanneer de klant de oplossing beheert en de trans acties worden gefactureerd via een ander abonnement. Zie [Wat is Azure Resource Manager?](/azure/azure-resource-manager/resource-group-overview.md) voor meer informatie over het bouwen van oplossings sjablonen.
+- **Oplossingen voor oplossings sjablonen** zijn een van de belangrijkste manieren om een oplossing in de commerciële Marketplace te publiceren. Oplossingen voor oplossings sjablonen zijn niet transactable in de commerciële Marketplace, maar kunnen worden gebruikt voor het implementeren van betaalde VM-aanbiedingen die worden gefactureerd via de commerciële Marketplace. Gebruik het oplossings sjabloon type wanneer de klant de oplossing beheert en de trans acties worden gefactureerd via een ander abonnement. Zie [Wat is Azure Resource Manager?](/azure/azure-resource-manager/resource-group-overview) voor meer informatie over het bouwen van oplossings sjablonen.
 - Met **beheerde toepassings** abonnementen kunt u eenvoudig volledig beheerde, kant-en-klare toepassingen voor uw klanten maken en leveren. Ze hebben dezelfde mogelijkheden als oplossings sjabloon plannen, met enkele belang rijke verschillen:
     - De resources worden geïmplementeerd in een resource groep en worden beheerd door de uitgever van de app. De resourcegroep is opgenomen in het abonnement van de consument, maar een identiteit in de tenant van de uitgever heeft toegang tot de resourcegroep. 
     - Als uitgever kunt u de kosten opgeven voor de continue ondersteuning van de oplossing en trans acties worden ondersteund via de commerciële Marketplace.
  
-    Gebruik het type beheerd toepassings plan wanneer u of uw klant vereist dat de oplossing wordt beheerd door een partner of u een oplossing op basis van een abonnement implementeert. Zie [overzicht van Azure-beheerde toepassingen](/azure/managed-applications/overview.md)voor meer informatie over de voor-en andere typen beheerde toepassingen.
+    Gebruik het type beheerd toepassings plan wanneer u of uw klant vereist dat de oplossing wordt beheerd door een partner of u een oplossing op basis van een abonnement implementeert. Zie [overzicht van Azure-beheerde toepassingen](/azure/managed-applications/overview)voor meer informatie over de voor-en andere typen beheerde toepassingen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -4,12 +4,12 @@ description: Meer informatie over het ontwikkelen van Azure Functions met C#.
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/24/2020
-ms.openlocfilehash: 51a7ffe72f8597fbaa11eae12585ebde8bb83153
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 3c363d13933e6554a6eefbeaf02d87dc6b382628
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380960"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578770"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Naslaginformatie over Azure Functions C# voor ontwikkelaars
 
@@ -17,12 +17,13 @@ ms.locfileid: "94380960"
 
 Dit artikel is een inleiding tot het ontwikkelen van Azure Functions door C# te gebruiken in .NET-klassen bibliotheken.
 
+Als C#-ontwikkelaar bent u mogelijk ook geïnteresseerd in een van de volgende artikelen:
+
+| Aan de slag | Concepten| Begeleide training/voor beelden |
+| -- | -- | -- | 
+| <ul><li>[Visual Studio gebruiken](functions-create-your-first-function-visual-studio.md)</li><li>[Visual Studio Code gebruiken](create-first-function-vs-code-csharp.md)</li><li>[Opdracht regel Programma's gebruiken](create-first-function-cli-csharp.md)</li></ul> | <ul><li>[Hostingopties](functions-scale.md)</li><li>[Prestatie &nbsp; overwegingen](functions-best-practices.md)</li><li>[Ontwikkelen in Visual Studio](functions-develop-vs.md)</li><li>[Afhankelijkheidsinjectie](functions-dotnet-dependency-injection.md)</li></ul> | <ul><li>[Serverloze toepassingen maken](/learn/paths/create-serverless-applications/)</li><li>[C#-voorbeelden](/samples/browse/?products=azure-functions&languages=csharp)</li></ul> |
+
 Azure Functions ondersteunt programmeer talen voor C#-en C#-scripts. Zie [Naslag informatie over c#-script (. CSX) voor ontwikkel aars](functions-reference-csharp.md)voor meer informatie over [het gebruik van c# in de Azure Portal](functions-create-function-app-portal.md).
-
-In dit artikel wordt ervan uitgegaan dat u de volgende artikelen al hebt gelezen:
-
-* [Hand leiding Azure Functions ontwikkel aars](functions-reference.md)
-* [Azure Functions Visual Studio 2019-Hulpprogram Ma's](functions-develop-vs.md)
 
 ## <a name="supported-versions"></a>Ondersteunde versies
 

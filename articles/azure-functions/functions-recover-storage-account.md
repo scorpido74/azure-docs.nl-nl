@@ -3,12 +3,12 @@ title: 'Fout oplossen: de Azure Functions-runtime is onbereikbaar'
 description: Meer informatie over het oplossen van problemen met een ongeldig opslag account.
 ms.topic: article
 ms.date: 09/05/2018
-ms.openlocfilehash: 094f4f45be0ae4173af434be178f2eae2b21b6be
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 0b6778a08bf04367f2a0ef10f7cd4fe29a52dd61
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92054726"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579008"
 ---
 # <a name="troubleshoot-error-azure-functions-runtime-is-unreachable"></a>Fout oplossen: ' Azure Functions-runtime is onbereikbaar '
 
@@ -76,7 +76,7 @@ De functie-runtime kan om een van de volgende redenen onbereikbaar zijn:
 
 * Uw functie-app wordt gehost in een [app service Environment met interne taak verdeling](../app-service/environment/create-ilb-ase.md) en is geconfigureerd om inkomend Internet verkeer te blok keren.
 
-* Uw functie-app heeft [binnenkomende IP-beperkingen](functions-networking-options.md#inbound-ip-restrictions) die zijn geconfigureerd om Internet toegang te blok keren. 
+* Uw functie-app heeft [binnenkomende IP-beperkingen](functions-networking-options.md#inbound-access-restrictions) die zijn geconfigureerd om Internet toegang te blok keren. 
 
 De Azure Portal maakt rechtstreeks aan de actieve app aanroepen om de lijst met functies op te halen en maakt HTTP-aanroepen naar het kudu-eind punt. Instellingen op platform niveau onder het tabblad **platform functies** zijn nog steeds beschikbaar.
 

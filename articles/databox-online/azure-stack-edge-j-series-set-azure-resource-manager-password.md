@@ -1,6 +1,6 @@
 ---
 title: Azure Resource Manager wacht woord instellen op uw Azure Stack Edge Pro GPU-apparaat
-description: Hierin wordt beschreven hoe u verbinding maakt met de Azure Resource Manager die wordt uitgevoerd op uw Azure Stack Edge Pro GPU met behulp van Azure PowerShell.
+description: Hierin wordt beschreven hoe u het Azure Resource Manager wacht woord instelt op uw Azure Stack Edge Pro GPU met behulp van Azure PowerShell.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: df5fea8101834dae089ab97354c438363321a707
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 915146cd17b90272daea4ce57f5243baf1d49cb3
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90904488"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578787"
 ---
 # <a name="set-azure-resource-manager-password-on-azure-stack-edge-pro-gpu-device"></a>Azure Resource Manager wacht woord instellen op Azure Stack Edge Pro GPU-apparaat
 
@@ -21,14 +21,14 @@ ms.locfileid: "90904488"
 
 In dit artikel wordt beschreven hoe u uw Azure Resource Manager wacht woord instelt. U moet dit wacht woord instellen wanneer u verbinding maakt met de lokale Api's van het apparaat via de Azure Resource Manager.
 
-De procedure voor het instellen van het wacht woord kan verschillen, afhankelijk van of u de Azure Portal of de Power shell-cmdlets gebruikt. Elk van deze procedures wordt beschreven in de volgende secties.
+De procedure voor het instellen van het wachtwoord kan verschillen, afhankelijk van of u de Azure Portal of de PowerShell-cmdlets gebruikt. Elk van deze procedures wordt beschreven in de volgende secties.
 
 
 ## <a name="reset-password-via-the-azure-portal"></a>Wacht woord opnieuw instellen via de Azure Portal
 
 1. Ga in het Azure Portal naar de resource Azure Stack Edge die u hebt gemaakt om uw apparaat te beheren. Ga naar **Edge-rekenproces > Aan de slag**.
 
-2. Selecteer in het rechterdeel venster, vanaf de opdracht balk, het **wacht woord voor de Edge-arm opnieuw instellen**. 
+2. Selecteer in het rechter deelvenster, in de opdrachtbalk, de optie **Edge ARM-wachtwoord opnieuw instellen**. 
 
     ![EdgeARM gebruikers wachtwoord 1 opnieuw instellen](media/azure-stack-edge-j-series-set-azure-resource-manager-password/set-edgearm-password-1.png)
 

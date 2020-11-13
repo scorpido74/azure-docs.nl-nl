@@ -4,12 +4,12 @@ description: Antwoord op enkele van de meest voorkomende vragen en scenario's vo
 ms.topic: troubleshooting
 ms.date: 4/11/2019
 ms.reviewer: glenga
-ms.openlocfilehash: d07484943f8ba85cc8e46737f3ef85b6e25d5187
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e8a992aac95b6c2688cb45aa980bf0b01883a53
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91538055"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578226"
 ---
 # <a name="frequently-asked-questions-about-networking-in-azure-functions"></a>Veelgestelde vragen over netwerken in Azure Functions
 
@@ -31,11 +31,9 @@ Houd er wel voor dat de Azure Portal editor rechtstreekse toegang tot uw actieve
 
 ## <a name="how-do-i-restrict-my-function-app-to-a-virtual-network"></a>Hoe kan ik mijn functie-app beperken tot een virtueel netwerk?
 
-U kunt **Inkomend** verkeer voor een functie-app beperken tot een virtueel netwerk met behulp van [service-eind punten](./functions-networking-options.md#private-site-access). Met deze configuratie kan de functie-app nog steeds uitgaande aanroepen naar Internet maken.
+U kunt **Inkomend** verkeer voor een functie-app beperken tot een virtueel netwerk met behulp van [service-eind punten](./functions-networking-options.md#use-service-endpoints). Met deze configuratie kan de functie-app nog steeds uitgaande aanroepen naar Internet maken.
 
-De enige manier om een functie zodanig te beperken dat alle verkeer via een virtueel netwerk loopt, is door gebruik te maken van een App Service Environment met interne taak verdeling. Met deze optie wordt uw site geïmplementeerd op een speciale infra structuur binnen een virtueel netwerk en worden alle triggers en verkeer via het virtuele netwerk verzonden. 
-
-Voor meer informatie over het gebruik van een App Service Environment begint u met het artikel [een interne Load Balancer met een app service Environment maken en gebruiken](../app-service/environment/create-ilb-ase.md).
+Als u een functie wilt beperken waarmee al het verkeer via een virtueel netwerk wordt doorlopen, kunt u een [privé-eind punt](./functions-networking-options.md#private-endpoint-connections) met uitgaande virtuele netwerk integratie of een app service Environment gebruiken.
 
 ## <a name="how-can-i-access-resources-in-a-virtual-network-from-a-function-app"></a>Hoe kan ik toegang krijgen tot resources in een virtueel netwerk vanuit een functie-app?
 
@@ -47,7 +45,7 @@ Door gebruik te maken van virtuele netwerk integratie kunt u toegang krijgen tot
 
 ## <a name="how-can-i-trigger-a-function-from-a-resource-in-a-virtual-network"></a>Hoe kan ik een functie activeren vanuit een resource in een virtueel netwerk?
 
-U kunt HTTP-triggers toestaan van een virtueel netwerk met behulp van [service-eind punten](./functions-networking-options.md#private-site-access). 
+U kunt HTTP-triggers toestaan van een virtueel netwerk met behulp van [service-eind punten](./functions-networking-options.md#use-service-endpoints) of [verbindingen met een particulier eind punt](./functions-networking-options.md#private-endpoint-connections). 
 
 U kunt ook een functie activeren vanuit alle andere resources in een virtueel netwerk door uw functie-app te implementeren in een Premium-abonnement, App Service plan of App Service Environment. Zie [niet-http-triggers voor virtuele netwerken](./functions-networking-options.md#virtual-network-triggers-non-http) voor meer informatie
 

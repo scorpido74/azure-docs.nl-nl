@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3559b3724d14be6aade07c4884190afce30c0715
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: cc2c40dd0b61f917da86d67188f4b503ca9b9298
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93306848"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579348"
 ---
 # <a name="query-parquet-files-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Een query uitvoeren op Parquet-bestanden met serverloze SQL-pool (preview) in azure Synapse Analytics
 
@@ -36,6 +36,11 @@ from openrowset(
 ```
 
 Zorg ervoor dat u toegang tot dit bestand hebt. Als uw bestand is beveiligd met een SAS-sleutel of aangepaste Azure-identiteit, moet u de [referenties voor SQL-aanmelding op server niveau](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)instellen.
+
+> [!IMPORTANT]
+> Zorg ervoor dat u een UTF-8-database sortering gebruikt (bijvoorbeeld `Latin1_General_100_CI_AS_SC_UTF8` ), omdat de teken reeks waarden in PARQUET-bestanden worden gecodeerd met UTF-8-code ring.
+> De tekst codering in het PARQUET-bestand en de sortering kunnen onverwachte conversie fouten tot gevolg hebben.
+> U kunt eenvoudig de standaard sortering van de huidige data base wijzigen met behulp van de volgende T-SQL-instructie: `alter database current collate Latin1_General_100_CI_AI_SC_UTF8`
 
 ### <a name="data-source-usage"></a>Gebruik van gegevens bronnen
 
@@ -67,6 +72,12 @@ from openrowset(
         format = 'parquet'
     ) with ( date_rep date, cases int, geo_id varchar(6) ) as rows
 ```
+
+> [!IMPORTANT]
+> Zorg ervoor dat u explicilty een UTF-8-sortering opgeeft (bijvoorbeeld `Latin1_General_100_CI_AS_SC_UTF8` ) voor alle teken reeks kolommen in- `WITH` component of een bepaalde UTF-8-sortering op database niveau instellen.
+> De tekst codering in het bestand en de sortering van de teken reeks kolom kan onverwachte conversie fouten tot gevolg hebben.
+> U kunt eenvoudig de standaard sortering van de huidige data base wijzigen met behulp van de volgende T-SQL-instructie: `alter database current collate Latin1_General_100_CI_AI_SC_UTF8`
+> U kunt de sortering eenvoudig instellen voor de kolom typen met behulp van de volgende definitie: `geo_id varchar(6) collate Latin1_General_100_CI_AI_SC_UTF8`
 
 In de volgende secties ziet u hoe u verschillende typen PARQUET-bestanden kunt opvragen.
 

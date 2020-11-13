@@ -11,19 +11,19 @@ ms.subservice: bing-image-search
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: aahi
-ms.openlocfilehash: f697449fffe6c93d8e5082b210678d3f51c0c736
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 6fb1bdbad4455b55c3f6cc3b395526f637339847
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93084407"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592155"
 ---
 # <a name="customize-and-suggest-image-search-queries"></a>Zoek query's voor afbeeldingen aanpassen en suggereren
 
 > [!WARNING]
-> Bing Zoeken-API's van Cognitive Services naar Bing Search-Services verplaatsen. Vanaf **30 oktober 2020** moeten nieuwe exemplaren van Bing Search worden ingericht volgens het proces dat [hier](https://aka.ms/cogsvcs/bingmove)wordt beschreven.
-> Bing Zoeken-API's ingericht met Cognitive Services wordt voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst gebeurt.
-> Zie [Bing Search Services](https://aka.ms/cogsvcs/bingmigration)voor migratie-instructies.
+> Bing Search-API's worden van Cognitive Services naar Bing Search Services overgezet. Vanaf **30 oktober 2020** moeten nieuwe instanties van Bing Search worden ingericht overeenkomstig het proces dat [hier](https://aka.ms/cogsvcs/bingmove) is beschreven.
+> Bing Search-API's die zijn ingericht met Cognitive Services, worden voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst afloopt.
+> Raadpleeg [Bing Search Services](https://aka.ms/cogsvcs/bingmigration) voor migratie-instructies.
 
 In dit artikel leest u hoe u query's kunt aanpassen en zoek termen kunt suggereren om naar de Bing Afbeeldingen zoeken-API te verzenden.
 
@@ -33,7 +33,7 @@ Als uw app een zoekvak bevat waarin zoek termen worden ingevoerd, kunt u de [Aut
 
 ## <a name="pivot-the-query"></a>De query draaien
 
-Als Bing de oorspronkelijke Zoek query kan segmenteren, bevat het geretourneerde [afbeeldingen](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) -object `pivotSuggestions` . Suggesties voor draai grafieken kunnen worden weer gegeven als optionele zoek termen voor de gebruiker. Als de oorspronkelijke query bijvoorbeeld *micro soft-Opper vlak* was, kan de query door Bing worden gesegmenteerd in *micro soft* en het *Opper vlak* en kunnen er voor elke draai grafiek suggesties worden gegeven. Deze suggesties kunnen worden weer gegeven als optionele query termen aan de gebruiker.
+Als Bing de oorspronkelijke Zoek query kan segmenteren, bevat het geretourneerde [afbeeldingen](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) -object `pivotSuggestions` . Suggesties voor draai grafieken kunnen worden weer gegeven als optionele zoek termen voor de gebruiker. Als de oorspronkelijke query bijvoorbeeld *micro soft-Opper vlak* was, kan de query door Bing worden gesegmenteerd in *micro soft* en het *Opper vlak* en kunnen er voor elke draai grafiek suggesties worden gegeven. Deze suggesties kunnen worden weer gegeven als optionele query termen aan de gebruiker.
 
 In het volgende voor beeld ziet u de draai suggesties voor het *micro soft-Opper vlak* :  
 
@@ -94,7 +94,7 @@ In het volgende voor beeld ziet u de draai suggesties voor het *micro soft-Opper
 }
 ```
 
-Het veld `pivotSuggestions` bevat de lijst met segmenten (draaipunten) waarin de oorspronkelijke query is onderverdeeld. Voor elk draaipunt bevat de respons een lijst met [Query](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query_obj)-objecten met voorgestelde query's. Het `text` veld bevat de voorgestelde query. Het `displayText` veld bevat de term waarmee de draai tabel in de oorspronkelijke query wordt vervangen. Een voor beeld is de release datum van het Opper vlak.
+Het veld `pivotSuggestions` bevat de lijst met segmenten (draaipunten) waarin de oorspronkelijke query is onderverdeeld. Voor elk draaipunt bevat de respons een lijst met [Query](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query_obj)-objecten met voorgestelde query's. Het `text` veld bevat de voorgestelde query. Het `displayText` veld bevat de term waarmee de draai tabel in de oorspronkelijke query wordt vervangen. Een voor beeld is de release datum van het Opper vlak.
 
 Als de query teken reeks van de draai tabel is wat de gebruiker zoekt, `text` gebruikt `thumbnail` u de velden en om de draai tabel query teken reeksen weer te geven. Zorg ervoor dat de miniatuur en de tekst kunnen worden geklikt met behulp van de `webSearchUrl` URL of de `searchLink` URL. Gebruiken `webSearchUrl` om de gebruiker naar de zoek resultaten van Bing te verzenden. Als u uw eigen resultaten pagina opgeeft, gebruikt u `searchLink` .
 
@@ -106,13 +106,13 @@ The following shows an example of the pivot queries.
 
 ## <a name="expand-the-query"></a>De query uitvouwen
 
-Als Bing de query kan uitbreiden om de oorspronkelijke zoekopdracht te beperken, bevat het object [Images](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) het veld `queryExpansions`. Als de query bijvoorbeeld *micro soft-Opper vlak* was, kunnen de uitgevouwen query's er als volgt uitzien:
-- Micro soft Surface **Pro 3** .
-- Micro soft Surface **RT** .
-- Micro soft Surface **Phone** .
-- Micro soft Surface **hub** .
+Als Bing de query kan uitbreiden om de oorspronkelijke zoekopdracht te beperken, bevat het object [Images](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) het veld `queryExpansions`. Als de query bijvoorbeeld *micro soft-Opper vlak* was, kunnen de uitgevouwen query's er als volgt uitzien:
+- Micro soft Surface **Pro 3**.
+- Micro soft Surface **RT**.
+- Micro soft Surface **Phone**.
+- Micro soft Surface **hub**.
 
-In het volgende voorbeeld ziet u de uitgebreide query's voor *Microsoft Surface* .
+In het volgende voorbeeld ziet u de uitgebreide query's voor *Microsoft Surface*.
 
 ```json
 {
@@ -152,7 +152,7 @@ In het volgende voorbeeld ziet u de uitgebreide query's voor *Microsoft Surface*
 }
 ```
 
-Het veld `queryExpansions` bevat een lijst met [Query](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query_obj)-objecten. Het `text` veld bevat de uitgevouwen query. Het `displayText` veld bevat de uitbreidings periode. Als de uitgevouwen query teken reeks is wat de gebruiker zoekt, gebruikt `text` `thumbnail` u de velden en om de uitgevouwen query reeksen weer te geven. Zorg ervoor dat de miniatuur en de tekst kunnen worden geklikt met behulp van de `webSearchUrl` URL of de `searchLink` URL. Gebruiken `webSearchUrl` om de gebruiker naar de zoek resultaten van Bing te verzenden. Als u uw eigen resultaten pagina opgeeft, gebruikt u `searchLink` .
+Het veld `queryExpansions` bevat een lijst met [Query](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query_obj)-objecten. Het `text` veld bevat de uitgevouwen query. Het `displayText` veld bevat de uitbreidings periode. Als de uitgevouwen query teken reeks is wat de gebruiker zoekt, gebruikt `text` `thumbnail` u de velden en om de uitgevouwen query reeksen weer te geven. Zorg ervoor dat de miniatuur en de tekst kunnen worden geklikt met behulp van de `webSearchUrl` URL of de `searchLink` URL. Gebruiken `webSearchUrl` om de gebruiker naar de zoek resultaten van Bing te verzenden. Als u uw eigen resultaten pagina opgeeft, gebruikt u `searchLink` .
 
 <!-- Removing until we can replace with a sanitized image.
 The following shows an example Bing implementation that uses expanded queries. If the user clicks the Microsoft Surface Pro 3 link, they're taken to the Bing search results page, which shows them images of the Pro 3.

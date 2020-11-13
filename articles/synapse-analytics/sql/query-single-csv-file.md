@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7e5a64a75ca6cde4172e49eb77dde42a44c06d5e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: b9896b62ab347ec3b4751eb517c00222f00ddb1c
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321459"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579399"
 ---
 # <a name="query-csv-files"></a>Query uitvoeren op CSV-bestanden
 
@@ -45,6 +45,11 @@ from openrowset(
 ```
 
 Wordt `firstrow` gebruikt voor het overs laan van de eerste rij in het CSV-bestand dat de koptekst in dit geval vertegenwoordigt. Zorg ervoor dat u toegang tot dit bestand hebt. Als uw bestand is beveiligd met een SAS-sleutel of aangepaste identiteit, moet u de [referenties voor SQL-aanmelding op server niveau](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)instellen.
+
+> [!IMPORTANT]
+> Als uw CSV-bestand UTF-8-tekens bevat, moet u ervoor zorgen dat u een UTF-8-database sortering gebruikt (bijvoorbeeld `Latin1_General_100_CI_AS_SC_UTF8` ).
+> De tekst codering in het bestand en de sortering kunnen onverwachte conversie fouten tot gevolg hebben.
+> U kunt eenvoudig de standaard sortering van de huidige data base wijzigen met behulp van de volgende T-SQL-instructie: `alter database current collate Latin1_General_100_CI_AI_SC_UTF8`
 
 ### <a name="data-source-usage"></a>Gebruik van gegevens bronnen
 
@@ -90,6 +95,12 @@ from openrowset(
 ```
 
 De getallen na een gegevens type in de `WITH` component vertegenwoordigen kolom index in het CSV-bestand.
+
+> [!IMPORTANT]
+> Als uw CSV-bestand UTF-8-tekens bevat, moet u ervoor zorgen dat u explicilty een UTF-8-sortering opgeeft (bijvoorbeeld `Latin1_General_100_CI_AS_SC_UTF8` ) voor alle kolommen in- `WITH` component of een bepaalde UTF-8-sortering op database niveau instellen.
+> De tekst codering in het bestand en de sortering kunnen onverwachte conversie fouten tot gevolg hebben.
+> U kunt eenvoudig de standaard sortering van de huidige data base wijzigen met behulp van de volgende T-SQL-instructie: `alter database current collate Latin1_General_100_CI_AI_SC_UTF8`
+> U kunt de sortering eenvoudig instellen voor de kolom typen met behulp van de volgende definitie: `geo_id varchar(6) collate Latin1_General_100_CI_AI_SC_UTF8 8`
 
 In de volgende secties ziet u hoe u verschillende typen CSV-bestanden kunt opvragen.
 

@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell, references_regions
-ms.openlocfilehash: a4a338a4d13715ba1ff7cb30c011757d5050ba05
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 85577a428f803e31aa33468496d7efca77933835
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100066"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579308"
 ---
 # <a name="optimize-costs-by-automating-azure-blob-storage-access-tiers"></a>Kosten optimaliseren door Azure Blob Storage Access-lagen te automatiseren
 
@@ -66,7 +66,7 @@ Er zijn twee manieren om een beleid toe te voegen via de Azure Portal.
 
 #### <a name="azure-portal-list-view"></a>Lijst weergave Azure Portal
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Zoek en selecteer uw opslag account in de Azure Portal. 
 
@@ -80,7 +80,7 @@ Er zijn twee manieren om een beleid toe te voegen via de Azure Portal.
 
 1. Selecteer **basis-blobs** om de voor waarden voor de regel in te stellen. In het volgende voor beeld worden blobs verplaatst naar koude opslag als deze 30 dagen niet zijn gewijzigd.
 
-   :::image type="content" source="media/storage-lifecycle-management-concepts/lifecycle-management-base-blobs.png" alt-text="Levenscyclus beheer een pagina met regel Details toevoegen in Azure Portal":::
+   :::image type="content" source="media/storage-lifecycle-management-concepts/lifecycle-management-base-blobs.png" alt-text="Pagina levenscyclus beheer basis-blobs in Azure Portal":::
 
    De **laatst geopende** optie is beschikbaar in de preview-versie in de volgende regio's:
 
@@ -95,12 +95,12 @@ Er zijn twee manieren om een beleid toe te voegen via de Azure Portal.
 
 1. Als u **blobs beperken met filters** hebt geselecteerd op de pagina **Details** , selecteert u **filter sets** om een optioneel filter toe te voegen. In het volgende voor beeld wordt gefilterd op blobs in de *mylifecyclecontainer* -container die beginnen met ' Log '.
 
-   :::image type="content" source="media/storage-lifecycle-management-concepts/lifecycle-management-filter-set.png" alt-text="Levenscyclus beheer een pagina met regel Details toevoegen in Azure Portal":::
+   :::image type="content" source="media/storage-lifecycle-management-concepts/lifecycle-management-filter-set.png" alt-text="Pagina met levenscyclus beheer filters instellen in Azure Portal":::
 
 1. Selecteer **toevoegen** om het nieuwe beleid toe te voegen.
 
 #### <a name="azure-portal-code-view"></a>Code weergave Azure Portal
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Zoek en selecteer uw opslag account in de Azure Portal.
 
@@ -137,7 +137,7 @@ Er zijn twee manieren om een beleid toe te voegen via de Azure Portal.
    }
    ```
 
-1. Selecteer **Opslaan** .
+1. Selecteer **Opslaan**.
 
 1. Zie de secties [beleid](#policy) en [regels](#rules) voor meer informatie over dit JSON-voor beeld.
 
@@ -239,13 +239,13 @@ Een levenscyclus beheer beleid is een verzameling regels in een JSON-document:
 
 Een beleid is een verzameling regels:
 
-| Parameternaam | Parameter type | Opmerkingen |
+| Parameternaam | Parameter type | Notities |
 |----------------|----------------|-------|
 | `rules`        | Een matrix van regel objecten | Er is ten minste één regel vereist in een beleid. U kunt Maxi maal 100 regels definiëren in een beleid.|
 
 Elke regel in het beleid heeft verschillende para meters:
 
-| Parameternaam | Parameter type | Opmerkingen | Vereist |
+| Parameternaam | Parameter type | Notities | Vereist |
 |----------------|----------------|-------|----------|
 | `name`         | Tekenreeks |De naam van een regel kan Maxi maal 256 alfanumerieke tekens bevatten. De regel naam is hoofdletter gevoelig. Het moet uniek zijn binnen een beleid. | Waar |
 | `enabled`      | Boolean-waarde | Een optionele Booleaanse waarde waarmee een regel tijdelijk kan worden uitgeschakeld. De standaard waarde is True als deze niet is ingesteld. | Niet waar | 
@@ -315,7 +315,7 @@ Filters beperken regel acties voor een subset van blobs binnen het opslag accoun
 
 Filters omvatten:
 
-| Bestandsnaam | Filtertype | Opmerkingen | Is vereist |
+| Bestandsnaam | Filtertype | Notities | Is vereist |
 |-------------|-------------|-------|-------------|
 | blobTypes   | Een matrix met vooraf gedefinieerde Enum-waarden. | De huidige versie ondersteunt `blockBlob` en `appendBlob` . Alleen verwijderen wordt ondersteund voor `appendBlob` , set-laag wordt niet ondersteund. | Ja |
 | prefixMatch | Een matrix met teken reeksen voor voor voegsels die moeten worden vergeleken. Elke regel kan Maxi maal 10 voor voegsels definiëren. Een voorvoegsel teken reeks moet beginnen met een container naam. Als u bijvoorbeeld wilt zoeken naar alle blobs onder `https://myaccount.blob.core.windows.net/container1/foo/...` een regel, is de prefixMatch `container1/foo` . | Als u prefixMatch niet definieert, is de regel van toepassing op alle blobs in het opslag account. | Nee |
@@ -330,7 +330,7 @@ Acties worden toegepast op de gefilterde blobs wanneer wordt voldaan aan de voor
 
 Levenscyclus beheer ondersteunt het trapsgewijs maken en verwijderen van blobs, eerdere BLOB-versies en BLOB-moment opnamen. Definieer ten minste één actie voor elke regel op basis-blobs, eerdere BLOB-versies of BLOB-moment opnamen.
 
-| Actie                      | Basis-BLOB                                  | Momentopname      | Versie
+| Bewerking                      | Basis-BLOB                                  | Momentopname      | Versie
 |-----------------------------|--------------------------------------------|---------------|---------------|
 | tierToCool                  | Ondersteund voor `blockBlob`                  | Ondersteund     | Ondersteund     |
 | enableAutoTierToHotFromCool | Ondersteund voor `blockBlob`                  | Niet ondersteund | Niet ondersteund |
@@ -439,7 +439,7 @@ Het bijhouden van tijd van laatste toegang is beschikbaar voor de volgende typen
 
 Als uw opslag account een algemeen v1-account is, gebruikt u de Azure Portal om te upgraden naar een v2-account voor algemeen gebruik.
 
-Opslag accounts met een hiërarchische naam ruimte die is ingeschakeld voor gebruik met Azure Data Lake Storage Gen2 worden nog niet ondersteund.
+Opslag accounts met een hiërarchische naam ruimte die is ingeschakeld voor gebruik met Azure Data Lake Storage Gen2 worden nu ondersteund.
 
 #### <a name="pricing-and-billing"></a>Prijzen en facturering
 

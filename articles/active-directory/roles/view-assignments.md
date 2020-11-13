@@ -1,6 +1,6 @@
 ---
-title: Aangepaste roltoewijzingen weer geven in de Azure AD-Portal | Microsoft Docs
-description: U kunt nu leden van een Azure AD-beheerdersrol weer geven en beheren in het Azure AD-beheer centrum.
+title: Aangepaste roltoewijzingen weer geven in de Azure Active Directory Portal | Microsoft Docs
+description: U kunt nu leden van een Azure Active Directory beheerdersrol weer geven en beheren in het Azure Active Directory beheer centrum.
 services: active-directory
 author: curtand
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ccb158548f52059b780fd71bf19788ba200aa7c4
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: f9f7c6ec0917adbca5b44feee1ec285f4337ac4c
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505577"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579025"
 ---
 # <a name="view-custom-role-assignments-using-azure-active-directory"></a>Aangepaste roltoewijzingen weer geven met behulp van Azure Active Directory
 

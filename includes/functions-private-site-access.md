@@ -4,19 +4,17 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 05/06/2020
 ms.author: glenga
-ms.openlocfilehash: 5e0cff7bde6e80a776d694820ca7b69dafa7c0d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d66e7f497f85141de172c59b67676e1bb93955e
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83648812"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578811"
 ---
-Toegang via een persoonlijke site verwijst naar het toegankelijk maken van uw app vanaf een particulier netwerk, zoals een virtueel Azure-netwerk.
+[Azure Private Endpoint](../articles/private-link/private-endpoint-overview.md) is een netwerkinterface die u privé en veilig verbindt met een service die wordt ondersteund door Azure Private Link.  Private Endpoint maakt gebruik van een privé-IP-adres van uw virtuele netwerk, waarbij de service effectief in uw virtuele netwerk wordt geplaatst.
 
-* Toegang tot persoonlijke sites is beschikbaar in de [Premium](../articles/azure-functions/functions-premium-plan.md)-, [verbruiks](../articles/azure-functions/functions-scale.md#consumption-plan)-en [app service](../articles/azure-functions/functions-scale.md#app-service-plan) plannen wanneer service-eind punten zijn geconfigureerd.
-    * Service-eind punten kunnen per app worden geconfigureerd onder **platform functies**  >  **netwerk**  >  **toegangs beperkingen configureren**  >  **regel toevoegen**. Virtuele netwerken kunnen nu worden geselecteerd als regel type.
-    * Zie [service-eind punten voor virtuele netwerken](../articles/virtual-network/virtual-network-service-endpoints-overview.md)voor meer informatie.
-    * Houd er bij service-eind punten voor dat uw functie nog steeds volledige uitgaande toegang tot het internet heeft, zelfs als de virtuele netwerk integratie is geconfigureerd.
-* Toegang tot privé-sites is ook beschikbaar in een App Service Environment dat is geconfigureerd met een interne load balancer (ILB). Zie [een interne Load Balancer met een app service Environment maken en gebruiken](../articles/app-service/environment/create-ilb-ase.md)voor meer informatie.
+U kunt een privé-eind punt gebruiken voor uw functies die worden gehost in de [Premium](../articles/azure-functions/functions-premium-plan.md) -en [app service](../articles/azure-functions/functions-scale.md#app-service-plan) -abonnementen.
 
-Zie voor meer informatie over het instellen van toegang tot persoonlijke sites, [Azure functions toegang tot de persoonlijke site tot stand brengen](../articles/azure-functions/functions-create-private-site-access.md).
+Bij het maken van een verbinding voor een inkomend particulier eind punt voor functions, hebt u ook een DNS-record nodig om het privé adres op te lossen.  Er wordt standaard een privé-DNS-record voor u gemaakt bij het maken van een persoonlijk eind punt met behulp van de Azure Portal.
+
+Zie voor meer informatie over het [gebruik van privé-eind punten voor web apps](../articles/app-service/networking/private-endpoint.md).

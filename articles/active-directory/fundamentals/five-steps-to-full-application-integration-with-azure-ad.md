@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: nichola
-ms.openlocfilehash: 54a1135931c2be9c6b7941c9ff740fd29f855eee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26dd255e6edff7c339ab9766bb71889cf4e2deaa
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90601245"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94577640"
 ---
 # <a name="five-steps-for-integrating-all-your-apps-with-azure-ad"></a>Vijf stappen voor het integreren van al uw apps met Azure AD
 
@@ -46,7 +46,7 @@ Ten slotte kunt u ook de apps integreren die u zelf ontwikkelt. Dit wordt behand
 
 Vervolgens ontdekken we de werk nemers van de toepassingen die vaak gebruikmaken van en bepalen we uw werk om ze te integreren met Azure AD.
 
-U kunt beginnen met Microsoft Cloud App Security&#39;s- [hulpprogram ma's voor Cloud detectie](/cloud-app-security/tutorial-shadow-it) om schaduw te detecteren en te beheren &quot; &quot; in uw netwerk (dat wil zeggen, apps die niet worden beheerd door de IT-afdeling). U kunt [micro soft Defender Advanced Threat Protection (ATP) gebruiken](/cloud-app-security/wdatp-integration) om het detectie proces te vereenvoudigen en uit te breiden.
+U kunt beginnen met Microsoft Cloud App Security&#39;s- [hulpprogram ma's voor Cloud detectie](/cloud-app-security/tutorial-shadow-it) om schaduw te detecteren en te beheren &quot; &quot; in uw netwerk (dat wil zeggen, apps die niet worden beheerd door de IT-afdeling). U kunt [micro soft Defender Advanced Threat Protection (ATP) gebruiken](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) om het detectie proces te vereenvoudigen en uit te breiden.
 
 Daarnaast kunt u het [rapport AD FS toepassings activiteit](../manage-apps/migrate-adfs-application-activity.md) in de Azure Portal gebruiken om alle AD FS-apps in uw organisatie te detecteren, het aantal unieke gebruikers dat zich heeft aangemeld en de compatibiliteit voor het integreren met Azure AD.
 

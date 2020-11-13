@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9f57d435134bffbb8e7576adffeacb92bf687124
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 087ee796fbd3c0563b8019a062acab9c7ad80bb1
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93310307"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579382"
 ---
 # <a name="query-azure-cosmos-db-data-with-serverless-sql-pool-in-azure-synapse-link-preview"></a>Query's uitvoeren op Azure Cosmos DB gegevens met serverloze SQL-groep in azure Synapse-koppeling (preview-versie)
 
@@ -42,7 +42,9 @@ OPENROWSET(
 Met de Azure Cosmos DB connection string geeft u de Azure Cosmos DB account naam, de database naam, de hoofd sleutel van het database account en een optionele regio naam te `OPENROWSET` gebruiken. 
 
 > [!IMPORTANT]
-> Zorg ervoor dat u alias gebruikt na `OPENROWSET` . Er is een [bekend probleem](#known-issues) waardoor het verbindings probleem met het Synapse SQL-eind punt zonder server wordt veroorzaakt als u de alias na-functie niet opgeeft `OPENROWSET` .
+> Zorg ervoor dat u een UTF-8-database sortering (bijvoorbeeld) gebruikt, `Latin1_General_100_CI_AS_SC_UTF8` omdat de teken reeks waarden in Cosmos DB analytische archief worden gecodeerd als UTF-8-tekst.
+> De tekst codering in het bestand en de sortering kunnen onverwachte tekst conversie fouten veroorzaken.
+> U kunt eenvoudig de standaard sortering van de huidige data base wijzigen met behulp van de volgende T-SQL-instructie: `alter database current collate Latin1_General_100_CI_AI_SC_UTF8`
 
 De connection string heeft de volgende indeling:
 ```sql
@@ -338,8 +340,8 @@ In dit voor beeld wordt het aantal cases opgeslagen als `int32` , `int64` , of `
 
 ## <a name="known-issues"></a>Bekende problemen
 
-- Alias **moet** worden opgegeven na `OPENROWSET` -functie (bijvoorbeeld `OPENROWSET (...) AS function_alias` ). Het weglaten van een alias kan leiden tot een verbindings probleem en Synapse SQL-eind punt zonder server mogelijk tijdelijk niet beschikbaar. Dit probleem wordt opgelost in november 2020.
 - De query-ervaring die serverloze SQL-pool biedt voor [Azure Cosmos DB volledig beeld schema](#full-fidelity-schema) is tijdelijk gedrag dat wordt gewijzigd op basis van de preview-feedback. Vertrouw niet op het schema dat `OPENROWSET` Function zonder `WITH` component bevat tijdens de open bare preview, omdat de query-ervaring mogelijk kan worden uitgelijnd met een goed gedefinieerd schema op basis van feedback van klanten. Neem contact op met het [product team van Synapse link](mailto:cosmosdbsynapselink@microsoft.com) om feedback te geven.
+- Een serverloze SQL-groep retourneert geen compilatie fout als de `OPENROSET` kolom sortering geen UTF-8-code ring heeft. U kunt eenvoudig de standaard sortering wijzigen voor alle `OPENROWSET` functies die in de huidige Data Base worden uitgevoerd, met behulp van de volgende T-SQL-instructie: `alter database current collate Latin1_General_100_CI_AI_SC_UTF8`
 
 In de volgende tabel worden mogelijke fouten en acties voor het oplossen van problemen weer gegeven:
 

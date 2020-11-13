@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 11/12/2020
 ms.author: b-juche
-ms.openlocfilehash: 4c578f99e22e35871f0c52440c3b73a636ef958b
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: d4e66511ce3017749076615f081a8fb56d8b8452
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089312"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94591543"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Veelgestelde vragen over Azure NetApp Files
 
@@ -150,7 +150,7 @@ Ja, u moet een Active Directory verbinding maken voordat u een SMB-volume implem
 
 ### <a name="how-many-active-directory-connections-are-supported"></a>Hoeveel Active Directory verbindingen worden ondersteund?
 
-Azure NetApp Files biedt geen ondersteuning voor meerdere Active Directory (AD)-verbindingen in één *regio*, zelfs als de AD-verbindingen zich in verschillende NetApp-accounts bevinden. U kunt echter meerdere AD-verbindingen hebben in één *abonnement*, zolang de AD-verbindingen zich in verschillende regio's bevinden. Als u meerdere AD-verbindingen in één regio nodig hebt, kunt u hiervoor afzonderlijke abonnementen gebruiken. 
+Azure NetApp Files biedt geen ondersteuning voor meerdere Active Directory (AD)-verbindingen in één *regio* , zelfs als de AD-verbindingen zich in verschillende NetApp-accounts bevinden. U kunt echter meerdere AD-verbindingen hebben in één *abonnement* , zolang de AD-verbindingen zich in verschillende regio's bevinden. Als u meerdere AD-verbindingen in één regio nodig hebt, kunt u hiervoor afzonderlijke abonnementen gebruiken. 
 
 Een AD-verbinding wordt geconfigureerd per NetApp-account; de AD-verbinding wordt alleen weer gegeven via het NetApp-account dat wordt gemaakt in.
 
@@ -173,16 +173,6 @@ De grootte van het volume dat door de SMB-client wordt gerapporteerd, is de maxi
 
 Yes, Azure NetApp Files supports LDAP signing by default. This functionality enables secure LDAP lookups between the Azure NetApp Files service and the user-specified [Active Directory Domain Services domain controllers](/windows/win32/ad/active-directory-domain-services). For more information, see [ADV190023 | Microsoft Guidance for Enabling LDAP Channel Binding and LDAP Signing](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023).
 --> 
-
-## <a name="dual-protocol-faqs"></a>Veelgestelde vragen over dual-Protocol
-
-### <a name="i-tried-to-use-the-root-and-local-users-to-access-a-dual-protocol-volume-with-the-ntfs-security-style-on-a-unix-system-why-did-i-encounter-a-permission-denied-error"></a>Ik heb geprobeerd de root-en lokale gebruikers te gebruiken voor toegang tot een Dual-protocol volume met de NTFS-beveiligings stijl op een UNIX-systeem. Waarom is de fout ' toestemming geweigerd ' aangetroffen?   
-
-Zie [problemen met Dual-protocol volumes oplossen](troubleshoot-dual-protocol-volumes.md) voor oplossingen.
-
-### <a name="when-i-try-to-create-a-dual-protocol-volume-why-does-the-creation-process-fail-with-the-error-failed-to-validate-ldap-configuration-try-again-after-correcting-ldap-configuration"></a>Wanneer ik een volume met dubbele protocollen probeer te maken, mislukt het aanmaak proces met de fout ' kan de LDAP-configuratie niet valideren. Probeer het opnieuw nadat u de LDAP-configuratie hebt gecorrigeerd '?  
-
-Zie [problemen met Dual-protocol volumes oplossen](troubleshoot-dual-protocol-volumes.md) voor oplossingen.
 
 ## <a name="capacity-management-faqs"></a>Veelgestelde vragen over capaciteits beheer
 

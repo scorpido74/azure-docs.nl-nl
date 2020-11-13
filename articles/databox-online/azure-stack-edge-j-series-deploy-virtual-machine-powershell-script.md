@@ -1,6 +1,6 @@
 ---
-title: Implementeer Vm's op uw Azure Stack Edge Pro GPU-apparaat via Azure PowerShell
-description: Hierin wordt beschreven hoe u virtuele machines (Vm's) maakt en beheert op een Azure Stack Edge Pro-apparaat met behulp van Azure PowerShell.
+title: Vm's implementeren op uw Azure Stack Edge Pro GPU-apparaat via Azure PowerShell script
+description: Hierin wordt beschreven hoe u virtuele machines (Vm's) maakt en beheert op een Azure Stack Edge Pro-apparaat met behulp van een Azure PowerShell script.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 5ed6de28f1e1b0545ebd675c30249e2f2b4747e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd877a91c7c082ce7845394f2636857f33b7940f
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90890644"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578753"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-azure-powershell-script"></a>Vm's implementeren op uw Azure Stack Edge Pro GPU-apparaat via Azure PowerShell script
 
@@ -31,7 +31,7 @@ Voordat u begint met het maken en beheren van een virtuele machine op uw Azure S
 
 2. U hebt een netwerkinterface ingeschakeld voor berekeningen. Het IP-adres van de netwerkinterface wordt gebruikt om een virtuele switch te maken voor de VM-implementatie. Met de volgende stappen doorloopt u dit proces:
 
-    1. Ga naar de **instellingen**voor de berekening. Selecteer de netwerkinterface die u wilt gebruiken om een virtuele switch te maken.
+    1. Ga naar de **instellingen** voor de berekening. Selecteer de netwerkinterface die u wilt gebruiken om een virtuele switch te maken.
 
         > [!IMPORTANT] 
         > U kunt slechts één poort configureren voor berekeningen.
@@ -54,7 +54,7 @@ Voordat u begint met het maken en beheren van een virtuele machine op uw Azure S
     
         ![Hosts-bestand in Windows Verkenner](media/azure-stack-edge-j-series-connect-resource-manager/hosts-file.png)
     
-    2. Voeg de volgende vermeldingen toe aan uw **hosts**-bestand, waarbij u de juiste waarden voor uw apparaat invoert:
+    2. Voeg de volgende vermeldingen toe aan uw **hosts** -bestand, waarbij u de juiste waarden voor uw apparaat invoert:
     
         ```
         <Azure consistent services VIP> login.<appliance name>.<DNS domain>

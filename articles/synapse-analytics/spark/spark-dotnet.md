@@ -9,16 +9,16 @@ ms.subservice: spark
 ms.date: 05/01/2020
 ms.author: mamccrea
 ms.reviewer: jrasnick
-ms.openlocfilehash: d0ae4ef48bfb79130180cc477eb2a6fbeb470eb6
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 9fbf4eab55ec2cf8e4f0e27969ca4a22eb1f27ad
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506427"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578612"
 ---
 # <a name="use-net-for-apache-spark-with-azure-synapse-analytics"></a>.NET gebruiken voor Apache Spark met Azure Synapse Analytics
 
-[.Net voor Apache Spark](https://dot.net/spark) biedt gratis, open-source en platformoverschrijdende .net-ondersteuning voor Spark. 
+[.Net voor Apache Spark](https://dot.net/spark) biedt gratis, [open-source](https://github.com/dotnet/spark)en platformoverschrijdende .net-ondersteuning voor Spark. 
 
 Het biedt .NET-bindingen voor Spark, waarmee u Spark-Api's kunt openen via C# en F #. Met .NET voor Apache Spark kunt u ook door de gebruiker gedefinieerde functies schrijven en uitvoeren voor Spark geschreven in .NET. Met de .NET-Api's voor Spark kunt u toegang krijgen tot alle aspecten van Spark-DataFrames die u helpen bij het analyseren van uw gegevens, waaronder Spark SQL, Delta Lake en Structured streaming.
 
@@ -70,7 +70,13 @@ Wanneer u een nieuw notitie blok maakt, kiest u een taal-kernel waarmee u uw bed
 
 Als u .NET wilt gebruiken voor Apache Spark in uw Azure Synapse Analytics-notebook, selecteert u **.net Spark (C#)** als uw kernel en koppelt u het notitie blok aan een bestaande serverloze Apache Spark groep.
 
-De .NET Spark-notebook is gebaseerd op de interactieve .NET-ervaring en biedt interactieve C#-ervaringen met de mogelijkheid om .NET voor Spark uit het vak te gebruiken, waarbij de Spark-sessie variabele `spark` al vooraf is gedefinieerd.
+De .NET Spark-notebook is gebaseerd op de [interactieve .net](https://github.com/dotnet/interactive) -ervaring en biedt interactieve C#-ervaringen met de mogelijkheid om .net voor Spark uit het vak te gebruiken, waarbij de Spark-sessie variabele `spark` al vooraf is gedefinieerd.
+
+### <a name="install-nuget-packages-in-notebooks"></a>NuGet-pakketten installeren in notitie blokken
+
+U kunt NuGet-pakketten van uw keuze in uw notitie blok installeren met behulp van het `#r` symbool voor de naam van het NuGet-pakket. In het volgende diagram ziet u een voor beeld:
+
+![Scherm opname van het gebruik van #r voor het installeren van een Spark .NET notebook NuGet-pakket](./media/apache-spark-development-using-notebooks/synapse-spark-dotnet-notebook-nuget.png)
 
 ### <a name="net-for-apache-spark-c-kernel-features"></a>.NET for Apache Spark C#-kernel-functies
 
@@ -80,14 +86,15 @@ De volgende functies zijn beschikbaar wanneer u .NET for Apache Spark gebruikt i
 * Eenvoudige C#-instructies (zoals toewijzingen, afdrukken op console, uitzonde ringen genereren, enzovoort).
 * Meerdere regels C# code blokken (zoals if-instructies, foreach-lussen, klassedefinities, enzovoort).
 * Toegang tot de Standard C#-bibliotheek (zoals System, LINQ, overzichten, enzovoort).
-* Ondersteuning voor [C# 8,0-taal functies](/dotnet/csharp/whats-new/csharp-8?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
-* Spark als een vooraf gedefinieerde variabele om u toegang te geven tot uw Apache Spark-sessie.
-* Ondersteuning voor het definiëren van [door de gebruiker gedefinieerde .NET-functies die in Apache Spark kunnen worden uitgevoerd](https://github.com/dotnet/spark/blob/master/examples/Microsoft.Spark.CSharp.Examples/Sql).
+* Ondersteuning voor C# 8,0-taal functies.
+* `spark` Als een vooraf gedefinieerde variabele om u toegang te geven tot uw Apache Spark-sessie.
+* Ondersteuning voor het definiëren van [door de gebruiker gedefinieerde .NET-functies die in Apache Spark kunnen worden uitgevoerd](/dotnet/spark/how-to-guides/udf-guide). We raden u [aan om udf's in .net te schrijven en aan te roepen voor Apache Spark interactieve omgevingen](/dotnet/spark/how-to-guides/dotnet-interactive-udf-issue) voor het leren hoe u udf's kunt gebruiken in .net voor Apache Spark interactieve ervaring.
 * Ondersteuning voor het visualiseren van uitvoer van uw Spark-taken met behulp van verschillende grafieken (zoals een lijn, staaf of histogram) en indelingen (zoals één, overlappend, enzovoort) met behulp van de- `XPlot.Plotly` bibliotheek.
 * De mogelijkheid om NuGet-pakketten toe te voegen aan uw C#-notebook.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Documentatie voor .NET voor Apache Spark](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-* [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)
+* [Documentatie voor .NET voor Apache Spark](/dotnet/spark/)
+* [Interactieve hand leidingen voor .NET for Apache Spark](/dotnet/spark/how-to-guides/dotnet-interactive-udf-issue)
+* [Azure Synapse Analytics](https://azure.microsoft.com/services/synapse-analytics/)
 * [.NET interactief](https://devblogs.microsoft.com/dotnet/creating-interactive-net-documentation/)

@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.author: jehollan
-ms.openlocfilehash: 691fbf3be4e39a724a8a290c3ec147a679013cba
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 6b082801a89450e34056be8be88a96fe26b7eeec
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413085"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578824"
 ---
 # <a name="azure-functions-networking-options"></a>Netwerkopties van Azure Functions
 
@@ -30,18 +30,36 @@ U kunt functie-apps op verschillende manieren hosten:
 
 [!INCLUDE [functions-networking-features](../../includes/functions-networking-features.md)]
 
-## <a name="inbound-ip-restrictions"></a>Binnenkomende IP-beperkingen
+## <a name="inbound-access-restrictions"></a>Beperkingen voor binnenkomende toegang
 
-U kunt IP-beperkingen gebruiken om een lijst met door prioriteiten geordende IP-adressen te definiëren die geen toegang tot uw app hebben of geweigerd. De lijst kan IPv4-en IPv6-adressen bevatten. Als er sprake is van een of meer vermeldingen, bevindt zich een impliciete ' weigeren ' aan het einde van de lijst. IP-beperkingen werken met alle opties voor het hosten van functies.
+U kunt toegangs beperkingen gebruiken voor het definiëren van een lijst met door prioriteiten gerangschikte IP-adressen die geen toegang tot uw app hebben of geweigerd. De lijst kan IPv4-en IPv6-adressen of specifieke subnetten van het virtuele netwerk bevatten die gebruikmaken van [service-eind punten](#use-service-endpoints). Als er sprake is van een of meer vermeldingen, bevindt zich een impliciete ' weigeren ' aan het einde van de lijst. IP-beperkingen werken met alle opties voor het hosten van functies.
+
+Toegangs beperkingen zijn beschikbaar in de [Premium](functions-premium-plan.md), het [verbruik](functions-scale.md#consumption-plan)en het [app service](functions-scale.md#app-service-plan).
 
 > [!NOTE]
-> Als er netwerk beperkingen zijn ingesteld, kunt u de portal Editor alleen gebruiken vanuit uw virtuele netwerk, of wanneer u het IP-adres van de computer die u gebruikt, hebt geplaatst voor toegang tot de Azure Portal in de lijst met veilige geadresseerden. U hebt echter nog steeds toegang tot alle functies op het tabblad **platform functies** vanaf een wille keurige computer.
+> Als er netwerk beperkingen zijn ingesteld, kunt u alleen implementeren vanuit uw virtuele netwerk of wanneer u het IP-adres van de computer die u gebruikt voor toegang tot de Azure Portal op de lijst met veilige geadresseerden. U kunt de functie echter wel beheren via de portal.
 
 Zie [Azure app service beperkingen voor statische toegang](../app-service/app-service-ip-restrictions.md)voor meer informatie.
 
-## <a name="private-site-access"></a>Toegang tot privésite
+### <a name="use-service-endpoints"></a>Service-eindpunten gebruiken
+
+Door service-eind punten te gebruiken, kunt u de toegang beperken tot geselecteerde subnetten van het virtuele netwerk van Azure. Als u de toegang tot een specifiek subnet wilt beperken, maakt u een beperkings regel met een **Virtual Network** type. U kunt vervolgens het abonnement, het virtuele netwerk en het subnet selecteren dat u wilt toestaan of weigeren van toegang tot. 
+
+Als service-eind punten niet al zijn ingeschakeld met micro soft. web voor het geselecteerde subnet, worden ze automatisch ingeschakeld, tenzij u het selectie vakje **ontbrekende micro soft. webservice-eind punten negeren** inschakelt. Het scenario waarin u mogelijk service-eind punten in de app wilt inschakelen, maar niet het subnet is afhankelijk van het feit of u gemachtigd bent om deze in te scha kelen op het subnet. 
+
+Als iemand anders de service-eind punten in het subnet moet inschakelen, schakelt u het selectie vakje **ontbrekende micro soft. web service-eind punten negeren** in. Uw app wordt geconfigureerd voor service-eind punten in de verwachting dat ze later in het subnet worden ingeschakeld. 
+
+![Scherm opname van het deel venster ' IP-beperking toevoegen ' met het Virtual Network type geselecteerd.](../app-service/media/app-service-ip-restrictions/access-restrictions-vnet-add.png)
+
+U kunt Service-eind punten niet gebruiken om de toegang te beperken tot apps die worden uitgevoerd in een App Service Environment. Als uw app zich in een App Service Environment bevindt, kunt u de toegang hiertoe beheren door IP-toegangs regels toe te passen. 
+
+Zie voor meer informatie over het instellen van service-eind punten [verbinding maken Azure functions toegang tot privé-site](functions-create-private-site-access.md).
+
+## <a name="private-endpoint-connections"></a>Verbindingen met privé-eind punten
 
 [!INCLUDE [functions-private-site-access](../../includes/functions-private-site-access.md)]
+
+Als u andere services wilt aanroepen die een persoonlijke eindpunt verbinding hebben, zoals opslag of service bus, moet u uw app configureren voor het maken van [uitgaande aanroepen naar privé-eind punten](#private-endpoints).
 
 ## <a name="virtual-network-integration"></a>Integratie van virtueel netwerk
 
@@ -80,7 +98,7 @@ Wanneer u een functie-app maakt, moet u een Azure Storage-account voor algemeen 
 1. [Maak een bestands share](../storage/files/storage-how-to-create-file-share.md#create-file-share) in het account voor beveiligde opslag.
 1. Schakel de service-eind punten of het persoonlijke eind punt in voor het opslag account.  
     * Zorg ervoor dat u het subnet dat is toegewezen aan uw functie-apps, inschakelt als u een service-eind punt gebruikt.
-    * Zorg ervoor dat u een DNS-record maakt en uw app zodanig configureert dat deze [werkt met persoonlijke eindpunt](#azure-dns-private-zones) eindpunten als u een privé-eind punt gebruikt.  Het opslag account heeft een persoonlijk eind punt nodig voor de `file` en `blob` subresources.  Als u bepaalde functies gebruikt, zoals Durable Functions hebt u `queue` ook `table` toegang nodig via een verbinding met een privé-eind punt.
+    * Zorg ervoor dat u een DNS-record maakt en uw app zodanig configureert dat deze [werkt met persoonlijke eindpunt](#azure-dns-private-zones) eindpunten als u een privé-eind punt gebruikt.  Het opslag account heeft een persoonlijk eind punt voor de `file` `blob` subresources en nodig.  Als u bepaalde functies als Durable Functions gebruikt, hebt u ook `queue` `table` toegang nodig via een verbinding met een privé-eind punt.
 1. Beschrijving Kopieer het bestand en de blob-inhoud van het functie-app-opslag account naar het beveiligde opslag account en de bestands share.
 1. Kopieer de connection string voor dit opslag account.
 1. Werk de **Toepassings instellingen** onder **configuratie** voor de functie-app als volgt bij:
@@ -159,7 +177,7 @@ Wanneer u een functie-app integreert in een Premium-abonnement of een App Servic
 ## <a name="automation"></a>Automation
 Met de volgende Api's kunt u via programma code regionale virtuele netwerk integraties beheren:
 
-+ **Azure cli** : gebruik de [`az functionapp vnet-integration`](/cli/azure/functionapp/vnet-integration) opdrachten om regionale virtuele netwerk integraties toe te voegen, weer te geven of te verwijderen.  
++ **Azure cli** : gebruik de [`az functionapp vnet-integration`](/cli/azure/functionapp/vnet-integration) opdrachten om een regionale virtuele netwerk integratie toe te voegen, weer te geven of te verwijderen.  
 + **Arm-sjablonen** : regionale integratie van virtuele netwerken kan worden ingeschakeld met behulp van een Azure Resource Manager sjabloon. Voor een volledig voor beeld raadpleegt u [de Quick Start-sjabloon van deze functies](https://azure.microsoft.com/resources/templates/101-function-premium-vnet-integration/).
 
 ## <a name="troubleshooting"></a>Problemen oplossen
