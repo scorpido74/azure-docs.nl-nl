@@ -38,6 +38,21 @@
           href: infrastructure-integrity.md
         - name: Gegevensbeveiliging
           href: protection-customer-data.md
+    - name: Platformintegriteit en -beveiliging
+      href: platform.md
+      items:
+        - name: Firmware-beveiliging
+          href: firmware.md
+        - name: Secure Boot
+          href: secure-boot.md
+        - name: Attestation van gemeten boot en host
+          href: measured-boot-host-attestation.md
+        - name: Project Cerberus
+          href: project-cerberus.md
+        - name: Versleuteling 'at rest'
+          href: encryption-atrest.md
+        - name: Hypervisor-beveiliging
+          href: hypervisor.md
     - name: Isolatie in de Azure-cloud
       href: isolation-choices.md
 - name: Identiteitsbeheer

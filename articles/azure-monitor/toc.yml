@@ -180,6 +180,21 @@
               href: app/pricing.md
             - name: Gegevensgebruik en kosten vastleggen
               href: platform/manage-cost-storage.md
+    - name: Metrische gegevens van Azure Monitor
+      items:
+        - name: Overzicht
+          displayname: Metrics
+          href: platform/data-platform-metrics.md
+        - name: Metrics-explorer
+          items:
+            - name: Aan de slag met Metrics Explorer
+              href: platform/metrics-getting-started.md
+            - name: Geavanceerde functies van Metrics Explorer
+              href: platform/metrics-charts.md
+            - name: Voorbeelden van grafieken met metrische gegevens
+              href: platform/metric-chart-samples.md
+            - name: Problemen met grafieken met metrische gegevens oplossen
+              href: platform/metrics-troubleshoot.md
     - name: Azure Monitor-logboeken
       items:
         - name: Overzicht
@@ -262,21 +277,10 @@
               href: platform/logs-export-logic-app.md
             - name: Query's uitvoeren op geëxporteerde gegevens met Data Explorer
               href: platform/azure-data-explorer-query-storage.md
-    - name: Metrische gegevens van Azure Monitor
-      items:
-        - name: Overzicht
-          displayname: Metrics
-          href: platform/data-platform-metrics.md
-        - name: Metrics-explorer
-          items:
-            - name: Aan de slag met Metrics Explorer
-              href: platform/metrics-getting-started.md
-            - name: Geavanceerde functies van Metrics Explorer
-              href: platform/metrics-charts.md
-            - name: Voorbeelden van grafieken met metrische gegevens
-              href: platform/metric-chart-samples.md
-            - name: Problemen met grafieken met metrische gegevens oplossen
-              href: platform/metrics-troubleshoot.md
+            - name: Verzenden naar Excel
+              href: log-query/log-excel.md
+            - name: Verzenden naar Power BI
+              href: log-query/log-powerbi.md
     - name: Platformlogboeken
       items:
         - name: Overzicht
@@ -575,12 +579,16 @@
                   displayname: 'ilogger, logging, log'
                   href: app/ilogger.md
             - name: ASP.NET
-              displayname: 'ASP.NET, c#, csharp, .NET, NET, dotnet'
-              href: app/asp-net.md
-            - name: Niet-http-apps/-achtergrond-apps
+              items:
+                - name: App-bewaking in ASP.NET
+                  displayname: 'ASP.NET, c#, csharp, .NET, NET, dotnet'
+                  href: app/asp-net.md
+                - name: Problemen met ASP.NET oplossen
+                  href: app/asp-net-troubleshoot-no-data.md
+            - name: Niet-HTTP-/achtergrond-apps
               displayname: 'console, .NET, .NET Core, dotnet console, dotnet, c#, csharp, NET, worker, background, generic host'
               href: app/worker-service.md
-            - name: .NET Console
+            - name: ASP.NET-console
               displayname: 'console, .NET, dotnet console, dotnet, c#, csharp, NET'
               href: app/console.md
             - name: Java
@@ -590,18 +598,10 @@
                   href: app/java-get-started.md
                 - name: Logboektraceringen
                   href: app/java-trace-logs.md
-                - name: Unix-meetgegevens
-                  href: app/java-collectd.md
                 - name: Afhankelijkheden
                   href: app/java-agent.md
                 - name: Telemetrie filteren
                   href: app/java-filter-telemetry.md
-                - name: Metrische gegevens van Micrometer
-                  displayname: java
-                  href: app/micrometer-java.md
-                - name: Spring Boot-app
-                  displayname: java
-                  href: /java/azure/spring-framework/configure-spring-boot-java-applicationinsights
                 - name: Problemen oplossen
                   href: app/java-troubleshoot.md
             - name: Node.js
@@ -637,8 +637,6 @@
             - name: API-samenvatting voor Application Insights
               displayname: 'SDK, API, custom events, custom metrics, trackevent,trackmetric, getmetric, trackrequest, trackexception, tracktrace, trackdependency'
               href: app/api-custom-events-metrics.md
-            - name: Problemen met ASP.NET oplossen
-              href: app/asp-net-troubleshoot-no-data.md
             - name: Application Insights verwijderen
               href: app/remove-application-insights.md
         - name: Bewaking zonder code
@@ -1241,6 +1239,8 @@
               href: app/release-notes.md
             - name: Web-appuitbreiding
               href: app/web-app-extension-release-notes.md
+            - name: Snapshot Debugger
+              href: app/snapshot-collector-release-notes.md
         - name: Gegevensmodel
           items:
             - name: Overzicht
@@ -1323,6 +1323,11 @@
           href: platform/resource-logs-blob-format.md
         - name: Key Vault Analytics (afgeschaft)
           href: insights/azure-key-vault-deprecated.md
+        - name: Unix-meetgegevens
+          href: app/java-collectd.md
+        - name: Metrische gegevens van Micrometer
+          displayname: java
+          href: app/micrometer-java.md
         - name: Weergaven
           items:
             - name: Designer weergeven

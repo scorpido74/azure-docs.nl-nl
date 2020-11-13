@@ -4,12 +4,12 @@ description: 'Zelfstudie: In dit artikel wordt beschreven hoe u met Azure Event 
 ms.topic: tutorial
 ms.date: 07/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 64d4b9769e1a228294bd7d8741f6f4b1260fb0dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4fb26bf92e6af1fd9e97f3b9434b4ab5e76316b3
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91270544"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305270"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>Zelfstudie: Big data streamen naar een datawarehouse
 Azure [Event Grid](overview.md) is een intelligente service voor het routeren van gebeurtenissen waarmee u kunt reageren op meldingen (gebeurtenissen) van apps en services. Het kan bijvoorbeeld een Azure-functie activeren voor het verwerken van Event Hubs-gegevens die zijn opgenomen in een Azure Blob-opslag of Azure Data Lake Storage en de gegevens naar andere gegevensopslagplaatsen migreren. Dit [Event Hubs en Event Grid-voorbeeld](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) laat zien hoe u Event Hubs gebruikt met Event Grid voor het naadloos migreren van opgenomen gegevens van Event Hubs uit blob-opslag naar Azure Synapse Analytics (voorheen SQL Data Warehouse).
@@ -63,7 +63,7 @@ In deze stap implementeert u de vereiste infrastructuur met behulp van een [Reso
 3. U ziet onderin de browser dat Cloud Shell wordt geopend.
 
     ![Cloud Shell](media/event-grid-event-hubs-integration/launch-cloud-shell.png) 
-4. Als in Cloud Shell een optie wordt weergegeven om te kiezen tussen **Bash** en **PowerShell**, kiest u **Bash**. 
+4. Als in Cloud Shell een optie wordt weergegeven om te kiezen tussen **Bash** en **PowerShell** , kiest u **Bash**. 
 5. Als u Cloud Shell voor het eerst gebruikt, maakt u een opslagaccount door **Create storage** (Opslag maken) te selecteren. Voor het opslaan van sommige bestanden in Azure Cloud Shell is een Azure-opslagaccount vereist. 
 
     ![Schermopname van het dialoogvenster ‘U hebt geen opslag gekoppeld’ met de knop ‘Opslag maken’ geselecteerd.](media/event-grid-event-hubs-integration/create-storage-cloud-shell.png)
@@ -165,7 +165,7 @@ Sluit Cloud Shell met de knop **Cloud Shell** in de portal of met de knop **X** 
 ### <a name="create-a-table-in-azure-synapse-analytics"></a>Een tabel maken in Azure Synapse Analytics
 Maak een tabel in uw datawarehouse door het script [CreateDataWarehouseTable.sql](https://github.com/Azure/azure-event-hubs/blob/master/samples/e2e/EventHubsCaptureEventGridDemo/scripts/CreateDataWarehouseTable.sql) uit te voeren. Gebruik hiervoor Visual Studio of de query-editor in de portal. De volgende stappen laten zien hoe u de query-editor gebruikt: 
 
-1. Selecteer uw **Synapse SQL-pool (datawarehouse)** in de lijst met resources in de resourcegroep. 
+1. Selecteer uw **toegewezen SQL-pool** in de lijst met resources in de resourcegroep. 
 2. Selecteer in het linkermenu op de Azure Synapse Analytics-pagina **Query-editor (preview)** . 
 
     ![Azure Synapse Analytics-pagina](media/event-grid-event-hubs-integration/sql-data-warehouse-page.png)
@@ -203,7 +203,7 @@ Maak een tabel in uw datawarehouse door het script [CreateDataWarehouseTable.sql
 ## <a name="publish-the-azure-functions-app"></a>De Azure Functions-app publiceren
 
 1. Start Visual Studio.
-2. Open de oplossing **EventHubsCaptureEventGridDemo.sln**, die u eerder hebt gedownload van de [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)-opslagplaats als onderdeel van de vereisten.
+2. Open de oplossing **EventHubsCaptureEventGridDemo.sln** , die u eerder hebt gedownload van de [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)-opslagplaats als onderdeel van de vereisten.
 3. Klik in Solution Explorer met de rechtermuisknop op **FunctionEGDWDumper** en selecteer **Publish**.
 
    ![Functie-app publiceren](media/event-grid-event-hubs-integration/publish-function-app.png)
@@ -216,7 +216,7 @@ Maak een tabel in uw datawarehouse door het script [CreateDataWarehouseTable.sql
 6. Selecteer achtereenvolgens **Azure-functie-app** en **Volgende**. 
 
    ![Azure-functie-app selecteren - Windows](media/event-grid-event-hubs-integration/select-azure-function-windows.png)
-7. Selecteer uw Azure-abonnement op het tabblad **Functions-instantie**, vouw de resourcegroep uit en selecteer vervolgens uw functie-app en **Voltooien**. Als u dit nog niet hebt gedaan, moet u zich aanmelden bij uw Azure-account. 
+7. Selecteer uw Azure-abonnement op het tabblad **Functions-instantie** , vouw de resourcegroep uit en selecteer vervolgens uw functie-app en **Voltooien**. Als u dit nog niet hebt gedaan, moet u zich aanmelden bij uw Azure-account. 
 
    ![Uw functie-app selecteren](media/event-grid-event-hubs-integration/publish-select-function-app.png)
 8. In het gedeelte **Service-afhankelijkheden** selecteert u **Configureren**.
@@ -245,9 +245,9 @@ Nadat de functie is gepubliceerd, kunt u zich abonneren op de gebeurtenis.
 7. Selecteer **Event Grid-abonnement toevoegen** op de werkbalk. 
 
     ![Selecteer uw Azure-functie](media/event-grid-event-hubs-integration/select-function-add-button.png)
-8. Ga als volgt te werk op de pagina **Event Grid-abonnement toevoegen**: 
+8. Ga als volgt te werk op de pagina **Event Grid-abonnement toevoegen** : 
     1. Voer op de pagina **Gebeurtenisabonnementdetails** een naam voor het abonnement in, bijvoorbeeld captureEventSub, en selecteer **Maken**. 
-    2. Voer de volgende acties uit in de sectie **Onderwerpdetails**:
+    2. Voer de volgende acties uit in de sectie **Onderwerpdetails** :
         1. Selecteer **Event Hubs-naamruimten** voor **Onderwerptypen**. 
         2. Selecteer uw Azure-abonnement.
         2. Selecteer de Azure-resourcegroep.

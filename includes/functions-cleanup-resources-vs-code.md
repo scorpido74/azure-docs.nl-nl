@@ -2,25 +2,21 @@
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 09/28/2020
+ms.date: 10/20/2020
 ms.author: glenga
-ms.openlocfilehash: 0d83f3a92efe7bddcefdeebb5b6d580caf749206
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: af009a3f04f17d9d7e518d2dd02343a8ed54e342
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91408540"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93424624"
 ---
-1. Druk in Visual Studio Code op <kbd>F1</kbd> om het opdrachtenpalet te openen. In het opdrachtenpalet zoekt en selecteert u `Azure Functions: Open in portal`.
+## <a name="clean-up-resources"></a>Resources opschonen
 
-1. Kies uw functie-app en druk op <kbd>Enter</kbd>. De functie-app wordt geopend in de Azure-portal.
+Wanneer u verder gaat met de [volgende stap](#next-steps) en een Azure Storage-wachtrijbinding aan uw functie toevoegt, moet u alle resources op dezelfde plaats laten staan, zodat u hiermee verder kunt gaan met wat u al hebt gedaan.
 
-1. Selecteer op het tabblad **Overzicht** de benoemde koppeling naast **Resourcegroep**.
+Als dat niet het geval is, kunt u de volgende stappen gebruiken om de functie-app en de bijbehorende resources te verwijderen om te voorkomen dat er verdere kosten in rekening worden gebracht.
 
-   :::image type="content" source="./media/functions-cleanup-resources-vs-code/functions-app-delete-resource-group.png" alt-text="Selecteer op de pagina Functie-app de resourcegroep die u wilt verwijderen.":::
+[!INCLUDE [functions-cleanup-resources-vs-code-inner.md](functions-cleanup-resources-vs-code-inner.md)]
 
-1. Bekijk op de pagina **Resourcegroep** de lijst met opgenomen resources en controleer of dit de resources zijn die u wilt verwijderen.
- 
-1. Selecteer **Resourcegroep verwijderen** en volg de instructies.
-
-   Verwijderen kan enkele minuten duren. Wanneer dit is voltooid, verschijnt een aantal seconden een melding in beeld. U kunt ook het belpictogram boven aan de pagina selecteren om de melding te bekijken.
+Zie [Kosten voor verbruiksplannen inschatten](../articles/azure-functions/functions-consumption-costs.md) voor meer informatie over de kosten voor Functions.

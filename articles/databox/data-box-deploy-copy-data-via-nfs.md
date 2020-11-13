@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 09/29/2020
 ms.author: alkohli
-ms.openlocfilehash: eee5119336be02621a27b315cb26ca8dd1fd9cb4
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: bbebe3b3f63e6ccbb5f351abfc9ba3b846ca6fbe
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91766263"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337658"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>Zelfstudie: Gegevens kopiëren naar Azure Data Box via NFS
 
@@ -62,7 +62,7 @@ Voer de volgende stappen uit om Data Box zo te configureren dat toegang tot NFS-
 
 2. Geef het IP-adres op van de NFS-client en klik op **Toevoegen**. U kunt deze stap herhalen om toegang voor meerdere NFS-clients te configureren. Klik op **OK**.
 
-    ![NFS-clienttoegang configureren 2](media/data-box-deploy-copy-data/nfs-client-access2.png)
+    ![IP-adres van een NFS-client configureren](media/data-box-deploy-copy-data/nfs-client-access2.png)
 
 2. Zorg dat er een [ondersteunde versie](data-box-system-requirements.md) van de NFS-client op de Linux-hostcomputer is geïnstalleerd. Gebruik de specifieke versie voor uw Linux-distributie. 
 
@@ -78,7 +78,7 @@ Voer de volgende stappen uit om Data Box zo te configureren dat toegang tot NFS-
     
     `sudo mount -t nfs -o sec=sys,resvport 10.161.23.130:/Mystoracct_Blob /home/databoxubuntuhost/databox`
 
-    **Maak altijd een map voor de bestanden die u van plan bent te kopiëren in de bestandsshare en kopieer de bestanden vervolgens naar die map**. De map gemaakt onder shares met blok-blobs en pagina-blobs vertegenwoordigt een container waarnaar gegevens als blobs worden geüpload. Het is niet mogelijk om bestanden rechtstreeks te kopiëren naar de *root*-map in het opslagaccount.
+    **Maak altijd een map voor de bestanden die u van plan bent te kopiëren in de bestandsshare en kopieer de bestanden vervolgens naar die map**. De map gemaakt onder shares met blok-blobs en pagina-blobs vertegenwoordigt een container waarnaar gegevens als blobs worden geüpload. Het is niet mogelijk om bestanden rechtstreeks te kopiëren naar de *root* -map in het opslagaccount.
 
 ## <a name="copy-data-to-data-box"></a>Gegevens kopiëren naar Data Box
 
@@ -88,7 +88,7 @@ Nadat u verbinding met de Data Box-shares hebt gemaakt, moet u de gegevens kopi�
 *  Zorg er tijdens het kopiëren van gegevens voor dat de gegevensgrootte voldoet aan de limieten die worden vermeld in de [limieten voor Azure-opslagaccounts](data-box-limits.md#azure-storage-account-size-limits).
 * Als de gegevens die door Data Box worden geüpload gelijktijdig door andere toepassingen buiten Data Box worden geüpload, kan dit tot fouten voor de uploadtaak en beschadigde gegevens leiden.
 * We adviseren u om niet SMB en NFS tegelijk te gebruiken of om dezelfde gegevens naar dezelfde eindbestemming in Azure te kopiëren. In dergelijke gevallen kan de definitieve uitkomst niet worden vastgesteld.
-* **Maak altijd een map voor de bestanden die u van plan bent te kopiëren in de bestandsshare en kopieer de bestanden vervolgens naar die map**. De map gemaakt onder shares met blok-blobs en pagina-blobs vertegenwoordigt een container waarnaar gegevens als blobs worden geüpload. Het is niet mogelijk om bestanden rechtstreeks te kopiëren naar de *root*-map in het opslagaccount.
+* **Maak altijd een map voor de bestanden die u van plan bent te kopiëren in de bestandsshare en kopieer de bestanden vervolgens naar die map**. De map gemaakt onder shares met blok-blobs en pagina-blobs vertegenwoordigt een container waarnaar gegevens als blobs worden geüpload. Het is niet mogelijk om bestanden rechtstreeks te kopiëren naar de *root* -map in het opslagaccount.
 * Bij het opnemen van hoofdlettergevoelige map- en bestandsnamen van een NSF-share naar NFS op Data Box:
   * Blijven de hoofd- en kleine letters behouden in de naam.
   * De bestanden zijn niet hoofdlettergevoelig.
@@ -104,7 +104,7 @@ De opdracht `cp` is een van de beste opties om een map te kopiëren. Ga voor mee
 
 Volg deze richtlijnen als u rsync gebruikt voor een kopie met meerdere threads:
 
-* Installeer het **CIFS Utils**- of **NFS Utils**-pakket, afhankelijk van het bestandssysteem dat uw Linux-client gebruikt.
+* Installeer het **CIFS Utils** - of **NFS Utils** -pakket, afhankelijk van het bestandssysteem dat uw Linux-client gebruikt.
 
     `sudo apt-get install cifs-utils`
 

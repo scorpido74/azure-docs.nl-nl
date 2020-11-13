@@ -1,7 +1,7 @@
 ---
 title: Modellen opnieuw trainen met behulp van Azure Machine Learning Designer
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het opnieuw trainen van modellen met gepubliceerde pijp lijnen in Azure Machine Learning Designer.
+description: Meer informatie over het opnieuw trainen van machine learning modellen met gepubliceerde pijp lijnen in Azure Machine Learning Designer.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: likebupt
 ms.date: 04/06/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: d43bea855d9ac3dc34b8e72adcd9577e5933e52c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d8ef4d9f768d6fdcf976c9317d1abec3d4533824
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905684"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94554798"
 ---
 # <a name="retrain-models-with-azure-machine-learning-designer"></a>Modellen opnieuw trainen met Azure Machine Learning Designer
 

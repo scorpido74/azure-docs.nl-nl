@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: ce3174516d8046df53b5290bcfeea03756937129
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 26ac1714330bba06c01d33b47105f04c600c7729
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92201525"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555104"
 ---
 # <a name="color-materials"></a>Kleurmaterialen
 
@@ -22,7 +22,7 @@ Kleur materiaal is efficiënter om weer te geven dan [PBR-materialen](pbr-materi
 
 Deze eigenschappen zijn gebruikelijk voor alle materialen:
 
-* **albedoColor:** Deze kleur wordt vermenigvuldigd met andere kleuren, zoals de *albedoMap* of * :::no-loc text="vertex"::: kleuren*. Als *transparantie* is ingeschakeld voor een materiaal, wordt het Alfa kanaal gebruikt voor het aanpassen van de dekking, met een `1` volledig ondoorzichtigheid en duidelijk `0` doorzichtig. De standaard waarde is wit.
+* **albedoColor:** Deze kleur wordt vermenigvuldigd met andere kleuren, zoals de *albedoMap* of *:::no-loc text="vertex"::: kleuren*. Als *transparantie* is ingeschakeld voor een materiaal, wordt het Alfa kanaal gebruikt voor het aanpassen van de dekking, met een `1` volledig ondoorzichtigheid en duidelijk `0` doorzichtig. De standaard waarde is wit.
 
   > [!NOTE]
   > Omdat kleur materialen niet overeenkomen met de omgeving, wordt een volledig transparant kleuren materiaal onzichtbaar. Dit wijkt af van de [PBR-materialen](pbr-materials.md).
@@ -38,6 +38,12 @@ Deze eigenschappen zijn gebruikelijk voor alle materialen:
 * **isDoubleSided:** Als Double-sidedness is ingesteld op True, worden drie hoeken met dit materiaal weer gegeven, zelfs als de camera op de achtergrond is. Deze optie is standaard uitgeschakeld. Zie ook [ :::no-loc text="Single-sided"::: rendering](single-sided-rendering.md).
 
 * **TransparencyWritesDepth:** Als de vlag TransparencyWritesDepth is ingesteld op het materiaal en het materiaal transparant is, kunnen objecten die dit materiaal gebruiken, ook bijdragen aan de uiteindelijke diepte buffer. Zie de eigenschap kleur materiaal *transparencyMode* in de volgende sectie. Het inschakelen van deze functie wordt aanbevolen als voor uw use-case een meer plausible [te late fase](late-stage-reprojection.md) ring van volledig transparante scènes nodig is. Voor gemengde dekkende/transparante scènes kan deze instelling leiden tot implausible-projectie gedrag of reprojectie-artefacten. Daarom is het uitschakelen van de standaard en aanbevolen instelling voor de algemene use-case dat deze vlag wordt uitgeschakeld. De geschreven diepte waarden worden opgehaald uit de laag diepte per pixel van het object dat zich het dichtst bij de camera bevindt.
+
+* **FresnelEffect:** Met deze materiaal vlag wordt het additief [Fresnel-effect](../../overview/features/fresnel-effect.md) op het respectieve materiaal ingeschakeld. De weer gave van het effect is onderhevig aan de andere Fresnel-para meters die in het volgende worden uitgelegd. 
+
+* **FresnelEffectColor:** De Fresnel kleur die wordt gebruikt voor dit materiaal. Alleen belang rijk wanneer de Fresnel-effect bit is ingesteld op dit materiaal (zie hierboven). Deze eigenschap bepaalt de basis kleur van de Fresnel schijnt (Zie [Fresnel-effect](../../overview/features/fresnel-effect.md) voor een volledige uitleg). Momenteel zijn alleen de RGB-kanaal waarden belang rijk en de alpha-waarde wordt genegeerd.
+
+* **FresnelEffectExponent:** De Fresnel-exponent die wordt gebruikt voor dit materiaal. Alleen belang rijk wanneer de Fresnel-effect bit is ingesteld op dit materiaal (zie hierboven). Deze eigenschap bepaalt de sprei ding van de Fresnel schijnt. De minimale waarde 0,01 veroorzaakt een verspreiding over het hele object. De maximum waarde 10,0 beperkt de glanzende tot alleen de meest Gracing randen die zichtbaar zijn.
 
 ## <a name="color-material-properties"></a>Eigenschappen van kleur materiaal
 

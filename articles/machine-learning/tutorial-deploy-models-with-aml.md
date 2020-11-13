@@ -1,7 +1,7 @@
 ---
 title: 'Zelfstudie over de classificatie van afbeeldingen: Modellen implementeren'
 titleSuffix: Azure Machine Learning
-description: In deze zelfstudie, de tweede uit een tweedelige serie, leert u hoe u Azure Machine Learning kunt gebruiken om een afbeeldingsclassificatiemodel met scikit-learn in een Python Jupyter-notebook te implementeren.
+description: In deze zelfstudie ziet u hoe u Azure Machine Learning kunt gebruiken om een afbeeldingsclassificatiemodel met scikit-learn in een Python Jupyter-notebook te implementeren.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 03/18/2020
 ms.custom: seodec18
-ms.openlocfilehash: f0d78fc55ca60fa883c742885acf2fa98ede61ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee6529f36c302cba1dc7b5a4b53aaf96ce58e4a5
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90896576"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94532780"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Zelfstudie: Een afbeeldingsclassificatiemodel implementeren in Azure Container Instances
 
@@ -358,6 +358,6 @@ service.delete()
 
 + Meer informatie over alle [implementatieopties voor Azure Machine Learning](how-to-deploy-and-where.md).
 + Meer informatie over het [maken van clients voor de webservice](how-to-consume-web-service.md).
-+  Doe asynchroon [voorspellingen op grote hoeveelheden gegevens](how-to-use-parallel-run-step.md).
++  Doe asynchroon [voorspellingen op grote hoeveelheden gegevens](./tutorial-pipeline-batch-scoring-classification.md).
 + Bewaak uw Azure Machine Learning-modellen met [Application Insights](how-to-enable-app-insights.md).
-+ Ga ook aan de slag met de zelfstudie [Automatisch algoritmen selecteren](tutorial-auto-train-models.md). 
++ Ga ook aan de slag met de zelfstudie [Automatisch algoritmen selecteren](tutorial-auto-train-models.md).

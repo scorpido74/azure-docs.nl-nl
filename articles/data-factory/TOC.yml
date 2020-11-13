@@ -451,6 +451,8 @@
           href: copy-activity-fault-tolerance.md
         - name: Verificatie van gegevensconsistentie
           href: copy-activity-data-consistency.md
+        - name: Activiteitenlogboek kopiëren
+          href: copy-activity-log.md
         - name: Ondersteuning voor indeling en compressie (verouderd)
           href: supported-file-formats-and-compression-codecs-legacy.md
     - name: Gegevens transformeren

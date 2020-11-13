@@ -11,14 +11,28 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 01c9cbe0438ee0efeece4c7e6b17e9607db4c4cc
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 2586b3aab9d1fb8e7ae12aea540df19ff6c37556
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93356685"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94553655"
 ---
 # <a name="speech-service-release-notes"></a>Release opmerkingen bij de spraak service
+
+## <a name="text-to-speech-2020-october-release"></a>Tekst-naar-spraak 2020-oktober release
+
+**Nieuwe functies**
+- Wilma ondersteunt een nieuwe `newscast` stijl. Zie [de gesp roken stijlen gebruiken in SSML](speech-synthesis-markup.md#adjust-speaking-styles).
+- **Neural stemmen met een upgrade van HiFiNet vocoder, met een grotere geluids kwaliteit en een snellere synthese snelheid**. Deze voor delen van klanten waarvan het scenario afhankelijk is van Hi-Fi-audio of lange interacties, zoals het nahanden van Video's, audio boeken of online onderwijs materiaal. [Lees meer over het verhaal en luister naar de spraak voorbeelden in onze technische community-blog](https://techcommunity.microsoft.com/t5/azure-ai/azure-neural-tts-upgraded-with-hifinet-achieving-higher-audio/ba-p/1847860)
+- **[Aangepaste spraak](https://speech.microsoft.com/customvoice)  &  [Audio Content Creation Studio](https://speech.microsoft.com/audiocontentcreation) gelokaliseerd in 17 landen**. Gebruikers kunnen de gebruikers interface eenvoudig overschakelen naar een lokale taal voor een gebruiks vriendelijker ervaring.   
+- **Audio-inhoud maken** : het besturings element stijl graden is toegevoegd voor XiaoxiaoNeural; Verfijnen de aangepaste break-functie om incrementele onderbrekingen van 50ms op te nemen. 
+
+**Algemene verbeteringen voor spraak kwaliteit van TTS**
+- Verbeterde nauw keurigheid van de uitspraak op woord niveau in `pl-PL` (reductie van fout frequentie: 51%) en `fi-FI` (reductie van fout frequentie: 58%)
+- Verbeterd `ja-JP` lezen van één woord voor het woordenlijst scenario. De uitspraak fout met 80% is verminderd.
+- `zh-CN-XiaoxiaoNeural`: Verbeterde sentiment/CustomerService/Newscast/cheerful/boos de kwaliteit van de stem.
+- `zh-CN`: Verbeterde Erhua-uitspraak en lichte tint en een geraffineerde ruimte prosody, waardoor de intelligibility aanzienlijk wordt verbeterd. 
 
 ## <a name="speech-sdk-1140-2020-october-release"></a>Speech SDK 1.14.0:2020-oktober release
 
@@ -78,6 +92,18 @@ SPX is de opdracht regel interface voor het gebruik van de service Azure speech 
 - `spx * --http header A=B` -ondersteunt aangepaste headers (toegevoegd voor Office voor aangepaste verificatie). 
 - `spx help` : verbeterde tekst en tekst kleur code (blauw).
 
+## <a name="text-to-speech-2020-september-release"></a>Tekst-naar-spraak 2020-release van september
+
+### <a name="new-features"></a>Nieuwe functies
+
+* **Neural TTS** 
+    * **Uitgebreid ter ondersteuning van 18 nieuwe talen/land instellingen.** Dit zijn Bulgaars, Tsjechisch, Duits (Oosten rijk), Duits (Zwitser land), Grieks, Engels (Ierland), Frans (Zwitser land), Hebreeuws, Kroatisch, Hong aars, Indonesisch, Maleis, Roemeens, Slowaaks, Sloveens, Tamil, Telugu en Vietnamees. 
+    * **14 nieuwe stemmen uitgebracht om het RAS in de bestaande talen te verrijken.** Zie [volledige taal en spraak lijst](language-support.md#neural-voices).
+    * **Nieuwe gesp roken stijlen voor `en-US` en `zh-CN` stemmen.** Wilma, de nieuwe Voice in het Engels (Verenigde Staten), ondersteunt chatbot, Customer service en assistent-stijlen. Er zijn 10 nieuwe spraak stijlen beschikbaar met onze zh-CN Voice, XiaoXiao. Daarnaast ondersteunt de XiaoXiao Neural-stem het `StyleDegree` afstemmen. Zie [de gesp roken stijlen gebruiken in SSML](speech-synthesis-markup.md#adjust-speaking-styles).
+
+* **Containers: Neural TTS-container uitgebracht in open bare Preview met 16 stemmen beschikbaar in 14 talen.** Meer informatie over [het implementeren van spraak containers voor NEURAL TTS](speech-container-howto.md)  
+
+Lees de [volledige aankondiging van de TTS-updates voor Ignite 2020](https://techcommunity.microsoft.com/t5/azure-ai/ignite-2020-neural-tts-updates-new-language-support-more-voices/ba-p/1698544) 
 
 ## <a name="text-to-speech-2020-august-release"></a>Tekst-naar-spraak 2020-augustus-release
 
@@ -613,7 +639,7 @@ De volgende nieuwe inhoud is beschikbaar in onze [voorbeeld opslagplaats](https:
   - De SDK is nu gebouwd op basis van de iOS SDK-versie 12,1.
   - De SDK ondersteunt nu iOS-versies 9,2 en hoger.
   - Verbeter de referentie documentatie en los diverse eigenschapnamen op.
-- Javascript
+- JavaScript
   - Voeg ondersteuning toe voor het `Connection` object.
   - Type definitie bestanden voor gebundelde java script toevoegen
   - Eerste ondersteuning en implementatie voor woordgroepen hints.
@@ -645,7 +671,7 @@ Dit is een alleen-Java script-versie. Er zijn geen functies toegevoegd. De volge
 
 - Python
   - De bèta versie van python-ondersteuning (3,5 en hoger) is beschikbaar in deze release. Zie hier] (Quick Start-python.md) voor meer informatie.
-- Javascript
+- JavaScript
   - De Speech SDK voor Java script is open source. De bron code is beschikbaar op [github](https://github.com/Microsoft/cognitive-services-speech-sdk-js).
   - We bieden nu ondersteuning voor Node.js. u kunt [hier](quickstart-js-node.md)meer informatie vinden.
   - De lengte beperking voor audio sessies is verwijderd. de verbinding wordt automatisch hersteld onder de dekking.

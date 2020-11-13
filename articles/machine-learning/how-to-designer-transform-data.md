@@ -1,7 +1,7 @@
 ---
 title: Gegevens transformeren in de ontwerp functie
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het transformeren van gegevens in Azure Machine Learning Designer om uw eigen gegevens sets te maken.
+description: Meer informatie over het importeren en transformeren van gegevens in Azure Machine Learning Designer om uw eigen gegevens sets te maken.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.author: peterlu
 ms.date: 06/28/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: f08d0f1be166630d9cf4b0b9236d78228fd78aae
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: be2921f88ad2ecf88c555daf8385f1bd6733e836
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93312809"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94554012"
 ---
 # <a name="transform-data-in-azure-machine-learning-designer"></a>Gegevens transformeren in Azure Machine Learning Designer
 

@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/04/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8485f3474da18e052bc0eab6c053be084ef884a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c7a9c8fce87b48b47f4bf82e5fd25fda12a25758
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82192413"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94553502"
 ---
 # <a name="operating-system-upgrade"></a>Upgrade van besturings systeem
 In dit document worden de details van upgrades van besturings systemen op de HANA grote instanties beschreven.
@@ -29,7 +29,7 @@ In dit document worden de details van upgrades van besturings systemen op de HAN
 Tijdens het inrichten van de HLI-eenheid installeert het micro soft Operations-team het besturings systeem.
 U moet de installatie van het besturings systeem (voor beeld: patches, afstemming, upgrades enz.) op de////-eenheid hand matig uitvoeren.
 
-Voordat u belang rijke wijzigingen doorvoert aan het besturings systeem (bijvoorbeeld een upgrade van SP1 naar SP2), moet u contact opnemen met het micro soft Operations-team door een ondersteunings ticket te openen om te raadplegen.
+Voordat u belang rijke wijzigingen doorvoert aan het besturings systeem (bijvoorbeeld een upgrade van SP1 naar SP2), neemt u contact op met het micro soft Operations-team door een ondersteunings ticket te openen om te raadplegen.
 
 In uw ticket insluiten:
 
@@ -38,11 +38,9 @@ In uw ticket insluiten:
 * Het patch niveau dat u wilt Toep assen.
 * De datum waarop u deze wijziging plant. 
 
-U wordt aangeraden dit ticket ten minste één week voor de gewenste upgrade datum te openen, omdat het operationele team een controle moet uitvoeren als er een firmware-upgrade nodig is op de Blade van de server.
-
+U wordt aangeraden dit ticket ten minste één week te openen voor de gewenste upgrade, waardoor Opration team weet wat de firmware versie is.
 
 Zie [SAP Note #2235581](https://launchpad.support.sap.com/#/notes/2235581)voor de ondersteunings matrix van de verschillende SAP Hana versies met de verschillende Linux-versies.
-
 
 ## <a name="known-issues"></a>Bekende problemen
 
@@ -55,16 +53,17 @@ Hier volgen enkele veelvoorkomende bekende problemen tijdens de upgrade:
 De configuratie van het besturings systeem kan van de aanbevolen instellingen in de loop van de tijd worden overgenomen door patches, systeem upgrades en wijzigingen die door klanten zijn aangebracht. Daarnaast identificeert micro soft updates die nodig zijn voor bestaande systemen om ervoor te zorgen dat ze optimaal worden geconfigureerd voor de beste prestaties en tolerantie. De volgende instructies zijn een overzicht van aanbevelingen voor netwerk prestaties, stabiliteit van het systeem en optimale HANA-prestaties.
 
 ### <a name="compatible-enicfnic-driver-versions"></a>Compatibele versies van Stuur Programma's voor eNIC/fNIC
-  Om de juiste netwerk prestaties en systeem stabiliteit te hebben, wordt aanbevolen om ervoor te zorgen dat de systeemspecifieke, juiste versie van eNIC-en fNIC-Stuur Programma's wordt geïnstalleerd, zoals in de volgende compatibiliteits tabel wordt weer gegeven. Servers worden aan klanten geleverd met compatibele versies. Houd er rekening mee dat in sommige gevallen tijdens het herstellen van het besturings systeem/de kernel de Stuur Programma's kunnen worden teruggedraaid naar de standaard versies van het stuur programma. Zorg ervoor dat de juiste versie van het stuur programma post OS/kernel-patch bewerkingen uitvoert.
+  Om de juiste netwerk prestaties en systeem stabiliteit te hebben, wordt aangeraden om ervoor te zorgen dat de systeemspecifieke, juiste versie van eNIC-en fNIC-Stuur Programma's wordt geïnstalleerd, zoals in de volgende compatibiliteits tabel wordt weer gegeven. Servers worden aan klanten geleverd met compatibele versies. In sommige gevallen kan de Stuur Programma's tijdens het bijwerken van het besturings systeem/de kernel worden teruggedraaid naar de standaard versies van het stuur programma. Zorg ervoor dat de juiste versie van het stuur programma post OS/kernel-patch bewerkingen uitvoert.
        
       
   |  BESTURINGSSYSTEEM leverancier    |  Versie van besturingssysteem pakket     |  Firmwareversie  |  eNIC-stuur programma |  fNIC-stuur programma | 
   |---------------|-------------------------|--------------------|--------------|--------------|
   |   SuSE        |  SLES 12 SP2            |   3.1.3 h           |  2.3.0.40    |   1.6.0.34   |
   |   SuSE        |  SLES 12 SP3            |   3.1.3 h           |  2.3.0.44    |   1.6.0.36   |
-  |   SuSE        |  SLES 12 SP4            |   3.2.3 i           |  2.3.0.47    |   2.0.0.54   |
+  |   SuSE        |  SLES 12 SP4            |   3.2.3 i           |  4.0.0.6     |   2.0.0.60   |
   |   SuSE        |  SLES 12 SP2            |   3.2.3 i           |  2.3.0.45    |   1.6.0.37   |
-  |   SuSE        |  SLES 12 SP3            |   3.2.3 i           |  2.3.0.45    |   1.6.0.37   |
+  |   SuSE        |  SLES 12 SP3            |   3.2.3 i           |  2.3.0.43    |   1.6.0.36   |
+  |   SuSE        |  SLES 12 SP5            |   3.2.3 i           |  4.0.0.8     |   2.0.0.60   |
   |   Red Hat     |  RHEL 7,2               |   3.1.3 h           |  2.3.0.39    |   1.6.0.34   |
  
 
@@ -88,6 +87,15 @@ rpm -ivh <enic/fnic.rpm>
 modinfo enic
 modinfo fnic
 ```
+
+#### <a name="steps-for-enicfnic-drivers-installation-during-os-upgrade"></a>Stappen voor de installatie van eNIC/fNIC-Stuur Programma's tijdens de upgrade van het besturings systeem
+
+* Versie van besturings systeem bijwerken
+* Oude RPM-pakketten verwijderen
+* Compatibele eNIC/fNIC-Stuur Programma's installeren als per geïnstalleerde versie van het besturings systeem
+* Systeem opnieuw opstarten
+* Nadat het systeem opnieuw is opgestart, controleert u de eNIC/fNIC-versie
+
 
 ### <a name="suse-hlis-grub-update-failure"></a>SuSE HLIs GRUB-Update fout
 SAP on Azure HANA grote instanties (type I) kunnen na de upgrade een niet-opstart bare status hebben. Met de onderstaande procedure wordt dit probleem opgelost.
@@ -117,7 +125,6 @@ blacklist edac_core
 ```
 De computer moet opnieuw worden opgestart om wijzigingen te kunnen aanbrengen. `lsmod`Opdracht uitvoeren en controleren of de module niet aanwezig is in de uitvoer.
 
-
 ### <a name="kernel-parameters"></a>Kernel-para meters
    Zorg ervoor dat de juiste instelling `transparent_hugepage` voor `numa_balancing` , `processor.max_cstate` , `ignore_ce` en `intel_idle.max_cstate` wordt toegepast.
 
@@ -126,7 +133,6 @@ De computer moet opnieuw worden opgestart om wijzigingen te kunnen aanbrengen. `
 * transparent_hugepage = nooit
 * numa_balancing = uitschakelen
 * MCE = ignore_ce
-
 
 #### <a name="execution-steps"></a>Uitvoerings stappen
 

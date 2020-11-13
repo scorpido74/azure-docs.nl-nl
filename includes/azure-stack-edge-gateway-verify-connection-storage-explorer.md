@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 12/02/2019
 ms.author: alkohli
-ms.openlocfilehash: 3474a97f4b05fd1f944e18abebcef927232453e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 203c977fe9109cd8b2b6de561e975e20aacf700e
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89080293"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376065"
 ---
 Als dit de eerste keer is dat u Storage Explorer gebruikt, moet u de volgende stappen uitvoeren.
 
@@ -24,11 +24,11 @@ Volg deze stappen om verbinding te maken met het opslagaccount en de verbinding 
 
 1. Selecteer opslagaccounts in Storage Explorer. Klik met de rechtermuisknop en selecteer de optie **Verbinding maken met Azure Storage**. 
 
-    ![Storage Explorer configureren](media/azure-stack-edge-gateway-verify-connection-storage-explorer/connect-with-storage-explorer-2.png)
+    ![Storage Explorer configureren 2](media/azure-stack-edge-gateway-verify-connection-storage-explorer/connect-with-storage-explorer-2.png)
 
 2. Selecteer in het dialoogvenster **Verbinding maken met Azure Storage** de optie **Een opslagaccountnaam en -sleutel gebruiken**.
 
-    ![Storage Explorer configureren](media/azure-stack-edge-gateway-verify-connection-storage-explorer/connect-with-storage-explorer-3.png)
+    ![Storage Explorer configureren 3](media/azure-stack-edge-gateway-verify-connection-storage-explorer/connect-with-storage-explorer-3.png)
 
 2. Voer in het dialoogvenster **Verbinding maken met naam en sleutel** de volgende stappen uit:
 
@@ -39,11 +39,11 @@ Volg deze stappen om verbinding te maken met het opslagaccount en de verbinding 
     5. Selecteer de optie **HTTP gebruiken** voor overdracht via *HTTP*. 
     6. Selecteer **Next**.
 
-    ![Storage Explorer configureren](media/azure-stack-edge-gateway-verify-connection-storage-explorer/connect-with-storage-explorer-4.png)    
+    ![Storage Explorer configureren 4](media/azure-stack-edge-gateway-verify-connection-storage-explorer/connect-with-storage-explorer-4.png)    
 
 3. Controleer in het dialoogvenster **Samenvatting verbinding** de gegevens die u hebt opgegeven. Selecteer **Verbinding maken**.
 
-    ![Storage Explorer configureren](media/azure-stack-edge-gateway-verify-connection-storage-explorer/connect-with-storage-explorer-5.png)
+    ![Storage Explorer configureren 5](media/azure-stack-edge-gateway-verify-connection-storage-explorer/connect-with-storage-explorer-5.png)
 
 4. Het account dat is toegevoegd, wordt weergegeven in het linkerdeelvenster van Storage Explorer met (Externe, Andere) toegevoegd aan de naam. Selecteer **Blobcontainers** om de container weer te geven.
 
@@ -59,27 +59,27 @@ Voer de volgende stappen uit om gegevens te laden in uw Edge-opslagaccount op he
 
 2. In het dialoogvenster **Bestanden uploaden** navigeert u naar en selecteert u de bestanden die u wilt uploaden. Selecteer **Next**.
 
-    ![Gegevensoverdracht verifiëren](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-2.png)
+    ![Gegevensoverdracht verifiëren 2](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-2.png)
 
 3. Verifieer dat de bestanden zijn geüpload. De geüploade bestanden verschijnen in de container.
 
-    ![Gegevensoverdracht verifiëren](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-3.png)
+    ![Gegevensoverdracht verifiëren 3](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-3.png)
 
 4. Vervolgens maakt u verbinding met het Azure Storage-account dat is toegewezen aan dit Edge-opslagaccount. Gegevens die naar het Edge-opslagaccount worden geüpload, zouden automatisch moeten worden gelaagd in het Azure Storage-account. 
     
     Om de verbindingsreeks voor het Azure Storage-account op te halen, gaat u naar het **Azure Storage-account > Toegangssleutels** en kopieert u de verbindingsreeks.
 
-    ![Gegevensoverdracht verifiëren](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-5.png)
+    ![Gegevensoverdracht verifiëren 4](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-5.png)
 
     Gebruik de verbindingsreeks om verbinding te maken met het Azure Storage-account.  
 
-    ![Gegevensoverdracht verifiëren](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-4.png)
+    ![Gegevensoverdracht verifiëren 5](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-4.png)
 
 
 5. Controleer in het dialoogvenster **Samenvatting verbinding** de gegevens die u hebt opgegeven. Selecteer **Verbinding maken**.
 
-    ![Gegevensoverdracht verifiëren](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-6.png)
+    ![Gegevensoverdracht verifiëren 6](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-6.png)
 
 6. U ziet dat de bestanden die u hebt geüpload in het Edge-opslagaccount, zijn overgedragen naar het Azure Storage-account.
 
-    ![Gegevensoverdracht verifiëren](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-7.png)
+    ![Gegevensoverdracht verifiëren 7](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-7.png)

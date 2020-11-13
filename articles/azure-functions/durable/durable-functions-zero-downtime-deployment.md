@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: azfuncdf
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 11bbc30179cc27f4799b1fd2869cb312dfa34473
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2c96f2cc37c47c77b82ca86d5fd0295f0c66a896
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87093065"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94553689"
 ---
 # <a name="zero-downtime-deployment-for-durable-functions"></a>Implementatie met een nul-uitval tijd voor Durable Functions
 
@@ -54,7 +54,7 @@ Gebruik de volgende procedure om dit scenario in te stellen.
 
 1. Maak voor elke sleuf een nieuwe app-instelling, bijvoorbeeld `DurableManagementStorage` . Stel de waarde ervan in op de connection string van verschillende opslag accounts. Deze opslag accounts worden gebruikt door de extensie Durable Functions voor [betrouw bare uitvoering](./durable-functions-orchestrations.md). Gebruik een afzonderlijk opslag account voor elke sleuf. Markeer deze instelling niet als een implementatie site-instelling.
 
-1. In dehost.jsvan de functie-app [ in de sectie durableTask van het bestand](durable-functions-bindings.md#hostjson-settings), geeft `azureStorageConnectionStringName` u de naam op van de app-instelling die u in stap 3 hebt gemaakt.
+1. In dehost.jsvan de functie-app [ in de sectie durableTask van het bestand](durable-functions-bindings.md#hostjson-settings), geeft `connectionStringName` u (duurzaam 2. x) of `azureStorageConnectionStringName` (duurzaam 1. x) op als de naam van de app-instelling die u in stap 3 hebt gemaakt.
 
 In het volgende diagram ziet u de beschreven configuratie van implementatie sleuven en opslag accounts. In dit mogelijke scenario voor voor implementatie wordt versie 2 van een functie-app uitgevoerd in de productie omgeving, terwijl versie 1 in de faserings sleuf blijft.
 
@@ -71,7 +71,10 @@ De volgende JSON-fragmenten zijn voor beelden van de connection string-instellin
   "version": 2.0,
   "extensions": {
     "durableTask": {
-      "azureStorageConnectionStringName": "DurableManagementStorage"
+      "hubName": "MyTaskHub",
+      "storageProvider": {
+        "connectionStringName": "DurableManagementStorage"
+      }
     }
   }
 }

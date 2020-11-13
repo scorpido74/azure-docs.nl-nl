@@ -1,7 +1,7 @@
 ---
 title: Gegevens importeren in de ontwerp functie
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het importeren van gegevens in Azure Machine Learning Designer van verschillende gegevens bronnen.
+description: Meer informatie over het importeren van gegevens in Azure Machine Learning Designer met behulp van Azure Machine Learning gegevens sets en de module gegevens importeren.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.author: keli19
 ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 15fca48327c46480546764be1b2ab40c1635e874
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ce0bb2a30ec4092d0053adf2de711547595c900
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90985607"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94554713"
 ---
 # <a name="import-data-into-azure-machine-learning-designer"></a>Gegevens importeren in Azure Machine Learning Designer
 
@@ -42,7 +42,7 @@ U kunt de uitvoer voor elke ontwerp module ook registreren als een gegevensset.
 
     ![Scherm afbeelding die laat zien hoe u kunt navigeren naar de optie gegevensset registreren](media/how-to-designer-import-data/register-dataset-designer.png)
 
-Als de gegevens van de module-uitvoer een tabel indeling hebben, moet u ervoor kiezen om de uitvoer als een **Bestands gegevensset** of een **tabellaire gegevensset**te registreren.
+Als de gegevens van de module-uitvoer een tabel indeling hebben, moet u ervoor kiezen om de uitvoer als een **Bestands gegevensset** of een **tabellaire gegevensset** te registreren.
 
  - **File dataset** registreert de uitvoermap van de module als een bestands gegevensset. De uitvoermap bevat een gegevens bestand en meta bestanden die door de ontwerp functie intern worden gebruikt. Selecteer deze optie als u de geregistreerde gegevensset in de ontwerp functie wilt blijven gebruiken. 
 

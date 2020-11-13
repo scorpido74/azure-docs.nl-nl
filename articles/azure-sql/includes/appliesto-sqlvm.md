@@ -6,5 +6,5 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 10/09/2020
 ms.locfileid: "90533328"
 ---
-<Token>**VAN TOEPASSING OP:** :::image type="icon" source="../media/applies-to/yes.png" border="false":::SQL Server op virtuele Azure-machine </Token> 
+<Token>**VAN TOEPASSING OP:** :::image type="icon" source="../media/applies-to/yes.png" border="false":::SQL Server op virtuele Azure-machine</Token> 
 

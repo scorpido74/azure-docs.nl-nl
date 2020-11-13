@@ -3,12 +3,12 @@ title: Zelfstudie voor video-opname op basis van gebeurtenissen in de cloud en a
 description: In deze zelfstudie leert u hoe u Azure Live Video Analytics in Azure IoT Edge kunt gebruiken om een video-opname op basis van gebeurtenissen te maken in de cloud, en deze af te spelen vanuit de cloud.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: a2388a01544d2158e7ca6f1692df07b14ec03a93
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 03c97854673b369db9fe1cb026161a1e81a6bf31
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91773549"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346636"
 ---
 # <a name="tutorial-event-based-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Zelfstudie: Video-opname op basis van gebeurtenissen in de cloud en afspelen vanuit de cloud
 
@@ -82,7 +82,23 @@ Zoals in het diagram wordt getoond, gebruikt u een [RTSP-bronknooppunt](media-gr
 Controleer voordat u begint of u de derde stap in [Vereisten](#prerequisites) hebt voltooid. Zodra het script voor de installatie van de resource is voltooid, klikt u op de accolades om de mapstructuur zichtbaar te maken. Er zijn enkele bestanden gemaakt in de map ~/clouddrive/lva-sample.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/quickstarts/clouddrive.png" alt-text="Mediagrafiek" : "HostName=xxx.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX",  
+> :::image type="content" source="./media/quickstarts/clouddrive.png" alt-text="App-instellingen":::
+
+In deze zelfstudie zijn de volgende bestanden van belang:
+
+* **~/clouddrive/lva-sample/edge-deployment/.env** : bevat eigenschappen waarvan Visual Studio Code gebruikmaakt om modules te implementeren op een Edge-apparaat.
+* **~/clouddrive/lva-sample/appsetting.json** : wordt gebruikt in Visual Studio Code voor het uitvoeren van de voorbeeldcode.
+
+U hebt de bestanden nodig voor de volgende stappen.
+
+1. Kloon de opslagplaats van de GitHub-koppeling https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp.
+1. Start Visual Studio Code en open de map waarnaar u de opslagplaats hebt gedownload.
+1. Blader in Visual Studio Code naar de map src/cloud-to-device-console-app en maak een bestand met de naam **appsettings.json**. Dit bestand bevat de instellingen die nodig zijn om het programma uit te voeren.
+1. Kopieer de inhoud uit het ~/clouddrive/lva-sample/appSettings.json-bestand. De tekst moet er als volgt uitzien:
+
+    ```
+    {  
+        "IoThubConnectionString" : "HostName=xxx.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX",  
         "deviceId" : "lva-sample-device",  
         "moduleId" : "lvaEdge"  
     }
@@ -91,7 +107,7 @@ Controleer voordat u begint of u de derde stap in [Vereisten](#prerequisites) he
     Met de IoT Hub-verbindingsreeks kunt u Visual Studio Code gebruiken om opdrachten naar de Edge-modules te verzenden via Azure IoT Hub.
     
 1. Blader vervolgens naar de map src/edge en maak een bestand met de extensie **.env**.
-1. Kopieer de inhoud uit het ~/clouddrive/lva-sample/.env-bestand. De tekst moet er als volgt uitzien:
+1. Kopieer de inhoud uit het bestand ~/clouddrive/lva-sample/edge-deployment/.env. De tekst moet er als volgt uitzien:
 
     ```
     SUBSCRIPTION_ID="<Subscription ID>"  
@@ -116,10 +132,10 @@ Blader in Visual Studio code naar src/edge. U ziet het. env-bestand dat u hebt g
 
 Open src/edge/deployment.objectCounter.template.json. Er zijn vier vermeldingen in de sectie **Modules** die overeenkomen met de items die worden vermeld in de vorige de sectie Concepten:
 
-* **lvaEdge**: dit is de Live Video Analytics in IoT Edge-module.
-* **yolov3**: dit is de AI-module die is gemaakt met behulp van het YOLO v3-model.
-* **rtspsim**: dit is de RTSP-simulator.
-* **objectCounter**: dit is de module die zoekt naar specifieke objecten in de resultaten van yolov3.
+* **lvaEdge** : dit is de Live Video Analytics in IoT Edge-module.
+* **yolov3** : dit is de AI-module die is gemaakt met behulp van het YOLO v3-model.
+* **rtspsim** : dit is de RTSP-simulator.
+* **objectCounter** : dit is de module die zoekt naar specifieke objecten in de resultaten van yolov3.
 
 Voor de objectCounter-module raadpleegt u de tekenreeks (${MODULES.objectCounter}) die wordt gebruikt voor de waarde voor ‘afbeelding’. Dit is gebaseerd op de [zelfstudie](../../iot-edge/tutorial-develop-for-linux.md) over het ontwikkelen van een IoT Edge-module. In Visual Studio code wordt automatisch herkend dat de code voor de deobjectCounter-module zich bevindt onder src/edge/modules/objectCounter. 
 
@@ -139,7 +155,7 @@ Het distributiemanifest definieert welke modules op een Edge-apparaat worden ge�
 Volg met behulp van Visual Studio Code [deze instructies](../../iot-edge/tutorial-develop-for-linux.md#build-and-push-your-solution) om u aan te melden bij Docker. Selecteer vervolgens **IoT Edge-oplossingen bouwen en pushen**. Gebruik voor deze stap src/edge/deployment.objectCounter.template.json.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/event-based-video-recording-tutorial/build-push.png" alt-text="Mediagrafiek":::
+> :::image type="content" source="./media/event-based-video-recording-tutorial/build-push.png" alt-text="IoT Edge-oplossingen bouwen en pushen":::
 
 Met deze actie maakt u de objectCounter-module voor het tellen van objecten en pusht u de kopie naar uw Azure Container Registry.
 
@@ -148,7 +164,7 @@ Met deze actie maakt u de objectCounter-module voor het tellen van objecten en p
 Met deze stap maakt u het IoT Edge-distributiemanifest op src/edge/config/deployment.objectCounter.amd64.json. Klik met de rechtermuisknop op het bestand en selecteer **Implementatie maken voor één apparaat**.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/quickstarts/create-deployment-single-device.png" alt-text="Mediagrafiek":::
+> :::image type="content" source="./media/quickstarts/create-deployment-single-device.png" alt-text="Implementatie voor één apparaat maken":::
 
 Als dit uw eerste zelfstudie met Live Video Analytics in IoT Edge is, wordt u in Visual Studio Code gevraagd om de IoTHub-verbindingsreeks in te voeren. U kunt deze kopiëren uit het bestand appsettings.json.
 
@@ -158,7 +174,7 @@ Nu is de implementatie van Edge-modules op uw IoT Edge-apparaat gestart.
 Vernieuw Azure IoT Hub, over ongeveer 30 seconden, in de sectie linksonder in Visual Studio Code. U ziet dat er vier modules zijn geïmplementeerd, genaamd lvaEdge, rtspsim, yolov3 en objectCounter.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/event-based-video-recording-tutorial/iot-hub.png" alt-text="Mediagrafiek":::
+> :::image type="content" source="./media/event-based-video-recording-tutorial/iot-hub.png" alt-text="Vier modules geïmplementeerd":::
 
 ## <a name="prepare-for-monitoring-events"></a>Bewakingsgebeurtenissen voorbereiden
 
@@ -169,7 +185,7 @@ Volg deze stappen om de gebeurtenissen van de objectCounter-module en van de Liv
 1. Klik met de rechtermuisknop op Iva-sample-device en selecteer **Bewaking van ingebouwd gebeurteniseindpunt starten**.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/quickstarts/start-monitoring-iothub-events.png" alt-text="Mediagrafiek":::
+    > :::image type="content" source="./media/quickstarts/start-monitoring-iothub-events.png" alt-text="Bewaking van ingebouwd gebeurteniseindpunt starten":::
     
 ## <a name="run-the-program"></a>Het programma uitvoeren
 
@@ -177,11 +193,60 @@ Volg deze stappen om de gebeurtenissen van de objectCounter-module en van de Liv
 1. Klik met de rechtermuisknop en selecteer **Extensie-instellingen**.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Mediagrafiek":::
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Extensie-instellingen":::
 1. Zoek 'Uitgebreid bericht tonen' en schakel deze optie in.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Mediagrafiek"
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Uitgebreid bericht tonen":::
+1. <!--In Visual Studio Code, go-->Navigeer naar src/cloud-to-device-console-app/operations.json.
+1. Bewerk onder het knooppunt **GraphTopologySet** het volgende:
+
+    `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/evr-hubMessage-assets/topology.json"`
+    
+1. Bewerk vervolgens onder de knooppunten **GraphInstanceSet** en **GraphTopologyDelete** :
+
+    `"topologyName" : "EVRtoAssetsOnObjDetect"`
+1. Start een foutopsporingssessie door F5 te selecteren. In het **TERMINAL** -venster ziet u enkele berichten verschijnen.
+1. Het bestand operations.json begint met het uitvoeren van aanroepen naar GraphTopologyList en GraphInstanceList. Als u resources hebt opgeschoond na vorige quickstarts of zelfstudies, worden met deze actie lege lijsten geretourneerd en wordt er gepauzeerd zodat u op **ENTER** kunt drukken, zoals hieronder:
+
+    ```
+    --------------------------------------------------------------------------
+    Executing operation GraphTopologyList
+    -----------------------  Request: GraphTopologyList  --------------------------------------------------
+    {
+      "@apiVersion": "1.0"
+    }
+    ---------------  Response: GraphTopologyList - Status: 200  ---------------
+    {
+      "value": []
+    }
+    --------------------------------------------------------------------------
+    Executing operation WaitForInput
+    Press Enter to continue
+    ```
+1. Wanneer u **Enter** selecteert in het **TERMINAL** -venster, wordt de volgende set met aanroepen met de directe methode gemaakt:
+   * Een aanroep van GraphTopologySet met behulp van de vorige topologyUrl
+   * Een aanroep van GraphInstanceSet met behulp van de volgende hoofdtekst
+     
+        ```
+        {
+          "@apiVersion": "1.0",
+          "name": "Sample-Graph-1",
+          "properties": {
+            "topologyName": "EVRtoAssetsOnObjDetect",
+            "description": "Sample graph description",
+            "parameters": [
+              {
+                "name": "rtspUrl",
+                "value": "rtsp://rtspsim:554/media/camera-300s.mkv"
+              },
+              {
+                "name": "rtspUserName",
+                "value": "testuser"
+              },
+              {
+                "name": "rtspPassword",
+                "value": "testpassword"
               }
             ]
           }
@@ -191,11 +256,11 @@ Volg deze stappen om de gebeurtenissen van de objectCounter-module en van de Liv
    * Een aanroep van GraphInstanceActivate om het grafiekexemplaar te starten en de videostream te starten
    * Een tweede aanroep van GraphInstanceList om aan te geven dat het grafiekexemplaar actief is
      
-1. De uitvoer in het **TERMINAL**-venster wordt nu onderbroken met de prompt **Druk op ENTER** om door te gaan. Klik nog niet op **Enter**. Schuif omhoog om de nettoladingen voor het JSON-antwoord te zien voor de directe methoden die u hebt aangeroepen.
-1. Als u nu overschakelt naar het **UITVOER**-venster in Visual Studio Code, worden berichten die worden verzonden naar de IoT Hub, weergegeven door de Live Video Analytics in IoT Edge-module.
+1. De uitvoer in het **TERMINAL** -venster wordt nu onderbroken met de prompt **Druk op ENTER** om door te gaan. Klik nog niet op **Enter**. Schuif omhoog om de nettoladingen voor het JSON-antwoord te zien voor de directe methoden die u hebt aangeroepen.
+1. Als u nu overschakelt naar het **UITVOER** -venster in Visual Studio Code, worden berichten die worden verzonden naar de IoT Hub, weergegeven door de Live Video Analytics in IoT Edge-module.
 
    Deze berichten worden beschreven in de volgende sectie.
-1. Het grafiekexemplaar blijft de video uitvoeren en opnemen. Via de RTSP-simulator wordt de bronvideo continu herhaald. Bekijk de berichten zoals wordt beschreven in de volgende sectie. Ga vervolgens, om de opname te stoppen, terug naar het **TERMINAL**-venster en klik op **Enter**. De volgende reeks aanroepen wordt gedaan om resources op te schonen:
+1. Het grafiekexemplaar blijft de video uitvoeren en opnemen. Via de RTSP-simulator wordt de bronvideo continu herhaald. Bekijk de berichten zoals wordt beschreven in de volgende sectie. Ga vervolgens, om de opname te stoppen, terug naar het **TERMINAL** -venster en klik op **Enter**. De volgende reeks aanroepen wordt gedaan om resources op te schonen:
 
    * Een aanroep van GraphInstanceDeactivate om het grafiekexemplaar te deactiveren.
    * Een aanroep van GraphInstanceDelete om het exemplaar te verwijderen.
@@ -204,7 +269,7 @@ Volg deze stappen om de gebeurtenissen van de objectCounter-module en van de Liv
 
 ## <a name="interpret-the-results"></a>De resultaten interpreteren 
 
-Bij het uitvoeren van de mediagrafiek stuurt de Live Video Analytics in IoT Edge-module bepaalde diagnostische en operationele gebeurtenissen naar de IoT Edge-hub. Deze gebeurtenissen zijn de berichten die u ziet in het **UITVOER**-venster van Visual Studio Code. Deze bevatten een hoofdtekstsectie en een sectie applicationProperties. Zie [IoT Hub-berichten maken en lezen](../../iot-hub/iot-hub-devguide-messages-construct.md)als u wilt weten wat deze secties inhouden.
+Bij het uitvoeren van de mediagrafiek stuurt de Live Video Analytics in IoT Edge-module bepaalde diagnostische en operationele gebeurtenissen naar de IoT Edge-hub. Deze gebeurtenissen zijn de berichten die u ziet in het **UITVOER** -venster van Visual Studio Code. Deze bevatten een hoofdtekstsectie en een sectie applicationProperties. Zie [IoT Hub-berichten maken en lezen](../../iot-hub/iot-hub-devguide-messages-construct.md)als u wilt weten wat deze secties inhouden.
 
 In de volgende berichten worden de eigenschappen van de toepassing en de inhoud van de hoofdtekst door de module Live Video Analytics bepaald.
 
@@ -333,16 +398,16 @@ U kunt de Media Services-asset die met de grafiek is gemaakt, controleren door u
 
 1. Open uw webbrowser en ga naar de [Azure-portal](https://portal.azure.com/). Voer uw referenties in om u aan te melden bij de portal. De standaardweergave is uw service-dashboard.
 1. Zoek uw Media Services-account op tussen de resources in uw abonnement. Open het deelvenster Account.
-1. Selecteer **Assets** in de **Media Services**-lijst.
+1. Selecteer **Assets** in de **Media Services** -lijst.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/continuous-video-recording-tutorial/assets.png" alt-text="Mediagrafiek":::
+    > :::image type="content" source="./media/continuous-video-recording-tutorial/assets.png" alt-text="Continue video-opname":::
 1. U vindt een asset in de lijst met de naam sampleAssetFromEVR-LVAEdge-{DateTime}. Dit is de naam die is opgegeven in de eigenschap outputLocation van de gebeurtenis RecordingStarted. De assetNamePattern in de topologie bepaalt hoe deze naam wordt gegenereerd.
 1. Selecteer de asset.
 1. Klik op de pagina met assetdetails op **Nieuwe maken** onder het tekstvak **Streaming-URL**.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/continuous-video-recording-tutorial/new-asset.png" alt-text="Mediagrafiek":::
+    > :::image type="content" source="./media/continuous-video-recording-tutorial/new-asset.png" alt-text="Nieuwe asset":::
 1. Accepteer in de wizard die wordt geopend, de standaardopties en klik op **Toevoegen**. Zie [video afspelen](video-playback-concept.md) voor meer informatie.
 
     > [!TIP]

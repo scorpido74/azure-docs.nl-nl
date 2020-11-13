@@ -130,6 +130,8 @@
             - name: Synapse Studio-verbindingsproblemen oplossen
               href: troubleshoot/troubleshoot-synapse-studio-powershell.md
               displayname: powershell
+            - name: Problemen met de connectiviteit tussen Synapse Studio en opslag oplossen
+              href: troubleshoot/troubleshoot-synapse-studio-and-storage-connectivity.md
     - name: Instructiegidsen
       items:
         - name: Beveiligen

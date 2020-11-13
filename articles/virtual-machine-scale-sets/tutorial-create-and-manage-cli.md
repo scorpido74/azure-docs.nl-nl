@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Een virtuele-Azure-machineschaalset maken en beheren - Azure CLI'
+title: 'Zelfstudie: Een virtuele-machineschaalset maken en beheren - Azure CLI'
 description: Ontdek hoe u met Azure CLI een schaalset voor virtuele Azure-machines maakt. Leer daarnaast hoe u enkele veelvoorkomende beheertaken uitvoert, zoals het starten en stoppen van een exemplaar of het wijzigen van de capaciteit van de schaalset.
 author: ju-shim
 ms.author: jushiman
@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: e7267ca90ea11e63c5523dec0a3ee414f7b655b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f94823b958ae5f95789dd4ef9a62057bdf764a8
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87501641"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517458"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Zelfstudie: Een virtuele-machineschaalset maken en beheren met Azure CLI
 Met een virtuele-machineschaalset kunt u een reeks identieke virtuele machines met automatisch schalen implementeren en beheren. Gedurende de levenscyclus van een schaalset voor virtuele machines moet u mogelijk een of meer beheertaken uitvoeren. In deze zelfstudie leert u het volgende:
@@ -26,11 +26,11 @@ Met een virtuele-machineschaalset kunt u een reeks identieke virtuele machines m
 > * Een schaalset handmatig schalen
 > * Algemene beheertaken voor schaalsets uitvoeren
 
-Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze zelfstudie Azure CLI 2.0.29 of hoger gebruiken. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren]( /cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren. 
+- Voor dit artikel is versie 2.0.29 of hoger van Azure CLI vereist. Als u Azure Cloud Shell gebruikt, is de nieuwste versie al geïnstalleerd. 
 
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
@@ -44,7 +44,7 @@ De naam van de resourcegroep moet worden opgegeven als u ergens in deze zelfstud
 
 
 ## <a name="create-a-scale-set"></a>Een schaalset maken
-U maakt een schaalset voor virtuele machines met [az vmss create](/cli/azure/vmss). Het volgende voorbeeld wordt een schaalset gemaakt met de naam *myScaleSet*, en worden SSH-sleutels gegenereerd als deze nog niet bestaan:
+U maakt een schaalset voor virtuele machines met [az vmss create](/cli/azure/vmss). Het volgende voorbeeld wordt een schaalset gemaakt met de naam *myScaleSet* , en worden SSH-sleutels gegenereerd als deze nog niet bestaan:
 
 ```azurecli-interactive
 az vmss create \
@@ -78,7 +78,7 @@ In de volgende voorbeelduitvoer ziet u dat de schaalset twee VM-exemplaren bevat
 ```
 
 
-De eerste kolom in de uitvoer bevat een *InstanceId*. Als u extra informatie wilt weergeven over een bepaald VM-exemplaar, voegt u de parameter `--instance-id` toe aan [az vmss get-instance-view](/cli/azure/vmss). In het volgende voorbeeld wordt informatie opgevraagd over het VM-exemplaar *1*:
+De eerste kolom in de uitvoer bevat een *InstanceId*. Als u extra informatie wilt weergeven over een bepaald VM-exemplaar, voegt u de parameter `--instance-id` toe aan [az vmss get-instance-view](/cli/azure/vmss). In het volgende voorbeeld wordt informatie opgevraagd over het VM-exemplaar *1* :
 
 ```azurecli-interactive
 az vmss get-instance-view \
@@ -146,7 +146,7 @@ WindowsServer  MicrosoftWindowsServer  2012-Datacenter     MicrosoftWindowsServe
 WindowsServer  MicrosoftWindowsServer  2008-R2-SP1         MicrosoftWindowsServer:WindowsServer:2008-R2-SP1:latest         Win2008R2SP1         latest
 ```
 
-Als u een volledige lijst wilt weergeven, voegt u het argument `--all` toe. De lijst met installatiekopieën kan ook worden gefilterd door `--publisher` of `–-offer`. In het volgende voorbeeld wordt de lijst gefilterd op alle installatiekopieën met een aanbieding die overeenkomt met *CentOS*:
+Als u een volledige lijst wilt weergeven, voegt u het argument `--all` toe. De lijst met installatiekopieën kan ook worden gefilterd door `--publisher` of `–-offer`. In het volgende voorbeeld wordt de lijst gefilterd op alle installatiekopieën met een aanbieding die overeenkomt met *CentOS* :
 
 ```azurecli-interactive
 az vm image list --offer CentOS --all --output table
@@ -183,7 +183,7 @@ az vmss create \
 
 
 ## <a name="understand-vm-instance-sizes"></a>VM-exemplaargrootten begrijpen
-De grootte van een VM-exemplaar, of *SKU*, bepaalt de hoeveelheid rekenresources, zoals CPU, GPU en geheugen die beschikbaar worden gesteld aan het VM-exemplaar. VM-exemplaren in een schaalset moeten de juiste grootte krijgen voor de verwachte werkbelasting.
+De grootte van een VM-exemplaar, of *SKU* , bepaalt de hoeveelheid rekenresources, zoals CPU, GPU en geheugen die beschikbaar worden gesteld aan het VM-exemplaar. VM-exemplaren in een schaalset moeten de juiste grootte krijgen voor de verwachte werkbelasting.
 
 ### <a name="vm-instance-sizes"></a>VM-exemplaargrootten
 In de volgende tabel worden enkele veelgebruikte VM-grootten gecategoriseerd naar gebruikssituatie.
@@ -239,7 +239,7 @@ az vmss create \
 ## <a name="change-the-capacity-of-a-scale-set"></a>De capaciteit van een schaalset wijzigen
 Toen u aan het begin van de zelfstudie een schaalset hebt gemaakt, zijn er standaard twee VM-exemplaren geïmplementeerd. U kunt de parameter `--instance-count` opgeven met [az vmss create](/cli/azure/vmss) om het aantal exemplaren te wijzigen dat wordt gemaakt met een schaalset. Als u het aantal VM-exemplaren in een bestaande schaalset wilt vergroten of verkleinen, kunt u de capaciteit handmatig wijzigen. De grootte van de schaalset wordt dan aangepast, waarna de load balancer wordt geconfigureerd voor het verdelen van het verkeer.
 
-Als u het aantal VM-exemplaren in de schaalset handmatig wilt vergroten of verkleinen, gebruikt u [az vmss scale](/cli/azure/vmss). In het volgende voorbeeld wordt het aantal VM-exemplaren in de schaalset ingesteld op *3*:
+Als u het aantal VM-exemplaren in de schaalset handmatig wilt vergroten of verkleinen, gebruikt u [az vmss scale](/cli/azure/vmss). In het volgende voorbeeld wordt het aantal VM-exemplaren in de schaalset ingesteld op *3* :
 
 ```azurecli-interactive
 az vmss scale \
@@ -248,7 +248,7 @@ az vmss scale \
     --new-capacity 3
 ```
 
-Het duurt een paar minuten om de capaciteit van de schaalset bij te werken. Als u het aantal instanties wilt weergeven dat zich momenteel in een schaalset bevindt, gebruikt u [az vmss show](/cli/azure/vmss) en voert u een query uit op *sku.capacity*:
+Het duurt een paar minuten om de capaciteit van de schaalset bij te werken. Als u het aantal instanties wilt weergeven dat zich momenteel in een schaalset bevindt, gebruikt u [az vmss show](/cli/azure/vmss) en voert u een query uit op *sku.capacity* :
 
 ```azurecli-interactive
 az vmss show \

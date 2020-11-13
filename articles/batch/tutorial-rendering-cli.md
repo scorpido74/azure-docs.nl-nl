@@ -4,12 +4,12 @@ description: 'Zelfstudie: Een Autodesk 3ds Max-scène renderen met Arnold met be
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 516f5a3f80f1252dbf63e3b254f0c7200de16e11
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 579a5446cb199bb73f98e2e1cbb0948f062470a8
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747056"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542385"
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>Zelfstudie: Een scène renderen met Azure Batch 
 
@@ -26,19 +26,21 @@ In deze zelfstudie rendert u een 3ds Max-scène met Batch met behulp van de ray-
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt een abonnement op basis van betalen-per-gebruik of een andere betaalde Azure-optie nodig om renderingtoepassingen in Batch te kunnen gebruiken op basis van betalen per gebruik. **Licenties op basis van betalen per gebruik worden niet ondersteund als u gebruikmaakt van een gratis Azure-aanbieding die een financieel tegoed biedt.**
+ - U hebt een abonnement op basis van betalen-per-gebruik of een andere betaalde Azure-optie nodig om renderingtoepassingen in Batch te kunnen gebruiken op basis van betalen per gebruik. **Licenties op basis van betalen per gebruik worden niet ondersteund als u gebruikmaakt van een gratis Azure-aanbieding die een financieel tegoed biedt.**
 
-De 3ds Max-voorbeeldscène voor deze zelfstudie staat op [GitHub](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/batch/render-scene), samen met een Bash-voorbeeldscript en JSON-configuratiebestanden. De 3ds Max-scène is afkomstig uit de [voorbeeldbestanden van Autodesk 3ds Max](https://download.autodesk.com/us/support/files/3dsmax_sample_files/2017/Autodesk_3ds_Max_2017_English_Win_Samples_Files.exe). (Autodesk 3ds Max-voorbeeldbestanden zijn beschikbaar onder de Creative Commons-licentie Naamsvermelding-NietCommercieel-GelijkDelen. Copyright &copy; Autodesk, Inc.)
+ - De 3ds Max-voorbeeldscène voor deze zelfstudie staat op [GitHub](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/batch/render-scene), samen met een Bash-voorbeeldscript en JSON-configuratiebestanden. De 3ds Max-scène is afkomstig uit de [voorbeeldbestanden van Autodesk 3ds Max](https://download.autodesk.com/us/support/files/3dsmax_sample_files/2017/Autodesk_3ds_Max_2017_English_Win_Samples_Files.exe). (Autodesk 3ds Max-voorbeeldbestanden zijn beschikbaar onder de Creative Commons-licentie Naamsvermelding-NietCommercieel-GelijkDelen. Copyright &copy; Autodesk, Inc.)
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze zelfstudie Azure CLI 2.0.20 of later uitvoeren. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
+- Voor deze zelfstudie is versie 2.0.20 of hoger van Azure CLI vereist. Als u Azure Cloud Shell gebruikt, is de nieuwste versie al geïnstalleerd.
 
+> [!TIP]
+> U kunt [Arnold-taaksjablonen](https://github.com/Azure/batch-extension-templates/tree/master/templates/arnold/render-windows-frames) weergeven in de GitHub-opslagplaats met Azure Batch-extensiesjablonen.
 ## <a name="create-a-batch-account"></a>Batch-account maken
 
 Als u dat nog niet hebt gedaan, maakt u een resourcegroep, een Batch-account en een gekoppeld opslagaccount in uw abonnement. 
 
-Een resourcegroep maken met de opdracht [az group create](/cli/azure/group#az-group-create). In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *eastus2* .
+Een resourcegroep maken met de opdracht [az group create](/cli/azure/group#az-group-create). In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *eastus2*.
 
 ```azurecli-interactive 
 az group create \
@@ -286,7 +288,7 @@ Deze wijziging duurt enkele minuten. Tijdens dit proces stelt u de volgende take
 
 ## <a name="render-a-multiframe-scene"></a>Een scène met meerdere frames renderen
 
-Net als in het voorbeeld met één frame gebruikt u de opdracht [az batch task create](/cli/azure/batch/task#az-batch-task-create) om renderingtaken te maken in de taak genaamd *myrenderjob* . Hier geeft u de taakinstellingen op in een JSON-bestand genaamd *myrendertask_multi.json* . (U kunt het bestand downloaden van [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-cli-python-samples/master/batch/render-scene/json/myrendertask_multi.json).) Elk van de zes taken geeft een Arnold-opdrachtregel op om één frame van de 3ds Max-scène *MotionBlur DragonFlying.max* te renderen.
+Net als in het voorbeeld met één frame gebruikt u de opdracht [az batch task create](/cli/azure/batch/task#az-batch-task-create) om renderingtaken te maken in de taak genaamd *myrenderjob*. Hier geeft u de taakinstellingen op in een JSON-bestand genaamd *myrendertask_multi.json*. (U kunt het bestand downloaden van [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-cli-python-samples/master/batch/render-scene/json/myrendertask_multi.json).) Elk van de zes taken geeft een Arnold-opdrachtregel op om één frame van de 3ds Max-scène *MotionBlur DragonFlying.max* te renderen.
 
 Maak een bestand in uw huidige shell met de naam *myrendertask_multi.json* en kopieer en plak de inhoud uit het gedownloade bestand. Wijzig de elementen `blobSource` en `containerURL` in het JSON-bestand, zodat ze de naam van uw opslagaccount en uw SAS-token bevatten. Let erop dat u de instellingen voor elk van de zes taken wijzigt. Sla het bestand op en voer de volgende opdracht uit om de taken in de wachtrij te plaatsen:
 

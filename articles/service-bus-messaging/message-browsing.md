@@ -1,32 +1,30 @@
 ---
 title: Azure Service Bus-bericht bladeren
-description: Met Service Bus berichten bladeren en bekijken kunnen een Azure Service Bus-client alle berichten opsommen die zich in een wachtrij of abonnement bevinden.
+description: Met Service Bus berichten bladeren en bekijken kunnen een Azure Service Bus-client alle berichten in een wachtrij of abonnement opsommen.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 6e50fc737f6c81c07854ff07d8cc64061306749b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/11/2020
+ms.openlocfilehash: c52c9c967d4eada1a931e188ed4d25f7691cfb91
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91827437"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94553638"
 ---
 # <a name="message-browsing"></a>Berichten doorzoeken
 
-Door een bericht te bladeren of te bekijken, kan een Service Bus-client alle berichten opsommen die zich in een wachtrij of abonnement bevinden, meestal voor diagnose-en fout opsporing.
+Door een bericht te bladeren of weer te geven, kan een Service Bus-client alle berichten in een wachtrij of een abonnement opsommen voor diagnose-en fout opsporing.
 
-Met de bewerking Peek worden alle berichten geretourneerd die bestaan in het wachtrij-of abonnements berichten logboek, niet alleen die beschikbaar zijn voor direct ophalen met `Receive()` of de `OnMessage()` lus. De `State` eigenschap van elk bericht vertelt u of het bericht actief is (dat kan worden ontvangen), [uitgesteld](message-deferral.md)of [gepland](message-sequencing.md).
+De bewerking Peek op basis van een wachtrij retourneert alle berichten in de wachtrij, niet alleen de items die beschikbaar zijn voor direct ophalen met `Receive()` of de `OnMessage()` lus. De `State` eigenschap van elk bericht vertelt u of het bericht actief is (dat kan worden ontvangen), [uitgesteld](message-deferral.md)of [gepland](message-sequencing.md). De bewerking voor het weer geven van een abonnement retourneert alle berichten behalve geplande berichten in het logboek voor abonnements berichten. 
 
-Verbruikte en verlopen berichten worden opgeschoond door een asynchrone ' garbagecollection ' en niet noodzakelijkerwijs precies wanneer berichten verlopen en daarom `Peek` is het mogelijk om berichten te retour neren die al verlopen zijn en worden verwijderd of onbestelbaar wanneer een receive-bewerking vervolgens wordt aangeroepen voor de wachtrij of het abonnement.
+Verbruikte en verlopen berichten worden opgeschoond door een asynchrone garbagecollection-bewerking uit te voeren. Deze stap is mogelijk niet onmiddellijk na het verlopen van berichten. Daarom `Peek` kunnen berichten die al verlopen zijn, worden geretourneerd. Deze berichten worden verwijderd of onbestelbaar wanneer een receive-bewerking de volgende keer wordt aangeroepen voor de wachtrij of het abonnement. Houd rekening met dit gedrag bij het herstellen van uitgestelde berichten uit de wachtrij. Een verlopen bericht is niet langer in aanmerking komen voor regel matige ophaal acties, zelfs wanneer dit wordt geretourneerd door Peek. Als u deze berichten retourneert, is het ontwerp als Peek een diagnostisch hulp programma dat de huidige status van het logboek weergeeft.
 
-Dit is vooral belang rijk bij het herstellen van uitgestelde berichten uit de wachtrij. Een bericht waarvoor de [ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc#Microsoft_Azure_ServiceBus_Message_ExpiresAtUtc) direct is door gegeven, komt niet meer in aanmerking voor regel matige ophaal acties op een andere manier, zelfs wanneer dit wordt geretourneerd door Peek. Het retour neren van deze berichten is opzettelijk, omdat Peek een diagnostisch hulp programma is dat de huidige status van het logboek weergeeft.
-
-PEEK retourneert ook berichten die zijn vergrendeld en die momenteel worden verwerkt door andere ontvangers, maar die nog niet zijn voltooid. Omdat Peek echter een niet-verbonden moment opname retourneert, kan de vergrendelings status van een bericht niet worden waargenomen op getoonde berichten. de eigenschappen [LockedUntilUtc](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.lockeduntilutc) en [LockToken](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.locktoken#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_LockToken) genereren een [InvalidOperationException](/dotnet/api/system.invalidoperationexception) wanneer de toepassing deze probeert te lezen.
+PEEK retourneert ook berichten die zijn vergrendeld en die momenteel worden verwerkt door andere ontvangers. Omdat Peek echter een niet-verbonden moment opname retourneert, kan de vergrendelings status van een bericht niet worden waargenomen op getoonde berichten. De eigenschappen [LockedUntilUtc](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.lockeduntilutc) en [LockToken](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.locktoken#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_LockToken) genereren een [InvalidOperationException](/dotnet/api/system.invalidoperationexception) wanneer de toepassing deze probeert te lezen.
 
 ## <a name="peek-apis"></a>Api's bekijken
 
-De methoden [Peek/PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_PeekAsync) en [PeekBatch/PeekBatchAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatchasync#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatchAsync_System_Int64_System_Int32_) bestaan in alle .net-en Java-client bibliotheken en op alle receiver-objecten: **MessageReceiver**, **MessageSession**. Peek werkt op alle wacht rijen en abonnementen en de bijbehorende wacht rijen voor onbestelbare berichten.
+De methoden [Peek/PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_PeekAsync) en [PeekBatch/PeekBatchAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatchasync#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatchAsync_System_Int64_System_Int32_) bestaan in .net-en Java-client bibliotheken en op receiver-objecten: **MessageReceiver** , **MessageSession**. Peek werkt op wacht rijen, abonnementen en hun respectieve wacht rijen voor onbestelbare berichten.
 
-Wanneer herhaaldelijk wordt aangeroepen, worden alle berichten die in de wachtrij of het logboek voor het abonnement aanwezig zijn, in volg orde van Volg nummers opgesomd van het laagste beschik bare Volg nummer tot het hoogste niveau. Dit is de volg orde waarin berichten in wachtrij worden gezet en niet de volg orde waarin berichten uiteindelijk kunnen worden opgehaald.
+Wanneer herhaaldelijk wordt aangeroepen **, worden alle** berichten in de wachtrij of het abonnements logboek genummerd, in volg orde van het laagste beschik bare Volg nummer tot het hoogste niveau. Het is de volg orde waarin berichten in wachtrij worden gezet, niet in de volg orde waarin berichten uiteindelijk kunnen worden opgehaald.
 
 [PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatch_System_Int32_) haalt meerdere berichten op en retourneert deze als een opsomming. Als er geen berichten beschikbaar zijn, is het opsommings object leeg, niet null.
 

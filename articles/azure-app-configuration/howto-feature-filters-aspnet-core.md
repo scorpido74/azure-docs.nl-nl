@@ -1,30 +1,31 @@
 ---
-title: Functie filters gebruiken om een functie in te scha kelen voor een subset van gebruikers
+title: Functie filters gebruiken om voorwaardelijke functie vlaggen in te scha kelen
 titleSuffix: Azure App Configuration
-description: Meer informatie over het gebruik van functie filters om een functie in te scha kelen voor een subset van gebruikers
+description: Meer informatie over het gebruik van functie filters om voorwaardelijke functie vlaggen in te scha kelen
 ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 author: lisaguthrie
 ms.author: lcozzens
 ms.topic: conceptual
 ms.date: 3/9/2020
-ms.openlocfilehash: 5b2eb942581f6e4163012b0f767d04c02689bb7b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af8df66e02dc9316311f36dec60374a7c4e649b8
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88206774"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94554750"
 ---
-# <a name="use-feature-filters-to-enable-a-feature-for-a-subset-of-users"></a>Functie filters gebruiken om een functie in te scha kelen voor een subset van gebruikers
+# <a name="use-feature-filters-to-enable-conditional-feature-flags"></a>Functie filters gebruiken om voorwaardelijke functie vlaggen in te scha kelen
 
 Met functie vlaggen kunt u de functionaliteit in uw toepassing activeren of deactiveren. Een eenvoudige functie vlag is in-of uitgeschakeld. De toepassing gedraagt zich altijd op dezelfde manier. U kunt bijvoorbeeld een nieuwe functie achter een functie vlag implementeren. Wanneer de functie vlag is ingeschakeld, zien alle gebruikers de nieuwe functie. Als u de functie vlag uitschakelt, wordt de nieuwe functie verborgen.
 
 Als u daarentegen een _vlag voor voorwaardelijke functies_ gebruikt, kan de functie vlag dynamisch worden in-of uitgeschakeld. De toepassing kan zich anders gedragen, afhankelijk van de criteria van de functie vlag. Stel dat u de nieuwe functie wilt weer geven in een kleine subset van gebruikers op het eerst. Met een vlag voor voorwaardelijke functies kunt u de functie vlag voor sommige gebruikers inschakelen en uitschakelen voor anderen. _Functie filters_ bepalen de status van de functie vlag elke keer dat deze wordt geëvalueerd.
 
-De `Microsoft.FeatureManagement` bibliotheek bevat twee functie filters:
+De `Microsoft.FeatureManagement` bibliotheek bevat drie functie filters:
 
 - `PercentageFilter` Hiermee schakelt u de functie vlag in op basis van een percentage.
 - `TimeWindowFilter` Hiermee schakelt u de functie vlag in gedurende een opgegeven periode.
+- `TargetingFilter` Hiermee schakelt u de functie vlag in voor opgegeven gebruikers en groepen.
 
 U kunt ook uw eigen functie filter maken waarmee de [Interface micro soft. FeatureManagement. IFeatureFilter wordt](/dotnet/api/microsoft.featuremanagement.ifeaturefilter)geïmplementeerd.
 
@@ -55,9 +56,9 @@ U kunt deze instellingen configureren voor functie vlaggen die zijn gedefinieerd
     > [!div class="mx-imgBorder"]
     > ![Bèta-functie vlag bewerken](./media/edit-beta-feature-flag.png)
 
-1. Selecteer in het **bewerkings** scherm **het keuze** rondje als dit nog niet is geselecteerd. Klik vervolgens op de knop **filter toevoegen** . (Het label **op** de radio knop wordt gewijzigd in **voorwaardelijke**tekst lezen.)
+1. Selecteer in het **bewerkings** scherm **het keuze** rondje als dit nog niet is geselecteerd. Klik vervolgens op de knop **filter toevoegen** . (Het label **op** de radio knop wordt gewijzigd in **voorwaardelijke** tekst lezen.)
 
-1. Voer *micro soft. percentage*in het veld **sleutel** in.
+1. Voer *micro soft. percentage* in het veld **sleutel** in.
 
     > [!div class="mx-imgBorder"]
     > ![Functie filter toevoegen](./media/feature-flag-add-filter.png)
@@ -84,9 +85,9 @@ U kunt deze instellingen configureren voor functie vlaggen die zijn gedefinieerd
 Als u de effecten van deze functie vlag wilt zien, start u de toepassing en klikt u op de knop **vernieuwen** in uw browser meerdere keren. U ziet dat het *bèta* -item ongeveer 50% van de tijd op de werk balk wordt weer gegeven. Het is de rest van de tijd verborgen, omdat de `PercentageFilter` *bèta* functie wordt gedeactiveerd voor een subset van aanvragen. In de volgende video ziet u dit gedrag in actie.
 
 > [!div class="mx-imgBorder"]
-> ![PercentageFilter in actie](./media/feature-flags-percentagefilter.gif)
+> ![TargetingFilter in actie](./media/feature-flags-percentagefilter.gif)
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Overzicht van functie beheer](./concept-feature-management.md)
+> [Gefaseerde implementatie van functies voor doel groepen inschakelen](./howto-targetingfilter-aspnet-core.md)

@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 03/18/2019
 ms.author: rogarana
-ms.openlocfilehash: 10599b47d55a0b4ea1eb79cda3c31a2479efb7c0
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: ffb07220267a2c192b4aad2405185c80bd9abbc0
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92756008"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94523720"
 ---
 U kunt een aantal gegevensschijven koppelen aan een virtuele Azure-machine. Op basis van schaalbaarheid- en prestatiedoelen voor de gegevensschijven van een VM kunt u het aantal en type schijven bepalen dat u nodig hebt om aan uw prestatie- en capaciteitsvereisten te voldoen.
 
@@ -31,7 +31,7 @@ In de volgende tabel ziet u de standaard- en maximumlimieten van het aantal reso
 
 **Voor Standard-opslagaccounts:** Een standaardopslagaccount heeft een maximale totale aanvraagsnelheid van 20.000 IOP's. Het totale aantal IOP's van alle schijven van een virtuele machine in een standaardopslagaccount mag niet groter zijn dan deze limiet.
   
-    You can roughly calculate the number of highly utilized disks supported by a single Standard storage account based on the request rate limit. For example, for a Basic tier VM, the maximum number of highly utilized disks is about 66, which is 20,000/300 IOPS per disk. The maximum number of highly utilized disks for a Standard tier VM is about 40, which is 20,000/500 IOPS per disk. 
+U kunt het aantal intensief gebruikte schijven dat binnen één standaardopslagaccount wordt ondersteund, ruwweg berekenen op basis van de limiet voor het aantal aanvragen. Voor bijvoorbeeld een VM in de Basic-laag is het maximumaantal hoog gebruikte schrijven ongeveer 66, wat neerkomt op 20.000/300 IOPS per schijf. Het maximumaantal hoog gebruikte schijven voor een Standard-VM is ongeveer 40, wat neerkomt op 20.000/500 IOPS per schijf. 
 
 **Voor Premium Storage-accounts:** Premium-opslagaccounts bieden een maximale totale doorvoersnelheid van 50 Gbps. De totale doorvoer op alle schijven in uw virtuele machine mag deze limiet niet overschrijden.
 

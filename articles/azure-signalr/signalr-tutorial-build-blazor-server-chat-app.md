@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jixin
-ms.openlocfilehash: d1c13c5d4bea8bfdb0f70e67ce8f264a1929b8a2
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 16fd15a5939cc6c268a80e88401f05042a206075
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150899"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94516812"
 ---
 # <a name="tutorial-build-a-blazor-server-chat-app"></a>Zelfstudie: Een Blazor Server-chat-app bouwen
 
@@ -96,7 +96,7 @@ Vanaf versie 16.2.0 van Visual Studio 2019 is Azure SignalR Service ingebouwd om
    dotnet add package Microsoft.AspNetCore.SignalR.Client --version 3.1.7
    ```
 
-1. Maak `ChartRoom.razor` onder de map `Pages` om de SignalR-client te implementeren. Voer de onderstaande stappen uit of kopieer gewoon [ChatRoom.razor](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/BlazorChat/Pages/ChatRoom.razor).
+1. Maak `ChatRoom.razor` onder de map `Pages` om de SignalR-client te implementeren. Voer de onderstaande stappen uit of kopieer gewoon [ChatRoom.razor](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/BlazorChat/Pages/ChatRoom.razor).
 
    1. Voeg een paginakoppeling en verwijzing toe.
       
@@ -285,7 +285,7 @@ Vanaf versie 16.2.0 van Visual Studio 2019 is Azure SignalR Service ingebouwd om
    </li>
    ```
    
-1. Werk `site.css` om de praatwolkweergaven in het chatgebied te optimaliseren. Voeg de volgende code toe aan het einde.
+1. Werk `site.css` bij om de praatwolkweergaven in het chatgebied te optimaliseren. Voeg de volgende code toe aan het einde.
 
    ```css
    /* improved for chat text box */

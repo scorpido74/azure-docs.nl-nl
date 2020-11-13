@@ -6,12 +6,12 @@ ms.author: lazinnat
 author: lazinnat
 ms.date: 06/20/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ace58bd3bb89f9e8545bf125f272e62c3a134061
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: f327749d1bdfb8cf2cba00cf4c5f68b4b2b77999
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91949809"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379550"
 ---
 # <a name="tutorial-create-managed-application-with-custom-actions-and-resources"></a>Zelfstudie: Een beheerde toepassing maken met aangepaste acties en resources
 
@@ -41,7 +41,7 @@ Voor het voltooien van deze zelfstudie moet u het volgende weten:
 
 In deze zelfstudie maakt u een beheerde toepassing. De bijbehorende beheerde resourcegroep bevat een aangepast providerexemplaar, een opslagaccount en een functie. Met de Azure-functie die in dit voorbeeld wordt gebruikt, wordt een API geïmplementeerd die voor acties en resources aangepaste providerbewerkingen verwerkt. Het Azure Storage-account wordt gebruikt als basisopslag voor de aangepaste providerresources.
 
-De definitie van de gebruikersinterface voor het maken van een exemplaar van een beheerde toepassing bevat de invoerelementen `funcname` en `storagename`. De naam van het opslagaccount en de functienaam moeten globaal uniek zijn. Standaard worden functiebestanden geïmplementeerd op basis van het [pakket met voorbeeldfuncties](https://github.com/Azure/azure-quickstart-templates/tree/master/101-custom-rp-with-function/artifacts/functionzip), maar u kunt dit wijzigen door een invoerelement voor een pakketkoppeling toe te voegen in *createUIDefinition.json*:
+De definitie van de gebruikersinterface voor het maken van een exemplaar van een beheerde toepassing bevat de invoerelementen `funcname` en `storagename`. De naam van het opslagaccount en de functienaam moeten globaal uniek zijn. Standaard worden functiebestanden geïmplementeerd op basis van het [pakket met voorbeeldfuncties](https://github.com/Azure/azure-quickstart-templates/tree/master/101-custom-rp-with-function/artifacts/functionzip). U kunt dit wijzigen door een invoerelement voor een pakketkoppeling toe te voegen in *createUiDefinition.json* :
 
 ```json
 {
@@ -74,7 +74,7 @@ De definitie van de gebruikersinterface voor het maken van een exemplaar van een
 }
 ```
 
-en een uitvoer in *createUIDefinition.json*:
+en een uitvoer in *createUiDefinition.json* :
 
 ```json
   "funcname": "[steps('applicationSettings').funcname]",
@@ -82,13 +82,13 @@ en een uitvoer in *createUIDefinition.json*:
   "zipFileBlobUri": "[steps('applicationSettings').zipFileBlobUri]"
 ```
 
-U kunt het volledige *createUIDefinition.json*-voorbeeld vinden op [Naslaginformatie: Artefacten voor gebruikersinterface-elementen](reference-createuidefinition-artifact.md).
+U kunt het volledige *createUiDefinition.json* -voorbeeld vinden op [Naslaginformatie: Artefacten voor gebruikersinterface-elementen](reference-createuidefinition-artifact.md).
 
 ## <a name="template-with-custom-provider"></a>Sjabloon met aangepaste provider
 
 Als u een exemplaar van een beheerde toepassing wilt maken met een aangepaste provider, moet u in uw **mainTemplate.json** een aangepaste providerresource definiëren met de naam **public** en het type **Microsoft.CustomProviders/resourceProviders**. In die resource definieert u de resourcetypen en acties voor uw service. Als u exemplaren van de Azure-functie en het Azure Storage-account wilt implementeren, moet u resources van het type `Microsoft.Web/sites` respectievelijk `Microsoft.Storage/storageAccounts` definiëren.
 
-In deze zelfstudie maakt u een resourcetype `users`, een aangepaste actie `ping` en een aangepaste actie `users/contextAction`, die worden uitgevoerd in een context van een aangepaste resource `users`. Voor elk resourcetype en elke actie geeft u een eindpunt op dat verwijst naar de functie met de naam die is opgegeven in [createUIDefinition.json](#user-interface-definition). Geef **routingType** op als `Proxy,Cache` voor resourcetypen en `Proxy` voor acties:
+In deze zelfstudie maakt u een resourcetype `users`, een aangepaste actie `ping` en een aangepaste actie `users/contextAction`, die worden uitgevoerd in een context van een aangepaste resource `users`. Voor elk resourcetype en elke actie geeft u een eindpunt op dat verwijst naar de functie met de naam die is opgegeven in [createUiDefinition.json](#user-interface-definition). Geef **routingType** op als `Proxy,Cache` voor resourcetypen en `Proxy` voor acties:
 
 ```json
 {
@@ -123,7 +123,7 @@ In deze zelfstudie maakt u een resourcetype `users`, een aangepaste actie `ping`
 }
 ```
 
-U kunt het volledige *mainTemplate.json*-voorbeeld vinden op [Naslaginformatie: Artefact implementatiesjabloon](reference-main-template-artifact.md).
+U kunt het volledige *mainTemplate.json* -voorbeeld vinden op [Naslaginformatie: Artefact implementatiesjabloon](reference-main-template-artifact.md).
 
 ## <a name="view-definition-artifact"></a>Definitie-artefact weergeven
 
@@ -175,7 +175,7 @@ Het onderstaande voorbeeld bevat de configuratie van de resourcespagina Gebruike
   }
 ```
 
-U kunt het volledige *viewDefinition.json*-voorbeeld vinden op [Naslaginformatie: Artefact weergavedefinitie](reference-view-definition-artifact.md).
+U kunt het volledige *viewDefinition.json* -voorbeeld vinden op [Naslaginformatie: Artefact weergavedefinitie](reference-view-definition-artifact.md).
 
 ## <a name="managed-application-definition"></a>Definitie van beheerde toepassingen
 
@@ -254,8 +254,8 @@ az managedapp definition create \
 
 3. Geef waarden op voor het maken van een servicecatalogusdefinitie:
 
-    * Geef een unieke **naam**, een **weergavenaam** en een *beschrijving* (optioneel) voor de servicecatalogusdefinitie op.
-    * Selecteer het **abonnement**, de **resourcegroep** en de **locatie** waar de toepassingsdefinitie moet worden gemaakt. U kunt dezelfde resourcegroep gebruiken die wordt gebruikt voor een zip-pakket of voor het maken van een nieuwe resourcegroep.
+    * Geef een unieke **naam** , een **weergavenaam** en een *beschrijving* (optioneel) voor de servicecatalogusdefinitie op.
+    * Selecteer het **abonnement** , de **resourcegroep** en de **locatie** waar de toepassingsdefinitie moet worden gemaakt. U kunt dezelfde resourcegroep gebruiken die wordt gebruikt voor een zip-pakket of voor het maken van een nieuwe resourcegroep.
     * Geef voor een **pakketbestand-URI** het pad op naar het zip-bestand dat u in de vorige stap hebt gemaakt.
 
     ![Waarden opgeven](./media/tutorial-create-managed-app-with-custom-provider/add-service-catalog-managed-application.png)
@@ -314,7 +314,7 @@ az managedapp create \
 
 4. Geef waarden op om een exemplaar van een beheerde toepassing te maken op basis van een servicecatalogusdefinitie:
 
-    * Selecteer het **abonnement**, de **resourcegroep** en de **locatie** waar het toepassingsexemplaar moet worden gemaakt.
+    * Selecteer het **abonnement** , de **resourcegroep** en de **locatie** waar het toepassingsexemplaar moet worden gemaakt.
     * Geef een unieke naam op voor de Azure-functie en het Azure Storage-account.
 
     ![Toepassingsinstellingen](./media/tutorial-create-managed-app-with-custom-provider/application-settings.png)
@@ -339,11 +339,11 @@ U kunt naar het exemplaar van de beheerde toepassing gaan en een **aangepaste ac
 
 * Ga naar de pagina Users en klik op de knop Add. Geef invoer voor het maken van een resource op en verzend het formulier:
 
-![Aangepaste resource maken](./media/tutorial-create-managed-app-with-custom-provider/create-custom-resource.png)
+![Schermopname van de knop Toevoegen die is geselecteerd bij Gebruikers.](./media/tutorial-create-managed-app-with-custom-provider/create-custom-resource.png)
 
 * Ga naar de pagina Users, selecteer een resource voor users en klik op Custom Context Action:
 
-![Aangepaste resource maken](./media/tutorial-create-managed-app-with-custom-provider/perform-custom-resource-action.png)
+![Schermopname van de optie Custom Context Action die is geselecteerd.](./media/tutorial-create-managed-app-with-custom-provider/perform-custom-resource-action.png)
 
 [!INCLUDE [clean-up-section-portal](../../../includes/clean-up-section-portal.md)]
 
