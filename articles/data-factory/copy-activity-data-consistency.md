@@ -11,23 +11,18 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 3/27/2020
 ms.author: yexu
-ms.openlocfilehash: 55db5cf62e2e4ba2844a47ad405afa88349dc8fd
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: e7c66518cd62ef1debd8ceb1c38ba93101c8395d
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92634909"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565650"
 ---
-#  <a name="data-consistency-verification-in-copy-activity-preview"></a>Verificatie van de gegevens consistentie in de Kopieer activiteit (preview-versie)
+#  <a name="data-consistency-verification-in-copy-activity"></a>Verificatie van de gegevens consistentie in de Kopieer activiteit
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Wanneer u gegevens van de bron naar het doel archief verplaatst, biedt Azure Data Factory Kopieer activiteit een optie waarmee u aanvullende gegevens consistentie verificatie kunt uitvoeren om ervoor te zorgen dat de gegevens niet alleen worden gekopieerd van de bron naar het doel archief, maar ook zijn geverifieerd om consistent te zijn tussen de bron-en doel opslag. Zodra er inconsistente bestanden zijn gevonden tijdens het verplaatsen van gegevens, kunt u de Kopieer activiteit afbreken of door gaan met het kopiëren van de rest door de instelling fout tolerantie in te scha kelen om inconsistente bestanden over te slaan. U kunt de overgeslagen bestands namen ophalen door de instelling voor sessie logboek in de Kopieer activiteit in te scha kelen. 
-
-> [!IMPORTANT]
-> Deze functie is momenteel in preview, met de volgende beperkingen waarmee we actief werken:
->- Wanneer u de instelling voor het sessie logboek inschakelt in de Kopieer activiteit om de inconsistente bestanden die worden overgeslagen, te registreren, kan de volledigheid van het logboek bestand niet 100% worden gegarandeerd als de Kopieer activiteit is mislukt.
->- Het sessie logboek bevat alleen inconsistente bestanden, waarbij de gekopieerde bestanden tot nu toe niet worden geregistreerd.
+Wanneer u gegevens van de bron naar het doel archief verplaatst, biedt Azure Data Factory Kopieer activiteit een optie waarmee u aanvullende gegevens consistentie verificatie kunt uitvoeren om ervoor te zorgen dat de gegevens niet alleen worden gekopieerd van de bron naar het doel archief, maar ook zijn geverifieerd om consistent te zijn tussen de bron-en doel opslag. Zodra er inconsistente bestanden zijn gevonden tijdens het verplaatsen van gegevens, kunt u de Kopieer activiteit afbreken of door gaan met het kopiëren van de rest door de instelling fout tolerantie in te scha kelen om inconsistente bestanden over te slaan. U kunt de overgeslagen bestands namen ophalen door de instelling voor sessie logboek in de Kopieer activiteit in te scha kelen. Raadpleeg het [sessie logboek in de Kopieer activiteit](copy-activity-log.md) voor meer informatie.
 
 ## <a name="supported-data-stores-and-scenarios"></a>Ondersteunde gegevens archieven en-scenario's
 
@@ -60,13 +55,19 @@ In het volgende voor beeld wordt een JSON-definitie geboden om de verificatie va
     "skipErrorFile": { 
         "dataInconsistency": true 
     }, 
-    "logStorageSettings": { 
-        "linkedServiceName": { 
-            "referenceName": "ADLSGen2_storage", 
-            "type": "LinkedServiceReference" 
-        }, 
-        "path": "/sessionlog/" 
-} 
+    "logSettings": {
+        "enableCopyActivityLog": true,
+        "copyActivityLogSettings": {
+            "logLevel": "Warning",
+            "enableReliableLogging": false
+        },
+        "logLocationSettings": {
+            "linkedServiceName": {
+                "referenceName": "ADLSGen2",
+               "type": "LinkedServiceReference"
+            }
+        }
+    }
 } 
 ```
 
@@ -74,7 +75,7 @@ Eigenschap | Beschrijving | Toegestane waarden | Vereist
 -------- | ----------- | -------------- | -------- 
 validateDataConsistency | Als u waar voor deze eigenschap instelt, worden bij het kopiëren van binaire bestanden de bestands grootte, de lastModifiedDate en de MD5-controlesom van de bron naar het doel archief gecontroleerd om de gegevens consistentie tussen het bron-en doel archief te controleren. Bij het kopiëren van tabellaire gegevens wordt het totale aantal rijen gecontroleerd nadat de taak is voltooid om ervoor te zorgen dat het totale aantal van de bron opgehaalde rij gelijk is aan het aantal rijen dat is gekopieerd naar de bestemming plus het aantal incompatibele rijen dat is overgeslagen. Houd er rekening mee dat de Kopieer prestaties worden beïnvloed door deze optie in te scha kelen.  | Waar<br/>False (standaard) | Nee
 dataInconsistency | Een van de sleutel-waardeparen in de skipErrorFile-eigenschappen verzameling om te bepalen of u de inconsistente bestanden wilt overs Laan. <br/> -True: u wilt de rest kopiëren door inconsistente bestanden over te slaan.<br/> -False: u wilt de Kopieer activiteit afbreken nadat het inconsistente bestand is gevonden.<br/>Houd er rekening mee dat deze eigenschap alleen geldig is wanneer u binaire bestanden kopieert en stel validateDataConsistency in op True.  | Waar<br/>False (standaard) | Nee
-logStorageSettings | Een groep eigenschappen die kan worden opgegeven om het sessie logboek in te scha kelen voor het registreren van bestanden die zijn overgeslagen. | | Nee
+logSettings | Een groep eigenschappen die kan worden opgegeven om het sessie logboek in te scha kelen voor het registreren van bestanden die zijn overgeslagen. | | Nee
 linkedServiceName | De gekoppelde service van [Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties) of [Azure data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) voor het opslaan van de sessie logboek bestanden. | De namen van een `AzureBlobStorage` of meer `AzureBlobFS` gekoppelde service, die verwijst naar het exemplaar dat u gebruikt om de logboek bestanden op te slaan. | Nee
 leertraject | Het pad van de logboek bestanden. | Geef het pad op waarin u de logboek bestanden wilt opslaan. Als u geen pad opgeeft, maakt de service een container voor u. | Nee
 
@@ -95,7 +96,7 @@ Nadat de Kopieer activiteit volledig is uitgevoerd, kunt u het resultaat van de 
             "filesWritten": 1, 
             "filesSkipped": 2, 
             "throughput": 297,
-            "logPath": "https://myblobstorage.blob.core.windows.net//myfolder/a84bf8d4-233f-4216-8cb5-45962831cd1b/",
+            "logFilePath": "myfolder/a84bf8d4-233f-4216-8cb5-45962831cd1b/",
             "dataConsistencyVerification": 
            { 
                 "VerificationResult": "Verified", 

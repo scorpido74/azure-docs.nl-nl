@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 8/12/2020
 ms.author: JenCook
-ms.openlocfilehash: 235f4eb236e144d41ffb9958b09dab0cf5c269b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b2c266d31a3aacc5bc97434de2246bfb1285a1ee
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462425"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565701"
 ---
 # <a name="how-to-run-an-application-with-fortanix-enclave-manager"></a>Procedure: een toepassing uitvoeren met Fortanix enclave Manager 
 
@@ -60,36 +60,36 @@ In deze zelf studie leert u hoe u de installatie kopie van uw toepassing kunt co
 
 6. In deze zelf studie gebruiken we het docker-REGI ster van Fortanix voor de voorbeeld toepassing. Vul de gegevens in op basis van de volgende gegevens. Gebruik uw persoonlijke docker-REGI ster om de uitvoer installatie kopie te bedenken. 
  
-    - **Toepassings naam**: python-toepassings server
-    - **Beschrijving**: python-fles server
-    - **Naam van de invoer installatie kopie**: fortanix/python-kolf
-    - **Naam van uitvoer installatie kopie**: fortanx-privé/python-kolf-SGX
-    - **ISVPRODID**: 1
-    - **ISVSVM**: 1
-    - **Geheugen grootte**: 1 GB
-    - **Aantal threads**: 128
+    - **Toepassings naam** : python-toepassings server
+    - **Beschrijving** : python-fles server
+    - **Naam van de invoer installatie kopie** : fortanix/python-kolf
+    - **Naam van uitvoer installatie kopie** : fortanx-privé/python-kolf-SGX
+    - **ISVPRODID** : 1
+    - **ISVSVM** : 1
+    - **Geheugen grootte** : 1 GB
+    - **Aantal threads** : 128
 
-    *Optioneel*: Voer de toepassing uit.
-    - **Docker-hub**: [https://hub.docker.com/u/fortanix](https://hub.docker.com/u/fortanix)
-    - **App**: fortanix/python-kolf
+    *Optioneel* : Voer de toepassing uit.
+    - **Docker-hub** : [https://hub.docker.com/u/fortanix](https://hub.docker.com/u/fortanix)
+    - **App** : fortanix/python-kolf
 
         Voer de volgende opdracht uit:
          ```bash
             sudo docker run fortanix/python-flask
          ```
 
-1. Voeg een certificaat toe. Vul de gegevens in met behulp van de onderstaande gegevens en selecteer **volgende**:
-    - **Domein**: Mijntoep. domain. dom
-    - **Type**: certificaat uitgegeven door enclave Manager 
+1. Voeg een certificaat toe. Vul de gegevens in met behulp van de onderstaande gegevens en selecteer **volgende** :
+    - **Domein** : Mijntoep. domain. dom
+    - **Type** : certificaat uitgegeven door enclave Manager 
     - **Sleutelpad:/appkey.pem**
-    - **Sleutel type**: RSA
-    - **Certificaatpad**:/appcert.pem
-    - **RSA-sleutel grootte**: 2048 bits
+    - **Sleutel type** : RSA
+    - **Certificaatpad** :/appcert.pem
+    - **RSA-sleutel grootte** : 2048 bits
     
 
 ## <a name="create-an-image"></a>Een installatie kopie maken
 Een Fortanix EM-installatie kopie is een software versie of-versie van een toepassing. Elke installatie kopie is gekoppeld aan één enclave-hash (MRENCLAVE). 
-1. Voer op de pagina **afbeelding toevoegen** de **register referenties** voor de **naam van de uitvoer installatie kopie**in. Deze referenties worden gebruikt om toegang te krijgen tot het privé-docker-REGI ster waarin de installatie kopie wordt gepusht. 
+1. Voer op de pagina **afbeelding toevoegen** de **register referenties** voor de **naam van de uitvoer installatie kopie** in. Deze referenties worden gebruikt om toegang te krijgen tot het privé-docker-REGI ster waarin de installatie kopie wordt gepusht. 
 
     ![installatie kopie maken](media/how-to-fortanix-enclave-manager/create-image.png)
 1. Geef de afbeeldings code op en selecteer **maken**.
@@ -115,12 +115,12 @@ Als u een Fortanix-knoop punt agent maakt, worden een virtuele machine, netwerk 
 1. Ga naar de [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/) en meld u aan met uw Azure-referenties.
 1. Typ in de zoek balk **Fortanix vertrouwelijk computing node agent**. Selecteer de app die wordt weer gegeven in het zoekvak met de naam **Fortanix vertrouwelijk computing node agent** om naar de start pagina van de aanbieding te navigeren. 
      ![Marketplace zoeken](media/how-to-fortanix-enclave-manager/search-fortanix-marketplace.png)
-1. Selecteer **nu downloaden**, Vul zo nodig uw gegevens in en selecteer **door gaan**. U wordt omgeleid naar de Azure Portal. 
+1. Selecteer **nu downloaden** , Vul zo nodig uw gegevens in en selecteer **door gaan**. U wordt omgeleid naar de Azure Portal. 
 1. Selecteer **maken** om de implementatie pagina van de Fortanix vertrouwelijk computing-knoop punt in te voeren.
 1. Op deze pagina voert u informatie in voor het implementeren van een virtuele machine. Deze VM is met name een DCsv2-Series Intel SGX-ingeschakelde virtuele machine van Azure met de Fortanix-knooppunt agent software geïnstalleerd. Met de knooppunt agent kan de geconverteerde afbeelding veilig worden uitgevoerd op Intel SGX-knoop punten in Azure.  Selecteer het **abonnement** en de **resource groep** waar u de virtuele machine en de bijbehorende resources wilt implementeren. 
  
     > [!NOTE]
-    > Er gelden beperkingen bij het implementeren van DCsv2-Series virtuele machines in Azure. Mogelijk moet u een quotum aanvragen voor extra kern geheugens. Lees meer informatie over de [oplossingen voor vertrouwelijke Computing op Azure-vm's](https://docs.microsoft.com/azure/confidential-computing/virtual-machine-solutions) . 
+    > Er gelden beperkingen bij het implementeren van DCsv2-Series virtuele machines in Azure. Mogelijk moet u een quotum aanvragen voor extra kern geheugens. Lees meer informatie over de [oplossingen voor vertrouwelijke Computing op Azure-vm's](./virtual-machine-solutions.md) . 
 
 1. Selecteer een beschikbare regio.
 1. Voer in het veld **knooppunt naam** een naam in voor de virtuele machine. 
@@ -174,4 +174,4 @@ In deze Snelstartgids hebt u Fortanix tool gebruikt om de installatie kopie van 
 
 Zie [overzicht van Azure vertrouwelijk computing](overview.md) voor meer informatie over de aanbiedingen van Azure vertrouwelijk computing
 
- Meer informatie over het uitvoeren van soort gelijke taken met andere aanbiedingen van derden op Azure, zoals [Anjuna](https://azuremarketplace.microsoft.com/marketplace/apps/anjuna-5229812.aee-az-v1) en [Scone](https://sconedocs.github.io).  
+ Meer informatie over het uitvoeren van soort gelijke taken met andere aanbiedingen van derden op Azure, zoals [Anjuna](https://azuremarketplace.microsoft.com/marketplace/apps/anjuna-5229812.aee-az-v1) en [Scone](https://sconedocs.github.io).

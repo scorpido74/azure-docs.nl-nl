@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: victorh
 ms.reviewer: tyao
-ms.openlocfilehash: a7ab7debffc8e88f385fbba6ae52af74ef98b25f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 479b1d8ed1f4238486bb78e33a6139463578dbba
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91266937"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94563304"
 ---
 # <a name="set-up-a-geo-filtering-waf-policy-for-your-front-door"></a>Een WAF-beleid voor geo-filtering instellen voor uw voor deur
 
@@ -25,9 +25,9 @@ Als u nog geen abonnement op Azure hebt, maak dan nu een [gratis account](https:
 
 Voordat u begint met het instellen van een beleid voor geofilters, stelt u uw PowerShell-omgeving in en maakt u een Front Door-profiel.
 ### <a name="set-up-your-powershell-environment"></a>Uw PowerShell-omgeving instellen
-Azure PowerShell voorziet in een set van cmdlets die gebruikmaken van het [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)-model om uw Azure-resources te beheren. 
+Azure PowerShell voorziet in een set van cmdlets die gebruikmaken van het [Azure Resource Manager](../../azure-resource-manager/management/overview.md)-model om uw Azure-resources te beheren. 
 
-U kunt [Azure PowerShell](https://docs.microsoft.com/powershell/azure/) op uw lokale computer installeren en in elke PowerShell-sessie gebruiken. Volg de instructies op de pagina om u aan te melden met uw Azure-referenties en Az PowerShell te installeren.
+U kunt [Azure PowerShell](/powershell/azure/) op uw lokale computer installeren en in elke PowerShell-sessie gebruiken. Volg de instructies op de pagina om u aan te melden met uw Azure-referenties en Az PowerShell te installeren.
 
 #### <a name="connect-to-azure-with-an-interactive-dialog-for-sign-in"></a>Verbinding maken met Azure met een interactief dialoog venster voor aanmelden
 

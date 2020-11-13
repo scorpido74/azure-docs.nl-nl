@@ -1,15 +1,15 @@
 ---
-title: Algemeen waarschuwings schema voor Azure monitor-waarschuwingen
+title: Algemeen waarschuwings schema voor waarschuwingen voor Azure Monitor
 description: Meer informatie over het algemene waarschuwings schema, waarom u het moet gebruiken en hoe u het kunt inschakelen
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: bb182f88a896be436e3981ff4e361010ee2655f6
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: aa619976c8fa03b925d66e884ad03fc4e385693e
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108827"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565599"
 ---
 # <a name="common-alert-schema"></a>Algemeen waarschuwingsschema
 
@@ -19,9 +19,9 @@ In dit artikel wordt beschreven wat het algemene waarschuwings schema is, wat de
 
 Het algemene waarschuwings schema standaardisert de verbruiks ervaring voor waarschuwings meldingen in azure vandaag. In het verleden hebben de drie waarschuwings typen in azure vandaag (metrische gegevens, logboeken en activiteiten Logboeken) hun eigen e-mail sjablonen, webhook-schema's, enzovoort. Met het algemene waarschuwings schema kunt u nu waarschuwings meldingen met een consistent schema ontvangen.
 
-Elk waarschuwings exemplaar beschrijft **de bron die is beïnvloed** en **de oorzaak van de waarschuwing**, en deze instanties worden beschreven in het algemene schema in de volgende secties:
-* **Essentials**: een set **gestandaardiseerde velden**, gemeen schappelijk voor alle waarschuwings typen, waarmee wordt beschreven in **welke resource** de waarschuwing zich bevindt, evenals aanvullende algemene meta gegevens voor waarschuwingen (bijvoorbeeld Ernst of beschrijving). 
-* **Waarschuwings context**: een set velden waarin de **oorzaak van de waarschuwing**wordt beschreven, met velden die variëren op **basis van het waarschuwings type**. Een metrische waarschuwing heeft bijvoorbeeld velden als de metrische naam en metrische waarde in de context van de waarschuwing, terwijl een waarschuwing in het activiteiten logboek informatie bevat over de gebeurtenis die de waarschuwing heeft gegenereerd. 
+Elk waarschuwings exemplaar beschrijft **de bron die is beïnvloed** en **de oorzaak van de waarschuwing** , en deze instanties worden beschreven in het algemene schema in de volgende secties:
+* **Essentials** : een set **gestandaardiseerde velden** , gemeen schappelijk voor alle waarschuwings typen, waarmee wordt beschreven in **welke resource** de waarschuwing zich bevindt, evenals aanvullende algemene meta gegevens voor waarschuwingen (bijvoorbeeld Ernst of beschrijving). 
+* **Waarschuwings context** : een set velden waarin de **oorzaak van de waarschuwing** wordt beschreven, met velden die variëren op **basis van het waarschuwings type**. Een metrische waarschuwing heeft bijvoorbeeld velden als de metrische naam en metrische waarde in de context van de waarschuwing, terwijl een waarschuwing in het activiteiten logboek informatie bevat over de gebeurtenis die de waarschuwing heeft gegenereerd. 
 
 De typische integratie scenario's die we horen van klanten, omvatten de route ring van het waarschuwings exemplaar naar het betreffende team op basis van een draai tabel (bijvoorbeeld resource groep), waarna het verantwoordelijke team aan het werk gaat. Met het gemeen schappelijke waarschuwings schema kunt u gestandaardiseerde routerings logica hebben in waarschuwings typen door gebruik te maken van de essentiële velden, waardoor de context velden niet worden gebruikt voor de betrokken teams om verder te onderzoeken.
 

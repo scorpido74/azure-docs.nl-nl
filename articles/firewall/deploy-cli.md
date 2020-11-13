@@ -7,12 +7,12 @@ ms.service: firewall
 ms.date: 08/29/2019
 ms.author: victorh
 ms.topic: how-to
-ms.openlocfilehash: 7f00b57edb37cc5bb5c8340663d619e526c2eacb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d7c6640b6634a017819735b9d0f7b906f8dc91d0
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89075423"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565871"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-azure-cli"></a>Azure Firewall implementeren en configureren met behulp van Azure CLI
 
@@ -44,22 +44,11 @@ In dit artikel leert u het volgende:
 
 Als u wilt, kunt u deze procedure volt ooien met behulp van de [Azure Portal](tutorial-firewall-deploy-portal.md) of [Azure PowerShell](deploy-ps.md).
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-## <a name="prerequisites"></a>Vereisten
-
-### <a name="azure-cli"></a>Azure CLI
-
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, hebt u Azure CLI versie 2.0.4 of hoger nodig. Voer **AZ--version**uit om de versie te vinden. Zie [Azure CLI installeren]( /cli/azure/install-azure-cli) voor meer informatie over installeren en upgraden.
-
-Installeer de Azure Firewall extensie:
-
-```azurecli-interactive
-az extension add -n azure-firewall
-```
-
+- Voor dit artikel is versie 2.0.4 of hoger van de Azure CLI vereist. Als u Azure Cloud Shell gebruikt, is de nieuwste versie al geïnstalleerd.
 
 ## <a name="set-up-the-network"></a>Het netwerk instellen
 
@@ -264,7 +253,7 @@ Test nu de firewall om te controleren of deze werkt zoals verwacht.
 
 1. Verbind een extern bureaublad met de virtuele machine **Srv-Jump** en meld u aan. Open vanaf daar een verbinding met een extern bureau blad met het privé-IP-adres van **SRV-werk** en meld u aan.
 
-3. Open op **SRV**een Power shell-venster en voer de volgende opdrachten uit:
+3. Open op **SRV** een Power shell-venster en voer de volgende opdrachten uit:
 
    ```
    nslookup www.google.com

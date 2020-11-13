@@ -13,19 +13,17 @@ ms.date: 03/31/2020
 ms.author: marsma
 ms.reviewer: hahamil
 ms.custom: aaddev, identitypla | Azuretformtop40
-ms.openlocfilehash: c1bf6b33176bf7942fbd76fa86ecd61b4f24e154
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: fc32b4f583aea2fa9a34ab8b235f3f99fe4def9d
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92366000"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94562165"
 ---
 # <a name="shared-device-mode-for-android-devices"></a>Modus voor gedeeld apparaat voor Android-apparaten
 
-> [!NOTE]
-> Deze functie is beschikbaar voor openbare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
-> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+>[!IMPORTANT]
+> Deze functie [!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
 
 Firstline-werk rollen, zoals Retail Associates, leden van de vliegtuig bemanning en mede werkers van de Field service gebruiken vaak een gedeeld mobiel apparaat om hun werk uit te voeren. Dit wordt problematisch wanneer ze beginnen met het delen van wacht woorden of pincodes om toegang te krijgen tot klant-en bedrijfs gegevens op het gedeelde apparaat.
 
@@ -36,7 +34,7 @@ De modus gedeeld apparaat biedt ook micro soft-identiteits beheer van het appara
 Als u een app voor gedeelde apparaten wilt maken, werken ontwikkel aars en beheerders van Cloud apparaten samen:
 
 - Ontwikkel aars schrijven een app met één account (apps met meerdere accounts worden niet ondersteund in de modus gedeeld apparaat), toevoegen `"shared_device_mode_supported": true` aan de configuratie van de app en code schrijven voor het afhandelen van dingen zoals het afmelden van gedeelde apparaten.
-- Apparaat beheerders maken het apparaat klaar om te worden gedeeld door de verificator-app te installeren en het apparaat in te stellen op de gedeelde modus met de verificator-app. Alleen gebruikers met de rol [beheerder van Cloud apparaat](../roles/permissions-reference.md#cloud-device-administrator-permissions) kunnen een apparaat in de gedeelde modus plaatsen met behulp van de [verificator-app](../user-help/user-help-auth-app-overview.md). U kunt het lidmaatschap van uw organisatie rollen in de Azure Portal configureren via: **Azure Active Directory**-  >  **rollen en-Administrators**van de  >  **Cloud apparaat-beheerder**.
+- Apparaat beheerders maken het apparaat klaar om te worden gedeeld door de verificator-app te installeren en het apparaat in te stellen op de gedeelde modus met de verificator-app. Alleen gebruikers met de rol [beheerder van Cloud apparaat](../roles/permissions-reference.md#cloud-device-administrator-permissions) kunnen een apparaat in de gedeelde modus plaatsen met behulp van de [verificator-app](../user-help/user-help-auth-app-overview.md). U kunt het lidmaatschap van uw organisatie rollen in de Azure Portal configureren via: **Azure Active Directory** -  >  **rollen en-Administrators** van de  >  **Cloud apparaat-beheerder**.
 
  In dit artikel wordt voornamelijk aandacht besteed aan ontwikkel aars.
 

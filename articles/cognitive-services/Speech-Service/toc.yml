@@ -28,8 +28,6 @@
       items:
         - name: Brontaal voor spraakherkenning wijzigen
           href: how-to-specify-source-language.md
-        - name: Nauwkeurigheid verbeteren met Custom Speech
-          href: how-to-custom-speech.md
         - name: Gecomprimeerde audio-invoerindelingen gebruiken
           href: how-to-use-codec-compressed-audio-input-streams.md
           displayName: 'codec,codecs,compression,compressed,mp3,flac,mulaw,alaw,mp4,mp4a,wav,opus,ogg,pcm,silk'
@@ -45,20 +43,18 @@
           href: tutorial-tenant-model.md
     - name: Aanpassing
       items:
+        - name: Wat is Custom Speech?
+          href: custom-speech-overview.md
         - name: Een model testen met audiobestanden in Speech Studio
           href: quickstarts/speech-studio-test-model.md
         - name: Gegevens voorbereiden voor Custom Speech
           href: how-to-custom-speech-test-and-train.md
         - name: Custom Speech-gegevens controleren
           href: how-to-custom-speech-inspect-data.md
-        - name: Nauwkeurigheid van Custom Speech evalueren
+        - name: Nauwkeurigheid van Custom Speech beoordelen en verbeteren
           href: how-to-custom-speech-evaluate-data.md
-        - name: Nauwkeurigheid van Custom Speech verbeteren
-          href: how-to-custom-speech-improve-accuracy.md
-        - name: Een model trainen voor Custom Speech
+        - name: Een Custom Speech-model trainen en implementeren
           href: how-to-custom-speech-train-model.md
-        - name: Aangepaste model implementeren
-          href: how-to-custom-speech-deploy-model.md
         - name: CI/CD voor Custom Speech
           href: how-to-custom-speech-continuous-integration-continuous-deployment.md
         - name: door mensen gelabelde transcripties maken
@@ -391,6 +387,10 @@
                       href: how-to-custom-commands-setup-web-endpoints.md
                     - name: Uw app met aangepaste opdrachten exporteren als een vaardigheid
                       href: how-to-custom-commands-integrate-remote-skills.md
+                    - name: Een opdracht bijwerken vanuit de client-app
+                      href: how-to-custom-commands-update-command-from-client.md
+                    - name: Een opdracht bijwerken vanuit een webeindpunt
+                      href: how-to-custom-commands-update-command-from-web-endpoint.md
                 - name: Implementeren
                   items:
                     - name: Continue implementatie met Azure DevOps

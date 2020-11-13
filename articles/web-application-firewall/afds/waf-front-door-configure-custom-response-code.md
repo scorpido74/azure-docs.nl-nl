@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 06/10/2020
 ms.author: victorh
 ms.reviewer: tyao
-ms.openlocfilehash: a995460793686d8293d77965e74e2cbf916925a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8fc6e71494df36cd6f823661b18e4a3d8ce2938c
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87005596"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94563678"
 ---
 # <a name="configure-a-custom-response-for-azure-web-application-firewall-waf"></a>Een aangepast antwoord configureren voor de firewall van Azure Web Application (WAF)
 
-Wanneer WAF een aanvraag blokkeert vanwege een overeenkomende regel, retourneert deze standaard een 403-status code met **de aanvraag is een geblokkeerd** bericht. Het standaard bericht bevat ook de teken reeks voor het volgen van verwijzingen die kan worden gebruikt om een koppeling te maken naar [logboek vermeldingen](https://docs.microsoft.com/azure/web-application-firewall/afds/waf-front-door-monitor) voor de aanvraag.  U kunt een aangepaste antwoord status code en een aangepast bericht met een verwijzing naar de teken reeks voor uw use-case configureren. In dit artikel wordt beschreven hoe u een aangepaste antwoord pagina configureert wanneer een aanvraag wordt geblokkeerd door WAF.
+Wanneer WAF een aanvraag blokkeert vanwege een overeenkomende regel, retourneert deze standaard een 403-status code met **de aanvraag is een geblokkeerd** bericht. Het standaard bericht bevat ook de teken reeks voor het volgen van verwijzingen die kan worden gebruikt om een koppeling te maken naar [logboek vermeldingen](./waf-front-door-monitor.md) voor de aanvraag.  U kunt een aangepaste antwoord status code en een aangepast bericht met een verwijzing naar de teken reeks voor uw use-case configureren. In dit artikel wordt beschreven hoe u een aangepaste antwoord pagina configureert wanneer een aanvraag wordt geblokkeerd door WAF.
 
 ## <a name="configure-custom-response-status-code-and-message-use-portal"></a>Aangepaste antwoord status code en het bericht gebruik van de portal configureren
 
@@ -27,15 +27,17 @@ U kunt een aangepaste antwoord status code en hoofd tekst onder beleids instelli
 
 In het bovenstaande voor beeld hebben we de antwoord code als 403 bewaard en een kort bericht van ' Neem contact met ons opgenomen ', zoals wordt weer gegeven in de onderstaande afbeelding:
 
-:::image type="content" source="../media/waf-front-door-configure-custom-response-code/custom-response.png" alt-text="WAF-beleids instellingen" voegt de unieke referentie teken reeks in de hoofd tekst van het antwoord in. De waarde komt overeen met het veld TrackingReference in de `FrontdoorAccessLog` `FrontdoorWebApplicationFirewallLog` Logboeken en.
+:::image type="content" source="../media/waf-front-door-configure-custom-response-code/custom-response.png" alt-text="Voor beeld van aangepaste antwoorden":::
+
+"{{Azure-Ref}}" voegt de unieke referentie teken reeks in de hoofd tekst van het antwoord in. De waarde komt overeen met het veld TrackingReference in de `FrontdoorAccessLog` `FrontdoorWebApplicationFirewallLog` Logboeken en.
 
 ## <a name="configure-custom-response-status-code-and-message-use-powershell"></a>De status code en het bericht voor de aangepaste reactie configureren met Power shell
 
 ### <a name="set-up-your-powershell-environment"></a>Uw PowerShell-omgeving instellen
 
-Azure PowerShell voorziet in een set van cmdlets die gebruikmaken van het [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)-model om uw Azure-resources te beheren. 
+Azure PowerShell voorziet in een set van cmdlets die gebruikmaken van het [Azure Resource Manager](../../azure-resource-manager/management/overview.md)-model om uw Azure-resources te beheren. 
 
-U kunt [Azure PowerShell](https://docs.microsoft.com/powershell/azure/) op uw lokale computer installeren en in elke PowerShell-sessie gebruiken. Volg de instructies op de pagina om u aan te melden met uw Azure-referenties en Az PowerShell te installeren.
+U kunt [Azure PowerShell](/powershell/azure/) op uw lokale computer installeren en in elke PowerShell-sessie gebruiken. Volg de instructies op de pagina om u aan te melden met uw Azure-referenties en Az PowerShell te installeren.
 
 ### <a name="connect-to-azure-with-an-interactive-dialog-for-sign-in"></a>Verbinding maken met Azure met een interactief dialoogvenster voor aanmelden
 

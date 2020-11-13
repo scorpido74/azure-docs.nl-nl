@@ -8,18 +8,18 @@ ms.service: virtual-machines
 ms.subservice: workloads
 ms.date: 4/17/2020
 ms.author: jencook
-ms.openlocfilehash: cf90ff5b94eb03f76dffc8b64dd4d92a44ac20ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9df3d9771029e6d72e9d0092a129cddc27be6cd7
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91848905"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94564103"
 ---
 # <a name="frequently-asked-questions-for-azure-confidential-computing"></a>Veelgestelde vragen over Azure vertrouwelijk computing
 
 In dit artikel vindt u antwoorden op enkele van de meest voorkomende vragen over het uitvoeren van [werk belastingen op Azure virtual machines](overview.md).
 
-Als uw Azure-probleem niet in dit artikel wordt behandeld, gaat u naar de Azure-forums op [MSDN en stack overflow](https://azure.microsoft.com/support/forums/). U kunt uw probleem in deze forums plaatsen of een bericht plaatsen [ @AzureSupport op Twitter](https://twitter.com/AzureSupport). U kunt ook een ondersteunings aanvraag voor Azure indienen. Als u een ondersteunings aanvraag wilt indienen, selecteert u op de [pagina ondersteuning voor Azure](https://azure.microsoft.com/support/options/)de optie ondersteuning ophalen.
+Als uw Azure-probleem niet in dit artikel wordt behandeld, gaat u naar de Azure-forums op [MSDN en Stack Overflow](https://azure.microsoft.com/support/forums/). U kunt uw probleem in deze forums plaatsen of een bericht sturen naar [@AzureSupport op Twitter](https://twitter.com/AzureSupport). U kunt ook een ondersteunings aanvraag voor Azure indienen. Als u een ondersteunings aanvraag wilt indienen, selecteert u op de [pagina ondersteuning voor Azure](https://azure.microsoft.com/support/options/)de optie ondersteuning ophalen.
 
 ## <a name="confidential-computing-virtual-machines"></a>Virtual Machines voor vertrouwelijke computing <a id="vm-faq"></a>
 
@@ -32,14 +32,14 @@ Hier volgen enkele manieren waarop u een DCsv2-VM kunt implementeren:
 
 **Werken alle besturingssysteem installatie kopieën met Azure vertrouwelijk computing?**
 
-Nee. De virtuele machines kunnen alleen worden geïmplementeerd op machines van de tweede generatie met Ubuntu Server 18,04, Ubuntu Server 16,04, Windows Server 2019 Data Center en Windows Server 2016 Data Center. Meer informatie over virtuele machines van generatie 2 in [Linux](../virtual-machines/linux/generation-2.md) en [Windows](../virtual-machines/windows/generation-2.md)
+Nee. De virtuele machines kunnen alleen worden geïmplementeerd op machines van de tweede generatie met Ubuntu Server 18,04, Ubuntu Server 16,04, Windows Server 2019 Data Center en Windows Server 2016 Data Center. Meer informatie over virtuele machines van generatie 2 in [Linux](../virtual-machines/generation-2.md) en [Windows](../virtual-machines/generation-2.md)
 
 **Virtuele DCsv2-machines zijn niet beschikbaar in de portal en ik kan er geen selecteren**
 
 Op basis van de informatie ballon naast de virtuele machine zijn er verschillende acties die u moet uitvoeren:
-   -    **UnsupportedGeneration**: Wijzig de generatie van de installatie kopie van de virtuele machine in ' Gen2 '.
-   -    **NotAvailableForSubscription**: de regio is nog niet beschikbaar voor uw abonnement. Selecteer een beschikbare regio.
-   -    **InsufficientQuota**: [Maak een ondersteunings aanvraag om uw quotum te verg Roten](../azure-portal/supportability/per-vm-quota-requests.md). Abonnementen voor een gratis proef abonnement hebben geen quota voor het gebruik van de virtuele machines van het werk. 
+   -    **UnsupportedGeneration** : Wijzig de generatie van de installatie kopie van de virtuele machine in ' Gen2 '.
+   -    **NotAvailableForSubscription** : de regio is nog niet beschikbaar voor uw abonnement. Selecteer een beschikbare regio.
+   -    **InsufficientQuota** : [Maak een ondersteunings aanvraag om uw quotum te verg Roten](../azure-portal/supportability/per-vm-quota-requests.md). Abonnementen voor een gratis proef abonnement hebben geen quota voor het gebruik van de virtuele machines van het werk. 
 
 **Virtuele DCsv2-machines worden niet weer gegeven wanneer ik deze probeer te zoeken in de portal formaat kiezer**
 

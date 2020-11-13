@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: b385d6dfb5beba481ad92403d69f5d0988f3bce3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 86db8c88fae7a5fd1ec4828d8936c6cb8172a61c
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92786425"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94564562"
 ---
 # <a name="cluster-configuration-best-practices-sql-server-on-azure-vms"></a>Aanbevolen procedures voor clusterconfiguratie (SQL Server op virtuele machines van Azure)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -30,6 +30,10 @@ In dit artikel vindt u aanbevolen procedures voor cluster configuratie voor [fai
 ## <a name="networking"></a>Netwerken
 
 Gebruik één NIC per server (cluster knooppunt) en één subnet. Azure-netwerken hebben fysieke redundantie, waardoor extra Nic's en subnetten onnodig worden op een gast cluster van de virtuele machine van Azure. In het cluster validatie rapport wordt u gewaarschuwd dat de knoop punten alleen bereikbaar zijn op één netwerk. U kunt deze waarschuwing negeren op virtuele Azure-machine gast-failoverclusters.
+
+### <a name="tuning-failover-cluster-network-thresholds"></a>Drempel waarden voor failover cluster-netwerken afstemmen
+
+Bij het uitvoeren van Windows-Failoverclusterknooppunten in azure-Vm's met SQL Server AlwaysOn, wordt het wijzigen van de cluster instelling in een meer beperkte bewakings status aanbevolen.  Hierdoor is het cluster veel stabieler en betrouwbaarder.  Zie voor meer informatie [IaaS met SQL AlwaysOn-failover cluster network drempels](/windows-server/troubleshoot/iaas-sql-failover-cluser).
 
 ## <a name="quorum"></a>Quorum
 

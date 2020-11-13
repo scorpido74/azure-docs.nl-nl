@@ -3,14 +3,14 @@ title: Back-ups maken van Azure-bestands shares met Azure CLI
 description: Meer informatie over het gebruik van Azure CLI voor het maken van back-ups van Azure-bestands shares in de Recovery Services kluis
 ms.topic: conceptual
 ms.date: 01/14/2020
-ms.openlocfilehash: 12d258a3242530745cc8ce31afae18f622323488
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34eea8daa6a0a8920c842178664055838b06a78a
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91293268"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565888"
 ---
-# <a name="back-up-azure-file-shares-with-cli"></a>Back-ups maken van Azure-bestands shares met CLI
+# <a name="back-up-azure-file-shares-with-azure-cli"></a>Back-ups maken van Azure-bestands shares met Azure CLI
 
 De Azure-opdracht regel interface (CLI) biedt een opdracht regel ervaring voor het beheer van Azure-resources. Het is een uitstekend hulp programma voor het maken van aangepaste automatisering om Azure-resources te gebruiken. In dit artikel wordt beschreven hoe u back-ups van Azure-bestands shares maakt met Azure CLI. U kunt deze stappen ook uitvoeren met [Azure PowerShell](./backup-azure-afs-automation.md) of in [Azure Portal](backup-afs.md).
 
@@ -20,9 +20,9 @@ Aan het einde van deze zelf studie leert u hoe u de bewerkingen hieronder kunt u
 * Back-ups voor Azure-bestands shares inschakelen
 * Een back-up op aanvraag activeren voor bestands shares
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Als u de CLI lokaal wilt installeren en gebruiken, moet u Azure CLI versie 2.0.18 of hoger gebruiken. Om de CLI-versie te zoeken `run az --version` . Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli).
+ - Voor deze zelf studie is versie 2.0.18 of hoger van de Azure CLI vereist. Als u Azure Cloud Shell gebruikt, is de nieuwste versie al geïnstalleerd.
 
 ## <a name="create-a-recovery-services-vault"></a>Een Recovery Services-kluis maken
 

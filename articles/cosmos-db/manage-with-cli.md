@@ -7,21 +7,21 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: e4b112b93a552ff62b08c102e710cd914265ba5c
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: b13f5bfffced9afd80663d606e30e028e52643ac
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339322"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94563832"
 ---
 # <a name="manage-azure-cosmos-core-sql-api-resources-using-azure-cli"></a>Azure Cosmos core (SQL) API-resources beheren met Azure CLI
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 In de volgende handleiding worden veelvoorkomende opdrachten beschreven voor het automatiseren van het beheer van Azure Cosmos DB-accounts, -databases en -containers, met behulp van Azure CLI. Referentiepagina's voor alle Azure Cosmos DB CLI-opdrachten zijn beschikbaar in de [naslaginformatie voor Azure CLI](/cli/azure/cosmosdb). U kunt ook meer voor beelden vinden in [Azure CLI-voor beelden voor Azure Cosmos DB](cli-samples.md), met inbegrip van het maken en beheren van Cosmos DB accounts, data bases en containers voor MongoDb, Gremlin, Cassandra en Table-API.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit onderwerp gebruikmaken van Azure CLI versie 2.12.1 of hoger. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
+- Voor dit artikel is versie 2.12.1 of hoger van de Azure CLI vereist. Als u Azure Cloud Shell gebruikt, is de nieuwste versie al geïnstalleerd.
 
 Zie voor Azure CLI-voorbeelden voor andere API's [CLI-voorbeelden voor Cassandra](cli-samples-cassandra.md), [CLI-voorbeelden voor MongoDB API](cli-samples-mongodb.md), [CLI-voorbeelden voor Gremlin](cli-samples-gremlin.md), [CLI-voorbeelden voor Table](cli-samples-table.md)
 
@@ -43,7 +43,7 @@ In de volgende secties ziet u hoe u het Azure Cosmos-account kunt beheren, met i
 * [Verbindingsreeksen weergeven](#list-connection-strings)
 * [Account sleutel opnieuw genereren](#regenerate-account-key)
 
-### <a name="create-an-azure-cosmos-db-account"></a>Maak een Azure Cosmos DB-account
+### <a name="create-an-azure-cosmos-db-account"></a>Een Azure Cosmos DB-account maken
 
 Een Azure Cosmos DB-account maken met SQL API, sessie consistentie in de regio's vs-West 2 en VS-Oost 2:
 

@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sukishen
-ms.openlocfilehash: e3f6f947b86b1cb34fde66c62199336403037827
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea9ddd05fe6fc745a3eefc29ab4f1d6aababc936
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91828050"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94564698"
 ---
 # <a name="sd-wan-connectivity-architecture-with-azure-virtual-wan"></a>Architectuur van de SD-WAN-verbinding met Azure Virtual WAN
 
@@ -44,9 +44,9 @@ Met virtueel WAN kunnen gebruikers de selectie van Azure-paden verkrijgen. Dit i
 
 ## <a name="direct-interconnect-model-with-nva-in-vwan-hub"></a><a name="direct"></a>Model direct interconnect met NVA-in-VWAN-hub
 
-:::image type="content" source="./media/sd-wan-connectivity-architecture/direct-nva.png" alt-text="Model direct Interconnect":::
+:::image type="content" source="./media/sd-wan-connectivity-architecture/direct-nva.png" alt-text="Model direct interconnect met NVA-in-VWAN-hub":::
 
-Dit architectuur model ondersteunt de implementatie van een [virtueel netwerk (NVA) van een derde partij rechtstreeks naar de virtuele hub](https://docs.microsoft.com/azure/virtual-wan/about-nva-hub). Hierdoor kunnen klanten die hun vertakkings verbinding willen maken met hetzelfde merk NVA in de virtuele hub, zodat ze profiteren van eigen end-to-end SD-WAN-mogelijkheden bij het maken van verbinding met Azure-workloads. 
+Dit architectuur model ondersteunt de implementatie van een [virtueel netwerk (NVA) van een derde partij rechtstreeks naar de virtuele hub](./about-nva-hub.md). Hierdoor kunnen klanten die hun vertakkings verbinding willen maken met hetzelfde merk NVA in de virtuele hub, zodat ze profiteren van eigen end-to-end SD-WAN-mogelijkheden bij het maken van verbinding met Azure-workloads. 
 
 Verschillende virtuele WAN-partners hebben gewerkt om een ervaring te bieden waarmee de NVA automatisch worden geconfigureerd als onderdeel van het implementatie proces. Zodra de NVA is ingericht in de virtuele hub, moeten eventuele aanvullende configuraties die nodig zijn voor de NVA, worden uitgevoerd via de portal voor de NVA-partners of de beheer toepassing. Er is geen rechtstreekse toegang tot de NVA beschikbaar. De Nva's die beschikbaar zijn om rechtstreeks te worden geïmplementeerd in de virtuele WAN-hub van Azure, worden speciaal ontworpen om te worden gebruikt in de virtuele hub. Raadpleeg het artikel over [virtuele WAN-partners](virtual-wan-locations-partners.md#partners-with-integrated-virtual-hub-offerings) voor partners die ondersteuning bieden voor NVA in VWAN hub en hun implementatie handleidingen.
 
@@ -55,7 +55,7 @@ In dit model wordt de leverancier van eigen verkeer op basis van real-time verke
 
 ## <a name="indirect-interconnect-model"></a><a name="indirect"></a>Model voor indirecte Interconnect
 
-:::image type="content" source="./media/sd-wan-connectivity-architecture/indirect.png" alt-text="Model direct Interconnect":::
+:::image type="content" source="./media/sd-wan-connectivity-architecture/indirect.png" alt-text="Model voor indirecte Interconnect":::
 
 In dit architectuur model zijn SD-WAN Branch CPEs indirect verbonden met virtuele WAN-hubs. Zoals in de afbeelding wordt weer gegeven, wordt een virtuele SD-WAN-CPE geïmplementeerd in een VNet voor ondernemingen. Dit virtuele CPE is op zijn beurt verbonden met de virtuele WAN-hub (s) met behulp van IPsec. De virtuele CPE fungeert als een SD-WAN-gateway in Azure. Vertakkingen die toegang moeten hebben tot hun werk belastingen in azure, hebben toegang tot deze via de v-CPE-gateway.
 
@@ -63,7 +63,7 @@ Omdat de connectiviteit met Azure via de v-CPE-gateway (NVA) is, wordt al het ve
   
 ## <a name="managed-hybrid-wan-model"></a><a name="hybrid"></a>Beheerd hybride WAN-model
 
-:::image type="content" source="./media/sd-wan-connectivity-architecture/hybrid.png" alt-text="Model direct Interconnect":::
+:::image type="content" source="./media/sd-wan-connectivity-architecture/hybrid.png" alt-text="Beheerd hybride WAN-model":::
 
 In dit architectuur model kunnen ondernemingen gebruikmaken van een beheerde SD-WAN-service die wordt aangeboden door een begeleide MSP-partner (service provider). Dit model is vergelijkbaar met de directe of indirecte modellen die hierboven worden beschreven. In dit model worden het ontwerp, de indeling en de bewerkingen van het SD-WAN echter geleverd door de SD-WAN-provider.
 

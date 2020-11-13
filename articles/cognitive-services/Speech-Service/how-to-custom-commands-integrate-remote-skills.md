@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: sausin
-ms.openlocfilehash: 6ab3e1e063409832de839da26eba80efd8b3f4d5
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 8c7cb1e9f39b1de7897da29467a607953b42bb24
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92344804"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565735"
 ---
 # <a name="export-custom-commands-application-as-a-remote-skill"></a>Toepassing voor het exporteren van aangepaste opdrachten als externe vaardigheid
 
@@ -82,10 +82,10 @@ Als auteur wilt u misschien bepalen welke van uw **voorbeeld zinnen** worden geb
 > Als u **wijzigingen** hebt aangebracht in de toepassing, moet u ook de toepassing opnieuw publiceren, zodat de meest recente wijzigingen worden weer gegeven in het manifest bestand.
 
 > [!NOTE]
-> Als u problemen ondervindt bij het publiceren van de toepassing en de fout wordt doorgestuurd naar vaardig heden die uitingen activeren, controleert u de configuratie van de **ingeschakelde opdrachten voor vaardig heden**opnieuw. Elk van de weer gegeven opdrachten moet ten minste één geldige trigger voor utterance hebben.
+> Als u problemen ondervindt bij het publiceren van de toepassing en de fout wordt doorgestuurd naar vaardig heden die uitingen activeren, controleert u de configuratie van de **ingeschakelde opdrachten voor vaardig heden** opnieuw. Elk van de weer gegeven opdrachten moet ten minste één geldige trigger voor utterance hebben.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Een CI/CD-proces inschakelen voor uw aangepaste opdrachten-toepassing](./how-to-custom-commands-deploy-cicd.md)
+> [Een opdracht van de client bijwerken](./how-to-custom-commands-update-command-from-client.md)

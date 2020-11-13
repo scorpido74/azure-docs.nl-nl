@@ -10,12 +10,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: avgupta
-ms.openlocfilehash: 725beb50e55852e35ee4434539ff158f082059df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee262c0eb2431085e71d8ee0035bcdab9833d1cf
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88122008"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565769"
 ---
 # <a name="leverage-content-type-to-store-json-key-values-in-app-configuration"></a>Maak gebruik van het inhouds type voor het opslaan van JSON-sleutel waarden in app-configuratie
 
@@ -25,9 +25,9 @@ Gegevens worden in de app-configuratie opgeslagen als sleutel waarden, waarbij w
 ## <a name="overview"></a>Overzicht
 
 In app-configuratie kunt u het JSON-media type gebruiken als het inhouds type van uw sleutel waarden om te profiteren van voor delen zoals:
-- **Eenvoudiger gegevens beheer**: het beheren van sleutel waarden, zoals matrices, is veel eenvoudiger in de Azure Portal.
-- **Verbeterde gegevens export**: primitieve typen, matrices en JSON-objecten blijven behouden tijdens het exporteren van gegevens.
-- **Systeem eigen ondersteuning met de app-configuratie provider**: sleutel waarden met JSON-inhouds type werken prima wanneer ze worden gebruikt door bibliotheken met app-configuratie providers in uw toepassingen.
+- **Eenvoudiger gegevens beheer** : het beheren van sleutel waarden, zoals matrices, is veel eenvoudiger in de Azure Portal.
+- **Verbeterde gegevens export** : primitieve typen, matrices en JSON-objecten blijven behouden tijdens het exporteren van gegevens.
+- **Systeem eigen ondersteuning met de app-configuratie provider** : sleutel waarden met JSON-inhouds type werken prima wanneer ze worden gebruikt door bibliotheken met app-configuratie providers in uw toepassingen.
 
 #### <a name="valid-json-content-type"></a>Geldig JSON-inhouds type
 
@@ -46,7 +46,7 @@ Enkele voor beelden van geldige JSON-waarden zijn:
 
 - "John Doe"
 - 723
-- onjuist
+- false
 - null
 - "2020-01-01T12:34:56.789 Z"
 - [1, 2, 3, 4]
@@ -63,13 +63,11 @@ In deze zelfstudie leert u het volgende:
 > * JSON-sleutel waarden gebruiken in uw toepassingen.
 
 
-## <a name="prerequisites"></a>Vereisten
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-- Azure-abonnement: [Maak een gratis versie](https://azure.microsoft.com/free/).
-- Nieuwste versie van Azure CLI (2.10.0 of hoger). Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren. Als u Azure CLI gebruikt, moet u zich eerst aanmelden met `az login` . U kunt eventueel de Azure Cloud Shell gebruiken.
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
+- Voor deze zelf studie is versie 2.10.0 of hoger van de Azure CLI vereist. Als u Azure Cloud Shell gebruikt, is de nieuwste versie al geïnstalleerd.
 
 ## <a name="create-an-app-configuration-store"></a>Een App Configuration-archief maken
 
@@ -88,7 +86,7 @@ Blader naar uw app-configuratie archief en selecteer **Configuration Explorer** 
 |---|---|---|
 | Instellingen: BackgroundColor | Dag | application/json |
 | Instellingen: FontSize | 24 | application/json |
-| Instellingen: UseDefaultRouting | onjuist | application/json |
+| Instellingen: UseDefaultRouting | false | application/json |
 | Instellingen: BlockedUsers | null | application/json |
 | Instellingen: ReleaseDate | "2020-08-04T12:34:56.789 Z" | application/json |
 | Instellingen: RolloutPercentage | [25, 50, 75100] | application/json |
@@ -153,7 +151,7 @@ Houd rekening met deze sleutel waarden zonder JSON-inhouds type:
 | Sleutel | Waarde | Type inhoud |
 |---|---|---|
 | Instellingen: FontSize | 24 | |
-| Instellingen: UseDefaultRouting | onjuist | |
+| Instellingen: UseDefaultRouting | false | |
 
 Wanneer u deze sleutel waarden naar een JSON-bestand exporteert, worden de waarden geëxporteerd als teken reeksen:
 ```json

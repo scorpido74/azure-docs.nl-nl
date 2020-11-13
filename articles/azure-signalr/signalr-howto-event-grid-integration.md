@@ -7,22 +7,22 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: chenyl
-ms.openlocfilehash: 04059ac1feae04cb6fa8b09f7b7077b7e11bac4c
-ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
+ms.openlocfilehash: 84b83c1dd541418c446a89a6f51be668cb41e54e
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92170372"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94562641"
 ---
 # <a name="how-to-send-events-from-azure-signalr-service-to-event-grid"></a>Gebeurtenissen van Azure SignalR Service naar Event Grid verzenden
 
 Azure Event Grid is een volledig beheerde service voor gebeurtenis routering die uniform gebeurtenis verbruik biedt met behulp van een pub-model. In deze hand leiding gebruikt u de Azure CLI om een Azure signalerings service te maken, u te abonneren op verbindings gebeurtenissen en vervolgens een voor beeld-webtoepassing te implementeren om de gebeurtenissen te ontvangen. Ten slotte kunt u verbinding maken en de verbinding verbreken en de nettolading van de gebeurtenis in de voorbeeld toepassing bekijken.
 
-Als u nog geen Azure-abonnement hebt, maakt u een [gratis account][azure-account] voordat u begint.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-De Azure CLI-opdrachten in dit artikel zijn ingedeeld voor de **bash** -shell. Als u een andere shell gebruikt, zoals Power shell of opdracht prompt, moet u mogelijk regel voortzettings tekens of variabele toewijzings regels dienovereenkomstig aanpassen. In dit artikel wordt gebruikgemaakt van variabelen om de hoeveelheid opdracht bewerking te minimaliseren.
+ - De Azure CLI-opdrachten in dit artikel zijn ingedeeld voor de **bash** -shell. Als u een andere shell gebruikt, zoals Power shell of opdracht prompt, moet u mogelijk regel voortzettings tekens of variabele toewijzings regels dienovereenkomstig aanpassen. In dit artikel wordt gebruikgemaakt van variabelen om de hoeveelheid opdracht bewerking te minimaliseren.
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 

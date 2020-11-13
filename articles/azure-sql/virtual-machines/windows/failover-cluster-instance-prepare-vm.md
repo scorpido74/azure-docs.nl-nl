@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 901c090d26959950d0ffd6a96253bdc36c9331c5
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: a9289fad6f7ae1030628bedcf1a62cacc0b1e23a
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556332"
+ms.locfileid: "94564460"
 ---
 # <a name="prepare-virtual-machines-for-an-fci-sql-server-on-azure-vms"></a>Virtuele machines voorbereiden voor een FCI (SQL Server op Azure-Vm's)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -58,6 +58,8 @@ Selecteer zorgvuldig de optie voor de beschik baarheid van de VM die overeenkomt
 
 Nadat u de beschik baarheid van uw VM hebt geconfigureerd, kunt u uw virtuele machines maken. U kunt ervoor kiezen om een installatie kopie van Azure Marketplace te gebruiken waarop SQL Server al is geïnstalleerd. Als u echter een installatie kopie kiest voor SQL Server op Azure-Vm's, moet u SQL Server verwijderen van de virtuele machine voordat u het failover-cluster exemplaar configureert. 
 
+### <a name="considerations"></a>Overwegingen
+Bij een failover-gastcluster voor een Azure IaaS-VM adviseren we één NIC per server (clusterknooppunt) en één subnet. Een Azure-netwerk maakt gebruikt van fysieke redundantie, waardoor extra NIC's en subnetten overbodig zijn voor een gastcluster voor een Azure IaaS-VM. Hoewel het clustervalidatierapport een waarschuwing zal bevatten dat de knooppunten alleen bereikbaar zijn in één netwerk, kan deze waarschuwing zonder problemen worden genegeerd in het geval van failover-gastclusters voor een Azure IaaS-VM.
 
 Plaats beide virtuele machines:
 

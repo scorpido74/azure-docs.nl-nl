@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: ecebaf9384bcb0dbbb6fe36df4dd474738422149
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 8e97a2f077efd4d00eec4a91645dc1b65057ebd9
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043410"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565004"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>Een VPN-client configureren voor P2S OpenVPN-protocolverbindingen: Azure Active Directory-verificatie
 
@@ -32,7 +32,7 @@ Gebruik deze [koppeling](https://go.microsoft.com/fwlink/?linkid=2117554) om de 
 
 1. Ga naar Start en selecteer instellingen > privacy > achtergrond-apps.
 2. Zorg ervoor dat onder achtergrond-apps **de functie apps op de achtergrond uitvoeren** is ingeschakeld.
-3. Onder Kies welke apps op de achtergrond kunnen worden uitgevoerd, schakelt u de instellingen voor de Azure VPN-client in **op aan** .
+3. Onder Kies welke apps op de achtergrond kunnen worden uitgevoerd, schakelt u de instellingen voor de Azure VPN-client in **op aan**.
 
   ![hebt](./media/openvpn-azure-ad-client/backgroundpermission.png)
 
@@ -54,7 +54,7 @@ Wanneer u werkt met een op een certificaat gebaseerd profiel, moet u ervoor zorg
 
 Wanneer u een werk profiel hebt en dit moet worden gedistribueerd naar andere gebruikers, kunt u het exporteren met behulp van de volgende stappen:
 
-1. Markeer het VPN-client profiel dat u wilt exporteren, selecteer de **...** en selecteer vervolgens **exporteren** .
+1. Markeer het VPN-client profiel dat u wilt exporteren, selecteer de **...** en selecteer vervolgens **exporteren**.
 
     ![Scherm afbeelding toont de optie exporteren geselecteerd in het menu.](./media/openvpn-azure-ad-client/export/export1.jpg)
 
@@ -64,7 +64,7 @@ Wanneer u een werk profiel hebt en dit moet worden gedistribueerd naar andere ge
 
 ### <a name="to-import-a-client-profile"></a><a name="import"></a>Een client profiel importeren
 
-1. Selecteer op de pagina **importeren** .
+1. Selecteer op de pagina **importeren**.
 
     ![Scherm afbeelding toont importeren geselecteerd in het plus menu.](./media/openvpn-azure-ad-client/import/import1.jpg)
 
@@ -72,7 +72,7 @@ Wanneer u een werk profiel hebt en dit moet worden gedistribueerd naar andere ge
 
     ![Scherm afbeelding toont een geopend dialoog venster waarin u een bestand kunt selecteren.](./media/openvpn-azure-ad-client/import/import2.jpg)
 
-3. Geef de naam van het profiel op en selecteer **Opslaan** .
+3. Geef de naam van het profiel op en selecteer **Opslaan**.
 
     ![Scherm afbeelding toont de toegevoegde verbindings naam en de knop Opslaan geselecteerd.](./media/openvpn-azure-ad-client/import/import3.jpg)
 
@@ -80,13 +80,13 @@ Wanneer u een werk profiel hebt en dit moet worden gedistribueerd naar andere ge
 
     ![Scherm afbeelding toont de knop verbinding maken voor de voor de verbinding die u zojuist hebt gemaakt.](./media/openvpn-azure-ad-client/import/import4.jpg)
 
-5. Zodra de verbinding is gemaakt, wordt het pictogram groen en vervolgens **verbonden** .
+5. Zodra de verbinding is gemaakt, wordt het pictogram groen en vervolgens **verbonden**.
 
     ![Scherm afbeelding toont de verbinding met een verbonden status met de optie voor het verbreken van de koppeling.](./media/openvpn-azure-ad-client/import/import5.jpg)
 
 ### <a name="to-delete-a-client-profile"></a><a name="delete"></a>Een client profiel verwijderen
 
-1. Selecteer de weglatings tekens naast het client profiel dat u wilt verwijderen. Selecteer vervolgens **verwijderen** .
+1. Selecteer de weglatings tekens naast het client profiel dat u wilt verwijderen. Selecteer vervolgens **verwijderen**.
 
     ![Scherm afbeelding toont verwijderen geselecteerd in het menu.](./media/openvpn-azure-ad-client/delete/delete1.jpg)
 
@@ -96,11 +96,11 @@ Wanneer u een werk profiel hebt en dit moet worden gedistribueerd naar andere ge
 
 ## <a name="create-a-connection"></a><a name="connection"></a>Een verbinding maken
 
-1. Selecteer op de pagina **+** en vervolgens **+ toevoegen** .
+1. Selecteer op de pagina **+** en vervolgens **+ toevoegen**.
 
     ![Scherm afbeelding toont toevoegen geselecteerd in het plus menu.](./media/openvpn-azure-ad-client/create/create1.jpg)
 
-2. Vul de verbindings gegevens in. Als u niet zeker weet wat de waarden zijn, neemt u contact op met de beheerder. Nadat u de waarden hebt ingevuld, selecteert u **Opslaan** .
+2. Vul de verbindings gegevens in. Als u niet zeker weet wat de waarden zijn, neemt u contact op met de beheerder. Nadat u de waarden hebt ingevuld, selecteert u **Opslaan**.
 
     ![Scherm afbeelding toont het deel venster waarin u de vereiste waarden kunt invoeren.](./media/openvpn-azure-ad-client/create/create2.jpg)
 
@@ -108,11 +108,11 @@ Wanneer u een werk profiel hebt en dit moet worden gedistribueerd naar andere ge
 
     ![Scherm afbeelding toont de knop verbinding maken voor uw verbinding.](./media/openvpn-azure-ad-client/create/create3.jpg)
 
-4. Selecteer de juiste referenties en selecteer vervolgens **door gaan** .
+4. Selecteer de juiste referenties en selecteer vervolgens **door gaan**.
 
     ![Scherm afbeelding toont het dialoog venster Aanmelden.](./media/openvpn-azure-ad-client/create/create4.jpg)
 
-5. Zodra de verbinding is gemaakt, wordt het pictogram groen en vervolgens **verbonden** .
+5. Zodra de verbinding is gemaakt, wordt het pictogram groen en vervolgens **verbonden**.
 
     ![Scherm afbeelding toont de verbinding met een verbonden status.](./media/openvpn-azure-ad-client/create/create5.jpg)
 
@@ -120,7 +120,7 @@ Wanneer u een werk profiel hebt en dit moet worden gedistribueerd naar andere ge
 
 Met deze stappen kunt u de verbinding configureren om automatisch verbinding te maken met Always.
 
-1. Selecteer op de start pagina voor uw VPN-client de optie **VPN-instellingen** .
+1. Selecteer op de start pagina voor uw VPN-client de optie **VPN-instellingen**.
 
     ![Scherm opname toont V P N verbindingen waarbij u instellingen voor V P N kunt selecteren.](./media/openvpn-azure-ad-client/auto/auto1.jpg)
 
@@ -138,11 +138,11 @@ Met deze stappen kunt u de verbinding configureren om automatisch verbinding te 
 
 ## <a name="diagnose-connection-issues"></a><a name="diagnose"></a>Problemen met de verbinding vaststellen
 
-1. Als u verbindings problemen wilt vaststellen, kunt u het hulp programma voor **diagnose** gebruiken. Selecteer de **..** . naast de VPN-verbinding die u wilt diagnosticeren om het menu weer te geven. Selecteer vervolgens **diagnose** .
+1. Als u verbindings problemen wilt vaststellen, kunt u het hulp programma voor **diagnose** gebruiken. Selecteer de **..** . naast de VPN-verbinding die u wilt diagnosticeren om het menu weer te geven. Selecteer vervolgens **diagnose**.
 
     ![Scherm opname bevat de optie diagnose geselecteerd in het menu.](./media/openvpn-azure-ad-client/diagnose/diagnose1.jpg)
 
-2. Selecteer op de pagina **Eigenschappen van verbinding** de optie **diagnose uitvoeren** .
+2. Selecteer op de pagina **Eigenschappen van verbinding** de optie **diagnose uitvoeren**.
 
     ![Scherm afbeelding toont de knop diagnose uitvoeren voor een verbinding.](./media/openvpn-azure-ad-client/diagnose/diagnose2.jpg)
 
@@ -192,7 +192,7 @@ U kunt het gedownloade XML-profiel bestand wijzigen **\<dnsservers> \<dnsserver>
 ```
 
 > [!NOTE]
-> De OpenVPN Azure AD-client maakt gebruik van NRPT-vermeldingen (DNS Name Resolution Policy Table), wat betekent dat de DNS-servers niet worden vermeld onder de uitvoer van `ipconfig /all` . Raadpleeg [Get-DnsClientNrptPolicy](https://docs.microsoft.com/powershell/module/dnsclient/get-dnsclientnrptpolicy?view=win10-ps) in Power shell om uw DNS-instellingen in gebruik te bevestigen.
+> De OpenVPN Azure AD-client maakt gebruik van NRPT-vermeldingen (DNS Name Resolution Policy Table), wat betekent dat de DNS-servers niet worden vermeld onder de uitvoer van `ipconfig /all` . Raadpleeg [Get-DnsClientNrptPolicy](/powershell/module/dnsclient/get-dnsclientnrptpolicy?view=win10-ps) in Power shell om uw DNS-instellingen in gebruik te bevestigen.
 >
 
 ### <a name="how-do-i-add-custom-routes-to-the-vpn-client"></a>Hoe kan ik aangepaste routes toevoegen aan de VPN-client?

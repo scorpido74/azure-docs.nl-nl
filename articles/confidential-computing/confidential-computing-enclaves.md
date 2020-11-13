@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 9/3/2020
 ms.author: JenCook
-ms.openlocfilehash: a7e3ade66aa4ebf7584e03b75f85c48b44537d97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 565f4971fffde1cbeb2234b43aaad5cce73b5404
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90995856"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94564375"
 ---
 # <a name="azure-confidential-computing-virtual-machines-vms-overview"></a>Overzicht van virtuele machines (Vm's) van Azure vertrouwelijk computing
 
@@ -29,7 +29,7 @@ In virtuele machines met Azure Confidential Computing wordt een deel van de hard
 
 De infrastructuur van Azure Confidential Computing bestaat momenteel uit een speciale SKU van virtuele machines (VM's). Deze VM's worden uitgevoerd op Intel-processors met Software Guard Extension (Intel SGX). [Intel SGX-](https://intel.com/sgx) is het onderdeel dat de verhoogde beveiliging mogelijk maakt die in confidential computing wordt toegepast. 
 
-Nu biedt Azure de [DCsv2-serie](https://docs.microsoft.com/azure/virtual-machines/dcv2-series) die is gebouwd op Intel SGX-technologie voor het maken van een hardware-enclave. U kunt veilige enclavetoepassingen bouwen om uit te voeren op VM's uit de DCsv2-serie, om uw toepassingsgegevens en -code in gebruik te beveiligen. 
+Nu biedt Azure de [DCsv2-serie](../virtual-machines/dcv2-series.md) die is gebouwd op Intel SGX-technologie voor het maken van een hardware-enclave. U kunt veilige enclavetoepassingen bouwen om uit te voeren op VM's uit de DCsv2-serie, om uw toepassingsgegevens en -code in gebruik te beveiligen. 
 
 [Meer](virtual-machine-solutions.md) informatie over het implementeren van Azure vertrouwelijk computing virtuele machines met op hardware gebaseerde vertrouwde enclaves.
 
@@ -39,7 +39,7 @@ Enclaves zijn beveiligde delen van de processor en het geheugen van de hardware.
 
 Eigenlijk kunt u een enclave beschouwen als een soort beveiligde doos. U plaatst versleutelde code en gegevens in de doos. Vanaf de buitenkant ziet u niets. U geeft de enclave een sleutel waarmee de gegevens kunnen worden ontsleuteld, waarna de gegevens worden verwerkt en opnieuw worden versleuteld voordat ze vanuit de enclave worden verzonden.
 
-Elke enclave heeft een ingestelde grootte van de versleutelde pagina cache (EPC) die de hoeveelheid geheugen bepaalt die elke enclave kan bevatten. Grotere virtuele DCsv2-machines hebben meer EPC-geheugen. Lees de pagina met [DCsv2-specificaties](https://docs.microsoft.com/azure/virtual-machines/dcv2-series) voor de maximale grootte van EPC per VM.
+Elke enclave heeft een ingestelde grootte van de versleutelde pagina cache (EPC) die de hoeveelheid geheugen bepaalt die elke enclave kan bevatten. Grotere virtuele DCsv2-machines hebben meer EPC-geheugen. Lees de pagina met [DCsv2-specificaties](../virtual-machines/dcv2-series.md) voor de maximale grootte van EPC per VM.
 
 
 

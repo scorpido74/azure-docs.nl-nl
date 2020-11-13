@@ -10,21 +10,21 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: 52819caeb833eb475c8ea2c476ef5ba27681a50c
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: e8747b822916ba2c9ef7b45cc3cbbaa88d16dcb1
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94367553"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565786"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>Uw Bing Aangepaste zoekopdrachten-ervaring configureren
 
 > [!WARNING]
-> Bing Zoeken-API's van Cognitive Services naar Bing Search-Services verplaatsen. Vanaf **30 oktober 2020** moeten nieuwe exemplaren van Bing Search worden ingericht volgens het proces dat [hier](https://aka.ms/cogsvcs/bingmove)wordt beschreven.
-> Bing Zoeken-API's ingericht met Cognitive Services wordt voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst gebeurt.
-> Zie [Bing Search Services](https://aka.ms/cogsvcs/bingmigration)voor migratie-instructies.
+> Bing Search-API's worden van Cognitive Services naar Bing Search Services overgezet. Vanaf **30 oktober 2020** moeten nieuwe instanties van Bing Search worden ingericht overeenkomstig het proces dat [hier](https://aka.ms/cogsvcs/bingmove) is beschreven.
+> Bing Search-API's die zijn ingericht met Cognitive Services, worden voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst afloopt.
+> Raadpleeg [Bing Search Services](https://aka.ms/cogsvcs/bingmigration) voor migratie-instructies.
 
-Met een aangepaste zoek opdracht kunt u de zoek ervaring zodanig aanpassen dat alleen inhoud wordt Inge sloten van websites waar uw gebruikers zich bevinden. In plaats van een zoek opdracht in het hele web uit te voeren, zoekt Bing alleen de segmenten van het web die u interesseren. Als u een aangepaste weergave van het web wilt maken, gebruikt u de [portal](https://customsearch.ai) van Bing Aangepaste zoekopdrachten.
+Met een aangepaste zoek opdracht kunt u de zoek ervaring zodanig aanpassen dat alleen inhoud wordt Inge sloten van websites waar uw gebruikers zich bevinden. In plaats van een zoek opdracht in het hele web uit te voeren, zoekt Bing alleen de segmenten van het web die u interesseren. Als u een aangepaste weergave van het web wilt maken, gebruikt u de [portal](https://www.customsearch.ai) van Bing Aangepaste zoekopdrachten.
 
 Met de portal kunt u een zoek exemplaar maken dat de segmenten van het web bevat: domeinen, subpagina's en webpagina's, waarin u wilt zoeken naar een zoek opdracht en de pagina's die u niet wilt doorzoeken. De portal kan ook inhoud suggereren die u mogelijk wilt toevoegen.
 

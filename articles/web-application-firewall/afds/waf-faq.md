@@ -8,12 +8,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/05/2020
 ms.author: victorh
-ms.openlocfilehash: 0ba0cbbccd1f4a9bc8ff8a4895e238c9150c9b17
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 5b60082db53b458adc53ac23d98731ad1c97b52b
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413068"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94563644"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall-on-azure-front-door-service"></a>Veelgestelde vragen over Azure Web Application firewall op de Azure front-deur service
 
@@ -55,7 +55,7 @@ U kunt de IP-Access Control lijst in uw back-end configureren om alleen uitgaand
 
 ## <a name="which-azure-waf-options-should-i-choose"></a>Welke opties voor Azure WAF moet ik kiezen?
 
-Er zijn twee opties voor het Toep assen van WAF-beleid in Azure. WAF met Azure front deur is een wereld wijd gedistribueerde, Edge-beveiligings oplossing. WAF met Application Gateway is een regionale, toegewezen oplossing. We raden u aan een oplossing te kiezen op basis van uw algemene prestatie-en beveiligings vereisten. Zie [taak verdeling met de Application Delivery Suite van Azure](https://docs.microsoft.com/azure/frontdoor/front-door-lb-with-azure-app-delivery-suite)voor meer informatie.
+Er zijn twee opties voor het Toep assen van WAF-beleid in Azure. WAF met Azure front deur is een wereld wijd gedistribueerde, Edge-beveiligings oplossing. WAF met Application Gateway is een regionale, toegewezen oplossing. We raden u aan een oplossing te kiezen op basis van uw algemene prestatie-en beveiligings vereisten. Zie [taak verdeling met de Application Delivery Suite van Azure](../../frontdoor/front-door-lb-with-azure-app-delivery-suite.md)voor meer informatie.
 
 
 ## <a name="do-you-support-same-waf-features-in-all-integrated-platforms"></a>Biedt u ondersteuning voor dezelfde WAF-functies in alle geïntegreerde platformen?
