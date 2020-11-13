@@ -5,26 +5,26 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 12/12/2018
+ms.date: 11/11/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 2766ea87544f2a21fb654f687eb62dee3c0714ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7db9749adab9a6d6d7b8c350648603f42d0b43d
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80334991"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94574068"
 ---
-**Beheerde schijven met Standard - HDD**  
+### <a name="standard-hdd-managed-disks"></a>Beheerde schijven met Standard - HDD
 [!INCLUDE [disk-storage-standard-hdd-sizes](disk-storage-standard-hdd-sizes.md)]
 
-**Standaard beheerde SSD-schijven**  
+### <a name="standard-ssd-managed-disks"></a>Standaard beheerde SSD-schijven
 [!INCLUDE [disk-storage-standard-ssd-sizes](disk-storage-standard-ssd-sizes.md)]
 
-**Beheerde schijven met Premium - SSD: limieten per schijf**  
+### <a name="premium-ssd-managed-disks-per-disk-limits"></a>Beheerde schijven met Premium - SSD: limieten per schijf 
 [!INCLUDE [disk-storage-premium-ssd-sizes](disk-storage-premium-ssd-sizes.md)]
 
-**Beheerde schijven met Premium - SSD: limieten per VM**
+### <a name="premium-ssd-managed-disks-per-vm-limits"></a>Beheerde schijven met Premium - SSD: limieten per VM
 
 | Resource | Limiet |
 | --- | --- |

@@ -4,12 +4,12 @@ description: Beschik baarheid van reken-en geheugen resources voor de Azure Cont
 ms.topic: article
 ms.date: 04/27/2020
 ms.custom: references_regions
-ms.openlocfilehash: e4fbf1023863f9f4c46e6bd2266f72ff2f7d7adc
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 2a833c93c80d932305f47b6e292e5e5df4d0cb95
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93395866"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576611"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Beschik baarheid van resources voor Azure Container Instances in azure-regio's
 
@@ -29,22 +29,22 @@ De volgende regio's en maximum resources zijn beschikbaar voor container groepen
 > [!IMPORTANT]
 > De maximale bronnen in een regio verschillen afhankelijk van uw implementatie. Een regio kan bijvoorbeeld een andere maximale CPU-en geheugen grootte hebben in een implementatie van een virtueel Azure-netwerk dan voor een algemene implementatie. Dezelfde regio kan ook een andere set maximum waarden hebben voor een implementatie met GPU-resources. Controleer uw implementatie type voordat u de onderstaande tabellen controleert op de maximum waarden in uw regio.
 
-| Region | Maximaal CPU-gebruik | Maxi maal geheugen (GB) | Maximale CPU voor VNET | Max. VNET-geheugen (GB) | Opslag (GB) | GPU-Sku's (preview-versie) |
+| Regio | Maximaal CPU-gebruik | Maxi maal geheugen (GB) | Maximale CPU voor VNET | Max. VNET-geheugen (GB) | Opslag (GB) | GPU-Sku's (preview-versie) |
 | -------- | :---: | :---: | :----: | :-----: | :-------: | :----: |
 | Australië - oost | 4 | 16 | 4 | 16 | 50 | N.v.t. |
-| Brazilië - zuid | 4 | 16 | 2 | 8 | 50 | N.v.t. |
+| Brazil South | 4 | 16 | 2 | 8 | 50 | N.v.t. |
 | Canada - midden | 4 | 16 | 4 | 16 | 50 | N.v.t. |
 | India - centraal | 4 | 16 | N.v.t. | N.v.t. | 50 | V100 |
-| VS - centraal | 4 | 16 | 4 | 16 | 50 | N.v.t. |
+| Central US | 4 | 16 | 4 | 16 | 50 | N.v.t. |
 | Azië - oost | 4 | 16 | 4 | 16 | 50 | N.v.t. |
 | VS - oost | 4 | 16 | 4 | 16 | 50 | K80, P100, V100 |
 | US - oost 2 | 4 | 16 | 4 | 16 | 50 | N.v.t. |
 | Frankrijk - centraal | 4 | 16 | 4 | 16 | 50 | N.v.t. |
-| Japan - oost | 2 | 8 | 4 | 16 | 50 | N.v.t. |
+| Japan East | 2 | 8 | 4 | 16 | 50 | N.v.t. |
 | Korea - centraal | 4 | 16 | N.v.t. | N.v.t. | 50 | N.v.t. |
 | VS - noord-centraal | 2 | 3,5 | 4 | 16 | 50 | K80, P100, V100 |
 | Europa - noord | 4 | 16 | 4 | 16 | 50 | K80 |
-| VS - zuid-centraal | 4 | 16 | 4 | 16 | 50 | N.v.t. |
+| South Central US | 4 | 16 | 4 | 16 | 50 | N.v.t. |
 | Azië - zuidoost | 4 | 16 | 4 | 16 | 50 | P100, V100 |
 | India - zuid | 4 | 16 | N.v.t. | N.v.t. | 50 | N.v.t. |
 | Verenigd Koninkrijk Zuid | 4 | 16 | 4 | 16 | 50 | N.v.t. |
@@ -54,6 +54,9 @@ De volgende regio's en maximum resources zijn beschikbaar voor container groepen
 | West US 2 | 4 | 16 | 4 | 16 | 50 | K80, P100, V100 |
 
 De volgende maximum bronnen zijn beschikbaar voor een container groep die is geïmplementeerd met [GPU-bronnen](container-instances-gpu.md) (preview-versie).
+
+> [!IMPORTANT]
+> Op dit moment worden implementaties met GPU-bronnen niet ondersteund in een implementatie van een virtueel Azure-netwerk en zijn deze alleen beschikbaar in Linux-container groepen.
 
 | GPU-Sku's | Aantal GPU | Maximaal CPU-gebruik | Maxi maal geheugen (GB) | Opslag (GB) |
 | --- | --- | --- | --- | --- |
@@ -68,26 +71,29 @@ De volgende maximum bronnen zijn beschikbaar voor een container groep die is ge�
 
 De volgende regio's en maximum resources zijn beschikbaar voor container groepen met [ondersteunde en preview](container-instances-faq.md#what-windows-base-os-images-are-supported) Windows Server-containers.
 
+> [!IMPORTANT]
+> Op dit moment worden implementaties met Windows-container groepen niet ondersteund in een implementatie van een virtueel Azure-netwerk.
+
 ###  <a name="windows-server-2016"></a>Windows Server 2016
 
 > [!NOTE]
 > Zie [host-en container versie compatibiliteit](/virtualization/windowscontainers/deploy-containers/update-containers#host-and-container-version-compatibility) voor meer informatie over de hosts van 1B, 2b en 3b.
 
-| Region | 1B/2B maximum CPU | 1B/2B Max. geheugen (GB) |3B maximum CPU | 3B Max. geheugen (GB) | Opslag (GB) |
+| Regio | 1B/2B maximum CPU | 1B/2B Max. geheugen (GB) |3B maximum CPU | 3B Max. geheugen (GB) | Opslag (GB) |
 | -------- | :---: | :---: | :----: | :-----: | :-------: |
 | Australië - oost | 2 | 8 | 2 | 3,5 | 20 |
-| Brazilië - zuid | 4 | 16 | 4 | 16 | 20 |
+| Brazil South | 4 | 16 | 4 | 16 | 20 |
 | Canada - midden | 2 | 3,5 | 2 | 3,5 | 20 |
 | India - centraal | 2 | 3,5 | 2 | 3,5 | 20 |
-| VS - centraal | 2 | 3,5 | 2 | 3,5 | 20 |
+| Central US | 2 | 3,5 | 2 | 3,5 | 20 |
 | Azië - oost | 2 | 3,5 | 2 | 3,5 | 20 |
 | VS - oost | 4 | 16 | 2 | 8 | 20 |
 | US - oost 2 | 2 | 3,5 | 4 | 16 | 20 |
-| Japan - oost | 4 | 16 | 4 | 16 | 20 |
+| Japan East | 4 | 16 | 4 | 16 | 20 |
 | Korea - centraal | 4 | 16 | 4 | 16 | 20 |
 | VS - noord-centraal | 4 | 16 | 4 | 16 | 20 |
 | Europa - noord | 2 | 3,5 | 2 | 8 | 20 |
-| VS - zuid-centraal | 2 | 3,5 | 2 | 3,5 | 20 |
+| South Central US | 2 | 3,5 | 2 | 3,5 | 20 |
 | Azië - zuidoost | N.v.t. | N.v.t. | 2 | 3,5 | 20 |
 | India - zuid | 2 | 3,5 | 2 | 3,5 | 20 |
 | Verenigd Koninkrijk Zuid | 2 | 8 | 2 | 3,5 | 20 |
@@ -102,22 +108,22 @@ De volgende regio's en maximum resources zijn beschikbaar voor container groepen
 > [!NOTE]
 > Zie [host-en container versie compatibiliteit](/virtualization/windowscontainers/deploy-containers/update-containers#host-and-container-version-compatibility) voor meer informatie over de hosts van 1B, 2b en 3b.
 
-| Region | 1B/2B maximum CPU | 1B/2B Max. geheugen (GB) |3B maximum CPU | 3B Max. geheugen (GB) | Opslag (GB) |
+| Regio | 1B/2B maximum CPU | 1B/2B Max. geheugen (GB) |3B maximum CPU | 3B Max. geheugen (GB) | Opslag (GB) |
 | -------- | :---: | :---: | :----: | :-----: | :-------: |
 | Australië - oost | 4 | 16 | 4 | 16 | 20 |
-| Brazilië - zuid | 4 | 16 | 4 | 16 | 20 |
+| Brazil South | 4 | 16 | 4 | 16 | 20 |
 | Canada - midden | 4 | 16 | 4 | 16 | 20 |
 | India - centraal | 4 | 16 | 4 | 16 | 20 |
-| VS - centraal | 4 | 16 | 4 | 16 | 20 |
+| Central US | 4 | 16 | 4 | 16 | 20 |
 | Azië - oost | 4 | 16 | 4 | 16 | 20 |
 | VS - oost | 4 | 16 | 4 | 16 | 20 |
 | US - oost 2 | 2 | 3,5 | 2 | 3,5 | 20 |
 | Frankrijk - centraal | 4 | 16 | 4 | 16 | 20 |
-| Japan - oost | N.v.t. | N.v.t. | 4 | 16 | 20 |
+| Japan East | N.v.t. | N.v.t. | 4 | 16 | 20 |
 | Korea - centraal | 4 | 16 | 4 | 16 | 20 |
 | VS - noord-centraal | 4 | 16 | 4 | 16 | 20 |
 | Europa - noord | 4 | 16 | 4 | 16 | 20 |
-| VS - zuid-centraal | 4 | 16 | 4 | 16 | 20 |
+| South Central US | 4 | 16 | 4 | 16 | 20 |
 | Azië - zuidoost | 4 | 16 | 4 | 16 | 20 |
 | India - zuid | 4 | 16 | 4 | 16 | 20 |
 | Verenigd Koninkrijk Zuid | 4 | 16 | 4 | 16 | 20 |

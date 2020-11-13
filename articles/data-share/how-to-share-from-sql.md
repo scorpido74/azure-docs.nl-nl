@@ -6,23 +6,23 @@ ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 10/15/2020
-ms.openlocfilehash: c13b71858915ab262ab3e0e99ab8c482d19160ea
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 205600e488822c5ade4b808c29c66741d28a84a7
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93318496"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94575902"
 ---
 # <a name="share-and-receive-data-from-azure-sql-database-and-azure-synapse-analytics"></a>Gegevens delen en ontvangen van Azure SQL Database en Azure Synapse Analytics
 
 [!INCLUDE[appliesto-sql](includes/appliesto-sql.md)]
 
-Azure data share ondersteunt het delen op basis van moment opnamen Azure SQL Database en Azure Synapse Analytics (voorheen Azure SQL DW). In dit artikel wordt uitgelegd hoe u gegevens uit deze bronnen kunt delen en ontvangen.
+Azure-gegevens share biedt ondersteuning voor het delen Azure SQL Database en Azure Synapse Analytics op basis van moment opnamen. In dit artikel wordt uitgelegd hoe u gegevens uit deze bronnen kunt delen en ontvangen.
 
-Azure data share ondersteunt het delen van tabellen of weer gaven van Azure SQL Database en Azure Synapse Analytics (voorheen Azure SQL DW). Gegevens gebruikers kunnen ervoor kiezen om de gegevens in Azure Data Lake Storage Gen2 of Azure Blob Storage te accepteren als CSV-of Parquet-bestand, evenals in Azure SQL Database en Azure Synapse Analytics als tabellen.
+De Azure-gegevens share ondersteunt het delen van tabellen of weer gaven van Azure SQL Database en Azure Synapse Analytics (voorheen Azure SQL DW) en het delen van tabellen vanuit een Azure Synapse Analytics (werk ruimte) SQL-groep. Gegevens gebruikers kunnen ervoor kiezen om de gegevens in Azure Data Lake Storage Gen2 of Azure Blob Storage te accepteren als CSV-of Parquet-bestand, evenals in Azure SQL Database en Azure Synapse Analytics als tabellen.
 
 Wanneer gegevens worden geaccepteerd in Azure Data Lake Store Gen2 of Azure Blob Storage, overschrijven volledige moment opnamen de inhoud van het doel bestand als dit al bestaat.
-Wanneer gegevens in de tabel worden ontvangen en als de doel tabel nog niet bestaat, maakt Azure-gegevens share de SQL-tabel met het bron schema. Als er al een doel tabel met dezelfde naam bestaat, wordt deze verwijderd en overschreven met de laatste volledige moment opname. Incrementele moment opnamen worden momenteel niet ondersteund.
+Wanneer gegevens worden ontvangen in de SQL-tabel en als de doel tabel nog niet bestaat, maakt Azure-gegevens share de SQL-tabel met het bron schema. Als er al een doel tabel met dezelfde naam bestaat, wordt deze verwijderd en overschreven met de laatste volledige moment opname. Incrementele moment opnamen worden momenteel niet ondersteund.
 
 ## <a name="share-data"></a>Gegevens delen
 
@@ -33,12 +33,15 @@ Wanneer gegevens in de tabel worden ontvangen en als de doel tabel nog niet best
 * Als de bron-Azure-gegevensopslag zich in een ander Azure-abonnement bevindt dan de opslag die u gebruikt om een Data Share-resource te maken, registreert u de [resourceprovider Microsoft.DataShare](concepts-roles-permissions.md#resource-provider-registration) in het abonnement waarin de Azure-gegevensopslag zich bevindt. 
 
 ### <a name="prerequisites-for-sql-source"></a>Vereisten voor SQL-bron
-Hieronder ziet u de lijst met vereisten voor het delen van gegevens uit de SQL-bron. U kunt ook de [demo stapsgewijze](https://youtu.be/hIE-TjJD8Dc) voor het configureren van vereisten volgen.
+Hieronder ziet u de lijst met vereisten voor het delen van gegevens uit de SQL-bron. 
 
-* Azure SQL Database of Azure Synapse Analytics (voorheen SQL Data Warehouse) met tabellen en weergaven die u wilt delen.
-* Machtiging om naar de databases op de SQL-server te schrijven, aanwezig in *Microsoft.Sql/servers/databases/write*. Deze machtiging maakt onderdeel uit van de rol Inzender.
-* Machtiging voor de gegevensshare om toegang te krijgen tot de datawarehouse. U kunt dit doen via de volgende stappen: 
-    1. Ga in Azure Portal naar de SQL-Server en stel uzelf in als de Azure Active Directory-beheerder.
+#### <a name="prerequisites-for-sharing-from-azure-sql-database-or-azure-synapse-analytics-formerly-azure-sql-dw"></a>Vereisten voor delen van Azure SQL Database of Azure Synapse Analytics (voorheen Azure SQL DW)
+U kunt de stapsgewijze [demo](https://youtu.be/hIE-TjJD8Dc) voor het configureren van vereisten volgen.
+
+* Een Azure SQL Database of Azure Synapse Analytics (voorheen Azure SQL DW) met tabellen en weer gaven die u wilt delen.
+* Machtiging om naar de databases op de SQL-server te schrijven, aanwezig in *Microsoft.Sql/servers/databases/write*. Deze machtiging maakt onderdeel uit van de rol **Inzender**.
+* Machtiging voor de beheerde identiteit van de gegevens share bron voor toegang tot de data base. U kunt dit doen via de volgende stappen: 
+    1. Ga in Azure Portal naar de SQL-Server en stel uzelf in als de **Azure Active Directory-beheerder**.
     1. Maak verbinding met de Azure SQL Database/data warehouse met behulp van de [query-editor](../azure-sql/database/connect-query-portal.md#connect-using-azure-active-directory) of SQL Server Management Studio met Azure Active Directory-verificatie. 
     1. Voer het volgende script uit om de beheerde identiteit van de gegevens share bron toe te voegen als een db_datareader. U moet verbinding maken met behulp van Active Directory en niet via SQL Server-verificatie. 
     
@@ -48,11 +51,32 @@ Hieronder ziet u de lijst met vereisten voor het delen van gegevens uit de SQL-b
         ```                   
        U ziet dat *<share_acc_name>* de naam is van uw Data Share-resource. Als u nog geen Data Share-resource hebt gemaakt, kunt u later aan deze vereiste voldoen.  
 
-* Een Azure SQL Database-gebruiker met db_datareader-toegang om door de tabellen en/of weergaven die u wilt delen te navigeren en ze te selecteren. 
+* Een Azure SQL Database gebruiker met **' db_datareader '** toegang om te navigeren en de tabellen en/of weer gaven te selecteren die u wilt delen. 
 
 * SQL Server firewall toegang. U kunt dit doen via de volgende stappen: 
-    1. Ga in SQL Server in de Azure-portal naar *Firewalls en virtuele netwerken*
+    1. Ga in Azure Portal naar SQL Server. Selecteer *firewalls en virtuele netwerken* vanuit het navigatie links.
     1. Klik op **Ja** om *Azure-Services en-bronnen toegang te geven tot deze server*.
+    1. Klik op **+ client-IP toevoegen**. Het IP-adres van de client kan worden gewijzigd. Dit proces moet mogelijk worden herhaald de volgende keer dat u SQL-gegevens deelt vanuit de Azure-portal. U kunt ook een IP-bereik toevoegen.
+    1. Klik op **Opslaan**. 
+
+#### <a name="prerequisites-for-sharing-from-azure-synapse-analytics-workspace-sql-pool"></a>Vereisten voor delen van Azure Synapse Analytics (werk ruimte) SQL-groep
+
+* Een Azure Synapse Analytics (werk ruimte) SQL-groep met tabellen die u wilt delen. Delen van weer gave wordt momenteel niet ondersteund.
+* Toestemming om te schrijven naar de SQL-groep in de Synapse-werk ruimte, die aanwezig is in *micro soft. Synapse/werk ruimten/sqlPools/schrijven*. Deze machtiging maakt onderdeel uit van de rol **Inzender**.
+* Machtiging voor de beheerde identiteit van de gegevens share bron voor toegang tot de SQL-groep Synapse-werk ruimte. U kunt dit doen via de volgende stappen: 
+    1. Ga in Azure Portal naar Synapse-werk ruimte. Selecteer SQL Active Directory-beheerder in de linkernavigatiebalk en stel zichzelf in als de **Azure Active Directory-beheerder**.
+    1. Open Synapse Studio, selecteer *beheren* in het linkernavigatievenster. Selecteer *toegangs beheer* onder beveiliging. Wijs uzelf de rol van **SQL-beheerder** of **werk ruimte beheerder** toe.
+    1. Selecteer in Synapse Studio *ontwikkelen* vanaf de linkernavigatiebalk. Voer het volgende script in de SQL-groep uit om de beheerde identiteit van de gegevens share resource als db_datareader toe te voegen. 
+    
+        ```sql
+        create user "<share_acct_name>" from external provider;     
+        exec sp_addrolemember db_datareader, "<share_acct_name>"; 
+        ```                   
+       U ziet dat *<share_acc_name>* de naam is van uw Data Share-resource. Als u nog geen Data Share-resource hebt gemaakt, kunt u later aan deze vereiste voldoen.  
+
+* Toegang tot de Synapse werkruimte firewall. U kunt dit doen via de volgende stappen: 
+    1. Ga in Azure Portal naar Synapse-werk ruimte. Selecteer *firewalls* van links navigeren.
+    1. Klik op **aan** om *Azure-Services en-resources toegang te geven tot deze werk ruimte*.
     1. Klik op **+ client-IP toevoegen**. Het IP-adres van de client kan worden gewijzigd. Dit proces moet mogelijk worden herhaald de volgende keer dat u SQL-gegevens deelt vanuit de Azure-portal. U kunt ook een IP-bereik toevoegen.
     1. Klik op **Opslaan**. 
 
@@ -108,11 +132,11 @@ Maak een Azure Data Share-resource in een Azure-resourcegroep.
 
     ![AddDatasets](./media/add-datasets.png "Gegevenssets toevoegen")    
 
-1. Selecteer uw SQL-Server, geef referenties op en selecteer **volgende** om naar het object te navigeren dat u wilt delen en selecteer gegevens sets toevoegen. 
+1. Selecteer uw SQL Server-of Synapse-werk ruimte, geef referenties op als u hierom wordt gevraagd en selecteer **volgende** om naar het object te navigeren dat u wilt delen en selecteer gegevens sets toevoegen. 
 
     ![SelectDatasets](./media/select-datasets-sql.png "Gegevenssets selecteren")    
 
-1. Voer op het tabblad Ontvangers de e-mailadressen in van uw gegevensgebruiker door + Ontvanger toevoegen te selecteren. 
+1. Voer op het tabblad Ontvangers de e-mailadressen in van uw gegevensgebruiker door + Ontvanger toevoegen te selecteren. Het e-mail adres moet de Azure-aanmeldings-e-mail van de ontvanger zijn.
 
     ![AddRecipients](./media/add-recipient.png "Ontvangers toevoegen") 
 
@@ -145,15 +169,19 @@ Zorg ervoor dat alle vereisten zijn voltooid voordat u een uitnodiging voor gege
 Als u ervoor kiest om gegevens te ontvangen in Azure Storage, hieronder volgt de lijst met vereisten.
 
 * Een Azure Storage-account: Hier kunt u een [Azure Storage-account](../storage/common/storage-account-create.md) maken als u nog geen account hebt. 
-* Machtiging om naar het opslagaccount te schrijven, aanwezig in *Microsoft.Storage/storageAccounts/write*. Deze machtiging maakt onderdeel uit van de rol Inzender. 
-* Machtiging om roltoewijzing toe te voegen aan het opslagaccount, aanwezig in *Microsoft.Authorization/role assignments/write*. Deze machtiging maakt onderdeel uit van de rol Eigenaar.  
+* Machtiging om naar het opslagaccount te schrijven, aanwezig in *Microsoft.Storage/storageAccounts/write*. Deze machtiging maakt onderdeel uit van de rol **Inzender**. 
+* Machtiging voor het toevoegen van de roltoewijzing van de gegevens share bron beheerde identiteit aan het opslag account dat aanwezig is in *micro soft. autorisatie/roltoewijzingen/schrijven*. Deze machtiging maakt onderdeel uit van de rol **Eigenaar**.  
 
 ### <a name="prerequisites-for-sql-target"></a>Vereisten voor SQL-doel
-Als u ervoor kiest om gegevens te ontvangen in Azure SQL Database, wordt in azure Synapse Analytics hieronder de lijst met vereisten weer gegeven. U kunt ook de [demo stapsgewijze](https://youtu.be/aeGISgK1xro) voor het configureren van vereisten volgen.
+Als u ervoor kiest om gegevens te ontvangen in Azure SQL Database, wordt in azure Synapse Analytics hieronder de lijst met vereisten weer gegeven. 
 
-* Machtiging om naar databases op de SQL-server te schrijven, aanwezig in *Microsoft.Sql/servers/databases/write*. Deze machtiging maakt onderdeel uit van de rol Inzender. 
-* Machtiging voor de beheerde identiteit van de Data Share-resource voor toegang tot Azure SQL Database of Azure Synapse Analytics. U kunt dit doen via de volgende stappen: 
-    1. Ga in Azure Portal naar de SQL-Server en stel uzelf in als de Azure Active Directory-beheerder.
+#### <a name="prerequisites-for-receiving-data-into-azure-sql-database-or-azure-synapse-analytics-formerly-azure-sql-dw"></a>Vereisten voor het ontvangen van gegevens in Azure SQL Database of Azure Synapse Analytics (voorheen Azure SQL DW)
+U kunt de stapsgewijze [demo](https://youtu.be/aeGISgK1xro) voor het configureren van vereisten volgen.
+
+* Een Azure SQL Database of Azure Synapse Analytics (voorheen Azure SQL DW).
+* Machtiging om naar databases op de SQL-server te schrijven, aanwezig in *Microsoft.Sql/servers/databases/write*. Deze machtiging maakt onderdeel uit van de rol **Inzender**. 
+* Machtiging voor de beheerde identiteit van de gegevens share bron om toegang te krijgen tot de Azure SQL Database of Azure Synapse Analytics. U kunt dit doen via de volgende stappen: 
+    1. Ga in Azure Portal naar de SQL-Server en stel uzelf in als de **Azure Active Directory-beheerder**.
     1. Maak verbinding met de Azure SQL Database/data warehouse met behulp van de [query-editor](../azure-sql/database/connect-query-portal.md#connect-using-azure-active-directory) of SQL Server Management Studio met Azure Active Directory-verificatie. 
     1. Voer het volgende script uit om de door de gegevens share beheerde identiteit toe te voegen als een db_datareader, db_datawriter, db_ddladmin. U moet verbinding maken met behulp van Active Directory en niet via SQL Server-verificatie. 
 
@@ -168,6 +196,29 @@ Als u ervoor kiest om gegevens te ontvangen in Azure SQL Database, wordt in azur
 * SQL Server firewall toegang. U kunt dit doen via de volgende stappen: 
     1. Ga in SQL Server in de Azure-portal naar *Firewalls en virtuele netwerken*
     1. Klik op **Ja** om *Azure-Services en-bronnen toegang te geven tot deze server*.
+    1. Klik op **+ client-IP toevoegen**. Het IP-adres van de client kan worden gewijzigd. Dit proces moet mogelijk worden herhaald de volgende keer dat u SQL-gegevens deelt vanuit de Azure-portal. U kunt ook een IP-bereik toevoegen.
+    1. Klik op **Opslaan**. 
+ 
+#### <a name="prerequisites-for-receiving-data-into-azure-synapse-analytics-workspace-sql-pool"></a>Vereisten voor het ontvangen van gegevens in een Azure Synapse Analytics (werk ruimte) SQL-groep
+
+* Een Azure Synapse Analytics (werk ruimte) SQL-groep.
+* Toestemming om te schrijven naar de SQL-groep in de Synapse-werk ruimte, die aanwezig is in *micro soft. Synapse/werk ruimten/sqlPools/schrijven*. Deze machtiging maakt onderdeel uit van de rol **Inzender**.
+* Machtiging voor de beheerde identiteit van de gegevens share bron voor toegang tot de Synapse werkruimte SQL-pool. U kunt dit doen via de volgende stappen: 
+    1. Ga in Azure Portal naar Synapse-werk ruimte. Selecteer SQL Active Directory-beheerder in de linkernavigatiebalk en stel zichzelf in als de **Azure Active Directory-beheerder**.
+    1. Open Synapse Studio, selecteer *beheren* in het linkernavigatievenster. Selecteer *toegangs beheer* onder beveiliging. Wijs uzelf de rol van **SQL-beheerder** of **werk ruimte beheerder** toe.
+    1. Selecteer in Synapse Studio *ontwikkelen* vanaf de linkernavigatiebalk. Voer het volgende script in de SQL-groep uit om de beheerde identiteit van de gegevens share bron toe te voegen als een db_datareader, db_datawriter, db_ddladmin. 
+    
+        ```sql
+        create user "<share_acc_name>" from external provider; 
+        exec sp_addrolemember db_datareader, "<share_acc_name>"; 
+        exec sp_addrolemember db_datawriter, "<share_acc_name>"; 
+        exec sp_addrolemember db_ddladmin, "<share_acc_name>";
+        ```                   
+       U ziet dat *<share_acc_name>* de naam is van uw Data Share-resource. Als u nog geen Data Share-resource hebt gemaakt, kunt u later aan deze vereiste voldoen.  
+
+* Toegang tot de Synapse werkruimte firewall. U kunt dit doen via de volgende stappen: 
+    1. Ga in Azure Portal naar Synapse-werk ruimte. Selecteer *firewalls* van links navigeren.
+    1. Klik op **aan** om *Azure-Services en-resources toegang te geven tot deze werk ruimte*.
     1. Klik op **+ client-IP toevoegen**. Het IP-adres van de client kan worden gewijzigd. Dit proces moet mogelijk worden herhaald de volgende keer dat u SQL-gegevens deelt vanuit de Azure-portal. U kunt ook een IP-bereik toevoegen.
     1. Klik op **Opslaan**. 
 
@@ -202,7 +253,7 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
    ![Opties voor accepteren](./media/accept-options.png "Opties voor accepteren") 
 
-   U ziet de ontvangen share nu in uw Data Share-account. 
+   Hiermee gaat u naar de ontvangen share in uw gegevens share-account. 
 
    Als u de uitnodiging niet wilt accepteren, selecteert u *Weigeren*. 
 
@@ -244,7 +295,7 @@ Wanneer u gegevens uit de SQL-bron deelt, wordt de volgende toewijzing gebruikt 
 | binair |Byte [] |
 | bit |Boolean-waarde |
 | char |Teken reeks, char [] |
-| date |DateTime |
+| datum |DateTime |
 | Datum/tijd |DateTime |
 | datetime2 |DateTime |
 | Date time offset |Date time offset |
@@ -290,7 +341,7 @@ De prestaties van SQL-moment opnamen worden beïnvloed door een aantal factoren.
 * Locatie van bron-en doel gegevens archieven. 
 
 ## <a name="troubleshoot-sql-snapshot-failure"></a>Problemen met SQL-momentopname fout oplossen
-De meest voorkomende oorzaak van het mislukken van de moment opname is dat de gegevens share geen machtiging heeft voor het bron-of doel gegevens archief. Als u de machtiging gegevens share wilt verlenen aan de bron-of doel-SQL-gegevens opslag, moet u het meegeleverde SQL-script uitvoeren wanneer u verbinding maakt met de SQL database met behulp van Azure Active Directory-verificatie. Raadpleeg [problemen met de moment opname oplossen](data-share-troubleshoot.md#snapshot-failed)voor het oplossen van een extra SQL-momentopname fout.
+De meest voorkomende oorzaak van het mislukken van de moment opname is dat de gegevens share geen machtiging heeft voor het bron-of doel gegevens archief. Als u de machtiging gegevens share wilt verlenen aan de bron-of doel Azure SQL Database of Azure Synapse Analytics (voorheen Azure SQL DW), moet u het meegeleverde SQL-script uitvoeren wanneer u verbinding maakt met de SQL database met behulp van Azure Active Directory-verificatie. Raadpleeg [problemen met de moment opname oplossen](data-share-troubleshoot.md#snapshot-failed)voor het oplossen van een extra SQL-momentopname fout.
 
 ## <a name="next-steps"></a>Volgende stappen
 U hebt geleerd hoe u gegevens kunt delen en ontvangen van SQL-bronnen met behulp van de Azure data share-service. Voor meer informatie over het delen van andere gegevens bronnen gaat u verder met [ondersteunde gegevens archieven](supported-data-stores.md).

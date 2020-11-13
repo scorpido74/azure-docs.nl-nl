@@ -10,14 +10,17 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calui
-ms.openlocfilehash: c822aaebb2451d709f6afcdeba959f39c4d491cb
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c3fcff5673f4498e92f5d66fe96d806a08527197
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964533"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576016"
 ---
 # <a name="sign-in-to-azure-active-directory-using-email-as-an-alternate-login-id-preview"></a>Meld u aan Azure Active Directory gebruik te maken van een e-mail adres als een alternatieve aanmeldings-ID (preview-versie)
+
+> [!NOTE]
+> Meld u aan bij Azure AD met een e-mail adres als alternatieve aanmeldings-ID. Dit is een open bare preview-functie van Azure Active Directory. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 Veel organisaties willen dat gebruikers zich aanmelden bij Azure Active Directory (Azure AD) met dezelfde referenties als de on-premises Directory-omgeving. Bij deze benadering, ook wel hybride verificatie genoemd, hoeven gebruikers slechts één set referenties te onthouden.
 
@@ -27,12 +30,12 @@ Sommige organisaties zijn niet naar hybride verificatie verplaatst om de volgend
 * Als u de UPN van Azure AD wijzigt, wordt er een mis-overeenkomst tussen on-premises en Azure AD-omgevingen gemaakt die problemen met bepaalde toepassingen en services kunnen veroorzaken.
 * Als gevolg van bedrijfs-of nalevings redenen wil de organisatie zich niet aanmelden bij Azure AD door de lokale UPN te gebruiken.
 
-Om u te helpen bij het verplaatsen naar hybride verificatie kunt u Azure AD nu configureren zodat gebruikers zich kunnen aanmelden met een e-mail adres in uw geverifieerde domein als een alternatieve aanmeldings-ID. Als *Contoso* bijvoorbeeld is gebrandt op *fabrikam*, in plaats van zich te blijven aanmelden met de verouderde `balas@contoso.com` UPN, kan e-mail als alternatieve aanmeldings-id nu worden gebruikt. Om toegang te krijgen tot een toepassing of services, melden gebruikers zich aan bij Azure AD via hun toegewezen e-mail adres, zoals `balas@fabrikam.com` .
+Om u te helpen bij het verplaatsen naar hybride verificatie kunt u Azure AD nu configureren zodat gebruikers zich kunnen aanmelden met een e-mail adres in uw geverifieerde domein als een alternatieve aanmeldings-ID. Als *Contoso* bijvoorbeeld is gebrandt op *fabrikam* , in plaats van zich te blijven aanmelden met de verouderde `balas@contoso.com` UPN, kan e-mail als alternatieve aanmeldings-id nu worden gebruikt. Om toegang te krijgen tot een toepassing of services, melden gebruikers zich aan bij Azure AD via hun toegewezen e-mail adres, zoals `balas@fabrikam.com` .
 
 In dit artikel leest u hoe u e-mail kunt inschakelen en gebruiken als een alternatieve aanmeldings-ID. Deze functie is beschikbaar in de Azure AD Free-editie en hoger.
 
 > [!NOTE]
-> Meld u aan bij Azure AD met een e-mail adres als alternatieve aanmeldings-ID. Dit is een open bare preview-functie van Azure Active Directory. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+> Deze functie is alleen voor door de Cloud geverifieerde Azure AD-gebruikers.
 
 ## <a name="overview-of-azure-ad-sign-in-approaches"></a>Overzicht van de benaderingen van Azure AD-aanmelding
 
@@ -169,13 +172,79 @@ Wanneer het beleid is toegepast, kan het tot een uur duren voordat gebruikers zi
 
 Als u wilt testen of gebruikers zich kunnen aanmelden met e-mail, bladert u naar [https://myprofile.microsoft.com][my-profile] en meldt u zich aan met een gebruikers account op basis van hun e-mail adres, zoals `balas@fabrikam.com` , niet de UPN, zoals `balas@contoso.com` . De aanmeldings ervaring moet er hetzelfde uitzien als bij een aanmeld gebeurtenis op basis van een UPN.
 
+## <a name="enable-staged-rollout-to-test-user-sign-in-with-an-email-address"></a>Gefaseerde implementatie inschakelen voor het testen van de gebruikers aanmelding met een e-mail adres  
+
+Met [gefaseerde implementatie][staged-rollout] kunnen Tenant beheerders functies inschakelen voor specifieke groepen. Het wordt aanbevolen dat Tenant beheerders gefaseerde implementatie gebruiken om de gebruikers aanmelding te testen met een e-mail adres. Wanneer beheerders klaar zijn om deze functie te implementeren in hun hele Tenant, moeten ze gebruikmaken van het beleid voor het detecteren van een thuis domein.  
+
+
+U hebt *Tenant beheerders* machtigingen nodig om de volgende stappen uit te voeren:
+
+1. Open een Power shell-sessie als beheerder en installeer de *AzureADPreview* -module met de cmdlet [install-module][Install-Module] :
+
+    ```powershell
+    Install-Module AzureADPreview
+    ```
+
+    Als u hierom wordt gevraagd, selecteert u **Y** om NuGet te installeren of om te installeren vanuit een niet-vertrouwde opslag plaats.
+
+2. Meld u aan bij uw Azure AD-Tenant als een *Tenant beheerder* met de cmdlet [Connect-AzureAD][Connect-AzureAD] :
+
+    ```powershell
+    Connect-AzureAD
+    ```
+
+    De opdracht retourneert informatie over uw account, omgeving en Tenant-ID.
+
+3. Een lijst met alle bestaande beleids regels voor gefaseerde implementatie met behulp van de volgende cmdlet:
+   
+   ```powershell
+   Get-AzureADMSFeatureRolloutPolicy
+   ``` 
+
+4. Als er geen bestaande beleids regels voor gefaseerde implementatie zijn voor deze functie, maakt u een nieuw beleid voor gefaseerde implementatie en noteert u de beleids-ID:
+
+   ```powershell
+   New-AzureADMSFeatureRolloutPolicy -Feature EmailAsAlternateId -DisplayName "EmailAsAlternateId Rollout Policy" -IsEnabled $true
+   ```
+
+5. Zoek de directoryObject-ID voor de groep die moet worden toegevoegd aan het beleid voor gefaseerde implementatie. Let op de geretourneerde waarde voor de *id-* para meter, omdat deze wordt gebruikt in de volgende stap.
+   
+   ```powershell
+   Get-AzureADMSGroup -SearchString "Name of group to be added to the staged rollout policy"
+   ```
+
+6. Voeg de groep toe aan het beleid voor gefaseerde implementatie, zoals wordt weer gegeven in het volgende voor beeld. Vervang de waarde in de para meter *-id* door de waarde die voor de beleids-id is geretourneerd in stap 4 en vervang de waarde in de para meter *-RefObjectId* door de *id* die u in stap 5 hebt opgegeven. Het kan Maxi maal één uur duren voordat gebruikers in de groep hun proxy adressen kunnen gebruiken om zich aan te melden.
+
+   ```powershell
+   Add-AzureADMSFeatureRolloutPolicyDirectoryObject -Id "ROLLOUT_POLICY_ID" -RefObjectId "GROUP_OBJECT_ID"
+   ```
+   
+Voor nieuwe leden die aan de groep zijn toegevoegd, kan het tot 24 uur duren voordat ze hun proxy adressen kunnen gebruiken om zich aan te melden.
+
+### <a name="removing-groups"></a>Groepen verwijderen
+
+Als u een groep wilt verwijderen uit een gefaseerde implementatie beleid, voert u de volgende opdracht uit:
+
+```powershell
+Remove-AzureADMSFeatureRolloutPolicyDirectoryObject -Id "ROLLOUT_POLICY_ID" -ObjectId "GROUP_OBJECT_ID" 
+```
+
+### <a name="removing-policies"></a>Beleid verwijderen
+
+Als u een beleid voor gefaseerde implementatie wilt verwijderen, schakelt u eerst het beleid uit en verwijdert u het vervolgens van het systeem:
+
+```powershell
+Set-AzureADMSFeatureRolloutPolicy -Id "ROLLOUT_POLICY_ID" -IsEnabled $false 
+Remove-AzureADMSFeatureRolloutPolicy -Id "ROLLOUT_POLICY_ID"
+```
+
 ## <a name="troubleshoot"></a>Problemen oplossen
 
 Als gebruikers problemen ondervinden met aanmeldings gebeurtenissen met hun e-mail adres, raadpleegt u de volgende stappen voor probleem oplossing:
 
 1. Zorg ervoor dat het e-mail adres van de gebruikers account is ingesteld voor het kenmerk *proxyAddresses* in de on-premises AD DS omgeving.
 1. Controleer of Azure AD Connect is geconfigureerd en synchroniseert gebruikers accounts uit de on-premises AD DS omgeving in azure AD.
-1. Controleer of het kenmerk *AlternateIdLogin* van het Azure AD *HomeRealmDiscoveryPolicy* -beleid is ingesteld op *' enabled ': True*:
+1. Controleer of het kenmerk *AlternateIdLogin* van het Azure AD *HomeRealmDiscoveryPolicy* -beleid is ingesteld op *' enabled ': True* :
 
     ```powershell
     Get-AzureADPolicy | where-object {$_.Type -eq "HomeRealmDiscoveryPolicy"} | fl *
@@ -202,4 +271,5 @@ Zie How to Synchronizing [hash Sync][phs-overview] of [Pass-Through-verificatie]
 [Get-AzureADPolicy]: /powershell/module/azuread/get-azureadpolicy
 [New-AzureADPolicy]: /powershell/module/azuread/new-azureadpolicy
 [Set-AzureADPolicy]: /powershell/module/azuread/set-azureadpolicy
+[staged-rollout]: /powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#staged-rollout
 [my-profile]: https://myprofile.microsoft.com

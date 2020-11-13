@@ -2,14 +2,14 @@
 title: Veelgestelde vragen
 description: Hier vindt u antwoorden op enkele veelgestelde vragen over de Azure VMware-oplossing.
 ms.topic: conceptual
-ms.date: 09/25/2020
+ms.date: 11/12/2020
 ms.author: dikamath
-ms.openlocfilehash: 33250b0ba9209f7806346668dac0ef308101e7c2
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 99e9e53693e42f907250331894f55ed0160f9e30
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94487785"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94577512"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Veelgestelde vragen over de Azure VMware-oplossing
 
@@ -229,9 +229,15 @@ U hebt volledige beheerders bevoegdheden voor NSX-T en kan toegangs beheer op ba
 
 Zie de pagina met [prijzen](https://azure.microsoft.com/pricing/details/azure-vmware) voor Azure VMware-oplossingen voor algemene vragen over prijzen. 
 
+#### <a name="can-azure-vmware-solution-be-purchased-through-a-microsoft-csp"></a>Kan de Azure VMware-oplossing worden aangeschaft via een micro soft CSP?
+
+Ja, klanten kunnen Azure VMware-oplossing implementeren binnen een Azure-abonnement dat wordt beheerd door een CSP.
+
 #### <a name="who-supports-azure-vmware-solution"></a>Wie ondersteunt de Azure VMware-oplossing?
 
-Micro soft biedt ondersteuning voor de Azure VMware-oplossing. U kunt een [ondersteunings aanvraag](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)indienen.
+Micro soft biedt ondersteuning voor de Azure VMware-oplossing. U kunt een [ondersteunings aanvraag](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)indienen. 
+
+Voor CSP Managed-abonnementen wordt het eerste ondersteunings niveau geboden door de oplossings provider op dezelfde manier als CSP voor andere Azure-Services.
 
 #### <a name="what-accounts-do-i-need-to-create-an-azure-vmware-solution-private-cloud"></a>Welke accounts heb ik nodig om een privécloud van Azure VMware-oplossing te maken?
 
@@ -246,6 +252,10 @@ Micro soft en Red Hat delen een geïntegreerd ondersteunings team dat een unifor
 VMware HCX Enterprise Edition (EE) is beschikbaar met Azure VMware Solution als een *preview* -functie/-service. Hoewel VMware HCX EE voor de Azure VMware-oplossing in preview is, is het een gratis functie/service en onderhevig aan de voor waarden van de preview-versie van de service. Zodra de VMware HCX EE-service algemeen beschikbaar wordt, krijgt u een melding dat de facturering over 30 dagen wordt omgeschakeld. U kunt de service uitschakelen of u afmelden.
 
 #### <a name="how-do-i-request-a-host-quota-increase-for-azure-vmware-solution"></a>Hoe kan ik een toename voor een quotum van een host voor een Azure VMware-oplossing aanvragen?
+
+Voor CSP Managed-abonnementen moet de klant de aanvraag indienen bij de partner en zal het partner team samen werken met micro soft om het quotum voor het abonnement te verg root. 
+
+Voor EA-abonnementen moet de klant deze procedure volgen.
 
 * U hebt een [Azure Enterprise Agreement (EA)](../cost-management-billing/manage/ea-portal-agreements.md) met micro soft nodig.
 * U hebt een Azure-account in een Azure-abonnement nodig.
@@ -283,9 +293,12 @@ Voordat u uw Azure VMware-oplossings resource maakt, moet u een ondersteunings t
 
    ```azurecli-interactive
    az provider register -n Microsoft.AVS --subscription <your subscription ID>
-   `"
 
-   For additional ways to register the resource provider, see [Azure resource providers and types](../azure-resource-manager/management/resource-providers-and-types.md).
+   For additional ways to register the resource provider, see [Azure resource providers and types](../azure-resource-manager/management/resource-providers-and-types.md). 
+
+#### Are Reserved Instances available for purchasing through the Cloud Solution Provider (CSP) program?
+
+Yes. CSP can purchase reserved instances on behalf of their customers, see [Save costs with a reserved instance](reserved-instance.md) article. 
 
 
 ## Customer communication

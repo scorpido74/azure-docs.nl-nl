@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/16/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 48884e6faa5f26f027c772b44d5f960979a40d1d
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: beede74134affeb3ee0d4bdd20d5da3b4c5e6eda
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94447725"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566619"
 ---
 # <a name="red-hat-enterprise-linux-in-place-upgrades"></a>Red Hat Enterprise Linux in-place Upgrades
 
@@ -22,10 +22,12 @@ In dit artikel vindt u stapsgewijze instructies voor het uitvoeren van een in-pl
 > SQL Server op Red Hat Enterprise Linux aanbiedingen bieden geen ondersteuning voor in-place upgrade op Azure.
 
 ## <a name="what-to-expect-during-the-upgrade"></a>Wat u tijdens de upgrade kunt verwachten
-Het systeem wordt een paar keer opnieuw opgestart tijdens de upgrade en dat is normaal. Bij de laatste keer opnieuw opstarten wordt de VM bijgewerkt naar RHEL 8 laatste secundaire release.
+Het systeem wordt een paar keer opnieuw opgestart tijdens de upgrade en dat is normaal. Bij de laatste keer opnieuw opstarten wordt de VM bijgewerkt naar RHEL 8 laatste secundaire release. 
+
+Het upgrade proces kan 20 minuten tot enkele uren duren. Dit is afhankelijk van verschillende factoren, zoals de VM-grootte en het aantal pakketten dat op het systeem is geïnstalleerd.
 
 ## <a name="preparations-for-the-upgrade"></a>Voor bereidingen voor de upgrade
-In-place Upgrades zijn de officieel aanbevolen manier van Red Hat en Azure om klanten in staat te stellen uw systeem bij te werken naar de volgende primaire versie. Voordat u de upgrade uitvoert, moet u zich bewust zijn van de volgende zaken en rekening houden. 
+Een in-place upgrade is de officieel aanbevolen manier van Red Hat en Azure, zodat klanten het systeem kunnen upgraden naar de volgende primaire versie. Voordat u de upgrade uitvoert, moet u zich bewust zijn van de volgende zaken en rekening houden. 
 
 >[!Important] 
 > Maak een moment opname van de installatie kopie voordat u de upgrade uitvoert.
@@ -39,6 +41,12 @@ In-place Upgrades zijn de officieel aanbevolen manier van Red Hat en Azure om kl
     ```bash
     leapp preupgrade --no-rhsm
     ```
+* Zorg ervoor dat de seriële console functioneel is, omdat hiermee bewaking kan worden uitgevoerd tijdens het upgrade proces.
+
+* SSH-basis toegang inschakelen in `/etc/ssh/sshd_config`
+    1. Open het bestand `/etc/ssh/sshd_config`
+    1. Zoeken naar ' #PermitRootLogin ja '
+    1. ' # ' Verwijderen uit Opmerking
 
 ## <a name="steps-for-performing-the-upgrade"></a>Stappen voor het uitvoeren van de upgrade
 
@@ -46,7 +54,7 @@ Voer deze stappen zorgvuldig uit. U wordt geadviseerd om de upgrade op een test 
 
 1. Voer een yum-update uit om de meest recente client pakketten op te halen.
     ```bash
-    yum update
+    yum update -y
     ```
 
 1. Installeer het leapp-client-package.
@@ -58,35 +66,66 @@ Voer deze stappen zorgvuldig uit. U wordt geadviseerd om de upgrade op een test 
     1. Down load het bestand.
     1. Pak de inhoud uit en verwijder het bestand met de volgende opdracht:
     ```bash
-     tar -xzf leapp-data12.tar.gz -C /etc/leapp/files && rm leapp-data12.tar.gz
+    tar -xzf leapp-data12.tar.gz -C /etc/leapp/files && rm leapp-data12.tar.gz
     ```
-    
-
 
 1. Voeg het bestand ' Answers ' voor ' Leapp ' toe.
     ```bash
     leapp answer --section remove_pam_pkcs11_module_check.confirm=True --add
-    ```
-    
-1. PermitRootLogin in/etc/ssh/inschakelen sshd_config
-    1. Open het bestand/etc/ssh/sshd_config
-    1. Zoeken naar ' #PermitRootLogin ja '
-    1. ' # ' Verwijderen uit Opmerking
-
-
+    ``` 
 
 1. Voer de upgrade ' Leapp ' uit.
     ```bash
     leapp upgrade --no-rhsm
     ```
+1.  Nadat de `leapp upgrade` opdracht is voltooid, start u het systeem hand matig opnieuw op om het proces te volt ooien. Het systeem wordt opnieuw opgestart, zodat het niet meer beschikbaar is. Bewaak het proces met behulp van de seriële console.
+
+1.  Controleer of de upgrade is voltooid.
+    ```bash
+    uname -a && cat /etc/redhat-release
+    ```
+
+1. Het verwijderen van de hoofd-SSH-toegang nadat de upgrade is voltooid.
+    1. Open het bestand `/etc/ssh/sshd_config`
+    1. Zoeken naar ' #PermitRootLogin ja '
+    1. ' # ' Aan opmerking toevoegen
+
 1. De sshd-service opnieuw starten om de wijzigingen van kracht te laten worden
     ```bash
     systemctl restart sshd
     ```
-1. PermitRootLogin in/etc/ssh/-sshd_config opnieuw opmerking plaatsen
-    1. Open het bestand/etc/ssh/sshd_config
-    1. Zoeken naar ' #PermitRootLogin ja '
-    1. ' # ' Aan opmerking toevoegen
+
+## <a name="common-issues"></a>Veelvoorkomende problemen
+Dit zijn enkele algemene instanties die het `leapp preupgrade` of `leapp upgrade` proces kunnen mislukken.
+
+**Fout: er zijn geen overeenkomsten gevonden voor de volgende uitgeschakelde invoeg toepassingen patronen**
+```plaintext
+STDERR:
+No matches found for the following disabled plugin patterns: subscription-manager
+Warning: Packages marked by Leapp for upgrade not found in repositories metadata: gpg-pubkey
+```
+**Oplossing**\
+Schakel de invoeg toepassing voor abonnements beheer uit door het bestand `/etc/yum/pluginconf.d/subscription-manager.conf` te bewerken en ingeschakeld in te scha kelen `enabled=0` .
+
+Dit wordt veroorzaakt door de yum-invoeg toepassing van Subscription-Manager, die niet wordt gebruikt voor PAYG-Vm's.
+
+**Fout: mogelijk problemen met externe aanmelding via de hoofdmap** Het kan zijn dat de `leapp preupgrade` volgende fout is opgetreden:
+```structured-text
+============================================================
+                     UPGRADE INHIBITED
+============================================================
+
+Upgrade has been inhibited due to the following problems:
+    1. Inhibitor: Possible problems with remote login using root account
+Consult the pre-upgrade report for details and possible remediation.
+
+============================================================
+                     UPGRADE INHIBITED
+============================================================
+```
+**Oplossing**\
+Toegang tot hoofdmap inschakelen in `/etc/sshd_conf` .
+Dit wordt veroorzaakt doordat geen basis-SSH-toegang is ingeschakeld in `/etc/sshd_conf` de sectie "[voor bereidingen voor de upgrade](#preparations-for-the-upgrade)". 
 
 ## <a name="next-steps"></a>Volgende stappen
 * Meer informatie over de [Red Hat-afbeeldingen in azure](./redhat-images.md).

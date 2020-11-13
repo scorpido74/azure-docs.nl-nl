@@ -1,6 +1,6 @@
 ---
 title: Verificatie op basis van een header met Azure Active Directory
-description: Richt lijnen voor architectuur over het bereiken van dit verificatie patroon
+description: Richt lijnen voor architectuur over het bereiken van verificatie op basis van een header met Azure Active Directory.
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f364e4e14dd1b7c60cb81f06051d9dedd94396a
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: bb54410fb314376b68d7297a3452f0990762343d
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92114258"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94577155"
 ---
 # <a name="header-based-authentication-with-azure-active-directory"></a>Verificatie op basis van een header met Azure Active Directory
 
@@ -34,17 +34,17 @@ Externe gebruikers moeten zich op een veilige manier aanmelden voor on-premises 
 
 ## <a name="components-of-system"></a>Onderdelen van systeem
 
-* **Gebruiker**: toegang tot verouderde toepassingen die worden bediend door de toepassings proxy.
+* **Gebruiker** : toegang tot verouderde toepassingen die worden bediend door de toepassings proxy.
 
-* **Webbrowser**: het onderdeel waarmee de gebruiker communiceert om toegang te krijgen tot de externe URL van de toepassing.
+* **Webbrowser** : het onderdeel waarmee de gebruiker communiceert om toegang te krijgen tot de externe URL van de toepassing.
 
-* **Azure AD**: verifieert de gebruiker. 
+* **Azure AD** : verifieert de gebruiker. 
 
-* **Application proxy-service**: fungeert als omgekeerde proxy voor het verzenden van een aanvraag van de gebruiker naar de on-premises toepassing. Het bevindt zich in azure AD en kan ook beleids regels voor voorwaardelijke toegang afdwingen.
+* **Application proxy-service** : fungeert als omgekeerde proxy voor het verzenden van een aanvraag van de gebruiker naar de on-premises toepassing. Het bevindt zich in azure AD en kan ook beleids regels voor voorwaardelijke toegang afdwingen.
 
-* **Application proxy-connector**: on-premises op Windows-servers geïnstalleerd om verbinding te kunnen maken met de toepassingen. Er worden alleen uitgaande verbindingen gebruikt. Retourneert het antwoord naar Azure AD.
+* **Application proxy-connector** : on-premises op Windows-servers geïnstalleerd om verbinding te kunnen maken met de toepassingen. Er worden alleen uitgaande verbindingen gebruikt. Retourneert het antwoord naar Azure AD.
 
-* **Verouderde toepassingen**: toepassingen die gebruikers aanvragen ontvangen van de toepassings proxy. De verouderde toepassing ontvangt de vereiste HTTP-headers voor het instellen van een sessie en het retour neren van een antwoord. 
+* **Verouderde toepassingen** : toepassingen die gebruikers aanvragen ontvangen van de toepassings proxy. De verouderde toepassing ontvangt de vereiste HTTP-headers voor het instellen van een sessie en het retour neren van een antwoord. 
 
 ## <a name="implement-header-based-authentication-with-azure-ad"></a>Op headers gebaseerde verificatie implementeren met Azure AD
 

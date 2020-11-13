@@ -1,6 +1,6 @@
 ---
 title: LDAP-verificatie met Azure Active Directory
-description: Richt lijnen voor architectuur over het bereiken van dit verificatie patroon
+description: Architectuur richtlijnen voor het bereiken van LDAP-verificatie met Azure Active Directory.
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a70cb4754d98f4573670860c510692a7a2d134c
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: d5314758acecae2a9d68f2405fc1c3d2196950b4
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92114241"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94577053"
 ---
 # <a name="ldap-authentication-with-azure-active-directory"></a>LDAP-verificatie met Azure Active Directory
 
@@ -40,23 +40,23 @@ U moet voor een toepassing of service gebruikmaken van LDAP-verificatie.
 
 ## <a name="components-of-system"></a>Onderdelen van systeem
 
-* **Gebruiker**: toegang tot toepassingen die afhankelijk zijn van LDAP via een browser.
+* **Gebruiker** : toegang tot toepassingen die afhankelijk zijn van LDAP via een browser.
 
-* **Webbrowser**: de interface waarmee de gebruiker communiceert om toegang te krijgen tot de externe URL van de toepassing.
+* **Webbrowser** : de interface waarmee de gebruiker communiceert om toegang te krijgen tot de externe URL van de toepassing.
 
-* **Virtual Network**: een particulier netwerk in azure waarmee de oudere toepassing LDAP-services kan verbruiken. 
+* **Virtual Network** : een particulier netwerk in azure waarmee de oudere toepassing LDAP-services kan verbruiken. 
 
-* **Oudere toepassingen**: toepassingen of server werkbelastingen waarvoor LDAP is geïmplementeerd in een virtueel netwerk in azure, of die zicht hebben op de AD DS instantie ip's via netwerk routes. 
+* **Oudere toepassingen** : toepassingen of server werkbelastingen waarvoor LDAP is geïmplementeerd in een virtueel netwerk in azure, of die zicht hebben op de AD DS instantie ip's via netwerk routes. 
 
-* **Azure AD**: synchroniseert identiteits gegevens van de on-premises Directory van de organisatie via Azure AD Connect.
+* **Azure AD** : synchroniseert identiteits gegevens van de on-premises Directory van de organisatie via Azure AD Connect.
 
-* **Azure AD Domain Services (AD DS)**: voert een eenrichtings synchronisatie uit vanuit Azure AD om toegang te bieden tot een centrale set gebruikers, groepen en referenties. Het AD DS-exemplaar wordt toegewezen aan een virtueel netwerk. Toepassingen, services en virtuele machines in azure die verbinding maken met het virtuele netwerk dat is toegewezen aan AD DS, kunnen gebruikmaken van algemene AD DS functies zoals LDAP, domein deelname, groeps beleid, Kerberos en NTLM-verificatie.
+* **Azure AD Domain Services (AD DS)** : voert een eenrichtings synchronisatie uit vanuit Azure AD om toegang te bieden tot een centrale set gebruikers, groepen en referenties. Het AD DS-exemplaar wordt toegewezen aan een virtueel netwerk. Toepassingen, services en virtuele machines in azure die verbinding maken met het virtuele netwerk dat is toegewezen aan AD DS, kunnen gebruikmaken van algemene AD DS functies zoals LDAP, domein deelname, groeps beleid, Kerberos en NTLM-verificatie.
    > [!NOTE]
    >  In omgevingen waar de organisatie geen wacht woord-hashes kan synchroniseren of gebruikers zich aanmelden met Smart Cards, raden we u aan een bron-forest te gebruiken in AD DS. 
 
-* **Azure AD Connect**: een hulp programma voor het synchroniseren van on-premises identiteits gegevens naar Microsoft Azure AD. De implementatie wizard en de begeleide ervaringen helpen u bij het configureren van vereisten en onderdelen die vereist zijn voor de verbinding, waaronder synchronisatie en aanmelding van Active Directory naar Azure AD. 
+* **Azure AD Connect** : een hulp programma voor het synchroniseren van on-premises identiteits gegevens naar Microsoft Azure AD. De implementatie wizard en de begeleide ervaringen helpen u bij het configureren van vereisten en onderdelen die vereist zijn voor de verbinding, waaronder synchronisatie en aanmelding van Active Directory naar Azure AD. 
 
-* **Active Directory**: Directory service die [on-premises identiteits gegevens opslaat, zoals gebruikers-en account gegevens](https://www.dnsstuff.com/active-directory-service-accounts), en beveiligings informatie, zoals wacht woorden.
+* **Active Directory** : Directory service die [on-premises identiteits gegevens opslaat, zoals gebruikers-en account gegevens](https://www.dnsstuff.com/active-directory-service-accounts), en beveiligings informatie, zoals wacht woorden.
 
 ## <a name="implement-ldap-authentication-with-azure-ad"></a>LDAP-verificatie implementeren met Azure AD
 

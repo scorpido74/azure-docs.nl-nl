@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: 78165e9c14d4a83dbc20cbccd2f31dc8ac4c79ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 53b8d74d6eb35347d6ac5b27d12fa5b5eaed2582
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91440868"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566364"
 ---
 # <a name="azure-virtual-wan-logs-and-metrics"></a>Virtuele WAN-logboeken en-metrische gegevens van Azure
 
@@ -66,7 +66,7 @@ De volgende stappen helpen u metrische gegevens te zoeken en weer te geven:
 
 4. Op de pagina **metrische gegevens** kunt u de metrische gegevens bekijken die u interesseren.
 
-   :::image type="content" source="./media/logs-metrics/metrics-page.png" alt-text="Scherm afbeelding toont een deel venster site naar site V P N met weer gave in Azure Monitor geselecteerd.":::
+   :::image type="content" source="./media/logs-metrics/metrics-page.png" alt-text="Scherm opname van de pagina metrische gegevens waarop de gemarkeerde categorieën worden weer gegeven.":::
 
 ## <a name="diagnostic-logs"></a><a name="diagnostic"></a>Diagnostische logboeken
 
@@ -93,15 +93,15 @@ De volgende stappen helpen u bij het zoeken en weer geven van diagnostische gege
 
 1. Navigeer in de portal naar uw virtuele WAN-resource. Selecteer in de sectie **overzicht** van de virtuele WAN-pagina in de Portal de optie **essentiële** items om de weer gave uit te vouwen en de informatie over de resource groep te verkrijgen. Kopieer de gegevens van de resource groep.
 
-   :::image type="content" source="./media/logs-metrics/3.png" alt-text="Scherm afbeelding toont een deel venster site naar site V P N met weer gave in Azure Monitor geselecteerd.":::
+   :::image type="content" source="./media/logs-metrics/3.png" alt-text="Scherm afbeelding met de sectie overzicht met een pijl die verwijst naar de knop kopiëren.":::
 
-2. Navigeer in het gedeelte bewaking naar de resource groep. Selecteer **Diagnostische instellingen**en voer vervolgens de resource gegevens in. Dit zijn de resource gegevens die u hebt gekopieerd in stap 2 van de sectie [statistieken van gateway weer geven](#metrics-steps) eerder in dit artikel.
+2. Navigeer in het gedeelte bewaking naar de resource groep. Selecteer **Diagnostische instellingen** en voer vervolgens de resource gegevens in. Dit zijn de resource gegevens die u hebt gekopieerd in stap 2 van de sectie [statistieken van gateway weer geven](#metrics-steps) eerder in dit artikel.
 
-   :::image type="content" source="./media/logs-metrics/4.png" alt-text="Scherm afbeelding toont een deel venster site naar site V P N met weer gave in Azure Monitor geselecteerd.":::
+   :::image type="content" source="./media/logs-metrics/4.png" alt-text="Scherm afbeelding met de sectie bewaking met een pijl die verwijst naar de vervolg keuzelijst resource.":::
 
-3. Selecteer op de pagina resultaten **+ Diagnostische instelling toevoegen**en selecteer vervolgens een optie. U kunt ervoor kiezen om te verzenden naar Log Analytics, streamen naar een Event Hub of eenvoudigweg te archiveren naar een opslag account.
+3. Selecteer op de pagina resultaten **+ Diagnostische instelling toevoegen** en selecteer vervolgens een optie. U kunt ervoor kiezen om te verzenden naar Log Analytics, streamen naar een Event Hub of eenvoudigweg te archiveren naar een opslag account.
 
-   :::image type="content" source="./media/logs-metrics/5.png" alt-text="Scherm afbeelding toont een deel venster site naar site V P N met weer gave in Azure Monitor geselecteerd.":::
+   :::image type="content" source="./media/logs-metrics/5.png" alt-text="pagina metrische gegevens":::
 
 ### <a name="log-analytics-sample-query"></a><a name="sample-query"></a>Voorbeeld query Log Analytics
 
@@ -109,7 +109,7 @@ De logboeken bevinden zich in **Azure log Analytics-werk ruimte**. U kunt een qu
 
 ```AzureDiagnostics | where Category == "RouteDiagnosticLog"```
 
-Vervang de onderstaande waarden na de **= =**, indien nodig.
+Vervang de onderstaande waarden na de **= =** , indien nodig.
 
 * "GatewayDiagnosticLog"
 * "IKEDiagnosticLog"
@@ -119,9 +119,9 @@ Vervang de onderstaande waarden na de **= =**, indien nodig.
 
 ## <a name="activity-logs"></a><a name="activity-logs"></a>Activiteiten logboeken
 
-Vermeldingen in het **activiteiten logboek** worden standaard verzameld en kunnen worden weer gegeven in de Azure Portal. U kunt Azure-activiteiten Logboeken (voorheen bekend als *operationele logboeken* en *audit logboeken*) gebruiken om alle bewerkingen weer te geven die zijn verzonden naar uw Azure-abonnement.
+Vermeldingen in het **activiteiten logboek** worden standaard verzameld en kunnen worden weer gegeven in de Azure Portal. U kunt Azure-activiteiten Logboeken (voorheen bekend als *operationele logboeken* en *audit logboeken* ) gebruiken om alle bewerkingen weer te geven die zijn verzonden naar uw Azure-abonnement.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [zelf studie: Azure firewall logboeken controleren](../firewall/tutorial-diagnostics.md)voor meer informatie over het bewaken van Azure firewall logboeken en metrische gegevens.
+* Zie [zelf studie: Azure firewall logboeken controleren](../firewall/firewall-diagnostics.md)voor meer informatie over het bewaken van Azure firewall logboeken en metrische gegevens.
 * Zie [metrische gegevens in azure monitor](../azure-monitor/platform/data-platform-metrics.md)voor meer informatie over metrische gegevens in azure monitor.

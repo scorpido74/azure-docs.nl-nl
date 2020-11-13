@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 08d3d5bcdace113d3319b5af6375fff21405159a
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 21562bc17d4bfd4913c9085755d962382d207c79
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790012"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566789"
 ---
 # <a name="tutorial-prerequisites-for-creating-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Zelf studie: vereisten voor het maken van beschikbaarheids groepen op SQL Server op Azure Virtual Machines
 
@@ -55,9 +55,9 @@ U hebt een Azure-account nodig. U kunt [een gratis Azure-account openen of de](h
 
    ![Resourcegroep](./media/availability-group-manually-configure-prerequisites-tutorial-/01-resourcegroupsymbol.png)
 
-4. Selecteer een **resource groep** .
-5. Selecteer **Maken** .
-6. Typ onder **naam van resource groep** een naam voor de resource groep. Typ bijvoorbeeld **SQL-ha-RG** .
+4. Selecteer een **resource groep**.
+5. Selecteer **Maken**.
+6. Typ onder **naam van resource groep** een naam voor de resource groep. Typ bijvoorbeeld **SQL-ha-RG**.
 7. Als u meerdere Azure-abonnementen hebt, controleert u of het abonnement het Azure-abonnement is waarin u de beschikbaarheids groep wilt maken.
 8. Selecteer een locatie. De locatie is de Azure-regio waar u de beschikbaarheids groep wilt maken. In dit artikel worden alle resources op één Azure-locatie gebouwd.
 9. Controleer of het selectie vakje **vastmaken aan dash board** is ingeschakeld. Deze optionele instelling plaatst een snelkoppeling voor de resource groep op het Azure Portal dash board.
@@ -79,11 +79,11 @@ Het virtuele netwerk maken in de Azure Portal:
 1. Selecteer **+ toevoegen** in de resource groep. 
 
    ![Nieuw item](./media/availability-group-manually-configure-prerequisites-tutorial-/02-newiteminrg.png)
-2. Zoek naar het **virtuele netwerk** .
+2. Zoek naar het **virtuele netwerk**.
 
      ![Virtueel netwerk zoeken](./media/availability-group-manually-configure-prerequisites-tutorial-/04-findvirtualnetwork.png)
-3. Selecteer **virtueel netwerk** .
-4. Selecteer in het **virtuele netwerk** het **Resource Manager** -implementatie model en selecteer vervolgens **maken** .
+3. Selecteer **virtueel netwerk**.
+4. Selecteer in het **virtuele netwerk** het **Resource Manager** -implementatie model en selecteer vervolgens **maken**.
 
     De volgende tabel bevat de instellingen voor het virtuele netwerk:
 
@@ -101,7 +101,7 @@ Het virtuele netwerk maken in de Azure Portal:
 
    In het voor beeld wordt de naam **beheerder** van het subnet gebruikt. Dit subnet is voor de domein controllers.
 
-5. Selecteer **Maken** .
+5. Selecteer **Maken**.
 
    ![Het virtuele netwerk configureren](./media/availability-group-manually-configure-prerequisites-tutorial-/06-configurevirtualnetwork.png)
 
@@ -109,9 +109,9 @@ Azure keert u terug naar het portal-dash board en waarschuwt u wanneer het nieuw
 
 ### <a name="create-a-second-subnet"></a>Een tweede subnet maken
 
-Het nieuwe virtuele netwerk heeft één subnet met de naam **admin** . De domein controllers gebruiken dit subnet. De SQL Server-Vm's gebruiken een tweede subnet met de naam **SQL** . Dit subnet configureren:
+Het nieuwe virtuele netwerk heeft één subnet met de naam **admin**. De domein controllers gebruiken dit subnet. De SQL Server-Vm's gebruiken een tweede subnet met de naam **SQL**. Dit subnet configureren:
 
-1. Selecteer op het dash board de resource groep die u hebt gemaakt, **SQL-ha-RG** . Zoek het netwerk in de resource groep onder **resources** .
+1. Selecteer op het dash board de resource groep die u hebt gemaakt, **SQL-ha-RG**. Zoek het netwerk in de resource groep onder **resources**.
 
     Als **SQL-ha-RG** niet zichtbaar is, zoekt u deze door **resource groepen** te selecteren en te filteren op basis van de naam van de resource groep.
 
@@ -124,7 +124,7 @@ Het nieuwe virtuele netwerk heeft één subnet met de naam **admin** . De domein
 
 5. Selecteer **+ subnet** om een tweede subnet te maken.
 6. Configureer het subnet in **subnet toevoegen** door **sqlsubnet** onder **naam** te typen. Azure geeft automatisch een geldig **adres bereik** op. Controleer of dit adres bereik ten minste 10 adressen bevat. In een productie omgeving hebt u mogelijk meer adressen nodig.
-7. Selecteer **OK** .
+7. Selecteer **OK**.
 
     ![Subnet configureren](./media/availability-group-manually-configure-prerequisites-tutorial-/08-configuresubnet.png)
 
@@ -148,7 +148,7 @@ Voordat u virtuele machines maakt, moet u beschikbaarheids sets maken. Beschikba
 
 U hebt twee beschikbaarheids sets nodig. Een voor de domein controllers. De tweede is voor de SQL Server Vm's.
 
-Als u een beschikbaarheidsset wilt maken, gaat u naar de resource groep en selecteert u **toevoegen** . Filter de resultaten door de **beschikbaarheidsset** in te voeren. Selecteer **beschikbaarheidsset** in de resultaten en selecteer vervolgens **maken** .
+Als u een beschikbaarheidsset wilt maken, gaat u naar de resource groep en selecteert u **toevoegen**. Filter de resultaten door de **beschikbaarheidsset** in te voeren. Selecteer **beschikbaarheidsset** in de resultaten en selecteer vervolgens **maken**.
 
 Configureer twee beschikbaarheids sets volgens de para meters in de volgende tabel:
 
@@ -169,9 +169,9 @@ Nadat u de netwerk-, subnetten-en beschikbaarheids sets hebt gemaakt, kunt u de 
 
 Als u de domein controllers wilt maken en configureren, gaat u terug naar de resource groep **SQL-ha-RG** .
 
-1. Selecteer **Toevoegen** . 
-2. Typ **Windows Server 2016 Data Center** .
-3. Selecteer **Windows Server 2016 Data Center** . Controleer in **Windows Server 2016 Data Center** of het implementatie model **Resource Manager** is en selecteer vervolgens **maken** . 
+1. Selecteer **Toevoegen**. 
+2. Typ **Windows Server 2016 Data Center**.
+3. Selecteer **Windows Server 2016 Data Center**. Controleer in **Windows Server 2016 Data Center** of het implementatie model **Resource Manager** is en selecteer vervolgens **maken**. 
 
 Herhaal de voor gaande stappen om twee virtuele machines te maken. Noem de twee virtuele machines:
 
@@ -186,7 +186,7 @@ De volgende tabel bevat de instellingen voor deze twee computers:
 
 | **Veld** | Waarde |
 | --- | --- |
-| **Naam** |Eerste domein controller: *ad-Primary-DC* .</br>Tweede domein controller *ad-secundair-DC* . |
+| **Naam** |Eerste domein controller: *ad-Primary-DC*.</br>Tweede domein controller *ad-secundair-DC*. |
 | **VM-schijf type** |SSD |
 | **Gebruikersnaam** |Domein Administrator |
 | **Wachtwoord** |Contoso! 0000 |
@@ -228,20 +228,20 @@ In de volgende stappen configureert u de **ad-Primary-DC-** computer als een dom
 6. Selecteer de **Active Directory Domain Services** **-en DNS-server** functies. Wanneer u hierom wordt gevraagd, voegt u extra functies toe die vereist zijn voor deze rollen.
 
    > [!NOTE]
-   > Windows waarschuwt u dat er geen statisch IP-adres is. Als u de configuratie wilt testen, selecteert u **door gaan** . Stel voor productie scenario's het IP-adres in op statisch in het Azure Portal, of [gebruik Power shell om het statische IP-adres van de computer van de domein controller](/previous-versions/azure/virtual-network/virtual-networks-reserved-private-ip)in te stellen.
+   > Windows waarschuwt u dat er geen statisch IP-adres is. Als u de configuratie wilt testen, selecteert u **door gaan**. Stel voor productie scenario's het IP-adres in op statisch in het Azure Portal, of [gebruik Power shell om het statische IP-adres van de computer van de domein controller](/previous-versions/azure/virtual-network/virtual-networks-reserved-private-ip)in te stellen.
    >
 
     ![Dialoog venster Rollen toevoegen](./media/availability-group-manually-configure-prerequisites-tutorial-/23-addroles.png)
 
 7. Selecteer **volgende** totdat u het **bevestigings** gedeelte hebt bereikt. Schakel het selectie vakje **de doel server automatisch opnieuw opstarten als dit vereist** is in.
-8. Selecteer **Installeren** .
+8. Selecteer **Installeren**.
 9. Nadat de installatie van de onderdelen is voltooid, gaat u terug naar het dash board van **Serverbeheer** .
 10. Selecteer de optie nieuw **AD DS** in het linkerdeel venster.
 11. Selecteer de koppeling **meer** op de gele waarschuwings balk.
 
     ![AD DS dialoog venster op de DNS-Server-VM](./media/availability-group-manually-configure-prerequisites-tutorial-/24-addsmore.png)
     
-12. Selecteer in de kolom **actie** van het dialoog venster **alle Server taak Details** de optie **deze server promo veren naar een domein controller** .
+12. Selecteer in de kolom **actie** van het dialoog venster **alle Server taak Details** de optie **deze server promo veren naar een domein controller**.
 13. Gebruik de volgende waarden in de **Wizard Active Directory Domain Services configuratie** :
 
     | **Pagina** | Instelling |
@@ -249,8 +249,8 @@ In de volgende stappen configureert u de **ad-Primary-DC-** computer als een dom
     | **Implementatieconfiguratie** |**Een nieuw forest toevoegen**<br/> **Naam van hoofd domein** = Corp.contoso.com |
     | **Domeincontrolleropties** |**Wacht woord voor DSRM** = contoso! 0000<br/>**Bevestig het wacht woord** = contoso! 0000 |
 
-14. Selecteer **volgende** om de andere pagina's in de wizard te door lopen. Controleer op de pagina **controle van vereisten** of het volgende bericht wordt weer **gegeven: alle controles van vereisten zijn geslaagd** . U kunt alle toepasselijke waarschuwings berichten bekijken, maar het is mogelijk om door te gaan met de installatie.
-15. Selecteer **Installeren** . De virtuele machine van **ad-Primary-DC** wordt automatisch opnieuw opgestart.
+14. Selecteer **volgende** om de andere pagina's in de wizard te door lopen. Controleer op de pagina **controle van vereisten** of het volgende bericht wordt weer **gegeven: alle controles van vereisten zijn geslaagd**. U kunt alle toepasselijke waarschuwings berichten bekijken, maar het is mogelijk om door te gaan met de installatie.
+15. Selecteer **Installeren**. De virtuele machine van **ad-Primary-DC** wordt automatisch opnieuw opgestart.
 
 ### <a name="note-the-ip-address-of-the-primary-domain-controller"></a>Noteer het IP-adres van de primaire domein controller
 
@@ -274,11 +274,11 @@ Nadat u de eerste domein controller hebt gemaakt en DNS op de eerste server insc
 
 1. Selecteer in het Azure Portal het virtuele netwerk.
 
-2. Selecteer bij **instellingen** de optie **DNS-server** .
+2. Selecteer bij **instellingen** de optie **DNS-server**.
 
 3. Selecteer **aangepast** en typ het privé-IP-adres van de primaire domein controller.
 
-4. Selecteer **Opslaan** .
+4. Selecteer **Opslaan**.
 
 ### <a name="configure-the-second-domain-controller"></a>De tweede domein controller configureren
 
@@ -287,14 +287,14 @@ Nadat de primaire domein controller opnieuw is opgestart, kunt u de tweede domei
 1. Open in de Portal de resource groep **SQL-ha-RG** en selecteer de **ad-Secondary-DC-** computer. Op **ad-secundair-DC** selecteert u **verbinding maken** om een RDP-bestand te openen voor toegang tot extern bureau blad.
 2. Meld u aan bij de virtuele machine met behulp van uw geconfigureerde beheerders account ( **BUILTIN\DomainAdmin** ) en wacht woord ( **Contoso! 0000** ).
 3. Wijzig het adres van de voor Keurs-DNS-server in het adres van de domein controller.
-4. Selecteer de netwerk interface in **netwerk centrum** .
+4. Selecteer de netwerk interface in **netwerk centrum**.
 
    ![Netwerkinterface](./media/availability-group-manually-configure-prerequisites-tutorial-/26-networkinterface.png)
 
-5. Selecteer **Eigenschappen** .
-6. Selecteer **Internet Protocol versie 4 (TCP/IPv4)** en selecteer vervolgens **Eigenschappen** .
-7. Selecteer **de volgende DNS-server adressen gebruiken** en geef het adres van de primaire domein controller op in de **voor Keurs-DNS-server** .
-8. Selecteer **OK** en **sluiten** om de wijzigingen door te voeren. U kunt nu lid worden van de virtuele machine aan **Corp.contoso.com** .
+5. Selecteer **Eigenschappen**.
+6. Selecteer **Internet Protocol versie 4 (TCP/IPv4)** en selecteer vervolgens **Eigenschappen**.
+7. Selecteer **de volgende DNS-server adressen gebruiken** en geef het adres van de primaire domein controller op in de **voor Keurs-DNS-server**.
+8. Selecteer **OK** en **sluiten** om de wijzigingen door te voeren. U kunt nu lid worden van de virtuele machine aan **Corp.contoso.com**.
 
    >[!IMPORTANT]
    >Als u de verbinding met uw externe bureau blad hebt verbroken nadat u de DNS-instelling hebt gewijzigd, gaat u naar de Azure Portal en start u de virtuele machine opnieuw op.
@@ -308,21 +308,21 @@ Nadat de primaire domein controller opnieuw is opgestart, kunt u de tweede domei
 13. Nadat de installatie van de onderdelen is voltooid, gaat u terug naar het dash board van **Serverbeheer** .
 14. Selecteer de optie nieuw **AD DS** in het linkerdeel venster.
 15. Selecteer de koppeling **meer** op de gele waarschuwings balk.
-16. Selecteer in de kolom **actie** van het dialoog venster **alle Server taak Details** de optie **deze server promo veren naar een domein controller** .
-17. Onder **implementatie configuratie** selecteert **u een domein controller toevoegen aan een bestaand domein** .
+16. Selecteer in de kolom **actie** van het dialoog venster **alle Server taak Details** de optie **deze server promo veren naar een domein controller**.
+17. Onder **implementatie configuratie** selecteert **u een domein controller toevoegen aan een bestaand domein**.
 
     ![Implementatie configuratie](./media/availability-group-manually-configure-prerequisites-tutorial-/28-deploymentconfig.png)
 
-18. Klik op **Selecteren** .
+18. Klik op **Selecteren**.
 19. Verbinding maken met behulp van het beheerders account ( **Corp. CONTOSO. COM\domainadmin** ) en het wacht woord ( **Contoso! 0000** ).
-20. Kies in **een domein in het forest selecteren** uw domein en selecteer vervolgens **OK** .
+20. Kies in **een domein in het forest selecteren** uw domein en selecteer vervolgens **OK**.
 21. Gebruik in de **Opties voor domein controller** de standaard waarden en stel een DSRM-wacht woord in.
 
     >[!NOTE]
     >Op de pagina **DNS-opties** wordt mogelijk gewaarschuwd dat er geen delegering voor deze DNS-server kan worden gemaakt. U kunt deze waarschuwing negeren in niet-productie omgevingen.
     >
 
-22. Selecteer **volgende** totdat het dialoog venster de controle van **vereisten** bereikt. Selecteer vervolgens **Installeren** .
+22. Selecteer **volgende** totdat het dialoog venster de controle van **vereisten** bereikt. Selecteer vervolgens **Installeren**.
 
 Nadat de configuratie wijzigingen door de server zijn voltooid, start u de server opnieuw op.
 
@@ -342,9 +342,9 @@ In de volgende stappen configureert u de Active Directory accounts. De volgende 
 Gebruik de volgende stappen om elk account te maken.
 
 1. Meld u aan bij de **ad-Primary-DC-** computer.
-2. Selecteer in **Serverbeheer** **extra** en selecteer vervolgens **Active Directory-beheercentrum** .   
+2. Selecteer in **Serverbeheer** **extra** en selecteer vervolgens **Active Directory-beheercentrum**.   
 3. Selecteer **Corp (lokaal)** in het linkerdeel venster.
-4. Selecteer in het deel venster rechter **taken** de optie **Nieuw** en selecteer vervolgens **gebruiker** .
+4. Selecteer in het deel venster rechter **taken** de optie **Nieuw** en selecteer vervolgens **gebruiker**.
 
    ![Active Directory-beheercentrum](./media/availability-group-manually-configure-prerequisites-tutorial-/29-addcnewuser.png)
 
@@ -357,20 +357,20 @@ Gebruik de volgende stappen om elk account te maken.
 
 ### <a name="grant-the-required-permissions-to-the-installation-account"></a>De vereiste machtigingen verlenen aan het installatie account
 
-1. Selecteer in de **Active Directory-beheercentrum** **Corp (lokaal)** in het linkerdeel venster. Selecteer vervolgens in het deel venster rechterdeel **taken** de optie **Eigenschappen** .
+1. Selecteer in de **Active Directory-beheercentrum** **Corp (lokaal)** in het linkerdeel venster. Selecteer vervolgens in het deel venster rechterdeel **taken** de optie **Eigenschappen**.
 
     ![Eigenschappen van CORP-gebruikers](./media/availability-group-manually-configure-prerequisites-tutorial-/31-addcproperties.png)
 
 2. Selecteer **uitbrei dingen** en selecteer vervolgens de knop **Geavanceerd** op het tabblad **beveiliging** .
-3. Selecteer in het dialoog venster **Geavanceerde beveiligings instellingen voor Corp** de optie **toevoegen** .
-4. Klik op **een principal selecteren** , zoek naar **CORP\Install** en selecteer **OK** .
+3. Selecteer in het dialoog venster **Geavanceerde beveiligings instellingen voor Corp** de optie **toevoegen**.
+4. Klik op **een principal selecteren** , zoek naar **CORP\Install** en selecteer **OK**.
 5. Schakel het selectie vakje **alle eigenschappen lezen** in.
 
 6. Schakel het selectie vakje **computer objecten maken** in.
 
      ![Corp-gebruikers machtigingen](./media/availability-group-manually-configure-prerequisites-tutorial-/33-addpermissions.png)
 
-7. Selecteer **OK** en vervolgens weer **OK** . Sluit het venster Eigenschappen van **Corp** .
+7. Selecteer **OK** en vervolgens weer **OK**. Sluit het venster Eigenschappen van **Corp** .
 
 Nu u klaar bent met het configureren van Active Directory en de gebruikers objecten, maakt u twee SQL Server Vm's en een Witness-Server-VM. Voeg vervolgens alle drie toe aan het domein.
 
@@ -388,9 +388,13 @@ Voordat u verdergaat, moet u rekening houden met de volgende ontwerp beslissinge
 
    Voor de virtuele machines gebruikt deze zelf studie open bare IP-adressen. Met een openbaar IP-adres is externe verbinding rechtstreeks met de virtuele machine via internet mogelijk en worden configuratie stappen eenvoudiger. In productie omgevingen raadt micro soft alleen privé-IP-adressen aan om de kwets baarheid van de VM-resource van het SQL Server exemplaar te verminderen.
 
+* **Netwerk-aanbevolen één NIC per server** 
+
+Gebruik één NIC per server (cluster knooppunt) en één subnet. Azure-netwerken hebben fysieke redundantie, waardoor extra Nic's en subnetten onnodig worden op een gast cluster van de virtuele machine van Azure. In het cluster validatie rapport wordt u gewaarschuwd dat de knoop punten alleen bereikbaar zijn op één netwerk. U kunt deze waarschuwing negeren op virtuele Azure-machine gast-failoverclusters.
+
 ### <a name="create-and-configure-the-sql-server-vms"></a>De SQL Server Vm's maken en configureren
 
-Maak vervolgens drie Vm's: twee SQL Server Vm's en één virtuele machine voor een extra cluster knooppunt. Als u elke virtuele machine wilt maken, gaat u terug naar de resource groep **SQL-ha-RG** en selecteert u vervolgens **toevoegen** . Zoek het juiste galerij-item, selecteer **virtuele machine** en selecteer vervolgens **uit galerie** . Gebruik de informatie in de volgende tabel om u te helpen bij het maken van de virtuele machines:
+Maak vervolgens drie Vm's: twee SQL Server Vm's en één virtuele machine voor een extra cluster knooppunt. Als u elke virtuele machine wilt maken, gaat u terug naar de resource groep **SQL-ha-RG** en selecteert u vervolgens **toevoegen**. Zoek het juiste galerij-item, selecteer **virtuele machine** en selecteer vervolgens **uit galerie**. Gebruik de informatie in de volgende tabel om u te helpen bij het maken van de virtuele machines:
 
 
 | Pagina | VM1 | VM2 | VM3 |
@@ -411,15 +415,15 @@ Nadat de drie Vm's volledig zijn ingericht, moet u deze toevoegen aan het **Corp
 
 ### <a name="join-the-servers-to-the-domain"></a><a name="joinDomain"></a>De servers toevoegen aan het domein
 
-U kunt nu lid worden van de virtuele machines aan **Corp.contoso.com** . Voer de volgende stappen uit voor de SQL Server Vm's en de bestands share Witness-server:
+U kunt nu lid worden van de virtuele machines aan **Corp.contoso.com**. Voer de volgende stappen uit voor de SQL Server Vm's en de bestands share Witness-server:
 
-1. Maak extern verbinding met de virtuele machine met **BUILTIN\DomainAdmin** .
-2. Selecteer in **Serverbeheer** de optie **Lokale server** .
+1. Maak extern verbinding met de virtuele machine met **BUILTIN\DomainAdmin**.
+2. Selecteer in **Serverbeheer** de optie **Lokale server**.
 3. Selecteer de koppeling voor de **werk groep** .
 4. Selecteer **wijzigen** in de sectie **computer naam** .
-5. Schakel het selectie vakje **domein** in en typ **Corp.contoso.com** in het tekstvak. Selecteer **OK** .
+5. Schakel het selectie vakje **domein** in en typ **Corp.contoso.com** in het tekstvak. Selecteer **OK**.
 6. Geef in het pop-upvenster **Windows-beveiliging** de referenties op voor het standaard domein beheerders account ( **CORP\DomainAdmin** ) en het wacht woord ( **Contoso! 0000** ).
-7. Wanneer het bericht Welkom bij het domein corp.contoso.com wordt weer gegeven, selecteert u **OK** .
+7. Wanneer het bericht Welkom bij het domein corp.contoso.com wordt weer gegeven, selecteert u **OK**.
 8. Selecteer **sluiten** en selecteer **nu opnieuw opstarten** in het pop-updialoogvenster.
 
 ## <a name="add-accounts"></a>Accounts toevoegen
@@ -436,13 +440,13 @@ Nadat elke virtuele machine opnieuw is opgestart als lid van het domein, voegt u
    >Zorg ervoor dat u zich aanmeldt met het domein beheerders account. In de vorige stappen gebruikt u het ingebouwde Administrator-account. Nu de server zich in het domein bevindt, gebruikt u het domein account. Geef in uw RDP-sessie de *domein* \\ *gebruikers naam* op.
    >
 
-2. Selecteer in **Serverbeheer** **extra** en selecteer vervolgens **computer beheer** .
-3. Vouw in het venster **computer beheer** **lokale gebruikers en groepen** uit en selecteer vervolgens **groepen** .
+2. Selecteer in **Serverbeheer** **extra** en selecteer vervolgens **computer beheer**.
+3. Vouw in het venster **computer beheer** **lokale gebruikers en groepen** uit en selecteer vervolgens **groepen**.
 4. Dubbel klik op de groep **Administrators** .
 5. Selecteer in het dialoog venster **Eigenschappen van beheerder** de knop **toevoegen** .
-6. Voer de gebruikers **CORP\Install** in en selecteer **OK** .
+6. Voer de gebruikers **CORP\Install** in en selecteer **OK**.
 7. Selecteer **OK** om het dialoog venster met **beheerders eigenschappen** te sluiten.
-8. Herhaal de vorige stappen in **sqlserver-1** en **cluster-FSW** .
+8. Herhaal de vorige stappen in **sqlserver-1** en **cluster-FSW**.
 
 
 ### <a name="create-a-sign-in-on-each-sql-server-vm-for-the-installation-account"></a>Maak een aanmelding op elke SQL Server virtuele machine voor het installatie account
@@ -453,13 +457,13 @@ Gebruik het installatie account (CORP\install) om de beschikbaarheids groep te c
 
 1. Open SQL Server Management Studio en maak verbinding met het lokale exemplaar van SQL Server.
 
-1. Selecteer in **objectverkenner** **beveiliging** .
+1. Selecteer in **objectverkenner** **beveiliging**.
 
-1. Klik met de rechter muisknop op **aanmeldingen** . Selecteer **nieuwe aanmelding** .
+1. Klik met de rechter muisknop op **aanmeldingen**. Selecteer **nieuwe aanmelding**.
 
-1. In **Aanmelding - Nieuw** selecteert u **Zoeken** .
+1. In **Aanmelding - Nieuw** selecteert u **Zoeken**.
 
-1. Selecteer **locaties** .
+1. Selecteer **locaties**.
 
 1. Voer de netwerk referenties voor de domein beheerder in.
 
@@ -467,7 +471,7 @@ Gebruik het installatie account (CORP\install) om de beschikbaarheids groep te c
 
 1. Stel de aanmelding in op een lid van de vaste serverrol **sysadmin** .
 
-1. Selecteer **OK** .
+1. Selecteer **OK**.
 
 Herhaal de voor gaande stappen op de andere SQL Server VM.
 
@@ -505,8 +509,8 @@ Als u een account voor het systeem account wilt maken en de juiste machtigingen 
 
 Stel op elke SQL Server-VM de SQL Server-service account in. Gebruik de accounts die u hebt gemaakt tijdens het configureren van de domein accounts.
 
-1. Open **SQL Server Configuration Manager** .
-2. Klik met de rechter muisknop op de SQL Server-service en selecteer **Eigenschappen** .
+1. Open **SQL Server Configuration Manager**.
+2. Klik met de rechter muisknop op de SQL Server-service en selecteer **Eigenschappen**.
 3. Stel het account en het wacht woord in.
 4. Herhaal deze stappen op de andere SQL Server VM.  
 
@@ -516,13 +520,13 @@ Voor SQL Server-beschikbaarheids groepen moet elke SQL Server VM als een domein 
 
 Als u functies voor Failover Clustering wilt toevoegen, voert u de volgende stappen uit op beide SQL Server Vm's:
 
-1. Maak verbinding met de virtuele machine van SQL Server via de Remote Desktop Protocol (RDP) met behulp van het *CORP\install* -account. Open **Serverbeheer dash board** .
+1. Maak verbinding met de virtuele machine van SQL Server via de Remote Desktop Protocol (RDP) met behulp van het *CORP\install* -account. Open **Serverbeheer dash board**.
 2. Selecteer de koppeling **functies en onderdelen toevoegen** op het dash board.
 
     ![Serverbeheer-functies toevoegen](./media/availability-group-manually-configure-prerequisites-tutorial-/22-addfeatures.png)
 
 3. Selecteer **volgende** totdat u toegang hebt tot het gedeelte **Server functies** .
-4. Selecteer in **functies** **failover clustering** .
+4. Selecteer in **functies** **failover clustering**.
 5. Voeg aanvullende vereiste onderdelen toe.
 6. Selecteer **installeren** om de functies toe te voegen.
 
@@ -531,6 +535,10 @@ Herhaal de stappen op de andere SQL Server VM.
   >[!NOTE]
   > Deze stap, samen met de daad werkelijke deelname van de SQL Server Vm's aan het failovercluster, kan nu worden geautomatiseerd met [Azure SQL VM cli](./availability-group-az-commandline-configure.md) en [Azure Quick](availability-group-quickstart-template-configure.md)start-sjablonen.
   >
+
+### <a name="tuning-failover-cluster-network-thresholds"></a>Drempel waarden voor failover cluster-netwerken afstemmen
+
+Bij het uitvoeren van Windows-Failoverclusterknooppunten in azure-Vm's met SQL Server AlwaysOn, wordt het wijzigen van de cluster instelling in een meer beperkte bewakings status aanbevolen.  Hierdoor is het cluster veel stabieler en betrouwbaarder.  Zie voor meer informatie [IaaS met SQL AlwaysOn-failover cluster network drempels](/windows-server/troubleshoot/iaas-sql-failover-cluser).
 
 
 ## <a name="configure-the-firewall-on-each-sql-server-vm"></a><a name="endpoint-firewall"></a> De firewall op elke SQL Server VM configureren
@@ -547,17 +555,17 @@ De methode voor het openen van de poorten is afhankelijk van de firewall-oplossi
 
 ### <a name="open-a-tcp-port-in-the-firewall"></a>Een TCP-poort openen in de firewall
 
-1. Op de eerste SQL Server **Start** scherm, start u **Windows Firewall met geavanceerde beveiliging** .
-2. Selecteer in het linkerdeel venster **regels voor binnenkomende verbindingen** . Selecteer **nieuwe regel** in het rechterdeel venster.
-3. Kies **poort** bij **regel type** .
+1. Op de eerste SQL Server **Start** scherm, start u **Windows Firewall met geavanceerde beveiliging**.
+2. Selecteer in het linkerdeel venster **regels voor binnenkomende verbindingen**. Selecteer **nieuwe regel** in het rechterdeel venster.
+3. Kies **poort** bij **regel type**.
 4. Geef voor de poort **TCP** op en typ de juiste poort nummers. Zie het volgende voorbeeld:
 
    ![SQL-firewall](./media/availability-group-manually-configure-prerequisites-tutorial-/35-tcpports.png)
 
-5. Selecteer **Next** .
-6. Laat op de pagina **actie** **de optie verbinding toestaan** ingeschakeld en selecteer **volgende** .
-7. Accepteer de standaard instellingen op de **profiel** pagina en selecteer **volgende** .
-8. Geef op de pagina **naam** een regel naam op (zoals **Azure lb probe** ) in het tekstvak **naam** en selecteer vervolgens **volt ooien** .
+5. Selecteer **Volgende**.
+6. Laat op de pagina **actie** **de optie verbinding toestaan** ingeschakeld en selecteer **volgende**.
+7. Accepteer de standaard instellingen op de **profiel** pagina en selecteer **volgende**.
+8. Geef op de pagina **naam** een regel naam op (zoals **Azure lb probe** ) in het tekstvak **naam** en selecteer vervolgens **volt ooien**.
 
 Herhaal deze stappen op de tweede SQL Server VM.
 

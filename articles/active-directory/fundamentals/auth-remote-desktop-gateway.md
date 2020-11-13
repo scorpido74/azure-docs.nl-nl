@@ -1,6 +1,6 @@
 ---
 title: Extern bureaublad-gateway services met Azure Active Directory
-description: Richt lijnen voor architectuur over het bereiken van dit verificatie patroon
+description: Richt lijnen voor architectuur over het bereiken van Extern bureaublad-gateway services met Azure Active Directory.
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff099d41970ad4d78d5c6035a60f448f29ab24b1
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 57466cccb71444d5711a9221c324a107757c5e82
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92114200"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576792"
 ---
 # <a name="remote-desktop-gateway-services"></a>Extern bureaublad-gateway services
 
@@ -32,15 +32,15 @@ U moet externe toegang bieden en uw Extern bureaublad-services-implementatie bev
 
 ## <a name="components-of-system"></a>Onderdelen van systeem
 
-* **Gebruiker**: toegang tot RDS die wordt bediend door de toepassings proxy.
+* **Gebruiker** : toegang tot RDS die wordt bediend door de toepassings proxy.
 
-* **Webbrowser**: het onderdeel waarmee de gebruiker communiceert om toegang te krijgen tot de externe URL van de toepassing.
+* **Webbrowser** : het onderdeel waarmee de gebruiker communiceert om toegang te krijgen tot de externe URL van de toepassing.
 
-* **Azure AD**: verifieert de gebruiker. 
+* **Azure AD** : verifieert de gebruiker. 
 
-* **Application proxy-service**: fungeert als omgekeerde proxy voor het door sturen van de aanvraag van de gebruiker naar RDS. Toepassings proxy kan ook beleid voor voorwaardelijke toegang afdwingen. 
+* **Application proxy-service** : fungeert als omgekeerde proxy voor het door sturen van de aanvraag van de gebruiker naar RDS. Toepassings proxy kan ook beleid voor voorwaardelijke toegang afdwingen. 
 
-* **Extern bureaublad-services**: fungeert als een platform voor afzonderlijke gevirtualiseerde toepassingen, biedt veilige toegang tot mobiele en externe Bureau bladen en biedt eind gebruikers de mogelijkheid om hun toepassingen en Bureau bladen vanuit de Cloud uit te voeren. 
+* **Extern bureaublad-services** : fungeert als een platform voor afzonderlijke gevirtualiseerde toepassingen, biedt veilige toegang tot mobiele en externe Bureau bladen en biedt eind gebruikers de mogelijkheid om hun toepassingen en Bureau bladen vanuit de Cloud uit te voeren. 
 
 ## <a name="implement-remote-desktop-gateway-services-with-azure-ad"></a>Extern bureaublad-gateway services implementeren met Azure AD
 

@@ -7,12 +7,12 @@ services: monitoring
 ms.topic: conceptual
 ms.date: 9/30/2020
 ms.subservice: alerts
-ms.openlocfilehash: d99e37171f2fb5b86bee897caca55c3e8782f92e
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: d1a1a31d5894338e0deeed27fabcde9fdbf6f588
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108810"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566483"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Ondersteunde resources voor metrische waarschuwingen in Azure Monitor
 
@@ -26,7 +26,7 @@ Op dit moment kunt u alleen nieuwe metrische waarschuwingen maken in de sjablone
 ## <a name="metrics-and-dimensions-supported"></a>Ondersteunde metrische gegevens en dimensies
 Nieuwere metrische waarschuwingen ondersteunen waarschuwingen voor metrische gegevens die gebruikmaken van dimensies. U kunt dimensies gebruiken om uw metrische gegevens te filteren op het juiste niveau. Alle ondersteunde metrische gegevens en de toepasselijke dimensies kunnen worden verkend en gevisualiseerd vanaf [Azure monitor-Metrics Explorer](./metrics-charts.md).
 
-Hier volgt de volledige lijst met metrische gegevens bronnen van Azure monitor die worden ondersteund door de nieuwere waarschuwingen:
+Dit is de volledige lijst met Azure Monitor metrische bronnen die worden ondersteund door de nieuwere waarschuwingen:
 
 |Resourcetype  |Ondersteunde dimensies |Waarschuwingen voor meerdere resources| Beschik bare metrische gegevens|
 |---------|---------|-----|----------|
@@ -49,7 +49,7 @@ Hier volgt de volledige lijst met metrische gegevens bronnen van Azure monitor d
 |Microsoft.Compute/virtualMachines | Yes | Ja<sup>1</sup> | [Virtual Machines](./metrics-supported.md#microsoftcomputevirtualmachines) |
 |Microsoft.Compute/virtualMachineScaleSets | Ja | Nee |[Schaal sets voor virtuele machines](./metrics-supported.md#microsoftcomputevirtualmachinescalesets) |
 |Micro soft. ContainerInstance/containerGroups | Ja| Nee | [Containergroepen](./metrics-supported.md#microsoftcontainerinstancecontainergroups) |
-|Micro soft. ContainerRegistry/registers | Nee | Nee | [Containerregisters](./metrics-supported.md#microsoftcontainerregistryregistries) |
+|Micro soft. ContainerRegistry/registers | Nee | Nee | [Container registers](./metrics-supported.md#microsoftcontainerregistryregistries) |
 |Micro soft. container service/managedClusters | Ja | Nee | [Beheerde clusters](./metrics-supported.md#microsoftcontainerservicemanagedclusters) |
 |Micro soft. DataBoxEdge/dataBoxEdgeDevices | Ja | Ja | [Data Box](./metrics-supported.md#microsoftdataboxedgedataboxedgedevices) |
 |Micro soft. DataFactory/datafactories| Ja| Nee | [Gegevens fabrieken v1](./metrics-supported.md#microsoftdatafactorydatafactories) |
@@ -61,7 +61,7 @@ Hier volgt de volledige lijst met metrische gegevens bronnen van Azure monitor d
 |Microsoft.DBforPostgreSQL/servers | Nee | Nee | [DB voor PostgreSQL](./metrics-supported.md#microsoftdbforpostgresqlservers)|
 |Micro soft. DBforPostgreSQL/serversv2 | Nee | Nee | [DB voor PostgreSQL v2](./metrics-supported.md#microsoftdbforpostgresqlserversv2)|
 |Micro soft. DBforPostgreSQL/singleservers | Nee | Nee | [DB voor PostgreSQL (enkelvoudige servers)](./metrics-supported.md#microsoftdbforpostgresqlsingleservers)|
-|Micro soft. devices/IotHubs | Ja | Nee |[IoT Hub](./metrics-supported.md#microsoftdevicesiothubs) |
+|Microsoft.Devices/IotHubs | Ja | Nee |[IoT Hub](./metrics-supported.md#microsoftdevicesiothubs) |
 |Micro soft. devices/provisioningServices| Ja | Nee | [Services voor het inrichten van apparaten](./metrics-supported.md#microsoftdevicesprovisioningservices) |
 |Micro soft. DigitalTwins/digitalTwinsInstances | Ja | Nee | |
 |Microsoft.DocumentDB/databaseAccounts | Ja | Nee | [Cosmos DB](./metrics-supported.md#microsoftdocumentdbdatabaseaccounts) |
@@ -72,7 +72,7 @@ Hier volgt de volledige lijst met metrische gegevens bronnen van Azure monitor d
 |Microsoft.EventHub/namespaces |Ja| Nee | [Event Hubs](./metrics-supported.md#microsofteventhubnamespaces) |
 |Micro soft. HDInsight/clusters | Ja | Nee | [HDInsight-clusters](./metrics-supported.md#microsofthdinsightclusters) |
 |Micro soft. Insights/onderdelen | Ja | Nee | [Application Insights](./metrics-supported.md#microsoftinsightscomponents) |
-|Micro soft.-sleutel kluis/-kluizen | Ja |Ja |[Kluizen](./metrics-supported.md#microsoftkeyvaultvaults)|
+|Microsoft.KeyVault/vaults | Ja |Ja |[Kluizen](./metrics-supported.md#microsoftkeyvaultvaults)|
 |Micro soft. Kusto/clusters | Ja |Nee |[Data Explorer clusters](./metrics-supported.md#microsoftkustoclusters)|
 |Micro soft. Logic/integrationServiceEnvironments | Ja | Nee |[Integratie service omgevingen](./metrics-supported.md#microsoftlogicintegrationserviceenvironments) |
 |Microsoft.Logic/workflows | Nee | Nee |[Logic Apps](./metrics-supported.md#microsoftlogicworkflows) |
@@ -85,7 +85,7 @@ Hier volgt de volledige lijst met metrische gegevens bronnen van Azure monitor d
 |Micro soft. Network/applicationGateways | Ja | Nee | [Toepassings gateways](./metrics-supported.md#microsoftnetworkapplicationgateways) |
 |Micro soft. Network/azurefirewalls | Ja | Nee | [Firewalls](./metrics-supported.md#microsoftnetworkazurefirewalls) |
 |Microsoft.Network/dnsZones | Nee | Nee | [DNS-zones](./metrics-supported.md#microsoftnetworkdnszones) |
-|Microsoft.Network/expressRouteCircuits | N.v.t. | No |[Express Route-circuits](./metrics-supported.md#microsoftnetworkexpressroutecircuits) |
+|Microsoft.Network/expressRouteCircuits | N.v.t. | Nee |[Express Route-circuits](./metrics-supported.md#microsoftnetworkexpressroutecircuits) |
 |Micro soft. Network/loadBalancers (alleen voor standaard-Sku's)| Ja| Nee | [Load balancers](./metrics-supported.md#microsoftnetworkloadbalancers) |
 |Micro soft. Network/natGateways| Nee | Nee | |
 |Micro soft. Network/privateEndpoints| Nee | Nee | |

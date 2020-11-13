@@ -8,7 +8,6 @@
     - name: Ondersteunde gegevensarchieven
       href: supported-data-stores.md
 - name: Snelstartgidsen
-  expanded: true
   items:
     - name: Gegevens delen - Azure Portal
       href: share-your-data-portal.md
@@ -16,6 +15,7 @@
       displayName: Resource Manager
       href: share-your-data-arm.md
 - name: Zelfstudies
+  expanded: true
   items:
     - name: Gegevens delen
       href: share-your-data.md

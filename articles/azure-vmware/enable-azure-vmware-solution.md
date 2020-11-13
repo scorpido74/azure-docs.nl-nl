@@ -2,28 +2,30 @@
 title: Uw Azure VMware-oplossings resource inschakelen
 description: Meer informatie over het indienen van een ondersteunings aanvraag om uw Azure VMware-oplossings resource in te scha kelen. U kunt ook meer knoop punten aanvragen in uw bestaande privécloud van Azure VMware-oplossingen.
 ms.topic: how-to
-ms.date: 09/22/2020
-ms.openlocfilehash: dc90a322b5592ca7f400a82deca65ea753711c27
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.date: 11/12/2020
+ms.openlocfilehash: 7c805e9e622f55593ff1fbb72a355d233b7e3618
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91948728"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576380"
 ---
 # <a name="how-to-enable-azure-vmware-solution-resource"></a>Azure VMware Solution resource inschakelen
-Meer informatie over het indienen van een ondersteunings aanvraag om uw Azure VMware-oplossings resource in te scha kelen. U kunt ook meer knoop punten aanvragen in uw bestaande privécloud van Azure VMware-oplossingen.
+Meer informatie over het indienen van een ondersteunings aanvraag om uw [Azure VMware-oplossings](introduction.md) resource in te scha kelen. U kunt ook meer knoop punten aanvragen in uw bestaande privécloud van Azure VMware-oplossingen.
 
 ## <a name="eligibility-criteria"></a>Criteria om in aanmerking te komen
 
-* U hebt een [Azure Enterprise Agreement (EA)](../cost-management-billing/manage/ea-portal-agreements.md) met micro soft nodig.
-* U hebt een Azure-account in een Azure-abonnement nodig.
+U hebt een Azure-account in een Azure-abonnement nodig. Het Azure-abonnement moet voldoen aan een van de volgende criteria:
+
+* Een abonnement onder een [Azure Enterprise Agreement (EA)](../cost-management-billing/manage/ea-portal-agreements.md) met micro soft.
+* Een door de Cloud Solution Provider (CSP) beheerd abonnement onder een Azure-abonnement.
 
 
-## <a name="enable-azure-vmware-solution-resource"></a>Resource voor Azure VMware-oplossing inschakelen
-Voordat u uw Azure VMware-oplossings resource maakt, moet u een ondersteunings ticket indienen om uw knoop punten toe te wijzen. Zodra het ondersteunings team uw aanvraag heeft ontvangen, duurt het Maxi maal vijf werk dagen om uw aanvraag te bevestigen en uw knoop punten toe te wijzen. Als u een bestaande privécloud van Azure VMware-oplossing hebt en u meer knoop punten wilt toewijzen, gaat u door hetzelfde proces.
+## <a name="enable-azure-vmware-solution-for-ea-customers"></a>Azure VMware-oplossing voor EA-klanten inschakelen
+Voordat u uw Azure VMware Solution-resource maakt, moet u een ondersteuningsticket indienen om uw knooppunten te laten toewijzen. Zodra het ondersteuningsteam uw aanvraag heeft ontvangen, duurt het maximaal vijf werkdagen om uw aanvraag te bevestigen en uw knooppunten toe te wijzen. Als u een bestaande privécloud van Azure VMware Solution hebt en u meer knooppunten wilt toewijzen, dan volgt u hetzelfde proces.
 
 
-1. Maak in uw Azure Portal onder **Help en ondersteuning**een **[nieuwe ondersteunings aanvraag](https://rc.portal.azure.com/#create/Microsoft.Support)** en geef de volgende informatie op voor het ticket:
+1. Maak in uw Azure Portal onder **Help en ondersteuning** een **[nieuwe ondersteunings aanvraag](https://rc.portal.azure.com/#create/Microsoft.Support)** en geef de volgende informatie op voor het ticket:
    - **Type probleem:** Documentatie
    - **Abonnement:** Uw abonnement selecteren
    - **Service:** Alle services > Azure VMware-oplossing
@@ -56,3 +58,25 @@ Voordat u uw Azure VMware-oplossings resource maakt, moet u een ondersteunings t
    ```
 
    Zie [Azure-resourceproviders en -typen](../azure-resource-manager/management/resource-providers-and-types.md) voor meer manieren om de Azure Synapse-resourceprovider te registeren.
+
+## <a name="enable-azure-vmware-solution-for-csp-customers"></a>Azure VMware-oplossing voor CSP-klanten inschakelen 
+
+Csp's moeten [micro soft Partner Center](https://partner.microsoft.com) gebruiken om de Azure VMware-oplossing voor hun klanten in te scha kelen. 
+
+1. Selecteer in **partner centrum** **CSP** om toegang te krijgen tot het gebied **klanten** .
+
+   :::image type="content" source="media/enable-azure-vmware-solution/csp-customers-screen.png" alt-text="Het gebied klanten van micro soft-partner centrum" lightbox="media/enable-azure-vmware-solution/csp-customers-screen.png":::
+
+1. Selecteer uw klant en selecteer vervolgens **producten toevoegen**.
+
+   :::image type="content" source="media/enable-azure-vmware-solution/csp-partner-center.png" alt-text="Microsoft Partnercentrum" lightbox="media/enable-azure-vmware-solution/csp-partner-center.png":::
+
+1. Selecteer **Azure-abonnement** en selecteer vervolgens **toevoegen aan winkel wagen**. 
+
+1. Bekijk en voltooi de algemene instellingen van het abonnement voor Azure plan voor uw klant. Zie de [documentatie van micro soft Partner Center](https://docs.microsoft.com/partner-center/azure-plan-manage)voor meer informatie.
+
+Na het configureren van het Azure-abonnement en de benodigde RBAC-machtigingen zijn aanwezig als CSP, wordt u door micro soft gecommuniceerd met een vergelijk bare procedure om het quotum voor een Azure-abonnement in te scha kelen. Wanneer de klant of de partner beheerder eenmaal is toegevoegd aan het Azure-abonnement, kan hij of zij een Privécloud van Azure VMware-oplossing implementeren via de Azure Portal. 
+
+## <a name="next-steps"></a>Volgende stappen
+
+Nadat u uw Azure VMware-oplossings resource hebt ingeschakeld en u de juiste netwerken hebt, kunt u [een privécloud maken](tutorial-create-private-cloud.md).

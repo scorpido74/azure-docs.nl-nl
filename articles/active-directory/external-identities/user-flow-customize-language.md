@@ -1,6 +1,6 @@
 ---
 title: Taal aanpassing in azure AD-gebruikers stromen
-description: Meer informatie over het aanpassen van de taal ervaring in uw gebruikers stromen.
+description: Meer informatie over het aanpassen van de taal ervaring in uw gebruikers stromen in Azure Active Directory.
 services: active-directory
 author: msmimart
 manager: celestedg
@@ -11,12 +11,12 @@ ms.date: 05/06/2020
 ms.author: mimart
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c73a5491c0ad543d57a6721f37d81ae661c0a653
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 98ead87ce2bd3b4e3ffc45763aa5151168c72078
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441433"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576509"
 ---
 # <a name="language-customization-in-azure-active-directory-preview"></a>Taal aanpassing in Azure Active Directory (preview-versie)
 
@@ -37,13 +37,13 @@ Taal aanpassing is standaard ingeschakeld voor gebruikers die zich aanmelden om 
 Door taal aanpassing kunt u een wille keurige teken reeks in uw gebruikers stroom aanpassen.
 
 1. Meld u als een Azure AD-administrator aan bij de [Azure Portal](https://portal.azure.com).
-2. Onder **Azure-Services**selecteert u **Azure Active Directory**.
+2. Onder **Azure-Services** selecteert u **Azure Active Directory**.
 3. Selecteer in het linkermenu **externe identiteiten**.
 4. **Gebruikers stromen selecteren (preview-versie)**.
 3. Selecteer de gebruikers stroom die u wilt inschakelen voor vertalingen.
 4. Selecteer **talen**.
 5. Selecteer op de pagina **talen** voor de gebruikers stroom de taal die u wilt aanpassen.
-6. Vouw de **pagina kenmerk verzameling**uit.
+6. Vouw de **pagina kenmerk verzameling** uit.
 7. Selecteer **standaard waarden downloaden** (of **down loads negeren** als u deze taal eerder hebt bewerkt).
 
 Deze stappen geven u een JSON-bestand dat u kunt gebruiken om te beginnen met het bewerken van uw teken reeksen.

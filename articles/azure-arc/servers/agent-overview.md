@@ -3,12 +3,12 @@ title: Overzicht van de verbonden computer Windows-agent
 description: Dit artikel bevat een gedetailleerd overzicht van de beschik bare Azure Arc-servers agent, die ondersteuning biedt voor het bewaken van virtuele machines die worden gehost in hybride omgevingen.
 ms.date: 09/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: f1f74ff12d007553c0c0c9b16f56a27371618bbb
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 8a66f99f535013b8aac52fdee43b91a8c734b10a
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370165"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94577580"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Overzicht van de agent voor servers met Azure Arc ingeschakeld
 
@@ -60,7 +60,7 @@ De volgende versies van het Windows-en Linux-besturings systeem worden officieel
 
 * Voor de onboarding van machines bent u lid van de rol **Azure Connected machine** .
 
-* Als u een machine wilt lezen, wijzigen, onboarden en verwijderen, bent u lid van de **Azure Connected machine resource Administrator** -rol. 
+* Als u een machine wilt lezen, wijzigen en verwijderen, bent u lid van de **Azure Connected machine resource Administrator** -rol. 
 
 ### <a name="azure-subscription-and-service-limits"></a>Limieten voor het Azure-abonnement en de Azure-service
 
@@ -183,7 +183,7 @@ Na de installatie van de verbonden machine-agent voor Windows, worden de volgend
 
 * De volgende omgevings variabelen worden tijdens de installatie van de agent gemaakt.
 
-    |Naam |Standaardwaarde |Beschrijving |
+    |Name |Standaardwaarde |Beschrijving |
     |-----|--------------|------------|
     |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
     |IMDS_ENDPOINT |http://localhost:40342 ||
@@ -245,7 +245,7 @@ Na de installatie van de verbonden machine agent voor Linux worden de volgende a
 
 * De volgende omgevings variabelen worden tijdens de installatie van de agent gemaakt. Deze variabelen worden ingesteld in `/lib/systemd/system.conf.d/azcmagent.conf` .
 
-    |Naam |Standaardwaarde |Beschrijving |
+    |Name |Standaardwaarde |Beschrijving |
     |-----|--------------|------------|
     |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
     |IMDS_ENDPOINT |http://localhost:40342 ||

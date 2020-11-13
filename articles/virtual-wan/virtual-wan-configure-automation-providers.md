@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 0029f3fbcf96036a247356042e4c39d59f86a224
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 29fff3a6a430e3bc1a0b3a13876b55d22f7cb545
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88208346"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566466"
 ---
 # <a name="automation-guidelines-for-virtual-wan-partners"></a>Automatiseringsrichtlijnen voor Virtual WAN-partners
 
@@ -33,9 +33,9 @@ Een vertakkings apparaat (een on-premises VPN-apparaat of SDWAN CPE) van een kla
 
 ### <a name="additional-information"></a><a name ="additional"></a>Aanvullende informatie
 
-* [Rest API](https://docs.microsoft.com/rest/api/virtualwan/virtualhubs) om het maken van virtuele hub te automatiseren
-* [Rest API](https://docs.microsoft.com/rest/api/virtualwan/vpngateways) voor het automatiseren van Azure VPN-gateway voor virtueel WAN
-* [Rest API](https://docs.microsoft.com/rest/api/virtualwan/vpnconnections) om een VPNSite te verbinden met een Azure VPN-hub
+* [Rest API](/rest/api/virtualwan/virtualhubs) om het maken van virtuele hub te automatiseren
+* [Rest API](/rest/api/virtualwan/vpngateways) voor het automatiseren van Azure VPN-gateway voor virtueel WAN
+* [Rest API](/rest/api/virtualwan/vpnconnections) om een VPNSite te verbinden met een Azure VPN-hub
 * [Standaard IPsec-beleid](#default)
 
 ## <a name="customer-experience"></a><a name ="ae"></a>Gebruikers ervaring
@@ -63,11 +63,11 @@ Klanten moeten het juiste toegangs beheer voor virtuele WAN-verbindingen kunnen 
 
 ###  <a name="upload-branch-device-information"></a><a name="branch"></a>Gegevens van vertakkings apparaten uploaden
 
-U moet de gebruikers ervaring ontwerpen om vertakkings gegevens (on-premises site) naar Azure te uploaden. U kunt [rest-api's](https://docs.microsoft.com/rest/api/virtualwan/vpnsites) voor VPNSite gebruiken om de site-informatie in virtuele WAN te maken. U kunt alle Branch SDWAN/VPN-apparaten opgeven of zo nodig aanpassingen van het apparaat selecteren.
+U moet de gebruikers ervaring ontwerpen om vertakkings gegevens (on-premises site) naar Azure te uploaden. U kunt [rest-api's](/rest/api/virtualwan/vpnsites) voor VPNSite gebruiken om de site-informatie in virtuele WAN te maken. U kunt alle Branch SDWAN/VPN-apparaten opgeven of zo nodig aanpassingen van het apparaat selecteren.
 
 ### <a name="device-configuration-download-and-connectivity"></a><a name="device"></a>Apparaatconfiguratie downloaden en connectiviteit
 
-Deze stap omvat het downloaden van de Azure-configuratie en het instellen van connectiviteit vanuit het vertakkings apparaat in azure Virtual WAN. In deze stap zal een klant die geen provider gebruikt, de Azure-configuratie hand matig downloaden en Toep assen op hun on-premises SDWAN/VPN-apparaat. Als provider kunt u deze stap automatiseren. Bekijk de [rest-api's](https://docs.microsoft.com/rest/api/virtualwan/vpnsitesconfiguration/download) voor downloaden voor meer informatie. De apparaat-controller kan ' GetVpnConfiguration ' aanroepen REST API de Azure-configuratie te downloaden.
+Deze stap omvat het downloaden van de Azure-configuratie en het instellen van connectiviteit vanuit het vertakkings apparaat in azure Virtual WAN. In deze stap zal een klant die geen provider gebruikt, de Azure-configuratie hand matig downloaden en Toep assen op hun on-premises SDWAN/VPN-apparaat. Als provider kunt u deze stap automatiseren. Bekijk de [rest-api's](/rest/api/virtualwan/vpnsitesconfiguration/download) voor downloaden voor meer informatie. De apparaat-controller kan ' GetVpnConfiguration ' aanroepen REST API de Azure-configuratie te downloaden.
 
 **Configuratie notities**
 
@@ -97,7 +97,7 @@ Het apparaatconfiguratiebestand bevat de instellingen die u dient te gebruiken o
         "Instance0":"104.45.18.186"
         "Instance1":"104.45.13.195"
         ```
-    * **Informatie over verbindingsconfiguratie van VPN-gateway**, zoals BGP, vooraf-gedeelde sleutels, enzovoort. De PSK is de vooraf gedeelde sleutel die automatisch voor u wordt gegenereerd. U kunt altijd de verbinding bewerken op de pagina Overzicht om een aangepaste PSK in te stellen.
+    * **Informatie over verbindingsconfiguratie van VPN-gateway** , zoals BGP, vooraf-gedeelde sleutels, enzovoort. De PSK is de vooraf gedeelde sleutel die automatisch voor u wordt gegenereerd. U kunt altijd de verbinding bewerken op de pagina Overzicht om een aangepaste PSK in te stellen.
   
 **Voorbeeld van een apparaatconfiguratiebestand**
 

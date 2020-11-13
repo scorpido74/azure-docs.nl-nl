@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: sukishen
-ms.openlocfilehash: 83cc7757f31a631af755155b49c7c26753618426
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6b2595eaf1e373c3a15014d0bc684d6e3914a665
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399105"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566636"
 ---
 # <a name="interconnect-with-china-using-azure-virtual-wan-and-secure-hub"></a>Interconnect met China met behulp van Azure Virtual WAN en Secure hub
 
@@ -111,7 +111,7 @@ Afhankelijk van uw keuze met betrekking tot de verbinding met Hong Kong, kan de 
 
 Al deze opties maken gebruik van Azure Virtual WAN beveiligde hub voor rechtstreekse Microsoft 365 connectiviteit in Hong Kong. Deze architecturen bieden ook ondersteuning voor de nalevings vereisten voor [Microsoft 365 multi-geo](/microsoft-365/enterprise/microsoft-365-multi-geo) en houden dat verkeer in de buurt van de volgende locatie van de Azure front-deur. Als gevolg hiervan is het ook een verbetering van het gebruik van Microsoft 365 uit China.
 
-Wanneer u Azure Virtual WAN gebruikt in combi natie met Internet verbindingen, kan elke verbinding profiteren van extra services zoals [Microsoft Azure peering-Services (Maps)](https://docs.microsoft.com/azure/peering-service/about). KAARTEN is gebouwd voor het optimaliseren van verkeer dat afkomstig is van het wereld wijde netwerk van derden van Internet serviceproviders.
+Wanneer u Azure Virtual WAN gebruikt in combi natie met Internet verbindingen, kan elke verbinding profiteren van extra services zoals [Microsoft Azure peering-Services (Maps)](../peering-service/about.md). KAARTEN is gebouwd voor het optimaliseren van verkeer dat afkomstig is van het wereld wijde netwerk van derden van Internet serviceproviders.
 
 ### <a name="option-1-sdwan-or-vpn"></a><a name="option-1"></a>Optie 1: SDWAN of VPN
 
@@ -151,4 +151,4 @@ Raadpleeg de volgende artikelen voor meer informatie:
 
 * [Een virtuele WAN-beveiligde hub configureren](../firewall-manager/secure-cloud-network.md)
 
-* [Overzicht van de preview-versie van Azure peering service](https://docs.microsoft.com/azure/peering-service/about)
+* [Overzicht van de preview-versie van Azure peering service](../peering-service/about.md)

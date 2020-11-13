@@ -13,20 +13,23 @@ ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1075cce9b9e3bc3267756bba84691788293fa8d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 378dab95d8fb3519bb2fc5c934a760e051a18d29
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88116293"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94575880"
 ---
 # <a name="developer-guidance-for-the-azure-active-directory-conditional-access-feature"></a>Richt lijnen voor ontwikkel aars voor de functie voor voorwaardelijke toegang van Azure Active Directory
 
 [!INCLUDE [active-directory-azuread-dev](../../../includes/active-directory-azuread-dev.md)]
 
+> [!NOTE]
+> Zie voor de micro soft Identity platform-versie van dit artikel [ontwikkelaars richtlijnen voor Azure Active Directory voorwaardelijke toegang](/azure/active-directory/develop/v2-conditional-access-dev-guide).
+
 De functie voor voorwaardelijke toegang in Azure Active Directory (Azure AD) biedt een van de volgende manieren om uw app te beveiligen en een service te beveiligen. Met voorwaardelijke toegang kunnen ontwikkel aars en zakelijke klanten services op talrijke manieren beveiligen, waaronder:
 
-* Meervoudige verificatie
+* Multi-Factor Authentication
 * Alleen intune-geregistreerde apparaten toegang verlenen tot specifieke services
 * Gebruikers locaties en IP-bereiken beperken
 
@@ -40,7 +43,7 @@ Er wordt uitgegaan van kennis van apps met [één en meerdere tenants](../develo
 
 ### <a name="app-types-impacted"></a>Beïnvloede app-typen
 
-In de meeste gevallen wordt de werking van een app door voorwaardelijke toegang niet gewijzigd of zijn wijzigingen van de ontwikkelaar vereist.In bepaalde gevallen, wanneer een app indirect of op de achtergrond een token voor een service aanvraagt, vereist een app code wijzigingen voor het afhandelen van voorwaardelijke toegang ' uitdagingen '.Het kan net zo eenvoudig zijn als het uitvoeren van een interactieve aanmeldings aanvraag.
+In de meeste gevallen wordt de werking van een app door voorwaardelijke toegang niet gewijzigd of zijn wijzigingen van de ontwikkelaar vereist. In bepaalde gevallen, wanneer een app indirect of op de achtergrond een token voor een service aanvraagt, vereist een app code wijzigingen voor het afhandelen van voorwaardelijke toegang ' uitdagingen '. Het kan net zo eenvoudig zijn als het uitvoeren van een interactieve aanmeldings aanvraag.
 
 Met name de volgende scenario's vereisen code voor het afhandelen van voorwaardelijke toegang "uitdagingen":
 
@@ -175,7 +178,7 @@ Onze app moet worden onderschept `error=interaction_required` . De toepassing ka
 
 Als u dit scenario wilt uitproberen, raadpleegt u ons [js Spa-code voorbeeld](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof-ca). Dit code voorbeeld maakt gebruik van het beleid voor voorwaardelijke toegang en de Web-API die u eerder hebt geregistreerd met een JS SPA om dit scenario te demonstreren. Hier ziet u hoe u de claim Challenge goed kunt afhandelen en een toegangs token krijgt dat kan worden gebruikt voor uw web-API. U kunt ook het voor beeld van de algemene [Angular.js code](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp) uitchecken voor hulp bij een hoek Spa
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 * Zie [voorwaardelijke toegang in azure Active Directory](../conditional-access/overview.md)voor meer informatie over de mogelijkheden.
 * Zie [github opslag plaats code samples](https://github.com/azure-samples?utf8=%E2%9C%93&q=active-directory)(Engelstalig) voor meer informatie over Azure ad-code voorbeelden.

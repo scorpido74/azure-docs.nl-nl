@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/02/2020
 ms.custom: references_regions
-ms.openlocfilehash: dfea03270dfea3699f7c3508b9f5275a2dd26372
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 7f2df005a8d3211ba53aadb16370624c4f530eb3
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287150"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94575863"
 ---
 # <a name="configure-customer-managed-keys-for-data-encryption-in-azure-cognitive-search"></a>Door de klant beheerde sleutels voor gegevens versleuteling configureren in azure Cognitive Search
 
@@ -169,9 +169,11 @@ Toegangs machtigingen kunnen op elk gewenst moment worden ingetrokken. Na intrek
 > [!Important]
 > Versleutelde inhoud in azure Cognitive Search is geconfigureerd voor het gebruik van een specifieke Azure Key Vault sleutel met een specifieke **versie**. Als u de sleutel of versie wijzigt, moet de toewijzing van de index of het synoniem worden bijgewerkt voor gebruik van de nieuwe key\version **voordat** u de vorige key\version. verwijdert Als u dit niet doet, wordt de toewijzing van de index of het synoniem onbruikbaar. u kunt de inhoud niet ontsleutelen wanneer de sleutel toegang is verbroken.
 
+<a name="encrypt-content"></a>
+
 ## <a name="5---encrypt-content"></a>5-inhoud versleutelen
 
-Als u een door de klant beheerde sleutel op een index of synoniemen toewijzing wilt toevoegen, gebruikt u een REST API of SDK om een object te maken waarvan de definitie bevat `encryptionKey` .
+Als u een door de klant beheerde sleutel wilt toevoegen aan een index, gegevens bron, vaardig heden, Indexeer functie of synoniemen toewijzing, moet u de [zoek rest API](https://docs.microsoft.com/rest/api/searchservice/) of een SDK gebruiken. Synoniemen kaarten of versleutelings eigenschappen worden niet weer gegeven in de portal. Wanneer u een geldige API-index gebruikt, ondersteunen gegevens bronnen, vaardig heden, Indexeer functies en synoniemen kaarten een **encryptionKey** -eigenschap op het hoogste niveau.
 
 In dit voor beeld wordt de REST API gebruikt met waarden voor Azure Key Vault en Azure Active Directory:
 
@@ -192,6 +194,12 @@ In dit voor beeld wordt de REST API gebruikt met waarden voor Azure Key Vault en
 > [!Note]
 > Geen van deze sleutel kluis Details worden beschouwd als geheim en kunnen gemakkelijk worden opgehaald door te bladeren naar de relevante Azure Key Vault sleutel pagina in Azure Portal.
 
+## <a name="example-index-encryption"></a>Voor beeld: index versleuteling
+
+Maak een versleutelde index met behulp van de [rest API Create Index Azure Cognitive Search](https://docs.microsoft.com/rest/api/searchservice/create-index). Gebruik de `encryptionKey` eigenschap om op te geven welke versleutelings sleutel moet worden gebruikt.
+> [!Note]
+> Geen van deze sleutel kluis Details worden beschouwd als geheim en kunnen gemakkelijk worden opgehaald door te bladeren naar de relevante Azure Key Vault sleutel pagina in Azure Portal.
+
 ## <a name="rest-examples"></a>REST-voor beelden
 
 Deze sectie toont de volledige JSON voor een versleutelde index en synoniemen toewijzing
@@ -202,7 +210,7 @@ De details van het maken van een nieuwe index via de REST API zijn te vinden in 
 
 ```json
 {
- "name": "hotels",  
+ "name": "hotels",
  "fields": [
   {"name": "HotelId", "type": "Edm.String", "key": true, "filterable": true},
   {"name": "HotelName", "type": "Edm.String", "searchable": true, "filterable": false, "sortable": true, "facetable": false},
@@ -231,19 +239,19 @@ U kunt de aanvraag voor het maken van de index nu verzenden en de index vervolge
 
 ### <a name="synonym-map-encryption"></a>Synoniemen kaart versleuteling
 
-Meer informatie over het maken van een nieuwe synoniemen kaart via de REST API vindt u in de [toewijzing synoniemen maken (rest API)](/rest/api/searchservice/create-synonym-map), waarbij het enige verschil hier de details van de versleutelings sleutel opgeeft als onderdeel van de definitie van de synoniemen kaart: 
+Maak een versleutelde synoniemen toewijzing met behulp van de [toewijzing Create synoniem Azure Cognitive Search rest API](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map). Gebruik de `encryptionKey` eigenschap om op te geven welke versleutelings sleutel moet worden gebruikt.
 
 ```json
-{   
-  "name" : "synonymmap1",  
-  "format" : "solr",  
+{
+  "name" : "synonymmap1",
+  "format" : "solr",
   "synonyms" : "United States, United States of America, USA\n
   Washington, Wash. => WA",
   "encryptionKey": {
     "keyVaultUri": "https://demokeyvault.vault.azure.net",
     "keyVaultKeyName": "myEncryptionKey",
     "keyVaultKeyVersion": "eaab6a663d59439ebb95ce2fe7d5f660",
-    "activeDirectoryAccessCredentials": {
+    "accessCredentials": {
       "applicationId": "00000000-0000-0000-0000-000000000000",
       "applicationSecret": "myApplicationSecret"
     }
@@ -252,6 +260,86 @@ Meer informatie over het maken van een nieuwe synoniemen kaart via de REST API v
 ```
 
 U kunt de aanvraag voor het maken van de synoniemen kaart nu verzenden en vervolgens op de normale manier gebruiken.
+
+## <a name="example-data-source-encryption"></a>Voor beeld: versleuteling van gegevens bron
+
+Maak een versleutelde gegevens bron met behulp van de [gegevens bron maken (Azure Cognitive Search rest API)](https://docs.microsoft.com/rest/api/searchservice/create-data-source). Gebruik de `encryptionKey` eigenschap om op te geven welke versleutelings sleutel moet worden gebruikt.
+
+```json
+{
+  "name" : "datasource1",
+  "type" : "azureblob",
+  "credentials" :
+  { "connectionString" : "DefaultEndpointsProtocol=https;AccountName=datasource;AccountKey=accountkey;EndpointSuffix=core.windows.net"
+  },
+  "container" : { "name" : "containername" },
+  "encryptionKey": {
+    "keyVaultUri": "https://demokeyvault.vault.azure.net",
+    "keyVaultKeyName": "myEncryptionKey",
+    "keyVaultKeyVersion": "eaab6a663d59439ebb95ce2fe7d5f660",
+    "accessCredentials": {
+      "applicationId": "00000000-0000-0000-0000-000000000000",
+      "applicationSecret": "myApplicationSecret"
+    }
+  }
+}
+```
+
+U kunt de aanvraag voor het maken van de gegevens bron nu verzenden en vervolgens op de normale manier gebruiken.
+
+## <a name="example-skillset-encryption"></a>Voor beeld: Vaardigheidset-versleuteling
+
+Maak een versleutelde vaardig heden met behulp van de [rest API Create vaardig heden Azure Cognitive Search](https://docs.microsoft.com/rest/api/searchservice/create-skillset). Gebruik de `encryptionKey` eigenschap om op te geven welke versleutelings sleutel moet worden gebruikt.
+
+```json
+{
+  "name" : "datasource1",
+  "type" : "azureblob",
+  "credentials" :
+  { "connectionString" : "DefaultEndpointsProtocol=https;AccountName=datasource;AccountKey=accountkey;EndpointSuffix=core.windows.net"
+  },
+  "container" : { "name" : "containername" },
+  "encryptionKey": {
+    "keyVaultUri": "https://demokeyvault.vault.azure.net",
+    "keyVaultKeyName": "myEncryptionKey",
+    "keyVaultKeyVersion": "eaab6a663d59439ebb95ce2fe7d5f660",
+    "accessCredentials": {
+      "applicationId": "00000000-0000-0000-0000-000000000000",
+      "applicationSecret": "myApplicationSecret"
+    }
+  }
+}
+```
+
+U kunt nu de aanvraag voor het maken van vaardig heden verzenden en deze vervolgens op de normale manier gebruiken.
+
+## <a name="example-indexer-encryption"></a>Voor beeld: indexer versleuteling
+
+Maak een versleutelde Indexeer functie met behulp van de [rest API Create Indexeer functie Azure Cognitive Search](https://docs.microsoft.com/rest/api/searchservice/create-indexer). Gebruik de `encryptionKey` eigenschap om op te geven welke versleutelings sleutel moet worden gebruikt.
+
+```json
+{
+  "name": "indexer1",
+  "dataSourceName": "datasource1",
+  "skillsetName": "skillset1",
+  "parameters": {
+      "configuration": {
+          "imageAction": "generateNormalizedImages"
+      }
+  },
+  "encryptionKey": {
+    "keyVaultUri": "https://demokeyvault.vault.azure.net",
+    "keyVaultKeyName": "myEncryptionKey",
+    "keyVaultKeyVersion": "eaab6a663d59439ebb95ce2fe7d5f660",
+    "accessCredentials": {
+      "applicationId": "00000000-0000-0000-0000-000000000000",
+      "applicationSecret": "myApplicationSecret"
+    }
+  }
+}
+```
+
+U kunt de aanvraag voor het maken van de Indexeer functie nu verzenden en vervolgens op de normale manier gebruiken.
 
 >[!Important]
 > Hoewel het `encryptionKey` niet kan worden toegevoegd aan bestaande zoek indexen of synoniemen toewijzingen, kan deze worden bijgewerkt door andere waarden op te geven voor een van de drie sleutel kluis Details (bijvoorbeeld het bijwerken van de sleutel versie). Wanneer u overstapt naar een nieuwe Key Vault sleutel of een nieuwe sleutel versie, moet een zoek index of synoniem toewijzing die de sleutel gebruikt eerst worden bijgewerkt om de nieuwe key\version te gebruiken **voordat** u de vorige key\version. verwijdert. Als u dit niet doet, wordt de toewijzing van de index of het synoniem onbruikbaar, omdat het niet mogelijk is om de inhoud te ontsleutelen wanneer de sleutel toegang verloren is gegaan. Hoewel de toegangs machtigingen voor de sleutel kluis op een later tijdstip worden teruggezet, wordt de toegang tot inhoud hersteld.
@@ -265,7 +353,6 @@ Met deze aanpak kunt u de stappen voor het registreren van toepassingen en toepa
 In het algemeen zorgt een beheerde identiteit ervoor dat uw zoek service kan worden geverifieerd bij Azure Key Vault zonder dat u referenties (ApplicationID of ApplicationSecret) in code hoeft op te slaan. De levens cyclus van dit type beheerde identiteit is gekoppeld aan de levens cyclus van uw zoek service, maar kan slechts één beheerde identiteit hebben. Zie [Wat zijn beheerde identiteiten voor Azure-resources](../active-directory/managed-identities-azure-resources/overview.md)voor meer informatie over de werking van beheerde identiteiten.
 
 1. Uw zoek service een vertrouwde service maken.
-
    ![Door het systeem toegewezen beheerde identiteit inschakelen](./media/search-managed-identities/turn-on-system-assigned-identity.png "Door het systeem toegewezen beheerde identiteit inschakelen")
 
 1. Wanneer u een toegangs beleid instelt in Azure Key Vault, kiest u de vertrouwde zoek service als principe (in plaats van de AD-geregistreerde toepassing). Wijs dezelfde machtigingen toe (meerdere ophalen, TERUGLOPEN, uitpakken), zoals wordt geïnstrueerd in de stap machtigingen voor toegangs sleutel verlenen.

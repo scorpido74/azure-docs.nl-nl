@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/01/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 4aee41bc0188676ac0bd168474f1842199af9620
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8e8fed99fe0b1de52d2e2d0018dfd8867b54b63b
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89595221"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566517"
 ---
 # <a name="route-web-traffic-based-on-the-url-using-the-azure-cli"></a>Webverkeer routeren op basis van de URL met behulp van de Azure CLI
 
@@ -32,11 +32,11 @@ In dit artikel leert u het volgende:
 
 Als u wilt, kunt u deze procedure volt ooien met behulp van [Azure PowerShell](tutorial-url-route-powershell.md) of de [Azure Portal](create-url-route-portal.md).
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit artikel Azure CLI (versie 2.0.4 of hoger) uitvoeren. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
+ - Voor deze zelf studie is versie 2.0.4 of hoger van de Azure CLI vereist. Als u Azure Cloud Shell gebruikt, is de nieuwste versie al geïnstalleerd.
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
@@ -50,7 +50,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Netwerkbronnen maken
 
-Maak het virtuele netwerk *myVNet* en het subnet *myAGSubnet* met `az network vnet create`. Vervolgens voegt u het subnet *myBackendSubnet*, dat voor de back-endservers vereist is, toe met `az network vnet subnet create`. Maak het openbare IP-adres *myAGPublicIPAddress* met `az network public-ip create`.
+Maak het virtuele netwerk *myVNet* en het subnet *myAGSubnet* met `az network vnet create`. Vervolgens voegt u het subnet *myBackendSubnet* , dat voor de back-endservers vereist is, toe met `az network vnet subnet create`. Maak het openbare IP-adres *myAGPublicIPAddress* met `az network public-ip create`.
 
 ```azurecli-interactive
 az network vnet create \
@@ -183,7 +183,7 @@ az network application-gateway rule create \
 
 ## <a name="create-virtual-machine-scale-sets"></a>Virtuele-machineschaalset maken
 
-In dit artikel maakt u drie virtuele-machine schaal sets die ondersteuning bieden voor de drie back-endservers die u hebt gemaakt. U maakt schaalsets met de namen *myvmss1*, *myvmss2* en *myvmss3*. Elke schaalset bevat twee exemplaren van virtuele machines waarop u NGINX installeert.
+In dit artikel maakt u drie virtuele-machine schaal sets die ondersteuning bieden voor de drie back-endservers die u hebt gemaakt. U maakt schaalsets met de namen *myvmss1* , *myvmss2* en *myvmss3*. Elke schaalset bevat twee exemplaren van virtuele machines waarop u NGINX installeert.
 
 ```azurecli-interactive
 for i in `seq 1 3`; do

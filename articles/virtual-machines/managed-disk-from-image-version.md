@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/27/2020
 ms.author: cynthn
 ms.reviewer: olayemio
-ms.openlocfilehash: 5873f28fed492f9ef906a9d7c1364d8ae07033a7
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 1fbdae2480caef5bf1d190124ca3be6c5b97a2f9
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93336058"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576356"
 ---
 # <a name="create-a-managed-disk-from-an-image-version"></a>Een beheerde schijf maken op basis van een installatie kopie versie
 
@@ -23,7 +23,7 @@ Indien nodig kunt u het besturings systeem of één gegevens schijf exporteren u
 
 ## <a name="cli"></a>CLI
 
-De afbeeldings versies in een galerie weer geven met de [lijst AZ sig image-version](/cli/azure/sig/image-version.md#az_sig_image_version_list). In dit voor beeld zoeken we naar alle installatie kopieën die deel uitmaken van de definitie van de *myImageDefinition* -installatie kopie in de galerie met installatie kopieën van *myGallery* .
+De afbeeldings versies in een galerie weer geven met de [lijst AZ sig image-version](/cli/azure/sig/image-version#az_sig_image_version_list). In dit voor beeld zoeken we naar alle installatie kopieën die deel uitmaken van de definitie van de *myImageDefinition* -installatie kopie in de galerie met installatie kopieën van *myGallery* .
 
 ```azurecli-interactive
 az sig image-version list \
@@ -33,7 +33,7 @@ az sig image-version list \
    -o table
 ```
 
-Stel de `source` variabele in op de id van de installatie kopie en gebruik [AZ Disk Create](/cli/azure/disk.md#az_disk_create) om de beheerde schijf te maken. 
+Stel de `source` variabele in op de id van de installatie kopie en gebruik [AZ Disk Create](//cli/azure/disk#az_disk_create) om de beheerde schijf te maken. 
 
 In dit voor beeld exporteren we de besturingssysteem schijf van de versie van de installatie kopie voor het maken van een beheerde schijf met de naam *myManagedOSDisk* , in de regio *oostus* , in een resource groep met de naam *myResourceGroup*. 
 

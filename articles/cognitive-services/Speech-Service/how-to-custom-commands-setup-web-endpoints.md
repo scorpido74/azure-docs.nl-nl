@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 7a8bdd911db82a07bfcdd1596b7a8203a19a6442
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 0e2406cd35fb2d4dd99da4f5139a9f0f80697912
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341954"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566245"
 ---
 # <a name="set-up-web-endpoints"></a>Webeindpunten instellen
 
@@ -125,14 +125,14 @@ In de meeste gevallen wilt u echter alleen een activiteit naar de clienttoepassi
     1. Kopieer de JSON hieronder naar **Activity Content** (Inhoud van de activiteit)
    ```json
    {
-     "type": "event",
-     "name": "UpdateDeviceState",
-     "state": "{OnOff}",
-     "device": "{SubjectDevice}"
-   }
+      "type": "event",
+      "name": "UpdateDeviceState",
+      "value": {
+        "state": "{OnOff}",
+        "device": "{SubjectDevice}"
+      }
+    }
    ```
-    > [!div class="mx-imgBorder"]
-    > ![Activiteit verzenden bij voltooiing](media/custom-commands/setup-web-endpoint-edit-action-on-success-send-activity.png)
    
 Nu wordt er alleen activiteit naar de client verzonden wanneer de aanvraag op het eindpunt is geslaagd.
 
@@ -207,3 +207,4 @@ Als u de app met `turn on tv` hebt getest in de vorige sectie, ziet u dat de tv 
 
 > [!div class="nextstepaction"]
 > [Toepassing voor het exporteren van aangepaste opdrachten als externe vaardigheid](./how-to-custom-commands-integrate-remote-skills.md)
+

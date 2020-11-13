@@ -1,6 +1,6 @@
 ---
 title: Verificatie op basis van wacht woorden met Azure Active Directory
-description: Richt lijnen voor architectuur over het bereiken van dit verificatie patroon
+description: Architectuur richtlijnen voor het realiseren van verificatie op basis van wacht woorden met Azure Active Directory.
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f05bf8f5f7ec4907c2cd61ff48e3438dfa1e097a
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 74815976036abafc56f97e622351a1018fe30504
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92114201"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576929"
 ---
 # <a name="password-based-authentication-with-azure-active-directory"></a>Verificatie op basis van wacht woorden met Azure Active Directory
 
@@ -35,13 +35,13 @@ U moet beveiligen met pre-authenticatie en eenmalige aanmelding via wachtwoord k
 
 ## <a name="components-of-system"></a>Onderdelen van systeem
 
-* **Gebruiker**: er wordt vanuit mijn apps toegang tot een samengestelde toepassing uitgevoerd of door de site rechtstreeks te bezoeken. 
+* **Gebruiker** : er wordt vanuit mijn apps toegang tot een samengestelde toepassing uitgevoerd of door de site rechtstreeks te bezoeken. 
 
-* **Webbrowser**: het onderdeel waarmee de gebruiker communiceert om toegang te krijgen tot de externe URL van de toepassing. De gebruiker opent de op formulieren gebaseerde toepassing via de MyApps-extensie. 
+* **Webbrowser** : het onderdeel waarmee de gebruiker communiceert om toegang te krijgen tot de externe URL van de toepassing. De gebruiker opent de op formulieren gebaseerde toepassing via de MyApps-extensie. 
 
-* **MyApps-extensie**: identificeert de geconfigureerde op wacht woord gebaseerde SSO-toepassing en levert de referenties aan het aanmeldings formulier. De uitbrei ding MyApps wordt geïnstalleerd op de webbrowser. 
+* **MyApps-extensie** : identificeert de geconfigureerde op wacht woord gebaseerde SSO-toepassing en levert de referenties aan het aanmeldings formulier. De uitbrei ding MyApps wordt geïnstalleerd op de webbrowser. 
 
-* **Azure AD**: verifieert de gebruiker.
+* **Azure AD** : verifieert de gebruiker.
 
 ## <a name="implement-password-based-sso-with-azure-ad"></a>Eenmalige aanmelding op basis van wacht woorden implementeren met Azure AD
 

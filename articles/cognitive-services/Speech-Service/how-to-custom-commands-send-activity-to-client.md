@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: fc62c87fd12457c60d3eb26cba6814aa1df76f87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 52a4dbc4ff01515af8cd7d2503877184a09f7e64
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91839211"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566092"
 ---
 # <a name="send-custom-commands-activity-to-client-application"></a>Activiteit aangepaste opdrachten verzenden naar client toepassing
 
@@ -36,15 +36,17 @@ U voert de volgende taken uit:
 ## <a name="setup-send-activity-to-client"></a>Activiteit verzenden naar client installeren 
 1. Open de toepassing voor aangepaste opdrachten die u eerder hebt gemaakt
 1. Selecteer **TurnOnOff** opdracht, selecteer **ConfirmationResponse** onder voltooiings regel en selecteer vervolgens **een actie toevoegen** .
-1. Onder **nieuw actie-type**, selecteer **activiteit verzenden naar client**
+1. Onder **nieuw actie-type** , selecteer **activiteit verzenden naar client**
 1. Kopieer de JSON hieronder naar **activiteit inhoud**
    ```json
    {
-     "type": "event",
-     "name": "UpdateDeviceState",
-     "state": "{OnOff}",
-     "device": "{SubjectDevice}"
-   }
+      "type": "event",
+      "name": "UpdateDeviceState",
+      "value": {
+        "state": "{OnOff}",
+        "device": "{SubjectDevice}"
+      }
+    }
    ```
 1. Klik op **Opslaan** om een nieuwe regel met de actie activiteit verzenden te maken, de wijziging te **trainen** en te **publiceren**
 
@@ -83,8 +85,8 @@ Voeg het volgende XML-blok van StackPanel toe aan om vakken met een label toe te
 Omdat u een JSON-nettolading hebt gemaakt, moet u een verwijzing naar de [JSON.net](https://www.newtonsoft.com/json) -bibliotheek toevoegen om de deserialisatie te verwerken.
 
 1. Rechts-client uw oplossing.
-1. Kies **NuGet-pakketten beheren voor oplossing**, selecteer **Bladeren** 
-1. Als u **Newtonsoft.js**al hebt geïnstalleerd, zorg er dan voor dat de versie ten minste 12.0.3 is. Als dat niet het geval is, gaat u naar **NuGet-pakketten beheren voor oplossing-updates**, zoekt u naar **Newtonsoft.jsop** om het bij te werken. In deze hand leiding wordt gebruikgemaakt van versie 12.0.3.
+1. Kies **NuGet-pakketten beheren voor oplossing** , selecteer **Bladeren** 
+1. Als u **Newtonsoft.js** al hebt geïnstalleerd, zorg er dan voor dat de versie ten minste 12.0.3 is. Als dat niet het geval is, gaat u naar **NuGet-pakketten beheren voor oplossing-updates** , zoekt u naar **Newtonsoft.jsop** om het bij te werken. In deze hand leiding wordt gebruikgemaakt van versie 12.0.3.
 
     > [!div class="mx-imgBorder"]
     > ![Nettolading activiteit verzenden](media/custom-commands/send-activity-to-client-json-nuget.png)
@@ -114,8 +116,8 @@ connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
     if (name.Equals("UpdateDeviceState"))
     {
         Debug.WriteLine("Here");
-        var state = activity?.device != null ? activity.state.ToString() : string.Empty;
-        var device = activity?.device != null ? activity.device.ToString() : string.Empty;
+        var state = activity?.value?.state != null ? activity.value.state.ToString() : string.Empty;
+        var device = activity?.value?.device != null ? activity.value.device.ToString() : string.Empty;
 
         if (state.Equals("on") || state.Equals("off"))
         {

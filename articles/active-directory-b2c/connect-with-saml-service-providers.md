@@ -12,12 +12,12 @@ ms.date: 10/26/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: c59a104796e11b15af805e34f9cd14b2ce8bd075
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: 6f7888e978fd4eb19232c156ce65b6e4967d9c5a
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92628844"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94575965"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Een SAML-toepassing registreren in Azure AD B2C
 
@@ -99,13 +99,13 @@ Als u nog geen certificaat hebt, kunt u een zelfondertekend certificaat gebruike
 Upload vervolgens de SAML-verklaring en het handtekening certificaat voor antwoorden naar Azure AD B2C.
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com) en blader naar uw Azure AD B2C-Tenant.
-1. Onder **beleids regels** selecteert u **identiteits ervaring-Framework** en vervolgens **beleids sleutels** .
-1. Selecteer **toevoegen** en selecteer vervolgens **Opties**  >  **uploaden** .
-1. Voer een **naam** in, bijvoorbeeld *SamlIdpCert* . De prefix *B2C_1A_* wordt automatisch toegevoegd aan de naam van uw sleutel.
+1. Onder **beleids regels** selecteert u **identiteits ervaring-Framework** en vervolgens **beleids sleutels**.
+1. Selecteer **toevoegen** en selecteer vervolgens **Opties**  >  **uploaden**.
+1. Voer een **naam** in, bijvoorbeeld *SamlIdpCert*. De prefix *B2C_1A_* wordt automatisch toegevoegd aan de naam van uw sleutel.
 1. Upload uw certificaat met het besturings element voor het uploaden van bestanden.
 1. Voer het wacht woord voor het certificaat in.
-1. Selecteer **Maken** .
-1. Controleer of de sleutel wordt weer gegeven zoals verwacht. Bijvoorbeeld *B2C_1A_SamlIdpCert* .
+1. Selecteer **Maken**.
+1. Controleer of de sleutel wordt weer gegeven zoals verwacht. Bijvoorbeeld *B2C_1A_SamlIdpCert*.
 
 ## <a name="2-prepare-your-policy"></a>2. het beleid voorbereiden
 
@@ -159,7 +159,7 @@ Nu uw Tenant SAML-bevestigingen kan uitgeven, moet u het SAML-Relying Party bele
 
 ### <a name="31-create-sign-up-or-sign-in-policy"></a>3,1 aanmelden of aanmeldings beleid maken
 
-1. Maak een kopie van het *SignUpOrSignin.xml* -bestand in de werkmap van uw starter pakket en sla het op met een nieuwe naam. Bijvoorbeeld *SignUpOrSigninSAML.xml* . Dit is uw Relying Party-beleids bestand.
+1. Maak een kopie van het *SignUpOrSignin.xml* -bestand in de werkmap van uw starter pakket en sla het op met een nieuwe naam. Bijvoorbeeld *SignUpOrSigninSAML.xml*. Dit is uw Relying Party-beleids bestand.
 
 1. Open het *SignUpOrSigninSAML.xml* -bestand in de editor van uw voor keur.
 
@@ -260,7 +260,7 @@ Het uiteindelijke Relying Party-beleids bestand moet er als volgt uitzien:
 
 Sla de wijzigingen op en upload het nieuwe beleids bestand. Nadat u beide beleids regels (de extensie en de Relying Party bestanden) hebt geüpload, opent u een webbrowser en navigeert u naar de meta gegevens van het beleid.
 
-Azure AD B2C IDP-beleid bevat informatie die wordt gebruikt in het SAML-protocol om de configuratie van een SAML-ID-provider beschikbaar te maken. Meta gegevens definiëren de locatie van de services, zoals aanmelden en afmelden, certificaten, aanmeldings methode en meer. De meta gegevens van het Azure AD B2C beleid zijn beschikbaar op de volgende URL. Vervang door `tenant-name` de naam van uw Azure AD B2C Tenant en `policy-name` met de naam (id) van het beleid:
+Azure AD B2C IDP-beleid bevat informatie die wordt gebruikt in het SAML-protocol om de configuratie van een SAML-ID-provider beschikbaar te maken. Meta gegevens definiëren de locatie van de services, zoals aanmelden en afmelden, certificaten, aanmeldings methode en meer. De meta gegevens van het Azure AD B2C beleid zijn beschikbaar op de volgende URL. Vervang door `tenant-name` de naam van uw Azure AD B2C Tenant en `policy-name` met de naam (id) van het beleid bijvoorbeeld.../B2C_1A_SAML2_signup_signin/samlp/metadata:
 
 `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
 
@@ -272,12 +272,12 @@ Uw aangepaste beleid en Azure AD B2C Tenant zijn nu gereed. Maak vervolgens een 
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer het filter **Map + Abonnement** in het bovenste menu en selecteer vervolgens de map die uw Azure AD B2C-tenant bevat.
-1. Selecteer **Azure AD B2C** in het linkermenu. Of selecteer **Alle services** en zoek naar en selecteer **Azure AD B2C** .
-1. Selecteer **App-registraties** en selecteer vervolgens **Nieuwe registratie** .
-1. Voer een **naam** in voor de toepassing. Bijvoorbeeld *SAMLApp1* .
+1. Selecteer **Azure AD B2C** in het linkermenu. Of selecteer **Alle services** en zoek naar en selecteer **Azure AD B2C**.
+1. Selecteer **App-registraties** en selecteer vervolgens **Nieuwe registratie**.
+1. Voer een **naam** in voor de toepassing. Bijvoorbeeld *SAMLApp1*.
 1. Onder **ondersteunde account typen** selecteert u **alleen accounts in deze organisatie Directory**
 1. Onder **omleidings-URI** selecteert u **Web** en voert u in `https://localhost` . U wijzigt deze waarde later in het manifest van de toepassings registratie.
-1. Selecteer **Registreren** .
+1. Selecteer **Registreren**.
 
 ### <a name="42-update-the-app-manifest"></a>4,2 het app-manifest bijwerken
 
@@ -296,7 +296,7 @@ Deze eigenschap vertegenwoordigt de openbaar beschik bare meta gegevens-URL van 
 
 De meta gegevens worden in het SAML-protocol gebruikt om de configuratie van een SAML-partij, zoals een service provider, beschikbaar te stellen. Meta gegevens definiëren de locatie van de services, zoals aanmelden en afmelden, certificaten, aanmeldings methode en meer. Azure AD B2C leest de meta gegevens van de service provider en reageert dienovereenkomstig. De meta gegevens zijn niet vereist. U kunt ook een aantal kenmerken opgeven, zoals de antwoord-URI en de afmeldings-URI rechtstreeks in het app-manifest.
 
-Als er eigenschappen zijn opgegeven in *zowel* de URL voor SAML-meta gegevens en in het manifest van de toepassings registratie, worden deze **samengevoegd** . De eigenschappen die zijn opgegeven in de meta gegevens-URL worden eerst verwerkt en hebben voor rang.
+Als er eigenschappen zijn opgegeven in *zowel* de URL voor SAML-meta gegevens en in het manifest van de toepassings registratie, worden deze **samengevoegd**. De eigenschappen die zijn opgegeven in de meta gegevens-URL worden eerst verwerkt en hebben voor rang.
 
 Voor deze zelf studie, die gebruikmaakt van de SAML-test toepassing, gebruikt u de volgende waarde voor `samlMetadataUrl` :
 
@@ -443,7 +443,7 @@ De volgende opties voor SAML-Relying Party (RP) worden ondersteund via uw eigen 
 
 Een SAML-token is een beveiligings token dat is uitgegeven door Azure AD B2C nadat het aanmelden is geslaagd. Het bevat informatie over de gebruiker, de service provider waarvoor het token is bedoeld, de hand tekening en de geldigheids duur. De volgende tabel geeft een lijst van de claims en eigenschappen die u kunt verwachten in een SAML-token dat is uitgegeven door Azure AD B2C.
 
-|Element  |Eigenschap  |Opmerkingen  |
+|Element  |Eigenschap  |Notities  |
 |---------|---------|---------|
 |`<Response>`| `ID` | Een automatisch gegenereerde unieke id van het antwoord. | 
 |`<Response>`| `InResponseTo` | De ID van de SAML-aanvraag waarnaar dit bericht wordt gestuurd. | 

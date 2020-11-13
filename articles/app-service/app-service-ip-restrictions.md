@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: e074be91f343e04ba3049aea51f83f7f6364cdb0
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: e1549dda367105db34272eab8a90c1760dd5bb5c
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94564035"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576441"
 ---
 # <a name="set-up-azure-app-service-access-restrictions"></a>Toegangs beperkingen voor Azure App Service instellen
 
@@ -179,7 +179,7 @@ U kunt waarden ook hand matig instellen door een van de volgende handelingen uit
 Er zijn ook toegangs beperkingen beschikbaar voor functie-apps met dezelfde functionaliteit als App Service-abonnementen. Wanneer u toegangs beperkingen inschakelt, schakelt u ook de Azure Portal code-editor uit voor niet-toegestane IP-adressen.
 
 ## <a name="next-steps"></a>Volgende stappen
-[Toegangs beperkingen voor Azure Functions](../azure-functions/functions-networking-options.md#inbound-ip-restrictions)  
+[Toegangs beperkingen voor Azure Functions](../azure-functions/functions-networking-options.md#inbound-access-restrictions)  
 [Integratie met Service-eind punten Application Gateway](networking/app-gateway-with-service-endpoints.md)
 
 <!--Links-->

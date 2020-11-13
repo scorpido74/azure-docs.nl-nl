@@ -1,6 +1,6 @@
 ---
 title: Taal aanpassing in Azure Active Directory B2C
-description: Meer informatie over het aanpassen van de taal ervaring in uw gebruikers stromen.
+description: Meer informatie over het aanpassen van de taal ervaring in uw gebruikers stromen in Azure Active Directory B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,12 +11,12 @@ ms.date: 08/13/2019
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6b3bb3648fff6bc893ea07204fad79d2830a1b47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5bfdada12229070568bb9b0556471ea5aab306f
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91355090"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94575948"
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Taal aanpassing in Azure Active Directory B2C
 
@@ -28,9 +28,9 @@ U gebruikt taal aanpassing om te selecteren in welke talen uw gebruikers stroom 
 
 Mogelijk hebt u niet het controle niveau nodig over de talen die uw klant ziet. Als u geen `ui_locales` para meter opgeeft, wordt de gebruikers ervaring bepaald door de instellingen van de browser. U kunt nog steeds bepalen in welke talen uw gebruikers stroom wordt vertaald door deze toe te voegen als een ondersteunde taal. Als de browser van een klant is ingesteld om een taal weer te geven die u niet wilt ondersteunen, wordt in plaats daarvan de taal weer gegeven die u als standaard waarde hebt geselecteerd in ondersteunde cult uren.
 
-* **gebruikers interface-land instellingen opgegeven taal**: nadat u de taal aanpassing hebt ingeschakeld, wordt uw gebruikers stroom vertaald naar de taal die u hier opgeeft.
-* Door **browser aangevraagde taal**: als er geen `ui_locales` para meter is opgegeven, wordt uw gebruikers stroom vertaald naar de door de browser aangevraagde taal, *als de taal wordt ondersteund*.
-* **Standaard taal van beleid**: als in de browser geen taal is opgegeven of als er een niet wordt ondersteund, wordt de gebruikers stroom vertaald naar de standaard taal van de gebruikers stroom.
+* **gebruikers interface-land instellingen opgegeven taal** : nadat u de taal aanpassing hebt ingeschakeld, wordt uw gebruikers stroom vertaald naar de taal die u hier opgeeft.
+* Door **browser aangevraagde taal** : als er geen `ui_locales` para meter is opgegeven, wordt uw gebruikers stroom vertaald naar de door de browser aangevraagde taal, *als de taal wordt ondersteund*.
+* **Standaard taal van beleid** : als in de browser geen taal is opgegeven of als er een niet wordt ondersteund, wordt de gebruikers stroom vertaald naar de standaard taal van de gebruikers stroom.
 
 > [!NOTE]
 > Als u aangepaste gebruikers kenmerken gebruikt, moet u uw eigen vertalingen opgeven. Zie [uw teken reeksen aanpassen](#customize-your-strings)voor meer informatie.
@@ -65,7 +65,7 @@ Door taal aanpassing kunt u een wille keurige teken reeks in uw gebruikers stroo
 
 1. Zorg ervoor dat de taal aanpassing voor uw gebruikers stroom is ingeschakeld in de vorige instructies.
 1. Selecteer op de pagina **talen** voor de gebruikers stroom de taal die u wilt aanpassen.
-1. Selecteer onder **bronnen bestanden op pagina niveau**de pagina die u wilt bewerken.
+1. Selecteer onder **bronnen bestanden op pagina niveau** de pagina die u wilt bewerken.
 1. Selecteer **standaard waarden downloaden** (of **down loads negeren** als u deze taal eerder hebt bewerkt).
 
 Deze stappen geven u een JSON-bestand dat u kunt gebruiken om te beginnen met het bewerken van uw teken reeksen.
@@ -170,7 +170,7 @@ U kunt ook talen toevoegen waarnaar micro soft momenteel geen vertalingen levert
 4. In het context venster dat wordt geopend, identificeert u in welke taal u de vertalingen levert door een geldige land instelling in te voeren.
 5. Voor elke pagina kunt u een set onderdrukkingen downloaden voor Engels en werken aan de vertalingen.
 6. Nadat u klaar bent met de JSON-bestanden, kunt u deze voor elke pagina uploaden.
-7. Selecteer **inschakelen**en uw gebruikers stroom kan deze taal nu weer geven voor uw gebruikers.
+7. Selecteer **inschakelen** en uw gebruikers stroom kan deze taal nu weer geven voor uw gebruikers.
 8. Sla de taal op.
 
 >[!IMPORTANT]

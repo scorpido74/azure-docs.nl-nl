@@ -5,13 +5,13 @@ ms.service: data-share
 author: jifems
 ms.author: jife
 ms.topic: conceptual
-ms.date: 10/15/2020
-ms.openlocfilehash: f3ecf8ef22d3f1d66b7148b809475a830c7e9f13
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.date: 10/30/2020
+ms.openlocfilehash: 47c484268573334057e6b4dd14bbae849f9ce774
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92318582"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94577218"
 ---
 # <a name="supported-data-stores-in-azure-data-share"></a>Ondersteunde gegevensarchieven in Azure Data Share
 
@@ -23,14 +23,15 @@ In dit artikel vindt u meer informatie over de uitgebreide set met Azure-gegeven
 
 De onderstaande tabel bevat een overzicht van de ondersteunde gegevens bronnen voor Azure data share. 
 
-| Gegevensarchief | Op moment opnamen gebaseerd delen | In-place delen 
-|:--- |:--- |:--- |:--- |:--- |:--- |
-| Azure Blob Storage |✓ | |
-| Azure Data Lake Storage Gen1 |✓ | |
-| Azure Data Lake Storage Gen2 |✓ ||
-| Azure SQL Database |✓ | |
-| Azure Synapse Analytics (voorheen Azure SQL DW) |✓ | |
-| Azure Data Explorer | |✓ |
+| Gegevensarchief | Op moment opnamen gebaseerd delen (volledige moment opname) | Op moment opnamen gebaseerd delen (incrementele moment opname) | In-place delen 
+|:--- |:--- |:--- |:--- |:--- |:--- |:--- |
+| Azure Blob Storage |✓ |✓ | |
+| Azure Data Lake Storage Gen1 |✓ |✓ | |
+| Azure Data Lake Storage Gen2 |✓ |✓ ||
+| Azure SQL Database |✓ | | |
+| Azure Synapse Analytics (voorheen Azure SQL DW) |✓ | | |
+| Azure Synapse Analytics (werk ruimte) SQL-groep | Openbare preview | | |
+| Azure Data Explorer | | |✓ |
 
 ## <a name="data-store-support-matrix"></a>Ondersteunings matrix voor gegevens opslag
 
@@ -38,14 +39,15 @@ Azure-gegevens share biedt gegevens gebruikers flexibiliteit bij het bepalen van
 
 De onderstaande tabel bevat informatie over verschillende combi Naties en keuzen die gebruikers van gegevens hebben wanneer ze hun gegevens delen accepteren en configureren. Zie [toewijzing van gegevensset configureren](how-to-configure-mapping.md)voor meer informatie over het configureren van gegevensset-toewijzingen.
 
-| Gegevensarchief | Azure Blob Storage | Azure Data Lake Storage Gen1 | Azure Data Lake Storage Gen2 | Azure SQL Database | Azure Synapse Analytics | Azure Data Explorer
-|:--- |:--- |:--- |:--- |:--- |:--- |:--- |
-| Azure Blob Storage | ✓ || ✓ ||
-| Azure Data Lake Storage Gen1 | ✓ | | ✓ ||
-| Azure Data Lake Storage Gen2 | ✓ | | ✓ ||
-| Azure SQL Database | ✓ | | ✓ | ✓ | ✓ ||
-| Azure Synapse Analytics (voorheen Azure SQL DW) | ✓ | | ✓ | ✓ | ✓ ||
-| Azure Data Explorer |||||| ✓ |
+| Gegevensarchief | Azure Blob Storage | Azure Data Lake Storage Gen1 | Azure Data Lake Storage Gen2 | Azure SQL Database | Azure Synapse Analytics (voorheen Azure SQL DW) | Azure Synapse Analytics (werk ruimte) SQL-groep | Azure Data Explorer
+|:--- |:--- |:--- |:--- |:--- |:--- |:--- | :--- |
+| Azure Blob Storage | ✓ || ✓ |||
+| Azure Data Lake Storage Gen1 | ✓ | | ✓ |||
+| Azure Data Lake Storage Gen2 | ✓ | | ✓ |||
+| Azure SQL Database | ✓ | | ✓ | ✓ | ✓ | ✓ ||
+| Azure Synapse Analytics (voorheen Azure SQL DW) | ✓ | | ✓ | ✓ | ✓ | ✓ ||
+| Azure Synapse Analytics (werk ruimte) SQL-groep | ✓ | | ✓ | ✓ | ✓ | ✓ ||
+| Azure Data Explorer ||||||| ✓ |
 
 ## <a name="share-from-a-storage-account"></a>Delen vanuit een opslag account
 De Azure-gegevens share ondersteunt het delen van bestanden, mappen en bestands systemen van Azure Data Lake gen1 en Azure Data Lake Gen2. Het biedt ook ondersteuning voor het delen van blobs, mappen en containers vanuit Azure Blob Storage. Momenteel wordt alleen blok-BLOB ondersteund. Wanneer bestands systemen, containers of mappen worden gedeeld in delen op basis van moment opnamen, kan de gegevens consument ervoor kiezen om een volledige kopie van de share gegevens te maken of om alleen nieuwe of bijgewerkte bestanden te kopiëren. Incrementele moment opname is gebaseerd op de tijd van de laatste wijziging van de bestanden. Bestaande bestanden met dezelfde naam worden overschreven.
@@ -53,7 +55,7 @@ De Azure-gegevens share ondersteunt het delen van bestanden, mappen en bestands 
 Raadpleeg [en ontvang gegevens van Azure Blob Storage en Azure data Lake Storage](how-to-share-from-storage.md) voor meer informatie.
 
 ## <a name="share-from-a-sql-based-source"></a>Delen vanuit een bron op basis van SQL
-Azure data share ondersteunt het delen van tabellen of weer gaven van Azure SQL Database en Azure Synapse Analytics (voorheen Azure SQL DW). Gegevens gebruikers kunnen ervoor kiezen om de gegevens in Azure Data Lake Storage Gen2 of Azure Blob Storage te accepteren als CSV-of Parquet-bestand, evenals in Azure SQL Database en Azure Synapse Analytics als tabellen.
+De Azure-gegevens share ondersteunt het delen van tabellen of weer gaven van Azure SQL Database en Azure Synapse Analytics (voorheen Azure SQL DW) en het delen van tabellen vanuit een Azure Synapse Analytics (werk ruimte) SQL-groep. Gegevens gebruikers kunnen ervoor kiezen om de gegevens in Azure Data Lake Storage Gen2 of Azure Blob Storage te accepteren als CSV-of Parquet-bestand, evenals in Azure SQL Database en Azure Synapse Analytics als tabellen.
 
 Wanneer gegevens worden geaccepteerd in Azure Data Lake Store Gen2 of Azure Blob Storage, overschrijven volledige moment opnamen de inhoud van het doel bestand als dit al bestaat.
 Wanneer gegevens in de tabel worden ontvangen en als de doel tabel nog niet bestaat, maakt Azure-gegevens share de SQL-tabel met het bron schema. Als er al een doel tabel met dezelfde naam bestaat, wordt deze verwijderd en overschreven met de laatste volledige moment opname. Incrementele moment opnamen worden momenteel niet ondersteund.

@@ -5,18 +5,18 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: troubleshooting
 ms.date: 05/06/2020
-ms.openlocfilehash: 8eb37b993ee5bc3944228cba72be0557b52e3dc6
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 17b070fea422268ec12e0ccd3357ae0549a78916
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149267"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566262"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Veelgestelde vragen (FAQ’s) over Language Understanding
 
 In dit artikel vindt u antwoorden op veelgestelde vragen over Language Understanding (LUIS).
 
-## <a name="whats-new"></a>Nieuw
+## <a name="whats-new"></a>Nieuwe functies
 
 Meer [informatie](whats-new.md) over wat er nieuw is in language UNDERSTANDING (Luis).
 
@@ -91,7 +91,7 @@ U krijgt de status codes 403 en 429 wanneer u de trans acties per seconde of tra
 
 Wanneer u al deze gratis 1000-eindpunt query's gebruikt of als u het quotum voor maandelijkse trans acties van uw prijs categorie overschrijdt, ontvangt u een HTTP 403-fout status code.
 
-U kunt deze fout oplossen door [de prijs categorie te wijzigen](luis-how-to-azure-subscription.md#change-pricing-tier) in een hogere laag of door [een nieuwe resource te maken](get-started-portal-deploy-app.md#create-the-endpoint-resource) en [deze toe te wijzen aan uw app](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal).
+U kunt deze fout oplossen door [de prijs categorie te wijzigen](luis-how-to-azure-subscription.md#change-the-pricing-tier) in een hogere laag of door [een nieuwe resource te maken](get-started-portal-deploy-app.md#create-the-endpoint-resource) en [deze toe te wijzen aan uw app](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal).
 
 Oplossingen voor deze fout zijn onder andere:
 
@@ -106,7 +106,7 @@ Deze status code wordt geretourneerd wanneer uw trans acties per seconde uw prij
 
 Oplossingen omvatten:
 
-* U kunt [de prijs categorie verhogen](luis-how-to-azure-subscription.md#change-pricing-tier)als u niet de hoogste laag hebt.
+* U kunt [de prijs categorie verhogen](luis-how-to-azure-subscription.md#change-the-pricing-tier)als u niet de hoogste laag hebt.
 * Als uw gebruik de hoogste prijs categorie overschrijdt, voegt u meer Language Understanding resources toe met een load balancer. De [Language Understanding-container](luis-container-howto.md) met Kubernetes of docker-opstellen kan u hierbij helpen.
 * U kunt de aanvragen van uw client toepassing gateiseren met een [beleid voor opnieuw proberen](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines) dat u zelf implementeert wanneer u deze status code ophaalt.
 
@@ -190,7 +190,7 @@ Bekijk [de trein met alle gegevens](luis-how-to-train.md#train-with-all-data).
 ## <a name="app-publishing"></a>App-publicatie
 
 ### <a name="what-is-the-tenant-id-in-the-add-a-key-to-your-app-window"></a>Wat is de Tenant-ID in het venster ' een sleutel toevoegen aan uw app '?
-In azure vertegenwoordigt een Tenant de client of organisatie die aan een service is gekoppeld. Zoek uw Tenant-id in de Azure Portal in het vak **Directory-id** door **Azure Active Directory**  >  **Manage**  >  **Eigenschappen**beheren te selecteren.
+In azure vertegenwoordigt een Tenant de client of organisatie die aan een service is gekoppeld. Zoek uw Tenant-id in de Azure Portal in het vak **Directory-id** door **Azure Active Directory**  >  **Manage**  >  **Eigenschappen** beheren te selecteren.
 
 ![Tenant-ID in de Azure Portal](./media/luis-manage-keys/luis-assign-key-tenant-id.png)
 
@@ -224,7 +224,7 @@ Bewerkings sleutels zijn beschikbaar in de LUIS-Portal na [de migratie naar de e
 ## <a name="app-management"></a>Appbeheer
 
 ### <a name="how-do-i-download-a-log-of-user-utterances"></a>Hoe kan ik een logboek van de uitingen van de gebruiker downloaden?
-Uw LUIS-app registreert standaard uitingen van gebruikers. Als u een logboek van uitingen wilt downloaden dat gebruikers naar uw LUIS-app verzenden, gaat u naar **mijn apps**en selecteert u de app. Selecteer op de contextuele werk balk de optie **eindpunt logboeken exporteren**. Het logboek wordt opgemaakt als een bestand met door komma's gescheiden waarden (CSV).
+Uw LUIS-app registreert standaard uitingen van gebruikers. Als u een logboek van uitingen wilt downloaden dat gebruikers naar uw LUIS-app verzenden, gaat u naar **mijn apps** en selecteert u de app. Selecteer op de contextuele werk balk de optie **eindpunt logboeken exporteren**. Het logboek wordt opgemaakt als een bestand met door komma's gescheiden waarden (CSV).
 
 ### <a name="how-can-i-disable-the-logging-of-utterances"></a>Hoe kan ik de logboek registratie van uitingen uitschakelen?
 U kunt de logboek registratie van de gebruikers uitingen uitschakelen door `log=false` in te stellen in de eind punt-URL die door uw client toepassing wordt gebruikt voor het opvragen van Luis. Door logboek registratie uit te scha kelen, wordt de mogelijkheid van uw LUIS-app echter uitgeschakeld om uitingen te suggereren of de prestaties te verbeteren op basis van [actief leren](luis-concept-review-endpoint-utterances.md#what-is-active-learning). Als u `log=false` vanwege problemen met de privacy hebt ingesteld, kunt u geen record van die gebruiker uitingen downloaden van Luis of deze uitingen gebruiken om uw app te verbeteren.
@@ -268,7 +268,7 @@ De eerste fout is het isoleren als het probleem betrekking heeft op LUIS of zich
 #### <a name="resolve-issue-in-luis"></a>Probleem oplossen in LUIS
 Geef dezelfde utterance door aan LUIS van het [Luis-eind punt](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint). Als u een fout bericht ontvangt, lost u het probleem op in LUIS totdat de fout niet meer wordt geretourneerd. Veelvoorkomende fouten zijn onder andere:
 
-* `Out of call volume quota. Quota will be replenished in <time>.` : Dit probleem geeft aan dat u moet overschakelen van een ontwerp sleutel naar een [eindpunt sleutel](luis-how-to-azure-subscription.md) of dat u de [service lagen](luis-how-to-azure-subscription.md#change-pricing-tier)moet wijzigen.
+* `Out of call volume quota. Quota will be replenished in <time>.` : Dit probleem geeft aan dat u moet overschakelen van een ontwerp sleutel naar een [eindpunt sleutel](luis-how-to-azure-subscription.md) of dat u de [service lagen](luis-how-to-azure-subscription.md#change-the-pricing-tier)moet wijzigen.
 
 #### <a name="resolve-issue-in-azure-bot-service"></a>Probleem in Azure Bot Service oplossen
 
@@ -278,7 +278,7 @@ Als u de Azure Bot Service gebruikt en het probleem is dat de **test in Web Chat
 1. Open de online code-editor.
 1. Selecteer in de bovenste blauwe navigatie balk de naam van de bot (het tweede item aan de rechter kant).
 1. Selecteer in de vervolg keuzelijst resulterende **kudu-console openen**.
-1. Selecteer **Logboeken**en selecteer vervolgens **toepassing**. Controleer alle logboek bestanden. Als u de fout niet in de toepassingsmap ziet, controleert u alle logboek bestanden onder **Logboeken**.
+1. Selecteer **Logboeken** en selecteer vervolgens **toepassing**. Controleer alle logboek bestanden. Als u de fout niet in de toepassingsmap ziet, controleert u alle logboek bestanden onder **Logboeken**.
 1. Vergeet niet om uw project opnieuw samen te stellen als u een gecompileerde taal gebruikt, zoals C#.
 
 > [!Tip]
