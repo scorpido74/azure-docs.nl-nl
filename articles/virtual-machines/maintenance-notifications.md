@@ -7,18 +7,18 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 8/12/2020
 ms.author: shants
-ms.openlocfilehash: 14c7c3deb60c50fe71cf52959e342a3dcf2afc94
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 53cde1178a4faae0fbd11222e4219f70be29145d
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151549"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94560805"
 ---
 # <a name="handling-planned-maintenance-notifications"></a>Geplande onderhouds meldingen verwerken
 
 Van tijd tot tijd voert Azure updates uit om de betrouwbaarheid, prestaties en veiligheid te verbeteren van de host-infrastructuur voor virtuele machines. Updates zijn wijzigingen zoals het patchen van de hosting omgeving of het upgraden en uit bedrijf nemen van hardware. Een meerderheid van deze updates wordt voltooid zonder enige invloed op de gehoste virtuele machines. Er zijn echter gevallen waarin updates een impact hebben:
 
-- Als voor het onderhoud geen herstart is vereist, gebruikt Azure in-place migratie om de VM te onderbreken terwijl de host wordt bijgewerkt. Dit type onderhouds bewerkingen worden een fout domein toegepast op het fout domein. De voortgang wordt gestopt als er waarschuwings status signalen worden ontvangen.
+- Als voor het onderhoud niet opnieuw moet worden opgestart, wordt de virtuele machine gedurende enkele seconden onderbroken tijdens het bijwerken van de host. Dit type onderhouds bewerkingen worden een fout domein toegepast op het fout domein. De voortgang wordt gestopt als er waarschuwings status signalen worden ontvangen.
 
 - Als de computer opnieuw moet worden opgestart, wordt een melding weer gegeven wanneer het onderhoud is gepland. U krijgt een tijd venster van ongeveer 35 dagen waarin u de onderhouds werkzaamheden zelf kunt starten.
 
@@ -80,7 +80,7 @@ Zie [Beschik baarheid voor virtuele machines in azure](availability.md)voor meer
 
 **V: Hoe kan ik ontvang een melding over gepland onderhoud?**
 
-**A:** Een geplande onderhouds Golf wordt gestart door een planning in te stellen voor een of meer Azure-regio's. Binnenkort na, wordt een e-mail melding verzonden naar de abonnements beheerder en mede beheerders (één e-mail per abonnement). Aanvullende kanalen en ontvangers voor deze melding kunnen worden geconfigureerd met behulp van waarschuwingen voor activiteiten Logboeken. Als u een virtuele machine implementeert in een regio waar gepland onderhoud al is gepland, wordt de melding niet weer gegeven, maar moet u de onderhouds status van de VM controleren.
+**A:** Een geplande onderhouds Golf wordt gestart door een planning in te stellen voor een of meer Azure-regio's. Binnenkort nadat wordt een e-mail melding verzonden naar de abonnements beheerders, mede beheerders, eigen aren en mede werkers (één e-mail per abonnement). Aanvullende kanalen en ontvangers voor deze melding kunnen worden geconfigureerd met behulp van waarschuwingen voor activiteiten Logboeken. Als u een virtuele machine implementeert in een regio waar gepland onderhoud al is gepland, wordt de melding niet weer gegeven, maar moet u de onderhouds status van de VM controleren.
 
 **V: Ik zie geen indicatie van gepland onderhoud in de portal, Power shell of CLI. Wat is er aan de hand?**
 

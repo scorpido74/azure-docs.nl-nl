@@ -13,21 +13,19 @@ ms.date: 03/31/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 514782d62f117af5bfff4a5d2b3354c4e263eece
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3cd7074467332f89d4d6c60830be34f4e2a638c1
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80550238"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94562080"
 ---
 # <a name="overview-of-shared-device-mode"></a>Overzicht van de modus gedeeld apparaat
 
 De modus gedeeld apparaat is een functie van Azure Active Directory waarmee u toepassingen kunt bouwen die Firstline-werk nemers ondersteunen en de modus gedeeld apparaat inschakelen op de apparaten die hierop zijn geïmplementeerd.
 
-> [!NOTE]
-> Deze functie is beschikbaar voor openbare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
-> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+>[!IMPORTANT]
+> Deze functie [!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
 
 ## <a name="what-are-firstline-workers"></a>Wat zijn Firstline-werk rollen?
 
@@ -45,7 +43,7 @@ Omdat mobiele apparaten met iOS of Android zijn ontworpen voor individuele gebru
 
 Ontwikkel aars moeten de tegenovergestelde ervaring inschakelen om de werk nemers van een organisatie in staat te stellen hun apps te gebruiken voor een groep apparaten die door deze werk nemers worden gedeeld. Werk nemers moeten een apparaat uit de pool kunnen kiezen en één penbeweging kunnen uitvoeren om de duur van hun verschuiving te maken. Aan het einde van de ploeg moeten ze een andere beweging kunnen uitvoeren om zich wereld wijd aan te melden op het apparaat, waarbij al hun persoonlijke en bedrijfs gegevens worden verwijderd, zodat ze deze kunnen terugsturen naar de groep apparaten. Als een werk nemer zich vervolgens vergeet af te melden, moet het apparaat automatisch worden afgemeld aan het einde van hun verschuiving en/of na een periode van inactiviteit.
 
-Azure Active Directory maakt deze scenario's mogelijk met een functie die de **modus gedeeld apparaat**heet.
+Azure Active Directory maakt deze scenario's mogelijk met een functie die de **modus gedeeld apparaat** heet.
 
 ## <a name="introducing-shared-device-mode"></a>De modus gedeeld apparaat introduceren
 

@@ -7,18 +7,18 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/19/2020
 ms.author: cherylmc
-ms.openlocfilehash: e8323c5a290ee2a78e2a3a131d50883d5f8c5a28
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 723d93b9a5e986501278bdee35835cfa0c234711
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "92330985"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555842"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>Een VPN-gatewayverbinding tussen VNet's configureren met behulp van Azure Portal
 
 Dit artikel helpt u om virtuele netwerken (VNet's) te verbinden met behulp van het verbindingstype VNet-naar-VNet. Virtuele netwerken kunnen zich in verschillende regio's bevinden en tot verschillende abonnementen behoren. Wanneer u VNet's uit verschillende abonnementen koppelt, hoeven de abonnementen niet aan dezelfde Active Directory-tenant gekoppeld te zijn. 
 
-![v2v-diagram](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/v2vrmps.png)
+:::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/vnet-vnet-diagram.png" alt-text="Diagram van VNet naar VNet":::
 
 De stappen in dit artikel zijn van toepassing op het Azure Resource Manager-implementatiemodel en maken gebruik van Azure Portal. U kunt deze configuratie ook maken met een ander implementatieprogramma of -model, met behulp van de opties die worden beschreven in de volgende artikelen:
 
@@ -65,7 +65,7 @@ U kunt omwille van de volgende redenen virtuele netwerken koppelen met een VNet-
 
 VNet-naar-VNet-communicatie kan worden gecombineerd met configuraties voor meerdere locaties. Zoals u in het volgende diagram kunt zien, kunt u met dergelijke configuraties netwerktopologieën maken waarin cross-premises connectiviteit wordt gecombineerd met connectiviteit tussen virtuele netwerken:
 
-![Over verbindingen](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/aboutconnections.png "Over verbindingen")
+:::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/connections-diagram.png" alt-text="Het diagram VNet-verbindingen":::
 
 In dit artikel leest u hoe u VNet's verbindt met behulp van het verbindingstype VNet-naar-VNet. Wanneer u deze stappen uitvoert als oefening, kunt u de volgende voorbeeldinstellingswaarden gebruiken. In het voorbeeld vallen de virtuele netwerken onder hetzelfde abonnement, maar behoren ze tot verschillende resourcegroepen. Als uw VNet's onder verschillende abonnementen vallen, kunt u de verbinding niet via de portal maken. Gebruik in plaats daarvan [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md) of de [CLI](vpn-gateway-howto-vnet-vnet-cli.md). Zie [Veelgestelde vragen over VNet-naar-VNet](#vnet-to-vnet-faq) voor meer informatie over VNet-naar-VNet-verbindingen.
 
@@ -87,8 +87,8 @@ In dit artikel leest u hoe u VNet's verbindt met behulp van het verbindingstype 
   * **Naam** : VNet1GW
   * **Resource groep** : VS-Oost
   * **Generatie** : generatie 1
-  * **Gatewaytype** : selecteer **VPN** .
-  * **VPN-type** : Selecteer **route op basis** .
+  * **Gatewaytype** : selecteer **VPN**.
+  * **VPN-type** : Selecteer **route op basis**.
   * **SKU** : VpnGw1
   * **Virtueel netwerk** : VNet1
   * **Adres bereik gateway-subnet** : 10.1.255.0/27
@@ -115,8 +115,8 @@ In dit artikel leest u hoe u VNet's verbindt met behulp van het verbindingstype 
   * **Naam** : VNet4GW
   * **Resource groep** : VS-West
   * **Generatie** : generatie 1
-  * **Gatewaytype** : selecteer **VPN** .
-  * **VPN-type** : Selecteer **op route gebaseerd** .
+  * **Gatewaytype** : selecteer **VPN**.
+  * **VPN-type** : Selecteer **op route gebaseerd**.
   * **SKU** : VpnGw1
   * **Virtueel netwerk** : en vnet4
   * **Adres bereik gateway-subnet** : 10.41.255.0/27
@@ -157,17 +157,17 @@ Nadat u VNet1 hebt geconfigureerd, maakt u en vnet4 en de en vnet4-gateway door 
 
 Wanneer de virtuele netwerk gateways voor zowel VNet1 als en vnet4 zijn voltooid, kunt u de verbindingen van uw virtuele netwerk gateway maken. In deze sectie maakt u een verbinding tussen VNet1 en VNet4. Deze stappen werken alleen voor VNets in hetzelfde abonnement. Als uw VNet's onder verschillende abonnementen vallen, moet u [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md) gebruiken om de verbinding te maken. Als uw VNet's echter behoren tot verschillende resourcegroepen die onder hetzelfde abonnement vallen, kunt u deze verbinden met behulp van de portal.
 
-1. Selecteer in Azure Portal **Alle resources** , typ *gateway van virtueel netwerk* in het zoekvak en navigeer vervolgens naar de gateway voor uw VNet. Bijvoorbeeld **VNet1GW** . Selecteer de gateway om de pagina **virtuele netwerk gateway** te openen.
-1. Ga op de pagina gateway naar **instellingen->verbindingen** . Selecteer vervolgens **+ toevoegen** .
+1. Selecteer in Azure Portal **Alle resources** , typ *gateway van virtueel netwerk* in het zoekvak en navigeer vervolgens naar de gateway voor uw VNet. Bijvoorbeeld **VNet1GW**. Selecteer de gateway om de pagina **virtuele netwerk gateway** te openen.
+1. Ga op de pagina gateway naar **instellingen->verbindingen**. Selecteer vervolgens **+ toevoegen**.
 
    :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/connections.png" alt-text="Pagina verbindingen":::
 1. De pagina **verbinding toevoegen** wordt geopend.
 
-   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/vnet1-vnet4.png" alt-text="Pagina verbindingen":::
+   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/vnet1-vnet4.png" alt-text="Verbinding toevoegen":::
 
    Vul op de pagina **Verbinding toevoegen** de waarden voor uw verbinding in:
 
-   * **Naam** : Voer een naam in voor de verbinding. Bijvoorbeeld *VNet1toVNet4* .
+   * **Naam** : Voer een naam in voor de verbinding. Bijvoorbeeld *VNet1toVNet4*.
 
    * **Verbindings type** : Selecteer **VNet-naar-VNet** in de vervolg keuzelijst.
 
@@ -175,7 +175,7 @@ Wanneer de virtuele netwerk gateways voor zowel VNet1 als en vnet4 zijn voltooid
 
    * **Tweede virtuele netwerk gateway** : dit veld is de virtuele netwerk gateway van het VNet waarmee u een verbinding wilt maken. Selecteer **Een andere virtuele netwerkgateway kiezen** om de pagina **Virtuele netwerkgateway kiezen** te openen.
 
-      :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/choose.png" alt-text="Pagina verbindingen":::
+      :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/choose.png" alt-text="Een gateway kiezen":::
 
      * Bekijk de virtuele netwerkgateways die op deze pagina worden vermeld. U ziet dat er alleen virtuele netwerkgateways worden vermeld die binnen uw abonnement vallen. Als u verbinding wilt maken met een virtuele netwerkgateway die geen deel uitmaakt van uw abonnement, gebruikt u [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md).
 
@@ -191,16 +191,16 @@ Maak vervolgens een verbinding van en vnet4 naar VNet1. Zoek in de Portal de vir
 ## <a name="verify-your-connections"></a>Controleer uw verbindingen
 
 1. Zoek de virtuele netwerkgateway in Azure Portal. 
-1. Selecteer **Verbindingen** op de pagina **Virtuele netwerkgateway** om de pagina **Verbindingen** weer te geven voor de virtuele netwerkgateway. Nadat de verbinding tot stand is gebracht, ziet u dat de **status** waarden worden gewijzigd in **verbonden** .
+1. Selecteer **Verbindingen** op de pagina **Virtuele netwerkgateway** om de pagina **Verbindingen** weer te geven voor de virtuele netwerkgateway. Nadat de verbinding tot stand is gebracht, ziet u dat de **status** waarden worden gewijzigd in **verbonden**.
 
-   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/view-connections.png" alt-text="Pagina verbindingen":::
-1. Selecteer een van de verbindingen onder de kolom **naam** om meer informatie weer te geven. Wanneer de gegevensstromen op gang komen, ziet u waarden voor **Inkomende gegevens** en **Uitgaande gegevens** .
+   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/view-connections.png" alt-text="Verbindingen controleren":::
+1. Selecteer een van de verbindingen onder de kolom **naam** om meer informatie weer te geven. Wanneer de gegevensstromen op gang komen, ziet u waarden voor **Inkomende gegevens** en **Uitgaande gegevens**.
 
-   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/status.png" alt-text="Pagina verbindingen":::
+   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/status.png" alt-text="Scherm afbeelding toont een resource groep met waarden voor gegevens in en uit gegevens":::
 
 ## <a name="add-additional-connections"></a>Extra verbindingen toevoegen
 
-Als u extra verbindingen wilt toevoegen, gaat u naar de virtuele netwerkgateway waarvoor u de verbinding wilt maken en selecteert u **Verbindingen** . U kunt een andere VNet-naar-VNet-verbinding maken, of een site-naar-site-verbinding (IPsec) met een on-premises locatie. Stel **Verbindingstype** in op het gewenste type voor de verbinding die u wilt maken. Controleer voordat u extra verbindingen maakt of de adresruimte voor het virtuele netwerk niet overlapt met een van de adresruimten waarmee u verbinding wilt maken. Zie [Een site-naar-site-verbinding maken](vpn-gateway-howto-site-to-site-resource-manager-portal.md) voor stappen voor het maken van een site-naar-site-verbinding.
+Als u extra verbindingen wilt toevoegen, gaat u naar de virtuele netwerkgateway waarvoor u de verbinding wilt maken en selecteert u **Verbindingen**. U kunt een andere VNet-naar-VNet-verbinding maken, of een site-naar-site-verbinding (IPsec) met een on-premises locatie. Stel **Verbindingstype** in op het gewenste type voor de verbinding die u wilt maken. Controleer voordat u extra verbindingen maakt of de adresruimte voor het virtuele netwerk niet overlapt met een van de adresruimten waarmee u verbinding wilt maken. Zie [Een site-naar-site-verbinding maken](vpn-gateway-howto-site-to-site-resource-manager-portal.md) voor stappen voor het maken van een site-naar-site-verbinding.
 
 ## <a name="vnet-to-vnet-faq"></a>Veelgestelde vragen over VNet-naar-VNet
 

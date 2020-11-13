@@ -15,12 +15,12 @@ ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6bf17f85892691fe930d3d4b1e12846da8f9dc58
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: c49f8b2732a1b62760cec69626d56751971e6a44
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789808"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556434"
 ---
 # <a name="how-to-use-azure-powershell-to-provision-sql-server-on-azure-virtual-machines"></a>Azure PowerShell gebruiken om SQL Server in te richten op Azure Virtual Machines
 
@@ -151,7 +151,7 @@ Voer deze cmdlet uit om uw nieuwe resource groep te maken.
 New-AzResourceGroup -Name $ResourceGroupName -Location $Location
 ```
 
-## <a name="create-a-storage-account"></a>Een opslagaccount maken
+## <a name="create-a-storage-account"></a>Create a storage account
 
 Voor de virtuele machine zijn opslag resources vereist voor de schijf met het besturings systeem en voor de SQL Server gegevens en logboek bestanden. Voor eenvoud maakt u één schijf voor beide. U kunt later extra schijven toevoegen met behulp van de cmdlet [add-Azure Disk](/powershell/module/servicemanagement/azure.service/add-azuredisk) om uw SQL Server-gegevens en-logboek bestanden op toegewezen schijven te plaatsen. Gebruik de cmdlet [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) om een standaard-opslag account te maken in de nieuwe resource groep. Geef de variabelen op die u eerder hebt geïnitialiseerd voor de naam van het opslag account, de naam van de opslag-SKU en de locatie.
 
@@ -367,12 +367,17 @@ De virtuele machine wordt gemaakt.
 
 ## <a name="install-the-sql-iaas-agent"></a>SQL IaaS-agent installeren
 
-SQL Server virtuele machines ondersteunen geautomatiseerde beheer functies met de [uitbrei ding SQL Server IaaS agent](sql-server-iaas-agent-extension-automate-management.md). Als u de agent wilt installeren op de nieuwe virtuele machine en wilt registreren bij de resource provider, moet u de opdracht [New-AzSqlVM](/powershell/module/az.sqlvirtualmachine/new-azsqlvm) uitvoeren nadat de virtuele machine is gemaakt. Geef het licentie type voor uw SQL Server virtuele machine op en kies een van de betalen per gebruik-of uw eigen licentie via de [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/). Zie [licentie model](licensing-model-azure-hybrid-benefit-ahb-change.md)voor meer informatie over licentie verlening. 
+SQL Server virtuele machines ondersteunen geautomatiseerde beheer functies met de [uitbrei ding SQL Server IaaS agent](sql-server-iaas-agent-extension-automate-management.md). Als u uw SQL Server wilt registreren met de uitbrei ding, voert u de opdracht [New-AzSqlVM](/powershell/module/az.sqlvirtualmachine/new-azsqlvm) uit nadat de virtuele machine is gemaakt. Geef het licentie type voor uw SQL Server virtuele machine op en kies een van de betalen per gebruik-of uw eigen licentie via de [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/). Zie [licentie model](licensing-model-azure-hybrid-benefit-ahb-change.md)voor meer informatie over licentie verlening. 
 
 
    ```powershell
    New-AzSqlVM -ResourceGroupName $ResourceGroupName -Name $VMName -Location $Location -LicenseType <PAYG/AHUB> 
    ```
+
+Er zijn drie manieren om u te registreren bij de extensie: 
+- [Automatisch voor alle huidige en toekomstige Vm's in een abonnement](sql-agent-extension-automatic-registration-all-vms.md)
+- [Hand matig voor één VM](sql-agent-extension-manually-register-single-vm.md)
+- [Hand matig voor meerdere Vm's tegelijk](sql-agent-extension-manually-register-vms-bulk.md)
 
 
 ## <a name="stop-or-remove-a-vm"></a>Een virtuele machine stoppen of verwijderen
@@ -383,7 +388,7 @@ Als het niet nodig is dat de VM continu wordt uitgevoerd, kunt u onnodige kosten
 Stop-AzVM -Name $VMName -ResourceGroupName $ResourceGroupName
 ```
 
-U kunt ook alle resources die aan de virtuele machine zijn gekoppeld, definitief verwijderen met de opdracht **Remove-AzResourceGroup** . Wees voorzichtig met het gebruik van deze opdracht, want hiermee verwijdert u ook de virtuele machine zelf definitief.
+U kunt ook alle resources die aan de virtuele machine zijn gekoppeld, definitief verwijderen met de opdracht **Remove-AzResourceGroup**. Wees voorzichtig met het gebruik van deze opdracht, want hiermee verwijdert u ook de virtuele machine zelf definitief.
 
 ## <a name="example-script"></a>Voorbeeldscript
 

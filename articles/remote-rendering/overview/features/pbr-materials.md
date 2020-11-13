@@ -5,18 +5,18 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: 76e7b3d0b0dd514feb7d16a6bc23d1b908be683f
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: f2e63903546e173e17f2b457b78eb41bcdf65dbd
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207203"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555563"
 ---
 # <a name="pbr-materials"></a>PBR-materialen
 
 *PBR-materialen* zijn een van de ondersteunde [materiaal typen](../../concepts/materials.md) in de externe rendering van Azure. Ze worden gebruikt voor [netten](../../concepts/meshes.md) die realistische verlichting moeten ontvangen.
 
-PBR staat voor **P**hysically **B**ased **R**endering en houdt in dat het materiaal de visuele eigenschappen van een Opper vlak op een fysiek plausible manier beschrijft, waardoor realistische resultaten onder alle belichtings omstandigheden mogelijk zijn. De meeste moderne game engines en hulpprogram ma's voor het maken van inhoud ondersteunen PBR-materialen omdat ze worden beschouwd als de beste benadering van echte wereld scenario's voor realtime-rendering.
+PBR staat voor **P** hysically **B** ased **R** endering en houdt in dat het materiaal de visuele eigenschappen van een Opper vlak op een fysiek plausible manier beschrijft, waardoor realistische resultaten onder alle belichtings omstandigheden mogelijk zijn. De meeste moderne game engines en hulpprogram ma's voor het maken van inhoud ondersteunen PBR-materialen omdat ze worden beschouwd als de beste benadering van echte wereld scenario's voor realtime-rendering.
 
 ![GlTF-voorbeeld model voor helm gegenereerd door ARR](media/helmet.png)
 
@@ -26,7 +26,7 @@ PBR-materialen zijn echter geen universele oplossing. Afhankelijk van de weergav
 
 Deze eigenschappen zijn gebruikelijk voor alle materialen:
 
-* **albedoColor:** Deze kleur wordt vermenigvuldigd met andere kleuren, zoals de *albedoMap* of * :::no-loc text="vertex "::: kleuren*. Als *transparantie* is ingeschakeld voor een materiaal, wordt het Alfa kanaal gebruikt voor het aanpassen van de dekking, met een `1` volledig ondoorzichtigheid en duidelijk `0` doorzichtig. De standaard waarde is wit.
+* **albedoColor:** Deze kleur wordt vermenigvuldigd met andere kleuren, zoals de *albedoMap* of *:::no-loc text="vertex "::: kleuren*. Als *transparantie* is ingeschakeld voor een materiaal, wordt het Alfa kanaal gebruikt voor het aanpassen van de dekking, met een `1` volledig ondoorzichtigheid en duidelijk `0` doorzichtig. De standaard waarde is wit.
 
   > [!NOTE]
   > Wanneer een PBR-materiaal volledig transparant is, zoals een perfect gereinigd glas, wordt de omgeving nog steeds weer gegeven. Heldere vlekken zoals de zon zijn nog steeds zichtbaar in de reflectie. Dit wijkt af van [kleur materialen](color-materials.md).
@@ -43,9 +43,15 @@ Deze eigenschappen zijn gebruikelijk voor alle materialen:
 
 * **TransparencyWritesDepth:** Als de vlag TransparencyWritesDepth is ingesteld op het materiaal en het materiaal transparant is, kunnen objecten die dit materiaal gebruiken, ook bijdragen aan de uiteindelijke diepte buffer. Zie de sectie voor het PBR-materiaal *transparant* in het volgende gedeelte. Het inschakelen van deze functie wordt aanbevolen als voor uw use-case een meer plausible [te late fase](late-stage-reprojection.md) ring van volledig transparante scènes nodig is. Voor gemengde dekkende/transparante scènes kan deze instelling leiden tot implausible-projectie gedrag of reprojectie-artefacten. Daarom is het uitschakelen van de standaard en aanbevolen instelling voor de algemene use-case dat deze vlag wordt uitgeschakeld. De geschreven diepte waarden worden opgehaald uit de laag diepte per pixel van het object dat zich het dichtst bij de camera bevindt.
 
+* **FresnelEffect:** Met deze materiaal vlag wordt het additief [Fresnel-effect](../../overview/features/fresnel-effect.md) op het respectieve materiaal ingeschakeld. De weer gave van het effect is onderhevig aan de andere Fresnel-para meters die in het volgende worden uitgelegd. 
+
+* **FresnelEffectColor:** De Fresnel kleur die wordt gebruikt voor dit materiaal. Alleen belang rijk wanneer de Fresnel-effect bit is ingesteld op dit materiaal (zie hierboven). Deze eigenschap bepaalt de basis kleur van de Fresnel schijnt (Zie [Fresnel-effect](../../overview/features/fresnel-effect.md) voor een volledige uitleg). Momenteel zijn alleen de RGB-kanaal waarden belang rijk en de alpha-waarde wordt genegeerd.
+
+* **FresnelEffectExponent:** De Fresnel-exponent die wordt gebruikt voor dit materiaal. Alleen belang rijk wanneer de Fresnel-effect bit is ingesteld op dit materiaal (zie hierboven). Deze eigenschap bepaalt de sprei ding van de Fresnel schijnt. De minimale waarde 0,01 veroorzaakt een verspreiding over het hele object. De maximum waarde 10,0 beperkt de glanzende tot alleen de meest Gracing randen die zichtbaar zijn.
+
 ## <a name="pbr-material-properties"></a>Eigenschappen van het PBR-materiaal
 
-Het belangrijkste idee van het samen stellen van fysiek gebaseerd is het gebruik van *BaseColor*, *metaaling*en *Grove* eigenschappen om een breed scala aan reële materialen te emuleren. Een gedetailleerde beschrijving van PBR valt buiten het bereik van dit artikel. Zie [andere bronnen](http://www.pbr-book.org)voor meer informatie over PBR. De volgende eigenschappen zijn specifiek voor PBR-materialen:
+Het belangrijkste idee van het samen stellen van fysiek gebaseerd is het gebruik van *BaseColor* , *metaaling* en *Grove* eigenschappen om een breed scala aan reële materialen te emuleren. Een gedetailleerde beschrijving van PBR valt buiten het bereik van dit artikel. Zie [andere bronnen](http://www.pbr-book.org)voor meer informatie over PBR. De volgende eigenschappen zijn specifiek voor PBR-materialen:
 
 * **baseColor:** In PBR-materialen wordt de *albedo-kleur* aangeduid als de *basis kleur*. In azure rendering op afstand de eigenschap *albedo Color* is al aanwezig via de algemene eigenschappen van het materiaal, dus er is geen aanvullende eigenschap Base Color.
 

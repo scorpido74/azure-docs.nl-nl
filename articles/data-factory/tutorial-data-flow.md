@@ -7,15 +7,15 @@ ms.reviewer: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/07/2019
-ms.openlocfilehash: 0119d134861b54ac14c6fe22b638ab459344c5ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/09/2019
+ms.openlocfilehash: fa516f577254f827a6437697df82010bd9b631ee
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91569877"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555907"
 ---
-# <a name="transform-data-using-mapping-data-flows"></a>Gegevens transformeren met toewijzing van gegevens stromen
+# <a name="transform-data-using-mapping-data-flows"></a>Gegevens transformeren met toewijzingsgegevensstromen
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
@@ -36,14 +36,14 @@ In deze zelfstudie voert u de volgende stappen uit:
 * **Azure-abonnement**. Als u nog geen abonnement op Azure hebt, maak dan een [gratis Azure-account](https://azure.microsoft.com/free/) aan voordat u begint.
 * **Azure-opslagaccount**. U gebruikt ADLS-opslag als *bron* -en *sink* -gegevens opslag. Als u geen opslagaccount hebt, raadpleegt u het artikel [Een opslagaccount maken](../storage/common/storage-account-create.md) om een account te maken.
 
-Het bestand dat u in deze zelf studie transformeert, is MoviesDB.csv, dat u [hier](https://raw.githubusercontent.com/djpmsft/adf-ready-demo/master/moviesDB.csv)kunt vinden. Als u het bestand wilt ophalen uit GitHub, kopieert u de inhoud naar een tekst editor van uw keuze om lokaal op te slaan als een CSV-bestand. Als u het bestand naar uw opslag account wilt uploaden, raadpleegt u [blobs uploaden met Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md). De voor beelden verwijzen naar een container met de naam ' Sample-Data '.
+Het bestand dat u in deze zelf studie transformeert, is MoviesDB.csv, dat u [hier](https://raw.githubusercontent.com/djpmsft/adf-ready-demo/master/moviesDB.csv)kunt vinden. Als u het bestand wilt ophalen uit GitHub, kopieert u de inhoud naar een tekst editor van uw keuze om lokaal op te slaan als een CSV-bestand. Als u het bestand naar uw opslag account wilt uploaden, raadpleegt u [blobs uploaden met de Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md). De voor beelden verwijzen naar een container met de naam ' Sample-Data '.
 
-## <a name="create-a-data-factory"></a>Een data factory maken
+## <a name="create-a-data-factory"></a>Een gegevensfactory maken
 
 In deze stap maakt u een data factory en opent u de Data Factory UX om een pijp lijn te maken in de data factory.
 
 1. Open **Microsoft Edge** of **Google Chrome**. Momenteel wordt Data Factory gebruikers interface alleen ondersteund in de micro soft Edge-en Google Chrome-webbrowsers.
-2. Selecteer in het linkermenu **Een resource maken** > **Analyse** > **Data Factory**:
+2. Selecteer in het linkermenu **een resource** -  >  **integratie**  >  **Data Factory** maken:
 
    ![Selectie van Data Factory in het deelvenster Nieuw](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -52,8 +52,8 @@ In deze stap maakt u een data factory en opent u de Data Factory UX om een pijp 
    De naam van de Azure-gegevensfactory moet *wereldwijd uniek* zijn. Als u een foutbericht ontvangt dat betrekking heeft op de waarde die bij de naam is ingevuld, voert u een andere naam in voor de data factory. (Gebruik dan bijvoorbeeld uwnaamADFTutorialDataFactory). Zie [Data Factory - Naamgevingsregels](naming-rules.md) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
 
      ![Nieuwe data factory](./media/doc-common-process/name-not-available-error.png)
-4. Selecteer het Azure-**abonnement** waarin u de data factory wilt maken.
-5. Voer een van de volgende stappen uit voor **Resourcegroep**:
+4. Selecteer het Azure- **abonnement** waarin u de data factory wilt maken.
+5. Voer een van de volgende stappen uit voor **Resourcegroep** :
 
     a. Selecteer **Bestaande gebruiken** en selecteer een bestaande resourcegroep in de vervolgkeuzelijst.
 
@@ -92,7 +92,7 @@ Wanneer u de gegevens stroom hebt gemaakt, wordt u automatisch naar het canvas v
 1. Voeg in het canvas gegevens stroom een bron toe door te klikken op het vak **bron toevoegen** .
 
     ![Scherm opname van het vak Bron toevoegen.](media/tutorial-data-flow/dataflow2.png)
-1. Geef uw bron **MoviesDB**een naam. Klik op **Nieuw** om een nieuwe bron gegevensset te maken.
+1. Geef uw bron **MoviesDB** een naam. Klik op **Nieuw** om een nieuwe bron gegevensset te maken.
 
     ![Scherm afbeelding die laat zien waar u nieuw selecteert nadat u de naam van uw bron hebt gewijzigd.](media/tutorial-data-flow/dataflow3.png)
 1. Kies **Azure data Lake Storage Gen2**. Klik op Doorgaan.
@@ -107,7 +107,7 @@ Wanneer u de gegevens stroom hebt gemaakt, wordt u automatisch naar het canvas v
 1. Typ in het scherm gekoppelde service maken de naam van uw ADLS Gen2-gekoppelde service **ADLSGen2** en geef uw verificatie methode op. Voer vervolgens uw verbindings referenties in. In deze zelf studie gebruiken we de account sleutel om verbinding te maken met het opslag account. U kunt klikken op **verbinding testen** om te controleren of uw referenties correct zijn ingevoerd. Klik op Maken als u klaar bent.
 
     ![Gekoppelde service](media/tutorial-data-flow/ls1.png)
-1. Wanneer u weer op het scherm gegevensset maken hebt geklikt, voert u in waar het bestand zich bevindt in het veld **bestandspad** . In deze zelf studie wordt het bestand moviesDB.csv bevindt zich in container-voorbeeld gegevens. Controleer de **eerste rij als koptekst**, terwijl het bestand kopteksten bevat. Selecteer **in verbinding/archief** om het header-schema rechtstreeks te importeren uit het bestand in de opslag. Klik op OK wanneer u klaar bent.
+1. Wanneer u weer op het scherm gegevensset maken hebt geklikt, voert u in waar het bestand zich bevindt in het veld **bestandspad** . In deze zelf studie wordt het bestand moviesDB.csv bevindt zich in container-voorbeeld gegevens. Controleer de **eerste rij als koptekst** , terwijl het bestand kopteksten bevat. Selecteer **in verbinding/archief** om het header-schema rechtstreeks te importeren uit het bestand in de opslag. Klik op OK wanneer u klaar bent.
 
     ![Gegevenssets](media/tutorial-data-flow/dataset4.png)
 1. Als het cluster voor fout opsporing is gestart, gaat u naar het tabblad **voor beeld van gegevens** van de bron transformatie en klikt u op **vernieuwen** om een moment opname van de gegevens op te halen. U kunt gegevens voorbeeld gebruiken om te controleren of uw trans formatie correct is geconfigureerd.
@@ -131,7 +131,7 @@ Wanneer u de gegevens stroom hebt gemaakt, wordt u automatisch naar het canvas v
 
     Als u een debug-cluster hebt geactiveerd, kunt u uw logica controleren door op **vernieuwen** te klikken om de expressie-uitvoer te bekijken in vergelijking met de gebruikte invoer. Er is meer dan één recht antwoord op hoe u deze logica kunt uitvoeren met behulp van de data flow-expressie taal.
 
-    ![Filter](media/tutorial-data-flow/filter2.png)
+    ![Filteren](media/tutorial-data-flow/filter2.png)
 
     Klik op **opslaan en volt ooien** zodra u klaar bent met de expressie.
 
@@ -141,13 +141,13 @@ Wanneer u de gegevens stroom hebt gemaakt, wordt u automatisch naar het canvas v
 1. De volgende trans formatie die u toevoegt, is een **statistische** trans formatie onder **schema wijzigings functie**.
 
     ![Scherm opname van de aggregatie van het cumulatieve schema.](media/tutorial-data-flow/agg1.png)
-1. Geef uw aggregatie transformatie **AggregateComedyRatings**een naam. Selecteer in het tabblad **groeperen op** **jaar** in de vervolg keuzelijst om de aggregaties te groeperen op het jaar dat de film is uitkwam.
+1. Geef uw aggregatie transformatie **AggregateComedyRatings** een naam. Selecteer in het tabblad **groeperen op** **jaar** in de vervolg keuzelijst om de aggregaties te groeperen op het jaar dat de film is uitkwam.
 
     ![Scherm afbeelding met de optie Year op het tabblad Group by onder statistische instellingen.](media/tutorial-data-flow/agg2.png)
 1. Ga naar het tabblad **aggregaties** . Geef in het vak links de cumulatieve kolom **AverageComedyRating**. Klik op het vak rechter expressie om de statistische expressie op te geven via de opbouw functie voor expressies.
 
     ![Scherm afbeelding met de optie Year op het tabblad aggregaties onder aggregatie instellingen.](media/tutorial-data-flow/agg3.png)
-1. Gebruik de functie aggregate om het gemiddelde van de kolom **classificatie**te berekenen ```avg()``` . Als **classificatie** is een teken reeks die ```avg()``` in een numerieke invoer neemt, moeten we de waarde converteren naar een getal via de ```toInteger()``` functie. De expressie ziet er als volgt uit:
+1. Gebruik de functie aggregate om het gemiddelde van de kolom **classificatie** te berekenen ```avg()``` . Als **classificatie** is een teken reeks die ```avg()``` in een numerieke invoer neemt, moeten we de waarde converteren naar een getal via de ```toInteger()``` functie. De expressie ziet er als volgt uit:
 
     ```avg(toInteger(Rating))```
 

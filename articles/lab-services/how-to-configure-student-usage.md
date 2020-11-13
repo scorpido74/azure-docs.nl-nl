@@ -2,13 +2,13 @@
 title: Gebruiks instellingen configureren in de klassikale Labs van Azure Lab Services
 description: Meer informatie over het configureren van het aantal studenten voor een lab, het ontvangen van ze met het lab, het aantal uren dat ze de virtuele machine mogen gebruiken en meer.
 ms.topic: article
-ms.date: 06/26/2020
-ms.openlocfilehash: 742fcd2b504bce7ad2257edd559e4b66a9172d24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/11/2020
+ms.openlocfilehash: d3100f1a7e67e3b0d403375de02cb3daf5fcfb31
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399666"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555716"
 ---
 # <a name="add-and-manage-lab-users"></a>Labgebruikers toevoegen en beheren
 
@@ -20,9 +20,9 @@ In deze sectie voegt u studenten hand matig toe aan een Lab of door een CSV-best
 
 1. Selecteer in het linkerdeel venster de optie **gebruikers**. 
 
-    De optie **toegang beperken** is standaard ingeschakeld en, tenzij ze in de lijst met gebruikers staan, kunnen studenten zich niet bij het lab registreren, zelfs niet als ze een registratie koppeling hebben. Alleen gebruikers die worden weer gegeven, kunnen zich bij het lab registreren met de registratie koppeling die u verzendt. In deze procedure kunt u gebruikers toevoegen aan de lijst. U kunt de **toegang ook beperken**uitschakelen, zodat studenten zich bij het lab kunnen registreren zolang ze de registratie koppeling hebben. 
+    De optie **toegang beperken** is standaard ingeschakeld en, tenzij ze in de lijst met gebruikers staan, kunnen studenten zich niet bij het lab registreren, zelfs niet als ze een registratie koppeling hebben. Alleen gebruikers die worden weer gegeven, kunnen zich bij het lab registreren met de registratie koppeling die u verzendt. In deze procedure kunt u gebruikers toevoegen aan de lijst. U kunt de **toegang ook beperken** uitschakelen, zodat studenten zich bij het lab kunnen registreren zolang ze de registratie koppeling hebben. 
 
-1. Selecteer aan de bovenkant van het deel venster **gebruikers** de optie **gebruikers toevoegen**en selecteer vervolgens **toevoegen per e-mail adres**. 
+1. Selecteer aan de bovenkant van het deel venster **gebruikers** de optie **gebruikers toevoegen** en selecteer vervolgens **toevoegen per e-mail adres**. 
 
     ![De knop gebruikers toevoegen](./media/how-to-configure-student-usage/add-users-button.png)
 
@@ -41,13 +41,15 @@ In deze sectie voegt u studenten hand matig toe aan een Lab of door een CSV-best
 
 ### <a name="add-users-by-uploading-a-csv-file"></a>Gebruikers toevoegen door een CSV-bestand te uploaden
 
-U kunt ook gebruikers toevoegen door een CSV-bestand te uploaden dat hun e-mail adressen bevat.
+U kunt ook gebruikers toevoegen door een CSV-bestand te uploaden dat hun e-mail adressen bevat. 
+
+Een CSV-tekst bestand wordt gebruikt voor het opslaan van gegevens in tabel vorm (getallen en tekst) met komma's gescheiden (CSV). In plaats van informatie op te slaan in kolom velden (zoals in werk bladen), slaat een CSV-bestand gegevens op, gescheiden door komma's. Elke regel in een CSV-bestand heeft hetzelfde aantal velden met door komma's gescheiden waarden. " U kunt Excel gebruiken om eenvoudig CSV-bestanden te maken en te bewerken.
 
 1. Maak in micro soft Excel een CSV-bestand met een lijst met e-mail adressen van studenten in één kolom.
 
     ![Lijst met gebruikers in een CSV-bestand](./media/how-to-configure-student-usage/csv-file-with-users.png)
 
-1. Selecteer aan de bovenkant van het deel venster **gebruikers** de optie **gebruikers toevoegen**en selecteer vervolgens **CSV uploaden**.
+1. Selecteer aan de bovenkant van het deel venster **gebruikers** de optie **gebruikers toevoegen** en selecteer vervolgens **CSV uploaden**.
 
     ![De knop voor het uploaden van CSV](./media/how-to-configure-student-usage/upload-csv-button.png)
 
@@ -79,11 +81,11 @@ Met deze methode wordt uitgelegd hoe u een e-mail met een registratie koppeling 
 
 1. Voer in het venster **uitnodiging per E-mail verzenden** een optioneel bericht in en selecteer vervolgens **verzenden**. 
 
-    Het e-mailbericht bevat automatisch een registratiekoppeling. Als u de registratie koppeling afzonderlijk wilt ophalen en opslaan, selecteert u het weglatings teken (**...**) aan de bovenkant van het deel venster **gebruikers** en selecteert u vervolgens **registratie koppeling**. 
+    Het e-mailbericht bevat automatisch een registratiekoppeling. Als u de registratie koppeling afzonderlijk wilt ophalen en opslaan, selecteert u het weglatings teken ( **...** ) aan de bovenkant van het deel venster **gebruikers** en selecteert u vervolgens **registratie koppeling**. 
 
     ![Het venster registratie koppeling per e-mail verzenden](./media/tutorial-setup-classroom-lab/send-email.png)
 
-    In de kolom **uitnodigingen** van de lijst **gebruikers** wordt de status van de uitnodiging voor elke toegevoegde gebruiker weer gegeven. De status moet worden gewijzigd om te **verzenden** en vervolgens naar ** \<date> verzonden **. 
+    In de kolom **uitnodigingen** van de lijst **gebruikers** wordt de status van de uitnodiging voor elke toegevoegde gebruiker weer gegeven. De status moet worden gewijzigd om te **verzenden** en vervolgens naar **\<date> verzonden**. 
 
 ### <a name="invite-selected-users"></a>Geselecteerde gebruikers uitnodigen
 
@@ -95,7 +97,7 @@ Deze methode laat zien hoe u alleen bepaalde studenten uitnodigt en een registra
 
     ![Geselecteerde gebruikers uitnodigen](./media/how-to-configure-student-usage/invite-selected-users.png)
 
-1. Voer in het venster **uitnodiging per E-mail verzenden** een optioneel **bericht**in en selecteer vervolgens **verzenden**. 
+1. Voer in het venster **uitnodiging per E-mail verzenden** een optioneel **bericht** in en selecteer vervolgens **verzenden**. 
 
     ![E-mail naar geselecteerde gebruikers verzenden](./media/how-to-configure-student-usage/send-invitation-to-selected-users.png)
 
@@ -105,11 +107,11 @@ Deze methode laat zien hoe u alleen bepaalde studenten uitnodigt en een registra
 
 In deze sectie kunt u de registratie koppeling vanuit de portal ophalen en verzenden met uw eigen e-mail toepassing. 
 
-1. Selecteer **registratie koppeling**in het deel venster **gebruikers** .
+1. Selecteer **registratie koppeling** in het deel venster **gebruikers** .
 
     ![Registratiekoppeling voor studenten](./media/how-to-configure-student-usage/registration-link-button.png)
 
-1. Selecteer in het venster **gebruikers registratie** de optie **kopiëren**en selecteer vervolgens **gereed**. 
+1. Selecteer in het venster **gebruikers registratie** de optie **kopiëren** en selecteer vervolgens **gereed**. 
 
     ![Het venster gebruikers registratie](./media/how-to-configure-student-usage/registration-link.png)
 
@@ -120,9 +122,9 @@ In deze sectie kunt u de registratie koppeling vanuit de portal ophalen en verze
 ## <a name="view-registered-users"></a>Geregistreerde gebruikers weergeven
 
 1. Ga naar de website van [Azure Lab Services](https://labs.azure.com) . 
-1. Selecteer **Aanmelden**en voer uw referenties in. Azure Lab Services ondersteunt organisatieaccounts en Microsoft-accounts.
+1. Selecteer **Aanmelden** en voer uw referenties in. Azure Lab Services ondersteunt organisatieaccounts en Microsoft-accounts.
 1. Selecteer op de pagina **mijn Labs** het lab waarvan u het gebruik wilt bijhouden. 
-1. Selecteer in het linkerdeel venster de optie **gebruikers**of selecteer de tegel **gebruikers** . 
+1. Selecteer in het linkerdeel venster de optie **gebruikers** of selecteer de tegel **gebruikers** . 
 
     In het deel venster **gebruikers** wordt een lijst weer gegeven met studenten die zijn geregistreerd bij uw Lab.  
 
@@ -154,7 +156,7 @@ Ga als volgt te werk om aanvullende quota's in te stellen:
 
     ![De knop quotum aanpassen](./media/how-to-configure-student-usage/adjust-quota-button.png)
 
-1. Voer in het deel **quotum \<selected user or users email address> aanpassen voor **het aantal extra Lab-uren in dat u wilt verlenen aan de geselecteerde student of studenten, en selecteer vervolgens **Toep assen**. 
+1. Voer in het deel **quotum \<selected user or users email address> aanpassen voor** het aantal extra Lab-uren in dat u wilt verlenen aan de geselecteerde student of studenten, en selecteer vervolgens **Toep assen**. 
 
     ![De "quota aanpassen..." openen](./media/how-to-configure-student-usage/additional-quota.png)
 
@@ -167,11 +169,12 @@ Ga als volgt te werk om aanvullende quota's in te stellen:
 Als u studenten wilt toevoegen aan een leslokaal Lab, gebruikt u hun e-mail accounts. Studenten hebben mogelijk de volgende typen e-mail accounts:
 
 - Een e-mail account voor studenten dat wordt weer gegeven door de Azure Active Directory instantie van uw universiteit.
-- Een micro soft-domein e-mail account, zoals *Outlook.com*, *Hotmail.com*, *MSN.com*of *Live.com*.
+- Een micro soft-domein e-mail account, zoals *Outlook.com* , *Hotmail.com* , *MSN.com* of *Live.com*.
 - Een niet-micro soft-e-mail account, zoals een van Yahoo! of Google. Deze typen accounts moeten echter worden gekoppeld aan een Microsoft-account.
 - Een GitHub-account. Dit account moet worden gekoppeld aan een Microsoft-account.
 
 ### <a name="use-a-non-microsoft-email-account"></a>Een niet-micro soft-e-mail account gebruiken
+
 Studenten kunnen niet-micro soft-e-mail accounts gebruiken om zich te registreren bij een leslokaal Lab en zich aan te melden.  De registratie vereist echter dat ze eerst een Microsoft-account maken dat is gekoppeld aan een niet-micro soft-e-mail adres.
 
 Veel studenten hebben mogelijk al een Microsoft-account die is gekoppeld aan een niet-micro soft-e-mail adres. Studenten hebben bijvoorbeeld al een Microsoft-account als ze hun e-mail adres hebben gebruikt met andere micro soft-producten of-services, zoals Office, Skype, OneDrive of Windows.  
@@ -186,6 +189,7 @@ Hier volgt een koppeling waarmee studenten [zich kunnen registreren voor een Mic
 > Wanneer studenten zich aanmelden bij een leslokaal Lab, krijgen ze niet de optie om een Microsoft-account te maken. Daarom wordt u aangeraden deze aanmeldings koppeling op te nemen http://signup.live.com in de inschrijvings-e-mail van het leslokaal dat u verzendt naar studenten die niet-micro soft-accounts gebruiken.
 
 ### <a name="use-a-github-account"></a>Een GitHub-account gebruiken
+
 Studenten kunnen ook een bestaand GitHub-account gebruiken om zich te registreren bij een leslokaal Lab en zich aan te melden. Als er al een Microsoft-account is gekoppeld aan hun GitHub-account, kunnen studenten zich aanmelden en hun wacht woord opgeven, zoals wordt weer gegeven in de voor gaande sectie. 
 
 Als ze hun GitHub-account nog niet aan een Microsoft-account hebben gekoppeld, kunnen ze het volgende doen:
@@ -194,21 +198,22 @@ Als ze hun GitHub-account nog niet aan een Microsoft-account hebben gekoppeld, k
 
     ![De koppeling aanmeldings opties](./media/how-to-configure-student-usage/signin-options.png)
 
-1. Selecteer **Aanmelden met github**in het venster **Opties voor aanmelden** .
+1. Selecteer **Aanmelden met github** in het venster **Opties voor aanmelden** .
 
     ![De koppeling ' aanmelden bij GitHub '](./media/how-to-configure-student-usage/signin-github.png)
 
-    Na de prompt maken studenten een Microsoft-account dat is gekoppeld aan hun GitHub-account. De koppeling wordt automatisch uitgevoerd wanneer u **volgende**selecteert. Ze zijn vervolgens direct aangemeld en zijn verbonden met het leslokaal Lab.
+    Na de prompt maken studenten een Microsoft-account dat is gekoppeld aan hun GitHub-account. De koppeling wordt automatisch uitgevoerd wanneer u **volgende** selecteert. Ze zijn vervolgens direct aangemeld en zijn verbonden met het leslokaal Lab.
 
 ## <a name="export-a-list-of-users-to-a-csv-file"></a>Een lijst met gebruikers exporteren naar een CSV-bestand
 
 1. Ga naar het deel venster **gebruikers** .
-1. Selecteer op de werk balk het beletsel teken (**...**) en selecteer vervolgens **CSV exporteren**. 
+1. Selecteer op de werk balk het beletsel teken ( **...** ) en selecteer vervolgens **CSV exporteren**. 
 
     ![De knop CSV exporteren](./media/how-to-export-users-virtual-machines-csv/users-export-csv.png)
 
 
 ## <a name="next-steps"></a>Volgende stappen
+
 Zie de volgende artikelen:
 
 - Voor beheerders: [Lab-accounts maken en beheren](how-to-manage-lab-accounts.md)

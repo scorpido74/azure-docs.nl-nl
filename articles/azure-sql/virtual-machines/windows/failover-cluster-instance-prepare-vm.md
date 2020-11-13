@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: e5eff13c9ec672937258cf35274d2f5f7bc66f18
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 901c090d26959950d0ffd6a96253bdc36c9331c5
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164241"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556332"
 ---
 # <a name="prepare-virtual-machines-for-an-fci-sql-server-on-azure-vms"></a>Virtuele machines voorbereiden voor een FCI (SQL Server op Azure-Vm's)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -47,9 +47,9 @@ Voor de functie failover cluster moeten virtuele machines in een [beschikbaarhei
 
 Selecteer zorgvuldig de optie voor de beschik baarheid van de VM die overeenkomt met de gewenste cluster configuratie: 
 
- - **Gedeelde Azure-schijven**: [beschikbaarheidsset](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set) die is geconfigureerd met het fout domein en het bijwerken van het domein ingesteld op 1 en geplaatst in een [proximity-plaatsings groep](../../../virtual-machines/windows/proximity-placement-groups-portal.md).
- - **Premium-bestands shares**: [beschikbaarheidsset](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set) of [beschikbaarheids zone](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address). Premium-bestands shares zijn de enige gedeelde opslag optie als u beschikbaarheids zones kiest als de beschikbaarheids configuratie voor uw virtuele machines. 
- - **Opslagruimten direct**: [beschikbaarheidsset](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set).
+ - **Gedeelde Azure-schijven** : [beschikbaarheidsset](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set) die is geconfigureerd met het fout domein en het bijwerken van het domein ingesteld op 1 en geplaatst in een [proximity-plaatsings groep](../../../virtual-machines/windows/proximity-placement-groups-portal.md).
+ - **Premium-bestands shares** : [beschikbaarheidsset](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set) of [beschikbaarheids zone](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address). Premium-bestands shares zijn de enige gedeelde opslag optie als u beschikbaarheids zones kiest als de beschikbaarheids configuratie voor uw virtuele machines. 
+ - **Opslagruimten direct** : [beschikbaarheidsset](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set).
 
 >[!IMPORTANT]
 >U kunt de beschikbaarheidsset niet instellen of wijzigen nadat u een virtuele machine hebt gemaakt.
@@ -71,15 +71,15 @@ U kunt een virtuele machine van Azure maken met behulp van een installatie kopie
 
 ## <a name="uninstall-sql-server"></a>SQL Server verwijderen
 
-Als onderdeel van het proces voor het maken van de FCI installeert u SQL Server als een geclusterd exemplaar van het failovercluster. *Als u een virtuele machine hebt geïmplementeerd met een installatie kopie van Azure Marketplace zonder SQL Server, kunt u deze stap overs Laan.* Als u een installatie kopie hebt geïmplementeerd met SQL Server vooraf geïnstalleerd, moet u de registratie van de SQL Server VM bij de resource provider van de SQL-VM ongedaan maken en vervolgens SQL Server verwijderen. 
+Als onderdeel van het proces voor het maken van de FCI installeert u SQL Server als een geclusterd exemplaar van het failovercluster. *Als u een virtuele machine hebt geïmplementeerd met een installatie kopie van Azure Marketplace zonder SQL Server, kunt u deze stap overs Laan.* Als u een installatie kopie hebt geïmplementeerd met SQL Server vooraf geïnstalleerd, moet u de registratie van de SQL Server VM ongedaan maken vanuit de SQL IaaS agent-extensie en vervolgens SQL Server verwijderen. 
 
-### <a name="unregister-from-the-sql-vm-resource-provider"></a>Registratie bij de resource provider van de SQL-VM verwijderen
+### <a name="unregister-from-the-sql-iaas-agent-extension"></a>Registratie bij de SQL IaaS agent-extensie ongedaan maken
 
-SQL Server VM-installatie kopieën van Azure Marketplace worden automatisch geregistreerd bij de resource provider van de SQL-VM. Voordat u het vooraf geïnstalleerde SQL Server exemplaar verwijdert, moet u eerst de [registratie van elke SQL Server virtuele machine bij de resource provider van de SQL-VM](sql-vm-resource-provider-register.md#unregister-from-rp)ongedaan maken. 
+SQL Server VM-installatie kopieën van Azure Marketplace worden automatisch geregistreerd met de SQL IaaS agent-extensie. Voordat u het vooraf geïnstalleerde SQL Server exemplaar verwijdert, moet u eerst de [registratie van elke SQL Server virtuele machine uit de SQL IaaS agent-extensie ongedaan](sql-agent-extension-manually-register-single-vm.md#unregister-from-extension)maken. 
 
 ### <a name="uninstall-sql-server"></a>SQL Server verwijderen
 
-Nadat u de registratie van de resource provider ongedaan hebt gemaakt, kunt u SQL Server verwijderen. Volg deze stappen op elke virtuele machine: 
+Nadat u de registratie van de extensie ongedaan hebt gemaakt, kunt u SQL Server verwijderen. Volg deze stappen op elke virtuele machine: 
 
 1. Maak verbinding met de virtuele machine met behulp van RDP.
 
@@ -87,14 +87,14 @@ Nadat u de registratie van de resource provider ongedaan hebt gemaakt, kunt u SQ
 
 1. Als u een van de op SQL Server gebaseerde installatie kopieën voor virtuele machines gebruikt, verwijdert u het SQL Server-exemplaar:
 
-   1. Klik in **Program ma's en onderdelen**met de rechter muisknop op **Microsoft SQL Server 201_ (64-bits)** en selecteer **verwijderen/wijzigen**.
+   1. Klik in **Program ma's en onderdelen** met de rechter muisknop op **Microsoft SQL Server 201_ (64-bits)** en selecteer **verwijderen/wijzigen**.
    1. Selecteer **Verwijderen**.
    1. Selecteer het standaard exemplaar.
    1. Verwijder alle functies onder **Data Base Engine-Services**. Verwijder niets onder **gedeelde onderdelen**. U ziet iets als de volgende scherm afbeelding:
 
       ![Kenmerken selecteren](./media/failover-cluster-instance-prepare-vm/03-remove-features.png)
 
-   1. Selecteer **volgende**en selecteer vervolgens **verwijderen**.
+   1. Selecteer **volgende** en selecteer vervolgens **verwijderen**.
    1. Nadat het exemplaar is verwijderd, start u de virtuele machine opnieuw op. 
 
 ## <a name="open-the-firewall"></a>De firewall openen 
@@ -105,11 +105,11 @@ Als u een [Load Balancer](failover-cluster-instance-vnn-azure-load-balancer-conf
 
 Deze tabel bevat informatie over de poorten die u mogelijk moet openen, afhankelijk van uw FCI-configuratie: 
 
-   | Doel | Poort | Opmerkingen
+   | Doel | Poort | Notities
    | ------ | ------ | ------
-   | SQL Server | TCP 1433 | Normale poort voor standaard exemplaren van SQL Server. Als u een installatie kopie uit de galerie hebt gebruikt, wordt deze poort automatisch geopend. </br> </br> **Gebruikt door**: alle FCI-configuraties. |
-   | Statustest | TCP 59999 | Een open TCP-poort. Configureer de load balancer [Health probe](failover-cluster-instance-vnn-azure-load-balancer-configure.md#configure-health-probe) en het cluster om deze poort te gebruiken. </br> </br> **Gebruikt door**: FCI met Load Balancer. |
-   | Bestandsshare | UDP 445 | Poort die door de bestands share service wordt gebruikt. </br> </br> **Gebruikt door**: FCI met Premium-bestands share. |
+   | SQL Server | TCP 1433 | Normale poort voor standaard exemplaren van SQL Server. Als u een installatie kopie uit de galerie hebt gebruikt, wordt deze poort automatisch geopend. </br> </br> **Gebruikt door** : alle FCI-configuraties. |
+   | Statustest | TCP 59999 | Een open TCP-poort. Configureer de load balancer [Health probe](failover-cluster-instance-vnn-azure-load-balancer-configure.md#configure-health-probe) en het cluster om deze poort te gebruiken. </br> </br> **Gebruikt door** : FCI met Load Balancer. |
+   | Bestandsshare | UDP 445 | Poort die door de bestands share service wordt gebruikt. </br> </br> **Gebruikt door** : FCI met Premium-bestands share. |
 
 ## <a name="join-the-domain"></a>Aan domein toevoegen
 

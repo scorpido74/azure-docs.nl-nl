@@ -12,12 +12,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 467cbe91f4e516dc6facd2d30c38da1483308b77
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6b563e8ca93487a123f97f0bbb86624dc3be2db0
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316967"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556283"
 ---
 # <a name="manage-sql-server-vms-in-azure-by-using-the-azure-portal"></a>SQL Server Vm's in azure beheren door gebruik te maken van de Azure Portal
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -30,7 +30,7 @@ In de [Azure Portal](https://portal.azure.com)is de resource van de [**virtuele 
 ## <a name="remarks"></a>Opmerkingen
 
 - U wordt aangeraden de resource voor [**virtuele SQL-machines**](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) te gebruiken voor het weer geven en beheren van uw SQL Server-Vm's in Azure. Op dit moment biedt de resource van de **virtuele SQL-machine** geen ondersteuning voor het beheer van [End-of-support](sql-server-2008-extend-end-of-support.md) SQL Server vm's. Als u de instellingen voor uw end-of-support SQL Server Vm's wilt beheren, gebruikt u het tabblad afgeschafte [SQL Server configuratie](#access-the-sql-server-configuration-tab) . 
-- De resource voor **virtuele SQL-machines** is alleen beschikbaar voor SQL Server vm's die zijn [geregistreerd bij de resource provider van de SQL-VM](sql-vm-resource-provider-register.md). 
+- De resource voor **virtuele SQL-machines** is alleen beschikbaar voor SQL Server vm's die zijn [geregistreerd bij de SQL IaaS agent-extensie](sql-agent-extension-manually-register-single-vm.md). 
 
 
 ## <a name="access-the-sql-virtual-machines-resource"></a>Toegang tot de resource van de virtuele SQL-machines
@@ -57,7 +57,7 @@ Ga als volgt te werk om toegang te krijgen tot de resource van de **virtuele SQL
 > De resource van de **virtuele SQL-machine** is voor toegewezen SQL Server-instellingen. Selecteer de VM-naam in het vak **virtuele machine** om instellingen te openen die specifiek zijn voor de VM, maar niet exclusief voor SQL Server. 
 
 ## <a name="access-the-sql-server-configuration-tab"></a>Het tabblad SQL Server configuratie openen
-Het tabblad **SQL Server configuratie** is afgeschaft. Op dit moment is het de enige methode om [End-of-support](sql-server-2008-extend-end-of-support.md) te beheren SQL Server vm's en SQL Server virtuele machines die niet zijn [geregistreerd bij de resource provider van de SQL-VM](sql-vm-resource-provider-register.md).
+Het tabblad **SQL Server configuratie** is afgeschaft. Op dit moment is het de enige methode om [End-of-support](sql-server-2008-extend-end-of-support.md) te beheren SQL Server vm's en SQL Server virtuele machines die niet zijn [geregistreerd met de SQL IaaS agent-extensie](sql-agent-extension-manually-register-single-vm.md).
 
 Ga naar de resource van de **virtuele machines** om toegang te krijgen tot het tabblad afgeschafte **SQL Server configuratie** . Voer de volgende stappen uit:
 

@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure gegevens versleuteling-at-rest | Microsoft Docs
-description: Dit artikel bevat een overzicht van Microsoft Azure gegevens versleuteling in rust, de algemene mogelijkheden en algemene overwegingen.
+title: Azure-gegevens versleuteling-at-rest-Azure-beveiliging
+description: Dit artikel biedt een overzicht van Azure Data Encryption op rest, de algemene mogelijkheden en algemene overwegingen.
 services: security
 documentationcenter: na
 author: msmbaldwin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: dafc55656be2d8ef2c0f52d633c7db7eeee83534
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: c9a68661a89f53c5aa27bdd046b5bc09a47db400
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412779"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556621"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Versleuteling van inactieve gegevens in Azure
 
@@ -128,7 +128,7 @@ Alle Azure Storage services (Blob-opslag, wachtrij opslag, tabel opslag en Azure
 
 Azure SQL Database biedt momenteel ondersteuning voor versleuteling in rust voor micro soft-beheerde service-en versleutelings scenario's aan de client zijde.
 
-Ondersteuning voor Server versleuteling wordt momenteel geboden via de SQL-functie met de naam Transparent Data Encryption. Zodra een Azure SQL Database klant wordt ingeschakeld, wordt er automatisch een TDE-sleutel gemaakt en beheerd. Versleuteling in rust kan worden ingeschakeld op Data Base-en server niveau. Vanaf 2017 juni is [transparent Data Encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) standaard ingeschakeld voor nieuw gemaakte data bases. Azure SQL Database ondersteunt door de klant beheerde sleutels van RSA 2048-bits in Azure Key Vault. Zie [transparent Data Encryption met Bring your own Key ondersteuning voor Azure SQL database en Data Warehouse](/sql/relational-databases/security/encryption/transparent-data-encryption-byok-azure-sql?view=azuresqldb-current)voor meer informatie.
+Ondersteuning voor Server versleuteling wordt momenteel geboden via de SQL-functie met de naam Transparent Data Encryption. Zodra een Azure SQL Database klant wordt ingeschakeld, wordt er automatisch een TDE-sleutel gemaakt en beheerd. Versleuteling in rust kan worden ingeschakeld op Data Base-en server niveau. Vanaf 2017 juni is [transparent Data Encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) standaard ingeschakeld voor nieuw gemaakte data bases. Azure SQL Database ondersteunt door de klant beheerde sleutels van RSA 2048-bits in Azure Key Vault. Zie [transparent Data Encryption met Bring your own Key ondersteuning voor Azure SQL database en Data Warehouse](/sql/relational-databases/security/encryption/transparent-data-encryption-byok-azure-sql)voor meer informatie.
 
 Versleuteling aan client zijde van Azure SQL Database gegevens wordt ondersteund via de [Always encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) -functie. Always Encrypted gebruikt een sleutel die door de client is gemaakt en opgeslagen. Klanten kunnen de hoofd sleutel opslaan in een Windows-certificaat archief, Azure Key Vault of een lokale hardware Security module. Met behulp van SQL Server Management Studio kiezen SQL-gebruikers welke sleutel ze willen gebruiken om de kolom te versleutelen.
 
@@ -140,3 +140,4 @@ De beveiliging van klant gegevens die zijn opgeslagen in Azure-Services is van c
 
 - Zie [gegevens versleutelings modellen](encryption-models.md) voor meer informatie over door service beheerde sleutels en door de klant beheerde sleutels.
 - Meer informatie over hoe Azure gebruikmaakt van [dubbele versleuteling](double-encryption.md) om bedreigingen te verhelpen die worden gebruikt voor het versleutelen van gegevens.
+- Meer informatie over wat micro soft doet om de [platform integriteit en beveiliging](platform.md) te garanderen van hosts die de hardware-en firmware-build, integratie, uitoefening en reparatie pijplijnen door lopen.

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 052418924e73252a780689aea33e84d5bfdbc3f6
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 98510132b2341736664dfafa52e9567df95652be
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927648"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94561094"
 ---
 # <a name="custom-commands-concepts-and-definitions"></a>Concepten en definities voor aangepaste opdrachten
 
@@ -40,7 +40,7 @@ Interactie regels zijn aanvullende regels voor het verwerken van specifieke of c
 
 Para meters zijn gegevens die worden vereist door opdrachten voor het volt ooien van een taak. In complexe scenario's kunnen para meters ook worden gebruikt voor het definiëren van voor waarden die aangepaste acties activeren.
 
-### <a name="name"></a>Naam
+### <a name="name"></a>Name
 Een para meter wordt geïdentificeerd door de eigenschap name. U moet altijd een beschrijvende naam opgeven voor een para meter. Een para meter kan worden verwezen in verschillende secties, bijvoorbeeld wanneer u voor waarden, spraak reacties of andere acties bouwt.
  
 ### <a name="isglobal"></a>IsGlobal
@@ -48,6 +48,8 @@ Dit selectie vakje geeft aan of het bereik van deze para meter wordt gedeeld doo
 
 ### <a name="required"></a>Vereist
 Dit selectie vakje geeft aan of een waarde voor deze para meter is vereist voor het uitvoeren van opdrachten of het volt ooien van de opdracht. U moet antwoorden configureren om de gebruiker te vragen om een waarde op te geven als een para meter is gemarkeerd als vereist.
+
+Houd er rekening mee dat als u een **vereiste para meter** hebt geconfigureerd voor een **standaard waarde** , het systeem nog steeds expliciet om de waarde van de para meter wordt gevraagd.
 
 ### <a name="type"></a>Type
 Aangepaste opdrachten bieden ondersteuning voor de volgende parameter typen:
@@ -57,12 +59,12 @@ Aangepaste opdrachten bieden ondersteuning voor de volgende parameter typen:
 * Getal
 * Tekenreeks
 
-Al deze parameter typen ondersteunen configuratie van de standaard waarde, die u vanuit de Azure Portal kunt configureren.
+Al deze parameter typen, met uitzonde ring van geografie, ondersteunen de configuratie van de standaard waarde, die u vanuit de portal kunt configureren.
 
 ### <a name="configuration"></a>Configuratie
 Configuratie is een para meter-eigenschap die alleen voor de type teken reeks is gedefinieerd. De volgende waarden worden ondersteund:
 
-* **Geen** .
+* **Geen**.
 * **Volledige invoer accepteren** : wanneer deze functie is ingeschakeld, accepteert een para meter alle invoer-utterance. Deze optie is handig als de gebruiker een para meter met de volledige utterance nodig heeft. Een voor beeld hiervan is post adressen.
 * **Vooraf gedefinieerde invoer waarden accepteren uit een externe catalogus** : deze waarde wordt gebruikt voor het configureren van een para meter die kan uitgaan van een groot aantal verschillende waarden. Een voor beeld is een verkoop catalogus. In dit geval wordt de catalogus gehost op een extern webeindpunt en kan deze onafhankelijk worden geconfigureerd.
 * **Vooraf gedefinieerde invoer waarden accepteren uit interne catalogus** : deze waarde wordt gebruikt voor het configureren van een para meter die een aantal waarden kan aannemen. In dit geval moeten waarden worden geconfigureerd in de speech Studio.

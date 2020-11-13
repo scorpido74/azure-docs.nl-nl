@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 6/10/2020
-ms.openlocfilehash: 402214da75bffd278e12db94f089d64acd62221e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/09/2020
+ms.openlocfilehash: f94975b91a332e480a1b570c29f02040a1047f75
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84730137"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555410"
 ---
 # <a name="incrementally-copy-new-and-changed-files-based-on-lastmodifieddate-by-using-the-copy-data-tool"></a>Incrementeel nieuwe en gewijzigde bestanden op basis van LastModifiedDate kopiëren met behulp van het hulp programma Gegevens kopiëren
 
@@ -39,8 +39,8 @@ In deze zelfstudie voert u de volgende taken uit:
 
 ## <a name="prerequisites"></a>Vereisten
 
-* **Azure-abonnement**: Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
-* **Azure Storage account**: gebruik Blob Storage voor de bron-en Sink-gegevens opslag. Als u geen Azure Storage account hebt, volgt u de instructies in [een opslag account maken](../storage/common/storage-account-create.md).
+* **Azure-abonnement** : Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
+* **Azure Storage account** : gebruik Blob Storage voor de bron-en Sink-gegevens opslag. Als u geen Azure Storage account hebt, volgt u de instructies in [een opslag account maken](../storage/common/storage-account-create.md).
 
 ## <a name="create-two-containers-in-blob-storage"></a>Twee containers maken in Blob Storage
 
@@ -50,9 +50,9 @@ Bereid de Blob-opslag voor op de zelf studie door de volgende stappen uit te voe
 
 2. Maak een container met de naam **Destination**.
 
-## <a name="create-a-data-factory"></a>Een data factory maken
+## <a name="create-a-data-factory"></a>Een gegevensfactory maken
 
-1. Selecteer **Een resource maken** in het linkerdeelvenster. Selecteer **Analytics**  >  **Data Factory**:
+1. Selecteer **Een resource maken** in het linkerdeelvenster. Selecteer **integratie**  >  **Data Factory** :
 
    ![Data Factory selecteren](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -63,8 +63,8 @@ Bereid de Blob-opslag voor op de zelf studie door de volgende stappen uit te voe
    ![Fout bericht de naam is niet beschikbaar](./media/doc-common-process/name-not-available-error.png)
 
    Als u een foutbericht ontvangt dat betrekking heeft op de waarde die bij de naam is ingevuld, voert u een andere naam in voor de data factory. Gebruik bijvoorbeeld de naam _**uwnaam**_**ADFTutorialDataFactory**. Raadpleeg het onderwerp [Data Factory - Naamgevingsregels](naming-rules.md) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
-3. Selecteer bij **abonnement**het Azure-abonnement waarin u de nieuwe Data Factory wilt maken.
-4. Voer een van de volgende stappen uit onder **resource groep**:
+3. Selecteer bij **abonnement** het Azure-abonnement waarin u de nieuwe Data Factory wilt maken.
+4. Voer een van de volgende stappen uit onder **resource groep** :
 
     * Selecteer **bestaande gebruiken** en selecteer een bestaande resource groep in de lijst.
 
@@ -88,15 +88,15 @@ Bereid de Blob-opslag voor op de zelf studie door de volgende stappen uit te voe
 
 2. Voer de volgende stappen uit op de pagina **Eigenschappen** :
 
-    a. Voer onder **taak naam** **DeltaCopyFromBlobPipeline**in.
+    a. Voer onder **taak naam** **DeltaCopyFromBlobPipeline** in.
 
     b. Selecteer onder **taak uitgebracht of taak planning** **regel matig uitvoeren volgens schema**.
 
-    c. Onder **trigger type**selecteert u **tumblingvenstertriggers-venster**.
+    c. Onder **trigger type** selecteert u **tumblingvenstertriggers-venster**.
 
-    d. Voer onder **terugkeer patroon** **15 minuut/minuten**in.
+    d. Voer onder **terugkeer patroon** **15 minuut/minuten** in.
 
-    e. Selecteer **Next**.
+    e. Selecteer **Volgende**.
 
     Data Factory maakt een pijp lijn met de opgegeven taak naam.
 
@@ -106,13 +106,13 @@ Bereid de Blob-opslag voor op de zelf studie door de volgende stappen uit te voe
 
     a. Selecteer  **nieuwe verbinding maken** om een verbinding toe te voegen.
 
-    b. Selecteer **Azure Blob Storage** in de galerie en selecteer vervolgens **door gaan**:
+    b. Selecteer **Azure Blob Storage** in de galerie en selecteer vervolgens **door gaan** :
 
     ![Azure-blog opslag selecteren](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/source-data-store-page-select-blob.png)
 
     c. Selecteer op de pagina **nieuwe gekoppelde service (Azure Blob Storage)** uw opslag account in de lijst **naam van het opslag account** . Test de verbinding en selecteer vervolgens **maken**.
 
-    d. Selecteer de nieuwe gekoppelde service en selecteer **volgende**:
+    d. Selecteer de nieuwe gekoppelde service en selecteer **volgende** :
 
    ![De nieuwe gekoppelde service selecteren](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/source-data-store-page-select-linkedservice.png)
 
@@ -122,9 +122,9 @@ Bereid de Blob-opslag voor op de zelf studie door de volgende stappen uit te voe
 
     ![Kies het invoerbestand of invoermap.](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/choose-input-file-folder.png)
 
-    b. Selecteer bij **gedrag bij het laden van bestanden**de optie **Incrementeel laden: LastModifiedDate**.
+    b. Selecteer bij **gedrag bij het laden van bestanden** de optie **Incrementeel laden: LastModifiedDate**.
 
-    c. Selecteer **binaire kopie** en selecteer **volgende**:
+    c. Selecteer **binaire kopie** en selecteer **volgende** :
 
      ![De pagina voor het invoer bestand of de map kiezen](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/check-binary-copy.png)
 
@@ -132,11 +132,11 @@ Bereid de Blob-opslag voor op de zelf studie door de volgende stappen uit te voe
 
 6. Voltooi op de pagina **Uitvoerbestand of uitvoermap kiezen** de volgende stappen:
 
-    a. Blader naar de **doelmap** en selecteer deze en selecteer vervolgens **kiezen**:
+    a. Blader naar de **doelmap** en selecteer deze en selecteer vervolgens **kiezen** :
 
     ![De pagina voor het uitvoer bestand of de map kiezen](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/choose-output-file-folder.png)
 
-    b. Selecteer **Next**.
+    b. Selecteer **Volgende**.
 
 7. Selecteer op de pagina **Instellingen** de optie **Volgende**.
 
@@ -164,7 +164,7 @@ Bereid de Blob-opslag voor op de zelf studie door de volgende stappen uit te voe
 
     ![file1.txt maken en uploaden naar de bron container](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs3-1.png)
 
-13. Als u wilt terugkeren naar de weer gave **pijplijn uitvoeringen** , selecteert u **alle pijplijn uitvoeringen**en wacht u totdat dezelfde pijp lijn automatisch opnieuw wordt geactiveerd.  
+13. Als u wilt terugkeren naar de weer gave **pijplijn uitvoeringen** , selecteert u **alle pijplijn uitvoeringen** en wacht u totdat dezelfde pijp lijn automatisch opnieuw wordt geactiveerd.  
 
 14. Wanneer de tweede pijp lijn is uitgevoerd, voert u dezelfde stappen uit om de details van de uitvoering van de activiteit te controleren.  
 

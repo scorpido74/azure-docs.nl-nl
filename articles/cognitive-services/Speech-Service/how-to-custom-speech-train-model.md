@@ -1,38 +1,35 @@
 ---
-title: Een model trainen voor Custom Speech-Speech-Service
+title: Een Custom Speech model-spraak service trainen en implementeren
 titleSuffix: Azure Cognitive Services
-description: Als u een spraak-naar-tekst model wilt trainen, kunt u de nauw keurigheid van de herkenning voor het basislijn model van micro soft of een aangepast model verbeteren. Een model wordt getraind met behulp van transcripties en gerelateerde tekst.
+description: In dit artikel leert u hoe u Custom Speech modellen traint en implementeert. Als u een spraak-naar-tekst model wilt trainen, kunt u de nauw keurigheid van de herkenning voor het basislijn model van micro soft of een aangepast model verbeteren. Een model wordt getraind met behulp van transcripties en gerelateerde tekst.
 services: cognitive-services
-author: erhopf
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/06/2019
-ms.author: erhopf
-ms.openlocfilehash: bf9209e0c256412ccb06ea62a197046a7b012e00
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/11/2020
+ms.author: trbye
+ms.openlocfilehash: 34c0703ee7c335ca904a21bcce6ed44abc6dc13f
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84629025"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555784"
 ---
-# <a name="train-a-model-for-custom-speech"></a>Een model trainen voor Custom Speech
+# <a name="train-and-deploy-a-custom-speech-model"></a>Een Custom Speech model trainen en implementeren
 
-Training van een model voor spraak naar tekst kan de nauw keurigheid van de herkenning voor het basislijn model van micro soft verbeteren. Een model wordt getraind met behulp van transcripties en gerelateerde tekst. Deze gegevens sets en eerder geüploade audio gegevens worden gebruikt voor het verfijnen en trainen van het spraak-naar-tekst model.
+In dit artikel leert u hoe u Custom Speech modellen traint en implementeert. Training van een model voor spraak naar tekst kan de nauw keurigheid van de herkenning voor het basislijn model van micro soft verbeteren. Een model wordt getraind met behulp van transcripties en gerelateerde tekst. Deze gegevens sets en eerder geüploade audio gegevens worden gebruikt voor het verfijnen en trainen van het spraak-naar-tekst model.
 
 ## <a name="use-training-to-resolve-accuracy-issues"></a>Training gebruiken om nauw keurige problemen op te lossen
 
-Als u herkennings problemen ondervindt met uw model, kunt u de nauw keurigheid verbeteren door gebruik te maken van transcripten met menselijke labels en gerelateerde gegevens voor extra training. Gebruik deze tabel om te bepalen welke gegevensset moet worden gebruikt voor het oplossen van uw probleem (en):
+Als u herkennings problemen ondervindt met een basis model, kan het gebruik van transcripten met menselijke labels en gerelateerde gegevens voor het trainen van een aangepast model helpen de nauw keurigheid te verbeteren. Gebruik deze tabel om te bepalen welke gegevensset moet worden gebruikt voor het oplossen van uw probleem (en):
 
 | Gebruiksvoorbeeld | Gegevenstype |
 | -------- | --------- |
 | Verbeter nauw keurigheid van herkenning op branchespecifieke woorden lijst en grammatica, zoals medische terminologie of het jargon. | Gerelateerde tekst (zinnen/uitingen) |
 | Definieer de fonetische en weer gegeven vorm van een woord of term met een niet-standaard uitspraak, zoals product namen of acroniemen. | Gerelateerde tekst (uitspraak) |
 | Verbeter de herkennings nauwkeurigheid op spraak stijlen, accenten of specifieke achtergrond ruis. | Audio en Transcripten met menselijke labels |
-
-> [!IMPORTANT]
-> Als u geen gegevensset hebt geüpload, raadpleegt u [uw gegevens voorbereiden en testen](how-to-custom-speech-test-data.md). In dit document vindt u instructies voor het uploaden van gegevens en richt lijnen voor het maken van sets met hoge kwaliteit.
 
 ## <a name="train-and-evaluate-a-model"></a>Een model trainen en evalueren
 
@@ -49,22 +46,37 @@ De eerste stap voor het trainen van een model is het uploaden van trainings gege
 
 In de tabel training wordt een nieuw item weer gegeven dat overeenkomt met dit nieuwe model. In de tabel wordt ook de volgende status weer gegeven: verwerken, geslaagd, mislukt.
 
-## <a name="evaluate-the-accuracy-of-a-trained-model"></a>De nauw keurigheid van een getraind model evalueren
+Bekijk de nauw keurigheid van het Custom Speech model te evalueren en [te](how-to-custom-speech-evaluate-data.md) verbeteren. Als u ervoor hebt gekozen om nauw keurigheid te testen, is het belang rijk dat u een akoestische gegevensset selecteert die afwijkt van het model dat u hebt gebruikt voor de prestaties van het model.
 
-U kunt de gegevens controleren en de model nauwkeurigheid evalueren met behulp van deze documenten:
+## <a name="deploy-a-custom-model"></a>Aangepaste model implementeren
 
-- [Uw gegevens controleren](how-to-custom-speech-inspect-data.md)
-- [Uw gegevens evalueren](how-to-custom-speech-evaluate-data.md)
+Nadat u gegevens hebt geüpload en geinspectet, de nauw keurigheid hebt geëvalueerd en een aangepast model hebt getraind, kunt u een aangepast eind punt implementeren voor gebruik met uw apps, hulpprogram ma's en producten. 
 
-Als u ervoor hebt gekozen om nauw keurigheid te testen, is het belang rijk dat u een akoestische gegevensset selecteert die afwijkt van het model dat u hebt gebruikt voor de prestaties van het model.
+Als u een nieuw aangepast eind punt wilt maken, meldt u zich aan bij de [Custom speech Portal](https://speech.microsoft.com/customspeech) en selecteert u **implementatie** in het menu Custom speech boven aan de pagina. Als dit de eerste keer is dat u uitvoert, ziet u dat er geen eind punten in de tabel staan. Nadat u een eind punt hebt gemaakt, kunt u deze pagina gebruiken om elk geïmplementeerd eind punt bij te houden.
+
+Selecteer vervolgens **eind punt toevoegen** en voer een **naam** en **Beschrijving** in voor het aangepaste eind punt. Selecteer vervolgens het aangepaste model dat u aan dit eind punt wilt koppelen. Op deze pagina kunt u ook logboek registratie inschakelen. Met logboek registratie kunt u eindpunt verkeer bewaken. Als deze is uitgeschakeld, wordt verkeer niet opgeslagen.
+
+![Een model implementeren](./media/custom-speech/custom-speech-deploy-model.png)
+
+> [!NOTE]
+> Vergeet niet om akkoord te gaan met de gebruiks voorwaarden en prijs gegevens.
+
+Selecteer vervolgens **maken**. Met deze actie keert u terug naar de **implementatie** pagina. De tabel bevat nu een vermelding die overeenkomt met uw aangepaste eind punt. De status van het eind punt toont de huidige status. Het kan tot 30 minuten duren om een nieuw eind punt te instantiëren met uw aangepaste modellen. Wanneer de status van de implementatie verandert in **voltooid** , is het eind punt klaar voor gebruik.
+
+Nadat het eind punt is geïmplementeerd, wordt de naam van het eind punt weer gegeven als een koppeling. Klik op de koppeling om informatie weer te geven die specifiek is voor uw eind punt, zoals de eindpunt sleutel, eind punt-URL en voorbeeld code.
+
+## <a name="view-logging-data"></a>Logboek gegevens weer geven
+
+Logboek gegevens kunnen worden gedownload onder **eindpunt > Details**.
+> [!NOTE]
+>De logboek gegevens zijn 30 dagen beschikbaar op micro soft-opslag in eigendom en worden daarna verwijderd. Als een opslag account van een klant is gekoppeld aan het cognitieve Services-abonnement, worden de logboek gegevens niet automatisch verwijderd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Uw model implementeren](how-to-custom-speech-deploy-model.md)
+* Meer informatie [over het gebruik van uw aangepaste model](how-to-specify-source-language.md).
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Uw gegevens voorbereiden en testen](how-to-custom-speech-test-data.md)
 - [Uw gegevens controleren](how-to-custom-speech-inspect-data.md)
 - [Uw gegevens evalueren](how-to-custom-speech-evaluate-data.md)
-- [Uw model trainen](how-to-custom-speech-train-model.md)

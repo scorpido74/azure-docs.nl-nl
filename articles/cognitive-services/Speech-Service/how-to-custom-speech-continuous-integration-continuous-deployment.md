@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/09/2020
 ms.author: kaprochi
-ms.openlocfilehash: 46bdc314e7aa0002937e808d7982f43c8e725d6f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de0065abaf5669859e864186fc9a3fb88219414b
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91357468"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555818"
 ---
 # <a name="cicd-for-custom-speech"></a>CI/CD voor Custom Speech
 
@@ -37,7 +37,7 @@ De werk stromen moeten op de een of andere manier gegevens, testen, test bestand
 
 ### <a name="ci-workflow-for-testing-data-updates"></a>CI-werk stroom voor het testen van gegevens updates
 
-Het hoofd doel van de CI/CD-werk stromen is het bouwen van een nieuw model met behulp van de trainings gegevens en om dat model te testen met behulp van de test gegevens om te bepalen of de [fout frequentie van Word](how-to-custom-speech-evaluate-data.md#what-is-word-error-rate-wer) (wer) is verbeterd ten opzichte van het eerder best presterende model (het ' bench Mark-model '). Als het nieuwe model beter presteert, wordt het het nieuwe benchmark model voor het vergelijken van toekomstige modellen vergeleken.
+Het hoofd doel van de CI/CD-werk stromen is het bouwen van een nieuw model met behulp van de trainings gegevens en om dat model te testen met behulp van de test gegevens om te bepalen of de [fout frequentie van Word](how-to-custom-speech-evaluate-data.md#evaluate-custom-speech-accuracy) (wer) is verbeterd ten opzichte van het eerder best presterende model (het ' bench Mark-model '). Als het nieuwe model beter presteert, wordt het het nieuwe benchmark model voor het vergelijken van toekomstige modellen vergeleken.
 
 De CI-werk stroom voor het testen van gegevens updates moet het huidige Bench Mark-model opnieuw testen met de bijgewerkte test gegevens om de herziene WER te berekenen. Op deze manier zorgt u ervoor dat wanneer de WER van een nieuw model wordt vergeleken met de WER van de Bench Mark, beide modellen zijn getest op dezelfde test gegevens en u vergelijken zoals in een soort.
 
@@ -84,8 +84,8 @@ De [opslag plaats van de speech DevOps-sjabloon](https://github.com/Azure-Sample
 
 - Kopieer de sjabloon opslagplaats naar uw GitHub-account en maak vervolgens Azure-resources en een [Service-Principal](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) voor de GITHUB acties CI/cd-werk stromen.
 - Door loop de '[dev Inner-lus](https://mitchdenny.com/the-inner-loop/)'. Werk de training bij en test gegevens van een functie vertakking, test de wijzigingen met een tijdelijk ontwikkel model en verhoog een pull-aanvraag om de wijzigingen voor te stellen en te controleren.
-- Wanneer trainings gegevens worden bijgewerkt in een pull-aanvraag naar de *Master*, traint u modellen met de GitHub-acties CI-werk stroom.
-- Voer automatische nauwkeurigheids tests uit om de [Word-fout frequentie](how-to-custom-speech-evaluate-data.md#what-is-word-error-rate-wer) (wer) van een model vast te leggen. Sla de test resultaten op in Azure Blob.
+- Wanneer trainings gegevens worden bijgewerkt in een pull-aanvraag naar de *Master* , traint u modellen met de GitHub-acties CI-werk stroom.
+- Voer automatische nauwkeurigheids tests uit om de [Word-fout frequentie](how-to-custom-speech-evaluate-data.md#evaluate-custom-speech-accuracy) (wer) van een model vast te leggen. Sla de test resultaten op in Azure Blob.
 - Voer de CD-werk stroom uit om een eind punt te maken wanneer de WER wordt verbeterd.
 
 ## <a name="next-steps"></a>Volgende stappen

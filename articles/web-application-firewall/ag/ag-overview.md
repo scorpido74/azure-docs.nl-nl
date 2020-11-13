@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 09/16/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 050252718e4796ff20d57be3fdeac98f0cf04fdf
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: d3e38de191557f0602d1b544c6590018f98405b0
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785218"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94560788"
 ---
 # <a name="what-is-azure-web-application-firewall-on-azure-application-gateway"></a>Wat is Azure Web Application Firewall voor Azure Application Gateway?
 
@@ -160,7 +160,7 @@ Logboeken van Application Gateway zijn geïntegreerd met [Azure Monitor](../../a
 
 #### <a name="azure-security-center"></a>Azure Security Center
 
-[Security Center](../../security-center/security-center-intro.md) helpt bij het voorkomen, detecteren en afhandelen van bedreigingen. De service biedt meer inzicht in en controle over de veiligheid van uw Azure-resources. Application Gateway is [geïntegreerd met Security Center](../../application-gateway/application-gateway-integration-security-center.md). Security Center scant uw omgeving op niet-beveiligde webtoepassingen. Indien nodig worden er aanbevelingen naar Application Gateway WAF gestuurd om deze kwetsbare resources te beschermen. U maakt de firewalls rechtstreeks vanuit Security Center. Deze instanties van WAF zijn geïntegreerd met Security Center. Ze sturen waarschuwingen en statusinformatie naar Security Center voor rapportagedoeleinden.
+[Security Center](../../security-center/security-center-introduction.md) helpt bij het voorkomen, detecteren en afhandelen van bedreigingen. De service biedt meer inzicht in en controle over de veiligheid van uw Azure-resources. Application Gateway is [geïntegreerd met Security Center](../../application-gateway/application-gateway-integration-security-center.md). Security Center scant uw omgeving op niet-beveiligde webtoepassingen. Indien nodig worden er aanbevelingen naar Application Gateway WAF gestuurd om deze kwetsbare resources te beschermen. U maakt de firewalls rechtstreeks vanuit Security Center. Deze instanties van WAF zijn geïntegreerd met Security Center. Ze sturen waarschuwingen en statusinformatie naar Security Center voor rapportagedoeleinden.
 
 ![Venster Overzicht van Security Center](../media/ag-overview/figure1.png)
 

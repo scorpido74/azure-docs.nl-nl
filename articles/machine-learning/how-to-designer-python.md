@@ -1,7 +1,7 @@
 ---
 title: Python-script uitvoeren in de ontwerp functie
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het gebruik van python in Azure Machine Learning Designer voor het transformeren van gegevens.
+description: Meer informatie over het gebruik van het script model uitvoeren python in Azure Machine Learning Designer om aangepaste bewerkingen uit te voeren die zijn geschreven in python.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.author: keli19
 ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, designer, devx-track-python
-ms.openlocfilehash: 6a393cf2c0787a2bc2111581126cbc261d85f1f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dcc28d98efbc82079586de8cfbecd35effc93d6e
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90897731"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556230"
 ---
 # <a name="run-python-code-in-azure-machine-learning-designer"></a>Python-code uitvoeren in Azure Machine Learning Designer
 
@@ -58,7 +58,7 @@ Invoer modules zijn optioneel, omdat u gegevens rechtstreeks kunt genereren of i
 
 De Designer biedt een eerste toegangs punt script waarmee u uw eigen python-code kunt bewerken en invoeren. 
 
-In dit voor beeld gebruikt u Pandas om twee kolommen te combi neren die worden gevonden in de automobiele gegevensset, de **prijs** en de **paarden kracht**, om een nieuwe kolom te maken, **dollars per paarden kracht**. Deze kolom geeft aan hoeveel u betaalt voor elk paarden kracht, wat nuttig kan zijn om te bepalen of een auto een goede deal is voor het geld. 
+In dit voor beeld gebruikt u Pandas om twee kolommen te combi neren die worden gevonden in de automobiele gegevensset, de **prijs** en de **paarden kracht** , om een nieuwe kolom te maken, **dollars per paarden kracht**. Deze kolom geeft aan hoeveel u betaalt voor elk paarden kracht, wat nuttig kan zijn om te bepalen of een auto een goede deal is voor het geld. 
 
 1. Selecteer de **script** module voor het uitvoeren van python.
 
@@ -83,7 +83,7 @@ In dit voor beeld gebruikt u Pandas om twee kolommen te combi neren die worden g
     
 1. Verzend de pijp lijn.
 
-Nu hebt u een gegevensset met de nieuwe functie **dollars/HP**, wat nuttig kan zijn bij het trainen van een auto aanbeveling. Dit is een voor beeld van het uitpakken en dalen van de functie. 
+Nu hebt u een gegevensset met de nieuwe functie **dollars/HP** , wat nuttig kan zijn bij het trainen van een auto aanbeveling. Dit is een voor beeld van het uitpakken en dalen van de functie. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

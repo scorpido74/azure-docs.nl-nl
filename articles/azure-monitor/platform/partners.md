@@ -4,12 +4,12 @@ description: Meer informatie over de partners van Azure Monitor en hoe u toegang
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: b56b2386422d9f7f2fa598ff804a2206bf4b4d83
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc33e9d8d613b9d0575da069d884e454d9930eac
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91460085"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555635"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Integraties van Azure Monitor-partner
 
@@ -151,7 +151,7 @@ De **ArcSight** van de MicroFocus heeft een slimme connector voor Azure monitor 
 
 Met de micro focus- **Operations Bridge** worden automatisch alle hybride IT-resources bewaakt: elk apparaat, besturings systeem, Data Base, toepassing of service, ongeacht waar het wordt uitgevoerd en past AIOps toe op alle gegevens typen: gebeurtenissen, metrieken, logboeken en afhankelijkheden. Het biedt een unieke combi natie van Quality-of-Service-bewaking, in combi natie met diepe analyse van toepassings status en bevat een uitgebreide prestatie-en beschikbaarheids bewaking van Microsoft Azure Services. Met Operations Bridge kunnen klanten een enkel glas venster bieden, dat beschikbaar is op elk apparaat met een browser, op basis van de manier waarop zowel bedrijven als IT-belanghebbenden kunnen begrijpen.
 
-Meer informatie
+Lees meer
 - [Overzicht van OB Suite](https://www.microfocus.com/products/operations-bridge-suite/overview)
 - [Downloaden](https://marketplace.microfocus.com/itom/content/obm-management-pack-for-microsoft-azure)
 - [Sitescope](https://docs.microfocus.com/itom/SiteScope:2019.05/MSAzureMonitor) -sitescope is een onderdeel in de operations Bridge Suite.
@@ -253,7 +253,7 @@ Verminder incidenten en MTTR met het AIOps-platform om lawaai te elimineren, de 
 
 ![SignalFX-logo](./media/partners/signalfx.png)
 
-SignalFx is de leider in realtime operationele informatie voor gegevensgestuurde DevOps. De service detecteert en verzamelt metrische gegevens over elk onderdeel in de Cloud. Het vervangt de traditionele punt gereedschappen en biedt real-time inzicht in de dynamische omgevingen van vandaag. Dankzij het uiterst schaal bare SignalFx platform is het SaaS-platform geoptimaliseerd voor architecturen en micro Services op basis van architectuur en biedt het krachtige visualisatie, proactieve waarschuwingen en samen werking van sorteren-mogelijkheden voor organisaties van elke omvang. SignalFx kan rechtstreeks worden geïntegreerd met Azure Monitor en via open source-connectors, zoals *telegrafie*, *Statistieken*en *verzamelde* , zodat u de beste Dash boards, analyses en waarschuwingen voor Azure kunt krijgen.
+SignalFx is de leider in realtime operationele informatie voor gegevensgestuurde DevOps. De service detecteert en verzamelt metrische gegevens over elk onderdeel in de Cloud. Het vervangt de traditionele punt gereedschappen en biedt real-time inzicht in de dynamische omgevingen van vandaag. Dankzij het uiterst schaal bare SignalFx platform is het SaaS-platform geoptimaliseerd voor architecturen en micro Services op basis van architectuur en biedt het krachtige visualisatie, proactieve waarschuwingen en samen werking van sorteren-mogelijkheden voor organisaties van elke omvang. SignalFx kan rechtstreeks worden geïntegreerd met Azure Monitor en via open source-connectors, zoals *telegrafie* , *Statistieken* en *verzamelde* , zodat u de beste Dash boards, analyses en waarschuwingen voor Azure kunt krijgen.
 
 [Documentatie voor signalfx](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-azure)
 
@@ -300,6 +300,16 @@ Sumo Logic is een beveiligde, Cloud systeem eigen machine voor gegevens analyse,
 Turbonomic levert werkbelasting automatisering voor hybride Clouds door tegelijkertijd de prestaties, kosten en naleving in realtime te optimaliseren. Turbonomic helpt organisaties in hun Azure-omgeving te elastisch door voortdurend het vermogen te optimaliseren om ervoor te zorgen dat toepassingen voortdurend de bronnen krijgen die ze nodig hebben om hun SLA te leveren en niets meer over compute, opslag en netwerk voor de IaaS-en PaaS-laag. Organisaties kunnen migraties simuleren, werk belastingen op de juiste schaal schalen en Datacenter bronnen buiten gebruik stellen voor een verantwoorde migratie naar Azure-tijd, binnen het budget, terwijl de prestaties en naleving worden gegarandeerd. Turbonomic is API-gestuurde en wordt uitgevoerd als een virtuele machine zonder agent in Azure en on-premises.
 
 [Turbonomic-Inleiding](https://turbonomic.com/)
+
+## <a name="bmc-helix"></a>BMC Helix
+
+![BMC Helix-logo](./media/partners/BMCHelix.png)
+
+BMC Helix is een autonoom platform voor bedrijfs Services en Operations SaaS. Het is geïntegreerd met 360-degree Intelligence en biedt bedrijven de mogelijkheid om proactief en predictively te detecteren, te bewaken, te onderhouden, te herstellen, te optimaliseren en te leveren universeel-kanaal ervaringen voor IT en line-of-Business.
+Dankzij de naadloze integratie van ITSM en IT Operations Management (ITOM) kunnen gebruikers met BMC Helix IT-silo's elimineren, gestuurde zakelijke beslissingen nemen en toonaangevende klant ervaringen leveren.
+Klanten kunnen het BMC Helix-platform implementeren met de Cloud implementatie van hun keuze: openbaar, privé of hybride. Daarnaast hebben klanten een keuze uit de AI/ML-oplossingen die kunnen worden gebruikt door toonaangevende providers.
+
+[Meer informatie over BMC Helix](https://www.bmc.com/it-solutions/bmc-helix.html?vu=helix)
 
 ## <a name="next-steps"></a>Volgende stappen
 

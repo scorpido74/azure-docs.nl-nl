@@ -13,19 +13,17 @@ ms.date: 09/15/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: ec0ab4601e15129ecd8917e0e750a3e1661dc558
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7ec6ab8b52d9d43d898f481a2f36310e5c0897d
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91530694"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94561077"
 ---
 # <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>Micro soft Enter prise SSO-invoeg toepassing voor Apple-apparaten (preview-versie)
 
-> [!NOTE]
-> Deze functie is beschikbaar voor openbare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
-> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+>[!IMPORTANT]
+> Deze functie [!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
 
 De *micro soft Enter PRISE SSO-invoeg toepassing voor Apple-apparaten* biedt eenmalige aanmelding (SSO) voor Azure Active Directory (Azure AD)-accounts voor alle toepassingen die ondersteuning bieden voor de functie voor [eenmalige aanmelding voor ondernemingen](https://developer.apple.com/documentation/authenticationservices) van Apple. Micro soft werkte nauw samen met Apple voor het ontwikkelen van deze invoeg toepassing om de bruikbaarheid van uw toepassingen te verhogen en de beste beveiliging te bieden die door Apple en micro soft kan worden geboden.
 
@@ -53,10 +51,10 @@ Als u de micro soft Enter prise SSO-invoeg toepassing voor Apple-apparaten wilt 
 
 Gebruik de volgende para meters voor het configureren van de micro soft Enter prise SSO-invoeg toepassing voor Apple-apparaten:
 
-- **Type**: omleiden
-- **Extensie-id**: `com.microsoft.azureauthenticator.ssoextension`
-- **Team-ID**: (dit veld is niet nodig voor IOS)
-- **Url's**:
+- **Type** : omleiden
+- **Extensie-id** : `com.microsoft.azureauthenticator.ssoextension`
+- **Team-ID** : (dit veld is niet nodig voor IOS)
+- **Url's** :
   - `https://login.microsoftonline.com`
   - `https://login.microsoft.com`
   - `https://sts.windows.net`
@@ -80,10 +78,10 @@ Alleen apps die systeem eigen Apple-netwerk technologieën of webweergave gebrui
 
 Gebruik de volgende para meters voor het configureren van de micro soft Enter prise SSO-invoeg toepassing voor apps die geen gebruik hoeven te MSAL:
 
-- **Sleutel**: `AppAllowList`
-- **Type**: `String`
-- **Waarde**: een door komma's gescheiden lijst met toepassings bundel-id's voor de toepassingen die aan de SSO mogen deel nemen
-- **Voor beeld**: `com.contoso.workapp, com.contoso.travelapp`
+- **Sleutel** : `AppAllowList`
+- **Type** : `String`
+- **Waarde** : een door komma's gescheiden lijst met toepassings bundel-id's voor de toepassingen die aan de SSO mogen deel nemen
+- **Voor beeld** : `com.contoso.workapp, com.contoso.travelapp`
 
 Toegestane [apps](./application-consent-experience.md) die door de MDM-beheerder zijn toegestaan om deel te nemen aan de SSO, kunnen een token ontvangen voor de eind gebruiker. Daarom is het belang rijk om alleen vertrouwde toepassingen toe te voegen aan de acceptatie lijst. 
 
@@ -95,9 +93,9 @@ Standaard biedt de micro soft Enter prise SSO-invoeg toepassing alleen SSO voor 
 
 `browser_sso_interaction_enabled`Als u de vlag inschakelt, kunnen niet-MSAL apps en Safari-browser de eerste Boots trap ping uitvoeren en een gedeelde referentie ophalen. Als de micro soft Enter prise SSO-invoeg toepassing nog geen gedeelde referentie heeft, wordt er een opgehaald wanneer een aanmelding wordt aangevraagd vanuit een Azure AD-URL in de Safari-browser, ASWebAuthenticationSession, SafariViewController of een andere toegestane systeem eigen toepassing.  
 
-- **Sleutel**: `browser_sso_interaction_enabled`
-- **Type**: `Integer`
-- **Waarde**: 1 of 0
+- **Sleutel** : `browser_sso_interaction_enabled`
+- **Type** : `Integer`
+- **Waarde** : 1 of 0
 
 We raden u aan deze vlag in te scha kelen om consistenter te zijn voor alle apps. Deze optie is standaard uitgeschakeld. 
 
@@ -107,9 +105,9 @@ De micro soft Enter prise SSO-invoeg toepassing biedt SSO door gedeelde referent
 
 `disable_explicit_app_prompt`Als u deze optie inschakelt, wordt de mogelijkheid van zowel systeem eigen als webtoepassingen beperkt om de prompt van een eind gebruiker op de protocol-laag af te dwingen en SSO over te slaan.
 
-- **Sleutel**: `disable_explicit_app_prompt`
-- **Type**: `Integer`
-- **Waarde**: 1 of 0
+- **Sleutel** : `disable_explicit_app_prompt`
+- **Type** : `Integer`
+- **Waarde** : 1 of 0
 
 We raden u aan deze vlag in te scha kelen om consistenter te zijn voor alle apps. Deze optie is standaard uitgeschakeld. 
 

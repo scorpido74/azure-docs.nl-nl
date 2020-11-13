@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 6/10/2020
-ms.openlocfilehash: 3a46c2024269affc06d18806aa186fb8b0feaafe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/09/2020
+ms.openlocfilehash: ae66bb025f2a49a79120fe86e0de7c4a3ccf26ca
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91533754"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555373"
 ---
 # <a name="incrementally-copy-new-files-based-on-time-partitioned-file-name-by-using-the-copy-data-tool"></a>Kopieer incrementeel nieuwe bestanden op basis van een gepartitioneerde bestands naam met behulp van het Gegevens kopiëren-hulp programma
 
@@ -38,8 +38,8 @@ In deze zelfstudie voert u de volgende stappen uit:
 
 ## <a name="prerequisites"></a>Vereisten
 
-* **Azure-abonnement**: Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
-* **Azure-opslag account**: Blob Storage gebruiken als _bron_  -en _sink_ -gegevens archief. Als u geen Azure Storage-account hebt, raadpleegt u de instructies in [een opslag account maken](../storage/common/storage-account-create.md).
+* **Azure-abonnement** : Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
+* **Azure-opslag account** : Blob Storage gebruiken als _bron_  -en _sink_ -gegevens archief. Als u geen Azure-opslagaccount hebt, raadpleegt u de instructies in [Een opslagaccount maken](../storage/common/storage-account-create.md).
 
 ### <a name="create-two-containers-in-blob-storage"></a>Twee containers maken in Blob Storage
 
@@ -54,9 +54,9 @@ Bereid de Blob-opslag voor op de zelf studie door de volgende stappen uit te voe
 
 2. Maak een container met de naam **Destination**. U kunt verschillende hulpprogramma's gebruiken om deze taken uit te voeren, zoals [Azure Storage Explorer](https://storageexplorer.com/).
 
-## <a name="create-a-data-factory"></a>Een data factory maken
+## <a name="create-a-data-factory"></a>Een gegevensfactory maken
 
-1. Selecteer in het linkermenu **Een resource maken** > **Gegevens en analyses** > **Data factory**:
+1. Selecteer in het linkermenu **een resource** -  >  **integratie**  >  **Data Factory** maken:
 
    ![Selectie van Data Factory in het deelvenster Nieuw](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -67,8 +67,8 @@ Bereid de Blob-opslag voor op de zelf studie door de volgende stappen uit te voe
    ![Foutbericht nieuwe data factory](./media/doc-common-process/name-not-available-error.png)
 
    Als u een foutbericht ontvangt dat betrekking heeft op de waarde die bij de naam is ingevuld, voert u een andere naam in voor de data factory. Gebruik bijvoorbeeld de naam _**uwnaam**_**ADFTutorialDataFactory**. Raadpleeg het onderwerp [Data Factory - Naamgevingsregels](naming-rules.md) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
-3. Selecteer het Azure-**abonnement** waarin u de nieuwe data factory wilt maken.
-4. Voer een van de volgende stappen uit voor **Resourcegroep**:
+3. Selecteer het Azure- **abonnement** waarin u de nieuwe data factory wilt maken.
+4. Voer een van de volgende stappen uit voor **Resourcegroep** :
 
     a. Selecteer **Bestaande gebruiken** en selecteer een bestaande resourcegroep in de vervolgkeuzelijst.
 
@@ -93,15 +93,15 @@ Bereid de Blob-opslag voor op de zelf studie door de volgende stappen uit te voe
 
 2. Voer de volgende stappen uit op de pagina **Eigenschappen** :
 
-    a. Voer onder **taak naam** **DeltaCopyFromBlobPipeline**in.
+    a. Voer onder **taak naam** **DeltaCopyFromBlobPipeline** in.
 
     b. Selecteer onder **taak uitgebracht of taak planning** **regel matig uitvoeren volgens schema**.
 
-    c. Onder **trigger type**selecteert u **tumblingvenstertriggers-venster**.
+    c. Onder **trigger type** selecteert u **tumblingvenstertriggers-venster**.
 
-    d. Voer **1 uur**in onder **terugkeer patroon**.
+    d. Voer **1 uur** in onder **terugkeer patroon**.
 
-    e. Selecteer **Next**.
+    e. Selecteer **Volgende**.
 
     De gebruikersinterface van Data Factory maakt een pijplijn met de opgegeven taaknaam.
 
@@ -124,13 +124,13 @@ Bereid de Blob-opslag voor op de zelf studie door de volgende stappen uit te voe
 
     ![Scherm afbeelding toont het dialoog venster invoer bestand of-map kiezen.](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/choose-input-file-folder.png)
 
-    b. Selecteer bij **gedrag bij het laden van bestanden**de optie **Incrementeel laden: gepartitioneerde map/bestands namen**.
+    b. Selecteer bij **gedrag bij het laden van bestanden** de optie **Incrementeel laden: gepartitioneerde map/bestands namen**.
 
     c. Schrijf het pad naar de dynamische map als **bron/{Year}/{maand}/{Day}/{Hour}/** en wijzig de notatie zoals weer gegeven in de volgende scherm afbeelding. Controleer de **binaire kopie** en klik op **volgende**.
 
     ![Scherm afbeelding toont het dialoog venster invoer bestand of-map kiezen met een geselecteerde map.](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/check-binary-copy.png)     
 
-5. Selecteer op de pagina **doel gegevens archief** de **AzureBlobStorage**, die hetzelfde opslag account als gegevens bron archief is, en klik vervolgens op **volgende**.
+5. Selecteer op de pagina **doel gegevens archief** de **AzureBlobStorage** , die hetzelfde opslag account als gegevens bron archief is, en klik vervolgens op **volgende**.
 
     ![De pagina Doelgegevensarchief](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/destination-data-store-page-select-linkedservice.png)
 6. Voer op de pagina **het uitvoer bestand of de map kiezen** de volgende stappen uit:
@@ -169,7 +169,7 @@ Bereid de Blob-opslag voor op de zelf studie door de volgende stappen uit te voe
     > [!NOTE]
     > Mogelijk weet u dat er een nieuw mappad moet worden gemaakt. Wijzig de mapnaam met uw UTC-tijd.  Als de huidige UTC-tijd bijvoorbeeld 4:20 uur is op mrt. 17, 2020, kunt u het mappad maken als **bron/2020/03/17/04/** door de regel **{year}/{month}/{Day}/{Hour}/**.
 
-13. Als u wilt terugkeren naar de weer gave **pijplijn uitvoeringen** , selecteert u **alle pijp lijnen worden uitgevoerd**en wacht u tot dezelfde pijp lijn opnieuw wordt geactiveerd na een uur.  
+13. Als u wilt terugkeren naar de weer gave **pijplijn uitvoeringen** , selecteert u **alle pijp lijnen worden uitgevoerd** en wacht u tot dezelfde pijp lijn opnieuw wordt geactiveerd na een uur.  
 
     ![Scherm afbeelding toont de koppeling alle pijplijn uitvoeringen om terug te gaan naar die pagina.](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs5.png)
 

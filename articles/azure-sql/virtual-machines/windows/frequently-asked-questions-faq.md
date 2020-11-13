@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: d3d8908739d6dda76f4c3d44540c36b36115d6f5
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: b58119ccc1551d12dfc9b09f76f6980618ba6221
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289405"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556291"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-azure-vms"></a>Veelgestelde vragen over SQL Server op virtuele Azure-machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -52,7 +52,7 @@ In dit artikel vindt u antwoorden op enkele van de meest voorkomende vragen over
    
 1. **Is het mogelijk om een gegeneraliseerde Azure Marketplace-SQL Server installatie kopie van mijn SQL Server virtuele machine te maken en deze te gebruiken om Vm's te implementeren?**
 
-   Ja, maar u moet [elke SQL Server virtuele machine registreren bij de resource provider SQL Server VM](sql-vm-resource-provider-register.md) om uw SQL Server-VM in de portal te beheren, evenals functies als automatische patches en automatisch maken van back-ups. Wanneer u zich registreert bij de resource provider, moet u ook het licentie type opgeven voor elke SQL Server VM.
+   Ja, maar u moet [elke SQL Server VM registreren met de SQL IaaS agent-extensie](sql-agent-extension-manually-register-single-vm.md) voor het beheren van uw SQL Server virtuele machine in de portal, en het gebruik van functies zoals automatische patching en automatische back-ups. Bij het registreren met de uitbrei ding moet u ook het licentie type opgeven voor elke SQL Server VM.
 
 1. **Hoe kan ik generaliseer SQL Server op Azure VM en gebruiken om nieuwe virtuele machines te implementeren?**
 
@@ -64,22 +64,22 @@ In dit artikel vindt u antwoorden op enkele van de meest voorkomende vragen over
    `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Setup\SysPrepExternal\Specialize`
 
    > [!NOTE]
-   > SQL Server op virtuele machines van Azure, met inbegrip van de Vm's die zijn geïmplementeerd vanuit aangepaste gegeneraliseerde installatie kopieën, moeten worden [geregistreerd bij de resource provider van de SQL-VM](./sql-vm-resource-provider-register.md?tabs=azure-cli%252cbash) om te voldoen aan de nalevings vereisten en om optionele functies te gebruiken, zoals automatische patches en automatische back-ups. De resource provider stelt u ook in staat [het licentie type](./licensing-model-azure-hybrid-benefit-ahb-change.md?tabs=azure-portal) voor elke SQL Server virtuele machine op te geven.
+   > SQL Server op virtuele machines van Azure, met inbegrip van de Vm's die zijn geïmplementeerd vanuit aangepaste gegeneraliseerde installatie kopieën, moeten worden [geregistreerd met de SQL IaaS agent-extensie](./sql-agent-extension-manually-register-single-vm.md?tabs=azure-cli%252cbash) om te voldoen aan de nalevings vereisten en om optionele functies te gebruiken, zoals automatische patching en automatische back-ups. Met de extensie kunt u ook [het licentie type](./licensing-model-azure-hybrid-benefit-ahb-change.md?tabs=azure-portal) voor elke SQL Server virtuele machine opgeven.
 
 1. **Kan ik mijn eigen VHD gebruiken om een SQL Server virtuele machine te implementeren?**
 
-   Ja, maar u moet [elke SQL Server virtuele machine registreren bij de resource provider SQL Server VM](sql-vm-resource-provider-register.md) om uw SQL Server-VM in de portal te beheren, evenals functies als automatische patches en automatisch maken van back-ups.
+   Ja, maar u moet [elke SQL Server VM registreren met de SQL IaaS agent-extensie](sql-agent-extension-manually-register-single-vm.md) voor het beheren van uw SQL Server virtuele machine in de portal, en het gebruik van functies zoals automatische patching en automatische back-ups.
 
 1. **Is het mogelijk configuraties in te stellen die niet worden weer gegeven in de galerie met virtuele machines (bijvoorbeeld Windows 2008 R2 + SQL Server 2012)?**
 
-   Nee. Voor installatie kopieën in de galerie met virtuele machines die SQL Server bevatten, moet u een van de installatie kopieën selecteren via de Azure Portal of via [Power shell](create-sql-vm-powershell.md). U hebt echter de mogelijkheid om een Windows-VM te implementeren en zelf SQL Server te installeren. U moet [uw SQL Server-VM vervolgens registreren bij de resource provider SQL Server VM](sql-vm-resource-provider-register.md) om uw SQL Server-VM in de Azure portal te beheren, evenals functies zoals automatische patching en automatische back-ups. 
+   Nee. Voor installatie kopieën in de galerie met virtuele machines die SQL Server bevatten, moet u een van de installatie kopieën selecteren via de Azure Portal of via [Power shell](create-sql-vm-powershell.md). U hebt echter de mogelijkheid om een Windows-VM te implementeren en zelf SQL Server te installeren. U moet [uw SQL Server-VM vervolgens registreren bij de SQL IaaS agent-extensie](sql-agent-extension-manually-register-single-vm.md) om uw SQL Server-VM in de Azure portal te beheren, evenals functies zoals automatische patches en automatische back-ups. 
 
 
 ## <a name="creation"></a>Maken
 
 1. **Hoe kan ik een virtuele machine van Azure met SQL Server maken?**
 
-   De eenvoudigste methode is het maken van een virtuele machine die SQL Server bevat. Zie [een SQL Server virtuele machine inrichten in de Azure Portal](create-sql-vm-portal.md)voor een zelf studie over het aanmelden voor Azure en het maken van een SQL Server-VM vanuit de portal. U kunt een installatie kopie van een virtuele machine selecteren die gebruikmaakt van betalen per seconde SQL Server-licentie verlening, of u kunt een installatie kopie gebruiken waarmee u uw eigen SQL Server-licentie meebrengt. U hebt ook de mogelijkheid om SQL Server hand matig te installeren op een virtuele machine met een gratis licentie (ontwikkelaar of Express) of door een on-premises licentie opnieuw te gebruiken. Zorg ervoor dat u [uw SQL Server-VM registreert bij de SQL Server VM-resource provider](sql-vm-resource-provider-register.md) om uw SQL Server-VM in de portal te beheren, en gebruik functies zoals automatische patching en automatische back-ups. Als u uw eigen licentie meebrengt, moet u beschikken over [License Mobility via Software Assurance op Azure](https://azure.microsoft.com/pricing/license-mobility/). Zie [Pricing guidance for SQL Server Azure VMs](pricing-guidance.md) (Prijsrichtlijnen voor SQL Server Azure VM's) voor meer informatie.
+   De eenvoudigste methode is het maken van een virtuele machine die SQL Server bevat. Zie [een SQL Server virtuele machine inrichten in de Azure Portal](create-sql-vm-portal.md)voor een zelf studie over het aanmelden voor Azure en het maken van een SQL Server-VM vanuit de portal. U kunt een installatie kopie van een virtuele machine selecteren die gebruikmaakt van betalen per seconde SQL Server-licentie verlening, of u kunt een installatie kopie gebruiken waarmee u uw eigen SQL Server-licentie meebrengt. U hebt ook de mogelijkheid om SQL Server hand matig te installeren op een virtuele machine met een gratis licentie (ontwikkelaar of Express) of door een on-premises licentie opnieuw te gebruiken. Zorg ervoor dat u [uw SQL Server-VM registreert met de SQL IaaS agent-extensie](sql-agent-extension-manually-register-single-vm.md) voor het beheren van uw SQL Server virtuele machine in de portal, en gebruik functies zoals automatische patching en automatische back-ups. Als u uw eigen licentie meebrengt, moet u beschikken over [License Mobility via Software Assurance op Azure](https://azure.microsoft.com/pricing/license-mobility/). Zie [Pricing guidance for SQL Server Azure VMs](pricing-guidance.md) (Prijsrichtlijnen voor SQL Server Azure VM's) voor meer informatie.
 
 1. **Hoe kan ik mijn on-premises SQL Server Data Base naar de Cloud migreren?**
 
@@ -89,7 +89,7 @@ In dit artikel vindt u antwoorden op enkele van de meest voorkomende vragen over
 
 1. **Hoe kan ik mijn gelicentieerd exemplaar van SQL Server installeren op een Azure-VM?**
 
-   Er zijn drie manieren om dit te doen. Als u een klant van Enterprise Agreement (EA) bent, kunt u een van de [installatie kopieën van virtuele machines inrichten die ondersteuning bieden voor licenties](sql-server-on-azure-vm-iaas-what-is-overview.md#BYOL), ook wel bekend als uw eigen licentie (BYOL). Als u [Software Assurance](https://www.microsoft.com/en-us/licensing/licensing-programs/software-assurance-default)hebt, kunt u de [Azure Hybrid Benefit](licensing-model-azure-hybrid-benefit-ahb-change.md) inschakelen op een bestaande payg-installatie kopie (betalen per gebruik). Of u kunt de SQL Server-installatiemedia kopiëren naar een Windows Server-VM, en vervolgens SQL Server op de VM installeren. Zorg ervoor dat u uw SQL Server-VM registreert bij de [resource provider](sql-vm-resource-provider-register.md) voor functies zoals portal beheer, geautomatiseerde back-up en automatische patching. 
+   Er zijn drie manieren om dit te doen. Als u een klant van Enterprise Agreement (EA) bent, kunt u een van de [installatie kopieën van virtuele machines inrichten die ondersteuning bieden voor licenties](sql-server-on-azure-vm-iaas-what-is-overview.md#BYOL), ook wel bekend als uw eigen licentie (BYOL). Als u [Software Assurance](https://www.microsoft.com/en-us/licensing/licensing-programs/software-assurance-default)hebt, kunt u de [Azure Hybrid Benefit](licensing-model-azure-hybrid-benefit-ahb-change.md) inschakelen op een bestaande payg-installatie kopie (betalen per gebruik). Of u kunt de SQL Server-installatiemedia kopiëren naar een Windows Server-VM, en vervolgens SQL Server op de VM installeren. Zorg ervoor dat u uw SQL Server-VM registreert met de [uitbrei ding](sql-agent-extension-manually-register-single-vm.md) voor functies zoals portal beheer, geautomatiseerde back-up en automatische patching. 
 
 1. **Kan ik een VM wijzigen zodat mijn eigen SQL Server-licentie wordt gebruikt, wanneer de VM is gemaakt vanuit een van de Betalen per gebruik-installatiekopieën uit de galerie?**
 
@@ -97,15 +97,15 @@ In dit artikel vindt u antwoorden op enkele van de meest voorkomende vragen over
 
 1. **Treedt er downtime op voor SQL Server tijdens het schakelen tussen licentiemodellen?**
 
-   Nee. [Het wijzigen van het licentie model](licensing-model-azure-hybrid-benefit-ahb-change.md) vereist geen uitval tijd voor SQL Server, omdat de wijziging onmiddellijk van kracht is en het opnieuw opstarten van de virtuele machine niet vereist is. Als u uw SQL Server virtuele machine echter wilt registreren bij de resource provider van SQL Server VM, is de [SQL IaaS-uitbrei ding](sql-server-iaas-agent-extension-automate-management.md) een vereiste en installeert u de SQL IaaS-extensie in de _volledige_ modus. Start de SQL Server-service opnieuw. Als de SQL IaaS-extensie moet worden geïnstalleerd, installeert u deze in de modus _Lightweight_ voor beperkte functionaliteit of installeert u deze in de _volledige_ modus tijdens een onderhouds venster. De SQL IaaS-uitbrei ding die is geïnstalleerd in de _licht_ modus kan op elk gewenst moment worden bijgewerkt naar de _volledige_ modus, maar vereist dat de SQL Server-service opnieuw wordt gestart. 
+   Nee. [Het wijzigen van het licentie model](licensing-model-azure-hybrid-benefit-ahb-change.md) vereist geen uitval tijd voor SQL Server, omdat de wijziging onmiddellijk van kracht is en het opnieuw opstarten van de virtuele machine niet vereist is. Als u uw SQL Server-VM echter wilt registreren met de SQL IaaS agent-extensie, is de [SQL IaaS](sql-server-iaas-agent-extension-automate-management.md) -uitbrei ding een vereiste en installeert u de SQL IaaS-extensie in de _volledige_ modus, wordt de SQL Server-service opnieuw gestart. Als de SQL IaaS-extensie moet worden geïnstalleerd, installeert u deze in de modus _Lightweight_ voor beperkte functionaliteit of installeert u deze in de _volledige_ modus tijdens een onderhouds venster. De SQL IaaS-uitbrei ding die is geïnstalleerd in de _licht_ modus kan op elk gewenst moment worden bijgewerkt naar de _volledige_ modus, maar vereist dat de SQL Server-service opnieuw wordt gestart. 
    
 1. **Is het mogelijk om licentie modellen te scha kelen op een SQL Server VM die is geïmplementeerd met het klassieke model?**
 
-   Nee. Het wijzigen van licentie modellen wordt niet ondersteund op een klassieke virtuele machine. U kunt de VM migreren naar het Azure Resource Manager-model en registreren bij de SQL Server-VM-resourceprovider. Zodra de VM is geregistreerd bij de SQL Server-VM-resourceprovider, zijn wijzigingen in het licentiemodel beschikbaar op de VM.
+   Nee. Het wijzigen van licentie modellen wordt niet ondersteund op een klassieke virtuele machine. U kunt uw VM migreren naar het Azure Resource Manager model en registreren bij de SQL IaaS agent-extensie. Zodra de VM is geregistreerd met de SQL IaaS agent-extensie, zijn wijzigingen in het licentie model beschikbaar op de virtuele machine.
 
 1. **Kan ik de Azure-portal gebruiken om meerdere exemplaren op dezelfde VM te beheren?**
 
-   Nee. Portalbeheer is een functie van de SQL Server-VM-resourceprovider, die afhankelijk is van de SQL Server IaaS-agentextensie. Als zodanig gelden dezelfde beperkingen voor de resourceprovider als voor de extensie. In de portal kan slechts één standaardexemplaar of één benoemd exemplaar worden beheerd, zolang het op de juiste wijze is geconfigureerd. Zie [SQL Server IaaS agent extension](sql-server-iaas-agent-extension-automate-management.md)(Engelstalig) voor meer informatie over deze beperkingen. 
+   Nee. Portal beheer is een functie die wordt ondersteund door de SQL IaaS agent-extensie, die afhankelijk is van de uitbrei ding van de SQL Server IaaS-agent. Als zodanig gelden dezelfde beperkingen voor de uitbrei ding als voor de uitbrei ding. In de portal kan slechts één standaardexemplaar of één benoemd exemplaar worden beheerd, zolang het op de juiste wijze is geconfigureerd. Zie [SQL Server IaaS agent extension](sql-server-iaas-agent-extension-automate-management.md)(Engelstalig) voor meer informatie over deze beperkingen. 
 
 1. **Kan Azure Hybrid Benefit worden geactiveerd met een CSP-abonnement?**
 
@@ -135,27 +135,27 @@ In dit artikel vindt u antwoorden op enkele van de meest voorkomende vragen over
    Uitgebreide programma's die abonnementsrechten bieden die vergelijkbaar zijn met die van Software Assurance als een vast voordeel, bieden ondersteuning voor Disaster Recovery Benefit. Dit is inclusief, maar is niet beperkt tot, de Open Value (OV), Open Value Subscription (OVS), Enterprise Agreement (EA), Enterprise Agreement-abonnement (EAS) en de server-en Cloud registratie (SCE). Raadpleeg de [product voorwaarden](https://www.microsoft.com/licensing/product-licensing/products) en neem contact op met uw licentie contactpersonen of account manager voor meer informatie. 
 
    
- ## <a name="resource-provider"></a>Resourceprovider
+ ## <a name="extension"></a>Extensie
 
-1. **Gaat mijn VM registreren met de nieuwe provider van SQL Server VM-resource, worden extra kosten in rekening gebracht?**
+1. **Gaat mijn VM registreren met de nieuwe SQL IaaS agent-extensie worden extra kosten in rekening gebracht?**
 
-   Nee. De resource provider van de SQL Server-VM biedt alleen extra beheer baarheid voor SQL Server op Azure VM zonder extra kosten. 
+   Nee. De SQL IaaS agent-extensie biedt alleen extra beheer baarheid voor SQL Server op Azure VM zonder extra kosten. 
 
-1. **Is de resource provider voor de SQL Server-VM beschikbaar voor alle klanten?**
+1. **Is de SQL IaaS agent-extensie voor alle klanten beschikbaar?**
  
-   Ja, zolang de SQL Server virtuele machine is geïmplementeerd in de open bare Cloud met behulp van het Resource Manager-model en niet het klassieke model. Alle andere klanten kunnen zich registreren bij de nieuwe SQL Server VM-resource provider. Maar alleen klanten met het voor deel van [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?activetab=software-assurance-default-pivot%3aprimaryr3) kunnen hun eigen licentie gebruiken door de [Azure Hybrid Benefit (AHB)](https://azure.microsoft.com/pricing/hybrid-benefit/) te activeren op een SQL Server VM. 
+   Ja, zolang de SQL Server virtuele machine is geïmplementeerd in de open bare Cloud met behulp van het Resource Manager-model en niet het klassieke model. Alle andere klanten kunnen zich registreren met de nieuwe SQL IaaS agent-extensie. Maar alleen klanten met het voor deel van [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?activetab=software-assurance-default-pivot%3aprimaryr3) kunnen hun eigen licentie gebruiken door de [Azure Hybrid Benefit (AHB)](https://azure.microsoft.com/pricing/hybrid-benefit/) te activeren op een SQL Server VM. 
 
-1. **Wat gebeurt er met de resource provider ( _micro soft. SqlVirtualMachine_ ) als de VM-resource wordt verplaatst of verwijderd?** 
+1. **Wat gebeurt er met de extensie ( _micro soft. SqlVirtualMachine_ ) als de VM-resource wordt verplaatst of verwijderd?** 
 
    Wanneer de micro soft. Compute/VirtualMachine-resource wordt verwijderd of verplaatst, wordt de bijbehorende micro soft. SqlVirtualMachine-resource op de hoogte gesteld om de bewerking asynchroon te repliceren.
 
-1. **Wat gebeurt er met de virtuele machine als de bron provider ( _micro soft. SqlVirtualMachine_ ) wordt verwijderd?**
+1. **Wat gebeurt er met de virtuele machine als de extensie ( _micro soft. SqlVirtualMachine_ ) wordt verwijderd?**
 
     De resource micro soft. Compute/VirtualMachine wordt niet beïnvloed wanneer de micro soft. SqlVirtualMachine-resource wordt verwijderd. De licentie wijzigingen worden echter standaard teruggezet naar de oorspronkelijke installatie kopie bron. 
 
-1. **Is het mogelijk om zelf-geïmplementeerde SQL Server Vm's te registreren bij de resource provider van SQL Server VM?**
+1. **Is het mogelijk om zelf geïmplementeerde SQL Server Vm's te registreren met de SQL IaaS agent-extensie?**
 
-    Ja. Als u SQL Server vanaf uw eigen media hebt geïmplementeerd en de SQL IaaS-extensie hebt geïnstalleerd, kunt u uw SQL Server VM registreren bij de resource provider om de beheer baarheid van de SQL IaaS-uitbrei ding te verkrijgen.    
+    Ja. Als u SQL Server vanaf uw eigen media hebt geïmplementeerd en de SQL IaaS-extensie hebt geïnstalleerd, kunt u uw SQL Server VM registreren met de extensie om de beheer baarheid voor delen van de SQL IaaS-uitbrei ding te verkrijgen.    
 
 
 ## <a name="administration"></a>Beheer
@@ -186,12 +186,12 @@ In dit artikel vindt u antwoorden op enkele van de meest voorkomende vragen over
    1. Maak, indien nodig, back-ups van al uw gegevens, inclusief systeem databases. 
    1. SQL Server volledig verwijderen, met inbegrip van de SQL IaaS-extensie (indien aanwezig).
    1. Installeer de gratis [SQL Express-editie](https://www.microsoft.com/sql-server/sql-server-downloads).
-   1. Meld u aan bij de resource provider van de SQL-VM in de [Lightweight-modus](sql-vm-resource-provider-register.md).
+   1. Meld u aan bij de SQL IaaS agent-extensie in de [Lightweight-modus](sql-agent-extension-manually-register-single-vm.md).
    1. Beschrijving Schakel de Service Express SQL Server uit door het starten van de service uit te scha kelen. 
 
 1. **Kan ik de Azure-portal gebruiken om meerdere exemplaren op dezelfde VM te beheren?**
 
-   Nee. Portal beheer wordt verzorgd door de resource provider van de SQL-VM, die afhankelijk is van de SQL Server IaaS agent-extensie. Als zodanig gelden dezelfde beperkingen voor de resource provider als de extensie. De portal kan slechts één standaard exemplaar of één benoemd exemplaar beheren, zolang de configuratie op de juiste wijze is geconfigureerd. Zie [SQL Server IaaS agent extension](sql-server-iaas-agent-extension-automate-management.md) (Engelstalig) voor meer informatie. 
+   Nee. Portal beheer wordt verzorgd door de SQL IaaS agent-extensie, die afhankelijk is van de uitbrei ding van de SQL Server IaaS-agent. Als zodanig gelden dezelfde beperkingen als voor de uitbrei ding. De portal kan slechts één standaard exemplaar of één benoemd exemplaar beheren, zolang de configuratie op de juiste wijze is geconfigureerd. Zie [SQL Server IaaS agent extension](sql-server-iaas-agent-extension-automate-management.md) (Engelstalig) voor meer informatie. 
 
 
 ## <a name="updating-and-patching"></a>Updates en patches
@@ -208,7 +208,7 @@ In dit artikel vindt u antwoorden op enkele van de meest voorkomende vragen over
 
    virtuele machines geven u controle over de hostmachine, inclusief wanneer en hoe u updates wilt toepassen. U kunt handmatig de Windows-updates toepassen voor het besturingssysteem of u kunt de planningsservice [Automated Patching](automated-patching.md) inschakelen. Automated Patching installeert alle updates die als belangrijk zijn aangeduid, met inbegrip van SQL Server-updates in deze categorie. Overige optionele updates voor SQL Server moeten handmatig worden geïnstalleerd.
 
-1. **Kan ik een upgrade uitvoeren van mijn SQL Server 2008/2008 R2-exemplaar nadat ik deze heb geregistreerd bij de resource provider van SQL Server VM?**
+1. **Kan ik een upgrade uitvoeren van mijn SQL Server 2008/2008 R2-exemplaar na het registreren van de SQL IaaS agent-extensie?**
 
    Als het besturings systeem Windows Server 2008 R2 of later is, ja. U kunt elk installatie medium gebruiken om de versie en editie van SQL Server te upgraden, en vervolgens kunt u uw [SQL IaaS-uitbreidings modus](sql-server-iaas-agent-extension-automate-management.md#management-modes)upgraden van _geen enkele agent_ naar een _volle_. Op die manier krijgt u toegang tot alle voor delen van de SQL IaaS-extensie, zoals beheer baarheid van de portal, automatische back-ups en automatische patching. Als de versie van het besturings systeem Windows Server 2008 is, wordt alleen de modus zonder agent ondersteund. 
 

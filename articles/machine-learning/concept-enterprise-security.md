@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/09/2020
-ms.openlocfilehash: eaaedc4404419e6028250a994077dd3df20b83d4
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: fb1f1d098970927ba04c840e77ec0a0b8d76ca02
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/12/2020
-ms.locfileid: "94539648"
+ms.locfileid: "94561315"
 ---
 # <a name="enterprise-security-and-governance-for-azure-machine-learning"></a>Enter prise Security en governance voor Azure Machine Learning
 
@@ -105,7 +105,13 @@ U kunt desgewenst uw eigen beheerde identiteiten configureren voor gebruik met A
 
 U kunt Azure Virtual Network (VNet) gebruiken om fysieke toegang tot Azure Machine Learning resources te beperken. Met VNets kunt u netwerk omgevingen maken die gedeeltelijk of volledig zijn geïsoleerd van het open bare Internet. Dit vermindert de kwets baarheid voor uw oplossing en de kans op gegevens exfiltration.
 
-Zie [Overzicht van isolatie van virtueel netwerk en privacy](how-to-network-security-overview.md).
+Raadpleeg de volgende documenten voor meer informatie:
+
+* [Overzicht van virtuele netwerk isolatie en privacy](how-to-network-security-overview.md)
+* [Beveiligde werkruimteresources](how-to-secure-workspace-vnet.md)
+* [Beveiligde trainingsomgeving](how-to-secure-training-vnet.md)
+* [Veilige interferentie omgeving](how-to-secure-inferencing-vnet.md)
+* [Studio gebruiken in een beveiligd virtueel netwerk](how-to-enable-studio-virtual-network.md)
 
 <a id="encryption-at-rest"></a><a id="azure-blob-storage"></a>
 

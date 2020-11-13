@@ -1,15 +1,15 @@
 ---
 title: Resources vergren delen om wijzigingen te voor komen
-description: Voor komen dat gebruikers essentiële Azure-resources bijwerken of verwijderen door een vergren deling toe te passen op alle gebruikers en rollen.
+description: Voor komen dat gebruikers Azure-resources bijwerken of verwijderen door een vergren deling toe te passen voor alle gebruikers en rollen.
 ms.topic: conceptual
-ms.date: 11/03/2020
+ms.date: 11/11/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 57b4fecd0293c714dfd910ae2ad4866397646ce8
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: f1073d8c4a6902ea00a9b4098ef87bc411b3e6c0
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340138"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555665"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Resources vergrendelen om onverwachte wijzigingen te voorkomen
 
@@ -74,19 +74,91 @@ Als u alles wilt verwijderen voor de service, inclusief de resource groep vergre
 
 ### <a name="arm-template"></a>ARM-sjabloon
 
-Wanneer u een resource manager-sjabloon gebruikt om een vergren deling te implementeren, gebruikt u verschillende waarden voor de naam en het type, afhankelijk van het bereik van de vergren deling.
+Wanneer u een Azure Resource Manager sjabloon (ARM-sjabloon) gebruikt om een vergren deling te implementeren, moet u rekening houden met het bereik van de vergren deling en het bereik van de implementatie. Als u een vergren deling op het implementatie bereik wilt Toep assen, zoals het vergren delen van een resource groep of-abonnement, stelt u de eigenschap scope niet in. Stel de eigenschap scope in wanneer u een resource vergrendelt binnen het implementatie bereik.
 
-Bij het Toep assen van een vergren deling op een **resource** gebruikt u de volgende indelingen:
+Met de volgende sjabloon wordt een vergren deling toegepast op de resource groep waarop deze is geïmplementeerd. U ziet dat er geen bereik eigenschap is voor de vergren deling van de resource omdat het bereik van de vergren deling overeenkomt met het implementatie bereik. Deze sjabloon wordt geïmplementeerd op het niveau van de resource groep.
 
-* naam `{resourceName}/Microsoft.Authorization/{lockName}`
-* voert `{resourceProviderNamespace}/{resourceType}/providers/locks`
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {  
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Authorization/locks",
+            "apiVersion": "2016-09-01",
+            "name": "rgLock",
+            "properties": {
+                "level": "CanNotDelete",
+                "notes": "Resource Group should not be deleted."
+            }
+        }
+    ]
+}
+```
 
-Bij het Toep assen van een vergren deling op een **resource groep** of- **abonnement** , gebruikt u de volgende indelingen:
+Als u een resource groep wilt maken en deze wilt vergren delen, implementeert u de volgende sjabloon op abonnements niveau.
 
-* naam `{lockName}`
-* voert `Microsoft.Authorization/locks`
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "rgName": {
+            "type": "string"
+        },
+        "rgLocation": {
+            "type": "string"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Resources/resourceGroups",
+            "apiVersion": "2019-10-01",
+            "name": "[parameters('rgName')]",
+            "location": "[parameters('rgLocation')]",
+            "properties": {}
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2020-06-01",
+            "name": "lockDeployment",
+            "resourceGroup": "[parameters('rgName')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Resources/resourceGroups/', parameters('rgName'))]"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "template": {
+                    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {},
+                    "variables": {},
+                    "resources": [
+                        {
+                            "type": "Microsoft.Authorization/locks",
+                            "apiVersion": "2016-09-01",
+                            "name": "rgLock",
+                            "properties": {
+                                "level": "CanNotDelete",
+                                "notes": "Resource group and its resources should not be deleted."
+                            }
+                        }
+                    ],
+                    "outputs": {}
+                }
+            }
+        }
+    ],
+    "outputs": {}
+}
+```
 
-In het volgende voor beeld ziet u een sjabloon waarmee u een app service-plan, een website en een vergren deling op de website maakt. Het bron type van de vergren deling is het resource type van de resource die u wilt vergren delen en **/providers/Locks**. De naam van de vergren deling wordt gemaakt door de resource naam met **/Microsoft.Authorization/** en de naam van de vergren deling samen te voegen.
+Wanneer u een vergren deling toepast op een **resource** in de resource groep, voegt u de eigenschap scope toe. Stel het bereik in op de naam van de resource die u wilt vergren delen.
+
+In het volgende voor beeld ziet u een sjabloon waarmee u een app service-plan, een website en een vergren deling op de website maakt. Het bereik van de vergren deling is ingesteld op de website.
 
 ```json
 {
@@ -95,6 +167,10 @@ In het volgende voor beeld ziet u een sjabloon waarmee u een app service-plan, e
   "parameters": {
     "hostingPlanName": {
       "type": "string"
+    },
+    "location": {
+        "type": "string",
+        "defaultValue": "[resourceGroup().location]"
     }
   },
   "variables": {
@@ -103,9 +179,9 @@ In het volgende voor beeld ziet u een sjabloon waarmee u een app service-plan, e
   "resources": [
     {
       "type": "Microsoft.Web/serverfarms",
-      "apiVersion": "2019-08-01",
+      "apiVersion": "2020-06-01",
       "name": "[parameters('hostingPlanName')]",
-      "location": "[resourceGroup().location]",
+      "location": "[parameters('location')]",
       "sku": {
         "tier": "Free",
         "name": "f1",
@@ -117,9 +193,9 @@ In het volgende voor beeld ziet u een sjabloon waarmee u een app service-plan, e
     },
     {
       "type": "Microsoft.Web/sites",
-      "apiVersion": "2019-08-01",
+      "apiVersion": "2020-06-01",
       "name": "[variables('siteName')]",
-      "location": "[resourceGroup().location]",
+      "location": "[parameters('location')]",
       "dependsOn": [
         "[resourceId('Microsoft.Web/serverfarms', parameters('hostingPlanName'))]"
       ],
@@ -128,9 +204,10 @@ In het volgende voor beeld ziet u een sjabloon waarmee u een app service-plan, e
       }
     },
     {
-      "type": "Microsoft.Web/sites/providers/locks",
+      "type": "Microsoft.Authorization/locks",
       "apiVersion": "2016-09-01",
-      "name": "[concat(variables('siteName'), '/Microsoft.Authorization/siteLock')]",
+      "name": "siteLock",
+      "scope": "[concat('Microsoft.Web/sites/', variables('siteName'))]",
       "dependsOn": [
         "[resourceId('Microsoft.Web/sites', variables('siteName'))]"
       ],
@@ -142,8 +219,6 @@ In het volgende voor beeld ziet u een sjabloon waarmee u een app service-plan, e
   ]
 }
 ```
-
-Zie [een resource groep maken en deze vergren delen](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-deployments/create-rg-lock-role-assignment)voor een voor beeld van het instellen van een vergren deling voor een resource groep.
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 

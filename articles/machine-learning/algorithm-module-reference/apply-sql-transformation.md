@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 09/09/2019
-ms.openlocfilehash: 9a195497b4376633bd3c767d7d0ea029109fdf9d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/12/2020
+ms.openlocfilehash: c66fbe59fd5b2660d02bfca285f78666d64569fe
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76314535"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555597"
 ---
 # <a name="apply-sql-transformation"></a>SQL-transformatie toepassen
 
@@ -29,11 +29,26 @@ Met de module voor het Toep assen van SQL-trans formatie kunt u het volgende doe
 -   Voer SQL-query-instructies uit om gegevens te filteren of te wijzigen en de query resultaten te retour neren als een gegevens tabel.  
 
 > [!IMPORTANT]
-> De SQL-engine die in deze module wordt gebruikt, is **sqlite**. Voor meer informatie over de syntaxis van SQLite raadpleegt u [SQL zoals geïnterpreteerd door sqlite](https://www.sqlite.org/index.html) voor meer informatie.  
+> De SQL-engine die in deze module wordt gebruikt, is **sqlite**. Voor meer informatie over de syntaxis van SQLite raadpleegt u [SQL zoals begrepen door sqlite](https://www.sqlite.org/index.html).
+> Met deze module worden gegevens in SQLite gebump, die zich in de geheugen-DB bevinden. Daarom vergt het uitvoeren van de module veel meer geheugen en kan er een `Out of memory` fout optreden. Zorg ervoor dat uw computer voldoende RAM heeft.
 
 ## <a name="how-to-configure-apply-sql-transformation"></a>SQL-trans formatie Toep assen configureren  
 
 De module kan Maxi maal drie gegevens sets als invoer hebben. Wanneer u verwijst naar de gegevens sets die zijn verbonden met elke invoer poort, moet u de namen `t1` , `t2` en gebruiken `t3` . Het tabel nummer geeft de index van de invoer poort aan.  
+
+Hieronder ziet u voorbeeld code om te laten zien hoe u twee tabellen samenvoegt. T1 en T2 zijn twee gegevens sets die zijn verbonden met de linker-en middelste invoer poorten van **SQL-trans formatie Toep assen** :
+
+```sql
+SELECT t1.*
+    , t3.Average_Rating
+FROM t1 join
+    (SELECT placeID
+        , AVG(rating) AS Average_Rating
+    FROM t2
+    GROUP BY placeID
+    ) as t3
+on t1.placeID = t3.placeID
+```
   
 De resterende para meter is een SQL-query die gebruikmaakt van de SQLite-syntaxis. Wanneer u meerdere regels in het tekstvak **SQL script** typt, gebruikt u een punt komma om elke instructie te beëindigen. Anders worden regel einden geconverteerd naar spaties.  
 

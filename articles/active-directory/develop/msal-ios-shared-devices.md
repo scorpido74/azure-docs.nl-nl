@@ -13,19 +13,17 @@ ms.date: 03/31/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 949ddae903a53957f62b89a01ce477edb92917c1
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: a97e14bcb68629f5f175a4913146187949af08be
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92365906"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94561060"
 ---
 # <a name="shared-device-mode-for-ios-devices"></a>Modus voor gedeeld apparaat voor iOS-apparaten
 
-> [!NOTE]
-> Deze functie is beschikbaar voor openbare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
-> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+>[!IMPORTANT]
+> Deze functie [!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
 
 Firstline-werk rollen, zoals Retail Associates, leden van de vliegtuig bemanning en mede werkers van de Field service gebruiken vaak een gedeeld mobiel apparaat om hun werk uit te voeren. Deze gedeelde apparaten kunnen beveiligings Risico's opleveren als uw gebruikers hun wacht woord of pincode, opzettelijk of niet delen, om toegang te krijgen tot klant-en bedrijfs gegevens op het gedeelde apparaat.
 
@@ -43,9 +41,9 @@ Als u een app voor gedeelde apparaten wilt maken, werken ontwikkel aars en behee
 
 1. **Beheerders** van apparaten bereiden het apparaat voor met het delen van een Mobile Device Management (MDM)-provider, zoals Microsoft intune voor het beheren van de apparaten in hun organisatie. Het MDM duwt de Microsoft Authenticator-app naar de apparaten en schakelt gedeelde modus voor elk apparaat in via een profiel update op het apparaat. Met deze instelling voor de gedeelde modus wordt het gedrag van de ondersteunde apps op het apparaat gewijzigd. Deze configuratie van de MDM-provider stelt de modus voor gedeelde apparaten voor het apparaat in en schakelt de [micro soft Enter PRISE SSO-invoeg toepassing in voor Apple-apparaten](apple-sso-plugin.md) die vereist zijn voor de modus gedeeld apparaat.
 
-1. [**Vereist tijdens alleen open bare preview**] Een gebruiker met de rol van beheerder van het [Cloud apparaat](../roles/permissions-reference.md#cloud-device-administrator) moet vervolgens de [app Microsoft Authenticator](../user-help/user-help-auth-app-overview.md) starten en hun apparaat toevoegen aan de organisatie.
+1. [ **Vereist tijdens alleen open bare preview** ] Een gebruiker met de rol van beheerder van het [Cloud apparaat](../roles/permissions-reference.md#cloud-device-administrator) moet vervolgens de [app Microsoft Authenticator](../user-help/user-help-auth-app-overview.md) starten en hun apparaat toevoegen aan de organisatie.
 
-    Als u het lidmaatschap van uw organisatie rollen wilt configureren in de Azure portal: **Azure Active Directory**  >  **rollen en Administrators**van de  >  **Cloud apparaat-beheerder**
+    Als u het lidmaatschap van uw organisatie rollen wilt configureren in de Azure portal: **Azure Active Directory**  >  **rollen en Administrators** van de  >  **Cloud apparaat-beheerder**
 
 In de volgende secties wordt beschreven hoe u uw toepassing bijwerkt voor de ondersteuning van de modus gedeeld apparaat.
 
@@ -58,10 +56,10 @@ Het apparaat moet worden geconfigureerd voor de ondersteuning van de modus gedee
 
 1. Vertel in de intune-configuratie Portal het apparaat om de [micro soft Enter PRISE SSO-invoeg toepassing](apple-sso-plugin.md) in te scha kelen voor Apple-apparaten met de volgende configuratie:
 
-    - **Type**: omleiden
-    - **Extensie-id**: com. micro soft. azureauthenticator. ssoextension
-    - **Team-ID**: (dit veld is niet nodig voor IOS)
-    - **Url's**:   
+    - **Type** : omleiden
+    - **Extensie-id** : com. micro soft. azureauthenticator. ssoextension
+    - **Team-ID** : (dit veld is niet nodig voor IOS)
+    - **Url's** :   
         - `https://login.microsoftonline.com`
         - `https://login.microsoft.com`
         - `https://sts.windows.net`
@@ -71,7 +69,7 @@ Het apparaat moet worden geconfigureerd voor de ondersteuning van de modus gedee
         - `https://login.microsoftonline.us`
         - `https://login.usgovcloudapi.net`
         - `https://login-us.microsoftonline.com`
-    - **Aanvullende gegevens die moeten worden geconfigureerd**:
+    - **Aanvullende gegevens die moeten worden geconfigureerd** :
       - Sleutel: sharedDeviceMode
       - Type: Booleaans
       - Waarde: True

@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/09/2020
-ms.openlocfilehash: 8abcbc74506599e7896ad6d41b9444e946172283
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 11/12/2020
+ms.openlocfilehash: 1489ce74da2ecff5212feb5a1a2e3c9151b73424
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324906"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555580"
 ---
 # <a name="convert-to-image-directory"></a>Converteren naar afbeeldingsmap
 
@@ -47,7 +47,8 @@ In dit artikel wordt beschreven hoe u de module converteren naar afbeelding kunt
     
     ![Gegevensset voor beeld van afbeelding](./media/module/image-sample-dataset.png)
 
-    Voor scores moet de map gegevensset voor afbeeldingen alleen niet-geclassificeerde afbeeldingen bevatten.
+    > [!NOTE]
+    > Voor een afleiding moet de map gegevensset van de afbeelding alleen niet-geclassificeerde afbeeldingen bevatten.
 
 1. [Registreer de gegevensset van de installatie kopie als een bestands gegevensset](../how-to-create-register-datasets.md) in uw werk ruimte, omdat de invoer van Convert naar afbeelding Directory module moet een **Bestands gegevensset** zijn.
 

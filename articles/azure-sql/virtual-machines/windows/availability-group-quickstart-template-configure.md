@@ -14,12 +14,12 @@ ms.date: 01/04/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 204c7d756a13ed0427f06abfb56e3f1256df48bc
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: e52925acb099190305e1f0609ac389565336e24b
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789944"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556502"
 ---
 # <a name="use-azure-quickstart-templates-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>Gebruik sjablonen van Azure Quick Start om een beschikbaarheids groep te configureren voor SQL Server op Azure VM
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -41,7 +41,7 @@ Hoewel in dit artikel de Azure Quick Start-sjablonen worden gebruikt om de omgev
 Als u de installatie van een AlwaysOn-beschikbaarheids groep wilt automatiseren met behulp van Quick Start-sjablonen, moet u beschikken over de volgende vereisten: 
 - Een [Azure-abonnement](https://azure.microsoft.com/free/).
 - Een resource groep met een domein controller. 
-- Een of meer aan een domein gekoppelde [virtuele machines in azure met SQL Server 2016 (of hoger) Enter prise Edition](./create-sql-vm-portal.md) die zich in dezelfde beschikbaarheidsset of beschikbaarheids zone bevinden en die zijn [geregistreerd bij de resource provider van de SQL-VM](sql-vm-resource-provider-register.md).  
+- Een of meer aan een domein gekoppelde [virtuele machines in azure met SQL Server 2016 (of hoger) Enter prise Edition](./create-sql-vm-portal.md) die zich in dezelfde beschikbaarheidsset of beschikbaarheids zone bevinden en die zijn [geregistreerd bij de SQL IaaS agent-extensie](sql-agent-extension-manually-register-single-vm.md).  
 - Twee beschik bare (niet gebruikt door een entiteit) IP-adressen: een voor de interne load balancer en één voor de beschikbaarheids groep-listener binnen hetzelfde subnet als de beschikbaarheids groep. Als een bestaande load balancer wordt gebruikt, hebt u slechts één beschikbaar IP-adres nodig.  
 
 ## <a name="permissions"></a>Machtigingen
@@ -52,7 +52,7 @@ De volgende machtigingen zijn nodig voor het configureren van de always on-besch
 
 
 ## <a name="create-cluster"></a>Cluster maken
-Nadat uw SQL Server Vm's zijn geregistreerd bij de resource provider van de SQL-VM, kunt u uw SQL Server-Vm's toevoegen aan *SqlVirtualMachineGroups* . Met deze bron worden de meta gegevens van het Windows-failovercluster gedefinieerd. Meta gegevens bevatten de versie, editie, Fully Qualified Domain Name, Active Directory accounts voor het beheren van zowel het cluster als SQL Server en het opslag account als de cloudwitness. 
+Nadat uw SQL Server Vm's zijn geregistreerd bij de SQL IaaS agent-extensie, kunt u uw SQL Server Vm's toevoegen aan *SqlVirtualMachineGroups*. Met deze bron worden de meta gegevens van het Windows-failovercluster gedefinieerd. Meta gegevens bevatten de versie, editie, Fully Qualified Domain Name, Active Directory accounts voor het beheren van zowel het cluster als SQL Server en het opslag account als de cloudwitness. 
 
 Het toevoegen van SQL Server Vm's aan de resource groep *SqlVirtualMachineGroups* Boots trapt de Windows failover cluster-service om het cluster te maken en voegt vervolgens deze SQL Server vm's toe aan dat cluster. Deze stap is geautomatiseerd met de sjabloon **101-SQL-VM-AG-Setup** Quick Start. U kunt het implementeren met behulp van de volgende stappen:
 
@@ -115,14 +115,14 @@ Voor de always on-beschikbaarheids groep-listener is een intern exemplaar van Az
 U hoeft alleen de interne load balancer te maken. In stap 4 wordt de rest van de configuratie (zoals de back-end-pool, de status test en de regels voor taak verdeling) verwerkt met de Snelstartgids **101-SQL-VM-aglistener-Setup** . 
 
 1. Open in Azure-portal de resourcegroep die de virtuele SQL Server-machines omvat. 
-2. Selecteer in de resource groep de optie **toevoegen** .
-3. Zoeken naar **Load Balancer** . Selecteer in de zoek resultaten **Load Balancer** , die is gepubliceerd door **micro soft** .
-4. Selecteer op **Load Balancer** de blade Load Balancer **maken** .
+2. Selecteer in de resource groep de optie **toevoegen**.
+3. Zoeken naar **Load Balancer**. Selecteer in de zoek resultaten **Load Balancer** , die is gepubliceerd door **micro soft**.
+4. Selecteer op **Load Balancer** de blade Load Balancer **maken**.
 5. Configureer de taakverdeler in het dialoogvenster **Taakverdeler maken** als volgt:
 
    | Instelling | Waarde |
    | --- | --- |
-   | **Naam** |Voer een tekst naam in die de load balancer vertegenwoordigt. Voer bijvoorbeeld **sqlLB** . |
+   | **Naam** |Voer een tekst naam in die de load balancer vertegenwoordigt. Voer bijvoorbeeld **sqlLB**. |
    | **Type** |**Intern** : de meeste implementaties gebruiken een interne Load Balancer, waarmee toepassingen binnen hetzelfde virtuele netwerk verbinding kunnen maken met de beschikbaarheids groep.  </br> **Extern** : Hiermee kunnen toepassingen verbinding maken met de beschikbaarheids groep via een open bare Internet verbinding. |
    | **Virtueel netwerk** | Selecteer het virtuele netwerk waarin de SQL Server exemplaren zich bevinden. |
    | **Subnet** | Selecteer het subnet waarin de SQL Server-exemplaren zich bevinden. |
@@ -133,7 +133,7 @@ U hoeft alleen de interne load balancer te maken. In stap 4 wordt de rest van de
    | **Locatie** |Selecteer de Azure-locatie waar de SQL Server-exemplaren zich bevinden. |
    | &nbsp; | &nbsp; |
 
-6. Selecteer **Maken** . 
+6. Selecteer **Maken**. 
 
 
 >[!IMPORTANT]
@@ -141,7 +141,7 @@ U hoeft alleen de interne load balancer te maken. In stap 4 wordt de rest van de
 
 ## <a name="create-listener"></a>Listener maken 
 
-Maak de listener voor de beschikbaarheids groep en configureer de interne load balancer automatisch met behulp van de sjabloon **101-SQL-VM-aglistener-Setup**  Quick Start. De sjabloon richt zich op de resource micro soft. SqlVirtualMachine/SqlVirtualMachineGroups/AvailabilityGroupListener. Met de sjabloon  **101-SQL-VM-aglistener-** start Quick Start, via de resource provider van de SQL-VM, worden de volgende acties uitgevoerd:
+Maak de listener voor de beschikbaarheids groep en configureer de interne load balancer automatisch met behulp van de sjabloon **101-SQL-VM-aglistener-Setup**  Quick Start. De sjabloon richt zich op de resource micro soft. SqlVirtualMachine/SqlVirtualMachineGroups/AvailabilityGroupListener. Met de sjabloon  **101-SQL-VM-aglistener-Setup** Quick Start, via de SQL IaaS agent-extensie, worden de volgende acties uitgevoerd:
 
 - Hiermee maakt u een nieuwe frontend-IP-bron (op basis van de IP-adres waarde die tijdens de implementatie is gegeven) voor de listener. 
 - Hiermee configureert u de netwerk instellingen voor het cluster en de interne load balancer. 
@@ -179,9 +179,9 @@ Ga als volgt te werk om de interne load balancer te configureren en de beschikba
 >Als uw implementatie halverwege kan worden uitgevoerd, moet u [de zojuist gemaakte listener](#remove-listener) hand matig verwijderen met behulp van Power shell voordat u de **101-SQL-VM-aglistener-Setup** Quick Start-sjabloon opnieuw implementeert. 
 
 ## <a name="remove-listener"></a>Listener verwijderen
-Als u later de beschikbaarheids groep wilt verwijderen dat de sjabloon is geconfigureerd, moet u de resource provider van de SQL-VM door lopen. Omdat de listener is geregistreerd via de resource provider van de SQL-VM, kunt u deze alleen verwijderen via SQL Server Management Studio onvoldoende. 
+Als u later de beschikbaarheids groep wilt verwijderen dat de sjabloon is geconfigureerd, moet u de SQL IaaS agent-extensie door lopen. Omdat de listener is geregistreerd via de SQL IaaS agent-extensie, hoeft u deze niet te verwijderen via SQL Server Management Studio onvoldoende. 
 
-U kunt de methode het beste verwijderen via de resource provider van de SQL-VM met behulp van het volgende code fragment in Power shell. Hiermee verwijdert u de meta gegevens van de beschikbaarheids groep van de resource provider van de SQL-VM. Ook wordt de listener fysiek uit de beschikbaarheids groep verwijderd. 
+U kunt de methode het beste verwijderen via de SQL IaaS agent-extensie met behulp van het volgende code fragment in Power shell. Hiermee verwijdert u de meta gegevens van de beschikbaarheids groep van de SQL IaaS agent-extensie. Ook wordt de listener fysiek uit de beschikbaarheids groep verwijderd. 
 
 ```PowerShell
 # Remove the availability group listener
@@ -192,21 +192,21 @@ Remove-AzResource -ResourceId '/subscriptions/<SubscriptionID>/resourceGroups/<r
 ## <a name="common-errors"></a>Algemene fouten
 In deze sectie worden enkele bekende problemen en mogelijke oplossingen besproken. 
 
-De **beschikbaarheids groep-listener voor de beschikbaarheids groep \<AG-Name> bestaat al** de geselecteerde beschikbaarheids groep die wordt gebruikt in de Azure Quick Start-sjabloon voor de listener van de beschikbaarheids groep bevat al een listener. Het bevindt zich fysiek binnen de beschikbaarheids groep of de meta gegevens blijven binnen de resource provider van de SQL-VM. Verwijder de listener met behulp van [Power shell](#remove-listener) voordat u de sjabloon **101-SQL-VM-aglistener-Setup** Snelstartgids opnieuw implementeert. 
+De **beschikbaarheids groep-listener voor de beschikbaarheids groep \<AG-Name> bestaat al** de geselecteerde beschikbaarheids groep die wordt gebruikt in de Azure Quick Start-sjabloon voor de listener van de beschikbaarheids groep bevat al een listener. Het bevindt zich fysiek binnen de beschikbaarheids groep of de meta gegevens blijven binnen de SQL IaaS agent-extensie. Verwijder de listener met behulp van [Power shell](#remove-listener) voordat u de sjabloon **101-SQL-VM-aglistener-Setup** Snelstartgids opnieuw implementeert. 
 
 De **verbinding werkt alleen vanuit de primaire replica** Dit gedrag is waarschijnlijk van een mislukte **101-SQL-VM-aglistener-installatie** sjabloon implementatie die de configuratie van de interne Load Balancer met een inconsistente status heeft verlaten. Controleer of de back-endadresgroep een lijst met beschikbaarheids sets bevat en of er regels bestaan voor de status test en voor de regels voor de taak verdeling. Als er iets ontbreekt, is de configuratie van de interne load balancer een inconsistente status. 
 
 U kunt dit probleem oplossen door de listener te verwijderen met behulp van [Power shell](#remove-listener), de interne Load Balancer te verwijderen via de Azure Portal en opnieuw te beginnen bij stap 3. 
 
-**Alleen-onjuiste aanvraag virtuele-machine lijst kan worden bijgewerkt** Deze fout kan optreden wanneer u de sjabloon **101-SQL-VM-aglistener-Setup** implementeert als de listener is verwijderd via SQL Server Management Studio (SSMS), maar niet is verwijderd uit de resource provider van de SQL-VM. Als u de listener via SSMS verwijdert, worden de meta gegevens van de listener niet verwijderd uit de resource provider van de SQL-VM. De listener moet worden verwijderd van de resource provider via [Power shell](#remove-listener). 
+**Alleen-onjuiste aanvraag virtuele-machine lijst kan worden bijgewerkt** Deze fout kan optreden wanneer u de sjabloon **101-SQL-VM-aglistener-Setup** implementeert als de listener is verwijderd via SQL Server Management Studio (SSMS), maar niet is verwijderd uit de SQL IaaS agent-extensie. Als u de listener via SSMS verwijdert, worden de meta gegevens van de listener niet verwijderd uit de SQL IaaS agent-extensie. De listener moet worden verwijderd van de resource provider via [Power shell](#remove-listener). 
 
 Het **domein account bestaat niet** Deze fout kan twee oorzaken hebben. Ofwel het opgegeven domein account bestaat niet of de [UPN-gegevens (User Principal Name)](/windows/desktop/ad/naming-properties#userprincipalname) ontbreken. De sjabloon **101-SQL-VM-AG-Setup** verwacht een domein account in het UPN-formulier (dat wil zeggen user@domain.com ), maar sommige domein accounts ontbreken mogelijk. Dit gebeurt meestal wanneer een lokale gebruiker is gemigreerd als het eerste domein beheerders account wanneer de server is gepromoveerd naar een domein controller of wanneer een gebruiker is gemaakt via Power shell. 
 
 Controleer of het account bestaat. Als dat het geval is, wordt u mogelijk in de tweede situatie uitgevoerd. Ga als volgt te werk om het probleem op te lossen:
 
-1. Open op de domein controller het venster **Active Directory gebruikers en computers** met de optie **extra** in **Serverbeheer** . 
+1. Open op de domein controller het venster **Active Directory gebruikers en computers** met de optie **extra** in **Serverbeheer**. 
 2. Ga naar het account door **gebruikers** te selecteren in het linkerdeel venster.
-3. Klik met de rechter muisknop op het account en selecteer **Eigenschappen** .
+3. Klik met de rechter muisknop op het account en selecteer **Eigenschappen**.
 4. Selecteer het tabblad **account** . Als het vak **aanmeldings naam van gebruiker** leeg is, is dit de oorzaak van de fout. 
 
     ![Lege gebruikers account geeft ontbrekende UPN aan](./media/availability-group-quickstart-template-configure/account-missing-upn.png)

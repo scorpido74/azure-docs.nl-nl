@@ -13,12 +13,12 @@ ms.date: 01/14/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 997e867798922975757a588ef50248f0d09a96e0
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 801a9a112615bd6220b5f273b51ed39248ebcd45
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789842"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556468"
 ---
 # <a name="in-place-change-of-sql-server-edition-on-azure-vm"></a>In-place wijziging van SQL Server-editie op Azure VM
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -34,7 +34,7 @@ Zodra de versie van SQL Server intern is gewijzigd in de SQL Server VM, moet u d
 Als u een in-place wijziging van de editie van SQL Server wilt uitvoeren, hebt u het volgende nodig: 
 
 - Een [Azure-abonnement](https://azure.microsoft.com/free/).
-- Een [SQL Server VM in Windows](./create-sql-vm-portal.md) die is geregistreerd bij de [resource provider](sql-vm-resource-provider-register.md)van de SQL-VM.
+- Een [SQL Server VM in Windows](./create-sql-vm-portal.md) die is geregistreerd met de [SQL IaaS agent-extensie](sql-agent-extension-manually-register-single-vm.md).
 - Stel media in met de **gewenste versie** van SQL Server. Klanten die beschikken over [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) kunnen hun installatiemedia downloaden van het [Volume Licensing Center](https://www.microsoft.com/Licensing/servicecenter/default.aspx). Klanten die geen Software Assurance hebben, kunnen het installatie medium van een Azure Marketplace gebruiken SQL Server VM-installatie kopie met de gewenste versie (meestal zich in `C:\SQLServerFull` ). 
 
 
@@ -50,7 +50,7 @@ Als u de versie van SQL Server wilt bijwerken, moet u de SQL Server Setup-media 
 
    ![Selectie voor het bijwerken van de versie van SQL Server](./media/change-sql-server-edition/edition-upgrade.png)
 
-1. Selecteer **volgende** totdat u de pagina **gereed voor de upgrade-editie** hebt bereikt en selecteer vervolgens **upgrade** . Het installatie venster reageert mogelijk enkele minuten niet meer wanneer de wijziging wordt doorgevoerd. Op een **volledige** pagina wordt bevestigd dat uw editie-upgrade is voltooid. 
+1. Selecteer **volgende** totdat u de pagina **gereed voor de upgrade-editie** hebt bereikt en selecteer vervolgens **upgrade**. Het installatie venster reageert mogelijk enkele minuten niet meer wanneer de wijziging wordt doorgevoerd. Op een **volledige** pagina wordt bevestigd dat uw editie-upgrade is voltooid. 
 
 Nadat de SQL Server-editie is bijgewerkt, wijzigt u de eigenschap Edition van de virtuele machine SQL Server in de Azure Portal. Hiermee worden de meta gegevens en de facturering bijgewerkt die aan deze virtuele machine zijn gekoppeld.
 
@@ -75,11 +75,11 @@ Nadat de SQL Server-editie is gedowngraded, wijzigt u de eigenschap Edition van 
 
 ## <a name="change-edition-in-portal"></a>Editie wijzigen in Portal 
 
-Nadat u de editie van SQL Server hebt gewijzigd met behulp van de installatie media en u uw SQL Server VM hebt geregistreerd bij de [resource provider](sql-vm-resource-provider-register.md)van de SQL-VM, kunt u de Azure Portal vervolgens gebruiken om de eigenschap Edition van de SQL Server virtuele machine te wijzigen voor facturerings doeleinden. Voer hiervoor de volgende stappen uit: 
+Nadat u de editie van SQL Server hebt gewijzigd met behulp van de installatie media en u uw SQL Server VM hebt geregistreerd met de [SQL IaaS agent-extensie](sql-agent-extension-manually-register-single-vm.md), kunt u vervolgens de Azure Portal gebruiken om de eigenschap Edition van de SQL Server virtuele machine te wijzigen voor facturerings doeleinden. Voer hiervoor de volgende stappen uit: 
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
 1. Ga naar uw SQL Server virtuele machine bron. 
-1. Selecteer **configureren** onder **instellingen** . Selecteer vervolgens de gewenste versie van SQL Server in de vervolg keuzelijst onder **editie** . 
+1. Selecteer **configureren** onder **instellingen**. Selecteer vervolgens de gewenste versie van SQL Server in de vervolg keuzelijst onder **editie**. 
 
    ![Meta gegevens van de editie wijzigen](./media/change-sql-server-edition/edition-change-in-portal.png)
 
@@ -91,7 +91,7 @@ Nadat u de editie van SQL Server hebt gewijzigd met behulp van de installatie me
 
 - De editie-eigenschap voor de SQL Server virtuele machine moet overeenkomen met de editie van het SQL Server exemplaar dat is geïnstalleerd voor alle SQL Server virtual machines, inclusief betalen per gebruik en uw eigen licentie typen licenties.
 - Als u uw SQL Server VM-resource weghaalt, gaat u terug naar de in code vastgelegde editie van de installatie kopie.
-- De mogelijkheid om de editie te wijzigen, is een functie van de resource provider van de SQL-VM. Als u een installatie kopie van Azure Marketplace implementeert via de Azure Portal, wordt automatisch een SQL Server VM geregistreerd bij de resource provider. Klanten die zelf een SQL Server installeren, moeten echter [hun SQL Server virtuele machine](sql-vm-resource-provider-register.md)hand matig registreren.
+- De mogelijkheid om de editie te wijzigen, is een functie van de SQL IaaS agent-extensie. Als u een installatie kopie van een Azure Marketplace implementeert via de Azure Portal wordt automatisch een SQL Server virtuele machine geregistreerd met de SQL IaaS agent-extensie. Klanten die zelf een SQL Server installeren, moeten echter [hun SQL Server virtuele machine](sql-agent-extension-manually-register-single-vm.md)hand matig registreren.
 - Voor het toevoegen van een SQL Server-VM aan een beschikbaarheidsset moet de virtuele machine opnieuw worden gemaakt. Alle Vm's die zijn toegevoegd aan een beschikbaarheidsset, worden teruggestuurd naar de standaard editie en de editie moet opnieuw worden gewijzigd.
 
 ## <a name="next-steps"></a>Volgende stappen

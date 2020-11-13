@@ -106,8 +106,10 @@
           href: concept-disaster-recovery.md
 - name: Instructiegidsen
   items:
-    - name: Een functie inschakelen voor een subset gebruikers
+    - name: Een functie inschakelen om voor een percentage van de gebruikers
       href: howto-feature-filters-aspnet-core.md
+    - name: Een functie inschakelen voor gespecificeerde gebruikers/groepen
+      href: howto-targetingfilter-aspnet-core.md
     - name: Labels gebruiken voor configuratie per omgeving
       href: howto-labels-aspnet-core.md
     - name: Configuratiegegevens importeren of exporteren

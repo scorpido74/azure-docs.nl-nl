@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: f9b73e0919d660947edd0417f7379b3f6e6140c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d5ce3cde8c86d66bec025c778318a192ef60b73
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88245849"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94560840"
 ---
 # <a name="solutions-on-azure-virtual-machines"></a>Oplossingen op virtuele machines van Azure
 
@@ -29,7 +29,7 @@ Begin met het implementeren van een DCsv2-Series-VM via de micro soft Commercial
 
 ### <a name="current-available-sizes-and-regions"></a>Huidige beschik bare grootten en regio's
 
-Voer de volgende opdracht uit in de [Azure-cli](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest)om een lijst op te halen met alle algemeen beschik bare generatie-VM-grootten in de beschik bare regio's en beschikbaarheids zones:
+Voer de volgende opdracht uit in de [Azure-cli](/cli/azure/install-azure-cli-windows?view=azure-cli-latest)om een lijst op te halen met alle algemeen beschik bare generatie-VM-grootten in de beschik bare regio's en beschikbaarheids zones:
 
 ```azurecli-interactive
 az vm list-skus `
@@ -47,7 +47,7 @@ az vm list-skus `
     --query "[?family=='standardDCSv2Family']"
 ```
 ### <a name="dedicated-host-requirements"></a>Vereisten voor speciale host
-Het implementeren van een **Standard_DC8_v2** grootte van een virtuele machine in de DCSv2-Series VM-familie neemt de volledige host in beslag en wordt niet gedeeld met andere tenants of abonnementen. Deze VM-SKU-serie biedt de isolatie die u mogelijk nodig hebt om te voldoen aan nalevings-en beveiligings voorschriften die normaal gesp roken worden voldaan door een speciale host-service te hebben. Wanneer u **Standard_DC8_v2** SKU kiest, wijst de fysieke hostserver alle beschik bare hardwarebronnen, inclusief EPC-geheugen, toe aan uw virtuele machine. Houd er rekening mee dat deze functionaliteit bestaat door het ontwerpen van de infra structuur en dat alle functies van de **Standard_DC8_v2** worden ondersteund. Deze implementatie is niet hetzelfde als de [Azure dedicated host](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts) -service die wordt verschaft door andere Azure VM-families.
+Het implementeren van een **Standard_DC8_v2** grootte van een virtuele machine in de DCSv2-Series VM-familie neemt de volledige host in beslag en wordt niet gedeeld met andere tenants of abonnementen. Deze VM-SKU-serie biedt de isolatie die u mogelijk nodig hebt om te voldoen aan nalevings-en beveiligings voorschriften die normaal gesp roken worden voldaan door een speciale host-service te hebben. Wanneer u **Standard_DC8_v2** SKU kiest, wijst de fysieke hostserver alle beschik bare hardwarebronnen, inclusief EPC-geheugen, toe aan uw virtuele machine. Houd er rekening mee dat deze functionaliteit bestaat door het ontwerpen van de infra structuur en dat alle functies van de **Standard_DC8_v2** worden ondersteund. Deze implementatie is niet hetzelfde als de [Azure dedicated host](../virtual-machines/dedicated-hosts.md) -service die wordt verschaft door andere Azure VM-families.
 
 
 ## <a name="deployment-considerations"></a>Overwegingen bij de implementatie
@@ -59,14 +59,14 @@ Volg een zelf studie over het uitvoeren van een Snelstartgids voor het implement
 - **Prijzen en regionale Beschik baarheid** : Zoek de prijzen voor DCsv2-Series vm's op de [pagina met prijzen voor virtuele machines](https://azure.microsoft.com/pricing/details/virtual-machines/linux/). Controleer of de beschik [bare producten per regio beschikbaar zijn](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) in azure-regio's.
 
 
-- **Quotum voor kernen** : u moet mogelijk het quotum voor kernen in uw Azure-abonnement verhogen van de standaard waarde. Uw abonnement kan ook het aantal kernen beperken dat u kunt implementeren in bepaalde VM-grootte families, met inbegrip van de DCsv2-serie. Als u een quotum toename wilt aanvragen, opent u gratis [een aanvraag voor een online klant ondersteuning](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests) . Opmerking: de standaard limieten kunnen variëren, afhankelijk van de categorie van uw abonnement.
+- **Quotum voor kernen** : u moet mogelijk het quotum voor kernen in uw Azure-abonnement verhogen van de standaard waarde. Uw abonnement kan ook het aantal kernen beperken dat u kunt implementeren in bepaalde VM-grootte families, met inbegrip van de DCsv2-serie. Als u een quotum toename wilt aanvragen, opent u gratis [een aanvraag voor een online klant ondersteuning](../azure-portal/supportability/per-vm-quota-requests.md) . Opmerking: de standaard limieten kunnen variëren, afhankelijk van de categorie van uw abonnement.
 
   > [!NOTE]
   > Neem contact op met de ondersteuning van Azure als er grootschalige capaciteits behoeften zijn. Azure-quota zijn krediet limieten, geen capaciteits garanties. Ongeacht uw quotum worden er alleen kosten in rekening gebracht voor kernen die u gebruikt.
   
 - **Grootte wijzigen** : vanwege hun gespecialiseerde hardware kunt u alleen de grootte van vertrouwelijke computing-instanties binnen dezelfde omvang aanpassen. U kunt bijvoorbeeld alleen het formaat van een virtuele machine uit de DCsv2-serie wijzigen van de grootte van een DCsv2-serie naar een andere. Het wijzigen van het formaat van een niet-vertrouwelijke computer grootte naar een vertrouwelijk computer formaat wordt niet ondersteund.  
 
-- **Afbeelding** : om Intel-software Guard-extensie (Intel SGX) ondersteuning te bieden voor vertrouwelijke Compute-instanties, moeten alle implementaties worden uitgevoerd op installatie kopieën van de tweede generatie. Azure vertrouwelijk computing ondersteunt werk belastingen die worden uitgevoerd op Ubuntu 18,04 gen 2, Ubuntu 16,04 gen 2, Windows Server 2019 Gen2 en Windows Server 2016 gen 2. Meer informatie over [ondersteuning voor virtuele machines van de tweede generatie op Azure](../virtual-machines/linux/generation-2.md) voor meer info over ondersteunde en niet-ondersteunde scenario's. 
+- **Afbeelding** : om Intel-software Guard-extensie (Intel SGX) ondersteuning te bieden voor vertrouwelijke Compute-instanties, moeten alle implementaties worden uitgevoerd op installatie kopieën van de tweede generatie. Azure vertrouwelijk computing ondersteunt werk belastingen die worden uitgevoerd op Ubuntu 18,04 gen 2, Ubuntu 16,04 gen 2, Windows Server 2019 Gen2 en Windows Server 2016 gen 2. Meer informatie over [ondersteuning voor virtuele machines van de tweede generatie op Azure](../virtual-machines/generation-2.md) voor meer info over ondersteunde en niet-ondersteunde scenario's. 
 
 - **Opslag** : Azure vertrouwelijk computing gegevens schijven van virtuele machines en onze tijdelijke OS-schijven bevinden zich op NVMe-schijven. Instanties ondersteunen alleen Premium-SSD en Standard-SSD schijven, niet Ultra-SSD of Standard-HDD. De grootte van de virtuele machine **DC8_v2** biedt geen ondersteuning voor Premium Storage. 
 
@@ -76,7 +76,7 @@ Volg een zelf studie over het uitvoeren van een Snelstartgids voor het implement
 
 Wanneer u virtuele machines in azure gebruikt, bent u verantwoordelijk voor het implementeren van een oplossing voor hoge Beschik baarheid en herstel na nood gevallen om uitval tijd te voor komen. 
 
-Azure vertrouwelijk computing ondersteunt momenteel geen zone-redundantie via Beschikbaarheidszones. Gebruik [beschikbaarheids sets](../virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)voor de hoogst mogelijke Beschik baarheid en redundantie voor vertrouwelijke computing. Vanwege de beperkingen van de hardware kunnen beschikbaarheids sets voor vertrouwelijke computing instanties slechts een maximum van 10 update domeinen hebben. 
+Azure vertrouwelijk computing ondersteunt momenteel geen zone-redundantie via Beschikbaarheidszones. Gebruik [beschikbaarheids sets](../virtual-machines/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)voor de hoogst mogelijke Beschik baarheid en redundantie voor vertrouwelijke computing. Vanwege de beperkingen van de hardware kunnen beschikbaarheids sets voor vertrouwelijke computing instanties slechts een maximum van 10 update domeinen hebben. 
 
 ## <a name="deployment-with-azure-resource-manager-arm-template"></a>De sjabloon implementatie met Azure Resource Manager (ARM)
 
@@ -84,11 +84,11 @@ Azure Resource Manager is de implementatie- en beheersservice voor Azure. Er wor
 
 Zie [Sjabloonimlementatie Overview](../azure-resource-manager/templates/overview.md)(Engelstalig) voor meer informatie over arm-sjablonen.
 
-Als u een DCsv2-Series-VM in een ARM-sjabloon wilt implementeren, gebruikt u de resource van de [virtuele machine](../virtual-machines/windows/template-description.md). Zorg ervoor dat u de juiste eigenschappen voor **vmSize** en voor uw **imageReference**opgeeft.
+Als u een DCsv2-Series-VM in een ARM-sjabloon wilt implementeren, gebruikt u de resource van de [virtuele machine](../virtual-machines/windows/template-description.md). Zorg ervoor dat u de juiste eigenschappen voor **vmSize** en voor uw **imageReference** opgeeft.
 
 ### <a name="vm-size"></a>VM-grootte
 
-Geef een van de volgende grootten op in uw ARM-sjabloon in de virtuele-machine bron. Deze teken reeks wordt in **Eigenschappen**als **vmSize** geplaatst.
+Geef een van de volgende grootten op in uw ARM-sjabloon in de virtuele-machine bron. Deze teken reeks wordt in **Eigenschappen** als **vmSize** geplaatst.
 
 ```json
   [
@@ -101,7 +101,7 @@ Geef een van de volgende grootten op in uw ARM-sjabloon in de virtuele-machine b
 
 ### <a name="gen2-os-image"></a>Installatie kopie van Gen2-besturings systeem
 
-Onder **Eigenschappen**moet u ook verwijzen naar een installatie kopie onder **storageProfile**. Gebruik *slechts één* van de volgende installatie kopieën voor uw **imageReference**.
+Onder **Eigenschappen** moet u ook verwijzen naar een installatie kopie onder **storageProfile**. Gebruik *slechts één* van de volgende installatie kopieën voor uw **imageReference**.
 
 ```json
       "2019-datacenter-gensecond": {

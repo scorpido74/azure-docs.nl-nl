@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 11/13/2019
-ms.openlocfilehash: e80ff2c04cf71fa322bb0bf41e8132f595c0644e
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.date: 11/12/2020
+ms.openlocfilehash: 04da4d6466d450d04d7008332e32ea3d59cd0252
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372273"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555529"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>Een Log Analytics-werk ruimte verplaatsen naar een ander abonnement of een andere resource groep
 
@@ -29,14 +29,14 @@ De bron-en doel abonnementen van de werk ruimte moeten zich in dezelfde Azure Ac
 ```
 
 ## <a name="workspace-move-considerations"></a>Overwegingen bij het verplaatsen van de werk ruimte
-Beheerde oplossingen die in de werk ruimte zijn geïnstalleerd, worden verplaatst met de bewerking voor het verplaatsen van Log Analytics werk ruimte. Verbonden agents blijven verbonden en blijven gegevens verzenden naar de werk ruimte na de verplaatsing. Omdat voor de verplaatsings bewerking vereist is dat er geen gekoppelde services zijn uit de werk ruimte, moeten oplossingen die afhankelijk zijn van die koppeling worden verwijderd zodat de werk ruimte kan worden verplaatst.
-
-Oplossingen die moeten worden verwijderd voordat u uw Automation-account kunt ontkoppelen:
-
-- Updatebeheer
-- Wijzigingen bijhouden
-- VM's starten/stoppen buiten kantooruren
-- Azure Security Center
+- Beheerde oplossingen die in de werk ruimte zijn geïnstalleerd, worden verplaatst met de bewerking voor het verplaatsen van Log Analytics werk ruimte. 
+- Werkruimte sleutels worden opnieuw gegenereerd met werkruimte verplaatsing (primair en secundair). Als u uw werkruimte sleutel een kluis hebt, moet u deze bijwerken met de nieuwe gegenereerde sleutels. 
+- Verbonden agents blijven verbonden en blijven gegevens verzenden naar de werk ruimte na de verplaatsing. 
+- Omdat voor de verplaatsings bewerking vereist is dat er geen gekoppelde services zijn uit de werk ruimte, moeten oplossingen die afhankelijk zijn van die koppeling worden verwijderd zodat de werk ruimte kan worden verplaatst. Oplossingen die moeten worden verwijderd voordat u uw Automation-account kunt ontkoppelen:
+  - Updatebeheer
+  - Wijzigingen bijhouden
+  - VM's starten/stoppen buiten kantooruren
+  - Azure Security Center
 
 >[!IMPORTANT]
 > **Azure Sentinel-klanten**
@@ -51,7 +51,7 @@ Oplossingen die moeten worden verwijderd voordat u uw Automation-account kunt on
 > 
 >   *Voorbeelden:*
 >   - [Azure Monitor waarschuwings regels](alerts-resource-move.md)
->   - Toepassingen van derden
+>   - Externe toepassingen
 >   - Aangepast uitvoeren van scripts
 >
 

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/09/2019
 ms.author: madsd
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: dbf38c303f024884971e95f7be9d4dfc50d118de
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 954e94063ec91cd2a6d67d154dfd7da553e0935a
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127821"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94560890"
 ---
 # <a name="application-gateway-integration-with-service-endpoints"></a>Integratie met Service-eind punten Application Gateway
 Er zijn drie variaties van App Service waarvoor een enigszins verschillende configuratie van de integratie met Azure-toepassing gateway is vereist. De variaties zijn onder andere gewone App Service, ook wel bekend als multi tenant, interne Load Balancer (ILB) App Service Environment (ASE) en externe ASE. In dit artikel wordt uitgelegd hoe u dit kunt configureren met App Service (multi tenant) en overwegingen over ILB en externe ASE kunt bespreken.
@@ -36,7 +36,7 @@ Met Azure Portal voert u vier stappen uit om de installatie in te richten en te 
 1. Maak een App Service met behulp van een van de Quick starts in de App Service Documentatie, bijvoorbeeld [Snelstartgids voor .net core](../quickstart-dotnetcore.md)
 2. Maak een Application Gateway met behulp van de Snelstartgids van de [Portal](../../application-gateway/quick-create-portal.md), maar sla de sectie backend-doelen toevoegen over.
 3. Configureer [app service als een back-end in Application Gateway](../../application-gateway/configure-web-app-portal.md), maar sla de sectie toegang beperken niet over.
-4. Maak tot slot de [toegangs beperking met behulp van service-eind punten](../../app-service/app-service-ip-restrictions.md#service-endpoints).
+4. Maak tot slot de [toegangs beperking met behulp van service-eind punten](../../app-service/app-service-ip-restrictions.md#use-service-endpoints).
 
 U hebt nu toegang tot de App Service via Application Gateway, maar als u de App Service rechtstreeks probeert te openen, ontvangt u een 403 HTTP-fout melding die aangeeft dat de website is gestopt.
 

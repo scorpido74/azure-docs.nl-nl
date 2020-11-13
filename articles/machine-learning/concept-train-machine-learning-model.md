@@ -1,7 +1,7 @@
 ---
 title: '& Train-modellen bouwen'
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het trainen van modellen met Azure Machine Learning, waaronder het werken met populaire frameworks zoals Scikit-learn, tensor flow en PyTorch. Met Machine Learning pijp lijnen kunt u eenvoudig uitvoeringen zonder toezicht plannen, heterogene reken omgevingen gebruiken en delen van uw werk stroom hergebruiken. En uitvoerings configuraties bieden een gedetailleerde controle over de reken doelen waarop het trainings proces wordt uitgevoerd.
+description: Meer informatie over het trainen van modellen met Azure Machine Learning. Bekijk de verschillende trainings methoden en kies de juiste methode voor uw project.
 services: machine-learning
 ms.service: machine-learning
 author: Blackmist
@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 8888393cdbc738525b89ace1cf6f5864b7aa3b6e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2448f5f778f19674aec63291acb72536c65ca6c9
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324816"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555886"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Modellen trainen met Azure Machine Learning
 

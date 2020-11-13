@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: 9b90d13d6f4fa5a33bff38aaa66728a5d0f3d70f
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 01f9ee1ad134c14150d16569fd57e658b160784c
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289950"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556315"
 ---
 # <a name="create-an-fci-with-storage-spaces-direct-sql-server-on-azure-vms"></a>Een FCI maken met Opslagruimten Direct (SQL Server op Azure Vm's)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -92,15 +92,15 @@ Als u het cluster wilt valideren met behulp van de gebruikers interface, gaat u 
 
 1. Klik onder **Serverbeheer** op **extra** en selecteer vervolgens **Failoverclusterbeheer**.
 1. Selecteer onder **Failoverclusterbeheer** **actie** en selecteer vervolgens **configuratie valideren**.
-1. Selecteer **Next**.
+1. Selecteer **Volgende**.
 1. Voer onder **servers of een cluster selecteren** de namen van beide virtuele machines in.
 1. Onder **test opties** selecteert u **alleen geselecteerde tests uitvoeren**. 
-1. Selecteer **Next**.
+1. Selecteer **Volgende**.
 1. Selecteer onder **selectie testen** alle tests, met uitzonde ring van **opslag** , zoals hier wordt weer gegeven:
 
    ![Cluster validatie tests selecteren](./media/failover-cluster-instance-storage-spaces-direct-manually-configure/10-validate-cluster-test.png)
 
-1. Selecteer **Next**.
+1. Selecteer **Volgende**.
 1. Klik onder **bevestiging** op **volgende**.
 
     Met de wizard **een configuratie valideren** worden de validatie tests uitgevoerd.
@@ -217,7 +217,7 @@ Nadat u het failovercluster en alle cluster onderdelen, inclusief opslag, hebt g
 
 ## <a name="register-with-the-sql-vm-rp"></a>Registreren bij de SQL-VM RP
 
-Als u uw SQL Server-VM wilt beheren vanuit de portal, registreert u deze bij de resource provider (RP) van de SQL-VM in de [modus licht gewicht beheer](sql-vm-resource-provider-register.md#lightweight-management-mode), momenteel de enige modus die wordt ondersteund door FCI en SQL Server op Azure-vm's. 
+Als u uw SQL Server-VM wilt beheren vanuit de portal, registreert u deze bij de SQL IaaS agent-extensie (RP) in de [modus voor licht gewicht beheer](sql-agent-extension-manually-register-single-vm.md#lightweight-management-mode), momenteel de enige modus die wordt ondersteund door FCI en SQL Server op Azure-vm's. 
 
 
 Een SQL Server VM registreren in de licht gewicht modus met Power shell:  
@@ -239,7 +239,7 @@ Als u verkeer op de juiste manier wilt door sturen naar het huidige primaire kno
 
 - Azure virtual machines ondersteunen micro soft Distributed Transaction Coordinator (MSDTC) op Windows Server 2019 met opslag op Csv's en een [standaard Load Balancer](../../../load-balancer/load-balancer-overview.md).
 - Schijven die zijn gekoppeld als schijven met NTFS-indeling kunnen alleen worden gebruikt met Opslagruimten Direct als de optie voor de geschiktheid van de schijf is uitgeschakeld, of als deze is gewist, wanneer opslag wordt toegevoegd aan het cluster. 
-- Alleen registreren met de resource provider van de SQL-VM in de [Lightweight-beheer modus](sql-server-iaas-agent-extension-automate-management.md#management-modes) wordt ondersteund.
+- Alleen registreren met de SQL IaaS agent-extensie in de [Lightweight-beheer modus](sql-server-iaas-agent-extension-automate-management.md#management-modes) wordt ondersteund.
 
 ## <a name="next-steps"></a>Volgende stappen
 

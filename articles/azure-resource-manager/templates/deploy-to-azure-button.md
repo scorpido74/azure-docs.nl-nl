@@ -3,12 +3,12 @@ title: De knop Implementeren in Azure
 description: Gebruik de knop om Azure Resource Manager sjablonen te implementeren vanuit een GitHub-opslag plaats.
 ms.topic: conceptual
 ms.date: 11/10/2020
-ms.openlocfilehash: 7d002508f6b2402f8cff40fb0369896080ecbbad
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 25ec5fd7a0c5b356097412ab6f1765cb0886522a
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94490896"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555259"
 ---
 # <a name="use-a-deployment-button-to-deploy-templates-from-github-repository"></a>Een implementatie knop gebruiken voor het implementeren van sjablonen uit de GitHub-opslag plaats
 
@@ -19,11 +19,15 @@ Het implementatie bereik wordt bepaald door het sjabloon schema. Zie voor meer i
 * [resource groepen](deploy-to-resource-group.md)
 * [geabonneerd](deploy-to-subscription.md)
 * [beheer groepen](deploy-to-management-group.md)
-* [tenants](deploy-to-tenant.md).
+* [tenants](deploy-to-tenant.md)
 
 ## <a name="use-common-image"></a>Algemene installatie kopie gebruiken
 
 Gebruik de volgende afbeelding om de knop toe te voegen aan uw webpagina of opslag plaats:
+
+```markdown
+![Deploy to Azure](https://aka.ms/deploytoazurebutton)
+```
 
 ```html
 <img src="https://aka.ms/deploytoazurebutton"/>
@@ -48,6 +52,7 @@ https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-st
 Converteer vervolgens de URL naar een URL-gecodeerde waarde. U kunt een online coderings programma gebruiken of een opdracht uitvoeren. Het volgende Power shell-voor beeld laat zien hoe een URL een waarde codeert.
 
 ```powershell
+$url = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json"
 [uri]::EscapeDataString($url)
 ```
 
@@ -70,6 +75,8 @@ https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.github
 ```
 
 U hebt de volledige URL voor de koppeling.
+
+Normaal gesp roken host u de sjabloon in een open bare opslag plaats. Als u een privé-opslag plaats gebruikt, moet u een token toevoegen om toegang te krijgen tot de onbewerkte inhoud van de sjabloon. Het token dat door GitHub wordt gegenereerd, is slechts voor een korte periode geldig. U moet de koppeling vaak bijwerken.
 
 Als u Git gebruikt [met Azure opslag plaatsen](/azure/devops/repos/git/) in plaats van een github opslag plaats, kunt u nog steeds de knop implementeren in azure gebruiken. Zorg ervoor dat uw opslag plaats openbaar is. Gebruik de [bewerking items](/rest/api/azure/devops/git/items/get) om de sjabloon op te halen. Uw aanvraag moet de volgende indeling hebben:
 

@@ -4,12 +4,12 @@ description: Bevat een samenvatting van ondersteuningsinstellingen en -beperking
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: ee37e994c9e72c3d3c98455360dc68746f49d278
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: ae2eb97f214204b813564b6373c4e9dc176f483c
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92743118"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555433"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Ondersteunings matrix voor Azure Backup
 
@@ -25,7 +25,7 @@ Andere ondersteunings matrices zijn beschikbaar:
 
 ## <a name="vault-support"></a>Ondersteuning voor kluizen
 
-Azure Backup gebruikt Recovery Services kluizen om back-ups te organiseren en te beheren. Er worden ook kluizen gebruikt voor het opslaan van back-upgegevens.
+Azure Backup gebruikt Recovery Services kluizen voor het indelen en beheren van back-ups voor de volgende werkbelasting typen: Azure-Vm's, SQL in azure-Vm's, SAP HANA in azure-Vm's, Azure-bestands shares en on-premises workloads die gebruikmaken van Azure Backup Agent, Azure Backup Server en System Center DPM. Er worden ook Recovery Services kluizen gebruikt om back-upgegevens voor deze werk belastingen op te slaan.
 
 In de volgende tabel worden de functies van Recovery Services kluizen beschreven:
 
