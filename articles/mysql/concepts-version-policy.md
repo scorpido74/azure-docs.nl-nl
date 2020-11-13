@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/03/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: af2a58ecb97e4c62f437d0c693ec79a4b5f618b0
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 4903f1e48eb2f33c68d62c635201474b841ed146
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579229"
+ms.locfileid: "94591509"
 ---
 # <a name="azure-database-for-mysql-versioning-policy"></a>Beleid voor Azure Database for MySQL-versie
 
@@ -30,7 +30,7 @@ Azure Database for MySQL ondersteunt de volgende database versies.
 
 
 ## <a name="major-version-support"></a>Ondersteuning voor primaire versie
-Elke primaire versie van MySQL wordt ondersteund door Azure Database for MySQL vanaf de datum waarop Azure de versie ondersteunt, totdat de versie wordt ingetrokken door de MySQL-Community, zoals is opgenomen in het [versie beleid](https://en.wikipedia.org/wiki/mysql).
+Elke primaire versie van MySQL wordt ondersteund door Azure Database for MySQL vanaf de datum waarop Azure de versie ondersteunt, totdat de versie wordt ingetrokken door de MySQL-Community, zoals is opgenomen in het [versie beleid](https://www.mysql.com/support/eol-notice.html).
 
 ## <a name="minor-version-support"></a>Ondersteuning voor secundaire versie
 Azure Database for MySQL voert automatisch secundaire versie-upgrades uit naar de voor Keurs-MySQL-versie van Azure als onderdeel van het periodieke onderhoud. 

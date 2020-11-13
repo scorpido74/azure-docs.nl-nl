@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: yexu
-ms.openlocfilehash: caec9b802bb347333dd861ebe499f72249d75aa2
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: e64f4ab31aed5c4c3e70ef10faf2049027525014
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92634774"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593639"
 ---
 #  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Fouttolerantie van kopieeractiviteit in Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
@@ -27,7 +27,7 @@ ms.locfileid: "92634774"
 
 Wanneer u gegevens van de bron naar het doel archief kopieert, biedt Azure Data Factory Kopieer activiteit een bepaald aantal fout toleranties om onderbrekingen van storingen in het midden van de verplaatsing van gegevens te voor komen. U kopieert bijvoorbeeld miljoenen rijen van bron naar doel archief, waar een primaire sleutel is gemaakt in de doel database, maar voor de bron database geen primaire sleutels zijn gedefinieerd. Wanneer u dubbele rijen van de bron naar het doel kopieert, raakt u de fout met de PK-fout op de doel database. Op dit moment biedt Kopieer activiteit u twee manieren om dergelijke fouten af te handelen: 
 - U kunt de Kopieer activiteit afbreken zodra er fouten zijn opgetreden. 
-- U kunt door gaan met het kopiëren van de rest door fout tolerantie in te scha kelen om de niet-compatibele gegevens over te slaan. U kunt bijvoorbeeld de dubbele rij in dit geval overs Laan. Daarnaast kunt u de overgeslagen gegevens registreren door het sessie logboek in een Kopieer activiteit in te scha kelen. 
+- U kunt door gaan met het kopiëren van de rest door fout tolerantie in te scha kelen om de niet-compatibele gegevens over te slaan. U kunt bijvoorbeeld de dubbele rij in dit geval overs Laan. Daarnaast kunt u de overgeslagen gegevens registreren door het sessie logboek in een Kopieer activiteit in te scha kelen. Raadpleeg het [sessie logboek in de Kopieer activiteit](copy-activity-log.md) voor meer informatie.
 
 ## <a name="copying-binary-files"></a>Binaire bestanden kopiëren 
 
@@ -61,24 +61,31 @@ Wanneer u binaire bestanden tussen opslag archieven kopieert, kunt u fout tolera
         "dataInconsistency": true 
     }, 
     "validateDataConsistency": true, 
-    "logStorageSettings": { 
-        "linkedServiceName": { 
-            "referenceName": "ADLSGen2", 
-            "type": "LinkedServiceReference" 
-            }, 
-        "path": "sessionlog/" 
-     } 
+    "logSettings": {
+        "enableCopyActivityLog": true,
+        "copyActivityLogSettings": {            
+            "logLevel": "Warning",
+            "enableReliableLogging": false
+        },
+        "logLocationSettings": {
+            "linkedServiceName": {
+               "referenceName": "ADLSGen2",
+               "type": "LinkedServiceReference"
+            },
+            "path": "sessionlog/"
+        }
+    }
 } 
 ```
 Eigenschap | Beschrijving | Toegestane waarden | Vereist
 -------- | ----------- | -------------- | -------- 
-skipErrorFile | Een groep eigenschappen om de typen fouten op te geven die u wilt overs Laan tijdens het verplaatsen van gegevens. | | Nee
-fileMissing | Een van de sleutel-waardeparen in skipErrorFile eigenschappen verzameling om te bepalen of u bestanden wilt overs laan die door andere toepassingen worden verwijderd wanneer ADF in de tussen tijd wordt gekopieerd. <br/> -True: u wilt de rest kopiëren door de bestanden die worden verwijderd door andere toepassingen over te slaan. <br/> -False: u wilt de Kopieer activiteit afbreken zodra er bestanden uit het bron archief worden verwijderd in het midden van het verplaatsen van gegevens. <br/>Houd er rekening mee dat deze eigenschap is ingesteld op True als standaard. | True (standaard) <br/>False | Nee
-fileForbidden | Een van de sleutel-waardeparen in de verzameling skipErrorFile om te bepalen of u de specifieke bestanden wilt overs Laan, wanneer de Acl's van deze bestanden of mappen een hoger machtigings niveau hebben dan de verbinding die in ADF is geconfigureerd. <br/> -True: u wilt de rest kopiëren door de bestanden over te slaan. <br/> -False: u wilt de Kopieer activiteit afbreken zodra u het probleem met de machtiging voor mappen of bestanden hebt opgehaald. | Waar <br/>False (standaard) | Nee
-dataInconsistency | Een van de sleutel-waardeparen in de skipErrorFile-eigenschappen verzameling om te bepalen of u de inconsistente gegevens tussen de bron-en doel opslag wilt overs Laan. <br/> -True: u wilt de rest kopiëren door inconsistente gegevens over te slaan. <br/> -False: u wilt de Kopieer activiteit afbreken zodra inconsistente gegevens zijn gevonden. <br/>Houd er rekening mee dat deze eigenschap alleen geldig is wanneer u validateDataConsistency instelt als waar. | Waar <br/>False (standaard) | Nee
-logStorageSettings  | Een groep eigenschappen die kan worden opgegeven wanneer u de overgeslagen object namen wilt vastleggen. | &nbsp; | Nee
-linkedServiceName | De gekoppelde service van [Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties) of [Azure data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) voor het opslaan van de sessie logboek bestanden. | De namen van de `AzureBlobStorage` gekoppelde service van een of het `AzureBlobFS` type, die verwijst naar het exemplaar dat u gebruikt voor het opslaan van het logboek bestand. | Nee
-leertraject | Het pad van de logboek bestanden. | Geef het pad op dat u gebruikt om de logboek bestanden op te slaan. Als u geen pad opgeeft, maakt de service een container voor u. | Nee
+skipErrorFile | Een groep eigenschappen om de typen fouten op te geven die u wilt overs Laan tijdens het verplaatsen van gegevens. | | No
+fileMissing | Een van de sleutel-waardeparen in skipErrorFile eigenschappen verzameling om te bepalen of u bestanden wilt overs laan die door andere toepassingen worden verwijderd wanneer ADF in de tussen tijd wordt gekopieerd. <br/> -True: u wilt de rest kopiëren door de bestanden die worden verwijderd door andere toepassingen over te slaan. <br/> -False: u wilt de Kopieer activiteit afbreken zodra er bestanden uit het bron archief worden verwijderd in het midden van het verplaatsen van gegevens. <br/>Houd er rekening mee dat deze eigenschap is ingesteld op True als standaard. | True (standaard) <br/>Niet waar | No
+fileForbidden | Een van de sleutel-waardeparen in de verzameling skipErrorFile om te bepalen of u de specifieke bestanden wilt overs Laan, wanneer de Acl's van deze bestanden of mappen een hoger machtigings niveau hebben dan de verbinding die in ADF is geconfigureerd. <br/> -True: u wilt de rest kopiëren door de bestanden over te slaan. <br/> -False: u wilt de Kopieer activiteit afbreken zodra u het probleem met de machtiging voor mappen of bestanden hebt opgehaald. | Waar <br/>False (standaard) | No
+dataInconsistency | Een van de sleutel-waardeparen in de skipErrorFile-eigenschappen verzameling om te bepalen of u de inconsistente gegevens tussen de bron-en doel opslag wilt overs Laan. <br/> -True: u wilt de rest kopiëren door inconsistente gegevens over te slaan. <br/> -False: u wilt de Kopieer activiteit afbreken zodra inconsistente gegevens zijn gevonden. <br/>Houd er rekening mee dat deze eigenschap alleen geldig is wanneer u validateDataConsistency instelt als waar. | Waar <br/>False (standaard) | No
+logSettings  | Een groep eigenschappen die kan worden opgegeven wanneer u de overgeslagen object namen wilt vastleggen. | &nbsp; | No
+linkedServiceName | De gekoppelde service van [Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties) of [Azure data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) voor het opslaan van de sessie logboek bestanden. | De namen van de `AzureBlobStorage` gekoppelde service van een of het `AzureBlobFS` type, die verwijst naar het exemplaar dat u gebruikt voor het opslaan van het logboek bestand. | No
+leertraject | Het pad van de logboek bestanden. | Geef het pad op dat u gebruikt om de logboek bestanden op te slaan. Als u geen pad opgeeft, maakt de service een container voor u. | No
 
 > [!NOTE]
 > Hier volgen de vereisten voor het inschakelen van fout tolerantie in Kopieer activiteit bij het kopiëren van binaire bestanden.
@@ -108,7 +115,7 @@ U kunt het aantal bestanden dat wordt gelezen, geschreven en overgeslagen, ophal
             "filesWritten": 1, 
             "filesSkipped": 2, 
             "throughput": 297,
-            "logPath": "https://myblobstorage.blob.core.windows.net//myfolder/a84bf8d4-233f-4216-8cb5-45962831cd1b/",
+            "logFilePath": "myfolder/a84bf8d4-233f-4216-8cb5-45962831cd1b/",
             "dataConsistencyVerification": 
            { 
                 "VerificationResult": "Verified", 
@@ -146,15 +153,15 @@ In het bovenstaande logboek kunt u zien bigfile.csv is overgeslagen omdat een an
 ### <a name="supported-scenarios"></a>Ondersteunde scenario's
 De Kopieer activiteit ondersteunt drie scenario's voor het detecteren, overs Laan en het vastleggen van incompatibele tabellaire gegevens:
 
-- **Incompatibiliteit tussen het type bron gegevens en het systeem eigen type Sink** . 
+- **Incompatibiliteit tussen het type bron gegevens en het systeem eigen type Sink**. 
 
     Bijvoorbeeld: gegevens uit een CSV-bestand in de Blob-opslag kopiëren naar een SQL database met een schema definitie die drie typen kolommen van het type INT bevat. De rijen met het CSV-bestand die numerieke gegevens bevatten, zoals 123.456.789, worden naar de Sink Store gekopieerd. De rijen met niet-numerieke waarden, zoals 123.456, ABC worden echter gedetecteerd als incompatibel en worden overgeslagen.
 
-- **Het aantal kolommen tussen de bron en de Sink komt niet overeen** .
+- **Het aantal kolommen tussen de bron en de Sink komt niet overeen**.
 
     Bijvoorbeeld: gegevens uit een CSV-bestand in Blob Storage kopiëren naar een SQL database met een schema definitie die zes kolommen bevat. De rijen met het CSV-bestand die zes kolommen bevatten, worden naar de Sink-Store gekopieerd. De rijen met het CSV-bestand met meer dan zes kolommen worden gedetecteerd als incompatibel en worden overgeslagen.
 
-- **Schending van primaire sleutel bij het schrijven naar SQL Server/Azure SQL database/Azure Cosmos DB** .
+- **Schending van primaire sleutel bij het schrijven naar SQL Server/Azure SQL database/Azure Cosmos DB**.
 
     Bijvoorbeeld: gegevens kopiëren van een SQL-Server naar een SQL database. Er wordt een primaire sleutel gedefinieerd in de Sink-SQL database, maar er is geen dergelijke primaire sleutel gedefinieerd in de SQL-bron server. De dubbele rijen die aanwezig zijn in de bron, kunnen niet naar de Sink worden gekopieerd. Met de Kopieer activiteit wordt alleen de eerste rij van de bron gegevens naar de Sink gekopieerd. De volgende bron rijen die de dubbele primaire-sleutel waarde bevatten, worden gedetecteerd als incompatibel en worden overgeslagen.
 
@@ -175,22 +182,29 @@ In het volgende voor beeld wordt een JSON-definitie geboden voor het overs laan 
         "type": "AzureSqlSink" 
     }, 
     "enableSkipIncompatibleRow": true, 
-    "logStorageSettings": { 
-    "linkedServiceName": { 
-        "referenceName": "ADLSGen2", 
-        "type": "LinkedServiceReference" 
-        }, 
-    "path": "sessionlog/" 
+    "logSettings": {
+        "enableCopyActivityLog": true,
+        "copyActivityLogSettings": {            
+            "logLevel": "Warning",
+            "enableReliableLogging": false
+        },
+        "logLocationSettings": {
+            "linkedServiceName": {
+               "referenceName": "ADLSGen2",
+               "type": "LinkedServiceReference"
+            },
+            "path": "sessionlog/"
+        }
     } 
 }, 
 ```
 
 Eigenschap | Beschrijving | Toegestane waarden | Vereist
 -------- | ----------- | -------------- | -------- 
-enableSkipIncompatibleRow | Hiermee wordt aangegeven of niet-compatibele rijen moeten worden overgeslagen tijdens het kopiëren of niet. | Waar<br/>False (standaard) | Nee
-logStorageSettings | Een groep eigenschappen die kan worden opgegeven wanneer u de niet-compatibele rijen wilt vastleggen. | &nbsp; | Nee
-linkedServiceName | De gekoppelde service van [Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties) of [Azure data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) om het logboek op te slaan dat de overgeslagen rijen bevat. | De namen van de `AzureBlobStorage` gekoppelde service van een of het `AzureBlobFS` type, die verwijst naar het exemplaar dat u gebruikt voor het opslaan van het logboek bestand. | Nee
-leertraject | Het pad van de logboek bestanden met de overgeslagen rijen. | Geef het pad op dat u wilt gebruiken om de niet-compatibele gegevens te registreren. Als u geen pad opgeeft, maakt de service een container voor u. | Nee
+enableSkipIncompatibleRow | Hiermee wordt aangegeven of niet-compatibele rijen moeten worden overgeslagen tijdens het kopiëren of niet. | Waar<br/>False (standaard) | No
+logSettings | Een groep eigenschappen die kan worden opgegeven wanneer u de niet-compatibele rijen wilt vastleggen. | &nbsp; | No
+linkedServiceName | De gekoppelde service van [Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties) of [Azure data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) om het logboek op te slaan dat de overgeslagen rijen bevat. | De namen van de `AzureBlobStorage` gekoppelde service van een of het `AzureBlobFS` type, die verwijst naar het exemplaar dat u gebruikt voor het opslaan van het logboek bestand. | No
+leertraject | Het pad van de logboek bestanden met de overgeslagen rijen. | Geef het pad op dat u wilt gebruiken om de niet-compatibele gegevens te registreren. Als u geen pad opgeeft, maakt de service een container voor u. | No
 
 ### <a name="monitor-skipped-rows"></a>Overgeslagen rijen bewaken
 Nadat het uitvoeren van de Kopieer activiteit is voltooid, kunt u het aantal overgeslagen rijen zien in de uitvoer van de Kopieer activiteit:
@@ -203,7 +217,7 @@ Nadat het uitvoeren van de Kopieer activiteit is voltooid, kunt u het aantal ove
             "rowsSkipped": 2,
             "copyDuration": 16,
             "throughput": 0.01,
-            "logPath": "https://myblobstorage.blob.core.windows.net//myfolder/a84bf8d4-233f-4216-8cb5-45962831cd1b/",
+            "logFilePath": "myfolder/a84bf8d4-233f-4216-8cb5-45962831cd1b/",
             "errors": []
         },
 
@@ -261,10 +275,10 @@ In het volgende voor beeld wordt een JSON-definitie geboden voor het overs laan 
 
 Eigenschap | Beschrijving | Toegestane waarden | Vereist
 -------- | ----------- | -------------- | -------- 
-enableSkipIncompatibleRow | Hiermee wordt aangegeven of niet-compatibele rijen moeten worden overgeslagen tijdens het kopiëren of niet. | Waar<br/>False (standaard) | Nee
-redirectIncompatibleRowSettings | Een groep eigenschappen die kan worden opgegeven wanneer u de niet-compatibele rijen wilt vastleggen. | &nbsp; | Nee
-linkedServiceName | De gekoppelde service van [Azure Storage](connector-azure-blob-storage.md#linked-service-properties) of [Azure data Lake Store](connector-azure-data-lake-store.md#linked-service-properties) om het logboek op te slaan dat de overgeslagen rijen bevat. | De namen van een `AzureStorage` of het `AzureDataLakeStore` type gekoppelde service, die verwijst naar het exemplaar dat u wilt gebruiken om het logboek bestand op te slaan. | Nee
-leertraject | Het pad naar het logboek bestand dat de overgeslagen rijen bevat. | Geef het pad op dat u wilt gebruiken om de niet-compatibele gegevens te registreren. Als u geen pad opgeeft, maakt de service een container voor u. | Nee
+enableSkipIncompatibleRow | Hiermee wordt aangegeven of niet-compatibele rijen moeten worden overgeslagen tijdens het kopiëren of niet. | Waar<br/>False (standaard) | No
+redirectIncompatibleRowSettings | Een groep eigenschappen die kan worden opgegeven wanneer u de niet-compatibele rijen wilt vastleggen. | &nbsp; | No
+linkedServiceName | De gekoppelde service van [Azure Storage](connector-azure-blob-storage.md#linked-service-properties) of [Azure data Lake Store](connector-azure-data-lake-store.md#linked-service-properties) om het logboek op te slaan dat de overgeslagen rijen bevat. | De namen van een `AzureStorage` of het `AzureDataLakeStore` type gekoppelde service, die verwijst naar het exemplaar dat u wilt gebruiken om het logboek bestand op te slaan. | No
+leertraject | Het pad naar het logboek bestand dat de overgeslagen rijen bevat. | Geef het pad op dat u wilt gebruiken om de niet-compatibele gegevens te registreren. Als u geen pad opgeeft, maakt de service een container voor u. | No
 
 ### <a name="monitor-skipped-rows"></a>Overgeslagen rijen bewaken
 Nadat het uitvoeren van de Kopieer activiteit is voltooid, kunt u het aantal overgeslagen rijen zien in de uitvoer van de Kopieer activiteit:

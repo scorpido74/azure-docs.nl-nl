@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 11/04/2020
+ms.date: 11/12/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45851015dd5a845497fb2d09bf1f9fffb9e35a06
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 74be3f4218149f0cdb9f107c8aba0be76d8da27e
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93377748"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593073"
 ---
 # <a name="authentication-methods-in-azure-active-directory---phone-options"></a>Verificatie methoden in Azure Active Directory-telefoon opties
 
@@ -32,7 +32,7 @@ Om goed te kunnen werken, moeten telefoon nummers de notatie *+ CountryCode phon
 
 ## <a name="mobile-phone-verification"></a>Verificatie van mobiele telefoon
 
-Voor Azure Multi-Factor Authentication of SSPR kunnen gebruikers ervoor kiezen om een SMS-bericht te ontvangen met een verificatie code om in te voeren in de aanmeldings interface, of om een telefoon gesprek te ontvangen met een prompt om hun gedefinieerde pincode in te voeren.
+Voor Azure Multi-Factor Authentication of SSPR kunnen gebruikers ervoor kiezen om een SMS-bericht te ontvangen met een verificatie code om in te voeren in de aanmeldings interface, of om een telefoon gesprek te ontvangen.
 
 Als gebruikers niet willen dat hun mobiele telefoon nummer wordt weer gegeven in de map, maar u dit wilt gebruiken voor het opnieuw instellen van wacht woorden, moeten beheerders het telefoon nummer in de map niet vullen. In plaats daarvan moeten gebruikers hun kenmerk voor de verificatie van de **telefoon** invullen via de registratie van gecombineerde beveiligings gegevens op [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo) . Beheerders kunnen deze informatie zien in het profiel van de gebruiker, maar ze worden niet elders gepubliceerd.
 
@@ -46,11 +46,11 @@ Met de verificatie van SMS-berichten tijdens SSPR of Azure Multi-Factor Authenti
 
 ### <a name="phone-call-verification"></a>Verificatie via telefoon oproep
 
-Bij een verificatie via telefoon gesprekken tijdens SSPR of Azure Multi-Factor Authentication wordt een automatische telefoon oproep uitgevoerd naar het telefoon nummer dat door de gebruiker is geregistreerd. Om het aanmeldings proces te volt ooien, wordt de gebruiker gevraagd hun pincode in te voeren, gevolgd door # op hun toetsen blok.
+Bij een verificatie via telefoon gesprekken tijdens SSPR of Azure Multi-Factor Authentication wordt een automatische telefoon oproep uitgevoerd naar het telefoon nummer dat door de gebruiker is geregistreerd. Om het aanmeldings proces te volt ooien, wordt de gebruiker gevraagd op # op hun toetsen blok te drukken.
 
 ## <a name="office-phone-verification"></a>Verificatie op bedrijfs telefoon
 
-Bij een verificatie via telefoon gesprekken tijdens SSPR of Azure Multi-Factor Authentication wordt een automatische telefoon oproep uitgevoerd naar het telefoon nummer dat door de gebruiker is geregistreerd. Om het aanmeldings proces te volt ooien, wordt de gebruiker gevraagd hun pincode in te voeren, gevolgd door # op hun toetsen blok.
+Bij een verificatie via telefoon gesprekken tijdens SSPR of Azure Multi-Factor Authentication wordt een automatische telefoon oproep uitgevoerd naar het telefoon nummer dat door de gebruiker is geregistreerd. Om het aanmeldings proces te volt ooien, wordt de gebruiker gevraagd op # op hun toetsen blok te drukken.
 
 ## <a name="troubleshooting-phone-options"></a>Problemen met telefoonopties oplossen
 
@@ -61,7 +61,7 @@ Als u problemen ondervindt met telefoon verificatie voor Azure AD, raadpleegt u 
 * Onjuist telefoon nummer of onjuiste land-/regionummer of Verwar ring tussen privé telefoon nummer en telefoon nummer van werk.
    * Problemen oplossen met het gebruikers object en de geconfigureerde verificatie methoden. Controleer of de juiste telefoon nummers zijn geregistreerd.
 * Verkeerde pincode ingevoerd.
-   * Bevestig dat de gebruiker de juiste pincode heeft gebruikt als geregistreerd voor hun account.
+   * Bevestig dat de gebruiker de juiste pincode heeft gebruikt als geregistreerd voor hun account (alleen voor MFA Server-gebruikers).
 * Oproep doorgestuurd naar Voice mail.
    * Zorg ervoor dat de telefoon is ingeschakeld voor de gebruiker en dat de service beschikbaar is in hun gebied of gebruik een alternatieve methode.
 * Gebruiker is geblokkeerd

@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/16/2019
-ms.openlocfilehash: 1c08ba51b815386783c3412e9238d2e96da03ff9
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.date: 11/13/2020
+ms.openlocfilehash: 92ef5b372113d0d226335b8ec464a75a5a684bc3
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94377678"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592903"
 ---
 # <a name="one-vs-one-multiclass"></a>Een-VS-één-klasse
 
@@ -31,6 +31,8 @@ Met deze module wordt de één-op-een-methode geïmplementeerd, waarin een binai
 In essentie maakt de module een ensemble van afzonderlijke modellen en voegt de resultaten vervolgens samen om één model te maken waarmee alle klassen worden voor speld. Een binaire classificatie kan worden gebruikt als basis voor een model met één versus één.  
 
 Stel bijvoorbeeld dat u een [twee klasse ondersteunings vector computer](two-class-support-vector-machine.md) model configureert en als invoer voor de module met één-VS-één-klasse. De module maakt met twee klassen ondersteuning vector machine modellen voor alle leden van de klasse output. Vervolgens wordt de één-op-één-methode toegepast om de resultaten voor alle klassen te combi neren.  
+
+De module maakt gebruik van OneVsOneClassifier van sklearn en u vindt [hier](https://scikit-learn.org/stable/modules/generated/sklearn.multiclass.OneVsOneClassifier.html)meer informatie.
 
 ## <a name="how-to-configure-the-one-vs-one-multiclass-classifier"></a>De één-VS-een classificatie met meerdere klassen configureren  
 

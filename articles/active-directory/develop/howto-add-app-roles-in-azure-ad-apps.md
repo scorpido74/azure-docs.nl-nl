@@ -1,7 +1,7 @@
 ---
 title: App-rollen toevoegen en ophalen uit een token | Azure
 titleSuffix: Microsoft identity platform
-description: Meer informatie over het toevoegen van app-rollen in een toepassing die is geregistreerd in Azure Active Directory, gebruikers en groepen toewijzen aan deze rollen en ze ontvangen in de `roles` claim in het token.
+description: Meer informatie over het toevoegen van app-rollen aan een toepassing die is geregistreerd in Azure Active Directory, het toewijzen van gebruikers en groepen aan deze rollen en het ontvangen ervan in de claim ' roles ' in het token.
 services: active-directory
 author: kalyankrishna1
 manager: CelesteDG
@@ -9,62 +9,93 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/15/2020
+ms.date: 11/13/2020
 ms.author: kkrishna
-ms.reviewer: kkrishna, jmprieur
+ms.reviewer: marsma, kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7c29e1e3fd42702e0eb02531f995c550738839a9
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 96c52c46a75d6d5810dfddf91439c275d14e85f1
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92673704"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616132"
 ---
-# <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Procedure: app-rollen toevoegen in uw toepassing en deze ontvangen in het token
+# <a name="how-to-add-app-roles-to-your-application-and-receive-them-in-the-token"></a>Procedure: app-rollen toevoegen aan uw toepassing en deze ontvangen in het token
 
 Op rollen gebaseerd toegangs beheer (RBAC) is een populair mechanisme voor het afdwingen van autorisatie in toepassingen. Wanneer u RBAC gebruikt, verleent een beheerder machtigingen aan rollen en niet aan afzonderlijke gebruikers of groepen. De beheerder kan vervolgens rollen toewijzen aan verschillende gebruikers en groepen om te bepalen wie toegang heeft tot de inhoud en functionaliteit.
 
-Met RBAC met toepassings rollen en claim claims kunnen ontwikkel aars veilig autorisaties in hun apps afdwingen met weinig moeite op hun eigen onderdeel.
+Met RBAC met toepassings rollen en functie claims kunnen ontwikkel aars veilig autorisaties in hun apps afdwingen met minder inspanning.
 
-Een andere benadering is het gebruik van Azure AD-groepen en-groepclaims, zoals wordt weer gegeven in [webapp-GroupClaims-DotNet](https://github.com/Azure-Samples/WebApp-GroupClaims-DotNet). Azure AD-groepen en toepassings rollen zijn op geen enkele manier onderling uitsluiten; ze kunnen samen worden gebruikt om nog nauw keuriger toegangs beheer te bieden.
+Een andere benadering is het gebruik van Azure AD-groepen en groepclaims, zoals wordt weer gegeven in het code voorbeeld [Active-Directory-aspnetcore-webapp-openidconnect-v2](https://aka.ms/groupssample) op github. Azure AD-groepen en toepassings rollen sluiten elkaar niet uit. ze kunnen samen worden gebruikt om nog nauw keuriger toegangs beheer te bieden.
 
 ## <a name="declare-roles-for-an-application"></a>Rollen voor een toepassing declareren
 
-Deze toepassings rollen worden gedefinieerd in de [Azure Portal](https://portal.azure.com) in het registratie manifest van de toepassing.  Wanneer een gebruiker zich aanmeldt bij de toepassing, verzendt Azure AD een `roles` claim voor elke rol die de gebruiker afzonderlijk heeft verleend aan de gebruiker en aan het groepslid maatschap.  De toewijzing van gebruikers en groepen aan rollen kan worden uitgevoerd via de gebruikers interface van de portal of via een programma met behulp van [Microsoft Graph](/graph/azuread-identity-access-management-concept-overview).
+U kunt app-rollen definiëren met behulp van de [Azure Portal](https://portal.azure.com). Wanneer een gebruiker zich aanmeldt bij de toepassing, verzendt Azure AD een `roles` claim voor elke rol die de gebruiker afzonderlijk aan de gebruiker en aan het groepslid maatschap heeft verleend.
 
-### <a name="declare-app-roles-using-azure-portal"></a>App-rollen declareren met Azure Portal
+Er zijn twee manieren om app-rollen te declareren met behulp van de Azure Portal:
+
+* [Gebruikers interface voor app-rollen](#app-roles-ui--preview) | Voorbeeld
+* [App-manifest editor](#app-manifest-editor)
+
+Het aantal rollen dat u toevoegt, telt de toepassings manifest limieten die worden afgedwongen door Azure Active Directory. Voor informatie over deze limieten, zie de sectie  [manifest limieten](./reference-app-manifest.md#manifest-limits) van [Azure Active Directory app-manifest verwijzing](reference-app-manifest.md).
+
+### <a name="app-roles-ui--preview"></a>Gebruikers interface voor app-rollen | Voorbeeld
+
+> [!IMPORTANT]
+> De UI-functie van de portal voor app-rollen [!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
+
+Een app-rol maken met behulp van de gebruikers interface van de Azure Portal:
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-1. Selecteer het pictogram voor het adres van de **map en het abonnement** op de werk balk van de portal.
-1. Kies in de lijst **Favorieten** of **alle directory's** de Active Directory Tenant waar u de toepassing wilt registreren.
-1. Zoek en selecteer in de Azure-portal de optie **Azure Active Directory** .
-1. Selecteer in **Azure Active Directory** het deel venster Azure Active Directory **app-registraties** om een lijst met al uw toepassingen weer te geven.
-1. Selecteer de toepassing waarvoor u de app-rollen wilt definiëren. Selecteer vervolgens **manifest** .
-1. Bewerk het app-manifest door de `appRoles` instelling te zoeken en alle toepassings rollen toe te voegen.
+1. Selecteer het filter **Directory + abonnement** in het bovenste menu en kies vervolgens de Azure Active Directory Tenant met de app-registratie waaraan u een app-functie wilt toevoegen.
+1. Zoek en selecteer de optie **Azure Active Directory**.
+1. Selecteer onder **beheren** de optie **app-registraties** en selecteer vervolgens de toepassing waarvoor u de app-rollen wilt definiëren.
+1. **App-rollen selecteren | Preview** en selecteer app- **functie maken**.
 
-     > [!NOTE]
-     > Elke app-roldefinitie in dit manifest moet een andere geldige GUID hebben in de context van het manifest voor de `id` eigenschap.
-     >
-     > De `value` eigenschap van elke roldefinitie van de app moet exact overeenkomen met de teken reeksen die worden gebruikt in de code in de toepassing. De `value` eigenschap mag geen spaties bevatten. Als dit het geval is, ontvangt u een fout melding wanneer u het manifest opslaat.
+   :::image type="content" source="media/howto-add-app-roles-in-azure-ad-apps/app-roles-overview-pane.png" alt-text="Het deel venster app-rollen van een app-registratie in de Azure Portal":::
+1. Voer in het deel venster **app-rollen maken** de instellingen voor de rol in. In de tabel die volgt op de afbeelding worden de instellingen en de bijbehorende para meters beschreven.
 
+    :::image type="content" source="media/howto-add-app-roles-in-azure-ad-apps/app-roles-create-context-pane.png" alt-text="Met de app-rollen van een app-registratie wordt een context deel venster gemaakt in het Azure Portal":::
+
+    | Veld | Beschrijving | Voorbeeld |
+    |-------|-------------|---------|
+    | **Display name** (Weergavenaam) | Weergave naam voor de app-rol die wordt weer gegeven in de ervaringen beheerder en app-toewijzing. Deze waarde mag spaties bevatten. | `Survey Writer` |
+    | **Toegestane leden typen** | Hiermee geeft u op of deze app-rol kan worden toegewezen aan gebruikers, toepassingen of beide.<br/><br/>Wanneer `applications` de app-rollen beschikbaar zijn voor, worden deze als toepassings machtigingen weer gegeven in de sectie **beheren** van een app-registratie > **API-machtigingen > een machtiging > mijn API'S toevoegen > een API > toepassings machtigingen te kiezen**. | `Users/Groups` |
+    | **Waarde** | Hiermee geeft u de waarde van de functie claim op die de toepassing moet verwachten in het token. De waarde moet exact overeenkomen met de teken reeks waarnaar wordt verwezen in de code van de toepassing. De waarde mag geen spaties bevatten. | `Survey.Create` |
+    | **Beschrijving** | Een gedetailleerde beschrijving van de app-rol die wordt weer gegeven tijdens de toewijzing van de beheer-app en de toestemming. | `Writers can create surveys.` |
+    | **Wilt u deze app-functie inschakelen?** | Hiermee wordt opgegeven of de functie van de app is ingeschakeld. Als u een app-functie wilt verwijderen, schakelt u dit selectie vakje uit en past u de wijziging toe voordat u probeert de bewerking verwijderen uit te voeren. | *Ingeschakeld* |
+
+1. Selecteer **Toepassen** om uw wijzigingen op te slaan.
+
+### <a name="app-manifest-editor"></a>App-manifest editor
+
+Als u rollen wilt toevoegen door het manifest rechtstreeks te bewerken:
+
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Selecteer het filter **Directory + abonnement** in het bovenste menu en kies vervolgens de Azure Active Directory Tenant met de app-registratie waaraan u een app-functie wilt toevoegen.
+1. Zoek en selecteer de optie **Azure Active Directory**.
+1. Selecteer onder **beheren** de optie **app-registraties** en selecteer vervolgens de toepassing waarvoor u de app-rollen wilt definiëren.
+1. Klik opnieuw onder **beheren** op **manifest**.
+1. Bewerk het app-manifest door de `appRoles` instelling te zoeken en uw toepassings rollen toe te voegen. U kunt de app-rollen definiëren die het doel `users` hebben, `applications` of beide. De volgende JSON-fragmenten bevatten voor beelden van beide.
 1. Sla het manifest op.
 
-### <a name="examples"></a>Voorbeelden
+Elke functie definitie van een app in het manifest moet een unieke GUID hebben voor de `id` waarde.
 
-In het volgende voor beeld ziet `appRoles` u hoe u kunt toewijzen aan `users` .
+De `value` eigenschap van elke roldefinitie van de app moet exact overeenkomen met de teken reeksen die worden gebruikt in de code in de toepassing. De `value` eigenschap mag geen spaties bevatten. Als dit het geval is, ontvangt u een fout melding wanneer u het manifest opslaat.
 
-> [!NOTE]
->De `id` moet een unieke GUID zijn.
+#### <a name="example-user-app-role"></a>Voor beeld: rol van gebruikers-app
 
-```Json
-"appId": "8763f1c4-f988-489c-a51e-158e9ef97d6a",
+In dit voor beeld wordt een app-functie gedefinieerd met de naam `Writer` die u kunt toewijzen aan een `User` :
+
+```json
+"appId": "8763f1c4-0000-0000-0000-158e9ef97d6a",
 "appRoles": [
     {
       "allowedMemberTypes": [
         "User"
       ],
       "displayName": "Writer",
-      "id": "d1c2ade8-98f8-45fd-aa4a-6d06b947c66f",
+      "id": "d1c2ade8-0000-0000-0000-6d06b947c66f",
       "isEnabled": true,
       "description": "Writers Have the ability to create tasks.",
       "value": "Writer"
@@ -73,20 +104,21 @@ In het volgende voor beeld ziet `appRoles` u hoe u kunt toewijzen aan `users` .
 "availableToOtherTenants": false,
 ```
 
-> [!NOTE]
->De `displayName` mag spaties bevatten.
+#### <a name="example-application-app-role"></a>Voor beeld: app-rol van toepassing
 
-U kunt app-rollen definiëren voor het doel `users` , `applications` of beide. Wanneer deze beschikbaar is voor `applications` , worden de app-rollen weer gegeven als toepassings machtigingen onder sectie **beheren** > **API-machtigingen > een machtiging > mijn API'S toevoegen > een API > toepassings machtigingen te kiezen** . In het volgende voor beeld ziet u een app-rol die is gericht op een `Application` .
+Wanneer `applications` de app-rollen beschikbaar zijn voor, worden deze als toepassings machtigingen weer gegeven in de sectie **beheren** van een app-registratie > **API-machtigingen > een machtiging > mijn API'S toevoegen > een API > toepassings machtigingen te kiezen**.
 
-```Json
-"appId": "8763f1c4-f988-489c-a51e-158e9ef97d6a",
+In dit voor beeld ziet u een app-functie die is gericht op een `Application` :
+
+```json
+"appId": "8763f1c4-0000-0000-0000-158e9ef97d6a",
 "appRoles": [
     {
       "allowedMemberTypes": [
         "Application"
       ],
       "displayName": "ConsumerApps",
-      "id": "47fbb575-859a-4941-89c9-0f7a6c30beac",
+      "id": "47fbb575-0000-0000-0000-0f7a6c30beac",
       "isEnabled": true,
       "description": "Consumer apps have access to the consumer data.",
       "value": "Consumer"
@@ -95,39 +127,85 @@ U kunt app-rollen definiëren voor het doel `users` , `applications` of beide. W
 "availableToOtherTenants": false,
 ```
 
-Het aantal gedefinieerde rollen heeft gevolgen voor de limieten die het toepassings manifest heeft. Deze zijn uitvoerig besproken op de pagina [manifest limieten](./reference-app-manifest.md#manifest-limits) .
+## <a name="assign-users-and-groups-to-roles"></a>Gebruikers en groepen toewijzen aan rollen
 
-### <a name="assign-users-and-groups-to-roles"></a>Gebruikers en groepen toewijzen aan rollen
+Wanneer u app-rollen in uw toepassing hebt toegevoegd, kunt u gebruikers en groepen toewijzen aan de rollen. De toewijzing van gebruikers en groepen aan rollen kan worden uitgevoerd via de gebruikers interface van de portal of via een programma met behulp van [Microsoft Graph](/graph/api/user-post-approleassignments). Wanneer de gebruikers die zijn toegewezen aan de verschillende app-rollen zich aanmelden bij de toepassing, krijgen hun tokens hun toegewezen rollen in de `roles` claim.
 
-Wanneer u app-rollen hebt toegevoegd in uw toepassing, kunt u gebruikers en groepen toewijzen aan deze rollen.
+Gebruikers en groepen toewijzen aan rollen met behulp van de Azure Portal:
 
-1. Selecteer in **Azure Active Directory** het deel venster Azure Active Directory **bedrijfs toepassingen** in het navigatie menu **Azure Active Directory** links.
-1. Selecteer **alle toepassingen** om een lijst met al uw toepassingen weer te geven.
-
-     Als u de toepassing die u wilt weer geven hier niet ziet, gebruikt u de diverse filters boven aan de lijst **alle toepassingen** om de lijst te beperken of omlaag te schuiven in de lijst om uw toepassing te vinden.
-
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. In **Azure Active Directory** selecteert u **bedrijfs toepassingen** in het navigatie menu aan de linkerkant.
+1. Selecteer **alle toepassingen** om een lijst met al uw toepassingen weer te geven. Als uw toepassing niet wordt weer gegeven in de lijst, gebruikt u de filters boven aan de lijst **alle toepassingen** om de lijst te beperken, of schuif omlaag in de lijst om de toepassing te zoeken.
 1. Selecteer de toepassing waarin u gebruikers of beveiligings groep aan rollen wilt toewijzen.
-1. Selecteer het deel venster **gebruikers en groepen** in het navigatie menu aan de linkerkant van de toepassing.
-1. Klik boven aan de lijst **gebruikers en groepen** op de knop **gebruiker toevoegen** om het deel venster **toewijzing toevoegen** te openen.
-1. Selecteer de selector **gebruikers en groepen** in het deel venster **toewijzing toevoegen** .
+1. Selecteer onder **Beheren** de optie **Gebruikers en groepen**.
+1. Selecteer **gebruiker toevoegen** om het deel venster **toewijzing toevoegen** te openen.
+1. Selecteer de selector **gebruikers en groepen** in het deel venster **toewijzing toevoegen** . Er wordt een lijst met gebruikers en beveiligings groepen weer gegeven. U kunt zoeken naar een bepaalde gebruiker of groep en meerdere gebruikers en groepen selecteren die in de lijst worden weer gegeven.
+1. Zodra u gebruikers en groepen hebt geselecteerd, selecteert u de knop **selecteren** om door te gaan.
+1. Selecteer **een rol selecteren** in het deel venster **toewijzing toevoegen** . Alle rollen die u voor de toepassing hebt gedefinieerd, worden weer gegeven.
+1. Kies een rol en selecteer de knop **selecteren** .
+1. Selecteer de knop **toewijzen** om de toewijzing van gebruikers en groepen aan de app te volt ooien.
 
-     Er wordt een lijst met gebruikers en beveiligings groepen weer gegeven samen met een tekstvak om te zoeken en een bepaalde gebruiker of groep te zoeken. In dit scherm kunt u meerdere gebruikers en groepen tegelijk selecteren.
+Controleer of de gebruikers en groepen die u hebt toegevoegd, worden weer gegeven in de lijst **gebruikers en groepen** .
 
-1. Wanneer u klaar bent met het selecteren van de gebruikers en groepen, klikt u op de knop **selecteren** aan de onderkant om naar het volgende deel te gaan.
-1. Kies de selector **selecteren** in het deel venster **toewijzing toevoegen** . Alle eerder in het app-manifest gedeclareerde rollen worden weer gegeven.
-1. Kies een rol en druk op de knop **selecteren** .
-1. Druk op de knop **toewijzen** aan de onderkant om de toewijzingen van gebruikers en groepen aan de app te volt ooien.
-1. Controleer of de gebruikers en groepen die u hebt toegevoegd, worden weer gegeven in de lijst met bijgewerkte **gebruikers en groepen** .
+## <a name="assign-app-roles-to-applications"></a>App-rollen toewijzen aan toepassingen
 
-### <a name="receive-roles-in-tokens"></a>Rollen ontvangen in tokens
+Wanneer u app-rollen hebt toegevoegd in uw toepassing, kunt u een app-rol toewijzen aan een client-app met behulp van de Azure Portal of programmatisch met behulp van [Microsoft Graph](/graph/api/user-post-approleassignments).
 
-Wanneer de gebruikers die zijn toegewezen aan de verschillende app-rollen zich aanmelden bij de toepassing, krijgen hun tokens hun toegewezen rollen in de `roles` claim.
+Wanneer u app-rollen toewijst aan een toepassing, maakt u *toepassings machtigingen*. Toepassings machtigingen worden meestal gebruikt door daemon-apps of back-end-services die als zichzelf moeten worden geverifieerd en geautoriseerde API-aanroepen moeten maken, zonder de interactie van een gebruiker.
+
+App-rollen toewijzen aan een toepassing met behulp van de Azure Portal:
+
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Selecteer in **Azure Active Directory** **app-registraties** in het navigatie menu aan de linkerkant.
+1. Selecteer **alle toepassingen** om een lijst met al uw toepassingen weer te geven. Als uw toepassing niet wordt weer gegeven in de lijst, gebruikt u de filters boven aan de lijst **alle toepassingen** om de lijst te beperken, of schuif omlaag in de lijst om de toepassing te zoeken.
+1. Selecteer de toepassing waaraan u een app-functie wilt toewijzen.
+1. Selecteer **API-machtigingen** > **Een machtiging toevoegen**.
+1. Selecteer het tabblad **mijn api's** en selecteer vervolgens de app waarvoor u app-rollen hebt gedefinieerd.
+1. Selecteer **Toepassingsmachtigingen**.
+1. Selecteer de rol (len) die u wilt toewijzen.
+1. Selecteer de knop machtigingen toevoegen om de rol (len) **toe te voegen** .
+
+De nieuw toegevoegde rollen moeten worden weer gegeven in het deel venster **API-machtigingen** van uw app-registratie.
+
+#### <a name="grant-admin-consent"></a>Toestemming van beheerder verlenen
+
+Omdat dit *machtigingen voor toepassingen* zijn, niet de gedelegeerde machtigingen, moet een beheerder toestemming verlenen om de app-rollen te gebruiken die aan de toepassing zijn toegewezen.
+
+1. Selecteer in het deel venster **API-machtigingen** voor app-registratie de optie **beheerder toestemming geven voor \<tenant name\>**.
+1. Selecteer **Ja** wanneer u wordt gevraagd toestemming te geven voor de aangevraagde machtigingen.
+
+De kolom **status** moet overeenkomen met de **toegestane toestemming voor \<tenant name\>**.
+
+## <a name="use-app-roles-in-your-web-api"></a>App-rollen gebruiken in uw web-API
+
+Wanneer u app-rollen hebt gedefinieerd en deze hebt toegewezen aan een gebruiker, groep of toepassing, is de volgende stap het toevoegen van code aan uw web-API die controleert op die rollen wanneer de API wordt aangeroepen. Dat wil zeggen dat wanneer een client-app een API-bewerking aanvraagt die u hebt gekozen, autorisatie vereist, uw API-code moet controleren of de scopes zich in het toegangs token bevinden dat wordt weer gegeven in de aanroep van de client-app.
+
+Zie voor meer informatie over het toevoegen van autorisatie aan uw web-API de [beveiligde web-API: scopes en app-rollen verifiëren](scenario-protected-web-api-verification-scope-app-roles.md).
+
+## <a name="app-roles-vs-groups"></a>App-rollen versus groepen
+
+Hoewel u app-rollen of-groepen kunt gebruiken voor autorisatie, zijn de belangrijkste verschillen tussen de functies die u besluit te gebruiken voor uw scenario.
+
+| App-rollen                                                                          | Groepen                                                      |
+|------------------------------------------------------------------------------------|-------------------------------------------------------------|
+| Ze zijn specifiek voor een toepassing en worden gedefinieerd in de app-registratie. Ze worden met de toepassing verplaatst. | Ze zijn niet specifiek voor een app, maar voor een Azure AD-Tenant. |
+| App-rollen worden verwijderd wanneer de app-registratie wordt verwijderd.                      | Groepen blijven intact, zelfs als de app wordt verwijderd.            |
+| Gegeven in de `roles` claim.                                                     | Vermeld in `groups` claim.                                 |
+
+Ontwikkel aars kunnen app-rollen gebruiken om te bepalen of een gebruiker zich kan aanmelden bij een app of een app kan een toegangs token verkrijgen voor een web-API. Als u dit beveiligings beheer wilt uitbreiden naar groepen, kunnen ontwikkel aars en beheerders ook beveiligings groepen toewijzen aan app-rollen.
+
+App-rollen worden aanbevolen door ontwikkel aars wanneer ze de para meters van autorisatie in hun app zelf willen beschrijven en beheren. Een app die gebruikmaakt van groepen voor autorisatie, verbreekt bijvoorbeeld de volgende Tenant, aangezien de groeps-ID en de naam verschillend kunnen zijn. Een app die app-rollen gebruikt, blijft veilig. Het toewijzen van groepen aan app-rollen is in feite voor dezelfde redenen populair bij SaaS-apps.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Autorisatie toevoegen met behulp van app-rollen & rollen claims aan een ASP.NET Core-web-app](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-1-Roles)
-- [Autorisatie in uw toepassingen implementeren met het micro soft Identity platform (video)](https://www.youtube.com/watch?v=HdBSBSbgYQQ)
-- [Azure Active Directory, nu met groeps claims en toepassings rollen](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-Active-Directory-now-with-Group-Claims-and-Application/ba-p/243862)
-- [Azure Active Directory-app-manifest](./reference-app-manifest.md)
-- [Azure AD-toegangs tokens](access-tokens.md)
-- [Azure AD `id_tokens`](id-tokens.md)
+Meer informatie over app-rollen met de volgende resources.
+
+* Codevoorbeelden op GitHub
+  * [Autorisatie toevoegen met behulp van groepen en groepclaims aan een ASP.NET Core web-app](https://aka.ms/groupssample)
+  * [Hoek-toepassing met één pagina (SPA) die een .NET core web-API aanroept en app-rollen en beveiligings groepen gebruikt](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-dotnetcore-webapi-roles-groups/blob/master/README.md)
+* Referentie documentatie
+  * [Azure AD-App-manifest](./reference-app-manifest.md)
+  * [Azure AD-toegangs tokens](access-tokens.md)
+  * [Azure AD ID-tokens](id-tokens.md)
+  * [Optionele claims voor uw app opgeven](active-directory-optional-claims.md)
+* Video: [autorisatie in uw toepassingen implementeren met het micro soft Identity platform](https://www.youtube.com/watch?v=LRoc-na27l0) (1:01:15)

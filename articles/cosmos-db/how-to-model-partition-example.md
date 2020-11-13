@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: thweiss
 ms.custom: devx-track-js
-ms.openlocfilehash: ef999d4b452f3f31942e1fb2ddb46efe760acff0
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: c3cdc0a9fb9fa236fae37a52194f446278a42f72
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93342144"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616243"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>Meer informatie over het modelleren en partitioneren van gegevens in Azure Cosmos DB aan de hand van een praktijkvoorbeeld
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -21,6 +21,8 @@ ms.locfileid: "93342144"
 In dit artikel worden verschillende Azure Cosmos DB concepten, zoals [gegevens modellering](modeling-data.md), [partitioneren](partitioning-overview.md)en [ingerichte door Voer](request-units.md) , gebouwd om te laten zien hoe u een praktijk oefening voor het ontwerpen van gegevens kunt beleven.
 
 Als u meestal met relationele data bases werkt, hebt u waarschijnlijk gewoonten en intuitions gemaakt over het ontwerpen van een gegevens model. Vanwege de specifieke beperkingen, maar ook de unieke kracht van Azure Cosmos DB, worden de meeste van deze best practices niet goed vertaald en kunnen ze naar eigen inzicht worden gesleept. Het doel van dit artikel is om u door het proces van het model leren van een Real-World use-case op Azure Cosmos DB, van artikel modellering tot entiteits-en container partities.
+
+[Down load of Bekijk een door de Community gegenereerde bron code](https://github.com/jwidmer/AzureCosmosDbBlogExample) die de concepten in dit artikel illustreert. Dit code voorbeeld is bijgedragen door een mede werker van de community en Azure Cosmos DB team biedt geen ondersteuning voor het onderhoud ervan.
 
 ## <a name="the-scenario"></a>Het scenario
 

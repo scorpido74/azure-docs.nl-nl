@@ -12,12 +12,12 @@ ms.date: 09/15/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperfq2
-ms.openlocfilehash: 158a82b43e573e5d34ec9a44c4a47cd1126de8ed
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 0ec70963dd7f464ae4e72c3bf79e06ebfb5238fc
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424587"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616175"
 ---
 # <a name="tutorial---build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Zelfstudie: een SCIM-eind punt bouwen en gebruikers inrichten met Azure AD
 
@@ -88,7 +88,8 @@ Het hierboven gedefinieerde schema wordt weergegeven met behulp van de onderstaa
      "location":
  "https://example.com/v2/Users/2819c223-7f76-453a-919d-413861904646"
    }
- ```
+}   
+```
 
 ### <a name="table-2-default-user-attribute-mapping"></a>Tabel 2: Standaardtoewijzing van gebruikerskenmerk
 U kunt de onderstaande tabel gebruiken om te begrijpen hoe de kenmerken die uw toepassing nodig heeft, kunnen worden toegewezen aan een kenmerk in Azure AD en de SCIM RFC. U kunt [aanpassen](customize-application-attributes.md) hoe kenmerken worden toegewezen tussen Azure AD en uw SCIM-eindpunt. Houd er rekening mee dat u niet zowel gebruikers als groepen of alle hieronder weer gegeven kenmerken hoeft te ondersteunen. Ze laten alleen de manier zien waarop kenmerken in Azure AD vaak worden toegewezen aan eigenschappen in het SCIM-protocol. 
@@ -126,7 +127,7 @@ U kunt de onderstaande tabel gebruiken om te begrijpen hoe de kenmerken die uw t
 | objectId |externalId |
 | proxyAddresses |emails[type eq "other"].Value |
 
-Er zijn verschillende eindpunten gedefinieerd in de SCIM RFC. U kunt beginnen met het /User-eindpunt en vervolgens van daaruit verder gaan. Het /Schemas-eindpunt is handig wanneer u aangepaste kenmerken gebruikt of als uw schema regelmatig wordt gewijzigd. Hiermee kan een client automatisch het meest recente schema ophalen. Het /Bulk-eindpunt is vooral handig bij het ondersteunen van groepen. De volgende tabel beschrijft de verschillende eindpunten die zijn gedefinieerd in de SCIM-standaard. Het /Schemas-eindpunt is handig wanneer u aangepaste kenmerken gebruikt of als uw schema regelmatig wordt gewijzigd. Hiermee kan een client automatisch het meest recente schema ophalen. Het /Bulk-eindpunt is vooral handig bij het ondersteunen van groepen. De volgende tabel beschrijft de verschillende eindpunten die zijn gedefinieerd in de SCIM-standaard. 
+Er zijn verschillende eindpunten gedefinieerd in de SCIM RFC. U kunt beginnen met het /User-eindpunt en vervolgens van daaruit verder gaan. Het /Schemas-eindpunt is handig wanneer u aangepaste kenmerken gebruikt of als uw schema regelmatig wordt gewijzigd. Hiermee kan een client automatisch het meest recente schema ophalen. Het /Bulk-eindpunt is vooral handig bij het ondersteunen van groepen. De volgende tabel beschrijft de verschillende eindpunten die zijn gedefinieerd in de SCIM-standaard.
  
 ### <a name="table-4-determine-the-endpoints-that-you-would-like-to-develop"></a>Tabel 4: Bepaal de eind punten die u wilt ontwikkelen
 |EINDPUNT:|BESCHRIJVING|
@@ -759,7 +760,7 @@ De open source .NET core [referentiecode](https://aka.ms/SCIMReferenceCode) die 
    > [!Note]
    > De referentiecode is bedoeld om u te helpen bij het bouwen van uw SCIM-eindpunt en wordt 'AS IS' aangeboden. Bijdragen van de community zijn welkom bij het bouwen en onderhouden van de code.
 
-De oplossing bestaat uit twee projecten _Microsoft.SCIM_ en _Microsoft.SCIM.WebHostSample_ .
+De oplossing bestaat uit twee projecten _Microsoft.SCIM_ en _Microsoft.SCIM.WebHostSample_.
 
 Het _Microsoft.SCIM_ -project is de bibliotheek waarin de onderdelen van de webservice worden gedefinieerd die voldoen aan de SCIM-specificatie. Het declareert de interface _Microsoft.SCIM.IProvider_ , aanvragen worden omgezet in aanroepen naar de methoden van de provider, die vervolgens kunnen worden geprogrammeerd om te werken in een identiteitsopslag.
 
@@ -810,7 +811,7 @@ Aanvragen van Azure Active Directory bevatten een OAuth 2.0 Bearer-token. Alle s
 
 In het token wordt de uitgever geïdentificeerd aan de hand van een ISS-claim, zoals `"iss":"https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/"`. In dit voorbeeld is het basisadres van de claimwaarde `https://sts.windows.net`, Azure Active Directory, als de uitgever geïdentificeerd, terwijl het relatief adressegment, _cbb1a5ac-f33b-45fa-9bf5-f37db0fed422_ , een unieke id is van de Azure Active Directory Tenant waarvoor het token is uitgegeven.
 
-Het doel van het token is de toepassingssjabloon-ID voor de toepassing in de galerie. Elk van de toepassingen die in één tenant zijn geregistreerd, kan dezelfde `iss`-claim ontvangen met SCIM-aanvragen. De toepassingssjabloon-ID voor alle aangepaste apps is _8adf8e6e-67b2-4cf2-A259-e3dc5476c621_ . Het token dat is gegenereerd door de Azure AD-inrichtingsservice mag alleen worden gebruikt voor het testen. Het mag niet worden gebruikt in productie-omgevingen.
+Het doel van het token is de toepassingssjabloon-ID voor de toepassing in de galerie. Elk van de toepassingen die in één tenant zijn geregistreerd, kan dezelfde `iss`-claim ontvangen met SCIM-aanvragen. De toepassingssjabloon-ID voor alle aangepaste apps is _8adf8e6e-67b2-4cf2-A259-e3dc5476c621_. Het token dat is gegenereerd door de Azure AD-inrichtingsservice mag alleen worden gebruikt voor het testen. Het mag niet worden gebruikt in productie-omgevingen.
 
 In de voorbeeldcode worden aanvragen geverifieerd met het pakket Microsoft.AspNetCore.Authentication.JwtBearer package. De volgende code dwingt af dat aanvragen voor een van de service-eindpunten worden geverifieerd met behulp van het Bearer-token dat is uitgegeven door Azure Active Directory voor een opgegeven tenant:
 
@@ -1132,20 +1133,20 @@ Toepassingen die ondersteuning bieden voor het SCIM-profiel dat in dit artikel w
 
 1. Meld u aan bij de [Azure Active Directory Portal](https://aad.portal.azure.com). U kunt toegang krijgen tot een gratis proefversie van Azure Active Directory met P2-licenties door u aan te melden voor het [ontwikkelaarsprogramma](https://developer.microsoft.com/office/dev-program)
 2. Selecteer **Enterprise-toepassingen** in het linkerdeelvenster. Er wordt een lijst met alle geconfigureerde apps weergegeven, met inbegrip van apps die zijn toegevoegd vanuit de galerie.
-3. Select **+ Nieuwe toepassing** > **Alle** > **Niet-galerie toepassing** .
+3. Select **+ Nieuwe toepassing** > **Alle** > **Niet-galerie toepassing**.
 4. Voer een naam in voor uw toepassing en selecteer **Toevoegen** om een app-object te maken. De nieuwe app wordt toegevoegd aan de lijst met bedrijfstoepassingen en wordt geopend op het scherm voor het beheren van apps.
 
    ![Schermopname van de Azure AD-toepassingsgalerie](media/use-scim-to-provision-users-and-groups/scim-figure-2a.png)<br/>
    *Azure AD-toepassingsgalerie*
 
 5. Selecteer in het scherm voor het beheren van apps **Inrichting** in het linker deelvenster.
-6. Selecteer **Automatisch** in het menu **Inrichtingsmodus** .
+6. Selecteer **Automatisch** in het menu **Inrichtingsmodus**.
 
    ![Voorbeeld: De inrichtingspagina van een app in de Azure Portal](media/use-scim-to-provision-users-and-groups/scim-figure-2b.png)<br/>
    *Inrichting configureren in de Azure Portal*
 
 7. Voer in het veld **Tenant-URL** de URL in van het SCIM-eindpunt van de toepassing. Voorbeeld: `https://api.contoso.com/scim/`
-8. Als het SCIM-eindpunt een OAuth Bearer-token van een andere uitgever dan Azure AD vereist, kopieert u het vereiste OAuth Bearer-token naar het optionele veld **Geheime token** . Als dit veld leeg blijft, voegt Azure AD aan elke aanvraag een OAuth Bearer-token toe dat is uitgegeven door Azure AD. Apps die gebruikmaken van Azure AD als id-provider kunnen dit door Azure AD uitgegeven token valideren. 
+8. Als het SCIM-eindpunt een OAuth Bearer-token van een andere uitgever dan Azure AD vereist, kopieert u het vereiste OAuth Bearer-token naar het optionele veld **Geheime token**. Als dit veld leeg blijft, voegt Azure AD aan elke aanvraag een OAuth Bearer-token toe dat is uitgegeven door Azure AD. Apps die gebruikmaken van Azure AD als id-provider kunnen dit door Azure AD uitgegeven token valideren. 
    > [!NOTE]
    > Het wordt * *_niet_* aanbevolen om dit veld leeg te laten en te vertrouwen op een token dat door Azure AD wordt gegenereerd. Deze optie is voornamelijk beschikbaar voor testdoeleinden.
 9. Selecteer *Verbinding testen* * om Azure Active Directory verbinding te laten maken met het SCIM-eindpunt. Als de poging mislukt, wordt er informatie over de fout weergegeven.  
@@ -1159,8 +1160,8 @@ Toepassingen die ondersteuning bieden voor het SCIM-profiel dat in dit artikel w
     > [!NOTE]
     > U kunt de synchronisatie van groepsobjecten eventueel uitschakelen door de toewijzing van groepen uit te schakelen.
 
-12. Onder **Instellingen** wordt in het veld **Bereik** gedefinieerd welke gebruikers en groepen worden gesynchroniseerd. Selecteer **Alleen toegewezen gebruikers en groepen** (aanbevolen) om gebruikers en groepen te synchroniseren die zijn toegewezen op het tabblad **Gebruikers en groepen** .
-13. Nadat de configuratie is voltooid, stelt u de **Inrichtingsstatus** in op **Aan** .
+12. Onder **Instellingen** wordt in het veld **Bereik** gedefinieerd welke gebruikers en groepen worden gesynchroniseerd. Selecteer **Alleen toegewezen gebruikers en groepen** (aanbevolen) om gebruikers en groepen te synchroniseren die zijn toegewezen op het tabblad **Gebruikers en groepen**.
+13. Nadat de configuratie is voltooid, stelt u de **Inrichtingsstatus** in op **Aan**.
 14. Selecteer **Opslaan** om de Azure AD-inrichtingsservice te starten.
 15. Als u alleen toegewezen gebruikers en groepen (aanbevolen) wilt synchroniseren, selecteert u het tabblad **Gebruikers en groepen** en wijst u de gebruikers of groepen toe die u wilt synchroniseren.
 

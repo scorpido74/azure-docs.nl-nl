@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 11/12/2020
 ms.author: cherylmc
-ms.openlocfilehash: 7853ac3ece01057282bc6cb421018020e15273b5
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 5bff5b341dcbdaa7ccae2b02e62e3e6bd4d115f9
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92079187"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94594263"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion"></a>Werken met NSG-toegang en Azure Bastion
 
@@ -28,21 +28,22 @@ In dit diagram:
 * Connect Integration-een RDP/SSH-sessie met één klik binnen de browser
 * Is er geen openbaar IP-adres vereist voor de virtuele Azure-machine.
 
-## <a name="network-security-groups"></a><a name="nsg"></a>Netwerk beveiligings groepen
+## <a name="network-security-groups"></a><a name="nsg"></a>Netwerkbeveiligingsgroepen
 
 In deze sectie ziet u het netwerk verkeer tussen de gebruiker en Azure Bastion, en tot doel-Vm's in uw virtuele netwerk:
 
 ### <a name="azurebastionsubnet"></a><a name="apply"></a>AzureBastionSubnet
 
-Azure Bastion wordt specifiek geïmplementeerd voor ***AzureBastionSubnet***.
+Azure Bastion wordt specifiek geïmplementeerd voor * **AzureBastionSubnet** _.
 
-* **Binnenkomend verkeer:**
+_ Binnenkomend **verkeer:**
 
    * **Binnenkomend verkeer via het open bare Internet:** De Azure-Bastion maakt een openbaar IP-adres waarvoor poort 443 is ingeschakeld op het open bare IP-adres voor binnenkomend verkeer. Poort 3389/22 hoeft niet te worden geopend op de AzureBastionSubnet.
    * **Binnenkomend verkeer vanuit het Azure Bastion-besturings vlak:** Schakel voor de connectiviteit van het besturings element het argument poort 443 binnenkomend van de **GatewayManager** -service in. Hiermee wordt het besturings vlak ingeschakeld, dat wil zeggen dat gateway beheer met Azure Bastion kan communiceren.
+   * **Binnenkomend verkeer vanuit Azure Loadbalancer:** Schakel voor status tests het argument poort 443 binnenkomend van de **AzureLoadBalancer** -service in. Dit maakt Azure load balancer, om verbindings problemen met de back-end te detecteren.
 
 
-   :::image type="content" source="./media/bastion-nsg/inbound.png" alt-text="NSG":::
+   :::image type="content" source="./media/bastion-nsg/inbound.png" alt-text="Scherm opname bevat binnenkomende beveiligings regels voor Azure Bastion-connectiviteit.":::
 
 * **Uitgaand verkeer:**
 
@@ -50,7 +51,7 @@ Azure Bastion wordt specifiek geïmplementeerd voor ***AzureBastionSubnet***.
    * Uitgaand **verkeer naar andere open bare eind punten in Azure:** Azure Bastion moet verbinding kunnen maken met verschillende open bare eind punten in azure (bijvoorbeeld voor het opslaan van Diagnostische logboeken en logboeken voor meters). Daarom heeft Azure Bastion een uitgaand verkeer naar 443 naar **Cloud** service-tag nodig.
 
 
-   :::image type="content" source="./media/bastion-nsg/outbound.png" alt-text="NSG":::
+   :::image type="content" source="./media/bastion-nsg/outbound.png" alt-text="Scherm opname toont de uitgaande beveiligings regels voor Azure Bastion-connectiviteit.":::
 
 ### <a name="target-vm-subnet"></a>Doel-VM-subnet
 Dit is het subnet dat de virtuele doel machine bevat waarnaar u RDP/SSH wilt.

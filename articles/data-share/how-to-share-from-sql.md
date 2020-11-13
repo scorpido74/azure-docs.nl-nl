@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 10/15/2020
-ms.openlocfilehash: 205600e488822c5ade4b808c29c66741d28a84a7
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.date: 11/12/2020
+ms.openlocfilehash: 87d6ca8ee69ca49cf52b61e6beddb56721658afa
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/13/2020
-ms.locfileid: "94575902"
+ms.locfileid: "94593736"
 ---
 # <a name="share-and-receive-data-from-azure-sql-database-and-azure-synapse-analytics"></a>Gegevens delen en ontvangen van Azure SQL Database en Azure Synapse Analytics
 
@@ -19,7 +19,7 @@ ms.locfileid: "94575902"
 
 Azure-gegevens share biedt ondersteuning voor het delen Azure SQL Database en Azure Synapse Analytics op basis van moment opnamen. In dit artikel wordt uitgelegd hoe u gegevens uit deze bronnen kunt delen en ontvangen.
 
-De Azure-gegevens share ondersteunt het delen van tabellen of weer gaven van Azure SQL Database en Azure Synapse Analytics (voorheen Azure SQL DW) en het delen van tabellen vanuit een Azure Synapse Analytics (werk ruimte) SQL-groep. Gegevens gebruikers kunnen ervoor kiezen om de gegevens in Azure Data Lake Storage Gen2 of Azure Blob Storage te accepteren als CSV-of Parquet-bestand, evenals in Azure SQL Database en Azure Synapse Analytics als tabellen.
+De Azure-gegevens share ondersteunt het delen van tabellen en weer gaven van Azure SQL Database en Azure Synapse Analytics (voorheen Azure SQL DW) en het delen van tabellen vanuit een Azure Synapse Analytics (werk ruimte) toegewezen SQL-groep. Delen vanuit een Azure Synapse Analytics (werk ruimte) SQL-groep zonder server wordt momenteel niet ondersteund. Gegevens gebruikers kunnen ervoor kiezen om de gegevens in Azure Data Lake Storage Gen2 of Azure Blob Storage te accepteren als CSV-of Parquet-bestand, evenals in Azure SQL Database en Azure Synapse Analytics als tabellen.
 
 Wanneer gegevens worden geaccepteerd in Azure Data Lake Store Gen2 of Azure Blob Storage, overschrijven volledige moment opnamen de inhoud van het doel bestand als dit al bestaat.
 Wanneer gegevens worden ontvangen in de SQL-tabel en als de doel tabel nog niet bestaat, maakt Azure-gegevens share de SQL-tabel met het bron schema. Als er al een doel tabel met dezelfde naam bestaat, wordt deze verwijderd en overschreven met de laatste volledige moment opname. Incrementele moment opnamen worden momenteel niet ondersteund.
@@ -61,7 +61,7 @@ U kunt de stapsgewijze [demo](https://youtu.be/hIE-TjJD8Dc) voor het configurere
 
 #### <a name="prerequisites-for-sharing-from-azure-synapse-analytics-workspace-sql-pool"></a>Vereisten voor delen van Azure Synapse Analytics (werk ruimte) SQL-groep
 
-* Een Azure Synapse Analytics (werk ruimte) SQL-groep met tabellen die u wilt delen. Delen van weer gave wordt momenteel niet ondersteund.
+* Een toegewezen SQL-groep in azure Synapse Analytics (werk ruimte) met tabellen die u wilt delen. Delen van weer gave wordt momenteel niet ondersteund. Delen vanuit een serverloze SQL-groep wordt momenteel niet ondersteund.
 * Toestemming om te schrijven naar de SQL-groep in de Synapse-werk ruimte, die aanwezig is in *micro soft. Synapse/werk ruimten/sqlPools/schrijven*. Deze machtiging maakt onderdeel uit van de rol **Inzender**.
 * Machtiging voor de beheerde identiteit van de gegevens share bron voor toegang tot de SQL-groep Synapse-werk ruimte. U kunt dit doen via de volgende stappen: 
     1. Ga in Azure Portal naar Synapse-werk ruimte. Selecteer SQL Active Directory-beheerder in de linkernavigatiebalk en stel zichzelf in als de **Azure Active Directory-beheerder**.
@@ -132,7 +132,7 @@ Maak een Azure Data Share-resource in een Azure-resourcegroep.
 
     ![AddDatasets](./media/add-datasets.png "Gegevenssets toevoegen")    
 
-1. Selecteer uw SQL Server-of Synapse-werk ruimte, geef referenties op als u hierom wordt gevraagd en selecteer **volgende** om naar het object te navigeren dat u wilt delen en selecteer gegevens sets toevoegen. 
+1. Selecteer uw SQL Server-of Synapse-werk ruimte, geef referenties op als u hierom wordt gevraagd en selecteer **volgende** om naar het object te navigeren dat u wilt delen en selecteer gegevens sets toevoegen. U kunt tabellen en weer gaven selecteren op basis van Azure SQL Database en Azure Synapse Analytics (voorheen Azure SQL DW) of tabellen uit een toegewezen SQL-groep in azure Synapse Analytics (workspace). 
 
     ![SelectDatasets](./media/select-datasets-sql.png "Gegevenssets selecteren")    
 
@@ -201,7 +201,7 @@ U kunt de stapsgewijze [demo](https://youtu.be/aeGISgK1xro) voor het configurere
  
 #### <a name="prerequisites-for-receiving-data-into-azure-synapse-analytics-workspace-sql-pool"></a>Vereisten voor het ontvangen van gegevens in een Azure Synapse Analytics (werk ruimte) SQL-groep
 
-* Een Azure Synapse Analytics (werk ruimte) SQL-groep.
+* Een toegewezen SQL-groep in azure Synapse Analytics (werk ruimte). Het ontvangen van gegevens in een serverloze SQL-groep wordt momenteel niet ondersteund.
 * Toestemming om te schrijven naar de SQL-groep in de Synapse-werk ruimte, die aanwezig is in *micro soft. Synapse/werk ruimten/sqlPools/schrijven*. Deze machtiging maakt onderdeel uit van de rol **Inzender**.
 * Machtiging voor de beheerde identiteit van de gegevens share bron voor toegang tot de Synapse werkruimte SQL-pool. U kunt dit doen via de volgende stappen: 
     1. Ga in Azure Portal naar Synapse-werk ruimte. Selecteer SQL Active Directory-beheerder in de linkernavigatiebalk en stel zichzelf in als de **Azure Active Directory-beheerder**.

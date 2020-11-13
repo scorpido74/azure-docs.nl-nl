@@ -1,6 +1,6 @@
 ---
 title: Gegevens transformeren met behulp van Pig-activiteit in Azure Data Factory
-description: Meer informatie over hoe u de Pig-activiteit in een Azure data factory v1 kunt gebruiken om Pig-scripts uit te voeren op een op aanvraag/uw eigen HDInsight-cluster.
+description: Meer informatie over hoe u de Pig-activiteit in Azure Data Factory v1 kunt gebruiken om Pig-scripts uit te voeren op een op aanvraag/uw eigen HDInsight-cluster.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 35990312658492e1e41b47096a43748c3a4e653e
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: c94d66bf98645e12a6c603f2b35d229080717734
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92359897"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616855"
 ---
 # <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>Gegevens transformeren met behulp van Pig-activiteit in Azure Data Factory
 > [!div class="op_single_selector" title1="Transformatie activiteiten"]
@@ -26,8 +26,8 @@ ms.locfileid: "92359897"
 > * [MapReduce-activiteit](data-factory-map-reduce.md)
 > * [Hadoop streaming-activiteit](data-factory-hadoop-streaming-activity.md)
 > * [Spark-activiteit](data-factory-spark.md)
-> * [Activiteit voor het uitvoeren van Azure Machine Learning Studio (klassiek)](data-factory-azure-ml-batch-execution-activity.md)
-> * [Resource-activiteit voor het bijwerken van Azure Machine Learning Studio (klassiek)](data-factory-azure-ml-update-resource-activity.md)
+> * [Azure Machine Learning Studio-batchuitvoeringsactiviteit (klassiek)](data-factory-azure-ml-batch-execution-activity.md)
+> * [Resourceactiviteit voor Azure Machine Learning Studio (klassiek)](data-factory-azure-ml-update-resource-activity.md)
 > * [Opgeslagen procedureactiviteit](data-factory-stored-proc-activity.md)
 > * [Data Lake Analytics U-SQL-activiteit](data-factory-usql-activity.md)
 > * [Aangepaste .NET-activiteit](data-factory-use-custom-activities.md)
@@ -84,15 +84,15 @@ Met de HDInsight Pig-activiteit in een Data Factory [pijp lijn](data-factory-cre
 
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| naam |Naam van de activiteit |Ja |
-| description |Tekst waarin wordt beschreven waarvoor de activiteit wordt gebruikt |Nee |
-| type |HDinsightPig |Ja |
-| invoer |Een of meer invoer waarden die worden gebruikt door de Pig-activiteit |Nee |
-| uitvoer |Een of meer uitvoer die wordt geproduceerd door de Pig-activiteit |Ja |
-| linkedServiceName |Verwijzing naar het HDInsight-cluster dat is geregistreerd als een gekoppelde service in Data Factory |Ja |
-| script |Inline van het Pig-script opgeven |Nee |
-| scriptPath |Sla het Pig-script op in een Azure Blob-opslag en geef het pad naar het bestand op. Gebruik de eigenschap script of scriptPath. Beide kunnen niet tegelijk worden gebruikt. De bestands naam is hoofdletter gevoelig. |Nee |
-| compliant |Para meters opgeven als sleutel/waarde-paren voor het verwijzen binnen het Pig-script |Nee |
+| naam |Naam van de activiteit |Yes |
+| beschrijving |Tekst waarin wordt beschreven waarvoor de activiteit wordt gebruikt |No |
+| type |HDinsightPig |Yes |
+| invoer |Een of meer invoer waarden die worden gebruikt door de Pig-activiteit |No |
+| uitvoer |Een of meer uitvoer die wordt geproduceerd door de Pig-activiteit |Yes |
+| linkedServiceName |Verwijzing naar het HDInsight-cluster dat is geregistreerd als een gekoppelde service in Data Factory |Yes |
+| script |Inline van het Pig-script opgeven |No |
+| scriptPath |Sla het Pig-script op in een Azure Blob-opslag en geef het pad naar het bestand op. Gebruik de eigenschap script of scriptPath. Beide kunnen niet tegelijk worden gebruikt. De bestands naam is hoofdletter gevoelig. |No |
+| compliant |Para meters opgeven als sleutel/waarde-paren voor het verwijzen binnen het Pig-script |No |
 
 ## <a name="example"></a>Voorbeeld
 Laten we eens kijken naar een voor beeld van een spel logboek analyse waarin u de tijd wilt identificeren die wordt besteed aan spelers die games spelen die door uw bedrijf worden gestart.
@@ -121,10 +121,10 @@ Store PigSampleOut into 'wasb://adfwalkthrough@anandsub14.blob.core.windows.net/
 
 Voer de volgende stappen uit om dit Pig-script uit te voeren in een Data Factory pijp lijn:
 
-1. Maak een gekoppelde service om [uw eigen hdinsight Compute-Cluster](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) te registreren of configureer het [hdinsight-berekenings cluster op aanvraag](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service). We bellen u de **HDInsightLinkedService**van de gekoppelde service.
-2. Maak een [gekoppelde service](data-factory-azure-blob-connector.md) om de verbinding met Azure Blob Storage te configureren die als host fungeert voor de gegevens. We bellen u de **StorageLinkedService**van de gekoppelde service.
-3. Maak gegevens [sets](data-factory-create-datasets.md) die verwijzen naar de invoer en de uitvoer gegevens. We gaan de invoer gegevensset **PigSampleIn** en de uitvoer gegevensset **PigSampleOut**noemen.
-4. Kopieer de Pig-query in een bestand met de Azure-Blob Storage die in stap #2 zijn geconfigureerd. Als de Azure-opslag die als host fungeert voor de gegevens een andere is dan die als host fungeert voor het query bestand, maakt u een afzonderlijke Azure Storage gekoppelde service. Raadpleeg de gekoppelde service in de configuratie van de activiteit. Gebruik **ScriptPath** om het pad naar het Pig-script bestand en **scriptLinkedService**op te geven. 
+1. Maak een gekoppelde service om [uw eigen hdinsight Compute-Cluster](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) te registreren of configureer het [hdinsight-berekenings cluster op aanvraag](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service). We bellen u de **HDInsightLinkedService** van de gekoppelde service.
+2. Maak een [gekoppelde service](data-factory-azure-blob-connector.md) om de verbinding met Azure Blob Storage te configureren die als host fungeert voor de gegevens. We bellen u de **StorageLinkedService** van de gekoppelde service.
+3. Maak gegevens [sets](data-factory-create-datasets.md) die verwijzen naar de invoer en de uitvoer gegevens. We gaan de invoer gegevensset **PigSampleIn** en de uitvoer gegevensset **PigSampleOut** noemen.
+4. Kopieer de Pig-query in een bestand met de Azure-Blob Storage die in stap #2 zijn geconfigureerd. Als de Azure-opslag die als host fungeert voor de gegevens een andere is dan die als host fungeert voor het query bestand, maakt u een afzonderlijke Azure Storage gekoppelde service. Raadpleeg de gekoppelde service in de configuratie van de activiteit. Gebruik **ScriptPath** om het pad naar het Pig-script bestand en **scriptLinkedService** op te geven. 
    
    > [!NOTE]
    > U kunt ook het Pig-script inline in de definitie van de activiteit opgeven met behulp van de eigenschap **script** . Deze aanpak wordt echter niet aanbevolen omdat alle speciale tekens in het script moeten worden ontsnapd en kan problemen met de fout opsporing veroorzaken. De best practice moet worden gevolgd door een stap #4.
@@ -210,7 +210,7 @@ Ga als volgt te werk om het Pig-script te gebruiken:
       }
     }
     ```
-* In het Pig-script raadpleegt u de para meters met behulp van '**$parameterName**', zoals wordt weer gegeven in het volgende voor beeld:
+* In het Pig-script raadpleegt u de para meters met behulp van ' **$parameterName** ', zoals wordt weer gegeven in het volgende voor beeld:
 
     ```
     PigSampleIn = LOAD '$Input' USING PigStorage(',') AS (ProfileID:chararray, SessionStart:chararray, Duration:int, SrcIPAddress:chararray, GameType:chararray);

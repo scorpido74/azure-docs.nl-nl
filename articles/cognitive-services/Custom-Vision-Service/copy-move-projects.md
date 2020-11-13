@@ -9,12 +9,12 @@ ms.subservice: custom-vision
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: pafarley
-ms.openlocfilehash: c742240cc82035b2a9af16348eaa9f2a40a32fa3
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 548d936538a909da10796d0377f119826582c420
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900319"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616056"
 ---
 # <a name="copy-and-move-your-custom-vision-projects"></a>Uw Custom Vision projecten kopiëren en verplaatsen
 
@@ -30,7 +30,7 @@ Als uw app of bedrijf afhankelijk is van het gebruik van een Custom Vision proje
 
 - Twee Azure Custom Vision-resources. Als u deze niet hebt, gaat u naar de Azure Portal en [maakt u een nieuwe Custom Vision resource](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision?azure-portal=true).
 - De trainings sleutels en eind punt-Url's van uw Custom Vision-resources. U kunt deze waarden vinden op het tabblad **overzicht** van de resource op het Azure Portal.
-- Een gemaakt Custom Vision project. Zie [een classificatie bouwen](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/getting-started-build-a-classifier) voor instructies over hoe u dit doet.
+- Een gemaakt Custom Vision project. Zie [een classificatie bouwen](./getting-started-build-a-classifier.md) voor instructies over hoe u dit doet.
 
 ## <a name="process-overview"></a>Overzicht van het proces
 

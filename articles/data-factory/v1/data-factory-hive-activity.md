@@ -1,6 +1,6 @@
 ---
 title: Gegevens transformeren met hive-activiteit-Azure
-description: Meer informatie over hoe u de Hive-activiteit in een Azure data factory v1 kunt gebruiken om Hive-query's uit te voeren op een op aanvraag/uw eigen HDInsight-cluster.
+description: Meer informatie over hoe u de Hive-activiteit in Azure Data Factory v1 kunt gebruiken om Hive-query's uit te voeren op een op aanvraag/uw eigen HDInsight-cluster.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 36e0d8a0c0ee5e5202c47acdd74b869181cfaf9e
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 0271029814071b3a692209d3a2015cfdbe5fa941
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371678"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616770"
 ---
 # <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>Gegevens transformeren met behulp van Hive-activiteit in Azure Data Factory 
 > [!div class="op_single_selector" title1="Transformatie activiteiten"]
@@ -26,8 +26,8 @@ ms.locfileid: "92371678"
 > * [MapReduce-activiteit](data-factory-map-reduce.md)
 > * [Hadoop streaming-activiteit](data-factory-hadoop-streaming-activity.md)
 > * [Spark-activiteit](data-factory-spark.md)
-> * [Activiteit voor het uitvoeren van Azure Machine Learning Studio (klassiek)](data-factory-azure-ml-batch-execution-activity.md)
-> * [Resource-activiteit voor het bijwerken van Azure Machine Learning Studio (klassiek)](data-factory-azure-ml-update-resource-activity.md)
+> * [Azure Machine Learning Studio-batchuitvoeringsactiviteit (klassiek)](data-factory-azure-ml-batch-execution-activity.md)
+> * [Resourceactiviteit voor Azure Machine Learning Studio (klassiek)](data-factory-azure-ml-update-resource-activity.md)
 > * [Opgeslagen procedureactiviteit](data-factory-stored-proc-activity.md)
 > * [Data Lake Analytics U-SQL-activiteit](data-factory-usql-activity.md)
 > * [Aangepaste .NET-activiteit](data-factory-use-custom-activities.md)
@@ -74,15 +74,15 @@ De HDInsight Hive-activiteit in een Data Factory [pijp lijn](data-factory-create
 ## <a name="syntax-details"></a>Syntaxis Details
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| naam |Naam van de activiteit |Ja |
-| description |Tekst waarin wordt beschreven waarvoor de activiteit wordt gebruikt |Nee |
-| type |HDinsightHive |Ja |
-| invoer |Invoer die wordt gebruikt door de Hive-activiteit |Nee |
-| uitvoer |Uitvoer geproduceerd door de Hive-activiteit |Ja |
-| linkedServiceName |Verwijzing naar het HDInsight-cluster dat is geregistreerd als een gekoppelde service in Data Factory |Ja |
-| script |Het Hive-script inline opgeven |Nee |
-| scriptPath |Sla het Hive-script op in een Azure Blob-opslag en geef het pad naar het bestand op. Gebruik de eigenschap script of scriptPath. Beide kunnen niet tegelijk worden gebruikt. De bestands naam is hoofdletter gevoelig. |Nee |
-| compliant |Geef para meters op als sleutel/waarde-paren voor het verwijzen in het Hive-script met behulp van ' hiveconf ' |Nee |
+| naam |Naam van de activiteit |Yes |
+| beschrijving |Tekst waarin wordt beschreven waarvoor de activiteit wordt gebruikt |No |
+| type |HDinsightHive |Yes |
+| invoer |Invoer die wordt gebruikt door de Hive-activiteit |No |
+| uitvoer |Uitvoer geproduceerd door de Hive-activiteit |Yes |
+| linkedServiceName |Verwijzing naar het HDInsight-cluster dat is geregistreerd als een gekoppelde service in Data Factory |Yes |
+| script |Het Hive-script inline opgeven |No |
+| scriptPath |Sla het Hive-script op in een Azure Blob-opslag en geef het pad naar het bestand op. Gebruik de eigenschap script of scriptPath. Beide kunnen niet tegelijk worden gebruikt. De bestands naam is hoofdletter gevoelig. |No |
+| compliant |Geef para meters op als sleutel/waarde-paren voor het verwijzen in het Hive-script met behulp van ' hiveconf ' |No |
 
 ## <a name="example"></a>Voorbeeld
 Laten we eens kijken naar een voor beeld van een spel logboek analyse waarin u de tijd wilt identificeren die gebruikers spelen die door uw bedrijf worden gestart. 

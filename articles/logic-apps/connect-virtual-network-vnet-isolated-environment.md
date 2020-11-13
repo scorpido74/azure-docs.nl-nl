@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 10/25/2020
-ms.openlocfilehash: cf8ce541c069f78adbb138fa38e2efc506e095ea
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 11/12/2020
+ms.openlocfilehash: 6c5badf4760bff559fb050278df84c7ad6e703bd
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675189"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616940"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Verbinding maken met virtuele Azure-netwerken van Azure Logic Apps met behulp van een ISE (Integration service Environment)
 
@@ -34,7 +34,7 @@ In dit artikel wordt beschreven hoe u deze taken kunt volt ooien met behulp van 
 
 U kunt ook een ISE maken met behulp van de voor [beeld-Azure Resource Manager Quick](https://github.com/Azure/azure-quickstart-templates/tree/master/201-integration-service-environment) start-sjabloon of met behulp van de Logic apps rest API, inclusief het instellen van door de klant beheerde sleutels:
 
-* [Maak een integratie service omgeving (ISE) met behulp van de Logic Apps REST API](../logic-apps/create-integration-service-environment-rest-api.md)
+* [Een integratieserviceomgeving (ISE) maken met behulp van de Logic Apps REST API](../logic-apps/create-integration-service-environment-rest-api.md)
 * [Door de klant beheerde sleutels instellen om gegevens in rust te versleutelen voor ISEs](../logic-apps/customer-managed-keys-integration-service-environment.md)
 
 ## <a name="prerequisites"></a>Vereisten
@@ -114,7 +114,7 @@ In deze tabel worden de poorten beschreven die uw ISE nodig heeft om toegankelij
 
 #### <a name="inbound-security-rules"></a>Inkomende beveiligingsregels
 
-| Doel | Bron servicetag of IP-adressen | Bronpoorten | Servicetag of IP-adressen van doel service | Doelpoorten | Opmerkingen |
+| Doel | Bron servicetag of IP-adressen | Bronpoorten | Servicetag of IP-adressen van doel service | Doelpoorten | Notities |
 |---------|------------------------------------|--------------|-----------------------------------------|-------------------|-------|
 | Intersubnet-communicatie binnen het virtuele netwerk | Adres ruimte voor het virtuele netwerk met ISE-subnetten | * | Adres ruimte voor het virtuele netwerk met ISE-subnetten | * | Vereist voor verkeer voor stroom *tussen* de subnetten in het virtuele netwerk. <p><p>**Belang rijk** : Zorg ervoor dat u alle poorten in elk subnet opent voor verkeer tussen de *onderdelen* in elk subnet. |
 | Beide: <p>Communicatie met uw logische app <p><p>Geschiedenis van de logische app wordt uitgevoerd| Interne ISE: <br>**VirtualNetwork** <p><p>Externe ISE: **Internet** of Zie **opmerkingen** | * | **VirtualNetwork** | 443 | In plaats van het label **Internet** te gebruiken, kunt u het IP-adres van de bron voor deze items opgeven: <p><p>-De computer of service die aanvraag triggers of webhooks aanroept in uw logische app <p>-De computer of service van waaruit u de geschiedenis van de uitvoering van de logische app wilt openen <p><p>**Belang rijk** : door deze poort te sluiten of te blok keren, voor komt u dat er Logic apps worden aangeroepen die aanvraag triggers of webhooks hebben. U kunt er ook voor zorgen dat u geen toegang hebt tot invoer en uitvoer voor elke stap in de geschiedenis van uitvoeringen. U hebt echter geen toegang tot de geschiedenis van de logische app-uitvoeringen.|
@@ -129,7 +129,7 @@ In deze tabel worden de poorten beschreven die uw ISE nodig heeft om toegankelij
 
 #### <a name="outbound-security-rules"></a>Uitgaande beveiligingsregels
 
-| Doel | Bron servicetag of IP-adressen | Bronpoorten | Servicetag of IP-adressen van doel service | Doelpoorten | Opmerkingen |
+| Doel | Bron servicetag of IP-adressen | Bronpoorten | Servicetag of IP-adressen van doel service | Doelpoorten | Notities |
 |---------|------------------------------------|--------------|-----------------------------------------|-------------------|-------|
 | Intersubnet-communicatie binnen het virtuele netwerk | Adres ruimte voor het virtuele netwerk met ISE-subnetten | * | Adres ruimte voor het virtuele netwerk met ISE-subnetten | * | Vereist voor verkeer voor stroom *tussen* de subnetten in het virtuele netwerk. <p><p>**Belang rijk** : Zorg ervoor dat u alle poorten in elk subnet opent voor verkeer tussen de *onderdelen* in elk subnet. |
 | Communicatie vanuit uw logische app | **VirtualNetwork** | * | Varieert op basis van bestemming | 80, 443 | Bestemming is afhankelijk van de eind punten voor de externe service waarmee de logische app moet communiceren. |
@@ -176,7 +176,7 @@ Als u geen toegang voor deze afhankelijkheden toestaat, mislukt uw ISE-implement
 
 ## <a name="create-your-ise"></a>Een ISE maken
 
-1. Voer in het [Azure Portal](https://portal.azure.com)in het hoofd venster van Azure Search in `integration service environments` als uw filter en selecteer **integratie service omgevingen** .
+1. Voer in het [Azure Portal](https://portal.azure.com)in het hoofd venster van Azure Search in `integration service environments` als uw filter en selecteer **integratie service omgevingen**.
 
    ![Zoek en selecteer integratie service omgevingen](./media/connect-virtual-network-vnet-isolated-environment/find-integration-service-environment.png)
 
@@ -192,20 +192,20 @@ Als u geen toegang voor deze afhankelijkheden toestaat, mislukt uw ISE-implement
    |----------|----------|-------|-------------|
    | **Abonnement** | Ja | <*Azure-subscription-name*> | Het Azure-abonnement dat u wilt gebruiken voor uw omgeving |
    | **Resourcegroep** | Ja | <*Naam-van-Azure-resourcegroep*> | Een nieuwe of bestaande Azure-resource groep waar u uw omgeving wilt maken |
-   | **Naam van de integratie service omgeving** | Ja | <*omgeving-naam*> | De naam van uw ISE, die alleen letters, cijfers, afbreek streepjes ( `-` ), onderstrepings tekens ( `_` ) en punten () kan bevatten `.` . |
+   | **Naam van de integratie service omgeving** | Yes | <*omgeving-naam*> | De naam van uw ISE, die alleen letters, cijfers, afbreek streepjes ( `-` ), onderstrepings tekens ( `_` ) en punten () kan bevatten `.` . |
    | **Locatie** | Ja | <*Azure-Data Center-regio*> | De Azure Data Center-regio waar u uw omgeving kunt implementeren |
-   | **SKU** | Ja | **Premium** of **ontwikkelaar (geen sla)** | De ISE-SKU die u wilt maken en gebruiken. Zie [ISE sku's](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)(Engelstalig) voor verschillen tussen deze sku's. <p><p>**Belang rijk** : deze optie is alleen beschikbaar bij het maken van ISE en kan later niet worden gewijzigd. |
-   | **Extra capaciteit** | Premium: <br>Ja <p><p>Developer <br>Niet van toepassing | Premium: <br>0 tot 10 <p><p>Developer <br>Niet van toepassing | Het aantal extra verwerkings eenheden dat voor deze ISE-resource moet worden gebruikt. Zie [ISE-capaciteit toevoegen](../logic-apps/ise-manage-integration-service-environment.md#add-capacity)om capaciteit toe te voegen na het maken. |
-   | **Toegangs eindpunt** | Ja | **Intern** of **extern** | Het type toegangs eindpunten dat moet worden gebruikt voor uw ISE. Deze eind punten bepalen of de aanvraag of webhook triggers op Logic apps in uw ISE kan ontvangen van buiten uw virtuele netwerk. <p><p>Uw selectie is ook van invloed op de manier waarop u invoer en uitvoer kunt weer geven en openen in de geschiedenis van de logische app-uitvoeringen. Zie [ISE endpoint Access](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)(Engelstalig) voor meer informatie. <p><p>**Belang rijk** : u kunt het toegangs eindpunt alleen selecteren tijdens het maken van de ISE en deze optie later niet wijzigen. |
+   | **SKU** | Yes | **Premium** of **ontwikkelaar (geen sla)** | De ISE-SKU die u wilt maken en gebruiken. Zie [ISE sku's](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)(Engelstalig) voor verschillen tussen deze sku's. <p><p>**Belang rijk** : deze optie is alleen beschikbaar bij het maken van ISE en kan later niet worden gewijzigd. |
+   | **Extra capaciteit** | Premium: <br>Yes <p><p>Developer <br>Niet van toepassing | Premium: <br>0 tot 10 <p><p>Developer <br>Niet van toepassing | Het aantal extra verwerkings eenheden dat voor deze ISE-resource moet worden gebruikt. Zie [ISE-capaciteit toevoegen](../logic-apps/ise-manage-integration-service-environment.md#add-capacity)om capaciteit toe te voegen na het maken. |
+   | **Toegangs eindpunt** | Yes | **Intern** of **extern** | Het type toegangs eindpunten dat moet worden gebruikt voor uw ISE. Deze eind punten bepalen of de aanvraag of webhook triggers op Logic apps in uw ISE kan ontvangen van buiten uw virtuele netwerk. <p><p>Als u bijvoorbeeld de volgende webhook-triggers wilt gebruiken, zorg er dan voor dat u **extern** selecteert: <p><p>-Azure DevOps <br>-Azure Event Grid <br>-Common Data Service <br>-Office 365 <br>-SAP (ISE-versie) <p><p>Uw selectie is ook van invloed op de manier waarop u invoer en uitvoer kunt weer geven en openen in de geschiedenis van de logische app-uitvoeringen. Zie [ISE endpoint Access](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)(Engelstalig) voor meer informatie. <p><p>**Belang rijk** : u kunt het toegangs eindpunt alleen selecteren tijdens het maken van de ISE en deze optie later niet wijzigen. |
    | **Virtueel netwerk** | Ja | <*Azure-virtueel-netwerk-naam*> | Het virtuele Azure-netwerk waar u uw omgeving wilt injecteren zodat logische apps in die omgeving toegang hebben tot uw virtuele netwerk. Als u nog geen netwerk hebt, [maakt u eerst een virtueel netwerk van Azure](../virtual-network/quick-create-portal.md). <p><p>**Belang rijk** : u kunt deze injectie *alleen* uitvoeren wanneer u uw ISE maakt. |
-   | **Subnetten** | Ja | <*subnet-Resource-lijst*> | Een ISE vereist vier *lege* subnetten, die vereist zijn voor het maken en implementeren van resources in uw ISE en worden gebruikt door interne Logic apps onderdelen, zoals connectors en caching voor prestaties. <p>**Belang rijk** : Zorg ervoor dat u [de vereisten van het subnet controleert voordat u doorgaat met deze stappen voor het maken van uw subnetten](#create-subnet). |
+   | **Subnetten** | Yes | <*subnet-Resource-lijst*> | Een ISE vereist vier *lege* subnetten, die vereist zijn voor het maken en implementeren van resources in uw ISE en worden gebruikt door interne Logic apps onderdelen, zoals connectors en caching voor prestaties. <p>**Belang rijk** : Zorg ervoor dat u [de vereisten van het subnet controleert voordat u doorgaat met deze stappen voor het maken van uw subnetten](#create-subnet). |
    |||||
 
    <a name="create-subnet"></a>
 
    **Subnetten maken**
 
-   Uw ISE heeft vier *lege* subnetten nodig, die vereist zijn voor het maken en implementeren van resources in uw ISE en worden gebruikt door interne Logic apps onderdelen, zoals connectors en caching voor prestaties. U *kunt* deze subnet-adressen niet wijzigen nadat u uw omgeving hebt gemaakt. Als u uw ISE via de Azure Portal maakt en implementeert, moet u ervoor zorgen dat deze subnetten niet worden overgedragen aan Azure-Services. Als u echter uw ISE maakt en implementeert via de REST API, Azure PowerShell of een Azure Resource Manager sjabloon, moet u één leeg subnet [delegeren](../virtual-network/manage-subnet-delegation.md) `Microsoft.integrationServiceEnvironment` . Zie [een subnet delegering toevoegen](../virtual-network/manage-subnet-delegation.md)voor meer informatie.
+   Uw ISE vereist vier *lege* subnetten, die nodig zijn voor het maken en implementeren van resources in uw ISE en worden gebruikt door interne Logic apps onderdelen, zoals connectors en caching voor prestaties. U *kunt* deze subnet-adressen niet wijzigen nadat u uw omgeving hebt gemaakt. Als u uw ISE via de Azure Portal maakt en implementeert, moet u ervoor zorgen dat deze subnetten niet worden overgedragen aan Azure-Services. Als u echter uw ISE maakt en implementeert via de REST API, Azure PowerShell of een Azure Resource Manager sjabloon, moet u één leeg subnet [delegeren](../virtual-network/manage-subnet-delegation.md) `Microsoft.integrationServiceEnvironment` . Zie [een subnet delegering toevoegen](../virtual-network/manage-subnet-delegation.md)voor meer informatie.
 
    Elk subnet moet aan de volgende vereisten voldoen:
 
@@ -231,7 +231,7 @@ Als u geen toegang voor deze afhankelijkheden toestaat, mislukt uw ISE-implement
      **Adres voorvoegsel** : 0.0.0.0/0<br>
      **Volgende hop** : Internet
 
-   1. Selecteer in de lijst **subnets** de optie **subnet-configuratie beheren** .
+   1. Selecteer in de lijst **subnets** de optie **subnet-configuratie beheren**.
 
       ![Subnet-configuratie beheren](./media/connect-virtual-network-vnet-isolated-environment/manage-subnet-configuration.png)
 
@@ -246,7 +246,7 @@ Als u geen toegang voor deze afhankelijkheden toestaat, mislukt uw ISE-implement
 
       ![Details van subnet toevoegen](./media/connect-virtual-network-vnet-isolated-environment/provide-subnet-details.png)
 
-   1. Wanneer u gereed bent, selecteert u **OK** .
+   1. Wanneer u gereed bent, selecteert u **OK**.
 
    1. Herhaal deze stappen voor nog drie subnetten.
 
@@ -277,6 +277,21 @@ Als u geen toegang voor deze afhankelijkheden toestaat, mislukt uw ISE-implement
    > Zie [virtueel netwerk verwijderen](../virtual-network/manage-virtual-network.md#delete-a-virtual-network).
 
 1. Als u uw omgeving wilt weer geven, selecteert u **naar resource gaan** als Azure niet automatisch naar uw omgeving gaat nadat de implementatie is voltooid.
+
+1. Voor een ISE met *externe* eindpunt toegang, moet u een netwerk beveiligings groep maken als u er nog geen hebt en een regel voor binnenkomende beveiliging toevoegen om verkeer toe te staan van uitgaande IP-adressen van beheerde connectors. Voer de volgende stappen uit om deze regel in te stellen:
+
+   1. Selecteer in het menu ISE onder **instellingen** de optie **Eigenschappen**.
+
+   1. Kopieer onder **uitgaande IP-adressen van connector** de open bare IP-adresbereiken, die ook in dit artikel worden weer gegeven, [limieten en configuratie-uitgaande IP-adressen](../logic-apps/logic-apps-limits-and-config.md#outbound).
+
+   1. Maak een netwerk beveiligings groep als u er nog geen hebt.
+   
+   1. Voeg aan de hand van de volgende informatie een inkomende beveiligings regel toe voor de open bare uitgaande IP-adressen die u hebt gekopieerd. Zie voor meer informatie [zelf studie: netwerk verkeer filteren met een netwerk beveiligings groep met behulp van de Azure Portal](../virtual-network/tutorial-filter-network-traffic.md#create-a-network-security-group).
+
+      | Doel | Bron servicetag of IP-adressen | Bronpoorten | Servicetag of IP-adressen van doel service | Doelpoorten | Notities |
+      |---------|------------------------------------|--------------|-----------------------------------------|-------------------|-------|
+      | Verkeer van uitgaande IP-adressen van connector toestaan | <*connector-openbaar/uitgaand-IP-adressen*> | * | Adres ruimte voor het virtuele netwerk met ISE-subnetten | * | |
+      |||||||
 
 1. Zie [uw integratie service omgeving beheren](../logic-apps/ise-manage-integration-service-environment.md#check-network-health)om de netwerk status van uw ISE te controleren.
 

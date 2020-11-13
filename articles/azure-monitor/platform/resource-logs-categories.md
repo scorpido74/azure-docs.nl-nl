@@ -4,12 +4,12 @@ description: Verwijzing van Azure Monitor inzicht krijgen in de ondersteunde ser
 ms.subservice: logs
 ms.topic: reference
 ms.date: 06/03/2020
-ms.openlocfilehash: 81f79b81c03e7996d7f6d45b002d8160740c3c14
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1fd6f07151c93b64c150f01e5c0b5c7f4cffed85
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87318297"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593005"
 ---
 # <a name="supported-categories-for-azure-resource-logs"></a>Ondersteunde categorieën voor Azure-resource logboeken
 
@@ -269,7 +269,7 @@ Als er nog steeds iets ontbreekt, kunt u onder aan dit artikel een GitHub-opmerk
 |Beheer|Beheer|
 
 
-## <a name="microsoftdevicesiothubs"></a>Micro soft. devices/IotHubs
+## <a name="microsoftdevicesiothubs"></a>Microsoft.Devices/IotHubs
 
 |Categorie|Weergave naam categorie|
 |---|---|
@@ -354,7 +354,7 @@ Als er nog steeds iets ontbreekt, kunt u onder aan dit artikel een GitHub-opmerk
 |OperationalLogs|Operationele logboeken|
 
 
-## <a name="microsofthealthcareapisservices"></a>Micro soft. HealthcareApis/Services
+## <a name="microsofthealthcareapisservices"></a>Microsoft.HealthcareApis/services
 
 |Categorie|Weergave naam categorie|
 |---|---|
@@ -398,7 +398,7 @@ Als er nog steeds iets ontbreekt, kunt u onder aan dit artikel een GitHub-opmerk
 |UserDefinedFunction|UserDefinedFunction|
 
 
-## <a name="microsoftkeyvaultvaults"></a>Micro soft.-sleutel kluis/-kluizen
+## <a name="microsoftkeyvaultvaults"></a>Microsoft.KeyVault/vaults
 
 |Categorie|Weergave naam categorie|
 |---|---|
@@ -497,11 +497,10 @@ Als er nog steeds iets ontbreekt, kunt u onder aan dit artikel een GitHub-opmerk
 |Categorie|Weergave naam categorie|
 |---|---|
 |NetworkSecurityGroupEvent|Gebeurtenis netwerk beveiligings groep|
-|NetworkSecurityGroupFlowEvent|Stroom gebeurtenis van regel voor netwerk beveiligings groep|
 |NetworkSecurityGroupRuleCounter|Teller van regel voor netwerk beveiligings groep|
 
 
-## <a name="microsoftnetworkpublicipaddresses"></a>Microsoft.Network/publicIPAddresses
+## <a name="microsoftnetworkpublicipaddresses"></a>Micro soft. Network/publicIPAddresses
 
 |Categorie|Weergave naam categorie|
 |---|---|
@@ -583,7 +582,7 @@ Als er nog steeds iets ontbreekt, kunt u onder aan dit artikel een GitHub-opmerk
 |OperationalLogs|Operationele logboeken|
 
 
-## <a name="microsoftsignalrservicesignalr"></a>Micro soft. SignalRService/Signa lering
+## <a name="microsoftsignalrservicesignalr"></a>Microsoft.SignalRService/SignalR
 
 |Categorie|Weergave naam categorie|
 |---|---|
@@ -616,7 +615,7 @@ Als er nog steeds iets ontbreekt, kunt u onder aan dit artikel een GitHub-opmerk
 |AutomaticTuning|Automatisch instellen|
 |Block|Block|
 |DatabaseWaitStatistics|Data base-wacht statistieken|
-|Impassen|Impassen|
+|Impasses|Impasses|
 |DevOpsOperationsAudit|Audit logboeken voor Devops-bewerkingen|
 |DmsWorkers|DMS-werk rollen|
 |Fouten|Fouten|

@@ -8,16 +8,16 @@ ms.subservice: high-availability
 ms.custom: sqldbrb=1, devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: tutorial
-author: MashaMSFT
-ms.author: mathoma
-ms.reviewer: sashan, sstein
+author: stevestein
+ms.author: sstein
+ms.reviewer: sashan
 ms.date: 08/27/2019
-ms.openlocfilehash: df10e2b674a8e97766ee96a802e614e2bd797b7b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 92d1ce51306e846e2d842bef33bb9782da14019a
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617737"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593991"
 ---
 # <a name="tutorial-add-sql-managed-instance-to-a-failover-group"></a>Zelfstudie: Met SQL beheerd exemplaar toevoegen aan een failovergroep
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -69,7 +69,7 @@ Maak de resourcegroep en het primaire beheerde exemplaar met behulp van de Azure
 
     ![SQL Managed Instance selecteren](./media/failover-group-add-instance-tutorial/select-managed-instance.png)
 
-1. Doe het volgende op het tabblad **Basisbeginselen** van de pagina **Met Azure SQL beheerd exemplaar maken**:
+1. Doe het volgende op het tabblad **Basisbeginselen** van de pagina **Met Azure SQL beheerd exemplaar maken** :
     1. Selecteer onder **Projectdetails** uw **abonnement** in de vervolgkeuzelijst, en kies vervolgens **Nieuwe resourcegroep maken**. Typ een naam voor uw resourcegroep, zoals `myResourceGroup`. 
     1. Geef onder **Details van met SQL beheerd exemplaar** de naam op van uw beheerde exemplaar, en de regio waarin u het beheerde exemplaar wilt implementeren. Laat **Compute + opslag** staan op de standaardwaarden. 
     1. Geef onder **Beheerdersaccount** aanmeldingsgegevens voor een beheerder op, zoals `azureuser`, en een complex beheerderswachtwoord. 
@@ -161,8 +161,8 @@ Maak de resourcegroep en het primaire beheerde exemplaar met behulp van PowerShe
    # Suppress networking breaking changes warning (https://aka.ms/azps-changewarnings
    Set-Item Env:\SuppressAzurePowerShellBreakingChangeWarnings "true"
    
-   # Set the subscription context
-   Set-AzContext -SubscriptionId $subscriptionId 
+   # Set the subscription context
+   Set-AzContext -SubscriptionId $subscriptionId 
    
    # Create the resource group
    Write-host "Creating resource group..."
@@ -415,7 +415,7 @@ Als u de Azure-portal gebruikt om het beheerde exemplaar te maken, moet u het vi
 Voer de volgende stappen uit om het subnetbereik van het primaire virtuele netwerk te controleren:
 
 1. Ga in de [Azure-portal](https://portal.azure.com) naar uw resourcegroep en selecteer het virtuele netwerk voor het primaire exemplaar.  
-2. Selecteer **Subnetten** onder **Instellingen**, en noteer het **Adresbereik**. Het adresbereik van het subnet van het virtuele netwerk voor het secundaire beheerde exemplaar mag dit bereik niet overlappen. 
+2. Selecteer **Subnetten** onder **Instellingen** , en noteer het **Adresbereik**. Het adresbereik van het subnet van het virtuele netwerk voor het secundaire beheerde exemplaar mag dit bereik niet overlappen. 
 
 
    ![Primair subnet](./media/failover-group-add-instance-tutorial/verify-primary-subnet-range.png)
@@ -751,7 +751,7 @@ De gateway voor het virtuele netwerk van het primaire beheerde exemplaar maken m
 
 
 1. Ga in de [Azure-portal](https://portal.azure.com) naar uw resourcegroep en selecteer de resource **Virtueel netwerk** voor uw primaire beheerde exemplaar. 
-1. Selecteer **Subnetten** onder **Instellingen**, en selecteer vervolgens om een nieuw **Gatewaysubnet** te maken. Laat de standaardwaarden staan. 
+1. Selecteer **Subnetten** onder **Instellingen** , en selecteer vervolgens om een nieuw **Gatewaysubnet** te maken. Laat de standaardwaarden staan. 
 
    ![Gateway toevoegen voor primair beheerd exemplaar](./media/failover-group-add-instance-tutorial/add-subnet-gateway-primary-vnet.png)
 
@@ -923,16 +923,16 @@ De twee gateways verbinden met behulp van de Azure-portal.
 
 
 1. Selecteer **Een resource maken** in de [Azure-portal](https://portal.azure.com).
-1. Typ `connection` in het zoekvak, en druk vervolgens op Enter om te zoeken. Dit brengt u naar de resource **Verbinding**, gepubliceerd door Microsoft.
+1. Typ `connection` in het zoekvak, en druk vervolgens op Enter om te zoeken. Dit brengt u naar de resource **Verbinding** , gepubliceerd door Microsoft.
 1. Selecteer **Maken** om de verbinding te maken. 
 1. Selecteer op de pagina **Basisbeginselen** de volgende waarden, en selecteer vervolgens **OK**. 
     1. Selecteer `VNet-to-VNet` voor **Verbindingstype**. 
     1. Selecteer uw abonnement in de vervolgkeuzelijst. 
     1. Selecteer de resourcegroep voor SQL Managed Instance in de vervolgkeuzelijst. 
     1. Selecteer de locatie van uw primaire beheerde instantie in de vervolgkeuzelijst. 
-1. Selecteer op de pagina **Instellingen** de volgende waarden, of voer ze in, en selecteer vervolgens **OK**:
-    1. Kies de primaire netwerkgateway voor de **Eerste virtuele netwerkgateway**, zoals `primaryGateway`.  
-    1. Kies de secundaire netwerkgateway voor de **Tweede virtuele netwerkgateway**, zoals `secondaryGateway`. 
+1. Selecteer op de pagina **Instellingen** de volgende waarden, of voer ze in, en selecteer vervolgens **OK** :
+    1. Kies de primaire netwerkgateway voor de **Eerste virtuele netwerkgateway** , zoals `primaryGateway`.  
+    1. Kies de secundaire netwerkgateway voor de **Tweede virtuele netwerkgateway** , zoals `secondaryGateway`. 
     1. Schakel het selectievakje in naast **Connectiviteit in twee richtingen tot stand brengen**. 
     1. Laat de standaardnaam voor de primaire verbinding staan, of kies een nieuwe naam naar keuze. 
     1. Geef een **Gedeelde sleutel (PSK)** op voor de verbinding, zoals `mi1m2psk`. 
@@ -985,7 +985,7 @@ De failovergroep maken met behulp van de Azure-portal.
 
 1. Selecteer **Azure SQL** in het menu aan de linkerzijde van de [Azure-portal](https://portal.azure.com). Als **Azure SQL** niet voorkomt in de lijst, selecteert u **Alle services** en typt u `Azure SQL` in het zoekvak. (Optioneel) Selecteer de ster naast **Azure SQL** om deze favoriet te maken en toe te voegen als item in de linkernavigatiebalk. 
 1. Selecteer het primaire beheerde exemplaar dat u in de eerste sectie hebt gemaakt, zoals `sql-mi-primary`. 
-1. Ga onder **Instellingen** naar **Exemplaarfailovergroepen**, en kies vervolgens **Groep toevoegen** om de pagina **Exemplaarfailovergroep** te openen. 
+1. Ga onder **Instellingen** naar **Exemplaarfailovergroepen** , en kies vervolgens **Groep toevoegen** om de pagina **Exemplaarfailovergroep** te openen. 
 
    ![Een failovergroep toevoegen](./media/failover-group-add-instance-tutorial/add-failover-group.png)
 

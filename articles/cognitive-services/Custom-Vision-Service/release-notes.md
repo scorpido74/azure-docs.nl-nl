@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: pafarley
-ms.openlocfilehash: f7259fe486a473f994d7795de5926b86717bb1b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ccf742e5ff612816cae1056ef7bf0e64fc9dbb5b
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85391703"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616464"
 ---
 # <a name="custom-vision-service-release-notes"></a>Opmerkingen bij de release Custom Vision Service
 
@@ -41,7 +41,7 @@ ms.locfileid: "85391703"
 
 - Custom Vision Service is algemene Beschik baarheid in azure ingevoerd.
 - Er is een geavanceerde trainings functie toegevoegd met een nieuwe machine learning back-end voor betere prestaties, met name op uitdagende gegevens sets en een verfijnde classificatie. Met geavanceerde training kunt u een reken tijd-budget voor training en Custom Vision een experimenteel identificeren van de beste trainingen en uitbrei ding van de instellingen. Voor snelle herhalingen kunt u de bestaande snelle training blijven gebruiken.
-- 3,0 Api's geïntroduceerd. Er wordt op 1 oktober 2019 een afschaffing van vóór 3,0 Api's aangekondigd. Raadpleeg de documentatie Quick starts voor [.net](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/csharp-tutorial), [python](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/python-tutorial), [node](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/node-tutorial), [Java](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/java-tutorial)of [Go](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/go-tutorial) voor voor beelden van hoe u aan de slag kunt gaan.
+- 3,0 Api's geïntroduceerd. Er wordt op 1 oktober 2019 een afschaffing van vóór 3,0 Api's aangekondigd. Raadpleeg de documentatie Quick starts voor [.net](./quickstarts/image-classification.md), [python](./quickstarts/image-classification.md), [node](./quickstarts/image-classification.md), [Java](./quickstarts/image-classification.md)of [Go](./quickstarts/image-classification.md) voor voor beelden van hoe u aan de slag kunt gaan.
 - "Standaard herhalingen" vervangen door publiceren/ongedaan maken in de 3,0-Api's.
 - Er zijn nieuwe model export doelen toegevoegd. Dockerfile export is bijgewerkt om ARM voor Raspberry Pi 3 te ondersteunen. Ondersteuning voor exporteren is toegevoegd aan de [Vision AI dev kit.](https://visionaidevkit.com/)
 - De limiet voor labels per project is verhoogd tot 500 voor de S0-laag. De limiet voor afbeeldingen per project is verhoogd tot 100.000 voor de S0-laag.

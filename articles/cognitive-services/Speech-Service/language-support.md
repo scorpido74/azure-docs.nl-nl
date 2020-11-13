@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: a864717304dacaf6cf4c77c92050827af619ed39
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: cfd28171524ada5f5feea9e18e4b88a291254e88
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92736674"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616787"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Taal-en spraak ondersteuning voor de spraak service
 
@@ -26,7 +26,7 @@ Taal ondersteuning is afhankelijk van de functionaliteit van de spraak service. 
 
 Zowel de micro soft Speech SDK als de REST API ondersteunen de volgende talen (land instellingen). 
 
-Om de nauw keurigheid te verbeteren, wordt aanpassing aangeboden voor een subset van de talen via het uploaden van **Audio en Transcripten met menselijke labels** of **gerelateerde tekst: zinnen** . Zie aan de [slag met Custom speech](how-to-custom-speech.md)voor meer informatie over aanpassingen.
+Om de nauw keurigheid te verbeteren, wordt aanpassing aangeboden voor een subset van de talen via het uploaden van **Audio en Transcripten met menselijke labels** of **gerelateerde tekst: zinnen**. Zie aan de [slag met Custom speech](how-to-custom-speech.md)voor meer informatie over aanpassingen.
 
 <!--
 To get the AM and ML bits:
@@ -36,7 +36,7 @@ To get pronunciation bits:
 https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronunciation Datasets" -> Click on Import -> Locale: the list of locales there correspond to the supported locales
 -->
 
-| Taal                          | Landinstelling | Aanpassingen                                   |
+| Taal                          | Land instelling (BCP-47) | Aanpassingen                                   |
 |-----------------------------------|--------|--------------------------------------------------|
 |Arabisch (Bahrein), modern, standaard  |`ar-BH` | Taalmodel                                   |
 |Arabisch (Egypte)                     |`ar-EG` | Taalmodel                                   |
@@ -136,7 +136,7 @@ Neural stemmen kunnen worden gebruikt om interacties te maken met chat bots uitb
 
 Zie [regio's](regions.md#standard-and-neural-voices)voor meer informatie over regionale Beschik baarheid.
 
-|Taal  | Landinstelling           | Geslacht | Spraak naam | Stijl ondersteuning |
+|Taal  | Land instelling (BCP-47)          | Geslacht | Spraak naam | Stijl ondersteuning |
 |--|--|--|--|--|
 | Arabisch (Egypte) | `ar-EG` | Vrouw | `ar-EG-SalmaNeural` | Algemeen |
 | Arabisch (Saoedi-Arabië) | `ar-SA` | Vrouw | `ar-SA-ZariyahNeural` | Algemeen |
@@ -219,7 +219,7 @@ Zie voor meer informatie over het configureren en aanpassen van Neural stemmen d
 
 Meer dan 75 standaard stemmen zijn beschikbaar in meer dan 45 talen en land instellingen, waarmee u tekst kunt converteren naar gesynthesizerde spraak. Zie [regio's](regions.md#standard-and-neural-voices)voor meer informatie over regionale Beschik baarheid.
 
-| Taal | Landinstelling | Geslacht | Spraak naam |
+| Taal | Land instelling (BCP-47) | Geslacht | Spraak naam |
 |--|--|--|--|
 | Arabisch (Arabisch)  |  `ar-EG`  |  Vrouw  |  `ar-EG-Hoda`|
 | Arabisch (Saoedi-Arabië)  |  `ar-SA`  |  Man  |  `ar-SA-Naayf`|
@@ -306,7 +306,7 @@ Meer dan 75 standaard stemmen zijn beschikbaar in meer dan 45 talen en land inst
 > [!TIP]
 > U kunt de volledige toewijzing van de service naam blijven gebruiken als ' micro soft server Speech Text to Speech Voice (nl-nl, AriaRUS) ' in uw spraakherkennings aanvragen.
 
-### <a name="customization"></a>Aanpassen
+### <a name="customization"></a>Aanpassing
 
 Stem aanpassing is beschikbaar voor,,,,,, `de-DE` `en-GB` , en `en-IN` `en-US` `es-MX` `fr-FR` `it-IT` `pt-BR` `zh-CN` . Selecteer de juiste land instelling die overeenkomt met de trainings gegevens die u nodig hebt om een aangepast spraak model te trainen. Als de opname gegevens die u hebt gesp roken in het Engels met een Britse accent, selecteert u bijvoorbeeld `en-GB` .
 
@@ -397,7 +397,7 @@ De API voor **spraak omzetting** ondersteunt verschillende talen voor conversie 
 
 Raadpleeg de volgende tabel voor ondersteunde talen voor de verschillende Speaker Recognition-Api's. Zie het [overzicht](speaker-recognition-overview.md) voor meer informatie over speaker Recognition.
 
-| Taal | Landinstelling | Tekstafhankelijke verificatie | Tekstonafhankelijke verificatie | Tekstonafhankelijke identificatie |
+| Taal | Land instelling (BCP-47) | Tekstafhankelijke verificatie | Tekstonafhankelijke verificatie | Tekstonafhankelijke identificatie |
 |----|----|----|----|----|
 |Engels (VS)  |  nl-NL  |  ja  |  ja  |  ja |
 |Chinees (Mandarijn, vereenvoudigd) | zh-CN     |     n.v.t. |     ja |     ja|

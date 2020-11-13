@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 5fe1c3e344705b6cde9791f889b22be53a9e8c76
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/13/2020
+ms.openlocfilehash: 69d27c102ca059974da87224e44f0ad7aa103fff
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372592"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592631"
 ---
 # <a name="import-data-module"></a>Gegevens module importeren
 
@@ -24,7 +24,7 @@ Gebruik deze module om gegevens te laden in een machine learning pijp lijn vanui
 
 > [!Note]
 > Alle functionaliteit van deze module kan worden uitgevoerd door **gegevens opslag** en **gegevens sets** op de werk ruimte-landings pagina. U wordt aangeraden om data **Store** en **DataSet** te gebruiken. Dit omvat aanvullende functies zoals gegevens bewaking. Zie voor meer informatie [hoe u toegang krijgt tot gegevens](../how-to-access-data.md) en het artikel gegevens [sets registreren](../how-to-create-register-datasets.md) .
-> Nadat u een gegevensset hebt geregistreerd, kunt u deze vinden in de categorie **gegevens**sets  ->  **mijn gegevens sets** in de ontwerp interface. Deze module is gereserveerd voor Studio-gebruikers (klassiek) voor een vertrouwde ervaring. 
+> Nadat u een gegevensset hebt geregistreerd, kunt u deze vinden in de categorie **gegevens** sets  ->  **mijn gegevens sets** in de ontwerp interface. Deze module is gereserveerd voor Studio-gebruikers (klassiek) voor een vertrouwde ervaring. 
 >
 
 De module **gegevens importeren** ondersteunt het lezen van gegevens uit de volgende bronnen:
@@ -54,15 +54,23 @@ Als de bron gegevens worden gewijzigd, kunt u de gegevensset vernieuwen en nieuw
 
 1. Selecteer de module om het rechterdeel venster te openen.
 
-1. Selecteer **gegevens bron**en kies het type gegevens bron. Dit kan HTTP of gegevens opslag zijn.
+1. Selecteer **gegevens bron** en kies het type gegevens bron. Dit kan HTTP of gegevens opslag zijn.
 
     Als u gegevens opslag kiest, kunt u bestaande gegevens opslag selecteren die al in uw Azure Machine Learning-werk ruimte is geregistreerd of een nieuw gegevens archief maken. Definieer vervolgens het pad van de gegevens die moeten worden geïmporteerd in het gegevens archief. U kunt eenvoudig door het pad bladeren door op scherm afbeelding **Bladeren** te klikken. ![ hier ziet u de koppeling Browse pad waarmee het dialoog venster Padselectie wordt geopend.](media/module/import-data-path.png)
+
+    > [!NOTE]
+    > De module **gegevens importeren** is alleen voor gegevens **in tabel vorm** .
+    > Als u meerdere tabellaire gegevens bestanden één keer wilt importeren, hebt u de volgende voor waarden nodig, anders worden er fouten weer gegeven:
+    > 1. Als u alle gegevens bestanden in de map wilt toevoegen, moet u `folder_name/**` voor het **pad** invoeren.
+    > 2. Alle gegevens bestanden moeten worden gecodeerd in Unicode-8.
+    > 3. Alle gegevens bestanden moeten dezelfde kolom nummers en kolom namen hebben.
+    > 4. Het resultaat van het importeren van meerdere gegevens bestanden is het samen voegen van alle rijen uit meerdere bestanden in de juiste volg orde.
 
 1. Selecteer het voorbeeld schema voor het filteren van de kolommen die u wilt toevoegen. U kunt ook geavanceerde instellingen definiëren als scheidings teken bij het parseren van opties.
 
     ![import-data-preview](media/module/import-data.png)
 
-1. Het selectie vakje, **uitvoer opnieuw genereren**, bepaalt of de module moet worden uitgevoerd om de uitvoer tijdens de uitvoering opnieuw te genereren. 
+1. Het selectie vakje, **uitvoer opnieuw genereren** , bepaalt of de module moet worden uitgevoerd om de uitvoer tijdens de uitvoering opnieuw te genereren. 
 
     Deze optie is standaard niet geselecteerd, wat betekent dat als de module met dezelfde para meters eerder is uitgevoerd, de uitvoer van de laatste uitvoering opnieuw wordt gebruikt om de uitvoerings tijd te verminderen. 
 
@@ -79,9 +87,9 @@ Als de bron gegevens worden gewijzigd, kunt u de gegevensset vernieuwen en nieuw
 
 ## <a name="results"></a>Resultaten
 
-Wanneer het importeren is voltooid, klikt u op de uitvoer gegevensset en selecteert u **visualiseren** om te zien of de gegevens zijn geïmporteerd.
+Wanneer het importeren is voltooid, klikt u met de rechter muisknop op de uitvoer gegevensset en selecteert u **visualiseren** om te zien of de gegevens zijn geïmporteerd.
 
-Als u de gegevens wilt opslaan voor hergebruik in plaats van een nieuwe set gegevens te importeren telkens wanneer de pijp lijn wordt uitgevoerd, selecteert u het pictogram **gegevensset registreren** onder het tabblad **uitvoer** in het rechterdeel venster van de module. Kies een naam voor de gegevensset. De opgeslagen gegevensset behoudt de gegevens op het moment van opslaan, de gegevensset wordt niet bijgewerkt wanneer de pijp lijn opnieuw wordt uitgevoerd, zelfs als de gegevensset in de pijp lijn wordt gewijzigd. Dit kan handig zijn voor het maken van moment opnamen van gegevens.
+Als u de gegevens wilt opslaan voor hergebruik in plaats van een nieuwe set gegevens te importeren telkens wanneer de pijp lijn wordt uitgevoerd, selecteert u het pictogram **gegevensset registreren** onder het tabblad **uitvoer en logboeken** in het rechterdeel venster van de module. Kies een naam voor de gegevensset. De opgeslagen gegevensset behoudt de gegevens op het moment van opslaan, de gegevensset wordt niet bijgewerkt wanneer de pijp lijn opnieuw wordt uitgevoerd, zelfs als de gegevensset in de pijp lijn wordt gewijzigd. Dit kan handig zijn voor het maken van moment opnamen van gegevens.
 
 Na het importeren van de gegevens zijn mogelijk extra voor bereid voor het maken en analyseren van modellen nodig:
 

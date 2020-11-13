@@ -8,19 +8,19 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.author: jhirono
 author: jhirono
-ms.date: 10/05/2020
+ms.date: 11/13/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 168dc342eaf61a9ede632fb429311f6f5c1d4be4
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: e3d95be52215b03a30dc4b5c7f251357f163b24a
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311559"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616090"
 ---
 # <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>Werkruimte gebruiken met een aangepaste DNS-server
 
-Wanneer u Azure Machine Learning met een virtueel netwerk gebruikt, zijn er [verschillende manieren om DNS-naam omzetting te verwerken](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md). Standaard verwerkt Azure automatisch naam omzetting voor uw werk ruimte en persoonlijk eind punt. Wanneer u echter __uw eigen aangepaste DNS-server gebruikt__ , moet u hand matig DNS-vermeldingen maken voor de werk ruimte.
+Wanneer u Azure Machine Learning met een virtueel netwerk gebruikt, zijn er [verschillende manieren om DNS-naam omzetting te verwerken](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md). Standaard verwerkt Azure automatisch naam omzetting voor uw werk ruimte en persoonlijk eind punt. Als u in plaats daarvan _uw eigen aangepaste DNS-server gebruikt_ , moet u hand matig DNS-vermeldingen maken voor de werk ruimte.
 
 > [!IMPORTANT]
 > In dit artikel wordt alleen beschreven hoe u de Fully Qualified Domain Name (FQDN) en IP-adressen voor deze vermeldingen kunt vinden. Deze bevat geen informatie over het configureren van de DNS-records voor deze items. Raadpleeg de documentatie bij uw DNS-software voor informatie over het toevoegen van records.
@@ -40,13 +40,14 @@ Wanneer u Azure Machine Learning met een virtueel netwerk gebruikt, zijn er [ver
 De volgende lijst bevat de volledig gekwalificeerde domein namen (FQDN) die worden gebruikt door uw werk ruimte en persoonlijk eind punt:
 
 * `<workspace-GUID>.workspace.<region>.api.azureml.ms`
-* `<workspace-GUID>.studio.workspace.<region>.api.azureml.ms`
-* `cert-<workspace-GUID>.workspace.<region>.api.azureml.ms`
 * `<workspace-GUID>.workspace.<region>.experiments.azureml.net`
 * `<workspace-GUID>.workspace.<region>.modelmanagement.azureml.net`
 * `<workspace-GUID>.workspace.<region>.aether.ms`
 * `ml-<workspace-name>-<region>-<workspace-guid>.notebooks.azure.ml`
-* Als u een compute-exemplaar maakt, moet u ook een vermelding voor met het privé `<instance-name>.<region>.instances.azureml.ms` -IP-eind punt van de werk ruimte toevoegen. Houd er rekening mee dat Compute instance alleen kan worden geopend vanuit het virtuele netwerk.
+* Als u een reken instantie maakt, moet u ook een vermelding voor toevoegen `<instance-name>.<region>.instances.azureml.ms` met het privé-IP-eind punt van de werk ruimte.
+
+    > [!NOTE]
+    > Reken instanties kunnen alleen worden geopend vanuit het virtuele netwerk.
 
 Gebruik een van de volgende methoden om de interne IP-adressen voor de FQDN-namen in het VNet te vinden:
 
@@ -82,8 +83,6 @@ De informatie die door alle methoden wordt geretourneerd, is hetzelfde. een lijs
 | FQDN | IP-adres |
 | ----- | ----- |
 | `fb7e20a0-8891-458b-b969-55ddb3382f51.workspace.eastus.api.azureml.ms` | `10.1.0.5` |
-| `fb7e20a0-8891-458b-b969-55ddb3382f51.studio.workspace.eastus.api.azureml.ms` | `10.1.0.5` |
-| `cert-fb7e20a0-8891-458b-b969-55ddb3382f51.workspace.eastus.api.azureml.ms` | `10.1.0.5` |
 | `ml-myworkspace-eastus-fb7e20a0-8891-458b-b969-55ddb3382f51.notebooks.azure.net` | `10.1.0.6` |
 
 > [!IMPORTANT]

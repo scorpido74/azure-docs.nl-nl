@@ -5,13 +5,13 @@ ms.service: data-share
 author: jifems
 ms.author: jife
 ms.topic: conceptual
-ms.date: 10/30/2020
-ms.openlocfilehash: 47c484268573334057e6b4dd14bbae849f9ce774
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.date: 11/12/2020
+ms.openlocfilehash: 6289395b5d508de8da3e5c8c89caebb4b0e9b817
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577218"
+ms.locfileid: "94592427"
 ---
 # <a name="supported-data-stores-in-azure-data-share"></a>Ondersteunde gegevensarchieven in Azure Data Share
 
@@ -55,7 +55,7 @@ De Azure-gegevens share ondersteunt het delen van bestanden, mappen en bestands 
 Raadpleeg [en ontvang gegevens van Azure Blob Storage en Azure data Lake Storage](how-to-share-from-storage.md) voor meer informatie.
 
 ## <a name="share-from-a-sql-based-source"></a>Delen vanuit een bron op basis van SQL
-De Azure-gegevens share ondersteunt het delen van tabellen of weer gaven van Azure SQL Database en Azure Synapse Analytics (voorheen Azure SQL DW) en het delen van tabellen vanuit een Azure Synapse Analytics (werk ruimte) SQL-groep. Gegevens gebruikers kunnen ervoor kiezen om de gegevens in Azure Data Lake Storage Gen2 of Azure Blob Storage te accepteren als CSV-of Parquet-bestand, evenals in Azure SQL Database en Azure Synapse Analytics als tabellen.
+De Azure-gegevens share ondersteunt het delen van tabellen en weer gaven van Azure SQL Database en Azure Synapse Analytics (voorheen Azure SQL DW) en het delen van tabellen vanuit een Azure Synapse Analytics (werk ruimte) toegewezen SQL-groep. Delen vanuit een Azure Synapse Analytics (werk ruimte) SQL-groep zonder server wordt momenteel niet ondersteund. Gegevens gebruikers kunnen ervoor kiezen om de gegevens in Azure Data Lake Storage Gen2 of Azure Blob Storage te accepteren als CSV-of Parquet-bestand, evenals in Azure SQL Database en Azure Synapse Analytics als tabellen.
 
 Wanneer gegevens worden geaccepteerd in Azure Data Lake Store Gen2 of Azure Blob Storage, overschrijven volledige moment opnamen de inhoud van het doel bestand als dit al bestaat.
 Wanneer gegevens in de tabel worden ontvangen en als de doel tabel nog niet bestaat, maakt Azure-gegevens share de SQL-tabel met het bron schema. Als er al een doel tabel met dezelfde naam bestaat, wordt deze verwijderd en overschreven met de laatste volledige moment opname. Incrementele moment opnamen worden momenteel niet ondersteund.

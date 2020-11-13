@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/29/2020
 ms.author: pafarley
-ms.openlocfilehash: d6bcb5485833fbfaa3eb72191ee54b1ee69bab04
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 58ced0c45d66223ac3e40112126e92a4539db32d
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82594292"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616073"
 ---
 # <a name="use-an-onnx-model-from-custom-vision-with-windows-ml-preview"></a>Een ONNX-model uit Custom Vision gebruiken met Windows ML (preview)
 
@@ -28,7 +28,7 @@ In deze hand leiding vindt u informatie over het gebruik van een ONNX-bestand da
 * Windows 10 versie 1809 of hoger
 * Windows SDK voor Build 17763 of hoger
 * Visual Studio 2017 versie 15.7 of later waarbij de __ontwikkelworkload van Universal Windows Platform__ is ingeschakeld.
-* De ontwikkelaars modus is ingeschakeld op uw PC. Zie [uw apparaat inschakelen voor ontwikkeling](https://docs.microsoft.com/windows/uwp/get-started/enable-your-device-for-development)voor meer informatie.
+* De ontwikkelaars modus is ingeschakeld op uw PC. Zie [uw apparaat inschakelen voor ontwikkeling](/windows/uwp/get-started/enable-your-device-for-development)voor meer informatie.
 
 ## <a name="about-the-example-app"></a>Over de voorbeeld-app
 
@@ -47,9 +47,9 @@ De voorbeeld toepassing is beschikbaar op de opslag plaats [COGNITIVE Services O
 
 Als u uw eigen afbeeldings classificatie model wilt gebruiken, volgt u deze stappen:
 
-1. Maak en train een classificatie met de Custom Vision Service. Zie [een classificatie maken en trainen](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier)voor instructies over hoe u dit doet. Gebruik een van de **compacte** domeinen, zoals **Algemeen (compact)**. 
+1. Maak en train een classificatie met de Custom Vision Service. Zie [een classificatie maken en trainen](./getting-started-build-a-classifier.md)voor instructies over hoe u dit doet. Gebruik een van de **compacte** domeinen, zoals **Algemeen (compact)**. 
    * Als u een bestaande classificatie hebt die gebruikmaakt van een ander domein, kunt u deze converteren naar **comprimeren** in de project instellingen. Train vervolgens het project opnieuw voordat u doorgaat.
-1. Exporteer uw model. Ga naar het tabblad prestaties en selecteer een herhaling die is getraind met een **compact** domein. Selecteer de knop **exporteren** die wordt weer gegeven. Selecteer vervolgens **ONNX**en vervolgens **exporteren**. Zodra het bestand gereed is, selecteert u de knop **Downloaden**. Zie [uw model exporteren](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model)voor meer informatie over export opties.
+1. Exporteer uw model. Ga naar het tabblad prestaties en selecteer een herhaling die is getraind met een **compact** domein. Selecteer de knop **exporteren** die wordt weer gegeven. Selecteer vervolgens **ONNX** en vervolgens **exporteren**. Zodra het bestand gereed is, selecteert u de knop **Downloaden**. Zie [uw model exporteren](./export-your-model.md)voor meer informatie over export opties.
 1. Open het gedownloade *zip* -bestand en pak het bestand *model. onnx* uit. Dit bestand bevat uw classificatie model.
 1. Klik in de Solution Explorer in Visual Studio met de rechter muisknop op de map **assets** en selecteer __bestaand item toevoegen__. Selecteer uw ONNX-bestand.
 1. In Solution Explorer klikt u met de rechter muisknop op het ONNX-bestand en selecteert u **Eigenschappen**. Wijzig de volgende eigenschappen voor het bestand:
@@ -63,7 +63,7 @@ Als u uw eigen afbeeldings classificatie model wilt gebruiken, volgt u deze stap
 
 Als u andere manieren wilt ontdekken om een Custom Vision-model te exporteren en te gebruiken, raadpleegt u de volgende documenten:
 
-* [Uw model exporteren](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model)
+* [Uw model exporteren](./export-your-model.md)
 * [Geëxporteerd Tensorflow-model in een Android-toepassing gebruiken](https://github.com/Azure-Samples/cognitive-services-android-customvision-sample)
 * [Geëxporteerd CoreML-model in een Swift iOS-toepassing gebruiken](https://go.microsoft.com/fwlink/?linkid=857726)
 * [Geëxporteerd CoreML-model in een iOS-toepassing gebruiken met Xamarin](https://github.com/xamarin/ios-samples/tree/master/ios11/CoreMLAzureModel)

@@ -9,18 +9,18 @@ ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 09/30/2020
-ms.openlocfilehash: e042fd62d99c9fdf88a144c93739bf1f3f08a78c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 12163419ad779acfa116f1dee66284623e2d45fb
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325583"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616107"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>Interactieve fout opsporing met Visual Studio code
 
 
 
-Leer hoe u interactief fouten opspoort Azure Machine Learning experimenten, pijp lijnen en implementaties met Visual Studio code (VS code) en [depugpy](https://github.com/microsoft/debugpy/).
+Leer hoe u interactief fouten opspoort Azure Machine Learning experimenten, pijp lijnen en implementaties met Visual Studio code (VS code) en [debugpy](https://github.com/microsoft/debugpy/).
 
 ## <a name="run-and-debug-experiments-locally"></a>Experimenten lokaal uitvoeren en fouten opsporen
 
@@ -100,7 +100,7 @@ Zie [Virtual Network-isolatie en privacy overview](how-to-network-security-overv
 > [!TIP]
 > Hoewel u kunt werken met Azure Machine Learning-resources die zich niet achter een virtueel netwerk bevinden, wordt het gebruik van een virtueel netwerk aanbevolen.
 
-### <a name="how-it-works"></a>Hoe werkt het?
+### <a name="how-it-works"></a>Uitleg
 
 Met uw ML pijplijn stappen voert u python-scripts uit. Deze scripts zijn gewijzigd om de volgende acties uit te voeren:
 

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 32748a996e0622c4b75d887aebf8a1805c5368bd
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: f3056c500453c2249d66a05079334851c851df33
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319085"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616617"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>Software omgevingen maken & gebruiken in Azure Machine Learning
 
@@ -114,7 +114,7 @@ Standaard wordt de zojuist gemaakte docker-installatie kopie weer gegeven in het
 
 #### <a name="use-a-prebuilt-docker-image"></a>Een vooraf ontwikkelde docker-installatie kopie gebruiken
 
-Standaard gebruikt de service automatisch een van de op Ubuntu Linux gebaseerde [basis installatie kopieën](https://github.com/Azure/AzureML-Containers), met name de versie die is gedefinieerd door `azureml.core.environment.DEFAULT_CPU_IMAGE` . Vervolgens worden de opgegeven Python-pakketten geïnstalleerd die zijn gedefinieerd door de opgegeven Azure ML-omgeving. Het is ook mogelijk om een [aangepaste docker-basis installatie kopie](./how-to-deploy-custom-docker-image.md#create-a-custom-base-image)te gebruiken.
+Standaard gebruikt de service automatisch een van de op Ubuntu Linux gebaseerde [basis installatie kopieën](https://github.com/Azure/AzureML-Containers), met name de versie die is gedefinieerd door `azureml.core.environment.DEFAULT_CPU_IMAGE` . Vervolgens worden de opgegeven Python-pakketten geïnstalleerd die zijn gedefinieerd door de opgegeven Azure ML-omgeving. Andere Azure ML CPU-en GPU-basis installatie kopieën zijn beschikbaar in de container [opslagplaats](https://github.com/Azure/AzureML-Containers). Het is ook mogelijk om een [aangepaste docker-basis installatie kopie](./how-to-deploy-custom-docker-image.md#create-a-custom-base-image)te gebruiken.
 
 ```python
 # Specify custom Docker base image and registry, if you don't want to use the defaults

@@ -3,12 +3,12 @@ title: Traffic Manager implementeren om de werk belastingen van de Azure VMware-
 description: Informatie over het integreren van Traffic Manager met de Azure VMware-oplossing (AVS) om de werk belastingen van toepassingen te verdelen over meerdere eind punten in verschillende regio's.
 ms.topic: how-to
 ms.date: 08/14/2020
-ms.openlocfilehash: d461cc444c60e1907a34a08c68139446301c133c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 076d9c77d68df3d8acb7b531b3dfbea40fb3cedd
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91579841"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593115"
 ---
 # <a name="deploy-traffic-manager-to-balance-azure-vmware-solution-avs-workloads"></a>Traffic Manager implementeren om de werk belastingen van de Azure VMware-oplossing (AVS) te verdelen
 
@@ -30,7 +30,7 @@ Zoals in de volgende afbeelding wordt weer gegeven, biedt Azure Traffic Manager 
 
 Verbinding via het virtuele netwerk tussen de twee de privécloud-regio's van de Cloud, VS-West en Europa-west, en een on-premises server in VS-Oost, maakt gebruik van een ExpressRoute-gateway.   
 
-![Integratie met AVS Traffic Manager](media/traffic-manager/traffic-manager-topology.png)
+![Diagram van de architectuur van Traffic Manager integratie met de Azure VMware-oplossing](media/traffic-manager/traffic-manager-topology.png)
  
 ## <a name="prerequisites"></a>Vereisten
 
@@ -55,15 +55,15 @@ De volgende stappen verifiëren de juiste configuratie van uw toepassings gatewa
     - AVS-GW-EUS (on-premises)
     - AVS-GW-WEU
 
-    :::image type="content" source="media/traffic-manager/app-gateways-list-1.png" alt-text="Lijst met toepassings gateways." lightbox="media/traffic-manager/app-gateways-list-1.png":::
+    :::image type="content" source="media/traffic-manager/app-gateways-list-1.png" alt-text="Scherm afbeelding van de pagina Toepassings gateway met een lijst met geconfigureerde toepassings gateways." lightbox="media/traffic-manager/app-gateways-list-1.png":::
 
 2. Selecteer een van de eerder geïmplementeerde toepassings gateways. Er wordt een venster geopend met verschillende informatie over de toepassings gateway. Selecteer **back-endservers** om de configuratie van een van de back-endservers te controleren.
 
-   :::image type="content" source="media/traffic-manager/backend-pool-config.png" alt-text="Lijst met toepassings gateways." lightbox="media/traffic-manager/backend-pool-config.png":::
+   :::image type="content" source="media/traffic-manager/backend-pool-config.png" alt-text="Scherm afbeelding van de pagina Toepassings gateway met details van de geselecteerde toepassings gateway." lightbox="media/traffic-manager/backend-pool-config.png":::
  
 3. In dit geval ziet u één lid van een back-endadresgroep van een virtuele machine die is geconfigureerd als een webserver met het IP-adres 172.29.1.10.
  
-    :::image type="content" source="media/traffic-manager/backend-pool-ip-address.png" alt-text="Lijst met toepassings gateways.":::
+    :::image type="content" source="media/traffic-manager/backend-pool-ip-address.png" alt-text="Scherm opname van pagina voor het bewerken van de back-endserver met het doel-IP-adres gemarkeerd.":::
 
     U kunt ook de configuratie van de andere toepassings gateways en back-endadresgroep controleren. 
 
@@ -75,21 +75,21 @@ In ons scenario wordt een NSX-T-segment geconfigureerd in de AVS-omgeving waar d
 
 1. Selecteer **segmenten** om uw geconfigureerde segmenten weer te geven. In dit geval ziet u dat contoso-segment1 is verbonden met Contoso-T01-gateway, een flexibele router van laag 1.
 
-    :::image type="content" source="media/traffic-manager/nsx-t-segment-avs.png" alt-text="Lijst met toepassings gateways.":::    
+    :::image type="content" source="media/traffic-manager/nsx-t-segment-avs.png" alt-text="Scherm opname van segment profielen in NSX-T-beheer.":::    
 
 2. Selecteer **laag-1 gateways** om een lijst met uw laag-1-gateways met het aantal gekoppelde segmenten weer te geven. Selecteer het segment dat is gekoppeld aan contoso-T01. Er wordt een venster geopend met de logische interface die is geconfigureerd op de laag-01-router. Dit fungeert als gateway naar de virtuele machine van de back-endadresgroep-groep die is verbonden met het segment.
 
-   :::image type="content" source="media/traffic-manager/nsx-t-segment-linked-2.png" alt-text="Lijst met toepassings gateways.":::    
+   :::image type="content" source="media/traffic-manager/nsx-t-segment-linked-2.png" alt-text="Scherm opname van het gateway-adres van het geselecteerde segment.":::    
 
 3. Selecteer de virtuele machine in de VM vSphere-client om de details ervan weer te geven. Houd er rekening mee dat het IP-adres overeenkomt met wat we in stap 3 van de vorige sectie hebben gezien: 172.29.1.10.
 
-    :::image type="content" source="media/traffic-manager/nsx-t-vm-details.png" alt-text="Lijst met toepassings gateways.":::    
+    :::image type="content" source="media/traffic-manager/nsx-t-vm-details.png" alt-text="Scherm opname van de VM-Details in de VSphere-client.":::    
 
 4. Selecteer de virtuele machine en klik vervolgens op **acties > instellingen bewerken** om de verbinding met het NSX-T-segment te controleren.
 
 ## <a name="create-your-traffic-manager-profile"></a>Uw Traffic Manager-profiel maken
 
-1. Meld u aan bij [Azure Portal](https://rc.portal.azure.com/#home). Selecteer **Traffic Manager profielen**onder **Azure-Services > netwerk**.
+1. Meld u aan bij [Azure Portal](https://rc.portal.azure.com/#home). Selecteer **Traffic Manager profielen** onder **Azure-Services > netwerk**.
 
 2. Selecteer **+ toevoegen** om een nieuw Traffic Manager profiel te maken.
  
@@ -99,29 +99,23 @@ In ons scenario wordt een NSX-T-segment geconfigureerd in de AVS-omgeving waar d
 
 1. Selecteer het Traffic Manager profiel in het deel venster Zoek resultaten, selecteer **eind punten** en vervolgens **+ toevoegen**.
 
-2. Voer de vereiste gegevens in: type, naam, FQDN-naam (Fully Qualified Domain Name) of IP, en gewicht (in dit scenario wordt er een gewicht van 1 toegewezen aan elk eind punt). Selecteer **Toevoegen**.
-
-   :::image type="content" source="media/traffic-manager/traffic-manager-profile.png" alt-text="Lijst met toepassings gateways.":::  
- 
-   Hiermee maakt u het externe eind punt. De monitor status moet **online**zijn. 
-
-   Herhaal dezelfde stappen om twee meer externe eind punten te maken, één in een andere regio en de andere on-premises. Zodra u deze hebt gemaakt, worden alle drie in het Traffic Manager profiel weer gegeven. de status van alle drie moet **online**zijn.
+2. Voer de vereiste gegevens in: type, naam, FQDN-naam (Fully Qualified Domain Name) of IP, en gewicht (in dit scenario wordt er een gewicht van 1 toegewezen aan elk eind punt). Selecteer **Toevoegen**. Hiermee maakt u het externe eind punt. De monitor status moet **online** zijn. Herhaal dezelfde stappen om twee meer externe eind punten te maken, één in een andere regio en de andere on-premises. Zodra u deze hebt gemaakt, worden alle drie in het Traffic Manager profiel weer gegeven. de status van alle drie moet **online** zijn.
 
 3. Selecteer **Overzicht**. Kopieer de URL onder **DNS-naam**.
 
-   :::image type="content" source="media/traffic-manager/traffic-manager-endpoints.png" alt-text="Lijst met toepassings gateways."::: 
+   :::image type="content" source="media/traffic-manager/traffic-manager-endpoints.png" alt-text="Scherm afbeelding met een Traffic Manager overzicht van eind punten waarbij de DNS-naam is gemarkeerd."::: 
 
 4. Plak de URL van de DNS-naam in een browser. De volgende scherm afbeelding toont het verkeer dat wordt omgeleid naar de Europa-west regio.
 
-   :::image type="content" source="media/traffic-manager/traffic-to-west-europe.png" alt-text="Lijst met toepassings gateways."::: 
+   :::image type="content" source="media/traffic-manager/traffic-to-west-europe.png" alt-text="Scherm afbeelding van het browser venster met het verkeer dat wordt gerouteerd naar Europa-west."::: 
 
 5. Vernieuw de browser. De volgende scherm afbeelding toont het verkeer dat nu wordt omgeleid naar een andere set back-end-groeps leden in de regio vs-West.
 
-   :::image type="content" source="media/traffic-manager/traffic-to-west-us.png" alt-text="Lijst met toepassings gateways."::: 
+   :::image type="content" source="media/traffic-manager/traffic-to-west-us.png" alt-text="Scherm afbeelding van het browser venster met verkeer dat wordt gerouteerd naar VS-West."::: 
 
 6. Vernieuw de browser opnieuw. De volgende scherm afbeelding toont het verkeer dat nu wordt doorgestuurd naar de laatste set back-end-groeps leden on-premises.
 
-   :::image type="content" source="media/traffic-manager/traffic-to-on-premises.png" alt-text="Lijst met toepassings gateways.":::
+   :::image type="content" source="media/traffic-manager/traffic-to-on-premises.png" alt-text="Scherm afbeelding van het browser venster met verkeer dat wordt gerouteerd naar on-premises.":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

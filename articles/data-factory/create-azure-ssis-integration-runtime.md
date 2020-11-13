@@ -11,12 +11,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 55083da596f15409ed460e498438f9eaea10dfa8
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: effa0d3ba9f7098b691605bfbd76bff9ea3d5e66
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92633226"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593753"
 ---
 # <a name="create-an-azure-ssis-integration-runtime-in-azure-data-factory"></a>Een Azure SSIS Integration runtime in Azure Data Factory maken
 
@@ -43,9 +43,9 @@ In dit artikel wordt beschreven hoe u een Azure-SSIS IR inricht met behulp van d
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- **Azure-abonnement** . Als u nog geen abonnement hebt, kunt u een [gratis proef](https://azure.microsoft.com/pricing/free-trial/) account maken.
+- **Azure-abonnement**. Als u nog geen abonnement hebt, kunt u een [gratis proef](https://azure.microsoft.com/pricing/free-trial/) account maken.
 
-- **Azure SQL database server of SQL Managed instance (optioneel)** . Als u nog geen database server of een beheerd exemplaar hebt, maakt u er een in de Azure Portal voordat u aan de slag gaat. Met Data Factory wordt vervolgens een SSISDB-exemplaar op deze databaseserver gemaakt. 
+- **Azure SQL database server of SQL Managed instance (optioneel)**. Als u nog geen database server of een beheerd exemplaar hebt, maakt u er een in de Azure Portal voordat u aan de slag gaat. Met Data Factory wordt vervolgens een SSISDB-exemplaar op deze databaseserver gemaakt. 
 
   U wordt aangeraden om de database server of het beheerde exemplaar te maken in dezelfde Azure-regio als de Integration runtime. Met deze configuratie kan de Integration Runtime uitvoeringslogboeken wegschrijven naar SSISDB zonder dat hierbij Azure-regio's worden overschreden.
 
@@ -63,13 +63,13 @@ In dit artikel wordt beschreven hoe u een Azure-SSIS IR inricht met behulp van d
 
   - Controleer of de databaseserver al een SSISDB-exemplaar heeft. Het inrichten van een Azure-SSIS IR biedt geen ondersteuning voor het gebruik van een bestaand SSIS-exemplaar.
 
-- **Azure Resource Manager virtueel netwerk (optioneel)** . U moet een Azure Resource Manager virtueel netwerk hebben als ten minste één van de volgende voor waarden waar is:
+- **Azure Resource Manager virtueel netwerk (optioneel)**. U moet een Azure Resource Manager virtueel netwerk hebben als ten minste één van de volgende voor waarden waar is:
 
   - U host SSISDB op een Azure SQL Database Server met IP-firewall regels/virtuele netwerk service-eind punten of een beheerd exemplaar met een persoonlijk eind punt.
 
   - U wilt verbinding maken met on-premises gegevens archieven vanaf SSIS-pakketten die worden uitgevoerd op uw Azure-SSIS IR zonder een zelf-hostende IR te configureren.
 
-- **Azure PowerShell (optioneel)** . Volg de instructies in het [Azure PowerShell installeren en configureren](/powershell/azure/install-az-ps)als u een Power shell-script wilt uitvoeren om uw Azure-SSIS IR in te richten.
+- **Azure PowerShell (optioneel)**. Volg de instructies in het [Azure PowerShell installeren en configureren](/powershell/azure/install-az-ps)als u een Power shell-script wilt uitvoeren om uw Azure-SSIS IR in te richten.
 
 ### <a name="regional-support"></a>Regionale ondersteuning
 
@@ -126,9 +126,9 @@ Voer op de pagina **Algemene instellingen** van het deelvenster **Installatie va
 
    6. Selecteer bij **Editie/licentie** de SQL Server-editie voor uw integratieruntime: Standard of Enterprise. Selecteer Enterprise als u geavanceerde functies in de integratieruntime wilt gebruiken.
 
-   7. Selecteer bij **Geld besparen** de optie Azure Hybrid Benefit voor uw integratieruntime: **Ja** of **Nee** . Selecteer **Ja** als u uw eigen SQL Server-licentie met Software Assurance wilt gebruiken om te profiteren van de kostenbesparingen met hybride gebruik.
+   7. Selecteer bij **Geld besparen** de optie Azure Hybrid Benefit voor uw integratieruntime: **Ja** of **Nee**. Selecteer **Ja** als u uw eigen SQL Server-licentie met Software Assurance wilt gebruiken om te profiteren van de kostenbesparingen met hybride gebruik.
 
-   8. Selecteer **Next** .
+   8. Selecteer **Next**.
 
 #### <a name="deployment-settings-page"></a>Pagina Implementatie-instellingen
 
@@ -164,8 +164,11 @@ Als u het selectievakje inschakelt, moet u de volgende stappen uitvoeren om uw e
 
    1. Selecteer bij **Serverlaag catalogusdatabase** de servicelaag voor uw databaseserver voor het hosten van SSISDB. Selecteer de laag Basic, Standard of Premium of selecteer de naam van een elastische pool.
 
-Selecteer **Verbinding testen** wanneer dit van toepassing is en selecteer **Volgende** .
+Selecteer **Verbinding testen** wanneer dit van toepassing is en selecteer **Volgende**.
 
+> [!NOTE]
+   > Als u Azure SQL Database Server gebruikt om SSISDB te hosten, worden uw gegevens standaard opgeslagen in geografisch redundante opslag voor back-ups. Als u niet wilt dat uw gegevens worden gerepliceerd in andere regio's, volgt u de instructies voor het [configureren van de redundantie van back-upopslag met behulp van Power shell](https://docs.microsoft.com/azure/azure-sql/database/automated-backups-overview?tabs=single-database#configure-backup-storage-redundancy-by-using-powershell).
+   
 ##### <a name="creating-azure-ssis-ir-package-stores"></a>Azure-SSIS IR-pakketarchieven maken
 
 Schakel op de pagina **Implementatie-instellingen** van het deelvenster **Integratieruntime-instellingen** het selectievakje **Pakketarchieven maken om uw pakketten te beheren die zijn geïmplementeerd in het bestandssysteem/Azure Files/SQL Server-database (MSDB) en worden gehost door Azure SQL Managed Instance** in als u uw pakketten wilt beheren die zijn geïmplementeerd in MSDB, het bestandssysteem of Azure Files (pakketimplementatiemodel) met pakketarchieven van Azure-SSIS IR.
@@ -178,7 +181,7 @@ Als u dit selectievakje inschakelt, kunt u meerdere pakketarchieven toevoegen aa
 
 Voltooi op de pagina **Pakketarchief toevoegen** de volgende stappen.
    
-   1. Voer de naam van uw pakketarchief in bij **Naam van pakketarchief** . 
+   1. Voer de naam van uw pakketarchief in bij **Naam van pakketarchief**. 
 
    1. Selecteer voor **Gekoppelde service voor pakketarchief** de bestaande gekoppelde service waarin de toegangsgegevens zijn opgeslagen voor het bestandssysteem/Azure Files/Azure SQL Managed Instance waarin uw pakketten zijn geïmplementeerd of maak een nieuwe door **Nieuwe** te selecteren. Voer in het deelvenster **Nieuwe gekoppelde service** de volgende stappen uit.
    
@@ -191,15 +194,15 @@ Voltooi op de pagina **Pakketarchief toevoegen** de volgende stappen.
          
       1. Voer bij **Beschrijving** de beschrijving van de gekoppelde service in. 
          
-      1. Voor **Type** selecteert u **Azure File Storage** , **Azure SQL Managed Instance** of **Bestandssysteem** .
+      1. Voor **Type** selecteert u **Azure File Storage** , **Azure SQL Managed Instance** of **Bestandssysteem**.
 
       1. U kunt **Verbinding maken via integratieruntime** negeren omdat we altijd uw Azure-SSIS IR gebruiken om de toegangsgegevens voor pakketarchieven op te halen.
 
       1. Als u **Azure File Storage** selecteert, voert u de volgende stappen uit. 
 
-         1. Selecteer bij **Accountselectiemethode** de optie **Van Azure-abonnement** of **Handmatig invoeren** .
+         1. Selecteer bij **Accountselectiemethode** de optie **Van Azure-abonnement** of **Handmatig invoeren**.
          
-         1. Als u **Van Azure-abonnement** hebt gekozen, selecteert u het relevante **Azure-abonnement** , **Naam van opslagaccount** en **Bestandsshare** .
+         1. Als u **Van Azure-abonnement** hebt gekozen, selecteert u het relevante **Azure-abonnement** , **Naam van opslagaccount** en **Bestandsshare**.
             
          1. Als u **Handmatig invoeren** hebt gekozen, voert u `\\<storage account name>.file.core.windows.net\<file share name>` in bij **Host** , `Azure\<storage account name>` bij **Gebruikersnaam** en `<storage account key>` bij **Wachtwoord** , of u selecteert de **Azure Key Vault** waar het wachtwoord is opgeslagen als geheim.
 
@@ -213,7 +216,7 @@ Voltooi op de pagina **Pakketarchief toevoegen** de volgende stappen.
 
             1. Voer bij **Name database** de invoer `msdb` in.
                
-            1. Selecteer **SQL-verificatie** , **Beheerde identiteit** of **Service-principal** bij **Verificatietype** .
+            1. Selecteer **SQL-verificatie** , **Beheerde identiteit** of **Service-principal** bij **Verificatietype**.
 
             1. Als u **SQL-verificatie** hebt gekozen, voert u de relevante **Gebruikersnaam** en het **Wachtwoord** in of selecteer u de **Azure Key Vault** waar het wachtwoord is opgeslagen als geheim.
 
@@ -223,11 +226,11 @@ Voltooi op de pagina **Pakketarchief toevoegen** de volgende stappen.
 
       1. Als u **Bestandssysteem** hebt gekozen, voert u het UNC-pad in van de map waarin uw pakketten zijn geïmplementeerd voor **Host** , evenals de relevante **Gebruikersnaam** en het **Wachtwoord** of selecteert u de **Azure Key Vault** waar het wachtwoord is opgeslagen als geheim.
 
-      1. Selecteer **Verbinding testen** wanneer dit van toepassing is en selecteer **Maken** .
+      1. Selecteer **Verbinding testen** wanneer dit van toepassing is en selecteer **Maken**.
 
-   1. De toegevoegde pakketarchieven worden weergegeven op de pagina **Implementatie-instellingen** . Als u deze wilt verwijderen, schakelt u de selectie vakjes in en selecteert u **Verwijderen** .
+   1. De toegevoegde pakketarchieven worden weergegeven op de pagina **Implementatie-instellingen**. Als u deze wilt verwijderen, schakelt u de selectie vakjes in en selecteert u **Verwijderen**.
 
-Selecteer **Verbinding testen** wanneer dit van toepassing is en selecteer **Volgende** .
+Selecteer **Verbinding testen** wanneer dit van toepassing is en selecteer **Volgende**.
 
 #### <a name="advanced-settings-page"></a>De pagina Geavanceerde instellingen
 
@@ -289,7 +292,7 @@ Voer op de pagina **Geavanceerde instellingen** van het deelvenster **Installati
 
       1. Geef voor het **tijdelijke pad** een BLOB-container op in het geselecteerde Azure Blob Storage-account of laat het leeg om een standaard waarde te gebruiken voor fase ring.
 
-   1. Selecteer **VNet-validatie**  >  **door gaan** . 
+   1. Selecteer **VNet-validatie**  >  **door gaan**. 
 
 Controleer in de sectie **samen vatting** alle inrichtings instellingen, blad wijzer de aanbevolen documentatie koppelingen en selecteer **volt ooien** om het maken van de Integration runtime te starten.
 
@@ -302,7 +305,7 @@ Controleer in de sectie **samen vatting** alle inrichtings instellingen, blad wi
 
 #### <a name="connections-pane"></a>Deelvenster Verbindingen
 
-Ga in het deelvenster **Verbindingen** van de hub **Beheren** naar de pagina **Integratieruntimes** en selecteer **Vernieuwen** . 
+Ga in het deelvenster **Verbindingen** van de hub **Beheren** naar de pagina **Integratieruntimes** en selecteer **Vernieuwen**. 
 
    ![Deelvenster Verbindingen](./media/tutorial-create-azure-ssis-runtime-portal/connections-pane.png)
 
@@ -310,7 +313,7 @@ Ga in het deelvenster **Verbindingen** van de hub **Beheren** naar de pagina **I
 
 ### <a name="azure-ssis-integration-runtimes-in-the-portal"></a>Azure SSIS-integratieruntimes in de portal
 
-1. Ga in de gebruikersinterface van Azure Data Factory naar het tabblad **Bewerken** en selecteer **Verbindingen** . Ga vervolgens naar het tabblad **Integratieruntimes** om de bestaande integratieruntimes in uw data factory weer te geven.
+1. Ga in de gebruikersinterface van Azure Data Factory naar het tabblad **Bewerken** en selecteer **Verbindingen**. Ga vervolgens naar het tabblad **Integratieruntimes** om de bestaande integratieruntimes in uw data factory weer te geven.
 
    ![Bestaande IR’s weergeven](./media/tutorial-create-azure-ssis-runtime-portal/view-azure-ssis-integration-runtimes.png)
 
@@ -318,7 +321,7 @@ Ga in het deelvenster **Verbindingen** van de hub **Beheren** naar de pagina **I
 
    ![Integratieruntime via menu](./media/tutorial-create-azure-ssis-runtime-portal/edit-connections-new-integration-runtime-button.png)
 
-1. Selecteer in het venster **Installatie van integratieruntime** de tegel **Bestaande SSIS-pakketten verplaatsen voor uitvoering in Azure** en selecteer vervolgens **Volgende** .
+1. Selecteer in het venster **Installatie van integratieruntime** de tegel **Bestaande SSIS-pakketten verplaatsen voor uitvoering in Azure** en selecteer vervolgens **Volgende**.
 
    ![Geef het type integratieruntime op](./media/tutorial-create-azure-ssis-runtime-portal/integration-runtime-setup-options.png)
 
