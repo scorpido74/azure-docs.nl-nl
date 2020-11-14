@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/19/2017
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6b201565ae2bcadccf55cee78ade0e011e603a15
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb74ab16e51fbb3a157757353d5743e889f993dd
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85515384"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629696"
 ---
 # <a name="develop-for-azure-files-with-c"></a>Ontwikkelen voor Azure Files met C++
 
@@ -32,7 +32,7 @@ In deze zelf studie leert u hoe u basis bewerkingen op Azure Files uitvoert. U l
 * Een Shared Access Signature (SAS-sleutel) maken voor een bestand dat gebruikmaakt van een gedeeld toegangsbeleid dat voor de share is gedefinieerd.
 
 > [!Note]  
-> Omdat Azure Files mogelijk toegankelijk is via SMB, is het mogelijk om eenvoudige toepassingen te schrijven die toegang hebben tot de Azure-bestands share met behulp van de Standard C++ I/O-klassen en-functies. In dit artikel wordt beschreven hoe u toepassingen schrijft die gebruikmaken van de Azure Storage C++ SDK, die gebruikmaakt van het [bestand rest API](https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api) om te praten met Azure files.
+> Omdat Azure Files mogelijk toegankelijk is via SMB, is het mogelijk om eenvoudige toepassingen te schrijven die toegang hebben tot de Azure-bestands share met behulp van de Standard C++ I/O-klassen en-functies. In dit artikel wordt beschreven hoe u toepassingen schrijft die gebruikmaken van de Azure Storage C++ SDK, die gebruikmaakt van het [bestand rest API](/rest/api/storageservices/file-service-rest-api) om te praten met Azure files.
 
 ## <a name="create-a-c-application"></a>Een C++-toepassing maken
 
@@ -160,7 +160,7 @@ directory.delete_directory_if_exists();
 
 ## <a name="enumerate-files-and-directories-in-an-azure-file-share"></a>Bestanden en mappen in een Azure-bestands share opsommen
 
-U kunt eenvoudig een lijst met bestanden en mappen in een share verkrijgen door het aanroepen van **list_files_and_directories** op een **cloud_file_directory** verwijzing. Voor toegang tot de uitgebreide set eigenschappen en methoden voor een geretourneerde **list_file_and_directory_item**moet u de methode **list_file_and_directory_item. as _file** aanroepen om een **cloud_file** -object op te halen, of de methode **list_file_and_directory_item. as _directory** om een **cloud_file_directory** -object op te halen.
+U kunt eenvoudig een lijst met bestanden en mappen in een share verkrijgen door het aanroepen van **list_files_and_directories** op een **cloud_file_directory** verwijzing. Voor toegang tot de uitgebreide set eigenschappen en methoden voor een geretourneerde **list_file_and_directory_item** moet u de methode **list_file_and_directory_item. as _file** aanroepen om een **cloud_file** -object op te halen, of de methode **list_file_and_directory_item. as _directory** om een **cloud_file_directory** -object op te halen.
 
 De volgende code laat zien hoe u de URI van elk item in de hoofdmap van de share ophaalt en uitvoert.
 
@@ -185,7 +185,7 @@ for (auto it = directory.list_files_and_directories(); it != end_of_results; ++i
 }
 ```
 
-## <a name="upload-a-file"></a>Een bestand uploaden
+## <a name="upload-a-file"></a>Bestand uploaden
 
 Een Azure-bestands share bevat ten minste een hoofdmap waarin bestanden kunnen worden opgeslagen. In deze sectie leert u hoe u een bestand van de lokale opslag uploadt naar de hoofdmap van een share.
 

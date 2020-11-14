@@ -10,12 +10,12 @@ ms.date: 11/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 941435e90f91a4c3a4e41c2869e35157da41d8b0
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: ef92895374f07c79f8ba8d626a0aab3d89733f40
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592172"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629645"
 ---
 # <a name="publish-and-subscribe-with-azure-iot-edge"></a>Publiceren en abonneren met Azure IoT Edge
 
@@ -31,8 +31,10 @@ U kunt Azure IoT Edge MQTT Broker gebruiken voor het publiceren en abonneren van
 - Een **IOT hub** van de SKU F1, S1, S2 of S3.
 - Een **IOT edge apparaat hebben met versie 1,2 of hoger**. Omdat IoT Edge MQTT Broker momenteel beschikbaar is in de open bare preview, stelt u de volgende omgevings variabelen in op True in de edgeHub-container om de MQTT Broker in te scha kelen:
 
-    - experimentalFeatures__enabled
-    - mqttbroker__enabled
+   | Name | Waarde |
+   | - | - |
+   | `experimentalFeatures__enabled` | `true` |
+   | `experimentalFeatures__mqttBrokerEnabled` | `true` |
 
 - **Mosquitto-clients** geïnstalleerd op het IOT edge-apparaat. In dit artikel wordt gebruikgemaakt van de populaire Mosquitto-clients met [MOSQUITTO_PUB](https://mosquitto.org/man/mosquitto_pub-1.html) en [MOSQUITTO_SUB](https://mosquitto.org/man/mosquitto_sub-1.html). In plaats daarvan kunnen andere MQTT-clients worden gebruikt. Als u de Mosquitto-clients op een Ubuntu-apparaat wilt installeren, voert u de volgende opdracht uit:
 

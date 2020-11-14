@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: da60d6a2146385e1dfd0717afb1172b378e52533
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 19fe6be0487772524516172bd32e0562512c4e3c
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91715997"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630172"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux-smb"></a>Problemen met Azure Files oplossen in Linux (SMB)
 
@@ -61,14 +61,14 @@ Om het probleem op te lossen, gebruikt u het [hulp programma voor probleem oplos
 
 ### <a name="cause-1-unencrypted-communication-channel"></a>Oorzaak 1: niet-versleuteld communicatie kanaal
 
-Verbindingen met Azure-bestandsshares worden uit veiligheidsoverwegingen geblokkeerd als het communicatiekanaal niet is versleuteld en als de verbindingspoging niet is ondernomen vanuit hetzelfde datacenter als waar de Azure-bestandsshares zich bevinden. Niet-versleutelde verbindingen binnen hetzelfde datacenter kunnen ook worden geblokkeerd als de instelling [Veilige overdracht vereist](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) is ingeschakeld in het opslagaccount. Er wordt alleen een versleuteld communicatiekanaal geboden als het clientbesturingssysteem van de gebruiker ondersteuning biedt voor SMB-versleuteling.
+Verbindingen met Azure-bestandsshares worden uit veiligheidsoverwegingen geblokkeerd als het communicatiekanaal niet is versleuteld en als de verbindingspoging niet is ondernomen vanuit hetzelfde datacenter als waar de Azure-bestandsshares zich bevinden. Niet-versleutelde verbindingen binnen hetzelfde datacenter kunnen ook worden geblokkeerd als de instelling [Veilige overdracht vereist](../common/storage-require-secure-transfer.md) is ingeschakeld in het opslagaccount. Er wordt alleen een versleuteld communicatiekanaal geboden als het clientbesturingssysteem van de gebruiker ondersteuning biedt voor SMB-versleuteling.
 
 Zie [Vereisten voor het koppelen van een Azure-bestandsshare met Linux en het cifs-utils-pakket](storage-how-to-use-files-linux.md#prerequisites) voor meer informatie. 
 
 ### <a name="solution-for-cause-1"></a>Oplossing voor oorzaak 1
 
 1. Verbinding maken vanaf een client die ondersteuning biedt voor SMB-versleuteling of verbinding maken vanaf een virtuele machine in hetzelfde Data Center als het Azure-opslag account dat wordt gebruikt voor de Azure-bestands share.
-2. Controleer of de instelling [beveiligde overdracht vereist](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) is uitgeschakeld op het opslag account als de client geen SMB-versleuteling ondersteunt.
+2. Controleer of de instelling [beveiligde overdracht vereist](../common/storage-require-secure-transfer.md) is uitgeschakeld op het opslag account als de client geen SMB-versleuteling ondersteunt.
 
 ### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>Oorzaak 2: het virtuele netwerk of de firewall regels zijn ingeschakeld voor het opslag account 
 
@@ -76,7 +76,7 @@ Als er regels voor het VNET (virtueel netwerk) of de firewall zijn geconfigureer
 
 ### <a name="solution-for-cause-2"></a>Oplossing voor oorzaak 2
 
-Controleer of regels voor het virtuele netwerk of de firewall juist zijn geconfigureerd in het opslagaccount. Als u wilt testen of het probleem wordt veroorzaakt door regels voor het virtuele netwerk of de firewall, wijzigt u de instelling in het opslagaccount in **Toegang toestaan vanaf alle netwerken**. Zie [Firewalls en virtuele netwerken voor Azure Storage configureren](https://docs.microsoft.com/azure/storage/common/storage-network-security) voor meer informatie.
+Controleer of regels voor het virtuele netwerk of de firewall juist zijn geconfigureerd in het opslagaccount. Als u wilt testen of het probleem wordt veroorzaakt door regels voor het virtuele netwerk of de firewall, wijzigt u de instelling in het opslagaccount in **Toegang toestaan vanaf alle netwerken**. Zie [Firewalls en virtuele netwerken voor Azure Storage configureren](../common/storage-network-security.md) voor meer informatie.
 
 <a id="permissiondenied"></a>
 ## <a name="permission-denied-disk-quota-exceeded-when-you-try-to-open-a-file"></a>"[toestemming geweigerd] schijf quotum overschreden" wanneer u een bestand probeert te openen
@@ -95,19 +95,19 @@ Er is een quotum van 2.000 open ingangen voor één bestand of map. Wanneer u 2.
 
 Verminder het aantal gelijktijdige open ingangen door enkele ingangen te sluiten en voer de bewerking vervolgens opnieuw uit.
 
-Gebruik de Power shell [-cmdlet Get-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) om de geopende ingangen voor een bestands share, map of bestand weer te geven.  
+Gebruik de Power shell [-cmdlet Get-AzStorageFileHandle](/powershell/module/az.storage/get-azstoragefilehandle) om de geopende ingangen voor een bestands share, map of bestand weer te geven.  
 
-Gebruik de Power shell [-cmdlet close-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) om open ingangen voor een bestands share, map of bestand te sluiten.
+Gebruik de Power shell [-cmdlet close-AzStorageFileHandle](/powershell/module/az.storage/close-azstoragefilehandle) om open ingangen voor een bestands share, map of bestand te sluiten.
 
 > [!Note]  
-> De cmdlets Get-AzStorageFileHandle en Close-AzStorageFileHandle zijn opgenomen in AZ Power shell-module versie 2,4 of hoger. Zie [de module Azure PowerShell installeren](https://docs.microsoft.com/powershell/azure/install-az-ps)om de nieuwste AZ Power shell-module te installeren.
+> De cmdlets Get-AzStorageFileHandle en Close-AzStorageFileHandle zijn opgenomen in AZ Power shell-module versie 2,4 of hoger. Zie [de module Azure PowerShell installeren](/powershell/azure/install-az-ps)om de nieuwste AZ Power shell-module te installeren.
 
 <a id="slowfilecopying"></a>
 ## <a name="slow-file-copying-to-and-from-azure-files-in-linux"></a>Trage bestanden kopiëren naar en van Azure Files in Linux
 
 - Als u geen specifieke minimale I/O-grootte vereiste hebt, raden we u aan om 1 MiB te gebruiken als de I/O-grootte voor optimale prestaties.
 - Gebruik de juiste Kopieer methode:
-    - Gebruik [AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) voor elke overdracht tussen twee bestands shares.
+    - Gebruik [AzCopy](../common/storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json) voor elke overdracht tussen twee bestands shares.
     - Als u CP of DD met parallel gebruikt, kan de Kopieer snelheid worden verbeterd. het aantal threads is afhankelijk van de use-case en de werk belasting. De volgende voor beelden gebruiken zes: 
     - CP-voor beeld (CP gebruikt de standaard blok grootte van het bestands systeem als segment grootte): `find * -type f | parallel --will-cite -j 6 cp {} /mntpremium/ &` .
     - DD voor beeld (met deze opdracht wordt de segment grootte expliciet ingesteld op 1 MiB): `find * -type f | parallel --will-cite-j 6 dd if={} of=/mnt/share/{} bs=1M`
@@ -144,13 +144,13 @@ Fout code: 403
 
 ### <a name="solution-for-cause-1"></a>Oplossing voor oorzaak 1
 
-Controleer of regels voor het virtuele netwerk of de firewall juist zijn geconfigureerd in het opslagaccount. Als u wilt testen of het probleem wordt veroorzaakt door regels voor het virtuele netwerk of de firewall, wijzigt u de instelling in het opslagaccount in **Toegang toestaan vanaf alle netwerken**. Zie [Firewalls en virtuele netwerken voor Azure Storage configureren](https://docs.microsoft.com/azure/storage/common/storage-network-security) voor meer informatie.
+Controleer of regels voor het virtuele netwerk of de firewall juist zijn geconfigureerd in het opslagaccount. Als u wilt testen of het probleem wordt veroorzaakt door regels voor het virtuele netwerk of de firewall, wijzigt u de instelling in het opslagaccount in **Toegang toestaan vanaf alle netwerken**. Zie [Firewalls en virtuele netwerken voor Azure Storage configureren](../common/storage-network-security.md) voor meer informatie.
 
 ### <a name="cause-2-your-user-account-does-not-have-access-to-the-storage-account"></a>Oorzaak 2: uw gebruikers account heeft geen toegang tot het opslag account
 
 ### <a name="solution-for-cause-2"></a>Oplossing voor oorzaak 2
 
-Blader naar het opslag account waar de Azure-bestands share zich bevindt, klik op **toegangs beheer (IAM)** en controleer of uw gebruikers account toegang heeft tot het opslag account. Zie [uw opslag account beveiligen met Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](https://docs.microsoft.com/azure/storage/blobs/security-recommendations#data-protection)voor meer informatie.
+Blader naar het opslag account waar de Azure-bestands share zich bevindt, klik op **toegangs beheer (IAM)** en controleer of uw gebruikers account toegang heeft tot het opslag account. Zie [uw opslag account beveiligen met Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](../blobs/security-recommendations.md#data-protection)voor meer informatie.
 
 <a id="open-handles"></a>
 ## <a name="unable-to-delete-a-file-or-directory-in-an-azure-file-share"></a>Kan een bestand of map in een Azure-bestandsshare niet verwijderen
@@ -162,12 +162,12 @@ Dit probleem treedt doorgaans op als het bestand of de map een geopende ingang h
 
 Als de SMB-clients alle geopende ingangen hebben gesloten en het probleem blijft optreden, voert u de volgende handelingen uit:
 
-- Gebruik de Power shell [-cmdlet Get-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) om open ingangen weer te geven.
+- Gebruik de Power shell [-cmdlet Get-AzStorageFileHandle](/powershell/module/az.storage/get-azstoragefilehandle) om open ingangen weer te geven.
 
-- Gebruik de Power shell [-cmdlet close-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) om open ingangen te sluiten. 
+- Gebruik de Power shell [-cmdlet close-AzStorageFileHandle](/powershell/module/az.storage/close-azstoragefilehandle) om open ingangen te sluiten. 
 
 > [!Note]  
-> De cmdlets Get-AzStorageFileHandle en Close-AzStorageFileHandle zijn opgenomen in AZ Power shell-module versie 2,4 of hoger. Zie [de module Azure PowerShell installeren](https://docs.microsoft.com/powershell/azure/install-az-ps)om de nieuwste AZ Power shell-module te installeren.
+> De cmdlets Get-AzStorageFileHandle en Close-AzStorageFileHandle zijn opgenomen in AZ Power shell-module versie 2,4 of hoger. Zie [de module Azure PowerShell installeren](/powershell/azure/install-az-ps)om de nieuwste AZ Power shell-module te installeren.
 
 <a id="slowperformance"></a>
 ## <a name="slow-performance-on-an-azure-file-share-mounted-on-a-linux-vm"></a>Langzame prestaties van een Azure-bestandsshare die is gekoppeld aan een Linux-VM
@@ -192,11 +192,11 @@ U kunt ook controleren of de juiste opties worden gebruikt door de opdracht  **s
 //azureuser.file.core.windows.net/cifs on /cifs type cifs (rw,relatime,vers=2.1,sec=ntlmssp,cache=strict,username=xxx,domain=X,uid=0,noforceuid,gid=0,noforcegid,addr=192.168.10.1,file_mode=0777, dir_mode=0777,persistenthandles,nounix,serverino,mapposix,rsize=1048576,wsize=1048576,actimeo=1)
 ```
 
-Als de optie **cache = strikt** of **serverino** niet aanwezig is, ontkoppelen en koppelen Azure files opnieuw door de koppelings opdracht uit te voeren vanuit de [documentatie](../storage-how-to-use-files-linux.md). Controleer vervolgens of de **bestand/etc/fstab** -vermelding de juiste opties heeft.
+Als de optie **cache = strikt** of **serverino** niet aanwezig is, ontkoppelen en koppelen Azure files opnieuw door de koppelings opdracht uit te voeren vanuit de [documentatie](./storage-how-to-use-files-linux.md). Controleer vervolgens of de **bestand/etc/fstab** -vermelding de juiste opties heeft.
 
 ### <a name="cause-2-throttling"></a>Oorzaak 2: beperking
 
-Het is mogelijk dat u beperking ondervindt en dat uw aanvragen naar een wachtrij worden verzonden. U kunt dit controleren door gebruik te maken van [Azure Storage metrische gegevens in azure monitor](../common/storage-metrics-in-azure-monitor.md).
+Het is mogelijk dat u beperking ondervindt en dat uw aanvragen naar een wachtrij worden verzonden. U kunt dit controleren door gebruik te maken van [Azure Storage metrische gegevens in azure monitor](../blobs/monitor-blob-storage.md).
 
 ### <a name="solution-for-cause-2"></a>Oplossing voor oorzaak 2
 
@@ -294,7 +294,7 @@ Als u geen upgrade kunt uitvoeren naar de nieuwste kernelversies, kunt u dit pro
 ## <a name="cifs-vfs-error--22-on-ioctl-to-get-interface-list-when-you-mount-an-azure-file-share-by-using-smb-30"></a>"CIFS VFS: error-22 op IOCTL om de interface lijst op te halen" wanneer u een Azure-bestands share koppelt met behulp van SMB 3,0
 
 ### <a name="cause"></a>Oorzaak
-Deze fout wordt geregistreerd omdat Azure Files [momenteel geen SMB meerdere kanalen ondersteunt](https://docs.microsoft.com/rest/api/storageservices/features-not-supported-by-the-azure-file-service).
+Deze fout wordt geregistreerd omdat Azure Files [momenteel geen SMB meerdere kanalen ondersteunt](/rest/api/storageservices/features-not-supported-by-the-azure-file-service).
 
 ### <a name="solution"></a>Oplossing
 Deze fout kan worden genegeerd.

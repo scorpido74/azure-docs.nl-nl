@@ -8,16 +8,16 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 5149024f8621754451520e0ae249ed61f0b07f99
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 961ba457136d20fbb63ae3315fe8143cffb56be2
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91568468"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629305"
 ---
 # <a name="azure-file-share-protocols"></a>Protocollen voor Azure-bestands shares
 
-Azure Files biedt twee protocollen voor het koppelen en koppelen van uw Azure-bestands shares. [SMB-protocol (Server Message Block)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) en [NFS-protocol (Network File System](https://en.wikipedia.org/wiki/Network_File_System) ) (preview). Azure Files biedt momenteel geen ondersteuning voor multi-protocol toegang, zodat een share alleen een NFS-share of een SMB-share kan zijn. Daarom is het raadzaam om te bepalen welk protocol het beste aansluit bij uw behoeften voordat u Azure-bestands shares maakt.
+Azure Files biedt twee protocollen voor het koppelen en koppelen van uw Azure-bestands shares. [SMB-protocol (Server Message Block)](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) en [NFS-protocol (Network File System](https://en.wikipedia.org/wiki/Network_File_System) ) (preview). Azure Files biedt momenteel geen ondersteuning voor multi-protocol toegang, zodat een share alleen een NFS-share of een SMB-share kan zijn. Daarom is het raadzaam om te bepalen welk protocol het beste aansluit bij uw behoeften voordat u Azure-bestands shares maakt.
 
 ## <a name="differences-at-a-glance"></a>Verschillen in een oogopslag
 
@@ -64,7 +64,7 @@ Alle Azure Files gegevens worden op rest versleuteld. Voor versleuteling in tran
 - [Een persoonlijk eind punt](storage-files-networking-overview.md#private-endpoints)
 - [Azure VPN-gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md)
     - [Een punt-naar-site-VPN (P2S)](../../vpn-gateway/point-to-site-about.md)
-    - [Site-to-Site](https://docs.microsoft.com/azure/vpn-gateway/design#s2smulti)
+    - [Site-to-Site](../../vpn-gateway/design.md#s2smulti)
 - [ExpressRoute](../../expressroute/expressroute-introduction.md)
 - [Een beperkt openbaar eind punt](storage-files-networking-overview.md#storage-account-firewall-settings)
 

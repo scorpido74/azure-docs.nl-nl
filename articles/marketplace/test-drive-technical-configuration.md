@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/13/2019
 author: trkeya
 ms.author: trkeya
-ms.openlocfilehash: 6faecdd561d7c434d2948e70886d6f1b19115d9f
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: f628c2a4c2f8eb474bbc34ef2d3fd2f03f668992
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94504829"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629900"
 ---
 # <a name="test-drive-technical-configuration"></a>Technische configuratie van test drive
 
@@ -98,5 +98,5 @@ Als u uw test drive momenteel in partner centrum maakt, selecteert u **concept o
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Aanbevolen procedures testen](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
-- [Overzicht](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)(PDF; Controleer of de pop-upblokkering is uitgeschakeld)
+- [Overzicht](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) (PDF; Controleer of de pop-upblokkering is uitgeschakeld)
 - [Een bestaande aanbieding bijwerken in de commerciële Marketplace](partner-center-portal/update-existing-offer.md)

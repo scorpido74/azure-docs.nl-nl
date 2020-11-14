@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: rogarana
-ms.openlocfilehash: 03b569422b6ce9e74f77637a514c1c0b28011bed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02b8d72ab88f9eca2e1fac4858c14826dae57dbe
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761138"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629169"
 ---
 # <a name="part-three-configure-directory-and-file-level-permissions-over-smb"></a>Deel drie: machtigingen voor mappen en bestands niveau configureren via SMB 
 
@@ -44,7 +44,7 @@ De volgende tabel bevat de Azure RBAC-machtigingen die zijn gerelateerd aan deze
 
 ## <a name="supported-permissions"></a>Ondersteunde machtigingen
 
-Azure Files ondersteunt de volledige set basis-en geavanceerde Windows-Acl's. U kunt Windows-Acl's op mappen en bestanden in een Azure-bestands share weer geven en configureren door de share te koppelen en vervolgens met behulp van Windows Verkenner, de Windows [icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) -opdracht of de [set-ACL](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-acl) opdracht uit te voeren. 
+Azure Files ondersteunt de volledige set basis-en geavanceerde Windows-Acl's. U kunt Windows-Acl's op mappen en bestanden in een Azure-bestands share weer geven en configureren door de share te koppelen en vervolgens met behulp van Windows Verkenner, de Windows [icacls](/windows-server/administration/windows-commands/icacls) -opdracht of de [set-ACL](/powershell/module/microsoft.powershell.security/set-acl) opdracht uit te voeren. 
 
 Als u Acl's wilt configureren met machtigingen voor de super gebruiker, moet u de share koppelen met behulp van de sleutel van uw opslag account van de virtuele machine die lid is van het domein. Volg de instructies in de volgende sectie voor het koppelen van een Azure-bestands share vanaf de opdracht prompt en voor het configureren van Windows-Acl's.
 
@@ -85,7 +85,7 @@ else
 
 ```
 
-Als u problemen ondervindt bij het maken van verbinding met Azure Files, raadpleegt u [het hulp programma voor probleem oplossing dat is gepubliceerd voor Azure files-montage fouten in Windows](https://azure.microsoft.com/blog/new-troubleshooting-diagnostics-for-azure-files-mounting-errors-on-windows/). We bieden ook [richt lijnen](https://docs.microsoft.com/azure/storage/files/storage-files-faq#on-premises-access) voor het omzeilen van scenario's wanneer poort 445 wordt geblokkeerd. 
+Als u problemen ondervindt bij het maken van verbinding met Azure Files, raadpleegt u [het hulp programma voor probleem oplossing dat is gepubliceerd voor Azure files-montage fouten in Windows](https://azure.microsoft.com/blog/new-troubleshooting-diagnostics-for-azure-files-mounting-errors-on-windows/). We bieden ook [richt lijnen](./storage-files-faq.md#on-premises-access) voor het omzeilen van scenario's wanneer poort 445 wordt geblokkeerd. 
 
 ## <a name="configure-windows-acls"></a>Windows-Acl's configureren
 
@@ -114,7 +114,7 @@ Gebruik de volgende Windows-opdracht om volledige machtigingen te verlenen aan a
 icacls <mounted-drive-letter>: /grant <user-email>:(f)
 ```
 
-Zie voor meer informatie over het gebruik van icacls voor het instellen van Windows-Acl's en voor de verschillende typen ondersteunde machtigingen [de opdracht regel verwijzing voor icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls).
+Zie voor meer informatie over het gebruik van icacls voor het instellen van Windows-Acl's en voor de verschillende typen ondersteunde machtigingen [de opdracht regel verwijzing voor icacls](/windows-server/administration/windows-commands/icacls).
 
 ## <a name="next-steps"></a>Volgende stappen
 

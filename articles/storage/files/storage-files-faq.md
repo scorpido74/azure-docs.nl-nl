@@ -7,22 +7,22 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 609f6d5fd0bf75b1a2056c01c8d22ae9e08ab9cb
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 1eddca26152f27ced20bbae66b3265639b97e64e
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746830"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629492"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Lees de veelgestelde vragen (FAQ) over Azure Files
-[Azure files](storage-files-introduction.md) biedt volledig beheerde bestands shares in de cloud die toegankelijk zijn via het industrie standaard [SMB-protocol (Server Message Block)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) en het [NFS-protocol (Network File System](https://en.wikipedia.org/wiki/Network_File_System) ) (preview). U kunt Azure-bestands shares gelijktijdig koppelen aan Cloud-of on-premises implementaties van Windows, Linux en macOS. U kunt ook Azure-bestands shares op Windows Server-computers in de cache opslaan met behulp van Azure File Sync voor snelle toegang, waarbij de gegevens worden gebruikt.
+[Azure files](storage-files-introduction.md) biedt volledig beheerde bestands shares in de cloud die toegankelijk zijn via het industrie standaard [SMB-protocol (Server Message Block)](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) en het [NFS-protocol (Network File System](https://en.wikipedia.org/wiki/Network_File_System) ) (preview). U kunt Azure-bestands shares gelijktijdig koppelen aan Cloud-of on-premises implementaties van Windows, Linux en macOS. U kunt ook Azure-bestands shares op Windows Server-computers in de cache opslaan met behulp van Azure File Sync voor snelle toegang, waarbij de gegevens worden gebruikt.
 
 In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functies en-functionaliteit, met inbegrip van het gebruik van Azure File Sync met Azure Files. Als u het antwoord op uw vraag niet ziet, kunt u contact met ons opnemen via de volgende kanalen (in de volg orde waarin ze worden doorzocht):
 
 1. De sectie opmerkingen van dit artikel.
-2. [Micro soft Q&een vraag pagina voor Azure Storage](https://docs.microsoft.com/answers/topics/azure-file-storage.html).
+2. [Micro soft Q&een vraag pagina voor Azure Storage](/answers/topics/azure-file-storage.html).
 3. [Azure files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files). 
-4. Microsoft Ondersteuning. Als u een nieuwe ondersteunings aanvraag wilt maken, selecteert u in het Azure Portal op het tabblad **Help** de knop **Help en ondersteuning** en selecteert u vervolgens **nieuwe ondersteunings aanvraag** .
+4. Microsoft Ondersteuning. Als u een nieuwe ondersteunings aanvraag wilt maken, selecteert u in het Azure Portal op het tabblad **Help** de knop **Help en ondersteuning** en selecteert u vervolgens **nieuwe ondersteunings aanvraag**.
 
 ## <a name="general"></a>Algemeen
 * <a id="why-files-useful"></a>
@@ -80,7 +80,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
 
 * <a id="file-locking"></a>
   **Ondersteunt Azure Files het vergren delen van bestanden?**  
-    Ja, Azure Files volledig ondersteunt SMB/Windows-stijl bestands vergrendeling. [Zie de Details voor meer informatie](https://docs.microsoft.com/rest/api/storageservices/managing-file-locks).
+    Ja, Azure Files volledig ondersteunt SMB/Windows-stijl bestands vergrendeling. [Zie de Details voor meer informatie](/rest/api/storageservices/managing-file-locks).
 
 * <a id="give-us-feedback"></a>
   **Ik wil een specifieke functie zien die is toegevoegd aan Azure Files. Kunt u deze toevoegen?**  
@@ -107,7 +107,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
     Prestaties zijn afhankelijk van uw omgevings instellingen, configuratie en of dit een initiële synchronisatie of een voortdurende synchronisatie is. Zie voor meer informatie [Azure file sync metrische gegevens over prestaties](storage-files-scale-targets.md#azure-file-sync-performance-metrics)
 
 * <a id="afs-conflict-resolution"></a>**Als hetzelfde bestand op ongeveer hetzelfde moment op twee servers wordt gewijzigd, wat gebeurt er dan?**  
-    Azure File Sync maakt gebruik van een eenvoudige strategie voor conflict oplossing: wijzigingen in bestanden die op hetzelfde moment worden gewijzigd in twee eind punten worden bewaard. De meest recent geschreven wijziging behoudt de oorspronkelijke bestands naam. Het oudere bestand (bepaald door LastWriteTime) heeft de naam van het eind punt en het conflict nummer dat is toegevoegd aan de bestands naam. Voor Server-eind punten is de naam van het eind punt de naam van de server. Voor Cloud-eind punten is de naam van het eind punt in de **Cloud** . De naam volgt deze taxonomie: 
+    Azure File Sync maakt gebruik van een eenvoudige strategie voor conflict oplossing: wijzigingen in bestanden die op hetzelfde moment worden gewijzigd in twee eind punten worden bewaard. De meest recent geschreven wijziging behoudt de oorspronkelijke bestands naam. Het oudere bestand (bepaald door LastWriteTime) heeft de naam van het eind punt en het conflict nummer dat is toegevoegd aan de bestands naam. Voor Server-eind punten is de naam van het eind punt de naam van de server. Voor Cloud-eind punten is de naam van het eind punt in de **Cloud**. De naam volgt deze taxonomie: 
    
     \<FileNameWithoutExtension\>-\<endpointName\>\[-#\].\<ext\>  
 
@@ -158,7 +158,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
     
 * <a id="afs-resource-move"></a>
   **Kan ik de opslag synchronisatie service en/of het opslag account verplaatsen naar een andere resource groep, een abonnement of een Azure AD-Tenant?**  
-   Ja, de opslag synchronisatie service en/of het opslag account kunnen worden verplaatst naar een andere resource groep, een abonnement of een Azure AD-Tenant. Nadat de opslag synchronisatie service of het opslag account is verplaatst, moet u de micro soft. StorageSync-toepassing toegang geven tot het opslag account (Zie [controleren of Azure file sync toegang heeft tot het opslag account](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)).
+   Ja, de opslag synchronisatie service en/of het opslag account kunnen worden verplaatst naar een andere resource groep, een abonnement of een Azure AD-Tenant. Nadat de opslag synchronisatie service of het opslag account is verplaatst, moet u de micro soft. StorageSync-toepassing toegang geven tot het opslag account (Zie [controleren of Azure file sync toegang heeft tot het opslag account](./storage-sync-files-troubleshoot.md?tabs=portal1%252cportal#troubleshoot-rbac)).
 
     > [!Note]  
     > Bij het maken van het Cloud eindpunt moeten de opslag synchronisatie service en het opslag account zich in dezelfde Azure AD-Tenant bevinden. Zodra het Cloud eindpunt is gemaakt, kunnen de opslag synchronisatie service en het opslag account worden verplaatst naar verschillende Azure AD-tenants.
@@ -184,7 +184,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
 
     - Azure File Sync behoudt en repliceert alle discretionaire Acl's, of DACL'S, (of Active Directory of lokaal) naar alle server eindpunten die worden gesynchroniseerd. 
     
-    U kunt de [toegang tot Azure Storage machtigen](https://docs.microsoft.com/azure/storage/common/storage-auth?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) voor een uitgebreide weer gave van alle protocollen die worden ondersteund op Azure Storage services. 
+    U kunt de [toegang tot Azure Storage machtigen](../common/storage-auth.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json) voor een uitgebreide weer gave van alle protocollen die worden ondersteund op Azure Storage services. 
     
 * <a id="encryption-at-rest"></a>
 **Hoe kan ik ervoor zorgen dat mijn Azure-bestands share op rest versleuteld is?**  
@@ -209,14 +209,14 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
 * <a id="data-compliance-policies"></a>
 **Wat voor nalevings beleid voor gegevens Azure Files worden ondersteund?**  
 
-   Azure Files wordt uitgevoerd boven op dezelfde opslag architectuur die wordt gebruikt in andere opslag Services in Azure Storage. Azure Files past hetzelfde beleid voor gegevens naleving toe dat in andere Azure Storage-services wordt gebruikt. Raadpleeg voor meer informatie over de naleving van Azure Storage gegevens [Azure Storage compliance-aanbiedingen](https://docs.microsoft.com/azure/storage/common/storage-compliance-offerings)en ga naar het [vertrouwens centrum van micro soft](https://microsoft.com/trustcenter/default.aspx).
+   Azure Files wordt uitgevoerd boven op dezelfde opslag architectuur die wordt gebruikt in andere opslag Services in Azure Storage. Azure Files past hetzelfde beleid voor gegevens naleving toe dat in andere Azure Storage-services wordt gebruikt. Raadpleeg voor meer informatie over de naleving van Azure Storage gegevens [Azure Storage compliance-aanbiedingen](../common/storage-compliance-offerings.md)en ga naar het [vertrouwens centrum van micro soft](https://microsoft.com/trustcenter/default.aspx).
 
 * <a id="file-auditing"></a>
 **Hoe kan ik de toegang tot bestanden en wijzigingen controleren in Azure Files?**
 
   Er zijn twee opties voor het controleren van de controle functionaliteit voor Azure Files:
-  - Als gebruikers rechtstreeks toegang hebben tot de Azure-bestands share, kunnen [Azure Storage-Logboeken (preview)](https://docs.microsoft.com/azure/storage/common/monitor-storage?tabs=azure-powershell#logs-in-azure-monitor-preview) worden gebruikt om bestands wijzigingen en gebruikers toegang bij te houden. Deze logboeken kunnen worden gebruikt voor het oplossen van problemen en de aanvragen worden aanbevolen.
-  - Als gebruikers toegang hebben tot de Azure-bestands share via een Windows-Server waarop de Azure File Sync-agent is geïnstalleerd, kunt u een [controle beleid](https://docs.microsoft.com/windows/security/threat-protection/auditing/apply-a-basic-audit-policy-on-a-file-or-folder) of een product van een derde partij gebruiken om bestands wijzigingen en gebruikers toegang op de Windows-Server bij te houden. 
+  - Als gebruikers rechtstreeks toegang hebben tot de Azure-bestands share, kunnen [Azure Storage-Logboeken (preview)](../blobs/monitor-blob-storage.md?tabs=azure-powershell#analyzing-logs) worden gebruikt om bestands wijzigingen en gebruikers toegang bij te houden. Deze logboeken kunnen worden gebruikt voor het oplossen van problemen en de aanvragen worden aanbevolen.
+  - Als gebruikers toegang hebben tot de Azure-bestands share via een Windows-Server waarop de Azure File Sync-agent is geïnstalleerd, kunt u een [controle beleid](/windows/security/threat-protection/auditing/apply-a-basic-audit-policy-on-a-file-or-folder) of een product van een derde partij gebruiken om bestands wijzigingen en gebruikers toegang op de Windows-Server bij te houden. 
    
 ### <a name="ad-ds--azure-ad-ds-authentication"></a>AD DS & Azure AD DS-verificatie
 * <a id="ad-support-devices"></a>
@@ -247,7 +247,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
 * <a id="ad-aad-smb-files"></a>
 **Hoe kan ik controleren of ik AD DS verificatie op mijn opslag account heb ingeschakeld en de domein gegevens ophaal?**
 
-    Zie [hier](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#1-enable-ad-authentication-for-your-account)voor instructies.
+    Zie [hier](./storage-files-identity-ad-ds-enable.md#confirm-the-feature-is-enabled)voor instructies.
 
 * <a id=""></a>
 **Ondersteunt Azure Files Azure AD-verificatie Linux Vm's?**
@@ -288,19 +288,14 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
     Ja, u kunt AD-verificatie inschakelen op een bestands share die wordt beheerd door Azure file sync. Wijzigingen in de map/bestand NTFS Acl's op lokale bestands servers worden trapsgewijs gelaagd en Azure Files en vice versa.
 
 * <a id="ad-aad-smb-files"></a>
-**Hoe kan ik controleren of AD-verificatie is ingeschakeld voor mijn opslag account en de gegevens van het AD-domein?**
-
-    Raadpleeg de instructies die u [hier](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#enable-ad-authentication-for-your-account) kunt vinden om te controleren of Azure files AD-verificatie is ingeschakeld voor uw opslag account en de gegevens van het AD-domein op te halen.
-
-* <a id="ad-aad-smb-files"></a>
 **Is er een verschil in het maken van een computer account of een service-aanmeldings account voor het weer geven van mijn opslag account in AD?**
 
-    Het maken van een [computer account](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (standaard) of een [service aanmeldings account](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts) heeft geen verschil op de manier waarop de verificatie met Azure files zou werken. U kunt uw eigen keuze maken voor het weer geven van een opslag account als identiteit in uw AD-omgeving. De standaard DomainAccountType die in Join-AzStorageAccountForAuth-cmdlet is ingesteld, is computer account. De leeftijd van het wacht woord die in uw AD-omgeving is geconfigureerd, kan echter verschillen voor de computer-of service-aanmeldings account en u moet rekening houden om [het wacht woord van de identiteit van uw opslag account in AD bij te werken](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#5-update-ad-account-password).
+    Het maken van een [computer account](/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (standaard) of een [service aanmeldings account](/windows/win32/ad/about-service-logon-accounts) heeft geen verschil op de manier waarop de verificatie met Azure files zou werken. U kunt uw eigen keuze maken voor het weer geven van een opslag account als identiteit in uw AD-omgeving. De standaard DomainAccountType die in Join-AzStorageAccountForAuth-cmdlet is ingesteld, is computer account. De leeftijd van het wacht woord die in uw AD-omgeving is geconfigureerd, kan echter verschillen voor de computer-of service-aanmeldings account en u moet rekening houden om [het wacht woord van de identiteit van uw opslag account in AD bij te werken](./storage-files-identity-ad-ds-update-password.md).
  
 * <a id="ad-support-rest-apis"></a>
 **Zijn er REST-Api's ter ondersteuning van Get/set/Copy-Windows-Acl's voor mappen/bestanden?**
 
-    Ja, we ondersteunen REST-Api's waarmee NTFS-Acl's voor mappen of bestanden worden opgehaald, ingesteld of gekopieerd wanneer de [2019-07-07](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-07-07) (of hoger) wordt gebruikt rest API. We bieden ook ondersteuning voor persistentie van Windows-Acl's in REST-hulpprogram ma's: [AzCopy v 10.4 +](https://github.com/Azure/azure-storage-azcopy/releases).
+    Ja, we ondersteunen REST-Api's waarmee NTFS-Acl's voor mappen of bestanden worden opgehaald, ingesteld of gekopieerd wanneer de [2019-07-07](/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-07-07) (of hoger) wordt gebruikt rest API. We bieden ook ondersteuning voor persistentie van Windows-Acl's in REST-hulpprogram ma's: [AzCopy v 10.4 +](https://github.com/Azure/azure-storage-azcopy/releases).
 
 ## <a name="network-file-system"></a>Netwerk bestandssysteem
 
@@ -324,7 +319,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
 * <a id="port-445-blocked"></a>
 **Mijn Internet provider of poort 445 wordt geblokkeerd en kan niet Azure Files gekoppeld. Wat moet ik doen?**
 
-    Hier vindt u meer informatie over de verschillende manieren waarop u de [tijdelijke oplossing poort 445 kunt blok keren](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked). Azure Files staat alleen verbindingen toe met behulp van SMB 3,0 (met ondersteuning voor versleuteling) van buiten de regio of het Data Center. Het SMB 3,0-protocol heeft veel beveiligings functies geïntroduceerd, waaronder Channel Encryption, die zeer veilig zijn voor gebruik via internet. Het is echter mogelijk dat poort 445 is geblokkeerd vanwege historische oorzaken van beveiligings problemen die in lagere SMB-versies zijn aangetroffen. In het ideale geval moet de poort alleen worden geblokkeerd voor SMB 1,0-verkeer en moet SMB 1,0 worden uitgeschakeld op alle clients.
+    Hier vindt u meer informatie over de verschillende manieren waarop u de [tijdelijke oplossing poort 445 kunt blok keren](./storage-troubleshoot-windows-file-connection-problems.md#cause-1-port-445-is-blocked). Azure Files staat alleen verbindingen toe met behulp van SMB 3,0 (met ondersteuning voor versleuteling) van buiten de regio of het Data Center. Het SMB 3,0-protocol heeft veel beveiligings functies geïntroduceerd, waaronder Channel Encryption, die zeer veilig zijn voor gebruik via internet. Het is echter mogelijk dat poort 445 is geblokkeerd vanwege historische oorzaken van beveiligings problemen die in lagere SMB-versies zijn aangetroffen. In het ideale geval moet de poort alleen worden geblokkeerd voor SMB 1,0-verkeer en moet SMB 1,0 worden uitgeschakeld op alle clients.
 
 * <a id="expressroute-not-required"></a>
 **Moet ik Azure ExpressRoute gebruiken om verbinding te maken met Azure Files of Azure File Sync on-premises te gebruiken?**  
@@ -339,7 +334,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
 ## <a name="backup"></a>Backup
 * <a id="backup-share"></a>
 **Hoe kan ik back-up maken van mijn Azure-bestands share?**  
-    U kunt [moment opnamen van periodieke shares](storage-snapshots-files.md) gebruiken voor beveiliging tegen onbedoeld verwijderen. U kunt ook AzCopy, Robocopy of een back-upprogramma van derden gebruiken dat een back-up kan maken van een gekoppelde bestands share. Azure Backup biedt back-up van Azure Files. Meer informatie over het [maken van back-ups van Azure-bestands shares per Azure backup](https://docs.microsoft.com/azure/backup/backup-azure-files).
+    U kunt [moment opnamen van periodieke shares](storage-snapshots-files.md) gebruiken voor beveiliging tegen onbedoeld verwijderen. U kunt ook AzCopy, Robocopy of een back-upprogramma van derden gebruiken dat een back-up kan maken van een gekoppelde bestands share. Azure Backup biedt back-up van Azure Files. Meer informatie over het [maken van back-ups van Azure-bestands shares per Azure backup](../../backup/backup-afs.md).
 
 ## <a name="share-snapshots"></a>Momentopnamen van shares
 
@@ -450,11 +445,11 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
 ## <a name="features-and-interoperability-with-other-services"></a>Functies en interoperabiliteit met andere services
 * <a id="cluster-witness"></a>
 **Kan ik mijn Azure-bestands share gebruiken als een *Bestands share-Witness* voor mijn Windows Server-failovercluster?**  
-    Deze configuratie wordt momenteel niet ondersteund voor een Azure-bestands share. Zie [een Cloudwitness implementeren voor een failovercluster](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness)voor meer informatie over het instellen van dit voor Azure Blob Storage.
+    Deze configuratie wordt momenteel niet ondersteund voor een Azure-bestands share. Zie [een Cloudwitness implementeren voor een failovercluster](/windows-server/failover-clustering/deploy-cloud-witness)voor meer informatie over het instellen van dit voor Azure Blob Storage.
 
 * <a id="containers"></a>
 **Kan ik een Azure-bestands share koppelen aan een Azure-container exemplaar?**  
-    Ja, Azure-bestands shares zijn een goede optie wanneer u gegevens wilt behouden die langer duren dan de levens duur van een container exemplaar. Zie [een Azure-bestands share koppelen met Azure container instances](../../container-instances/container-instances-mounting-azure-files-volume.md)voor meer informatie.
+    Ja, Azure-bestands shares zijn een goede optie wanneer u gegevens wilt behouden die langer duren dan de levens duur van een container exemplaar. Zie [een Azure-bestands share koppelen met Azure container instances](../../container-instances/container-instances-volume-azure-files.md)voor meer informatie.
 
 * <a id="rest-rename"></a>
 **Is er een bewerking voor naam wijzigen in de REST API?**  

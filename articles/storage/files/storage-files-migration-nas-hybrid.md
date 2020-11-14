@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: fd8e845734169bcd73fa0e087c30c0f2fd6ef4f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d8d19256dfca21cc805c2689557099a6785f76b
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85510302"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629203"
 ---
 # <a name="migrate-from-network-attached-storage-nas-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Migreren van NAS (Network Attached Storage) naar een hybride Cloud implementatie met Azure File Sync
 
@@ -151,7 +151,7 @@ Achtergrondbitmap
       /MIR
    :::column-end:::
    :::column span="1":::
-      Hiermee kan deze RoboCopy-opdracht verschillende keren worden uitgevoerd, opeenvolgend op hetzelfde doel/dezelfde bestemming. Hiermee wordt aangegeven wat er eerder is gekopieerd en wordt deze wegge laten. Alleen wijzigingen, toevoegingen en '*verwijderingen*' worden verwerkt, die zijn opgetreden sinds de laatste uitvoering. Als de opdracht nog niet eerder is uitgevoerd, wordt er niets wegge laten. De vlag */Mir* is een uitstekende optie voor bron locaties die nog steeds worden gebruikt en worden gewijzigd.
+      Hiermee kan deze RoboCopy-opdracht verschillende keren worden uitgevoerd, opeenvolgend op hetzelfde doel/dezelfde bestemming. Hiermee wordt aangegeven wat er eerder is gekopieerd en wordt deze wegge laten. Alleen wijzigingen, toevoegingen en ' *verwijderingen* ' worden verwerkt, die zijn opgetreden sinds de laatste uitvoering. Als de opdracht nog niet eerder is uitgevoerd, wordt er niets wegge laten. De vlag */Mir* is een uitstekende optie voor bron locaties die nog steeds worden gebruikt en worden gewijzigd.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -208,13 +208,13 @@ U bent klaar met het migreren van een share/groep shares naar een gemeen schappe
 U kunt proberen enkele van deze kopieën parallel uit te voeren. Het is raadzaam om het bereik van een Azure-bestands share tegelijk te verwerken.
 
 > [!WARNING]
-> Wanneer u alle gegevens van de NAS naar de Windows-Server hebt verplaatst en uw migratie is voltooid, gaat u terug naar ***alle***  synchronisatie groepen in het Azure Portal en past u de waarde voor het percentage beschik bare ruimte op het volume voor de Cloud laag aan wat beter geschikt is voor het gebruik van de cache, bijvoorbeeld 20%. 
+> Wanneer u alle gegevens van de NAS naar de Windows-Server hebt verplaatst en uw migratie is voltooid: Ga terug naar * **alle** _ synchronisatie groepen in de Azure Portal en pas de waarde voor het percentage beschik bare ruimte in de Cloud laag aan om iets beter geschikt te maken voor het gebruik van de cache, bijvoorbeeld 20%. 
 
 Het beleid voor beschik bare ruimte op het niveau van de Cloud-laag is een volume dat mogelijk meerdere server eindpunten synchroniseert. Als u vergeet de beschik bare ruimte op zelfs één server eindpunt aan te passen, blijft synchronisatie de meest beperkende regel Toep assen en wordt geprobeerd om 99% vrije schijf ruimte te houden, waardoor de lokale cache niet wordt uitgevoerd zoals u zou verwachten. Tenzij het uw doel is om alleen de naam ruimte te hebben voor een volume dat slechts zelden wordt gebruikt, worden de archiverings gegevens opgeslagen en moet u de rest van de opslag ruimte voor een ander scenario reserveren.
 
 ## <a name="troubleshoot"></a>Problemen oplossen
 
-Het meest waarschijnlijke probleem dat u kunt uitvoeren in, is dat de RoboCopy-opdracht mislukt met *' volume vol '* aan de Windows Server-zijde. Cloud lagen reageert eenmaal elk uur om inhoud te verlaten van de lokale Windows Server-schijf, die is gesynchroniseerd. Het doel is om uw 99% beschik bare ruimte op het volume te bereiken.
+Het meest waarschijnlijke probleem dat u kunt uitvoeren in, is dat de RoboCopy-opdracht mislukt met _ "volume vol" * aan de kant van de Windows-Server. Cloud lagen reageert eenmaal elk uur om inhoud te verlaten van de lokale Windows Server-schijf, die is gesynchroniseerd. Het doel is om uw 99% beschik bare ruimte op het volume te bereiken.
 
 Laat de voortgang van de synchronisatie en Cloud lagen vrij schijf ruimte vrijmaken. U ziet dat in Verkenner op uw Windows-Server.
 
@@ -226,6 +226,6 @@ Controleer de koppeling in de volgende sectie voor het oplossen van problemen me
 
 Er is meer informatie over Azure-bestands shares en Azure File Sync. De volgende artikelen helpen u bij het begrijpen van geavanceerde opties, aanbevolen procedures en ook voor het oplossen van problemen. Deze artikelen maken een koppeling naar de [documentatie van Azure file share](storage-files-introduction.md) .
 
-* [Overzicht van AFS](https://aka.ms/AFS)
+* [Overzicht van AFS](./storage-sync-files-planning.md)
 * [AFS-implementatie handleiding](storage-files-deployment-guide.md)
 * [Problemen met AFS oplossen](storage-sync-files-troubleshoot.md)

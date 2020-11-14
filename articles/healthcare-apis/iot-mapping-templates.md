@@ -8,15 +8,15 @@ ms.subservice: iomt
 ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: punagpal
-ms.openlocfilehash: 1702c17555d1d3c39a83fa16ca790d6f8f2b3344
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 63484361a6d5a331fd9dc646c53627918ce8b246
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93394234"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630546"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-mapping-templates"></a>Toewijzingssjablonen in Azure IoT Connector for FHIR (preview)
-In dit artikel vindt u informatie over het configureren van Azure IoT connector voor FHIR * met toewijzings sjablonen.
+In dit artikel wordt uitgelegd hoe u Azure IoT connector kunt configureren voor snelle bronnen voor de gezondheids zorg (FHIR&#174;) * met toewijzings sjablonen.
 
 De Azure IoT connector voor FHIR vereist twee typen toewijzings sjablonen op basis van JSON. Het eerste type, **apparaattoewijzing** , is verantwoordelijk voor het toewijzen van de nettoladingen van apparaten die zijn verzonden naar het `devicedata` eind punt van de Azure Event hub. Het extraheert typen, apparaat-id's, meting datum en meet waarde (n). Het tweede type, **FHIR-toewijzing** , bepaalt de toewijzing voor FHIR-resource. Hiermee kunt u de lengte van de observatie periode, het gegevens type FHIR dat wordt gebruikt voor het opslaan van de waarden en terminologie code (s), configureren. 
 
@@ -362,7 +362,7 @@ Vertegenwoordigt het [SampledData](http://hl7.org/fhir/datatypes.html#SampledDat
 |**DefaultPeriod**|De standaard periode in milliseconden die moet worden gebruikt. 
 |**Eenheid**|De eenheid die moet worden ingesteld op de oorsprong van de SampledData. 
 
-#### <a name="quantity"></a>Aantal
+#### <a name="quantity"></a>Hoeveelheid
 Hiermee wordt het gegevens type [hoeveelheid](http://hl7.org/fhir/datatypes.html#Quantity) FHIR. Als er meer dan één waarde in de groepering aanwezig is, wordt alleen de eerste waarde gebruikt. Wanneer een nieuwe waarde arriveert die is toegewezen aan dezelfde observatie, wordt de oude waarde overschreven.
 
 | Eigenschap | Beschrijving 
@@ -567,6 +567,4 @@ Bekijk veelgestelde vragen over Azure IoT connector voor FHIR (preview).
 >[!div class="nextstepaction"]
 >[Veelgestelde vragen over Azure IoT connector voor FHIR](fhir-faq.md)
 
-*In Azure Portal wordt Azure IoT Connector for FHIR aangeduid als IoT Connector (preview).
-
-FHIR is het gedeponeerde handelsmerk van HL7 en wordt gebruikt met de toestemming van HL7.
+* In de Azure Portal wordt Azure IoT connector voor FHIR aangeduid als IoT-connector (preview). FHIR is een geregistreerd handels merk van HL7 en wordt gebruikt met de machtiging van HL7.

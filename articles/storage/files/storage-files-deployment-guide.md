@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 05/22/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 08bcb41dd8d9f4643b03d855960d8632b778ff84
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 53111ccd634c516d0db10c0e2dd41768aba43f41
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88034495"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629237"
 ---
 # <a name="how-to-deploy-azure-files"></a>Azure Files implementeren
 [Azure files](storage-files-introduction.md) biedt volledig beheerde bestands shares in de cloud die toegankelijk zijn via het industrie standaard SMB-protocol. In dit artikel wordt uitgelegd hoe u Azure Files in uw organisatie nagenoeg implementeert.
@@ -22,7 +22,7 @@ Voordat u de stappen in dit artikel uitvoert, wordt u ten zeerste geadviseerd om
 ## <a name="prerequisites"></a>Vereisten
 In dit artikel wordt ervan uitgegaan dat u de volgende stappen al hebt uitgevoerd:
 
-- U hebt een Azure Storage-account gemaakt met de gewenste tolerantie-en versleutelings opties, in de regio die u wenst. Zie [een opslag account maken](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) voor stapsgewijze instructies voor het maken van een opslag account.
+- U hebt een Azure Storage-account gemaakt met de gewenste tolerantie-en versleutelings opties, in de regio die u wenst. Zie [een opslag account maken](../common/storage-account-create.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json) voor stapsgewijze instructies voor het maken van een opslag account.
 - Maak een Azure-bestands share met uw gewenste quotum in uw opslag account. Zie [een bestands share maken](storage-how-to-create-file-share.md) voor stapsgewijze instructies voor het maken van een bestands share.
 
 ## <a name="transfer-data-into-azure-files"></a>Gegevens overdragen naar Azure Files
@@ -63,7 +63,7 @@ Met de volgende stappen worden gegevens van een on-premises locatie naar uw Azur
     "F:\shares\scratch\","MyAzureFileShare/",file,rename,"None",None
     ```
 
-    Er kunnen meerdere shares met een opslag account worden opgegeven. Zie [het CSV-bestand van de gegevensset voorbereiden](../common/storage-import-export-tool-preparing-hard-drives-import.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) voor meer informatie.
+    Er kunnen meerdere shares met een opslag account worden opgegeven. Zie [het CSV-bestand van de gegevensset voorbereiden](/previous-versions/azure/storage/common/storage-import-export-tool-preparing-hard-drives-import?toc=%252fazure%252fstorage%252ffiles%252ftoc.json) voor meer informatie.
 
 5. Maak het CSV-bestand van het stationset. Het CSV-bestand van het station bevat een lijst met de schijven die beschikbaar zijn voor de on-premises export agent. U kunt bijvoorbeeld de volgende CSV-bestanden van stationset `X:` , `Y:` en `Z:` stations gebruiken voor de on-premises export taak:
 
@@ -74,7 +74,7 @@ Met de volgende stappen worden gegevens van een on-premises locatie naar uw Azur
     Z,Format,SilentMode,Encrypt,
     ```
     
-    Zie [het CSV-bestand van het stationset voorbereiden](../common/storage-import-export-tool-preparing-hard-drives-import.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) voor meer informatie.
+    Zie [het CSV-bestand van het stationset voorbereiden](/previous-versions/azure/storage/common/storage-import-export-tool-preparing-hard-drives-import?toc=%252fazure%252fstorage%252ffiles%252ftoc.json) voor meer informatie.
 
 6. Gebruik het [hulp programma WAImportExport](https://www.microsoft.com/download/details.aspx?id=55280) om uw gegevens naar een of meer harde schijven te kopiëren.
 
@@ -88,7 +88,7 @@ Met de volgende stappen worden gegevens van een on-premises locatie naar uw Azur
 7. [Een import taak maken](../common/storage-import-export-data-to-files.md#step-2-create-an-import-job).
     
 ### <a name="robocopy"></a>Robocopy
-Robocopy is een goed bekend Kopieer programma dat wordt geleverd bij Windows en Windows Server. Robocopy kan worden gebruikt om gegevens over te brengen naar Azure Files door de bestands share lokaal te koppelen en vervolgens de gekoppelde locatie als bestemming in de Robocopy-opdracht te gebruiken. Het gebruik van Robocopy is heel eenvoudig:
+Robocopy is een bekend kopieerprogramma dat wordt geleverd bij Windows en Windows Server. Robocopy kan worden gebruikt om gegevens over te brengen naar Azure Files door de bestands share lokaal te koppelen en vervolgens de gekoppelde locatie als bestemming in de Robocopy-opdracht te gebruiken. Het gebruik van Robocopy is heel eenvoudig:
 
 1. [Koppel uw Azure-bestands share](storage-how-to-use-files-windows.md). Voor optimale prestaties raden we u aan de Azure-bestands share lokaal te koppelen op de server die de gegevens bevat. In sommige gevallen, zoals wanneer de bestands server die de gegevens verzendt, een NAS-apparaat is, is dit mogelijk niet mogelijk. In dat geval is het perfect om de Azure-bestands share op een PC te koppelen. In dit voor beeld `net use` wordt gebruikt op de opdracht regel om de bestands share te koppelen:
 
@@ -102,12 +102,12 @@ Robocopy is een goed bekend Kopieer programma dat wordt geleverd bij Windows en 
     robocopy <path-to-local-share> <path-to-azure-file-share> /E /Z /MT:32
     ```
     
-    Robocopy heeft een groot aantal opties om het Kopieer gedrag naar wens aan te passen. Bekijk de pagina met de hand leiding voor [Robocopy](https://technet.microsoft.com/library/cc733145.aspx) voor meer informatie.
+    Robocopy heeft een groot aantal opties om het Kopieer gedrag naar wens aan te passen. Bekijk de pagina met de hand leiding voor [Robocopy](/windows-server/administration/windows-commands/robocopy) voor meer informatie.
 
 ### <a name="azcopy"></a>AzCopy
 AzCopy is een opdracht regel programma dat is ontworpen voor het kopiëren van gegevens van en naar Azure Files, evenals Azure Blob-opslag, met behulp van eenvoudige opdrachten met optimale prestaties. Het gebruik van AzCopy is eenvoudig:
 
-1. Down load de [nieuwste versie van AzCopy in Windows](https://aka.ms/downloadazcopy) of [Linux](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy-linux#download-and-install-azcopy).
+1. Down load de [nieuwste versie van AzCopy in Windows](https://aka.ms/downloadazcopy) of [Linux](../common/storage-use-azcopy-v10.md?toc=/azure/storage/files/toc.json#download-azcopy).
 2. Gebruik `azcopy` op de opdracht regel om gegevens te verplaatsen naar de Azure-bestands share. De syntaxis van Windows is als volgt: 
 
     ```
@@ -120,7 +120,7 @@ AzCopy is een opdracht regel programma dat is ontworpen voor het kopiëren van g
     azcopy --source <path-to-local-share> --destination https://<storage-account>.file.core.windows.net/<file-share>/ --dest-key <storage-account-key> --recursive
     ```
 
-    AzCopy heeft een groot aantal opties om het Kopieer gedrag naar wens aan te passen. Bekijk [AzCopy in Windows](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) en [AzCopy in Linux](../common/storage-use-azcopy-linux.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)voor meer informatie.
+    AzCopy heeft een groot aantal opties om het Kopieer gedrag naar wens aan te passen. Zie [aan de slag met AzCopy](../common/storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json)voor meer informatie.
 
 ## <a name="automatically-mount-on-needed-pcsservers"></a>Automatisch koppelen op de benodigde Pc's/servers
 Als u een on-premises bestands share wilt vervangen, is het handig om de shares vooraf te koppelen op de computers waarop deze worden gebruikt. Dit kan automatisch worden gedaan in een lijst met computers.

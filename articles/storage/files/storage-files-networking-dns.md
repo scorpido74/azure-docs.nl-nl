@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 3/19/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4b5ce48cf15c890fbdb3dfd90d9d0ab922a2f4b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9abe306668a4b20e42e45c498bf85b540dfaaee5
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320265"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630189"
 ---
 # <a name="configuring-dns-forwarding-for-azure-files"></a>DNS doorsturen configureren voor Azure Files
 Met Azure Files kunt u privé-eind punten maken voor de opslag accounts met uw bestands shares. Hoewel het nuttig is voor veel verschillende toepassingen, zijn privé-eind punten vooral nuttig om verbinding te maken met uw Azure-bestands shares van uw on-premises netwerk met behulp van een VPN-of ExpressRoute-verbinding met behulp van privé-peering. 
@@ -43,7 +43,7 @@ Voordat u het door sturen van DNS naar Azure Files kunt instellen, moet u de vol
 
 - Een opslag account met een Azure-bestands share die u wilt koppelen. Zie [een Azure-bestands share maken](storage-how-to-create-file-share.md)voor meer informatie over het maken van een opslag account en een Azure-bestands share.
 - Een persoonlijk eind punt voor het opslag account. Zie [een persoonlijk eind punt maken](storage-files-networking-endpoints.md#create-a-private-endpoint)voor meer informatie over het maken van een persoonlijk eind punt voor Azure files.
-- De [nieuwste versie](https://docs.microsoft.com/powershell/azure/install-az-ps) van de Azure PowerShell-module.
+- De [nieuwste versie](/powershell/azure/install-az-ps) van de Azure PowerShell-module.
 
 > [!Important]  
 > In deze hand leiding wordt ervan uitgegaan dat u de DNS-server in Windows Server gebruikt in uw on-premises omgeving. Alle stappen die in deze hand leiding worden beschreven, zijn mogelijk met een DNS-server, niet alleen de Windows DNS-server.
@@ -110,7 +110,7 @@ New-AzDnsForwarder `
 
 Het kan ook nuttig/nood zakelijk zijn om verschillende extra para meters op te geven:
 
-| Parameternaam | Type | Beschrijving |
+| Parameternaam | Type | Description |
 |----------------|------|-------------|
 | `DnsServerResourceGroupName` | `string` | De DNS-servers worden standaard geïmplementeerd in dezelfde resource groep als het virtuele netwerk. Als dit niet gewenst is, kunt u met deze para meter een alternatieve resource groep kiezen die in moet worden geïmplementeerd. |
 | `DnsForwarderRootName` | `string` | De DNS-servers die in azure zijn geïmplementeerd, hebben standaard de namen `DnsFwder-*` , waarbij het sterretje door een iterator wordt gevuld. Met deze para meter wordt de hoofdmap van die naam (dat wil zeggen `DnsFwder` ) gewijzigd. |
@@ -152,6 +152,6 @@ Test-NetConnection -ComputerName storageaccount.file.core.windows.net -CommonTCP
 ```
 
 ## <a name="see-also"></a>Zie ook
-- [Implementatie van Azure Files plannen](storage-files-planning.md)
+- [Een Azure Files-implementatie plannen](storage-files-planning.md)
 - [Azure Files networking considerations](storage-files-networking-overview.md) (Aandachtspunten voor Azure Files-netwerken)
 - [Azure Files-netwerkeindpunten configureren](storage-files-networking-endpoints.md)

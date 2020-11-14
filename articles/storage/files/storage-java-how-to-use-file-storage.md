@@ -8,12 +8,12 @@ ms.date: 09/19/2017
 ms.custom: devx-track-java
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2c80d741ca1cf0b4d66bc18488af8ef1da44fd14
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 977777aff4aa32bf6876e1d573970d71ec71584e
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462595"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629764"
 ---
 # <a name="develop-for-azure-files-with-java"></a>Ontwikkelen voor Azure Files met Java
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -29,7 +29,7 @@ In deze zelf studie wordt gedemonstreerd hoe u Java gebruikt voor het ontwikkele
 * Een bestand uploaden, downloaden en verwijderen
 
 > [!Note]  
-> Omdat Azure Files mogelijk toegankelijk is via SMB, is het mogelijk om toepassingen te schrijven die toegang hebben tot de Azure-bestands share met behulp van de standaard Java-I/O-klassen. In dit artikel wordt beschreven hoe u toepassingen schrijft die gebruikmaken van de Azure Storage Java SDK, die gebruikmaakt van de [Azure Files rest API](https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api) om te praten met Azure files.
+> Omdat Azure Files mogelijk toegankelijk is via SMB, is het mogelijk om toepassingen te schrijven die toegang hebben tot de Azure-bestands share met behulp van de standaard Java-I/O-klassen. In dit artikel wordt beschreven hoe u toepassingen schrijft die gebruikmaken van de Azure Storage Java SDK, die gebruikmaakt van de [Azure Files rest API](/rest/api/storageservices/file-service-rest-api) om te praten met Azure files.
 
 ## <a name="create-a-java-application"></a>Een Java-toepassing maken
 U hebt de Java Development Kit (JDK) en de [Azure Storage SDK voor Java](https://github.com/Azure/azure-storage-java)nodig om de voor beelden te maken. U moet ook een Azure-opslag account hebben gemaakt.
@@ -166,7 +166,7 @@ for ( ListFileItem fileItem : rootDir.listFilesAndDirectories() ) {
 }
 ```
 
-## <a name="upload-a-file"></a>Een bestand uploaden
+## <a name="upload-a-file"></a>Bestand uploaden
 In deze sectie leert u hoe u een bestand van de lokale opslag uploadt naar de hoofdmap van een share.
 
 De eerste stap bij het uploaden van een bestand is het verkrijgen van een verwijzing naar de map waar deze zich moet bevinden. U doet dit door de methode **getRootDirectoryReference** van het object share aan te roepen.
@@ -229,7 +229,7 @@ Als u meer wilt weten over andere Azure Storage-Api's, volgt u deze koppelingen.
 * [Azure Storage SDK voor Java](https://github.com/azure/azure-storage-java)
 * [Azure Storage SDK voor Android](https://github.com/azure/azure-storage-android)
 * [Azure Storage Client SDK-referentie](https://javadoc.io/doc/com.microsoft.azure/azure-core/0.8.0/index.html)
-* [REST-API voor Azure Storage-services](https://msdn.microsoft.com/library/azure/dd179355.aspx)
-* [Blog van het Azure Storage-team](https://docs.microsoft.com/archive/blogs/windowsazurestorage/)
-* [Gegevens overdragen met het AzCopy-hulp programma van Command-Line](../common/storage-use-azcopy.md)
+* [REST-API voor Azure Storage-services](/rest/api/storageservices/)
+* [Blog van het Azure Storage-team](/archive/blogs/windowsazurestorage/)
+* [Gegevens overdragen met het AzCopy-hulp programma van Command-Line](../common/storage-use-azcopy-v10.md)
 * [Problemen met betrekking tot Azure Files oplossen - Windows](storage-troubleshoot-windows-file-connection-problems.md)

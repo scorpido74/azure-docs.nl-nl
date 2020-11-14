@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 17b2ab53c0154a29f9084f9dd999a53bcf477b72
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b684123068889e422080605fb9c50ef9aed0cb76
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93075123"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630155"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>Problemen met Azure Files oplossen in Windows (SMB)
 
@@ -30,14 +30,14 @@ Wanneer u een bestands share probeert te koppelen, wordt mogelijk de volgende fo
 
 ### <a name="cause-1-unencrypted-communication-channel"></a>Oorzaak 1: niet-versleuteld communicatie kanaal
 
-Verbindingen met Azure-bestandsshares worden uit veiligheidsoverwegingen geblokkeerd als het communicatiekanaal niet is versleuteld en als de verbindingspoging niet is ondernomen vanuit hetzelfde datacenter als waar de Azure-bestandsshares zich bevinden. Niet-versleutelde verbindingen binnen hetzelfde datacenter kunnen ook worden geblokkeerd als de instelling [Veilige overdracht vereist](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) is ingeschakeld in het opslagaccount. Er wordt alleen een versleuteld communicatiekanaal geboden als het clientbesturingssysteem van de gebruiker ondersteuning biedt voor SMB-versleuteling.
+Verbindingen met Azure-bestandsshares worden uit veiligheidsoverwegingen geblokkeerd als het communicatiekanaal niet is versleuteld en als de verbindingspoging niet is ondernomen vanuit hetzelfde datacenter als waar de Azure-bestandsshares zich bevinden. Niet-versleutelde verbindingen binnen hetzelfde datacenter kunnen ook worden geblokkeerd als de instelling [Veilige overdracht vereist](../common/storage-require-secure-transfer.md) is ingeschakeld in het opslagaccount. Er wordt alleen een versleuteld communicatiekanaal geboden als het clientbesturingssysteem van de gebruiker ondersteuning biedt voor SMB-versleuteling.
 
 Voor Windows 8, Windows Server 2012 en latere versies van elk systeem wordt onderhandeld over aanvragen die SMB 3.0 omvatten, wat ondersteuning biedt voor versleuteling.
 
 ### <a name="solution-for-cause-1"></a>Oplossing voor oorzaak 1
 
 1. Verbinding maken vanaf een client die ondersteuning biedt voor SMB-versleuteling (Windows 8, Windows Server 2012 of hoger) of verbinding maken vanaf een virtuele machine in hetzelfde Data Center als het Azure-opslag account dat wordt gebruikt voor de Azure-bestands share.
-2. Controleer of de instelling [beveiligde overdracht vereist](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) is uitgeschakeld op het opslag account als de client geen SMB-versleuteling ondersteunt.
+2. Controleer of de instelling [beveiligde overdracht vereist](../common/storage-require-secure-transfer.md) is uitgeschakeld op het opslag account als de client geen SMB-versleuteling ondersteunt.
 
 ### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>Oorzaak 2: het virtuele netwerk of de firewall regels zijn ingeschakeld voor het opslag account 
 
@@ -45,7 +45,7 @@ Als er regels voor het VNET (virtueel netwerk) of de firewall zijn geconfigureer
 
 ### <a name="solution-for-cause-2"></a>Oplossing voor oorzaak 2
 
-Controleer of regels voor het virtuele netwerk of de firewall juist zijn geconfigureerd in het opslagaccount. Als u wilt testen of het probleem wordt veroorzaakt door regels voor het virtuele netwerk of de firewall, wijzigt u de instelling in het opslagaccount in **Toegang toestaan vanaf alle netwerken** . Zie [Firewalls en virtuele netwerken voor Azure Storage configureren](https://docs.microsoft.com/azure/storage/common/storage-network-security) voor meer informatie.
+Controleer of regels voor het virtuele netwerk of de firewall juist zijn geconfigureerd in het opslagaccount. Als u wilt testen of het probleem wordt veroorzaakt door regels voor het virtuele netwerk of de firewall, wijzigt u de instelling in het opslagaccount in **Toegang toestaan vanaf alle netwerken**. Zie [Firewalls en virtuele netwerken voor Azure Storage configureren](../common/storage-network-security.md) voor meer informatie.
 
 ### <a name="cause-3-share-level-permissions-are-incorrect-when-using-identity-based-authentication"></a>Oorzaak 3: machtigingen op share niveau zijn onjuist bij het gebruik van verificatie op basis van identiteiten
 
@@ -55,10 +55,10 @@ Als gebruikers toegang hebben tot de Azure-bestands share met Active Directory (
 
 Controleer of de machtigingen juist zijn geconfigureerd:
 
-- **Active Directory (AD)** Zie [machtigingen op share niveau toewijzen aan een identiteit](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-assign-permissions).
+- **Active Directory (AD)** Zie [machtigingen op share niveau toewijzen aan een identiteit](./storage-files-identity-ad-ds-assign-permissions.md).
 
     Machtigings toewijzingen op share niveau worden ondersteund voor groepen en gebruikers die zijn gesynchroniseerd van de Active Directory (AD) naar Azure Active Directory (Azure AD) met behulp van Azure AD Connect.  Controleer of de groepen en gebruikers toegewezen machtigingen op share niveau worden niet ondersteund in de Cloud groepen.
-- Zie **Azure Active Directory Domain Services (Azure AD DS)** [toegangs machtigingen toewijzen aan een identiteit](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-domain-service-enable?tabs=azure-portal#assign-access-permissions-to-an-identity).
+- Zie **Azure Active Directory Domain Services (Azure AD DS)** [toegangs machtigingen toewijzen aan een identiteit](./storage-files-identity-auth-active-directory-domain-service-enable.md?tabs=azure-portal#assign-access-permissions-to-an-identity).
 
 <a id="error53-67-87"></a>
 ## <a name="error-53-error-67-or-error-87-when-you-mount-or-unmount-an-azure-file-share"></a>Fout 53, fout 67 of fout 87 bij het koppelen of ontkoppelen van een Azure-bestands share
@@ -111,7 +111,7 @@ TcpTestSucceeded : True
 ### <a name="solution-for-cause-1"></a>Oplossing voor oorzaak 1
 
 #### <a name="solution-1---use-azure-file-sync"></a>Oplossing 1: Azure File Sync gebruiken
-Azure File Sync kunt uw on-premises Windows-Server omzetten in een snelle cache van uw Azure-bestands share. U kunt elk protocol dat beschikbaar is in Windows Server, inclusief SMB, NFS en FTPS, gebruiken voor lokale toegang tot uw gegevens. Azure File Sync werkt via poort 443 en kan daarom worden gebruikt als tijdelijke oplossing voor toegang tot Azure Files vanaf clients waarbij poort 445 is geblokkeerd. [Meer informatie over het instellen van Azure file sync](https://docs.microsoft.com/azure/storage/files/storage-sync-files-extend-servers).
+Azure File Sync kunt uw on-premises Windows-Server omzetten in een snelle cache van uw Azure-bestands share. U kunt elk protocol dat beschikbaar is in Windows Server, inclusief SMB, NFS en FTPS, gebruiken voor lokale toegang tot uw gegevens. Azure File Sync werkt via poort 443 en kan daarom worden gebruikt als tijdelijke oplossing voor toegang tot Azure Files vanaf clients waarbij poort 445 is geblokkeerd. [Meer informatie over het instellen van Azure file sync](./storage-sync-files-extend-servers.md).
 
 #### <a name="solution-2---use-vpn"></a>Oplossing 2: VPN gebruiken
 Door een VPN-verbinding met uw specifieke opslag account in te stellen, zal het verkeer via internet een beveiligde tunnel passeren. Volg de [instructies voor het instellen van VPN](storage-files-configure-p2s-vpn-windows.md) om toegang te krijgen tot Azure Files vanuit Windows.
@@ -120,7 +120,7 @@ Door een VPN-verbinding met uw specifieke opslag account in te stellen, zal het 
 Werk samen met uw IT-afdeling of provider voor het openen van poort 445 uitgaand verkeer naar [Azure IP-bereiken](https://www.microsoft.com/download/details.aspx?id=41653).
 
 #### <a name="solution-4---use-rest-api-based-tools-like-storage-explorerpowershell"></a>Oplossing 4: Hulpprogramma’s op basis van REST API gebruiken, zoals Storage Explorer/PowerShell
-Azure Files biedt ook ondersteuning voor REST naast SMB. REST-toegang werkt via poort 443 (standaard TCP). Er zijn verschillende hulpprogramma's die zijn geschreven met REST API die een uitgebreide UI-ervaring bieden. [Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows) is een van beide. [Download en installeer Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) en maak verbinding met de bestandsshare die door Azure Files wordt ondersteund. U kunt ook [Power shell](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-powershell) gebruiken die ook gebruikers rest API.
+Azure Files biedt ook ondersteuning voor REST naast SMB. REST-toegang werkt via poort 443 (standaard TCP). Er zijn verschillende hulpprogramma's die zijn geschreven met REST API die een uitgebreide UI-ervaring bieden. [Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows) is een van beide. [Download en installeer Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) en maak verbinding met de bestandsshare die door Azure Files wordt ondersteund. U kunt ook [Power shell](./storage-how-to-use-files-powershell.md) gebruiken die ook gebruikers rest API.
 
 ### <a name="cause-2-ntlmv1-is-enabled"></a>Oorzaak 2: NTLMv1 is ingeschakeld
 
@@ -130,7 +130,7 @@ Als u wilt vaststellen of dit de oorzaak van de fout is, controleert u of de vol
 
 **HKLM\SYSTEM\CurrentControlSet\Control\Lsa > LmCompatibilityLevel**
 
-Zie het onderwerp [LmCompatibilityLevel](https://technet.microsoft.com/library/cc960646.aspx) in TechNet voor meer informatie.
+Zie het onderwerp [LmCompatibilityLevel](/previous-versions/windows/it-pro/windows-2000-server/cc960646(v=technet.10)) in TechNet voor meer informatie.
 
 ### <a name="solution-for-cause-2"></a>Oplossing voor oorzaak 2
 
@@ -143,18 +143,18 @@ Zet de waarde **LmCompatibilityLevel** terug naar de standaardwaarde 3 in de vol
 
 ### <a name="cause"></a>Oorzaak
 
-Fout 1816 treedt op wanneer u de bovengrens van gelijktijdige open ingangen bereikt die zijn toegestaan voor een bestand of map op de Azure-bestands share. Zie [Azure Files-schaalbaarheidsdoelen](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#azure-files-scale-targets) voor meer informatie.
+Fout 1816 treedt op wanneer u de bovengrens van gelijktijdige open ingangen bereikt die zijn toegestaan voor een bestand of map op de Azure-bestands share. Zie [Azure Files-schaalbaarheidsdoelen](./storage-files-scale-targets.md#azure-files-scale-targets) voor meer informatie.
 
 ### <a name="solution"></a>Oplossing
 
-Verminder het aantal gelijktijdige open ingangen door enkele grepen te sluiten en probeer het opnieuw. Zie [Microsoft Azure Storage controle lijst voor prestaties en schaal baarheid](../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)voor meer informatie.
+Verminder het aantal gelijktijdige open ingangen door enkele grepen te sluiten en probeer het opnieuw. Zie [Microsoft Azure Storage controle lijst voor prestaties en schaal baarheid](../blobs/storage-performance-checklist.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json)voor meer informatie.
 
-Gebruik de Power shell [-cmdlet Get-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) om de geopende ingangen voor een bestands share, map of bestand weer te geven.  
+Gebruik de Power shell [-cmdlet Get-AzStorageFileHandle](/powershell/module/az.storage/get-azstoragefilehandle) om de geopende ingangen voor een bestands share, map of bestand weer te geven.  
 
-Gebruik de Power shell [-cmdlet close-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) om open ingangen voor een bestands share, map of bestand te sluiten.
+Gebruik de Power shell [-cmdlet close-AzStorageFileHandle](/powershell/module/az.storage/close-azstoragefilehandle) om open ingangen voor een bestands share, map of bestand te sluiten.
 
 > [!Note]  
-> De cmdlets Get-AzStorageFileHandle en Close-AzStorageFileHandle zijn opgenomen in AZ Power shell-module versie 2,4 of hoger. Zie [de module Azure PowerShell installeren](https://docs.microsoft.com/powershell/azure/install-az-ps)om de nieuwste AZ Power shell-module te installeren.
+> De cmdlets Get-AzStorageFileHandle en Close-AzStorageFileHandle zijn opgenomen in AZ Power shell-module versie 2,4 of hoger. Zie [de module Azure PowerShell installeren](/powershell/azure/install-az-ps)om de nieuwste AZ Power shell-module te installeren.
 
 <a id="noaaccessfailureportal"></a>
 ## <a name="error-no-access-when-you-try-to-access-or-delete-an-azure-file-share"></a>Fout ' geen toegang ' wanneer u een Azure-bestands share probeert te openen of verwijderen  
@@ -167,13 +167,13 @@ Fout code: 403
 
 ### <a name="solution-for-cause-1"></a>Oplossing voor oorzaak 1
 
-Controleer of regels voor het virtuele netwerk of de firewall juist zijn geconfigureerd in het opslagaccount. Als u wilt testen of het probleem wordt veroorzaakt door regels voor het virtuele netwerk of de firewall, wijzigt u de instelling in het opslagaccount in **Toegang toestaan vanaf alle netwerken** . Zie [Firewalls en virtuele netwerken voor Azure Storage configureren](https://docs.microsoft.com/azure/storage/common/storage-network-security) voor meer informatie.
+Controleer of regels voor het virtuele netwerk of de firewall juist zijn geconfigureerd in het opslagaccount. Als u wilt testen of het probleem wordt veroorzaakt door regels voor het virtuele netwerk of de firewall, wijzigt u de instelling in het opslagaccount in **Toegang toestaan vanaf alle netwerken**. Zie [Firewalls en virtuele netwerken voor Azure Storage configureren](../common/storage-network-security.md) voor meer informatie.
 
 ### <a name="cause-2-your-user-account-does-not-have-access-to-the-storage-account"></a>Oorzaak 2: uw gebruikers account heeft geen toegang tot het opslag account
 
 ### <a name="solution-for-cause-2"></a>Oplossing voor oorzaak 2
 
-Blader naar het opslag account waar de Azure-bestands share zich bevindt, klik op **toegangs beheer (IAM)** en controleer of uw gebruikers account toegang heeft tot het opslag account. Zie [uw opslag account beveiligen met Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](https://docs.microsoft.com/azure/storage/blobs/security-recommendations#data-protection)voor meer informatie.
+Blader naar het opslag account waar de Azure-bestands share zich bevindt, klik op **toegangs beheer (IAM)** en controleer of uw gebruikers account toegang heeft tot het opslag account. Zie [uw opslag account beveiligen met Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](../blobs/security-recommendations.md#data-protection)voor meer informatie.
 
 <a id="open-handles"></a>
 ## <a name="unable-to-delete-a-file-or-directory-in-an-azure-file-share"></a>Kan een bestand of map in een Azure-bestandsshare niet verwijderen
@@ -199,15 +199,15 @@ Hoewel bestands ingangen en leases een belang rijk doel hebben, kunnen er soms z
 De oplossing voor dit probleem is afhankelijk van het feit of dit wordt veroorzaakt door een zwevende bestands ingang of lease. 
 
 ### <a name="cause-1"></a>Oorzaak 1
-Een bestands ingang voor komt dat een bestand of map wordt gewijzigd of verwijderd. U kunt de Power shell [-cmdlet Get-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) gebruiken om open ingangen weer te geven. 
+Een bestands ingang voor komt dat een bestand of map wordt gewijzigd of verwijderd. U kunt de Power shell [-cmdlet Get-AzStorageFileHandle](/powershell/module/az.storage/get-azstoragefilehandle) gebruiken om open ingangen weer te geven. 
 
 Als alle SMB-clients hun open ingangen hebben gesloten op een bestand/map en het probleem blijft optreden, kunt u het sluiten van een bestands ingang afdwingen.
 
 ### <a name="solution-1"></a>Oplossing 1
-Als u wilt afdwingen dat een bestands ingang wordt gesloten, gebruikt u de Power shell [-cmdlet close-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) . 
+Als u wilt afdwingen dat een bestands ingang wordt gesloten, gebruikt u de Power shell [-cmdlet close-AzStorageFileHandle](/powershell/module/az.storage/close-azstoragefilehandle) . 
 
 > [!Note]  
-> De cmdlets Get-AzStorageFileHandle en Close-AzStorageFileHandle zijn opgenomen in AZ Power shell-module versie 2,4 of hoger. Zie [de module Azure PowerShell installeren](https://docs.microsoft.com/powershell/azure/install-az-ps)om de nieuwste AZ Power shell-module te installeren.
+> De cmdlets Get-AzStorageFileHandle en Close-AzStorageFileHandle zijn opgenomen in AZ Power shell-module versie 2,4 of hoger. Zie [de module Azure PowerShell installeren](/powershell/azure/install-az-ps)om de nieuwste AZ Power shell-module te installeren.
 
 ### <a name="cause-2"></a>Oorzaak 2
 Een bestands lease voor komt dat een bestand wordt gewijzigd of verwijderd. U kunt controleren of een bestand een bestands lease heeft met de volgende Power shell, vervangen `<resource-group>` ,, `<storage-account>` `<file-share>` en `<path-to-file>` met de juiste waarden voor uw omgeving:
@@ -262,8 +262,8 @@ Mogelijk ziet u trage prestaties wanneer u bestanden probeert over te brengen na
 - Als u geen specifieke minimale I/O-grootte vereiste hebt, raden we u aan om 1 MiB te gebruiken als de I/O-grootte voor optimale prestaties.
 -   Als u de uiteindelijke grootte kent van een bestand dat u uitbreidt met schrijf bewerkingen, en uw software geen compatibiliteits problemen heeft wanneer de niet-genoteerde staart van het bestand nullen bevat, moet u de bestands grootte vooraf instellen in plaats van elke schrijf bewerking uit te voeren.
 -   Gebruik de juiste Kopieer methode:
-    -   Gebruik [AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) voor elke overdracht tussen twee bestands shares.
-    -   Gebruik [Robocopy](/azure/storage/files/storage-files-deployment-guide#robocopy) tussen bestands shares op een on-premises computer.
+    -   Gebruik [AzCopy](../common/storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json) voor elke overdracht tussen twee bestands shares.
+    -   Gebruik [Robocopy](./storage-files-deployment-guide.md#robocopy) tussen bestands shares op een on-premises computer.
 
 ### <a name="considerations-for-windows-81-or-windows-server-2012-r2"></a>Overwegingen voor Windows 8,1 of Windows Server 2012 R2
 
@@ -290,7 +290,7 @@ Als u een Azure-bestands share als beheerder toewijst met behulp van net use, li
 Windows Verkenner wordt standaard niet uitgevoerd als beheerder. Als u net use uitvoert vanaf een opdracht prompt met beheerders rechten, wijst u het netwerk station toe als beheerder. Omdat toegewezen stations gebruikers gericht zijn, worden de stations niet weer gegeven in de gebruikers account die is aangemeld als deze zijn gekoppeld onder een ander gebruikers account.
 
 ### <a name="solution"></a>Oplossing
-Koppel de share vanuit een niet-beheerders opdracht regel. U kunt ook [Dit TechNet-onderwerp](https://technet.microsoft.com/library/ee844140.aspx) volgen om de register waarde **EnableLinkedConnections** te configureren.
+Koppel de share vanuit een niet-beheerders opdracht regel. U kunt ook [Dit TechNet-onderwerp](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee844140(v=ws.10)) volgen om de register waarde **EnableLinkedConnections** te configureren.
 
 <a id="netuse"></a>
 ## <a name="net-use-command-fails-if-the-storage-account-contains-a-forward-slash"></a>Opdracht net use mislukt als het opslag account een slash (voorwaarts) bevat
@@ -376,20 +376,20 @@ U kunt dit bijvoorbeeld instellen op 0x100000 en zien of de prestaties beter wor
 
 ### <a name="cause"></a>Oorzaak
 
-Fout AadDsTenantNotFound treedt op wanneer u probeert [Azure Active Directory Domain Services-verificatie (azure AD DS) in azure files in te scha kelen](storage-files-identity-auth-active-directory-domain-service-enable.md) op een opslag account waarin Azure [ad Domain Service (Azure AD DS)](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview) niet is gemaakt op de Azure AD-Tenant van het gekoppelde abonnement.  
+Fout AadDsTenantNotFound treedt op wanneer u probeert [Azure Active Directory Domain Services-verificatie (azure AD DS) in azure files in te scha kelen](storage-files-identity-auth-active-directory-domain-service-enable.md) op een opslag account waarin Azure [ad Domain Service (Azure AD DS)](../../active-directory-domain-services/overview.md) niet is gemaakt op de Azure AD-Tenant van het gekoppelde abonnement.  
 
 ### <a name="solution"></a>Oplossing
 
-Schakel Azure AD DS in op de Azure AD-Tenant van het abonnement waarop uw opslag account is geïmplementeerd. U hebt beheerders bevoegdheden nodig van de Azure AD-Tenant om een beheerd domein te maken. Als u niet de beheerder van de Azure AD-Tenant bent, neemt u contact op met de beheerder en volgt u de stapsgewijze richt lijnen om Azure Active Directory Domain Services in te [scha kelen met behulp van de Azure Portal](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started).
+Schakel Azure AD DS in op de Azure AD-Tenant van het abonnement waarop uw opslag account is geïmplementeerd. U hebt beheerders bevoegdheden nodig van de Azure AD-Tenant om een beheerd domein te maken. Als u niet de beheerder van de Azure AD-Tenant bent, neemt u contact op met de beheerder en volgt u de stapsgewijze richt lijnen voor het [maken en configureren van een Azure Active Directory Domain Services beheerd domein](../../active-directory-domain-services/tutorial-create-instance.md).
 
 [!INCLUDE [storage-files-condition-headers](../../../includes/storage-files-condition-headers.md)]
 
 ## <a name="unable-to-mount-azure-files-with-ad-credentials"></a>Kan Azure Files niet koppelen aan AD-referenties 
 
 ### <a name="self-diagnostics-steps"></a>Stappen voor zelf diagnostische gegevens
-Zorg er eerst voor dat u alle vier de stappen hebt gevolgd om [Azure files AD-verificatie in te scha kelen](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable).
+Zorg er eerst voor dat u alle vier de stappen hebt gevolgd om [Azure files AD-verificatie in te scha kelen](./storage-files-identity-auth-active-directory-enable.md).
 
-Probeer vervolgens de [Azure-bestands share te koppelen met de sleutel van het opslag account](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows). Als u de koppeling niet hebt gemaakt, downloadt u [AzFileDiagnostics.ps1](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows) om u te helpen bij het valideren van de client omgeving, detecteert u de niet-compatibele client configuratie die toegang zou hebben tot de Azure files, bevat prescriptieve richt lijnen voor zelf herstel en worden de diagnostische traceringen verzameld.
+Probeer vervolgens de [Azure-bestands share te koppelen met de sleutel van het opslag account](./storage-how-to-use-files-windows.md). Als u de koppeling niet hebt gemaakt, downloadt u [AzFileDiagnostics.ps1](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows) om u te helpen bij het valideren van de client omgeving, detecteert u de niet-compatibele client configuratie die toegang zou hebben tot de Azure files, bevat prescriptieve richt lijnen voor zelf herstel en worden de diagnostische traceringen verzameld.
 
 Ten derde kunt u de Debug-AzStorageAccountAuth cmdlet uitvoeren om een set basis controles uit te voeren op uw AD-configuratie met de aangemelde AD-gebruiker. Deze cmdlet wordt ondersteund met [versie AzFilesHybrid v 0.1.2 en hoger](https://github.com/Azure-Samples/azure-files-samples/releases). U moet deze cmdlet uitvoeren met een AD-gebruiker die de machtiging Eigenaar heeft voor het doelopslagaccount.  
 ```PowerShell
@@ -399,13 +399,13 @@ $StorageAccountName = "<storage-account-name-here>"
 Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGroupName $ResourceGroupName -Verbose
 ```
 De cmdlet voert deze controles hieronder uit, en biedt richt lijnen voor fouten:
-1. CheckADObjectPasswordIsCorrect: Zorg ervoor dat het wacht woord dat is geconfigureerd voor de AD-identiteit die het opslag account vertegenwoordigt, overeenkomt met de sleutel kerb1 of kerb2 van het opslag account. Als het wacht woord onjuist is, kunt u [Update-AzStorageAccountADObjectPassword](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-update-password) uitvoeren om het wacht woord opnieuw in te stellen. 
+1. CheckADObjectPasswordIsCorrect: Zorg ervoor dat het wacht woord dat is geconfigureerd voor de AD-identiteit die het opslag account vertegenwoordigt, overeenkomt met de sleutel kerb1 of kerb2 van het opslag account. Als het wacht woord onjuist is, kunt u [Update-AzStorageAccountADObjectPassword](./storage-files-identity-ad-ds-update-password.md) uitvoeren om het wacht woord opnieuw in te stellen. 
 2. CheckADObject: Bevestig dat er een object in de Active Directory is dat het opslag account vertegenwoordigt en de juiste SPN (Service Principal Name) heeft. Als de SPN niet juist is ingesteld, voert u de set-AD-cmdlet uit die is geretourneerd in de cmdlet debug om de SPN te configureren.
-3. CheckDomainJoined: Controleer of de client computer lid is van een domein dat is gekoppeld aan AD. Als uw computer niet is gekoppeld aan AD, raadpleegt u dit [artikel](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/join-a-computer-to-a-domain#:~:text=To%20join%20a%20computer%20to%20a%20domain&text=Navigate%20to%20System%20and%20Security,join%2C%20and%20then%20click%20OK) voor instructies over het toevoegen van een domein.
+3. CheckDomainJoined: Controleer of de client computer lid is van een domein dat is gekoppeld aan AD. Als uw computer niet is gekoppeld aan AD, raadpleegt u dit [artikel](/windows-server/identity/ad-fs/deployment/join-a-computer-to-a-domain#:~:text=To%20join%20a%20computer%20to%20a%20domain&text=Navigate%20to%20System%20and%20Security,join%2C%20and%20then%20click%20OK) voor instructies over het toevoegen van een domein.
 4. CheckPort445Connectivity: Controleer of poort 445 is geopend voor de SMB-verbinding. Als de vereiste poort niet open is, raadpleegt u het hulp programma voor probleem oplossing [AzFileDiagnostics.ps1](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows) voor verbindings problemen met Azure files.
 5. CheckSidHasAadUser: Controleer of de aangemelde AD-gebruiker is gesynchroniseerd met Azure AD. Als u wilt controleren of een specifieke AD-gebruiker is gesynchroniseerd met Azure AD, kunt u de-gebruikers naam en-domein opgeven in de invoer parameters. 
 6. CheckGetKerberosTicket: er wordt geprobeerd een Kerberos-ticket op te halen om verbinding te maken met het opslag account. Als er geen geldig Kerberos-token is, voert u de cmdlet Klist ophalen CIFS/Storage-account-name. file. core. Windows. net uit en controleert u de fout code in het hoofd knooppunt waardoor het ophalen van het ticket mislukt.
-7. CheckStorageAccountDomainJoined: Controleer of de AD-verificatie is ingeschakeld en of de AD-eigenschappen van het account zijn ingevuld. Als dat niet het geval is, raadpleegt u de instructie [hier](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-enable) om AD DS verificatie in te scha kelen op Azure files. 
+7. CheckStorageAccountDomainJoined: Controleer of de AD-verificatie is ingeschakeld en of de AD-eigenschappen van het account zijn ingevuld. Als dat niet het geval is, raadpleegt u de instructie [hier](./storage-files-identity-ad-ds-enable.md) om AD DS verificatie in te scha kelen op Azure files. 
 
 ## <a name="unable-to-configure-directoryfile-level-permissions-windows-acls-with-windows-file-explorer"></a>Kan de machtigingen voor mappen en bestands niveau (Windows-Acl's) niet configureren met Windows bestanden Verkenner
 
@@ -417,7 +417,7 @@ U kunt de volgende symptomen ondervinden bij het configureren van Windows-Acl's 
 
 ### <a name="solution"></a>Oplossing
 
-U wordt aangeraden om het [icacls-hulp programma](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) te gebruiken om de machtigingen voor het Directory/bestands niveau als tijdelijke oplossing te configureren. 
+U wordt aangeraden om het [icacls-hulp programma](/windows-server/administration/windows-commands/icacls) te gebruiken om de machtigingen voor het Directory/bestands niveau als tijdelijke oplossing te configureren. 
 
 ## <a name="errors-when-running-join-azstorageaccountforauth-cmdlet"></a>Fouten bij het uitvoeren van Join-AzStorageAccountForAuth cmdlet
 
@@ -431,7 +431,7 @@ Deze fout wordt waarschijnlijk veroorzaakt door een syntaxisfout in de opdracht 
 
 ## <a name="azure-files-on-premises-ad-ds-authentication-support-for-aes-256-kerberos-encryption"></a>Ondersteuning voor Azure Files on-premises AD DS-verificatie voor AES 256 Kerberos-versleuteling
 
-We hebben ondersteuning voor AES 256 Kerberos-versleuteling geïntroduceerd voor Azure Files on-premises AD DS authenticatie met [AzFilesHybrid module v 0.2.2](https://github.com/Azure-Samples/azure-files-samples/releases). Als u AD DS verificatie hebt ingeschakeld met een module versie lager dan v 0.2.2, moet u de meest recente AzFilesHybrid-module (v 0.2.2 +) downloaden en de onderstaande Power shell uitvoeren. Als u AD DS verificatie nog niet hebt ingeschakeld in uw opslag account, kunt u deze [instructies](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-enable#option-one-recommended-use-azfileshybrid-powershell-module) volgen voor de activering. 
+We hebben ondersteuning voor AES 256 Kerberos-versleuteling geïntroduceerd voor Azure Files on-premises AD DS authenticatie met [AzFilesHybrid module v 0.2.2](https://github.com/Azure-Samples/azure-files-samples/releases). Als u AD DS verificatie hebt ingeschakeld met een module versie lager dan v 0.2.2, moet u de meest recente AzFilesHybrid-module (v 0.2.2 +) downloaden en de onderstaande Power shell uitvoeren. Als u AD DS verificatie nog niet hebt ingeschakeld in uw opslag account, kunt u deze [instructies](./storage-files-identity-ad-ds-enable.md#option-one-recommended-use-azfileshybrid-powershell-module) volgen voor de activering. 
 
 ```PowerShell
 $ResourceGroupName = "<resource-group-name-here>"

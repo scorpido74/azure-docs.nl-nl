@@ -5,16 +5,16 @@ services: storage
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/03/2020
+ms.date: 11/13/2020
 ms.author: normesta
 ms.subservice: common
 ms.custom: subject-cost-optimization
-ms.openlocfilehash: c809a1ae525fb7fab6dceebb3241e229e8a0284e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: a30fe70943c5329b36cbe10b75d47cc0ee3827fc
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92781835"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630410"
 ---
 # <a name="plan-and-manage-costs-for-azure-blob-storage"></a>Kosten voor Azure Blob Storage plannen en beheren
 
@@ -39,6 +39,9 @@ Gebruik de [prijs calculator van Azure](https://azure.microsoft.com/pricing/calc
    Wanneer u de waarde van de vervolg keuzelijst **type** wijzigt, veranderen ook andere opties die in dit werk blad worden weer gegeven. Gebruik de koppelingen in het gedeelte **meer info** voor meer informatie over wat elke optie betekent en hoe deze opties van invloed zijn op de prijs van bewerkingen die betrekking hebben op opslag. 
 
 4. Wijzig de overige opties om de invloed op uw schatting te zien.
+
+   > [!NOTE]
+   > U kunt betalen voor Azure Blob Storage-kosten met uw Azure Enterprise Agreement monetaire toezeggings tegoed. U kunt het tegoed van de monetaire toezeg ging echter niet gebruiken om te betalen voor de kosten van producten en services van derden, waaronder die van de Azure Marketplace.
 
 ## <a name="optimize-costs"></a>Kosten optimaliseren
 
@@ -87,11 +90,11 @@ Azure Storage kosten voor de kosten analyse weer geven:
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
-2. Open het venster **Cost Management en facturering** , selecteer **kosten beheer** in het menu en selecteer vervolgens **kosten analyse** . U kunt vervolgens het bereik voor een specifiek abonnement wijzigen in de vervolg keuzelijst **bereik** .
+2. Open het venster **Cost Management en facturering** , selecteer **kosten beheer** in het menu en selecteer vervolgens **kosten analyse**. U kunt vervolgens het bereik voor een specifiek abonnement wijzigen in de vervolg keuzelijst **bereik** .
 
    ![Scherm opname met bereik](./media/storage-plan-manage-costs/cost-analysis-pane.png)
 
-4. Als u alleen de kosten voor Azure Storage wilt weer geven, selecteert u **filter toevoegen** en selecteert u vervolgens **service naam** . Kies vervolgens **opslag** in de lijst. 
+4. Als u alleen de kosten voor Azure Storage wilt weer geven, selecteert u **filter toevoegen** en selecteert u vervolgens **service naam**. Kies vervolgens **opslag** in de lijst. 
 
    Hier volgt een voor beeld van de kosten voor alleen Azure Storage:
 
@@ -99,11 +102,15 @@ Azure Storage kosten voor de kosten analyse weer geven:
 
 In het vorige voor beeld ziet u de huidige kosten voor de service. De kosten per Azure-regio (locaties) en per resource groep worden ook weer gegeven. U kunt ook andere filters toevoegen (bijvoorbeeld: een filter om de kosten voor specifieke opslag accounts te bekijken).
 
+## <a name="export-cost-data"></a>Kostengegevens exporteren
+
+U kunt ook [uw kosten gegevens exporteren](https://docs.microsoft.com/azure/cost-management-billing/costs/tutorial-export-acm-data?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) naar een opslag account. Dit is handig wanneer u of anderen extra gegevens analyse voor kosten moeten uitvoeren. Een financiële teams kunnen de gegevens bijvoorbeeld analyseren met Excel of Power BI. U kunt uw kosten per dag, wekelijks of maandelijks exporteren en een aangepast datum bereik instellen. Het exporteren van kosten gegevens is de aanbevolen manier om kosten sets op te halen.
+
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het beheren van kosten met [kosten analyse](../../cost-management-billing/costs/quick-acm-cost-analysis.md).
-
-Raadpleeg de volgende artikelen voor meer informatie over de werking van prijzen met Azure Storage:
-
-- [Prijzen Azure Storage overzicht](https://azure.microsoft.com/pricing/details/storage/)
-- [Kosten optimaliseren voor blob-opslag met gereserveerde capaciteit](../blobs/storage-blob-reserved-capacity.md)
+- Meer informatie over de werking van prijzen met Azure Storage. Zie [Azure Storage prijzen overzicht](https://azure.microsoft.com/pricing/details/storage/).
+- [Optimaliseer de kosten voor Blob Storage met gereserveerde capaciteit](../blobs/storage-blob-reserved-capacity.md).
+- Meer informatie [over hoe u uw investering in de Cloud optimaliseert met Azure Cost Management](https://docs.microsoft.com/azure/cost-management-billing/costs/cost-mgt-best-practices?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
+- Meer informatie over het beheren van kosten met [kosten analyse](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
+- Meer informatie over hoe u [onverwachte kosten kunt voor komen](https://docs.microsoft.com/azure/cost-management-billing/manage/getting-started?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
+- Neem de [Cost Management](https://docs.microsoft.com/learn/paths/control-spending-manage-bills?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) begeleide training door.

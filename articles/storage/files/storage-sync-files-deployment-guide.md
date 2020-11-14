@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 11/05/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 128a974c41b1c09196ecab2070136d9568b08f5d
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: d39f26d86792214c1ef0300bc39404bf6581826f
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331784"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629475"
 ---
 # <a name="deploy-azure-file-sync"></a>Azure Files SYNC implementeren
 Gebruik Azure File Sync om de bestands shares van uw organisatie in Azure Files te centraliseren, terwijl u de flexibiliteit, prestaties en compatibiliteit van een on-premises Bestands server bijhoudt. Door Azure File Sync wordt Windows Server getransformeerd in een snelle cache van uw Azure-bestandsshare. U kunt elk protocol dat beschikbaar is in Windows Server, inclusief SMB, NFS en FTPS, gebruiken voor lokale toegang tot uw gegevens. U kunt zoveel caches hebben als u nodig hebt in de hele wereld.
@@ -48,7 +48,7 @@ We raden u ten zeerste [aan de planning voor een Azure files-implementatie](stor
     > [!Important]  
     > Als u de gebruikers interface voor Server registratie wilt gebruiken in plaats van rechtstreeks vanuit Power shell te registreren, moet u Power shell 5,1 gebruiken.
 
-1. Als u hebt aangegeven dat u Power shell 5,1 wilt gebruiken, moet u ervoor zorgen dat er ten minste .NET 4.7.2 is geïnstalleerd. Meer informatie over [.NET Framework versies en afhankelijkheden](https://docs.microsoft.com/dotnet/framework/migration-guide/versions-and-dependencies) op uw systeem.
+1. Als u hebt aangegeven dat u Power shell 5,1 wilt gebruiken, moet u ervoor zorgen dat er ten minste .NET 4.7.2 is geïnstalleerd. Meer informatie over [.NET Framework versies en afhankelijkheden](/dotnet/framework/migration-guide/versions-and-dependencies) op uw systeem.
 
     > [!Important]  
     > Als u .NET 4.7.2 + installeert op Windows Server Core, moet u installeren met de `quiet` vlaggen en, anders `norestart` mislukt de installatie. Als u bijvoorbeeld .NET 4,8 installeert, ziet de opdracht er als volgt uit:
@@ -56,7 +56,7 @@ We raden u ten zeerste [aan de planning voor een Azure files-implementatie](stor
     > Start-Process -FilePath "ndp48-x86-x64-allos-enu.exe" -ArgumentList "/q /norestart" -Wait
     > ```
 
-1. De AZ Power shell-module, die kan worden geïnstalleerd door de volgende instructies te volgen: [Installeer en configureer Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps).
+1. De AZ Power shell-module, die kan worden geïnstalleerd door de volgende instructies te volgen: [Installeer en configureer Azure PowerShell](/powershell/azure/install-Az-ps).
      
     > [!Note]  
     > De module AZ. StorageSync wordt nu automatisch geïnstalleerd tijdens de installatie van de AZ Power shell-module.
@@ -573,7 +573,7 @@ Als u de planning echter zodanig wijzigt dat er een beschik bare moment opname i
 
 Het standaard maximum aantal VSS-moment opnamen per volume (64) en het standaard schema dat u wilt nemen, resulteert in een maximum van 45 dagen van vorige versies waarvan een informatie medewerker kan herstellen, afhankelijk van het aantal VSS-moment opnamen dat u op uw volume kunt opslaan.
 
-Als Max. 64 VSS-moment opnamen per volume niet de juiste instelling voor u zijn, kunt u [deze waarde wijzigen via een register sleutel](https://docs.microsoft.com/windows/win32/backup/registry-keys-for-backup-and-restore#maxshadowcopies).
+Als Max. 64 VSS-moment opnamen per volume niet de juiste instelling voor u zijn, kunt u [deze waarde wijzigen via een register sleutel](/windows/win32/backup/registry-keys-for-backup-and-restore#maxshadowcopies).
 Om de nieuwe limiet van kracht te laten worden, moet u de cmdlet opnieuw uitvoeren om de compatibiliteit van eerdere versies in te scha kelen op elk volume waarop deze eerder was ingeschakeld, met de vlag-Force om het nieuwe maximum aantal VSS-moment opnamen per volume in rekening te brengen. Dit leidt tot een nieuw berekend aantal compatibele dagen. Houd er rekening mee dat deze wijziging alleen van kracht wordt op nieuwe gelaagde bestanden en eventuele aanpassingen van de VSS-planning die u hebt aangebracht, worden overschreven.
 
 <a id="proactive-recall"></a>
@@ -599,7 +599,7 @@ Een wereld wijd gedistribueerd bedrijf heeft filialen in de Verenigde Staten en 
 
 # <a name="powershell"></a>[PowerShell](#tab/proactive-powershell)
 
-U kunt de eigenschappen van het server eindpunt wijzigen in Power shell via de cmdlet [set-AzStorageSyncServerEndpoint](https://docs.microsoft.com/powershell/module/az.storagesync/set-azstoragesyncserverendpoint) .
+U kunt de eigenschappen van het server eindpunt wijzigen in Power shell via de cmdlet [set-AzStorageSyncServerEndpoint](/powershell/module/az.storagesync/set-azstoragesyncserverendpoint) .
 
 ```powershell
 # Optional parameter. Default: "UpdateLocallyCachedFiles", alternative behavior: "DownloadNewAndModifiedFiles"

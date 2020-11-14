@@ -1,22 +1,22 @@
 ---
 title: Logische apps aanroepen met Azure Functions
-description: Azure functions maken die logische apps aanroepen of activeren door te Luis teren naar Azure Service Bus
+description: Logische apps aanroepen of activeren met behulp van Azure Functions en Azure Service Bus
 services: logic-apps
 ms.suite: integration
 ms.reviewer: jehollan, klam, logicappspm
 ms.topic: article
 ms.date: 11/08/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fcf7f1a27633c978c10f541d0a341225fbcb126d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 25f761d85ebfd0ac16f182941c5b5c29636066bf
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89013772"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629730"
 ---
 # <a name="call-or-trigger-logic-apps-by-using-azure-functions-and-azure-service-bus"></a>Logische apps aanroepen of activeren met behulp van Azure Functions en Azure Service Bus
 
-U kunt [Azure functions](../azure-functions/functions-overview.md) gebruiken om een logische app te activeren wanneer u een langlopende listener of taak moet implementeren. U kunt bijvoorbeeld een Azure-functie maken die in een [Azure service bus](../service-bus-messaging/service-bus-messaging-overview.md) wachtrij luistert en onmiddellijk een logische app als een push trigger wordt geactiveerd.
+U kunt [Azure functions](../azure-functions/functions-overview.md) gebruiken om een logische app te activeren wanneer u een langlopende listener of taak moet implementeren. U kunt bijvoorbeeld een functie maken die in een [Azure service bus](../service-bus-messaging/service-bus-messaging-overview.md) wachtrij luistert en onmiddellijk een logische app als een push trigger wordt geactiveerd.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -24,7 +24,7 @@ U kunt [Azure functions](../azure-functions/functions-overview.md) gebruiken om 
 
 * Een Azure Service Bus naam ruimte. Als u geen naam ruimte hebt, moet u [eerst uw naam ruimte maken](../service-bus-messaging/service-bus-create-namespace-portal.md).
 
-* Een Azure-functie-app, een container voor Azure functions. Als u geen functie-app hebt, [maakt u eerst uw functie-app](../azure-functions/functions-create-first-azure-function.md)en zorgt u ervoor dat u .net selecteert als runtime stack.
+* Een functie-app, een container voor uw functies. Als u geen functie-app hebt, [maakt u eerst uw functie-app](../azure-functions/functions-create-first-azure-function.md)en zorgt u ervoor dat u .net selecteert als runtime stack.
 
 * Basis kennis over [het maken van logische apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
@@ -50,7 +50,7 @@ Voor dit scenario hebt u een functie voor het uitvoeren van elke logische app di
 
    1. Selecteer in de trigger voor de aanvraag een **voor beeld-nettolading gebruiken om een schema te genereren**.
 
-   1. Voer onder **ENTER of plak een JSON**-voor beeld-nettolading in en selecteer vervolgens **gereed**.
+   1. Voer onder **ENTER of plak een JSON** -voor beeld-nettolading in en selecteer vervolgens **gereed**.
 
       ![Voor beeld-nettolading invoeren](./media/logic-apps-scenario-function-sb-trigger/enter-sample-payload.png)
 
@@ -94,13 +94,13 @@ Voor dit scenario hebt u een functie voor het uitvoeren van elke logische app di
 
    ![Gegenereerde call back-URL voor trigger](./media/logic-apps-scenario-function-sb-trigger/callback-URL-for-trigger.png)
 
-## <a name="create-azure-function"></a>Azure-functie maken
+## <a name="create-a-function"></a>Een functie maken
 
 Maak vervolgens de functie die als trigger fungeert en luistert naar de wachtrij.
 
 1. Open en vouw in de Azure Portal uw functie-app, als deze nog niet is geopend. 
 
-1. Vouw **functies**onder de naam van de functie-app uit. Selecteer in het deel venster **functies** de optie **nieuwe functie**.
+1. Vouw **functies** onder de naam van de functie-app uit. Selecteer in het deel venster **functies** de optie **nieuwe functie**.
 
    ![Vouw ' functions ' uit en selecteer ' nieuwe functie '](./media/logic-apps-scenario-function-sb-trigger/add-new-function-to-function-app.png)
 

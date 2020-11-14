@@ -1,21 +1,21 @@
 ---
-title: De metrische gegevens van Azure IoT connector voor FHIR (preview) weer geven en configureren
+title: Azure IoT Connector for FHIR weergeven en configureren (preview) Metrische gegevens
 description: In dit artikel wordt uitgelegd hoe u de metrische gegevens van Azure IoT connector voor FHIR (preview) kunt weer geven en configureren.
 services: healthcare-apis
 author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: how-to
-ms.date: 10/29/2020
+ms.date: 11/13/2020
 ms.author: jasteppe
-ms.openlocfilehash: 9a4e2c4dfe8a9de28688afe0dd036cecb7ce2b39
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 79a7b18986f4bed503cd5493a7d74325a13fe535
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94381215"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630512"
 ---
-# <a name="display-and-configure-azure-iot-connector-for-fhir-preview-metrics"></a>De metrische gegevens van Azure IoT connector voor FHIR (preview) weer geven en configureren 
+# <a name="display-and-configure-azure-iot-connector-for-fhir-preview-metrics"></a>Azure IoT Connector for FHIR weergeven en configureren (preview) Metrische gegevens 
 
 In dit artikel leert u hoe u Azure IoT connector kunt weer geven en configureren voor snelle interoperabiliteits bronnen voor gezondheids zorg (FHIR&#174;) * metrische gegevens.
 
@@ -41,6 +41,9 @@ In dit artikel leert u hoe u Azure IoT connector kunt weer geven en configureren
    :::image type="content" source="media/iot-metrics-display/iot-metrics-select-time.png" alt-text="Scherm afbeelding van het deel venster van de IoT-connector, met een ' 1 uur ' tijd periode lijn diagram voor ' connector 1 '." lightbox="media/iot-metrics-display/iot-metrics-select-time.png"::: 
  
 ## <a name="metric-types-for-azure-iot-connector-for-fhir-preview"></a>Metrische typen voor Azure IoT connector voor FHIR (preview-versie) 
+
+> [!TIP]
+> Voor meer informatie over de gegevens stroom in azure IoT connector voor FHIR, raadpleegt u [Azure IOT connector voor FHIR (preview)-gegevens stroom](./iot-data-flow.md) en de [Azure IOT-connector voor FHIR (preview)-probleemoplossings gids](./iot-troubleshoot-guide.md) voor meer informatie over fout berichten en oplossingen.
 
 De metrische gegevens voor de IoT-connector die u kunt weer geven, worden weer gegeven in de volgende tabel:
 

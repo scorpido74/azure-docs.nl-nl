@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/03/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: b291bd45b4003dd2241f40c810ed9d78af9f8bc9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 76d97e3312c1df51193d8a881f3ee07fcd155d75
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91267785"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629356"
 ---
 # <a name="azure-file-sync-networking-considerations"></a>Aandachtspunten voor Azure File Sync-netwerken
 U kunt op twee manieren verbinding maken met een Azure-bestandsshare:
@@ -55,7 +55,7 @@ Azure File Sync vereist de IP-adresbereiken voor de volgende services, zoals ge√
 | Azure Resource Manager | De Azure Resource Manager is de beheerinterface voor Azure. Alle beheeraanroepen, waaronder Azure File Sync-serverregistratie en voortdurende synchronisatieservertaken, vinden plaats via de Azure Resource Manager. | `AzureResourceManager` |
 | Azure Active Directory | Azure Active Directory, oftewel Azure AD, bevat de gebruiker-principals die nodig zijn om serverregistratie te autoriseren tegen een opslagsynchronisatieservice, en de service-principals die nodig zijn om Azure File Sync toegang tot uw cloudresources te verlenen. | `AzureActiveDirectory` |
 
-Als u Azure File Sync in Azure gebruikt, kunt u (zelfs als het een andere regio is) de naam van de servicetag rechtstreeks in uw netwerkbeveiligingsgroep gebruiken om verkeer naar die service toe te staan. Zie [Netwerkbeveiligingsgroepen](../../virtual-network/security-overview.md) voor meer informatie over hoe u dit doet. 
+Als u Azure File Sync in Azure gebruikt, kunt u (zelfs als het een andere regio is) de naam van de servicetag rechtstreeks in uw netwerkbeveiligingsgroep gebruiken om verkeer naar die service toe te staan. Zie [Netwerkbeveiligingsgroepen](../../virtual-network/network-security-groups-overview.md) voor meer informatie over hoe u dit doet. 
 
 Als u Azure File Sync on-premises gebruikt, kunt u de servicetag-API gebruiken om specifieke IP-adresbereiken op te halen voor de lijst met toegestane IP-adressen van uw firewall. Er zijn twee manieren om deze informatie op te halen:
 
@@ -65,9 +65,9 @@ Als u Azure File Sync on-premises gebruikt, kunt u de servicetag-API gebruiken o
     - [Azure China](https://www.microsoft.com/download/details.aspx?id=57062)
     - [Azure Duitsland](https://www.microsoft.com/download/details.aspx?id=57064)
 - Met de API voor servicetagdetectie (preview-versie) kunt u de huidige lijst met servicetags programmatisch ophalen. In de preview-versie kan de API voor servicetagdetectie informatie retourneren die minder actueel is dan informatie die wordt geretourneerd uit de JSON-documenten die in het Microsoft Downloadcentrum worden gepubliceerd. U kunt het API-gebied gebruiken op basis van uw automatiseringsvoorkeur:
-    - [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/servicetags/list)
-    - [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.network/Get-AzNetworkServiceTag)
-    - [Azure-CLI](https://docs.microsoft.com/cli/azure/network#az-network-list-service-tags)
+    - [REST API](/rest/api/virtualnetwork/servicetags/list)
+    - [Azure PowerShell](/powershell/module/az.network/Get-AzNetworkServiceTag)
+    - [Azure-CLI](/cli/azure/network#az-network-list-service-tags)
 
 Zie [Lijst met toegestane Azure File Sync-IP-adressen](storage-sync-files-firewall-and-proxy.md#allow-list-for-azure-file-sync-ip-addresses) voor meer informatie over hoe u de servicetag-API kunt gebruiken om de adressen van uw services op te halen.
 

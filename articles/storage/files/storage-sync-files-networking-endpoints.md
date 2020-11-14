@@ -8,12 +8,12 @@ ms.date: 5/11/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 747d03b228d41066cfc834b4a9c044b16c767622
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 026f4f36986fa5fcfad4dac5186e9dc0b0997d72
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91329360"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629407"
 ---
 # <a name="configuring-azure-file-sync-network-endpoints"></a>Azure Files Sync-netwerkeindpunten configureren
 Azure Files en Azure File Sync bieden twee hoofdtypen eindpunten voor toegang tot Azure-bestandsshares: 
@@ -33,15 +33,15 @@ In dit artikel wordt ervan uitgegaan dat:
 - U al een opslagsynchronisatieservice heeft aangemaakt en uw Windows-bestandsserver erbij heeft geregistreerd. Bekijk [Azure Files Sync implementeren](storage-sync-files-deployment-guide.md) voor meer informatie over de implementatie van Azure File Sync.
 
 Aanvullend:
-- Als u van plan bent om Azure PowerShell te gebruiken, [installeert u de nieuwste versie](https://docs.microsoft.com/powershell/azure/install-az-ps).
-- Als u van plan bent om de Artikel CLI te gebruiken, [installeert u de nieuwste versie](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+- Als u van plan bent om Azure PowerShell te gebruiken, [installeert u de nieuwste versie](/powershell/azure/install-az-ps).
+- Als u van plan bent om de Artikel CLI te gebruiken, [installeert u de nieuwste versie](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="create-the-private-endpoints"></a>De privé-eindpunten aanmaken
 Wanneer u een privé-eindpunt maakt voor een Azure-resource, worden de volgende resources geïmplementeerd:
 
-- **Een privé-eindpunt**: Een Azure-resource die het privé-eindpunt voor het opslagaccount of de opslagsynchronisatieservice voorstelt. U kunt dit zien als een resource die een verbinding opzet tussen uw Azure-resource en een netwerkinterface.
+- **Een privé-eindpunt** : Een Azure-resource die het privé-eindpunt voor het opslagaccount of de opslagsynchronisatieservice voorstelt. U kunt dit zien als een resource die een verbinding opzet tussen uw Azure-resource en een netwerkinterface.
 - **Een netwerkinterface (NIC)** : De netwerkinterface die een privé-IP-adres onderhoudt binnen het opgeven virtuele netwerk/subnet. Dit is exact dezelfde resource die wordt geïmplementeerd als u een virtuele machine implementeert, alleen wordt de resource nu niet toegewezen aan een VM, maar is deze het eigendom van het privé-eindpunt.
-- **Een privé-DNS-zone**: Als u niet eerder een privé-eindpunt hebt geïmplementeerd voor dit virtuele netwerk, wordt er een nieuwe privé-DNS-zone geïmplementeerd voor uw virtuele netwerk. Er wordt ook een DNS A-record gemaakt voor de Azure-resource in deze DNS-zone. Als u al een privé-eindpunt hebt geïmplementeerd in dit virtuele netwerk, wordt er een nieuwe A-record voor de Azure-resource toegevoegd aan de bestaande DNS-zone. Een DNS-zone implementeren is optioneel, maar sterk aanbevolen om het vereiste DNS-beheer te vereenvoudigen.
+- **Een privé-DNS-zone** : Als u niet eerder een privé-eindpunt hebt geïmplementeerd voor dit virtuele netwerk, wordt er een nieuwe privé-DNS-zone geïmplementeerd voor uw virtuele netwerk. Er wordt ook een DNS A-record gemaakt voor de Azure-resource in deze DNS-zone. Als u al een privé-eindpunt hebt geïmplementeerd in dit virtuele netwerk, wordt er een nieuwe A-record voor de Azure-resource toegevoegd aan de bestaande DNS-zone. Een DNS-zone implementeren is optioneel, maar sterk aanbevolen om het vereiste DNS-beheer te vereenvoudigen.
 
 > [!Note]  
 > In dit artikel worden de DNS-achtervoegsels voor de openbare Azure-regio's gebruikt, `core.windows.net` voor opslagaccounts en `afs.azure.net` voor opslagsynchronisatieservices. Deze opmerking geldt ook voor onafhankelijke Azure-clouds zoals de Azure-cloud voor de Amerikaanse overheid. Vervang het achtervoegsel gewoon door dat van de onafhankelijke cloud.

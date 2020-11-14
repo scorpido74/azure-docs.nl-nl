@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 128e4d0a421fc9ad4251f24f2cb37a217eeb1e31
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 046cca4e683a8f14893bf48ac8601b138a7c28a7
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322201"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630274"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 en 8600 migratie naar Azure File Sync
 
@@ -45,7 +45,7 @@ Migraties naar Azure-bestands shares van StorSimple-volumes via Data Transformat
 
 Azure-bestands shares openen een volledige nieuwe wereld van kansen voor het structureren van uw implementatie van bestands Services. Een Azure-bestands share is slechts een SMB-share in de cloud die u kunt instellen om gebruikers rechtstreeks toegang te geven tot het SMB-protocol met de vertrouwde Kerberos-verificatie en bestaande NTFS-machtigingen (bestanden en mappen Acl's) die systeem eigen werken. Meer informatie over [toegang tot Azure-bestands shares op basis van een identiteit](storage-files-active-directory-overview.md).
 
-Een alternatief voor directe toegang is [Azure file sync](https://aka.ms/AFS). Azure File Sync is een direct analoog voor de mogelijkheid van StorSimple om veelgebruikte bestanden on-premises op te slaan in de cache.
+Een alternatief voor directe toegang is [Azure file sync](./storage-sync-files-planning.md). Azure File Sync is een direct analoog voor de mogelijkheid van StorSimple om veelgebruikte bestanden on-premises op te slaan in de cache.
 
 Azure File Sync is een micro soft-Cloud service, gebaseerd op twee hoofd onderdelen:
 
@@ -56,7 +56,7 @@ Azure-bestands shares behouden belang rijke aspecten van de bestands kwaliteit v
 
 Dit artikel is gericht op de migratie stappen. Raadpleeg de volgende artikelen als u meer wilt weten over Azure File Sync voordat u de migratie uitvoert:
 
-* [Overzicht van Azure File Sync](https://aka.ms/AFS "Overzicht")
+* [Overzicht van Azure File Sync](./storage-sync-files-planning.md "Overzicht")
 * [Implementatie handleiding Azure File Sync](storage-sync-files-deployment-guide.md)
 
 ### <a name="storsimple-service-data-encryption-key"></a>Versleutelings sleutel voor StorSimple-service gegevens
@@ -385,7 +385,7 @@ Uw geregistreerde on-premises Windows Server-exemplaar moet gereed zijn en zijn 
 * [Een Windows P2S VPN configureren](storage-files-configure-p2s-vpn-windows.md)
 * [Een Linux P2S-VPN configureren](storage-files-configure-p2s-vpn-linux.md)
 * [DNS-door sturen configureren](storage-files-networking-dns.md)
-* [DFS configureren-N](https://aka.ms/AzureFiles/Namespaces)
+* [DFS configureren-N](/windows-server/storage/dfs-namespaces/dfs-overview)
    :::column-end:::
 :::row-end:::
 
@@ -535,7 +535,7 @@ Als u Azure File Sync gebruikt, moet u waarschijnlijk de SMB-shares op dat Azure
 
 Als u een DFS-N-implementatie hebt, kunt u de DFN-Namespaces naar de nieuwe locatie van de servermap wijzen. Als u geen DFS-N-implementatie hebt en u uw 8100-of 8600-apparaat lokaal hebt gefronteerd met een Windows Server-exemplaar, kunt u die server uit het domein halen. Vervolgens voegt u een domein toe aan uw nieuwe Windows Server-exemplaar met Azure File Sync. Geef tijdens dat proces de server dezelfde server naam en share namen als de oude server, zodat de uitsnede transparant blijft voor uw gebruikers, groeps beleid en scripts.
 
-Meer informatie over [DFS-N](https://aka.ms/AzureFiles/Namespaces).
+Meer informatie over [DFS-N](/windows-server/storage/dfs-namespaces/dfs-overview).
 
 ## <a name="deprovision"></a>Inrichting
 
@@ -561,7 +561,7 @@ De migratie is voltooid.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Krijg meer vertrouwd met [Azure File Sync: aka.MS/AFS](https://aka.ms/AFS).
+* Krijg meer vertrouwd met [Azure File Sync: aka.MS/AFS](./storage-sync-files-planning.md).
 * Meer informatie over de flexibiliteit van beleids regels voor [Cloud lagen](storage-sync-cloud-tiering.md) .
 * [Schakel Azure backup](../../backup/backup-afs.md#configure-backup-from-the-file-share-pane) in voor uw Azure-bestands shares om moment opnamen te plannen en schema's voor het bewaren van back-ups te definiëren.
 * Als u in de Azure Portal ziet dat sommige bestanden permanent niet worden gesynchroniseerd, raadpleegt u de [hand leiding](storage-sync-files-troubleshoot.md) voor het oplossen van problemen om deze problemen op te lossen.

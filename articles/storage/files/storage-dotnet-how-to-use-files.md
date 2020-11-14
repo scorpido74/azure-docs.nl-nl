@@ -9,12 +9,12 @@ ms.date: 10/02/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 21b407002adce01155b37321c068fb10d2c003f6
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 0196330df01f98e216c39bcc689eac2bde2f4cd9
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319786"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629339"
 ---
 # <a name="develop-for-azure-files-with-net"></a>Ontwikkelen voor Azure Files met .NET
 
@@ -41,7 +41,7 @@ Azure Files biedt twee veelzijdige methoden voor het maken van clienttoepassinge
 
 API | Wanneer gebruikt u dit? | Opmerkingen
 ----|-------------|------
-[System.IO](https://docs.microsoft.com/dotnet/api/system.io) | Uw toepassing: <ul><li>Moet bestanden lezen/schrijven met behulp van SMB</li><li>Wordt uitgevoerd op een apparaat met toegang tot uw Azure Files-account via poort 445</li><li>Hoeft geen beheerinstellingen van de bestandsshare te beheren</li></ul> | Bestands-I/O dat is geïmplementeerd met Azure Files over SMB, is over het algemeen hetzelfde als I/O met een netwerk bestands share of een lokaal opslag apparaat. Raadpleeg de zelf studie over de [console toepassing](https://docs.microsoft.com/dotnet/csharp/tutorials/console-teleprompter) voor een inleiding tot een aantal functies in .net, waaronder bestands-I/O.
+[System.IO](/dotnet/api/system.io) | Uw toepassing: <ul><li>Moet bestanden lezen/schrijven met behulp van SMB</li><li>Wordt uitgevoerd op een apparaat met toegang tot uw Azure Files-account via poort 445</li><li>Hoeft geen beheerinstellingen van de bestandsshare te beheren</li></ul> | Bestands-I/O dat is geïmplementeerd met Azure Files over SMB, is over het algemeen hetzelfde als I/O met een netwerk bestands share of een lokaal opslag apparaat. Raadpleeg de zelf studie over de [console toepassing](/dotnet/csharp/tutorials/console-teleprompter) voor een inleiding tot een aantal functies in .net, waaronder bestands-I/O.
 [Azure. storage. files. shares](/dotnet/api/azure.storage.files.shares) | Uw toepassing: <ul><li>Geen toegang tot Azure Files met behulp van SMB op poort 445 vanwege firewall-of ISP-beperkingen</li><li>Vereist beheerfunctionaliteit, zoals de mogelijkheid tot het instellen van een quotum voor een bestandsshare of het maken van een Shared Access Signature (gedeelde-toegangshandtekening)</li></ul> | In dit artikel wordt het gebruik beschreven van `Azure.Storage.Files.Shares` voor bestands-I/O met behulp van rest in plaats van SMB en het beheer van de bestands share.
 
 ## <a name="create-the-console-application-and-obtain-the-assembly"></a>De consoletoepassing maken en de assembly verkrijgen
@@ -51,8 +51,8 @@ U kunt de Azure Files-client bibliotheek in elk type .NET-app gebruiken. Deze ap
 Maak in Visual Studio een nieuwe Windows-consoletoepassing. In de volgende stappen ziet u hoe u een consoletoepassing maakt in Visual Studio 2019. De stappen zijn nagenoeg gelijk in andere versies van Visual Studio.
 
 1. Start Visual Studio en selecteer **Een nieuw project maken**.
-1. Kies in **een nieuw project maken de**optie **console-app (.NET Framework)** voor C# en selecteer vervolgens **volgende**.
-1. In **uw nieuwe project configureren**voert u een naam in voor de app en selecteert u **maken**.
+1. Kies in **een nieuw project maken de** optie **console-app (.NET Framework)** voor C# en selecteer vervolgens **volgende**.
+1. In **uw nieuwe project configureren** voert u een naam in voor de app en selecteert u **maken**.
 
 Voeg alle code voorbeelden in dit artikel toe aan de `Program` klasse in het *Program.cs* -bestand.
 
@@ -69,8 +69,8 @@ Raadpleeg deze pakketten in uw project:
 
 U kunt NuGet gebruiken om de pakketten te verkrijgen. Volg deze stappen:
 
-1. Klik in **Solution Explorer**met de rechter muisknop op het project en kies **NuGet-pakketten beheren**.
-1. Selecteer in **NuGet package manager**de optie **Browse**. Zoek en kies **Azure. core**, en selecteer vervolgens **installeren**.
+1. Klik in **Solution Explorer** met de rechter muisknop op het project en kies **NuGet-pakketten beheren**.
+1. Selecteer in **NuGet package manager** de optie **Browse**. Zoek en kies **Azure. core** , en selecteer vervolgens **installeren**.
 
    Met deze stap installeert u het pakket en de bijbehorende afhankelijkheden.
 
@@ -89,8 +89,8 @@ U kunt NuGet gebruiken om de pakketten te verkrijgen. Volg deze stappen:
 
 U kunt NuGet gebruiken om de pakketten te verkrijgen. Volg deze stappen:
 
-1. Klik in **Solution Explorer**met de rechter muisknop op het project en kies **NuGet-pakketten beheren**.
-1. Selecteer in **NuGet package manager**de optie **Browse**. Zoek en kies **micro soft. Azure. storage. blob**en selecteer vervolgens **installeren**.
+1. Klik in **Solution Explorer** met de rechter muisknop op het project en kies **NuGet-pakketten beheren**.
+1. Selecteer in **NuGet package manager** de optie **Browse**. Zoek en kies **micro soft. Azure. storage. blob** en selecteer vervolgens **installeren**.
 
    Met deze stap installeert u het pakket en de bijbehorende afhankelijkheden.
 1. Deze pakketten zoeken en installeren:
@@ -103,7 +103,7 @@ U kunt NuGet gebruiken om de pakketten te verkrijgen. Volg deze stappen:
 
 ## <a name="save-your-storage-account-credentials-to-the-appconfig-file"></a>Sla de referenties van uw opslag account op in het App.config bestand
 
-Sla vervolgens uw referenties op in het *App.config* -bestand van uw project. In **Solution Explorer**dubbelklikt u op `App.config` het bestand en bewerkt u dit zoals in het volgende voor beeld.
+Sla vervolgens uw referenties op in het *App.config* -bestand van uw project. In **Solution Explorer** dubbelklikt u op `App.config` het bestand en bewerkt u dit zoals in het volgende voor beeld.
 
 # <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
@@ -135,7 +135,7 @@ Vervang door `myaccount` de naam van uw opslag account en `StorageAccountKeyEndi
 
 ## <a name="add-using-directives"></a>Using-instructies toevoegen
 
-Open in **Solution Explorer**het *Program.cs* -bestand en voeg de volgende instructies toe aan het begin van het bestand.
+Open in **Solution Explorer** het *Program.cs* -bestand en voeg de volgende instructies toe aan het begin van het bestand.
 
 # <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
@@ -316,7 +316,7 @@ Zie [How a Shared Access Signature](../common/storage-sas-overview.md?toc=%2fazu
 
 Vanaf versie 5. x van de Azure Files-client bibliotheek kunt u een bestand kopiëren naar een ander bestand, een bestand naar een BLOB of een BLOB naar een bestand.
 
-U kunt AzCopy ook gebruiken om één bestand naar een andere te kopiëren of een BLOB naar een bestand of een andere manier te kopiëren. Raadpleeg [Aan de slag met AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+U kunt AzCopy ook gebruiken om één bestand naar een andere te kopiëren of een BLOB naar een bestand of een andere manier te kopiëren. Raadpleeg [Aan de slag met AzCopy](../common/storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json).
 
 > [!NOTE]
 > Als u een blob kopieert naar een bestand of een bestand naar een blob, moet u een Shared Access Signature (SAS) gebruiken om toegang tot het bronobject toe te staan, zelfs als u binnen hetzelfde opslagaccount kopieert.
@@ -624,10 +624,10 @@ Raadpleeg de volgende bronnen voor meer informatie over Azure Files:
 
 ### <a name="tooling-support-for-file-storage"></a>Hulpprogramma-ondersteuning voor File Storage
 
-- [Aan de slag met AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
-- [Problemen met Azure Files in Windows oplossen](https://docs.microsoft.com/azure/storage/storage-troubleshoot-file-connection-problems)
+- [Aan de slag met AzCopy](../common/storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json)
+- [Problemen met Azure Files in Windows oplossen](./storage-troubleshoot-windows-file-connection-problems.md)
 
-### <a name="reference"></a>Naslaginformatie
+### <a name="reference"></a>Referentie
 
 - [Azure Storage-API's voor .NET](/dotnet/api/overview/azure/storage)
 - [Bestandsservice REST API](/rest/api/storageservices/File-Service-REST-API)

@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein, danil
-ms.date: 09/26/2019
-ms.openlocfilehash: 334495eeef410c42fb45445c400a86ff1b777061
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 11/13/2020
+ms.openlocfilehash: 415c9fdcbf0e8bfecaa48b8199702d4159bc32d9
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790335"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629186"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>Herstellen met behulp van automatische database back-ups-Azure SQL Database & door SQL beheerd exemplaar
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -74,7 +74,7 @@ Over het algemeen herstelt u een Data Base naar een eerder tijdstip voor herstel
 
   Als u van plan bent de herstelde data base te vervangen door een vervanging voor de oorspronkelijke Data Base, moet u de reken grootte en de servicelaag van de oorspronkelijke data base opgeven. U kunt de naam van de oorspronkelijke data base wijzigen en de herstelde data base de oorspronkelijke naam geven met behulp van de opdracht [ALTER data base](/sql/t-sql/statements/alter-database-azure-sql-database) in T-SQL.
 
-- **Gegevens herstellen**
+- **Gegevensherstel**
 
   Als u van plan bent om gegevens op te halen uit de herstelde data base om te herstellen van een gebruiker of toepassings fout, moet u een gegevens herstel script schrijven en uitvoeren waarmee gegevens uit de herstelde data base worden geëxtraheerd en toegepast op de oorspronkelijke data base. Hoewel het herstellen van de herstel bewerking veel tijd kan duren, is de data base herstellen tijdens het herstel proces zichtbaar in de lijst met data bases. Als u de data base verwijdert tijdens het herstellen, wordt de herstel bewerking geannuleerd en worden er geen kosten in rekening gebracht voor de data base die het herstellen niet heeft voltooid.
   
@@ -108,15 +108,18 @@ U kunt een verwijderde data base herstellen naar de verwijderings tijd of een ee
 
 U kunt verwijderde data bases herstellen van de Azure Portal van de bron van de server of het beheerde exemplaar.
 
+> [!TIP]
+> Het kan enkele minuten duren voordat recent verwijderde data bases worden weer gegeven op de pagina **Verwijderde data bases** in azure Portal, of wanneer verwijderde data bases [programmatisch](#programmatic-recovery-using-automated-backups)worden weer gegeven.
+
 #### <a name="sql-database"></a>SQL Database
 
-Als u een verwijderde data base wilt herstellen naar de verwijderings tijd met behulp van de Azure Portal, opent u de pagina overzicht van de server en selecteert u **Verwijderde data bases** . Selecteer een verwijderde data base die u wilt herstellen en typ de naam voor de nieuwe Data Base die wordt gemaakt met de gegevens die worden teruggezet vanuit de back-up.
+Als u een verwijderde data base wilt herstellen naar de verwijderings tijd met behulp van de Azure Portal, opent u de pagina overzicht van de server en selecteert u **Verwijderde data bases**. Selecteer een verwijderde data base die u wilt herstellen en typ de naam voor de nieuwe Data Base die wordt gemaakt met de gegevens die worden teruggezet vanuit de back-up.
 
   ![Scherm opname van verwijderde data base herstellen](./media/recovery-using-backups/restore-deleted-sql-database-annotated.png)
 
 #### <a name="sql-managed-instance"></a>SQL Managed Instance
 
-Als u een beheerde Data Base wilt herstellen met behulp van de Azure Portal, opent u de overzichts pagina van het beheerde exemplaar en selecteert u **Verwijderde data bases** . Selecteer een verwijderde data base die u wilt herstellen en typ de naam voor de nieuwe Data Base die wordt gemaakt met de gegevens die worden teruggezet vanuit de back-up.
+Als u een beheerde Data Base wilt herstellen met behulp van de Azure Portal, opent u de overzichts pagina van het beheerde exemplaar en selecteert u **Verwijderde data bases**. Selecteer een verwijderde data base die u wilt herstellen en typ de naam voor de nieuwe Data Base die wordt gemaakt met de gegevens die worden teruggezet vanuit de back-up.
 
   ![Scherm opname van verwijderde Azure SQL Managed instance data base](./media/recovery-using-backups/restore-deleted-sql-managed-instance-annotated.png)
 
@@ -155,8 +158,8 @@ Vanuit de Azure Portal maakt u een nieuwe single-of Managed instance-data base e
 Ga als volgt te werk om een enkele data base te herstellen uit de Azure Portal in de gewenste regio en server:
 
 1. Selecteer in het **dash board** de optie **Add**  >  **Create SQL database** toevoegen. Voer de vereiste gegevens in op het tabblad **basis beginselen** .
-2. Selecteer **aanvullende instellingen** .
-3. Selecteer **back-up** voor het **gebruiken van bestaande gegevens** .
+2. Selecteer **aanvullende instellingen**.
+3. Selecteer **back-up** voor het **gebruiken van bestaande gegevens**.
 4. Selecteer voor **back-up** een back-up in de lijst met beschik bare back-ups van geo-herstel.
 
     ![Scherm opname van SQL Database opties maken](./media/recovery-using-backups/geo-restore-azure-sql-database-list-annotated.png)
@@ -167,9 +170,9 @@ Voltooi het proces van het maken van een nieuwe Data Base uit de back-up. Wannee
 
 Als u geografisch een beheerde exemplaar database van de Azure Portal naar een bestaand beheerd exemplaar in een door u gekozen gebied wilt herstellen, selecteert u een beheerd exemplaar waarop u een Data Base wilt herstellen. Volg deze stappen:
 
-1. Selecteer **nieuwe data base** .
+1. Selecteer **nieuwe data base**.
 2. Typ een naam voor de gewenste data base.
-3. Selecteer onder **bestaande gegevens gebruiken** de optie **back-up** .
+3. Selecteer onder **bestaande gegevens gebruiken** de optie **back-up**.
 4. Selecteer een back-up in de lijst met beschik bare back-ups van geo-herstel.
 
     ![Scherm opname van nieuwe database opties](./media/recovery-using-backups/geo-restore-sql-managed-instance-list-annotated.png)

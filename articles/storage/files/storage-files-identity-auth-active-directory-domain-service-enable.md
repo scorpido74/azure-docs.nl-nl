@@ -8,16 +8,16 @@ ms.date: 04/21/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: contperfq1, devx-track-azurecli
-ms.openlocfilehash: 906ec80ecc198675fdb5b163403267be1d13de00
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 5d900f105728efc6f58c4f9f7412cea157cbfe20
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746847"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630376"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>Azure Active Directory Domain Services authenticatie inschakelen op Azure Files
 
-[Azure files](storage-files-introduction.md)   ondersteunt op identiteit gebaseerde verificatie via Server Message Block (SMB) via twee typen Domain Services: on-premises Active Directory Domain Services (AD DS) en Azure Active Directory Domain Services (Azure AD DS). We raden u ten zeerste aan de [sectie How it Works](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-overview#how-it-works) te bekijken om de juiste domein service voor verificatie te selecteren. Het instellen verschilt, is afhankelijk van de domein service die u kiest. Dit artikel richt zich op het inschakelen en configureren van Azure AD DS voor verificatie met Azure-bestands shares.
+[Azure files](storage-files-introduction.md)   ondersteunt op identiteit gebaseerde verificatie via Server Message Block (SMB) via twee typen Domain Services: on-premises Active Directory Domain Services (AD DS) en Azure Active Directory Domain Services (Azure AD DS). We raden u ten zeerste aan de [sectie How it Works](./storage-files-active-directory-overview.md#how-it-works) te bekijken om de juiste domein service voor verificatie te selecteren. Het instellen verschilt, is afhankelijk van de domein service die u kiest. Dit artikel richt zich op het inschakelen en configureren van Azure AD DS voor verificatie met Azure-bestands shares.
 
 Als u geen ervaring hebt met Azure-bestands shares, raden we u aan onze [plannings handleiding](storage-files-planning.md) te lezen voordat u de volgende serie artikelen leest.
 
@@ -33,7 +33,7 @@ Voordat u Azure AD over SMB voor Azure-bestands shares inschakelt, moet u ervoor
 
     U kunt een nieuwe of bestaande Tenant voor Azure AD-verificatie via SMB gebruiken. De Tenant en de bestands share die u wilt openen, moeten zijn gekoppeld aan hetzelfde abonnement.
 
-    Als u een nieuwe Azure AD-Tenant wilt maken, kunt u [een Azure AD-Tenant en een Azure AD-abonnement toevoegen](https://docs.microsoft.com/windows/client-management/mdm/add-an-azure-ad-tenant-and-azure-ad-subscription). Als u een bestaande Azure AD-Tenant hebt, maar een nieuwe Tenant wilt maken voor gebruik met Azure-bestands shares, raadpleegt u [een Azure Active Directory-Tenant maken](https://docs.microsoft.com/rest/api/datacatalog/create-an-azure-active-directory-tenant).
+    Als u een nieuwe Azure AD-Tenant wilt maken, kunt u [een Azure AD-Tenant en een Azure AD-abonnement toevoegen](/windows/client-management/mdm/add-an-azure-ad-tenant-and-azure-ad-subscription). Als u een bestaande Azure AD-Tenant hebt, maar een nieuwe Tenant wilt maken voor gebruik met Azure-bestands shares, raadpleegt u [een Azure Active Directory-Tenant maken](/rest/api/datacatalog/create-an-azure-active-directory-tenant).
 
 1.  **Schakel Azure AD Domain Services in voor de Azure AD-Tenant.**
 
@@ -87,9 +87,9 @@ Denk eraan dat u Azure AD DS-verificatie via SMB pas kunt inschakelen nadat u Az
 Voer de volgende stappen uit om Azure AD DS-verificatie via SMB met de [Azure Portal](https://portal.azure.com)in te scha kelen:
 
 1. Ga in het Azure Portal naar uw bestaande opslag account of [Maak een opslag account](../common/storage-account-create.md).
-1. Selecteer in de sectie **instellingen** de optie **configuratie** .
-1. Onder op **identiteit gebaseerde toegang voor bestands shares** schakelt u de wissel knop voor **Azure Active Directory domein service (Aad DS)** in op **ingeschakeld** .
-1. Selecteer **Opslaan** .
+1. Selecteer in de sectie **instellingen** de optie **configuratie**.
+1. Onder op **identiteit gebaseerde toegang voor bestands shares** schakelt u de wissel knop voor **Azure Active Directory domein service (Aad DS)** in op **ingeschakeld**.
+1. Selecteer **Opslaan**.
 
 In de volgende afbeelding ziet u hoe u Azure AD DS-verificatie via SMB inschakelt voor uw opslag account.
 
@@ -97,9 +97,9 @@ In de volgende afbeelding ziet u hoe u Azure AD DS-verificatie via SMB inschakel
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Als u Azure AD DS-verificatie via SMB met Azure PowerShell wilt inschakelen, installeert u de nieuwste AZ-module (2,4 of hoger) of de AZ. Storage-module (1,5 of hoger). Zie [Azure PowerShell installeren op Windows met PowerShellGet](https://docs.microsoft.com/powershell/azure/install-Az-ps)voor meer informatie over het installeren van Power shell.
+Als u Azure AD DS-verificatie via SMB met Azure PowerShell wilt inschakelen, installeert u de nieuwste AZ-module (2,4 of hoger) of de AZ. Storage-module (1,5 of hoger). Zie [Azure PowerShell installeren op Windows met PowerShellGet](/powershell/azure/install-Az-ps)voor meer informatie over het installeren van Power shell.
 
-Als u een nieuw opslag account wilt maken, roept u [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/New-azStorageAccount?view=azps-2.5.0)aan en stelt u de para meter **EnableAzureActiveDirectoryDomainServicesForFile** in op **True** . In het volgende voor beeld moet u de waarden voor de tijdelijke aanduiding vervangen door uw eigen waarden. (Als u de vorige preview-module gebruikt, is de para meter voor het inschakelen van de functie **EnableAzureFilesAadIntegrationForSMB** .)
+Als u een nieuw opslag account wilt maken, roept u [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount?view=azps-2.5.0)aan en stelt u de para meter **EnableAzureActiveDirectoryDomainServicesForFile** in op **True**. In het volgende voor beeld moet u de waarden voor de tijdelijke aanduiding vervangen door uw eigen waarden. (Als u de vorige preview-module gebruikt, is de para meter voor het inschakelen van de functie **EnableAzureFilesAadIntegrationForSMB**.)
 
 ```powershell
 # Create a new storage account
@@ -121,11 +121,11 @@ Set-AzStorageAccount -ResourceGroupName "<resource-group-name>" `
 ```
 
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
-Als u Azure AD-verificatie via SMB wilt inschakelen met Azure CLI, installeert u de nieuwste CLI-versie (versie 2.0.70 of nieuwer). Zie [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)voor meer informatie over het installeren van Azure cli.
+Als u Azure AD-verificatie via SMB wilt inschakelen met Azure CLI, installeert u de nieuwste CLI-versie (versie 2.0.70 of nieuwer). Zie [de Azure cli installeren](/cli/azure/install-azure-cli?view=azure-cli-latest)voor meer informatie over het installeren van Azure cli.
 
-Als u een nieuw opslag account wilt maken, roept u [AZ Storage account create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create)aan en stelt `--enable-files-aadds` u de eigenschap in op **True** . In het volgende voor beeld moet u de waarden voor de tijdelijke aanduiding vervangen door uw eigen waarden. (Als u de vorige preview-module gebruikt, is de para meter voor functie activering **bestand-Aad** .)
+Als u een nieuw opslag account wilt maken, roept u [AZ Storage account create](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create)aan en stelt `--enable-files-aadds` u de eigenschap in op **True**. In het volgende voor beeld moet u de waarden voor de tijdelijke aanduiding vervangen door uw eigen waarden. (Als u de vorige preview-module gebruikt, is de para meter voor functie activering **bestand-Aad**.)
 
 ```azurecli-interactive
 # Create a new storage account

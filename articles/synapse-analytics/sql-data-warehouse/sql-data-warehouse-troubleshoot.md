@@ -7,16 +7,16 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 02/04/2019
+ms.date: 11/13/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: a50554c73958400f1f16348d3b8fb2bac88ac61b
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: e9811710971b411aaaed64ec0072dcf7b6b116d3
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340274"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630053"
 ---
 # <a name="troubleshooting-synapse-sql-in-azure-synapse-analytics"></a>Problemen met Synapse SQL oplossen in azure Synapse Analytics
 
@@ -29,7 +29,7 @@ In dit artikel worden veelvoorkomende problemen met het oplossen van problemen i
 | Aanmelding mislukt voor gebruiker 'NT AUTHORITY\ANONYMOUS LOGON'. (Microsoft SQL Server, fout: 18456) | Deze fout treedt op wanneer een Azure AD-gebruiker probeert verbinding te maken met de hoofd database, maar geen gebruiker heeft in de master-data base.  Om dit probleem op te lossen, geeft u de exclusieve SQL-groep op waarmee u verbinding wilt maken op het moment van de verbinding of voegt u de gebruiker toe aan de hoofd database.  Zie het artikel over [beveiligings overzicht](sql-data-warehouse-overview-manage-security.md) voor meer informatie. |
 | De server-principal 'MijnGebruikersnaam' heeft in de huidige beveiligingscontext geen toegang tot de hoofddatabase. Kan de standaarddatabase van de gebruiker niet openen. Aanmelden mislukt. Aanmelden is mislukt voor gebruiker 'MijnGebruikersnaam'. (Microsoft SQL Server, fout: 916) | Deze fout treedt op wanneer een Azure AD-gebruiker probeert verbinding te maken met de hoofd database, maar geen gebruiker heeft in de master-data base.  Om dit probleem op te lossen, geeft u de exclusieve SQL-groep op waarmee u verbinding wilt maken op het moment van de verbinding of voegt u de gebruiker toe aan de hoofd database.  Zie het artikel over [beveiligings overzicht](sql-data-warehouse-overview-manage-security.md) voor meer informatie. |
 | CTAIP-fout                                                  | Deze fout kan optreden als er een aanmelding is gemaakt voor de SQL Database hoofd database, maar niet in de specifieke SQL database.  Als deze fout optreedt, bekijkt u het artikel overzicht van de [beveiliging](sql-data-warehouse-overview-manage-security.md) .  In dit artikel wordt uitgelegd hoe u een aanmelding en gebruiker in de hoofd database maakt en hoe u een gebruiker maakt in een SQL database. |
-| Geblokkeerd door de firewall                                          | exclusieve SQL-groepen worden beveiligd door firewalls om ervoor te zorgen dat alleen bekende IP-adressen toegang hebben tot een Data Base. De firewalls zijn standaard beveiligd. Dit betekent dat u een expliciete en een IP-adres of bereik van adressen moet inschakelen voordat u verbinding kunt maken.  Als u uw firewall voor toegang wilt configureren, volgt u de stappen in de [Server firewall toegang configureren voor uw client-IP](create-data-warehouse-portal.md) in de instructies voor het [inrichten](create-data-warehouse-portal.md). |
+| Geblokkeerd door firewall                                          | exclusieve SQL-groepen worden beveiligd door firewalls om ervoor te zorgen dat alleen bekende IP-adressen toegang hebben tot een Data Base. De firewalls zijn standaard beveiligd. Dit betekent dat u een expliciete en een IP-adres of bereik van adressen moet inschakelen voordat u verbinding kunt maken.  Als u uw firewall voor toegang wilt configureren, volgt u de stappen in de [Server firewall toegang configureren voor uw client-IP](create-data-warehouse-portal.md) in de instructies voor het [inrichten](create-data-warehouse-portal.md). |
 | Kan geen verbinding maken met het hulp programma of stuur programma                           | Een exclusieve SQL-pool raadt u aan om [SSMS](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [SSDT voor Visual Studio](sql-data-warehouse-install-visual-studio.md)of [Sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) te gebruiken om uw gegevens op te vragen. Zie [Stuur Programma's voor Azure Synapse](sql-data-warehouse-connection-strings.md) en [verbinding maken met Azure Synapse](sql-data-warehouse-connect-overview.md) -artikelen voor meer informatie over Stuur Programma's en het maken van verbinding met Azure Synapse. |
 
 ## <a name="tools"></a>Hulpprogramma's
@@ -39,6 +39,12 @@ In dit artikel worden veelvoorkomende problemen met het oplossen van problemen i
 | Er ontbreken Azure AD-gebruikers in Visual Studio object Explorer           | Dit is een bekend probleem.  Als tijdelijke oplossing kunt u de gebruikers weergeven in [sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).  Zie [verificatie voor Azure Synapse](sql-data-warehouse-authentication.md) voor meer informatie over het gebruik van Azure Active Directory met een toegewezen SQL-groep. |
 | Hand matige scripting, met behulp van de wizard scripting of het maken van verbinding via SSMS is traag, reageert niet of levert fouten op | Zorg ervoor dat gebruikers zijn gemaakt in de hoofd database. In script opties moet u er ook voor zorgen dat de engine Edition is ingesteld op ' Microsoft Azure Synapse Analytics Edition ' en Engine type is ' Microsoft Azure SQL Database '. |
 | Genereren van scripts mislukt in SSMS                               | Het genereren van een script voor een toegewezen SQL-groep mislukt als de optie script voor afhankelijke objecten genereren is ingesteld op ' True '. Als tijdelijke oplossing moeten gebruikers hand matig naar **Hulpprogram ma's > opties->SQL Server-objectverkenner-> script genereren voor afhankelijke opties en ingesteld op ONWAAR** |
+
+## <a name="data-ingestion-and-preparation"></a>Gegevensopname en -voorbereiding
+
+| Probleem                                                        | Oplossing                                                   |
+| :----------------------------------------------------------- | :----------------------------------------------------------- |
+| Het exporteren van lege teken reeksen met CETAS resulteert in NULL-waarden in Parquet-en ORC-bestanden. Opmerking Als u lege teken reeksen exporteert uit kolommen met niet-NULL-beperkingen, resulteert CETAS in geweigerde records en kan het exporteren mislukken. | Verwijder lege teken reeksen of de kolom die het conflict veroorzaakt in de instructie SELECT van uw CETAS. |
 
 ## <a name="performance"></a>Prestaties
 

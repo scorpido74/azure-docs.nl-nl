@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/12/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: ae9404d366b24c0cc1bcf01ecffc71a427f949d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 94abb33d39765a19306a013576d43fb2602d1c37
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88034342"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630223"
 ---
 # <a name="migrate-bulk-data-to-azure-file-sync-with-azure-databox"></a>Bulkgegevens migreren in Azure File Sync met Azure DataBox
 U kunt op twee manieren bulk gegevens migreren naar Azure File Sync:
@@ -25,7 +25,7 @@ In dit artikel wordt uitgelegd hoe u bestanden offline kunt migreren op een mani
 ## <a name="migration-tools"></a>Hulpprogramma's voor migratie
 Het proces dat in dit artikel wordt beschreven, werkt niet alleen voor Data Box, maar ook voor andere hulpprogram ma's voor offline migratie. Het werkt ook voor hulpprogram ma's zoals AzCopy, Robocopy of partner tools en-services die rechtstreeks op Internet werken. U kunt de eerste upload vraag echter oplossen door de stappen in dit artikel te volgen om deze hulpprogram ma's te gebruiken op een manier die compatibel is met Azure File Sync.
 
-In sommige gevallen moet u overstappen van de ene Windows-Server naar een andere Windows-Server voordat u Azure File Sync doorneemt. U kunt met behulp van de [opslag migratie service](https://aka.ms/storagemigrationservice) (SMS). Of u moet migreren naar een versie van het besturings systeem van de server die wordt ondersteund door Azure File Sync (Windows Server 2012R2 en up) of u hoeft alleen maar te migreren omdat u een nieuw systeem voor Azure File Sync koopt, heeft SMS talrijke functies en voor delen waarmee u uw migratie probleemloos kunt uitvoeren.
+In sommige gevallen moet u overstappen van de ene Windows-Server naar een andere Windows-Server voordat u Azure File Sync doorneemt. U kunt met behulp van de [opslag migratie service](/windows-server/storage/storage-migration-service/overview) (SMS). Of u moet migreren naar een versie van het besturings systeem van de server die wordt ondersteund door Azure File Sync (Windows Server 2012R2 en up) of u hoeft alleen maar te migreren omdat u een nieuw systeem voor Azure File Sync koopt, heeft SMS talrijke functies en voor delen waarmee u uw migratie probleemloos kunt uitvoeren.
 
 ## <a name="benefits-of-using-a-tool-to-transfer-data-offline"></a>Voor delen van het gebruik van een hulp programma om gegevens offline over te dragen
 Dit zijn de belangrijkste voor delen van het gebruik van een hulp programma voor het overzetten van een overdracht, zoals Data Box voor offline migratie:
@@ -51,10 +51,10 @@ Hier volgt een beschrijving van het instellen van Azure File Sync op een manier 
 
 | Stap | Detail |
 |---|---------------------------------------------------------------------------------------|
-| ![Stap 1](media/storage-sync-files-offline-data-transfer/bullet_1.png) | [Bestel uw data Box](../../databox/data-box-deploy-ordered.md). De Data Box-serie biedt [verschillende producten](https://azure.microsoft.com/services/storage/databox/data) die aan uw behoeften voldoen. Wanneer u uw Data Box ontvangt, volgt u de bijbehorende [documentatie om uw gegevens te kopiëren](../../databox/data-box-deploy-copy-data.md#copy-data-to-data-box) naar dit UNC-pad op de Data Box: * \\ \> \<StorageAccountName_AzFile\> \<ShareName\><DeviceIPAddres*. Hier is *sharename* de naam van de staging-share. Verzend de Data Box terug naar Azure. |
+| ![Stap 1](media/storage-sync-files-offline-data-transfer/bullet_1.png) | [Bestel uw data Box](../../databox/data-box-deploy-ordered.md). De Data Box-serie biedt [verschillende producten](https://azure.microsoft.com/services/storage/databox/data) die aan uw behoeften voldoen. Wanneer u uw Data Box ontvangt, volgt u de bijbehorende [documentatie om uw gegevens te kopiëren](../../databox/data-box-deploy-copy-data.md#copy-data-to-data-box) naar dit UNC-pad op de Data Box: *\\ \> \<StorageAccountName_AzFile\> \<ShareName\><DeviceIPAddres*. Hier is *sharename* de naam van de staging-share. Verzend de Data Box terug naar Azure. |
 | ![Stap 2](media/storage-sync-files-offline-data-transfer/bullet_2.png) | Wacht tot uw bestanden worden weer gegeven in de Azure-bestands shares die u hebt gekozen als tijdelijke share voor tijdelijke bestanden. *Schakel synchronisatie van deze shares niet in.* |
 | ![Stap 3](media/storage-sync-files-offline-data-transfer/bullet_3.png) | <ul><li>Maak een nieuwe lege share voor elke bestands share die Data Box voor u hebt gemaakt. Deze nieuwe share moet zich in hetzelfde opslag account bezien als de Data Box share. [Een nieuwe Azure-bestands share maken](storage-how-to-create-file-share.md).</li><li>[Maak een synchronisatie groep](storage-sync-files-deployment-guide.md#create-a-sync-group-and-a-cloud-endpoint) in een opslag synchronisatie service. Verwijs naar een lege share als een eind punt in de Cloud. Herhaal deze stap voor elke Data Box bestands share. [Azure file sync instellen](storage-sync-files-deployment-guide.md).</li></ul> |
-| ![Stap 4](media/storage-sync-files-offline-data-transfer/bullet_4.png) | [Voeg uw live server-map als een server eindpunt toe](storage-sync-files-deployment-guide.md#create-a-server-endpoint). Geef in het proces op dat u de bestanden naar Azure hebt verplaatst en Raadpleeg de tijdelijke shares. U kunt Cloud lagen in-of uitschakelen als dat nodig is. Tijdens het maken van een server eindpunt op uw live server, verwijst u naar de faserings share. Selecteer op de Blade **Server eindpunt toevoegen** onder **offline gegevensoverdracht**de optie **ingeschakeld**en selecteer vervolgens de faserings share die zich in hetzelfde opslag account als het Cloud eindpunt moet beslaan. Hier wordt de lijst met beschik bare shares gefilterd op basis van het opslag account en de shares die nog niet worden gesynchroniseerd. In de scherm opname die volgt op deze tabel ziet u hoe u kunt verwijzen naar de DataBox-share tijdens het maken van de server-eind punten in de Azure Portal |
+| ![Stap 4](media/storage-sync-files-offline-data-transfer/bullet_4.png) | [Voeg uw live server-map als een server eindpunt toe](storage-sync-files-deployment-guide.md#create-a-server-endpoint). Geef in het proces op dat u de bestanden naar Azure hebt verplaatst en Raadpleeg de tijdelijke shares. U kunt Cloud lagen in-of uitschakelen als dat nodig is. Tijdens het maken van een server eindpunt op uw live server, verwijst u naar de faserings share. Selecteer op de Blade **Server eindpunt toevoegen** onder **offline gegevensoverdracht** de optie **ingeschakeld** en selecteer vervolgens de faserings share die zich in hetzelfde opslag account als het Cloud eindpunt moet beslaan. Hier wordt de lijst met beschik bare shares gefilterd op basis van het opslag account en de shares die nog niet worden gesynchroniseerd. In de scherm opname die volgt op deze tabel ziet u hoe u kunt verwijzen naar de DataBox-share tijdens het maken van de server-eind punten in de Azure Portal |
 | ![Stap 5](media/storage-sync-files-offline-data-transfer/bullet_5.png) | Zodra u het server-eind punt in de vorige stap hebt toegevoegd, worden de gegevens automatisch vanuit de juiste bron gestart. De sectie [share synchroniseren](#syncing-the-share) wordt uitgelegd wanneer gegevens stromen van de DataBox-share of van de Windows-Server |
 | |
 
@@ -81,7 +81,7 @@ Wanneer de server de initiële synchronisatie van de naam ruimte voltooit, gebru
 
 U kunt de faserings share nu opschonen om kosten te besparen:
 
-1. Selecteer op de Blade eigenschappen van het **Server eindpunt** wanneer de status is **voltooid**de optie **offline gegevens overdracht uitschakelen**.
+1. Selecteer op de Blade eigenschappen van het **Server eindpunt** wanneer de status is **voltooid** de optie **offline gegevens overdracht uitschakelen**.
 2. U kunt de faserings share verwijderen om kosten te besparen. De staging-share bevat waarschijnlijk geen Acl's voor bestanden en mappen, dus het is waarschijnlijk niet nuttig. Voor back-uppunt-in-time-doel einden maakt u een echte [moment opname van de synchronisatie van de Azure-bestands share](storage-snapshots-files.md). U kunt [Azure backup instellen om moment opnamen te maken]( ../../backup/backup-afs.md) volgens een planning.
 
 Schakel de offline modus voor gegevens overdracht alleen uit wanneer de status is **voltooid** of wanneer u wilt annuleren vanwege een onjuiste configuratie. Als u tijdens een implementatie de modus uitschakelt, wordt het uploaden van bestanden vanaf de server gestart, zelfs als uw staging-share nog steeds beschikbaar is.
@@ -94,8 +94,8 @@ Schakel de offline modus voor gegevens overdracht alleen uit wanneer de status i
 Als u geseede bestanden in een Azure-bestands share hebt op een andere manier dan DataBox, bijvoorbeeld via AzCopy, RoboCopy vanuit een Cloud back-up of een andere methode, moet u nog steeds het [Offline gegevensoverdracht proces](#process-for-offline-data-transfer) volgen dat in dit artikel wordt beschreven. U hoeft DataBox alleen te negeren als de methode die uw bestanden overzetten naar de Cloud. Het is echter van cruciaal belang om ervoor te zorgen dat u nog steeds het proces van het seeden van de bestanden naar een *staging-share* en niet de uiteindelijke, Azure file sync verbonden share.
 
 > [!WARNING]
-> **Volg het proces van het seeden van bestanden naar een staging-share en niet de uiteindelijke**, Azure file sync verbonden share. Als dat niet het geval is, kunnen er bestands conflicten optreden (beide bestands versies worden opgeslagen) en bestanden die op de live server worden verwijderd, kunnen terugkomen als ze nog steeds aanwezig zijn in uw oudere, seeded set bestanden. Daarnaast worden wijzigingen in mappen samen met elkaar samengevoegd, waardoor het zeer moeilijk is om de naam ruimte na een dergelijke fout te scheiden.
+> **Volg het proces van het seeden van bestanden naar een staging-share en niet de uiteindelijke** , Azure file sync verbonden share. Als dat niet het geval is, kunnen er bestands conflicten optreden (beide bestands versies worden opgeslagen) en bestanden die op de live server worden verwijderd, kunnen terugkomen als ze nog steeds aanwezig zijn in uw oudere, seeded set bestanden. Daarnaast worden wijzigingen in mappen samen met elkaar samengevoegd, waardoor het zeer moeilijk is om de naam ruimte na een dergelijke fout te scheiden.
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Een Azure File Sync-implementatie plannen](storage-sync-files-planning.md)
-- [Azure Files SYNC implementeren](storage-sync-files-deployment-guide.md)
+- [Azure File Sync implementeren](storage-sync-files-deployment-guide.md)

@@ -1,7 +1,7 @@
 ---
 title: Fouten in ParallelRunStep opsporen en problemen oplossen
 titleSuffix: Azure Machine Learning
-description: Fout opsporing en probleem oplossing voor ParallelRunStep in machine learning-pijp lijnen in de Azure Machine Learning SDK voor python. Leer veelvoorkomende Valk uilen voor het ontwikkelen met pijp lijnen en tips voor het oplossen van fouten in scripts voor en tijdens externe uitvoering.
+description: Fout opsporing en probleem oplossing voor ParallelRunStep in machine learning-pijp lijnen in de Azure Machine Learning SDK voor python.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.reviewer: jmartens, larryfr, vaidyas, laobri, tracych
 ms.author: trmccorm
 author: tmccrmck
 ms.date: 09/23/2020
-ms.openlocfilehash: 93997629b6b30f87769a0154e344215ca52c8ec4
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 09f75e9e8f972ec44098e119dc5b30bd44638918
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308386"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630461"
 ---
 # <a name="debug-and-troubleshoot-parallelrunstep"></a>Fouten in ParallelRunStep opsporen en problemen oplossen
 

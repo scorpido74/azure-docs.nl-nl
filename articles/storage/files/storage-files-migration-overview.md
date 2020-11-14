@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: e3ecf29be94074f51ead3173f997154df6dfa88f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 995ae176a8eec58f8dc9522e6fac6fd78170014d
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785609"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628914"
 ---
 # <a name="migrate-to-azure-file-shares"></a>Migreren naar Azure-bestandsshares
 
@@ -134,7 +134,7 @@ In deze sectie worden hulpprogram ma's beschreven die u helpen bij het plannen e
 
 #### <a name="robocopy-from-microsoft-corporation"></a>RoboCopy van micro soft Corporation
 
-RoboCopy is een van de hulpprogram ma's die het meest van toepassing zijn op bestands migraties. Het wordt geleverd als onderdeel van Windows. De belangrijkste [Robocopy-documentatie](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy) is een handige resource voor de vele opties van dit hulp programma.
+RoboCopy is een van de hulpprogram ma's die het meest van toepassing zijn op bestands migraties. Het wordt geleverd als onderdeel van Windows. De belangrijkste [Robocopy-documentatie](/windows-server/administration/windows-commands/robocopy) is een handige resource voor de vele opties van dit hulp programma.
 
 #### <a name="treesize-from-jam-software-gmbh"></a>TreeSize van een VASTGELOPEN software GmbH
 

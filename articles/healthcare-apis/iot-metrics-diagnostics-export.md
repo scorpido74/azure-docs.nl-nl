@@ -6,18 +6,18 @@ author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: how-to
-ms.date: 10/30/2020
+ms.date: 11/13/2020
 ms.author: jasteppe
-ms.openlocfilehash: 5a57b13cdb8c7c1144815543e03b970de32b4369
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 14fd5378f37ebfc20b2d7084c08f15ea8f7a00b2
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93394251"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630529"
 ---
 # <a name="export-azure-iot-connector-for-fhir-preview-metrics-through-diagnostic-settings"></a>Metrische gegevens van Azure IoT Connector voor FHIR (preview) exporteren via diagnostische instellingen
 
-In dit artikel leert u hoe u Azure IoT connector exporteert voor FHIR * metrische Logboeken. De functie die logboek registratie van metrische gegevens mogelijk maakt, is de [**Diagnostische instellingen**](../azure-monitor/platform/diagnostic-settings.md) in de Azure Portal. 
+In dit artikel leert u hoe u Azure IoT connector exporteert voor snelle bronnen voor de gezondheids zorg (FHIR&#174;) * metrische Logboeken. De functie die logboek registratie van metrische gegevens mogelijk maakt, is de [**Diagnostische instellingen**](../azure-monitor/platform/diagnostic-settings.md) in de Azure Portal. 
 
 > [!TIP]
 > Volg de richt lijnen in [Diagnostische logboek registratie inschakelen in azure API voor FHIR en Azure IOT connector voor FHIR](enable-diagnostic-logging.md#enable-diagnostic-logging-in-azure-api-for-fhir) om controle logboek registratie in te stellen.
@@ -41,7 +41,7 @@ In dit artikel leert u hoe u Azure IoT connector exporteert voor FHIR * metrisch
 
 6. Selecteer **fouten, verkeer en latentie** voor de Azure IOT-connector voor FHIR.  Selecteer eventuele aanvullende metrische categorieën die u wilt vastleggen voor de Azure API voor FHIR.
 
-7. Selecteer **Opslaan**
+7. Selecteer **Opslaan**.
 
    :::image type="content" source="media/iot-metrics-export/diagnostic-setting-add.png" alt-text="IoT-Connector2" lightbox="media/iot-metrics-export/diagnostic-setting-add.png":::
 
@@ -60,6 +60,4 @@ Bekijk veelgestelde vragen over de Azure IoT-connector voor FHIR.
 >[!div class="nextstepaction"]
 >[Veelgestelde vragen over Azure IoT connector voor FHIR](fhir-faq.md)
 
-*In Azure Portal wordt Azure IoT Connector for FHIR aangeduid als IoT Connector (preview).
-
-FHIR is het gedeponeerde handelsmerk van HL7 en wordt gebruikt met de toestemming van HL7.
+* In de Azure Portal wordt Azure IoT connector voor FHIR aangeduid als IoT-connector (preview). FHIR is een geregistreerd handels merk van HL7 en wordt gebruikt met de machtiging van HL7.

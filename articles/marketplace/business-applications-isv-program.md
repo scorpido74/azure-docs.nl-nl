@@ -7,12 +7,12 @@ ms.topic: article
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 7/14/2020
-ms.openlocfilehash: 345b9447daa9fcb5f97ec5d8d00bcf5ea76d958c
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 653e6aad7f57b4d683f2f71ed22e402ed5d1fca8
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93126733"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630291"
 ---
 # <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>Gids voor onboarding bij Microsoft Business Applications ISV Connect-programma
 
@@ -38,7 +38,7 @@ Voor deelname aan dit programma moet u de [Business Applications addendum](https
 > Voor deze stap is een *eigenaar* of *Manager* -rol vereist in het partner centrum voor uw account om juridische overeenkomsten te ondertekenen.
 
 1. Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard).
-1. Selecteer **instellingen** (tandwiel pictogram) en selecteer **instellingen voor ontwikkel aars** .
+1. Selecteer **instellingen** (tandwiel pictogram) en vervolgens **instellingen voor ontwikkel aars**.
 1. **Overeenkomsten** selecteren.
 1. Selecteer de versie koppeling en Bekijk de overeenkomst.
 1. Selecteer **overeenkomst accepteren** om akkoord te gaan en de overeenkomst te accepteren.
@@ -51,11 +51,12 @@ Stel facturerings gegevens in voor het Business Applications ISV Connect-program
 > Voor deze stap is een *eigenaar* of *Manager* -rol vereist in het partner centrum voor uw account om de facturerings gegevens bij te werken.
 
 1. Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard).
-1. Selecteer **instellingen** (tandwiel pictogram) en selecteer **instellingen voor ontwikkel aars** .
-1. Selecteer onder **account** **facturerings profiel** .
-1. Controleer de primaire contact-en facturerings gegevens die zijn ingevuld in uw rechts persoon en breng alle benodigde updates.
+1. Selecteer **instellingen** (tandwiel pictogram) en vervolgens **instellingen voor ontwikkel aars**.
+1. Selecteer **facturerings profiel** onder **account instellingen**.
+1. Controleer de gegevens van de primaire contact persoon en de facturering die van uw rechts persoon is gevuld.
+1. Als u wijzigingen wilt aanbrengen, selecteert u **bijwerken**.
 1. Geef indien van toepassing BTW-ID-ID-instellingen op.
-1. Sla uw wijzigingen op door op **Opslaan** te klikken.
+1. Selecteer **bijwerken** om uw wijzigingen op te slaan.
 
 > [!NOTE]
 > U kunt uw facturerings profiel op elk gewenst moment bijwerken. Het *land* van de *Bedrijfs naam* en het facturerings adres kan later echter niet meer worden gewijzigd.

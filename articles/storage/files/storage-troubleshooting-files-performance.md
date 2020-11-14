@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/15/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 4d89fb4bcedb58aa156e75aaefc87479797dcd37
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 3e6490babb5a4e68c1ecd931251ea4eb99d6c3f5
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577969"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630138"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>Prestatie problemen met Azure file shares oplossen
 
@@ -22,7 +22,7 @@ In dit artikel worden enkele veelvoorkomende problemen met betrekking tot Azure-
 
 ### <a name="cause-1-share-was-throttled"></a>Oorzaak 1: de share is beperkt
 
-Aanvragen worden beperkt wanneer de I/O-bewerkingen per seconde (IOPS), ingangs-of uitstel limieten voor een bestands share zijn bereikt. Zie [Bestands share en bestands schaal doelen](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#file-share-and-file-scale-targets)voor meer informatie over de limieten voor standaard-en Premium-bestands shares.
+Aanvragen worden beperkt wanneer de I/O-bewerkingen per seconde (IOPS), ingangs-of uitstel limieten voor een bestands share zijn bereikt. Zie [Bestands share en bestands schaal doelen](./storage-files-scale-targets.md#file-share-and-file-scale-targets)voor meer informatie over de limieten voor standaard-en Premium-bestands shares.
 
 Als u wilt controleren of uw share wordt beperkt, kunt u Azure-metrische gegevens openen en gebruiken in de portal.
 
@@ -45,8 +45,8 @@ Als u wilt controleren of uw share wordt beperkt, kunt u Azure-metrische gegeven
 
 ### <a name="solution"></a>Oplossing
 
-- Als u een standaard bestands share gebruikt, schakelt u [grote bestands shares](https://docs.microsoft.com/azure/storage/files/storage-files-how-to-create-large-file-share?tabs=azure-portal) in voor uw opslag account. Grote bestands shares bieden ondersteuning voor Maxi maal 10.000 IOPS per share.
-- Als u een Premium-bestands share gebruikt, verg root u de grootte van de ingerichte bestands share om de limiet voor IOPS te verhogen. Zie de sectie ' wat is inrichten voor Premium file shares ' in de [plannings handleiding van Azure files](https://docs.microsoft.com/azure/storage/files/storage-files-planning#understanding-provisioning-for-premium-file-shares)voor meer informatie.
+- Als u een standaard bestands share gebruikt, schakelt u [grote bestands shares](./storage-files-how-to-create-large-file-share.md?tabs=azure-portal) in voor uw opslag account. Grote bestands shares bieden ondersteuning voor Maxi maal 10.000 IOPS per share.
+- Als u een Premium-bestands share gebruikt, verg root u de grootte van de ingerichte bestands share om de limiet voor IOPS te verhogen. Zie de sectie ' wat is inrichten voor Premium file shares ' in de [plannings handleiding van Azure files](./storage-files-planning.md#understanding-provisioning-for-premium-file-shares)voor meer informatie.
 
 ### <a name="cause-2-metadata-or-namespace-heavy-workload"></a>Oorzaak 2: meta gegevens of een zware werk belasting van de naam ruimte
 
@@ -238,7 +238,7 @@ Zie [overzicht van waarschuwingen in Microsoft Azure]( https://docs.microsoft.co
 
 Zie [overzicht van waarschuwingen in Microsoft Azure]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)voor meer informatie over het configureren van waarschuwingen in azure monitor.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 - [Problemen met Azure Files in Windows oplossen](storage-troubleshoot-windows-file-connection-problems.md)  
 - [Problemen met Azure Files in Linux oplossen](storage-troubleshoot-linux-file-connection-problems.md)  
 - [Veelgestelde vragen over Azure Files](storage-files-faq.md)

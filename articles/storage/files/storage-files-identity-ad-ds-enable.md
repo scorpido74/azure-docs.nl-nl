@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 09/13/2020
 ms.author: rogarana
-ms.openlocfilehash: 6251894018ceeb2a99ebb62939b6e446fea825a2
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 948b30cbf37ae5f4f357860569579d8591412414
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220717"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630393"
 ---
 # <a name="part-one-enable-ad-ds-authentication-for-your-azure-file-shares"></a>Deel 1: Schakel AD DS verificatie in voor uw Azure-bestands shares 
 
@@ -28,20 +28,20 @@ Met de cmdlets in de AzFilesHybrid Power shell-module worden de nodige wijziging
 
 ### <a name="download-azfileshybrid-module"></a>AzFilesHybrid-module downloaden
 
-- [De AzFilesHybrid-module downloaden en uitpakken (Ga naar module: v 0.2.0 +)](https://github.com/Azure-Samples/azure-files-samples/releases) Houd er rekening mee dat AES 256 Kerberos-versleuteling wordt ondersteund op v 0.2.2 of hoger. Als u de functie hebt ingeschakeld met een AzFilesHybrid-versie lager dan v 0.2.2 en u wilt bijwerken om AES 256 Kerberos-versleuteling te ondersteunen, raadpleegt u [dit artikel](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#azure-files-on-premises-ad-ds-authentication-support-for-aes-256-kerberos-encryption). 
+- [De AzFilesHybrid-module downloaden en uitpakken (Ga naar module: v 0.2.0 +)](https://github.com/Azure-Samples/azure-files-samples/releases) Houd er rekening mee dat AES 256 Kerberos-versleuteling wordt ondersteund op v 0.2.2 of hoger. Als u de functie hebt ingeschakeld met een AzFilesHybrid-versie lager dan v 0.2.2 en u wilt bijwerken om AES 256 Kerberos-versleuteling te ondersteunen, raadpleegt u [dit artikel](./storage-troubleshoot-windows-file-connection-problems.md#azure-files-on-premises-ad-ds-authentication-support-for-aes-256-kerberos-encryption). 
 - Installeer en voer de module uit in een domein dat is gekoppeld aan een on-premises AD DS met AD DS referenties die machtigingen hebben voor het maken van een account voor service aanmelding of een computer account in de doel-AD.
 -  Voer het script uit met behulp van een on-premises AD DS referentie die is gesynchroniseerd met uw Azure AD. De referenties van de on-premises AD DS moeten de eigenaar van het opslag account of de Azure-rol van de Inzender hebben.
 
 ### <a name="run-join-azstorageaccountforauth"></a>Join-AzStorageAccountForAuth uitvoeren
 
-De `Join-AzStorageAccountForAuth` cmdlet voert het equivalent van een offline domein deelname uit namens het opgegeven opslag account uit. Het script maakt gebruik van de cmdlet voor het maken van een [computer account](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) in uw AD-domein. Als u om welke reden dan ook geen computer account kunt gebruiken, kunt u het script wijzigen om in plaats daarvan een [service-aanmeldings account](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts) te maken. Als u ervoor kiest om de opdracht hand matig uit te voeren, moet u het account selecteren dat het meest geschikt is voor uw omgeving.
+De `Join-AzStorageAccountForAuth` cmdlet voert het equivalent van een offline domein deelname uit namens het opgegeven opslag account uit. Het script maakt gebruik van de cmdlet voor het maken van een [computer account](/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) in uw AD-domein. Als u om welke reden dan ook geen computer account kunt gebruiken, kunt u het script wijzigen om in plaats daarvan een [service-aanmeldings account](/windows/win32/ad/about-service-logon-accounts) te maken. Als u ervoor kiest om de opdracht hand matig uit te voeren, moet u het account selecteren dat het meest geschikt is voor uw omgeving.
 
 Het AD DS-account dat is gemaakt door de cmdlet vertegenwoordigt het opslag account. Als het AD DS-account wordt gemaakt onder een organisatie-eenheid (OE) die het verlopen van wacht woorden afdwingt, moet u het wacht woord bijwerken vóór de maximale wachtwoord duur. Het bijwerken van het wacht woord van het account vóór die datum resulteert in verificatie fouten bij het openen van Azure-bestands shares. Zie [AD DS account wachtwoord bijwerken](storage-files-identity-ad-ds-update-password.md)voor meer informatie over het bijwerken van het wacht woord.
 
 Vervang de tijdelijke aanduidingen door uw eigen waarden in de onderstaande para meters voordat u deze in Power shell uitvoert.
 > [!IMPORTANT]
-> Met de cmdlet domein toevoegen wordt een AD-account gemaakt dat het opslag account (bestands share) in AD vertegenwoordigt. Zie [Veelgestelde vragen](https://docs.microsoft.com/azure/storage/files/storage-files-faq#security-authentication-and-access-control) voor meer informatie over het registreren van een computer account of een service-aanmeldings account. Voor computer accounts is er een standaard leeftijd voor wachtwoord verloop ingesteld in AD om 30 dagen. Op dezelfde manier kan voor het service-aanmeldings account een standaard leeftijd voor het wacht woord voor het verlopen van het AD-domein of de organisatie-eenheid (OE) zijn ingesteld.
-> Voor beide account typen raden we u aan de leeftijd van het wacht woord te controleren dat in uw AD-omgeving is geconfigureerd en om [het wacht woord van uw opslag account-id](storage-files-identity-ad-ds-update-password.md) van het ad-account bij te werken vóór de maximale wachtwoord duur. U kunt overwegen om [een nieuwe AD-organisatie-eenheid (OE) in AD te maken](https://docs.microsoft.com/powershell/module/addsadministration/new-adorganizationalunit?view=win10-ps) en het verloop beleid voor wacht woorden op [computer accounts](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj852252(v=ws.11)?redirectedfrom=MSDN) of service-aanmeldings accounts dienovereenkomstig uit te scha kelen. 
+> Met de cmdlet domein toevoegen wordt een AD-account gemaakt dat het opslag account (bestands share) in AD vertegenwoordigt. Zie [Veelgestelde vragen](./storage-files-faq.md#security-authentication-and-access-control) voor meer informatie over het registreren van een computer account of een service-aanmeldings account. Voor computer accounts is er een standaard leeftijd voor wachtwoord verloop ingesteld in AD om 30 dagen. Op dezelfde manier kan voor het service-aanmeldings account een standaard leeftijd voor het wacht woord voor het verlopen van het AD-domein of de organisatie-eenheid (OE) zijn ingesteld.
+> Voor beide account typen raden we u aan de leeftijd van het wacht woord te controleren dat in uw AD-omgeving is geconfigureerd en om [het wacht woord van uw opslag account-id](storage-files-identity-ad-ds-update-password.md) van het ad-account bij te werken vóór de maximale wachtwoord duur. U kunt overwegen om [een nieuwe AD-organisatie-eenheid (OE) in AD te maken](/powershell/module/addsadministration/new-adorganizationalunit?view=win10-ps) en het verloop beleid voor wacht woorden op [computer accounts](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj852252(v=ws.11)) of service-aanmeldings accounts dienovereenkomstig uit te scha kelen. 
 
 ```PowerShell
 #Change the execution policy to unblock importing AzFilesHybrid.psm1 module
@@ -89,7 +89,7 @@ Als u het bovenstaande script al hebt uitgevoerd `Join-AzStorageAccountForAuth` 
 
 ### <a name="checking-environment"></a>Omgeving controleren
 
-Eerst moet u de status van uw omgeving controleren. U moet in het bijzonder controleren of [Active Directory Power shell](https://docs.microsoft.com/powershell/module/addsadministration/?view=win10-ps) is geïnstalleerd en of de shell wordt uitgevoerd met beheerders bevoegdheden. Controleer vervolgens of de [Az.Storage 2.0-module](https://www.powershellgallery.com/packages/Az.Storage/2.0.0) is geïnstalleerd, en installeer deze als dit niet het geval is. Nadat u deze controles hebt voltooid, controleert u uw AD DS om te zien of er een [computer account](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (standaard) of een [service aanmeldings account](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts) is dat al is gemaakt met SPN/UPN als CIFS/uw-Storage-account-name. file. core. Windows. net. Als het account niet bestaat, maakt u er een zoals beschreven in de volgende sectie.
+Eerst moet u de status van uw omgeving controleren. U moet in het bijzonder controleren of [Active Directory Power shell](/powershell/module/addsadministration/?view=win10-ps) is geïnstalleerd en of de shell wordt uitgevoerd met beheerders bevoegdheden. Controleer vervolgens of de [Az.Storage 2.0-module](https://www.powershellgallery.com/packages/Az.Storage/2.0.0) is geïnstalleerd, en installeer deze als dit niet het geval is. Nadat u deze controles hebt voltooid, controleert u uw AD DS om te zien of er een [computer account](/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (standaard) of een [service aanmeldings account](/windows/win32/ad/about-service-logon-accounts) is dat al is gemaakt met SPN/UPN als CIFS/uw-Storage-account-name. file. core. Windows. net. Als het account niet bestaat, maakt u er een zoals beschreven in de volgende sectie.
 
 ### <a name="creating-an-identity-representing-the-storage-account-in-your-ad-manually"></a>Een identiteit maken die het opslag account in uw AD hand matig weergeeft
 

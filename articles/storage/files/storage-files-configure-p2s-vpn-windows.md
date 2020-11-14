@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: da49d1c94584393bfef066d61c1caf360b249c3b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6253deb53229172cd499a6aa14b8d8f19bc07b63
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85515325"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629254"
 ---
 # <a name="configure-a-point-to-site-p2s-vpn-on-windows-for-use-with-azure-files"></a>Een punt-naar-site-VPN (P2S) in Windows configureren voor gebruik met Azure Files
 U kunt een punt-naar-site-VPN-verbinding (P2S) gebruiken om uw Azure-bestands shares te koppelen via SMB van buiten Azure, zonder dat u poort 445 hoeft te openen. Een punt-naar-site-VPN-verbinding is een VPN-verbinding tussen Azure en een afzonderlijke client. Als u een punt-naar-site-VPN-verbinding met Azure Files wilt gebruiken, moet er een punt-naar-site-VPN-verbinding worden geconfigureerd voor elke client die verbinding wil maken. Als u veel clients hebt die verbinding moeten maken met uw Azure-bestands shares van uw on-premises netwerk, kunt u een S2S-VPN-verbinding (site-naar-site) gebruiken in plaats van een punt-naar-site-verbinding voor elke client. Zie [een site-naar-site-VPN configureren voor gebruik met Azure files voor](storage-files-configure-s2s-vpn.md)meer informatie.
@@ -22,7 +22,7 @@ We raden u ten zeerste aan om [netwerk overwegingen te lezen voor directe toegan
 In het artikel worden de stappen beschreven voor het configureren van een punt-naar-site-VPN in Windows (Windows-client en Windows Server) om Azure-bestands shares rechtstreeks on-premises te koppelen. Als u Azure File Sync verkeer via een VPN wilt omleiden, raadpleegt u [Azure file sync proxy-en Firewall instellingen configureren](storage-sync-files-firewall-and-proxy.md).
 
 ## <a name="prerequisites"></a>Vereisten
-- De meest recente versie van de module Azure PowerShell. Voor meer informatie over het installeren van de Azure PowerShell, raadpleegt u [de module Azure PowerShell installeren](https://docs.microsoft.com/powershell/azure/install-az-ps) en selecteert u uw besturings systeem. Als u liever de Azure CLI in Windows gebruikt, kunt u de onderstaande instructies echter weer geven voor Azure PowerShell.
+- De meest recente versie van de module Azure PowerShell. Voor meer informatie over het installeren van de Azure PowerShell, raadpleegt u [de module Azure PowerShell installeren](/powershell/azure/install-az-ps) en selecteert u uw besturings systeem. Als u liever de Azure CLI in Windows gebruikt, kunt u de onderstaande instructies echter weer geven voor Azure PowerShell.
 
 - Een Azure-bestands share die u on-premises wilt koppelen. Azure-bestands shares worden geïmplementeerd in opslag accounts. Dit zijn beheer constructies die een gedeelde opslag groep vertegenwoordigen, waarbij u meerdere bestands shares en andere opslag resources, zoals BLOB-containers of wacht rijen, kunt implementeren. Meer informatie over het implementeren van Azure-bestands shares en opslag accounts vindt u in [een Azure-bestands share maken](storage-how-to-create-file-share.md).
 
@@ -212,7 +212,7 @@ Export-PfxCertificate `
 ```
 
 ## <a name="configure-the-vpn-client"></a>De VPN-client configureren
-De gateway van het virtuele netwerk van Azure maakt een downloadbaar pakket met configuratie bestanden die nodig zijn om de VPN-verbinding op uw lokale Windows-computer te initialiseren. De VPN-verbinding wordt geconfigureerd met de functie [altijd op VPN](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/) van Windows 10/Windows Server 2016 +. Dit pakket bevat ook uitvoer bare pakketten die de verouderde Windows VPN-client configureren, als dat nodig is. In deze hand leiding wordt altijd op VPN gebruikt in plaats van de verouderde Windows VPN-client als de always on VPN-client toestaan dat eind gebruikers verbinding maken met of de verbinding verbreken met de Azure VPN zonder beheerders machtigingen voor hun computer. 
+De gateway van het virtuele netwerk van Azure maakt een downloadbaar pakket met configuratie bestanden die nodig zijn om de VPN-verbinding op uw lokale Windows-computer te initialiseren. De VPN-verbinding wordt geconfigureerd met de functie [altijd op VPN](/windows-server/remote/remote-access/vpn/always-on-vpn/) van Windows 10/Windows Server 2016 +. Dit pakket bevat ook uitvoer bare pakketten die de verouderde Windows VPN-client configureren, als dat nodig is. In deze hand leiding wordt altijd op VPN gebruikt in plaats van de verouderde Windows VPN-client als de always on VPN-client toestaan dat eind gebruikers verbinding maken met of de verbinding verbreken met de Azure VPN zonder beheerders machtigingen voor hun computer. 
 
 Met het volgende script wordt het client certificaat geïnstalleerd dat vereist is voor verificatie van de virtuele netwerk gateway, het downloaden en installeren van het VPN-pakket. Vergeet niet om `<computer1>` `<computer2>` de gewenste computers te vervangen. U kunt dit script uitvoeren op net zoveel computers als gewenst door meer Power shell-sessies toe te voegen aan de `$sessions` matrix. Het account dat u gebruikt, moet een beheerder zijn op elk van deze machines. Als een van deze computers de lokale computer is waarop u het script uitvoert, moet u het script uitvoeren vanuit een Power shell-sessie met verhoogde bevoegdheden. 
 

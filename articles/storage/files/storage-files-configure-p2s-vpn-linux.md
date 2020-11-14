@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 685373203da14a6aa83c608d90d6416ab2b30ae4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 74422318718e318a00d7bd7ebaf8e4093ef75aa6
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85515296"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629271"
 ---
 # <a name="configure-a-point-to-site-p2s-vpn-on-linux-for-use-with-azure-files"></a>Een punt-naar-site-VPN (P2S) op Linux configureren voor gebruik met Azure Files
 U kunt een punt-naar-site-VPN-verbinding (P2S) gebruiken om uw Azure-bestands shares te koppelen via SMB van buiten Azure, zonder dat u poort 445 hoeft te openen. Een punt-naar-site-VPN-verbinding is een VPN-verbinding tussen Azure en een afzonderlijke client. Als u een punt-naar-site-VPN-verbinding met Azure Files wilt gebruiken, moet er een punt-naar-site-VPN-verbinding worden geconfigureerd voor elke client die verbinding wil maken. Als u veel clients hebt die verbinding moeten maken met uw Azure-bestands shares van uw on-premises netwerk, kunt u een S2S-VPN-verbinding (site-naar-site) gebruiken in plaats van een punt-naar-site-verbinding voor elke client. Zie [een site-naar-site-VPN configureren voor gebruik met Azure files voor](storage-files-configure-s2s-vpn.md)meer informatie.
@@ -22,7 +22,7 @@ We raden u ten zeerste aan [Azure files netwerk overzicht](storage-files-network
 In het artikel worden de stappen beschreven voor het configureren van een punt-naar-site-VPN op Linux om Azure-bestands shares rechtstreeks on-premises te koppelen. Als u Azure File Sync verkeer via een VPN wilt omleiden, raadpleegt u [Azure file sync proxy-en Firewall instellingen configureren](storage-sync-files-firewall-and-proxy.md).
 
 ## <a name="prerequisites"></a>Vereisten
-- De meest recente versie van de Azure CLI. Zie voor meer informatie over het installeren van de Azure CLI [de Azure POWERSHELL cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli) en selecteer uw besturings systeem. Als u liever de module Azure PowerShell gebruikt in Linux, kunt u de onderstaande instructies echter voor Azure CLI weer geven.
+- De meest recente versie van de Azure CLI. Zie voor meer informatie over het installeren van de Azure CLI [de Azure POWERSHELL cli installeren](/cli/azure/install-azure-cli) en selecteer uw besturings systeem. Als u liever de module Azure PowerShell gebruikt in Linux, kunt u de onderstaande instructies echter voor Azure CLI weer geven.
 
 - Een Azure-bestands share die u on-premises wilt koppelen. Azure-bestands shares worden geïmplementeerd in opslag accounts. Dit zijn beheer constructies die een gedeelde opslag groep vertegenwoordigen, waarbij u meerdere bestands shares en andere opslag resources, zoals BLOB-containers of wacht rijen, kunt implementeren. Meer informatie over het implementeren van Azure-bestands shares en opslag accounts vindt u in [een Azure-bestands share maken](storage-how-to-create-file-share.md).
 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/12/2020
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 85c9111b0b16667e847aaf70d746e87fe524ef87
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 014c9759756a1da922a5141f064991827d593208
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592920"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630257"
 ---
 # <a name="upload-and-index-your-videos"></a>Uw video's uploaden en indexeren  
 
@@ -66,7 +66,7 @@ Gebruik de [video](https://api-portal.videoindexer.ai/docs/services/operations/o
 
 ### <a name="configurations-and-params"></a>Configuraties en parameters
 
-Deze sectie beschrijft een aantal van de optionele parameters en wanneer u deze het best instelt.
+Deze sectie beschrijft een aantal van de optionele parameters en wanneer u deze het best instelt. Zie de video-API [uploaden](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) voor meer informatie over de meest recente para meters.
 
 #### <a name="externalid"></a>externalID 
 

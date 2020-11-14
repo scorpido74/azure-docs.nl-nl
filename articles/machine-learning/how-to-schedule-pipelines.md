@@ -1,7 +1,7 @@
 ---
 title: Azure Machine Learning pijp lijnen plannen
 titleSuffix: Azure Machine Learning
-description: Plan Azure Machine Learning pijp lijnen met behulp van de Azure Machine Learning SDK voor python. Met geplande pijp lijnen kunt u routines automatiseren, tijdrovende taken zoals gegevens verwerking,-training en-bewaking.
+description: Met geplande pijp lijnen kunt u routines automatiseren, tijdrovende taken zoals gegevens verwerking,-training en-bewaking.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 11/12/2019
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 97d0f822e63bb6eb32b1cd2f211621af8ad1c4b8
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2c931aa6cd170c72654eb9ced6813d26e21ce5d0
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313994"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630308"
 ---
 # <a name="schedule-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>machine learning-pijp lijnen plannen met Azure Machine Learning SDK voor python
 

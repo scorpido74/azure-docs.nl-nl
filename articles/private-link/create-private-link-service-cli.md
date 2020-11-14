@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 2cfc746d883b565fe7a082a316ce314f385225df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a2b97bcc9fe902480364ade19efdae863556ac1e
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91358148"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629424"
 ---
 # <a name="create-a-private-link-service-using-azure-cli"></a>Een persoonlijke koppelings service maken met behulp van Azure CLI
 In dit artikel wordt beschreven hoe u een persoonlijke koppelings service maakt in azure met behulp van Azure CLI.
@@ -23,13 +23,13 @@ Als u ervoor kiest om Azure CLI lokaal te installeren en te gebruiken, moet u vo
 ## <a name="create-a-private-link-service"></a>Een Private Link-service maken
 ### <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-Voordat u een virtueel netwerk kunt maken, moet u een resourcegroep maken die het virtuele netwerk host. Maak een resourcegroep maken met [az group create](/cli/azure/group). Dit voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *westcentralus*:
+Voordat u een virtueel netwerk kunt maken, moet u een resourcegroep maken die het virtuele netwerk host. Maak een resourcegroep maken met [az group create](/cli/azure/group). Dit voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *westcentralus* :
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westcentralus
 ```
 ### <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
-Maak een virtueel netwerk met [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create). In dit voor beeld wordt een standaard virtueel netwerk gemaakt met de naam *myVirtualNetwork* met één subnet met de naam *mySubnet*:
+Maak een virtueel netwerk met [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create). In dit voor beeld wordt een standaard virtueel netwerk gemaakt met de naam *myVirtualNetwork* met één subnet met de naam *mySubnet* :
 
 ```azurecli-interactive
 az network vnet create --resource-group myResourceGroup --name myVirtualNetwork --address-prefix 10.0.0.0/16  
@@ -78,7 +78,7 @@ Een load balancer-regel definieert de front-end-IP-configuratie voor het binnenk
 ```
 ### <a name="create-backend-servers"></a>Back-endservers maken
 
-In dit voor beeld hebben we geen betrekking op het maken van virtuele machines. U kunt de stappen in [een interne Load Balancer maken om taken te verdelen over vm's met behulp van Azure cli](../load-balancer/load-balancer-get-started-ilb-arm-cli.md#create-servers-for-the-backend-address-pool) om twee virtuele machines te maken die moeten worden gebruikt als back-endservers voor de Load Balancer. 
+In dit voor beeld hebben we geen betrekking op het maken van virtuele machines. U kunt de stappen in Quick Start volgen [: Maak een interne Load Balancer voor het laden van vm's met behulp van Azure cli](/load-balancer/quickstart-load-balancer-standard-internal-cli#create-backend-servers) om twee virtuele machines te maken die moeten worden gebruikt als back-endservers voor de Load Balancer. 
 
 
 ### <a name="disable-private-link-service-network-policies-on-subnet"></a>Particuliere koppeling service-netwerk beleid op subnet uitschakelen 
@@ -111,7 +111,7 @@ Vervolgens laten we zien hoe u deze service kunt toewijzen aan een persoonlijk e
 ## <a name="private-endpoints"></a>Privé-eindpunten
 
 ### <a name="create-the-virtual-network"></a>Het virtuele netwerk maken 
-Maak een virtueel netwerk met [AZ Network vnet Create](/cli/azure/network/vnet#az-network-vnet-create). In dit voor beeld wordt een virtueel netwerk gemaakt met de naam *myPEVNet*   in de resource groep met de naam *myResourcegroup*: 
+Maak een virtueel netwerk met [AZ Network vnet Create](/cli/azure/network/vnet#az-network-vnet-create). In dit voor beeld wordt een virtueel netwerk gemaakt met de naam  *myPEVNet*   in de resource groep met de naam *myResourcegroup* : 
 ```azurecli-interactive
 az network vnet create \
 --resource-group myResourceGroup \
@@ -119,7 +119,7 @@ az network vnet create \
 --address-prefix 10.0.0.0/16  
 ```
 ### <a name="create-the-subnet"></a>Het subnet maken 
-Maak een subnet in een virtueel netwerk met [AZ Network vnet subnet Create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create). In dit voor beeld wordt een subnet met de naam *mySubnet*gemaakt in het virtuele netwerk met de naam   *myPEVnet* in de resource groep met de naam *myResourcegroup*: 
+Maak een subnet in een virtueel netwerk met [AZ Network vnet subnet Create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create). In dit voor beeld wordt een subnet met de naam  *mySubnet* gemaakt in het virtuele netwerk met de naam   *myPEVnet* in de resource groep met de naam *myResourcegroup* : 
 
 ```azurecli-interactive 
 az network vnet subnet create \
@@ -152,7 +152,7 @@ az network private-endpoint create \
 --location westcentralus 
 ```
 U kunt de *privé-verbinding-resource-id* ophalen met behulp `az network private-link-service show` van de service private link. De ID ziet er als volgt uit:   
-/subscriptions/subID/resourceGroups/*resourcegroupname*/providers/Microsoft.Network/privateLinkServices/**privatelinkservicename** 
+/subscriptions/subID/resourceGroups/ *resourcegroupname* /providers/Microsoft.Network/privateLinkServices/ **privatelinkservicename** 
  
 ## <a name="show-private-link-service-connections"></a>Verbindingen met de persoonlijke koppelings service weer geven 
  

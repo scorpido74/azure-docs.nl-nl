@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: c457dacd947c7af8a6be94205ed135ce04a49a06
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 194b0f2ff94197fe11c189e97dbc65c9d0367932
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85509503"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630580"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>Geregistreerde servers beheren met Azure File Sync
 Met Azure File Sync kunt u bestandsshares van uw organisatie in Azure Files centraliseren zonder in te leveren op de flexibiliteit, prestaties en compatibiliteit van een on-premises bestandsserver. Dit doet u door uw Windows-servers te transformeren naar een snelle cache van uw Azure-bestands share. U kunt elk protocol dat beschikbaar is in Windows Server gebruiken voor lokale toegang tot uw gegevens (inclusief SMB, NFS en FTPS) en u kunt zoveel caches hebben als waar ook ter wereld u nodig hebt.
@@ -20,7 +20,7 @@ Met Azure File Sync kunt u bestandsshares van uw organisatie in Azure Files cent
 In het volgende artikel ziet u hoe u een server met een opslag synchronisatie service registreert en beheert. Zie [Azure file sync implementeren](storage-sync-files-deployment-guide.md) voor informatie over het implementeren van Azure File Sync End-to-end.
 
 ## <a name="registerunregister-a-server-with-storage-sync-service"></a>Een server bij de opslag synchronisatie service registreren of de registratie ervan opheffen
-Bij het registreren van een server met Azure File Sync wordt een vertrouwens relatie tussen Windows Server en Azure tot stand gebracht. Deze relatie kan vervolgens worden gebruikt om *Server eindpunten* te maken op de server, die specifieke mappen vertegenwoordigen die moeten worden gesynchroniseerd met een Azure-bestands share (ook wel een *Cloud-eind punt*genoemd). 
+Bij het registreren van een server met Azure File Sync wordt een vertrouwens relatie tussen Windows Server en Azure tot stand gebracht. Deze relatie kan vervolgens worden gebruikt om *Server eindpunten* te maken op de server, die specifieke mappen vertegenwoordigen die moeten worden gesynchroniseerd met een Azure-bestands share (ook wel een *Cloud-eind punt* genoemd). 
 
 ### <a name="prerequisites"></a>Vereisten
 Als u een server wilt registreren bij een opslag synchronisatie service, moet u eerst uw server voorbereiden met de vereiste onderdelen:
@@ -32,7 +32,7 @@ Als u een server wilt registreren bij een opslag synchronisatie service, moet u 
     
     ![Serverbeheer gebruikers interface met de verbeterde beveiliging van Internet Explorer gemarkeerd](media/storage-sync-files-server-registration/server-manager-ie-config.png)
 
-* Zorg ervoor dat de module Azure PowerShell is geïnstalleerd op uw server. Als uw server lid is van een failovercluster, moet op elk knoop punt in het cluster de module AZ worden vereist. Meer informatie over het installeren van de AZ-module vindt u in de [Azure PowerShell installeren en configureren](https://docs.microsoft.com/powershell/azure/install-Az-ps).
+* Zorg ervoor dat de module Azure PowerShell is geïnstalleerd op uw server. Als uw server lid is van een failovercluster, moet op elk knoop punt in het cluster de module AZ worden vereist. Meer informatie over het installeren van de AZ-module vindt u in de [Azure PowerShell installeren en configureren](/powershell/azure/install-Az-ps).
 
     > [!Note]  
     > U kunt het beste de nieuwste versie van de AZ Power shell-module gebruiken om een server te registreren of de registratie ervan ongedaan te maken. Als het pakket AZ eerder op deze server is geïnstalleerd (en de Power shell-versie op deze server 5. * of hoger is), kunt u de `Update-Module` cmdlet gebruiken om dit pakket bij te werken. 
@@ -58,7 +58,7 @@ Als u een server wilt registreren bij een opslag synchronisatie service, moet u 
 ```    
 
 ### <a name="register-a-server-with-storage-sync-service"></a>Een server met de opslag synchronisatie service registreren
-Voordat een server kan worden gebruikt als een *Server eindpunt* in een Azure file sync *synchronisatie groep*, moet deze zijn geregistreerd bij een *opslag synchronisatie service*. Een server kan slechts met één opslag synchronisatie service tegelijk worden geregistreerd.
+Voordat een server kan worden gebruikt als een *Server eindpunt* in een Azure file sync *synchronisatie groep* , moet deze zijn geregistreerd bij een *opslag synchronisatie service*. Een server kan slechts met één opslag synchronisatie service tegelijk worden geregistreerd.
 
 #### <a name="install-the-azure-file-sync-agent"></a>Azure File Sync-agent installeren
 1. [Down load de Azure file sync-agent](https://go.microsoft.com/fwlink/?linkid=858257).
@@ -180,10 +180,10 @@ Get-StorageSyncNetworkLimit | ForEach-Object { Remove-StorageSyncNetworkLimit -I
 ```
 
 ### <a name="use-windows-server-storage-qos"></a>QoS voor Windows Server-opslag gebruiken 
-Als Azure File Sync wordt gehost op een virtuele machine die wordt uitgevoerd op een Windows Server Virtualization-Host, kunt u QoS voor opslag (Quality of service voor opslag) gebruiken om opslag-i/o-verbruik te reguleren. Het QoS-beleid voor opslag kan worden ingesteld als een maximum (of limiet, bijvoorbeeld hoe StorageSyncNetwork limiet wordt afgedwongen) of als een minimum (of reserve ring). Als u een minimum instelt in plaats van Maxi maal, kan Azure File Sync burst gebruiken voor het gebruik van beschik bare opslag bandbreedte als andere workloads deze niet gebruiken. Zie [opslag Quality of service](https://docs.microsoft.com/windows-server/storage/storage-qos/storage-qos-overview)voor meer informatie.
+Als Azure File Sync wordt gehost op een virtuele machine die wordt uitgevoerd op een Windows Server Virtualization-Host, kunt u QoS voor opslag (Quality of service voor opslag) gebruiken om opslag-i/o-verbruik te reguleren. Het QoS-beleid voor opslag kan worden ingesteld als een maximum (of limiet, bijvoorbeeld hoe StorageSyncNetwork limiet wordt afgedwongen) of als een minimum (of reserve ring). Als u een minimum instelt in plaats van Maxi maal, kan Azure File Sync burst gebruiken voor het gebruik van beschik bare opslag bandbreedte als andere workloads deze niet gebruiken. Zie [opslag Quality of service](/windows-server/storage/storage-qos/storage-qos-overview)voor meer informatie.
 
 ## <a name="see-also"></a>Zie ook
 - [Planning voor een Azure Files Sync-implementatie](storage-sync-files-planning.md)
-- [Azure Files SYNC implementeren](storage-sync-files-deployment-guide.md)
+- [Azure File Sync implementeren](storage-sync-files-deployment-guide.md)
 - [Azure File Sync bewaken](storage-sync-files-monitoring.md)
 - [Problemen oplossen met Azure File Sync](storage-sync-files-troubleshoot.md)

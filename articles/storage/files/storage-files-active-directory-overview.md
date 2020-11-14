@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: 48e9fc4c1efa3517f5de46b7198c868a22331c79
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 93dd73b5a9149474be771537f47b448c5c4d7d8f
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486386"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629322"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>Overzicht van Azure Files verificatie opties op basis van een identiteit voor SMB-toegang
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -26,11 +26,11 @@ Het is handig om enkele belang rijke termen te begrijpen met betrekking tot Azur
 
 -   **Kerberos-verificatie**
 
-    Kerberos is een authenticatieprotocol dat wordt gebruikt om de identiteit van een gebruiker of host te controleren. Zie [overzicht van Kerberos-verificatie](https://docs.microsoft.com/windows-server/security/kerberos/kerberos-authentication-overview)voor meer informatie over Kerberos.
+    Kerberos is een authenticatieprotocol dat wordt gebruikt om de identiteit van een gebruiker of host te controleren. Zie [overzicht van Kerberos-verificatie](/windows-server/security/kerberos/kerberos-authentication-overview)voor meer informatie over Kerberos.
 
 -  **SMB-protocol (Server Message Block)**
 
-    SMB is een standaard protocol voor het delen van netwerk bestanden. SMB is ook bekend als common Internet File System of CIFS. Zie het [overzicht van micro soft SMB-protocol en CIFS-protocol](https://docs.microsoft.com/windows/desktop/FileIO/microsoft-smb-protocol-and-cifs-protocol-overview)voor meer informatie over SMB.
+    SMB is een standaard protocol voor het delen van netwerk bestanden. SMB is ook bekend als common Internet File System of CIFS. Zie het [overzicht van micro soft SMB-protocol en CIFS-protocol](/windows/desktop/FileIO/microsoft-smb-protocol-and-cifs-protocol-overview)voor meer informatie over SMB.
 
 -   **Azure Active Directory (Azure AD)**
 
@@ -42,7 +42,7 @@ Het is handig om enkele belang rijke termen te begrijpen met betrekking tot Azur
 
 - **On-premises Active Directory Domain Services (AD DS)**
 
-    De integratie van on-premises Active Directory Domain Services (AD DS) met Azure Files biedt de methoden voor het opslaan van Directory gegevens wanneer deze beschikbaar zijn voor netwerk gebruikers en beheerders. Beveiliging is geïntegreerd met AD DS via aanmeldings verificatie en toegangs beheer voor objecten in de Directory. Met één netwerk aanmelding kunnen beheerders Directory gegevens en organisatie beheren in hun netwerk, en geautoriseerde netwerk gebruikers kunnen overal toegang krijgen tot bronnen in het netwerk. AD DS wordt doorgaans goedgekeurd door ondernemingen in on-premises omgevingen en AD DS referenties worden gebruikt als de identiteit voor toegangs beheer. Zie [Active Directory Domain Services Overview](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)voor meer informatie.
+    De integratie van on-premises Active Directory Domain Services (AD DS) met Azure Files biedt de methoden voor het opslaan van Directory gegevens wanneer deze beschikbaar zijn voor netwerk gebruikers en beheerders. Beveiliging is geïntegreerd met AD DS via aanmeldings verificatie en toegangs beheer voor objecten in de Directory. Met één netwerk aanmelding kunnen beheerders Directory gegevens en organisatie beheren in hun netwerk, en geautoriseerde netwerk gebruikers kunnen overal toegang krijgen tot bronnen in het netwerk. AD DS wordt doorgaans goedgekeurd door ondernemingen in on-premises omgevingen en AD DS referenties worden gebruikt als de identiteit voor toegangs beheer. Zie [Active Directory Domain Services Overview](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)voor meer informatie.
 
 -   **Azure RBAC (op rollen gebaseerd toegangsbeheer van Azure)**
 
@@ -116,7 +116,7 @@ Het volgende diagram vertegenwoordigt de werk stroom voor Azure AD DS-verificati
 
 - Ten tweede kunnen alle gebruikers die in azure AD bestaan, worden geverifieerd en geautoriseerd. De gebruiker kan alleen Cloud of Hybrid zijn. De synchronisatie van Azure AD naar Azure AD DS wordt beheerd door het platform zonder dat er gebruikers configuratie is vereist. De client moet echter lid zijn van een domein aan Azure AD DS en kan niet worden opgenomen in azure AD. 
 
-:::image type="content" source="media/storage-files-active-directory-overview/Files-Azure-AD-DS-Diagram.png" alt-text="Diagram van on-premises AD DS verificatie voor Azure-bestands shares via SMB.":::
+:::image type="content" source="media/storage-files-active-directory-overview/Files-Azure-AD-DS-Diagram.png" alt-text="Diagram":::
 
 ### <a name="enable-identity-based-authentication"></a>Verificatie op basis van identiteit inschakelen
 
@@ -128,7 +128,7 @@ Als Azure AD DS of een on-premises AD DS-verificatie is ingeschakeld, kunt u de 
 
 ### <a name="configure-directory-or-file-level-permissions-for-azure-files"></a>Machtigingen op Directory-of bestands niveau configureren voor Azure Files
 
-Azure-bestands shares dwingen standaard Windows-bestands machtigingen af op Directory-en bestands niveau, met inbegrip van de hoofdmap. De configuratie van machtigingen op Directory-of bestands niveau wordt zowel voor SMB als voor de REST ondersteund. Koppel de doel bestands share van uw VM en Configureer machtigingen met behulp van Windows Verkenner, Windows [icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls)of de [set-ACL-](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-acl?view=powershell-6) opdracht.
+Azure-bestands shares dwingen standaard Windows-bestands machtigingen af op Directory-en bestands niveau, met inbegrip van de hoofdmap. De configuratie van machtigingen op Directory-of bestands niveau wordt zowel voor SMB als voor de REST ondersteund. Koppel de doel bestands share van uw VM en Configureer machtigingen met behulp van Windows Verkenner, Windows [icacls](/windows-server/administration/windows-commands/icacls)of de [set-ACL-](/powershell/module/microsoft.powershell.security/get-acl?view=powershell-6) opdracht.
 
 ### <a name="use-the-storage-account-key-for-superuser-permissions"></a>De sleutel van het opslag account voor super gebruiker-machtigingen gebruiken
 
@@ -139,7 +139,7 @@ Een gebruiker met de sleutel van het opslag account kan toegang krijgen tot Azur
 
 ### <a name="preserve-directory-and-file-acls-when-importing-data-to-azure-file-shares"></a>Map-en bestands-Acl's behouden bij het importeren van gegevens in azure-bestands shares
 
-Azure Files ondersteunt het behouden van Acl's op Directory-of bestands niveau bij het kopiëren van gegevens naar Azure-bestands shares. U kunt Acl's op een map of bestand naar Azure-bestands shares kopiëren met behulp van Azure File Sync of gemeen schappelijke sluit voor bestands verplaatsing. U kunt [Robocopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy) bijvoorbeeld gebruiken met de `/copy:s` vlag voor het kopiëren van gegevens en Acl's naar een Azure-bestands share. Acl's blijven standaard behouden, u bent niet verplicht om verificatie op basis van een identiteit in te scha kelen voor uw opslag account om Acl's te behouden.
+Azure Files ondersteunt het behouden van Acl's op Directory-of bestands niveau bij het kopiëren van gegevens naar Azure-bestands shares. U kunt Acl's op een map of bestand naar Azure-bestands shares kopiëren met behulp van Azure File Sync of gemeen schappelijke sluit voor bestands verplaatsing. U kunt [Robocopy](/windows-server/administration/windows-commands/robocopy) bijvoorbeeld gebruiken met de `/copy:s` vlag voor het kopiëren van gegevens en Acl's naar een Azure-bestands share. Acl's blijven standaard behouden, u bent niet verplicht om verificatie op basis van een identiteit in te scha kelen voor uw opslag account om Acl's te behouden.
 
 ## <a name="pricing"></a>Prijzen
 Er worden geen extra kosten in rekening gebracht voor het inschakelen van verificatie op basis van identiteit via SMB voor uw opslag account. Zie [Azure files prijzen](https://azure.microsoft.com/pricing/details/storage/files/) en [Azure AD Domain Services prijzen](https://azure.microsoft.com/pricing/details/active-directory-ds/)voor meer informatie over prijzen.

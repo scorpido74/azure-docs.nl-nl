@@ -8,12 +8,12 @@ ms.date: 05/29/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 6c611d65c30cceba5fd6ff409ef71b906cd8674c
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 5acb8e347046780c84f0aa324b997abb5e2aa840
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94330305"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629220"
 ---
 # <a name="enable-and-create-large-file-shares"></a>Grote bestands shares inschakelen en maken
 
@@ -22,8 +22,8 @@ Wanneer u grote bestands shares inschakelt voor uw opslag account, kunnen uw bes
 ## <a name="prerequisites"></a>Vereisten
 
 - Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
-- Als u van plan bent om de Artikel CLI te gebruiken, [installeert u de nieuwste versie](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
-- Als u de module Azure PowerShell wilt gebruiken, [installeert u de nieuwste versie](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-4.6.0).
+- Als u van plan bent om de Artikel CLI te gebruiken, [installeert u de nieuwste versie](/cli/azure/install-azure-cli?view=azure-cli-latest).
+- Als u de module Azure PowerShell wilt gebruiken, [installeert u de nieuwste versie](/powershell/azure/install-az-ps?view=azps-4.6.0).
 
 ## <a name="restrictions"></a>Beperkingen
 
@@ -65,7 +65,7 @@ Het inschakelen van grote bestands shares voor een account is een onomkeerbaar p
 
 # <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
-Installeer eerst [de nieuwste versie van de Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) zodat u grote bestands shares kunt inschakelen.
+Installeer eerst [de nieuwste versie van de Azure cli](/cli/azure/install-azure-cli?view=azure-cli-latest) zodat u grote bestands shares kunt inschakelen.
 
 Als u een opslag account wilt maken waarvoor grote bestands shares zijn ingeschakeld, gebruikt u de volgende opdracht. Vervang `<yourStorageAccountName>` , `<yourResourceGroup>` en `<yourDesiredRegion>` met uw gegevens.
 
@@ -76,7 +76,7 @@ az storage account create --name <yourStorageAccountName> -g <yourResourceGroup>
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Installeer eerst [de meest recente versie van Power shell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.0.0) , zodat u grote bestands shares kunt inschakelen.
+Installeer eerst [de meest recente versie van Power shell](/powershell/azure/install-az-ps?view=azps-3.0.0) , zodat u grote bestands shares kunt inschakelen.
 
 Als u een opslag account wilt maken waarvoor grote bestands shares zijn ingeschakeld, gebruikt u de volgende opdracht. Vervang `<yourStorageAccountName>` , `<yourResourceGroup>` en `<yourDesiredRegion>` met uw gegevens.
 

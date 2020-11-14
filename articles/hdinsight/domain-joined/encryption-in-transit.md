@@ -7,19 +7,16 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/24/2020
-ms.openlocfilehash: 6f043a1cb870d003e371d2f20d0e1f6614c9201e
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: ac210adbc29075f27739b08dcf83eeedbeea3ed5
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92628980"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630359"
 ---
 # <a name="ipsec-encryption-in-transit-for-azure-hdinsight"></a>IPSec-versleuteling in transit voor Azure HDInsight
 
 In dit artikel wordt de implementatie van versleuteling in transit beschreven voor communicatie tussen Azure HDInsight-cluster knooppunten.
-
-> [!Note]
-> Versleuteling in transit is momenteel ingeschakeld voor de volgende regio's: VS-Oost, Zuid-Centraal VS, West-VS2.
 
 ## <a name="background"></a>Achtergrond
 
@@ -42,7 +39,7 @@ Voer de volgende stappen uit om een nieuw cluster te maken met versleuteling in 
 
 1. Schakel op het tabblad **beveiliging en netwerk** het selectie vakje **versleuteling in transit inschakelen in** .
 
-    :::image type="content" source="media/encryption-in-transit/enable-encryption-in-transit.png" alt-text="Het tabblad Beveiliging en netwerk voor het cluster maken.":::
+    :::image type="content" source="media/encryption-in-transit/enable-encryption-in-transit.png" alt-text="Cluster maken: Schakel versleuteling in door Voer in.":::
 
 ### <a name="create-a-cluster-with-encryption-in-transit-enabled-through-the-azure-cli"></a>Een cluster maken met versleuteling in transit dat is ingeschakeld via de Azure CLI
 
@@ -50,7 +47,7 @@ Versleuteling in transit is ingeschakeld met behulp van de `isEncryptionInTransi
 
 U kunt [een voorbeeld sjabloon en een parameter bestand downloaden](https://github.com/Azure-Samples/hdinsight-enterprise-security). Voordat u de sjabloon en het Azure CLI-code fragment hieronder gebruikt, vervangt u de volgende tijdelijke aanduidingen door de juiste waarden:
 
-| Tijdelijke aanduiding | Beschrijving |
+| Tijdelijke aanduiding | Description |
 |---|---|
 | `<SUBSCRIPTION_ID>` | De ID van uw Azure-abonnement |
 | `<RESOURCE_GROUP>` | De resource groep waar u het nieuwe cluster en opslag account wilt maken. |

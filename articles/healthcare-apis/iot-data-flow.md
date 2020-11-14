@@ -6,18 +6,18 @@ author: ms-puneet-nagpal
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: conceptual
-ms.date: 07/31/2020
+ms.date: 11/13/2020
 ms.author: punagpal
-ms.openlocfilehash: 3cae648e3c2bddbafec555621d97575a007cfeb4
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 310be095af10f5ed5860c4f627caa0373be55835
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93394863"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629662"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-data-flow"></a>Gegevensstroom van Azure IoT Connector for FHIR (preview)
 
-Dit artikel bevat een overzicht van de gegevens stroom in azure IoT connector voor FHIR *. Meer informatie over de verschillende fasen voor gegevens verwerking binnen Azure IoT connector voor FHIR waarmee apparaatgegevens worden omgezet in op FHIR gebaseerde [observatie](https://www.hl7.org/fhir/observation.html) resources.
+In dit artikel vindt u een overzicht van de gegevens stroom in azure IoT connector voor snelle bronnen voor de gezondheids zorg (FHIR&#174;) *. Meer informatie over de verschillende fasen voor gegevens verwerking binnen Azure IoT connector voor FHIR waarmee apparaatgegevens worden omgezet in op FHIR gebaseerde [observatie](https://www.hl7.org/fhir/observation.html) resources.
 
 ![Gegevensstroom van Azure IoT Connector for FHIR](media/concepts-iot-data-flow/iot-connector-data-flow.png)
 
@@ -44,7 +44,7 @@ De groepering van de apparaat-id en het meet type maken gebruik van het meting t
 > [!NOTE]
 > De waarde van de tijds periode wordt standaard ingesteld op 15 minuten en kan niet worden geconfigureerd voor de preview-versie.
 
-## <a name="transform"></a>Transformeren
+## <a name="transform"></a>Transformatie
 In het transformatie stadium worden gegroepeerde genormaliseerde berichten verwerkt via FHIR-toewijzings sjablonen. Berichten die overeenkomen met een sjabloon type worden getransformeerd in FHIR-waarnemingen die zijn opgegeven via de toewijzing.
 
 Op dit moment wordt de bron van het [apparaat](https://www.hl7.org/fhir/device.html) , samen met de bijbehorende [patiënt](https://www.hl7.org/fhir/patient.html) resource, ook opgehaald van de FHIR-server met behulp van de apparaat-id die aanwezig is in het bericht. Deze resources worden toegevoegd als een verwijzing naar de observatie resource die wordt gemaakt.
@@ -64,6 +64,4 @@ Klik hieronder op de volgende stap voor meer informatie over het maken van FHIR.
 >[!div class="nextstepaction"]
 >[Toewijzingssjablonen in Azure IoT Connector for FHIR](iot-mapping-templates.md)
 
-*In Azure Portal wordt Azure IoT Connector for FHIR aangeduid als IoT Connector (preview).
-
-FHIR is het gedeponeerde handelsmerk van HL7 en wordt gebruikt met de toestemming van HL7.
+* In de Azure Portal wordt Azure IoT connector voor FHIR aangeduid als IoT-connector (preview). FHIR is een geregistreerd handels merk van HL7 en wordt gebruikt met de machtiging van HL7. 

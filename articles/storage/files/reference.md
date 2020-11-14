@@ -7,12 +7,12 @@ ms.date: 07/14/2020
 ms.service: storage
 ms.topic: conceptual
 ms.reviewer: ripohane
-ms.openlocfilehash: cbbd4960a498516182323748e6609b834b1d4884
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4fe6befbfc3c6f12cf804841052795647cd1f76a
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90014681"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629832"
 ---
 # <a name="azure-files-reference"></a>Referentie voor Azure Files
 
@@ -24,8 +24,8 @@ De volgende tabel bevat Naslag informatie en voorbeeld documentatie voor Azure F
 
 |  Versie  | Referentie documentatie | Pakket | Snelstart |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12. x | [Azure Files-client bibliotheek V12 voor .NET](/dotnet/api/overview/azure/storage.files.shares-readme) | [Pakket (NuGet)](https://www.nuget.org/packages/Azure.Storage.Files/) | &nbsp; |
-| 11. x | [Micro soft. Azure. storage. File-naam ruimte](/dotnet/api/microsoft.azure.storage.file) | [Pakket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.File/) | [Ontwikkelen voor Azure Files met .NET](/azure/storage/files/storage-dotnet-how-to-use-files) |
+| 12.x | [Azure Files-client bibliotheek V12 voor .NET](/dotnet/api/overview/azure/storage.files.shares-readme) | [Pakket (NuGet)](https://www.nuget.org/packages/Azure.Storage.Files/) | &nbsp; |
+| 11. x | [Micro soft. Azure. storage. File-naam ruimte](/dotnet/api/microsoft.azure.storage.file) | [Pakket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.File/) | [Ontwikkelen voor Azure Files met .NET](./storage-dotnet-how-to-use-files.md) |
 
 ### <a name="storage-management"></a>Opslagbeheer
 
@@ -49,8 +49,8 @@ De volgende tabel bevat Naslag informatie en voorbeeld documentatie voor Azure F
 
 |  Versie  | Referentie documentatie | Pakket | Snelstart |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12. x | [Client bibliotheek voor Java Azure Files](/java/api/overview/azure/storage-file-share-readme) | [Pakket (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-file-share) | &nbsp; |
-| 8.x | [com. micro soft. Azure. storage. File](/java/api/com.microsoft.azure.storage.file) | [Pakket (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage) | [Ontwikkelen voor Azure Files met Java](/azure/storage/files/storage-java-how-to-use-file-storage) |
+| 12.x | [Client bibliotheek voor Java Azure Files](/java/api/overview/azure/storage-file-share-readme) | [Pakket (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-file-share) | &nbsp; |
+| 8.x | [com. micro soft. Azure. storage. File](/java/api/com.microsoft.azure.storage.file) | [Pakket (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage) | [Ontwikkelen voor Azure Files met Java](./storage-java-how-to-use-file-storage.md) |
 
 ### <a name="storage-management"></a>Opslagbeheer
 
@@ -66,8 +66,8 @@ De volgende tabel bevat Naslag informatie en voorbeeld documentatie voor Azure F
 
 |  Versie  | Referentie documentatie | Pakket | Snelstart |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12. x | [Azure Storage-client bibliotheken V12 voor python](/azure/developer/python/sdk/storage/overview) | [Pakket (PyPI)](https://pypi.org/project/azure-storage-file/12.0.0b4/) | [Voorbeelden](/python/api/overview/azure/storage-file-share-readme#examples) |
-| 2.x | [Azure Storage-client bibliotheken v2 voor python](/azure/developer/python/sdk/storage/overview?view=storage-py-v2&preserve-view=true) | [Pakket (PyPI)](https://pypi.org/project/azure-storage-file/2.1.0/) | [Ontwikkelen voor Azure Files met Python](/azure/storage/files/storage-python-how-to-use-file-storage) |
+| 12.x | [Azure Storage-client bibliotheken V12 voor python](/azure/developer/python/sdk/storage/overview) | [Pakket (PyPI)](https://pypi.org/project/azure-storage-file/12.0.0b4/) | [Voorbeelden](/python/api/overview/azure/storage-file-share-readme#examples) |
+| 2.x | [Azure Storage-client bibliotheken v2 voor python](/azure/developer/python/sdk/storage/overview?view=storage-py-v2&preserve-view=true) | [Pakket (PyPI)](https://pypi.org/project/azure-storage-file/2.1.0/) | [Ontwikkelen voor Azure Files met Python](./storage-python-how-to-use-file-storage.md) |
 
 ## <a name="javascript-client-libraries"></a>Java script-client bibliotheken
 
@@ -75,7 +75,7 @@ De volgende tabel bevat Naslag informatie en voorbeeld documentatie voor Azure F
 
 |  Versie  | Referentie documentatie | Pakket | Snelstart |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12. x | [Azure Files-client bibliotheek voor Java script](/javascript/api/overview/azure/storage-file-share-readme) | [Package (npm)](https://www.npmjs.com/package/@azure/storage-file-share) | [Voorbeelden](/javascript/api/overview/azure/storage-file-share-readme#examples) |
+| 12.x | [Azure Files-client bibliotheek voor Java script](/javascript/api/overview/azure/storage-file-share-readme) | [Package (npm)](https://www.npmjs.com/package/@azure/storage-file-share) | [Voorbeelden](/javascript/api/overview/azure/storage-file-share-readme#examples) |
 | 10. x | [@azure/storage-file](/javascript/api/@azure/storage-file) | [Package (npm)](https://www.npmjs.com/package/@azure/storage-file) | &nbsp; |
 
 ## <a name="rest-apis"></a>REST-API’s

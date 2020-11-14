@@ -10,12 +10,12 @@ ms.service: storage
 ms.subservice: files
 services: storage
 tags: ''
-ms.openlocfilehash: 1c50f54491e0284005c4b762b0c4b35a8460f5ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d4f10745d90ccd83e7251af40d3e92a230f2fcd
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85511972"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629679"
 ---
 # <a name="azure-file-share--failed-to-delete-files-from-azure-file-share"></a>Azure-bestandsshare: verwijderen van bestanden uit de Azure-bestandsshare is mislukt
 
@@ -34,7 +34,7 @@ Onvoldoende quotum beschikbaar om deze opdracht te verwerken
 
 ## <a name="cause"></a>Oorzaak
 
-Fout 1816 treedt op wanneer de bovengrens van gelijktijdige geopende ingangen die zijn toegestaan voor een bestand, worden bereikt op de computer waarop de bestands share wordt gekoppeld. Zie de [Azure Storage controle lijst voor prestaties en schaal baarheid](https://docs.microsoft.com/azure/storage/blobs/storage-performance-checklist)voor meer informatie.
+Fout 1816 treedt op wanneer de bovengrens van gelijktijdige geopende ingangen die zijn toegestaan voor een bestand, worden bereikt op de computer waarop de bestands share wordt gekoppeld. Zie de [Azure Storage controle lijst voor prestaties en schaal baarheid](../blobs/storage-performance-checklist.md)voor meer informatie.
 
 ## <a name="resolution"></a>Oplossing
 
@@ -44,7 +44,7 @@ Verminder het aantal gelijktijdige open ingangen door enkele ingangen te sluiten
 
 ### <a name="install-the-latest-azure-powershell-module"></a>De nieuwste Azure PowerShell-module installeren
 
-* [De Azure PowerShell-module installeren](https://docs.microsoft.com/powershell/azure/install-az-ps)
+* [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps)
 
 ### <a name="connect-to-azure"></a>Verbinding maken met Azure:
 

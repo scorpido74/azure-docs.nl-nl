@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: d9cf7b3cf996e41f90e3a40a6ee08d0fd51c8457
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 78c7953ef6432d37542a7a8b06f226a07f2b701f
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85510343"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630478"
 ---
 # <a name="storsimple-1200-migration-to-azure-file-sync"></a>StorSimple 1200-migratie naar Azure File Sync
 
@@ -32,7 +32,7 @@ Azure File Sync is een micro soft-Cloud service, gebaseerd op twee hoofd onderde
 
 Dit artikel is gericht op de migratie stappen. Als u vóór de migratie meer wilt weten over Azure File Sync, raden we u aan om de volgende artikelen te lezen:
 
-* [Azure File Sync-overzicht](https://aka.ms/AFS "Overzicht")
+* [Azure File Sync-overzicht](./storage-sync-files-planning.md "Overzicht")
 * [Azure File Sync-implementatie handleiding](storage-sync-files-deployment-guide.md)
 
 ## <a name="migration-goals"></a>Migratiedoelen
@@ -155,7 +155,7 @@ Achtergrondbitmap
       /MIR
    :::column-end:::
    :::column span="1":::
-      Hiermee kan deze RoboCopy-opdracht verschillende keren worden uitgevoerd, opeenvolgend op hetzelfde doel/dezelfde bestemming. Hiermee wordt aangegeven wat er eerder is gekopieerd en wordt deze wegge laten. Alleen wijzigingen, toevoegingen en '*verwijderingen*' worden verwerkt, die zijn opgetreden sinds de laatste uitvoering. Als de opdracht nog niet eerder is uitgevoerd, wordt er niets wegge laten. Dit is een uitstekende optie voor bron locaties die nog steeds worden gebruikt en worden gewijzigd.
+      Hiermee kan deze RoboCopy-opdracht verschillende keren worden uitgevoerd, opeenvolgend op hetzelfde doel/dezelfde bestemming. Hiermee wordt aangegeven wat er eerder is gekopieerd en wordt deze wegge laten. Alleen wijzigingen, toevoegingen en ' *verwijderingen* ' worden verwerkt, die zijn opgetreden sinds de laatste uitvoering. Als de opdracht nog niet eerder is uitgevoerd, wordt er niets wegge laten. Dit is een uitstekende optie voor bron locaties die nog steeds worden gebruikt en worden gewijzigd.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -210,20 +210,20 @@ U bent klaar met het migreren van een share/groep shares naar een gemeen schappe
 U kunt proberen enkele van deze kopieën parallel uit te voeren. Het is raadzaam om het bereik van een Azure-bestands share tegelijk te verwerken.
 
 > [!WARNING]
-> Wanneer u alle gegevens van de StorSimple naar de Windows-Server hebt verplaatst en uw migratie is voltooid, gaat u terug naar ***alle***  synchronisatie groepen in de Azure Portal en past u de waarde voor het percentage beschik bare ruimte in de Cloud laag aan om iets beter geschikt te maken voor het gebruik van de cache, bijvoorbeeld 20%. 
+> Wanneer u alle gegevens van de StorSimple naar de Windows-Server hebt verplaatst en uw migratie is voltooid, gaat u terug naar * **alle** _ synchronisatie groepen in de Azure Portal en past u de waarde voor het percentage beschik bare ruimte in de Cloud-laag aan om iets beter geschikt te maken voor het gebruik van de cache, bijvoorbeeld 20%. 
 
 Het beleid voor beschik bare ruimte op het niveau van de Cloud-laag is een volume dat mogelijk meerdere server eindpunten synchroniseert. Als u vergeet de beschik bare ruimte op zelfs één server eindpunt aan te passen, blijft synchronisatie de meest beperkende regel Toep assen en wordt geprobeerd om 99% vrije schijf ruimte te houden, waardoor de lokale cache niet wordt uitgevoerd zoals u zou verwachten. Tenzij het uw doel is om alleen de naam ruimte te hebben voor een volume dat slechts zelden wordt gebruikt, worden er gegevens gearchiveerd.
 
 ## <a name="troubleshoot"></a>Problemen oplossen
 
-Het meest waarschijnlijke probleem dat u kunt uitvoeren in, is dat de RoboCopy-opdracht mislukt met *' volume vol '* aan de Windows Server-zijde. Als dat het geval is, is de download snelheid waarschijnlijk beter dan uw Upload snelheid. Cloud lagen reageert eenmaal elk uur om inhoud te verlaten van de lokale Windows Server-schijf, die is gesynchroniseerd.
+Het meest waarschijnlijke probleem dat u kunt uitvoeren in, is dat de RoboCopy-opdracht mislukt met _ "volume vol" * aan de kant van de Windows-Server. Als dat het geval is, is de download snelheid waarschijnlijk beter dan uw Upload snelheid. Cloud lagen reageert eenmaal elk uur om inhoud te verlaten van de lokale Windows Server-schijf, die is gesynchroniseerd.
 
 Laat de voortgang van de synchronisatie en Cloud lagen vrij schijf ruimte vrijmaken. U ziet dat in Verkenner op uw Windows-Server.
 
 Als uw Windows-Server voldoende beschik bare capaciteit heeft, wordt het probleem opgelost door de opdracht opnieuw uit te voeren. Er zijn geen onderbrekingen wanneer u deze situatie krijgt en u kunt door gaan met vertrouwen. Het ongemak van het uitvoeren van de opdracht is het enige gevolg.
 
 U kunt ook andere Azure File Sync problemen uitvoeren.
-Als dat het geval is, raadpleegt u de **koppeling Azure file sync probleemoplossings gids**voor meer informatie.
+Als dat het geval is, raadpleegt u de **koppeling Azure file sync probleemoplossings gids** voor meer informatie.
 
 ## <a name="relevant-links"></a>Relevante koppelingen
 
@@ -233,6 +233,6 @@ Migratie-inhoud:
 
 Azure File Sync inhoud:
 
-* [Overzicht van AFS](https://aka.ms/AFS)
+* [Overzicht van AFS](./storage-sync-files-planning.md)
 * [AFS-implementatie handleiding](storage-files-deployment-guide.md)
 * [Problemen met AFS oplossen](storage-sync-files-troubleshoot.md)

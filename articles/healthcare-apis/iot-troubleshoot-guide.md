@@ -6,18 +6,18 @@ author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: troubleshooting
-ms.date: 11/09/2020
+ms.date: 11/13/2020
 ms.author: jasteppe
-ms.openlocfilehash: 124c3b3667e847a5ee1bb8034ef01088c629d503
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 403b6656a47f56508682dcda2438a85d513fbfb1
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94540940"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630495"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-troubleshooting-guide"></a>Gids voor probleem oplossing van Azure IoT connector voor FHIR (preview)
 
-Dit artikel bevat stappen voor het oplossen van problemen met algemene Azure IoT-connector voor FHIR *-fout berichten en-voor waarden.  
+In dit artikel worden de stappen beschreven voor het oplossen van problemen met algemene Azure IoT-connector voor snelle samenwerkings bronnen voor de gezondheids zorg (FHIR&#174;) * fout berichten en voor waarden.  
 
 U leert ook hoe u een kopie maakt van de Azure IoT connector voor FHIR-conversie toewijzingen JSON (bijvoorbeeld: apparaat en FHIR).  
 
@@ -100,7 +100,7 @@ Deze eigenschap vertegenwoordigt de bewerking die wordt uitgevoerd door IoT-conn
 > [!NOTE]
 > U kunt [hier](iot-data-flow.md)meer lezen over de verschillende stadia van de gegevens stroom in azure IOT connector voor FHIR (preview).
 
-|Gegevens stroom fase|Beschrijving|
+|Gegevens stroom fase|Description|
 |---------------|-----------|
 |Instellen|Bewerking specifiek voor het instellen van uw exemplaar van IoT connector|
 |Normaliserings|Gegevens stroom fase waar apparaatgegevens worden genormaliseerd|
@@ -122,7 +122,7 @@ Deze eigenschap vertegenwoordigt de ernst van de opgetreden fout. Hier volgt een
 
 Met deze eigenschap wordt een categorie aangegeven voor een bepaalde fout, wat in principe een logische groepering voor vergelijk bare type fouten vertegenwoordigt. Hier volgt een lijst met mogelijke waarden voor deze eigenschap.
 
-|Fout type|Beschrijving|
+|Fout type|Description|
 |----------|-----------|
 |DeviceTemplateError|Fouten met betrekking tot apparaattoewijzing|
 |DeviceMessageError|Er zijn fouten opgetreden bij het verwerken van een specifiek apparaat bericht|
@@ -136,7 +136,7 @@ Met deze eigenschap wordt een categorie aangegeven voor een bepaalde fout, wat i
 
 Deze eigenschap geeft de naam op voor een specifieke fout. Hier volgt een lijst met alle fout namen met de bijbehorende beschrijving en bijbehorende fout typen, ernst en gegevens stroom fase ('s).
 
-|Fout naam|Beschrijving|Fout type (n)|Ernst van fout|Gegevens stroom fase ('s)|
+|Fout naam|Description|Fout type (n)|Ernst van fout|Gegevens stroom fase ('s)|
 |----------|-----------|-------------|--------------|------------------|
 |MultipleResourceFoundException|Er is een fout opgetreden bij het vinden van meerdere patiënt-of apparaatgegevens in de FHIR-server voor de bijbehorende id's in het apparaats bericht|FHIRResourceError|Fout|FHIRConversion|
 |TemplateNotFoundException|Een sjabloon voor het toewijzen van een apparaat of FHIR is niet geconfigureerd met het exemplaar van IoT-connector|DeviceTemplateError, FHIRTemplateError|Kritiek|Normalisatie, FHIRConversion|
@@ -191,6 +191,4 @@ Bekijk veelgestelde vragen over de Azure IoT-connector voor FHIR.
 >[!div class="nextstepaction"]
 >[Veelgestelde vragen over Azure IoT connector voor FHIR](fhir-faq.md)
 
-*In Azure Portal wordt Azure IoT Connector for FHIR aangeduid als IoT Connector (preview).
-
-FHIR is het gedeponeerde handelsmerk van HL7 en wordt gebruikt met de toestemming van HL7.
+* In de Azure Portal wordt Azure IoT connector voor FHIR aangeduid als IoT-connector (preview). FHIR is een geregistreerd handels merk van HL7 en wordt gebruikt met de machtiging van HL7.
