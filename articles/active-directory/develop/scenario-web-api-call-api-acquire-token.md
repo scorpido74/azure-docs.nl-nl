@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 56bcc4e4936371b58d78f6de5ce4c2d25fbf614d
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 465544f1d861fc09d4b843270c6f3527036ee6a8
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94442800"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628000"
 ---
 # <a name="a-web-api-that-calls-web-apis-acquire-a-token-for-the-app"></a>Een web-API die web-Api's aanroept: een Token ophalen voor de app
 
@@ -25,7 +25,7 @@ Nadat u een client toepassings object hebt gemaakt, gebruikt u dit om een token 
 
 ## <a name="code-in-the-controller"></a>Code in de controller
 
-# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
+### <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 *Micro soft. Identity. Web* voegt extensie methoden toe die de mogelijkheid bieden om Microsoft Graph of een stroomafwaartse Web-API aan te roepen. Deze methoden worden gedetailleerd beschreven in [een web-API die web-api's aanroept: een API aanroepen](scenario-web-api-call-api-call-api.md). Met deze helper-methoden hoeft u geen token hand matig te verkrijgen.
 
@@ -63,7 +63,8 @@ public class MyApiController : Controller
 
 Zie voor meer informatie over de `callTodoListService` -methode  [een web-API die web-api's aanroept: roep een API](scenario-web-api-call-api-call-api.md)aan.
 
-# <a name="java"></a>[Java](#tab/java)
+### <a name="java"></a>[Java](#tab/java)
+
 Hier volgt een voor beeld van code die wordt aangeroepen in de acties van de API-controllers. Het roept de downstream API-Microsoft Graph aan.
 
 ```java
@@ -84,9 +85,13 @@ public class ApiController {
 }
 ```
 
-# <a name="python"></a>[Python](#tab/python)
+### <a name="python"></a>[Python](#tab/python)
 
 Een python-Web-API vereist het gebruik van middleware om het Bearer-token te valideren dat van de client is ontvangen. De Web-API kan vervolgens het toegangs token voor een downstream API verkrijgen met behulp van de MSAL python-bibliotheek door de methode aan te roepen [`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) . Een voor beeld van het demonstreren van deze stroom met MSAL python is nog niet beschikbaar.
+
+## <a name="advanced-accessing-the-signed-in-users-token-cache-from-background-apps-apis-and-services"></a>Gevanceerde De token cache van de aangemelde gebruiker openen vanaf de achtergrond-apps, Api's en services
+
+[!INCLUDE [advanced-token-caching](../../../includes/advanced-token-cache.md)]
 
 ---
 

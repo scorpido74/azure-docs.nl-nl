@@ -8,12 +8,12 @@ ms.date: 06/22/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c8a1d1c0f8de742bdafa130cce6927a472efd8f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e64b7efdd430287a7a3a969c5bf62b0c0e2aec9c
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91329343"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94626891"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Een Azure-bestandsshare gebruiken met Windows
 [Azure Files ](storage-files-introduction.md) is het eenvoudig te gebruiken cloudbestandssysteem van Microsoft. Azure-bestandsshares kunnen probleemloos worden gebruikt in Windows en Windows Server. In dit artikel worden de overwegingen besproken voor het gebruik van een Azure-bestandsshare met Windows en Windows Server.
@@ -46,7 +46,7 @@ U kunt Azure-bestandsshares gebruiken in een Windows-installatie die wordt uitge
 Zorg ervoor dat poort 445 open is: het SMB-protocol vereist dat TCP-poort 445 open is; verbindingen mislukken als poort 445 is geblokkeerd. U kunt controleren of de firewall poort 445 blokkeert met de `Test-NetConnection` cmdlet. Zie de sectie [Oorzaak 1: poort 445 is geblokkeerd](storage-troubleshoot-windows-file-connection-problems.md#cause-1-port-445-is-blocked) van de Windows-probleemoplossings gids voor meer informatie over manieren om een geblokkeerde 445-poort te omzeilen.
 
 ## <a name="using-an-azure-file-share-with-windows"></a>Een Azure-bestandsshare gebruiken met Windows
-Als u een Azure-bestandsshare met Windows wilt gebruiken, moet u deze koppelen, wat betekent dat u er een stationsletter of koppelingspunt aan moet toewijzen. U kunt ook toegang krijgen tot de share via het [UNC-pad](https://msdn.microsoft.com/library/windows/desktop/aa365247.aspx). 
+Als u een Azure-bestandsshare met Windows wilt gebruiken, moet u deze koppelen, wat betekent dat u er een stationsletter of koppelingspunt aan moet toewijzen. U kunt ook toegang krijgen tot de share via het [UNC-pad](/windows/win32/fileio/naming-a-file). 
 
 In dit artikel wordt de sleutel van het opslag account gebruikt om toegang te krijgen tot de bestands share. Een sleutel voor een opslag account is een beheerders sleutel voor een opslag account, met inbegrip van beheerders machtigingen voor alle bestanden en mappen in de bestands share waartoe u toegang hebt, en voor alle bestands shares en andere opslag resources (blobs, wacht rijen, tabellen, enzovoort) die zijn opgenomen in uw opslag account. Als dit niet voldoende is voor uw werk belasting, kan [Azure file sync](storage-sync-files-planning.md) worden gebruikt of kunt u [verificatie op basis van identiteiten via SMB](storage-files-active-directory-overview.md)gebruiken.
 
@@ -58,7 +58,7 @@ De Azure Portal biedt u een script dat u kunt gebruiken om uw bestands share rec
 
 Dit script ophalen:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 1. Navigeer naar het opslag account dat de bestands share bevat die u wilt koppelen.
 1. Selecteer **Bestandsshares**.
 1. Selecteer de bestands share die u wilt koppelen.
@@ -67,12 +67,12 @@ Dit script ophalen:
 
 1. Selecteer **Verbinding maken**.
 
-    :::image type="content" source="media/storage-how-to-use-files-windows/file-share-connect-icon.png" alt-text="Hierbij":::
+    :::image type="content" source="media/storage-how-to-use-files-windows/file-share-connect-icon.png" alt-text="Scherm afbeelding van het verbindings pictogram voor de bestands share.":::
 
 1. Selecteer de stationsletter waaraan u de share wilt koppelen.
 1. Kopieer het meegeleverde script.
 
-    :::image type="content" source="media/storage-how-to-use-files-windows/files-portal-mounting-cmdlet-resize.png" alt-text="Hierbij":::
+    :::image type="content" source="media/storage-how-to-use-files-windows/files-portal-mounting-cmdlet-resize.png" alt-text="Voorbeeld tekst":::
 
 1. Plak het script in een shell op de host waaraan u de bestands share wilt koppelen en voer dit uit.
 
@@ -196,11 +196,11 @@ Nadat u deze registersleutel hebt gemaakt, moet u uw server opnieuw opstarten om
 ### <a name="smb-resources"></a>SMB-resources
 - [Stoppen met SMB 1 gebruiken](https://blogs.technet.microsoft.com/filecab/2016/09/16/stop-using-smb1/)
 - [SMB 1 Product Clearinghouse](https://blogs.technet.microsoft.com/filecab/2017/06/01/smb1-product-clearinghouse/)
-- [SMB 1 detecteren in uw omgeving met DSCEA](https://blogs.technet.microsoft.com/ralphkyttle/2017/04/07/discover-smb1-in-your-environment-with-dscea/)
-- [SMB 1 uitschakelen via groepsbeleid](https://blogs.technet.microsoft.com/secguide/2017/06/15/disabling-smbv1-through-group-policy/)
+- [SMB 1 detecteren in uw omgeving met DSCEA](/archive/blogs/ralphkyttle/discover-smb1-in-your-environment-with-dscea)
+- [SMB 1 uitschakelen via groepsbeleid](/archive/blogs/secguide/disabling-smbv1-through-group-policy)
 
 ## <a name="next-steps"></a>Volgende stappen
 Raadpleeg de volgende koppelingen voor meer informatie over Azure Files:
-- [Implementatie van Azure Files plannen](storage-files-planning.md)
-- [Veelgestelde vragen](../storage-files-faq.md)
-- [Problemen oplossen in Windows](storage-troubleshoot-windows-file-connection-problems.md)      
+- [Een Azure Files-implementatie plannen](storage-files-planning.md)
+- [Veelgestelde vragen](./storage-files-faq.md)
+- [Problemen oplossen in Windows](storage-troubleshoot-windows-file-connection-problems.md)

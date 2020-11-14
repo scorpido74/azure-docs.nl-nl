@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/28/2020
+ms.date: 11/04/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 47af4015fa5c6d9a73ee597146890a29b4b9ef9d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: da79a74121318993f807ec3bde101b652a8b49da
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88119892"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628132"
 ---
 # <a name="acquire-and-cache-tokens-using-the-microsoft-authentication-library-msal"></a>Tokens verkrijgen en in de cache opslaan met behulp van de micro soft Authentication Library (MSAL)
 
@@ -115,6 +115,10 @@ Als uw client een toegangs token aanvraagt, retourneert Azure AD ook een verific
 - De Tenant-ID bevat de Tenant waarin de gebruiker is gevonden. Voor gast gebruikers (Azure AD B2B-scenario's) is de Tenant-ID de gast-Tenant, niet de unieke Tenant. Wanneer het token wordt geleverd met de naam van een gebruiker, bevat het verificatie resultaat ook informatie over deze gebruiker. Voor vertrouwelijke client stromen waarbij tokens worden aangevraagd zonder gebruiker (voor de toepassing), is deze gebruikers informatie null.
 - De bereiken waarvoor het token is uitgegeven.
 - De unieke ID voor de gebruiker.
+
+## <a name="advanced-accessing-the-users-cached-tokens-in-background-apps-and-services"></a>Gevanceerde Toegang krijgen tot de tokens in de cache van de gebruiker in de achtergrond-apps en-services
+
+[!INCLUDE [advanced-token-caching](../../../includes/advanced-token-cache.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 

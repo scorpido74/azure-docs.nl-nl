@@ -3,17 +3,17 @@ title: Commerciële Marketplace-partner en toewijzing van klant gebruik
 description: Bekijk een overzicht van het bijhouden van klant gebruik voor Azure Marketplace-oplossingen.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: article
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 11/4/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 95ac1abc1f286330bc5e7036f01faa6cf1b22d70
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 2c2b7de65e7ac22ebe648ce98633d5ae88818324
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337896"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628387"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Commerciële Marketplace-partner en toewijzing van klant gebruik
 
@@ -74,9 +74,9 @@ Nadat u een GUID hebt toegevoegd aan de sjabloon of in de gebruikers agent en de
    * Partners kunnen meerdere GUID'S registreren.
    * Partners kunnen GUID'S registreren voor niet-Marketplace-oplossings sjablonen en aanbiedingen.
 
-1. Selecteer in de rechter bovenhoek het tandwiel pictogram instellingen en selecteer vervolgens **instellingen voor ontwikkel aars**.
+1. Selecteer **instellingen** (tandwiel pictogram) in de rechter bovenhoek > **account instellingen**.
 
-1. Selecteer op de **pagina account instellingen** de optie **Tracking GUID toevoegen.**
+1. Selecteer onder **profiel-**  >  **id's** voor organisatie de optie **Tracking GUID toevoegen**.
 
 1. Voer in het vak **GUID** uw tracking-GUID in. Voer alleen de GUID in zonder het `pid-` voor voegsel. Typ in het vak **Beschrijving** de naam of beschrijving van uw aanbieding.
 
@@ -183,9 +183,10 @@ Als u resources implementeert via Azure PowerShell, voegt u uw GUID toe met behu
 
 Wanneer u de Azure CLI gebruikt om uw GUID toe te voegen, stelt u de omgevings variabele **AZURE_HTTP_USER_AGENT** in. U kunt deze variabele instellen binnen het bereik van een script. U kunt de variabele ook globaal instellen voor het shell-bereik:
 
-```
+```powershell
 export AZURE_HTTP_USER_AGENT='pid-eb7927c8-dd66-43e1-b0cf-c346a422063'
 ```
+
 Zie [Azure SDK voor Go](/azure/developer/go/)voor meer informatie.
 
 ## <a name="use-terraform"></a>Terraform gebruiken
@@ -206,7 +207,6 @@ Partners die hun implementatie willen verkrijgen via terraform bijgehouden door 
 
 * Een GUID maken (de GUID moet worden toegevoegd voor elke aanbieding of SKU)
 * Werk hun Azure-provider bij om de waarde van *partner_id* in te stellen op de GUID (de GUID niet vooraf herstellen met ' PID-', maar stel deze in op de werkelijke GUID)
-
 
 ## <a name="verify-the-guid-deployment"></a>De GUID-implementatie verifiëren
 
@@ -263,11 +263,11 @@ Partners moeten hun klanten informeren over implementaties die gebruikmaken van 
 
 ### <a name="notification-for-resource-manager-template-deployments"></a>Melding voor implementaties van Resource Manager-sjablonen
 
-Wanneer u deze sjabloon implementeert, kan micro soft de software-installatie identificeren \<PARTNER> met de Azure-resources die zijn geïmplementeerd. Micro soft kan de Azure-resources correleren die worden gebruikt ter ondersteuning van de software. Micro soft verzamelt deze informatie om de beste ervaring met hun producten te bieden en hun bedrijf te kunnen bedienen. De gegevens worden verzameld en geregeld door het privacybeleid van micro soft, dat u kunt vinden op https://www.microsoft.com/trustcenter .
+Wanneer u deze sjabloon implementeert, kan micro soft de software-installatie identificeren \<PARTNER> met de Azure-resources die zijn geïmplementeerd. Micro soft kan de Azure-resources correleren die worden gebruikt ter ondersteuning van de software. Micro soft verzamelt deze informatie om de beste ervaring met hun producten te bieden en hun bedrijf te kunnen bedienen. De gegevens worden verzameld en geregeld door het privacybeleid van micro soft, dat u kunt vinden op [https://www.microsoft.com/trustcenter](https://www.microsoft.com/trustcenter) .
 
 ### <a name="notification-for-sdk-or-api-deployments"></a>Melding voor SDK-of API-implementaties
 
-Wanneer u software implementeert \<PARTNER> , kan micro soft de software-installatie identificeren \<PARTNER> met de Azure-resources die zijn geïmplementeerd. Micro soft kan de Azure-resources correleren die worden gebruikt ter ondersteuning van de software. Micro soft verzamelt deze informatie om de beste ervaring met hun producten te bieden en hun bedrijf te kunnen bedienen. De gegevens worden verzameld en geregeld door het privacybeleid van micro soft, dat u kunt vinden op https://www.microsoft.com/trustcenter .
+Wanneer u software implementeert \<PARTNER> , kan micro soft de software-installatie identificeren \<PARTNER> met de Azure-resources die zijn geïmplementeerd. Micro soft kan de Azure-resources correleren die worden gebruikt ter ondersteuning van de software. Micro soft verzamelt deze informatie om de beste ervaring met hun producten te bieden en hun bedrijf te kunnen bedienen. De gegevens worden verzameld en geregeld door het privacybeleid van micro soft, dat u kunt vinden op [https://www.microsoft.com/trustcenter](https://www.microsoft.com/trustcenter) .
 
 ## <a name="get-support"></a>Ondersteuning krijgen
 
@@ -282,6 +282,7 @@ Meer informatie over de ondersteunings opties in de commerciële Marketplace met
     * De contact gegevens volt ooien/controleren.
     * De details van de consultatie kunnen vooraf worden ingevuld of worden geselecteerd in de vervolg keuzelijsten.
     * Voer een titel en de beschrijving van het probleem in (Geef zo veel mogelijk details op).
+
 1. Klik op Submit
 
 Bekijk stapsgewijze instructies voor het [gebruik van technische preverkoop-en implementatie services](https://aka.ms/TechConsultInstructions)met scherm opnamen.

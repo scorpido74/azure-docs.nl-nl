@@ -9,13 +9,13 @@ ms.date: 10/22/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 5358bbbca716f5152a943c90cb7a5f735ae12047
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 11/14/2020
 ms.locfileid: "92479559"
 ---
-1. Typ n [Azure Portal](https://portal.azure.com) in **Resources, services en documenten zoeken(G+/)** **lokale netwerkgateway** . Zoek **lokale netwerkgateway** onder **Marketplace** in de zoekresultaten en selecteer deze. Hiermee opent u de pagina **Lokale netwerkgateway maken** .
+1. Typ n [Azure Portal](https://portal.azure.com) in **Resources, services en documenten zoeken(G+/)** **lokale netwerkgateway**. Zoek **lokale netwerkgateway** onder **Marketplace** in de zoekresultaten en selecteer deze. Hiermee opent u de pagina **Lokale netwerkgateway maken**.
 1. Op de **pagina Lokale netwerkgateway maken** geeft u de waarden voor uw lokale netwerkgateway op.
 
    :::image type="content" source="./media/vpn-gateway-add-local-network-gateway-portal-include/create-ip.png" alt-text="Een lokale netwerkgateway met IP-adres maken":::
@@ -24,7 +24,7 @@ ms.locfileid: "92479559"
    * **Eindpunt:** Selecteer het eindpunttype voor het on-premises VPN-apparaat - **IP-adres** of **FQDN (Fully Qualified Domain Name)** .
       * **IP-adres** : Als u een statisch openbaar IP-adres hebt toegewezen van uw internetprovider voor uw VPN-apparaat, selecteert u de IP-adresoptie en vult u het IP-adres in zoals wordt weergegeven in het voorbeeld. Dit is het openbare IP-adres van het VPN-apparaat waarmee u via Azure VPN-gateway verbinding wilt maken. Als u op dit moment niet beschikt over het IP-adres, kunt u de waarden uit de schermafbeelding gebruiken. U moet dan wel later terugkeren om uw tijdelijke IP-adres te vervangen door het openbare IP-adres van uw VPN-apparaat. Anders kan er geen verbinding worden gemaakt vanuit Azure.
       * **FQDN** : Als u een dynamisch IP-adres hebt dat na een bepaalde periode verandert, meestal bepaald door uw internetprovider, kunt u een constante DNS-naam gebruiken met een dynamisch DNS-service-naar-punt naar uw huidige openbaar IP-adres van uw VPN-apparaat. Uw Azure VPN-gateway zet de FQDN om, om te bepalen met welk openbaar IP-adres verbinding moet worden gemaakt. 
-   * **Adresruimte** verwijst naar de adresbereiken voor het netwerk dat dit lokale netwerk vertegenwoordigt. U kunt meerdere adresruimtebereiken toevoegen. Zorg ervoor dat de bereiken die u hier opgeeft, niet overlappen met bereiken van andere netwerken waarmee u verbinding wilt maken. Azure stuurt het adresbereik dat u opgeeft, door naar het IP-adres van het on-premises VPN-apparaat. *Gebruik hier uw eigen waarden als u verbinding wilt maken met uw on-premises site, niet de waarden die worden weergegeven in het voorbeeld* .
+   * **Adresruimte** verwijst naar de adresbereiken voor het netwerk dat dit lokale netwerk vertegenwoordigt. U kunt meerdere adresruimtebereiken toevoegen. Zorg ervoor dat de bereiken die u hier opgeeft, niet overlappen met bereiken van andere netwerken waarmee u verbinding wilt maken. Azure stuurt het adresbereik dat u opgeeft, door naar het IP-adres van het on-premises VPN-apparaat. *Gebruik hier uw eigen waarden als u verbinding wilt maken met uw on-premises site, niet de waarden die worden weergegeven in het voorbeeld*.
    * **BGP-instellingen configureren:** gebruik deze alleen bij het configureren van BGP. Selecteer deze anders niet.
    * **Abonnement:** controleer of het juiste abonnement wordt weergegeven.
    * **Resourcegroep:** selecteer de resourcegroep die u wilt gebruiken. U kunt een nieuwe resourcegroep maken of een resourcegroep selecteren die u al hebt gemaakt.

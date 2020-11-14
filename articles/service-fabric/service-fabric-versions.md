@@ -3,12 +3,12 @@ title: Ondersteunde cluster versies in azure Service Fabric
 description: Meer informatie over cluster versies in azure Service Fabric, met inbegrip van een koppeling naar de nieuwste releases van de Service Fabric-team blog.
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: 4569b31f990687fb9658d2bf251045e27ecf91a2
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: d6469ada7fcb46c732cc7fbe081059ef41d89a40
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480953"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94626772"
 ---
 # <a name="supported-service-fabric-versions"></a>Ondersteunde Service Fabric versies
 
@@ -50,7 +50,10 @@ De volgende tabel bevat de versies van Service Fabric en de bijbehorende eind da
 | 7.1.456.* | 7.0.466.* |Kleiner dan of gelijk aan versie 4,1 |31 maart 2021 |
 | 7.1.458.* | 7.0.466.* |Kleiner dan of gelijk aan versie 4,1 |31 maart 2021 |
 | 7.1.459.* | 7.0.466.* |Kleiner dan of gelijk aan versie 4,1 |31 maart 2021 |
+| 7.1.503.* | 7.0.466.* |Kleiner dan of gelijk aan versie 4,1 |31 maart 2021 |
 | 7.2.413.* | 7.0.470.* |Kleiner dan of gelijk aan versie 4,2 |Huidige versie, dus geen eind datum |
+| 7.2.432.* | 7.0.470.* |Kleiner dan of gelijk aan versie 4,2 |Huidige versie, dus geen eind datum |
+| 7.2.433.* | 7.0.470.* |Kleiner dan of gelijk aan versie 4,2 |Huidige versie, dus geen eind datum |
 
 ## <a name="supported-operating-systems"></a>Ondersteunde besturingssystemen
 
@@ -73,26 +76,26 @@ De volgende tabel bevat de versie namen van Service Fabric en de bijbehorende ve
 
 | Versie naam | Windows-versienummer | Linux-versie nummer |
 | --- | --- | --- |
-| 5,3 RTO | 5.3.121.9494 | N.v.t. |
-| 5,3 CU1 | 5.3.204.9494 | N.v.t. |
-| 5,3 CU2 | 5.3.301.9590 | N.v.t. |
-| 5,3 CU3 | 5.3.311.9590 | N.v.t. |
-| 5,4 CU2 | 5.4.164.9494 | N.v.t. |
-| 5,5 CU1 | 5.5.216.0    | N.v.t. |
-| 5,5 CU2 | 5.5.219.0    | N.v.t. |
-| 5,5 CU3 | 5.5.227.0    | N.v.t. |
-| 5,5 CU4 | 5.5.232.0    | N.v.t. |
-| 5,6 RTO | 5.6.204.9494 | N.v.t. |
-| 5,6 CU2 | 5.6.210.9494 | N.v.t. |
-| 5,6 CU3 | 5.6.220.9494 | N.v.t. |
-| 5,7 RTO | 5.7.198.9494 | N.v.t. |
-| 5,7 CU4 | 5.7.221.9494 | N.v.t. |
+| 5,3 RTO | 5.3.121.9494 | NA |
+| 5,3 CU1 | 5.3.204.9494 | NA |
+| 5,3 CU2 | 5.3.301.9590 | NA |
+| 5,3 CU3 | 5.3.311.9590 | NA |
+| 5,4 CU2 | 5.4.164.9494 | NA |
+| 5,5 CU1 | 5.5.216.0    | NA |
+| 5,5 CU2 | 5.5.219.0    | NA |
+| 5,5 CU3 | 5.5.227.0    | NA |
+| 5,5 CU4 | 5.5.232.0    | NA |
+| 5,6 RTO | 5.6.204.9494 | NA |
+| 5,6 CU2 | 5.6.210.9494 | NA |
+| 5,6 CU3 | 5.6.220.9494 | NA |
+| 5,7 RTO | 5.7.198.9494 | NA |
+| 5,7 CU4 | 5.7.221.9494 | NA |
 | 6,0 RTO | 6.0.211.9494 | 6.0.120.1 |
 | 6,0 CU1 | 6.0.219.9494 | 6.0.127.1 |
 | 6,0 CU2 | 6.0.232.9494 | 6.0.133.1 |
 | 6,1 CU1 | 6.1.456.9494 | 6.1.183.1 |
 | 6,1 CU2 | 6.1.467.9494 | 6.1.185.1 |
-| 6,1 CU3 | 6.1.472.9494 | N.v.t. |
+| 6,1 CU3 | 6.1.472.9494 | NA |
 | 6,1 CU4 | 6.1.480.9494 | 6.1.187.1 |
 | 6,2 RTO | 6.2.269.9494 | 6.2.184.1 | 
 | 6,2 CU1 | 6.2.274.9494 | 6.2.191.1 |
@@ -102,13 +105,13 @@ De volgende tabel bevat de versie namen van Service Fabric en de bijbehorende ve
 | 6,3 CU1 | 6.3.176.9494 | 6.3.124.1 |
 | 6,3 CU1 | 6.3.187.9494 | 6.3.129.1 |
 | 6,4 RTO | 6.4.617.9590 | 6.4.625.1 |
-| 6,4 CU2 | 6.4.622.9590 | N.v.t. |
+| 6,4 CU2 | 6.4.622.9590 | NA |
 | 6,4 CU3 | 6.4.637.9590 | 6.4.634.1 |
 | 6,4 CU4 | 6.4.644.9590 | 6.4.639.1 |
 | 6,4 CU5 | 6.4.654.9590 | 6.4.649.1 |
-| 6,4 CU6 | 6.4.658.9590 | N.v.t. |
+| 6,4 CU6 | 6.4.658.9590 | NA |
 | 6,4 CU7 | 6.4.664.9590 | 6.4.661.1 |
-| 6,4 CU8 | 6.4.670.9590 | N.v.t. |
+| 6,4 CU8 | 6.4.670.9590 | NA |
 | 6,5 RTO | 6.5.639.9590 | 6.5.435.1 |
 | 6,5 CU1 | 6.5.641.9590 | 6.5.454.1 |
 | 6,5 CU2 | 6.5.658.9590 | 6.5.460.1 |
@@ -126,5 +129,8 @@ De volgende tabel bevat de versie namen van Service Fabric en de bijbehorende ve
 | 7,1 CU3 | 7.1.456.9590 | 7.1.452.1 |
 | 7,1 CU5 | 7.1.458.9590 | 7.1.454.1 |
 | 7,1 CU6 | 7.1.459.9590 | 7.1.455.1 |
-| 7,2 RTO | 7.2.413.9590 | N.v.t. |
+| 7,1 CU8 | 7.1.503.9590 | NA |
+| 7,2 RTO | 7.2.413.9590 | NA |
+| 7,2 CU2 | 7.2.432.9590 | 7.2.431.1 |
+| 7,2 CU3 | 7.2.433.9590 | NA |
 

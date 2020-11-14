@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 11/12/2020
+ms.date: 11/13/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74be3f4218149f0cdb9f107c8aba0be76d8da27e
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 65c8baa101df5e24780e5e68b5a21b86985608a6
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94593073"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628115"
 ---
 # <a name="authentication-methods-in-azure-active-directory---phone-options"></a>Verificatie methoden in Azure Active Directory-telefoon opties
 
@@ -56,6 +56,8 @@ Bij een verificatie via telefoon gesprekken tijdens SSPR of Azure Multi-Factor A
 
 Als u problemen ondervindt met telefoon verificatie voor Azure AD, raadpleegt u de volgende stappen voor probleem oplossing:
 
+* ' U hebt de limiet bereikt voor de verificatie aanroepen ' of ' u hebt de limiet voor de tekst verificatie codes ' bereikt tijdens het aanmelden
+   * Gebruik de Micrsoft Authenticator-app of verificatie code om de verificatie te volt ooien of probeer het later opnieuw.
 * De geblokkeerde beller-ID op één apparaat.
    * Bekijk alle geblokkeerde nummers die op het apparaat zijn geconfigureerd.
 * Onjuist telefoon nummer of onjuiste land-/regionummer of Verwar ring tussen privé telefoon nummer en telefoon nummer van werk.

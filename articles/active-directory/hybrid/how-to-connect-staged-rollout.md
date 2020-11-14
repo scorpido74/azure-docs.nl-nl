@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f800c11bb878ca1788c7258cde25266847e2a90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d7208b068bee4b0a4cc30adfd98d2422718bbcc
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89278578"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628897"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Migreren naar Cloud authenticatie met behulp van gefaseerde implementatie (preview-versie)
 
@@ -45,7 +45,7 @@ Bekijk voor een overzicht van de functie ' Azure Active Directory: wat is gefase
 
 -   U hebt alle toepasselijke beleids regels voor Tenant huismerk en voorwaardelijke toegang geconfigureerd die u nodig hebt voor gebruikers die worden gemigreerd naar Cloud authenticatie.
 
--   Als u van plan bent Azure Multi-Factor Authentication te gebruiken, raden we u aan om [gecombineerde registratie te gebruiken voor selfservice voor wachtwoord herstel (SSPR) en multi-factor Authentication](../authentication/concept-registration-mfa-sspr-combined.md) om ervoor te zorgen dat uw gebruikers hun verificatie methoden eenmaal registreren.
+-   Als u van plan bent Azure Multi-Factor Authentication te gebruiken, raden we u aan om [gecombineerde registratie te gebruiken voor selfservice voor wachtwoord herstel (SSPR) en multi-factor Authentication](../authentication/concept-registration-mfa-sspr-combined.md) om ervoor te zorgen dat uw gebruikers hun verificatie methoden eenmaal registreren. Opmerking: wanneer u SSPR gebruikt om het wacht woord opnieuw in te stellen of het wacht woord te wijzigen met behulp van de MyProfile-pagina tijdens de gefaseerde implementatie, moet Azure AD Connect de nieuwe wacht woord-hash synchroniseren. Dit kan Maxi maal twee minuten duren na de reset.
 
 -   Als u de functie voor gefaseerde implementatie wilt gebruiken, moet u een globale beheerder zijn op uw Tenant.
 
@@ -73,7 +73,7 @@ De volgende scenario's worden niet ondersteund voor gefaseerde implementatie:
 
 - Beheerders kunnen Cloud verificatie implementeren met behulp van beveiligings groepen. Als u wilt voor komen dat synchronisatie latentie wanneer u gebruikmaakt van on-premises Active Directory beveiligings groepen, raden we u aan Cloud beveiligings groepen te gebruiken. De volgende voor waarden zijn van toepassing:
 
-    - U kunt Maxi maal 10 groepen per functie gebruiken. Dat wil zeggen, u kunt elk 10 groepen gebruiken voor de *synchronisatie van wacht woord-hash*, *Pass-Through-verificatie*en *naadloze SSO*.
+    - U kunt Maxi maal 10 groepen per functie gebruiken. Dat wil zeggen, u kunt elk 10 groepen gebruiken voor de *synchronisatie van wacht woord-hash* , *Pass-Through-verificatie* en *naadloze SSO*.
     - Geneste groepen worden *niet ondersteund*. Dit bereik is ook van toepassing op open bare preview-versie.
     - Dynamische groepen worden *niet ondersteund* voor gefaseerde implementatie.
     - Met de objecten in de groep wordt de groep geblokkeerd, zodat deze niet meer kan worden toegevoegd.
@@ -95,11 +95,11 @@ Voor informatie over welke Power shell-cmdlets moeten worden gebruikt, raadpleeg
 
 ## <a name="pre-work-for-password-hash-sync"></a>Vooraf werken voor wachtwoord-hash-synchronisatie
 
-1. Schakel *wacht woord-hash-synchronisatie*   in op de pagina [optionele functies](how-to-connect-install-custom.md#optional-features)   in azure AD Connect. 
+1. Schakel *wacht woord-hash-synchronisatie* in op de pagina [optionele functies](how-to-connect-install-custom.md#optional-features) in azure AD Connect. 
 
    ![Scherm afbeelding van de pagina optionele functies in Azure Active Directory Connect](media/how-to-connect-staged-rollout/sr1.png)
 
-1. Zorg ervoor dat er een volledige hash-synchronisatie cyclus voor *wacht woorden* is uitgevoerd, zodat alle wacht woorden van de gebruikers zijn gesynchroniseerd met Azure AD. U kunt de status van de *synchronisatie van wacht woord-hashes*controleren met behulp van de diagnostische gegevens van Power shell in [Troubleshooting Password hash sync with Azure AD Connect Sync](tshoot-connect-password-hash-synchronization.md).
+1. Zorg ervoor dat er een volledige hash-synchronisatie cyclus voor *wacht woorden* is uitgevoerd, zodat alle wacht woorden van de gebruikers zijn gesynchroniseerd met Azure AD. U kunt de status van de *synchronisatie van wacht woord-hashes* controleren met behulp van de diagnostische gegevens van Power shell in [Troubleshooting Password hash sync with Azure AD Connect Sync](tshoot-connect-password-hash-synchronization.md).
 
    ![Scherm opname van het AADConnect-probleemoplossings logboek](./media/how-to-connect-staged-rollout/sr2.png)
 
@@ -109,47 +109,47 @@ Als u *Pass-Through-verificatie* -aanmelding wilt testen met behulp van gefaseer
 
 1. Identificeer een server waarop Windows Server 2012 R2 of hoger wordt uitgevoerd, waar u de *Pass-Through-verificatie* agent wilt uitvoeren. 
 
-   Kies *niet* de Azure AD Connect server.Zorg ervoor dat de server lid is van een domein, geselecteerde gebruikers kan verifiëren met Active Directory en kan communiceren met Azure AD via uitgaande poorten en Url's. Zie de sectie ' stap 1: de vereisten controleren ' in [Quick Start: Azure AD naadloze eenmalige aanmelding](how-to-connect-sso-quick-start.md)voor meer informatie.
+   Kies *niet* de Azure AD Connect server. Zorg ervoor dat de server lid is van een domein, geselecteerde gebruikers kan verifiëren met Active Directory en kan communiceren met Azure AD via uitgaande poorten en Url's. Zie de sectie ' stap 1: de vereisten controleren ' in [Quick Start: Azure AD naadloze eenmalige aanmelding](how-to-connect-sso-quick-start.md)voor meer informatie.
 
-1. [Down load de Azure AD Connect-Verificatie agent](https://aka.ms/getauthagent)en installeer deze op de-server. 
+1. [Down load de Azure AD Connect-Verificatie agent](https://aka.ms/getauthagent)en installeer deze op de-server. 
 
-1. Als u [maximale Beschik baarheid](how-to-connect-sso-quick-start.md)wilt inschakelen, installeert u extra verificatie agenten op andere servers.
+1. Als u [maximale Beschik baarheid](how-to-connect-sso-quick-start.md)wilt inschakelen, installeert u extra verificatie agenten op andere servers.
 
 1. Zorg ervoor dat u de instellingen voor [Slim vergren delen](../authentication/howto-password-smart-lockout.md) op de juiste wijze hebt geconfigureerd. Zo zorgt u ervoor dat de on-premises Active Directory accounts van uw gebruikers niet worden vergrendeld door ongeldige actors.
 
-We raden u aan *naadloze SSO* in te scha kelen, onafhankelijk van de aanmeldings methode (*hash voor wachtwoord synchronisatie* of *Pass-Through-verificatie*) die u selecteert voor gefaseerde implementatie. Als u *naadloze SSO*wilt inschakelen, volgt u de instructies voor voor het uitvoeren van de voor bereiding in de volgende sectie.
+We raden u aan *naadloze SSO* in te scha kelen, onafhankelijk van de aanmeldings methode ( *hash voor wachtwoord synchronisatie* of *Pass-Through-verificatie* ) die u selecteert voor gefaseerde implementatie. Als u *naadloze SSO* wilt inschakelen, volgt u de instructies voor voor het uitvoeren van de voor bereiding in de volgende sectie.
 
 ## <a name="pre-work-for-seamless-sso"></a>Pre-work voor naadloze SSO
 
-Schakel *naadloze SSO*   in op de Active Directory-forests met behulp van Power shell. Als u meer dan één Active Directory forest hebt, moet u dit voor elk forest afzonderlijk inschakelen.  *Naadloze SSO* wordt alleen geactiveerd voor gebruikers die zijn geselecteerd voor gefaseerde implementatie. Dit heeft geen invloed op uw bestaande federatie-instellingen.
+Schakel *naadloze SSO* in op de Active Directory-forests met behulp van Power shell. Als u meer dan één Active Directory forest hebt, moet u dit voor elk forest afzonderlijk inschakelen. *Naadloze SSO* wordt alleen geactiveerd voor gebruikers die zijn geselecteerd voor gefaseerde implementatie. Dit heeft geen invloed op uw bestaande federatie-instellingen.
 
 Schakel *naadloze SSO* in door het volgende te doen:
 
 1. Meld u aan bij Azure AD Connect-server.
 
-2. Ga naar de map *% Program Files% \\ Microsoft Azure Active Directory Connect*   .
+2. Ga naar de map *% Program Files% \\ Microsoft Azure Active Directory Connect* .
 
-3. Importeer de *naadloze SSO* Power shell-module door de volgende opdracht uit te voeren: 
+3. Importeer de *naadloze SSO* Power shell-module door de volgende opdracht uit te voeren: 
 
    `Import-Module .\AzureADSSO.psd1`
 
-4. Voer PowerShell uit als beheerder. Bel in Power shell  `New-AzureADSSOAuthenticationContext` . Met deze opdracht wordt een deel venster geopend waarin u de globale beheerders referenties van uw Tenant kunt invoeren.
+4. Voer PowerShell uit als beheerder. Bel in Power shell `New-AzureADSSOAuthenticationContext` . Met deze opdracht wordt een deel venster geopend waarin u de globale beheerders referenties van uw Tenant kunt invoeren.
 
-5. Aanroep  `Get-AzureADSSOStatus | ConvertFrom-Json` . Met deze opdracht wordt een lijst van Active Directory forests weer gegeven (Zie de lijst met domeinen) waarop deze functie is ingeschakeld. Standaard is deze ingesteld op False op Tenant niveau.
+5. Aanroep `Get-AzureADSSOStatus | ConvertFrom-Json` . Met deze opdracht wordt een lijst van Active Directory forests weer gegeven (Zie de lijst met domeinen) waarop deze functie is ingeschakeld. Standaard is deze ingesteld op False op Tenant niveau.
 
    ![Voor beeld van de Windows Power shell-uitvoer](./media/how-to-connect-staged-rollout/sr3.png)
 
-6. Aanroep  `$creds = Get-Credential` . Voer bij de prompt de domein beheerders referenties in voor het beoogde Active Directory-forest.
+6. Aanroep `$creds = Get-Credential` . Voer bij de prompt de domein beheerders referenties in voor het beoogde Active Directory-forest.
 
 7. Aanroep `Enable-AzureADSSOForest -OnPremCredentials $creds` . Met deze opdracht maakt u het AZUREADSSOACC-computer account van de on-premises domein controller voor het Active Directory-forest dat is vereist voor *naadloze SSO*.
 
 8. Voor *naadloze SSO* moeten url's zich in de intranet zone bevindt. Als u deze Url's wilt implementeren met behulp van groeps beleid, raadpleegt u [Quick Start: Azure AD naadloze eenmalige aanmelding](how-to-connect-sso-quick-start.md#step-3-roll-out-the-feature).
 
-9. Voor een volledig overzicht kunt u ook onze [implementatie plannen](https://aka.ms/SeamlessSSODPDownload) voor *naadloze SSO*downloaden.
+9. Voor een volledig overzicht kunt u ook onze [implementatie plannen](https://aka.ms/SeamlessSSODPDownload) voor *naadloze SSO* downloaden.
 
 ## <a name="enable-staged-rollout"></a>Gefaseerde implementatie inschakelen
 
-Volg de instructies in de volgende secties als u een specifieke functie (*Pass-Through-verificatie*, *wachtwoord-hash-synchronisatie*of *naadloze SSO*) wilt implementeren voor een geselecteerde set gebruikers in een groep.
+Volg de instructies in de volgende secties als u een specifieke functie ( *Pass-Through-verificatie* , *wachtwoord-hash-synchronisatie* of *naadloze SSO* ) wilt implementeren voor een geselecteerde set gebruikers in een groep.
 
 ### <a name="enable-a-staged-rollout-of-a-specific-feature-on-your-tenant"></a>Een gefaseerde implementatie van een specifieke functie in uw Tenant inschakelen
 
@@ -165,13 +165,13 @@ Ga als volgt te werk:
 
 2. Selecteer de koppeling **gefaseerde implementatie voor beheerde gebruiker aanmelden (preview) inschakelen** .
 
-   Als u bijvoorbeeld *optie A*wilt inschakelen, kunt u het **wacht woord hash-synchronisatie** en **naadloze eenmalige aanmelding** **instellen op aan, zoals**wordt weer gegeven in de volgende installatie kopieën.
+   Als u bijvoorbeeld *optie A* wilt inschakelen, kunt u het **wacht woord hash-synchronisatie** en **naadloze eenmalige aanmelding** **instellen op aan, zoals** wordt weer gegeven in de volgende installatie kopieën.
 
    ![De pagina Azure AD Connect](./media/how-to-connect-staged-rollout/sr4.png)
 
    ![De pagina met functies voor gefaseerde implementatie inschakelen (preview)](./media/how-to-connect-staged-rollout/sr5.png)
 
-3. Voeg de groepen toe aan de functie om *Pass Through-verificatie* en *naadloze SSO*in te scha kelen. Als u wilt voor komen dat een UX-time-out optreedt, moet u ervoor zorgen dat de beveiligings groepen in eerste instantie niet meer dan 200 leden bevatten.
+3. Voeg de groepen toe aan de functie om *Pass Through-verificatie* en *naadloze SSO* in te scha kelen. Als u wilt voor komen dat een UX-time-out optreedt, moet u ervoor zorgen dat de beveiligings groepen in eerste instantie niet meer dan 200 leden bevatten.
 
    ![De pagina groepen voor wachtwoord hash-synchronisatie (preview) beheren](./media/how-to-connect-staged-rollout/sr6.png)
 
@@ -183,7 +183,7 @@ Ga als volgt te werk:
 
 We hebben controle gebeurtenissen ingeschakeld voor de verschillende acties die we voor gefaseerde implementatie uitvoeren:
 
-- Controle gebeurtenis bij het inschakelen van een gefaseerde implementatie voor *wacht woord-hash-synchronisatie*, *Pass Through-verificatie*of *naadloze SSO*.
+- Controle gebeurtenis bij het inschakelen van een gefaseerde implementatie voor *wacht woord-hash-synchronisatie* , *Pass Through-verificatie* of *naadloze SSO*.
 
   >[!NOTE]
   >Er wordt een controle gebeurtenis geregistreerd wanneer *naadloze SSO* wordt ingeschakeld met behulp van gefaseerde implementatie.
@@ -192,7 +192,7 @@ We hebben controle gebeurtenissen ingeschakeld voor de verschillende acties die 
 
   ![Het deel venster implementatie beleid maken voor functie-aangepast eigenschappen tabblad](./media/how-to-connect-staged-rollout/sr8.png)
 
-- Controle gebeurtenis wanneer een groep wordt toegevoegd aan de *hash-synchronisatie van wacht woorden*, *Pass Through-verificatie*of *naadloze SSO*.
+- Controle gebeurtenis wanneer een groep wordt toegevoegd aan de *hash-synchronisatie van wacht woorden* , *Pass Through-verificatie* of *naadloze SSO*.
 
   >[!NOTE]
   >Er wordt een controle gebeurtenis geregistreerd wanneer een groep wordt toegevoegd aan de *wachtwoord-hash-synchronisatie* voor gefaseerde implementatie.
@@ -217,7 +217,7 @@ Ga als volgt te werk om de aanmelding met *wachtwoord-hash-synchronisatie* of *P
 
 1. Zorg ervoor dat de aanmelding correct wordt weer gegeven in het [rapport met aanmeld activiteiten van Azure AD](../reports-monitoring/concept-sign-ins.md) door te filteren met de userPrincipalName.
 
-Aanmelden met *naadloze SSO*testen:
+Aanmelden met *naadloze SSO* testen:
 
 1. Op het intranet gaat u naar de [pagina apps](https://myapps.microsoft.com) in een persoonlijke browser sessie en voert u vervolgens de USERPRINCIPALNAME (UPN) in van het gebruikers account dat is geselecteerd voor gefaseerde implementatie.
 

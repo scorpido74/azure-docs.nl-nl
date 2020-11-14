@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 75ba8e1e2037ba8ef249b548dfb38e5fd1618cb2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ec8e4a945f8b8277d05c11bf3673d2e4ab15f9a
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90564182"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94626789"
 ---
 # <a name="how-to-create-an-azure-premium-file-share"></a>Een Azure Premium-bestands share maken
 
@@ -24,8 +24,8 @@ In dit artikel wordt beschreven hoe u dit nieuwe account type maakt met behulp v
 ## <a name="prerequisites"></a>Vereisten
 
 - Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
-- Als u van plan bent om de Artikel CLI te gebruiken, [installeert u de nieuwste versie](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
-- Als u de module Azure PowerShell wilt gebruiken, [installeert u de nieuwste versie](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-4.6.0).
+- Als u van plan bent om de Artikel CLI te gebruiken, [installeert u de nieuwste versie](/cli/azure/install-azure-cli?view=azure-cli-latest).
+- Als u de module Azure PowerShell wilt gebruiken, [installeert u de nieuwste versie](/powershell/azure/install-az-ps?view=azps-4.6.0).
 
 ## <a name="create-a-filestorage-storage-account"></a>Een FileStorage-opslag account maken
 
@@ -49,7 +49,7 @@ U bent nu klaar om uw opslag account te maken.
 
 1. Voer vervolgens een naam in voor het opslagaccount. De naam die u kiest, moet uniek zijn binnen Azure. Verder moet de naam 3 tot 24 tekens lang zijn en mag alleen cijfers en kleine letters bevatten.
 1. Selecteer een locatie voor uw opslagaccount of gebruik de standaardlocatie.
-1. Selecteer **Premium**voor **prestaties** .
+1. Selecteer **Premium** voor **prestaties** .
 
     U moet **Premium** voor **FileStorage** selecteren als beschik bare optie in de vervolg keuzelijst **account soort** .
 

@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/18/2020
+ms.date: 11/04/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 8608da33c747f76452a0106e4e2737849e06a75c
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: cdda14bb579fc94414f9da89b8b1f1aa04ec3bf5
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443225"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628098"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Bureau blad-app voor het aanroepen van web-Api's: een Token ophalen
 
@@ -183,7 +183,7 @@ Op Android moet u ook de bovenliggende activiteit opgeven met behulp van `.WithP
 
 #### <a name="withparentactivityorwindow"></a>WithParentActivityOrWindow
 
-De gebruikers interface is belang rijk omdat deze interactief is. `AcquireTokenInteractive` heeft één specifieke optionele para meter die kan worden opgegeven voor platforms die deze kunnen ondersteunen, de bovenliggende gebruikers interface. Bij gebruik in een bureaublad toepassing `.WithParentActivityOrWindow` heeft een ander type, dat afhankelijk is van het platform. U kunt ook de optionele para meter voor het bovenliggende venster weglaten om een venster te maken, als u niet wilt bepalen waar het dialoog venster voor aanmelding op het scherm wordt weer gegeven. Dit is van toepassing op toepassingen op basis van de opdracht regel, die wordt gebruikt om aanroepen door te geven aan een andere back-end-service en geen Windows voor gebruikers interactie nodig hebt. 
+De gebruikers interface is belang rijk omdat deze interactief is. `AcquireTokenInteractive` heeft één specifieke optionele para meter die kan worden opgegeven voor platforms die deze kunnen ondersteunen, de bovenliggende gebruikers interface. Bij gebruik in een bureaublad toepassing `.WithParentActivityOrWindow` heeft een ander type, dat afhankelijk is van het platform. U kunt ook de optionele para meter voor het bovenliggende venster weglaten om een venster te maken, als u niet wilt bepalen waar het dialoog venster voor aanmelding op het scherm wordt weer gegeven. Dit is van toepassing op toepassingen op basis van de opdracht regel, die wordt gebruikt om aanroepen door te geven aan een andere back-end-service en geen Windows voor gebruikers interactie nodig hebt.
 
 ```csharp
 // net45
@@ -278,7 +278,7 @@ Het MSAL.NET-team heeft de UI-tests herschreven om dit uitbreidings mechanisme t
 
 ##### <a name="provide-a-great-experience-with-systemwebviewoptions"></a>Een fantastische ervaring bieden met SystemWebViewOptions
 
-Vanuit MSAL.NET 4,1 [`SystemWebViewOptions`](/dotnet/api/microsoft.identity.client.systemwebviewoptions?view=azure-dotnet) kunt u het volgende opgeven:
+Vanuit MSAL.NET 4,1 [`SystemWebViewOptions`](/dotnet/api/microsoft.identity.client.systemwebviewoptions) kunt u het volgende opgeven:
 
 - De URI naar ( `BrowserRedirectError` ) of het HTML-fragment dat moet worden weer gegeven ( `HtmlMessageError` ) in het geval van aanmeld-of toestemmings fouten in de webbrowser van het systeem.
 - De URI naar ( `BrowserRedirectSuccess` ) of het HTML-fragment dat moet worden weer gegeven ( `HtmlMessageSuccess` ) in het geval van een geslaagde aanmelding of toestemming.
@@ -304,7 +304,7 @@ var result = app.AcquireTokenInteractive(scopes)
 
 #### <a name="other-optional-parameters"></a>Andere optionele para meters
 
-Zie AcquireTokenInteractiveParameterBuilder voor meer informatie over de andere optionele para meters voor `AcquireTokenInteractive` . [AcquireTokenInteractiveParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokeninteractiveparameterbuilder?view=azure-dotnet-preview#methods)
+Zie AcquireTokenInteractiveParameterBuilder voor meer informatie over de andere optionele para meters voor `AcquireTokenInteractive` . [AcquireTokenInteractiveParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokeninteractiveparameterbuilder#methods)
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -532,7 +532,7 @@ static async Task GetATokenForGraph()
 }
 ```
 
-Zie [AcquireTokenByIntegratedWindowsAuthParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokenbyintegratedwindowsauthparameterbuilder?view=azure-dotnet-preview#methods)voor de lijst met mogelijke para meters op AcquireTokenByIntegratedWindowsAuthentication.
+Zie [AcquireTokenByIntegratedWindowsAuthParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokenbyintegratedwindowsauthparameterbuilder#methods)voor de lijst met mogelijke para meters op AcquireTokenByIntegratedWindowsAuthentication.
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -832,7 +832,7 @@ static async Task GetATokenForGraph()
 }
 ```
 
-Zie AcquireTokenByUsernamePasswordParameterBuilder voor meer informatie over alle wijzigingen die kunnen worden toegepast op `AcquireTokenByUsernamePassword` . [AcquireTokenByUsernamePasswordParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokenbyusernamepasswordparameterbuilder?view=azure-dotnet-preview#methods)
+Zie AcquireTokenByUsernamePasswordParameterBuilder voor meer informatie over alle wijzigingen die kunnen worden toegepast op `AcquireTokenByUsernamePassword` . [AcquireTokenByUsernamePasswordParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokenbyusernamepasswordparameterbuilder#methods)
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -1387,6 +1387,10 @@ namespace CommonCacheMsalV3
  }
 }
 ```
+
+## <a name="advanced-accessing-the-users-cached-tokens-in-background-apps-and-services"></a>Gevanceerde Toegang krijgen tot de tokens in de cache van de gebruiker in de achtergrond-apps en-services
+
+[!INCLUDE [advanced-token-caching](../../../includes/advanced-token-cache.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 

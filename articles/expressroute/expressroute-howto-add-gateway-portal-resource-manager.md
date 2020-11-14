@@ -9,10 +9,10 @@ ms.date: 10/05/2020
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: 843d0b8cfd75e8cbdf45ac535cc9486aa42442d6
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 11/14/2020
 ms.locfileid: "91761781"
 ---
 # <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>Zelfstudie: Een virtuele-netwerkgateway configureren voor ExpressRoute met behulp van de Azure-portal
@@ -60,11 +60,11 @@ U kunt een [video](https://azure.microsoft.com/documentation/videos/azure-expres
 
 1. Als **naam** voor het subnet wordt automatisch de waarde GatewaySubnet ingevuld. Deze waarde is vereist. Zonder deze waarde wordt het subnet niet in Azure als het gatewaysubnet herkend. Pas de automatisch ingevulde waarden voor **Adresbereik** aan overeenkomstig uw configuratievereisten. We raden u aan een gatewaysubnet te maken met een adresbereik van /27 of groter (/26, /25, enzovoort). Selecteer vervolgens **OK** om de waarden op te slaan en het gatewaysubnet te maken.
 
-    :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/add-subnet-gateway.png" alt-text="Het gatewaysubnet toevoegen":::
+    :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/add-subnet-gateway.png" alt-text="Het subnet toevoegen":::
 
 ## <a name="create-the-virtual-network-gateway"></a>De gateway van het virtuele netwerk maken
 
-1. Klik in de portal aan de linkerkant op **Een resource maken** en typ 'virtuele netwerkgateway' in het zoekvak. Zoek **Virtuele netwerkgateway** in de zoekresultaten en selecteer de vermelding. Selecteer op de pagina **Virtuele netwerkgateway** de optie **Maken** .
+1. Klik in de portal aan de linkerkant op **Een resource maken** en typ 'virtuele netwerkgateway' in het zoekvak. Zoek **Virtuele netwerkgateway** in de zoekresultaten en selecteer de vermelding. Selecteer op de pagina **Virtuele netwerkgateway** de optie **Maken**.
 1. Voer op de pagina **Virtuele netwerkgateway maken** de volgende instellingen in of selecteer ze:
 
     | Instelling | Waarde |
@@ -75,19 +75,19 @@ U kunt een [video](https://azure.microsoft.com/documentation/videos/azure-expres
     | Regio | Wijzig het veld **Regio** om naar de locatie van het virtuele netwerk te verwijzen. Als de locatie niet verwijst naar de regio waarin het virtuele netwerk zich bevindt, wordt het virtuele netwerk niet weergegeven in de vervolgkeuzelijst Virtueel netwerk. |
     | Gatewaytype | Selecteer **ExpressRoute**|
     | SKU | Selecteer de gateway-SKU in de vervolgkeuzelijst. |
-    | Virtueel netwerk | Selecteer *TestVNet* . |
-    | Openbaar IP-adres | Selecteer **Nieuw maken** .|
+    | Virtueel netwerk | Selecteer *TestVNet*. |
+    | Openbaar IP-adres | Selecteer **Nieuw maken**.|
     | Naam openbaar IP-adres | Geef een naam op voor het openbare IP-adres. |
 
 1. Selecteer **Beoordelen en maken** en daarna **Maken** om de gateway te maken. De instellingen worden gevalideerd en de gateway wordt geïmplementeerd. Het maken van een gateway voor een virtueel netwerk kan tot 45 minuten duren.
 
-    :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/gateway.png" alt-text="Het gatewaysubnet toevoegen":::
+    :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/gateway.png" alt-text="Velden op de pagina voor het maken van een gateway voor een virtueel netwerk":::
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u de ExpressRoute-gateway niet meer nodig hebt, gaat u naar de gateway in de resourcegroep met het virtuele netwerk en selecteert u **Verwijderen** . Zorg ervoor dat de gateway geen verbindingen met een circuit heeft.
+Als u de ExpressRoute-gateway niet meer nodig hebt, gaat u naar de gateway in de resourcegroep met het virtuele netwerk en selecteert u **Verwijderen**. Zorg ervoor dat de gateway geen verbindingen met een circuit heeft.
 
-:::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/delete-gateway.png" alt-text="Het gatewaysubnet toevoegen":::
+:::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/delete-gateway.png" alt-text="Virtuele-netwerkgateway verwijderen":::
 
 ## <a name="next-steps"></a>Volgende stappen
 Als u de VNet-gateway hebt gemaakt, kunt u uw VNet koppelen aan een ExpressRoute-circuit. 

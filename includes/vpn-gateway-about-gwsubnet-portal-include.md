@@ -9,10 +9,10 @@ ms.date: 09/24/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 92a6fef3305891b47c4dc2e0f0432e1079df5a69
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 11/14/2020
 ms.locfileid: "71266510"
 ---
 De virtuele netwerkgateway maakt gebruik van een specifiek subnet: het gatewaysubnet. Het gatewaysubnet maakt deel uit van het IP-adresbereik van het virtuele netwerk dat u opgeeft bij het configureren ervan. Het bevat de IP-adressen waarvan de resources en services van de virtuele netwerkgateway gebruikmaken. 

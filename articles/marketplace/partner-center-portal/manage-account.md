@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: parthpandyaMSFT
 ms.author: parthp
-ms.date: 08/27/2020
-ms.openlocfilehash: 9f58d03e2cfa7e1ab9c359cdb6600c42c8970a9a
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.date: 11/02/2020
+ms.openlocfilehash: a9d2c10d665af6899ec79312353676467a623735
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93125798"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628880"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>Uw commerciële Marketplace-account beheren in het partner centrum
 
@@ -40,13 +40,13 @@ Als u dit nog niet hebt gedaan, moet u (of de beheerder van uw organisatie) toeg
 
 ### <a name="open-developer-settings"></a>Instellingen voor ontwikkel aars openen
 
-**Account instellingen** bevindt zich in de rechter bovenhoek van uw [dash board voor commerciële Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace) in het partner centrum. Selecteer het tandwiel pictogram (in de rechter bovenhoek van het dash board) en selecteer vervolgens **instellingen voor ontwikkel aars** .
+Selecteer in het [dash board voor commerciële Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace) in partner centrum **instellingen** (tandwiel pictogram) in de rechter bovenhoek en klik vervolgens op **instellingen voor ontwikkel aars**.
 
 ![Het menu account instellingen in het partner centrum](./media/dashboard-developer-settings.png)
 
-Binnen de **account instellingen** kunt u uw volgende weer geven:
+In **account instellingen** kunt u het volgende bekijken:
 - **Account Details** : account type en account status
-- **Uitgevers-id's** : verkopers-id, gebruikers-id, uitgevers-id, Azure AD-tenants, enzovoort.
+- **Uitgevers-id's** : verkopers-id, gebruikers-id, uitgevers-id, Azure AD-tenants, enzovoort
 - **Contact gegevens** : de weergave naam van de uitgever, de naam van de contact persoon, de e-mail, het telefoon nummer en het adres
 - **Tracking-guid's** : alle tracerings-guid's die aan uw account zijn gekoppeld
 
@@ -56,7 +56,7 @@ In het gedeelte account details ziet u basis informatie, zoals uw **account type
 
 ### <a name="publisher-ids"></a>Uitgevers-Id's
 
-In de sectie uitgevers-Id's ziet u uw **Symantec-id** , **de verkoper-** ID, de **gebruikers-ID** , de **MPN-id** en **Azure AD-tenants** . Deze waarden worden door micro soft toegewezen om uw ontwikkelaars account uniek te identificeren en kunnen niet worden bewerkt.
+In de sectie uitgevers-Id's ziet u uw **Symantec-id** , **de verkoper-** ID, de **gebruikers-ID** , de **MPN-id** en **Azure AD-tenants**. Deze waarden worden door micro soft toegewezen om uw ontwikkelaars account uniek te identificeren en kunnen niet worden bewerkt.
 
 ### <a name="contact-info"></a>Contactgegevens
 
@@ -69,7 +69,7 @@ Een uitbetalings account is de Bank rekening waarnaar de opbrengst wordt verzond
 Uw account voor betaling instellen:
 
 1. Ga naar de [overzichts pagina voor commerciële Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) in partner centrum.
-2. Selecteer in de sectie profiel naast **uitbetalings profiel** de optie **bijwerken** .
+2. Selecteer in de sectie profiel naast **uitbetalings profiel** de optie **bijwerken**.
 3. **Kies een betalings wijze** : Bank account of PayPal.
 4. **Betalings gegevens toevoegen** : dit kan onder andere het kiezen van een account type (controleren of sparen), de naam van de account houder, het account nummer en het route nummer, het facturerings adres, het telefoon nummer of het e-mail adres van PayPal opgeven. * Zie [PayPal-info](/windows/uwp/publish/setting-up-your-payout-account-and-tax-forms#paypal-info)voor meer informatie over het gebruik van PayPal als uw betalings methode voor uw account en om te bepalen of het wordt ondersteund in uw markt regio.
 
@@ -104,7 +104,7 @@ Meer [informatie over belasting gegevens voor Windows app/Game-ontwikkel aars en
 
 Micro soft verzendt standaard betalingen op maand basis. U kunt eventueel ook uw uitbetalingen in de wacht zetten, waardoor het verzenden van betalingen naar uw account wordt voor komen. Als u ervoor kiest om uw uitbetalingen in de wacht te zetten, blijven we de omzet die u behaalt vastleggen en de details in de **samen vatting** van de betaling opgeven. Er worden echter geen betalingen naar uw account verzonden totdat u de blok kering verwijdert.
 
-Ga naar **account instellingen** om uw betalingen in de wacht te zetten. Onder **financiële details** , in de sectie **status van uitbetalings blokkering** , schakelt u de schuif regelaar in **op aan** . U kunt de status van uw uitbetalings blokkering op elk gewenst moment wijzigen, maar houd er rekening mee dat uw beslissing van invloed is op de volgende maandelijkse uitbetaling. Als u bijvoorbeeld de uitbetaling van april wilt bewaren, moet u ervoor zorgen dat u vóór het einde van maart de status van uw uitbetalings blokkering hebt ingesteld **op aan.**
+Ga naar **account instellingen** om uw betalingen in de wacht te zetten. Onder **financiële details** , in de sectie **status van uitbetalings blokkering** , schakelt u de schuif regelaar in **op aan**. U kunt de status van uw uitbetalings blokkering op elk gewenst moment wijzigen, maar houd er rekening mee dat uw beslissing van invloed is op de volgende maandelijkse uitbetaling. Als u bijvoorbeeld de uitbetaling van april wilt bewaren, moet u ervoor zorgen dat u vóór het einde van maart de status van uw uitbetalings blokkering hebt ingesteld **op aan.**
 
 Zodra u de status van de uitbetalings blokkering hebt ingesteld op **aan** , worden alle uitbetalingen in de wacht stand **gezet** totdat u de schuif regelaar weer inschakelt. Wanneer u dit doet, wordt u opgenomen in de volgende maandelijkse uitbetalings cyclus (op voor waarde dat er aan de toepasselijke betalings drempels is voldaan). Als u bijvoorbeeld uw uitbetalingen in wacht hebt, maar graag een toekenning wilt genereren die in juni is gegenereerd, moet u ervoor zorgen dat de status van de uitbetalings blokkering wordt **uitgeschakeld** voor het einde van mei.
 
@@ -161,24 +161,24 @@ Houd er rekening mee dat alle gebruikers van het partner centrum (met inbegrip v
 
 Gebruikers toevoegen aan uw partner centrum-account dat al aanwezig is in het werk account van uw bedrijf [(Azure AD-Tenant)](./company-work-accounts.md):
 
-1. Ga naar **gebruikers** (onder **account instellingen** ) en selecteer **gebruikers toevoegen** .
+1. Ga naar **gebruikers** (onder **account instellingen** ) en selecteer **gebruikers toevoegen**.
 2. Selecteer een of meer gebruikers in de lijst die wordt weer gegeven. U kunt het zoekvak gebruiken om te zoeken naar specifieke gebruikers.
 * Als u meer dan één gebruiker selecteert om aan uw partner Center-account toe te voegen, moet u deze dezelfde rol of set aangepaste machtigingen toewijzen. Als u meerdere gebruikers met verschillende rollen/machtigingen wilt toevoegen, herhaalt u deze stappen voor elke rol of set aangepaste machtigingen.
-3. Wanneer u klaar bent met het kiezen van gebruikers, selecteert u **geselecteerde toevoegen** .
+3. Wanneer u klaar bent met het kiezen van gebruikers, selecteert u **geselecteerde toevoegen**.
 4. Geef in de sectie **rollen** de rol (len) of aangepaste machtigingen voor de geselecteerde gebruiker (s) op.
-5. Selecteer **Opslaan** .
+5. Selecteer **Opslaan**.
 
 ### <a name="create-new-users"></a>Nieuwe gebruikers maken
 
 Als u gloed nieuwe gebruikers accounts wilt maken, moet u een account hebben met [**globale beheerders**](../../active-directory/roles/permissions-reference.md) machtigingen.
 
-1. Ga naar **gebruikers** (onder **account instellingen** ), selecteer **gebruikers toevoegen** en kies vervolgens **nieuwe gebruikers maken** .
+1. Ga naar **gebruikers** (onder **account instellingen** ), selecteer **gebruikers toevoegen** en kies vervolgens **nieuwe gebruikers maken**.
 1. Voer voor elke nieuwe gebruiker een voor naam, achternaam en gebruikers naam in. 
-1. Als u wilt dat de nieuwe gebruiker een globaal beheerders account in de adres lijst van uw organisatie heeft, schakelt u het selectie vakje **deze gebruiker een globale beheerder in uw Azure AD maken in en volledig beheer over alle Directory bronnen** . Hiermee krijgt de gebruiker volledige toegang tot alle beheer functies in de Azure AD van uw bedrijf. Ze kunnen gebruikers toevoegen en beheren in het werk account van uw organisatie (Azure AD-Tenant), maar niet in partner centrum, tenzij u het account de juiste rol/machtigingen verleent.
+1. Als u wilt dat de nieuwe gebruiker een globaal beheerders account in de adres lijst van uw organisatie heeft, schakelt u het selectie vakje **deze gebruiker een globale beheerder in uw Azure AD maken in en volledig beheer over alle Directory bronnen**. Hiermee krijgt de gebruiker volledige toegang tot alle beheer functies in de Azure AD van uw bedrijf. Ze kunnen gebruikers toevoegen en beheren in het werk account van uw organisatie (Azure AD-Tenant), maar niet in partner centrum, tenzij u het account de juiste rol/machtigingen verleent.
 1. Als u het selectie vakje inschakelt om **deze gebruiker een globale beheerder te maken** , moet u een **e-mail voor wachtwoord herstel** opgeven zodat de gebruiker het wacht woord zo nodig kan herstellen.
 1. Selecteer in de sectie **groepslid maatschap** de groepen waartoe u de nieuwe gebruiker wilt maken.
 1. Geef in de sectie **rollen** de rol (len) of aangepaste machtigingen voor de gebruiker op.
-1. Selecteer **Opslaan** .
+1. Selecteer **Opslaan**.
 
 Als u een nieuwe gebruiker in partner centrum maakt, wordt er ook een account voor die gebruiker gemaakt in het werk account (Azure AD-Tenant) waarbij u bent aangemeld. Als u wijzigingen aanbrengt aan de naam van een gebruiker in het partner centrum, worden dezelfde wijzigingen aangebracht in het werk account van uw organisatie (Azure AD-Tenant).
 
@@ -186,14 +186,14 @@ Als u een nieuwe gebruiker in partner centrum maakt, wordt er ook een account vo
 
 Als u gebruikers wilt uitnodigen die momenteel geen deel uitmaken van uw werk account (Azure AD-Tenant) via e-mail, moet u een account hebben met [**globale beheerders**](../../active-directory/roles/permissions-reference.md) machtigingen.
 
-1. Ga naar **gebruikers** (onder **account instellingen** ), selecteer **gebruikers toevoegen** en kies **gebruikers uitnodigen per e-mail** .
+1. Ga naar **gebruikers** (onder **account instellingen** ), selecteer **gebruikers toevoegen** en kies **gebruikers uitnodigen per e-mail**.
 2. Voer een of meer e-mail adressen (Maxi maal 10) in, gescheiden door komma's of punt komma's.
 3. Geef in de sectie **rollen** de rol (len) of aangepaste machtigingen voor de gebruiker op.
-4. Selecteer **Opslaan** .
+4. Selecteer **Opslaan**.
 
 De gebruikers die u hebt uitgenodigd, krijgen een e-mail uitnodiging om lid te worden van uw partner centrum-account. Er wordt een nieuw gast gebruikers account gemaakt in uw werk account (Azure AD-Tenant). Elke gebruiker moet de uitnodiging accepteren voordat ze toegang krijgen tot uw account.
 
-Als u een uitnodiging opnieuw moet verzenden, gaat u naar de pagina **gebruikers** , zoekt u de uitnodiging in de lijst met gebruikers, selecteert u hun e-mail adres (of de tekst met de melding *uitnodiging in behandeling* ). Selecteer vervolgens aan de onderkant van de pagina **uitnodiging opnieuw verzenden** .
+Als u een uitnodiging opnieuw moet verzenden, gaat u naar de pagina **gebruikers** , zoekt u de uitnodiging in de lijst met gebruikers, selecteert u hun e-mail adres (of de tekst met de melding *uitnodiging in behandeling* ). Selecteer vervolgens aan de onderkant van de pagina **uitnodiging opnieuw verzenden**.
 
 > [!NOTE]
 > Als uw organisatie gebruikmaakt van [adreslijst integratie](/previous-versions/azure/azure-services/jj573653(v=azure.100)) om de on-premises adreslijst service te synchroniseren met uw Azure AD, kunt u geen nieuwe gebruikers, groepen of Azure AD-toepassingen maken in het partner centrum. U (of een andere beheerder in uw on-premises Directory) moet u deze rechtstreeks in de on-premises map maken voordat u deze kunt bekijken en toevoegen in het partner centrum.
@@ -218,12 +218,12 @@ Met groepen kunt u meerdere gebruikers rollen en machtigingen tegelijk beheren.
 
 Een groep toevoegen die al bestaat in het werk account van uw organisatie (Azure AD-Tenant) aan uw partner centrum-account:
 
-1. Selecteer op de pagina **gebruikers** (onder **account instellingen** ) **groepen toevoegen** .
+1. Selecteer op de pagina **gebruikers** (onder **account instellingen** ) **groepen toevoegen**.
 2. Selecteer een of meer groepen in de lijst die wordt weer gegeven. U kunt het zoekvak gebruiken om te zoeken naar specifieke groepen.
 Als u meer dan één groep selecteert om aan uw partner Center-account toe te voegen, moet u deze dezelfde rol of set aangepaste machtigingen toewijzen. Als u meerdere groepen met verschillende rollen/machtigingen wilt toevoegen, herhaalt u deze stappen voor elke rol of set aangepaste machtigingen.
-3. Wanneer u klaar bent met het kiezen van groepen, selecteert u **geselecteerde toevoegen** .
+3. Wanneer u klaar bent met het kiezen van groepen, selecteert u **geselecteerde toevoegen**.
 4. Geef in de sectie **rollen** de rol (len) of aangepaste machtigingen voor de geselecteerde groep (en) op. Alle leden van de groep hebben toegang tot uw partner centrum-account met de machtigingen die u toepast op de groep, ongeacht de rollen en machtigingen die zijn gekoppeld aan het afzonderlijke account.
-5. Selecteer **Opslaan** .
+5. Selecteer **Opslaan**.
 
 Wanneer u een bestaande groep toevoegt, kan elke gebruiker die lid is van deze groep, toegang krijgen tot uw partner centrum-account, met de machtigingen die zijn gekoppeld aan de toegewezen rol van de groep.
 
@@ -231,13 +231,13 @@ Wanneer u een bestaande groep toevoegt, kan elke gebruiker die lid is van deze g
 
 Een gloed nieuwe groep toevoegen aan uw partner centrum-account:
 
-1. Selecteer op de pagina **gebruikers** (onder **account instellingen** ) **groepen toevoegen** .
-2. Selecteer op de volgende pagina **nieuwe groep** .
+1. Selecteer op de pagina **gebruikers** (onder **account instellingen** ) **groepen toevoegen**.
+2. Selecteer op de volgende pagina **nieuwe groep**.
 3. Voer de weergave naam voor de nieuwe groep in.
 4. Geef de rol (len) of aangepaste machtigingen voor de groep op. Alle leden van de groep hebben toegang tot uw partner centrum-account met de machtigingen die u hier toepast, ongeacht de rollen/machtigingen die zijn gekoppeld aan het afzonderlijke account.
 5. Selecteer gebruiker (s) voor de nieuwe groep in de lijst die wordt weer gegeven. U kunt het zoekvak gebruiken om te zoeken naar specifieke gebruikers.
 6. Wanneer u klaar bent met het selecteren van gebruikers, selecteert u **selectie toevoegen** om ze toe te voegen aan de nieuwe groep.
-7. Selecteer **Opslaan** .
+7. Selecteer **Opslaan**.
 
 Deze nieuwe groep wordt ook gemaakt in het werk account van uw organisatie (Azure AD-Tenant), niet alleen in uw partner centrum-account.
 
@@ -253,22 +253,22 @@ U kunt toepassingen of services die deel uitmaken van de Azure AD van uw bedrijf
 
 Toepassingen toevoegen die al bestaan in de Azure Active Directory van uw bedrijf:
 
-1. Selecteer op de pagina **gebruikers** (onder **account instellingen** ) de optie **Azure AD-toepassingen toevoegen** .
+1. Selecteer op de pagina **gebruikers** (onder **account instellingen** ) de optie **Azure AD-toepassingen toevoegen**.
 2. Selecteer een of meer Azure AD-toepassingen in de lijst die wordt weer gegeven. U kunt het zoekvak gebruiken om te zoeken naar specifieke Azure AD-toepassingen. Als u meer dan één Azure AD-toepassing selecteert om aan uw partner Center-account toe te voegen, moet u deze dezelfde rol of set aangepaste machtigingen toewijzen. Als u meerdere Azure AD-toepassingen met verschillende rollen/machtigingen wilt toevoegen, herhaalt u deze stappen voor elke rol of set aangepaste machtigingen.
-3. Wanneer u klaar bent met het selecteren van Azure AD-toepassingen, selecteert u **geselecteerde toevoegen** .
+3. Wanneer u klaar bent met het selecteren van Azure AD-toepassingen, selecteert u **geselecteerde toevoegen**.
 4. Geef in de sectie **functies** de rol (len) of aangepaste machtigingen voor de geselecteerde Azure AD-toepassing (en) op.
-5. Selecteer **Opslaan** .
+5. Selecteer **Opslaan**.
 
 ### <a name="add-new-azure-ad-applications"></a>Nieuwe Azure AD-toepassingen toevoegen
 
 Als u partner Center toegang wilt verlenen tot een gloed nieuwe Azure AD-toepassings account, kunt u er een maken in de sectie **gebruikers** . Hiermee maakt u een nieuw account in uw werk account (Azure AD-Tenant), niet alleen in uw partner centrum-account. Als u hoofd zakelijk gebruikmaakt van deze Azure AD-toepassing voor Partner Center-verificatie en gebruikers geen toegang meer nodig hebt, kunt u een geldig adres invoeren voor de **antwoord-URL** en de URI van de **App-ID** , zolang deze waarden niet worden gebruikt door een andere Azure AD-toepassing in uw Directory.
 
-1. Selecteer op de pagina **gebruikers** (onder **account instellingen** ) de optie **Azure AD-toepassingen toevoegen** .
-2. Selecteer op de volgende pagina de optie **nieuwe Azure AD-toepassing** .
+1. Selecteer op de pagina **gebruikers** (onder **account instellingen** ) de optie **Azure AD-toepassingen toevoegen**.
+2. Selecteer op de volgende pagina de optie **nieuwe Azure AD-toepassing**.
 3. Voer de **antwoord-URL** in voor de nieuwe Azure AD-toepassing. Dit is de URL waar gebruikers zich kunnen aanmelden en uw Azure AD-toepassing gebruiken (ook wel de URL van de app of de Sign-On URL genoemd). De **antwoord-URL** mag niet langer zijn dan 256 tekens en moet uniek zijn binnen uw Directory.
 4. Voer de **App-ID-URI** in voor de nieuwe Azure AD-toepassing. Dit is een logische id voor de Azure AD-toepassing die wordt weer gegeven wanneer een eenmalige aanmelding wordt verzonden naar Azure AD. De **URI van de App-ID** moet uniek zijn voor elke Azure AD-toepassing in uw Directory. Deze ID mag niet langer zijn dan 256 tekens. Zie [toepassingen integreren met Azure Active Directory](../../active-directory/develop/quickstart-modify-supported-accounts.md#change-the-application-registration-to-support-different-accounts)) voor meer informatie over de id-URI van de app.
 5. Geef in de sectie **rollen** de rol (len) of aangepaste machtigingen voor de Azure AD-toepassing op.
-6. Selecteer **Opslaan** .
+6. Selecteer **Opslaan**.
 
 Nadat u een Azure AD-toepassing hebt toegevoegd of gemaakt, kunt u teruggaan naar de sectie **gebruikers** en de toepassings naam selecteren om de instellingen voor de toepassing te controleren, waaronder de Tenant-id, de client-id, de antwoord-URL en de URI van de App-ID.
 
@@ -283,8 +283,8 @@ Als uw Azure AD-toepassing gegevens in Microsoft Azure AD leest en schrijft, is 
 1. Selecteer op de pagina **gebruikers** (onder **account instellingen** ) de naam van de Azure AD-toepassing. U ziet alle actieve sleutels voor de Azure AD-toepassing, met inbegrip van de datum waarop de sleutel is gemaakt en het verlopen van 50.
 2. Selecteer **verwijderen** om een sleutel te verwijderen die niet meer nodig is.
 3. Selecteer **nieuwe sleutel toevoegen** om een nieuwe sleutel toe te voegen.
-4. Er wordt een scherm weer gegeven met de **client-id** en **sleutel waarden** . Zorg ervoor dat u deze informatie afdrukt of kopieert, omdat u deze niet meer kunt openen nadat u deze pagina verlaat.
-5. Als u meer sleutels wilt maken, selecteert u **nog een sleutel toevoegen** .
+4. Er wordt een scherm weer gegeven met de **client-id** en **sleutel waarden**. Zorg ervoor dat u deze informatie afdrukt of kopieert, omdat u deze niet meer kunt openen nadat u deze pagina verlaat.
+5. Als u meer sleutels wilt maken, selecteert u **nog een sleutel toevoegen**.
 
 ## <a name="define-user-roles-and-permissions"></a>Gebruikersrollen en machtigingen definiëren
 
@@ -314,7 +314,7 @@ U kunt meerdere tenants instellen voor gebruik met partner Center. Elke gebruike
 
 Een andere Azure AD-Tenant koppelen aan uw partner centrum-account:
 
-1. Selecteer op de pagina **tenants** (onder **account instellingen** ) **een andere Azure AD-Tenant koppelen** .
+1. Selecteer op de pagina **tenants** (onder **account instellingen** ) **een andere Azure AD-Tenant koppelen**.
 2. Voer uw Azure AD-referenties in voor de Tenant die u wilt koppelen.
 3. Controleer de organisatie-en domein naam voor uw Azure AD-Tenant. Selecteer **bevestigen** om de koppeling te volt ooien.
 
@@ -324,7 +324,7 @@ Als de koppeling is geslaagd, kunt u account gebruikers toevoegen en beheren in 
 
 Een gloed nieuwe Azure AD-Tenant maken met uw partner centrum-account:
 
-1. Selecteer op de pagina **tenants** (onder **account instellingen** ) **een nieuwe Azure AD-Tenant maken** .
+1. Selecteer op de pagina **tenants** (onder **account instellingen** ) **een nieuwe Azure AD-Tenant maken**.
 2. Voer de Directory-informatie in voor uw nieuwe Azure AD:
     - **Domein naam** : de unieke naam die we gebruiken voor uw Azure AD-domein, samen met '. onmicrosoft.com '. Als u bijvoorbeeld ' voor beeld ' hebt ingevoerd, zou uw Azure AD-domein ' example.onmicrosoft.com ' zijn.
     - **Contact opnemen met e-mail** : een e-mail adres waar wij zo nodig contact met u kunnen opnemen over uw account.
@@ -336,7 +336,7 @@ Zie het artikel [een nieuwe Tenant maken in azure Active Directory](../../active
 
 ### <a name="remove-a-tenant"></a>Een Tenant verwijderen
 
-Als u een Tenant uit uw partner centrum-account wilt verwijderen, zoekt u de naam op de pagina **tenants** (in **account instellingen** ) en selecteert u vervolgens **verwijderen** . U wordt gevraagd om te bevestigen dat u de Tenant wilt verwijderen. Als u dit doet, kunnen gebruikers in die Tenant zich niet aanmelden bij het partner centrum-account en worden de machtigingen die u voor deze gebruikers hebt geconfigureerd, verwijderd.
+Als u een Tenant uit uw partner centrum-account wilt verwijderen, zoekt u de naam op de pagina **tenants** (in **account instellingen** ) en selecteert u vervolgens **verwijderen**. U wordt gevraagd om te bevestigen dat u de Tenant wilt verwijderen. Als u dit doet, kunnen gebruikers in die Tenant zich niet aanmelden bij het partner centrum-account en worden de machtigingen die u voor deze gebruikers hebt geconfigureerd, verwijderd.
 
 Wanneer u een Tenant verwijdert, kunnen alle gebruikers die zijn toegevoegd aan het partner centrum-account van die Tenant, zich niet meer aanmelden bij het account.
 

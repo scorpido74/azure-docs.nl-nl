@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 10/22/2020
 ms.author: cherylmc
 ms.openlocfilehash: b8c12048283cb8cc4220cb325762b272cde4a68f
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 11/14/2020
 ms.locfileid: "92541312"
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>Een site-naar-site-verbinding maken in Azure Portal
@@ -43,12 +43,12 @@ Controleer voordat u met de configuratie begint of u aan de volgende criteria he
 
 Maak een virtueel netwerk (VNet) met de volgende waarden:
 
-* **Resource groep:** TestRG1
+* **Resourcegroep:** TestRG1
 * **Naam:** VNet1
-* **Regio:** (VS) vs-Oost
-* **IPv4-adres ruimte:** 10.1.0.0/16
-* **Subnetnaam:** Front
-* **Adres ruimte van het subnet:** 10.1.0.0/24
+* **Regio:** (US) US - oost
+* **IPv4-adresruimte:** 10.1.0.0/16
+* **Subnetnaam:** FrontEnd
+* **Adresruimte van subnet:** 10.1.0.0/24
 
 [!INCLUDE [About cross-premises addresses](../../includes/vpn-gateway-cross-premises.md)]
 
@@ -67,17 +67,17 @@ In deze stap maakt u de virtuele netwerkgateway VNet. Het maken van een gateway 
 Maak een VPN-gateway met behulp van de volgende waarden:
 
 * **Naam:** VNet1GW
-* **Regio:** VS-Oost
-* **Gateway type:** VPN
-* **VPN-type:** Op basis van route
+* **Regio:** VS - oost
+* **Gatewaytype:** VPN
+* **VPN-type:** Op route gebaseerd
 * **SKU:** VpnGw1
 * **Generatie:** Generation1
 * **Virtueel netwerk:** VNet1
-* **Adres bereik gateway-subnet:** 10.1.255.0/27
+* **Adresbereik gatewaysubnet:** 10.1.255.0/27
 * **Openbaar IP-adres:** Nieuwe maken
 * **Openbare IP-adresnaam:** VNet1GWpip
-* **Modus actief-actief inschakelen:** Geblokkeerd
-* **BGP configureren:** Geblokkeerd
+* **De modus actief-actief inschakelen:** Uitgeschakeld
+* **BGP configureren:** Uitgeschakeld
 
 [!INCLUDE [Create a vpn gateway](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
 
@@ -90,7 +90,7 @@ De lokale netwerk gateway is een specifiek object dat uw on-premises locatie (de
 Maak een lokale netwerk gateway met behulp van de volgende waarden:
 
 * **Naam:** Site1
-* **Resourcegroep:** TestRG1
+* **Resource groep:** TestRG1
 * **Locatie:** VS-Oost
 
 [!INCLUDE [Add a local network gateway](../../includes/vpn-gateway-add-local-network-gateway-portal-include.md)]

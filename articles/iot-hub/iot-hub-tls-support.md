@@ -5,14 +5,14 @@ services: iot-hub
 author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 09/01/2020
+ms.date: 11/13/2020
 ms.author: jlian
-ms.openlocfilehash: 08ecb766a1a9bd7ff75bf97647be811577212eb5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c9dd66fe9d71f0a857e4b0821190bceb5d6d4680
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90006037"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628795"
 ---
 # <a name="tls-support-in-iot-hub"></a>TLS-ondersteuning in IoT Hub
 
@@ -26,7 +26,7 @@ Configureer uw IoT-hubs voor extra beveiliging zodat *alleen* client verbindinge
 
 * VS - oost
 * VS - zuid-centraal
-* VS - west 2
+* US - west 2
 * VS (overheid) - Arizona
 * VS (overheid) - Virginia
 
@@ -107,4 +107,4 @@ IoT Edge-apparaten kunnen worden geconfigureerd voor het gebruik van TLS 1,2 bij
 
 ## <a name="device-authentication"></a>Apparaatverificatie
 
-Na een geslaagde TLS-Handshake kan IoT Hub een apparaat verifiëren met behulp van een symmetrische sleutel of een X. 509-certificaat. Voor verificatie op basis van een certificaat kan dit elk X. 509-certificaat zijn, inclusief ECC. IoT Hub valideert het certificaat met de vinger afdruk of certificerings instantie (CA) die u opgeeft. IoT Hub biedt geen ondersteuning voor X. 509 gebaseerde wederzijdse verificatie (mTLS). Zie [ondersteunde X. 509-certificaten](iot-hub-devguide-security.md#supported-x509-certificates)voor meer informatie.
+Na een geslaagde TLS-Handshake kan IoT Hub een apparaat verifiëren met behulp van een symmetrische sleutel of een X. 509-certificaat. Voor verificatie op basis van een certificaat kan dit elk X. 509-certificaat zijn, inclusief ECC. IoT Hub valideert het certificaat met de vinger afdruk of certificerings instantie (CA) die u opgeeft. Zie [ondersteunde X. 509-certificaten](iot-hub-devguide-security.md#supported-x509-certificates)voor meer informatie.

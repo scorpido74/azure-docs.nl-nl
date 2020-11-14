@@ -3,14 +3,14 @@ title: Naslag informatie over Java script-ontwikkel aars voor Azure Functions
 description: Meer informatie over het ontwikkelen van functies met behulp van Java script.
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
-ms.date: 07/17/2020
+ms.date: 11/11/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 5b9ffdec83fb613b7df0b5a3227ca66c55e54fe9
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 9b920dc8a31967c9d8e1f05a6101fdfcc7a1304e
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422549"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628829"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Ontwikkelaarshandleiding voor Azure Functions Javascript
 
@@ -201,7 +201,7 @@ module.exports = (context) => {
 
 De context die wordt door gegeven aan de functie `executionContext` , bevat een eigenschap, een object met de volgende eigenschappen:
 
-| Naam van eigenschap  | Type  | Beschrijving |
+| Naam van eigenschap  | Type  | Description |
 |---------|---------|---------|
 | `invocationId` | Tekenreeks | Biedt een unieke id voor de specifieke functie aanroep. |
 | `functionName` | Tekenreeks | Geeft de naam van de functie die wordt uitgevoerd |
@@ -508,12 +508,20 @@ In de volgende tabel ziet u de huidige ondersteunde Node.js versies voor elke ho
 | Functie versie | Knooppunt versie (Windows) | Knooppunt versie (Linux) |
 |---|---| --- |
 | 1.x | 6.11.2 (vergrendeld door de runtime) | n.v.t. |
-| 2.x  | ~ 8<br/>~ 10 (aanbevolen)<br/>~ 12<sup>*</sup> | ~ 8 (aanbevolen)<br/>~ 10  |
-| 3.x | ~ 10<br/>~ 12 (aanbevolen)  | ~ 10<br/>~ 12 (aanbevolen) |
+| 2.x  | `~8`<br/>`~10` aanbevelingen<br/>`~12` | `node|8`<br/>`node|10` aanbevelingen  |
+| 3.x | `~10`<br/>`~12` aanbevelingen<br/>`~14` evaluatie  | `node|10`<br/>`node|12` aanbevelingen<br/>`node|14` evaluatie |
 
-<sup>*</sup>Het knoop punt ~ 12 is momenteel toegestaan op versie 2. x van de functions-runtime. Voor de beste prestaties raden we u echter aan functions runtime versie 3. x met het knoop punt ~ 12 te gebruiken. 
+U kunt de huidige versie bekijken die door de runtime wordt gebruikt door logboek registratie `process.version` vanuit een functie.
 
-U kunt de huidige versie bekijken die door de runtime wordt gebruikt door de bovenstaande app-instelling te controleren of door af te drukken `process.version` vanuit een functie. Richt de versie in Azure in door de WEBSITE_NODE_DEFAULT_VERSION [app-instelling](functions-how-to-use-azure-function-app-settings.md#settings) in te stellen op een ondersteunde versie van LTS, zoals `~10` .
+### <a name="setting-the-node-version"></a>De knooppunt versie instellen
+
+Voor Windows-functie-apps moet u de versie in azure richten door de `WEBSITE_NODE_DEFAULT_VERSION` [app-instelling](functions-how-to-use-azure-function-app-settings.md#settings) in te stellen op een ondersteunde versie van LTS, zoals `~12` .
+
+Voor Linux-functie-apps voert u de volgende Azure CLI-opdracht uit om de knooppunt versie bij te werken.
+
+```bash
+az functionapp config set --linux-fx-version "node|12" --name "<MY_APP_NAME>" --resource-group "<MY_RESOURCE_GROUP_NAME>"
+```
 
 ## <a name="dependency-management"></a>Beheer van afhankelijkheden
 Als u Community-bibliotheken in uw Java script-code wilt gebruiken, zoals in het onderstaande voor beeld wordt weer gegeven, moet u ervoor zorgen dat alle afhankelijkheden zijn geïnstalleerd op uw functie-app in Azure.

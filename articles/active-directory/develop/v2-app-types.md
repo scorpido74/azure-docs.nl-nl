@@ -1,6 +1,6 @@
 ---
 title: Toepassings typen voor micro soft Identity platform | Azure
-description: De typen apps en scenario's die worden ondersteund door het micro soft Identity platform (v 2.0)-eind punt.
+description: De typen apps en scenario's die worden ondersteund door het micro soft Identity platform-eind punt.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -8,20 +8,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 11/13/2020
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
-ms.custom: aaddev, fasttrack-edit
-ms.openlocfilehash: d04dd0ec7c6d3166e2170001d6ff341d203c0d6b
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.custom: aaddev, fasttrack-edit, contperfq2
+ms.openlocfilehash: 4c72d1b4b78c0b7ca9e7fa1f6468beb6fdd4b247
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92103149"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628081"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Toepassings typen voor micro soft Identity platform
 
-Het micro soft Identity platform (v 2.0)-eind punt ondersteunt verificatie voor verschillende moderne app-architecturen, die allemaal zijn gebaseerd op gestandaardiseerde protocollen [OAuth 2,0 of OpenID Connect Connect](active-directory-v2-protocols.md). In dit artikel worden de typen apps beschreven die u kunt bouwen met behulp van micro soft Identity platform, ongeacht uw voorkeurs taal of-platform. De informatie is ontworpen om u te helpen bij het begrijpen van scenario's met een hoog niveau voordat u [met de code aan de slag gaat](v2-overview.md#getting-started).
+Het micro soft Identity platform-eind punt ondersteunt verificatie voor tal van moderne app-architecturen, die allemaal zijn gebaseerd op gestandaardiseerde protocollen [OAuth 2,0 of OpenID Connect Connect](active-directory-v2-protocols.md). In dit artikel worden de typen apps beschreven die u kunt bouwen met behulp van micro soft Identity platform, ongeacht uw voorkeurs taal of-platform. De informatie is ontworpen om u te helpen bij het begrijpen van scenario's met een hoog niveau voordat u aan de slag gaat met de code in de [toepassings scenario's](authentication-flows-app-scenarios.md#application-scenarios).
 
 ## <a name="the-basics"></a>De basisbeginselen
 
@@ -81,10 +81,9 @@ In web server-apps neemt de aanmeldings verificatie stroom de volgende stappen o
 
 U kunt de identiteit van de gebruiker controleren door de ID-token te valideren met een open bare handtekening sleutel die wordt ontvangen van het micro soft Identity platform-eind punt. Er wordt een sessie cookie ingesteld die kan worden gebruikt om de gebruiker te identificeren op volgende pagina-aanvragen.
 
-Als u dit scenario in actie wilt zien, kunt u een van de voor beelden van de aanmeldings code voor de web-app in het gedeelte [aan de slag met micro soft Identity platform](v2-overview.md#getting-started) uitproberen.
+Als u dit scenario in actie wilt zien, probeert u de code voorbeelden in de web-app uit te proberen in het [scenario voor gebruikers](scenario-web-app-sign-user-overview.md).
 
 Naast het gebruik van een eenvoudige aanmelding moet een webserver-app mogelijk toegang hebben tot een andere webservice, zoals een REST API. In dit geval maakt de webserver-app deel uit van een gecombineerde OpenID connect-verbinding en OAuth 2,0-stroom met behulp van de [OAuth 2,0-autorisatie code stroom](v2-oauth2-auth-code-flow.md). Meer informatie over dit scenario vindt u [in aan de slag met web apps en Web-api's](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-WebAPI-OpenIDConnect-DotNet).
-
 
 ## <a name="web-apis"></a>Web-API's
 
@@ -106,7 +105,7 @@ Een web-API kan toegangs tokens ontvangen van alle typen apps, waaronder web ser
 
 ![Hiermee wordt de Web-API-verificatie stroom weer gegeven](./media/v2-app-types/convergence-scenarios-webapi.svg)
 
-Als u wilt weten hoe u een web-API kunt beveiligen met behulp van OAuth2-toegangs tokens, raadpleegt u de voor beelden van de Web-API in de sectie aan de slag met [micro soft Identity platform](v2-overview.md#getting-started) .
+Als u wilt weten hoe u een web-API kunt beveiligen met behulp van OAuth2-toegangs tokens, raadpleegt u de voor beelden van de Web-API in het scenario voor de [beveiligde web-API](scenario-protected-web-api-overview.md).
 
 In veel gevallen moeten Web-Api's ook uitgaande aanvragen indienen bij andere stroomafwaartse Web-Api's die worden beveiligd door het micro soft Identity-platform. Om dit te doen, kunnen Web-Api's gebruikmaken van de **namen van** de stroom, waarmee de Web-API een binnenkomend toegangs token kan uitwisselen voor een ander toegangs token dat in uitgaande aanvragen moet worden gebruikt. Zie voor meer informatie [micro soft Identity platform and OAuth 2,0 voor-of-flow](v2-oauth2-on-behalf-of-flow.md).
 

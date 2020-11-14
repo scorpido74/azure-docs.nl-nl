@@ -9,24 +9,24 @@ ms.date: 10/20/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: a66596ecb926c1bf3c6b61cc99e1eb1b56e99158
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 11/14/2020
 ms.locfileid: "92328425"
 ---
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-1. In **Resources, services en documenten (G+/) zoeken** typt u *virtueel netwerk* .
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. In **Resources, services en documenten (G+/) zoeken** typt u *virtueel netwerk*.
 
    ![Pagina 'naar de resource Virtueel netwerk zoeken'](./media/vpn-gateway-basic-vnet-rm-portal-include/marketplace.png "Pagina 'naar de resource Virtueel netwerk zoeken'")
-1. Selecteer **Virtueel netwerk** uit de resultaten van **Marketplace** .
+1. Selecteer **Virtueel netwerk** uit de resultaten van **Marketplace**.
 
    ![Virtueel netwerk selecteren](./media/vpn-gateway-basic-vnet-rm-portal-include/marketplace-results.png "Pagina 'naar de resource Virtueel netwerk zoeken'")
-1. Op de pagina **Virtueel netwerk** selecteert u **Maken** .
+1. Op de pagina **Virtueel netwerk** selecteert u **Maken**.
 
    ![pagina Virtueel netwerk](./media/vpn-gateway-basic-vnet-rm-portal-include/vnet-click-create.png "Selecteer Maken")
 1. Nadat u **Maken** hebt geselecteerd, wordt de pagina **Virtueel netwerk maken** geopend.
-1. In het tabblad **Basics** configureert u **Projectdetails** en de VNet-instellingen bij **Exemplaardetails** .
+1. In het tabblad **Basics** configureert u **Projectdetails** en de VNet-instellingen bij **Exemplaardetails**.
 
    ![Tabblad Basics](./media/vpn-gateway-basic-vnet-rm-portal-include/basics.png "Tabblad Basisbeginselen") Wanneer u de velden invult, ziet u een groen vinkje als de tekens die u in het veld invoert, gevalideerd zijn. Sommige waarden worden automatisch ingevuld. Deze kunt u door uw eigen waarden vervangen:
 
@@ -35,7 +35,7 @@ ms.locfileid: "92328425"
    - **Naam** : Voer de naam in van het virtuele netwerk.
    - **Regio** : selecteer de locatie voor uw VNet. De locatie bepaalt waar de resources die u naar dit VNet implementeert, zich bevinden.
 
-1. Configureer de waarden in het tabblad **IP-adressen** . De waarden die in de onderstaande voorbeelden worden weergegeven, zijn bedoeld voor demonstratiedoeleinden. U kunt deze waarden aanpassen op basis van de instellingen die u nodig hebt.
+1. Configureer de waarden in het tabblad **IP-adressen**. De waarden die in de onderstaande voorbeelden worden weergegeven, zijn bedoeld voor demonstratiedoeleinden. U kunt deze waarden aanpassen op basis van de instellingen die u nodig hebt.
 
    ![Tabblad IP-adressen](./media/vpn-gateway-basic-vnet-rm-portal-include/addresses.png "Tabblad IP-adressen")  
    - **IPv4-adresruimte** : Standaard wordt er automatisch een adresruimte gemaakt. U kunt op de adresruimte klikken om deze aan te passen aan uw eigen waarden. U kunt ook extra adresruimten toevoegen.
@@ -48,4 +48,4 @@ ms.locfileid: "92328425"
    - **DDoS-beveiliging** : Basic
    - **Firewall** : Uitgeschakeld
 1. Selecteer **Beoordelen en maken** om de instellingen voor het virtuele netwerk te valideren.
-1. Nadat de instellingen zijn gevalideerd, selecteert u **Maken** .
+1. Nadat de instellingen zijn gevalideerd, selecteert u **Maken**.

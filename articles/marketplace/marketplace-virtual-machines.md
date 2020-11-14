@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: a14ccb74e6f0ac2454255d609662706cb53ede31
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 433875e52e77a8992197b47fe0424cd0b7e9f50c
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129589"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628285"
 ---
 # <a name="how-to-plan-a-virtual-machine-offer"></a>Een aanbieding voor een virtuele machine plannen
 
@@ -100,7 +100,7 @@ In het volgende voor beeld ziet u een VM-aanbieding in azure Marketplace met pri
 
 U kunt de detectie en implementatie van uw virtuele machine beperken tot een specifieke set klanten door de installatie kopie en prijzen als een persoonlijk abonnement te publiceren. Met persoonlijke abonnementen kunt u exclusieve aanbiedingen voor uw dichtstbijzijnde klanten maken en aangepaste software en voor waarden aanbieden. Met de aangepaste voor waarden kunt u een groot aantal scenario's markeren, met inbegrip van veld LED-deals met gespecialiseerde prijzen en voor waarden, en vroegtijdige toegang tot beperkte release software. Met persoonlijke abonnementen kunt u specifieke prijzen of producten aan een beperkt aantal klanten geven.
 
-Zie [Abonnementen en prijzen voor commerciële Marketplace-aanbiedingen](plans-pricing.md) en [privé aanbiedingen op Azure Marketplace](https://azure.microsoft.com/blog/private-offers-on-azure-marketplace)voor meer informatie.
+Zie voor meer informatie [Abonnementen en prijzen voor commerciële Marketplace-aanbiedingen](plans-pricing.md) en [persoonlijke aanbiedingen in micro soft Commercial Marketplace](private-offers.md).
 
 ## <a name="test-drives"></a>Test drives
 

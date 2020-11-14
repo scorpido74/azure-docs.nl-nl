@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
 ms.openlocfilehash: 7be326e0f01ed6a00244c0f5b9ed6a960b2b6e0b
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 11/14/2020
 ms.locfileid: "86171853"
 ---
 # <a name="interoperability-in-azure-back-end-connectivity-features-test-configuration-details"></a>Interoperabiliteit in azure back-end-connectiviteits functies: Configuratie Details testen
@@ -23,17 +23,17 @@ In dit artikel worden de configuratie details van de [test installatie][Setup]be
 
 ## <a name="spoke-vnet-connectivity-by-using-vnet-peering"></a>Spoke VNet-connectiviteit met behulp van VNet-peering
 
-In de volgende afbeelding ziet u de details van Azure Virtual Network peering van een spoke Virtual Network (VNet). Zie [VNet-peering beheren][VNet-Config]voor meer informatie over het instellen van peering tussen twee VNets. Als u wilt dat de spoke VNet gebruikmaakt van de gateways die zijn verbonden met de hub VNet, selecteert u **externe gateways gebruiken** .
+In de volgende afbeelding ziet u de details van Azure Virtual Network peering van een spoke Virtual Network (VNet). Zie [VNet-peering beheren][VNet-Config]voor meer informatie over het instellen van peering tussen twee VNets. Als u wilt dat de spoke VNet gebruikmaakt van de gateways die zijn verbonden met de hub VNet, selecteert u **externe gateways gebruiken**.
 
 [![i]][1]
 
-In de volgende afbeelding ziet u de VNet-peering Details van de hub VNet. Als u wilt dat de hub vnet toestaat dat de spoke VNet de gateways van de hub gebruikt, selecteert u **Gateway doorvoer toestaan** .
+In de volgende afbeelding ziet u de VNet-peering Details van de hub VNet. Als u wilt dat de hub vnet toestaat dat de spoke VNet de gateways van de hub gebruikt, selecteert u **Gateway doorvoer toestaan**.
 
 [![2]][2]
 
 ## <a name="branch-vnet-connectivity-by-using-a-site-to-site-vpn"></a>Vertakkings-VNet-connectiviteit met behulp van een site-naar-site-VPN
 
-Stel de site-naar-site-VPN-verbinding tussen de hub en de vertakkings VNets in met behulp van VPN-gateways in azure VPN Gateway. Standaard gebruiken VPN-gateways en Azure ExpressRoute-gateways een privé-waarde voor autonoom systeem nummer (ASN) van **65515** . U kunt de ASN-waarde wijzigen in VPN Gateway. In de test installatie wordt de ASN-waarde van de branch VNet VPN-gateway gewijzigd in **65516** om eBGP-route ring tussen de hub en vertakking VNets te ondersteunen.
+Stel de site-naar-site-VPN-verbinding tussen de hub en de vertakkings VNets in met behulp van VPN-gateways in azure VPN Gateway. Standaard gebruiken VPN-gateways en Azure ExpressRoute-gateways een privé-waarde voor autonoom systeem nummer (ASN) van **65515**. U kunt de ASN-waarde wijzigen in VPN Gateway. In de test installatie wordt de ASN-waarde van de branch VNet VPN-gateway gewijzigd in **65516** om eBGP-route ring tussen de hub en vertakking VNets te ondersteunen.
 
 
 [![3]][3]
@@ -45,7 +45,7 @@ Stel de site-naar-site-VPN-verbinding tussen de hub en de vertakkings VNets in m
 
 In de volgende afbeelding ziet u de configuratie van het ExpressRoute-circuit van Azure regio 1 naar de on-premises locatie 1 Customer Edge (CE)-routers:
 
-[![3]][4]
+[![4]][4]
 
 In de volgende afbeelding ziet u de verbindings configuratie tussen het circuit ExpressRoute 1 en de hub-VNet:
 

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 10/27/2020
 ms.author: cherylmc
 ms.openlocfilehash: 92d39b0d39511571701fd092f641cb8ca3ae42c7
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 11/14/2020
 ms.locfileid: "92890145"
 ---
 # <a name="add-additional-s2s-connections-to-a-vnet-azure-portal"></a>Aanvullende S2S-verbindingen toevoegen aan een VNet: Azure Portal
@@ -44,21 +44,21 @@ Controleer de volgende items:
 1. Selecteer **verbindingen** op de pagina **virtuele netwerk gateway** .
 
    :::image type="content" source="./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/connections.png" alt-text="VPN-gateway verbindingen":::
-1. Selecteer op de pagina **verbindingen** **+ toevoegen** .
+1. Selecteer op de pagina **verbindingen** **+ toevoegen**.
 1. Hiermee opent u de pagina **verbinding toevoegen** .
 
-   :::image type="content" source="./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/add-connection.png" alt-text="VPN-gateway verbindingen":::
+   :::image type="content" source="./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/add-connection.png" alt-text="Verbindings pagina toevoegen":::
 1. Vul de volgende velden in op de pagina **verbinding toevoegen** :
 
    * **Naam:** De naam die u wilt toekennen aan de site waarmee u de verbinding maakt.
-   * **Verbindings type:** Selecteer **site-naar-site (IPSec)** .
+   * **Verbindings type:** Selecteer **site-naar-site (IPSec)**.
 
 ## <a name="add-a-local-network-gateway"></a><a name="local"></a>Een lokale netwerk gateway toevoegen
 
 1. Selecteer in het veld **lokale netwerk gateway** de optie **_een lokale netwerk gateway_ selecteren *_. Hiermee opent u de pagina _* lokale netwerk gateway kiezen** .
 1. Selecteer **+ nieuwe maken** om de pagina **lokale netwerk gateway maken** te openen.
 
-   :::image type="content" source="./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/create-local-network-gateway.png" alt-text="VPN-gateway verbindingen":::
+   :::image type="content" source="./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/create-local-network-gateway.png" alt-text="Pagina lokale netwerk gateway maken":::
 1. Vul op de pagina **lokale netwerk gateway maken** de volgende velden in:
 
    * **Naam:** De naam die u aan de lokale netwerk gateway resource wilt geven.
