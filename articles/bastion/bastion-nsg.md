@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 11/12/2020
 ms.author: cherylmc
-ms.openlocfilehash: 5bff5b341dcbdaa7ccae2b02e62e3e6bd4d115f9
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 822a90aa2bd3a19cf3459924e6b577cc416aa3a5
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/13/2020
-ms.locfileid: "94594263"
+ms.locfileid: "94616821"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion"></a>Werken met NSG-toegang en Azure Bastion
 
@@ -28,7 +28,7 @@ In dit diagram:
 * Connect Integration-een RDP/SSH-sessie met één klik binnen de browser
 * Is er geen openbaar IP-adres vereist voor de virtuele Azure-machine.
 
-## <a name="network-security-groups"></a><a name="nsg"></a>Netwerkbeveiligingsgroepen
+## <a name="network-security-groups"></a><a name="nsg"></a>Netwerk beveiligings groepen
 
 In deze sectie ziet u het netwerk verkeer tussen de gebruiker en Azure Bastion, en tot doel-Vm's in uw virtuele netwerk:
 
@@ -40,7 +40,7 @@ _ Binnenkomend **verkeer:**
 
    * **Binnenkomend verkeer via het open bare Internet:** De Azure-Bastion maakt een openbaar IP-adres waarvoor poort 443 is ingeschakeld op het open bare IP-adres voor binnenkomend verkeer. Poort 3389/22 hoeft niet te worden geopend op de AzureBastionSubnet.
    * **Binnenkomend verkeer vanuit het Azure Bastion-besturings vlak:** Schakel voor de connectiviteit van het besturings element het argument poort 443 binnenkomend van de **GatewayManager** -service in. Hiermee wordt het besturings vlak ingeschakeld, dat wil zeggen dat gateway beheer met Azure Bastion kan communiceren.
-   * **Binnenkomend verkeer vanuit Azure Loadbalancer:** Schakel voor status tests het argument poort 443 binnenkomend van de **AzureLoadBalancer** -service in. Dit maakt Azure load balancer, om verbindings problemen met de back-end te detecteren.
+   * **Binnenkomend verkeer van Azure Load Balancer:** Schakel voor status tests het poort 443 in dat binnenkomend van het **AzureLoadBalancer** -service label. Hiermee kan Azure Load Balancer connectiviteit detecteren 
 
 
    :::image type="content" source="./media/bastion-nsg/inbound.png" alt-text="Scherm opname bevat binnenkomende beveiligings regels voor Azure Bastion-connectiviteit.":::
