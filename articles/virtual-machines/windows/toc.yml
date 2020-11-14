@@ -46,7 +46,7 @@
     - name: 13 - Virtuele machines bewaken
       href: tutorial-monitor.md
     - name: 14 - VM-beveiliging beheren
-      href: tutorial-azure-security.md
+      href: ../tutorial-azure-security.md
     - name: 15 - Een SQL\IIS\.NET-stack installeren
       href: tutorial-iis-sql.md
     - name: 16 - Webserver beveiligen met SSL
@@ -648,8 +648,16 @@
         - name: De schijf met het besturingssysteem wisselen
           href: os-disk-swap.md
         - name: Een virtuele machine taggen
-          href: tag.md
-        - name: Tijdsynchronisatie
+          items:
+            - name: Portal
+              href: ../tag-portal.md
+            - name: PowerShell
+              href: ../tag-powershell.md
+            - name: CLI
+              href: ../tag-cli.md
+            - name: Sjabloon
+              href: ../tag-template.md
+            - name: Tijdsynchronisatie
           href: time-sync.md
         - name: Scripts uitvoeren op een virtuele machine
           href: run-scripts-in-vm.md

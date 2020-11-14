@@ -122,6 +122,10 @@
           href: manage/azure-plan-subscription-transfer-partners.md
         - name: Aan de slag in de Azure EA-portal
           href: manage/ea-portal-get-started.md
+    - name: Beveiliging
+      items:
+        - name: Beveiligingsbasislijn
+          href: security-baseline.md
 - name: Instructiegidsen
   items:
     - name: Kostenbeheer en facturering configureren

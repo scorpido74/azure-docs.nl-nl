@@ -85,12 +85,14 @@
       href: Tutorials/storage-lab-tutorial.md
 - name: Concepten
   items:
-    - name: Inhoudstags
-      href: concept-tagging-images.md
+    - name: Optische tekenherkenning (OCR)
+      href: concept-recognizing-text.md
     - name: Objectdetectie
       href: concept-object-detection.md
     - name: Merkdetectie
       href: concept-brand-detection.md
+    - name: Inhoudstags
+      href: concept-tagging-images.md
     - name: Categorisatie van afbeeldingen
       href: concept-categorizing-images.md
     - name: Beschrijvingen van afbeeldingen
@@ -105,8 +107,6 @@
       href: concept-detecting-color-schemes.md
     - name: Slim bijgesneden miniaturen
       href: concept-generating-thumbnails.md
-    - name: Optische tekenherkenning (OCR)
-      href: concept-recognizing-text.md
     - name: Detectie van erotische inhoud
       href: concept-detecting-adult-content.md
 - name: Verantwoordelijke AI

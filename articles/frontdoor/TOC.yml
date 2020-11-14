@@ -36,11 +36,15 @@
       href: front-door-quickstart-template-samples.md
 - name: Concepten
   items:
+    - name: Beveiliging
+      items:
+        - name: Beveiligingsbasislijn
+          href: security-baseline.md
     - name: Back-ends en back-endpools
       href: front-door-backend-pool.md
     - name: Opslaan in cache met Front Door
       href: front-door-caching.md
-    - name: DDoS-bescherming
+    - name: DDoS-beveiliging
       href: front-door-ddos.md
     - name: Veelgestelde vragen over Front Door
       href: front-door-faq.md
