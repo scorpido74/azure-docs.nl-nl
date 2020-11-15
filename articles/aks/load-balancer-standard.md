@@ -7,16 +7,16 @@ ms.topic: article
 ms.date: 06/14/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 414ae3b2adb60b9442a69e3ebcc8b13b29c67cb7
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 51cb79e942b9d92876bd4d0e2cc27bb5ee0337bf
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070500"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94634868"
 ---
 # <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>Een open bare Standard Load Balancer gebruiken in azure Kubernetes service (AKS)
 
-De Azure Load Balancer is een N4 van het OSI-model (Open Systems Interconnection) dat zowel binnenkomende als uitgaande scenario's ondersteunt. Hiermee worden inkomende stromen gedistribueerd die aan de front-end van de load balancer komen voor de back-endadresgroep.
+Het Azure Load Balancer bevindt zich op N4 van het OSI-model (Open Systems Interconnect) dat zowel binnenkomende als uitgaande scenario's ondersteunt. Hiermee worden inkomende stromen gedistribueerd die aan de front-end van de load balancer komen voor de back-endadresgroep.
 
 Een **open bare** Load Balancer in combi natie met AKS heeft twee doel einden:
 
@@ -93,13 +93,13 @@ Azure Load Balancer biedt een uitgaande verbinding van een virtueel netwerk naas
 
 Net als alle Load Balancer regels volgen uitgaande regels dezelfde vertrouwde syntaxis als taak verdeling en binnenkomende NAT-regels:
 
-***frontend-Ip's + para meters + back-end-pool***
+***frontend-ip's + para meters + back-end-pool** _
 
 Met een uitgaande regel wordt uitgaande NAT geconfigureerd voor alle virtuele machines die door de back-endadresgroep worden geïdentificeerd om te worden vertaald naar de front-end. En para meters bieden extra nauw keurige controle over de uitgaande NAT-algoritme.
 
 Terwijl een regel voor uitgaande verbindingen met slechts één openbaar IP-adres kan worden gebruikt, wordt door uitgaande regels de configuratie belasting voor het schalen van uitgaande NAT vereenvoudigd. U kunt meerdere IP-adressen gebruiken om te plannen voor grootschalige scenario's en u kunt uitgaande regels gebruiken om te voor komen dat er gevoelige patronen voor de uitputting van SNAT zijn. Elk extra IP-adres dat wordt geleverd door een front-end biedt 64 KB tijdelijke poorten voor Load Balancer die als SNAT-poorten kunnen worden gebruikt. 
 
-Wanneer u een *standaard* -SKU gebruikt Load Balancer met beheerde uitgaande open bare ip's, die standaard worden gemaakt, kunt u het aantal beheerde uitgaande open bare ip's schalen met behulp van de **`load-balancer-managed-ip-count`** para meter.
+Wanneer u een _Standard * SKU-load balancer gebruikt met beheerde uitgaande open bare Ip's, die standaard worden gemaakt, kunt u het aantal beheerde uitgaande open bare Ip's schalen met behulp van de **`load-balancer-managed-ip-count`** para meter.
 
 Voer de volgende opdracht uit om een bestaand cluster bij te werken. Deze para meter kan ook op een cluster worden ingesteld voor het maken van meerdere beheerde open bare IP-adressen.
 
@@ -266,7 +266,7 @@ Als u verwacht dat er veel korte verbindingen worden uitgevoerd, en geen verbind
  
 *outboundIPs* \* 64.000 \> *nodeVMs* \* *desiredAllocatedOutboundPorts*.
  
-Als u bijvoorbeeld drie *nodeVMs*en 50.000 *desiredAllocatedOutboundPorts*hebt, moet u Mini maal drie *outboundIPs*hebben. Het wordt aanbevolen dat u extra uitgaande IP-capaciteit opneemt dan wat u nodig hebt. Daarnaast moet u de cluster automatisch schalen en de mogelijkheid van upgrades van knooppunt groepen voor het berekenen van de uitgaande IP-capaciteit. Bekijk het huidige aantal knoop punten en het maximum aantal knoop punten en gebruik de hogere waarde voor het cluster automatisch schalen. Voor het uitvoeren van een upgrade moet u een extra VM-knoop punt voor elke knooppunt groep waarmee een upgrade kan worden uitgevoerd.
+Als u bijvoorbeeld drie *nodeVMs* en 50.000 *desiredAllocatedOutboundPorts* hebt, moet u Mini maal drie *outboundIPs* hebben. Het wordt aanbevolen dat u extra uitgaande IP-capaciteit opneemt dan wat u nodig hebt. Daarnaast moet u de cluster automatisch schalen en de mogelijkheid van upgrades van knooppunt groepen voor het berekenen van de uitgaande IP-capaciteit. Bekijk het huidige aantal knoop punten en het maximum aantal knoop punten en gebruik de hogere waarde voor het cluster automatisch schalen. Voor het uitvoeren van een upgrade moet u een extra VM-knoop punt voor elke knooppunt groep waarmee een upgrade kan worden uitgevoerd.
 
 - Wanneer u *IdleTimeoutInMinutes* instelt op een andere waarde dan de standaard instelling van 30 minuten, kunt u overwegen hoe lang uw workloads een uitgaande verbinding nodig hebben. Houd ook rekening met de standaardtime-outwaarde voor een *standaard* -SKU Load Balancer die buiten AKS wordt gebruikt, is 4 minuten. Een *IdleTimeoutInMinutes* -waarde die uw specifieke AKS-werk belasting nauw keuriger maakt, kan de SNAT-uitputting afnemen als gevolg van het koppelen van verbindingen die niet meer worden gebruikt.
 

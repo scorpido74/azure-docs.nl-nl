@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: pimorano
 ms.reviewer: omafnan
-ms.openlocfilehash: 3618ba28403882ee1f949a2bbc97e586674b3772
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 3f3009799889bd6b118f586676e22338d821d37c
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317554"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94635284"
 ---
 # <a name="using-sql-scripts-in-azure-synapse-studio-preview"></a>SQL-scripts gebruiken in azure Synapse Studio (preview-versie)
 
@@ -73,6 +73,18 @@ Als u het menu **acties** onder gegevens selecteert, kunt u verschillende acties
 Bekijk de beschik bare penbeweging door met de rechter muisknop te klikken op de knoop punten van SQL-data bases.
  
 ![nieuwe script database](media/author-sql-script/new-script-database.png)
+
+## <a name="create-folders-and-move-sql-scripts-into-a-folder"></a>Mappen maken en SQL-scripts naar een map verplaatsen
+
+Kies in het menu acties onder SQL-scripts ontwikkelen de optie nieuwe map in het menu acties onder SQL-scripts ontwikkelen. En typ de naam van de nieuwe map in het pop-upvenster. 
+
+> [!div class="mx-imgBorder"] 
+> ![newsqlscript](./media/author-sql-script/new-sql-script-create-folder.png)
+
+Als u een SQL-script wilt verplaatsen naar een map, kunt u het SQL-script selecteren en ' verplaatsen naar ' kiezen in het menu acties. Zoek vervolgens de doelmap in het nieuwe venster en verplaats het SQL-script naar de geselecteerde map. U kunt het SQL-script ook snel slepen en neerzetten in een map.  
+
+> [!div class="mx-imgBorder"] 
+> ![newsqlscript](./media/author-sql-script/new-sql-script-move-folder.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

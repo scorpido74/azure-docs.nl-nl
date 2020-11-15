@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 4f83500e539ff5254db290d156dfcf50ea60de14
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: 236a604c2c1cecfb18a2d82c3796a88cc4341a34
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372554"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636381"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>Azure Defender voor SQL-servers op computers 
 
@@ -48,7 +48,7 @@ Beide worden hieronder beschreven.
 
 ### <a name="step-1-provision-the-log-analytics-agent-on-your-sql-servers-host"></a>Stap 1. Richt de Log Analytics-agent in op de host van uw SQL-Server:
 
-- **SQL Server op de Azure-VM** : als uw SQL-machine wordt gehost op een Azure-VM, kunt u [de log Analytics agent automatisch inrichten](security-center-enable-data-collection.md#workspace-configuration). U kunt ook de hand matige procedure volgen voor [het Onboarden van uw Azure stack-vm's](quickstart-onboard-machines.md#onboard-your-azure-stack-vms).
+- **SQL Server op de Azure-VM** : als uw SQL-machine wordt gehost op een Azure-VM, kunt u [het automatisch inrichten van <a name="auto-provision-mma"></a> de log Analytics agent inschakelen](security-center-enable-data-collection.md#auto-provision-mma). U kunt ook de hand matige procedure volgen voor [het Onboarden van uw Azure stack-vm's](quickstart-onboard-machines.md#onboard-your-azure-stack-vms).
 - **SQL Server op Azure Arc** : als uw SQL Server wordt beheerd door [Azure Arc](../azure-arc/index.yml) -servers, kunt u de log Analytics agent implementeren met behulp van de Security Center aanbeveling ' Log Analytics agent moet worden geïnstalleerd op uw op Windows gebaseerde Azure-Arc-machines (preview) '. U kunt ook de installatie methoden volgen die worden beschreven in de [Azure Arc-documentatie](../azure-arc/servers/manage-vm-extensions.md).
 
 - **SQL Server on-premises** : als uw SQL Server wordt gehost op een on-premises Windows-machine zonder Azure Arc, hebt u twee opties om deze te verbinden met Azure:

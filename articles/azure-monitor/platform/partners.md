@@ -4,12 +4,12 @@ description: Meer informatie over de partners van Azure Monitor en hoe u toegang
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: dc33e9d8d613b9d0575da069d884e454d9930eac
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: d603e130d4e65667edb34121a4c89b7b0e02b819
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555635"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636738"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Integraties van Azure Monitor-partner
 
@@ -46,6 +46,16 @@ Met AppDynamics (APM) voor toepassings prestaties kunnen toepassings eigenaren s
 U kunt JIRA-tickets maken voor Azure Monitor-waarschuwingen.
 
 [Atlassian-documentatie voor Azure Monitor](https://azure.microsoft.com/blog/automated-notifications-from-azure-monitor-for-atlassian-jira/)
+
+## <a name="bmc-helix"></a>BMC Helix
+
+![BMC Helix-logo](./media/partners/BMCHelix.png)
+
+BMC Helix is een autonoom platform voor bedrijfs Services en Operations SaaS. Het is geïntegreerd met 360-degree Intelligence en biedt bedrijven de mogelijkheid om proactief en predictively te detecteren, te bewaken, te onderhouden, te herstellen, te optimaliseren en te leveren universeel-kanaal ervaringen voor IT en line-of-Business.
+Dankzij de naadloze integratie van ITSM en IT Operations Management (ITOM) kunnen gebruikers met BMC Helix IT-silo's elimineren, gestuurde zakelijke beslissingen nemen en toonaangevende klant ervaringen leveren.
+Klanten kunnen het BMC Helix-platform implementeren met de Cloud implementatie van hun keuze: openbaar, privé of hybride. Daarnaast hebben klanten een keuze uit de AI/ML-oplossingen die kunnen worden gebruikt door toonaangevende providers.
+
+[Meer informatie over BMC Helix](https://www.bmc.com/it-solutions/bmc-helix.html?vu=helix)
 
 ## <a name="botmetric"></a>Botmetric
 
@@ -151,7 +161,7 @@ De **ArcSight** van de MicroFocus heeft een slimme connector voor Azure monitor 
 
 Met de micro focus- **Operations Bridge** worden automatisch alle hybride IT-resources bewaakt: elk apparaat, besturings systeem, Data Base, toepassing of service, ongeacht waar het wordt uitgevoerd en past AIOps toe op alle gegevens typen: gebeurtenissen, metrieken, logboeken en afhankelijkheden. Het biedt een unieke combi natie van Quality-of-Service-bewaking, in combi natie met diepe analyse van toepassings status en bevat een uitgebreide prestatie-en beschikbaarheids bewaking van Microsoft Azure Services. Met Operations Bridge kunnen klanten een enkel glas venster bieden, dat beschikbaar is op elk apparaat met een browser, op basis van de manier waarop zowel bedrijven als IT-belanghebbenden kunnen begrijpen.
 
-Lees meer
+Meer informatie
 - [Overzicht van OB Suite](https://www.microfocus.com/products/operations-bridge-suite/overview)
 - [Downloaden](https://marketplace.microfocus.com/itom/content/obm-management-pack-for-microsoft-azure)
 - [Sitescope](https://docs.microfocus.com/itom/SiteScope:2019.05/MSAzureMonitor) -sitescope is een onderdeel in de operations Bridge Suite.
@@ -301,15 +311,6 @@ Turbonomic levert werkbelasting automatisering voor hybride Clouds door tegelijk
 
 [Turbonomic-Inleiding](https://turbonomic.com/)
 
-## <a name="bmc-helix"></a>BMC Helix
-
-![BMC Helix-logo](./media/partners/BMCHelix.png)
-
-BMC Helix is een autonoom platform voor bedrijfs Services en Operations SaaS. Het is geïntegreerd met 360-degree Intelligence en biedt bedrijven de mogelijkheid om proactief en predictively te detecteren, te bewaken, te onderhouden, te herstellen, te optimaliseren en te leveren universeel-kanaal ervaringen voor IT en line-of-Business.
-Dankzij de naadloze integratie van ITSM en IT Operations Management (ITOM) kunnen gebruikers met BMC Helix IT-silo's elimineren, gestuurde zakelijke beslissingen nemen en toonaangevende klant ervaringen leveren.
-Klanten kunnen het BMC Helix-platform implementeren met de Cloud implementatie van hun keuze: openbaar, privé of hybride. Daarnaast hebben klanten een keuze uit de AI/ML-oplossingen die kunnen worden gebruikt door toonaangevende providers.
-
-[Meer informatie over BMC Helix](https://www.bmc.com/it-solutions/bmc-helix.html?vu=helix)
 
 ## <a name="next-steps"></a>Volgende stappen
 

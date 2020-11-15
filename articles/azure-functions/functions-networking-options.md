@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.author: jehollan
-ms.openlocfilehash: 6b082801a89450e34056be8be88a96fe26b7eeec
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: bed76a6f3a17332f9a1e411ff1d4efb52703f3e1
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578824"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636466"
 ---
 # <a name="azure-functions-networking-options"></a>Netwerkopties van Azure Functions
 
@@ -97,8 +97,8 @@ Wanneer u een functie-app maakt, moet u een Azure Storage-account voor algemeen 
 1. Een ander opslag account maken of configureren.  Dit is het opslag account dat wordt beveiligd met Service-eind punten en om onze functie te verbinden.
 1. [Maak een bestands share](../storage/files/storage-how-to-create-file-share.md#create-file-share) in het account voor beveiligde opslag.
 1. Schakel de service-eind punten of het persoonlijke eind punt in voor het opslag account.  
-    * Zorg ervoor dat u het subnet dat is toegewezen aan uw functie-apps, inschakelt als u een service-eind punt gebruikt.
-    * Zorg ervoor dat u een DNS-record maakt en uw app zodanig configureert dat deze [werkt met persoonlijke eindpunt](#azure-dns-private-zones) eindpunten als u een privé-eind punt gebruikt.  Het opslag account heeft een persoonlijk eind punt voor de `file` `blob` subresources en nodig.  Als u bepaalde functies als Durable Functions gebruikt, hebt u ook `queue` `table` toegang nodig via een verbinding met een privé-eind punt.
+    * Als u verbindingen met een privé-eind punt gebruikt, heeft het opslag account een persoonlijk eind punt voor de `file` `blob` subresources nodig.  Als u bepaalde functies als Durable Functions gebruikt, hebt u ook `queue` `table` toegang nodig via een verbinding met een privé-eind punt.
+    * Als u service-eind punten gebruikt, schakelt u het subnet in dat is toegewezen aan uw functie-apps voor opslag accounts.
 1. Beschrijving Kopieer het bestand en de blob-inhoud van het functie-app-opslag account naar het beveiligde opslag account en de bestands share.
 1. Kopieer de connection string voor dit opslag account.
 1. Werk de **Toepassings instellingen** onder **configuratie** voor de functie-app als volgt bij:
@@ -106,6 +106,9 @@ Wanneer u een functie-app maakt, moet u een Azure Storage-account voor algemeen 
     - `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` de connection string voor het account voor beveiligde opslag.
     - `WEBSITE_CONTENTSHARE` de naam van de bestands share die is gemaakt in het account voor beveiligde opslag.
     - Maak een nieuwe instelling met de naam `WEBSITE_CONTENTOVERVNET` en waarde van `1` .
+    - Als het opslag account gebruikmaakt van verbindingen met een privé-eind punt, controleert of voegt u de volgende instellingen toe
+        - `WEBSITE_VNET_ROUTE_ALL` met een waarde van `1` .
+        - `WEBSITE_DNS_SERVER` met een waarde van `168.63.129.16` 
 1. Sla de toepassings instellingen op.  
 
 De functie-app wordt opnieuw gestart en wordt nu verbonden met een beveiligd opslag account.

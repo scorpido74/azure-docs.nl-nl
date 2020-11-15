@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 01/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 45f5a7e66c80dff5e78e575463becd95bcc7fca1
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: b8aaebdd37f835201ef549e3f97e0c0b657e4fe9
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242174"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636211"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-cli"></a>Een persoonlijke koppeling voor Azure Database for PostgreSQL-één server maken en beheren met CLI
 
@@ -67,6 +67,7 @@ az vm create \
   --name myVm \
   --image Win2019Datacenter
 ```
+
  Noteer het open bare IP-adres van de virtuele machine. U gebruikt dit adres om in de volgende stap verbinding te maken met de virtuele machine via internet.
 
 ## <a name="create-an-azure-database-for-postgresql---single-server"></a>Een Azure Database for PostgreSQL-één-server maken 
@@ -99,6 +100,7 @@ az network private-endpoint create \
 
 ## <a name="configure-the-private-dns-zone"></a>Privé-DNS-zone configureren 
 Maak een Privé-DNS zone voor het PostgreSQL-Server domein en maak een koppelings koppeling met de Virtual Network. 
+
 ```azurecli-interactive
 az network private-dns zone create --resource-group myResourceGroup \ 
    --name  "privatelink.postgres.database.azure.com" 
@@ -126,7 +128,7 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 
 > [!NOTE]
 > In sommige gevallen bevinden de Azure Database for PostgreSQL en het VNet-subnet zich in verschillende abonnementen. In deze gevallen moet u ervoor zorgen dat u de volgende configuraties hebt:
-> - Zorg ervoor dat voor beide abonnementen de resource provider **micro soft. DBforPostgreSQL** is geregistreerd. Raadpleeg [Resource-Manager-registratie][resource-manager-portal] voor meer informatie
+> - Zorg ervoor dat voor beide abonnementen de resource provider **micro soft. DBforPostgreSQL** is geregistreerd. Raadpleeg [resource providers](../azure-resource-manager/management/resource-providers-and-types.md)voor meer informatie.
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>Verbinding maken met een virtuele machine via internet
 
@@ -134,9 +136,9 @@ Maak als volgt verbinding met de VM *myVm* van Internet:
 
 1. Voer in de zoekbalk van de portal *myVm* in.
 
-1. Selecteer de knop **Verbinding maken** . Na het selecteren van de knop **Verbinden** wordt **Verbinden met virtuele machine** geopend.
+1. Selecteer de knop **Verbinding maken**. Na het selecteren van de knop **Verbinden** wordt **Verbinden met virtuele machine** geopend.
 
-1. Selecteer **RDP-bestand downloaden** . In Azure wordt een *RDP* -bestand (Remote Desktop Protocol) gemaakt en het bestand wordt gedownload naar de computer.
+1. Selecteer **RDP-bestand downloaden**. In Azure wordt een *RDP* -bestand (Remote Desktop Protocol) gemaakt en het bestand wordt gedownload naar de computer.
 
 1. Open het *downloaded.rdp* -bestand.
 
@@ -147,39 +149,40 @@ Maak als volgt verbinding met de VM *myVm* van Internet:
         > [!NOTE]
         > Mogelijk moet u **Meer opties** > **Een ander account gebruiken** selecteren om de referenties op te geven die u hebt ingevoerd tijdens het maken van de VM.
 
-1. Selecteer **OK** .
+1. Selecteer **OK**.
 
-1. Er wordt mogelijk een certificaatwaarschuwing weergegeven tijdens het aanmelden. Als er een certificaatwaarschuwing wordt weergegeven, selecteert u **Ja** of **Doorgaan** .
+1. Er wordt mogelijk een certificaatwaarschuwing weergegeven tijdens het aanmelden. Als er een certificaatwaarschuwing wordt weergegeven, selecteert u **Ja** of **Doorgaan**.
 
 1. Wanneer het VM-bureaublad wordt weergegeven, minimaliseert u het om terug te gaan naar het lokale bureaublad.  
 
 ## <a name="access-the-postgresql-server-privately-from-the-vm"></a>De PostgreSQL-server privé openen vanuit de VM
 
-1. Open PowerShell in het extern bureaublad van *myVM* .
+1. Open PowerShell in het extern bureaublad van *myVM*.
 
 2. Voer  `nslookup mydemopostgresserver.privatelink.postgres.database.azure.com` in. 
 
-    U ontvangt een bericht dat er ongeveer als volgt uitziet:
-    ```azurepowershell
-    Server:  UnKnown
-    Address:  168.63.129.16
-    Non-authoritative answer:
-    Name:    mydemopostgresserver.privatelink.postgres.database.azure.com
-    Address:  10.1.3.4
-    ```
+   U ontvangt een bericht dat er ongeveer als volgt uitziet:
 
-3. Test de verbinding van de persoonlijke verbinding voor de PostgreSQL-server met behulp van elke beschik bare client. In het onderstaande voor beeld heb ik [Azure Data Studio](/sql/azure-data-studio/download?view=sql-server-ver15) gebruikt om de bewerking uit te voeren.
+   ```azurepowershell
+   Server:  UnKnown
+   Address:  168.63.129.16
+   Non-authoritative answer:
+   Name:    mydemopostgresserver.privatelink.postgres.database.azure.com
+   Address:  10.1.3.4
+   ```
+
+3. Test de verbinding van de persoonlijke verbinding voor de PostgreSQL-server met behulp van elke beschik bare client. In het volgende voor beeld wordt [Azure Data Studio](/sql/azure-data-studio/download?view=sql-server-ver15&preserve-view=true) gebruikt om de bewerking uit te voeren.
 
 4. In **nieuwe verbinding** voert u de volgende gegevens in of selecteert u deze:
 
-    | Instelling | Waarde |
-    | ------- | ----- |
-    | Servertype| Selecteer **postgresql** .|
-    | Servernaam| *Mydemopostgresserver.privatelink.postgres.database.Azure.com* selecteren |
-    | Gebruikersnaam | Voer de gebruikers naam in username@servername die wordt opgegeven tijdens het maken van de postgresql-server. |
-    |Wachtwoord |Voer een wacht woord in dat u hebt opgegeven tijdens het maken van de PostgreSQL-server. |
-    |SSL|Selecteer **vereist** .|
-    ||
+   | Instelling | Waarde |
+   | ------- | ----- |
+   | Servertype| Selecteer **postgresql**.|
+   | Servernaam| *Mydemopostgresserver.privatelink.postgres.database.Azure.com* selecteren |
+   | Gebruikersnaam | Voer de gebruikers naam in username@servername die wordt opgegeven tijdens het maken van de postgresql-server. |
+   |Wachtwoord |Voer een wacht woord in dat u hebt opgegeven tijdens het maken van de PostgreSQL-server. |
+   |SSL|Selecteer **vereist**.|
+   ||
 
 5. Selecteer Verbinding maken.
 
@@ -198,6 +201,3 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Volgende stappen
 - Meer informatie over [Wat is Azure persoonlijk eind punt](../private-link/private-endpoint-overview.md) ?
-
-<!-- Link references, to text, Within this same GitHub repo. -->
-[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

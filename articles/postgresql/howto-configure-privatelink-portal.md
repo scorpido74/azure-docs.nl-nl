@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: 98d3beef72d314f93f6a2bc580b1dd5de5735f23
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 23b9774f28f915596abafbd8c1f6c38fc4f55748
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242463"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636262"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-portal"></a>Een persoonlijke koppeling maken en beheren voor Azure Database for PostgreSQL-één server met behulp van portal
 
@@ -222,7 +222,7 @@ Nadat u **myVm** hebt gemaakt, maakt u hiermee als volgt verbinding via internet
     Address:  10.1.3.4
     ```
 
-3. Test de verbinding van de persoonlijke verbinding voor de PostgreSQL-server met behulp van elke beschik bare client. In het onderstaande voor beeld heb ik [Azure Data Studio](/sql/azure-data-studio/download?view=sql-server-ver15) gebruikt om de bewerking uit te voeren.
+3. Test de verbinding van de persoonlijke verbinding voor de PostgreSQL-server met behulp van elke beschik bare client. In het onderstaande voor beeld heb ik [Azure Data Studio](/sql/azure-data-studio/download?view=sql-server-ver15&preserve-view=true) gebruikt om de bewerking uit te voeren.
 
 4. In **nieuwe verbinding** voert u de volgende gegevens in of selecteert u deze:
 

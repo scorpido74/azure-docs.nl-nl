@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 30cdc9924d41fdbe27156fcf90688d4baf440487
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 7e17cdca508db81551d988c795bd1235fa729e82
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92209869"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636857"
 ---
 # <a name="apache-kafka-with-confluent-schema-registry-in-azure-hdinsight"></a>Apache Kafka met Confluent-schema register in azure HDInsight
 
@@ -34,7 +34,7 @@ In deze sectie wordt een door HDInsight beheerd Kafka-cluster geïmplementeerd m
 
 1. Selecteer de onderstaande knop **implementeren naar Azure** om u aan te melden bij Azure en de Resource Manager-sjabloon te openen.
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Farnabganguly%2FKafkaschemaregistry%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="./media/schema-registry/hdi-deploy-to-azure1.png"/></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Farnabganguly%2FKafkaschemaregistry%2Fmaster%2Fazuredeploy.json" target="_blank">:::image type="icon" source="media/schema-registry/hdi-deploy-to-azure1.png":::</a>
 
 1. Vul op de sjabloon voor aangepaste implementatie de velden in zoals hieronder wordt beschreven:
 
@@ -113,7 +113,7 @@ Het schema register moet weten dat de Zookeeper-service kan communiceren met het
     debug=true
     ```
 
-1. Als u het bestand wilt opslaan, gebruikt u **CTRL + X**, **Y**en **voert**u in.
+1. Als u het bestand wilt opslaan, gebruikt u **CTRL + X** , **Y** en **voert** u in.
 
 1. Start het schema register en wijs het aan om het bijgewerkte schema REGI ster-eigenschappen bestand te gebruiken. Voer de volgende opdrachten uit:
 
@@ -215,7 +215,7 @@ In deze sectie worden gegevens uit de standaard invoer gelezen en naar een Kafka
     }
     ```
 
-    Gebruik de onderstaande opdracht om de **Kafka Avro-console producent**te starten:
+    Gebruik de onderstaande opdracht om de **Kafka Avro-console producent** te starten:
 
     ```bash
     /usr/bin/kafka-avro-console-producer     --broker-list $KAFKABROKERS     --topic agkafkaschemareg     --property parse.key=true --property key.schema='{"type" : "int", "name" : "id"}'     --property value.schema='{ "type" : "record", "name" : "example_schema", "namespace" : "com.example", "fields" : [ { "name" : "cust_id", "type" : "int", "doc" : "Id of the customer account" }, { "name" : "year", "type" : "int", "doc" : "year of expense" }, { "name" : "expenses", "type" : {"type": "array", "items": "float"}, "doc" : "Expenses for the year" } ], "doc:" : "A basic schema for storing messages" }'

@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Meer informatie over het oplossen van veelvoorkomende problemen bij het inschakelen en gebruiken van Azure dev Spaces
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, servicemesh, servicemeshroutering, kubectl, k8s '
-ms.openlocfilehash: 42551443fb5af1bd3f783c33f708b231eea68907
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: a30ae2d78d682427cf53c8f98b0ca70b441d72e1
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92364164"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636806"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Problemen met Azure dev Spaces oplossen
 
@@ -28,7 +28,7 @@ Voor Visual Studio stelt u de `MS_VS_AZUREDEVSPACES_TOOLS_LOGGING_ENABLED` omgev
 
 In de CLI kunt u meer informatie tijdens het uitvoeren van de opdracht uitvoeren met behulp van de `--verbose` Switch. U kunt ook meer gedetailleerde logboeken bekijken in `%TEMP%\Azure Dev Spaces` . Op een Mac kan de map *temp* worden gevonden door `echo $TMPDIR` vanuit een Terminal venster te worden uitgevoerd. Op een Linux-computer is de map *temp* doorgaans `/tmp` . Controleer bovendien of logboek registratie is ingeschakeld in uw [Azure cli-configuratie bestand](/cli/azure/azure-cli-configuration?view=azure-cli-latest#cli-configuration-values-and-environment-variables).
 
-Azure dev Spaces werkt ook het beste bij het opsporen van fouten in één exemplaar of pod. Het `azds.yaml` bestand bevat een instelling, *replicaCount*, die het aantal peulen aangeeft dat Kubernetes voor uw service wordt uitgevoerd. Als u de *replicaCount* wijzigt om uw toepassing te configureren voor het uitvoeren van meerdere peulen voor een bepaalde service, wordt het fout opsporingsprogramma gekoppeld aan de eerste Pod, wanneer deze alfabetisch wordt weer gegeven. Het fout opsporingsprogramma koppelt aan een andere pod wanneer de oorspronkelijke pod wordt gerecycled, mogelijk als gevolg van onverwacht gedrag.
+Azure dev Spaces werkt ook het beste bij het opsporen van fouten in één exemplaar of pod. Het `azds.yaml` bestand bevat een instelling, *replicaCount* , die het aantal peulen aangeeft dat Kubernetes voor uw service wordt uitgevoerd. Als u de *replicaCount* wijzigt om uw toepassing te configureren voor het uitvoeren van meerdere peulen voor een bepaalde service, wordt het fout opsporingsprogramma gekoppeld aan de eerste Pod, wanneer deze alfabetisch wordt weer gegeven. Het fout opsporingsprogramma koppelt aan een andere pod wanneer de oorspronkelijke pod wordt gerecycled, mogelijk als gevolg van onverwacht gedrag.
 
 ## <a name="common-issues-when-enabling-azure-dev-spaces"></a>Veelvoorkomende problemen bij het inschakelen van Azure dev Spaces
 
@@ -217,7 +217,7 @@ azds up --verbose --output json
 
 In Visual Studio:
 
-1. Open de **Hulpprogram ma's > opties** en klik onder **projecten en oplossingen**op **bouwen en uitvoeren**.
+1. Open de **Hulpprogram ma's > opties** en klik onder **projecten en oplossingen** op **bouwen en uitvoeren**.
 2. Wijzig de instellingen voor de **uitgebreide uitvoer van MSBuild-project compilatie** in **gedetailleerde** of **diagnose**.
 
     ![Scherm afbeelding van opties dialoog venster](media/common/VerbositySetting.PNG)
@@ -261,9 +261,9 @@ Deze fout treedt op omdat Azure dev Spaces momenteel geen builds van meerdere fa
 
 Wanneer u [Azure dev Spaces gebruikt om uw AKS-cluster te verbinden met uw ontwikkel computer](https://code.visualstudio.com/docs/containers/bridge-to-kubernetes), kan er een probleem optreden waarbij het netwerk verkeer niet wordt doorgestuurd tussen uw ontwikkel computer en het AKS-cluster.
 
-Wanneer u uw ontwikkel machine verbindt met uw AKS-cluster, stuurt Azure dev Spaces het netwerk verkeer tussen uw AKS-cluster en uw ontwikkel computer door het bestand van uw ontwikkel machine te wijzigen `hosts` . Met Azure dev Spaces maakt u een vermelding in het `hosts` adres van de Kubernetes-service die u vervangt als een hostnaam. Dit item wordt gebruikt bij het door sturen van poorten om het netwerk verkeer tussen uw ontwikkel computer en het AKS-cluster te omleiden. Als een service op uw ontwikkel computer een conflict veroorzaakt met de poort van de Kubernetes-service die u vervangt, kunnen Azure-ontwikkel ruimten geen netwerk verkeer door sturen voor de Kubernetes-service. De *Windows BranchCache* -service is bijvoorbeeld doorgaans gebonden aan *0.0.0.0:80*, wat conflicten veroorzaakt voor poort 80 op alle lokale IP-adressen.
+Wanneer u uw ontwikkel machine verbindt met uw AKS-cluster, stuurt Azure dev Spaces het netwerk verkeer tussen uw AKS-cluster en uw ontwikkel computer door het bestand van uw ontwikkel machine te wijzigen `hosts` . Met Azure dev Spaces maakt u een vermelding in het `hosts` adres van de Kubernetes-service die u vervangt als een hostnaam. Dit item wordt gebruikt bij het door sturen van poorten om het netwerk verkeer tussen uw ontwikkel computer en het AKS-cluster te omleiden. Als een service op uw ontwikkel computer een conflict veroorzaakt met de poort van de Kubernetes-service die u vervangt, kunnen Azure-ontwikkel ruimten geen netwerk verkeer door sturen voor de Kubernetes-service. De *Windows BranchCache* -service is bijvoorbeeld doorgaans gebonden aan *0.0.0.0:80* , wat conflicten veroorzaakt voor poort 80 op alle lokale IP-adressen.
 
-Om dit probleem op te lossen, moet u alle services of processen die conflicteren met de poort van de Kubernetes-service die u wilt vervangen, stoppen. U kunt hulpprogram ma's, zoals *netstat*, gebruiken om te controleren welke services of processen op uw ontwikkel computer conflicteren.
+Om dit probleem op te lossen, moet u alle services of processen die conflicteren met de poort van de Kubernetes-service die u wilt vervangen, stoppen. U kunt hulpprogram ma's, zoals *netstat* , gebruiken om te controleren welke services of processen op uw ontwikkel computer conflicteren.
 
 U kunt bijvoorbeeld de *Windows BranchCache* -service stoppen en uitschakelen:
 * Voer `services.msc` uit vanaf de opdracht prompt.
@@ -420,7 +420,7 @@ U kunt dit probleem oplossen door het `launch.json` bestand onder de submap van 
 
 Deze fout wordt mogelijk weer gegeven bij het uitvoeren van het fout opsporingsprogramma voor Visual Studio-code.
 
-U kunt dit probleem oplossen door Visual Studio code te sluiten en opnieuw te openen. Start het fout opsporingsprogramma opnieuw.
+U kunt dit probleem oplossen door Visual Studio code te sluiten en opnieuw te openen. Start het foutopsporingsprogramma opnieuw.
 
 ### <a name="error-internal-watch-failed-watch-enospc-when-attaching-debugging-to-a-nodejs-application"></a>Fout ' interne controle mislukt: Bekijk ENOSPC ' bij het toevoegen van fout opsporing aan een Node.js-toepassing
 
@@ -459,7 +459,7 @@ az provider register --namespace Microsoft.DevSpaces
 
 ### <a name="new-pods-arent-starting"></a>Nieuwe Peul wordt niet gestart
 
-De initialisatie functie Kubernetes kan de PodSpec niet Toep assen op nieuwe peulen vanwege de RBAC-machtigings wijzigingen in de rol *cluster beheerder* in het cluster. De nieuwe pod kan ook een ongeldige PodSpec hebben, bijvoorbeeld het service account dat is gekoppeld aan het Pod bestaat niet meer. Gebruik de opdracht om de peulen te zien die de status in *behandeling* hebben vanwege het probleem van de initialisatie functie `kubectl get pods` :
+De initialisatie functie Kubernetes kan de PodSpec niet Toep assen op nieuwe peulen vanwege Kubernetes RBAC-machtigings wijzigingen in de rol *cluster beheerder* in het cluster. De nieuwe pod kan ook een ongeldige PodSpec hebben, bijvoorbeeld het service account dat is gekoppeld aan het Pod bestaat niet meer. Gebruik de opdracht om de peulen te zien die de status in *behandeling* hebben vanwege het probleem van de initialisatie functie `kubectl get pods` :
 
 ```bash
 kubectl get pods --all-namespaces --include-uninitialized
@@ -488,7 +488,7 @@ azds controller create --name <cluster name> -g <resource group name> -tn <clust
 
 Nadat de controller opnieuw is geïnstalleerd, implementeert u uw peul opnieuw.
 
-### <a name="incorrect-rbac-permissions-for-calling-dev-spaces-controller-and-apis"></a>Onjuiste RBAC-machtigingen voor het aanroepen van de controller en Api's van dev Spaces
+### <a name="incorrect-azure-rbac-permissions-for-calling-dev-spaces-controller-and-apis"></a>Onjuiste Azure RBAC-machtigingen voor het aanroepen van de controller en Api's van dev Spaces
 
 De gebruiker die toegang probeert te krijgen tot de Azure dev Spaces-controller moet toegang hebben om de beheerder *kubeconfig* te lezen op het AKS-cluster. Deze machtiging is bijvoorbeeld beschikbaar in de [ingebouwde rol Azure Kubernetes service cluster admin](../aks/control-kubeconfig-access.md#available-cluster-roles-permissions). De gebruiker die de Azure dev Spaces-controller opent, moet ook de rol *Inzender* of *eigenaar* Azure hebben voor de controller. Meer informatie over het bijwerken van de machtigingen van een gebruiker voor een AKS-cluster is [hier](../aks/control-kubeconfig-access.md#assign-role-permissions-to-a-user-or-group)beschikbaar.
 
@@ -501,9 +501,9 @@ De Azure-rol van de gebruiker voor de controller bijwerken:
 1. Open het deel venster *Access Control (IAM)* .
 1. Klik *op het tabblad roltoewijzingen.*
 1. Klik op *toevoegen* en vervolgens op *functie toewijzing toevoegen*.
-    * Selecteer voor *rol*de optie *Inzender* of *eigenaar*.
-    * *Als u toegang wilt toewijzen*, selecteert u *Azure AD-gebruiker,-groep of Service-Principal*.
-    * Zoek bij *selecteren*naar de gebruiker aan wie u machtigingen wilt verlenen.
+    * Selecteer voor *rol* de optie *Inzender* of *eigenaar*.
+    * *Als u toegang wilt toewijzen* , selecteert u *Azure AD-gebruiker,-groep of Service-Principal*.
+    * Zoek bij *selecteren* naar de gebruiker aan wie u machtigingen wilt verlenen.
 1. Klik op *Opslaan*.
 
 ### <a name="dns-name-resolution-fails-for-a-public-url-associated-with-a-dev-spaces-service"></a>Het omzetten van de DNS-naam voor een open bare URL die is gekoppeld aan een service dev Spaces is mislukt
@@ -530,13 +530,13 @@ Dit probleem oplossen:
 Deze fout kan optreden wanneer u probeert toegang te krijgen tot uw service. Bijvoorbeeld, wanneer u naar de URL van de service in een browser gaat. Deze fout betekent dat de container poort niet beschikbaar is. Dit kan de volgende oorzaken hebben:
 
 * De container wordt nog steeds gemaakt en geïmplementeerd. Dit probleem kan zich voordoen als u `azds up` het fout opsporingsprogramma uitvoert of start en vervolgens probeert toegang te krijgen tot de container voordat deze is geïmplementeerd.
-* Poort configuratie is niet consistent in uw _Dockerfile_, helm-grafiek en server code waarmee een poort wordt geopend.
+* Poort configuratie is niet consistent in uw _Dockerfile_ , helm-grafiek en server code waarmee een poort wordt geopend.
 
 Dit probleem oplossen:
 
 1. Als de container wordt gebouwd/geïmplementeerd, kunt u 2-3 seconden wachten en de service opnieuw proberen toegang te krijgen. 
 1. Controleer de poort configuratie in de volgende assets:
-    * ** [Helm grafiek](https://docs.helm.sh):** Opgegeven door de `service.port` en `deployment.containerPort` in values. yaml met de `azds prep` opdracht.
+    * **[Helm grafiek](https://docs.helm.sh):** Opgegeven door de `service.port` en `deployment.containerPort` in values. yaml met de `azds prep` opdracht.
     * Alle poorten die in de toepassings code worden geopend, bijvoorbeeld in Node.js: `var server = app.listen(80, function () {...}`
 
 ### <a name="the-type-or-namespace-name-mylibrary-couldnt-be-found"></a>Het type of de naam van de naam ruimte ' MyLibrary ' is niet gevonden
@@ -594,7 +594,7 @@ Werk uw firewall of beveiligings configuratie bij om netwerk verkeer toe te staa
 
 ### <a name="error-could-not-find-the-cluster-cluster-in-subscription-subscriptionid"></a>Fout: kan het cluster niet vinden \<cluster\> in het abonnement \<subscriptionId\>
 
-Deze fout kan optreden als uw kubeconfig-bestand is gericht op een ander cluster of abonnement dan u probeert te gebruiken met het Azure dev Spaces-programma aan de client zijde. Met het hulp programma voor het gebruik van Azure dev Spaces aan de client zijde wordt het gedrag van *kubectl*gerepliceerd, dat gebruikmaakt van [een of meer kubeconfig-bestanden](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/) om te selecteren en te communiceren met het cluster.
+Deze fout kan optreden als uw kubeconfig-bestand is gericht op een ander cluster of abonnement dan u probeert te gebruiken met het Azure dev Spaces-programma aan de client zijde. Met het hulp programma voor het gebruik van Azure dev Spaces aan de client zijde wordt het gedrag van *kubectl* gerepliceerd, dat gebruikmaakt van [een of meer kubeconfig-bestanden](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/) om te selecteren en te communiceren met het cluster.
 
 Dit probleem oplossen:
 

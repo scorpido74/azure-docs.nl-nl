@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: mjbrown
-ms.openlocfilehash: 5243419d8e2c4780708e9bdee0d57f2734fe78b2
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 1c8c766208132aec115e1fbeb15af3a057c3de3e
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341957"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636687"
 ---
 # <a name="prevent-azure-cosmos-db-resources-from-being-deleted-or-changed"></a>Voor komen dat Azure Cosmos DB resources worden verwijderd of gewijzigd
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -26,7 +26,7 @@ Als beheerder moet u mogelijk een Azure Cosmos-account,-data base of-container v
 
 Wanneer u een vergren deling toepast op een bovenliggend bereik, nemen alle resources binnen die scope dezelfde vergren deling. Zelfs resources die u later toevoegt, nemen de vergren deling van het bovenliggende knoop punt over. De meest beperkende vergren deling in de overname heeft prioriteit.
 
-In tegenstelling tot op rollen gebaseerd toegangsbeheer wordt met beheervergrendelingen een beperking toegepast op alle gebruikers en rollen. Voor meer informatie over RBAC voor Azure Cosmos DB raadpleegt u [toegangs beheer op basis van rollen in azure Cosmos DB](role-based-access-control.md).
+In tegens telling tot op rollen gebaseerd toegangs beheer van Azure kunt u beheer vergrendelingen gebruiken om een beperking toe te passen op alle gebruikers en rollen. Voor meer informatie over Azure RBAC voor Azure Cosmos DB raadpleegt u [toegangs beheer op basis van rollen in azure Cosmos DB](role-based-access-control.md).
 
 Vergrendelingen van Resource Manager gelden alleen voor bewerkingen die zich op beheerniveau voordoen, wat bewerkingen zijn die worden verzonden naar https://management.azure.com. De vergrendelingen hebben geen invloed op hoe resources hun eigen functies uitvoeren. Resourcewijzigingen worden beperkt, maar resourcebewerkingen worden niet beperkt. Een alleen-lezen vergrendeling op een Azure Cosmos-container voor komt dat u de container kunt verwijderen of wijzigen. Het is niet mogelijk om gegevens in de container te maken, bij te werken of te verwijderen. Gegevenstransacties zijn toegestaan omdat deze bewerkingen niet naar https://management.azure.com worden verzonden.
 
@@ -73,7 +73,7 @@ az lock create --name $lockName \
     --resource $accountName
 ```
 
-### <a name="template"></a>Template
+### <a name="template"></a>Sjabloon
 
 Bij het Toep assen van een vergren deling op een Azure Cosmos DB-resource gebruikt u de volgende indelingen:
 

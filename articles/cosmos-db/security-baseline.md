@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 21e69cf8d90f004d397778c2eeb6b5f774196574
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 99cad2a4218995ad10488d97ce19eeef36b642ae
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098736"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636993"
 ---
 # <a name="azure-security-baseline-for-cosmos-db"></a>Azure-beveiligings basislijn voor Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -138,7 +138,7 @@ Meer informatie over het gebruik van service Tags: https://docs.microsoft.com/az
 
 - Cosmos DB moet gebruikmaken van een service-eindpunt voor een virtueel netwerk
 
-U kunt ook Azure-blauw drukken gebruiken om grootschalige Azure-implementaties te vereenvoudigen door sleutel omgevings artefacten, zoals Azure Resource Manager sjablonen, op rollen gebaseerd toegangs beheer (RBAC) en beleids regels in één blauw druk-definitie. U kunt de blauw druk eenvoudig Toep assen op nieuwe abonnementen, omgevingen en het beheer en de verwerkings mogelijkheden van versies.
+U kunt ook Azure-blauw drukken gebruiken om grootschalige Azure-implementaties te vereenvoudigen door sleutel omgevings artefacten, zoals Azure Resource Manager sjablonen, Toegangs beheer op basis van rollen (Azure RBAC) en beleids regels in één blauw definitie te verpakken. U kunt de blauw druk eenvoudig Toep assen op nieuwe abonnementen, omgevingen en het beheer en de verwerkings mogelijkheden van versies.
 
 Azure Policy configureren en beheren: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -285,15 +285,15 @@ Logboek waarschuwingen maken, weer geven en beheren met behulp van Azure Monitor
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: een inventaris van beheerders accounts onderhouden
 
-**Richt lijnen** : u kunt het deel venster identiteits-en toegangs beheer (IAM) in de Azure Portal gebruiken om op rollen gebaseerd toegangs beheer (RBAC) te configureren en inventaris op Azure Cosmos DB resources te onderhouden. De rollen worden toegepast op gebruikers, groepen, service-principals en beheerde identiteiten in Active Directory. U kunt ingebouwde rollen of aangepaste rollen gebruiken voor individuen en groepen.
+**Richt lijnen** : u kunt het venster identiteits-en toegangs beheer (IAM) in de Azure Portal gebruiken om op rollen gebaseerd toegangs beheer (Azure RBAC) voor Azure te configureren en inventaris op Azure Cosmos DB resources te onderhouden. De rollen worden toegepast op gebruikers, groepen, service-principals en beheerde identiteiten in Active Directory. U kunt ingebouwde rollen of aangepaste rollen gebruiken voor individuen en groepen.
 
-Azure Cosmos DB biedt ingebouwde RBAC voor algemene beheer scenario's in Azure Cosmos DB. Een persoon die een profiel in Azure Active Directory (AD) heeft, kan deze Azure-rollen toewijzen aan gebruikers, groepen, service-principals of beheerde identiteiten voor het verlenen of weigeren van toegang tot resources en bewerkingen op Azure Cosmos DB resources.
+Azure Cosmos DB biedt ingebouwde Azure RBAC voor algemene beheer scenario's in Azure Cosmos DB. Een persoon die een profiel in Azure Active Directory (AD) heeft, kan deze Azure-rollen toewijzen aan gebruikers, groepen, service-principals of beheerde identiteiten voor het verlenen of weigeren van toegang tot resources en bewerkingen op Azure Cosmos DB resources.
 
 U kunt ook de Azure AD Power shell-module gebruiken om ad hoc query's uit te voeren om accounts te detecteren die lid zijn van beheer groepen. 
 
 Daarnaast kunnen sommige acties in Azure Cosmos DB worden beheerd met Azure Active Directory en account-specifieke primaire sleutels.  Gebruik de account instelling ' disableKeyBasedMetadataWriteAccess ' om de toegang tot sleutels te beheren.
 
-Meer informatie over op rollen gebaseerd toegangs beheer in Azure Cosmos DB: https://docs.microsoft.com/azure/cosmos-db/role-based-access-control
+Meer informatie over toegangs beheer op basis van rollen in Azure in Azure Cosmos DB: https://docs.microsoft.com/azure/cosmos-db/role-based-access-control
 
 Bouw uw eigen aangepaste rollen met behulp van Azure Cosmos DB acties (Microsoft.DocumentDB naam ruimte): https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations#microsoftdocumentdb
 
@@ -529,9 +529,9 @@ Informatie over de beveiliging van klant gegevens in Azure: https://docs.microso
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: Azure RBAC gebruiken om de toegang tot resources te beheren
 
-**Hulp** : Azure Cosmos DB biedt ingebouwde op rollen gebaseerd toegangs beheer (RBAC) voor algemene beheer scenario's in azure Cosmos db. Een persoon die een profiel in Azure Active Directory heeft, kan deze Azure-rollen toewijzen aan gebruikers, groepen, service-principals of beheerde identiteiten voor het verlenen of weigeren van toegang tot resources en bewerkingen op Azure Cosmos DB-resources. Roltoewijzingen zijn alleen gericht op toegangs beheer, waaronder toegang tot Azure Cosmos-accounts, data bases, containers en aanbiedingen (door Voer).
+**Hulp** : Azure Cosmos DB biedt ingebouwde op rollen gebaseerd toegangs beheer voor Azure (Azure RBAC) voor algemene beheer scenario's in azure Cosmos db. Een persoon die een profiel in Azure Active Directory heeft, kan deze Azure-rollen toewijzen aan gebruikers, groepen, service-principals of beheerde identiteiten voor het verlenen of weigeren van toegang tot resources en bewerkingen op Azure Cosmos DB-resources. Roltoewijzingen zijn alleen gericht op toegangs beheer, waaronder toegang tot Azure Cosmos-accounts, data bases, containers en aanbiedingen (door Voer).
 
-RBAC implementeren in Azure Cosmos DB: https://docs.microsoft.com/azure/cosmos-db/role-based-access-control
+Azure RBAC implementeren in Azure Cosmos DB: https://docs.microsoft.com/azure/cosmos-db/role-based-access-control
 
 **Azure Security Center bewaking** : niet van toepassing
 

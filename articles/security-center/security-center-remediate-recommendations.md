@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/08/2020
 ms.author: memildin
-ms.openlocfilehash: 4bad3227e08c0fbe0d280967e45bbef9d477e1b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d4b968d0d5e091d72cf718d58b11ade68ddf8c6
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89569132"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94637082"
 ---
 # <a name="remediate-recommendations-in-azure-security-center"></a>Aanbevelingen oplossen in Azure Security Center
 
@@ -38,9 +38,16 @@ Nadat u alle aanbevelingen hebt bekeken, moet u bepalen welke u het eerst wilt h
 
 ## <a name="quick-fix-remediation"></a>Snel herstel oplossen<a name="one-click"></a>
 
-Met snelle oplossing kunt u snel een aanbeveling op meerdere resources herstellen. Het is alleen beschikbaar voor specifieke aanbevelingen. Snelle oplossing vereenvoudigt herstel en stelt u in staat snel uw beveiligde score te verhogen en de beveiliging van uw omgeving te verbeteren.
+Snelle oplossing vereenvoudigt herstel en stelt u in staat snel uw beveiligde score te verhogen en de beveiliging van uw omgeving te verbeteren.
 
-Voor het implementeren van herstel met snelle oplossingen:
+Met snelle oplossing kunt u snel een aanbeveling op meerdere resources herstellen. 
+
+> [!TIP]
+> Snelle oplossing is alleen beschikbaar voor specifieke aanbevelingen. Als u de aanbevelingen met de optie snel herstellen wilt vinden, gebruikt u het toegewezen filter boven aan de lijst met aanbevelingen:
+> 
+> :::image type="content" source="media/security-center-remediate-recommendations/quick-fix-filter.png" alt-text="Gebruik de filters boven de lijst met aanbevelingen om aanbevelingen met de optie snel herstellen te vinden.":::
+
+Voor het implementeren van een oplossing voor snel herstel:
 
 1. In de lijst met aanbevelingen waarvoor de **snelle oplossing** is geïnstalleerd. Label, klikt u op de aanbeveling.
 
@@ -56,7 +63,7 @@ Voor het implementeren van herstel met snelle oplossingen:
     ![Snel oplossen](./media/security-center-remediate-recommendations/security-center-one-click-fix-view.png)
 
     > [!NOTE]
-    > De implicaties worden weer gegeven in het grijze vak in het venster **resources herstellen** dat wordt geopend nadat u op **herstellen**hebt geklikt. Ze geven een lijst weer met de wijzigingen die worden aangebracht wanneer u doorgaat met het oplossen van problemen met snel herstel.
+    > De implicaties worden weer gegeven in het grijze vak in het venster **resources herstellen** dat wordt geopend nadat u op **herstellen** hebt geklikt. Ze geven een lijst weer met de wijzigingen die worden aangebracht wanneer u doorgaat met het oplossen van problemen met snel herstel.
 
 1. Voer indien nodig de relevante para meters in en goed keuring van het herstel.
 

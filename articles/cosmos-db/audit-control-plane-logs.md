@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: sngun
-ms.openlocfilehash: 683fc553e7712e2a760a0af1b601207cb20f2f55
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a0feaf4a984f40ddee7a30291fe0a8f671b6512a
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93092803"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636840"
 ---
 # <a name="how-to-audit-azure-cosmos-db-control-plane-operations"></a>Bewerkingen van Azure Cosmos DB Control-vlak controleren
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -28,7 +28,7 @@ Hier volgen enkele voor beelden van scenario's waarbij acties voor het beheren v
 
 ## <a name="disable-key-based-metadata-write-access"></a>Schrijf toegang op basis van sleutels uitschakelen
 
-Voordat u de bewerkingen van het besturings vlak controleert in Azure Cosmos DB, schakelt u de schrijf toegang op basis van de meta gegevens uit voor uw account. Wanneer op sleutels gebaseerde meta gegevens schrijf toegang is uitgeschakeld, kunnen clients die verbinding maken met het Azure Cosmos-account via account sleutels geen toegang krijgen tot het account. U kunt schrijf toegang uitschakelen door de `disableKeyBasedMetadataWriteAccess` eigenschap in te stellen op True. Nadat u deze eigenschap hebt ingesteld, kunnen wijzigingen aan resources worden aangebracht van een gebruiker met de juiste RBAC-rol (op rollen gebaseerd toegangs beheer) en referenties. Zie het artikel [wijzigingen van sdk's voor komen](role-based-access-control.md#prevent-sdk-changes) voor meer informatie over het instellen van deze eigenschap. 
+Voordat u de bewerkingen van het besturings vlak controleert in Azure Cosmos DB, schakelt u de schrijf toegang op basis van de meta gegevens uit voor uw account. Wanneer op sleutels gebaseerde meta gegevens schrijf toegang is uitgeschakeld, kunnen clients die verbinding maken met het Azure Cosmos-account via account sleutels geen toegang krijgen tot het account. U kunt schrijf toegang uitschakelen door de `disableKeyBasedMetadataWriteAccess` eigenschap in te stellen op True. Nadat u deze eigenschap hebt ingesteld, kunnen wijzigingen aan resources worden aangebracht van een gebruiker met de juiste Azure-rol en-referenties. Zie het artikel [wijzigingen van sdk's voor komen](role-based-access-control.md#prevent-sdk-changes) voor meer informatie over het instellen van deze eigenschap. 
 
 Als de `disableKeyBasedMetadataWriteAccess` is ingeschakeld en de op SDK gebaseerde clients Create-of update-bewerkingen uitvoeren, is een fout *' bewerking ' post ' op resource ' ContainerNameorDatabaseName ' niet toegestaan via Azure Cosmos DB-eind punt* wordt geretourneerd. U moet toegang tot dergelijke bewerkingen voor uw account inschakelen of de bewerkingen voor maken/bijwerken uitvoeren via Azure Resource Manager, Azure CLI of Azure PowerShell. Als u wilt overschakelen, stelt u de disableKeyBasedMetadataWriteAccess in op **False** door gebruik te maken van Azure CLI, zoals beschreven in het artikel [Wijzigingen verhinderen in Cosmos SDK](role-based-access-control.md#prevent-sdk-changes) . Zorg ervoor dat u de waarde `disableKeyBasedMetadataWriteAccess` Onwaar wijzigt in plaats van waar.
 
@@ -70,17 +70,17 @@ Nadat u logboek registratie hebt ingeschakeld, gebruikt u de volgende stappen om
 
 De volgende scherm afbeeldingen vastleggen Logboeken wanneer een consistentie niveau wordt gewijzigd voor een Azure Cosmos-account:
 
-:::image type="content" source="./media/audit-control-plane-logs/add-ip-filter-logs.png" alt-text="Registratie van aanvragen voor beheer vlak inschakelen":::
+:::image type="content" source="./media/audit-control-plane-logs/add-ip-filter-logs.png" alt-text="Besturings vlak Logboeken wanneer een VNet wordt toegevoegd":::
 
 De volgende scherm afbeeldingen vastleggen Logboeken wanneer de spatie of een tabel van een Cassandra-account wordt gemaakt en wanneer de door Voer wordt bijgewerkt. De besturings vlak logboeken voor het maken en bijwerken van bewerkingen in de data base en de container worden afzonderlijk geregistreerd, zoals wordt weer gegeven in de volgende scherm afbeelding:
 
-:::image type="content" source="./media/audit-control-plane-logs/throughput-update-logs.png" alt-text="Registratie van aanvragen voor beheer vlak inschakelen":::
+:::image type="content" source="./media/audit-control-plane-logs/throughput-update-logs.png" alt-text="Besturings vlak Logboeken wanneer de door Voer wordt bijgewerkt":::
 
 ## <a name="identify-the-identity-associated-to-a-specific-operation"></a>De identiteit identificeren die aan een specifieke bewerking is gekoppeld
 
 Als u meer fouten wilt opsporen, kunt u een specifieke bewerking in het **activiteiten logboek** identificeren met behulp van de activiteits-id of door de tijds tempel van de bewerking. Tijds tempel wordt gebruikt voor sommige Resource Manager-clients waarbij de activiteits-ID niet expliciet is door gegeven. Het activiteiten logboek bevat details over de identiteit waarmee de bewerking is gestart. De volgende scherm afbeelding laat zien hoe u de activiteit-ID gebruikt en de bewerkingen vindt die hieraan zijn gekoppeld in het activiteiten logboek:
 
-:::image type="content" source="./media/audit-control-plane-logs/find-operations-with-activity-id.png" alt-text="Registratie van aanvragen voor beheer vlak inschakelen":::
+:::image type="content" source="./media/audit-control-plane-logs/find-operations-with-activity-id.png" alt-text="De activiteit-ID gebruiken en de bewerkingen vinden":::
 
 ## <a name="control-plane-operations-for-azure-cosmos-account"></a>Bewerkingen voor het beheer vlak voor Azure Cosmos-account
 

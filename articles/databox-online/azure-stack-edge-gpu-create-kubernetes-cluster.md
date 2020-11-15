@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: cb783e5da7364f38944ce31ce49a6a6529658fe3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6f6d2b126cd9a0acbbbdb8d17ce7345bbf17b556
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90903219"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94635905"
 ---
 # <a name="connect-to-and-manage-a-kubernetes-cluster-via-kubectl-on-your-azure-stack-edge-pro-gpu-device"></a>Verbinding maken met en beheren van een Kubernetes-cluster via kubectl op uw Azure Stack Edge Pro GPU-apparaat
 
-Op uw Azure Stack Edge Pro-apparaat wordt een Kubernetes-cluster gemaakt wanneer u een compute-functie configureert. Nadat het Kubernetes-cluster is gemaakt, kunt u via een systeem eigen hulp programma, zoals *kubectl*, verbinding maken met het cluster en het lokaal beheren vanaf een client computer.
+Op uw Azure Stack Edge Pro-apparaat wordt een Kubernetes-cluster gemaakt wanneer u een compute-functie configureert. Nadat het Kubernetes-cluster is gemaakt, kunt u via een systeem eigen hulp programma, zoals *kubectl* , verbinding maken met het cluster en het lokaal beheren vanaf een client computer.
 
 In dit artikel wordt beschreven hoe u verbinding maakt met een Kubernetes-cluster op uw Azure Stack Edge Pro-apparaat en het vervolgens beheert met behulp van *kubectl*. 
 
@@ -44,7 +44,7 @@ Nadat het Kubernetes-cluster is gemaakt, kunt u toegang krijgen tot dit cluster 
 [!INCLUDE [Connect to admin runspace](../../includes/azure-stack-edge-gateway-connect-minishell.md)]
 
 
-## <a name="configure-cluster-access-via-rbac"></a>Cluster toegang via RBAC configureren
+## <a name="configure-cluster-access-via-kubernetes-rbac"></a>Cluster toegang configureren via Kubernetes RBAC
 
 Nadat het Kubernetes-cluster is gemaakt, kunt u het *kubectl* via de opdracht regel gebruiken om toegang te krijgen tot het cluster. 
 
@@ -125,7 +125,7 @@ In deze benadering maakt u een naam ruimte en een gebruiker. Vervolgens koppelt 
     Als bijvoorbeeld het hoofd knooppunt Kubernetes werd uitgevoerd op v 1.15.2, installeert u v 1.15.2 op de client.
 
     > [!IMPORTANT]
-    > Down load een client die niet meer dan één secundaire versie uit de Master heeft. De client versie, maar kan het hoofd naar een secundaire versie leiden. Een v 1.3-Master zou bijvoorbeeld moeten werken met de knoop punten v 1.1, v 1.2 en v 1.3, en moet werken met clients met de v 1.2, v 1.3 en v 1.4. Zie [ondersteunings beleid voor Kubernetes-versie en-versie](https://kubernetes.io/docs/setup/release/version-skew-policy/#supported-version-skew)voor meer informatie over de Kubernetes-client versie. Ga naar Kubernetes-Server versie ophalen voor meer informatie over de Kubernetes-Server versie op Azure Stack Edge Pro.<!-- insert link-->
+    > Download een client met een versie die maximaal één secundaire versie is verwijderd van de hoofdversie. De client versie, maar kan het hoofd naar een secundaire versie leiden. Een v 1.3-Master zou bijvoorbeeld moeten werken met de knoop punten v 1.1, v 1.2 en v 1.3, en moet werken met clients met de v 1.2, v 1.3 en v 1.4. Zie [ondersteunings beleid voor Kubernetes-versie en-versie](https://kubernetes.io/docs/setup/release/version-skew-policy/#supported-version-skew)voor meer informatie over de Kubernetes-client versie. Ga naar Kubernetes-Server versie ophalen voor meer informatie over de Kubernetes-Server versie op Azure Stack Edge Pro.<!-- insert link-->
     > Soms `kubectl` wordt vooraf geïnstalleerd op uw systeem als u docker voor Windows of andere hulpprogram ma's uitvoert. Het is belang rijk dat u de specifieke versie van `kubectl` zoals beschreven in deze sectie gebruikt om met dit kubernetes-cluster te werken. 
 
     De installatie duurt enkele minuten.
@@ -160,7 +160,7 @@ In deze benadering maakt u een naam ruimte en een gebruiker. Vervolgens koppelt 
 U kunt nu uw toepassingen implementeren in de naam ruimte en vervolgens de toepassingen en de bijbehorende logboeken weer geven.
 
 > [!IMPORTANT]   
-> Er zijn veel opdrachten die u niet kunt uitvoeren, bijvoorbeeld de opdrachten waarvoor u beheerders toegang nodig hebt. U kunt alleen bewerkingen uitvoeren die zijn toegestaan in de naam ruimte.
+> Er zijn veel opdrachten die u niet kunt uitvoeren, bijvoorbeeld de opdrachten waarvoor u beheerders toegang nodig hebt. U kunt alleen bewerkingen uitvoeren die zijn toegestaan in de naamruimte.
 
 
 ## <a name="remove-kubernetes-cluster"></a>Kubernetes-cluster verwijderen

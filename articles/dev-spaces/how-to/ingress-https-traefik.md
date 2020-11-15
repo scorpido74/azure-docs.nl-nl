@@ -6,12 +6,12 @@ ms.topic: conceptual
 description: Meer informatie over het configureren van Azure dev Spaces voor het gebruik van een aangepaste traefik ingress-controller en het configureren van HTTPS met deze ingangs controller
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, servicemesh, servicemeshroutering, kubectl, k8s
 ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: fb45c310d306813dc10b667db6ce36048eccf217
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 2dcb549078f1f0f5f7168960864d564fd0c169fc
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746122"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636823"
 ---
 # <a name="use-a-custom-traefik-ingress-controller-and-configure-https"></a>Een aangepaste traefik ingangs controller gebruiken en HTTPS configureren
 
@@ -53,7 +53,7 @@ helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 Maak een Kubernetes-naam ruimte voor de traefik ingangs controller en installeer deze met behulp van `helm` .
 
 > [!NOTE]
-> Als op uw AKS-cluster geen RBAC is ingeschakeld, verwijdert u de para meter *--set RBAC. Enabled = True* .
+> Als voor uw AKS-cluster geen Kubernetes RBAC is ingeschakeld, verwijdert u de para meter *--set RBAC. Enabled = True* .
 
 ```console
 kubectl create ns traefik
@@ -102,7 +102,7 @@ cd dev-spaces/samples/BikeSharingApp/charts
 ```
 
 Open [Values. yaml][values-yaml] en voer de volgende updates uit:
-* Alle exemplaren van *<REPLACE_ME_WITH_HOST_SUFFIX>* vervangen door *traefik. MY_CUSTOM_DOMAIN* uw domein gebruiken voor *MY_CUSTOM_DOMAIN* . 
+* Alle exemplaren van *<REPLACE_ME_WITH_HOST_SUFFIX>* vervangen door *traefik. MY_CUSTOM_DOMAIN* uw domein gebruiken voor *MY_CUSTOM_DOMAIN*. 
 * Vervang *kubernetes.io/ingress.class: traefik-azds # dev Spaces-specifiek* met *kubernetes.io/ingress.class: traefik # aangepaste* inkomend verkeer. 
 
 Hieronder ziet u een voor beeld van een bijgewerkt `values.yaml` bestand:
@@ -212,7 +212,7 @@ spec:
 ```
 
 > [!NOTE]
-> Voor het testen kunt u ook een [staging-server][letsencrypt-staging-issuer] gebruiken voor uw *ClusterIssuer* .
+> Voor het testen kunt u ook een [staging-server][letsencrypt-staging-issuer] gebruiken voor uw *ClusterIssuer*.
 
 Gebruiken `kubectl` om toe te passen `letsencrypt-clusterissuer.yaml` .
 
@@ -223,7 +223,7 @@ kubectl apply -f letsencrypt-clusterissuer.yaml --namespace traefik
 Verwijder de vorige *traefik* *ClusterRole* en *ClusterRoleBinding* en werk traefik vervolgens bij met behulp van HTTPS `helm` .
 
 > [!NOTE]
-> Als op uw AKS-cluster geen RBAC is ingeschakeld, verwijdert u de para meter *--set RBAC. Enabled = True* .
+> Als voor uw AKS-cluster geen Kubernetes RBAC is ingeschakeld, verwijdert u de para meter *--set RBAC. Enabled = True* .
 
 ```console
 kubectl delete ClusterRole traefik

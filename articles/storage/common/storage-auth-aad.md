@@ -10,12 +10,12 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 7128a11ae9d5c9844353404309f8ad40cba53972
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9d03496634c5d30d30b23a76b5b47b1e810af288
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92787581"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94635395"
 ---
 # <a name="authorize-access-to-blobs-and-queues-using-azure-active-directory"></a>Toegang verlenen tot blobs en wacht rijen met behulp van Azure Active Directory
 
@@ -75,15 +75,15 @@ Toegang tot BLOB-of wachtrij gegevens via de Azure Portal, Power shell of Azure 
 
 De Azure Portal kunnen uw Azure AD-account of de toegangs sleutels voor het account gebruiken om toegang te krijgen tot Blob-en wachtrij gegevens in een Azure-opslag account. Welk verificatie schema het Azure Portal gebruikt, is afhankelijk van de Azure-functies die aan u zijn toegewezen.
 
-Wanneer u probeert toegang te krijgen tot BLOB-of wachtrij gegevens, controleert de Azure Portal eerst of aan u een Azure-rol is toegewezen met **micro soft. Storage/Storage accounts/listkeys ophalen/Action** . Als aan u een rol is toegewezen met deze actie, gebruikt de Azure Portal de account sleutel voor toegang tot Blob-en wachtrij gegevens via gedeelde sleutel autorisatie. Als u geen rol aan deze actie hebt toegewezen, probeert de Azure Portal toegang te krijgen tot gegevens met uw Azure AD-account.
+Wanneer u probeert toegang te krijgen tot BLOB-of wachtrij gegevens, controleert de Azure Portal eerst of aan u een Azure-rol is toegewezen met **micro soft. Storage/Storage accounts/listkeys ophalen/Action**. Als aan u een rol is toegewezen met deze actie, gebruikt de Azure Portal de account sleutel voor toegang tot Blob-en wachtrij gegevens via gedeelde sleutel autorisatie. Als u geen rol aan deze actie hebt toegewezen, probeert de Azure Portal toegang te krijgen tot gegevens met uw Azure AD-account.
 
 Als u toegang wilt krijgen tot BLOB-of wachtrij gegevens van de Azure Portal met uw Azure AD-account, hebt u machtigingen nodig voor toegang tot de BLOB-en wachtrij gegevens en hebt u ook machtigingen nodig om te navigeren door de resources van het opslag account in de Azure Portal. De ingebouwde rollen die worden verschaft door Azure Storage toegang verlenen tot Blob-en wachtrij resources, maar ze verlenen geen machtigingen voor de resources van het opslag account. Daarom moet de toegang tot de portal ook de toewijzing van een Azure Resource Manager rol, zoals de rol van [lezer](../../role-based-access-control/built-in-roles.md#reader) , bereiken van het niveau van het opslag account of hoger. De rol van **lezer** verleent de meeste beperkte machtigingen, maar een andere Azure Resource Manager rol die toegang verleent tot bronnen voor het beheer van opslag accounts is ook aanvaardbaar. Zie voor meer informatie over het toewijzen van machtigingen aan gebruikers voor toegang tot gegevens in de Azure Portal met een Azure AD-account, [de Azure Portal gebruiken om een Azure-rol toe te wijzen voor toegang tot Blob-en wachtrij gegevens](storage-auth-aad-rbac-portal.md).
 
-De Azure Portal geeft aan welk verificatie schema wordt gebruikt wanneer u naar een container of wachtrij navigeert. Zie voor meer informatie over toegang tot de gegevens in de portal [kiezen hoe u de toegang tot blobgegevens in de Azure Portal autoriseren](../blobs/authorize-blob-access-portal.md) en [Kies hoe u de toegang tot de wachtrij gegevens in de Azure Portal wilt autoriseren](../queues/authorize-queue-access-portal.md).
+De Azure Portal geeft aan welk verificatie schema wordt gebruikt wanneer u naar een container of wachtrij navigeert. Zie voor meer informatie over toegang tot de gegevens in de portal [kiezen hoe u de toegang tot blobgegevens in de Azure Portal autoriseren](../blobs/authorize-data-operations-portal.md) en [Kies hoe u de toegang tot de wachtrij gegevens in de Azure Portal wilt autoriseren](../queues/authorize-data-operations-portal.md).
 
 ### <a name="data-access-from-powershell-or-azure-cli"></a>Gegevens toegang vanuit Power shell of Azure CLI
 
-Azure CLI en Power shell ondersteunen het aanmelden met Azure AD-referenties. Nadat u zich hebt aangemeld, wordt uw sessie uitgevoerd onder deze referenties. Zie voor meer informatie [Azure CLI of Power shell-opdrachten uitvoeren met Azure AD-referenties voor toegang tot BLOB-of wachtrij gegevens](../blobs/authorize-active-directory-powershell.md).
+Azure CLI en Power shell ondersteunen het aanmelden met Azure AD-referenties. Nadat u zich hebt aangemeld, wordt uw sessie uitgevoerd onder deze referenties. Zie voor meer informatie [Azure CLI of Power shell-opdrachten uitvoeren met Azure AD-referenties voor toegang tot BLOB-of wachtrij gegevens](../blobs/authorize-data-operations-powershell.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 

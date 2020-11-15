@@ -1,7 +1,7 @@
 ---
 title: Ondersteuning voor eenmalige aanmelding en app-beveiligings beleid in mobiele apps die u ontwikkelt | Azure
 titleSuffix: Microsoft identity platform
-description: Uitleg en overzicht van het bouwen van mobiele toepassingen die ondersteuning bieden voor eenmalige aanmelding en app-beveiligings beleid
+description: Uitleg en overzicht van het bouwen van mobiele toepassingen die ondersteuning bieden voor eenmalige aanmelding en app-beveiligings beleid met behulp van het micro soft-identiteits platform en integreren met Azure Active Directory.
 services: active-directory
 author: knicholasa
 manager: CelesteDG
@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/14/2020
 ms.author: nichola
-ms.openlocfilehash: 09fc29b54951d2f33acc725c734e01e3d3364ff0
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 4a9282882d23ecbdc3c03ca158ea3de5566143e7
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331603"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94634851"
 ---
 # <a name="support-single-sign-on-and-app-protection-policies-in-mobile-apps-you-develop"></a>Ondersteuning voor eenmalige aanmelding en app-beveiligings beleid in mobiele apps die u ontwikkelt
 
-Eenmalige aanmelding (SSO) biedt eenvoudige en veilige aanmeldingen voor gebruikers van uw app. App-beveiligings beleid (APP) bieden ondersteuning van het belangrijkste beveiligings beleid waarmee de gegevens van uw gebruiker veilig blijven. Met deze functies worden de beveiligde gebruikers aanmeldingen en het beheer van de gegevens van uw app ingeschakeld.
+Eenmalige aanmelding (SSO) is een belang rijke aanbieding van het micro soft Identity platform en Azure Active Directory, waarmee u eenvoudig en veilig aanmeldingen voor gebruikers van uw app kunt leveren. Daarnaast wordt door app-beveiligings beleid (APP) ondersteuning geboden voor het belangrijkste beveiligings beleid waarmee de gegevens van uw gebruiker veilig blijven. Met deze functies worden de beveiligde gebruikers aanmeldingen en het beheer van de gegevens van uw app ingeschakeld.
 
 In dit artikel wordt uitgelegd waarom SSO en APP belang rijk zijn en biedt de richt lijnen op hoog niveau voor het bouwen van mobiele toepassingen die ondersteuning bieden voor deze functies. Dit geldt voor telefoon-en Tablet-apps. Als u een IT-beheerder bent die SSO wil implementeren in de Azure Active Directory Tenant van uw organisatie, raadpleegt u onze [richt lijnen voor het plannen van de implementatie van eenmalige aanmelding](../manage-apps/plan-sso-deployment.md)
 
@@ -68,7 +68,7 @@ Daarnaast moet u een Broker-app gebruiken voor verificatie. De Broker vereist da
 
 Voeg tot slot [de intune-SDK](/mem/intune/developer/app-sdk-get-started) toe aan uw app om beveiligings beleid voor apps in te scha kelen. De SDK voor het meest deel maakt gebruik van een interceptie model en past automatisch beleids regels voor app-beveiliging toe om te bepalen of acties die door de app worden uitgevoerd, zijn toegestaan. Er zijn ook Api's die u hand matig kunt aanroepen om de app te laten weten of er beperkingen gelden voor bepaalde acties.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Extra resources
 
 - [Een Azure Active Directory implementatie van eenmalige aanmelding plannen](../manage-apps/plan-sso-deployment.md)
 - [Procedure: SSO configureren in macOS en iOS](single-sign-on-macos-ios.md)

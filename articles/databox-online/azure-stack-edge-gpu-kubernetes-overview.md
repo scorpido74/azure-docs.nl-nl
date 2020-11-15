@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 089476980ff3e8b2d3b72cb2d229934cf7850c03
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f67a36ac4ccb27d7b955158b7e4a9cf4f5185d0
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90899256"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636915"
 ---
 # <a name="kubernetes-on-your-azure-stack-edge-pro-gpu-device"></a>Kubernetes op uw Azure Stack Edge Pro GPU-apparaat
 
@@ -67,7 +67,7 @@ Wanneer er nieuwe Kubernetes-versies beschikbaar komen, kan uw cluster worden bi
 
 ## <a name="access-monitoring"></a>Toegang, bewaking
 
-Het Kubernetes-cluster op uw Azure Stack Edge Pro-apparaat staat op rollen gebaseerd toegangs beheer (RBAC) toe. Zie [op rollen gebaseerd toegangs beheer voor Kubernetes-cluster op uw Azure stack Edge Pro-apparaat](azure-stack-edge-gpu-kubernetes-rbac.md)voor meer informatie.
+Het Kubernetes-cluster op uw Azure Stack Edge Pro-apparaat staat Kubernetes op rollen gebaseerd toegangs beheer (Kubernetes RBAC) toe. Zie [Kubernetes op rollen gebaseerd toegangs beheer op uw Azure stack Edge Pro GPU-apparaat](azure-stack-edge-gpu-kubernetes-rbac.md)voor meer informatie.
 
 U kunt ook de status van uw cluster en resources bewaken via het Kubernetes-dash board. Er zijn ook container logboeken beschikbaar. Zie [het Kubernetes-dash board gebruiken voor het bewaken van de Kubernetes-cluster status op uw Azure stack Edge Pro-apparaat](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md)voor meer informatie.
 

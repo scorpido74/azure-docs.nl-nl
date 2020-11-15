@@ -5,12 +5,12 @@ ms.date: 01/28/2020
 ms.topic: conceptual
 description: Antwoorden vinden op enkele veelgestelde vragen over Azure dev Spaces
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, servicemesh, servicemeshroutering, kubectl, k8s '
-ms.openlocfilehash: 9870ba52424f6f59cc908e4d70bf1560f7d69165
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: a25ebd88d022ff278b3e3d9cc9cbf4d8b9b670cd
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91970296"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636092"
 ---
 # <a name="frequently-asked-questions-about-azure-dev-spaces"></a>Veelgestelde vragen over Azure dev Spaces
 
@@ -72,9 +72,9 @@ Ja, u kunt Azure dev Spaces gebruiken in AKS-clusters met [API-server geautorise
 
 Ja, u kunt Azure dev Spaces gebruiken in AKS-clusters met beperkt uitgaand [verkeer voor cluster knooppunten][aks-restrict-egress-traffic] die zijn ingeschakeld wanneer de juiste FQDN-namen zijn toegestaan. Meer informatie over het gebruik van een AKS-cluster met beperkt uitgaand verkeer voor knoop punten die zijn ingeschakeld met Azure dev Spaces is [hier](configure-networking.md#ingress-and-egress-network-traffic-requirements)beschikbaar.
 
-## <a name="can-i-use-azure-dev-spaces-on-rbac-enabled-aks-clusters"></a>Kan ik Azure dev Spaces gebruiken in AKS-clusters met RBAC-functionaliteit?
+## <a name="can-i-use-azure-dev-spaces-on-kubernetes-rbac-enabled-aks-clusters"></a>Kan ik Azure dev Spaces gebruiken in AKS-clusters met Kubernetes RBAC-functionaliteit?
 
-Ja, u kunt Azure dev Spaces gebruiken in AKS-clusters met of zonder RBAC ingeschakeld.
+Ja, u kunt Azure dev Spaces gebruiken in AKS-clusters met of zonder Kubernetes op rollen gebaseerd toegangs beheer (Kubernetes RBAC) ingeschakeld.
 
 ## <a name="what-happens-when-i-enable-ingress-for-project-in-visual-studio"></a>Wat gebeurt er wanneer ik inschakelingen voor het project in Visual Studio Activeer?
 

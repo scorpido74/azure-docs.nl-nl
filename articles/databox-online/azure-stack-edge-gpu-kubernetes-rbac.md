@@ -1,6 +1,6 @@
 ---
-title: Meer informatie over op rollen gebaseerd Kubernetes Access Control op Azure Stack Edge Pro-apparaat | Microsoft Docs
-description: Hierin wordt beschreven hoe Kubernetes op rollen gebaseerd Access Control zich voordoet op een Azure Stack Edge Pro-apparaat.
+title: Meer informatie over Kubernetes op rollen gebaseerd toegangs beheer op het apparaat met Azure Stack Edge Pro | Microsoft Docs
+description: Hierin wordt beschreven hoe op rollen gebaseerd toegangs beheer op een Azure Stack Edge Pro-apparaat plaatsvindt.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,21 +8,21 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: alkohli
-ms.openlocfilehash: 0880ae64520997fc6b41ba4a7e8508d927235a8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9a9625dcf40ae7d11e1154fc89b7f04652c8ca16
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320809"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94635837"
 ---
-# <a name="kubernetes-role-based-access-control-on-your-azure-stack-edge-pro-gpu-device"></a>Op rollen gebaseerd Access Control op Kubernetes op uw Azure Stack Edge Pro GPU-apparaat
+# <a name="kubernetes-role-based-access-control-on-your-azure-stack-edge-pro-gpu-device"></a>Kubernetes op rollen gebaseerd toegangs beheer op uw Azure Stack Edge Pro GPU-apparaat
 
 
-Wanneer u een compute-functie configureert op uw Azure Stack Edge Pro-apparaat, wordt er een Kubernetes-cluster gemaakt. U kunt op rollen gebaseerd toegangs beheer (RBAC) gebruiken om de toegang tot de cluster bronnen op uw apparaat te beperken.
+Wanneer u een compute-functie configureert op uw Azure Stack Edge Pro-apparaat, wordt er een Kubernetes-cluster gemaakt. U kunt Kubernetes met op rollen gebaseerd toegangs beheer (Kubernetes RBAC) gebruiken om de toegang tot de cluster bronnen op uw apparaat te beperken.
 
-In deze artikelen vindt u een overzicht van het RBAC-systeem dat door Kubernetes wordt geleverd en hoe Kubernetes RBAC is geïmplementeerd op uw Azure Stack Edge Pro-apparaat. 
+In deze artikelen vindt u een overzicht van het Kubernetes RBAC-systeem dat wordt geleverd door Kubernetes en hoe Kubernetes RBAC is geïmplementeerd op uw Azure Stack Edge Pro-apparaat. 
 
-## <a name="rbac-for-kubernetes"></a>RBAC voor Kubernetes
+## <a name="kubernetes-rbac"></a>Kubernetes RBAC
 
 Met Kubernetes RBAC kunt u gebruikers of groepen gebruikers toewijzen, toestemming geven voor zaken zoals het maken of wijzigen van resources of Logboeken voor het uitvoeren van werk belastingen van toepassingen. Deze machtigingen kunnen worden ingesteld op een enkele naam ruimte of worden verleend in het hele cluster. 
 
@@ -61,21 +61,21 @@ Uw Azure Stack Edge Pro-apparaat heeft de volgende naam ruimten:
 
 In de praktijk is het belang rijk dat u het cluster opsplitst in meerdere naam ruimten. 
 
-- **Meerdere gebruikers**: als u meerdere gebruikers hebt, kunnen deze gebruikers met meerdere naam ruimten hun toepassingen en services in hun specifieke naam ruimten van elkaar isoleren. 
-- **Eén gebruiker**: zelfs als er één gebruiker is, kan de gebruiker met meerdere naam ruimten meerdere versies van de toepassingen uitvoeren in hetzelfde Kubernetes-cluster.
+- **Meerdere gebruikers** : als u meerdere gebruikers hebt, kunnen deze gebruikers met meerdere naam ruimten hun toepassingen en services in hun specifieke naam ruimten van elkaar isoleren. 
+- **Eén gebruiker** : zelfs als er één gebruiker is, kan de gebruiker met meerdere naam ruimten meerdere versies van de toepassingen uitvoeren in hetzelfde Kubernetes-cluster.
 
 ### <a name="roles-and-rolebindings"></a>Rollen en RoleBindings
 
 Kubernetes heeft het concept van rol-en functie binding waarmee u machtigingen kunt verlenen aan gebruikers of resources op naam ruimte niveau en op cluster niveau. 
 
-- **Rollen**: u kunt machtigingen definiëren voor gebruikers als een **rol** en vervolgens **rollen** gebruiken om machtigingen te verlenen binnen een naam ruimte. 
-- **RoleBindings**: Zodra u de functies hebt gedefinieerd, kunt u **RoleBindings** gebruiken om rollen toe te wijzen voor een bepaalde naam ruimte. 
+- **Rollen** : u kunt machtigingen definiëren voor gebruikers als een **rol** en vervolgens **rollen** gebruiken om machtigingen te verlenen binnen een naam ruimte. 
+- **RoleBindings** : Zodra u de functies hebt gedefinieerd, kunt u **RoleBindings** gebruiken om rollen toe te wijzen voor een bepaalde naam ruimte. 
 
 Met deze benadering kunt u een enkel Kubernetes-cluster logisch scheiden, met gebruikers die alleen toegang hebben tot de toepassings resources in hun toegewezen naam ruimte. 
 
-## <a name="rbac-on-azure-stack-edge-pro"></a>RBAC op Azure Stack Edge Pro
+## <a name="kubernetes-rbac-on-azure-stack-edge-pro"></a>Kubernetes RBAC op Azure Stack Edge Pro
 
-In de huidige implementatie van RBAC kunt u met Azure Stack Edge Pro de volgende acties uitvoeren vanuit een beperkte Power shell-runs Pace:
+In de huidige implementatie van Kubernetes RBAC kunt u met Azure Stack Edge Pro de volgende acties uitvoeren vanuit een beperkte Power shell-runs Pace:
 
 - Maak naam ruimten.  
 - Maak extra gebruikers.
@@ -85,9 +85,9 @@ In de huidige implementatie van RBAC kunt u met Azure Stack Edge Pro de volgende
 
 Het Azure Stack Edge Pro-apparaat heeft meerdere naam ruimten van het systeem en u kunt gebruikers naam ruimten maken met `kubeconfig` bestanden voor toegang tot deze naam ruimten. De gebruikers hebben volledige controle over deze naam ruimten en kunnen gebruikers maken of wijzigen, of gebruikers toegang verlenen. Alleen de Cluster beheerder heeft volledige toegang tot systeem naam ruimten en cluster bronnen. Een `aseuser` heeft alleen-lezen toegang tot systeem naam ruimten.
 
-Hier volgt een diagram waarin de implementatie van RBAC op Azure Stack Edge Pro-apparaat wordt weer gegeven.
+Hier volgt een diagram waarin de implementatie van Kubernetes RBAC op Azure Stack Edge Pro-apparaat wordt weer gegeven.
 
-![RBAC op Azure Stack Edge Pro-apparaat](./media/azure-stack-edge-gpu-kubernetes-rbac/rbac-view-1.png)
+![RBAC op Azure Stack Edge Pro-apparaat Kubernetes](./media/azure-stack-edge-gpu-kubernetes-rbac/rbac-view-1.png)
 
 In dit diagram hebben Anne, Bob en Chuck alleen toegang tot toegewezen gebruikers naam ruimten, in dit geval, `ns1` `ns2` en `ns3` respectievelijk. Binnen deze naam ruimten hebben ze beheerders toegang. De Cluster beheerder van de andere kant heeft beheerders toegang tot systeem naam ruimten en cluster bronnen.
 

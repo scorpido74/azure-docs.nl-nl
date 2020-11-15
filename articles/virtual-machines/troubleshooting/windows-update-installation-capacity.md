@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: v-miegge
-ms.openlocfilehash: 596303223554589ef26938486ccfd2281ccd46f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f83a1820eb931fa075681da7a9661b304059cd2a
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86999102"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94635702"
 ---
 # <a name="troubleshoot-os-start-up--windows-update-installation-capacity"></a>Problemen oplossen met opstarten vanaf een besturings systeem – Windows Update installatie capaciteit
 
@@ -62,8 +62,6 @@ Om het probleem op te lossen:
 
 1. Controleer of de schijf vol is. Als de schijf kleiner is dan 1 TB, kunt u deze uitbreiden tot Maxi maal 1 TB [met behulp van Power shell](../windows/expand-os-disk.md).
 1. Als de schijf al 1 TB is, moet u een schijf opruiming uitvoeren.
-   1. Ontkoppel de gegevens schijf [van de verbroken virtuele machine](../windows/detach-disk.md).
-   1. Koppel de gegevens schijf [aan een WERKENDE VM](../windows/attach-disk-ps.md#attach-an-existing-data-disk-to-a-vm).
    1. Gebruik het [hulp programma schijf opruiming](https://support.microsoft.com/help/4026616/windows-10-disk-cleanup) om ruimte vrij te maken.
 1. Nadat het formaat is gewijzigd en het opschonen is voltooid, kunt u het station ontfragmenten met de volgende opdracht:
 
@@ -75,12 +73,12 @@ Afhankelijk van het niveau van de fragmentatie kan de defragmentatie enkele uren
 
 ### <a name="enable-the-serial-console-and-memory-dump-collection"></a>De seriële console en geheugen dump verzameling inschakelen
 
-**Aanbevolen**: voordat u de virtuele machine opnieuw bouwt, moet u de seriële console en geheugen dump verzameling inschakelen door het volgende script uit te voeren:
+**Aanbevolen** : voordat u de virtuele machine opnieuw bouwt, moet u de seriële console en geheugen dump verzameling inschakelen door het volgende script uit te voeren:
 
 1. Open een opdracht prompt sessie met verhoogde bevoegdheden als beheerder.
 1. Voer de volgende opdrachten uit:
 
-   **De seriële console inschakelen**:
+   **De seriële console inschakelen** :
    
    ```
    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /ems {<BOOT LOADER IDENTIFIER>} ON 
@@ -89,7 +87,7 @@ Afhankelijk van het niveau van de fragmentatie kan de defragmentatie enkele uren
 
 1. Controleer of de beschik bare ruimte op de besturingssysteem schijf groter is dan de geheugen grootte (RAM) op de virtuele machine.
 
-   Als er onvoldoende ruimte beschikbaar is op de besturingssysteem schijf, wijzigt u de locatie waar het geheugen dump bestand wordt gemaakt en verwijst u naar die locatie naar een gegevens schijf die is gekoppeld aan de VM met voldoende beschik bare ruimte. Als u de locatie wilt wijzigen, vervangt u **% System root%** door de stationsletter van de gegevens schijf, zoals **F:**, in de volgende opdrachten.
+   Als er onvoldoende ruimte beschikbaar is op de besturingssysteem schijf, wijzigt u de locatie waar het geheugen dump bestand wordt gemaakt en verwijst u naar die locatie naar een gegevens schijf die is gekoppeld aan de VM met voldoende beschik bare ruimte. Als u de locatie wilt wijzigen, vervangt u **% System root%** door de stationsletter van de gegevens schijf, zoals **F:** , in de volgende opdrachten.
 
    Voorgestelde configuratie voor het inschakelen van de OS-dump:
 
@@ -99,7 +97,7 @@ Afhankelijk van het niveau van de fragmentatie kan de defragmentatie enkele uren
    REG LOAD HKLM\BROKENSYSTEM <VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config\SYSTEM 
    ```
    
-   **Inschakelen op ControlSet001**:
+   **Inschakelen op ControlSet001** :
 
    ```
    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f 
@@ -107,7 +105,7 @@ Afhankelijk van het niveau van de fragmentatie kan de defragmentatie enkele uren
    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f
    ```
    
-   **Inschakelen op ControlSet002**:
+   **Inschakelen op ControlSet002** :
 
    ```
    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f 
@@ -115,7 +113,7 @@ Afhankelijk van het niveau van de fragmentatie kan de defragmentatie enkele uren
    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f
    ```
    
-   **Beschadigde besturingssysteem schijf verwijderen**:
+   **Beschadigde besturingssysteem schijf verwijderen** :
 
    ```
    REG UNLOAD HKLM\BROKENSYSTEM

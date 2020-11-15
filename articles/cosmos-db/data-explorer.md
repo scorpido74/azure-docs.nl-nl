@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/23/2020
 ms.author: dech
-ms.openlocfilehash: d5958ea947f6b786e9fbc6c44ab914ea895d6e08
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 691a2e56230d312416aed3d68bffd361f1d63558
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096798"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94637112"
 ---
 # <a name="work-with-data-using-azure-cosmos-explorer"></a>Werken met gegevens in Azure Cosmos Explorer 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -26,21 +26,21 @@ Azure Cosmos DB Explorer is een zelfstandige webgebaseerde interface waarmee u d
 
 ## <a name="access-azure-cosmos-db-explorer"></a>Toegang tot Azure Cosmos DB Verkenner
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/). 
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/). 
 
-2. Ga vanuit **alle resources** naar uw Azure Cosmos DB-account, selecteer sleutels en kopieer de **primaire verbindings reeks** .  
+2. Ga vanuit **alle resources** naar uw Azure Cosmos DB-account, selecteer sleutels en kopieer de **primaire verbindings reeks**.  
 
-3. Ga naar https://cosmos.azure.com/ , plak de Connection String en selecteer **verbinding maken** . Als u de connection string gebruikt, hebt u zonder enige tijd toegang tot de Azure Cosmos DB Explorer.  
+3. Ga naar https://cosmos.azure.com/ , plak de Connection String en selecteer **verbinding maken**. Als u de connection string gebruikt, hebt u zonder enige tijd toegang tot de Azure Cosmos DB Explorer.  
 
    Als u tijdelijke gebruikers toegang wilt geven tot uw Azure Cosmos DB-account, kunt u dit doen met behulp van de Url's voor lezen en schrijven en lees toegang. 
 
-4. Open de Blade **Data Explorer** en selecteer **Open volledige scherm** . In het pop-upvenster kunt u twee toegangs-Url's bekijken: **lezen/schrijven** en **lezen** . Met deze Url's kunt u uw Azure Cosmos DB-account tijdelijk delen met andere gebruikers. De toegang tot het account verloopt over 24 uur waarna u opnieuw verbinding kunt maken met behulp van een nieuwe toegangs-URL of de connection string. 
+4. Open de Blade **Data Explorer** en selecteer **Open volledige scherm**. In het pop-upvenster kunt u twee toegangs-Url's bekijken: **lezen/schrijven** en **lezen**. Met deze Url's kunt u uw Azure Cosmos DB-account tijdelijk delen met andere gebruikers. De toegang tot het account verloopt over 24 uur waarna u opnieuw verbinding kunt maken met behulp van een nieuwe toegangs-URL of de connection string. 
 
    **Lezen/schrijven** : wanneer u de Read-Write URL met andere gebruikers deelt, kunnen ze de data bases, verzamelingen, query's en andere resources die zijn gekoppeld aan dit specifieke account weer geven en wijzigen.
 
    **Lezen** : wanneer u de alleen-lezen URL deelt met andere gebruikers, kunnen ze de data bases, verzamelingen, query's en andere resources weer geven die zijn gekoppeld aan dit specifieke account. Als u bijvoorbeeld resultaten wilt delen van een query met uw team leden die geen toegang hebben tot Azure Portal of uw Azure Cosmos DB account, kunt u deze opgeven met deze URL.
 
-   Kies het type toegang waarmee u het account wilt openen en klik op **openen** . Nadat u de Explorer hebt geopend, is de ervaring hetzelfde als bij de Data Explorer tabblad in Azure Portal.
+   Kies het type toegang waarmee u het account wilt openen en klik op **openen**. Nadat u de Explorer hebt geopend, is de ervaring hetzelfde als bij de Data Explorer tabblad in Azure Portal.
 
    :::image type="content" source="./media/data-explorer/open-data-explorer-with-access-url.png" alt-text="Azure Cosmos DB Explorer openen":::
 
@@ -50,7 +50,7 @@ Momenteel is de ervaring voor het **openen van volledig scherm** , waarmee u tij
 
 Het weer geven van documenten die een UUID bevatten, wordt momenteel niet ondersteund in Data Explorer. Dit heeft geen invloed op het laden van verzamelingen, waarbij alleen afzonderlijke documenten of query's worden weer gegeven die deze documenten bevatten. Om deze documenten weer te geven en te beheren, moeten gebruikers het hulp programma blijven gebruiken dat oorspronkelijk werd gebruikt om deze documenten te maken.
 
-Klanten die HTTP-401-fouten ontvangen, kunnen worden veroorzaakt door onvoldoende RBAC-machtigingen voor het Azure-account van de klant, met name als het account een aangepaste RBAC-rol heeft. Aangepaste rollen moeten actie hebben `Microsoft.DocumentDB/databaseAccounts/listKeys/*` om Data Explorer te gebruiken als u zich aanmeldt met behulp van hun Azure Active Directory referenties.
+Klanten die HTTP-401-fouten ontvangen, kunnen worden veroorzaakt door onvoldoende Azure RBAC-machtigingen voor het Azure-account van de klant, met name als het account een aangepaste rol heeft. Aangepaste rollen moeten actie hebben `Microsoft.DocumentDB/databaseAccounts/listKeys/*` om Data Explorer te gebruiken als u zich aanmeldt met behulp van hun Azure Active Directory referenties.
 
 ## <a name="next-steps"></a>Volgende stappen
 

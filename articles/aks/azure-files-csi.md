@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: 556aec071ccb59a0223bc07d134f3427755117f3
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b29f4034b12ce43e6c051e454601f196365469f3
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92745788"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636977"
 ---
 # <a name="use-azure-files-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>Azure Files-Stuur Programma's van de container Storage interface (CSI) gebruiken in azure Kubernetes service (AKS) (preview)
 
@@ -212,7 +212,7 @@ Registreer de `AllowNfsFileShares` functie vlag met behulp van de opdracht [AZ f
 az feature register --namespace "Microsoft.Storage" --name "AllowNfsFileShares"
 ```
 
-Het duurt enkele minuten voordat de status is *geregistreerd* . Controleer de registratie status met behulp van de opdracht [AZ Feature List][az-feature-list] :
+Het duurt enkele minuten voordat de status is *geregistreerd*. Controleer de registratie status met behulp van de opdracht [AZ Feature List][az-feature-list] :
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.Storage/AllowNfsFileShares')].{Name:name,State:properties.state}"
@@ -229,7 +229,7 @@ az provider register --namespace Microsoft.Storage
 [Maak een `Premium_LRS` Azure Storage-account](../storage/files/storage-how-to-create-premium-fileshare.md) met de volgende configuraties ter ondersteuning van NFS-shares:
 - soort account: FileStorage
 - beveiligde overdracht vereist (alleen HTTPS-verkeer inschakelen): onwaar
-- het virtuele netwerk van uw agent knooppunten in firewalls en virtuele netwerken selecteren
+- Selecteer het virtuele netwerk van uw agent knooppunten in firewalls en virtuele netwerken. u kunt het beste daarom het opslag account maken in de resource groep MC_.
 
 ### <a name="create-nfs-file-share-storage-class"></a>Opslag klasse voor NFS-bestands share maken
 
@@ -239,7 +239,7 @@ Sla een `nfs-sc.yaml` bestand met het onderstaande manifest op om de betreffende
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: azurefile-csi
+  name: azurefile-csi-nfs
 provisioner: file.csi.azure.com
 parameters:
   resourceGroup: EXISTING_RESOURCE_GROUP_NAME  # optional, required only when storage account is not in the same resource group as your agent nodes
@@ -275,6 +275,10 @@ Filesystem      Size  Used Avail Use% Mounted on
 accountname.file.core.windows.net:/accountname/pvc-fa72ec43-ae64-42e4-a8a2-556606f5da38  100G     0  100G   0% /mnt/azurefile
 ...
 ```
+
+>[!NOTE]
+> Houd er rekening mee dat omdat de NFS-bestands share zich in Premium-account bevindt, de minimale grootte van de bestands share 100 GB is. Als u een PVC met een kleine opslag grootte maakt, kan er een fout optreden ' kan bestands share niet maken... grootte (5)....
+
 
 ## <a name="windows-containers"></a>Windows-containers
 
