@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6fd0ba19739b75e72541ac84d6b1696ab2819dee
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: ddf9d689316d3c95c322aa3a967af53621a2e00f
+ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317429"
+ms.lasthandoff: 11/16/2020
+ms.locfileid: "94638866"
 ---
 # <a name="best-practices-for-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Aanbevolen procedures voor de serverloze SQL-pool (preview) in azure Synapse Analytics
 
@@ -127,13 +127,17 @@ Als uw opgeslagen gegevens niet zijn gepartitioneerd, kunt u het partitioneren. 
 
 U kunt een met prestaties geoptimaliseerde parser gebruiken wanneer u CSV-bestanden opvraagt. Zie [PARSER_VERSION](develop-openrowset.md)voor meer informatie.
 
+## <a name="manually-create-statistics-for-csv-files"></a>Hand matig statistieken maken voor CSV-bestanden
+
+Een serverloze SQL-groep is afhankelijk van de statistieken voor het genereren van optimale query-uitvoerings plannen. Statistieken worden automatisch gemaakt voor kolommen in Parquet-bestanden wanneer dat nodig is. Op dit moment worden er geen statistieken automatisch gemaakt voor kolommen in CSV-bestanden. u moet statistieken hand matig maken voor kolommen die u in query's gebruikt, met name die in DISTINCT, samen voegen, waar, sorteren op en groeperen op. Controleer de [statistieken in de serverloze SQL-groep](develop-tables-statistics.md#statistics-in-serverless-sql-pool-preview) voor meer informatie.
+
 ## <a name="use-cetas-to-enhance-query-performance-and-joins"></a>CETAS gebruiken om de query prestaties te verbeteren en samen te voegen
 
 [CETAS](develop-tables-cetas.md) is een van de belangrijkste functies die beschikbaar zijn in een SERVERloze SQL-groep. CETAS is een parallelle bewerking die meta gegevens van externe tabellen maakt en de selectie query resultaten exporteert naar een set bestanden in uw opslag account.
 
 U kunt CETAS gebruiken voor het opslaan van veelgebruikte delen van query's, zoals gekoppelde referentie tabellen, naar een nieuwe set bestanden. U kunt vervolgens deel nemen aan deze afzonderlijke externe tabel in plaats van het herhalen van algemene samen voegingen in meerdere query's.
 
-Omdat CETAS Parquet-bestanden genereert, worden er automatisch statistieken gemaakt wanneer de eerste query de externe tabel bedoelt, wat resulteert in betere prestaties.
+Omdat CETAS Parquet-bestanden genereert, worden er automatisch statistieken gemaakt wanneer de eerste query deze externe tabel bedoelt, wat resulteert in betere prestaties voor volgende query's die zijn gegenereerd met CETAS.
 
 ## <a name="azure-ad-pass-through-performance"></a>Pass-Through Azure AD-prestaties
 

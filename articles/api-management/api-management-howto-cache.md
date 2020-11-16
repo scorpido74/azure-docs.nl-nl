@@ -11,18 +11,21 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 11/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 0a3aa0c26ddb515b8096cce909ca074f6f24a333
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 732abed830afdb759ed52fd933673edd8e5cade6
+ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86250478"
+ms.lasthandoff: 11/16/2020
+ms.locfileid: "94638730"
 ---
 # <a name="add-caching-to-improve-performance-in-azure-api-management"></a>Opslaan in cache toevoegen om de prestaties in Azure API Management te verbeteren
 
-Bewerkingen in API Management kunnen worden geconfigureerd voor het opslaan van antwoorden in de cache. Door het opslaan van antwoorden in de cache kan de API-latentie, het bandbreedteverbruik en de webservicewerklast aanzienlijk worden verminderd voor gegevens die niet vaak wijzigen.
+Api's en bewerkingen in API Management kunnen worden geconfigureerd met het opslaan van antwoorden in de cache. Het opslaan van antwoorden kan de latentie voor API-aanroepen en het laden van back-end voor API-providers aanzienlijk verminderen.
+
+> [!IMPORTANT]
+> De ingebouwde cache is vluchtig en wordt gedeeld door alle eenheden in dezelfde regio in dezelfde API Management-service.
 
 Zie [De cachebeleidsregels van API Management](api-management-caching-policies.md) en [Aangepaste opslaan in de cache in Azure API Management](api-management-sample-cache-by-key.md) voor meer informatie over opslaan in de cache.
 

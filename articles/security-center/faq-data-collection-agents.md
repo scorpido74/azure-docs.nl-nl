@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/25/2020
+ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: 315183040515110a6a21afcd00e12d1b12313170
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 2ea9fdcb11bd88755c0972fa166d1d94068ce60e
+ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341835"
+ms.lasthandoff: 11/16/2020
+ms.locfileid: "94638791"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>Veelgestelde vragen: vragen over het verzamelen van gegevens, agents en werk ruimten
 
@@ -91,7 +91,7 @@ De locatie van de standaardwerk ruimte is afhankelijk van uw Azure-regio:
 Zie [wat wordt bewaakt door Azure monitor?](../azure-monitor/monitor-reference.md#azure-services)voor een volledige lijst van de toepassingen en services die door de agent worden bewaakt.
 
 > [!IMPORTANT]
-> Houd er rekening mee dat voor sommige services, zoals Azure Firewall, als u logboek registratie hebt ingeschakeld en een intensieve-bron hebt gekozen voor aanmelding (bijvoorbeeld door het logboek in te stellen op *uitgebreid*), u mogelijk belang rijke gevolgen voor uw log Analytics werkruimte opslag nodig hebt. 
+> Houd er rekening mee dat voor sommige services, zoals Azure Firewall, als u logboek registratie hebt ingeschakeld en een intensieve-bron hebt gekozen voor aanmelding (bijvoorbeeld door het logboek in te stellen op *uitgebreid* ), u mogelijk belang rijke gevolgen voor uw log Analytics werkruimte opslag nodig hebt. 
 
 
 ## <a name="can-i-delete-the-default-workspaces-created-by-security-center"></a>Kan ik de standaardwerk ruimten verwijderen die zijn gemaakt door Security Center?
@@ -109,14 +109,19 @@ U kunt een bestaande Log Analytics-werk ruimte selecteren om gegevens op te slaa
 
 Een bestaande Log Analytics-werkruimte selecteren:
 
-1. Onder **beveiligings beleid – gegevens verzamelen**selecteert **u een andere werk ruimte gebruiken**.
+1. Selecteer **Prijzen en instellingen** in het hoofdmenu van Security Center.
+1. Selecteer het betreffende abonnement.
+1. Open de pagina **automatische inrichting** , s
+1. Selecteer voor de Log Analytics-agent **configuratie bewerken**. 
 
-    ![Een andere werk ruimte gebruiken][4]
+    :::image type="content" source="./media/security-center-enable-data-collection/edit-configuration-auto-deploy-agent.png" alt-text="De configuratie van de Log Analytics-agent die moet worden gebruikt bij het gebruik van automatische implementatie" lightbox="./media/security-center-enable-data-collection/edit-configuration-auto-deploy-agent.png":::
 
-1. Selecteer in de vervolgkeuzelijst een werkruimte om de verzamelde gegevens op te slaan.
+1. Selecteer **Azure Vm's verbinden met een andere werk ruimte** en kies uw bestaande werk ruimte.
 
-    > [!NOTE]
-    > In het vervolg keuzemenu worden alleen werk ruimten weer gegeven waartoe u toegang hebt en die zich in uw Azure-abonnement bevinden.
+    :::image type="content" source="./media/security-center-enable-data-collection/choose-workspace.png" alt-text="Een niet-standaard werkruimte selecteren voor uw Log Analytics-agent om te rapporteren" lightbox="./media/security-center-enable-data-collection/choose-workspace.png":::
+
+    > [!TIP]
+    > De lijst bevat alleen werk ruimten waartoe u toegang hebt en die zich in uw Azure-abonnement bevinden.
 
 1. Selecteer **Opslaan**. U wordt gevraagd of u de bewaakte Vm's opnieuw wilt configureren.
 
@@ -124,9 +129,8 @@ Een bestaande Log Analytics-werkruimte selecteren:
     - Selecteer **Ja** als u de nieuwe werkruimte instellingen wilt **Toep assen op alle vm's**. Daarnaast wordt elke VM die is verbonden met een door Security Center gemaakte werkruimte opnieuw verbonden met de nieuwe doelwerkruimte.
 
     > [!NOTE]
-    > Als u **Ja**selecteert, verwijdert u geen werk ruimten die zijn gemaakt door Security Center totdat alle virtuele machines opnieuw zijn verbonden met de nieuwe doel werkruimte. Deze bewerking mislukt als een werkruimte te vroeg wordt verwijderd.
+    > Als u **Ja** selecteert, verwijdert u geen werk ruimten die zijn gemaakt door Security Center totdat alle virtuele machines opnieuw zijn verbonden met de nieuwe doel werkruimte. Deze bewerking mislukt als een werkruimte te vroeg wordt verwijderd.
 
-    - Als u de bewerking wilt annuleren, selecteert u **Annuleren**.
 
 ## <a name="what-if-the-log-analytics-agent-was-already-installed-as-an-extension-on-the-vm"></a>Wat gebeurt er als de Log Analytics-agent al is geïnstalleerd als een uitbrei ding op de VM?<a name="mmaextensioninstalled"></a>
 
@@ -162,14 +166,19 @@ Als u de micro soft-bewakings extensie verwijdert, kan Security Center geen beve
 
 ## <a name="how-do-i-stop-the-automatic-agent-installation-and-workspace-creation"></a>Hoe kan ik de automatische agent installatie en het maken van de werk ruimte stoppen?
 
-U kunt automatische inrichting voor uw abonnementen uitschakelen in het beveiligings beleid, maar dit wordt niet aanbevolen. Automatische inrichtings limieten Security Center aanbevelingen en waarschuwingen uitschakelen. Automatische inrichting uitschakelen:
+U kunt automatische inrichting voor uw abonnementen uitschakelen in het beveiligings beleid, maar dit wordt niet aanbevolen. Het uitschakelen van limieten voor automatische inrichting Security Center aanbevelingen en waarschuwingen. Automatische inrichting uitschakelen:
 
-1. Als Azure Defender is ingeschakeld voor uw abonnement, opent u het beveiligings beleid voor dat abonnement en selecteert u **Azure Defender uit**.
+1. Selecteer **Prijzen en instellingen** in het hoofdmenu van Security Center.
+1. Selecteer het betreffende abonnement.
+1. Als Azure Defender is ingeschakeld voor uw abonnement, opent u **Azure Defender-abonnementen** en selecteert u **Azure Defender uit**.
 
     :::image type="content" source="./media/security-center-platform-migration-faq/pricing-tier.png" alt-text="Azure Defender in-of uitschakelen":::
 
-1. Schakel vervolgens automatische inrichting uit door **uit** te scha kelen op de pagina **beveiligings beleid – gegevens verzameling** .
-   ![Gegevensverzameling][2]
+1. Selecteer op de pagina **automatische inrichting** pen en de automatische inrichting uitschakelen op de pagina  **beveiligings beleid – gegevens verzameling** .
+
+    :::image type="content" source="./media/security-center-enable-data-collection/agent-toggles.png" alt-text="Automatische implementatie voor de Log Analytics-agent inschakelen":::
+
+1. Selecteer **Opslaan**.
 
 
 ## <a name="should-i-opt-out-of-the-automatic-agent-installation-and-workspace-creation"></a>Moet ik de automatische agent installatie en het maken van de werk ruimte afmelden?
@@ -214,7 +223,7 @@ U kunt de Log Analytics agent hand matig verwijderen. Dit wordt niet aanbevolen 
 
 Hand matig verwijderen van de agent:
 
-1.    Open **log Analytics**in de portal.
+1.    Open **log Analytics** in de portal.
 
 1.    Selecteer op de pagina Log Analytics een werk ruimte:
 
@@ -232,18 +241,16 @@ Automatisch inrichten wordt sterk aanbevolen om beveiligings waarschuwingen en a
 
 Als u het hebt ingeschakeld, maar nu wilt uitschakelen:
 
-1. Open **Security Center** in [het Azure Portal](https://portal.azure.com)en selecteer **beveiligings beleid**.
+1. Open **Security Center** in [het Azure Portal](https://portal.azure.com)en selecteer **prijzen en instellingen**.
 
 1. Selecteer het abonnement waarvoor u automatisch inrichten wilt uitschakelen.
 
-    **Beveiligings beleid: gegevens verzamelen** wordt geopend.
-
-1. Onder **automatische inrichting**selecteert u **uit**.
+1. Schakel onder **automatische inrichting** de wissel knop voor de log Analytics-agent uit.
 
 
 ## <a name="how-do-i-enable-data-collection"></a>Gegevens verzameling Hoe kan ik inschakelen?
 
-U kunt het verzamelen van gegevens voor uw Azure-abonnement inschakelen in het beveiligings beleid. Om het verzamelen van gegevens in te scha kelen. [Meld u aan bij de Azure Portal](https://portal.azure.com), selecteer **bladeren**, selecteer **Security Center**en selecteer **beveiligings beleid**. Selecteer het abonnement waarvoor u automatische inrichting wilt inschakelen. Wanneer u een beveiligings beleid voor abonnementen selecteert **: gegevens verzamelen** wordt geopend. Onder **automatische inrichting**selecteert u **aan**.
+U kunt het verzamelen van gegevens voor uw Azure-abonnement inschakelen in het beveiligings beleid. Om het verzamelen van gegevens in te scha kelen. [Meld u aan bij de Azure Portal](https://portal.azure.com), selecteer **bladeren** , selecteer **Security Center** en selecteer **beveiligings beleid**. Selecteer het abonnement waarvoor u automatische inrichting wilt inschakelen. Wanneer u een beveiligings beleid voor abonnementen selecteert **: gegevens verzamelen** wordt geopend. Onder **automatische inrichting** selecteert u **aan**.
 
 
 ## <a name="what-happens-when-data-collection-is-enabled"></a>Wat gebeurt er wanneer gegevens verzameling is ingeschakeld?

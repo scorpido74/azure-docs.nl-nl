@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2020
 ms.author: yelevin
-ms.openlocfilehash: e04d7fa1f319ca3969d8acdc0235e2838bb3a88d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 19ad45eec78d53261bf1781808339152c69a0136
+ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90995739"
+ms.lasthandoff: 11/16/2020
+ms.locfileid: "94638832"
 ---
 # <a name="import-threat-intelligence-into-azure-sentinel"></a>Bedreigingsinformatie importeren in Azure Sentinel
 
@@ -36,7 +36,7 @@ U kunt Threat Intelligence (TI) integreren in azure Sentinel via de volgende act
 - Gebruik de ingebouwde **analyse** regel sjablonen om beveiligings waarschuwingen en incidenten te genereren met behulp van uw geïmporteerde bedreigings informatie.
 - Visualiseren van belang rijke gegevens over uw bedreigings informatie in azure Sentinel met de **Threat Intelligence-werkmap**.
 
-Threat Intelligence biedt ook nuttige context binnen andere Azure-Sentinel-ervaringen, zoals **jacht** en **notebooks**, en hoewel dit niet in dit artikel wordt behandeld, worden deze ervaringen behandeld in [dit fantastische blog bericht door Ian hellen op Jupyter notebooks in Sentinel](https://techcommunity.microsoft.com/t5/azure-sentinel/using-threat-intelligence-in-your-jupyter-notebooks/ba-p/860239), dat het gebruik van CTI binnen notebooks behandelt.
+Threat Intelligence biedt ook nuttige context binnen andere Azure-Sentinel-ervaringen, zoals **jacht** en **notebooks** , en hoewel dit niet in dit artikel wordt behandeld, worden deze ervaringen behandeld in [dit fantastische blog bericht door Ian hellen op Jupyter notebooks in Sentinel](https://techcommunity.microsoft.com/t5/azure-sentinel/using-threat-intelligence-in-your-jupyter-notebooks/ba-p/860239), dat het gebruik van CTI binnen notebooks behandelt.
 
 ## <a name="azure-sentinel-data-connectors-for-threat-intelligence"></a>Azure Sentinel data connectors voor bedreigings informatie
 
@@ -44,7 +44,7 @@ Net als alle andere gebeurtenis gegevens in de Azure-Sentinel worden risico indi
 
 ### <a name="adding-threat-indicators-to-azure-sentinel-with-the-threat-intelligence-platforms-data-connector"></a>Risico indicatoren toevoegen aan Azure Sentinel met de gegevens connector van het bedreigings informatie platform
 
-Veel organisaties gebruiken oplossingen voor het maken van bedreigings informatie (TIP) voor het verzamelen van de gegevens in het platform en vervolgens om te kiezen welke bedreigings indicatoren moeten worden toegepast op verschillende beveiligings oplossingen, zoals netwerk apparaten, oplossingen voor geavanceerde dreigingen of Siem's zoals Azure Sentinel. Als uw organisatie gebruikmaakt van een geïntegreerde TIP-oplossing, zoals MISP, Anomali ThreatStream, ThreatConnect of Palo Alto Networks, kunt u met de **Data Connector van de Threat Intelligence-platformen** uw tip gebruiken om bedreigings indicatoren te importeren in azure Sentinel. Omdat de connector samenwerkt met de [Microsoft Graph Security TIINDICATORS API](https://docs.microsoft.com/graph/api/resources/tiindicator) om dit te bewerkstelligen, kan de connector ook worden gebruikt door een aangepast Threat Intelligence-platform om te profiteren van de TIINDICATORS-API om indica toren te verzenden naar Azure Sentinel (en naar andere micro soft-beveiligings oplossingen zoals Defender ATP).
+Veel organisaties gebruiken oplossingen voor het maken van bedreigings informatie (TIP) voor het verzamelen van de gegevens in het platform en vervolgens om te kiezen welke bedreigings indicatoren moeten worden toegepast op verschillende beveiligings oplossingen, zoals netwerk apparaten, oplossingen voor geavanceerde dreigingen of Siem's zoals Azure Sentinel. Als uw organisatie gebruikmaakt van een geïntegreerde TIP-oplossing, zoals MISP, Anomali ThreatStream, ThreatConnect, EclecticIQ platform, ThreatQ Threat Intelligence platform of Palo Alto Networks MineMeld, kunt u met de **Data Connector van de Threat Intelligence-platformen** uw tip gebruiken om bedreigings indicatoren te importeren in azure Sentinel. Omdat de connector samenwerkt met de [Microsoft Graph Security TIINDICATORS API](https://docs.microsoft.com/graph/api/resources/tiindicator) om dit te bewerkstelligen, kan de connector ook worden gebruikt door een aangepast Threat Intelligence-platform om te profiteren van de TIINDICATORS-API om indica toren te verzenden naar Azure Sentinel (en naar andere micro soft-beveiligings oplossingen zoals Defender ATP).
 
 :::image type="content" source="media/import-threat-intelligence/threat-intel-import-path.png" alt-text="Pad naar Threat Intelligence-import bewerking":::
 
@@ -78,7 +78,7 @@ Deze informatie is altijd afkomstig van uw Azure Active Directory via een proces
 
 1. Kies een naam voor de registratie van uw toepassing, selecteer het keuze rondje **Eén Tenant** en selecteer **registreren**.
 
-    :::image type="content" source="media/import-threat-intelligence/threat-intel-register-application.png" alt-text="Pad naar Threat Intelligence-import bewerking":::
+    :::image type="content" source="media/import-threat-intelligence/threat-intel-register-application.png" alt-text="Een toepassing registreren":::
 
 1. Kopieer vanuit het resulterende scherm de waarden van de **toepassing (client) ID** en **Directory (Tenant)** . Dit zijn de eerste twee stukjes informatie die u later nodig hebt om uw TIP of aangepaste oplossing te configureren voor het verzenden van bedreigings indicatoren naar Azure Sentinel.
 
@@ -96,13 +96,13 @@ Deze informatie is altijd afkomstig van uw Azure Active Directory via een proces
 
 1. Selecteer **ThreatIndicators. readwrite. OwnedBy** en selecteer **machtigingen toevoegen** om deze machtiging toe te voegen aan de lijst met machtigingen van uw app.
 
-    :::image type="content" source="media/import-threat-intelligence/threat-intel-api-permissions-1.png" alt-text="Pad naar Threat Intelligence-import bewerking":::
+    :::image type="content" source="media/import-threat-intelligence/threat-intel-api-permissions-1.png" alt-text="Machtigingen opgeven":::
 
 **Toestemming van uw organisatie verkrijgen om deze machtigingen te verlenen**
 
 1. Als u toestemming wilt geven, moet u een Azure Active Directory globale beheerder zijn om de knop **toestemming geven voor het verlenen van de beheerder voor uw Tenant** te selecteren op de pagina API-machtigingen van uw app. Als u niet beschikt over de rol van globale beheerder voor uw account, is deze knop niet beschikbaar en moet u een globale beheerder van uw organisatie vragen om deze stap uit te voeren.
 
-    :::image type="content" source="media/import-threat-intelligence/threat-intel-api-permissions-2.png" alt-text="Pad naar Threat Intelligence-import bewerking":::
+    :::image type="content" source="media/import-threat-intelligence/threat-intel-api-permissions-2.png" alt-text="Toestemming verlenen":::
 
 1. Zodra de toestemming voor uw app is verleend, ziet u een groen vinkje onder **status**.
  
@@ -114,9 +114,9 @@ Nu de app is geregistreerd en er machtigingen zijn verleend, kunt u het laatste 
 
 1. Selecteer **certificaten & geheimen** in het menu en klik op de knop **Nieuw client geheim** om een geheim (API-sleutel) voor uw app te verkrijgen.
 
-    :::image type="content" source="media/import-threat-intelligence/threat-intel-client-secret.png" alt-text="Pad naar Threat Intelligence-import bewerking":::
+    :::image type="content" source="media/import-threat-intelligence/threat-intel-client-secret.png" alt-text="Client geheim ophalen":::
 
-1. Klik op de knop **toevoegen** en **Zorg ervoor dat u het client geheim kopieert**, omdat u dit geheim niet opnieuw kunt ophalen als u deze pagina verlaat. U hebt deze waarde nodig wanneer u uw TIP of een aangepaste oplossing configureert.
+1. Klik op de knop **toevoegen** en **Zorg ervoor dat u het client geheim kopieert** , omdat u dit geheim niet opnieuw kunt ophalen als u deze pagina verlaat. U hebt deze waarde nodig wanneer u uw TIP of een aangepaste oplossing configureert.
 
 #### <a name="input-this-information-into-your-tip-solution-or-custom-application"></a>Deze informatie invoeren in uw TIP-oplossing of aangepaste toepassing
 
@@ -145,7 +145,7 @@ Binnen een paar minuten moeten bedreigings indicatoren stromen naar deze Azure S
 
 De meest wereld wijd gekozen industrie norm voor de verzen ding van bedreigings informatie is een [combi natie van de Stix-gegevens indeling en het TAXII-protocol](https://oasis-open.github.io/cti-documentation/). Als uw organisatie bedreigings indicatoren krijgt van oplossingen die de huidige STIX/TAXII-versie ondersteunen (2,0 of 2,1), kunt u de gegevens connector **Threat Intelligence-TAXII** gebruiken om uw bedreigings indicatoren in azure Sentinel te brengen. Met de TAXII-gegevens connector van Threat Intelligence kunt u een ingebouwde TAXII-client in azure Sentinel voor het importeren van bedreigings informatie van TAXII 2. x-servers.
 
-:::image type="content" source="media/import-threat-intelligence/threat-intel-taxii-import-path.png" alt-text="Pad naar Threat Intelligence-import bewerking":::
+:::image type="content" source="media/import-threat-intelligence/threat-intel-taxii-import-path.png" alt-text="Pad naar TAXII-import":::
  
 Voer de volgende stappen uit om de STIX-opmaak bedreigingen te importeren in azure Sentinel van een TAXII-server:
 
@@ -285,9 +285,9 @@ Als u bedreigings indicatoren wilt importeren in azure Sentinel van een TAXII-se
 
 1. Selecteer **gegevens connectors** in het menu, selecteer **Threat Intelligence-TAXII** in de galerie connectors en klik op de knop **connector pagina openen** .
 
-1. Typ een **naam** voor deze TAXII-server verzameling, URL van de **API-hoofdmap**, **verzamelings-id**, **gebruikers naam** (indien nodig) en **wacht woord** (indien nodig) en klik op de knop **toevoegen** .
+1. Typ een **naam** voor deze TAXII-server verzameling, URL van de **API-hoofdmap** , **verzamelings-id** , **gebruikers naam** (indien nodig) en **wacht woord** (indien nodig) en klik op de knop **toevoegen** .
 
-    :::image type="content" source="media/import-threat-intelligence/threat-intel-configure-taxii-servers.png" alt-text="Pad naar Threat Intelligence-import bewerking":::
+    :::image type="content" source="media/import-threat-intelligence/threat-intel-configure-taxii-servers.png" alt-text="TAXII-servers configureren":::
  
 U ontvangt een bevestiging dat er een verbinding met de TAXII-server is gemaakt en u kunt stap (4) zo vaak herhalen als gewenst om verbinding te maken met meerdere verzamelingen vanaf dezelfde of verschillende TAXII-servers.
 
@@ -307,7 +307,7 @@ Nu u risico indicatoren hebt geïmporteerd in azure Sentinel met behulp van de *
 
 De resultaten moeten er ongeveer uitzien als de volgende voor beeld van bedreigings indicator:
 
-:::image type="content" source="media/import-threat-intelligence/threat-intel-sample-query.png" alt-text="Pad naar Threat Intelligence-import bewerking":::
+:::image type="content" source="media/import-threat-intelligence/threat-intel-sample-query.png" alt-text="Voorbeeld query gegevens":::
  
 ## <a name="manage-your-threat-indicators-in-the-new-threat-intelligence-area-of-azure-sentinel"></a>Uw bedreigings indicatoren beheren in het nieuwe bedreigings informatie gebied van Azure Sentinel
 
@@ -322,7 +322,7 @@ Laten we eens kijken naar twee van de meest voorkomende taken, het maken van nie
 
 1. Selecteer de knop **Nieuw toevoegen** in het bovenste menu van de pagina.
 
-    :::image type="content" source="media/import-threat-intelligence/threat-intel-add-new-indicator.png" alt-text="Pad naar Threat Intelligence-import bewerking" lightbox="media/import-threat-intelligence/threat-intel-add-new-indicator.png":::
+    :::image type="content" source="media/import-threat-intelligence/threat-intel-add-new-indicator.png" alt-text="Een nieuwe bedreigings indicator toevoegen" lightbox="media/import-threat-intelligence/threat-intel-add-new-indicator.png":::
 
 1. Kies het indicator type en vul vervolgens de vereiste velden in die zijn gemarkeerd met een rood sterretje (*) in het deel venster **nieuwe indicator** .
 
@@ -330,13 +330,13 @@ Laten we eens kijken naar twee van de meest voorkomende taken, het maken van nie
 
 Het coderen van bedreigings indicatoren is een eenvoudige manier om ze samen te groeperen, zodat u ze eenvoudiger kunt vinden. Normaal gesp roken kunt u een tag Toep assen op Indica tors die betrekking hebben op een bepaald incident of op indica toren die bedreigingen vertegenwoordigen van een bepaalde bekende actor of een bekende aanvals campagne. U kunt risico indicatoren afzonderlijk labelen of meervoudige indica toren en ze allemaal tegelijk labelen. Hieronder ziet u een voor beeld van het coderen van meerdere indica toren met een incident-ID. Omdat labels gratis zijn, is het raadzaam om standaard naam conventies voor bedreigings indicator Tags te maken. U kunt meerdere labels Toep assen op elke indicator.
 
-:::image type="content" source="media/import-threat-intelligence/threat-intel-tagging-indicators.png" alt-text="Pad naar Threat Intelligence-import bewerking" lightbox="media/import-threat-intelligence/threat-intel-tagging-indicators.png":::
+:::image type="content" source="media/import-threat-intelligence/threat-intel-tagging-indicators.png" alt-text="Tags Toep assen op bedreigings indicatoren" lightbox="media/import-threat-intelligence/threat-intel-tagging-indicators.png":::
 
 ## <a name="analytics-puts-your-threat-indicators-to-work-detecting-potential-threats"></a>Met Analytics worden uw bedreigings indicatoren gebruikt voor het detecteren van mogelijke dreigingen
 
-U hebt uw bedreigings indicatoren ingevoerd in azure Sentinel; u hebt gezien hoe u ze kunt weer geven en beheren. Bekijk nu wat ze voor u kunnen doen. De belangrijkste gebruiks Case voor bedreigings indicatoren in SIEM-oplossingen zoals Azure Sentinel is voor Power Analytics-regels.  Deze regels op basis van een indicator vergelijken onbewerkte gebeurtenissen uit uw gegevens bronnen tegen uw bedreigings indicatoren om beveiligings dreigingen in uw organisatie te detecteren. In azure Sentinel **Analytics**maakt u Analytics-regels die volgens een planning worden uitgevoerd en beveiligings waarschuwingen genereren. De regels worden aangedreven door query's, samen met configuraties die bepalen hoe vaak de regel moet worden uitgevoerd, welke soort query resultaten beveiligings waarschuwingen moeten genereren en welke automatische antwoorden moeten worden geactiveerd wanneer er waarschuwingen worden gegenereerd.
+U hebt uw bedreigings indicatoren ingevoerd in azure Sentinel; u hebt gezien hoe u ze kunt weer geven en beheren. Bekijk nu wat ze voor u kunnen doen. De belangrijkste gebruiks Case voor bedreigings indicatoren in SIEM-oplossingen zoals Azure Sentinel is voor Power Analytics-regels.  Deze regels op basis van een indicator vergelijken onbewerkte gebeurtenissen uit uw gegevens bronnen tegen uw bedreigings indicatoren om beveiligings dreigingen in uw organisatie te detecteren. In azure Sentinel **Analytics** maakt u Analytics-regels die volgens een planning worden uitgevoerd en beveiligings waarschuwingen genereren. De regels worden aangedreven door query's, samen met configuraties die bepalen hoe vaak de regel moet worden uitgevoerd, welke soort query resultaten beveiligings waarschuwingen moeten genereren en welke automatische antwoorden moeten worden geactiveerd wanneer er waarschuwingen worden gegenereerd.
 
-Hoewel u altijd nieuwe analyse regels kunt maken, biedt Azure Sentinel een reeks ingebouwde regel sjablonen, gemaakt door micro soft-beveiligings technici, die u kunt gebruiken om te voldoen aan uw behoeften. U kunt de regel sjablonen die gebruikmaken van bedreigings indicatoren, gemakkelijk identificeren, aangezien ze allemaal beginnen met '**Ti map**... '. Al deze regel sjablonen worden op dezelfde manier uitgevoerd, met het enige verschil dat het type risico indicatoren wordt gebruikt (domein, e-mail, bestands-hash, IP-adres of URL) en welk gebeurtenis type moet overeenkomen. Elke sjabloon bevat een lijst met de vereiste gegevens bronnen die nodig zijn om de regel te kunnen gebruiken. u kunt in één oogopslag zien of u de benodigde gebeurtenissen al hebt geïmporteerd in azure Sentinel.
+Hoewel u altijd nieuwe analyse regels kunt maken, biedt Azure Sentinel een reeks ingebouwde regel sjablonen, gemaakt door micro soft-beveiligings technici, die u kunt gebruiken om te voldoen aan uw behoeften. U kunt de regel sjablonen die gebruikmaken van bedreigings indicatoren, gemakkelijk identificeren, aangezien ze allemaal beginnen met ' **Ti map**... '. Al deze regel sjablonen worden op dezelfde manier uitgevoerd, met het enige verschil dat het type risico indicatoren wordt gebruikt (domein, e-mail, bestands-hash, IP-adres of URL) en welk gebeurtenis type moet overeenkomen. Elke sjabloon bevat een lijst met de vereiste gegevens bronnen die nodig zijn om de regel te kunnen gebruiken. u kunt in één oogopslag zien of u de benodigde gebeurtenissen al hebt geïmporteerd in azure Sentinel.
 
 Laten we eens kijken naar een van deze regel sjablonen en instructies voor het inschakelen en configureren van de regel voor het genereren van beveiligings waarschuwingen met behulp van de bedreigings indicatoren die u in azure Sentinel hebt geïmporteerd. In dit voor beeld gebruiken we de regel sjabloon met de naam **Ti toewijzen IP-entiteit aan AzureActivity**. Deze regel komt overeen met een bedreigings indicator van het IP-adres type met al uw Azure-activiteiten gebeurtenissen. Als er een overeenkomst wordt gevonden, wordt er een **waarschuwing** gegenereerd, evenals een bijbehorend **incident** voor onderzoek door uw beveiligings team. Deze analyse regel werkt alleen als u een of beide van de **Threat Intelligence** -gegevens connectors (voor het importeren van bedreigings indicatoren) en de gegevens connector van **Azure activity** (voor het importeren van uw Azure-gebeurtenissen op abonnements niveau) hebt ingeschakeld.
 
@@ -350,11 +350,11 @@ Laten we eens kijken naar een van deze regel sjablonen en instructies voor het i
 
 1. Navigeer naar de regel met de naam **map IP-entiteit toewijzen aan AzureActivity** en zorg ervoor dat u alle vereiste gegevens bronnen hebt verbonden, zoals hieronder wordt weer gegeven.
 
-    :::image type="content" source="media/import-threat-intelligence/threat-intel-required-data-sources.png" alt-text="Pad naar Threat Intelligence-import bewerking":::
+    :::image type="content" source="media/import-threat-intelligence/threat-intel-required-data-sources.png" alt-text="Vereiste gegevens bronnen":::
 
 1. Selecteer deze regel en selecteer de knop **regel maken** . Hiermee opent u een wizard om de regel te configureren. Vul de instellingen hier in en selecteer de **volgende: regel logica instellen >** knop.
 
-    :::image type="content" source="media/import-threat-intelligence/threat-intel-create-analytics-rule.png" alt-text="Pad naar Threat Intelligence-import bewerking":::
+    :::image type="content" source="media/import-threat-intelligence/threat-intel-create-analytics-rule.png" alt-text="Analytics-regel maken":::
 
 1. Het gedeelte regel logica van de wizard bevat:
     - De query die wordt gebruikt in de regel.
@@ -374,7 +374,7 @@ Laten we eens kijken naar een van deze regel sjablonen en instructies voor het i
 
 U kunt de standaard instellingen laten staan of een van deze wijzigen om te voldoen aan uw vereisten. Wanneer u klaar bent, selecteert u de **volgende: knop automatisch antwoord >**
 
-1. In deze stap van de wizard kunt u alle automatisering configureren die u wilt activeren wanneer er een beveiligings waarschuwing wordt gegenereerd op basis van deze analyse regel. Automatisering in azure Sentinel wordt uitgevoerd met behulp van **Playbooks**, aangedreven door Azure Logic apps. Meer informatie vindt u in deze [zelf studie: automatische antwoorden op dreigingen instellen in azure Sentinel](./tutorial-respond-threats-playbook.md). In dit voor beeld selecteren we alleen de knop **volgende: controleren >** om door te gaan.
+1. In deze stap van de wizard kunt u alle automatisering configureren die u wilt activeren wanneer er een beveiligings waarschuwing wordt gegenereerd op basis van deze analyse regel. Automatisering in azure Sentinel wordt uitgevoerd met behulp van **Playbooks** , aangedreven door Azure Logic apps. Meer informatie vindt u in deze [zelf studie: automatische antwoorden op dreigingen instellen in azure Sentinel](./tutorial-respond-threats-playbook.md). In dit voor beeld selecteren we alleen de knop **volgende: controleren >** om door te gaan.
 
 1. Met deze laatste stap valideert u de instellingen in de regel. Wanneer u klaar bent om de regel in te scha kelen, selecteert u de knop **maken** en bent u klaar.
 
@@ -397,7 +397,7 @@ Laten we eens kijken hoe u de Threat Intelligence-werkmap kunt vinden die is opg
 
 1. Navigeer naar de werkmap met de titel **Threat Intelligence** en controleer of u gegevens hebt in de tabel **ThreatIntelligenceIndicator** , zoals hieronder wordt weer gegeven.
 
-    :::image type="content" source="media/import-threat-intelligence/threat-intel-verify-data.png" alt-text="Pad naar Threat Intelligence-import bewerking":::
+    :::image type="content" source="media/import-threat-intelligence/threat-intel-verify-data.png" alt-text="Gegevens controleren":::
  
 1. Selecteer de knop **Opslaan** en kies een Azure-locatie om de werkmap op te slaan. Deze stap is vereist als u de werkmap op een wille keurige manier wilt wijzigen en uw wijzigingen wilt opslaan.
 
@@ -417,7 +417,7 @@ Laten we eens kijken hoe u de Threat Intelligence-werkmap kunt vinden die is opg
 
 1. Selecteer de knop **bewerken is voltooid** . U hebt een nieuwe grafiek voor uw werkmap gemaakt.
 
-    :::image type="content" source="media/import-threat-intelligence/threat-intel-bar-chart.png" alt-text="Pad naar Threat Intelligence-import bewerking":::
+    :::image type="content" source="media/import-threat-intelligence/threat-intel-bar-chart.png" alt-text="Staaf diagram":::
 
 Werkmappen bieden krachtige interactieve Dash boards die u inzicht geven in alle aspecten van Azure Sentinel. Er is een hele partij die u met werkmappen kunt doen, en terwijl de meegeleverde sjablonen een geweldig start punt zijn, wilt u waarschijnlijk de sjablonen in de hand brengen en aanpassen of nieuwe Dash boards maken die veel verschillende gegevens bronnen combi neren, zodat u uw gegevens op unieke wijze kunt visualiseren. Omdat Azure Sentinel-werkmappen zijn gebaseerd op Azure Monitor werkmappen, is er al uitgebreide documentatie beschikbaar en veel meer sjablonen. Een fantastische plek om te beginnen is dit artikel over het [maken van interactieve rapporten met Azure monitor-werkmappen](../azure-monitor/platform/workbooks-overview.md). 
 

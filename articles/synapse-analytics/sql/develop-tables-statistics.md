@@ -11,12 +11,12 @@ ms.date: 04/19/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: cf85b0ea658ae6459644dd710630a30f78ad99aa
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: b3e1c4b8dec0e62bb2a77939a36e38b61837033a
+ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339390"
+ms.lasthandoff: 11/16/2020
+ms.locfileid: "94638849"
 ---
 # <a name="statistics-in-synapse-sql"></a>Statistieken in Synapse SQL
 
@@ -443,7 +443,7 @@ Er zijn verschillende systeem weergaven en-functies die u kunt gebruiken om info
 
 Deze systeem weergaven bieden informatie over statistieken:
 
-| Catalogus weergave | Beschrijving |
+| Catalogus weergave | Description |
 |:--- |:--- |
 | [sys. Columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |Eén rij voor elke kolom. |
 | [sys. Objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |Eén rij voor elk object in de data base. |
@@ -457,7 +457,7 @@ Deze systeem weergaven bieden informatie over statistieken:
 
 Deze systeem functies zijn handig voor het werken met statistieken:
 
-| Systeem functie | Beschrijving |
+| Systeem functie | Description |
 |:--- |:--- |
 | [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |Datum waarop het statistieken object voor het laatst is bijgewerkt. |
 | [DBCC-SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |Overzichts niveau en gedetailleerde informatie over de distributie van waarden, zoals begrepen door het statistiek object. |
@@ -506,7 +506,7 @@ AND     st.[user_created] = 1
 
 DBCC SHOW_STATISTICS () toont de gegevens binnen een statistiek object. Deze gegevens zijn afkomstig uit drie delen:
 
-- Koptekst
+- Header
 - Dichtheids vector
 - Histogram
 
@@ -812,6 +812,74 @@ En maken statistieken:
 CREATE STATISTICS sState
     on census_external_table (STATENAME)
     WITH FULLSCAN, NORECOMPUTE
+```
+
+### <a name="statistics-metadata"></a>Statistieken meta gegevens
+
+Er zijn verschillende systeem weergaven en-functies die u kunt gebruiken om informatie te vinden over statistieken. U kunt bijvoorbeeld zien of een statistiek object mogelijk verouderd is door de functie STATS_DATE () te gebruiken. Met STATS_DATE () kunt u zien wanneer de statistieken voor het laatst zijn gemaakt of bijgewerkt.
+
+> [!NOTE]
+> Statistische meta gegevens zijn alleen beschikbaar voor externe tabel kolommen. Statistische meta gegevens zijn niet beschikbaar voor OPENROWSET-kolommen.
+
+#### <a name="catalog-views-for-statistics"></a>Catalogus weergaven voor statistieken
+
+Deze systeem weergaven bieden informatie over statistieken:
+
+| Catalogus weergave                                                 | Description                                                  |
+| :----------------------------------------------------------- | :----------------------------------------------------------- |
+| [sys. Columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Eén rij voor elke kolom.                                     |
+| [sys. Objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Eén rij voor elk object in de data base.                     |
+| [sys. schemas](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Eén rij voor elk schema in de data base.                     |
+| [sys. stats](/sql/relational-databases/system-catalog-views/sys-stats-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Eén rij voor elk statistiek object.                          |
+| [sys.stats_columns](/sql/relational-databases/system-catalog-views/sys-stats-columns-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Eén rij voor elke kolom in het statistiek object. Koppelingen terug naar sys. Columns. |
+| [sys. Tables](/sql/relational-databases/system-catalog-views/sys-tables-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Eén rij voor elke tabel (inclusief externe tabellen).           |
+| [sys.table_types](/sql/relational-databases/system-catalog-views/sys-table-types-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Eén rij voor elk gegevens type.                                  |
+
+#### <a name="system-functions-for-statistics"></a>Systeem functies voor statistieken
+
+Deze systeem functies zijn handig voor het werken met statistieken:
+
+| Systeem functie                                              | Description                                  |
+| :----------------------------------------------------------- | :------------------------------------------- |
+| [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Datum waarop het statistieken object voor het laatst is bijgewerkt. |
+
+#### <a name="combine-statistics-columns-and-functions-into-one-view"></a>Statistische kolommen en-functies combi neren in één weer gave
+
+In deze weer gave worden kolommen met betrekking tot statistieken en resultaten van de functie STATS_DATE () gecombineerd.
+
+```sql
+CREATE VIEW dbo.vstats_columns
+AS
+SELECT
+        sm.[name]                           AS [schema_name]
+,       tb.[name]                           AS [table_name]
+,       st.[name]                           AS [stats_name]
+,       st.[filter_definition]              AS [stats_filter_definition]
+,       st.[has_filter]                     AS [stats_is_filtered]
+,       STATS_DATE(st.[object_id],st.[stats_id])
+                                            AS [stats_last_updated_date]
+,       co.[name]                           AS [stats_column_name]
+,       ty.[name]                           AS [column_type]
+,       co.[max_length]                     AS [column_max_length]
+,       co.[precision]                      AS [column_precision]
+,       co.[scale]                          AS [column_scale]
+,       co.[is_nullable]                    AS [column_is_nullable]
+,       co.[collation_name]                 AS [column_collation_name]
+,       QUOTENAME(sm.[name])+'.'+QUOTENAME(tb.[name])
+                                            AS two_part_name
+,       QUOTENAME(DB_NAME())+'.'+QUOTENAME(sm.[name])+'.'+QUOTENAME(tb.[name])
+                                            AS three_part_name
+FROM    sys.objects                         AS ob
+JOIN    sys.stats           AS st ON    ob.[object_id]      = st.[object_id]
+JOIN    sys.stats_columns   AS sc ON    st.[stats_id]       = sc.[stats_id]
+                            AND         st.[object_id]      = sc.[object_id]
+JOIN    sys.columns         AS co ON    sc.[column_id]      = co.[column_id]
+                            AND         sc.[object_id]      = co.[object_id]
+JOIN    sys.types           AS ty ON    co.[user_type_id]   = ty.[user_type_id]
+JOIN    sys.tables          AS tb ON    co.[object_id]      = tb.[object_id]
+JOIN    sys.schemas         AS sm ON    tb.[schema_id]      = sm.[schema_id]
+WHERE   st.[user_created] = 1
+;
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
