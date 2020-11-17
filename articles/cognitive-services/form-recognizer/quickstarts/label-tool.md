@@ -11,12 +11,12 @@ ms.date: 09/30/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: documentverwerking
-ms.openlocfilehash: 287315440199c4dc3ded1298532167d37d89a877
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 5df8ced885768308369599d94c5734fa0620c507
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976144"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360867"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Een Form Recognizer-model trainen met behulp van het voorbeeldhulpprogramma voor labelen
 
@@ -37,6 +37,14 @@ U hebt het volgende nodig om deze quickstart te voltooien:
 ## <a name="create-a-form-recognizer-resource"></a>Een Form Recognizer-resource maken
 
 [!INCLUDE [create resource](../includes/create-resource.md)]
+
+## <a name="try-it-out"></a>Probeer het eens
+
+Als u het Form Recognizer-voorbeeldhulpprogramma voor labelen online wilt uitproberen, gaat u naar de [website van FOTT](https://fott-preview.azurewebsites.net/).
+
+> [!div class="nextstepaction"]
+> [Form Recognizer-voorbeeldhulpprogramma voor labelen](https://fott-preview.azurewebsites.net/)
+
 
 ## <a name="set-up-the-sample-labeling-tool"></a>Het voorbeeldhulpprogramma voor labelen instellen
 
@@ -139,7 +147,7 @@ In het voorbeeldhulpprogramma voor labelen worden uw configuraties en instelling
 * **API-sleutel**: de abonnementssleutel van de Form Recognizer.
 * **Beschrijving**: optioneel: projectbeschrijving
 
-:::image type="content" source="../media/label-tool/new-project.png" alt-text="Verbindingsinstellingen van het voorbeeldhulpprogramma voor labelen.":::
+:::image type="content" source="../media/label-tool/new-project.png" alt-text="Pagina met nieuw project in voorbeeldhulpprogramma voor labelen.":::
 
 ## <a name="label-your-forms"></a>Formulieren labelen
 
@@ -155,7 +163,7 @@ Klik in het linkerdeelvenster op **OCR uitvoeren op alle bestanden** om informat
 
 Er wordt ook weergegeven welke tabellen automatisch zijn geëxtraheerd. Klik op het tabel-/rasterpictogram aan de linkerkant van het document om de geëxtraheerde tabel te zien. Omdat de tabelinhoud automatisch wordt geëxtraheerd, zullen we de tabelinhoud in deze quickstart niet labelen maar zullen we vertrouwen op de geautomatiseerde extractie.
 
-:::image type="content" source="../media/label-tool/table-extraction.png" alt-text="Verbindingsinstellingen van het voorbeeldhulpprogramma voor labelen.":::
+:::image type="content" source="../media/label-tool/table-extraction.png" alt-text="Tabelvisualisatie in voorbeeldhulpprogramma voor labelen.":::
 
 ### <a name="apply-labels-to-text"></a>Labels op tekst toepassen
 
@@ -201,7 +209,7 @@ Vervolgens maakt u tags (labels) en past u ze toe op de tekstelementen die u doo
 
 ---
 
-:::image type="content" source="../media/label-tool/main-editor-2-1.png" alt-text="Verbindingsinstellingen van het voorbeeldhulpprogramma voor labelen.":::
+:::image type="content" source="../media/label-tool/main-editor-2-1.png" alt-text="Hoofdvenster van de editor van het voorbeeldhulpprogramma voor labelen.":::
 
 
 Volg de bovenstaande stappen om ten minste vijf formulieren te labelen.
@@ -256,7 +264,7 @@ Klik in het linkerdeelvenster op het trainingspictogram om de pagina Training te
 * De lijst met labels en de geschatte nauwkeurigheid per label.
 
 
-:::image type="content" source="../media/label-tool/train-screen.png" alt-text="Verbindingsinstellingen van het voorbeeldhulpprogramma voor labelen.":::
+:::image type="content" source="../media/label-tool/train-screen.png" alt-text="Trainingsweergave.":::
 
 Nadat de training is voltooid, bekijkt u de waarde **Gemiddelde nauwkeurigheid**. Als deze laag is, moet u meer invoerdocumenten toevoegen en de bovenstaande stappen herhalen. De documenten die u al hebt gelabeld, blijven in de projectindex.
 
@@ -275,7 +283,7 @@ Met Model samenstellen kunt u maximaal 100 modellen met één model-id samenstel
 
 Om modellen samen te stellen in het voorbeeldhulpprogramma voor labelen, klikt u aan de linkerkant op het pictogram Model samenstellen (samenvoegingspijlen). Selecteer links de modellen die u wilt samenstellen. Modellen met het pijlenpictogram zijn al samengesteld. Klik op de knop Samenstellen. In het pop-upvenster geeft u uw nieuwe samengestelde model een naam en klikt u op ‘Samenstellen’. Wanneer de bewerking is voltooid, zou uw nieuwe samengestelde model in de lijst moeten worden weergegeven. 
 
-:::image type="content" source="../media/label-tool/model-compose.png" alt-text="Verbindingsinstellingen van het voorbeeldhulpprogramma voor labelen.":::
+:::image type="content" source="../media/label-tool/model-compose.png" alt-text="UX-weergave van Model samenstellen.":::
 
 ---
 

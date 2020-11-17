@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 5423fc27ecc58bcd79b36a845e4b7569f342f712
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: eef4f6b8ee5821e54b5b7709eee7f8dad8749e63
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286701"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488533"
 ---
 # <a name="azure-key-vault-logging"></a>Logboekregistratie voor Azure Key Vault
 
@@ -30,7 +30,7 @@ Zie [Wat is Azure Key Vault?](overview.md) voor algemene informatie over Key Vau
 
 ## <a name="interpret-your-key-vault-logs"></a>Uw Key Vault-logboeken interpreteren
 
-Wanneer u logboekregistratie inschakelt, wordt automatisch een nieuwe container, genaamd **insights-logs-auditevent** , gemaakt voor uw opgegeven opslagaccount. U kunt ditzelfde opslagaccount gebruiken om logboeken voor meerdere sleutelkluizen te verzamelen.
+Wanneer u logboekregistratie inschakelt, wordt automatisch een nieuwe container, genaamd **insights-logs-auditevent**, gemaakt voor uw opgegeven opslagaccount. U kunt ditzelfde opslagaccount gebruiken om logboeken voor meerdere sleutelkluizen te verzamelen.
 
 Afzonderlijke blobs worden opgeslagen als tekst, die is opgemaakt als een JSON-blob. Laten we eens naar een voorbeeld van een logboekvermelding kijken. 
 
@@ -73,15 +73,15 @@ De volgende tabel bevat de namen en beschrijvingen van velden:
 | **callerIpAddress** |IP-adres van de client die de aanvraag heeft ingediend. |
 | **correlationId** |Een optionele GUID die de client kan doorgeven om de logboeken aan de clientzijde te relateren aan (Sleutelkluis-)logboeken aan de servicezijde. |
 | **identity** |De identiteit van het token dat is opgegeven in de REST-API-aanvraag. Dit is meestal ‘user’, ‘service principal’ of de combinatie ‘user+appId’, bijvoorbeeld bij een aanvraag via een Azure PowerShell-cmdlet. |
-| **properties** |Gegevens die variëren op basis van de bewerking ( **operationName** ). In de meeste gevallen bevat dit veld clientgegevens (de useragent-tekenreeks die door de client wordt doorgegeven), de exacte URI voor de REST-API-aanvraag en de HTTP-statuscode. Als een object wordt geretourneerd als gevolg van een aanvraag (bijvoorbeeld **KeyCreate** of **VaultGet** ), bevat dit veld ook de sleutel-URI (als `id`), kluis-URI of geheim-URI. |
+| **properties** |Gegevens die variëren op basis van de bewerking (**operationName**). In de meeste gevallen bevat dit veld clientgegevens (de useragent-tekenreeks die door de client wordt doorgegeven), de exacte URI voor de REST-API-aanvraag en de HTTP-statuscode. Als een object wordt geretourneerd als gevolg van een aanvraag (bijvoorbeeld **KeyCreate** of **VaultGet**), bevat dit veld ook de sleutel-URI (als `id`), kluis-URI of geheim-URI. |
 
-De veldwaarden voor **operationName** hebben de *ObjectVerb* -indeling. Bijvoorbeeld:
+De veldwaarden voor **operationName** hebben de *ObjectVerb*-indeling. Bijvoorbeeld:
 
 * Alle sleutelkluisbewerkingen hebben de `Vault<action>`-indeling, zoals `VaultGet` en `VaultCreate`.
 * Alle sleutelbewerkingen hebben de `Key<action>`-indeling, zoals `KeySign` en `KeyList`.
 * Alle geheimbewerkingen hebben de `Secret<action>`-indeling, zoals `SecretGet` en `SecretListVersions`.
 
-De volgende tabel bevat de **operationName** -waarden en de bijbehorende REST-API-opdrachten:
+De volgende tabel bevat de **operationName**-waarden en de bijbehorende REST-API-opdrachten:
 
 ### <a name="operation-names-table"></a>Tabel met waarden voor operationName
 
@@ -93,12 +93,14 @@ De volgende tabel bevat de **operationName** -waarden en de bijbehorende REST-AP
 | **VaultDelete** |[Een sleutelkluis verwijderen](/rest/api/keyvault/vaults) |
 | **VaultPatch** |[Een sleutelkluis bijwerken](/rest/api/keyvault/vaults) |
 | **VaultList** |[Alle sleutelkluizen in een resourcegroep weergeven](/rest/api/keyvault/vaults) |
+| **VaultPurge** |[Verwijderde kluis opschonen](/rest/api/keyvault/vaults/purgedeleted) |
+| **VaultRecover** |Verwijderde kluis herstellen|
+| **VaultGetDeleted** |[Verwijderde kluis ophalen](/rest/api/keyvault/vaults/getdeleted) |
+| **VaultListDeleted** |[Verwijderde kluizen weergeven](/rest/api/keyvault/vaults/listdeleted) |
 | **KeyCreate** |[Een sleutel maken](/rest/api/keyvault/createkey) |
 | **KeyGet** |[Informatie over een sleutel ophalen](/rest/api/keyvault/getkey) |
 | **KeyImport** |[Een sleutel in een kluis importeren](/rest/api/keyvault/vaults) |
-| **KeyBackup** |[Een back-up van een sleutel maken](/rest/api/keyvault/backupkey) |
 | **KeyDelete** |[Een sleutel verwijderen](/rest/api/keyvault/deletekey) |
-| **KeyRestore** |[Een sleutel herstellen](/rest/api/keyvault/restorekey) |
 | **KeySign** |[Aanmelden met een sleutel](/rest/api/keyvault/sign) |
 | **KeyVerify** |[Verifiëren met een sleutel](/rest/api/keyvault/vaults) |
 | **KeyWrap** |[Een sleutel inpakken](/rest/api/keyvault/wrapkey) |
@@ -106,14 +108,56 @@ De volgende tabel bevat de **operationName** -waarden en de bijbehorende REST-AP
 | **KeyEncrypt** |[Versleutelen met een sleutel](/rest/api/keyvault/encrypt) |
 | **KeyDecrypt** |[Ontsleutelen met een sleutel](/rest/api/keyvault/decrypt) |
 | **KeyUpdate** |[Een sleutel bijwerken](/rest/api/keyvault/updatekey) |
-| **KeyList** |[De sleutels in een kluis weergeven](/rest/api/keyvault/vaults) |
+| **KeyList** |[De sleutels in een kluis weergeven](/rest/api/keyvault/getkeys) |
 | **KeyListVersions** |[De versies van een sleutel weergeven](/rest/api/keyvault/getkeyversions) |
+| **KeyPurge** |[Een sleutel opschonen](/rest/api/keyvault/purgedeletedkey) |
+| **KeyBackup** |[Back-up maken van een sleutel](/rest/api/keyvault/backupkey) |
+| **KeyRestore** |[Een sleutel herstellen](/rest/api/keyvault/restorekey) |
+| **KeyRecover** |[Een sleutel herstellen](/rest/api/keyvault/recoverdeletedkey) |
+| **KeyGetDeleted** |[Een verwijderde sleutel ophalen](/rest/api/keyvault/getdeletedkey) |
+| **KeyListDeleted** |[De verwijderde sleutels in een kluis weergeven](/rest/api/keyvault/getdeletedkeys) |
+| **CertificateGet** |[Informatie over een certificaat ophalen](/rest/api/keyvault/getcertificate) |
+| **CertificateCreate** |[Een certificaat maken](/rest/api/keyvault/createcertificate) |
+| **CertificateImport** |[Een certificaat importeren in een kluis](/rest/api/keyvault/importcertificate) |
+| **CertificateUpdate** |[Een certificaat bijwerken](/rest/api/keyvault/updatecertificate) |
+| **CertificateList** |[De certificaten in een kluis weergeven](/rest/api/keyvault/getcertificates) |
+| **CertificateListVersions** |[De versies van een certificaat weergeven](/rest/api/keyvault/getcertificateversions) |
+| **CertificateDelete** |[Een certificaat verwijderen](/rest/api/keyvault/deletecertificate) |
+| **CertificatePurge** |[Een certificaat opschonen](/rest/api/keyvault/purgedeletedcertificate) |
+| **CertificateBackup** |[Een back-up maken van een certificaat](/rest/api/keyvault/backupcertificate) |
+| **CertificateRestore** |[Een certificaat terugzetten](/rest/api/keyvault/restorecertificate) |
+| **CertificateRecover** |[Een certificaat herstellen](/rest/api/keyvault/recoverdeletedcertificate) |
+| **CertificateGetDeleted** |[Verwijderd certificaat ophalen](/rest/api/keyvault/getdeletedcertificate) |
+| **CertificateListDeleted** |[De verwijderde certificaten in een kluis weergeven](/rest/api/keyvault/getdeletedcertificates) |
+| **CertificatePolicyGet** |[Certificaatbeleid ophalen](/rest/api/keyvault/getcertificatepolicy) |
+| **CertificatePolicyUpdate** |[Certificaatbeleid bijwerken](/rest/api/keyvault/updatecertificatepolicy) |
+| **CertificatePolicySet** |[Certificaatbeleid maken](/rest/api/keyvault/createcertificate) |
+| **CertificateContactsGet** |[Certificaatcontactpersonen ophalen](/rest/api/keyvault/getcertificatecontacts) |
+| **CertificateContactsSet** |[Certificaatcontactpersonen instellen](/rest/api/keyvault/setcertificatecontacts) |
+| **CertificateContactsDelete** |[Certificaatcontactpersonen verwijderen](/rest/api/keyvault/deletecertificatecontacts) |
+| **CertificateIssuerGet** |[Certificaatverlener ophalen](/rest/api/keyvault/getcertificateissuer) |
+| **CertificateIssuerSet** |[Certificaatverlener instellen](/rest/api/keyvault/setcertificateissuer) |
+| **CertificateIssuerUpdate** |[Certificaatverlener bijwerken](/rest/api/keyvault/updatecertificateissuer) |
+| **CertificateIssuerDelete** |[Certificaatverlener verwijderen](/rest/api/keyvault/deletecertificateissuer) |
+| **CertificateIssuersList** |[De certificaatverleners weergeven](/rest/api/keyvault/getcertificateissuers) |
+| **CertificateEnroll** |Een certificaat inschrijven |
+| **CertificateRenew** |Een certificaat verlengen |
+| **CertificatePendingGet** |Certificaat ophalen in behandeling |
+| **CertificatePendingMerge** |Certificaat samenvoegen in behandeling |
+| **CertificatePendingUpdate** |Certificaat bijwerken in behandeling |
+| **CertificatePendingDelete** |Certificaat verwijderen in behandeling |
 | **SecretSet** |[Een geheim maken](/rest/api/keyvault/updatecertificate) |
 | **SecretGet** |[Een geheim ophalen](/rest/api/keyvault/getsecret) |
 | **SecretUpdate** |[Een geheim bijwerken](/rest/api/keyvault/updatesecret) |
 | **SecretDelete** |[Een geheim verwijderen](/rest/api/keyvault/deletesecret) |
-| **SecretList** |[Geheimen in een kluis weergeven](/rest/api/keyvault/vaults) |
+| **SecretList** |[Geheimen in een kluis weergeven](/rest/api/keyvault/getsecrets) |
 | **SecretListVersions** |[Versies van een geheim weergeven](/rest/api/keyvault/getsecretversions) |
+| **SecretPurge** |[Een geheim opschonen](/rest/api/keyvault/purgedeletedsecret) |
+| **SecretBackup** |[Een back-up maken van een geheim](/rest/api/keyvault/backupsecret) |
+| **SecretRestore** |[Een geheim terugzetten](/rest/api/keyvault/restoresecret) |
+| **SecretRecover** |[Een geheim herstellen](/rest/api/keyvault/recoverdeletedsecret) |
+| **SecretGetDeleted** |[Verwijderd geheim ophalen](/rest/api/keyvault/getdeletedsecret) |
+| **SecretListDeleted** |[De verwijderde geheimen in een kluis weergeven](/rest/api/keyvault/getdeletedsecrets) |
 | **VaultAccessPolicyChangedEventGridNotification** | Gebeurtenis gepubliceerd voor wijzigen van toegangsbeleid voor kluis |
 | **SecretNearExpiryEventGridNotification** |Gebeurtenis gepubliceerd voor bijna verlopen van geheim |
 | **SecretExpiredEventGridNotification** |Gebeurtenis gepubliceerd voor verlopen van geheim |

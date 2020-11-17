@@ -143,10 +143,12 @@
               href: azure-vm-create-properties.md
             - name: Vermelding voor een VM-aanbieding configureren
               href: azure-vm-create-listing.md
-            - name: VM-abonnementen maken
-              href: azure-vm-create-plans.md
             - name: Een previewdoelgroep toevoegen
               href: azure-vm-create-preview.md
+            - name: VM-abonnementen maken
+              href: azure-vm-create-plans.md
+            - name: Doorverkopen via CSP's
+              href: azure-vm-create-resell-csp.md
             - name: Technische assets voor de VM maken
               items:
                 - name: Een VM maken vanaf een goedgekeurde basis

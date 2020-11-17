@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 08/20/2020
 ms.author: trbye
-ms.openlocfilehash: 09641fb66d2f68054d23abbf8ee9f4324e19832f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 7d31649e18f8cc687a9716c8ecafe556fa250de6
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521506"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93377884"
 ---
 # <a name="what-is-the-speech-service"></a>Wat is de Speech-service?
 
@@ -46,14 +46,12 @@ De volgende onderdelen maken deel uit van de spraakservice. Gebruik de koppeling
 
 Voor de volgende stappen hebt u zowel een Microsoft-account als een Azure-account nodig. Als u geen Microsoft-account hebt, kunt u zich gratis registreren bij het [Microsoft-accountportal](https://account.microsoft.com/account). Selecteer **Aanmelden met Microsoft** en klik als u wordt gevraagd om u aan te melden op **Een Microsoft-account maken**. Volg de stappen om uw nieuwe Microsoft-account te maken en te verifiëren.
 
-Zodra u een Microsoft-account hebt, gaat u naar de [Azure-aanmeldingspagina](https://azure.microsoft.com/free/ai/), selecteert u **Gratis starten** en maakt u een nieuw Azure-account met behulp van een Microsoft-account.
+Zodra u een Microsoft-account hebt, gaat u naar de [Azure-aanmeldingspagina](https://azure.microsoft.com/free/ai/), selecteert u **Gratis starten** en maakt u een nieuw Azure-account met behulp van een Microsoft-account. Hier volgt een video van hoe u zich kunt [aanmelden voor een gratis Azure-account](https://www.youtube.com/watch?v=GWT2R1C_uUU).
 
 > [!NOTE]
-> De spraakservice heeft twee servicecategorieën: gratis en abonnement, die verschillende beperkingen en voordelen hebben. Wanneer u zich aanmeldt voor een gratis Azure-account, krijgt u dit met $ 200 aan servicetegoed dat u kunt toepassen op een betaald abonnement op de spraakservice, dat maximaal 30 dagen geldig is.
+> Wanneer u zich aanmeldt voor een gratis Azure-account, krijgt u dit met $ 200 aan servicetegoed dat u kunt toepassen op een betaald abonnement op de spraakservice, dat maximaal 30 dagen geldig is. Als uw tegoed aan het einde van de 30 dagen bijna op of verlopen is, worden uw Azure-services uitgeschakeld. Als u gebruik wilt blijven maken van Azure-services, moet u uw account upgraden. Zie [Uw gratis Azure-account upgraden](https://docs.microsoft.com/azure/cost-management-billing/manage/upgrade-azure-subscription) voor meer informatie. 
 >
-> Als u de gratis prijscategorie van de spraakservice met een laag volume kiest, kunt u dit gratis abonnement ook houden nadat uw gratis proefperiode of servicetegoed is verlopen.
->
-> Zie [Prijzen van Cognitive Services - spraakservice](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/) voor meer informatie.
+> De spraakservice heeft twee servicecategorieën: gratis (f0) en abonnement (s0), die verschillende beperkingen en voordelen hebben. Als u de gratis prijscategorie van de spraakservice met een laag volume kiest, kunt u dit gratis abonnement ook houden nadat uw gratis proefperiode of servicetegoed is verlopen. Zie [Prijzen van Cognitive Services - spraakservice](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/) voor meer informatie.
 
 ### <a name="create-the-azure-resource"></a>De Azure-resource maken
 
@@ -72,11 +70,11 @@ Ga als volgt te werk om een spraakserviceresource (prijscategorie gratis of beta
 1. Selecteer **Maken** en voer vervolgens de volgende handelingen uit:
 
    - Geef een unieke naam op voor uw nieuwe resource. De naam helpt u om onderscheid te maken tussen meerdere abonnementen die aan dezelfde service zijn gekoppeld.
-   - Kies het Azure-abonnement waaraan de nieuwe resource wordt gekoppeld om te bepalen hoe de kosten worden gefactureerd.
-   - Kies de [regio](regions.md) waarin de resource wordt gebruikt.
-   - Kies gratis (F0) of betaald (S0) als prijscategorie. Selecteer **Volledige prijsgegevens weergeven** voor volledige informatie over prijzen en quota voor gebruik voor elke prijscategorie. Zie [limieten voor Azure Cognitive Services](../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-cognitive-services-limits) voor meer informatie over de resources die u kunt maken voor elk abonnement.
+   - Kies het Azure-abonnement waaraan de nieuwe resource wordt gekoppeld om te bepalen hoe de kosten worden gefactureerd. Hier vindt u de inleiding voor [het maken van een Azure-abonnement](https://docs.microsoft.com/azure/cost-management-billing/manage/create-subscription#create-a-subscription-in-the-azure-portal) in Azure Portal.
+   - Kies de [regio](regions.md) waarin de resource wordt gebruikt. Azure is een wereldwijd cloudplatform dat algemeen beschikbaar is in veel regio's over de hele wereld. Als u de beste prestaties wilt, selecteert u een regio die zich het dichtst bij u bevindt of waar uw toepassing wordt uitgevoerd. De beschikbaarheid van de spraakservice kan per regio verschillen. Zorg ervoor dat u uw resource in een ondersteunde regio maakt. Zie de [ondersteuning per regio voor spraakservices](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-to-text-text-to-speech-and-translation).
+   - Kies gratis (F0) of betaald (S0) als prijscategorie. Selecteer **Volledige prijsgegevens weergeven** voor volledige informatie over prijzen en quota voor gebruik voor elke prijscategorie of zie de [prijzen voor spraakservices](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/). Zie de [limieten voor Azure Cognitive Services](../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-cognitive-services-limits) voor meer informatie over resourcelimieten.
    - Maak een nieuwe resourcegroep voor dit spraakabonnement of wijs het abonnement toe aan een bestaande resourcegroep. Met resourcegroepen kunt u de verschillende Azure-abonnementen ordenen.
-   - Selecteer **Maken**. Hiermee gaat u naar het implementatieoverzicht en worden berichten over de voortgang van de implementatie weergegeven.
+   - Selecteer **Maken**. Hiermee gaat u naar het implementatieoverzicht en worden berichten over de voortgang van de implementatie weergegeven.  
 <!--
 > [!NOTE]
 > You can create an unlimited number of standard-tier subscriptions in one or multiple regions. However, you can create only one free-tier subscription. Model deployments on the free tier that remain unused for 7 days will be decommissioned automatically.

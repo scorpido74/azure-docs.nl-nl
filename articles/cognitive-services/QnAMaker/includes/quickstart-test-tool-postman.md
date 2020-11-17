@@ -4,16 +4,16 @@ description: bestand opnemen
 services: cognitive-services
 manager: nitinme
 ms.service: cognitive-services
-ms.subservice: luis
+ms.subservice: qna-maker
 ms.topic: include
 ms.custom: include file
-ms.date: 04/27/2020
-ms.openlocfilehash: fabd79829425147667c46f686a1ec1ceb6a29b00
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 11/09/2020
+ms.openlocfilehash: fa497b69b067d5556f11effdb52505895ecc3bdd
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87132880"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94386596"
 ---
 Deze snelstart op basis van Postman begeleidt u bij het ophalen van een antwoord uit een knowledge base.
 
@@ -28,6 +28,8 @@ Deze snelstart op basis van Postman begeleidt u bij het ophalen van een antwoord
 > Wanneer u klaar bent voor het genereren van een antwoord op een vraag uit uw knowledge base, moet u uw knowledge base [trainen](../Quickstarts/create-publish-knowledge-base.md#save-and-train) en [publiceren](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base). Wanneer uw knowledge base is gepubliceerd, geeft de pagina **Publiceren** de instellingen van de HTTP-aanvraag weer voor het genereren van een antwoord. Het tabblad **Postman** toont de instellingen die vereist zijn voor het genereren van een antwoord.
 
 ## <a name="set-up-postman-for-requests"></a>Postman voor aanvragen instellen
+
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabiele release)](#tab/v1)
 
 Deze quickstart maakt gebruik van dezelfde instellingen voor de Postman-aanvraag **POST** en configureert vervolgens naar de hoofdtekst van de JSON die wordt verzonden naar de service op basis van waarvoor u een query wilt uitvoeren.
 
@@ -44,6 +46,25 @@ Gebruik deze procedure voor het configureren van Postman en lees elke volgende s
     ||`{"question":"<Your question>"}`|De hoofdtekst van de POST-aanvraag als een JSON-object. Deze waarde wordt in elk van de volgende secties gewijzigd, afhankelijk van de bedoeling van de query.|
 
 1. Open Postman en maak een nieuwe basis **POST**-aanvraag met uw gepubliceerde knowledge base-instellingen. Wijzig in de volgende secties de JSON POST-hoofdtekst om de query te wijzigen in uw knowledge base.
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker beheerd (preview-release)](#tab/v2)
+
+Deze quickstart maakt gebruik van dezelfde instellingen voor de Postman-aanvraag **POST** en configureert vervolgens naar de hoofdtekst van de JSON die wordt verzonden naar de service op basis van waarvoor u een query wilt uitvoeren.
+
+Gebruik deze procedure voor het configureren van Postman en lees elke volgende sectie om de JSON van de hoofdtekst te configureren.
+
+1. Selecteer op de pagina **Instellingen** van de knowledge base het tabblad **Postman** om de configuratie te zien die wordt gebruikt voor het genereren van een antwoord uit de knowledge base. Kopieer de volgende informatie om te gebruiken in Postman.
+
+    |Naam|Instelling|Doel en waarde|
+    |--|--|--|
+    |`POST`| `/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer`|Dit is de HTTP-methode en route voor de URL.|
+    |`Host`|`https://YOUR-RESOURCE_NAME.cognitiveservices.azure.com/qnamaker`|Dit is de host van de URL. Voeg de Host en Post-waarden toe om de volledige generateAnswer-URL op te halen.|
+    |`Ocp-Apim-Subscription-Key`|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`|De waarde van de header om uw aanvraag te autoriseren. |
+    |`Content-type`|`application/json`|De headerwaarde van uw inhoud.|
+    ||`{"question":"<Your question>"}`|De hoofdtekst van de POST-aanvraag als een JSON-object. Deze waarde wordt in elk van de volgende secties gewijzigd, afhankelijk van de bedoeling van de query.|
+
+1. Open Postman en maak een nieuwe basis **POST**-aanvraag met uw gepubliceerde knowledge base-instellingen. Wijzig in de volgende secties de JSON POST-hoofdtekst om de query te wijzigen in uw knowledge base.
+---
 
 ## <a name="use-metadata-to-filter-answer"></a>Metagegevens gebruiken om antwoord te filteren
 

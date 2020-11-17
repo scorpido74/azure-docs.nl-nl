@@ -1,6 +1,6 @@
 ---
 title: Verbinding maken met Synapse SQL met behulp van Power BI Professional
-description: In deze zelfstudie voert u stappen uit om te leren hoe u Power BI Desktop kunt verbinden met SQL on-demand (preview).
+description: In deze zelfstudie voert u stappen uit om te leren hoe u Power BI Desktop kunt verbinden met een serverloze SQL-pool (preview-versie).
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: d88406646099a136d196a104f9cf4352a367f6d2
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 97b611c449302c95d4b24c305ce50ee7683e85ea
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92899118"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93316460"
 ---
-# <a name="connect-to-synapse-sql-with-power-bi-professional"></a>Verbinding maken met Synapse SQL met behulp van Power BI Professional
+# <a name="connect-to-serverless-sql-pool-with-power-bi-professional"></a>Verbinding maken met een serverloze SQL-pool met behulp van Power BI Professional
 
 > [!div class="op_single_selector"]
 >
@@ -26,7 +26,7 @@ ms.locfileid: "92899118"
 > - [sqlcmd](../sql/get-started-connect-sqlcmd.md)
 > - [SSMS](get-started-ssms.md)
 
-In deze zelfstudie voert u stappen uit om te leren hoe u Power BI Desktop kunt verbinden met SQL on-demand (preview).
+In deze zelfstudie voert u stappen uit om te leren hoe u Power BI Desktop kunt verbinden met een serverloze SQL-pool (preview).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -43,17 +43,17 @@ Parameters:
 
 | Parameter                                 | Beschrijving                                                   |
 | ----------------------------------------- | ------------------------------------------------------------- |
-| Adres van SQL on-demand service-eindpunt    | Zal worden gebruikt als servernaam                                   |
-| Regio van SQL on-demand service-eindpunt     | Zal worden gebruikt om te bepalen welke opslag wordt gebruikt in voorbeelden |
+| Eindpuntadres van de service voor serverloze SQL-pools    | Zal worden gebruikt als servernaam                                   |
+| Eindpuntregio van de service voor serverloze SQL-pools     | Zal worden gebruikt om te bepalen welke opslag wordt gebruikt in voorbeelden |
 | Gebruikersnaam en wachtwoord voor eindpunttoegang | Zal worden gebruikt om toegang te krijgen tot het eindpunt                               |
-| De database die u gaat gebruiken om weergaven te maken     | Deze database zal worden gebruikt als uitgangspunt in voorbeelden       |
+| De database die u gaat gebruiken om weergaven te maken       | Deze database zal worden gebruikt als uitgangspunt in voorbeelden       |
 
 ## <a name="first-time-setup"></a>De eerste installatie
 
 Er zijn twee stappen voorafgaand aan het gebruik van voorbeelden:
 
 1. Database voor uw weergaven maken
-2. Referenties maken voor gebruik door SQL on-demand om toegang te krijgen tot bestanden in opslag
+2. Referenties maken die een serverloze SQL-pool kan gebruiken voor toegang tot bestanden in opslag
 
 ### <a name="create-database"></a>Database maken
 
@@ -70,10 +70,10 @@ DROP DATABASE IF EXISTS demo;
 
 ### <a name="create-credentials"></a>Referenties maken
 
-U moet referenties maken voordat u query's kunt uitvoeren. Deze referenties worden gebruikt door de SQL on-demand-service om toegang te krijgen tot bestanden in opslag.
+U moet referenties maken voordat u query's kunt uitvoeren. Deze referenties worden gebruikt voor de service voor serverloze SQL-pools om toegang te krijgen tot bestanden in opslag.
 
 > [!NOTE]
-> U moet referenties maken voor toegang tot het opslagaccount. Hoewel SQL on-demand toegang kan krijgen tot opslagaccounts uit verschillende regio's, verkrijgt u betere prestaties als de opslag en de Azure Synapse-werkruimte zich in dezelfde regio bevinden.
+> U moet referenties maken voor toegang tot het opslagaccount. Hoewel een serverloze SQL-pool toegang kan krijgen tot opslagaccounts uit verschillende regio's, zijn de prestaties beter als de opslag en de Azure Synapse-werkruimte zich in dezelfde regio bevinden.
 
 **Codefragment voor het maken van referenties voor Census-gegevenscontainers** uitvoeren:
 
@@ -92,13 +92,13 @@ GO
 
 ## <a name="create-a-power-bi-desktop-report"></a>Een Power BI Desktop-rapport maken
 
-Open de toepassing Power BI Desktop en selecteer de optie **Gegevens ophalen** .
+Open de toepassing Power BI Desktop en selecteer de optie **Gegevens ophalen**.
 
 ![Open de toepassing Power BI Desktop en selecteer Gegevens ophalen.](./media/get-started-power-bi-professional/step-0-open-powerbi.png)
 
 ### <a name="step-1---select-data-source"></a>Stap 1 - gegevensbron selecteren
 
-Selecteer **Azure** in het menu en vervolgens **Azure SQL Database** .
+Selecteer **Azure** in het menu en vervolgens **Azure SQL Database**.
 ![Selecteer de gegevensbron.](./media/get-started-power-bi-professional/step-1-select-data-source.png)
 
 ### <a name="step-2---select-database"></a>Step 2 - database selecteren
@@ -108,5 +108,4 @@ Schrijf de URL voor de database en de naam van de database waarin de weergave zi
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga naar [Queryopslagbestanden](get-started-azure-data-studio.md) om te leren hoe u verbinding kunt maken met SQL on-demand via Azure Data Studio.
- 
+Ga naar [Queryopslagbestanden](get-started-azure-data-studio.md) om te leren hoe u verbinding kunt maken met een serverloze SQL-pool via Azure Data Studio.

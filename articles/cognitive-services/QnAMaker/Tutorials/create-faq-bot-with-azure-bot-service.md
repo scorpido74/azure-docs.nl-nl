@@ -5,15 +5,15 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 08/31/2020
-ms.openlocfilehash: ab78ac41be2f900d84e82c21e566f5250b2afd18
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa2530f817bf20af40ab2913df9f16e7d1974ef3
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777392"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94375451"
 ---
 # <a name="tutorial-create-an-faq-bot-with-azure-bot-service"></a>Zelfstudie: Een FAQ-bot maken met Azure Bot Service
-Een FAQ-bot maken met QnA Maker en Azure [Bot Service](https://azure.microsoft.com/en-us/services/bot-service/) zonder code te schrijven.
+Een FAQ-bot maken met QnA Maker en Azure [Bot Service](https://azure.microsoft.com/services/bot-service/) zonder code te schrijven.
 
 In deze zelfstudie leert u het volgende:
 
@@ -28,7 +28,15 @@ In deze zelfstudie leert u het volgende:
 
 Volg de [quickstart](../Quickstarts/create-publish-knowledge-base.md) om een Knowledge Base te maken. Wanneer de Knowledge Base is gepubliceerd, komt u op de onderstaande pagina.
 
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabiele release)](#tab/v1)
+
 ![Schermopname van geslaagde publicatie](../media/qnamaker-create-publish-knowledge-base/publish-knowledge-base-to-endpoint.png)
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker beheerd (preview-release)](#tab/v2)
+
+![Schermopname van geslaagde publicatie beheerd](../media/qnamaker-create-publish-knowledge-base/publish-knowledge-base-to-endpoint-managed.png)
+
+---
 
 ## <a name="create-a-bot"></a>Een bot maken
 
@@ -41,7 +49,16 @@ Wanneer u wijzigingen aanbrengt in de knowledge base en deze opnieuw publiceert,
 
 1. Selecteer in de QnA Maker-portal op de pagina **Publiceren** de optie **Bot maken**. Deze knop wordt alleen weergegeven nadat u de knowledge base hebt gepubliceerd.
 
+     # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabiele release)](#tab/v1)
+
     ![Schermopname van het maken van een bot](../media/qnamaker-create-publish-knowledge-base/create-bot-from-published-knowledge-base-page.png)
+
+    # <a name="qna-maker-managed-preview-release"></a>[QnA Maker beheerd (preview-release)](#tab/v2)
+
+    ![Schermopname van het maken van een bot beheerd (preview)](../media/qnamaker-create-publish-knowledge-base/create-bot-from-published-knowledge-base-page-managed.png)
+
+    ---
+    
 
 1. Er wordt een nieuw browsertabblad geopend voor Azure Portal, met daarin de pagina Maken van de Azure Bot Service. De Azure Bot Service configureren. De bot en QnA Maker kunnen het abonnement voor de web-appservice delen, maar ze kunnen de web-app niet delen. Dit betekent dat de **naam van de app** voor de bot anders moet zijn dan de naam van de app voor de QnA Maker-service.
 

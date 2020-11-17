@@ -10,16 +10,31 @@ ms.subservice: custom-vision
 ms.topic: overview
 ms.date: 10/23/2020
 ms.author: pafarley
-ms.openlocfilehash: a87e76d4a726f7a01b96d602e7f41d60409dae56
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 030b09dae9db11fb14defecde3d14e949b9e6748
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521489"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412728"
 ---
 # <a name="whats-new-in-custom-vision"></a>Wat is er nieuw in Custom Vision
 
 Meer informatie over nieuwe functies in de service. Dit kunnen opmerkingen bij de release, video's, blogposts en andere soorten informatie zijn. Voeg een bladwijzer toe aan deze pagina om up-to-date te blijven over de service.
+
+
+## <a name="october-2020"></a>Oktober 2020 
+
+### <a name="custom-base-model"></a>Aangepast basismodel
+
+- Sommige toepassingen bevatten een grote hoeveelheid gezamenlijke trainingsgegevens, maar moeten de bijbehorende modellen afzonderlijk afstemmen. Dit resulteert in betere prestaties voor afbeeldingen uit verschillende bronnen met kleine verschillen. In dit geval kunt u het eerste model trainen zoals gebruikelijk met een grote hoeveelheid trainingsgegevens. Roep vervolgens **TrainProject** aan in versie 3.4 van de openbare preview-API met _CustomBaseModelInfo_ in de aanvraagbody om het in de eerste fase getrainde model te gebruiken als het basismodel voor downstreamprojecten. Als het bronproject en het downstreamdoelproject vergelijkbare afbeeldingskenmerken hebben, kunt u betere prestaties verwachten. 
+
+### <a name="new-domain-information"></a>Nieuwe domeingegevens
+
+- De domeingegevens die worden geretourneerd door **GetDomains** in de openbare preview-API van Custom Vision 3.4, bevatten nu ondersteunde exporteerbare platformen, een korte beschrijving van de modelarchitectuur en de grootte van het model voor compacte domeinen.
+
+### <a name="training-divergence-feedback"></a>Feedback over trainingsverschillen
+
+- De openbare preview-API van Custom Vision Custom Vision 3.4 retourneert nu **TrainingErrorDetails** van de **GetIteration**-aanroep. Bij mislukte herhalingen wordt nagegaan of de fout het gevolg is van trainingsverschillen, wat kan worden opgelost met meer en betere trainingsgegevens.
 
 ## <a name="july-2020"></a>Juli 2020
 
