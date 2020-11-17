@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 9/10/2020
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d64f7423d537958b6d3c388cb12f23bd2e30e36
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a936552bd7d3b97e2c027f7b0d23abd7c21b6e2
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90087075"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94652192"
 ---
 # <a name="secure-hybrid-access-secure-legacy-apps-with-azure-active-directory"></a>Beveiligde hybride toegang: beveiligde verouderde apps met Azure Active Directory
 
@@ -28,44 +28,44 @@ U kunt nu uw lokale en Cloud toepassingen voor verouderde verificatie beveiligen
 
 - [VPN-toepassingen (virtueel particulier netwerk) en SDP (Software-Defined-verbindingen)](#sha-through-vpn-and-sdp-applications)
 
-U kunt de ruimte overbruggen en uw beveiligings postuur versterken voor alle toepassingen met Azure AD-mogelijkheden, zoals [voorwaardelijke toegang tot](https://docs.microsoft.com/azure/active-directory/conditional-access/overview) Azure AD en Azure AD [Identity Protection](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection).
+U kunt de ruimte overbruggen en uw beveiligings postuur versterken voor alle toepassingen met Azure AD-mogelijkheden, zoals [voorwaardelijke toegang tot](../conditional-access/overview.md) Azure AD en Azure AD [Identity Protection](../identity-protection/overview-identity-protection.md).
 
 ## <a name="secure-hybrid-access-sha-through-azure-ad-application-proxy"></a>Secure Hybrid Access (SHA) via Azure AD-toepassingsproxy
   
-Met [toepassings proxy](https://aka.ms/whyappproxy) kunt u [veilige externe toegang](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) tot uw on-premises webtoepassingen bieden. Uw gebruikers hoeven geen VPN te gebruiken. Gebruikers profiteren van een eenvoudige verbinding met hun toepassingen vanaf elk apparaat na een [eenmalige aanmelding](https://docs.microsoft.com/azure/active-directory/manage-apps/add-application-portal-setup-sso). Toepassings proxy biedt externe toegang als een service en biedt u de mogelijkheid om [uw on-premises toepassingen eenvoudig te publiceren](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application) naar gebruikers buiten het bedrijfs netwerk. U kunt hiermee uw beheer van Cloud toegang schalen zonder dat u uw on-premises toepassingen hoeft te wijzigen. [Plan een Azure AD-toepassingsproxy-implementatie](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-deployment-plan) als een volgende stap.
+Met [toepassings proxy](./what-is-application-proxy.md) kunt u [veilige externe toegang](./application-proxy.md) tot uw on-premises webtoepassingen bieden. Uw gebruikers hoeven geen VPN te gebruiken. Gebruikers profiteren van een eenvoudige verbinding met hun toepassingen vanaf elk apparaat na een [eenmalige aanmelding](./add-application-portal-setup-sso.md). Toepassings proxy biedt externe toegang als een service en biedt u de mogelijkheid om [uw on-premises toepassingen eenvoudig te publiceren](./application-proxy-add-on-premises-application.md) naar gebruikers buiten het bedrijfs netwerk. U kunt hiermee uw beheer van Cloud toegang schalen zonder dat u uw on-premises toepassingen hoeft te wijzigen. [Plan een Azure AD-toepassingsproxy-implementatie](./application-proxy-deployment-plan.md) als een volgende stap.
 
 ## <a name="azure-ad-partner-integrations"></a>Integraties van Azure AD-partner
 
 ### <a name="sha-through-networking-and-delivery-controllers"></a>SHA via netwerk-en bezorgings controllers
 
-Naast [Azure AD-toepassingsproxy](https://aka.ms/whyappproxy), zodat u het [vertrouwens raamwerk met de waarde nul](https://www.microsoft.com/security/blog/2020/04/02/announcing-microsoft-zero-trust-assessment-tool/)kunt gebruiken, micro soft-partners met externe providers. U kunt uw bestaande netwerk-en bezorgings controllers gebruiken en eenvoudig verouderde toepassingen beveiligen die essentieel zijn voor uw bedrijfs processen, maar die u niet beveiligt met Azure AD. Waarschijnlijk hebt u al alles wat u nodig hebt om deze toepassingen te beveiligen.
+Naast [Azure AD-toepassingsproxy](./what-is-application-proxy.md), zodat u het [vertrouwens raamwerk met de waarde nul](https://www.microsoft.com/security/blog/2020/04/02/announcing-microsoft-zero-trust-assessment-tool/)kunt gebruiken, micro soft-partners met externe providers. U kunt uw bestaande netwerk-en bezorgings controllers gebruiken en eenvoudig verouderde toepassingen beveiligen die essentieel zijn voor uw bedrijfs processen, maar die u niet beveiligt met Azure AD. Waarschijnlijk hebt u al alles wat u nodig hebt om deze toepassingen te beveiligen.
 
 ![Afbeelding toont beveiligde hybride toegang met netwerk partners en app proxy](./media/secure-hybrid-access/secure-hybrid-access.png)
 
 De volgende netwerk leveranciers bieden vooraf ontwikkelde oplossingen en gedetailleerde richt lijnen voor de integratie met Azure AD.
 
-- [Akamai Enter prise Application Access (EAA)](https://docs.microsoft.com/azure/active-directory/saas-apps/akamai-tutorial)
+- [Akamai Enter prise Application Access (EAA)](../saas-apps/akamai-tutorial.md)
 
-- [Citrix Application Delivery controller (ADC)](https://docs.microsoft.com/azure/active-directory/saas-apps/citrix-netscaler-tutorial)
+- [Citrix Application Delivery controller (ADC)](../saas-apps/citrix-netscaler-tutorial.md)
 
-- [F5 BIG-IP APM](https://docs.microsoft.com/azure/active-directory/saas-apps/headerf5-tutorial)
+- [F5 BIG-IP APM](../saas-apps/headerf5-tutorial.md)
 
-- [Kemp](https://docs.microsoft.com/azure/active-directory/saas-apps/kemp-tutorial)
+- [Kemp](../saas-apps/kemp-tutorial.md)
 
 ### <a name="sha-through-vpn-and-sdp-applications"></a>SHA via VPN-en SDP-toepassingen
 
-Met VPN-en SDP-oplossingen kunt u op elk gewenst moment beveiligde toegang bieden tot uw bedrijfs netwerk vanaf elk apparaat, op elke locatie, terwijl u de gegevens van uw organisatie beveiligt. Door Azure AD als id-provider (IDP) te hebben, kunt u moderne verificatie-en autorisatie methoden gebruiken, zoals [eenmalige aanmelding](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) voor Azure AD en [multi-factor Authentication](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks) om uw on-premises verouderde toepassingen te beveiligen.  
+Met VPN-en SDP-oplossingen kunt u op elk gewenst moment beveiligde toegang bieden tot uw bedrijfs netwerk vanaf elk apparaat, op elke locatie, terwijl u de gegevens van uw organisatie beveiligt. Door Azure AD als id-provider (IDP) te hebben, kunt u moderne verificatie-en autorisatie methoden gebruiken, zoals [eenmalige aanmelding](./what-is-single-sign-on.md) voor Azure AD en [multi-factor Authentication](../authentication/concept-mfa-howitworks.md) om uw on-premises verouderde toepassingen te beveiligen.  
 
 ![Afbeelding toont beveiligde hybride toegang met VPN-partners en app proxy ](./media/secure-hybrid-access/app-proxy-vpn.png)
 
 De volgende VPN-en SDP-leveranciers bieden vooraf ontwikkelde oplossingen en gedetailleerde richt lijnen voor de integratie met Azure AD.
 
-• [Cisco AnyConnect](https://docs.microsoft.com/azure/active-directory/saas-apps/cisco-anyconnect)
+• [Cisco AnyConnect](../saas-apps/cisco-anyconnect.md)
 
-• [Fortinet](https://docs.microsoft.com/azure/active-directory/saas-apps/fortigate-ssl-vpn-tutorial)
+• [Fortinet](../saas-apps/fortigate-ssl-vpn-tutorial.md)
 
-• [F5 BIG-IP apm](https://aka.ms/f5-hybridaccessguide)
+• [F5 BIG-IP apm](../saas-apps/headerf5-tutorial.md)
 
-• [Palo Alto-netwerken wereld wijd beveiligen](https://docs.microsoft.com/azure/active-directory/saas-apps/paloaltoadmin-tutorial)
+• [Palo Alto-netwerken wereld wijd beveiligen](../saas-apps/paloaltoadmin-tutorial.md)
 
-• [Zscaler private Access (ZPA)](https://aka.ms/zscaler-hybridaccessguide)
+• [Zscaler private Access (ZPA)](../saas-apps/zscalerprivateaccess-tutorial.md)

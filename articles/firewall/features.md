@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 10/08/2020
 ms.author: victorh
-ms.openlocfilehash: 7429be4430b2b520fb2a66b6b2c0dd138af8e501
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c71d9325ff7c1c5d2e7eff03a587a28335efd72
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850588"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94652141"
 ---
 # <a name="azure-firewall-features"></a>Azure Firewall-functies
 
@@ -103,7 +103,7 @@ Dit maakt de volgende scenario's mogelijk:
 
 Alle gebeurtenissen zijn geïntegreerd met Azure Monitor, zodat u logboeken kunt archiveren in een opslagaccount, gebeurtenissen kunt streamen naar uw Event Hub of deze kunt verzenden naar Azure Monitor-logboeken. Raadpleeg [Azure monitor-logboeken voor Azure firewall](log-analytics-samples.md)voor Azure monitor-logboek voorbeelden.
 
-Zie [Zelfstudie: Azure Firewall-logboeken en metrische gegevens bewaken](tutorial-diagnostics.md). 
+Zie [Zelfstudie: Azure Firewall-logboeken en metrische gegevens bewaken](./firewall-diagnostics.md). 
 
 Azure Firewall werkmap biedt een flexibel canvas voor het Azure Firewall van gegevens analyse. U kunt deze gebruiken om uitgebreide visuele rapporten te maken in de Azure Portal. Zie [Logboeken bewaken met Azure firewall werkmap](firewall-workbook.md)voor meer informatie.
 

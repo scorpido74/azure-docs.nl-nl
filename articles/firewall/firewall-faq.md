@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 08/13/2020
 ms.author: victorh
-ms.openlocfilehash: 8b94b71993285a61042be3c6cd9e4708315fab9f
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 3e6ea6692a81a06bbf3180904dfb465a88b105d1
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413000"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94653416"
 ---
 # <a name="azure-firewall-faq"></a>Veelgestelde vragen over Azure Firewall
 
@@ -40,9 +40,9 @@ Azure Firewall ondersteunt regels en regel verzamelingen. Een regel verzameling 
 
 Er zijn drie typen regel verzamelingen:
 
-* *Toepassings regels* : Configureer FQDN-namen (Fully Qualified Domain names) die toegankelijk zijn vanuit een subnet.
-* *Netwerk regels* : Configureer regels die bron adressen, protocollen, doel poorten en doel adressen bevatten.
-* *NAT-regels* : DNAT-regels configureren om binnenkomende Internet verbindingen toe te staan.
+* *Toepassings regels*: Configureer FQDN-namen (Fully Qualified Domain names) die toegankelijk zijn vanuit een subnet.
+* *Netwerk regels*: Configureer regels die bron adressen, protocollen, doel poorten en doel adressen bevatten.
+* *NAT-regels*: DNAT-regels configureren om binnenkomende Internet verbindingen toe te staan.
 
 ## <a name="does-azure-firewall-support-inbound-traffic-filtering"></a>Ondersteunt Azure Firewall het filteren van inkomend verkeer?
 
@@ -50,7 +50,7 @@ Azure Firewall ondersteunt filters voor inkomend en uitgaand verkeer. Inkomende 
 
 ## <a name="which-logging-and-analytics-services-are-supported-by-the-azure-firewall"></a>Welke logboek registratie en analyse services worden ondersteund door de Azure Firewall?
 
-Azure Firewall is geïntegreerd met Azure Monitor voor het weer geven en analyseren van Firewall Logboeken. Logboeken kunnen worden verzonden naar Log Analytics, Azure Storage of Event Hubs. Ze kunnen worden geanalyseerd in Log Analytics of door verschillende hulpprogram ma's zoals Excel en Power BI. Zie voor meer informatie [zelf studie: Azure firewall logboeken bewaken](tutorial-diagnostics.md).
+Azure Firewall is geïntegreerd met Azure Monitor voor het weer geven en analyseren van Firewall Logboeken. Logboeken kunnen worden verzonden naar Log Analytics, Azure Storage of Event Hubs. Ze kunnen worden geanalyseerd in Log Analytics of door verschillende hulpprogram ma's zoals Excel en Power BI. Zie voor meer informatie [zelf studie: Azure firewall logboeken bewaken](./firewall-diagnostics.md).
 
 ## <a name="how-does-azure-firewall-work-differently-from-existing-services-such-as-nvas-in-the-marketplace"></a>Hoe werkt Azure Firewall anders dan bestaande services zoals Nva's in de Marketplace?
 
@@ -139,9 +139,9 @@ Nee. NAT-regels voegen impliciet een bijbehorende netwerk regel toe om het verta
 
 ## <a name="how-do-wildcards-work-in-an-application-rule-target-fqdn"></a>Hoe werken joker tekens in een toepassings regel doel-FQDN?
 
-Joker tekens kunnen momenteel alleen worden gebruikt aan de linkerkant van de FQDN. Bijvoorbeeld * *_. contoso.com_* en * *_contoso.com_*.
+Joker tekens kunnen momenteel alleen worden gebruikt aan de linkerkant van de FQDN. Bijvoorbeeld **_. contoso.com_* en **_contoso.com_*.
 
-Als u * *_. contoso.com_* configureert, is *anyvalue*. contoso.com, maar niet contoso.com (het domein Apex) toegestaan. Als u het domein Apex wilt toestaan, moet u het expliciet configureren als een doel-FQDN.
+Als u **_. contoso.com_* configureert, is *anyvalue*. contoso.com, maar niet contoso.com (het domein Apex) toegestaan. Als u het domein Apex wilt toestaan, moet u het expliciet configureren als een doel-FQDN.
 
 ## <a name="what-does-provisioning-state-failed-mean"></a>Wat betekent de *inrichtings status: mislukt* ?
 
@@ -217,7 +217,7 @@ Nee. het verplaatsen van een IP-groep naar een andere resource groep wordt momen
 
 ## <a name="what-is-the-tcp-idle-timeout-for-azure-firewall"></a>Wat is de time-out voor inactiviteit van TCP voor Azure Firewall?
 
-Een standaard gedrag van een netwerk firewall is om ervoor te zorgen dat TCP-verbindingen in stand worden gehouden en ze onmiddellijk sluiten als er geen activiteit is. Azure Firewall TCP-time-out voor inactiviteit is vier minuten. Deze instelling kan niet worden geconfigureerd. Als een periode van inactiviteit langer is dan de time-outwaarde, is er geen garantie dat de TCP-of HTTP-sessie wordt onderhouden. Een veelvoorkomende procedure is het gebruik van een TCP-Keep-Alive. Deze procedure houdt de verbinding gedurende een langere periode actief. Zie de [.net-voor beelden](https://docs.microsoft.com/dotnet/api/system.net.servicepoint.settcpkeepalive?redirectedfrom=MSDN&view=netcore-3.1#System_Net_ServicePoint_SetTcpKeepAlive_System_Boolean_System_Int32_System_Int32_)voor meer informatie.
+Een standaard gedrag van een netwerk firewall is om ervoor te zorgen dat TCP-verbindingen in stand worden gehouden en ze onmiddellijk sluiten als er geen activiteit is. Azure Firewall TCP-time-out voor inactiviteit is vier minuten. Deze instelling kan niet worden geconfigureerd. Als een periode van inactiviteit langer is dan de time-outwaarde, is er geen garantie dat de TCP-of HTTP-sessie wordt onderhouden. Een veelvoorkomende procedure is het gebruik van een TCP-Keep-Alive. Deze procedure houdt de verbinding gedurende een langere periode actief. Zie de [.net-voor beelden](/dotnet/api/system.net.servicepoint.settcpkeepalive?view=netcore-3.1#System_Net_ServicePoint_SetTcpKeepAlive_System_Boolean_System_Int32_System_Int32_)voor meer informatie.
 
 ## <a name="can-i-deploy-azure-firewall-without-a-public-ip-address"></a>Kan ik Azure Firewall implementeren zonder een openbaar IP-adres?
 

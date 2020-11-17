@@ -16,12 +16,12 @@ ms.date: 07/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a602405065a41cb26b2ae5303d12c45ed21616f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 224ccaeace91288171db42d2b8b8cf8c21a352e0
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91741190"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94652515"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Problemen met Pass Through-verificatie in Azure Active Directory oplossen
 
@@ -34,7 +34,7 @@ Dit artikel helpt u bij het vinden van probleemoplossings informatie over veelvo
 
 ### <a name="check-status-of-the-feature-and-authentication-agents"></a>De status van de functie en verificatie agenten controleren
 
-Zorg ervoor dat de functie Pass-Through-verificatie nog steeds is **ingeschakeld** voor uw Tenant en de status van verificatie agenten **actief**is en niet **inactief**. U kunt de status controleren door naar de Blade **Azure AD Connect** in het [Azure Active Directory beheer centrum](https://aad.portal.azure.com/)te gaan.
+Zorg ervoor dat de functie Pass-Through-verificatie nog steeds is **ingeschakeld** voor uw Tenant en de status van verificatie agenten **actief** is en niet **inactief**. U kunt de status controleren door naar de Blade **Azure AD Connect** in het [Azure Active Directory beheer centrum](https://aad.portal.azure.com/)te gaan.
 
 ![Azure Active Directory-beheer centrum-Azure AD Connect Blade](./media/tshoot-connect-pass-through-authentication/pta7.png)
 
@@ -149,7 +149,7 @@ Afhankelijk van het type probleem dat u mogelijk hebt, moet u de logboeken van d
 
 ### <a name="azure-ad-connect-logs"></a>Azure AD Connect logboeken
 
-Raadpleeg de Azure AD Connect-Logboeken in **%ProgramData%\AADConnect\trace- \* . log**voor fouten met betrekking tot de installatie.
+Raadpleeg de Azure AD Connect-Logboeken in **%ProgramData%\AADConnect\trace- \* . log** voor fouten met betrekking tot de installatie.
 
 ### <a name="authentication-agent-event-logs"></a>Gebeurtenis logboeken voor verificatie agent
 
@@ -157,9 +157,11 @@ Voor fouten met betrekking tot de verificatie agent opent u de Logboeken-toepass
 
 Schakel voor gedetailleerde analyse het logboek van de sessie in (Klik met de rechter muisknop in de Logboeken toepassing om deze optie te vinden). De verificatie agent niet uitvoeren wanneer dit logboek is ingeschakeld tijdens normale bewerkingen; alleen gebruiken voor probleem oplossing. De inhoud van het logboek is alleen zichtbaar nadat het logboek is uitgeschakeld.
 
+PTA-agent gebeurtenis manifest vindt u [hier](https://msazure.visualstudio.com/One/_git/AD-AppProxy?path=%2Fsrc%2FProduct%2FMUC%2FPTADiagnosticsResource%2FPTADiagnosticsResource%2FPTAConnectorDiagnosticsResource%2FPTAConnectorEventManifest.man&_a=contents&version=GBmaster).
+
 ### <a name="detailed-trace-logs"></a>Gedetailleerde traceer logboeken
 
-Zoek naar traceer logboeken op **%PROGRAMDATA%\MICROSOFT\AZURE AD Connect- \\ verificatie Agent\Trace**om problemen met de gebruikers aanmelding op te lossen. In deze logboeken worden de redenen vermeld waarom een specifieke gebruiker zich aanmeldt met de functie Pass-Through-verificatie. Deze fouten worden ook toegewezen aan de oorzaken van de aanmeldings fout die worden weer gegeven in de voor gaande tabel met mislukte aanmeldings redenen. Hier volgt een voor beeld van een logboek vermelding:
+Zoek naar traceer logboeken op **%PROGRAMDATA%\MICROSOFT\AZURE AD Connect- \\ verificatie Agent\Trace** om problemen met de gebruikers aanmelding op te lossen. In deze logboeken worden de redenen vermeld waarom een specifieke gebruiker zich aanmeldt met de functie Pass-Through-verificatie. Deze fouten worden ook toegewezen aan de oorzaken van de aanmeldings fout die worden weer gegeven in de voor gaande tabel met mislukte aanmeldings redenen. Hier volgt een voor beeld van een logboek vermelding:
 
 ```
     AzureADConnectAuthenticationAgentService.exe Error: 0 : Passthrough Authentication request failed. RequestId: 'df63f4a4-68b9-44ae-8d81-6ad2d844d84e'. Reason: '1328'.
