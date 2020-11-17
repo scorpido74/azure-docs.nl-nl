@@ -4,8 +4,8 @@ description: Gebruikers bulksgewijs verwijderen in het Azure-beheer centrum in A
 services: active-directory
 author: curtand
 ms.author: curtand
-manager: mtillman
-ms.date: 04/27/2020
+manager: daveba
+ms.date: 11/15/2020
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4146fb6bfe6c06e699df1f563e1f26e0716b023
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: b312ef8735477e0921bcb9cdec541f97ba3003eb
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375384"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650271"
 ---
 # <a name="bulk-delete-users-in-azure-active-directory"></a>Gebruikers bulksgewijs verwijderen in Azure Active Directory
 
@@ -77,7 +77,7 @@ Vervolgens kunt u controleren of de gebruikers die u hebt verwijderd, bestaan in
 1. Meld u bij Azure Portal aan met een account met beheerdersrechten in de organisatie.
 1. Selecteer in het navigatiedeelvenster de service **Azure Active Directory**.
 1. Onder **Beheren**, selecteer **Gebruikers**.
-1. Onder **weer geven**selecteert u alleen **alle gebruikers** en controleert u of de gebruikers die u hebt verwijderd, niet meer worden weer gegeven.
+1. Onder **weer geven** selecteert u alleen **alle gebruikers** en controleert u of de gebruikers die u hebt verwijderd, niet meer worden weer gegeven.
 
 ### <a name="verify-deleted-users-with-powershell"></a>Verwijderde gebruikers controleren met Power shell
 

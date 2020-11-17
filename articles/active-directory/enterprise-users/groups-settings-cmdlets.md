@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: how-to
-ms.date: 08/13/2020
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 63f0c55823899be8eb4146860787aede2cd2d6b5
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 696bf37f308c16a1e77b06614f272ba971e6615d
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375734"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650543"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Azure Active Directory cmdlets voor het configureren van groepsinstellingen
 
@@ -147,7 +147,7 @@ Als u de waarde voor UsageGuideLinesUrl in de instellings sjabloon wilt bijwerke
 ## <a name="template-settings"></a>Sjabloon instellingen
 Dit zijn de instellingen die zijn gedefinieerd in de groep. Unified SettingsTemplate. Tenzij anders aangegeven, is voor deze functies een Azure Active Directory Premium P1-licentie vereist. 
 
-| **Instelling** | **Deschription** (Beschrijving) |
+| **Instelling** | **Beschrijving** |
 | --- | --- |
 |  <ul><li>EnableGroupCreation<li>Type: Booleaans<li>Standaard: True |De vlag waarmee wordt aangegeven of het maken van een Microsoft 365 groep is toegestaan in de map door niet-beheerders. Voor deze instelling is geen Azure Active Directory Premium P1-licentie vereist.|
 |  <ul><li>GroupCreationAllowedGroupId<li>Type: String<li>Standaard: |GUID van de beveiligings groep waarvoor de leden Microsoft 365 groepen mogen maken, zelfs wanneer EnableGroupCreation = = false. |

@@ -12,12 +12,12 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperfq2
-ms.openlocfilehash: e03598ab53a9061a59e18041b2f3f4dc04e1b110
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 8cbc683f06b809ec4d9c63a61d73a0c731a92cd7
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424546"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651615"
 ---
 # <a name="troubleshoot-problems-signing-in-to-an-application-from-azure-ad-my-apps"></a>Problemen oplossen bij het aanmelden bij een toepassing vanuit Azure AD mijn apps
 
@@ -100,8 +100,8 @@ Voer de volgende stappen uit om het wacht woord van een gebruiker opnieuw in te 
 
 ### <a name="enable-self-service-password-reset"></a>Selfservice voor wachtwoordherstel inschakelen
 Voer de volgende implementatie stappen uit om selfservice voor wachtwoord herstel in te scha kelen:
--   [Gebruikers in staat stellen hun Azure Active Directory wacht woorden opnieuw in te stellen](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
--   [Gebruikers in staat stellen om hun Active Directory on-premises wacht woorden opnieuw in te stellen of te wijzigen](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
+-   [Gebruikers in staat stellen hun Azure Active Directory wacht woorden opnieuw in te stellen](../authentication/tutorial-enable-sspr.md)
+-   [Gebruikers in staat stellen om hun Active Directory on-premises wacht woorden opnieuw in te stellen of te wijzigen](../authentication/tutorial-enable-sspr.md)
 
 ### <a name="check-a-users-multi-factor-authentication-status"></a>De multi-factor Authentication-status van een gebruiker controleren
 Voer de volgende stappen uit om de multi-factor Authentication-status van een gebruiker te controleren:
@@ -113,7 +113,7 @@ Voer de volgende stappen uit om de multi-factor Authentication-status van een ge
 6. Selecteer de knop **multi-factor Authentication** boven aan het deel venster.
 7. Nadat de **multi-factor Authentication beheer Portal** is geladen, controleert u of u zich op het tabblad **gebruikers** bevindt.
 8. Zoek de gebruiker in de lijst met gebruikers door te zoeken, te filteren of te sorteren.
-9. Selecteer de gebruiker in de lijst met gebruikers en **Schakel**indien **gewenst multi-** Factor Authentication in, **uit**of af.
+9. Selecteer de gebruiker in de lijst met gebruikers en **Schakel** indien **gewenst multi-** Factor Authentication in, **uit** of af.
    >[!NOTE]
    >Als een gebruiker een **afgedwongen** status heeft, kunt u deze zo instellen dat ze tijdelijk worden **uitgeschakeld** om ze weer in hun account te laten staan. Zodra ze weer in zijn, kunt u de status wijzigen in **ingeschakeld** zodat ze hun contact gegevens opnieuw moeten registreren tijdens de volgende aanmelding. U kunt ook de stappen volgen in de [contact gegevens van een gebruiker controleren](#check-a-users-authentication-contact-info) om te controleren of deze gegevens voor hen in te stellen.
 
@@ -126,7 +126,7 @@ Voer de volgende stappen uit om de contact gegevens van een gebruiker te control
 5.  Selecteer **alle gebruikers**.
 6.  **Zoek** naar de gebruiker die u wilt interesseren en **Selecteer de rij** die u wilt selecteren.
 7.  Selecteer een **profiel**.
-8.  Schuif omlaag naar de **contact gegevens**van de verificatie.
+8.  Schuif omlaag naar de **contact gegevens** van de verificatie.
 9.  **Controleer** de gegevens die voor de gebruiker zijn geregistreerd en werk deze indien nodig bij.
 
 ### <a name="check-a-users-group-memberships"></a>De groepslid maatschappen van een gebruiker controleren

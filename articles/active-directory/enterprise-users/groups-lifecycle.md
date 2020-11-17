@@ -8,19 +8,19 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: how-to
-ms.date: 08/13/2020
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb51f402cd7032358e6a9d2f9fad9aa64316b809
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: f3544d81059cd4c25c584d8af1b6fcd45a41b8bb
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375767"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650713"
 ---
 # <a name="configure-the-expiration-policy-for-microsoft-365-groups"></a>Het verloop beleid voor Microsoft 365 groepen configureren
 
@@ -73,7 +73,7 @@ Zie [een verwijderde Microsoft 365 groep herstellen in azure Active Directory](g
 
 1. Open het [Azure AD-beheer centrum](https://aad.portal.azure.com) met een account dat een globale beheerder is in uw Azure AD-organisatie.
 
-2. Selecteer **groepen**en selecteer vervolgens **verval datum** om de verloop instellingen te openen.
+2. Selecteer **groepen** en selecteer vervolgens **verval datum** om de verloop instellingen te openen.
   
    ![Verloop instellingen voor groepen](./media/groups-lifecycle/expiration-settings.png)
 
@@ -85,7 +85,7 @@ Zie [een verwijderde Microsoft 365 groep herstellen in azure Active Directory](g
       - **Alle** Microsoft 365 groepen
       - Een lijst met **geselecteerde** Microsoft 365 groepen
       - **Geen** om de verval datum voor alle groepen te beperken
-    - Sla de instellingen op wanneer u klaar bent door **Opslaan**te selecteren.
+    - Sla de instellingen op wanneer u klaar bent door **Opslaan** te selecteren.
 
 > [!NOTE]
 > - Wanneer u de verval datum voor het eerst instelt, worden de groepen die ouder zijn dan het verloop interval ingesteld op 35 dagen tot de verval datum, tenzij de groep automatisch wordt vernieuwd of de eigenaar deze vernieuwt.

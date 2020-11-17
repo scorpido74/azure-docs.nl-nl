@@ -13,18 +13,18 @@ ms.author: ajburnle
 ms.reviewer: kexia
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04e1d35ab17a49dd1c4e9bd2bd19289de2b8658a
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: bb138ade0f579a7545c0910646b6adfb7d5ac02a
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "89565851"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650220"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Een huis stijl toevoegen aan de Azure Active Directory aanmeldings pagina van uw organisatie
 Gebruik het logo van uw organisatie en aangepaste kleuren schema's om een consistent uiterlijk te geven op uw aanmeldings pagina's van Azure Active Directory (Azure AD). Uw aanmeldings pagina's worden weer gegeven wanneer gebruikers zich aanmelden bij de webtoepassingen van uw organisatie, zoals Microsoft 365, die Azure AD als id-provider gebruikt.
 
 >[!NOTE]
->Voor het toevoegen van aangepaste huis stijl moet u Azure Active Directory Premium 1, Premium 2 of Basic-editie gebruiken of een Microsoft 365 licentie hebben. Zie voor meer informatie over licenties en edities [Aanmelden registreren voor Azure AD Premium](active-directory-get-started-premium.md).<br><br>De Azure AD-edities Premium en Basic zijn beschikbaar voor klanten in China via het wereldwijde exemplaar van Azure Active Directory. De Azure AD Premium en Basic-edities worden momenteel niet ondersteund in de Azure-service die wordt beheerd door 21Vianet in China. Neem contact met ons op via het [Azure Active Directory Forum](https://feedback.azure.com/forums/169401-azure-active-directory/) voor meer informatie.
+>Voor het toevoegen van aangepaste huis stijl hebt u Azure Active Directory Premium 1 of Premium 2-licenties nodig. Zie voor meer informatie over licenties en edities [Aanmelden registreren voor Azure AD Premium](active-directory-get-started-premium.md).<br><br>Azure AD Premium-edities zijn beschikbaar voor klanten in China met behulp van de wereld wijde instantie van Azure Active Directory. Azure AD Premium-edities worden momenteel niet ondersteund in de Azure-service die wordt beheerd door 21Vianet in China. Neem contact met ons op via het [Azure Active Directory Forum](https://feedback.azure.com/forums/169401-azure-active-directory/) voor meer informatie.
 
 ## <a name="customize-your-azure-ad-sign-in-page"></a>Uw aanmeldings pagina voor Azure AD aanpassen
 U kunt uw aanmeldings pagina's van Azure AD aanpassen, die worden weer gegeven wanneer gebruikers zich aanmelden bij de Tenant-specifieke apps van uw organisatie, zoals `https://outlook.com/contoso.com` , of bij het door geven van een domein variabele, zoals `https://passwordreset.microsoftonline.com/?whr=contoso.com` .
@@ -37,7 +37,7 @@ Uw aangepaste huis stijl wordt niet onmiddellijk weer gegeven wanneer uw gebruik
 ### <a name="to-customize-your-branding"></a>Uw huis stijl aanpassen
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) met het account van een globale administrator voor de map.
 
-2. Selecteer **Azure Active Directory** , selecteer vervolgens **bedrijfs huisstijl** en selecteer vervolgens **configureren**.
+2. Selecteer **Azure Active Directory**, selecteer vervolgens **bedrijfs huisstijl** en selecteer vervolgens **configureren**.
 
     ![De pagina huis stijl contoso: de optie gemarkeerd configureren](media/customize-branding/company-branding-configure-button.png)
 
@@ -107,7 +107,7 @@ Nadat u uw aangepaste huis stijl hebt gemaakt, kunt u teruggaan en alles wat u w
 ### <a name="to-edit-your-custom-branding"></a>Uw aangepaste huis stijl bewerken
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) met het account van een globale administrator voor de map.
 
-2. Selecteer **Azure Active Directory** , selecteer vervolgens **bedrijfs huisstijl** en selecteer vervolgens **configureren**.
+2. Selecteer **Azure Active Directory**, selecteer vervolgens **bedrijfs huisstijl** en selecteer vervolgens **configureren**.
 
     ![Pagina huis stijl contoso, met de standaard configuratie weer gegeven](media/customize-branding/company-branding-default-config.png)
 
@@ -124,7 +124,7 @@ U kunt de taal van de oorspronkelijke configuratie niet wijzigen in de standaard
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) met het account van een globale administrator voor de map.
 
-2. Selecteer **Azure Active Directory** , selecteer vervolgens **bedrijfs huisstijl** en selecteer vervolgens **nieuwe taal**.
+2. Selecteer **Azure Active Directory**, selecteer vervolgens **bedrijfs huisstijl** en selecteer vervolgens **nieuwe taal**.
 
     ![Contoso-bedrijfs huisstijl pagina, met de optie nieuwe taal gemarkeerd](media/customize-branding/company-branding-new-language.png)
 

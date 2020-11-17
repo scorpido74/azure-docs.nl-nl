@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c826a679c1c64e113beb6b2cc5ffd29f82b55a3b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 779286a43f8b20ce9a9a528e14eaa930763d82b4
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84759535"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651580"
 ---
 # <a name="an-app-page-shows-an-error-message-after-the-user-signs-in"></a>Op een app-pagina wordt een fout bericht weer gegeven nadat de gebruiker zich heeft aangemeld
 
@@ -29,7 +29,7 @@ In dit scenario ondertekent Azure Active Directory (Azure AD) de gebruiker in. M
 
 Er zijn verschillende mogelijke redenen waarom de app de reactie van Azure AD niet heeft geaccepteerd. Als in het fout bericht niet duidelijk wordt aangegeven wat er in het antwoord ontbreekt, kunt u het volgende proberen:
 
--   Als de app de Azure AD-galerie is, controleert u of u de stappen in de [procedure voor het opsporen van op SAML gebaseerde eenmalige aanmelding bij toepassingen in azure AD](https://azure.microsoft.com/documentation/articles/active-directory-saml-debugging)hebt gevolgd.
+-   Als de app de Azure AD-galerie is, controleert u of u de stappen in de [procedure voor het opsporen van op SAML gebaseerde eenmalige aanmelding bij toepassingen in azure AD](./debug-saml-sso-issues.md)hebt gevolgd.
 
 -   Gebruik een hulp programma zoals [Fiddler](https://www.telerik.com/fiddler) om de SAML-aanvraag, het antwoord en het token vast te leggen.
 
@@ -60,7 +60,7 @@ Voer de volgende stappen uit om een kenmerk toe te voegen aan de Azure AD-config
 
    Een kenmerk toevoegen:
 
-   1. Selecteer **kenmerk toevoegen**. Voer de **naam**in en selecteer de **waarde** in de vervolg keuzelijst.
+   1. Selecteer **kenmerk toevoegen**. Voer de **naam** in en selecteer de **waarde** in de vervolg keuzelijst.
 
    1.  Selecteer **Opslaan**. U ziet het nieuwe kenmerk in de tabel.
 
@@ -72,7 +72,7 @@ Voer de volgende stappen uit om een kenmerk toe te voegen aan de Azure AD-config
 
 Het aanmelden bij de app is mislukt omdat het SAML-antwoord een kenmerk, zoals een rol, ontbreekt. Het kan ook zijn dat de app een andere indeling of waarde verwacht voor het kenmerk **NameID** (gebruikers-id).
 
-Als u gebruikmaakt van [automatische gebruikers inrichting van Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) voor het maken, onderhouden en verwijderen van gebruikers in de app, controleert u of de gebruiker is ingericht voor de SaaS-app. Voor meer informatie, Zie [er worden geen gebruikers ingericht voor een Azure AD Gallery-toepassing](../app-provisioning/application-provisioning-config-problem-no-users-provisioned.md).
+Als u gebruikmaakt van [automatische gebruikers inrichting van Azure AD](../app-provisioning/user-provisioning.md) voor het maken, onderhouden en verwijderen van gebruikers in de app, controleert u of de gebruiker is ingericht voor de SaaS-app. Voor meer informatie, Zie [er worden geen gebruikers ingericht voor een Azure AD Gallery-toepassing](../app-provisioning/application-provisioning-config-problem-no-users-provisioned.md).
 
 ## <a name="add-an-attribute-to-the-azure-ad-app-configuration"></a>Een kenmerk toevoegen aan de configuratie van de Azure AD-app
 
@@ -95,13 +95,13 @@ Voer de volgende stappen uit om de waarde voor de gebruikers-id te wijzigen:
 
 7. Nadat de app is geladen, selecteert u **eenmalige aanmelding** in het navigatie deel venster.
 
-8. Onder **gebruikers kenmerken**selecteert u de unieke id voor de gebruiker uit de vervolg keuzelijst **gebruikers-id** .
+8. Onder **gebruikers kenmerken** selecteert u de unieke id voor de gebruiker uit de vervolg keuzelijst **gebruikers-id** .
 
 ## <a name="change-the-nameid-format"></a>De NameID-indeling wijzigen
 
-Als de toepassing een andere indeling verwacht voor het kenmerk **NameID** (gebruikers-id), raadpleegt u [NameID bewerken](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization#editing-nameid) om de NameID-indeling te wijzigen.
+Als de toepassing een andere indeling verwacht voor het kenmerk **NameID** (gebruikers-id), raadpleegt u [NameID bewerken](../develop/active-directory-saml-claims-customization.md#editing-nameid) om de NameID-indeling te wijzigen.
 
-Azure AD selecteert de indeling voor het **NameID** -kenmerk (gebruikers-id) op basis van de waarde die is geselecteerd of de indeling die door de app is aangevraagd in het SAML-AuthRequest. Zie de sectie ' NameIDPolicy ' van het [SAML-protocol voor eenmalige aanmelding](https://docs.microsoft.com/azure/active-directory/develop/single-sign-on-saml-protocol#nameidpolicy)voor meer informatie.
+Azure AD selecteert de indeling voor het **NameID** -kenmerk (gebruikers-id) op basis van de waarde die is geselecteerd of de indeling die door de app is aangevraagd in het SAML-AuthRequest. Zie de sectie ' NameIDPolicy ' van het [SAML-protocol voor eenmalige aanmelding](../develop/single-sign-on-saml-protocol.md#nameidpolicy)voor meer informatie.
 
 ## <a name="the-app-expects-a-different-signature-method-for-the-saml-response"></a>De app verwacht een andere handtekening methode voor het SAML-antwoord
 
@@ -124,7 +124,7 @@ Voer de volgende stappen uit om te wijzigen welke onderdelen van het SAML-token 
 
 7. Nadat de toepassing is geladen, selecteert u **eenmalige aanmelding** in het navigatie deel venster.
 
-8. Onder **SAML-handtekening certificaat**selecteert u  **Geavanceerde instellingen voor certificaat ondertekening weer geven**.
+8. Onder **SAML-handtekening certificaat** selecteert u  **Geavanceerde instellingen voor certificaat ondertekening weer geven**.
 
 9. Selecteer de **handtekening optie** die door de app wordt verwacht van de volgende opties:
 
@@ -157,11 +157,11 @@ Voer de volgende stappen uit om het Ondertekeningsalgoritme te wijzigen:
 
 7. Nadat de app is geladen, selecteert u **eenmalige aanmelding** in het navigatie deel venster aan de linkerkant van de app.
 
-8. Onder **SAML-handtekening certificaat**selecteert u **Geavanceerde instellingen voor certificaat ondertekening weer geven**.
+8. Onder **SAML-handtekening certificaat** selecteert u **Geavanceerde instellingen voor certificaat ondertekening weer geven**.
 
 9. Selecteer **SHA-1** als het **Ondertekeningsalgoritme**.
 
    De volgende keer dat de gebruiker zich aanmeldt bij de app, wordt het SAML-token door Azure AD ondertekend met behulp van het algoritme SHA-1.
 
 ## <a name="next-steps"></a>Volgende stappen
-[Fout opsporing op SAML gebaseerde eenmalige aanmelding bij toepassingen in azure AD](https://azure.microsoft.com/documentation/articles/active-directory-saml-debugging).
+[Fout opsporing op SAML gebaseerde eenmalige aanmelding bij toepassingen in azure AD](./debug-saml-sso-issues.md).

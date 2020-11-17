@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: how-to
-ms.date: 04/10/2020
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: yukarppa
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cbbe37938249ee02c7deb4081a96aa1be2d8b7cb
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 1ccd17dc4112bd286257a6ed95ecc55dd13af428
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375815"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650747"
 ---
 # <a name="validate-a-dynamic-group-membership-rule-preview-in-azure-active-directory"></a>Een dynamische regel voor groepslid maatschap valideren (preview) in Azure Active Directory
 
@@ -27,7 +27,7 @@ Azure Active Directory (Azure AD) biedt nu de mogelijkheid om dynamische groeps 
 
 ## <a name="step-by-step-walk-through"></a>Step-by-Step-instructies
 
-Ga naar **Azure Active Directory**groepen om aan de slag te gaan  >  **Groups**. Selecteer een bestaande dynamische groep of maak een nieuwe dynamische groep en klik op dynamische lidmaatschaps regels. Vervolgens ziet u het tabblad **regels valideren** .
+Ga naar **Azure Active Directory** groepen om aan de slag te gaan  >  **Groups**. Selecteer een bestaande dynamische groep of maak een nieuwe dynamische groep en klik op dynamische lidmaatschaps regels. Vervolgens ziet u het tabblad **regels valideren** .
 
 ![Zoek het tabblad regels valideren en begin met een bestaande regel](./media/groups-dynamic-rule-validation/validate-tab.png)
 
@@ -39,7 +39,7 @@ Nadat u de gebruikers of apparaten uit de kiezer hebt gekozen en **selecteert**,
 
 ![De resultaten van de validatie van de regel weer geven](./media/groups-dynamic-rule-validation/validate-tab-results.png)
 
-De resultaten geven aan of een gebruiker lid is van de groep of niet. Als de regel ongeldig is of als er een netwerk probleem is, wordt het resultaat weer gegeven als **onbekend**. In het geval van **onbekend**wordt in het gedetailleerde fout bericht het probleem en de vereiste acties beschreven.
+De resultaten geven aan of een gebruiker lid is van de groep of niet. Als de regel ongeldig is of als er een netwerk probleem is, wordt het resultaat weer gegeven als **onbekend**. In het geval van **onbekend** wordt in het gedetailleerde fout bericht het probleem en de vereiste acties beschreven.
 
 ![De details van de resultaten van de validatie van de regel weer geven](./media/groups-dynamic-rule-validation/validate-tab-view-details.png)
 

@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: how-to
-ms.date: 08/13/2020
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a94d1a4fa717bbee9974f7218e704ba06dad530d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 1f9fcdd2ce17e967be432f8edc910dcf2fcdbed3
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375838"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650900"
 ---
 # <a name="create-or-update-a-dynamic-group-in-azure-active-directory"></a>Een dynamische groep in Azure Active Directory maken of bijwerken
 
@@ -48,7 +48,7 @@ Zie voor voor beelden van de syntaxis, ondersteunde eigenschappen, Opera tors en
 
 1. Meld u aan bij het [Azure AD-beheer centrum](https://aad.portal.azure.com) met een account dat zich in de rol globale beheerder, intune-beheerder of gebruikers beheerder in de Azure AD-organisatie bevindt.
 1. Zoek en selecteer **groepen**.
-1. Selecteer **alle groepen**en selecteer **nieuwe groep**.
+1. Selecteer **alle groepen** en selecteer **nieuwe groep**.
 
    ![Selecteer de opdracht voor het toevoegen van een nieuwe groep](./media/groups-create-rule/create-new-group-azure-active-directory.png)
 

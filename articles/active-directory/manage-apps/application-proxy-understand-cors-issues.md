@@ -11,18 +11,18 @@ ms.topic: troubleshooting
 ms.date: 05/23/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 2019802725e36c2400f57952fedf7af40877c8c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8836295e9f54260c4e9ff6c1da333ef2a86d58fb
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84759926"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651852"
 ---
 # <a name="understand-and-solve-azure-active-directory-application-proxy-cors-issues"></a>Azure Active Directory-toepassingsproxy CORS-problemen begrijpen en oplossen
 
-[Cross-Origin-resource delen (CORS)](https://www.w3.org/TR/cors/)   kan soms uitdagingen opleveren voor de apps en Api's die u via de Azure Active Directory-toepassingsproxy publiceert. In dit artikel worden de problemen met Azure AD-toepassingsproxy CORS en oplossingen besproken.
+[Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) kan soms uitdagingen opleveren voor de apps en api's die u via de Azure Active Directory-toepassingsproxy publiceert. In dit artikel worden de problemen met Azure AD-toepassingsproxy CORS en oplossingen besproken.
 
-Browser beveiliging voor komt doorgaans dat een webpagina AJAX-aanvragen naar een ander domein brengt. Deze beperking wordt *hetzelfde-Origin-beleid*genoemd en voor komt dat een schadelijke site gevoelige gegevens van een andere site leest. Soms wilt u echter dat andere sites uw web-API kunnen aanroepen. CORS is een W3C-standaard waarmee een server hetzelfde-Origin-beleid kan versoepelen en enkele cross-Origin-aanvragen kan afwijzen.
+Browser beveiliging voor komt doorgaans dat een webpagina AJAX-aanvragen naar een ander domein brengt. Deze beperking wordt *hetzelfde-Origin-beleid* genoemd en voor komt dat een schadelijke site gevoelige gegevens van een andere site leest. Soms wilt u echter dat andere sites uw web-API kunnen aanroepen. CORS is een W3C-standaard waarmee een server hetzelfde-Origin-beleid kan versoepelen en enkele cross-Origin-aanvragen kan afwijzen.
 
 ## <a name="understand-and-identify-cors-issues"></a>CORS-problemen begrijpen en identificeren
 
@@ -52,7 +52,7 @@ Selecteer in de volgende scherm afbeelding de knop **Probeer het opnieuw** met e
 
 ## <a name="cors-challenges-with-application-proxy"></a>CORS-uitdagingen met toepassings proxy
 
-In het volgende voor beeld ziet u een typisch Azure AD-toepassingsproxy CORS-scenario. De interne server fungeert als host voor een **CORSWebService** Web API-controller en een **CORSWebClient** die **CORSWebService**aanroept. Er is een AJAX-aanvraag van **CORSWebClient** naar **CORSWebService**.
+In het volgende voor beeld ziet u een typisch Azure AD-toepassingsproxy CORS-scenario. De interne server fungeert als host voor een **CORSWebService** Web API-controller en een **CORSWebClient** die **CORSWebService** aanroept. Er is een AJAX-aanvraag van **CORSWebClient** naar **CORSWebService**.
 
 ![On-premises same-Origin-aanvraag](./media/application-proxy-understand-cors-issues/image1.png)
 
@@ -66,7 +66,7 @@ U kunt het voor gaande CORS-probleem op verschillende manieren oplossen.
 
 ### <a name="option-1-set-up-a-custom-domain"></a>Optie 1: een aangepast domein instellen
 
-Gebruik een aangepast Azure AD-toepassingsproxy- [domein](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-custom-domains) om te publiceren vanuit dezelfde oorsprong, zonder dat u wijzigingen hoeft aan te brengen in de namen van apps, code of kopteksten. 
+Gebruik een aangepast Azure AD-toepassingsproxy- [domein](./application-proxy-configure-custom-domain.md) om te publiceren vanuit dezelfde oorsprong, zonder dat u wijzigingen hoeft aan te brengen in de namen van apps, code of kopteksten. 
 
 ### <a name="option-2-publish-the-parent-directory"></a>Optie 2: de bovenliggende map publiceren
 
@@ -117,4 +117,4 @@ Enkele CORS-problemen kunnen niet worden opgelost, bijvoorbeeld wanneer uw app o
 ## <a name="see-also"></a>Zie ook
 - [Zelfstudie: Een on-premises toepassing voor externe toegang toevoegen via Application Proxy in Azure Active Directory](application-proxy-add-on-premises-application.md) 
 - [Plan een implementatie voor de Azure AD-toepassingsproxy](application-proxy-deployment-plan.md) 
-- [Externe toegang tot on-premises toepassingen via Azure Active Directory-toepassingsproxy](application-proxy.md) 
+- [Externe toegang tot on-premises toepassingen via Azure Active Directory-toepassingsproxy](application-proxy.md)

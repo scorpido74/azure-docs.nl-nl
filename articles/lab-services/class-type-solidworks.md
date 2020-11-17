@@ -5,12 +5,12 @@ author: nicolela
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
-ms.openlocfilehash: 5511ad5a517bbd320ce3d66de90a8aec084c7e15
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc6fdadbdfdbdd1d32f640e356a67841187a83c9
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87290737"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651801"
 ---
 # <a name="set-up-a-lab-for-engineering-classes-using-solidworks"></a>Een Lab voor technische klassen instellen met behulp van SOLIDWORKS
 
@@ -24,22 +24,22 @@ In dit artikel laten we zien hoe u een klasse instelt die gebruikmaakt van SOLID
 
 Voor SOLIDWORKS-netwerk licenties moet SolidNetWork License Manager zijn geïnstalleerd en geactiveerd op uw licentie server.  Deze licentie server bevindt zich doorgaans in uw on-premises netwerk of in een particulier netwerk in Azure.  Zie voor meer informatie over het instellen van SolidNetWork License Manager op uw server [een licentie Manager installeren en activeren](https://help.solidworks.com/2019/English/Installation/install_guide/t_installing_snl_lic_mgr.htm) in de installatie handleiding voor SOLIDWORKS.  Wanneer u dit instelt, onthoud dan het **poort nummer** en het [**serie nummer**](https://help.solidworks.com/2019/english/installation/install_guide/r_hid_state_serial_number.htm) dat wordt gebruikt, omdat deze in latere stappen nodig zijn.
 
-Nadat de licentie server is ingesteld, moet u het [virtuele netwerk (VNet)](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-connect-peer-virtual-network) koppelen aan uw [Lab-account](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account).  De netwerk peering moet worden uitgevoerd voordat u het Lab maakt, zodat de virtuele machines van het lab toegang hebben tot de licentie server en de andere manier.
+Nadat de licentie server is ingesteld, moet u het [virtuele netwerk (VNet)](./how-to-connect-peer-virtual-network.md) koppelen aan uw [Lab-account](./tutorial-setup-lab-account.md).  De netwerk peering moet worden uitgevoerd voordat u het Lab maakt, zodat de virtuele machines van het lab toegang hebben tot de licentie server en de andere manier.
 
 > [!NOTE]
-> Controleer of de juiste poorten zijn geopend op de firewalls om communicatie tussen de virtuele machines van het lab en de licentie server toe te staan.  Zie bijvoorbeeld de instructies voor het wijzigen van de [computer poorten voor licentie beheer voor Windows Firewall](http://help.solidworks.com/2019/english/installation/install_guide/t_mod_ports_on_lic_mgr_for_firewall.htm) die laten zien hoe u regels voor binnenkomend en uitgaand verkeer toevoegt aan de firewall van de licentie server.  Mogelijk moet u ook poorten openen voor de virtuele lab-machines.  Volg de stappen in het artikel over [firewall instellingen voor Labs](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-firewall-settings) voor meer informatie hierover, inclusief het verkrijgen van het open bare IP-adres van het lab.
+> Controleer of de juiste poorten zijn geopend op de firewalls om communicatie tussen de virtuele machines van het lab en de licentie server toe te staan.  Zie bijvoorbeeld de instructies voor het wijzigen van de [computer poorten voor licentie beheer voor Windows Firewall](http://help.solidworks.com/2019/english/installation/install_guide/t_mod_ports_on_lic_mgr_for_firewall.htm) die laten zien hoe u regels voor binnenkomend en uitgaand verkeer toevoegt aan de firewall van de licentie server.  Mogelijk moet u ook poorten openen voor de virtuele lab-machines.  Volg de stappen in het artikel over [firewall instellingen voor Labs](./how-to-configure-firewall-settings.md) voor meer informatie hierover, inclusief het verkrijgen van het open bare IP-adres van het lab.
 
 ## <a name="lab-configuration"></a>Lab-configuratie
 
-Als u dit Lab wilt instellen, hebt u een Azure-abonnement en een Lab-account nodig om aan de slag te gaan. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint. Zodra u een Azure-abonnement hebt ontvangen, kunt u een nieuw Lab-account maken in Azure Lab Services. Zie de zelf studie over het [instellen van een Lab-account](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account)voor meer informatie over het maken van een nieuw Lab-account. U kunt ook een bestaand Lab-account gebruiken.
+Als u dit Lab wilt instellen, hebt u een Azure-abonnement en een Lab-account nodig om aan de slag te gaan. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint. Zodra u een Azure-abonnement hebt ontvangen, kunt u een nieuw Lab-account maken in Azure Lab Services. Zie de zelf studie over het [instellen van een Lab-account](./tutorial-setup-lab-account.md)voor meer informatie over het maken van een nieuw Lab-account. U kunt ook een bestaand Lab-account gebruiken.
 
 ### <a name="lab-account-settings"></a>Instellingen van Lab-account
 
-Schakel de instellingen die worden beschreven in de onderstaande tabel voor het lab-account in. Voor meer informatie over het inschakelen van Marketplace-installatie kopieën raadpleegt u het artikel over het [opgeven van Marketplace-installatie kopieën die beschikbaar zijn voor Lab-makers](https://docs.microsoft.com/azure/lab-services/classroom-labs/specify-marketplace-images).
+Schakel de instellingen die worden beschreven in de onderstaande tabel voor het lab-account in. Voor meer informatie over het inschakelen van Marketplace-installatie kopieën raadpleegt u het artikel over het [opgeven van Marketplace-installatie kopieën die beschikbaar zijn voor Lab-makers](./specify-marketplace-images.md).
 
 | Account instelling Lab | Instructies |
 | ------------------- | ------------ |
-|Marketplace-installatie kopie| Schakel de Windows 10 Pro-installatie kopie in voor gebruik binnen uw Lab-account.|
+|Marketplace-installatiekopie| Schakel de Windows 10 Pro-installatie kopie in voor gebruik binnen uw Lab-account.|
 
 > [!NOTE]
 > Naast Windows 10 ondersteunt SOLIDWORKS andere versies van Windows.  Raadpleeg de [systeem vereisten voor SOLIDWORKS](https://www.solidworks.com/sw/support/SystemRequirements.html) voor meer informatie.
@@ -50,7 +50,7 @@ Gebruik de instellingen in de onderstaande tabel bij het instellen van een leslo
 
 | Lab-instellingen | Waarde/instructies |
 | ------------ | ------------------ |
-|Grootte van virtuele machine| **Kleine GPU (visualisatie)**.  Deze VM is het meest geschikt voor externe visualisatie, streaming, games, code ring met behulp van frameworks zoals OpenGL en DirectX.|  
+|Grootte van de virtuele machine| **Kleine GPU (visualisatie)**.  Deze VM is het meest geschikt voor externe visualisatie, streaming, games, code ring met behulp van frameworks zoals OpenGL en DirectX.|  
 |Installatie kopie van virtuele machine| Windows 10 Pro|
 
 > [!NOTE]
@@ -76,7 +76,7 @@ De stappen in deze sectie laten zien hoe u de virtuele machine van uw sjabloon k
     > [!NOTE]
     > In het dialoog venster **server toevoegen** wordt u gevraagd om het **poort nummer** dat wordt gebruikt voor uw licentie server en de naam of het IP-adres van de licentie server.
 
-## <a name="cost"></a>Cost
+## <a name="cost"></a>Kosten
 
 Laten we een mogelijke schatting van de kosten voor deze klasse beslaan. Deze schatting omvat niet de kosten voor het uitvoeren van de licentie server. We gebruiken een klasse van 25 studenten. Er zijn 20 uur geplande tijd voor de klasse. Daarnaast krijgt elke student tien uur quota voor huis werk of toewijzingen buiten een geplande klasse tijd. De grootte van de virtuele machine die u hebt gekozen, is een **kleine GPU (visualisatie)**. dit zijn 160 Lab-eenheden.
 

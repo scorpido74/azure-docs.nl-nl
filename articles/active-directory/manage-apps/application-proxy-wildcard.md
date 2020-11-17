@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b566081459b0bab0aae9831e128ffbee0efaf4e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b2563b238bae310d662220d2c244e863249c9c4
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85367730"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651937"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Joker tekens voor toepassingen in de Azure Active Directory toepassings proxy
 
@@ -72,7 +72,7 @@ Wanneer u aangepaste domeinen gebruikt, moet u een DNS-vermelding maken met een 
 
 > `<yourAADTenantId>.tenant.runtime.msappproxy.net`
 
-Als u wilt controleren of u de CNAME juist hebt geconfigureerd, kunt u [nslookup](https://docs.microsoft.com/windows-server/administration/windows-commands/nslookup) gebruiken op een van de doel eindpunten, bijvoorbeeld `expenses.adventure-works.com` .  Uw antwoord moet de reeds vermelde alias ( `<yourAADTenantId>.tenant.runtime.msappproxy.net` ) bevatten.
+Als u wilt controleren of u de CNAME juist hebt geconfigureerd, kunt u [nslookup](/windows-server/administration/windows-commands/nslookup) gebruiken op een van de doel eindpunten, bijvoorbeeld `expenses.adventure-works.com` .  Uw antwoord moet de reeds vermelde alias ( `<yourAADTenantId>.tenant.runtime.msappproxy.net` ) bevatten.
 
 ## <a name="considerations"></a>Overwegingen
 
@@ -84,7 +84,7 @@ Voor Joker teken toepassingen moet de **interne URL** worden opgemaakt als `http
 
 ![Gebruik voor interne URL de notatie http (s)://*. \< domein>](./media/application-proxy-wildcard/22.png)
 
-Wanneer u een **externe URL**configureert, moet u de volgende indeling gebruiken: `https://*.<custom domain>`
+Wanneer u een **externe URL** configureert, moet u de volgende indeling gebruiken: `https://*.<custom domain>`
 
 ![Gebruik voor externe URL de notatie https://*. \< aangepast domein>](./media/application-proxy-wildcard/21.png)
 
@@ -156,7 +156,7 @@ De configuratie implementeert de volgende structuur:
 
 ![Toont de structuur die door de voorbeeld configuratie is geïmplementeerd](./media/application-proxy-wildcard/05.png)
 
-| Kleur | Beschrijving |
+| Color | Beschrijving |
 | ---   | ---         |
 | Blue  | Toepassingen worden expliciet gepubliceerd en zichtbaar in de Azure Portal. |
 | Grijs  | Toepassingen die u via de bovenliggende toepassing kunt openen. |
@@ -169,11 +169,11 @@ U moet ervoor zorgen dat er een CNAME-records bestaan die `finance.adventure-wor
 
 Aan de hand van de [gedocumenteerde stappen](application-proxy-add-on-premises-application.md)zijn voor dit scenario de volgende instellingen vereist:
 
-- In de **interne URL**stelt u **Financiën** in in plaats van een Joker teken.
+- In de **interne URL** stelt u **Financiën** in in plaats van een Joker teken.
 
     ![Voor beeld: Finance instellen in plaats van een Joker teken in interne URL](./media/application-proxy-wildcard/52.png)
 
-- In de **externe URL**stelt u **Financiën** in in plaats van een Joker teken.
+- In de **externe URL** stelt u **Financiën** in in plaats van een Joker teken.
 
     ![Voor beeld: Finance instellen in plaats van een Joker teken in externe URL](./media/application-proxy-wildcard/53.png)
 

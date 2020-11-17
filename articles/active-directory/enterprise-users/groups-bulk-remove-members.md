@@ -4,21 +4,21 @@ description: Groeps leden verwijderen uit bulk bewerkingen in het Azure-beheer c
 services: active-directory
 author: curtand
 ms.author: curtand
-manager: mtillman
-ms.date: 04/27/2020
+manager: daveba
+ms.date: 11/15/2020
 ms.topic: how-to
 ms.service: active-directory
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5da3da152fa8d0f568ee0f4075dafb8da8c3bf8a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 83b905faa892cc338b5bdf4f998ad95f7b8a484e
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375543"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650849"
 ---
 # <a name="bulk-remove-group-members-in-azure-active-directory"></a>Groeps leden bulksgewijs verwijderen in Azure Active Directory
 
@@ -48,9 +48,9 @@ De rijen in een gedownloade CSV-sjabloon zijn als volgt:
 ## <a name="to-bulk-remove-group-members"></a>Groeps leden bulksgewijs verwijderen
 
 1. Meld u aan bij [de Azure Portal](https://portal.azure.com) met een Administrator-account van de gebruiker in de organisatie. Groeps eigenaren kunnen ook leden verwijderen van de groepen waarvan ze eigenaar zijn.
-1. Selecteer **groepen**  >  **alle groepen**in azure AD.
+1. Selecteer **groepen**  >  **alle groepen** in azure AD.
 1. Open de groep waaruit u leden wilt verwijderen en selecteer vervolgens **leden**.
-1. Selecteer **leden verwijderen**op de pagina **leden** .
+1. Selecteer **leden verwijderen** op de pagina **leden** .
 1. Selecteer op de pagina **groeps leden bulksgewijs verwijderen** de optie **downloaden** om de CSV-bestands sjabloon met de vereiste eigenschappen voor de groeps leden op te halen.
 
    ![De opdracht leden verwijderen bevindt zich op de profiel pagina voor de groep](./media/groups-bulk-remove-members/remove-panel.png)
@@ -59,8 +59,8 @@ De rijen in een gedownloade CSV-sjabloon zijn als volgt:
 
     :::image type="content" source="./media/groups-bulk-import-members/csv-file.png" alt-text="Het CSV-bestand bevat namen en Id's van de groeps leden die moeten worden verwijderd":::
 
-1. Blader op de pagina **groeps leden bulksgewijs verwijderen** onder **uw CSV-bestand uploaden**naar het bestand. Wanneer u het bestand selecteert, wordt de validatie van het CSV-bestand gestart.
-1. Wanneer de bestands inhoud is gevalideerd, wordt het **bestand dat is geüpload**weer gegeven op de pagina Bulk Import. Als er fouten zijn, moet u deze corrigeren voordat u de taak kunt verzenden.
+1. Blader op de pagina **groeps leden bulksgewijs verwijderen** onder **uw CSV-bestand uploaden** naar het bestand. Wanneer u het bestand selecteert, wordt de validatie van het CSV-bestand gestart.
+1. Wanneer de bestands inhoud is gevalideerd, wordt het **bestand dat is geüpload** weer gegeven op de pagina Bulk Import. Als er fouten zijn, moet u deze corrigeren voordat u de taak kunt verzenden.
 1. Wanneer de validatie van uw bestand wordt door gegeven, selecteert u **verzenden** om de Azure-bulk bewerking te starten waarmee de groeps leden uit de groep worden verwijderd.
 1. Wanneer het verwijderen is voltooid, ziet u een melding dat de bulk bewerking is geslaagd.
 
@@ -70,7 +70,7 @@ U kunt de status van al uw bulk aanvragen in behandeling bekijken op de pagina *
 
 [![Controleer de status op de pagina resultaten van bulk bewerkingen](./media/groups-bulk-remove-members/bulk-center.png)](./media/groups-bulk-remove-members/bulk-center.png#lightbox)
 
-Selecteer de waarden onder de kolommen **# geslaagd**, **# fout**of **Totaal aantal aanvragen** voor meer informatie over elk regel item in de bulk bewerking. Als er fouten zijn opgetreden, worden de redenen voor de fouten weergegeven.
+Selecteer de waarden onder de kolommen **# geslaagd**, **# fout** of **Totaal aantal aanvragen** voor meer informatie over elk regel item in de bulk bewerking. Als er fouten zijn opgetreden, worden de redenen voor de fouten weergegeven.
 
 ## <a name="bulk-removal-service-limits"></a>Limieten voor bulksgewijs verwijderen van service
 

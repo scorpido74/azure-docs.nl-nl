@@ -9,18 +9,18 @@ manager: daveba
 ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
-ms.subservice: users-groups-roles
-ms.date: 04/29/2020
+ms.subservice: enterprise-users
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e1b61ca00b83d4c6b43fb5ade68dfb1228f0e0d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 732a92aea321bac0bc9cea4d3eee5a3979a469b1
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375421"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650577"
 ---
 # <a name="assign-licenses-to-users-by-group-membership-in-azure-active-directory"></a>Licenties toewijzen aan gebruikers per groepslid maatschap in Azure Active Directory
 
@@ -39,7 +39,7 @@ In dit voor beeld bevat de Azure AD-organisatie een beveiligings groep met de na
 
 1. Selecteer **licenties** om een pagina te openen waar u alle licentie-producten in de organisatie kunt zien en beheren.
 
-1. Onder **alle producten**selecteert u zowel Office 365 Enter prise E5 als Enterprise Mobility + Security E3 door de product namen te selecteren. Als u de toewijzing wilt starten, selecteert u boven aan de pagina **toewijzen** .
+1. Onder **alle producten** selecteert u zowel Office 365 Enter prise E5 als Enterprise Mobility + Security E3 door de product namen te selecteren. Als u de toewijzing wilt starten, selecteert u boven aan de pagina **toewijzen** .
 
    ![Producten selecteren om licenties toe te wijzen](./media/licensing-groups-assign/licenses-all-products-assign.png)
   
@@ -81,7 +81,7 @@ Wanneer u licenties aan een groep toewijst, worden alle bestaande leden van die 
 
 ## <a name="step-3-check-for-license-problems-and-resolve-them"></a>Stap 3: controleren op licentie problemen en deze oplossen
 
-1. Ga naar **Azure Active Directory**  >  **groepen**en zoek de groep waaraan de licenties zijn toegewezen.
+1. Ga naar **Azure Active Directory**  >  **groepen** en zoek de groep waaraan de licenties zijn toegewezen.
 1. Selecteer op de pagina groep de optie **licenties**. In de melding boven op de pagina ziet u dat er 10 gebruikers zijn waaraan geen licenties kunnen worden toegewezen. Open het om een lijst met alle gebruikers met een licentie fout status voor deze groep weer te geven.
 1. In de kolom **Mislukte toewijzingen** wordt aangegeven dat beide product licenties niet aan de gebruikers kunnen worden toegewezen. De **eerste reden voor de fout** kolom bevat de oorzaak van de fout. In dit geval zijn er **conflicterende service plannen**.
 

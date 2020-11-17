@@ -7,31 +7,27 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/06/2019
+ms.date: 11/16/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cf072ae9544cd479aeca02d9b9fcd670b8eb5fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 74754c973dbe11d954a1714e9a98d99de639acd4
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89226893"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651138"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Vereisten voor Azure AD Connect-cloudinrichting
 Dit artikel bevat richt lijnen voor het kiezen en gebruiken van Azure Active Directory (Azure AD) verbinden met Cloud inrichting als uw identiteits oplossing.
-
-
 
 ## <a name="cloud-provisioning-agent-requirements"></a>Vereisten voor de inrichtings agent voor Cloud
 U hebt het volgende nodig voor het gebruik van Azure AD Connect Cloud inrichting:
     
 - Een hybride identiteits beheerders account voor uw Azure AD-Tenant die geen gast gebruiker is.
 - Een on-premises server voor de inrichtings agent met Windows 2012 R2 of hoger.  Deze server moet een laag 0-server zijn op basis van het [Active Directory administratieve laag model](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material).
+- Domein beheerder of ondernemings Administrator referenties voor het maken van de Azure AD Connect Cloud Sync gMSA (door groep beheerd service account) voor het uitvoeren van de Agent service.
 - On-premises firewall configuraties.
-
->[!NOTE]
->De inrichtings agent kan momenteel alleen worden geïnstalleerd op de Engelse taal servers. Het installeren van een Engels taal pakket op een niet-Engelse server is geen geldige tijdelijke oplossing, waardoor de agent niet kan worden geïnstalleerd. 
 
 De rest van het document bevat stapsgewijze instructies voor deze vereisten.
 
@@ -57,7 +53,9 @@ Voer het [hulp programma IdFix](/office365/enterprise/prepare-directory-attribut
         | --- | --- |
         | **80** | Hiermee worden de certificaatintrekkingslijsten (Crl's) gedownload tijdens het valideren van het TLS/SSL-certificaat.  |
         | **443** | Hiermee wordt alle uitgaande communicatie met de service verwerkt. |
+        |**8082**|Vereist voor de installatie en als u de beheer-API wilt configureren.  Deze poort kan worden verwijderd zodra de agent is geïnstalleerd en als u geen gebruik maakt van de API.   |
         | **8080** (optioneel) | Agents rapporteren hun status elke 10 minuten via poort 8080, als poort 443 niet beschikbaar is. Deze status wordt weer gegeven in de Azure AD-Portal. |
+   
      
    - Als met uw firewall regels worden afgedwongen op basis van de herkomst van gebruikers, opent u deze poorten voor verkeer dat afkomstig is van Windows-services die als een netwerkservice worden uitgevoerd.
    - Als u met uw firewall of proxy veilige achtervoegsels kunt opgeven, voegt u verbindingen toe aan \* . msappproxy.net en \* . servicebus.Windows.net. Als dat niet het geval is, moet u toegang toestaan tot de [IP-adresbereiken van Azure Datacenter](https://www.microsoft.com/download/details.aspx?id=41653), die elke week worden bijgewerkt.
@@ -66,6 +64,17 @@ Voer het [hulp programma IdFix](/office365/enterprise/prepare-directory-attribut
 
 >[!NOTE]
 > Het is niet mogelijk om de inrichtings agent voor Clouds te installeren op Windows Server Core.
+
+## <a name="group-managed-service-accounts"></a>Door groep beheerde serviceaccounts
+Een beheerd service account voor een groep is een beheerd domein account dat automatische wachtwoord beheer, vereenvoudigd Service Principal Name (SPN)-beheer biedt, de mogelijkheid om het beheer te delegeren aan andere beheerders en deze functionaliteit uit te breiden op meerdere servers.  Azure AD Connect Cloud Sync ondersteunt en maakt gebruik van een gMSA voor het uitvoeren van de agent.  Tijdens de installatie wordt u gevraagd om beheerders referenties, om dit account te maken.  Het account wordt weer gegeven als (domain\provAgentgMSA $).  Zie [beheerde service accounts voor groepen](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) voor meer informatie over een gMSA 
+
+### <a name="prerequisites-for-gmsa"></a>Vereisten voor gMSA:
+1.  Het Active Directory schema in het forest van het gMSA-domein moet worden bijgewerkt naar Windows Server 2012
+2.  [Power shell RSAT-modules](https://docs.microsoft.com/windows-server/remote/remote-server-administration-tools) op een domein controller
+3.  Op ten minste één domein controller in het domein moet Windows Server 2012 worden uitgevoerd.
+4.  Een server die lid is van een domein waarop de agent wordt geïnstalleerd, moet Windows Server 2012 of hoger zijn.
+
+Zie [beheerde service accounts voor groepen](how-to-install.md#group-managed-service-accounts)voor stappen voor het bijwerken van een bestaande agent voor het gebruik van een gMSA-account.
 
 
 ### <a name="additional-requirements"></a>Aanvullende vereisten
@@ -90,6 +99,8 @@ Voer de volgende stappen uit om TLS 1,2 in te scha kelen.
     ```
 
 1. Start de server opnieuw.
+
+
 
 
 ## <a name="next-steps"></a>Volgende stappen 

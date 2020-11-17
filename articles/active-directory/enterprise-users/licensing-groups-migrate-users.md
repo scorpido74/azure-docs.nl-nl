@@ -10,18 +10,18 @@ editor: ''
 ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
-ms.subservice: users-groups-roles
-ms.date: 11/08/2019
+ms.subservice: enterprise-users
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: seohack1;it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 179ad1e552899f8fa92b8191fe78223458f87104
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: f202bebd2c9ab6147d8a37fc6109b915065068aa
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375415"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650339"
 ---
 # <a name="how-to-migrate-users-with-individual-licenses-to-groups-for-licensing"></a>Gebruikers met afzonderlijke licenties migreren naar groepen voor licentie verlening
 
@@ -57,13 +57,13 @@ Het migratie proces kan er als volgt uitzien:
 
 1. Wijs de Office 365 E3-licentie toe aan de groep **alle gebruikers** in azure AD met behulp van de Azure Portal.
 
-1. Controleer of de licentie toewijzing is voltooid voor alle gebruikers. Ga naar de pagina overzicht voor de groep, selecteer **licenties**en controleer de verwerkings status boven aan de Blade **licenties** .
+1. Controleer of de licentie toewijzing is voltooid voor alle gebruikers. Ga naar de pagina overzicht voor de groep, selecteer **licenties** en controleer de verwerkings status boven aan de Blade **licenties** .
 
    - Zoek naar "nieuwste licentie wijzigingen zijn toegepast op alle gebruikers" om te bevestigen dat de verwerking is voltooid.
 
    - Zoek op de hoogte van alle gebruikers voor wie de licenties mogelijk niet zijn toegewezen. Zijn er geen licenties meer voor sommige gebruikers? Hebben sommige gebruikers conflicterende licentie plannen die voor komen dat ze groeps licenties overnemen?
 
-1. Let op dat sommige gebruikers controleren of ze de directe en groeps licenties hebben toegepast. Ga naar de profiel pagina voor een gebruiker, selecteer **licenties**en controleer de status van licenties.
+1. Let op dat sommige gebruikers controleren of ze de directe en groeps licenties hebben toegepast. Ga naar de profiel pagina voor een gebruiker, selecteer **licenties** en controleer de status van licenties.
 
    - Dit is de verwachte gebruikers status tijdens de migratie:
 

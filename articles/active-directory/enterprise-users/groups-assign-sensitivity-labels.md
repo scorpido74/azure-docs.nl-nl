@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: how-to
-ms.date: 08/13/2020
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 63b754886d88e97134b30e4a2bee7bdf5ac5a9d3
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: c30dea57310fb040d8fa5f52e1d8576c2dd08504
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375606"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650832"
 ---
 # <a name="assign-sensitivity-labels-to-microsoft-365-groups-in-azure-active-directory"></a>Gevoeligheids labels toewijzen aan Microsoft 365 groepen in Azure Active Directory
 
@@ -73,7 +73,7 @@ U moet ook uw gevoeligheids labels synchroniseren met Azure AD. Zie voor instruc
 ## <a name="assign-a-label-to-a-new-group-in-azure-portal"></a>Een label toewijzen aan een nieuwe groep in Azure Portal
 
 1. Meld u aan bij het [Azure AD-beheer centrum](https://aad.portal.azure.com).
-1. Selecteer **groepen**en selecteer vervolgens **nieuwe groep**.
+1. Selecteer **groepen** en selecteer vervolgens **nieuwe groep**.
 1. Op de pagina **nieuwe groep** selecteert u **Office 365**, voert u de vereiste gegevens voor de nieuwe groep in en selecteert u een gevoeligheids label in de lijst.
 
    ![Een gevoeligheids label toewijzen op de pagina nieuwe groepen](./media/groups-assign-sensitivity-labels/new-group-page.png)

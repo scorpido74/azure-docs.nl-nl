@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Meer informatie over het maken en gebruiken van een statisch IP-adres met de Azure Kubernetes service (AKS) load balancer.
 services: container-service
 ms.topic: article
-ms.date: 03/09/2020
-ms.openlocfilehash: 3055b5d32055d0ed0e3870f16f6af95407a68cd9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/14/2020
+ms.openlocfilehash: 22fd099633556fa9ddce575c2ac238b4950667cb
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86243933"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651886"
 ---
 # <a name="use-a-static-public-ip-address-and-dns-label-with-the-azure-kubernetes-service-aks-load-balancer"></a>Gebruik een statisch openbaar IP-adres en een DNS-label met de Azure Kubernetes-service (AKS) load balancer
 
@@ -22,7 +22,7 @@ In dit artikel wordt beschreven hoe u een statisch openbaar IP-adres maakt en di
 
 In dit artikel wordt ervan uitgegaan dat u beschikt over een bestaand AKS-cluster. Als u een AKS-cluster nodig hebt, raadpleegt u de AKS Quick Start [met behulp van de Azure cli][aks-quickstart-cli] of [met behulp van de Azure Portal][aks-quickstart-portal].
 
-Ook moet de Azure CLI-versie 2.0.59 of hoger zijn geïnstalleerd en geconfigureerd. Voer  `az --version` uit om de versie te bekijken. Als u wilt installeren of upgraden, raadpleegt u [Azure cli installeren][install-azure-cli].
+Ook moet de Azure CLI-versie 2.0.59 of hoger zijn geïnstalleerd en geconfigureerd. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren][install-azure-cli] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 In dit artikel wordt gebruikgemaakt van een *standaard* SKU-IP-adres met een *standaard* SKU-Load Balancer. Zie [IP-adres typen en toewijzings methoden in azure][ip-sku]voor meer informatie.
 
@@ -73,6 +73,9 @@ az role assignment create \
 ```
 
 U kunt ook de door het systeem toegewezen beheerde identiteit voor machtigingen gebruiken in plaats van de Service-Principal. Zie [Beheerde identiteiten gebruiken](use-managed-identity.md) voor meer informatie.
+
+> [!IMPORTANT]
+> Als u uw uitgaande IP-adres hebt aangepast, moet u ervoor zorgen dat uw cluster identiteit machtigingen heeft voor zowel het uitgaande open bare IP-adres als dit inkomende open bare IP.
 
 Als u een *Load Balancer* -service met het statische open bare IP-adres wilt maken, voegt `loadBalancerIP` u de eigenschap en de waarde van het statische open bare IP-adres toe aan het yaml-manifest. Maak een bestand `load-balancer-service.yaml` met de naam en kopieer de volgende YAML. Geef uw eigen open bare IP-adres op dat u in de vorige stap hebt gemaakt. In het volgende voor beeld wordt de aantekening ook ingesteld op de resource groep met de naam *myResourceGroup*. Geef de naam van uw eigen resource groep op.
 

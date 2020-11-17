@@ -12,20 +12,20 @@ ms.date: 02/18/2019
 ms.author: kenwith
 ms.reviewer: luleon, asteen
 ms.custom: contperfq2
-ms.openlocfilehash: 12b11d6283bbed4e43daf52a65c0c259c476e73f
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: e75669c70c67d55c94642a0f6dbe3c9dbc3376e6
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357909"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651546"
 ---
 # <a name="problems-signing-in-to-saml-based-single-sign-on-configured-apps"></a>Problemen bij het aanmelden bij geconfigureerde apps voor eenmalige aanmelding op basis van SAML
 Voor het oplossen van de onderstaande aanmeldings problemen raden we het volgende aan om de oplossings stappen beter te diagnosticeren en te automatiseren:
 
-- Installeer de [beveiligde browser uitbreiding mijn apps](access-panel-extension-problem-installing.md) om Azure Active Directory (Azure AD) te helpen bij het verbeteren van de test ervaring in de Azure Portal.
-- Reproduceer de fout met behulp van de test ervaring op de pagina app-configuratie in de Azure Portal. Meer informatie over het [opsporen van op SAML gebaseerde toepassingen voor eenmalige aanmelding](../azuread-dev/howto-v1-debug-saml-sso-issues.md)
+- Installeer de [beveiligde browser uitbreiding mijn apps](./access-panel-deployment-plan.md) om Azure Active Directory (Azure AD) te helpen bij het verbeteren van de test ervaring in de Azure Portal.
+- Reproduceer de fout met behulp van de test ervaring op de pagina app-configuratie in de Azure Portal. Meer informatie over het [opsporen van op SAML gebaseerde toepassingen voor eenmalige aanmelding](./debug-saml-sso-issues.md)
 
-Als u de [test ervaring](../azuread-dev/howto-v1-debug-saml-sso-issues.md) in de Azure Portal met de beveiligde browser uitbreiding van mijn apps gebruikt, hoeft u de onderstaande stappen niet hand matig uit te voeren om de configuratie pagina voor eenmalige aanmelding op basis van SAML te openen.
+Als u de [test ervaring](./debug-saml-sso-issues.md) in de Azure Portal met de beveiligde browser uitbreiding van mijn apps gebruikt, hoeft u de onderstaande stappen niet hand matig uit te voeren om de configuratie pagina voor eenmalige aanmelding op basis van SAML te openen.
 
 De configuratie pagina voor eenmalige aanmelding op basis van SAML openen:
 1.  Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als **globale beheerder** of **coadmin**.
@@ -88,7 +88,7 @@ Azure AD biedt geen ondersteuning voor de SAML-aanvraag die met de toepassing is
 
 **Oplossing**
 
-1. Leg de SAML-aanvraag vast. Volg de zelf studie voor het [opsporen van op SAML gebaseerde eenmalige aanmelding bij toepassingen in azure AD](../azuread-dev/howto-v1-debug-saml-sso-issues.md) voor meer informatie over het vastleggen van de SAML-aanvraag.
+1. Leg de SAML-aanvraag vast. Volg de zelf studie voor het [opsporen van op SAML gebaseerde eenmalige aanmelding bij toepassingen in azure AD](./debug-saml-sso-issues.md) voor meer informatie over het vastleggen van de SAML-aanvraag.
 1. Neem contact op met de leverancier van de toepassing en verstrek de volgende gegevens:
     - SAML-aanvraag
     - [Vereisten voor het SAML-protocol voor eenmalige aanmelding voor Azure AD](../develop/single-sign-on-saml-protocol.md)
@@ -174,5 +174,5 @@ Vergelijk de resource waarmee u toegang vraagt in code met de geconfigureerde ma
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Quickstartreeks over toepassingsbeheer](add-application-portal-assign-users.md)
-- [Fout opsporing op SAML gebaseerde eenmalige aanmelding bij toepassingen in azure AD](../azuread-dev/howto-v1-debug-saml-sso-issues.md)
-- [Vereisten voor het SAML-protocol voor eenmalige aanmelding voor Azure AD](../develop/active-directory-single-sign-on-protocol-reference.md)
+- [Fout opsporing op SAML gebaseerde eenmalige aanmelding bij toepassingen in azure AD](./debug-saml-sso-issues.md)
+- [Vereisten voor het SAML-protocol voor eenmalige aanmelding voor Azure AD](../develop/single-sign-on-saml-protocol.md)

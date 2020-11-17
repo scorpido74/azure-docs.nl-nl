@@ -8,12 +8,12 @@ ms.date: 12/02/2019
 ms.topic: how-to
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
-ms.openlocfilehash: 34796a435536a48100b7434ed5267802cd2d549f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 94cf1f34db590abeb084c5e95367781e50c85efc
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89226944"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650092"
 ---
 # <a name="cloud-provisioning-troubleshooting"></a>Problemen met het inrichten van Clouds oplossen
 
@@ -45,13 +45,13 @@ Voer de volgende stappen uit om te controleren of de agent door Azure wordt gezi
 
 1. Meld u aan bij Azure Portal.
 1. Selecteer aan de linkerkant **Azure Active Directory**  >  **Azure AD CONNECT**. Selecteer in het midden de optie **inrichting beheren (preview)**.
-1. Selecteer **Alle agents controleren**op het scherm **Azure AD Provisioning (preview)** .
+1. Selecteer **Alle agents controleren** op het scherm **Azure AD Provisioning (preview)** .
 
-   ![Alle agents controleren](media/how-to-install/install7.png)</br>
+   ![Alle agents controleren](media/how-to-install/install-7.png)</br>
  
 1. Op het scherm **on-premises Provisioning agents** ziet u de agents die u hebt geïnstalleerd. Controleer of de agent in kwestie is en is gemarkeerd als *in orde*.
 
-   ![Scherm on-premises ingerichte agents](media/how-to-install/install8.png)</br>
+   ![Scherm on-premises ingerichte agents](media/how-to-install/install-8.png)</br>
 
 ### <a name="verify-the-port"></a>De poort controleren
 
@@ -59,14 +59,14 @@ Controleer of Azure luistert op poort 443 en of uw agent ermee kan communiceren.
 
 Met deze test wordt gecontroleerd of uw agents kunnen communiceren met Azure via poort 443. Open een browser en ga naar de vorige URL van de server waarop de agent is geïnstalleerd.
 
-![Verificatie van de bereik baarheid van de poort](media/how-to-install/verify2.png)
+![Verificatie van de bereik baarheid van de poort](media/how-to-install/verify-2.png)
 
 ### <a name="on-the-local-server"></a>Op de lokale server
 
 Voer de volgende stappen uit om te controleren of de agent wordt uitgevoerd.
 
-1. Op de server waarop de agent is geïnstalleerd, opent u **Services** door **ernaar te navigeren of door te gaan**met het  >  **uitvoeren**van  >  **Services. msc**.
-1. Zorg er bij **Services**voor dat **Microsoft Azure AD connect agent updater** en **Microsoft Azure AD Connect inrichtings agent** zijn, en de status wordt *uitgevoerd*.
+1. Op de server waarop de agent is geïnstalleerd, opent u **Services** door **ernaar te navigeren of door te gaan** met het  >  **uitvoeren** van  >  **Services. msc**.
+1. Zorg er bij **Services** voor dat **Microsoft Azure AD connect agent updater** en **Microsoft Azure AD Connect inrichtings agent** zijn, en de status wordt *uitgevoerd*.
 
    ![Scherm Services](media/how-to-troubleshoot/troubleshoot1.png)
 
@@ -85,8 +85,8 @@ Dit probleem wordt meestal veroorzaakt door een groeps beleid waarmee wordt voor
 Voer de volgende stappen uit om dit probleem op te lossen.
 
 1. Meld u met een beheerders account aan bij de server.
-1. Open **Services** door te navigeren naar de service of **door te gaan**met het  >  **uitvoeren**van  >  **Services. msc**.
-1. Dubbel klik onder **Services**op **Microsoft Azure AD Connect inrichtings agent**.
+1. Open **Services** door te navigeren naar de service of **door te gaan** met het  >  **uitvoeren** van  >  **Services. msc**.
+1. Dubbel klik onder **Services** op **Microsoft Azure AD Connect inrichtings agent**.
 1. Wijzig op het tabblad **Aanmelden** het **account** in een domein beheerder. Start de service vervolgens opnieuw. 
 
    ![Tabblad Aanmelden](media/how-to-troubleshoot/troubleshoot3.png)
@@ -164,7 +164,7 @@ De volgende sectie bevat informatie over het oplossen van object synchronisatie.
 
 ### <a name="provisioning-logs"></a>Inrichtingslogboeken
 
-In de Azure Portal kunnen inrichtings logboeken worden gebruikt om problemen met object synchronisatie op te sporen en op te lossen. Selecteer **Logboeken**om de logboeken weer te geven.
+In de Azure Portal kunnen inrichtings logboeken worden gebruikt om problemen met object synchronisatie op te sporen en op te lossen. Selecteer **Logboeken** om de logboeken weer te geven.
 
 ![Knop Logboeken](media/how-to-troubleshoot/log1.png)
 
@@ -191,7 +191,7 @@ Als u de status selecteert, ziet u aanvullende informatie over de quarantaine. U
 
 ### <a name="resolve-a-quarantine"></a>Een quarantaine omzetten
 
-- Gebruik de Azure Portal om de inrichtings taak opnieuw te starten. Selecteer **inrichting opnieuw opstarten**op de pagina configuratie van agent.
+- Gebruik de Azure Portal om de inrichtings taak opnieuw te starten. Selecteer **inrichting opnieuw opstarten** op de pagina configuratie van agent.
 
   ![Inrichting opnieuw starten](media/how-to-troubleshoot/quarantine3.png)
 

@@ -10,18 +10,18 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 10/24/2019
-ms.openlocfilehash: eacc104bf7157732f91507f631bcda2cd166bfb3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e3b6802bab2c5fae97be8e55c8d5c11ff570f78
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77588685"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651309"
 ---
 # <a name="keep-track-of-data-during-hunting-with-azure-sentinel"></a>Gegevens bijhouden tijdens de jacht met Azure Sentinel
 
 Voor de dreigings-jacht moet u de bergen aan logboek gegevens controleren op het zoeken naar informatie over schadelijk gedrag. Tijdens dit proces vinden onderzoekers gebeurtenissen die ze graag willen onthouden, opnieuw bezoeken en analyseren als onderdeel van het valideren van mogelijke hypo theses en het volledige verhaal van een inbreuk.
 
-Bewaak blad wijzers in azure Sentinel Help u dit doen door de query's te behouden die u in **Azure Sentinel-logs**hebt uitgevoerd, samen met de query resultaten die u relevant acht. U kunt ook uw contextuele waarnemingen vastleggen en naar uw bevindingen verwijzen door notities en tags toe te voegen. Blade gegevens zijn zichtbaar voor u en uw team leden voor eenvoudige samen werking.
+Bewaak blad wijzers in azure Sentinel Help u dit doen door de query's te behouden die u in **Azure Sentinel-logs** hebt uitgevoerd, samen met de query resultaten die u relevant acht. U kunt ook uw contextuele waarnemingen vastleggen en naar uw bevindingen verwijzen door notities en tags toe te voegen. Blade gegevens zijn zichtbaar voor u en uw team leden voor eenvoudige samen werking.
 
 U kunt uw bladwijzer gegevens op elk gewenst moment opnieuw bezoeken op het tabblad **blad wijzers** in het deel venster **jacht** . U kunt filters en zoek opties gebruiken om snel specifieke gegevens te vinden voor uw huidige onderzoek. U kunt uw gebladde gegevens ook rechtstreeks in de tabel **HuntingBookmark** in uw log Analytics-werk ruimte weer geven. Bijvoorbeeld:
 
@@ -56,12 +56,12 @@ U kunt ook in de preview-versie uw bladwijzer gegevens visualiseren door te klik
 
 6. Op de rechter kant kunt u in het deel venster **blad wijzer toevoegen** optioneel de naam van de blad wijzer bijwerken, Tags toevoegen en notities om u te helpen bij het identificeren van wat er interessant is voor het item.
 
-7. Gebruik in de sectie **query gegevens** de vervolg keuzelijst om informatie uit de query resultaten voor de entiteits typen **account**, **host**en **IP-adres** te extra heren. Met deze actie wordt het geselecteerde entiteits type toegewezen aan een specifieke kolom uit het query resultaat. Bijvoorbeeld:
+7. Gebruik in de sectie **query gegevens** de vervolg keuzelijst om informatie uit de query resultaten voor de entiteits typen **account**, **host** en **IP-adres** te extra heren. Met deze actie wordt het geselecteerde entiteits type toegewezen aan een specifieke kolom uit het query resultaat. Bijvoorbeeld:
     
     > [!div class="mx-imgBorder"]
     > ![Entiteits typen toewijzen voor jacht-blad wijzer](./media/bookmarks/map-entity-types-bookmark.png)
     
-    Als u de blad wijzer in het onderzoek diagram (momenteel in preview-versie) wilt weer geven, moet u ten minste één entiteits type toewijzen dat een **account**, **host**of **IP-adres**is. 
+    Als u de blad wijzer in het onderzoek diagram (momenteel in preview-versie) wilt weer geven, moet u ten minste één entiteits type toewijzen dat een **account**, **host** of **IP-adres** is. 
 
 5. Klik op **Opslaan** om uw wijzigingen door te voeren en de blad wijzer toe te voegen. Alle gegevens met een blad wijzer worden gedeeld met andere onderzoekers en zijn een eerste stap in de buurt van een samenwerkings ervaring.
 
@@ -90,7 +90,7 @@ U kunt ook in de preview-versie uw bladwijzer gegevens visualiseren door te klik
 
 1. Ga in het Azure Portal naar het tabblad voor het zoeken naar **Sentinel**  >  **Threat Management**  >  **Hunting**  >  -**Blades** en selecteer de blad wijzer of blad wijzers die u wilt onderzoeken.
 
-2. Zorg er in de Blade Details voor dat er ten minste één entiteit is toegewezen. Voor **entiteiten**ziet u bijvoorbeeld vermeldingen voor **IP**, **machine**of **account**.
+2. Zorg er in de Blade Details voor dat er ten minste één entiteit is toegewezen. Voor **entiteiten** ziet u bijvoorbeeld vermeldingen voor **IP**, **machine** of **account**.
 
 3. Klik op **onderzoeken** om de blad wijzer in het onderzoek diagram weer te geven.
 
@@ -110,12 +110,12 @@ Voor instructies voor het gebruik van de onderzoek grafiek raadpleegt u [de onde
     > [!div class="mx-imgBorder"]
     > ![Blad wijzers toevoegen aan incident](./media/bookmarks/incident-actions.png)
 
-3. Selecteer een **nieuw incident maken** of **toevoegen aan een bestaand incident**, indien nodig. Daarna kunt u het volgende doen:
+3. Selecteer een **nieuw incident maken** of **toevoegen aan een bestaand incident**, indien nodig. Vervolgens:
     
     - Voor een nieuw incident: werk eventueel de details van het incident bij en selecteer vervolgens **maken**.
     - Ga als volgt te werk om een blad wijzer toe te voegen aan een bestaand incident: Selecteer één incident en selecteer vervolgens **toevoegen**. 
 
-De blad wijzer binnen het incident bekijken: Navigeer naar **Sentinel**  >  **Threat Management**  >  **incidenten** en selecteer het incident met uw blad wijzer. Selecteer **volledige details weer geven**en selecteer vervolgens het tabblad **blad wijzers** .
+De blad wijzer binnen het incident bekijken: Navigeer naar **Sentinel**  >  **Threat Management**  >  **incidenten** en selecteer het incident met uw blad wijzer. Selecteer **volledige details weer geven** en selecteer vervolgens het tabblad **blad wijzers** .
 
 > [!TIP]
 > Als alternatief voor de optie **incident acties (preview)** op de opdracht balk kunt u het context menu (**...**) gebruiken voor een of meer blad wijzers om opties te selecteren voor het maken van een **nieuw incident**, **het toevoegen van een bestaand incident en het** **verwijderen van incidenten**. 
@@ -133,7 +133,7 @@ U kunt ook de gegevens van de onbewerkte Blade voor alle blad wijzers weer geven
 > [!div class="mx-imgBorder"]
 > ![Bladwijzer logboeken](./media/bookmarks/bookmark-logs.png)
 
-In deze weer gave worden alle blad wijzers met gekoppelde meta gegevens weer gegeven. U kunt [query language](https://docs.microsoft.com/sharepoint/dev/general-development/keyword-query-language-kql-syntax-reference) -query's (KQL) gebruiken om te filteren op de nieuwste versie van de Blade die u zoekt.
+In deze weer gave worden alle blad wijzers met gekoppelde meta gegevens weer gegeven. U kunt [query language](/sharepoint/dev/general-development/keyword-query-language-kql-syntax-reference) -query's (KQL) gebruiken om te filteren op de nieuwste versie van de Blade die u zoekt.
 
 > [!NOTE]
 > Er kan een aanzienlijke vertraging optreden (gemeten in minuten) tussen de tijd dat u een blad wijzer maakt en wanneer deze wordt weer gegeven op het tabblad **blad wijzers** .
