@@ -5,12 +5,12 @@ author: nicolela
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
-ms.openlocfilehash: abd182339719f19a521feed95f7cfbed6942b3e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3cbca82ba88baf5ddda2a6d7a6cdd35b62f28b8e
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91404779"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647933"
 ---
 # <a name="set-up-a-lab-with-gpu-virtual-machines"></a>Een Lab instellen met GPU virtual machines
 
@@ -30,14 +30,14 @@ Zoals beschreven in de volgende tabel is de *reken* GPU-grootte bedoeld voor com
 
 | Grootte | Kernen | RAM | Beschrijving | 
 | ---- | ----- | --- | ----------- | 
-| Kleine GPU (Compute) | -&nbsp;6 &nbsp; kernen<br>-&nbsp;56 &nbsp; GB &nbsp; RAM-geheugen  | [Standard_NC6](https://docs.microsoft.com/azure/virtual-machines/nc-series) |Deze grootte is het meest geschikt voor computerintensieve toepassingen zoals kunst matige intelligentie (AI) en diep gaande lessen. |
+| Kleine GPU (Compute) | -&nbsp;6 &nbsp; kernen<br>-&nbsp;56 &nbsp; GB &nbsp; RAM-geheugen  | [Standard_NC6](../virtual-machines/nc-series.md) |Deze grootte is het meest geschikt voor computerintensieve toepassingen zoals kunst matige intelligentie (AI) en diep gaande lessen. |
 
 De grootte van de *visualisatie* GPU is bedoeld voor grafische intensieve toepassingen.  Bijvoorbeeld, het [type SOLIDWORKS engineering](./class-type-solidworks.md) wordt weer gegeven met behulp van de grootte van de **kleine GPU (visualisatie)** .  De visualisatie GPU is geschikt voor dit type klasse, omdat studenten communiceren met de SOLIDWORKS 3D computer-aided design (CAD)-omgeving voor het model leren en visualiseren van effen objecten.
 
 | Grootte | Kernen | RAM | Beschrijving | 
 | ---- | ----- | --- | ----------- | 
-| Kleine GPU (visualisatie) | -&nbsp;6 &nbsp; kernen<br>-&nbsp;56 &nbsp; GB &nbsp; RAM-geheugen  | [Standard_NV6](https://docs.microsoft.com/azure/virtual-machines/nv-series) | Deze grootte is het meest geschikt voor externe visualisatie, streaming, games en code ring waarbij frameworks zoals OpenGL en DirectX worden gebruikt. |
-| Gemiddelde GPU (visualisatie) | -&nbsp;12 &nbsp; kernen<br>-&nbsp;112 &nbsp; GB &nbsp; RAM-geheugen  | [Standard_NV12](https://docs.microsoft.com/azure/virtual-machines/nv-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Deze grootte is het meest geschikt voor externe visualisatie, streaming, games en code ring waarbij frameworks zoals OpenGL en DirectX worden gebruikt. |
+| Kleine GPU (visualisatie) | -&nbsp;6 &nbsp; kernen<br>-&nbsp;56 &nbsp; GB &nbsp; RAM-geheugen  | [Standard_NV6](../virtual-machines/nv-series.md) | Deze grootte is het meest geschikt voor externe visualisatie, streaming, games en code ring waarbij frameworks zoals OpenGL en DirectX worden gebruikt. |
+| Gemiddelde GPU (visualisatie) | -&nbsp;12 &nbsp; kernen<br>-&nbsp;112 &nbsp; GB &nbsp; RAM-geheugen  | [Standard_NV12](../virtual-machines/nv-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) | Deze grootte is het meest geschikt voor externe visualisatie, streaming, games en code ring waarbij frameworks zoals OpenGL en DirectX worden gebruikt. |
 
 > [!NOTE]
 > Sommige van deze VM-grootten worden niet weer geven in de lijst wanneer u een leslokaal Lab maakt. De lijst wordt ingevuld op basis van de huidige capaciteit van de locatie van het lab. Als de maker van het lab-account [een locatie voor het lab](allow-lab-creator-pick-lab-location.md)kan kiezen, kunt u proberen een andere locatie voor het lab te kiezen en te controleren of de VM-grootte beschikbaar is. Zie [producten beschikbaar per regio](https://azure.microsoft.com/regions/services/?products=virtual-machines)voor de beschik baarheid van vm's.
@@ -76,7 +76,7 @@ Ga als volgt te werk om stuur Programma's hand matig te installeren voor de reke
 1. Nadat u de Stuur Programma's en andere software hebt geïnstalleerd die voor uw klasse zijn vereist, selecteert u **publiceren** om de vm's van uw studenten te maken.
 
 > [!NOTE]
-> Als u een Linux-installatie kopie gebruikt nadat u het installatie programma hebt gedownload, installeert u de Stuur Programma's door de instructies in [CUDA-Stuur Programma's installeren in Linux](https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup?toc=/azure/virtual-machines/linux/toc.json#install-cuda-drivers-on-n-series-vms)te volgen.
+> Als u een Linux-installatie kopie gebruikt nadat u het installatie programma hebt gedownload, installeert u de Stuur Programma's door de instructies in [CUDA-Stuur Programma's installeren in Linux](../virtual-machines/linux/n-series-driver-setup.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json#install-cuda-drivers-on-n-series-vms)te volgen.
 
 #### <a name="install-the-visualization-gpu-drivers"></a>De visualisatie GPU-Stuur Programma's installeren
 
@@ -85,8 +85,8 @@ Ga als volgt te werk om stuur Programma's hand matig te installeren voor de groo
 1. Schakel in de wizard Lab maken, wanneer u [uw Lab maakt](./how-to-manage-classroom-labs.md), de instelling **GPU-Stuur Programma's installeren** uit.
 1. Nadat uw Lab is gemaakt, maakt u verbinding met de VM van de sjabloon om de juiste Stuur Programma's te installeren.
 1. Installeer de raster Stuur Programma's die door micro soft worden meegeleverd met de sjabloon-VM door de instructies voor uw besturings systeem te volgen:
-   -  [Windows NVIDIA-raster Stuur Programma's](https://docs.microsoft.com/azure/virtual-machines/windows/n-series-driver-setup#nvidia-grid-drivers)
-   -  [Linux NVIDIA-raster Stuur Programma's](https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup?toc=/azure/virtual-machines/linux/toc.json#nvidia-grid-drivers)
+   -  [Windows NVIDIA-raster Stuur Programma's](../virtual-machines/windows/n-series-driver-setup.md#nvidia-grid-drivers)
+   -  [Linux NVIDIA-raster Stuur Programma's](../virtual-machines/linux/n-series-driver-setup.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json#nvidia-grid-drivers)
   
 1. Start de sjabloon-VM opnieuw op.
 1. Controleer of de Stuur Programma's correct zijn geïnstalleerd door de instructies in de sectie [de geïnstalleerde Stuur Programma's valideren](how-to-setup-lab-gpu.md#validate-the-installed-drivers) te volgen.
@@ -96,9 +96,9 @@ Ga als volgt te werk om stuur Programma's hand matig te installeren voor de groo
 In deze sectie wordt beschreven hoe u controleert of uw GPU-Stuur Programma's goed zijn geïnstalleerd.
 
 #### <a name="windows-images"></a>Windows-installatie kopieën
-1.  Volg de instructies in de sectie ' installatie van Stuur Programma's controleren ' van [NVIDIA GPU-Stuur Programma's installeren op vm's uit de N-serie waarop Windows wordt uitgevoerd](https://docs.microsoft.com/azure/virtual-machines/windows/n-series-driver-setup#verify-driver-installation).
+1.  Volg de instructies in de sectie ' installatie van Stuur Programma's controleren ' van [NVIDIA GPU-Stuur Programma's installeren op vm's uit de N-serie waarop Windows wordt uitgevoerd](../virtual-machines/windows/n-series-driver-setup.md#verify-driver-installation).
 1.  Als u een *visualisatie* -GPU gebruikt, kunt u ook het volgende doen:
-    - Bekijk en wijzig uw GPU-instellingen in het NVIDIA-configuratie scherm. Hiertoe selecteert u **Hardware**in **het configuratie scherm van Windows**en selecteert u vervolgens **NVIDIA-configuratie scherm**.
+    - Bekijk en wijzig uw GPU-instellingen in het NVIDIA-configuratie scherm. Hiertoe selecteert u **Hardware** in **het configuratie scherm van Windows** en selecteert u vervolgens **NVIDIA-configuratie scherm**.
 
       ![Scherm afbeelding van het configuratie scherm van Windows met de koppeling van het NVIDIA-configuratie scherm](./media/how-to-setup-gpu/control-panel-nvidia-settings.png) 
 
@@ -110,7 +110,7 @@ In deze sectie wordt beschreven hoe u controleert of uw GPU-Stuur Programma's go
       > De instellingen van het configuratie scherm van NVIDIA zijn alleen toegankelijk voor *visualisatie* gpu's.  Als u het NVIDIA-configuratie scherm probeert te openen voor een compute-GPU, wordt de volgende fout weer gegeven: "NVIDIA-weergave-instellingen zijn niet beschikbaar.  Er wordt momenteel geen weer gave gebruikt die is gekoppeld aan een NVIDIA-GPU.  Op dezelfde manier wordt de GPU-prestatie gegevens in taak beheer alleen gegeven voor visualisatie Gpu's.
 
 #### <a name="linux-images"></a>Linux-installatie kopieën
-Volg de instructies in de sectie ' installatie van Stuur Programma's controleren ' van [NVIDIA GPU-Stuur Programma's installeren op vm's met N-serie waarop Linux wordt uitgevoerd](https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup#verify-driver-installation).
+Volg de instructies in de sectie ' installatie van Stuur Programma's controleren ' van [NVIDIA GPU-Stuur Programma's installeren op vm's met N-serie waarop Linux wordt uitgevoerd](../virtual-machines/linux/n-series-driver-setup.md#verify-driver-installation).
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie de volgende artikelen:
@@ -118,6 +118,3 @@ Zie de volgende artikelen:
 - [Leslokaallabs maken en beheren](how-to-manage-classroom-labs.md)
 - [Type SOLIDWORKS computer-aided design (CAD)-klasse](class-type-solidworks.md)
 - [Het klassen type MATLAB (matrix laboratorium)](class-type-matlab.md)
-
-
-

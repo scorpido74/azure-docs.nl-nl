@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 11/10/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 873bebc462ce4756d38f966a87edda167bd49501
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 23a620f8031335e5a950df96427b11251f0ec042
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506376"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649310"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>T-SQL-verschillen tussen SQL Server & Azure SQL Managed instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -114,7 +114,7 @@ SQL Managed instance heeft geen toegang tot bestands shares en Windows-mappen, d
 
 Zie [certificaat](/sql/t-sql/statements/create-certificate-transact-sql) en [back-upcertificaat](/sql/t-sql/statements/backup-certificate-transact-sql)maken. 
  
-**Tijdelijke oplossing** : in plaats van het maken van een back-up van het certificaat en het herstellen van de back-up, [de binaire inhoud en de persoonlijke sleutel van het certificaat op te halen, deze op te slaan als. SQL-bestand en te maken](/sql/t-sql/functions/certencoded-transact-sql#b-copying-a-certificate-to-another-database)
+**Tijdelijke oplossing**: in plaats van het maken van een back-up van het certificaat en het herstellen van de back-up, [de binaire inhoud en de persoonlijke sleutel van het certificaat op te halen, deze op te slaan als. SQL-bestand en te maken](/sql/t-sql/functions/certencoded-transact-sql#b-copying-a-certificate-to-another-database)
 
 ```sql
 CREATE CERTIFICATE  
@@ -517,12 +517,11 @@ De volgende variabelen, functies en weer gaven retour neren verschillende result
 ### <a name="failover-groups"></a>Failovergroepen
 Systeem databases worden niet gerepliceerd naar het secundaire exemplaar in een failovergroep. Daarom zijn scenario's die afhankelijk zijn van objecten van de systeem databases niet mogelijk op het secundaire exemplaar, tenzij de objecten hand matig op de secundaire instantie worden gemaakt.
 
-### <a name="failover-groups"></a>Failovergroepen
-Systeem databases worden niet gerepliceerd naar het secundaire exemplaar in een failovergroep. Daarom zijn scenario's die afhankelijk zijn van objecten van de systeem databases niet mogelijk op het secundaire exemplaar, tenzij de objecten hand matig op de secundaire instantie worden gemaakt.
-
 ### <a name="tempdb"></a>TEMPDB
-
-De maximale bestands grootte van `tempdb` mag niet groter zijn dan 24 GB per kern op een algemeen laag. De maximale `tempdb` grootte van een bedrijfskritiek laag wordt beperkt door de opslag grootte van het SQL-beheerde exemplaar. `Tempdb` de grootte van het logboek bestand is beperkt tot 120 GB op Algemeen laag. Sommige query's retour neren mogelijk een fout als deze meer dan 24 GB per kern nodig heeft `tempdb` of als er meer dan 120 GB aan logboek gegevens worden geproduceerd.
+- De maximale bestands grootte van `tempdb` mag niet groter zijn dan 24 GB per kern op een algemeen laag. De maximale `tempdb` grootte van een bedrijfskritiek laag wordt beperkt door de opslag grootte van het SQL-beheerde exemplaar. `Tempdb` de grootte van het logboek bestand is beperkt tot 120 GB op Algemeen laag. Sommige query's retour neren mogelijk een fout als deze meer dan 24 GB per kern nodig heeft `tempdb` of als er meer dan 120 GB aan logboek gegevens worden geproduceerd.
+- `Tempdb` is altijd onderverdeeld in 12 gegevens bestanden: 1 primair, ook wel Master, Data File en 11 niet-primaire gegevens bestanden genoemd. Kan de bestands structuur niet wijzigen en er kunnen geen nieuwe bestanden aan worden toegevoegd `tempdb` . 
+- [ `tempdb` Meta gegevens](/sql/relational-databases/databases/tempdb-database?view=sql-server-ver15#memory-optimized-tempdb-metadata)die zijn geoptimaliseerd voor geheugen, een nieuwe SQL Server 2019 in-Memory database functie, worden niet ondersteund.
+- Objecten die in de model database zijn gemaakt, kunnen niet automatisch worden gemaakt `tempdb` na het opnieuw opstarten of een failover omdat de `tempdb` oorspronkelijke object lijst niet wordt opgehaald uit de gerepliceerde model database. 
 
 ### <a name="msdb"></a>MSDB
 

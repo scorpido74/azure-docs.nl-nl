@@ -15,12 +15,12 @@ ms.date: 04/08/2019
 ms.author: kenwith
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16af484e77787ee1d729ce97eec8c666bf925837
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 873a87ed2c75d41e0a249bde4b6a29921b7e5ce5
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84763581"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648052"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>Azure Active Directory aanmeldings gedrag configureren voor een toepassing met behulp van een beleid voor het detecteren van een thuis domein
 
@@ -195,7 +195,7 @@ New-AzureADPolicy -Definition @("{`"HomeRealmDiscoveryPolicy`":{`"AllowCloudPass
 ```
 
 
-Voer de volgende opdracht uit om het nieuwe beleid weer te geven en de **ObjectID**te verkrijgen:
+Voer de volgende opdracht uit om het nieuwe beleid weer te geven en de **ObjectID** te verkrijgen:
 
 ``` powershell
 Get-AzureADPolicy
@@ -207,7 +207,7 @@ Als u het HRD-beleid wilt Toep assen nadat u het hebt gemaakt, kunt u dit toewij
 #### <a name="step-2-locate-the-service-principal-to-which-to-assign-the-policy"></a>Stap 2: de Service-Principal zoeken waaraan het beleid moet worden toegewezen  
 U hebt de **ObjectID** nodig van de service-principals waaraan u het beleid wilt toewijzen. Er zijn verschillende manieren om de **ObjectID** van service-principals te vinden.    
 
-U kunt de portal gebruiken of u kunt een query uitvoeren op [Microsoft Graph](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta). U kunt ook naar het [hulp programma Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) gaan en u aanmelden bij uw Azure ad-account om alle service-principals van uw organisatie weer te geven. 
+U kunt de portal gebruiken of u kunt een query uitvoeren op [Microsoft Graph](/graph/api/resources/serviceprincipal?view=graph-rest-beta). U kunt ook naar het [hulp programma Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) gaan en u aanmelden bij uw Azure ad-account om alle service-principals van uw organisatie weer te geven. 
 
 Omdat u Power shell gebruikt, kunt u de volgende cmdlet gebruiken om de service-principals en hun Id's weer te geven.
 
@@ -267,6 +267,6 @@ Remove-AzureADServicePrincipalPolicy -id <ObjectId of the Service Principal>  -P
 Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 ```
 ## <a name="next-steps"></a>Volgende stappen
-- Zie [verificatie scenario's voor Azure AD](../develop/authentication-scenarios.md)voor meer informatie over hoe verificatie werkt in azure AD.
+- Zie [verificatie scenario's voor Azure AD](../develop/authentication-vs-authorization.md)voor meer informatie over hoe verificatie werkt in azure AD.
 - Zie voor meer informatie over eenmalige aanmelding [voor gebruikers eenmalige aanmelding bij toepassingen in azure Active Directory](what-is-single-sign-on.md).
 - Ga naar het [micro soft-identiteits platform](../develop/v2-overview.md) voor een overzicht van alle inhoud die betrekking heeft op ontwikkel aars.

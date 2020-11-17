@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: kenwith
 ms.reviewer: arvindh
-ms.openlocfilehash: 8968fd54968f3115641d2315a534ba61a247a06d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9bcf45cdfbadbf16f48f8f2ac3bd0c6320a2803f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90605121"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649225"
 ---
 # <a name="end-user-experiences-for-applications-in-azure-active-directory"></a>Ervaringen van eind gebruikers voor toepassingen in Azure Active Directory
 
@@ -37,13 +37,13 @@ Standaard worden alle toepassingen op één pagina weer gegeven. U kunt echter v
 
 Mijn apps staat los van de Azure Portal en vereist niet dat gebruikers een Azure-abonnement of Microsoft 365-abonnement hebben.
 
-Zie [Inleiding tot mijn apps](../user-help/active-directory-saas-access-panel-introduction.md)voor meer informatie over Azure AD-apps.
+Zie [Inleiding tot mijn apps](../user-help/my-apps-portal-end-user-access.md)voor meer informatie over Azure AD-apps.
 
 ## <a name="microsoft-365-application-launcher"></a>Start programma voor toepassing Microsoft 365
 
 Voor organisaties die Microsoft 365 hebben geïmplementeerd, worden toepassingen die zijn toegewezen aan gebruikers via Azure AD ook weer gegeven in de Office 365-Portal op [https://portal.office.com/myapps](https://portal.office.com/myapps) . Dit maakt het eenvoudig en handig voor gebruikers in een organisatie om hun apps te starten zonder dat ze een tweede Portal hoeven te gebruiken. Dit is de aanbevolen oplossing voor het starten van apps voor organisaties die Microsoft 365 gebruiken.
 
-Zie [uw app weer geven in het start programma voor apps van office 365](https://msdn.microsoft.com/office/office365/howto/connect-your-app-to-o365-app-launcher)voor meer informatie over het start programma voor Office 365-toepassingen.
+Zie [uw app weer geven in het start programma voor apps van office 365](/previous-versions/office/office-365-api/)voor meer informatie over het start programma voor Office 365-toepassingen.
 
 ## <a name="direct-sign-on-to-federated-apps"></a>Directe aanmelding bij federatieve apps
 

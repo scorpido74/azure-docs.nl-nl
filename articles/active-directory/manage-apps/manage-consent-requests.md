@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 12/27/2019
 ms.author: kenwith
 ms.reviewer: phsignor
-ms.openlocfilehash: 3d95d2551f8e078f4252a19dc850345793c040d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4664bdd515c815dbd742c0d4e05f1e5c03978526
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89420452"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649185"
 ---
 # <a name="managing-consent-to-applications-and-evaluating-consent-requests"></a>Het beheren van toestemming voor toepassingen en het evalueren van toestemming aanvragen
 
-Micro soft [raadt](https://docs.microsoft.com/azure/security/fundamentals/steps-secure-identity#restrict-user-consent-operations) aan om de toestemming van de eind gebruiker voor toepassingen uit te scha kelen. Hiermee wordt het besluitvormings proces gecentraliseerd met het beveiligings-en identiteits beheerders team van uw organisatie.
+Micro soft [raadt](../../security/fundamentals/steps-secure-identity.md#restrict-user-consent-operations) aan om de toestemming van de eind gebruiker voor toepassingen uit te scha kelen. Hiermee wordt het besluitvormings proces gecentraliseerd met het beveiligings-en identiteits beheerders team van uw organisatie.
 
 Nadat de toestemming van de eind gebruiker is uitgeschakeld of beperkt, zijn er enkele belang rijke aandachtspunten om ervoor te zorgen dat uw organisatie veilig blijft terwijl bedrijfs kritieke toepassingen nog steeds kunnen worden gebruikt. Deze stappen zijn van cruciaal belang om de impact op het ondersteunings team van uw organisatie en IT-beheerders te minimaliseren, en het gebruik van niet-beheerde accounts in toepassingen van derden te voor komen.
 
@@ -35,13 +35,13 @@ Nadat de toestemming van de eind gebruiker is uitgeschakeld of beperkt, zijn er 
 
 ## <a name="auditing-and-monitoring"></a>Controleren en bewaken
 
-1. [Apps controleren en machtigingen verlenen](https://docs.microsoft.com/azure/security/fundamentals/steps-secure-identity#audit-apps-and-consented-permissions) in uw organisatie om ervoor te zorgen dat er geen onzekere of verdachte toepassingen toegang hebben gekregen tot gegevens.
+1. [Apps controleren en machtigingen verlenen](../../security/fundamentals/steps-secure-identity.md#audit-apps-and-consented-permissions) in uw organisatie om ervoor te zorgen dat er geen onzekere of verdachte toepassingen toegang hebben gekregen tot gegevens.
 
-2. Bekijk [en herstel illegale toestemming subsidies in Office 365](https://docs.microsoft.com/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants) voor extra aanbevolen procedures en beveiliging tegen verdachte toepassingen die OAuth-toestemming aanvragen.
+2. Bekijk [en herstel illegale toestemming subsidies in Office 365](/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants) voor extra aanbevolen procedures en beveiliging tegen verdachte toepassingen die OAuth-toestemming aanvragen.
 
 3. Als uw organisatie de juiste licentie heeft:
 
-    * Gebruik extra [controle functies voor OAuth-toepassingen in Microsoft Cloud app Security](https://docs.microsoft.com/cloud-app-security/investigate-risky-oauth).
+    * Gebruik extra [controle functies voor OAuth-toepassingen in Microsoft Cloud app Security](/cloud-app-security/investigate-risky-oauth).
     * Gebruik [Azure monitor werkmappen om machtigingen en gerelateerde activiteiten te bewaken](../reports-monitoring/howto-use-azure-monitor-workbooks.md) . De *instemming* -werkmap van de toestemming biedt een overzicht van de apps op basis van het aantal mislukte toestemming aanvragen. Dit kan handig zijn om de prioriteit van toepassingen te bepalen en te bepalen of ze toestemming geven voor de beheerder.
 
 ### <a name="additional-considerations-for-reducing-friction"></a>Aanvullende overwegingen voor het verminderen van wrijving
@@ -75,7 +75,7 @@ De volgende lijst bevat enkele aanbevelingen waarmee u rekening moet houden bij 
 
 * **Meer informatie over de aangevraagde machtigingen.**
 
-   De machtigingen die door de toepassing worden aangevraagd, worden weer gegeven in de [toestemming prompt](../develop/application-consent-experience.md). Als u de machtigings titel uitbreidt, wordt de beschrijving van de machtiging weer gegeven. De beschrijving voor toepassings machtigingen eindigt doorgaans op zonder aangemelde gebruiker. De beschrijving voor gedelegeerde machtigingen eindigt doorgaans met ' namens de aangemelde gebruiker '. Machtigingen voor de Microsoft Graph-API worden beschreven in [Microsoft Graph machtigingen referentie](https://docs.microsoft.com/graph/permissions-reference) -Raadpleeg de documentatie voor andere api's om inzicht te krijgen in de machtigingen die ze beschikbaar maken.
+   De machtigingen die door de toepassing worden aangevraagd, worden weer gegeven in de [toestemming prompt](../develop/application-consent-experience.md). Als u de machtigings titel uitbreidt, wordt de beschrijving van de machtiging weer gegeven. De beschrijving voor toepassings machtigingen eindigt doorgaans op zonder aangemelde gebruiker. De beschrijving voor gedelegeerde machtigingen eindigt doorgaans met ' namens de aangemelde gebruiker '. Machtigingen voor de Microsoft Graph-API worden beschreven in [Microsoft Graph machtigingen referentie](/graph/permissions-reference) -Raadpleeg de documentatie voor andere api's om inzicht te krijgen in de machtigingen die ze beschikbaar maken.
 
    Als u een aangevraagde machtiging niet begrijpt, *mag u geen toestemming verlenen*.
 
@@ -97,15 +97,15 @@ De volgende lijst bevat enkele aanbevelingen waarmee u rekening moet houden bij 
 Zie [machtigingen voor Tenant-brede beheerder toestaan voor een toepassing](grant-admin-consent.md) voor stapsgewijze instructies voor het verlenen van toestemming voor de beheerder voor de hele Tenant via de Azure Portal, met behulp van Azure AD Power shell of via de toestemming prompt zelf.
 
 ### <a name="granting-consent-on-behalf-of-a-specific-user"></a>Toestemming verlenen namens een specifieke gebruiker
-In plaats van toestemming te verlenen voor de hele organisatie, kan een beheerder ook de [Microsoft Graph-API](https://docs.microsoft.com/graph/use-the-api) gebruiken om toestemming te geven aan gedelegeerde machtigingen namens één gebruiker. Zie [toegang namens een gebruiker verkrijgen](https://docs.microsoft.com/graph/auth-v2-user)voor meer informatie.
+In plaats van toestemming te verlenen voor de hele organisatie, kan een beheerder ook de [Microsoft Graph-API](/graph/use-the-api) gebruiken om toestemming te geven aan gedelegeerde machtigingen namens één gebruiker. Zie [toegang namens een gebruiker verkrijgen](/graph/auth-v2-user)voor meer informatie.
 
 ## <a name="limiting-user-access-to-applications"></a>Gebruikers toegang tot toepassingen beperken
-De toegang van gebruikers tot toepassingen kan nog steeds worden beperkt, zelfs wanneer toestemming van de beheerder voor de hele Tenant is verleend. Zie [methoden voor het toewijzen van gebruikers en groepen](methods-for-assigning-users-and-groups.md)voor meer informatie over het vereisen van een gebruikers toewijzing aan een toepassing.
+De toegang van gebruikers tot toepassingen kan nog steeds worden beperkt, zelfs wanneer toestemming van de beheerder voor de hele Tenant is verleend. Zie [methoden voor het toewijzen van gebruikers en groepen](./assign-user-or-group-access-portal.md)voor meer informatie over het vereisen van een gebruikers toewijzing aan een toepassing.
 
 Zie [Azure AD gebruiken voor toegang tot toepassingen voor](what-is-access-management.md)meer informatie over hoe u extra complexe scenario's kunt afhandelen.
 
 ## <a name="disable-all-future-user-consent-operations-to-any-application"></a>Alle toekomstige bewerkingen van de gebruikers toestemming voor elke toepassing uitschakelen
-Door de toestemming van de gebruiker voor uw hele map uit te scha kelen, voor komt u dat eind gebruikers aan elke toepassing worden doorgestuurd. Beheerders kunnen namens de gebruiker nog steeds toestemming geven. Meer informatie over de toestemming van de toepassing en waarom u dit mogelijk niet wilt doen, kunt u lezen [over de toestemming van gebruikers en beheerders](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview).
+Door de toestemming van de gebruiker voor uw hele map uit te scha kelen, voor komt u dat eind gebruikers aan elke toepassing worden doorgestuurd. Beheerders kunnen namens de gebruiker nog steeds toestemming geven. Meer informatie over de toestemming van de toepassing en waarom u dit mogelijk niet wilt doen, kunt u lezen [over de toestemming van gebruikers en beheerders](../develop/howto-convert-app-to-be-multi-tenant.md).
 
 Voer de volgende stappen uit om alle toekomstige bewerkingen voor gebruikers toestemming in uw hele directory uit te scha kelen:
 1.  Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als **globale beheerder.**
@@ -116,7 +116,7 @@ Voer de volgende stappen uit om alle toekomstige bewerkingen voor gebruikers toe
 6.  Schakel alle toekomstige acties voor gebruikers toestemming uit door de gebruikers in staat te stellen **apps toegang te geven tot hun gegevens** in-of uit te scha **kelen en op** de knop **Opslaan** te klikken.
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Vijf stappen voor het beveiligen van uw identiteits infrastructuur](https://docs.microsoft.com/azure/security/fundamentals/steps-secure-identity#before-you-begin-protect-privileged-accounts-with-mfa)
+* [Vijf stappen voor het beveiligen van uw identiteits infrastructuur](../../security/fundamentals/steps-secure-identity.md#before-you-begin-protect-privileged-accounts-with-mfa)
 * [De beheerder toestemming werk stroom configureren](configure-admin-consent-workflow.md)
 * [Configureren hoe eindgebruikers toestemming geven voor toepassingen](configure-user-consent.md)
-* [Machtigingen en toestemming in het micro soft Identity-platform](../develop/active-directory-v2-scopes.md)
+* [Machtigingen en toestemming in het micro soft Identity-platform](../develop/v2-permissions-and-consent.md)

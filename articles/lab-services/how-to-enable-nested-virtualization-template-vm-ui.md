@@ -5,12 +5,12 @@ author: emaher
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: ad92862c78260e7385168faf794c013e85f66b82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8135e11fb7b7ddb588ab3a8ed01227712072fd2
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85445726"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647916"
 ---
 # <a name="enable-nested-virtualization-on-a-template-virtual-machine-in-azure-lab-services-manually"></a>Geneste virtualisatie op een sjabloon virtuele machine in Azure Lab Services hand matig inschakelen
 
@@ -25,19 +25,19 @@ In dit artikel wordt beschreven hoe u een geneste virtualisatie instelt op een s
 
 In de volgende stappen worden de acties beschreven die nodig zijn om Hyper-V op Windows Server in te scha kelen met behulp van een Serverbeheer.  Zodra de installatie is voltooid, is Hyper-V-beheer beschikbaar om virtuele machines van de client toe te voegen, te wijzigen en te verwijderen.
 
-1. Klik in **Serverbeheer**op de pagina dash board op **functies en onderdelen toevoegen**.
+1. Klik in **Serverbeheer** op de pagina dash board op **functies en onderdelen toevoegen**.
 2. Klik op de pagina **Voordat u begint** op **Volgende**.
 3. Op de pagina **type installatie selecteren** behoudt u de standaard selectie van op rollen gebaseerde of op onderdelen gebaseerde installatie en klikt u vervolgens op **volgende**.
 4. Selecteer op de pagina **doel server selecteren** de optie een server uit de Server groep selecteren.   De huidige server is al geselecteerd.  Klik op Volgende.
 5. Op de **Serverfuncties selecteren** pagina **Hyper-V**.  
 6. De pop-up **wizard functies en onderdelen toevoegen** wordt weer gegeven.  Selecteer **include management tools (indien van toepassing)**.  Klik op de knop **onderdelen toevoegen** .
 7. Klik op de pagina **Serverfuncties selecteren** op **Volgende**.
-8. Klik op de **pagina onderdelen selecteren**op **volgende**.
+8. Klik op de **pagina onderdelen selecteren** op **volgende**.
 9. Klik op de pagina **Hyper-V** op **Volgende**.
 10. Accepteer de standaard instellingen op de pagina **virtuele switches maken** en klik op **volgende**.
 11. Accepteer de standaard instellingen op de pagina migratie van de **virtuele machine** en klik op **volgende**.
 12. Accepteer de standaard instellingen op de pagina **standaard archieven** en klik op **volgende**.
-13. Selecteer op de pagina **installatie selecties bevestigen** **de optie de doel server automatisch opnieuw opstarten als dat nodig**is.
+13. Selecteer op de pagina **installatie selecties bevestigen** **de optie de doel server automatisch opnieuw opstarten als dat nodig** is.
 14. Wanneer de **wizard functies en onderdelen toevoegen** pop-up wordt weer gegeven, klikt u op **Ja**.
 15. Klik op **Install**.
 16. Wacht totdat de pagina voortgang van de **installatie** is voltooid.  De computer wordt in het midden van de installatie opnieuw opgestart.
@@ -47,7 +47,7 @@ In de volgende stappen worden de acties beschreven die nodig zijn om Hyper-V op 
 
 Alle virtuele Hyper-V-client machines die zijn gemaakt, hebben een IP-adres in het NAT-netwerk nodig.  Het NAT-netwerk wordt later gemaakt.  Een manier om IP-adressen toe te wijzen, is door de host in te stellen als een DHCP-server, in dit geval de sjabloon voor de virtuele machine van het lab.  Hieronder vindt u de stappen die nodig zijn om de DHCP-functie in te scha kelen.
 
-1. Klik in **Serverbeheer**op de pagina **dash board** op **functies en onderdelen toevoegen**.
+1. Klik in **Serverbeheer** op de pagina **dash board** op **functies en onderdelen toevoegen**.
 2. Klik op de pagina **Voordat u begint** op **Volgende**.
 3. Op de **installatietype selecteren** pagina **installatie op basis van rollen of op basis van functie** en klik vervolgens op **volgende**.
 4. Selecteer op de pagina de **doel server selecteren** de huidige server uit de Server groep en klik vervolgens op **volgende**.
@@ -66,7 +66,7 @@ Alle virtuele Hyper-V-client machines die zijn gemaakt, hebben een IP-adres in h
 
 ## <a name="enable-routing-and-remote-access-role"></a>De functie route ring en RAS inschakelen
 
-1. Klik in **Serverbeheer**op de pagina **dash board** op **functies en onderdelen toevoegen**.
+1. Klik in **Serverbeheer** op de pagina **dash board** op **functies en onderdelen toevoegen**.
 2. Klik op de pagina **Voordat u begint** op **Volgende**.
 3. Op de **installatietype selecteren** pagina **installatie op basis van rollen of op basis van functie** en klik vervolgens op **volgende**.
 4. Selecteer op de pagina de **doel server selecteren** de huidige server uit de Server groep en klik vervolgens op **volgende**.
@@ -93,14 +93,14 @@ Nu alle benodigde rollen zijn geïnstalleerd, is het tijd om het NAT-netwerk te 
 3. Klik op **Virtual Switch Manager...** vanuit het menu **acties** aan de rechter kant van het **Hyper-V-beheer**.
 4. Selecteer in het pop-upvenster **Virtual Switch Manager** **interne** voor het type switch dat u wilt maken.  Klik op **virtuele switch maken**.
 5. Voor de zojuist gemaakte virtuele switch stelt u de naam in op iets te onthouden.  Voor dit voor beeld gebruiken we ' LabServicesSwitch '.  Klik op **OK**.
-6. Er wordt een nieuwe netwerk adapter gemaakt.  De naam is vergelijkbaar met ' vEthernet (LabServicesSwitch) '.  Als u wilt controleren of het **configuratie scherm**wordt geopend, klikt u op **netwerk en Internet**en vervolgens op **netwerk status en taken weer geven**.  Klik aan de linkerkant op **adapter instellingen wijzigen**.
+6. Er wordt een nieuwe netwerk adapter gemaakt.  De naam is vergelijkbaar met ' vEthernet (LabServicesSwitch) '.  Als u wilt controleren of het **configuratie scherm** wordt geopend, klikt u op **netwerk en Internet** en vervolgens op **netwerk status en taken weer geven**.  Klik aan de linkerkant op **adapter instellingen wijzigen**.
 
 ### <a name="create-a-nat-network"></a>Een NAT-netwerk maken
 
 1. Open het hulp programma **route ring en RAS** vanuit Windows-beheer Programma's.
 2. Selecteer de lokale server in de linkernavigatiebalk.
-3. Kies **actie**de optie  ->  **route ring en externe toegang configureren en inschakelen**.
-4. Klik op **volgende**wanneer de **wizard Setup van routerings-en RAS-server** wordt weer gegeven.
+3. Kies **actie** de optie  ->  **route ring en externe toegang configureren en inschakelen**.
+4. Klik op **volgende** wanneer de **wizard Setup van routerings-en RAS-server** wordt weer gegeven.
 5. Selecteer op de pagina **configuratie** **netwerk adres omzetting (NAT)-** configuratie.  Klik op **Volgende**.
 
     >[!WARNING]
@@ -115,7 +115,7 @@ Nu alle benodigde rollen zijn geïnstalleerd, is het tijd om het NAT-netwerk te 
 
 De netwerk adapter wordt gekoppeld aan het IP-adres dat wordt gebruikt voor de standaard gateway-IP voor het NAT-netwerk dat u eerder hebt gemaakt.  In dit voor beeld maken we een IP-adres van 192.168.0.1 met een subnetmasker van 255.255.255.0.  De virtuele switch die u eerder hebt gemaakt, wordt gebruikt.
 
-1. Open het **configuratie scherm**, klik op **netwerk en Internet**en klik op **netwerk status en taken weer geven**.
+1. Open het **configuratie scherm**, klik op **netwerk en Internet** en klik op **netwerk status en taken weer geven**.
 2. Klik aan de linkerkant op **adapter instellingen wijzigen**.  
 3. Dubbel klik in het venster **netwerk verbindingen** op ' VEthernet (LabServicesSwitch) ' om het dialoog venster status Details van **vEthernet (LabServicesSwitch)** weer te geven.
 4. Klik op de knop **Eigenschappen** .
@@ -156,7 +156,7 @@ De volgende stappen zijn een instructie voor het toevoegen van een DHCP-scope.  
 
 ## <a name="conclusion"></a>Conclusie
 
-Uw sjabloon machine is nu gereed voor het maken van virtuele Hyper-V-machines.   Zie [een virtuele machine maken in Hyper-v](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v) voor instructies over het maken van virtuele Hyper-v-machines.  Zie ook het [micro soft Evaluation Center](https://www.microsoft.com/evalcenter/) om beschik bare besturings systemen en software te bekijken.
+Uw sjabloon machine is nu gereed voor het maken van virtuele Hyper-V-machines.   Zie [een virtuele machine maken in Hyper-v](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v) voor instructies over het maken van virtuele Hyper-v-machines.  Zie ook het [micro soft Evaluation Center](https://www.microsoft.com/evalcenter/) om beschik bare besturings systemen en software te bekijken.
 
 ## <a name="next-steps"></a>Volgende stappen
 

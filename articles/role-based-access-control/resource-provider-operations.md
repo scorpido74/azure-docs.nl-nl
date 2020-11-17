@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 11/03/2020
 ms.custom: generated
-ms.openlocfilehash: e337cef9121dc5992f87b9996cfd01d16d9cc188
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: cf8c8e7d56f4eff351361edd148f91e81a07bfbb
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93309375"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649140"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure-resource provider bewerkingen
 
@@ -792,7 +792,7 @@ Azure-service: klassiek implementatie model virtueel netwerk
 
 ### <a name="microsoftnetwork"></a>Microsoft.Network
 
-Azure-service: [Application Gateway](../application-gateway/index.yml), [azure Bastion](../bastion/index.yml), [Azure DDoS Protection](../virtual-network/ddos-protection-overview.md), [Azure DNS](../dns/index.yml), [Azure ExpressRoute](../expressroute/index.yml), [Azure firewall](../firewall/index.yml), [Azure Front-deur service](../frontdoor/index.yml), [azure private link](../private-link/index.yml), [Load Balancer](../load-balancer/index.yml), [Network Watcher](../network-watcher/index.yml), [Traffic Manager](../traffic-manager/index.yml), [Virtual Network](../virtual-network/index.yml), [virtueel WAN](../virtual-wan/index.yml), [VPN gateway](../vpn-gateway/index.yml)
+Azure-service: [Application Gateway](../application-gateway/index.yml), [azure Bastion](../bastion/index.yml), [Azure DDoS Protection](../ddos-protection/ddos-protection-overview.md), [Azure DNS](../dns/index.yml), [Azure ExpressRoute](../expressroute/index.yml), [Azure firewall](../firewall/index.yml), [Azure Front-deur service](../frontdoor/index.yml), [azure private link](../private-link/index.yml), [Load Balancer](../load-balancer/index.yml), [Network Watcher](../network-watcher/index.yml), [Traffic Manager](../traffic-manager/index.yml), [Virtual Network](../virtual-network/index.yml), [virtueel WAN](../virtual-wan/index.yml), [VPN gateway](../vpn-gateway/index.yml)
 
 > [!div class="mx-tableFixed"]
 > | Bewerking | Beschrijving |
@@ -3850,7 +3850,7 @@ Azure-service: [Azure Cosmos DB](../cosmos-db/index.yml)
 
 ### <a name="microsoftsql"></a>Microsoft.Sql
 
-Azure-service: [Azure SQL database](../azure-sql/database/index.yml), Azure [SQL Managed instance](../azure-sql/managed-instance/index.yml), [azure Synapse Analytics (voorheen SQL Data Warehouse)](../sql-data-warehouse/index.yml)
+Azure-service: [Azure SQL database](../azure-sql/database/index.yml), Azure [SQL Managed instance](../azure-sql/managed-instance/index.yml), [azure Synapse Analytics (voorheen SQL Data Warehouse)](../synapse-analytics/sql-data-warehouse/index.yml)
 
 > [!div class="mx-tableFixed"]
 > | Bewerking | Beschrijving |
@@ -4331,7 +4331,7 @@ Azure-service: [Azure Analysis Services](../analysis-services/index.yml)
 
 ### <a name="microsoftdatabricks"></a>Micro soft. Databricks
 
-Azure-service: [Azure Databricks](https://docs.microsoft.com/azure/databricks/)
+Azure-service: [Azure Databricks](/azure/databricks/)
 
 > [!div class="mx-tableFixed"]
 > | Bewerking | Beschrijving |
@@ -4619,7 +4619,7 @@ Azure-service: [azure Data Explorer](/azure/data-explorer/)
 
 ### <a name="microsoftpowerbidedicated"></a>Micro soft. PowerBIDedicated
 
-Azure-service: [Power bi embedded](https://docs.microsoft.com/azure/power-bi-embedded/)
+Azure-service: [Power bi embedded](/azure/power-bi-embedded/)
 
 > [!div class="mx-tableFixed"]
 > | Bewerking | Beschrijving |
@@ -4712,7 +4712,7 @@ Azure-service: [Azure Block Chain Service](../blockchain/workbench/index.yml)
 
 ### <a name="microsoftbotservice"></a>Micro soft. BotService
 
-Azure-service: [Azure bot service](https://docs.microsoft.com/azure/bot-service/)
+Azure-service: [Azure bot service](/azure/bot-service/)
 
 > [!div class="mx-tableFixed"]
 > | Bewerking | Beschrijving |
@@ -6187,7 +6187,7 @@ Azure-service: [Logic apps](../logic-apps/index.yml)
 
 ### <a name="microsoftrelay"></a>Microsoft.Relay
 
-Azure-service: [Azure relay](../service-bus-relay/relay-what-is-it.md)
+Azure-service: [Azure relay](../azure-relay/relay-what-is-it.md)
 
 > [!div class="mx-tableFixed"]
 > | Bewerking | Beschrijving |
@@ -6257,7 +6257,7 @@ Azure-service: [Azure relay](../service-bus-relay/relay-what-is-it.md)
 
 ### <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 
-Azure-service: [Service Bus](../service-bus/index.md)
+Azure-service: [Service Bus](../service-bus-messaging/index.yml)
 
 > [!div class="mx-tableFixed"]
 > | Bewerking | Beschrijving |
@@ -6957,7 +6957,7 @@ Azure-service: [Azure Lab Services](../lab-services/index.yml)
 
 ### <a name="microsoftvisualstudio"></a>Micro soft. Visual Studio
 
-Azure-service: [Azure DevOps](https://docs.microsoft.com/azure/devops/)
+Azure-service: [Azure DevOps](/azure/devops/)
 
 > [!div class="mx-tableFixed"]
 > | Bewerking | Beschrijving |
@@ -6976,7 +6976,7 @@ Azure-service: [Azure DevOps](https://docs.microsoft.com/azure/devops/)
 > | Micro soft. Visual Studio/project/verwijderen | Project verwijderen |
 > | Micro soft. Visual Studio/project/lezen | Project lezen |
 
-## <a name="migrate"></a>Migreren
+## <a name="migrate"></a>Migrate
 
 ### <a name="microsoftmigrate"></a>Micro soft. migrate
 
@@ -7436,7 +7436,7 @@ Azure-service: [Azure migrate](../migrate/migrate-services-overview.md)
 > | Micro soft. OffAzure/VMwareSites/vCenter/lezen | Hiermee worden de eigenschappen van een VMware vCenter opgehaald |
 > | Micro soft. OffAzure/VMwareSites/vCenter/write | Hiermee wordt de VMware vCenter gemaakt of bijgewerkt |
 
-## <a name="monitor"></a>Controleren
+## <a name="monitor"></a>Monitor
 
 ### <a name="microsoftalertsmanagement"></a>Micro soft. AlertsManagement
 
@@ -8924,7 +8924,7 @@ Azure-service: [Azure-boog](../azure-arc/index.yml)
 
 ### <a name="microsoftkubernetes"></a>Microsoft.Kubernetes
 
-Azure-service: [Azure Arc enabled Kubernetes](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)
+Azure-service: [Azure Arc enabled Kubernetes](../azure-arc/kubernetes/overview.md)
 
 > [!div class="mx-tableFixed"]
 > | Bewerking | Beschrijving |
@@ -9677,7 +9677,7 @@ Azure-service: micro soft monitoring Insights
 
 ### <a name="microsoftbingmaps"></a>Microsoft.BingMaps
 
-Azure-service: [Bing Maps](https://docs.microsoft.com/BingMaps/)
+Azure-service: [Bing Maps](/BingMaps/)
 
 > [!div class="mx-tableFixed"]
 > | Bewerking | Beschrijving |

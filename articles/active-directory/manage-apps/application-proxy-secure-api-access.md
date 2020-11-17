@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 02/12/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: e72129b1f391996f6d5b085fe602adb35a3aecbe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e38d8261bf141248fd143f27c74e0761e54f73f9
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91371215"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649327"
 ---
 # <a name="secure-access-to-on-premises-apis-with-azure-ad-application-proxy"></a>Veilige toegang tot on-premises Api's met Azure AD-toepassingsproxy
 
-U hebt mogelijk bedrijfs logica-Api's die on-premises worden uitgevoerd of die worden gehost op virtuele machines in de Cloud. Uw systeem eigen Android-, iOS-, Mac-of Windows-apps moeten communiceren met de API-eind punten om gegevens te gebruiken of gebruikers interactie te bieden. Met Azure AD-toepassingsproxy en de [micro soft Authentication Library (MSAL)](/azure/active-directory/develop/active-directory-authentication-libraries) kunnen uw eigen apps veilig toegang krijgen tot uw on-premises api's. Azure Active Directory-toepassingsproxy is een snellere en veiliger oplossing dan het openen van Firewall poorten en het beheren van verificatie en autorisatie op de app-laag.
+U hebt mogelijk bedrijfs logica-Api's die on-premises worden uitgevoerd of die worden gehost op virtuele machines in de Cloud. Uw systeem eigen Android-, iOS-, Mac-of Windows-apps moeten communiceren met de API-eind punten om gegevens te gebruiken of gebruikers interactie te bieden. Met Azure AD-toepassingsproxy en de [micro soft Authentication Library (MSAL)](../azuread-dev/active-directory-authentication-libraries.md) kunnen uw eigen apps veilig toegang krijgen tot uw on-premises api's. Azure Active Directory-toepassingsproxy is een snellere en veiliger oplossing dan het openen van Firewall poorten en het beheren van verificatie en autorisatie op de app-laag.
 
 Dit artikel begeleidt u bij het instellen van een Azure AD-toepassingsproxy-oplossing voor het hosten van een web-API-service waarmee systeem eigen apps toegang hebben.
 
@@ -34,9 +34,9 @@ In het volgende diagram ziet u hoe u Azure AD-toepassingsproxy kunt gebruiken om
 
 ![Toegang tot Azure AD-toepassingsproxy-API](./media/application-proxy-secure-api-access/overview-publish-api-app-proxy.png)
 
-De Azure AD-toepassingsproxy vormt de ruggen graat van de oplossing, werkt als een openbaar eind punt voor API-toegang en biedt verificatie en autorisatie. U kunt toegang krijgen tot uw Api's vanuit een groot aantal platformen met behulp van de [micro soft Authentication Library (MSAL)-](/azure/active-directory/develop/active-directory-authentication-libraries) bibliotheken.
+De Azure AD-toepassingsproxy vormt de ruggen graat van de oplossing, werkt als een openbaar eind punt voor API-toegang en biedt verificatie en autorisatie. U kunt toegang krijgen tot uw Api's vanuit een groot aantal platformen met behulp van de [micro soft Authentication Library (MSAL)-](../azuread-dev/active-directory-authentication-libraries.md) bibliotheken.
 
-Omdat Azure AD-toepassingsproxy-verificatie en-autorisatie zijn gebouwd op Azure AD, kunt u voorwaardelijke toegang van Azure AD gebruiken om ervoor te zorgen dat alleen vertrouwde apparaten toegang hebben tot Api's die zijn gepubliceerd via de toepassings proxy. Gebruik Azure AD join of Azure AD hybride gekoppeld voor Desk tops en intune-beheer voor apparaten. U kunt ook profiteren van Azure Active Directory Premium functies zoals Azure Multi-Factor Authentication en de beveiliging van de machine learning-back-up van [Azure Identity Protection](/azure/active-directory/active-directory-identityprotection).
+Omdat Azure AD-toepassingsproxy-verificatie en-autorisatie zijn gebouwd op Azure AD, kunt u voorwaardelijke toegang van Azure AD gebruiken om ervoor te zorgen dat alleen vertrouwde apparaten toegang hebben tot Api's die zijn gepubliceerd via de toepassings proxy. Gebruik Azure AD join of Azure AD hybride gekoppeld voor Desk tops en intune-beheer voor apparaten. U kunt ook profiteren van Azure Active Directory Premium functies zoals Azure Multi-Factor Authentication en de beveiliging van de machine learning-back-up van [Azure Identity Protection](../identity-protection/overview-identity-protection.md).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -63,9 +63,9 @@ De SecretAPI-Web-API publiceren via toepassings proxy:
 
 1. Nadat u de toepassings proxy connector hebt geïnstalleerd, op de pagina **uw eigen on-premises toepassing toevoegen** :
 
-   1. Voer *SecretAPI*in bij **naam**.
+   1. Voer *SecretAPI* in bij **naam**.
 
-   1. Voer naast **interne URL**de URL in die u gebruikt voor toegang tot de API vanuit uw intranet.
+   1. Voer naast **interne URL** de URL in die u gebruikt voor toegang tot de API vanuit uw intranet.
 
    1. Zorg ervoor dat **verificatie vooraf** is ingesteld op **Azure Active Directory**.
 
@@ -96,7 +96,7 @@ U hebt uw web-API gepubliceerd via Azure AD-toepassingsproxy. Voeg nu gebruikers
 1. Selecteer op de pagina **toewijzing toevoegen** de optie **toewijzen**.
 
 > [!NOTE]
-> Voor Api's die gebruikmaken van geïntegreerde Windows-verificatie zijn mogelijk [extra stappen](/azure/active-directory/manage-apps/application-proxy-configure-single-sign-on-with-kcd)vereist.
+> Voor Api's die gebruikmaken van geïntegreerde Windows-verificatie zijn mogelijk [extra stappen](./application-proxy-configure-single-sign-on-with-kcd.md)vereist.
 
 ## <a name="register-the-native-app-and-grant-access-to-the-api"></a>De systeem eigen app registreren en toegang verlenen tot de API
 
@@ -108,19 +108,19 @@ De systeem eigen app AppProxyNativeAppSample registreren:
 
 1. Op de pagina **een toepassing registreren** :
 
-   1. Voer onder **naam** *AppProxyNativeAppSample*in.
+   1. Voer onder **naam** *AppProxyNativeAppSample* in.
 
    1. Selecteer onder **Ondersteunde accounttypen** de optie **Accounts in een organisatieadreslijst en persoonlijke Microsoft-account**.
 
    1. Onder **omleidings-URL**, vervolg keuzelijst en selecteer **open bare client (mobiele & bureau blad)** en voer vervolgens in *https://login.microsoftonline.com/common/oauth2/nativeclient* .
 
-   1. Selecteer **registreren**en wacht totdat de app is geregistreerd.
+   1. Selecteer **registreren** en wacht totdat de app is geregistreerd.
 
       ![Nieuwe toepassing registreren](./media/application-proxy-secure-api-access/8-create-reg-ga.png)
 
 U hebt de AppProxyNativeAppSample-app nu geregistreerd in Azure Active Directory. Om uw eigen app toegang te geven tot de SecretAPI-Web-API:
 
-1. **Overview**  >  Selecteer de **AppProxyNativeAppSample** -app op de pagina overzicht van**app-registraties** Azure Active Directory.
+1. **Overview**  >  Selecteer de **AppProxyNativeAppSample** -app op de pagina overzicht van **app-registraties** Azure Active Directory.
 
 1. Selecteer op de pagina **AppProxyNativeAppSample** de optie **API-machtigingen** in het linkernavigatievenster.
 
@@ -128,7 +128,7 @@ U hebt de AppProxyNativeAppSample-app nu geregistreerd in Azure Active Directory
 
 1. Selecteer op de eerste pagina **API-machtigingen voor aanvragen** de **api's mijn organisatie tabblad gebruikt** en zoek naar en selecteer **SecretAPI**.
 
-1. Schakel op de pagina volgende **aanvraag API-machtigingen** het selectie vakje naast **user_impersonation**in en selecteer vervolgens **machtigingen toevoegen**.
+1. Schakel op de pagina volgende **aanvraag API-machtigingen** het selectie vakje naast **user_impersonation** in en selecteer vervolgens **machtigingen toevoegen**.
 
     ![Een API selecteren](./media/application-proxy-secure-api-access/10-secretapi-added.png)
 

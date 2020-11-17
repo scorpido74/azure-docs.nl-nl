@@ -7,19 +7,19 @@ author: curtand
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: how-to
-ms.date: 05/21/2020
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: addimitu
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf8eeb2d1f19ca0848ae5c608ba9f0d8e9526e05
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 189eaf3a08ce0e8411ce67170fdf1a895cbc56d2
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375845"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647712"
 ---
 # <a name="delete-a-tenant-in-azure-active-directory"></a>Een Tenant verwijderen in Azure Active Directory
 
@@ -73,7 +73,7 @@ Met het Microsoft 365-beheer centrum kunt u een abonnement op de **onvoorziene**
 
    ![Bekijk een voor beeld van de nieuwe M365-beheer centrum-ervaring](./media/directory-delete-howto/preview-toggle.png)
 
-3. Zodra het nieuwe beheer centrum is ingeschakeld, moet u een abonnement annuleren voordat u het kunt verwijderen. Selecteer **facturering** en selecteer **producten & Services**en selecteer vervolgens **abonnement annuleren** voor het abonnement dat u wilt annuleren. U wordt naar een feedback pagina geleid.
+3. Zodra het nieuwe beheer centrum is ingeschakeld, moet u een abonnement annuleren voordat u het kunt verwijderen. Selecteer **facturering** en selecteer **producten & Services** en selecteer vervolgens **abonnement annuleren** voor het abonnement dat u wilt annuleren. U wordt naar een feedback pagina geleid.
 
    ![Kies een abonnement dat u wilt annuleren](./media/directory-delete-howto/cancel-choose-subscription.png)
 
@@ -121,7 +121,7 @@ U kunt een self-service registratie product, zoals micro soft Power BI of Azure 
 
 1. Meld u aan bij het [Azure AD-beheer centrum](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) met een account dat een globale beheerder in de organisatie is. Als u de organisatie Contoso wilt verwijderen die de oorspronkelijke standaard domein contoso.onmicrosoft.com heeft, meldt u zich aan met een UPN, zoals admin@contoso.onmicrosoft.com .
 
-2. Selecteer **licenties**en selecteer vervolgens **self-service registratie producten**. U kunt alle Self-service-aanmeldings producten afzonderlijk van de op seat gebaseerde abonnementen bekijken. Kies het product dat u definitief wilt verwijderen. Hier volgt een voor beeld van micro soft Power BI:
+2. Selecteer **licenties** en selecteer vervolgens **self-service registratie producten**. U kunt alle Self-service-aanmeldings producten afzonderlijk van de op seat gebaseerde abonnementen bekijken. Kies het product dat u definitief wilt verwijderen. Hier volgt een voor beeld van micro soft Power BI:
 
     ![Scherm opname van de pagina licenties-self-service-registratie producten.](./media/directory-delete-howto/licenses-page.png)
 
@@ -129,7 +129,7 @@ U kunt een self-service registratie product, zoals micro soft Power BI of Azure 
 
     ![Scherm opname van de pagina licenties-self-service-aanmeldingen, met het venster ' self-service voor aanmelden verwijderen ' geopend.](./media/directory-delete-howto/delete-product.png)
 
-4. Wanneer u **Ja**selecteert, wordt de verwijdering van het self-service product gestart. Er is een melding waarin wordt aangegeven dat de verwijdering wordt uitgevoerd.  
+4. Wanneer u **Ja** selecteert, wordt de verwijdering van het self-service product gestart. Er is een melding waarin wordt aangegeven dat de verwijdering wordt uitgevoerd.  
 
     ![Scherm opname van de pagina licenties-self-service-aanmeldingen, met de melding ' bezig met verwijderen ' wordt weer gegeven.](./media/directory-delete-howto/progress-message.png)
 

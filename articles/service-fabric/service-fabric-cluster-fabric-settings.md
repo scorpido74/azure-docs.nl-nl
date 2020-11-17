@@ -3,12 +3,12 @@ title: Instellingen van Azure Service Fabric cluster wijzigen
 description: In dit artikel worden de infrastructuur instellingen en het Fabric-upgrade beleid beschreven dat u kunt aanpassen.
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: fbd6c9503e409473a87c58202eb88d77716441f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a83d24b4badd78750756a3cb4564b1e53fd30593
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89055117"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648222"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Instellingen voor Service Fabric-cluster aanpassen
 In dit artikel worden de verschillende infrastructuur instellingen voor uw Service Fabric cluster beschreven die u kunt aanpassen. Voor clusters die worden gehost in azure, kunt u instellingen aanpassen via de [Azure Portal](https://portal.azure.com) of met behulp van een Azure Resource Manager sjabloon. Zie [de configuratie van een Azure-cluster upgraden](service-fabric-cluster-config-upgrade-azure.md)voor meer informatie. Voor zelfstandige clusters past u de instellingen aan door de *ClusterConfig.jsin* het bestand bij te werken en een configuratie-upgrade uit te voeren op uw cluster. Zie [de configuratie van een zelfstandig cluster upgraden](service-fabric-cluster-config-upgrade-windows-server.md)voor meer informatie.
@@ -243,7 +243,7 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 |QuorumLossWaitDuration | Tijd in seconden, de standaard waarde is MaxValue |Statisch|Geef een tijds duur in seconden op. De QuorumLossWaitDuration voor FaultAnalysisService. |
 |ReplicaDropWaitDurationInSeconds|int, standaard waarde is 600|Statisch|Deze para meter wordt gebruikt wanneer de data-verlies-API wordt aangeroepen. Hiermee wordt bepaald hoe lang het systeem wacht totdat een replica wordt verwijderd nadat replica is verwijderd. |
 |ReplicaRestartWaitDuration |Tijd in seconden, standaard waarde is 60 minuten|Statisch|Geef een tijds duur in seconden op. De ReplicaRestartWaitDuration voor FaultAnalysisService. |
-|StandByReplicaKeepDuration| Tijd in seconden, standaard is (60*24*7) minuten |Statisch|Geef een tijds duur in seconden op. De StandByReplicaKeepDuration voor FaultAnalysisService. |
+|StandByReplicaKeepDuration| Tijd in seconden, standaard is (60 *24* 7) minuten |Statisch|Geef een tijds duur in seconden op. De StandByReplicaKeepDuration voor FaultAnalysisService. |
 |StoredActionCleanupIntervalInSeconds | Int, standaard waarde is 3600 |Statisch|Dit is hoe vaak de Store wordt opgeruimd. Alleen acties in een Terminal status; en die ten minste CompletedActionKeepDurationInSeconds geleden zijn voltooid, worden verwijderd. |
 |StoredChaosEventCleanupIntervalInSeconds | Int, standaard waarde is 3600 |Statisch|Dit is hoe vaak de Store wordt gecontroleerd op opschoning. Als het aantal gebeurtenissen groter is dan 30000; het opschonen wordt gestart. |
 |TargetReplicaSetSize |Int, standaard is 0 |Statisch|NOT_PLATFORM_UNIX_START de TargetReplicaSetSize voor FaultAnalysisService. |
@@ -423,14 +423,14 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 |AzureStorageMaxConnections | Int, standaard waarde is 5000 |Dynamisch|Het maximum aantal gelijktijdige verbindingen met Azure Storage. |
 |AzureStorageMaxWorkerThreads | Int, standaard waarde is 25 |Dynamisch|Het maximum aantal worker-threads parallel. |
 |AzureStorageOperationTimeout | Tijd in seconden, standaard waarde is 6000 |Dynamisch|Geef een tijds duur in seconden op. Time-out voor het volt ooien van de xstore-bewerking. |
-|CleanupApplicationPackageOnProvisionSuccess|BOOL, default is FALSE |Dynamisch|Hiermee wordt het automatisch opruimen van het toepassings pakket bij een geslaagde inrichting in-of uitgeschakeld.
-
-*De aanbevolen procedure is om te gebruiken `true` .* | | CleanupUnusedApplicationTypes | BOOL, default is FALSE | Dynamisch | Met deze configuratie als deze functie is ingeschakeld, kan de registratie van ongebruikte toepassings type versies automatisch ongedaan worden gemaakt om de meest recente drie ongebruikte versies over te slaan, waardoor de schijf ruimte die wordt ingen Omen door Image Store De automatische opschoning wordt geactiveerd aan het einde van de inrichting van het specifieke app-type en wordt ook periodiek eenmaal per dag uitgevoerd voor alle toepassings typen. Het aantal ongebruikte versies dat moet worden overgeslagen, kan worden geconfigureerd met behulp van de para meter MaxUnusedAppTypeVersionsToKeep. 
-
-*De aanbevolen procedure is om te gebruiken `true` .*
-| | DisableChecksumValidation | BOOL, default is False | Statisch | Met deze configuratie kan de controlesom validatie tijdens het inrichten van de toepassing worden in-of uitgeschakeld. | | DisableServerSideCopy | BOOL, default is False | Statisch | Met deze configuratie wordt het exemplaar van het toepassings pakket op de installatie kopie opslag tijdens het inrichten van de toepassing ingeschakeld of uitgeschakeld. | | ImageCachingEnabled | BOOL, default is True | Statisch | Met deze configuratie kunnen we caching in-of uitschakelen. | | ImageStoreConnectionString | SecureString | Statisch | Verbindings reeks naar de hoofdmap voor installatie kopie opslag. | | ImageStoreMinimumTransferBPS | Int, standaard waarde is 1024 | Dynamisch | De minimale overdrachts frequentie tussen het cluster en de installatie kopie opslag. Deze waarde wordt gebruikt om de time-out te bepalen bij het openen van de externe installatie kopie opslag. Wijzig deze waarde alleen als de latentie tussen het cluster en installatie kopie opslag hoog is om meer tijd te bieden voor het downloaden van het cluster vanaf de externe installatie kopie opslag. | | MaxUnusedAppTypeVersionsToKeep | Int, standaard waarde is 3 | Dynamisch | Deze configuratie definieert het aantal ongebruikte versie van toepassings type dat moet worden overgeslagen voor opschonen. Deze para meter is alleen van toepassing als de para meter CleanupUnusedApplicationTypes is ingeschakeld.
-
-*Algemene best practice is de standaard waarde () te gebruiken `3` .*|
+|CleanupApplicationPackageOnProvisionSuccess|BOOL, default is FALSE |Dynamisch|Hiermee wordt het automatisch opruimen van het toepassings pakket bij een geslaagde inrichting in-of uitgeschakeld.<br/> *De aanbevolen procedure is om te gebruiken `true` .*
+|CleanupUnusedApplicationTypes|BOOL, default is FALSE |Dynamisch|Met deze configuratie als deze functie is ingeschakeld, kan de registratie van ongebruikte toepassings type versies automatisch ongedaan worden gemaakt om de meest recente drie ongebruikte versies over te slaan, waardoor de schijf ruimte die wordt ingen Omen door Image Store De automatische opschoning wordt geactiveerd aan het einde van de inrichting van het specifieke app-type en wordt ook periodiek eenmaal per dag uitgevoerd voor alle toepassings typen. Het aantal ongebruikte versies dat moet worden overgeslagen, kan worden geconfigureerd met behulp van de para meter MaxUnusedAppTypeVersionsToKeep. <br/> *De aanbevolen procedure is om te gebruiken `true` .*
+|DisableChecksumValidation | BOOL, default is False |Statisch| Met deze configuratie kan de controlesom validatie tijdens het inrichten van de toepassing worden in-of uitgeschakeld. |
+|DisableServerSideCopy | BOOL, default is False |Statisch|Met deze configuratie wordt het exemplaar van het toepassings pakket op de installatie kopie opslag tijdens het inrichten van de toepassing ingeschakeld of uitgeschakeld. |
+|ImageCachingEnabled | BOOL, default is True |Statisch|Met deze configuratie kunnen we caching in-of uitschakelen. |
+|ImageStoreConnectionString |SecureString |Statisch|Verbindings reeks naar de hoofdmap voor installatie kopie opslag. |
+|ImageStoreMinimumTransferBPS | Int, standaard waarde is 1024 |Dynamisch|De minimale overdrachts frequentie tussen het cluster en de installatie kopie opslag. Deze waarde wordt gebruikt om de time-out te bepalen bij het openen van de externe installatie kopie opslag. Wijzig deze waarde alleen als de latentie tussen het cluster en installatie kopie opslag hoog is om meer tijd te bieden voor het downloaden van het cluster vanaf de externe installatie kopie opslag. |
+|MaxUnusedAppTypeVersionsToKeep | Int, standaard is 3 |Dynamisch|Deze configuratie definieert het aantal ongebruikte versie van toepassings type dat moet worden overgeslagen voor opschonen. Deze para meter is alleen van toepassing als de para meter CleanupUnusedApplicationTypes is ingeschakeld. <br/>*Algemene best practice is de standaard waarde () te gebruiken `3` . Waarden die kleiner zijn dan 1 zijn niet geldig.*|
 
 
 ## <a name="metricactivitythresholds"></a>MetricActivityThresholds
@@ -890,7 +890,7 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 |PlacementConstraints | teken reeks, standaard instelling is |Statisch| De PlacementConstraints voor UpgradeOrchestrationService. |
 |QuorumLossWaitDuration | Tijd in seconden, de standaard waarde is MaxValue |Statisch| Geef een tijds duur in seconden op. De QuorumLossWaitDuration voor UpgradeOrchestrationService. |
 |ReplicaRestartWaitDuration | Tijd in seconden, standaard waarde is 60 minuten|Statisch| Geef een tijds duur in seconden op. De ReplicaRestartWaitDuration voor UpgradeOrchestrationService. |
-|StandByReplicaKeepDuration | Tijd in seconden, de standaard waarde is 60*24*7 minuten |Statisch| Geef een tijds duur in seconden op. De StandByReplicaKeepDuration voor UpgradeOrchestrationService. |
+|StandByReplicaKeepDuration | Tijd in seconden, de standaard waarde is 60 *24* 7 minuten |Statisch| Geef een tijds duur in seconden op. De StandByReplicaKeepDuration voor UpgradeOrchestrationService. |
 |TargetReplicaSetSize |Int, standaard is 0 |Statisch |De TargetReplicaSetSize voor UpgradeOrchestrationService. |
 |UpgradeApprovalRequired | BOOL, default is False | Statisch|Instelling voor het maken van een code-upgrade vereist goed keuring van de beheerder voordat u doorgaat. |
 

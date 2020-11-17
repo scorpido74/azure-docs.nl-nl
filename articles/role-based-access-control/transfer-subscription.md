@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 10/06/2020
 ms.author: rolyon
-ms.openlocfilehash: 3289f8a22e5601552ec6d44c7d37195b06913fde
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: ad0ba3c63f6f0ef6e7e02051031cf215c2e72cce
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545341"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648239"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>Een Azure-abonnement overdragen naar een andere Azure AD-adres lijst
 
@@ -87,7 +87,7 @@ Verschillende Azure-resources hebben een afhankelijkheid van een abonnement of e
 
 Als u deze stappen wilt uitvoeren, hebt u het volgende nodig:
 
-- [Bash in azure Cloud shell](/azure/cloud-shell/overview) of [Azure cli](/cli/azure)
+- [Bash in azure Cloud shell](../cloud-shell/overview.md) of [Azure cli](/cli/azure)
 - Account beheerder van het abonnement dat u wilt overdragen in de bron directory
 - De rol van [eigenaar](built-in-roles.md#owner) in de doel directory
 
@@ -111,7 +111,7 @@ Als u deze stappen wilt uitvoeren, hebt u het volgende nodig:
 
 ### <a name="install-the-azure-resource-graph-extension"></a>De Azure resource Graph-extensie installeren
 
- Met de Azure CLI-extensie voor [Azure resource Graph](../governance/resource-graph/index.yml), *resource-Graph* , kunt u de opdracht [AZ Graph](/cli/azure/ext/resource-graph/graph) gebruiken om te zoeken naar resources die worden beheerd door Azure Resource Manager. U gebruikt deze opdracht in latere stappen.
+ Met de Azure CLI-extensie voor [Azure resource Graph](../governance/resource-graph/index.yml), *resource-Graph*, kunt u de opdracht [AZ Graph](/cli/azure/ext/resource-graph/graph) gebruiken om te zoeken naar resources die worden beheerd door Azure Resource Manager. U gebruikt deze opdracht in latere stappen.
 
 1. Gebruik [AZ Extension List](/cli/azure/extension#az_extension_list) om te zien of de *resource-Graph-* extensie is geïnstalleerd.
 

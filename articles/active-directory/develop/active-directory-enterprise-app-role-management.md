@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 04/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 8ec87a8d78f73af48b662c5971dfe1803717f88a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 376086d0fc84e04645215b26ba896cf22f3f9c57
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91704545"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647882"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>Procedure: de rol claim configureren die is uitgegeven in het SAML-token voor zakelijke toepassingen
 
@@ -62,16 +62,16 @@ Als uw toepassing verwacht dat aangepaste rollen worden door gegeven in een SAML
 
       ![De knop machtigingen wijzigen](./media/active-directory-enterprise-app-role-management/graph-explorer-new9.png)
 
+    >[!NOTE]
+    >De rol van de Cloud app-beheerder en de app-beheerder werken niet in dit scenario omdat de globale beheerders machtigingen voor de Directory lezen en schrijven nodig zijn.
+
     c. Selecteer de volgende machtigingen in de lijst (als u dit nog niet hebt) en selecteer **machtigingen wijzigen**.
 
       ![Lijst met machtigingen en de knop machtigingen wijzigen](./media/active-directory-enterprise-app-role-management/graph-explorer-new10.png)
 
-    > [!Note]
-    > De rol van de Cloud app-beheerder en de app-beheerder werken niet in dit scenario omdat de globale beheerders machtigingen voor de Directory lezen en schrijven nodig zijn.
-
     d. Accepteer de toestemming. U bent weer aangemeld bij het systeem.
 
-    e. Wijzig de versie in **beta**en haal de lijst met Service-principals op uit de Tenant met behulp van de volgende query:
+    e. Wijzig de versie in **beta** en haal de lijst met Service-principals op uit de Tenant met behulp van de volgende query:
 
      `https://graph.microsoft.com/beta/servicePrincipals`
 
@@ -79,9 +79,7 @@ Als uw toepassing verwacht dat aangepaste rollen worden door gegeven in een SAML
 
       ![Graph Explorer in het dialoog venster met de query voor het ophalen van service-principals](./media/active-directory-enterprise-app-role-management/graph-explorer-new1.png)
 
-      > [!Note]
-      > We zijn al bezig met het bijwerken van de Api's, zodat klanten mogelijk een onderbreking van de service kunnen zien.
-
+      
     f. Ga in de lijst met opgehaalde service-principals naar het account dat u wilt wijzigen. U kunt ook CTRL + F gebruiken om de toepassing te doorzoeken vanuit alle vermelde service-principals. Zoek de object-ID die u hebt gekopieerd op de pagina **Eigenschappen** en gebruik de volgende query om naar de service-principal te gaan:
 
       `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`
@@ -92,8 +90,8 @@ Als uw toepassing verwacht dat aangepaste rollen worden door gegeven in een SAML
 
       ![Details van de eigenschap appRoles](./media/active-directory-enterprise-app-role-management/graph-explorer-new3.png)
 
-      > [!Note]
-      > Als u de aangepaste app gebruikt (niet de Azure Marketplace-app), ziet u twee standaard rollen: gebruiker en msiam_access. Voor de Marketplace-app is msiam_access de enige standaard rol. U hoeft geen wijzigingen aan te brengen in de standaard rollen.
+      
+      Als u de aangepaste app gebruikt (niet de Azure Marketplace-app), ziet u twee standaard rollen: gebruiker en msiam_access. Voor de Marketplace-app is msiam_access de enige standaard rol. U hoeft geen wijzigingen aan te brengen in de standaard rollen.
 
     h. Nieuwe rollen genereren voor uw toepassing.
 
@@ -128,8 +126,8 @@ Als uw toepassing verwacht dat aangepaste rollen worden door gegeven in een SAML
       }
       ```
 
-      > [!Note]
-      > U kunt alleen nieuwe rollen toevoegen na msiam_access voor de patch-bewerking. U kunt ook zoveel rollen toevoegen als uw organisatie nodig heeft. Azure AD verzendt de waarde van deze rollen als de claim waarde in het SAML-antwoord. Als u de GUID-waarden voor de ID van nieuwe rollen wilt genereren, gebruikt u de [volgende](https://www.guidgenerator.com/) webtoepassingen
+      
+      U kunt alleen nieuwe rollen toevoegen na msiam_access voor de patch-bewerking. U kunt ook zoveel rollen toevoegen als uw organisatie nodig heeft. Azure AD verzendt de waarde van deze rollen als de claim waarde in het SAML-antwoord. Als u de GUID-waarden voor de ID van nieuwe rollen wilt genereren, gebruikt u de [volgende](https://www.guidgenerator.com/) webtoepassingen
 
     i. Ga terug naar Graph Explorer en wijzig de methode van **Get** to **patch**. Patch het Service-Principal-object voor de gewenste rollen door de eigenschap **appRoles** bij te werken zoals in het vorige voor beeld. Selecteer **query uitvoeren** om de patch bewerking uit te voeren. Bij een geslaagd bericht wordt bevestigd dat de rol is gemaakt.
 
@@ -143,8 +141,8 @@ Als uw toepassing verwacht dat aangepaste rollen worden door gegeven in een SAML
 
     ![Deel venster toewijzing bewerken en rollen selecteren](./media/active-directory-enterprise-app-role-management/graph-explorer-new6.png)
 
-    > [!Note]
-    > U moet uw sessie vernieuwen in het Azure Portal om nieuwe rollen weer te geven.
+    
+    U moet uw sessie vernieuwen in het Azure Portal om nieuwe rollen weer te geven.
 
 8. Werk de **kenmerken** tabel bij om een aangepaste toewijzing van de rol claim te definiëren.
 
@@ -154,8 +152,8 @@ Als uw toepassing verwacht dat aangepaste rollen worden door gegeven in een SAML
     | -------------- | ----------------|
     | Rolnaam  | user.assignedroles |
 
-    >[!NOTE]
-    >Als de waarde van de rol claim null is, zal Azure AD deze waarde niet in het token verzenden en dit is standaard per ontwerp.
+    
+    Als de waarde van de rol claim null is, zal Azure AD deze waarde niet in het token verzenden en dit is standaard per ontwerp.
 
     a. Klik op pictogram **bewerken** om **gebruikers kenmerken** te openen & dialoog venster claims.
 
@@ -185,7 +183,7 @@ Voer de volgende stappen uit om een bestaande rol bij te werken:
 
 2. Meld u aan bij de Graph Explorer-site met behulp van de referenties van de globale beheerder of cobeheerder voor uw Tenant.
 
-3. Wijzig de versie in **beta**en haal de lijst met Service-principals op uit de Tenant met behulp van de volgende query:
+3. Wijzig de versie in **beta** en haal de lijst met Service-principals op uit de Tenant met behulp van de volgende query:
 
     `https://graph.microsoft.com/beta/servicePrincipals`
 
@@ -209,7 +207,7 @@ Voer de volgende stappen uit om een bestaande rol bij te werken:
 
     a. Wijzig de methode van **Get** to **patch**.
 
-    b. Kopieer de bestaande rollen en plak deze onder de **hoofd tekst**van de aanvraag.
+    b. Kopieer de bestaande rollen en plak deze onder de **hoofd tekst** van de aanvraag.
 
     c. Werk de waarde van een rol bij door de beschrijving, de functie waarde of de weergave naam van de rol zo nodig bij te werken.
 
@@ -223,7 +221,7 @@ Als u een bestaande functie wilt verwijderen, voert u de volgende stappen uit:
 
 2. Meld u aan bij de Graph Explorer-site met behulp van de referenties van de globale beheerder of cobeheerder voor uw Tenant.
 
-3. Wijzig de versie in **beta**en haal de lijst met Service-principals op uit de Tenant met behulp van de volgende query:
+3. Wijzig de versie in **beta** en haal de lijst met Service-principals op uit de Tenant met behulp van de volgende query:
 
     `https://graph.microsoft.com/beta/servicePrincipals`
 
@@ -247,21 +245,21 @@ Als u een bestaande functie wilt verwijderen, voert u de volgende stappen uit:
 
     a. Wijzig de methode van **Get** to **patch**.
 
-    b. Kopieer de bestaande rollen van de toepassing en plak deze onder de **hoofd tekst**van de aanvraag.
+    b. Kopieer de bestaande rollen van de toepassing en plak deze onder de **hoofd tekst** van de aanvraag.
 
     c. Stel de waarde **IsEnabled** in op **False** voor de functie die u wilt verwijderen.
 
     d. Selecteer **Query uitvoeren**.
 
-    > [!NOTE]
-    > Zorg ervoor dat u de rol msiam_access hebt en dat de ID overeenkomt met de gegenereerde rol.
+    
+    Zorg ervoor dat u de rol msiam_access hebt en dat de ID overeenkomt met de gegenereerde rol.
 
-7. Nadat de rol is uitgeschakeld, verwijdert u het Role-blok uit de sectie **appRoles** . Behoud de methode als **patch**en selecteer **query uitvoeren**.
+7. Nadat de rol is uitgeschakeld, verwijdert u het Role-blok uit de sectie **appRoles** . Behoud de methode als **patch** en selecteer **query uitvoeren**.
 
 8. Nadat u de query hebt uitgevoerd, wordt de rol verwijderd.
 
-    > [!NOTE]
-    > De rol moet worden uitgeschakeld voordat deze kan worden verwijderd.
+    
+    De rol moet worden uitgeschakeld voordat deze kan worden verwijderd.
 
 ## <a name="next-steps"></a>Volgende stappen
 

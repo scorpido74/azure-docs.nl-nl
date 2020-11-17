@@ -12,12 +12,12 @@ ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperfq2
-ms.openlocfilehash: c1c0c3038c687b7f91d3c75d8c4c9589c5e245a3
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 1617015d6d4a026d5dadda667dcd03447a20c288
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427637"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649497"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>Configureren hoe eindgebruikers toestemming geven voor toepassingen
 
@@ -49,15 +49,15 @@ Als u kiest welke app-machtigings beleid van toepassing is voor alle gebruikers,
 Instellingen voor gebruikers toestemming configureren via de Azure Portal:
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com) als [globale beheerder](../roles/permissions-reference.md#global-administrator--company-administrator).
-1. Selecteer **Azure Active Directory**  >  toestemming van**bedrijfs toepassingen**  >  **en machtigingen**  >  **instellingen voor gebruikers toestemming**.
-1. Selecteer onder **toestemming van de gebruiker voor toepassingen**de instelling van de toestemming die u wilt configureren voor alle gebruikers.
+1. Selecteer **Azure Active Directory**  >  toestemming van **bedrijfs toepassingen**  >  **en machtigingen**  >  **instellingen voor gebruikers toestemming**.
+1. Selecteer onder **toestemming van de gebruiker voor toepassingen** de instelling van de toestemming die u wilt configureren voor alle gebruikers.
 1. Selecteer **Opslaan** om uw instellingen op te slaan.
 
 :::image type="content" source="media/configure-user-consent/setting-for-all-users.png" alt-text="Instellingen voor gebruikers toestemming":::
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-U kunt de nieuwste Azure AD Power shell preview-module, [AzureADPreview](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true), gebruiken om te kiezen welk app-toestemming beleid gebruikers instemming voor toepassingen bepaalt.
+U kunt de nieuwste Azure AD Power shell preview-module, [AzureADPreview](/powershell/azure/active-directory/install-adv2?preserve-view=true&view=azureadps-2.0-preview), gebruiken om te kiezen welk app-toestemming beleid gebruikers instemming voor toepassingen bepaalt.
 
 #### <a name="disable-user-consent"></a>Toestemming van de gebruiker uitschakelen
 
@@ -101,7 +101,7 @@ Set-AzureADMSAuthorizationPolicy `
 
 ## <a name="risk-based-step-up-consent"></a>Op risico gebaseerde Step-up toestemming
 
-Met behulp van op risico gebaseerde stapsgewijze toestemming kan de gebruikers bloot stellen aan schadelijke apps die [illegale toestemming aanvragen](https://docs.microsoft.com/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants)doen. Als micro soft een aanvraag voor een Risk ante toestemming van de eind gebruiker detecteert, heeft de aanvraag een ' stapsgewijs ' door gegeven aan de beheerder. Deze mogelijkheid is standaard ingeschakeld, maar dit resulteert alleen in een wijziging in het gedrag wanneer toestemming van de eind gebruiker is ingeschakeld.
+Met behulp van op risico gebaseerde stapsgewijze toestemming kan de gebruikers bloot stellen aan schadelijke apps die [illegale toestemming aanvragen](/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants)doen. Als micro soft een aanvraag voor een Risk ante toestemming van de eind gebruiker detecteert, heeft de aanvraag een ' stapsgewijs ' door gegeven aan de beheerder. Deze mogelijkheid is standaard ingeschakeld, maar dit resulteert alleen in een wijziging in het gedrag wanneer toestemming van de eind gebruiker is ingeschakeld.
 
 Wanneer een Risk ante toestemming aanvraag wordt gedetecteerd, wordt in de toestemming prompt een bericht weer gegeven waarin wordt aangegeven dat de goed keuring van de beheerder nodig is. Als de [aanvraag werk stroom beheerder toestemming](configure-admin-consent-workflow.md) is ingeschakeld, kan de gebruiker de aanvraag naar een beheerder verzenden voor verdere controle, rechtstreeks vanuit de toestemming prompt. Als de functie niet is ingeschakeld, wordt het volgende bericht weer gegeven:
 
@@ -114,9 +114,9 @@ In dit geval wordt er ook een controle gebeurtenis vastgelegd met de categorie '
 
 ### <a name="disable-or-re-enable-risk-based-step-up-consent-using-powershell"></a>Op risico gebaseerde Step-up van de stap uitschakelen of opnieuw inschakelen met behulp van Power shell
 
-U kunt de Azure AD Power shell preview-module, [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true), gebruiken om de stap-tot-toestemming van de beheerder uit te scha kelen in gevallen waarin micro soft risico detecteert of het opnieuw inschakelt als dit eerder was uitgeschakeld.
+U kunt de Azure AD Power shell preview-module, [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview), gebruiken om de stap-tot-toestemming van de beheerder uit te scha kelen in gevallen waarin micro soft risico detecteert of het opnieuw inschakelt als dit eerder was uitgeschakeld.
 
-1. Zorg ervoor dat u de [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) -module gebruikt. Deze stap is belang rijk als u de [AzureAD](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0&preserve-view=true) -module en de [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) -module hebt geïnstalleerd.
+1. Zorg ervoor dat u de [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) -module gebruikt. Deze stap is belang rijk als u de [AzureAD](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0) -module en de [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) -module hebt geïnstalleerd.
 
     ```powershell
     Remove-Module AzureAD
@@ -147,7 +147,7 @@ U kunt de Azure AD Power shell preview-module, [AzureADPreview](https://docs.mic
 
     | Instelling       | Type         | Beschrijving  |
     | ------------- | ------------ | ------------ |
-    | _BlockUserConsentForRiskyApps_   | Booleaans |  Markering die aangeeft of de gebruikers toestemming wordt geblokkeerd wanneer een Risk ante aanvraag wordt gedetecteerd. |
+    | _BlockUserConsentForRiskyApps_   | Boolean-waarde |  Markering die aangeeft of de gebruikers toestemming wordt geblokkeerd wanneer een Risk ante aanvraag wordt gedetecteerd. |
 
 1. Waarde voor de update-instellingen voor de gewenste configuratie:
 
@@ -182,7 +182,7 @@ Zie voor meer informatie:
 * [De beheerder toestemming werk stroom configureren](configure-admin-consent-workflow.md)
 * [Meer informatie over het beheren van toestemming voor toepassingen en het evalueren van toestemming aanvragen](manage-consent-requests.md)
 * [Een toepassing beheerderstoestemming verlenen voor de hele tenant](grant-admin-consent.md)
-* [Machtigingen en toestemming in het micro soft Identity-platform](../develop/active-directory-v2-scopes.md)
+* [Machtigingen en toestemming in het micro soft Identity-platform](../develop/v2-permissions-and-consent.md)
 
 Om hulp te krijgen of antwoorden op uw vragen te vinden:
 * [Azure AD op stack overflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

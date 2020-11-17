@@ -3,19 +3,19 @@ title: Hand leiding voor het beheren van het afsluit gedrag van Windows in Azure
 description: Stappen voor het automatisch afsluiten van een niet-actieve Windows-virtuele machine en het verwijderen van de Windows-opdracht shutdown.
 ms.topic: article
 ms.date: 09/29/2020
-ms.openlocfilehash: c6021131787dde4fe23ec4caad107bda2e20158a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 248bbeabaf704ba636e2f82c7a93d0ee90a09f22
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541557"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647695"
 ---
 # <a name="guide-to-controlling-windows-shutdown-behavior"></a>Hand leiding voor het beheren van het afsluit gedrag van Windows
 
 Azure Lab Services biedt verschillende kosten controles om ervoor te zorgen dat virtuele Windows-machines (Vm's) niet onverwacht worden uitgevoerd:
- - [Een planning instellen](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-classroom-lab#set-a-schedule-for-the-lab)
- - [Quota instellen voor gebruikers](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-student-usage#set-quotas-for-users)
- - [De functie Automatisch afsluiten wanneer de verbinding is verbroken inschakelen](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-enable-shutdown-disconnect)
+ - [Een planning instellen](./tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab)
+ - [Quota instellen voor gebruikers](./how-to-configure-student-usage.md#set-quotas-for-users)
+ - [De functie Automatisch afsluiten wanneer de verbinding is verbroken inschakelen](./how-to-enable-shutdown-disconnect.md)
 
 Zelfs met deze kosten controles zijn er situaties waarin een Windows-VM onverwacht kan worden uitgevoerd. en als gevolg hiervan wordt het quotum van de student afgetrokken:
 
@@ -25,7 +25,7 @@ Zelfs met deze kosten controles zijn er situaties waarin een Windows-VM onverwac
 
 - **Windows shutdown opdracht wordt gebruikt om de virtuele machine uit te scha kelen**
   
-    Een student kan Windows shutdown opdracht of andere afsluit mechanismen van Windows gebruiken om de virtuele machine uit te scha kelen in plaats van [Azure Lab Services ' Stop knop '](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-use-classroom-lab#start-or-stop-the-vm).  Als dit gebeurt, wordt de VM in het perspectief van Azure Lab Services nog steeds gebruikt.
+    Een student kan Windows shutdown opdracht of andere afsluit mechanismen van Windows gebruiken om de virtuele machine uit te scha kelen in plaats van [Azure Lab Services ' Stop knop '](./how-to-use-classroom-lab.md#start-or-stop-the-vm).  Als dit gebeurt, wordt de VM in het perspectief van Azure Lab Services nog steeds gebruikt.
     
 Deze hand leiding bevat stappen voor het automatisch afsluiten van een niet-actieve Windows-VM en het verwijderen van de Windows-opdracht shutdown uit het **Start** menu om te voor komen dat deze situaties zich voordoen.  
 
@@ -44,13 +44,13 @@ Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies
 
 U kunt er ook voor kiezen om deze hand matige stappen te volgen met behulp van de sjabloon-VM:
 
-1. Druk op de Windows-toets, typ **gpedit**en selecteer vervolgens **groeps beleid bewerken (configuratie scherm)**.
+1. Druk op de Windows-toets, typ **gpedit** en selecteer vervolgens **groeps beleid bewerken (configuratie scherm)**.
 
 1. Ga naar **computer configuratie > Beheersjablonen > menu Start en de taak balk**.  
 
     ![Editor voor lokaal groepsbeleid](./media/how-to-windows-shutdown/group-policy-shutdown.png)
 
-1. Klik met de rechter muisknop op **verwijderen en voorkom de toegang tot de opdrachten afsluiten, opnieuw opstarten, slaap stand en sluimer stand**en klik op **bewerken**.
+1. Klik met de rechter muisknop op **verwijderen en voorkom de toegang tot de opdrachten afsluiten, opnieuw opstarten, slaap stand en sluimer stand** en klik op **bewerken**.
 
 1. Selecteer de **ingeschakelde** instelling en klik vervolgens op **OK**:
  

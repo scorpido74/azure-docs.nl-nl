@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 09/28/2020
 ms.author: rolyon
 ms.custom: contperfq1
-ms.openlocfilehash: 16ead03af14da70b5aaedc21118488c6dd3012c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75f2eb90e2418b57e5e0a358fbd6282b20ddc9e7
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91597647"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648358"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-azure-cli"></a>Azure-roltoewijzingen toevoegen of verwijderen met behulp van Azure CLI
 
@@ -26,7 +26,7 @@ ms.locfileid: "91597647"
 Om roltoewijzingen toe te voegen of te verwijderen, hebt u het volgende nodig:
 
 - Machtigingen voor `Microsoft.Authorization/roleAssignments/write` en `Microsoft.Authorization/roleAssignments/delete`, zoals [Beheerder van gebruikerstoegang](built-in-roles.md#user-access-administrator) of [Eigenaar](built-in-roles.md#owner)
-- [Bash in azure Cloud shell](/azure/cloud-shell/overview) of [Azure cli](/cli/azure)
+- [Bash in azure Cloud shell](../cloud-shell/overview.md) of [Azure cli](/cli/azure)
 
 ## <a name="steps-to-add-a-role-assignment"></a>Stappen om een roltoewijzing toe te voegen
 
@@ -52,7 +52,7 @@ Voor een Azure AD-groep hebt u de object-ID van de groep nodig. Als u de object-
 az ad group show --group "{groupName}" --query "objectId" --output tsv
 ```
 
-**Service-Principal**
+**Service-principal**
 
 Voor een Azure AD-Service-Principal (identiteit die wordt gebruikt door een toepassing) hebt u de Service-Principal object-ID nodig. Als u de object-ID wilt ophalen, kunt u [AZ AD SP List](/cli/azure/ad/sp#az_ad_sp_list)gebruiken. Gebruik voor een service-principal de object-ID en **niet** de toepassings-id.
 
@@ -195,7 +195,7 @@ az role assignment create --assignee "55555555-5555-5555-5555-555555555555" \
 
 ### <a name="add-role-assignment-for-all-blob-containers-in-a-storage-account-resource-scope"></a>Roltoewijzing voor alle BLOB-containers in een opslag account bron bereik toevoegen
 
-Hiermee wijst u de rol van de BLOB voor het decoderen van gegevens over de [opslag](built-in-roles.md#storage-blob-data-contributor) van een opslag account met de naam *storage12345*toe aan een service-principal met object-id *55555555-5555-5555-5555-555555555555* .
+Hiermee wijst u de rol van de BLOB voor het decoderen van gegevens over de [opslag](built-in-roles.md#storage-blob-data-contributor) van een opslag account met de naam *storage12345* toe aan een service-principal met object-id *55555555-5555-5555-5555-555555555555* .
 
 ```azurecli
 az role assignment create --assignee "55555555-5555-5555-5555-555555555555" \
@@ -362,4 +362,4 @@ az role assignment delete --assignee "alain@example.com" \
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Azure-roltoewijzingen weer geven met Azure CLI](role-assignments-list-cli.md)
-- [Azure CLI gebruiken voor het beheren van Azure-resources en-resource groepen](../azure-resource-manager/cli-azure-resource-manager.md)
+- [Azure CLI gebruiken voor het beheren van Azure-resources en-resource groepen](../azure-resource-manager/management/manage-resources-cli.md)

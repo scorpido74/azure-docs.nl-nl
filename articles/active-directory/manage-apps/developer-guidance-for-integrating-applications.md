@@ -12,22 +12,22 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da1b56e3818d2d9701ecb0252328746dc39bb260
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: de16c947c59f5a0111b9325dbefe7daf1268fb40
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578311"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649157"
 ---
 # <a name="develop-line-of-business-apps-for-azure-active-directory"></a>Line-of-Business-Apps ontwikkelen voor Azure Active Directory
 Deze hand leiding bevat een overzicht van het ontwikkelen van LoB-toepassingen (line-of-Business) voor Azure Active Directory (AD). De beoogde doel groep is Active Directory/Microsoft 365 globale beheerders.
 
 ## <a name="overview"></a>Overzicht
-Het bouwen van toepassingen die zijn geïntegreerd met Azure AD biedt gebruikers in uw organisatie eenmalige aanmelding met Microsoft 365. Met de toepassing in azure AD kunt u het verificatie beleid voor de toepassing beheren. Zie [toegangs regels configureren](../conditional-access/app-based-mfa.md)voor meer informatie over voorwaardelijke toegang en het beveiligen van apps met multi-factor Authentication (MFA).
+Het bouwen van toepassingen die zijn geïntegreerd met Azure AD biedt gebruikers in uw organisatie eenmalige aanmelding met Microsoft 365. Met de toepassing in azure AD kunt u het verificatie beleid voor de toepassing beheren. Zie [toegangs regels configureren](../authentication/tutorial-enable-azure-mfa.md)voor meer informatie over voorwaardelijke toegang en het beveiligen van apps met multi-factor Authentication (MFA).
 
 Registreer uw toepassing voor gebruik van Azure Active Directory. Het registreren van de toepassing betekent dat uw ontwikkel aars Azure AD kunnen gebruiken om gebruikers te verifiëren en om toegang aan te vragen voor gebruikers bronnen zoals e-mail, agenda en documenten.
 
-Elk lid van uw directory (geen gasten) kan een toepassing registreren, ook wel bekend als *het maken van een toepassings object*. Als u een toepassing niet kunt registreren, betekent dit dat de globale beheerder van uw Directory deze functionaliteit heeft beperkt. mogelijk moet u contact met hen opnemen [om de](https://docs.microsoft.com/azure/active-directory/roles/delegate-app-roles#assign-built-in-application-admin-roles) toepassing te kunnen registreren. Zie voor meer informatie over het beperken van de gebruiker [machtigingen voor het registreren van apps in azure Active Directory](https://docs.microsoft.com/azure/active-directory/roles/delegate-app-roles#restrict-who-can-create-applications).
+Elk lid van uw directory (geen gasten) kan een toepassing registreren, ook wel bekend als *het maken van een toepassings object*. Als u een toepassing niet kunt registreren, betekent dit dat de globale beheerder van uw Directory deze functionaliteit heeft beperkt. mogelijk moet u contact met hen opnemen [om de](../roles/delegate-app-roles.md#assign-built-in-application-admin-roles) toepassing te kunnen registreren. Zie voor meer informatie over het beperken van de gebruiker [machtigingen voor het registreren van apps in azure Active Directory](../roles/delegate-app-roles.md#restrict-who-can-create-applications).
 
 Als u een toepassing registreert, kan elke gebruiker het volgende doen:
 
@@ -55,14 +55,14 @@ Dit is wat u, de globale beheerder, nodig hebt om ontwikkel aars te helpen hun t
 * De standaard gebruikers interface voor toestemming onderdrukken
 
 ## <a name="configure-access-rules"></a>Toegangs regels configureren
-Toegangs regels per toepassing configureren voor uw SaaS-apps. U kunt bijvoorbeeld MFA vereisen of alleen toegang verlenen aan gebruikers op vertrouwde netwerken. De Details voor deze informatie zijn beschikbaar in het document [toegangs regels configureren](../conditional-access/app-based-mfa.md).
+Toegangs regels per toepassing configureren voor uw SaaS-apps. U kunt bijvoorbeeld MFA vereisen of alleen toegang verlenen aan gebruikers op vertrouwde netwerken. De Details voor deze informatie zijn beschikbaar in het document [toegangs regels configureren](../authentication/tutorial-enable-azure-mfa.md).
 
 ## <a name="configure-the-app-to-require-user-assignment-and-assign-users"></a>De app configureren om gebruikers toewijzing te vereisen en gebruikers toe te wijzen
 Standaard hebben gebruikers toegang tot toepassingen zonder te worden toegewezen. Als de toepassing echter rollen beschikbaar maakt of als u wilt dat de toepassing wordt weer gegeven in mijn apps van een gebruiker, moet u de gebruikers toewijzing vereisen.
 
 Als u een Azure AD Premium of een Enter prise Mobility Suite (EMS)-abonnee bent, raden we u ten zeerste aan groepen te gebruiken. Door groepen toe te wijzen aan de toepassing, kunt u doorlopend toegangs beheer delegeren aan de eigenaar van de groep. U kunt de groep maken of de verantwoordelijke partij in uw organisatie vragen de groep te maken met behulp van de groeps beheer faciliteit.
 
-[Gebruikers en groepen toewijzen aan een toepassing](methods-for-assigning-users-and-groups.md)  
+[Gebruikers en groepen toewijzen aan een toepassing](./assign-user-or-group-access-portal.md)  
 
 
 ## <a name="suppress-user-consent"></a>Toestemming van de gebruiker onderdrukken
@@ -70,9 +70,8 @@ Elke gebruiker krijgt standaard een toestemmings ervaring om zich aan te melden.
 
 Voor toepassingen die u vertrouwt, kunt u de gebruikers ervaring vereenvoudigen door namens uw organisatie toestemming te bieden voor de toepassing.
 
-Zie [toepassingen integreren met Azure Active Directory](../develop/quickstart-v1-integrate-apps-with-azure-ad.md)voor meer informatie over de toestemming van de gebruiker en de toestemming van Azure.
+Zie [toepassingen integreren met Azure Active Directory](../develop/quickstart-register-app.md)voor meer informatie over de toestemming van de gebruiker en de toestemming van Azure.
 
 ## <a name="related-articles"></a>Gerelateerde artikelen
 * [Veilige externe toegang tot on-premises toepassingen met Azure AD-toepassingsproxy inschakelen](application-proxy.md)
 * [Toegang tot apps beheren met Azure AD](what-is-access-management.md)
-

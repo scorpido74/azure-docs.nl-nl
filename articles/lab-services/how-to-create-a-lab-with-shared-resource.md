@@ -5,12 +5,12 @@ author: emaher
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: 2d6610a2f69b6da34972510a5619c6d16a605289
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4bf4127dc163bb5f034e077b84664828374ba87
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776439"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647967"
 ---
 # <a name="how-to-create-a-lab-with-a-shared-resource-in-azure-lab-services"></a>Een lab maken met een gedeelde bron in Azure Lab Services
 
@@ -38,12 +38,12 @@ Een van de meest voorkomende gedeelde bronnen is een licentie server. Hier volge
 De licentie server moet zijn verbonden met het virtuele netwerk dat is gekoppeld aan het lab, dus de licentie server moet zich in dezelfde regio bevinden als het lab-account.
 
 #### <a name="static-private-ip-and-mac-address"></a>Statisch particulier IP-en MAC-adres
-Virtuele machines hebben standaard een dynamisch privé-IP-adres [voordat u een software instelt voor het instellen van de privé-IP in statisch](https://docs.microsoft.com/azure/virtual-network/virtual-networks-static-private-ip-arm-pportal). Hiermee stelt u het privé-IP en het MAC-adres in op statisch.  
+Virtuele machines hebben standaard een dynamisch privé-IP-adres [voordat u een software instelt voor het instellen van de privé-IP in statisch](../virtual-network/virtual-networks-static-private-ip-arm-pportal.md). Hiermee stelt u het privé-IP en het MAC-adres in op statisch.  
 
 #### <a name="control-access"></a>Toegang beheren
 Het beheren van de toegang tot de licentie server is essentieel.  Wanneer de virtuele machine eenmaal is ingesteld, is de toegang nog steeds nodig voor onderhoud, probleem oplossing en bijwerken.  Hier volgen enkele verschillende manieren om dit te doen.
-- [JIT-toegang (just-in-time) instellen in Azure Security Center.](https://docs.microsoft.com/azure/security-center/security-center-just-in-time?tabs=jit-config-asc%2Cjit-request-asc)
-- [Instellen van een netwerk beveiligings groep om de toegang te beperken.](https://docs.microsoft.com/azure/virtual-network/network-security-groups-overview)
+- [JIT-toegang (just-in-time) instellen in Azure Security Center.](../security-center/security-center-just-in-time.md?tabs=jit-config-asc%252cjit-request-asc)
+- [Instellen van een netwerk beveiligings groep om de toegang te beperken.](../virtual-network/network-security-groups-overview.md)
 - [Setup Bastion om beveiligde toegang tot de licentie server toe te staan.](https://azure.microsoft.com/services/azure-bastion/)
 
 ## <a name="lab-account"></a>Lab-account

@@ -5,12 +5,12 @@ author: emaher
 ms.topic: article
 ms.date: 09/29/2020
 ms.author: enewman
-ms.openlocfilehash: 4bbf4c9d4bc83b48b8ecc62946fa9bffa8af50bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4034f889334bcf1e4eaa3710a32db60b6a9936b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91533517"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648018"
 ---
 # <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>Stel een lab in om data Science te leren met python-en Jupyter-notebooks
 In dit artikel wordt beschreven hoe u een virtuele machine (VM) in Lab-Services instelt met de hulpprogram ma's die nodig zijn om studenten te leren hoe ze [Jupyter-notebooks](http://jupyter-notebook.readthedocs.io/)gebruiken en hoe studenten verbinding kunnen maken met hun notebooks op hun virtuele machines (vm's).
@@ -29,7 +29,7 @@ Schakel de instellingen in die worden beschreven in de onderstaande tabel voor h
 
 | Account instelling Lab | Instructies |
 | ------------------- | ------------ |
-| Marketplace-installatie kopie | In uw Lab-account kunt u een van de Azure Marketplace-installatie kopieën inschakelen op basis van de behoeften van uw besturings systeem: <br/><ul><li>Data Science Virtual Machine-Windows Server 2019</li><li>Data Science Virtual Machine – Ubuntu 18,04</li></ul> |
+| Marketplace-installatiekopie | In uw Lab-account kunt u een van de Azure Marketplace-installatie kopieën inschakelen op basis van de behoeften van uw besturings systeem: <br/><ul><li>Data Science Virtual Machine-Windows Server 2019</li><li>Data Science Virtual Machine – Ubuntu 18,04</li></ul> |
 
 > [!NOTE]
 > In dit artikel wordt gebruikgemaakt van de data Science-installatie kopieën voor virtuele machines die beschikbaar zijn op de Azure Marketplace, omdat deze vooraf zijn geconfigureerd met Jupyter Notebook. Deze installatie kopieën bevatten echter ook tal van andere hulpprogram ma's voor ontwikkeling en modellen voor gegevens wetenschap. Als u deze extra hulpprogram ma's niet wilt en een licht gewicht configuratie met alleen Jupyter-notebooks wilt, maakt u een aangepaste VM-installatie kopie. Voor een voor beeld [installeert u JupyperHub op Azure](http://tljh.jupyter.org/en/latest/install/azure.html). Zodra de aangepaste installatie kopie is gemaakt, kunt u deze uploaden naar een galerie met gedeelde afbeeldingen om de installatie kopie in Azure Lab Services te gebruiken. Meer informatie over het [gebruik van de galerie voor gedeelde afbeeldingen in Azure Lab Services](how-to-attach-detach-shared-image-gallery.md). 
@@ -86,7 +86,7 @@ Als u studenten hebt voorzien van Linux Vm's, zijn er verschillende opties die s
 De volgende secties bevatten informatie over deze manieren om verbinding te maken met Jupyter-notebooks. 
 
 #### <a name="ssh-to-virtual-machine"></a>SSH-naar-virtuele machine
-Studenten kunnen via SSH verbinding maken met hun Linux-Vm's via een terminal sessie. Zie [toegang tot een leslokaal Lab](how-to-use-classroom-lab.md)voor gedetailleerde stappen. Als ze een Windows-client computer gebruiken, moeten ze een SSH-client inschakelen door [putty](https://www.putty.org/) te downloaden of [OpenSSH in Windows in](https://docs.microsoft.com/windows-server/administration/openssh/openssh_install_firstuse) te scha kelen naar SSH vanaf de opdracht prompt. 
+Studenten kunnen via SSH verbinding maken met hun Linux-Vm's via een terminal sessie. Zie [toegang tot een leslokaal Lab](how-to-use-classroom-lab.md)voor gedetailleerde stappen. Als ze een Windows-client computer gebruiken, moeten ze een SSH-client inschakelen door [putty](https://www.putty.org/) te downloaden of [OpenSSH in Windows in](/windows-server/administration/openssh/openssh_install_firstuse) te scha kelen naar SSH vanaf de opdracht prompt. 
 
 1.  Start de virtuele machine.
 2.  Zodra de virtuele machine actief is, klikt u op **verbinding maken**. Hiermee wordt een dialoog venster weer gegeven met de SSH-opdracht teken reeks, die er als volgt uitziet:

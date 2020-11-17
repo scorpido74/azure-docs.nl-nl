@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 6039eeed2e1bcb348920be986e72089164c614ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96931d2dd94a8a31021ebe62caaefc54f643b007
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89392647"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649259"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections"></a>IPsec/IKE-beleid configureren voor S2S VPN-verbindingen of VNet-naar-VNet-verbindingen
 
@@ -34,9 +34,8 @@ Dit artikel bevat instructies voor het maken en configureren van een IPsec/IKE-b
 
 > [!IMPORTANT]
 > 1. Houd er rekening mee dat IPsec/IKE-beleid alleen werkt op de volgende gateway-Sku's:
->    * ***VpnGw1, VpnGw2, VpnGw3*** (op route gebaseerd)
->    * ***Standard*** en ***High Performance*** (op route gebaseerd)
-> 2. U kunt maar ***één*** beleidscombinatie opgeven voor een bepaalde verbinding.
+>    * ***VpnGw1, VpnGw2, VpnGw3** _ (op route gebaseerd) _ ***standaard** _ en _*_High Performance_*_ (op route gebaseerd)
+> 2. U kunt slechts _*_één_*_ beleids combinatie voor een bepaalde verbinding opgeven.
 > 3. U moet alle algoritmen en para meters opgeven voor zowel IKE (hoofd modus) als IPsec (snelle modus). Gedeeltelijke beleidsspecificatie is niet toegestaan.
 > 4. Neem contact op met de specificaties van de leverancier van uw VPN-apparaat om ervoor te zorgen dat het beleid wordt ondersteund op uw on-premises VPN-apparaten. S2S-of VNet-naar-VNet-verbindingen kunnen niet bepalen of het beleid niet compatibel is.
 
@@ -56,7 +55,7 @@ De instructies in dit artikel helpen u bij het instellen en configureren van IPs
 
 De volgende tabel bevat de ondersteunde cryptografische algoritmen en sleutel sterktes die door de klanten kunnen worden geconfigureerd:
 
-| **IPsec/IKEv2**  | **Opties**    |
+| _ *IPSec/IKEv2**  | **Opties**    |
 | ---  | --- 
 | IKEv2-versleuteling | AES256, AES192, AES128, DES3, DES  
 | IKEv2-integriteit  | SHA384, SHA256, SHA1, MD5  |
@@ -64,7 +63,7 @@ De volgende tabel bevat de ondersteunde cryptografische algoritmen en sleutel st
 | IPsec-versleuteling | GCMAES256, GCMAES192, GCMAES128, AES256, AES192, AES128, DES3, DES, geen    |
 | IPsec-integriteit  | GCMASE256, GCMAES192, GCMAES128, SHA256, SHA1, MD5 |
 | PFS-groep        | PFS24, ECP384, ECP256, PFS2048, PFS2, PFS1, geen 
-| QM SA-levensduur   | (**Optioneel**: de standaard waarden worden gebruikt als er geen waarde is opgegeven)<br>Seconden (geheel getal; **min. 300 **/standaard 27000 seconden)<br>KB (geheel getal; **min. 1024**/standaard 102400000 KB)   |
+| QM SA-levensduur   | (**Optioneel**: de standaard waarden worden gebruikt als er geen waarde is opgegeven)<br>Seconden (geheel getal; **min. 300**/standaard 27000 seconden)<br>KB (geheel getal; **min. 1024**/standaard 102400000 KB)   |
 | Verkeersselector | UsePolicyBasedTrafficSelectors * * ($True/$False; **Optioneel**, standaard $false indien niet opgegeven)    |
 |  |  |
 
@@ -153,7 +152,7 @@ $LNGIP6        = "131.107.72.22"
 
 #### <a name="2-connect-to-your-subscription-and-create-a-new-resource-group"></a>2. Maak verbinding met uw abonnement en maak een nieuwe resource groep
 
-Zorg ervoor dat u overschakelt naar de PowerShell-modus als u de Resource Manager-cmdlets wilt gebruiken. Zie [Using Windows PowerShell with Resource Manager](../powershell-azure-resource-manager.md) (Windows PowerShell gebruiken met Resource Manager) voor meer informatie.
+Zorg ervoor dat u overschakelt naar de PowerShell-modus als u de Resource Manager-cmdlets wilt gebruiken. Zie [Using Windows PowerShell with Resource Manager](../azure-resource-manager/management/manage-resources-powershell.md) (Windows PowerShell gebruiken met Resource Manager) voor meer informatie.
 
 Open de PowerShell-console en maak verbinding met uw account. Gebruik het volgende voorbeeld als hulp bij het maken van de verbinding:
 

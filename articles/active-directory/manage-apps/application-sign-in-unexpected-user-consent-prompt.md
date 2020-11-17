@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9559e22a8396de93bbe46f20b76855d9ff00f753
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa74424dddd7577eb942f72f038f5bd56854abac
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84763717"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648188"
 ---
 # <a name="unexpected-consent-prompt-when-signing-in-to-an-application"></a>Onverwachte toestemming vragen bij het aanmelden bij een toepassing
 
@@ -39,7 +39,7 @@ Er kunnen in verschillende scenario's extra prompts worden verwacht:
 
 * De gebruiker die oorspronkelijk heeft ingestemd met de toepassing, was een beheerder, maar heeft geen toestemming verleend namens de hele organisatie.
 
-* De toepassing gebruikt [incrementele en dynamische toestemming](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-compare#incremental-and-dynamic-consent) om aanvullende machtigingen aan te vragen nadat de toestemming voor het eerst is toegekend. Dit wordt vaak gebruikt wanneer optionele functies van een toepassing extra machtigingen vereisen dan vereisten die vereist zijn voor de basislijn functionaliteit.
+* De toepassing gebruikt [incrementele en dynamische toestemming](../azuread-dev/azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent) om aanvullende machtigingen aan te vragen nadat de toestemming voor het eerst is toegekend. Dit wordt vaak gebruikt wanneer optionele functies van een toepassing extra machtigingen vereisen dan vereisten die vereist zijn voor de basislijn functionaliteit.
 
 * De toestemming is ingetrokken nadat deze in eerste instantie is toegekend.
 
@@ -47,8 +47,6 @@ Er kunnen in verschillende scenario's extra prompts worden verwacht:
 
 ## <a name="next-steps"></a>Volgende stappen
 
--   [Apps, machtigingen en toestemming in Azure Active Directory (v 1.0-eind punt)](https://docs.microsoft.com/azure/active-directory/active-directory-apps-permissions-consent)
+-   [Apps, machtigingen en toestemming in Azure Active Directory (v 1.0-eind punt)](../develop/quickstart-register-app.md)
 
--   [Bereiken, machtigingen en toestemming in de Azure Active Directory (v 2.0-eind punt)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)
-
-
+-   [Bereiken, machtigingen en toestemming in de Azure Active Directory (v 2.0-eind punt)](../develop/v2-permissions-and-consent.md)

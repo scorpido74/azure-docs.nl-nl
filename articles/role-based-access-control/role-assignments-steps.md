@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 09/30/2020
 ms.author: rolyon
-ms.openlocfilehash: badf10da8af0ed3829deb2498b51b5d5c8ce6a93
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 56b6638462acaf43b6353787495e5b7993acb413
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91604317"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648273"
 ---
 # <a name="steps-to-add-a-role-assignment"></a>Stappen om een roltoewijzing toe te voegen
 
@@ -22,18 +22,18 @@ ms.locfileid: "91604317"
 
 ## <a name="step-1-determine-who-needs-access"></a>Stap 1: bepalen wie toegang moet hebben
 
-U moet eerst bepalen wie toegang moet hebben. U kunt een rol toewijzen aan een gebruiker, groep, Service-Principal of beheerde identiteit. Dit wordt ook wel een *beveiligingsprincipal*genoemd.
+U moet eerst bepalen wie toegang moet hebben. U kunt een rol toewijzen aan een gebruiker, groep, Service-Principal of beheerde identiteit. Dit wordt ook wel een *beveiligingsprincipal* genoemd.
 
 ![Beveiligings-principal voor een roltoewijzing](./media/shared/rbac-security-principal.png)
 
-- Gebruiker: een persoon een profiel heeft in Azure Active Directory. U kunt ook rollen toewijzen aan gebruikers in andere tenants. Zie [Azure Active Directory B2B](../active-directory/b2b/what-is-b2b.md) voor meer informatie over gebruikers in andere organisaties.
+- Gebruiker: een persoon een profiel heeft in Azure Active Directory. U kunt ook rollen toewijzen aan gebruikers in andere tenants. Zie [Azure Active Directory B2B](../active-directory/external-identities/what-is-b2b.md) voor meer informatie over gebruikers in andere organisaties.
 - Groep: een aantal gebruikers dat in Azure Active Directory is gemaakt. Wanneer u een rol aan een groep toewijst, hebben alle gebruikers binnen die groep die rol. 
 - Service-principal: een beveiligings-id die wordt gebruikt door toepassingen of services om toegang tot specifieke Azure-resources te krijgen. U kunt het zien als een *gebruikersidentiteit* (gebruikersnaam en wachtwoord of certificaat) voor een toepassing.
 - Beheerde identiteit - een identiteit in Azure Active Directory die automatisch wordt beheerd door Azure. [Beheerde identiteiten](../active-directory/managed-identities-azure-resources/overview.md) worden doorgaans gebruikt bij het ontwikkelen van cloudtoepassingen voor het beheren van de referenties voor verificatie bij Azure-services.
 
 ## <a name="step-2-find-the-appropriate-role"></a>Stap 2: de juiste rol zoeken
 
-Machtigingen worden samen in een *roldefinitie*gegroepeerd. Het wordt meestal gewoon een *rol* genoemd. U kunt kiezen uit een lijst met verschillende ingebouwde rollen. Als de ingebouwde rollen niet voldoen aan de specifieke behoeften van uw organisatie, kunt u uw eigen aangepaste rollen maken.
+Machtigingen worden samen in een *roldefinitie* gegroepeerd. Het wordt meestal gewoon een *rol* genoemd. U kunt kiezen uit een lijst met verschillende ingebouwde rollen. Als de ingebouwde rollen niet voldoen aan de specifieke behoeften van uw organisatie, kunt u uw eigen aangepaste rollen maken.
 
 ![Roldefinitie voor een roltoewijzing](./media/shared/rbac-role-definition.png)
 

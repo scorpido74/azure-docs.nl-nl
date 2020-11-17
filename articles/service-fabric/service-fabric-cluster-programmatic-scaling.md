@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: mikerou
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bd47e5e39684bd4b684cd1e12dd9a3d420640ee2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f39bd874c1f5a1be42ca1c88e6ea2fe8df22f87
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89005802"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648205"
 ---
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>Een Service Fabric cluster via een programma schalen 
 
@@ -121,5 +121,5 @@ await client.ClusterManager.RemoveNodeStateAsync(mostRecentLiveNode.NodeName);
 Raadpleeg de volgende concepten en nuttige Api's om aan de slag te gaan met het implementeren van uw eigen logica voor automatisch schalen:
 
 - [Hand matig schalen of met regels voor automatisch schalen](./service-fabric-cluster-scale-in-out.md)
-- [Fluent Azure-beheer bibliotheken voor .net](https://github.com/Azure/azure-sdk-for-net/tree/Fluent) (geschikt voor interactie met de onderliggende virtuele-machine schaal sets van een service Fabric cluster)
+- [Azure-beheer bibliotheken voor .net](https://github.com/Azure/azure-libraries-for-net) (geschikt voor interactie met de onderliggende virtuele-machine schaal sets van een service Fabric cluster)
 - [System. Fabric. FabricClient](/dotnet/api/system.fabric.fabricclient) (handig voor interactie met een service Fabric cluster en de bijbehorende knoop punten)

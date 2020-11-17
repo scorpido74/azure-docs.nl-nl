@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/30/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 49191ffc0033559f0668a5330b8c91643dee39d3
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 8fc26b00214106aa08e0e6e4c41f9f05aca9344d
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92073968"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648035"
 ---
 # <a name="understand-linked-sign-on"></a>Informatie over gekoppelde aanmelding
 
@@ -29,7 +29,7 @@ Enkele veelvoorkomende scenario's waarbij de koppelings optie waardevol is:
 - Voeg diepe koppelingen toe aan specifieke share point-pagina's of andere webpagina's die u alleen op de toegangs Vensters van uw gebruiker wilt weer geven.
 - Voeg een koppeling toe aan een app waarvoor geen verificatie is vereist. 
  
- De optie **gekoppeld** biedt geen aanmeldings functionaliteit via Azure AD-referenties. Maar u kunt nog steeds een deel van de andere functies van **bedrijfs toepassingen**gebruiken. U kunt bijvoorbeeld audit Logboeken gebruiken en een aangepast logo en de naam van een app toevoegen.
+ De optie **gekoppeld** biedt geen aanmeldings functionaliteit via Azure AD-referenties. Maar u kunt nog steeds een deel van de andere functies van **bedrijfs toepassingen** gebruiken. U kunt bijvoorbeeld audit Logboeken gebruiken en een aangepast logo en de naam van een app toevoegen.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
@@ -40,7 +40,7 @@ De optie **gekoppeld** biedt geen aanmeldings functionaliteit via Azure AD. Met 
 > [!IMPORTANT] 
 > Er zijn enkele scenario's waarbij de optie voor **eenmalige aanmelding** niet voor komt in de navigatie voor een toepassing in **bedrijfs toepassingen**. 
 >
-> Als de toepassing is geregistreerd met behulp van **app-registraties** , is de functionaliteit voor eenmalige aanmelding standaard ingesteld op het gebruik van OIDC OAuth. In dit geval wordt de optie **voor eenmalige aanmelding** niet weer gegeven in de navigatie onder **bedrijfs toepassingen**. Wanneer u **app-registraties** gebruikt om uw aangepaste app toe te voegen, configureert u de opties in het manifest bestand. Zie [Azure Active Directory app-manifest](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)voor meer informatie over het manifest bestand. Zie [verificatie en autorisatie met behulp van micro soft Identity platform](https://docs.microsoft.com/azure/active-directory/develop/authentication-vs-authorization#authentication-and-authorization-using-microsoft-identity-platform)voor meer informatie over SSO-standaarden. 
+> Als de toepassing is geregistreerd met behulp van **app-registraties** , is de functionaliteit voor eenmalige aanmelding standaard ingesteld op het gebruik van OIDC OAuth. In dit geval wordt de optie **voor eenmalige aanmelding** niet weer gegeven in de navigatie onder **bedrijfs toepassingen**. Wanneer u **app-registraties** gebruikt om uw aangepaste app toe te voegen, configureert u de opties in het manifest bestand. Zie [Azure Active Directory app-manifest](../develop/reference-app-manifest.md)voor meer informatie over het manifest bestand. Zie [verificatie en autorisatie met behulp van micro soft Identity platform](../develop/authentication-vs-authorization.md#authentication-and-authorization-using-microsoft-identity-platform)voor meer informatie over SSO-standaarden. 
 >
 > Andere scenario's waarin **eenmalige aanmelding** ontbreekt in de navigatie, zijn, wanneer een toepassing wordt gehost in een andere Tenant of als uw account niet over de vereiste machtigingen (globale beheerder, Cloud toepassings beheerder, toepassings beheerder of eigenaar van de service-principal) beschikt. Machtigingen kunnen ook leiden tot een scenario waarin u **eenmalige aanmelding** kunt openen, maar niet kunt opslaan. Zie (voor meer informatie over Azure AD-beheerders rollen https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) .
 
@@ -52,5 +52,5 @@ Nadat u een app hebt geconfigureerd, kunt u er gebruikers en groepen aan toewijz
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Gebruikers of groepen toewijzen aan de toepassing](methods-for-assigning-users-and-groups.md)
+- [Gebruikers of groepen toewijzen aan de toepassing](./assign-user-or-group-access-portal.md)
 - [Automatisch inrichten van gebruikers accounts configureren](../app-provisioning/configure-automatic-user-provisioning-portal.md)

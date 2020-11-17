@@ -3,12 +3,12 @@ title: Grafische extern bureau blad inschakelen voor Linux in Azure Lab Services
 description: Meer informatie over het inschakelen van extern bureau blad voor virtuele Linux-machines in een lab in Azure Lab Services.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: b8db01ca57d90739a57cd9bbb3caf63ada5f26fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34c940fec388bb0e79ab5e1db9be6d52fb223873
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91251606"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647950"
 ---
 # <a name="enable-graphical-remote-desktop-for-linux-virtual-machines-in-azure-lab-services"></a>Grafische extern bureau blad inschakelen voor virtuele Linux-machines in Azure Lab Services
 In dit artikel leest u hoe u de volgende taken kunt uitvoeren:
@@ -19,7 +19,7 @@ In dit artikel leest u hoe u de volgende taken kunt uitvoeren:
 ## <a name="set-up-graphical-remote-desktop-solution"></a>Grafische oplossing voor extern bureau blad instellen
 Wanneer een lab wordt gemaakt op basis van een **Linux** -installatie kopie, wordt de **SSH** -toegang (Secure Shell) automatisch geconfigureerd zodat de docent via SSH verbinding kan maken met de sjabloon-VM vanaf de opdracht regel.  Op dezelfde manier kunnen studenten ook via SSH verbinding maken met hun virtuele machines wanneer de sjabloon-VM wordt gepubliceerd.
 
-Als u verbinding wilt maken met een virtuele Linux-machine met een **GUI** (Graphical User Interface), raden wij u aan **RDP** of **X2Go**te gebruiken.  Bij beide opties moet de docent een aantal extra instellingen voor de VM van de sjabloon hebben:
+Als u verbinding wilt maken met een virtuele Linux-machine met een **GUI** (Graphical User Interface), raden wij u aan **RDP** of **X2Go** te gebruiken.  Bij beide opties moet de docent een aantal extra instellingen voor de VM van de sjabloon hebben:
 
 ### <a name="rdp-setup"></a>Setup van RDP
 Als u RDP wilt gebruiken, moet de docent het volgende doen:
@@ -38,7 +38,7 @@ X2Go maakt gebruik van dezelfde poort die al is ingeschakeld voor SSH.  Als gevo
 > In sommige gevallen, zoals met Ubuntu LTS 18,04, levert X2Go betere prestaties.  Als u RDP gebruikt en u merkt dat er een latentie is bij interactie met de grafische desktop omgeving, kunt u overwegen X2Go te proberen, omdat dit de prestaties kan verbeteren.
 
 > [!IMPORTANT]
->  Voor sommige Marketplace-installatie kopieën is al een grafische bureaublad omgeving en een extern bureau blad-server geïnstalleerd.  De [Data Science virtual machine voor Linux (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804) heeft bijvoorbeeld al [xfce en X2Go-server geïnstalleerd en geconfigureerd om client verbindingen te accepteren](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro#x2go).
+>  Voor sommige Marketplace-installatie kopieën is al een grafische bureaublad omgeving en een extern bureau blad-server geïnstalleerd.  De [Data Science virtual machine voor Linux (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804) heeft bijvoorbeeld al [xfce en X2Go-server geïnstalleerd en geconfigureerd om client verbindingen te accepteren](../machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro.md#x2go).
 
 ## <a name="enable-remote-desktop-connection-for-rdp"></a>Verbinding met extern bureau blad inschakelen voor RDP
 
@@ -73,7 +73,7 @@ Volg de onderstaande stappen om de sjabloon-VM in te stellen:
     ![SSH-connection string](./media/how-to-enable-remote-desktop-linux/ssh-connection-string.png)
 
 4. U kunt RDP of X2Go installeren samen met de grafische desktop omgeving van uw keuze.  Raadpleeg de volgende instructies:
-    - [RDP installeren en configureren](https://docs.microsoft.com/azure/virtual-machines/linux/use-remote-desktop)
+    - [RDP installeren en configureren](../virtual-machines/linux/use-remote-desktop.md)
     - [X2Go installeren en configureren](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Scripts/X2GoRemoteDesktop)
 
 ## <a name="connect-to-the-template-vm-via-the-gui"></a>Verbinding maken met de sjabloon-VM via de gebruikers interface
@@ -82,7 +82,7 @@ Nadat de sjabloon-VM is ingesteld, kan de docent via de gebruikers interface ver
 
 ### <a name="microsoft-remote-desktop-rdp-client"></a>Microsoft Extern bureaublad-client (RDP)
 
-De Microsoft Extern bureaublad-client (RDP) wordt gebruikt om verbinding te maken met een sjabloon-VM waarvoor RDP is geconfigureerd.  De Extern bureaublad-client kan worden gebruikt in Windows, Chromebooks, Macs en meer.  Raadpleeg het artikel over [extern bureaublad-clients](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients) voor meer informatie.
+De Microsoft Extern bureaublad-client (RDP) wordt gebruikt om verbinding te maken met een sjabloon-VM waarvoor RDP is geconfigureerd.  De Extern bureaublad-client kan worden gebruikt in Windows, Chromebooks, Macs en meer.  Raadpleeg het artikel over [extern bureaublad-clients](/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients) voor meer informatie.
 
 Volg de onderstaande stappen op basis van het type computer dat wordt gebruikt om verbinding te maken met de VM van de sjabloon:
 

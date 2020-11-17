@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: v-erkel
-ms.openlocfilehash: 19950ca215abbac3a56bdb901448c9d92ad369be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 067b12d4dcfd5ba2b730204ef680b900d79f1b72
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613038"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648069"
 ---
 # <a name="manage-your-cache"></a>Uw cache beheren
 
@@ -46,7 +46,7 @@ Een gestopte cache reageert niet op client aanvragen. U moet clients ontkoppelen
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Met de knop **stoppen** wordt een actieve cache onderbroken. De knop **stoppen** is beschikbaar wanneer de status van een cache **in orde** is of **gedegradeerd**is.
+Met de knop **stoppen** wordt een actieve cache onderbroken. De knop **stoppen** is beschikbaar wanneer de status van een cache **in orde** is of **gedegradeerd** is.
 
 ![scherm afbeelding van de bovenste knoppen met een stop markering en een pop-upbericht waarin de actie stoppen wordt beschreven en u wordt gevraagd om door te gaan? met Ja (standaard) en geen knoppen](media/stop-cache.png)
 
@@ -58,9 +58,9 @@ Als u een gestopt cache opnieuw wilt activeren, klikt u op de knop **starten** .
 
 ### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[Azure cli instellen voor Azure HPC-cache](./az-cli-prerequisites.md).
 
-Een cache tijdelijk onderbreken met de opdracht [AZ HPC-cache stop](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-stop) . Deze actie is alleen geldig wanneer de status van een cache **in orde** is of **gedegradeerd**is.
+Een cache tijdelijk onderbreken met de opdracht [AZ HPC-cache stop](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-stop) . Deze actie is alleen geldig wanneer de status van een cache **in orde** is of **gedegradeerd** is.
 
 De inhoud van de cache wordt automatisch naar de opslag doelen gewist voordat deze wordt gestopt. Dit proces kan enige tijd duren, maar Hiermee wordt de consistentie van gegevens gegarandeerd.
 
@@ -113,7 +113,7 @@ Als u de cache wilt leegmaken, klikt u op de knop **leegmaken** en klikt u vervo
 
 ### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[Azure cli instellen voor Azure HPC-cache](./az-cli-prerequisites.md).
 
 Gebruik [AZ HPC-cache flush](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-flush) om ervoor te zorgen dat de cache alle gewijzigde gegevens naar de opslag doelen schrijft.
 
@@ -161,7 +161,7 @@ Klik op de knop **bijwerken** om de software-update te starten. De cache status 
 
 ### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[Azure cli instellen voor Azure HPC-cache](./az-cli-prerequisites.md).
 
 In azure CLI worden nieuwe software-informatie aan het einde van het cache status rapport opgenomen. (Gebruik [AZ HPC-cache show](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-show) om te controleren.) Zoek naar de teken reeks ' upgradeStatus ' in het bericht.
 
@@ -225,7 +225,7 @@ Nadat u de cache hebt gestopt, klikt u op de knop **verwijderen** om de cache pe
 
 ### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[Azure cli instellen voor Azure HPC-cache](./az-cli-prerequisites.md).
 
 Gebruik de Azure CLI [-opdracht AZ HPC-cache delete](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-delete) om de cache permanent te verwijderen.
 

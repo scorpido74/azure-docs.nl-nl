@@ -3,12 +3,12 @@ title: Back-ups maken van een SAP HANA Data Base naar Azure met Azure Backup
 description: In dit artikel vindt u informatie over het maken van een back-up van een SAP HANA Data Base naar Azure virtual machines met de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: a0a03a0d126845b1beba6d247f82950b0a9a35ab
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 28c9716bfb2dd0a6ac380d9ffd6dcd7fd5eb4978
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172983"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649433"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>Back-ups maken van SAP HANA-databases in virtuele Azure-machines
 
@@ -169,11 +169,16 @@ Geef als volgt de beleidsinstellingen op:
     ![Beleid voor differentiële back-ups](./media/backup-azure-sap-hana-database/differential-backup-policy.png)
 
     > [!NOTE]
-    > Incrementele back-ups worden momenteel niet ondersteund.
+    > Incrementele back-ups worden nu ondersteund in de open bare preview-versie. U kunt kiezen voor een differentieel of een incrementele back-up, maar niet voor beide.
+7. Selecteer in **Incrementeel back-upbeleid** **inschakelen** om de besturings elementen frequentie en retentie te openen.
+    * U kunt Maxi maal één incrementele back-up per dag activeren.
+    * Incrementele back-ups kunnen Maxi maal 180 dagen worden bewaard. Als dat voor u te kort is, moet u volledige back-ups gebruiken.
+
+    ![Incrementeel back-upbeleid](./media/backup-azure-sap-hana-database/incremental-backup-policy.png)
 
 7. Selecteer **OK** om het beleid op te slaan en terug te gaan naar het hoofdmenu **Back-upbeleid**.
 8. Selecteer **Logboekback-up** als u een back-upbeleid voor een transactielogboek wilt toevoegen;
-    * Selecteer in **logboek back-up**de optie **inschakelen**.  Dit kan niet worden uitgeschakeld omdat SAP HANA alle logboek back-ups beheert.
+    * Selecteer in **logboek back-up** de optie **inschakelen**.  Dit kan niet worden uitgeschakeld omdat SAP HANA alle logboek back-ups beheert.
     * Stel de besturings elementen voor de frequentie en de retentie in.
 
     > [!NOTE]
@@ -189,10 +194,10 @@ Geef als volgt de beleidsinstellingen op:
 
 Back-ups worden uitgevoerd volgens het beleids schema. U kunt als volgt een back-up op aanvraag uitvoeren:
 
-1. Selecteer **Back-upitems**in het menu kluis.
-2. Selecteer in **Back-upitems**de virtuele machine waarop de SAP Hana-data base wordt uitgevoerd en selecteer **Nu back-up maken**.
-3. Kies in **Nu back-up**het type back-up dat u wilt uitvoeren. Selecteer vervolgens **OK**. Deze back-up wordt bewaard op basis van het beleid dat aan dit back-upitem is gekoppeld.
-4. De portal meldingen bewaken. U kunt de voortgang van de taak in het kluis dashboard controleren > **back-uptaken**worden  >  **uitgevoerd**. Afhankelijk van de grootte van de data base kan het maken van de eerste back-up enige tijd duren.
+1. Selecteer **Back-upitems** in het menu kluis.
+2. Selecteer in **Back-upitems** de virtuele machine waarop de SAP Hana-data base wordt uitgevoerd en selecteer **Nu back-up maken**.
+3. Kies in **Nu back-up** het type back-up dat u wilt uitvoeren. Selecteer vervolgens **OK**. Deze back-up wordt bewaard op basis van het beleid dat aan dit back-upitem is gekoppeld.
+4. De portal meldingen bewaken. U kunt de voortgang van de taak in het kluis dashboard controleren > **back-uptaken** worden  >  **uitgevoerd**. Afhankelijk van de grootte van de data base kan het maken van de eerste back-up enige tijd duren.
 
 Standaard is het bewaren van back-ups op aanvraag 45 dagen.
 

@@ -5,12 +5,12 @@ author: EMaher
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: cf1b9db8de2c0f2c852a41d1e30343c5cef1b20b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 216dc843b31eac355e1d818014f3d70b2ef83132
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91396685"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647899"
 ---
 # <a name="guide-to-setting-up-a-windows-template-machine-in-azure-lab-services"></a>Hand leiding voor het instellen van een Windows-sjabloon machine in Azure Lab Services
 
@@ -47,7 +47,7 @@ Write-Host "Installing OneDrive..."
 
 ### <a name="onedrive-customizations"></a>Aanpassingen in OneDrive
 
-Er zijn veel [aanpassingen die u kunt uitvoeren in OneDrive](https://docs.microsoft.com/onedrive/use-group-policy). Laten we een aantal van de meest voorkomende aanpassingen behandelen.
+Er zijn veel [aanpassingen die u kunt uitvoeren in OneDrive](/onedrive/use-group-policy). Laten we een aantal van de meest voorkomende aanpassingen behandelen.
 
 #### <a name="silently-move-windows-known-folders-to-onedrive"></a>Windows bekende mappen op de achtergrond verplaatsen naar OneDrive
 
@@ -61,7 +61,7 @@ Als u zich op een computer bevindt die niet gebruikmaakt van Active Directory, k
 
 Als uw virtuele machine is verbonden met Active Directory, kunt u instellen dat de sjabloon machine automatisch uw studenten vraagt om de bekende mappen naar OneDrive te verplaatsen.  
 
-U moet eerst uw organisatie-ID ophalen.  Zie [uw Microsoft 365 organisatie-ID zoeken](https://docs.microsoft.com/onedrive/find-your-office-365-tenant-id)voor meer instructies.  U kunt de organisatie-ID ook ophalen met behulp van de volgende Power shell.
+U moet eerst uw organisatie-ID ophalen.  Zie [uw Microsoft 365 organisatie-ID zoeken](/onedrive/find-your-office-365-tenant-id)voor meer instructies.  U kunt de organisatie-ID ook ophalen met behulp van de volgende Power shell.
 
 ```powershell
 Install-Module MSOnline -Confirm
@@ -137,7 +137,7 @@ Als uw sjabloon machine Office nodig heeft, raden wij u aan Office te installere
 
 ### <a name="change-the-microsoft-365-update-channel"></a>Het Microsoft 365-update kanaal wijzigen
 
-Met het Office-configuratie programma kunt u instellen hoe vaak Office updates ontvangt. Als u echter wilt wijzigen hoe vaak Office updates ontvangt na de installatie, kunt u de URL van het update kanaal wijzigen. URL-adressen van het update kanaal kunt u vinden op [het update kanaal voor de Microsoft 365 apps voor apparaten in uw organisatie](https://docs.microsoft.com/deployoffice/change-update-channels). In het onderstaande voor beeld ziet u hoe u Microsoft 365 instelt om het maandelijkse update kanaal te gebruiken.
+Met het Office-configuratie programma kunt u instellen hoe vaak Office updates ontvangt. Als u echter wilt wijzigen hoe vaak Office updates ontvangt na de installatie, kunt u de URL van het update kanaal wijzigen. URL-adressen van het update kanaal kunt u vinden op [het update kanaal voor de Microsoft 365 apps voor apparaten in uw organisatie](/deployoffice/change-update-channels). In het onderstaande voor beeld ziet u hoe u Microsoft 365 instelt om het maandelijkse update kanaal te gebruiken.
 
 ```powershell
 # Update to the Microsoft 365 Monthly Channel
@@ -188,7 +188,7 @@ U kunt ook Power shell gebruiken voor het bijwerken van Microsoft Store toepassi
 
 ### <a name="stop-automatic-windows-updates"></a>Automatische Windows-updates stoppen
 
-Nadat u Windows hebt bijgewerkt naar de nieuwste versie, kunt u overwegen Windows-updates te stoppen.  Automatische updates kunnen problemen veroorzaken met de geplande tijd van de klasse.  Als uw cursus een langere keer wordt uitgevoerd, kunt u de cursisten vragen om hand matig te controleren op updates of automatische updates in te stellen voor een tijd buiten de geplande uren.  Zie voor meer informatie over aanpassings opties voor Windows Update de [instellingen voor het beheren van aanvullende Windows Update](https://docs.microsoft.com/windows/deployment/update/waas-wu-settings).
+Nadat u Windows hebt bijgewerkt naar de nieuwste versie, kunt u overwegen Windows-updates te stoppen.  Automatische updates kunnen problemen veroorzaken met de geplande tijd van de klasse.  Als uw cursus een langere keer wordt uitgevoerd, kunt u de cursisten vragen om hand matig te controleren op updates of automatische updates in te stellen voor een tijd buiten de geplande uren.  Zie voor meer informatie over aanpassings opties voor Windows Update de [instellingen voor het beheren van aanvullende Windows Update](/windows/deployment/update/waas-wu-settings).
 
 Automatische Windows-updates worden mogelijk gestopt met het volgende Power shell-script.
 

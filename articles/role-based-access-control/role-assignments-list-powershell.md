@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 07/28/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: e27fe0589498de13f5eb6e17f8869bb9d7352a09
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 53f31bca59bf316b6664a6c9daec886c84c1b072
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87372073"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648341"
 ---
 # <a name="list-azure-role-assignments-using-azure-powershell"></a>Toewijzingen van Azure-roltoewijzingen weer geven met Azure PowerShell
 
@@ -32,7 +32,7 @@ ms.locfileid: "87372073"
 
 ## <a name="prerequisites"></a>Vereisten
 
-- [Power shell in azure Cloud shell](/azure/cloud-shell/overview) of [Azure PowerShell](/powershell/azure/install-az-ps)
+- [Power shell in azure Cloud shell](../cloud-shell/overview.md) of [Azure PowerShell](/powershell/azure/install-az-ps)
 
 ## <a name="list-role-assignments-for-the-current-subscription"></a>Roltoewijzingen voor het huidige abonnement weer geven
 

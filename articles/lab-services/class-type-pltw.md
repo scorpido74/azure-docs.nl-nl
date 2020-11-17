@@ -3,12 +3,12 @@ title: Stel project in voor de manier waarop Labs met Azure Lab Services
 description: Meer informatie over het instellen van Labs om project leider te leren hoe klassen.
 ms.topic: article
 ms.date: 10/28/2020
-ms.openlocfilehash: 8585d09759319eef04da5ed68fec603cfa390093
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: e3783ae4fa07bf783841022903c4bcf3ab6fbe23
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94496887"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648001"
 ---
 # <a name="set-up-labs-for-project-lead-the-way-classes"></a>Labs instellen voor project leider de manier waarop klassen
 
@@ -53,12 +53,12 @@ ms.locfileid: "94496887"
 Raadpleeg de site van PLTW voor de [volledige lijst met software](https://www.pltw.org/pltw-software) voor elke klasse.
 
 ## <a name="lab-configuration"></a>Lab-configuratie
-Als u Labs wilt instellen voor PLTW, hebt u een Azure-abonnement en een Lab-account nodig om aan de slag te gaan. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint. Zodra u een Azure-abonnement hebt ontvangen, kunt u een nieuw Lab-account maken in Azure Lab Services. Zie de zelf studie over het [instellen van een Lab-account](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account)voor meer informatie over het maken van een nieuw Lab-account. U kunt ook een bestaand Lab-account gebruiken.
+Als u Labs wilt instellen voor PLTW, hebt u een Azure-abonnement en een Lab-account nodig om aan de slag te gaan. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint. Zodra u een Azure-abonnement hebt ontvangen, kunt u een nieuw Lab-account maken in Azure Lab Services. Zie de zelf studie over het [instellen van een Lab-account](./tutorial-setup-lab-account.md)voor meer informatie over het maken van een nieuw Lab-account. U kunt ook een bestaand Lab-account gebruiken.
 
 Zodra u een Lab-account hebt, moet u afzonderlijke Labs maken voor elke sessie van een PLTW-klasse die uw school biedt.  We raden u ook aan om afzonderlijke installatie kopieën te maken voor elk type PLTW-klasse.  Lees het blog bericht: [overstappen van een fysiek lab naar Azure Lab Services](https://techcommunity.microsoft.com/t5/azure-lab-services/moving-from-a-physical-lab-to-azure-lab-services/ba-p/1654931)voor meer informatie over het structureren van uw Labs en installatie kopieën.
 
 ### <a name="lab-account-settings"></a>Instellingen van Lab-account
-Schakel de instellingen die worden beschreven in de onderstaande tabel voor het lab-account in. Voor meer informatie over het inschakelen van Marketplace-installatie kopieën raadpleegt u het artikel over het [opgeven van Marketplace-installatie kopieën die beschikbaar zijn voor Lab-makers](https://docs.microsoft.com/azure/lab-services/classroom-labs/specify-marketplace-images).
+Schakel de instellingen die worden beschreven in de onderstaande tabel voor het lab-account in. Voor meer informatie over het inschakelen van Marketplace-installatie kopieën raadpleegt u het artikel over het [opgeven van Marketplace-installatie kopieën die beschikbaar zijn voor Lab-makers](./specify-marketplace-images.md).
 
 | Account instelling Lab | Instructies |
 | -------------------- | ----- |
@@ -80,19 +80,19 @@ De meeste software die wordt gebruikt in de bovenstaande PLTW-klassen *_hebben g
 
 [PLTW biedt gedetailleerde stappen](https://www.pltw.org/pltw-software) voor het installeren van de licentie Manager van auto Desk op uw licentie server om netwerk licenties te gebruiken met de software van auto Desk.  Deze licentie server bevindt zich doorgaans in uw on-premises netwerk of wordt gehost op een virtuele Azure-machine (VM) in azure Virtual Network (VNet).
 
-Nadat de licentie server is ingesteld, moet u [het VNet](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-connect-peer-virtual-network) koppelen aan uw [Lab-account](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account). De peering van het netwerk moet worden uitgevoerd _before * het lab maken zodat de virtuele machines van het lab toegang hebben tot de licentie server en de andere manier.
+Nadat de licentie server is ingesteld, moet u [het VNet](./how-to-connect-peer-virtual-network.md) koppelen aan uw [Lab-account](./tutorial-setup-lab-account.md). De peering van het netwerk moet worden uitgevoerd _before * het lab maken zodat de virtuele machines van het lab toegang hebben tot de licentie server en de andere manier.
 
 Met de gegenereerde licentie bestanden van auto Desk wordt het MAC-adres van de licentie server Inge sloten.  Als u besluit uw licentie server te hosten met behulp van een Azure-VM, is het belang rijk om ervoor te zorgen dat het MAC-adres van uw licentie server niet wordt gewijzigd.   Als het MAC-adres wordt gewijzigd, moeten uw licentie bestanden opnieuw worden gegenereerd.  Volg deze tips om te voor komen dat uw MAC-adres wordt gewijzigd:
 
-- [Stel een statisch privé-IP en Mac-adres](https://docs.microsoft.com/azure/lab-services/how-to-create-a-lab-with-shared-resource#static-private-ip-and-mac-address) in voor de virtuele Azure-machine die als host fungeert voor uw licentie server.
+- [Stel een statisch privé-IP en Mac-adres](./how-to-create-a-lab-with-shared-resource.md#static-private-ip-and-mac-address) in voor de virtuele Azure-machine die als host fungeert voor uw licentie server.
 - Zorg ervoor dat u het lab-account en het VNet van de licentie server in een region\location met voldoende VM-capaciteit hebt ingesteld, zodat u deze resources niet later hoeft te verplaatsen naar een nieuwe region\location.
 
-Lees ook het artikel over het [instellen van een licentie server als een gedeelde bron](https://docs.microsoft.com/azure/lab-services/how-to-create-a-lab-with-shared-resource) voor meer informatie.
+Lees ook het artikel over het [instellen van een licentie server als een gedeelde bron](./how-to-create-a-lab-with-shared-resource.md) voor meer informatie.
 
 ### <a name="template-machine"></a>Sjabloon machine
 Sommige van de installatie bestanden die u nodig hebt voor PLTW, zijn groot en nemen veel tijd in beslag om te kopiëren wanneer u deze downloadt naar de sjabloon machine van een test omgeving.
 
-In plaats van installatie bestanden te downloaden naar de sjabloon machine en alles daar te installeren, raden we u aan om uw PLTW-installatie kopieën in uw fysieke omgeving te maken.  Vervolgens kunt u de installatie kopieën in de galerie met gedeelde installatie kopieën importeren, zodat u deze aangepaste installatie kopieën kunt gebruiken om uw Labs te maken.  Lees het volgende artikel voor meer informatie: [een aangepaste installatie kopie uploaden naar de galerie met gedeelde afbeeldingen](https://docs.microsoft.com/azure/lab-services/upload-custom-image-shared-image-gallery).
+In plaats van installatie bestanden te downloaden naar de sjabloon machine en alles daar te installeren, raden we u aan om uw PLTW-installatie kopieën in uw fysieke omgeving te maken.  Vervolgens kunt u de installatie kopieën in de galerie met gedeelde installatie kopieën importeren, zodat u deze aangepaste installatie kopieën kunt gebruiken om uw Labs te maken.  Lees het volgende artikel voor meer informatie: [een aangepaste installatie kopie uploaden naar de galerie met gedeelde afbeeldingen](./upload-custom-image-shared-image-gallery.md).
 
 Dit zijn de belangrijkste taken voor het instellen van een Lab:
 
@@ -103,11 +103,11 @@ Dit zijn de belangrijkste taken voor het instellen van een Lab:
     > [!NOTE]    
     > Wanneer u de toepassingen van auto Desk installeert, moet de computer waarop u auto Desk installeert, kunnen communiceren met uw licentie server (in de installatie wizard van auto Desk wordt u gevraagd de computer naam op te geven van de computer waarop de licentie server wordt gehost).  Als u uw licentie server op een virtuele Azure-machine host, moet u mogelijk wachten op de installatie van auto Desk op de sjabloon machine van het Lab zodat de wizard installatie van auto Desk toegang heeft tot uw licentie server
 
-    b.  OneDrive (of andere back-upopties die uw school kan gebruiken) [installeren en configureren](https://docs.microsoft.com/azure/lab-services/how-to-prepare-windows-template#install-and-configure-onedrive) .
+    b.  OneDrive (of andere back-upopties die uw school kan gebruiken) [installeren en configureren](./how-to-prepare-windows-template.md#install-and-configure-onedrive) .
     
-    c.  [Windows-updates installeren en configureren](https://docs.microsoft.com/azure/lab-services/how-to-prepare-windows-template#install-and-configure-updates).
+    c.  [Windows-updates installeren en configureren](./how-to-prepare-windows-template.md#install-and-configure-updates).
 
-1.  Upload de aangepaste installatie kopie naar de [Galerie met gedeelde afbeeldingen die is gekoppeld aan uw Lab-account](https://docs.microsoft.com/azure/lab-services/how-to-attach-detach-shared-image-gallery).
+1.  Upload de aangepaste installatie kopie naar de [Galerie met gedeelde afbeeldingen die is gekoppeld aan uw Lab-account](./how-to-attach-detach-shared-image-gallery.md).
 
 1.  Maak een lab en selecteer de aangepaste installatie kopie die u in de vorige stap hebt geüpload.
 
@@ -118,9 +118,9 @@ Dit zijn de belangrijkste taken voor het instellen van een Lab:
 ## <a name="student-devices"></a>Studenten apparaten
 Uw studenten kunnen verbinding maken met hun Lab-Vm's van Windows\Mac computers en Chromebooks.  Hier vindt u koppelingen naar instructies voor elk van deze opties:
 
-- [Verbinding maken vanaf Windows](https://docs.microsoft.com/azure/lab-services/how-to-use-classroom-lab#connect-to-the-vm)
-- [Verbinding maken vanaf Mac](https://docs.microsoft.com/azure/lab-services/connect-virtual-machine-mac-remote-desktop)
-- [Verbinding maken vanaf Chromebook](https://docs.microsoft.com/azure/lab-services/connect-virtual-machine-chromebook-remote-desktop)
+- [Verbinding maken vanaf Windows](./how-to-use-classroom-lab.md#connect-to-the-vm)
+- [Verbinding maken vanaf Mac](./connect-virtual-machine-mac-remote-desktop.md)
+- [Verbinding maken vanaf Chromebook](./connect-virtual-machine-chromebook-remote-desktop.md)
 
 ## <a name="cost"></a>Kosten
 Laten we een mogelijke schatting van de kosten voor de bovenstaande PLTW-klassen best uren.  Deze schatting omvat niet de kosten voor het uitvoeren van een licentie server of voor het gebruik van de galerie voor gedeelde installatie kopieën.  We gebruiken een klasse van 25 studenten.  Er zijn 20 uur geplande tijd voor de klasse.  Daarnaast krijgt elke student tien uur quota voor huis werk of toewijzingen buiten de geplande tijd.  Raadpleeg de onderstaande kosten ramingen voor de grootte van de **grote** en **kleine GPU (visualisatie)** .
@@ -145,4 +145,4 @@ De volgende stappen zijn gebruikelijk voor het instellen van elk lab:
 - [Gebruikers toevoegen](tutorial-setup-classroom-lab.md#add-users-to-the-lab)
 - [Quota instellen](how-to-configure-student-usage.md#set-quotas-for-users)
 - [Een planning instellen](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab) 
-- [E-mail registratie koppelingen naar studenten](how-to-configure-student-usage.md#send-invitations-to-users). 
+- [E-mail registratie koppelingen naar studenten](how-to-configure-student-usage.md#send-invitations-to-users).

@@ -16,16 +16,16 @@ ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: a891830d876bfa99d29087278dd5b870ae7e2866
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 846e1a83f3cba5f87210ae4f825b5fac4f1569c6
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368380"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648375"
 ---
 # <a name="add-or-remove-azure-role-assignments-for-external-guest-users-using-the-azure-portal"></a>Azure-roltoewijzingen toevoegen of verwijderen voor externe gast gebruikers met behulp van de Azure Portal
 
-[Azure RBAC (op rollen gebaseerd toegangs beheer)](overview.md) biedt betere beveiliging voor grote organisaties en voor kleine en middel grote bedrijven die werken met externe deel nemers, leveranciers of freelancers die toegang nodig hebben tot specifieke bronnen in uw omgeving, maar niet noodzakelijkerwijs op de volledige infra structuur of een facturerings bereik. U kunt de mogelijkheden van [Azure Active Directory B2B](../active-directory/b2b/what-is-b2b.md) gebruiken om samen te werken met externe gast gebruikers en u kunt Azure RBAC gebruiken om alleen de machtigingen te verlenen die gast gebruikers in uw omgeving nodig hebben.
+[Azure RBAC (op rollen gebaseerd toegangs beheer)](overview.md) biedt betere beveiliging voor grote organisaties en voor kleine en middel grote bedrijven die werken met externe deel nemers, leveranciers of freelancers die toegang nodig hebben tot specifieke bronnen in uw omgeving, maar niet noodzakelijkerwijs op de volledige infra structuur of een facturerings bereik. U kunt de mogelijkheden van [Azure Active Directory B2B](../active-directory/external-identities/what-is-b2b.md) gebruiken om samen te werken met externe gast gebruikers en u kunt Azure RBAC gebruiken om alleen de machtigingen te verlenen die gast gebruikers in uw omgeving nodig hebben.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -49,13 +49,13 @@ Systeem eigen leden van een map (gebruikers van leden) hebben andere machtiginge
 
 Volg deze stappen om een gast gebruiker toe te voegen aan uw directory via de pagina Azure Active Directory.
 
-1. Zorg ervoor dat de instellingen voor externe samen werking van uw organisatie zodanig zijn geconfigureerd dat u gasten kunt uitnodigen. Zie [externe B2B-samen werking inschakelen en beheren wie gasten kan uitnodigen](../active-directory/b2b/delegate-invitations.md)voor meer informatie.
+1. Zorg ervoor dat de instellingen voor externe samen werking van uw organisatie zodanig zijn geconfigureerd dat u gasten kunt uitnodigen. Zie [externe B2B-samen werking inschakelen en beheren wie gasten kan uitnodigen](../active-directory/external-identities/delegate-invitations.md)voor meer informatie.
 
 1. Klik in de Azure Portal op **Azure Active Directory**  >  **gebruikers**  >  **nieuwe gast gebruiker**.
 
     ![Nieuwe functie gast gebruiker in Azure Portal](./media/role-assignments-external-users/invite-guest-user.png)
 
-1. Volg de stappen om een nieuwe gast gebruiker toe te voegen. Zie [Azure Active Directory B2B-samenwerkings gebruikers toevoegen in de Azure Portal](../active-directory/b2b/add-users-administrator.md#add-guest-users-to-the-directory)voor meer informatie.
+1. Volg de stappen om een nieuwe gast gebruiker toe te voegen. Zie [Azure Active Directory B2B-samenwerkings gebruikers toevoegen in de Azure Portal](../active-directory/external-identities/add-users-administrator.md#add-guest-users-to-the-directory)voor meer informatie.
 
 Nadat u een gast gebruiker aan de Directory hebt toegevoegd, kunt u de gast gebruiker een rechtstreekse koppeling sturen naar een gedeelde app, of de gast gebruiker kan klikken op de opname-URL in het e-mail bericht.
 
@@ -65,7 +65,7 @@ De gast gebruiker moet het uitnodigings proces volt ooien om toegang te kunnen k
 
 ![Machtigingen voor controleren door gast gebruiker uitnodigen](./media/role-assignments-external-users/invite-review-permissions.png)
 
-Zie [Azure Active Directory uitnodiging voor B2B-samen werking](../active-directory/b2b/redemption-experience.md)voor meer informatie over het uitnodigings proces.
+Zie [Azure Active Directory uitnodiging voor B2B-samen werking](../active-directory/external-identities/redemption-experience.md)voor meer informatie over het uitnodigings proces.
 
 ## <a name="add-a-role-assignment-for-a-guest-user"></a>Een roltoewijzing voor een gast gebruiker toevoegen
 
@@ -73,7 +73,7 @@ In azure RBAC wijst u een rol toe om toegang te verlenen. Als u een roltoewijzin
 
 1. Klik in Azure Portal op **Alle services**.
 
-1.  Selecteer de set resources waarop de toegang van toepassing is, ook wel bekend als het bereik. U kunt bijvoorbeeld **beheer groepen**, **abonnementen**, **resource groepen**of een resource selecteren.
+1.  Selecteer de set resources waarop de toegang van toepassing is, ook wel bekend als het bereik. U kunt bijvoorbeeld **beheer groepen**, **abonnementen**, **resource groepen** of een resource selecteren.
 
 1. Klik op de specifieke resource.
 
@@ -111,7 +111,7 @@ Als de gast gebruiker zich nog niet in uw directory bevindt, kunt u de gebruiker
 
 1. Klik in Azure Portal op **Alle services**.
 
-1.  Selecteer de set resources waarop de toegang van toepassing is, ook wel bekend als het bereik. U kunt bijvoorbeeld **beheer groepen**, **abonnementen**, **resource groepen**of een resource selecteren.
+1.  Selecteer de set resources waarop de toegang van toepassing is, ook wel bekend als het bereik. U kunt bijvoorbeeld **beheer groepen**, **abonnementen**, **resource groepen** of een resource selecteren.
 
 1. Klik op de specifieke resource.
 
@@ -145,7 +145,7 @@ Als de gast gebruiker zich nog niet in uw directory bevindt, kunt u de gebruiker
 
 1. Verzend de uitnodiging koppeling naar de gast gebruiker om het uitnodigings proces te volt ooien.
 
-    Zie [Azure Active Directory uitnodiging voor B2B-samen werking](../active-directory/b2b/redemption-experience.md)voor meer informatie over het uitnodigings proces.
+    Zie [Azure Active Directory uitnodiging voor B2B-samen werking](../active-directory/external-identities/redemption-experience.md)voor meer informatie over het uitnodigings proces.
 
 ## <a name="remove-a-guest-user-from-your-directory"></a>Een gast gebruiker uit uw Directory verwijderen
 
@@ -173,7 +173,7 @@ Voordat u een gast gebruiker uit een Directory verwijdert, moet u eerst eventuel
 
    ![Gast gebruiker verwijderen](./media/role-assignments-external-users/delete-guest-user.png)
 
-1. Klik op **Ja**in het bericht verwijderen dat wordt weer gegeven.
+1. Klik op **Ja** in het bericht verwijderen dat wordt weer gegeven.
 
 ## <a name="troubleshoot"></a>Problemen oplossen
 
@@ -183,7 +183,7 @@ Gast gebruikers hebben beperkte mapmachtigingen. Gast gebruikers kunnen bijvoorb
 
 ![Gast gebruiker kan niet bladeren naar gebruikers in een map](./media/role-assignments-external-users/directory-no-users.png)
 
-Als een gast gebruiker in de Directory extra bevoegdheden nodig heeft, kunt u een directory-rol toewijzen aan de gast gebruiker. Als u wilt dat een gast gebruiker volledige lees toegang heeft tot uw adres lijst, kunt u de gast gebruiker toevoegen aan de rol van [adreslijst lezers](../active-directory/roles/permissions-reference.md) in azure AD. Zie [machtigingen verlenen aan gebruikers van partner organisaties in uw Azure Active Directory-Tenant](../active-directory/b2b/add-guest-to-role.md)voor meer informatie.
+Als een gast gebruiker in de Directory extra bevoegdheden nodig heeft, kunt u een directory-rol toewijzen aan de gast gebruiker. Als u wilt dat een gast gebruiker volledige lees toegang heeft tot uw adres lijst, kunt u de gast gebruiker toevoegen aan de rol van [adreslijst lezers](../active-directory/roles/permissions-reference.md) in azure AD. Zie [machtigingen verlenen aan gebruikers van partner organisaties in uw Azure Active Directory-Tenant](../active-directory/external-identities/add-guest-to-role.md)voor meer informatie.
 
 ![Rol van adreslijst lezers toewijzen](./media/role-assignments-external-users/directory-roles.png)
 
@@ -193,27 +193,27 @@ Gast gebruikers hebben beperkte mapmachtigingen. Zelfs als een gast [gebruiker e
 
 ![Gast gebruiker kan niet bladeren in beveiligings-principals om rollen toe te wijzen](./media/role-assignments-external-users/directory-no-browse.png)
 
-Als de gast gebruiker de exacte aanmeldings naam van iemand in de Directory kent, kunnen ze toegang verlenen. Als u wilt dat een gast gebruiker volledige lees toegang heeft tot uw adres lijst, kunt u de gast gebruiker toevoegen aan de rol van [adreslijst lezers](../active-directory/roles/permissions-reference.md) in azure AD. Zie [machtigingen verlenen aan gebruikers van partner organisaties in uw Azure Active Directory-Tenant](../active-directory/b2b/add-guest-to-role.md)voor meer informatie.
+Als de gast gebruiker de exacte aanmeldings naam van iemand in de Directory kent, kunnen ze toegang verlenen. Als u wilt dat een gast gebruiker volledige lees toegang heeft tot uw adres lijst, kunt u de gast gebruiker toevoegen aan de rol van [adreslijst lezers](../active-directory/roles/permissions-reference.md) in azure AD. Zie [machtigingen verlenen aan gebruikers van partner organisaties in uw Azure Active Directory-Tenant](../active-directory/external-identities/add-guest-to-role.md)voor meer informatie.
 
 ### <a name="guest-user-cannot-register-applications-or-create-service-principals"></a>Gast gebruiker kan toepassingen niet registreren of service-principals maken
 
-Gast gebruikers hebben beperkte mapmachtigingen. Als een gast gebruiker toepassingen kan registreren of service-principals moet maken, kunt u de gast gebruiker toevoegen aan de rol van [toepassings ontwikkelaar](../active-directory/roles/permissions-reference.md) in azure AD. Zie [machtigingen verlenen aan gebruikers van partner organisaties in uw Azure Active Directory-Tenant](../active-directory/b2b/add-guest-to-role.md)voor meer informatie.
+Gast gebruikers hebben beperkte mapmachtigingen. Als een gast gebruiker toepassingen kan registreren of service-principals moet maken, kunt u de gast gebruiker toevoegen aan de rol van [toepassings ontwikkelaar](../active-directory/roles/permissions-reference.md) in azure AD. Zie [machtigingen verlenen aan gebruikers van partner organisaties in uw Azure Active Directory-Tenant](../active-directory/external-identities/add-guest-to-role.md)voor meer informatie.
 
 ![Gast gebruiker kan geen toepassingen registreren](./media/role-assignments-external-users/directory-access-denied.png)
 
 ### <a name="guest-user-does-not-see-the-new-directory"></a>Gast gebruiker ziet de nieuwe map niet
 
-Als een gast gebruiker toegang heeft gekregen tot een directory, maar de nieuwe map die wordt vermeld in de Azure Portal niet wordt weer gegeven wanneer ze overschakelen in hun **Directory-en-abonnements** venster, controleert u of de gast gebruiker het uitnodigings proces heeft voltooid. Zie [Azure Active Directory uitnodiging voor B2B-samen werking](../active-directory/b2b/redemption-experience.md)voor meer informatie over het uitnodigings proces.
+Als een gast gebruiker toegang heeft gekregen tot een directory, maar de nieuwe map die wordt vermeld in de Azure Portal niet wordt weer gegeven wanneer ze overschakelen in hun **Directory-en-abonnements** venster, controleert u of de gast gebruiker het uitnodigings proces heeft voltooid. Zie [Azure Active Directory uitnodiging voor B2B-samen werking](../active-directory/external-identities/redemption-experience.md)voor meer informatie over het uitnodigings proces.
 
 ### <a name="guest-user-does-not-see-resources"></a>De gast gebruiker ziet geen resources
 
-Als een gast gebruiker toegang heeft gekregen tot een directory, maar de resources waartoe ze toegang hebben, worden niet weer gegeven in de Azure Portal, moet u ervoor zorgen dat de gast gebruiker de juiste map heeft geselecteerd. Een gast gebruiker heeft mogelijk toegang tot meerdere directory's. Als u wilt scha kelen tussen directory's, klikt u in de linkerbovenhoek op **Directory + abonnement**en klikt u vervolgens op de juiste map.
+Als een gast gebruiker toegang heeft gekregen tot een directory, maar de resources waartoe ze toegang hebben, worden niet weer gegeven in de Azure Portal, moet u ervoor zorgen dat de gast gebruiker de juiste map heeft geselecteerd. Een gast gebruiker heeft mogelijk toegang tot meerdere directory's. Als u wilt scha kelen tussen directory's, klikt u in de linkerbovenhoek op **Directory + abonnement** en klikt u vervolgens op de juiste map.
 
 ![Het deel venster mappen en abonnementen in Azure Portal](./media/role-assignments-external-users/directory-subscription.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Azure Active Directory B2B-samenwerkings gebruikers toevoegen aan de Azure Portal](../active-directory/b2b/add-users-administrator.md)
-- [Eigenschappen van een Azure Active Directory B2B-samenwerkings gebruiker](../active-directory/b2b/user-properties.md)
-- [De elementen van het e-mail adres uitnodiging voor B2B-samen werking-Azure Active Directory](../active-directory/b2b/invitation-email-elements.md)
+- [Azure Active Directory B2B-samenwerkings gebruikers toevoegen aan de Azure Portal](../active-directory/external-identities/add-users-administrator.md)
+- [Eigenschappen van een Azure Active Directory B2B-samenwerkings gebruiker](../active-directory/external-identities/user-properties.md)
+- [De elementen van het e-mail adres uitnodiging voor B2B-samen werking-Azure Active Directory](../active-directory/external-identities/invitation-email-elements.md)
 - [Een gast gebruiker als co-beheerder toevoegen](classic-administrators.md#add-a-guest-user-as-a-co-administrator)

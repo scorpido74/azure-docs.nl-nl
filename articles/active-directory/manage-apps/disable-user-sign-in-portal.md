@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c6fc9a4716f1427257b3bbf18e5fa653567e141
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c208da657d30d4a0f5b6f171693c5c6abc2b358b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84763377"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649175"
 ---
 # <a name="disable-user-sign-ins-for-an-enterprise-app-in-azure-active-directory"></a>Aanmeldingen van gebruikers voor een bedrijfs-app in Azure Active Directory uitschakelen
 
@@ -31,15 +31,15 @@ Het is eenvoudig om een bedrijfs toepassing uit te scha kelen zodat gebruikers z
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com) met een account van een globale beheerder voor de directory.
 1. Selecteer **alle services**, Voer **Azure Active Directory** in het tekstvak in en selecteer vervolgens **Enter**.
-1. Selecteer in **Azure Active Directory**het  -   deel venster Azure Active Directory***directorynaam*** (dat wil zeggen, het deel venster Azure AD voor de directory die u beheert) **bedrijfs toepassingen**.
+1. Selecteer in **Azure Active Directory** het  -   **deel venster Azure Active Directory _Directory_*_ (dat wil zeggen het deel venster van Azure AD voor de directory die u beheert) de optie _* bedrijfs toepassingen**.
 1. In het deel venster **bedrijfs toepassingen-alle toepassingen** ziet u een lijst met de apps die u kunt beheren. Selecteer een app.
-1. In het deel venster ***AppName*** (dat wil zeggen, het deel venster met de naam van de geselecteerde app in de titel), selecteert u **Eigenschappen**.
-1. Selecteer in ***appname***  -  het deel venster appName-**Eigenschappen** de optie **Nee** voor **ingeschakeld voor gebruikers om zich aan te melden**.
+1. **_appname_ Selecteer _ eigenschappen in het *deel venster appName _ (dat wil zeggen, het deel venster met de naam van de geselecteerde app in de titel)***.
+1. Selecteer in het deel venster **_AppName_*_-_* eigenschappen** de optie **Nee** voor **ingeschakeld voor gebruikers om zich aan te melden**.
 1. Selecteer de opdracht **Opslaan** .
 
 ## <a name="use-azure-ad-powershell-to-disable-an-unlisted-app"></a>Azure AD Power shell gebruiken om een niet-gevermelde app uit te scha kelen
 
-Als u de AppId kent van een app die niet wordt weer gegeven in de lijst met zakelijke apps (bijvoorbeeld omdat u de app hebt verwijderd of als de Service-Principal nog niet is gemaakt door de app die door micro soft wordt geautoriseerd), kunt u de Service-Principal hand matig voor de app maken en deze vervolgens uitschakelen met behulp van de [AzureAD Power shell-cmdlet](https://docs.microsoft.com/powershell/module/azuread/New-AzureADServicePrincipal?view=azureadps-2.0).
+Als u de AppId kent van een app die niet wordt weer gegeven in de lijst met zakelijke apps (bijvoorbeeld omdat u de app hebt verwijderd of als de Service-Principal nog niet is gemaakt door de app die door micro soft wordt geautoriseerd), kunt u de Service-Principal hand matig voor de app maken en deze vervolgens uitschakelen met behulp van de [AzureAD Power shell-cmdlet](/powershell/module/azuread/New-AzureADServicePrincipal?view=azureadps-2.0).
 
 ```PowerShell
 # The AppId of the app to be disabled
@@ -60,5 +60,5 @@ if ($servicePrincipal) {
 
 * [Alle groepen weer geven](../fundamentals/active-directory-groups-view-azure-portal.md)
 * [Een gebruiker of groep toewijzen aan een bedrijfs-app](assign-user-or-group-access-portal.md)
-* [Een gebruiker of groeps toewijzing verwijderen uit een bedrijfs-app](remove-user-or-group-access-portal.md)
-* [De naam of het logo van een zakelijke app wijzigen](change-name-or-logo-portal.md)
+* [Een gebruiker of groeps toewijzing verwijderen uit een bedrijfs-app](./assign-user-or-group-access-portal.md)
+* [De naam of het logo van een zakelijke app wijzigen](./add-application-portal-configure.md)
