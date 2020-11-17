@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d7208b068bee4b0a4cc30adfd98d2422718bbcc
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 24eb7ac7c4490c8d27d141f6417ae157a7a9c65b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628897"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94646573"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Migreren naar Cloud authenticatie met behulp van gefaseerde implementatie (preview-versie)
 
@@ -73,7 +73,7 @@ De volgende scenario's worden niet ondersteund voor gefaseerde implementatie:
 
 - Beheerders kunnen Cloud verificatie implementeren met behulp van beveiligings groepen. Als u wilt voor komen dat synchronisatie latentie wanneer u gebruikmaakt van on-premises Active Directory beveiligings groepen, raden we u aan Cloud beveiligings groepen te gebruiken. De volgende voor waarden zijn van toepassing:
 
-    - U kunt Maxi maal 10 groepen per functie gebruiken. Dat wil zeggen, u kunt elk 10 groepen gebruiken voor de *synchronisatie van wacht woord-hash* , *Pass-Through-verificatie* en *naadloze SSO*.
+    - U kunt Maxi maal 10 groepen per functie gebruiken. Dat wil zeggen, u kunt elk 10 groepen gebruiken voor de *synchronisatie van wacht woord-hash*, *Pass-Through-verificatie* en *naadloze SSO*.
     - Geneste groepen worden *niet ondersteund*. Dit bereik is ook van toepassing op open bare preview-versie.
     - Dynamische groepen worden *niet ondersteund* voor gefaseerde implementatie.
     - Met de objecten in de groep wordt de groep geblokkeerd, zodat deze niet meer kan worden toegevoegd.
@@ -117,7 +117,7 @@ Als u *Pass-Through-verificatie* -aanmelding wilt testen met behulp van gefaseer
 
 1. Zorg ervoor dat u de instellingen voor [Slim vergren delen](../authentication/howto-password-smart-lockout.md) op de juiste wijze hebt geconfigureerd. Zo zorgt u ervoor dat de on-premises Active Directory accounts van uw gebruikers niet worden vergrendeld door ongeldige actors.
 
-We raden u aan *naadloze SSO* in te scha kelen, onafhankelijk van de aanmeldings methode ( *hash voor wachtwoord synchronisatie* of *Pass-Through-verificatie* ) die u selecteert voor gefaseerde implementatie. Als u *naadloze SSO* wilt inschakelen, volgt u de instructies voor voor het uitvoeren van de voor bereiding in de volgende sectie.
+We raden u aan *naadloze SSO* in te scha kelen, onafhankelijk van de aanmeldings methode (*hash voor wachtwoord synchronisatie* of *Pass-Through-verificatie*) die u selecteert voor gefaseerde implementatie. Als u *naadloze SSO* wilt inschakelen, volgt u de instructies voor voor het uitvoeren van de voor bereiding in de volgende sectie.
 
 ## <a name="pre-work-for-seamless-sso"></a>Pre-work voor naadloze SSO
 
@@ -149,7 +149,7 @@ Schakel *naadloze SSO* in door het volgende te doen:
 
 ## <a name="enable-staged-rollout"></a>Gefaseerde implementatie inschakelen
 
-Volg de instructies in de volgende secties als u een specifieke functie ( *Pass-Through-verificatie* , *wachtwoord-hash-synchronisatie* of *naadloze SSO* ) wilt implementeren voor een geselecteerde set gebruikers in een groep.
+Volg de instructies in de volgende secties als u een specifieke functie (*Pass-Through-verificatie*, *wachtwoord-hash-synchronisatie* of *naadloze SSO*) wilt implementeren voor een geselecteerde set gebruikers in een groep.
 
 ### <a name="enable-a-staged-rollout-of-a-specific-feature-on-your-tenant"></a>Een gefaseerde implementatie van een specifieke functie in uw Tenant inschakelen
 
@@ -178,12 +178,13 @@ Ga als volgt te werk:
    >[!NOTE]
    >De leden in een groep worden automatisch ingeschakeld voor gefaseerde implementatie. Geneste en dynamische groepen worden niet ondersteund voor gefaseerde implementatie.
    >Wanneer u een nieuwe groep toevoegt, worden gebruikers in de groep (Maxi maal 200 gebruikers voor een nieuwe groep) bijgewerkt met behulp van beheerde verificatie immidiatly. Het bewerken van een groep (het toevoegen of verwijderen van gebruikers) kan tot 24 uur duren voordat de wijzigingen van kracht worden.
+   >Naadloze SSO is alleen van toepassing als gebruikers zich in de naadloze SSO-groep bevinden en ook in een PTA-of PHS-groep.
 
 ## <a name="auditing"></a>Controleren
 
 We hebben controle gebeurtenissen ingeschakeld voor de verschillende acties die we voor gefaseerde implementatie uitvoeren:
 
-- Controle gebeurtenis bij het inschakelen van een gefaseerde implementatie voor *wacht woord-hash-synchronisatie* , *Pass Through-verificatie* of *naadloze SSO*.
+- Controle gebeurtenis bij het inschakelen van een gefaseerde implementatie voor *wacht woord-hash-synchronisatie*, *Pass Through-verificatie* of *naadloze SSO*.
 
   >[!NOTE]
   >Er wordt een controle gebeurtenis geregistreerd wanneer *naadloze SSO* wordt ingeschakeld met behulp van gefaseerde implementatie.
@@ -192,7 +193,7 @@ We hebben controle gebeurtenissen ingeschakeld voor de verschillende acties die 
 
   ![Het deel venster implementatie beleid maken voor functie-aangepast eigenschappen tabblad](./media/how-to-connect-staged-rollout/sr8.png)
 
-- Controle gebeurtenis wanneer een groep wordt toegevoegd aan de *hash-synchronisatie van wacht woorden* , *Pass Through-verificatie* of *naadloze SSO*.
+- Controle gebeurtenis wanneer een groep wordt toegevoegd aan de *hash-synchronisatie van wacht woorden*, *Pass Through-verificatie* of *naadloze SSO*.
 
   >[!NOTE]
   >Er wordt een controle gebeurtenis geregistreerd wanneer een groep wordt toegevoegd aan de *wachtwoord-hash-synchronisatie* voor gefaseerde implementatie.
@@ -239,7 +240,7 @@ A: Ja, u kunt deze functie gebruiken in uw productie Tenant, maar u wordt aanger
 
 **V: kan deze functie worden gebruikt om een permanente ' samen werking ' te behouden, waarbij sommige gebruikers Federated Authentication gebruiken en anderen Cloud verificatie gebruiken?**
 
-A: Nee, deze functie is ontworpen voor de migratie van federatieve naar Cloud authenticatie in fasen en uiteindelijk naar Cloud authenticatie. Het gebruik van een permanente gemengde status wordt niet aanbevolen, omdat deze benadering kan leiden tot onverwachte verificatie stromen.
+A: Nee, deze functie is ontworpen voor het testen van Cloud verificatie. Nadat u een aantal gebruikers groepen hebt getest, moet u zich naar Cloud authenticatie knippen. Het gebruik van een permanente gemengde status wordt niet aanbevolen, omdat deze benadering kan leiden tot onverwachte verificatie stromen.
 
 **V: kan ik Power shell gebruiken voor het uitvoeren van een gefaseerde implementatie?**
 

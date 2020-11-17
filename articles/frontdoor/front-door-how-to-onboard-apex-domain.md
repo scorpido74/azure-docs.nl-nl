@@ -5,14 +5,14 @@ services: front-door
 author: duongau
 ms.service: frontdoor
 ms.topic: how-to
-ms.date: 09/30/2020
+ms.date: 11/13/2020
 ms.author: duau
-ms.openlocfilehash: 44813a7662420ab4dedcd0bf99cc1eec7e9d9d2d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 55eefe7a7490df050aa7ebc2bb41fbadcc8d8279
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91819081"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94646335"
 ---
 # <a name="onboard-a-root-or-apex-domain-on-your-front-door"></a>Onboarding van een basis- of hoofddomein op uw Front door
 Azure front-deur gebruikt CNAME-records om het domein eigendom te valideren voor de onboarding van aangepaste domeinen. Aan de voor deur wordt niet het frontend-IP-adres weer gegeven dat is gekoppeld aan uw front deur-profiel. U kunt uw Apex-domein dus niet toewijzen aan een IP-adres als uw intentie het niet kan uitvoeren op de voor deur van Azure.
@@ -54,15 +54,15 @@ U kunt de Azure Portal gebruiken om een Apex-domein op uw voor deur uit te voere
 
 1. Selecteer **Opslaan** om de wijzigingen te verzenden.
 
-   :::image type="content" source="./media/front-door-apex-domain/front-door-onboard-apex-domain.png" alt-text="Alias record voor zone Apex":::
+   :::image type="content" source="./media/front-door-apex-domain/front-door-onboard-apex-domain.png" alt-text="Menu voor aangepaste domeinen":::
 
 ## <a name="enable-https-on-your-custom-domain"></a>HTTPS inschakelen voor uw aangepaste domein
 
-1. Selecteer het aangepaste domein dat is toegevoegd en wijzig de **status in de sectie voor het**https-gedeelte van het **aangepaste domein**.
+1. Selecteer het aangepaste domein dat is toegevoegd en wijzig de **status in de sectie voor het** https-gedeelte van het **aangepaste domein**.
 
 1. Selecteer het  **type certificaat beheer** om *mijn eigen certificaat te gebruiken*.
 
-   :::image type="content" source="./media/front-door-apex-domain/front-door-onboard-apex-custom-domain.png" alt-text="Alias record voor zone Apex":::    
+   :::image type="content" source="./media/front-door-apex-domain/front-door-onboard-apex-custom-domain.png" alt-text="HTTPS-instellingen voor aangepast domein":::    
 
    > [!WARNING]
    > Het beheer type van de front-deur wordt momenteel niet ondersteund voor Apex-of hoofd domeinen. De enige optie die beschikbaar is om HTTPS in te scha kelen op een Apex of hoofd domein voor de voor deur, gebruikt uw eigen aangepaste TLS/SSL-certificaat dat wordt gehost op Azure Key Vault.

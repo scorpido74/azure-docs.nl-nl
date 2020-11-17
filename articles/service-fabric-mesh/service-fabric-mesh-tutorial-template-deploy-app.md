@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 01/11/2019
 ms.author: gwallace
 ms.custom: mvc, devcenter, devx-track-azurecli
-ms.openlocfilehash: 3727e9a83827261bf9e8a526ffedb6d3fc644afa
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b02c16c63d83fc33be5512d26eafb0ca0d6c9b98
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92745980"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145885"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>Zelfstudie: Een toepassing in Service Fabric Mesh implementeren met behulp van een sjabloon
 
@@ -104,6 +104,11 @@ In deze zelfstudie wordt de takenlijsttoepassing als voorbeeld gebruikt.  De con
 
 U moet eerst een containerinstallatiekopie hebben om een installatiekopie naar een ACR-instantie te pushen. Gebruik de [docker pull](https://docs.docker.com/engine/reference/commandline/pull/)-opdracht om de [WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/)- en [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/)-installatiekopieën uit Docker Hub op te halen als u nog geen lokale containerinstallatiekopieën.
 
+>[!NOTE]
+> Met ingang van 2 november 2020 zijn [snelheidslimieten voor downloaden van toepassing](https://docs.docker.com/docker-hub/download-rate-limit/) op anonieme en geverifieerde aanvragen bij Docker Hub, vanuit accounts van gratis Docker-abonnementen. Deze aanvragen worden afgedwongen op IP-adres. 
+> 
+> Deze opdrachten maken gebruik van openbare installatiekopieën van Docker Hub. Houd er rekening mee dat er limieten kunnen gelden. Zie [Verifiëren met Docker Hub](https://docs.microsoft.com/azure/container-registry/buffer-gate-public-content#authenticate-with-docker-hub) voor meer informatie.
+
 De Windows-installatiekopieën ophalen:
 
 ```bash
@@ -156,7 +161,7 @@ seabreeze/azure-mesh-todo-webfrontend
 seabreeze/azure-mesh-todo-service
 ```
 
-In het volgende voorbeeld worden de tags in de **azure-mesh-todo-service** -opslagplaats vermeld.
+In het volgende voorbeeld worden de tags in de **azure-mesh-todo-service**-opslagplaats vermeld.
 
 ```azurecli
 az acr repository show-tags --name myContainerRegistry --repository seabreeze/azure-mesh-todo-service --output table
@@ -196,9 +201,9 @@ Een Service Fabric Mesh-toepassing is een Azure-resource die u met behulp van Az
 In deze zelfstudie wordt de takenlijst als voorbeeld gebruikt.  Download de bestanden [mesh_rp.windows.json deployment template](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.json) en [mesh_rp.windows.parameter.json parameters](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.parameters.json) zodat u geen nieuwe sjabloon- en parameterbestanden hoeft te bouwen.
 
 ### <a name="parameters"></a>Parameters
-Wanneer de sjabloon waarden bevat die naar verwachting zullen wijzigen nadat de toepassing is geïmplementeerd, of als u de mogelijkheid wilt hebben om de waarden per implementatie aan te passen (als u van plan bent om deze sjabloon te hergebruiken voor andere implementaties), is de aanbevolen procedure om de waarden door te geven via parameters. De juiste manier om dit te doen, is door een gedeelte ‘parameters’ aan de bovenkant van uw implementatiesjabloon te maken, waarin u parameternamen en -eigenschappen opgeeft waarnaar later in de implementatiesjabloon wordt verwezen. Elke parameterdefinitie bevat *type* , *standaardwaarde* en een optioneel gedeelte *metagegevens* met een *beschrijving* .
+Wanneer de sjabloon waarden bevat die naar verwachting zullen wijzigen nadat de toepassing is geïmplementeerd, of als u de mogelijkheid wilt hebben om de waarden per implementatie aan te passen (als u van plan bent om deze sjabloon te hergebruiken voor andere implementaties), is de aanbevolen procedure om de waarden door te geven via parameters. De juiste manier om dit te doen, is door een gedeelte ‘parameters’ aan de bovenkant van uw implementatiesjabloon te maken, waarin u parameternamen en -eigenschappen opgeeft waarnaar later in de implementatiesjabloon wordt verwezen. Elke parameterdefinitie bevat *type*, *standaardwaarde* en een optioneel gedeelte *metagegevens* met een *beschrijving*.
 
-Het parametergedeelte is aan de bovenkant van uw implementatiesjabloon gedefinieerd, direct voor het gedeelte *resources* :
+Het parametergedeelte is aan de bovenkant van uw implementatiesjabloon gedefinieerd, direct voor het gedeelte *resources*:
 
 ```json
 {

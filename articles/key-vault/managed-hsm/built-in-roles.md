@@ -8,16 +8,16 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 6b39c1d6fe2e84055e7c94dde076514d04a24f36
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5ecd8f13a3255a565168f62f358a6a38e3cbab4
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90992255"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445214"
 ---
 # <a name="managed-hsm-local-rbac-built-in-roles"></a>Lokale, ingebouwde RBAC-rollen van de beheerde HSM
 
-De lokale RBAC van de beheerde HSM bevat enkele ingebouwde rollen die u aan gebruikers, service-principals, groepen en beheerde identiteiten kunt toewijzen. Als u een principal wilt toestaan een bewerking uit te voeren, moet u deze een rol toewijzen die toestemming verleent om die bewerkingen uit te voeren. Met al deze rollen en bewerkingen kunt u alleen machtigingen beheren voor gegevensvlakbewerkingen. Als u de machtigingen voor het beheervlak voor de beheerde HSM-resource wilt beheren (bijvoorbeeld voor het maken van een nieuwe beheerde HSM of het bijwerken, verplaatsen of verwijderen van een bestaande HSM), moet u [op rollen gebaseerd toegangsbeheer (RBAC) van Azure](../../role-based-access-control/overview.md) gebruiken.
+De lokale RBAC van de beheerde HSM bevat enkele ingebouwde rollen die u aan gebruikers, service-principals, groepen en beheerde identiteiten kunt toewijzen. Als u een principal wilt toestaan een bewerking uit te voeren, moet u deze een rol toewijzen die toestemming verleent om die bewerkingen uit te voeren. Met al deze rollen en bewerkingen kunt u alleen machtigingen beheren voor gegevensvlakbewerkingen. Als u de machtigingen voor het beheervlak voor de beheerde HSM-resource wilt beheren (bijvoorbeeld voor het maken van een nieuwe beheerde HSM of het bijwerken, verplaatsen of verwijderen van een bestaande HSM), moet u [Azure RBAC (op rollen gebaseerd toegangsbeheer van Azure)](../../role-based-access-control/overview.md) gebruiken.
 
 ## <a name="built-in-roles"></a>Ingebouwde rollen
 
@@ -77,5 +77,5 @@ De lokale RBAC van de beheerde HSM bevat enkele ingebouwde rollen die u aan gebr
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Bekijk een overzicht van [toegangsbeheer op basis van rollen in Azure (RBAC)](../../role-based-access-control/overview.md).
+- Bekijk een overzicht van [Azure RBAC (op rollen gebaseerd toegangsbeheer van Azure)](../../role-based-access-control/overview.md).
 - Bekijk een zelfstudie over [Rolbeheer van beheerde HSM](role-management.md)

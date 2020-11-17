@@ -3,12 +3,12 @@ title: Zelfstudie voor continue video-opname in de cloud en afspelen vanuit de c
 description: In deze zelfstudie leert u hoe u Azure Live Video Analytics kunt gebruiken op Azure IoT Edge om continu video in de cloud op te nemen en een deel van die video te streamen met behulp van Azure Media Services.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 4333ceb9c02f39629e4bd06d3d9634b97bb2e2d7
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 7e8bf1202e95cb4e76b54473f9d84076d24accea
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91774025"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346363"
 ---
 # <a name="tutorial-continuous-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Zelfstudie: Continue video-opname in de cloud en afspelen vanuit de cloud
 
@@ -93,7 +93,7 @@ U hebt de bestanden nodig voor de volgende stappen:
     Met de IoT Hub-verbindingsreeks kunt u Visual Studio Code gebruiken om opdrachten naar de Edge-modules te verzenden via Azure IoT Hub.
     
 1. Blader vervolgens naar de map src/edge en maak een bestand met de extensie **.env**.
-1. Kopieer de inhoud uit het bestand ~/clouddrive/lva-sample/.env. De tekst moet er als volgt uitzien:
+1. Kopieer de inhoud uit het bestand ~/clouddrive/lva-sample/edge-deployment/.env. De tekst moet er als volgt uitzien:
 
     ```
     SUBSCRIPTION_ID="<Subscription ID>"  
@@ -124,7 +124,7 @@ Blader vervolgens naar de map src/cloud-to-device-console-app. Hier ziet u het b
 * **Program.cs**: de voorbeeldcode van het programma voor:
     * De app-instellingen laden.
     * Roept directe methoden aan die worden weergegeven door de module Live Video Analytics in IoT Edge. U kunt de module gebruiken om live-videostreams te analyseren door de bijbehorende [directe methoden](direct-methods.md) aan te roepen.
-    * Hiermee pauzeert u zodat u de uitvoer van het programma in het **TERMINAL**-venster en de gebeurtenissen die worden gegenereerd door de module in het **UITVOER**venster kunt controleren.
+    * Hiermee pauzeert u zodat u de uitvoer van het programma in het **TERMINAL**-venster en de gebeurtenissen die worden gegenereerd door de module in het **UITVOER** venster kunt controleren.
     * Hiermee worden directe methoden voor het opschonen van resources aangeroepen.
 
 ## <a name="generate-and-deploy-the-iot-edge-deployment-manifest"></a>Het IoT Edge-implementatiemanifest genereren en implementeren 
@@ -164,11 +164,63 @@ Wanneer u de Live Video Analytics in IoT Edge-module gebruikt om de live videost
 1. Klik met de rechtermuisknop en selecteer **Extensie-instellingen**.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Mediagrafiek":::
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Extensie-instellingen":::
 1. Zoek 'Uitgebreid bericht tonen' en schakel deze optie in.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Mediagrafiek"
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Uitgebreid bericht tonen":::
+1. <!--In Visual Studio Code, go-->Navigeer naar src/cloud-to-device-console-app/operations.json.
+1. Bewerk het volgende onder het knooppunt **GraphTopologySet**:
+
+    `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/cvr-asset/topology.json" `
+1. Controleer vervolgens of op de knooppunten **GraphInstanceSet** en **GraphTopologyDelete** de waarde van **topologyName** overeenkomt met de waarde van de eigenschap **name** in de bovenstaande graaftopologie:
+
+    `"topologyName" : "CVRToAMSAsset"`  
+1. Open de [topologie](https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/cvr-asset/topology.json) in een browser en kijk naar assetNamePattern. Om ervoor te zorgen dat uw asset een unieke naam heeft, kunt u de naam van het graafexemplaar wijzigen in het bestand operations.json (van de standaardwaarde van 'Sample-Graph-1').
+
+    `"assetNamePattern": "sampleAsset-${System.GraphTopologyName}-${System.GraphInstanceName}"`    
+1. Start een foutopsporingssessie door F5 te selecteren. In het **TERMINAL**-venster ziet u enkele berichten verschijnen.
+1. Het bestand operations.json begint met het uitvoeren van aanroepen naar GraphTopologyList en GraphInstanceList. Als u resources hebt opgeschoond na vorige quickstarts of zelfstudies, worden er lege lijsten geretourneerd, waarna wordt gepauzeerd zodat u op **ENTER** kunt drukken, zoals hieronder:
+
+    ```
+    --------------------------------------------------------------------------
+    Executing operation GraphTopologyList
+    -----------------------  Request: GraphTopologyList  --------------------------------------------------
+    {
+      "@apiVersion": "1.0"
+    }
+    ---------------  Response: GraphTopologyList - Status: 200  ---------------
+    {
+      "value": []
+    }
+    --------------------------------------------------------------------------
+    Executing operation WaitForInput
+    Press Enter to continue
+    ```
+
+1. Wanneer u op de toets **Enter** drukt in het venster **TERMINAL**, wordt de volgende set met aanroepen met de directe methode gemaakt:
+   * Een aanroep van GraphTopologySet met behulp van de vorige topologyUrl
+   * Een aanroep van GraphInstanceSet met behulp van de volgende hoofdtekst
+     
+     ```
+     {
+       "@apiVersion": "1.0",
+       "name": "Sample-Graph-1",
+       "properties": {
+         "topologyName": "CVRToAMSAsset",
+         "description": "Sample graph description",
+         "parameters": [
+           {
+             "name": "rtspUrl",
+             "value": "rtsp://rtspsim:554/media/camera-300s.mkv"
+           },
+           {
+             "name": "rtspUserName",
+             "value": "testuser"
+           },
+           {
+             "name": "rtspPassword",
+             "value": "testpassword"
            }
          ]
        }

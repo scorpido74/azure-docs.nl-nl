@@ -9,12 +9,12 @@ ms.reviewer: dseven
 ms.author: matjazl
 author: matjazl
 ms.date: 02/07/2019
-ms.openlocfilehash: f8b5e344fc963d466571e75ff16f17367dc32971
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 37086a925d65a80f219c8e0a3358c834a2691701
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87844844"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145647"
 ---
 # <a name="access-azure-api-for-fhir-with-postman"></a>Azure API for FHIR openen met Postman
 
@@ -121,7 +121,7 @@ Nu u een geldig toegangstoken hebt, kunt u een nieuwe patiënt invoegen. Schakel
 
 Klik op Verzenden. U ziet dan dat de patiënt is gemaakt:
 
-![De patiënt is gemaakt](media/tutorial-postman/postman-patient-created.png)
+![Schermopname waarop te zien is dat het maken van de patiënt is geslaagd.](media/tutorial-postman/postman-patient-created.png)
 
 Als u de zoekopdracht voor de patiënt herhaalt, ziet u nu de patiëntrecord:
 

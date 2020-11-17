@@ -4,8 +4,8 @@ description: Voeg groeps leden in bulk toe in het Azure Active Directory-beheer 
 services: active-directory
 author: curtand
 ms.author: curtand
-manager: mtillman
-ms.date: 04/27/2020
+manager: daveba
+ms.date: 11/15/2020
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d2a6e0a5459fbf53698b4204b8ae1f47a6a17bc
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 227a8261aef7953c07bcc12f7754a56dd8e7fafa
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375559"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647423"
 ---
 # <a name="bulk-add-group-members-in-azure-active-directory"></a>Groeps leden bulksgewijs toevoegen in Azure Active Directory
 
@@ -49,9 +49,9 @@ De rijen in een gedownloade CSV-sjabloon zijn als volgt:
 ## <a name="to-bulk-import-group-members"></a>Groeps leden bulksgewijs importeren
 
 1. Meld u aan bij [de Azure Portal](https://portal.azure.com) met een Administrator-account van de gebruiker in de organisatie. Groeps eigenaren kunnen ook leden van groepen waarvan ze eigenaar zijn, bulksgewijs importeren.
-1. Selecteer **groepen**  >  **alle groepen**in azure AD.
+1. Selecteer **groepen**  >  **alle groepen** in azure AD.
 1. Open de groep waaraan u leden wilt toevoegen en selecteer vervolgens **leden**.
-1. Selecteer **leden importeren**op de pagina **leden** .
+1. Selecteer **leden importeren** op de pagina **leden** .
 1. Selecteer op de pagina **groeps leden Bulk Import** de optie **downloaden** om de CSV-bestands sjabloon met de vereiste eigenschappen voor de groeps leden op te halen.
 
     ![De opdracht leden importeren bevindt zich op de profiel pagina voor de groep](./media/groups-bulk-import-members/import-panel.png)
@@ -60,8 +60,8 @@ De rijen in een gedownloade CSV-sjabloon zijn als volgt:
 
     :::image type="content" source="./media/groups-bulk-import-members/csv-file.png" alt-text="Het CSV-bestand bevat de namen en Id's van de leden die moeten worden geïmporteerd":::
 
-1. Blader op de pagina **groeps leden Bulk Import** onder **uw CSV-bestand uploaden**naar het bestand. Wanneer u het bestand selecteert, wordt de validatie van het CSV-bestand gestart.
-1. Wanneer de bestands inhoud is gevalideerd, wordt het **bestand dat is geüpload**weer gegeven op de pagina Bulk Import. Als er fouten zijn, moet u deze corrigeren voordat u de taak kunt verzenden.
+1. Blader op de pagina **groeps leden Bulk Import** onder **uw CSV-bestand uploaden** naar het bestand. Wanneer u het bestand selecteert, wordt de validatie van het CSV-bestand gestart.
+1. Wanneer de bestands inhoud is gevalideerd, wordt het **bestand dat is geüpload** weer gegeven op de pagina Bulk Import. Als er fouten zijn, moet u deze corrigeren voordat u de taak kunt verzenden.
 1. Wanneer de validatie van uw bestand wordt door gegeven, selecteert u **verzenden** om de Azure bulk bewerking te starten waarmee de groeps leden in de groep worden geïmporteerd.
 1. Wanneer de import bewerking is voltooid, ziet u een melding dat de bulk bewerking is geslaagd.
 
@@ -71,7 +71,7 @@ U kunt de status van al uw bulk aanvragen in behandeling bekijken op de pagina *
 
 [![Controleer de status op de pagina resultaten van bulk bewerking.](./media/groups-bulk-import-members/bulk-center.png)](./media/groups-bulk-import-members/bulk-center.png#lightbox)
 
-Selecteer de waarden onder de kolommen **# geslaagd**, **# fout**of **Totaal aantal aanvragen** voor meer informatie over elk regel item in de bulk bewerking. Als er fouten zijn opgetreden, worden de redenen voor de fouten weergegeven.
+Selecteer de waarden onder de kolommen **# geslaagd**, **# fout** of **Totaal aantal aanvragen** voor meer informatie over elk regel item in de bulk bewerking. Als er fouten zijn opgetreden, worden de redenen voor de fouten weergegeven.
 
 ## <a name="bulk-import-service-limits"></a>Service limieten voor bulk import
 

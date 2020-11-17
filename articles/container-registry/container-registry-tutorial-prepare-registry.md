@@ -4,12 +4,12 @@ description: Een Azure-containerregister maken, geo-replicatie configureren, een
 ms.topic: tutorial
 ms.date: 06/30/2020
 ms.custom: seodec18, mvc, devx-track-azurecli
-ms.openlocfilehash: c473e3cd891214c2c5789bd43b0d293cb25d660a
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 804f07762bef596f4631fbc5f694ecc6b308bfad
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92739483"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027224"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>Zelfstudie: Een Azure-containerregister met geo-replicatie voorbereiden
 
@@ -44,22 +44,22 @@ Voor deze zelfstudie hebt u een Azure-containerregister in de Premium-servicelaa
 
 Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
-Selecteer **Een resource maken** > **Containers** > **Azure Container Registry** .
+Selecteer **Een resource maken** > **Containers** > **Azure Container Registry**.
 
 :::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-01.png" alt-text="Een containerregister maken met Azure Portal":::
 
-Configureer uw nieuwe register met de volgende instellingen. Op het tabblad **Basis** :
+Configureer uw nieuwe register met de volgende instellingen. Op het tabblad **Basis**:
 
-* **Registernaam** : Een registernaam maken die globaal uniek is binnen Azure en 5-50 alfanumerieke tekens bevat
-* **Resourcegroep** : **Nieuwe maken** > `myResourceGroup`
-* **Locatie** : `West US`
-* **SKU** : `Premium` (vereist voor de geo-replicatie)
+* **Registernaam**: Een registernaam maken die globaal uniek is binnen Azure en 5-50 alfanumerieke tekens bevat
+* **Resourcegroep**: **Nieuwe maken** > `myResourceGroup`
+* **Locatie**: `West US`
+* **SKU**: `Premium` (vereist voor de geo-replicatie)
 
 Selecteer **Beoordelen en maken** en **Maken** om het exemplaar van het register te maken.
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-02.png" alt-text="Een containerregister maken met Azure Portal":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-02.png" alt-text="Een containerregister configureren in de Azure Portal":::
 
-In de rest van deze zelfstudie gebruiken we `<acrName>` als tijdelijke aanduiding voor de gekozen **containerregisternaam** .
+In de rest van deze zelfstudie gebruiken we `<acrName>` als tijdelijke aanduiding voor de gekozen **containerregisternaam**.
 
 > [!TIP]
 > Omdat Azure-containerregisters doorgaans lang meegaande resources zijn die op meerdere hosts van de container worden gebruikt, wordt u aangeraden het register in een eigen resourcegroep te maken. Als u registers met geo-replicatie en webhooks configureert, worden deze extra resources in dezelfde resourcegroep geplaatst.
@@ -68,30 +68,30 @@ In de rest van deze zelfstudie gebruiken we `<acrName>` als tijdelijke aanduidin
 
 Nu u een Premium-register hebt, kunt u geo-replicatie configureren. Uw web-app, die u in de volgende zelfstudie configureert voor uitvoering in twee regio's, kan vervolgens containerinstallatiekopieën uit het dichtstbijzijnde register pullen.
 
-Navigeer naar uw nieuwe containerregister in Azure Portal en selecteer **Replicaties** onder **Services** :
+Navigeer naar uw nieuwe containerregister in Azure Portal en selecteer **Replicaties** onder **Services**:
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-03.png" alt-text="Een containerregister maken met Azure Portal":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-03.png" alt-text="Replicaties in de containerregister-UI van Azure Portal":::
 
 Er wordt een kaart weergegeven met groene zeshoeken die Azure-regio's vertegenwoordigen die beschikbaar zijn voor geo-replicatie:
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-map-01.png" alt-text="Een containerregister maken met Azure Portal":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-map-01.png" alt-text="Kaart met regio's in Azure Portal":::
 
-Repliceer uw register naar de regio VS - oost door de groene zeshoek te selecteren. Selecteer vervolgens **Maken** onder **Replicatie maken** :
+Repliceer uw register naar de regio VS - oost door de groene zeshoek te selecteren. Selecteer vervolgens **Maken** onder **Replicatie maken**:
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-04.png" alt-text="Een containerregister maken met Azure Portal":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-04.png" alt-text="Gebruikersinterface voor het maken van een replicatie in Azure Portal":::
 
 Wanneer de replicatie is voltooid, geeft de portal *Gereed* weer voor beide regio's. Gebruik de knop **Vernieuwen** om de status van de replicatie te vernieuwen. Het kan een paar minuten duren voordat de replica's zijn gemaakt en gesynchroniseerd.
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-05.png" alt-text="Een containerregister maken met Azure Portal":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-05.png" alt-text="Gebruikersinterface voor de replicatiestatus in Azure Portal":::
 
 
 ## <a name="enable-admin-account"></a>Beheerdersaccount schakelen
 
 In volgende zelfstudies implementeert u een containerinstallatiekopie vanuit het register rechtstreeks naar Web App for Containers. Als u deze mogelijkheid wilt inschakelen, moet u ook het [beheerdersaccount](container-registry-authentication.md#admin-account) van het register inschakelen.
 
-Navigeer naar uw nieuwe containerregister in Azure Portal en selecteer **Toegangssleutels** onder **Instellingen** : Selecteer onder **Gebruiker met beheerdersrechten** de optie **Inschakelen** .
+Navigeer naar uw nieuwe containerregister in Azure Portal en selecteer **Toegangssleutels** onder **Instellingen**: Selecteer onder **Gebruiker met beheerdersrechten** de optie **Inschakelen**.
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-06.png" alt-text="Een containerregister maken met Azure Portal":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-06.png" alt-text="Beheerdersaccount inschakelen in Azure Portal":::
 
 
 ## <a name="container-registry-login"></a>Aanmelden bij het containerregister
@@ -110,7 +110,7 @@ De opdracht retourneert `Login Succeeded` nadat deze is voltooid.
 
 Het voorbeeld in deze zelfstudie bevat een kleine webtoepassing die is gebouwd in [ASP.NET Core][aspnet-core]. De app dient voor een HTML-pagina waarop de regio wordt weergegeven waaruit de installatiekopie is geïmplementeerd door Azure Container Registry.
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-app-01.png" alt-text="Een containerregister maken met Azure Portal":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-app-01.png" alt-text="Zelfstudie-app weergegeven in browser":::
 
 Gebruik Git om het voorbeeld te downloaden naar een lokale map en `cd` naar de map:
 
@@ -123,19 +123,19 @@ Als u `git` niet hebt geïnstalleerd, kunt u rechtstreeks vanuit GitHub [het ZIP
 
 ## <a name="update-dockerfile"></a>Dockerfile bijwerken
 
-Het Dockerfile dat deel uitmaakt van de voorbeeldopslagplaats laat zien hoe de container wordt gebouwd. Het begint met een officiële [aspnetcore][dockerhub-aspnetcore]-installatiekopie, kopieert de toepassingsbestanden naar de container, installeert afhankelijkheden, compileert de uitvoer met behulp van de officiële [aspnetcore-build][dockerhub-aspnetcore-build]-installatiekopie en maakt tot slot een geoptimaliseerde aspnetcore-installatiekopie.
+Het Dockerfile dat deel uitmaakt van de voorbeeldopslagplaats laat zien hoe de container wordt gebouwd. Het begint met een officiële ASP.NET Core-runtime-installatiekopie, kopieert de toepassingsbestanden naar de container, installeert afhankelijkheden, compileert de uitvoer met de officiële .NET Core SDK-installatiekopie, en maakt tot slot een geoptimaliseerde aspnetcore-installatiekopie.
 
 De [Dockerfile][dockerfile] bevindt zich in `./AcrHelloworld/Dockerfile` in de gekloonde bron.
 
 ```Dockerfile
-FROM microsoft/aspnetcore:2.0 AS base
+FROM mcr.microsoft.com/dotnet/core/aspnet:2.2 AS base
 # Update <acrName> with the name of your registry
 # Example: uniqueregistryname.azurecr.io
 ENV DOCKER_REGISTRY <acrName>.azurecr.io
 WORKDIR /app
 EXPOSE 80
 
-FROM microsoft/aspnetcore-build:2.0 AS build
+FROM mcr.microsoft.com/dotnet/core/sdk:2.2 AS build
 WORKDIR /src
 COPY *.sln ./
 COPY AcrHelloworld/AcrHelloworld.csproj AcrHelloworld/
@@ -153,7 +153,7 @@ COPY --from=publish /app .
 ENTRYPOINT ["dotnet", "AcrHelloworld.dll"]
 ```
 
-De toepassing in de *acr-helloworld* -installatiekopie probeert de regio te bepalen waaruit de container is geïmplementeerd door in DNS een query uit te voeren naar informatie over de aanmeldingsserver van het register. U moet de Fully Qualified Domain Name (FQDN) van de aanmeldingsserver van het register opgeven in de omgevingsvariabele `DOCKER_REGISTRY` in de Dockerfile.
+De toepassing in de *acr-helloworld*-installatiekopie probeert de regio te bepalen waaruit de container is geïmplementeerd door in DNS een query uit te voeren naar informatie over de aanmeldingsserver van het register. U moet de Fully Qualified Domain Name (FQDN) van de aanmeldingsserver van het register opgeven in de omgevingsvariabele `DOCKER_REGISTRY` in de Dockerfile.
 
 Haal eerst de aanmeldingsserver van het register op met de opdracht `az acr show`. Vervang `<acrName>` door de naam van het register dat u in de vorige stappen hebt gemaakt.
 
@@ -169,7 +169,7 @@ AcrLoginServer
 uniqueregistryname.azurecr.io
 ```
 
-Werk vervolgens de regel `ENV DOCKER_REGISTRY` bij met de FQDN van de aanmeldingsserver van uw register. In dit voorbeeld wordt de naam van het voorbeeldregister gebruikt, *uniqueregistryname* :
+Werk vervolgens de regel `ENV DOCKER_REGISTRY` bij met de FQDN van de aanmeldingsserver van uw register. In dit voorbeeld wordt de naam van het voorbeeldregister gebruikt, *uniqueregistryname*:
 
 ```Dockerfile
 ENV DOCKER_REGISTRY uniqueregistryname.azurecr.io
@@ -187,8 +187,8 @@ Terwijl de Docker-installatiekopie wordt gemaakt (hier ingekort weergegeven) wor
 
 ```bash
 Sending build context to Docker daemon  523.8kB
-Step 1/18 : FROM microsoft/aspnetcore:2.0 AS base
-2.0: Pulling from microsoft/aspnetcore
+Step 1/18 : FROM mcr.microsoft.com/dotnet/core/aspnet:2.2 AS base
+2.2: Pulling from mcr.microsoft.com/dotnet/core/aspnet
 3e17c6eae66c: Pulling fs layer
 
 [...]
@@ -212,7 +212,7 @@ uniqueregistryname.azurecr.io/acr-helloworld    v1     01ac48d5c8cf    About a m
 
 ## <a name="push-image-to-azure-container-registry"></a>Installatiekopie pushen naar Azure Container Registry
 
-Gebruik vervolgens de opdracht `docker push` om de *acr-helloworld* -installatiekopie naar het register te pushen. Vervang `<acrName>` door de naam van uw register.
+Gebruik vervolgens de opdracht `docker push` om de *acr-helloworld*-installatiekopie naar het register te pushen. Vervang `<acrName>` door de naam van uw register.
 
 ```bash
 docker push <acrName>.azurecr.io/acr-helloworld:v1
@@ -245,6 +245,4 @@ Ga naar de volgende zelfstudie om uw container te implementeren op meerdere Web 
 <!-- LINKS - External -->
 [acr-helloworld-zip]: https://github.com/Azure-Samples/acr-helloworld/archive/master.zip
 [aspnet-core]: https://dot.net
-[dockerhub-aspnetcore]: https://hub.docker.com/r/microsoft/aspnetcore/
-[dockerhub-aspnetcore-build]: https://store.docker.com/community/images/microsoft/aspnetcore-build
 [dockerfile]: https://github.com/Azure-Samples/acr-helloworld/blob/master/AcrHelloworld/Dockerfile

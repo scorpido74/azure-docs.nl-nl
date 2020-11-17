@@ -4,7 +4,7 @@ description: Beveiligings groepen of Microsoft 365 groepen maken en beheren in A
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.workload: identity
@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1730507c022d57495efa56c98215ff72d07e180
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 6425809cfa6dde20b8ef2b1f6d4cfaf04cbef6e6
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578175"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647083"
 ---
 # <a name="set-up-self-service-group-management-in-azure-active-directory"></a>Self-service groeps beheer instellen in Azure Active Directory 
 
@@ -49,8 +49,8 @@ Groepen die zijn gemaakt in | Standaard gedrag van beveiligings groep | Standaar
 1. Stel **toegang beperken tot groepen in het toegangs venster in** op **Nee**.
 1. Als u instelt dat **gebruikers beveiligings groepen kunnen maken in azure-portals** of **gebruikers kunnen Microsoft 365 groepen maken in azure-portals**
 
-    - **Ja** : alle gebruikers in uw Azure AD-organisatie mogen nieuwe beveiligings groepen maken en leden toevoegen aan deze groepen. Deze nieuwe groepen zullen ook verschijnen in het Toegangsvenster voor alle andere gebruikers. Als de beleids instelling voor de groep toestaat, kunnen andere gebruikers aanvragen maken om lid te worden van deze groepen
-    - **Nee** : gebruikers kunnen geen groepen maken en kunnen bestaande groepen waarvan ze een eigenaar zijn, niet wijzigen. Ze kunnen echter nog steeds de lidmaatschappen van die groepen beheren en aanvragen van andere gebruikers om lid te worden van hun groep goedkeuren.
+    - **Ja**: alle gebruikers in uw Azure AD-organisatie mogen nieuwe beveiligings groepen maken en leden toevoegen aan deze groepen. Deze nieuwe groepen zullen ook verschijnen in het Toegangsvenster voor alle andere gebruikers. Als de beleids instelling voor de groep toestaat, kunnen andere gebruikers aanvragen maken om lid te worden van deze groepen
+    - **Nee**: gebruikers kunnen geen groepen maken en kunnen bestaande groepen waarvan ze een eigenaar zijn, niet wijzigen. Ze kunnen echter nog steeds de lidmaatschappen van die groepen beheren en aanvragen van andere gebruikers om lid te worden van hun groep goedkeuren.
 
 U kunt ook **eigen aren gebruiken die leden als groeps eigenaren kunnen toewijzen in de Azure Portal** om meer nauw keurigere toegangs controle te verkrijgen over selfservice groeps beheer voor uw gebruikers.
 

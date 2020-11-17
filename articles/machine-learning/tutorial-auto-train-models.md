@@ -1,7 +1,7 @@
 ---
 title: 'Regressiezelfstudie: Geautomatiseerde machine learning'
 titleSuffix: Azure Machine Learning
-description: In deze zelfstudie leert u hoe u een model voor machine learning genereert met behulp van geautomatiseerde machine learning. Azure Machine Learning kan voorbewerking van gegevens, selectie van algoritmes en selectie van hyperparameters automatisch voor u uitvoeren.
+description: Maak een geautomatiseerd machine learning-experiment waarmee een regressiemodel wordt gegenereerd op basis van de trainingsgegevens en configuratie-instellingen die u opgeeft.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,13 +10,13 @@ author: aniththa
 ms.author: anumamah
 ms.reviewer: nibaccam
 ms.date: 08/14/2020
-ms.custom: devx-track-python
-ms.openlocfilehash: cf6616dcc3935946ad4a7213263bb20281d25354
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-python, automl
+ms.openlocfilehash: 811f1c27af660d388ecb875741c073591bd25f7f
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90896793"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93358606"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Zelfstudie: Geautomatiseerde machine learning gebruiken om taxitarieven te voorspellen
 
@@ -173,7 +173,7 @@ final_df.describe()
 
 ## <a name="configure-workspace"></a>Werkruimte configureren
 
-Maak een werkruimte-object van de bestaande werkruimte. Een [Werkruimte](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true) is een klasse die uw Azure-abonnement en resourcegegevens accepteert. Hier wordt ook een cloudresource gemaakt om de uitvoeringen van uw model te controleren en bij te houden. `Workspace.from_config()` leest het bestand **config.json** en laadt de verificatiegegevens in een object met de naam `ws`. `ws` wordt gebruikt in de rest van de code in deze zelfstudie.
+Maak een werkruimte-object van de bestaande werkruimte. Een [Werkruimte](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py) is een klasse die uw Azure-abonnement en resourcegegevens accepteert. Hier wordt ook een cloudresource gemaakt om de uitvoeringen van uw model te controleren en bij te houden. `Workspace.from_config()` leest het bestand **config.json** en laadt de verificatiegegevens in een object met de naam `ws`. `ws` wordt gebruikt in de rest van de code in deze zelfstudie.
 
 ```python
 from azureml.core.workspace import Workspace
@@ -300,7 +300,7 @@ BEST: The best observed score thus far.
 
 ## <a name="explore-the-results"></a>De resultaten verkennen
 
-Bekijk de resultaten van de automatische training met een [Jupyter-widget](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true). Met de widget kunt u een grafiek en tabel van alle afzonderlijke uitvoeringsiteraties bekijken, samen met metrische nauwkeurigheidsgegevens en metagegevens van de training. Daarnaast kunt u met behulp van de vervolgkeuzelijst filteren op andere metrische nauwkeurigheidsgegevens dan de eerste metrische gegevens.
+Bekijk de resultaten van de automatische training met een [Jupyter-widget](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py). Met de widget kunt u een grafiek en tabel van alle afzonderlijke uitvoeringsiteraties bekijken, samen met metrische nauwkeurigheidsgegevens en metagegevens van de training. Daarnaast kunt u met behulp van de vervolgkeuzelijst filteren op andere metrische nauwkeurigheidsgegevens dan de eerste metrische gegevens.
 
 ```python
 from azureml.widgets import RunDetails

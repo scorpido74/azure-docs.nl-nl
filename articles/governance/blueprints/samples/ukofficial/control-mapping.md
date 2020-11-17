@@ -1,14 +1,14 @@
 ---
 title: Beheeropties voor UK OFFICIAL- en UK NHS-blauwdrukvoorbeelden
 description: Toewijzing van beheeropties voor de UK OFFICIAL- en UK NHS-blauwdrukvoorbeelden. Elke beheeroptie wordt toegewezen aan een of meer Azure Policy-definities die helpen bij de evaluatie.
-ms.date: 07/13/2020
+ms.date: 11/05/2020
 ms.topic: sample
-ms.openlocfilehash: b798ac98e057b85cce0faa835575dbb0d50f9c8c
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 352ba30a21c638c68401e2f8e471096a777fbde9
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91931269"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420254"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>Toewijzing van beheeropties voor de UK OFFICIAL- en UK NHS-blauwdrukvoorbeelden
 
@@ -26,7 +26,6 @@ Deze blauwdruk zorgt voor een beveiligde overdracht van gegevens met Azure-servi
 - Alleen beveiligde verbindingen met uw Redis Cache moeten zijn ingeschakeld
 - Beveiligde overdracht naar opslagaccounts moet zijn ingeschakeld
 - Controleresultaten weergeven van Windows-webservers die geen veilige communicatieprotocollen gebruiken
-- Vereisten implementeren om Windows-webservers te controleren waarvoor geen veilige communicatieprotocollen worden gebruikt
 - Webtoepassing mag alleen toegankelijk zijn via HTTPS
 - Functie-app mag alleen toegankelijk zijn via HTTPS
 - API-app mag alleen toegankelijk zijn via HTTPS
@@ -55,9 +54,9 @@ Met deze blauwdruk kunt u beveiligingsproblemen in informatiesystemen beheren do
 - Beveiligingsproblemen in uw SQL-databases moeten worden opgelost
 - Beveiligingsproblemen moeten worden opgelost met een oplossing voor evaluatie van beveiligingsproblemen
 - De evaluatie van beveiligingsproblemen moet worden ingeschakeld op uw SQL-servers
-- De evaluatie van beveiligingsproblemen moet worden ingeschakeld voor uw beheerde SQL-exemplaren
+- Evaluatie van beveiligingsproblemen moet zijn ingeschakeld voor uw met SQL beheerde exemplaar
 - Beveiligingsproblemen in de beveiligingsconfiguratie van virtuele-machineschaalsets moeten worden hersteld
-- Advanced Data Security moet zijn ingeschakeld voor SQL Managed Instance
+- Advanced Data Security moet zijn ingeschakeld voor uw met SQL beheerde exemplaar
 - Advanced Data Security moet zijn ingeschakeld op uw SQL-servers
 
 ## <a name="53-protective-monitoring"></a>5.3 Bewaking van de beveiliging
@@ -65,9 +64,9 @@ Met deze blauwdruk kunt u beveiligingsproblemen in informatiesystemen beheren do
 Met deze blauwdruk kunt u informatiesysteemassets beveiligen door [Azure Policy](../../../policy/overview.md)-definities toe te wijzen die bewaking van de beveiliging bieden voor onbeperkte toegang, een lijst met toegestane activiteiten en bedreigingen.
 
 - Netwerktoegang tot opslagaccounts moet zijn beperkt
-- Besturingselementen voor adaptieve toepassingen om veilige toepassingen in de toegestane lijst op te nemen, moeten worden ingeschakeld op uw computers
-- Virtuele machines controleren waarop geen noodherstel is geconfigureerd
-- De DDoS Protection-standaard moet zijn ingeschakeld
+- Adaptieve toepassingsbesturingselementen voor het definiëren van veilige toepassingen moeten zijn ingeschakeld op uw computers
+- Virtuele machines controleren waarop geen herstel na noodgeval is geconfigureerd
+- Azure DDoS-beveiligingsstandaard moet zijn ingeschakeld
 - Advanced Threat Protection-typen moeten ingesteld zijn op Alles in de Advanced Data Security-instellingen
 - Advanced Threat Protection-typen moeten worden ingesteld op All in de Advanced Data Security-instellingen van SQL Server
 - Detectie van bedreigingen implementeren op SQL-servers
@@ -115,11 +114,6 @@ Met deze blauwdruk worden ook Azure Policy-definities toegewezen waarmee wordt g
 
 Met deze blauwdruk kunt u sterke wachtwoorden afdwingen door Azure Policy-definities toe te wijzen waarmee Windows-VM's worden gecontroleerd die geen vereisten voor minimale sterkte en andere wachtwoordvereisten afdwingen. Wanneer u op de hoogte bent van VM's die in strijd zijn met het beleid voor wachtwoordsterkte, kunt u corrigerende maatregelen nemen om ervoor te zorgen dat wachtwoorden voor alle gebruikersaccounts van de VM's voldoen aan dit beleid.
 
-- Vereisten implementeren om virtuele Windows-machines te controleren waarop de instelling voor wachtwoordcomplexiteit niet is ingeschakeld
-- Vereisten implementeren om virtuele Windows-machines te controleren waarvoor geen maximale wachtwoordduur van 70 dagen is ingesteld
-- Vereisten implementeren om virtuele Windows-machines te controleren waarvoor geen minimale wachtwoordduur van 1 dag is ingesteld
-- Vereisten implementeren om virtuele Windows-machines te controleren waarvoor de minimale wachtwoordlengte niet wordt beperkt tot 14 tekens
-- Vereisten implementeren om virtuele Windows-machines te controleren waarvoor de voorgaande 24 wachtwoorden opnieuw kunnen worden gebruikt
 - Controleresultaten weergeven van virtuele Windows-machines waarop de instelling voor wachtwoordcomplexiteit niet is ingeschakeld
 - Controleresultaten weergeven van virtuele Windows-machines waarvoor geen maximale wachtwoordduur van 70 dagen is ingesteld
 - Controleresultaten weergeven van virtuele Windows-machines waarvoor geen minimale wachtwoordduur van 1 dag is ingesteld
@@ -128,8 +122,6 @@ Met deze blauwdruk kunt u sterke wachtwoorden afdwingen door Azure Policy-defini
 
 Met deze blauwdruk kunt u ook de toegang tot Azure-resources beheren door Azure Policy-definities toe te wijzen. Met deze beleidsregels wordt het gebruik van resourcetypen en -configuraties gecontroleerd, waardoor de toegang tot resources kan worden uitgebreid. Dankzij meer inzicht in resources die in strijd zijn met deze beleidsregels kunt u corrigerende maatregelen treffen om te garanderen dat toegang tot Azure-resources wordt beperkt tot gemachtigde gebruikers.
 
-- Vereisten implementeren om Linux-VM's met accounts zonder wachtwoorden te controleren
-- Vereisten implementeren voor het controleren van Linux-VM's waarvoor externe verbindingen met accounts zonder wachtwoorden zijn toegestaan
 - Controleresultaten weergeven van virtuele Linux-machines met accounts zonder wachtwoorden
 - Controleresultaten weergeven van virtuele Linux-machines waarvoor externe verbindingen met accounts zonder wachtwoorden zijn toegestaan
 - Opslagaccounts moeten worden gemigreerd naar nieuwe Azure Resource Manager-resources
@@ -142,14 +134,14 @@ Behalve het gebruik van meer dan 25 beleidsregels voor het juiste beveiligde geb
 Opslagaccounts met onbeperkte toegang kunnen onbedoeld toegang verlenen tot gegevens in het informatiesysteem. Deze blauwdruk wijst ook een beleid toe dat adaptieve toepassingsregelaars op virtuele machines mogelijk maakt.
 
 - Netwerktoegang tot opslagaccounts moet zijn beperkt
-- Besturingselementen voor adaptieve toepassingen om veilige toepassingen in de toegestane lijst op te nemen, moeten worden ingeschakeld op uw computers
+- Adaptieve toepassingsbesturingselementen voor het definiëren van veilige toepassingen moeten zijn ingeschakeld op uw computers
 - Toegang via een eindpunt gericht op internet moet worden beperkt
 - Aanbevelingen voor Adaptieve netwerkbeveiliging moeten worden toegepast op op internet gerichte virtuele machines
 - De Endpoint Protection-oplossing moet worden geïnstalleerd op virtuele-machineschaalsets
 - Beheerpoorten van virtuele machines moeten worden beveiligd met Just-In-Time-netwerktoegangsbeheer
-- Externe foutopsporing moet worden uitgeschakeld voor functie-app
-- Externe foutopsporing moet worden uitgeschakeld voor webtoepassing
-- Externe foutopsporing moet worden uitgeschakeld voor API-app
+- Externe foutopsporing moet worden uitgeschakeld voor Function-apps
+- Externe foutopsporing moet worden uitgeschakeld voor webtoepassingen
+- Externe foutopsporing moet worden uitgeschakeld voor API-apps
 
 ## <a name="13-audit-information-for-users"></a>13 Controle-informatie voor gebruikers
 
@@ -161,6 +153,7 @@ Een toegewezen beleid controleert ook of de virtuele machines geen logboeken ver
 - \[Preview\]: Log Analytics-agent voor virtuele Linux-machines implementeren
 - \[Preview\]: Log Analytics-agent voor Windows-VM's implementeren
 - Network Watcher implementeren wanneer er virtuele netwerken worden gemaakt
+
 
 ## <a name="next-steps"></a>Volgende stappen
 

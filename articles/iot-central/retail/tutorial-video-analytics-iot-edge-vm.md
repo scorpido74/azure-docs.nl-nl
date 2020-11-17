@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: aa4ddfc773e2226fe155b563c237f1c533d52311
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 23173432db9364f25901e6e9b285d390c6a63a34
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127025"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94426542"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-linux-vm"></a>Zelfstudie: een IoT Edge-exemplaar voor videoanalyse maken in Azure IoT Central (Linux-VM)
 
@@ -55,7 +55,7 @@ Gebruik de informatie in de volgende tabel om het formulier **Aangepaste impleme
 | Gebruikersnaam van beheerder | *AzureUser* |
 | Beheerderswachtwoord | Voer een wachtwoord in. Noteer het wachtwoord in het bestand *scratchpad.txt* want u hebt dit later nodig. |
 | Bereik-ID | De **bereik-id** die u in de vorige zelfstudie in het bestand *scratchpad.txt* hebt genoteerd bij het toevoegen van het gatewayapparaat. |
-| Apparaat-ID | *lva-gateway-001*: het gatewayapparaat dat u hebt gemaakt in de vorige zelfstudie. |
+| Apparaat-ID | *gateway-001*: het gatewayapparaat dat u hebt gemaakt in de vorige zelfstudie. |
 | Apparaatsleutel | De primaire sleutel van het apparaat die u in de vorige zelfstudie in het bestand *scratchpad.txt* hebt genoteerd bij het toevoegen van het gatewayapparaat. |
 | Host van IoT Central-app | De **toepassings-URL** die u in de vorige zelfstudie in het bestand *scratchpad.txt* hebt genoteerd. Bijvoorbeeld *traders.azureiotcentral.com*. |
 | API-token van Iot Central-app | Het API-token van de operator dat u in de vorige zelfstudie hebt genoteerd. |

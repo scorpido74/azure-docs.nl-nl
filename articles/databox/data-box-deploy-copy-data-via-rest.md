@@ -9,12 +9,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 07/02/2020
 ms.author: alkohli
-ms.openlocfilehash: 17fa361fa4cef194d910d08d4a0afe075b119109
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: cb0a90db0595c655191006969071bc5b9cceaa75
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91742516"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337590"
 ---
 # <a name="tutorial-use-rest-apis-to-copy-data-to-azure-data-box-blob-storage"></a>Zelfstudie: Gegevens kopiëren naar Azure Data Box-Blob-opslag met REST API's  
 
@@ -111,15 +111,15 @@ Volg deze stappen om het `.cer`-bestand te importeren in het basisarchief van ee
 1. Klik met de rechtermuisknop op het `.cer`-bestand en selecteer **Certificaat installeren**. Deze actie start de wizard Certificaat importeren.
 2. Selecteer bij **Archieflocatie** de optie **Lokale computer** en klik op **Volgende**.
 
-    ![Certificaat importeren met PowerShell](media/data-box-deploy-copy-data-via-rest/import-cert-ws-1.png)
+    ![Wizard Certificaat importeren, Windows Server](media/data-box-deploy-copy-data-via-rest/import-cert-ws-1.png)
 
 3. Selecteer **Alle certificaten in het onderstaande archief opslaan** en klik op **Bladeren**. Navigeer naar het basisarchief van de externe host en klik vervolgens op **Volgende**.
 
-    ![Certificaat importeren met PowerShell 2](media/data-box-deploy-copy-data-via-rest/import-cert-ws-2.png)
+    ![Wizard Certificaat importeren, Certificaatarchief](media/data-box-deploy-copy-data-via-rest/import-cert-ws-2.png)
 
 4. Klik op **Voltooien**. Er wordt een bericht weergegeven dat het importeren is geslaagd.
 
-    ![Certificaat importeren met PowerShell 3](media/data-box-deploy-copy-data-via-rest/import-cert-ws-3.png)
+    ![Wizard Certificaat importeren, import voltooien](media/data-box-deploy-copy-data-via-rest/import-cert-ws-3.png)
 
 #### <a name="use-a-linux-system"></a>Een Linux-systeem gebruiken
 
@@ -173,7 +173,7 @@ De eerste stap is het maken van een container, omdat blobs altijd naar een conta
 2. Vouw in het linkerdeelvenster het opslagaccount uit waarin u de blobcontainer wilt maken.
 3. Klik met de rechtermuisknop op **Blob-containers** en selecteer **Blobcontainer maken**.
 
-   ![Het contextmenu Blobcontainers maken](media/data-box-deploy-copy-data-via-rest/create-blob-container-1.png)
+   ![Contextmenu Blobcontainers, Blobcontainer maken](media/data-box-deploy-copy-data-via-rest/create-blob-container-1.png)
 
 4. Onder de map **Blobcontainers** wordt een tekstvak weergegeven. Voer een naam in voor de blobcontainer. Zie [De container maken en machtigingen instellen](../storage/blobs/storage-quickstart-blobs-dotnet.md) voor informatie over regels en beperkingen voor namen van blobcontainers.
 5. Druk op **Enter** om de blobcontainer te maken of op **Esc** om te annuleren. Als de blobcontainer is gemaakt, wordt deze weergegeven in de map **Blobcontainers** voor het geselecteerde opslagaccount.

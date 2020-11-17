@@ -1,68 +1,79 @@
 ---
-title: Herstel na noodgevallen van Azure VM’s instellen met Azure Site Recovery
-description: Leer hoe u herstel na noodgevallen van Azure-VM’s naar een andere Azure-regio kunt instellen met de Azure Site Recovery-service.
+title: Zelfstudie om herstel na noodgevallen van Azure VM's in te stellen met Azure Site Recovery
+description: In deze zelfstudie stelt u herstel na noodgevallen van Azure-VM's naar een andere Azure-regio in met de Site Recovery-service.
 ms.topic: tutorial
-ms.date: 1/24/2020
-ms.author: raynew
+ms.date: 11/03/2020
 ms.custom: mvc
-ms.openlocfilehash: 50bf1ec7f21ccbc3a3fa8feaea02e45bd08a158a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 90527ad39055e438e4970ad4686f204f72d20cd2
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87421413"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394051"
 ---
-# <a name="set-up-disaster-recovery-for-azure-vms"></a>Herstel na noodgevallen instellen voor Azure-VM's
+# <a name="tutorial-set-up-disaster-recovery-for-azure-vms"></a>Zelfstudie: Herstel na noodgevallen instellen voor Azure-VM's
 
-De [Azure Site Recovery](site-recovery-overview.md)-service draagt bij aan uw strategie voor herstel na noodgeval, door de replicatie, failover en failback van on-premises machines en Azure-VM’s (virtuele machines) te beheren en in te delen.
-
-Deze zelfstudie laat zien hoe u voor Azure-VM's herstel na noodgevallen kunt instellen door deze van de ene Azure-regio naar een andere te repliceren. In deze zelfstudie leert u het volgende:
+Deze zelfstudie laat zien hoe u herstel na noodgevallen voor Azure-VM's kunt instellen met behulp van [Azure Site Recovery](site-recovery-overview.md). In dit artikel leert u het volgende:
 
 > [!div class="checklist"]
+> * Azure-instellingen en -machtigingen verifiëren
+> * VM's voorbereiden die u wilt repliceren
 > * Een Recovery Services-kluis maken
-> * Doelresource-instellingen controleren
-> * Uitgaande netwerkconnectiviteit voor VM's instellen
-> * Replicatie inschakelen voor een VM
+> * VM-replicatie inschakelen
+
+Wanneer u replicatie voor een VM inschakelt om herstel na noodgevallen in te stellen, wordt de Site Recovery Mobility-service-extensie geïnstalleerd op de VM en wordt deze geregistreerd bij Azure Site Recovery. Tijdens de replicatie worden schrijfbewerkingen van de VM-schijf verzonden naar een cache-opslagaccount in de bronregio. Er worden gegevens naar de doelregio verzonden en er worden herstelpunten gegenereerd op basis van de gegevens. Wanneer u een VM overbrengt tijdens noodherstel, wordt een herstelpunt gebruikt om de VM in de doelregio te herstellen.
 
 > [!NOTE]
-> Dit artikel biedt instructies voor het implementeren van herstel na noodgeval met de eenvoudigste instellingen. Als u informatie wilt over aangepaste instellingen, neem dan de artikelen in de [Instructiesectie](azure-to-azure-how-to-enable-replication.md) door.
+> Zelfstudies bieden instructies met de eenvoudigste standaardinstellingen. Bekijk [dit artikel](azure-to-azure-how-to-enable-replication.md) als u herstel na noodgevallen van Azure-VM's wilt instellen met aangepaste instellingen.
+
+Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Vereisten voor het voltooien van deze zelfstudie:
+Voordat u met deze zelfstudie begint:
 
-- De [architectuur en onderdelen voor dit scenario](./azure-to-azure-architecture.md) doornemen.
-- Raadpleeg de [ondersteuningsvereisten](./azure-to-azure-support-matrix.md) voordat u begint.
+- [Bekijk ondersteunde regio's](azure-to-azure-support-matrix.md#region-support). U kunt herstel na noodgevallen voor Azure-VM's instellen tussen twee regio's in dezelfde geografie.
+- U hebt één of meer Azure-VM's nodig. Verifieer dat [Windows](azure-to-azure-support-matrix.md#windows)- of [Linux](azure-to-azure-support-matrix.md#replicated-machines---linux-file-systemguest-storage)-VM's worden ondersteund.
+- Bekijk de vereisten voor [compute](azure-to-azure-support-matrix.md#replicated-machines---compute-settings), [opslag](azure-to-azure-support-matrix.md#replicated-machines---storage) en [netwerken](azure-to-azure-support-matrix.md#replicated-machines---networking) voor de VM.
+- In deze zelfstudie wordt ervan uitgegaan dat VM's niet zijn versleuteld. [Bekijk dit artikel](azure-to-azure-how-to-enable-replication-ade-vms.md) als u herstel na noodgevallen wilt instellen voor versleutelde VM's.
 
-## <a name="create-a-recovery-services-vault"></a>Een Recovery Services-kluis maken
+## <a name="check-azure-settings"></a>Azure-instellingen controleren
 
-Maak de kluis in elke gewenste regio, met uitzondering van de bronregio.
+Controleer machtigingen, en instellingen in de doelregio.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-1. Selecteer in het menu van de Azure-portal of op de **startpagina** de optie **Een resource maken**. Selecteer vervolgens **IT- en beheerhulpprogramma's** > **Backup en Site Recovery**.
-1. Geef in **Naam** een beschrijvende naam op om de kluis mee aan te duiden. Als u meer dan één abonnement hebt, selecteert u het gewenste abonnement.
-1. Maak een resourcegroep of selecteer een bestaande resourcegroep. Geef een Azure-regio op. Zie Geografische beschikbaarheid in [Prijsinformatie voor Azure Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/) om na te gaan welke regio's er worden ondersteund.
-1. Voor toegang tot de kluis vanuit het dashboard, selecteert u **Aan dashboard vastmaken** en vervolgens **Maken**.
+### <a name="check-permissions"></a>Machtigingen controleren
 
-   ![Nieuwe kluis](./media/azure-to-azure-tutorial-enable-replication/new-vault-settings.png)
+Uw Azure-account heeft machtigingen nodig om een Recovery Services-kluis te maken en om VM's in de doelregio te maken.
 
-De nieuwe kluis wordt toegevoegd op het **Dashboard** onder **Alle resources** en op de hoofdpagina van **Recovery Services-kluizen**.
+- Als u een gratis Azure-abonnement hebt genomen, bent u de accountbeheerder en hoeft u verder niets te doen.
+- Als u niet de beheerder bent, neemt u contact op met de beheerder om de machtigingen te krijgen die u nodig hebt.
+    - **Een kluis maken**: Beheerders- of eigenaarsmachtigingen voor het abonnement. 
+    - **Site Recovery-bewerkingen beheren in de kluis**: De ingebouwde Azure-rol *Site Recovery-inzender*.
+    - **Azure-VM's in de doelregio maken**: De ingebouwde rol *Inzender voor virtuele machines* of specifieke machtigingen voor:
+        - Het maken van een VM in het geselecteerde virtuele netwerk.
+        - Schrijf naar een Azure Storage-account.
+        - Schrijf naar een door Azure beheerde schijf.
 
-## <a name="verify-target-resource-settings"></a>Doelresource-instellingen controleren
+### <a name="verify-target-settings"></a>Doelinstellingen verifiëren
 
-Controleer uw Azure-abonnement voor de doelregio.
+Wanneer u tijdens herstel na noodgevallen een failover uitvoert vanuit de bronregio, worden VM's in de doelregio gemaakt. 
 
-- Controleer of u een Azure-abonnement hebt waarmee u VM´s kunt maken in de doelregio. Neem contact op met ondersteuning voor het inschakelen van het vereiste quotum.
-- Zorg ervoor dat uw abonnement voldoende resources heeft die ondersteuning bieden voor VM’s met grootten die overeenkomen met de bron-VM’s. Site Recovery kiest voor de doel-VM dezelfde of de dichtstbijzijnde grootte.
+Controleer of uw abonnement voldoende resources in de doelregio heeft. U moet VM's kunnen maken met een grootte die overeenkomt met VM's in de bronregio. Wanneer u herstel na noodgevallen instelt, kiest Site Recovery voor de doel-VM dezelfde (of de dichtstbijzijnde) grootte.
 
-## <a name="set-up-outbound-network-connectivity-for-vms"></a>Uitgaande netwerkconnectiviteit voor VM's instellen
 
-Om ervoor te zorgen dat Site Recovery werkt zoals verwacht, moet u de uitgaande netwerkconnectiviteit wijzigen van de VM's die u wilt repliceren.
+## <a name="prepare-vms"></a>VM's voorbereiden
+
+Zorg ervoor dat VM's uitgaande connectiviteit hebben en over de meest recente basiscertificaten beschikken. 
+
+
+### <a name="set-up-vm-connectivity"></a>VM-connectiviteit instellen
+
+VM's die u wilt repliceren, hebben uitgaande netwerkconnectiviteit nodig.
 
 > [!NOTE]
 > Site Recovery biedt geen ondersteuning voor het gebruiken van een verificatieproxy om netwerkconnectiviteit te beheren.
 
-### <a name="outbound-connectivity-for-urls"></a>Uitgaande connectiviteit voor URL's
+#### <a name="outbound-connectivity-for-urls"></a>Uitgaande connectiviteit voor URL's
 
 Als u een URL-firewallproxy gebruikt om de uitgaande connectiviteit te beheren, staat u toegang tot deze URL’s toe:
 
@@ -73,118 +84,107 @@ Als u een URL-firewallproxy gebruikt om de uitgaande connectiviteit te beheren, 
 | Replicatie               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | Maakt het de VM mogelijk te communiceren met de Site Recovery-service. |
 | Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | Maakt het de VM mogelijk bewakings- en diagnosegegevens van Site Recovery te schrijven. |
 
-### <a name="outbound-connectivity-for-ip-address-ranges"></a>Uitgaande connectiviteit voor IP-adresbereiken
+#### <a name="outbound-connectivity-for-ip-address-ranges"></a>Uitgaande connectiviteit voor IP-adresbereiken
 
-Als u een netwerkbeveiligingsgroep (NSG) gebruikt, moet u NSG-regels op basis van een servicetag maken om toegang te krijgen tot Azure Storage, Azure Active Directory, de Site Recovery-service en Site Recovery-bewaking. [Meer informatie](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags).
+Als u netwerkbeveiligingsgroepen (NSG's) gebruikt om connectiviteit te beheren, maakt u op servicetags gebaseerde NSG-regels die uitgaande HTTPS-connectiviteit naar poort 443 toestaan voor deze [servicetags](../virtual-network/service-tags-overview.md#available-service-tags) (groepen IP-adressen):
 
-## <a name="verify-azure-vm-certificates"></a>Azure VM-certificaten controleren
+**Tag** | **Toestaan** 
+--- | ---
+Opslagtag  |Hiermee kunnen gegevens van de VM naar het cache-opslagaccount worden geschreven.   
+Azure AD-tag | Hiermee hebt u toegang tot alle IP-adressen die overeenkomen met Azure AD.   
+EventsHub-tag | Hiermee hebt u toegang tot Site Recovery-bewaking.  
+AzureSiteRecovery-tag | Hiermee hebt u toegang tot de Site Recovery-service in een willekeurige regio.   
+GuestAndHybridManagement-tag | Gebruik deze optie als u de Site Recovery Mobility-agent automatisch wilt upgraden die wordt uitgevoerd op VM's die zijn ingeschakeld voor replicatie.
 
-Controleer of de VM’s die u wilt repliceren, beschikken over de meest recente basiscertificaten. Als dit niet het geval is, kunnen de VM's vanwege beveiligingsbeperkingen niet worden geregistreerd bij Site Recovery.
+[Meer informatie](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags) over vereiste tags en tagvoorbeelden.
 
-- Voor Windows-VM’s moet u de meest recente Windows-updates op de VM installeren, zodat alle vertrouwde basiscertificaten op de machine aanwezig zijn. In een niet-verbonden omgeving moet u de standaardprocedures van Windows Update en de standaardprocedures voor het bijwerken van de certificaten van uw organisatie volgen.
-- Voor Linux-VM’s volgt u de richtlijnen van de Linux-distributeur voor het verkrijgen van de meest recente basiscertificaten en de certificaatintrekkingslijst op de VM.
+### <a name="verify-vm-certificates"></a>VM-certificaten controleren
 
-## <a name="set-permissions-on-the-account"></a>Machtigingen instellen voor het account
+Controleer of de VM's over de meest recente basiscertificaten beschikken. Als dit niet het geval is, kunnen de VM's vanwege beveiligingsbeperkingen niet worden geregistreerd bij Site Recovery.
 
-Azure Site Recovery heeft drie ingebouwde rollen voor het beheren van Site Recovery-beheerbewerkingen.
+- **Virtuele Windows-machines**: Installeer de meest recente Windows-updates op de VM, zodat alle vertrouwde basiscertificaten op de machine aanwezig zijn. In een niet-verbonden omgeving volgt u uw standaardprocedures voor Windows Update en certificaatupdates.
+- **Virtuele Linux-machines**: Volg de richtlijnen van de Linux-distributeur voor het verkrijgen van de meest recente basiscertificaten en de certificaatintrekkingslijst.
 
-- **Site Recovery-inzender** - deze rol bevat alle machtigingen die nodig zijn om Azure Site Recovery-bewerkingen in een Recovery Services-kluis te kunnen beheren. Een gebruiker met deze rol kan echter geen Recovery Services-kluis maken of verwijderen, noch toegangsrechten aan andere gebruikers toewijzen. Deze rol is het meest geschikt voor beheerders die herstel na noodgevallen voor toepassingen of hele organisaties kunnen inschakelen en beheren.
+## <a name="create-a-recovery-services-vault"></a>Een Recovery Services-kluis maken
 
-- **Site Recovery-operator**: deze rol heeft machtigingen om failover- en failback-bewerkingen uit te voeren en te beheren. Een gebruiker met deze rol kan replicatie niet in- of uitschakelen, geen kluizen maken of verwijderen, en geen nieuwe infrastructuur registreren of toegangsrechten toewijzen aan andere gebruikers. Deze rol is het meest geschikt voor een operator die failover-overschakeling kan uitvoeren voor virtuele machines of applicaties in opdracht van toepassingseigenaren en IT-beheerders. Na het noodherstel kan de noodhersteloperator de virtuele machines opnieuw beschermen en een failback uitvoeren.
+Maak een Recovery Services-kluis in een willekeurige regio, behalve in de bronregio waaruit u VM's wilt repliceren.
 
-- **Site Recovery-lezer** - deze rol heeft machtigingen voor het weergeven van alle beheerbewerkingen van Site Recovery. Deze rol is het meest geschikt is voor een IT-leidinggevende die de huidige beschermingsstatus kan bewaken en ondersteuningstickets kan aanvragen.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+2. Typ *herstel* in het zoekvak. Onder **Services** selecteert u **Recovery Services-kluizen**.
 
-Meer informatie over [ingebouwde Azure-rollen](../role-based-access-control/built-in-roles.md).
+    ![Zoeken naar Recovery Services-kluizen](./media/azure-to-azure-tutorial-enable-replication/search.png)
 
-## <a name="enable-replication-for-a-vm"></a>Replicatie inschakelen voor een VM
+3. Bij **Recovery Services-kluizen** selecteert u **Toevoegen**.
+4. Bij **Een Recovery Services-kluis maken** > **Basisbeginselen** selecteert u het abonnement waarin u de kluis wilt maken.
+5. Selecteer bij **Resourcegroep** een bestaande resourcegroep voor de kluis of maak een nieuwe.
+6. Geef bij **Kluisnaam** een beschrijvende naam op om de kluis mee aan te duiden.
+7. Selecteer bij **Regio** de Azure-regio waarin de kluis moet worden geplaatst. [Controleer ondersteunde regio's](https://azure.microsoft.com/pricing/details/site-recovery/).
+8. Selecteer **Controleren + maken**.
 
-In de volgende secties wordt beschreven hoe u replicatie kunt inschakelen.
+   ![Kluisinstellingen op de pagina voor het maken van een nieuwe kluis](./media/azure-to-azure-tutorial-enable-replication/vault-basics.png)
 
-### <a name="select-the-source"></a>De bron selecteren
+9. Bij **Controleren en maken** selecteert u **Maken**.
 
-Als u de replicatie wilt instellen, begint u met het kiezen van de bron waar de Azure-VM's worden uitgevoerd.
+10. De kluisimplementatie begint. Houd de voortgang bij in de meldingen.
+11. Nadat de kluis is geïmplementeerd, selecteert u **Vastmaken aan dashboard** om deze op te slaan voor snelle naslag. Selecteer **Ga naar resource** om de nieuwe kluis te openen. 
+    
+    ![Knoppen voor het openen van de kluis na implementatie en het vastmaken aan het dashboard](./media/azure-to-azure-tutorial-enable-replication/vault-deploy.png)
 
-1. Ga naar **Recovery Services-kluizen**, selecteer de kluisnaam en vervolgens **+Repliceren**.
-1. Als **bron** selecteert u **Azure**.
-1. Bij **Bronlocatie** selecteert u de Azure-bronregio waar uw VM’s momenteel worden uitgevoerd.
-1. Selecteer het **Bronabonnement** waar de virtuele machines worden uitgevoerd. Dit kan elk abonnement zijn binnen dezelfde Azure Active Directory-tenant waar uw Recovery Services-kluis zich bevindt.
-1. Selecteer de **bronresourcegroep** en selecteer **OK** om de instellingen op te slaan.
+### <a name="enable-site-recovery"></a>Site Recovery inschakelen
 
-   ![Bron instellen](./media/azure-to-azure-tutorial-enable-replication/source.png)
+Selecteer **Site Recovery inschakelen** in de kluisinstellingen.
+
+![Selectie om Site Recovery in te schakelen in de kluis](./media/azure-to-azure-tutorial-enable-replication/enable-site-recovery.png)
+
+## <a name="enable-replication"></a>Replicatie inschakelen
+
+Selecteer de broninstellingen en schakel VM-replicatie in. 
+
+### <a name="select-source-settings"></a>Broninstellingen selecteren
+
+1. Op de pagina **Site Recovery** in de kluis selecteert u onder **Virtuele Azure-machines** de optie **Replicatie inschakelen**.
+
+    ![Selectie om replicatie in te schakelen voor Azure-VM's](./media/azure-to-azure-tutorial-enable-replication/enable-replication.png)
+
+2. Bij **Bron**> **Bronlocatie** selecteert u de Azure-bronregio waarin VM's momenteel worden uitgevoerd.
+3. Bij **Implementatiemodel voor virtuele Azure-machines** laat u de standaardinstelling **Resource Manager** staan.
+4. Selecteer bij **Bronabonnement** het abonnement waarin VM's worden uitgevoerd. U kunt elk abonnement selecteren dat zich in dezelfde Azure Active Directory-tenant (AD) als de kluis bevindt.
+5. Selecteer bij **Bronresourcegroep** de resourcegroep die de VM's bevat.
+6. Bij **Herstel na noodgeval tussen beschikbaarheidszones** laat u de standaardinstelling **Nee** staan.
+
+     ![Bron instellen](./media/azure-to-azure-tutorial-enable-replication/source.png)
+
+7. Selecteer **Volgende**.
 
 ### <a name="select-the-vms"></a>De VM’s selecteren
 
-Site Recovery haalt een lijst op van de VM’s die zijn gekoppeld aan het abonnement en de resourcegroep/cloudservice.
+In Site Recovery worden de VM's opgehaald die zijn gekoppeld aan het geselecteerde abonnement/de geselecteerde resourcegroep.
 
-1. Selecteer in **Virtuele machines** de VM’s die u wilt repliceren.
-1. Selecteer **OK**.
+1. Selecteer bij **Virtuele machines** de VM's die u wilt inschakelen voor herstel na noodgevallen.
 
-### <a name="configure-replication-settings"></a>Replicatie-instellingen configureren
+     ![Pagina om VM's voor replicatie te selecteren](./media/azure-to-azure-tutorial-enable-replication/select-vm.png)
 
-Site Recovery maakt standaardinstellingen en replicatiebeleid voor de doelregio. U kunt deze instellingen naar behoefte wijzigen.
+2. Selecteer **Volgende**.
 
-1. Selecteer **Instellingen** om de doel- en replicatie-instellingen te bekijken.
+### <a name="review-replication-settings"></a>Replicatie-instellingen controleren
 
-1. Selecteer **Aanpassen** naast **Resourcegroep, netwerk, opslag en beschikbaarheid** als u de standaarddoelinstellingen wilt overschrijven.
+1. Controleer bij **Replicatie-instellingen** de instellingen. Site Recovery maakt standaardinstellingen/-beleidsregels voor de doelregio. In deze zelfstudie gebruiken we de standaardinstellingen.
+2. Selecteer **Replicatie inschakelen**.
 
-   ![Instellingen configureren](./media/azure-to-azure-tutorial-enable-replication/settings.png)
+    ![Pagina om instellingen aan te passen en replicatie in te schakelen](./media/azure-to-azure-tutorial-enable-replication/enable-vm-replication.png)   
 
-1. Pas de doelinstellingen aan overeenkomstig het overzicht in de tabel.
+3. Houd de replicatievoortgang bij in de meldingen.
 
-   | **Instelling** | **Details** |
-   | --- | --- |
-   | **Doelabonnement** | Standaard is het doelabonnement hetzelfde als het bronabonnement. Selecteer **Aanpassen** om een ander doelabonnement binnen dezelfde Azure Active Directory-tenant te selecteren. |
-   | **Doellocatie** | De doelregio die wordt gebruikt voor herstel na noodgevallen.<br/><br/> Wij raden aan dezelfde doellocatie te gebruiken als de locatie van de Site Recovery-kluis. |
-   | **Doelresourcegroep** | De resourcegroep in de doelregio waarin Azure-VM’s zich na een failover bevinden.<br/><br/> Site Recovery maakt standaard een nieuwe resourcegroep in de doelregio met het achtervoegsel `asr`. De resourcegroep-locatie van de doelresourcegroep mag elke regio zijn, behalve de regio waar uw virtuele bronmachines worden gehost. |
-   | **Virtueel doelnetwerk** | Het netwerk in de doelregio waar VM’s zich na een failover bevinden.<br/><br/> Site Recovery maakt standaard een nieuw virtueel netwerk (met subnetten) in de doelregio met het achtervoegsel `asr`. |
-   | **Cacheopslagaccounts** | Site Recovery maakt gebruik van een opslagaccount in de bronregio. Wijzigingen in de bron-VM's worden naar dit account verzonden vóór replicatie naar de doellocatie.<br/><br/> Als u gebruikmaakt van een cacheopslagaccount met een firewall, moet u **Vertrouwde Microsoft-services toestaan** inschakelen. [Meer informatie](../storage/common/storage-network-security.md#exceptions). Zorg er ook voor dat u toegang tot ten minste één subnet van het bron-Vnet toestaat. |
-   | **Doelopslagaccounts (bron-VM maakt gebruik van niet-beheerde schijven)** | Met Site Recovery wordt standaard een nieuw opslagaccount in de doelregio gemaakt om het bron-VM-opslagaccount te spiegelen.<br/><br/> Schakel **Vertrouwde Microsoft-services toestaan** in als u gebruikmaakt van een cacheopslagaccount met een firewall. |
-   | **Beheerde replicaschijven (als de bron-VM gebruikmaakt van beheerde schijven)** | Met Site Recovery worden standaard replicaschijven in de doelregio gemaakt om de beheerde schijven van de bron-VM's met hetzelfde opslagtype (Standard of Premium) te spiegelen als de beheerde schijf van de bron-VM's. U kunt alleen het schijftype aanpassen. |
-   | **Doelbeschikbaarheidssets** | In Azure Site Recovery wordt standaard een nieuwe beschikbaarheidsset gemaakt in de doelregio, met een naam die eindigt op `asr` voor het VM-gedeelte van een beschikbaarheidsset in de bronregio. Als de beschikbaarheidsset die wordt gemaakt met Azure Site Recovery, al bestaat, wordt deze opnieuw gebruikt. |
-   | **Doelbeschikbaarheidszones** | In Site Recovery wordt standaard hetzelfde zonenummer toegewezen als de bronregio in de doelregio, als de doelregio ondersteuning biedt voor beschikbaarheidszones.<br/><br/> Als de doelregio geen ondersteuning biedt voor beschikbaarheidszones, worden de doel-VM's standaard geconfigureerd als enkele instanties.<br/><br/> Selecteer **Aanpassen** als u VM's wilt configureren als onderdeel van een beschikbaarheidsset in de doelregio.<br/><br/> Nadat u replicatie hebt ingeschakeld, kunt u het type beschikbaarheid (enkele instantie, beschikbaarheidsset of beschikbaarheidszone) niet meer wijzigen. Als u het type beschikbaarheid wilt wijzigen, moet u replicatie uitschakelen en opnieuw inschakelen. |
+     ![Voorgang bijhouden in meldingen](./media/azure-to-azure-tutorial-enable-replication/notification.png) ![Melding voor Geslaagde replicatie bijhouden](./media/azure-to-azure-tutorial-enable-replication/notification-success.png)
 
-1. Selecteer naast **Replicatiebeleid** de optie **Aanpassen** en pas de volgende instellingen naar behoefte aan om instellingen voor het replicatiebeleid aan te passen.
+4. De VM's die u inschakelt, worden weergegeven op de pagina **Gerepliceerde items** in de kluis.
 
-   | **Instelling** | **Details** |
-   | --- | --- |
-   | **Naam van replicatiebeleid** | Beleidsnaam. |
-   | **Bewaarperiode van herstelpunt** | In Site Recovery worden herstelpunten standaard 24 uur bewaard. U kunt een waarde van 1 tot 72 uur configureren. |
-   | **Frequentie van de app-consistente momentopname** | In Site Recovery wordt standaard elke 4 uur een app-consistente momentopname gemaakt. U kunt een waarde van 1 tot 12 uur configureren.<br/><br/> Een app-consistente momentopname is een momentopname van de toepassingsgegevens in de VM op een bepaald tijdstip. Met Volume Shadow Copy Service (VSS) wordt ervoor gezorgd dat apps op de VM een consistente status hebben wanneer er een momentopname wordt gemaakt. |
-   | **Replicatiegroep** | Als uw toepassing consistentie tussen meerdere VM's nodig heeft, kunt u een replicatiegroep maken voor deze VM’s. Standaard maken de geselecteerde VM’s geen deel uit van een replicatiegroep. |
+    ![VM op de pagina Gerepliceerde items](./media/azure-to-azure-tutorial-enable-replication/replicated-items.png)
 
-1. Selecteer in **Aanpassen** de optie **Ja** voor consistentie van multi-VM, als u VM’s wilt toevoegen aan een nieuwe of bestaande replicatiegroep. Selecteer vervolgens **OK**.
-
-   > [!NOTE]
-   > - Alle machines in een replicatiegroep hebben gedeelde crash-consistente en app-consistente herstelpunten bij een failover.
-   > - Het inschakelen van multi-VM-consistentie kan de prestaties van de workloads beïnvloeden (omdat dit CPU-intensief is). Dit moet dus alleen worden gebruikt als de computers dezelfde workload uitvoeren en u consistentie tussen meerdere computers nodig hebt.
-   > - U kunnen zich maximaal 16 virtuele machines in een replicatiegroep bevinden.
-   > - Als u multi-VM-consistentie inschakelt, communiceren machines in de replicatiegroep met elkaar via poort 20004. Zorg ervoor dat de interne communicatie tussen de VM's via deze poort niet door een firewall wordt geblokkeerd.
-   > - Bij Linux VM’s in een replicatiegroep moet u ervoor zorgen dat het uitgaande verkeer op poort 20004 handmatig wordt geopend overeenkomstig de richtlijnen voor die Linux-versie.
-
-### <a name="configure-encryption-settings"></a>Versleutelingsinstellingen configureren
-
-Controleer de instellingen als voor de bron-VM Azure Disk Encryption (ADE) is ingeschakeld.
-
-1. De instellingen controleren:
-   1. **Sleutelkluizen voor schijfversleuteling**: Site Recovery maakt standaard een nieuwe sleutelkluis met het achtervoegsel `asr` op basis van de schijfversleutelingssleutels van de bron-VM. Als de sleutelkluis al bestaat, wordt deze opnieuw gebruikt.
-   1. **Sleutelkluizen voor versleutelingssleutel**: Site Recovery maakt standaard een nieuwe sleutelkluis in de doelregio. De naam heeft een achtervoegsel `asr` en is gebaseerd op de versleutelingssleutels van de bron-VM. Als sleutelkluis die door Site Recovery wordt gemaakt al bestaat, wordt deze opnieuw gebruikt.
-1. Selecteer **Aanpassen** om de aangepaste sleutelkluizen te selecteren.
-
->[!NOTE]
-> Site Recovery biedt momenteel ondersteuning voor ADE, met en zonder Azure Active Directory (AAD), voor virtuele machines waarop Windows-besturingssystemen worden uitgevoerd. Voor Linux-besturingssystemen wordt alleen ADE zonder AAD ondersteund. Daarnaast moeten op computers waarop ADE 1.1 (zonder AAD) wordt uitgevoerd, de virtuele machines gebruikmaken van beheerde schijven. VM's met niet-beheerde schijven worden niet ondersteund. Als u overstapt van ADE 0.1 (met AAD) naar 1.1, moet u voor een VM replicatie uitschakelen en weer inschakelen nadat u 1.1 hebt ingeschakeld.
-
-### <a name="track-replication-status"></a>Replicatiestatus volgen
-
-Nadat de replicatie is ingeschakeld, kunt u de status van de taak bijhouden.
-
-1. Selecteer in **Instellingen** de optie **Vernieuwen** om de nieuwste status op te halen.
-1. U kunt als volgt de voortgang en status bijhouden:
-   1. Houd de voortgang bij van de taak **Beveiliging inschakelen** via **Instellingen** > **Taken** > **Site Recovery-taken**.
-   1. In **Instellingen** > **Gerepliceerde Items** kunt u de status van VM’s en de voortgang van de initiële replicatie bekijken. Selecteer de VM om in te zoomen op de instellingen ervan.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u herstel na noodgevallen geconfigureerd voor een Azure-VM. U kunt nu een noodherstelanalyse uitvoeren om te controleren of de failover werkt zoals verwacht.
+In deze zelfstudie hebt u herstel na noodgevallen ingeschakeld voor een Azure-VM. Voer nu een analyse uit om te controleren of de failover werkt zoals verwacht.
 
 > [!div class="nextstepaction"]
 > [Noodherstelanalyse uitvoeren](azure-to-azure-tutorial-dr-drill.md)

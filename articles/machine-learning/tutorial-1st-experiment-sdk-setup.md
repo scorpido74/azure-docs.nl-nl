@@ -1,7 +1,7 @@
 ---
 title: 'Zelfstudie: Aan de slag in Jupyter Notebooks (Python)'
 titleSuffix: Azure Machine Learning
-description: Installatie voor Jupyter Notebook-zelfstudies. Maak een Azure Machine Learning-werkruimte, kloon Jupyter-notebooks in de werkruimte en maak een rekenproces waarin u de notebooks uitvoert.
+description: Installatie voor Jupyter Notebook-zelfstudies. Maak een werkruimte, kloon notebooks in de werkruimte en maak een rekenproces waarin u de notebooks uitvoert.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 02/10/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 601e124c1ad87724babfabffc95e9265bc962d87
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 6eb76c9d8cc8447755e045972a7aceddefd1604a
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913293"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94532967"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-jupyter-notebooks"></a>Zelfstudie: Aan de slag met de Azure Machine Learning in Jupyter Notebooks
 
@@ -78,7 +78,7 @@ U voltooit de volgende instellingen voor het experiment en voert stappen uit in 
 1. Open de map **Zelfstudies** die naar uw sectie **Gebruikersbestanden** is gekloond.
 
     > [!IMPORTANT]
-    > U kunt notebooks bekijken in de map **Voorbeelden** , maar u kunt een notebook niet uitvoeren vandaaruit. Als u een notebook wilt uitvoeren, moet u de gekloonde versie van het notebook in de sectie **Gebruikersbestanden** openen.
+    > U kunt notebooks bekijken in de map **Voorbeelden**, maar u kunt een notebook niet uitvoeren vandaaruit. Als u een notebook wilt uitvoeren, moet u de gekloonde versie van het notebook in de sectie **Gebruikersbestanden** openen.
     
 1. Selecteer het bestand **tutorial-1st-experiment-sdk-train.ipynb** in de map **tutorials/image-classification-mnist-data**.
 

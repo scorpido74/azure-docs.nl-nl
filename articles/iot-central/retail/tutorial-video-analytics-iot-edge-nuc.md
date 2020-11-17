@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/27/2020
-ms.openlocfilehash: b74c7c3e9678c89edbe90d648520b9526c8fb569
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: e2e97b857f648390ec017a529115b23c4f17a68d
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748645"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427986"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-intel-nuc"></a>Zelfstudie: Een IoT Edge-exemplaar voor videoanalyse maken (Intel NUC)
 
@@ -117,9 +117,9 @@ Als u IoT Edge wilt configureren om uw IoT Central-toepassing te registreren en 
 
 1. Vervang `{scope_id}` door de **Id-bereik** die u hebt genoteerd in het bestand *scratchpad.txt* in de vorige zelfstudie.
 
-1. Vervang `{registration_id}` door *lva-gateway-001* , het apparaat dat u in de vorige zelfstudie hebt gemaakt.
+1. Vervang `{registration_id}` door *gateway-001*, het apparaat dat u hebt gemaakt in de vorige zelfstudie.
 
-1. Vervang `{symmetric_key}` door de **primaire sleutel** voor het apparaat **lva-gateway-001** dat u hebt genoteerd in het bestand *scratchpad.txt* in de vorige zelfstudie.
+1. Vervang `{symmetric_key}` door de **primaire sleutel** voor het apparaat **gateway-001** dat u hebt genoteerd in het bestand *scratchpad.txt* in de vorige zelfstudie.
 
 1. Voer de volgende opdracht uit om de IoT Edge-daemon opnieuw te starten:
 

@@ -10,12 +10,12 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
-ms.openlocfilehash: 0534c85548b1d8b6203aaac4911dc851dd49d81a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1823de88597756ba3db9aee0dc29501b1ba914a4
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89460351"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94646233"
 ---
 # <a name="troubleshoot-password-based-single-sign-on-in-azure-ad"></a>Problemen oplossen met eenmalige aanmelding op basis van wacht woorden in azure AD
 
@@ -36,7 +36,7 @@ Dit probleem treedt doorgaans op als de leverancier van de toepassing onlangs ee
 
 Micro soft heeft technologieën om automatisch te detecteren wanneer integraties zijn verbroken. het is mogelijk dat u de problemen niet meteen kunt vinden of dat de problemen enige tijd duren om op te lossen. Als een van deze integraties niet correct werkt, opent u een ondersteunings aanvraag zodat deze zo snel mogelijk kan worden opgelost.
 
-**Als u contact opneemt met de leverancier van deze toepassing, kunt u** ze onze manier sturen zodat micro soft ermee kan samen werken om hun toepassing systeem eigen te integreren met Azure Active Directory. U kunt de leverancier verzenden naar de [vermelding uw toepassing in de galerie met Azure Active Directory toepassingen](../azuread-dev/howto-app-gallery-listing.md) om ze te starten.
+**Als u contact opneemt met de leverancier van deze toepassing, kunt u** ze onze manier sturen zodat micro soft ermee kan samen werken om hun toepassing systeem eigen te integreren met Azure Active Directory. U kunt de leverancier verzenden naar de [vermelding uw toepassing in de galerie met Azure Active Directory toepassingen](../develop/v2-howto-app-gallery-listing.md) om ze te starten.
 
 ## <a name="credentials-are-filled-in-and-submitted-but-the-page-indicates-the-credentials-are-incorrect"></a>Referenties worden ingevuld en verzonden, maar de pagina geeft aan dat de referenties onjuist zijn
 
@@ -62,7 +62,7 @@ Als de vorige suggesties niet werken, is het mogelijk dat er een wijziging is op
 
 Micro soft heeft technologieën om automatisch te detecteren wanneer een toepassings integratie is verbroken. het is mogelijk dat u de problemen niet meteen kunt vinden of dat de problemen enige tijd in beslag nemen. Wanneer een integratie niet correct werkt, kunt u een ondersteunings aanvraag openen om deze zo snel mogelijk vast te krijgen. 
 
-Daarnaast kunt **u, als u in contact komt met de leverancier van deze toepassing,** **hen onze manier sturen** zodat we met hen kunnen samen werken om hun toepassing systeem eigen te integreren met Azure Active Directory. U kunt de leverancier verzenden naar de [vermelding uw toepassing in de galerie met Azure Active Directory toepassingen](../azuread-dev/howto-app-gallery-listing.md) om ze te starten.
+Daarnaast kunt **u, als u in contact komt met de leverancier van deze toepassing,** **hen onze manier sturen** zodat we met hen kunnen samen werken om hun toepassing systeem eigen te integreren met Azure Active Directory. U kunt de leverancier verzenden naar de [vermelding uw toepassing in de galerie met Azure Active Directory toepassingen](../develop/v2-howto-app-gallery-listing.md) om ze te starten.
 
 ## <a name="check-if-the-applications-login-page-has-changed-recently-or-requires-an-additional-field"></a>Controleren of de aanmeldings pagina van de toepassing onlangs is gewijzigd of een extra veld vereist
 
@@ -70,7 +70,7 @@ Als de aanmeldings pagina van de toepassing drastisch is gewijzigd, is het mogel
 
 Micro soft heeft technologieën om automatisch te detecteren wanneer een toepassings integratie is verbroken. het is mogelijk dat u de problemen niet meteen kunt vinden of dat de problemen enige tijd in beslag nemen. Wanneer een integratie niet correct werkt, kunt u een ondersteunings aanvraag openen om deze zo snel mogelijk vast te krijgen. 
 
-Daarnaast kunt **u, als u in contact komt met de leverancier van deze toepassing,** **hen onze manier sturen** zodat we met hen kunnen samen werken om hun toepassing systeem eigen te integreren met Azure Active Directory. U kunt de leverancier verzenden naar de [vermelding uw toepassing in de galerie met Azure Active Directory toepassingen](../azuread-dev/howto-app-gallery-listing.md) om ze te starten.
+Daarnaast kunt **u, als u in contact komt met de leverancier van deze toepassing,** **hen onze manier sturen** zodat we met hen kunnen samen werken om hun toepassing systeem eigen te integreren met Azure Active Directory. U kunt de leverancier verzenden naar de [vermelding uw toepassing in de galerie met Azure Active Directory toepassingen](../develop/v2-howto-app-gallery-listing.md) om ze te starten.
 
 ## <a name="capture-sign-in-fields-for-an-app"></a>Aanmeldings velden vastleggen voor een app
 
@@ -97,13 +97,13 @@ Voer de volgende stappen uit om eenmalige aanmelding op basis van een wacht woor
 6. Selecteer de app die u wilt configureren voor eenmalige aanmelding.
 7. Nadat de app is geladen, selecteert u **eenmalige aanmelding** in het navigatie deel venster aan de linkerkant.
 8. Selecteer **aanmeldings modus op basis van wacht woorden** .
-9. Voer de **aanmeldings-URL**in. Dit is de URL van de pagina waar gebruikers hun gebruikers naam en wacht woord invoeren om zich aan te melden. *Zorg ervoor dat de aanmeldings velden op de pagina worden weer gegeven voor de URL die u opgeeft*.
+9. Voer de **aanmeldings-URL** in. Dit is de URL van de pagina waar gebruikers hun gebruikers naam en wacht woord invoeren om zich aan te melden. *Zorg ervoor dat de aanmeldings velden op de pagina worden weer gegeven voor de URL die u opgeeft*.
 10. Selecteer **Opslaan**.
     De pagina wordt automatisch uitgewisseld voor de invoer vakken gebruikers naam en wacht woord. U kunt Azure AD nu gebruiken voor het veilig verzenden van wacht woorden naar die app met behulp van de browser uitbreiding mijn apps.
 
 ### <a name="manually-capture-sign-in-fields-for-an-app"></a>Aanmeldings velden hand matig vastleggen voor een app
 
-Als u hand matig aanmeldings velden wilt vastleggen, moet de browser extensie mijn apps zijn geïnstalleerd. Uw browser kan ook niet worden uitgevoerd in de modus *InPrivate*, *incognito*of *Private* .
+Als u hand matig aanmeldings velden wilt vastleggen, moet de browser extensie mijn apps zijn geïnstalleerd. Uw browser kan ook niet worden uitgevoerd in de modus *InPrivate*, *incognito* of *Private* .
 
 Voer de volgende stappen uit om SSO op basis van een wacht woord te configureren voor een app door gebruik te maken van hand matige registratie van het registratie veld:
 1. Open [Azure Portal](https://portal.azure.com/). Meld u aan als globale beheerder of co-beheerder.
@@ -116,8 +116,8 @@ Voer de volgende stappen uit om SSO op basis van een wacht woord te configureren
 6. Selecteer de app die u wilt configureren voor eenmalige aanmelding.
 7. Nadat de app is geladen, selecteert u **eenmalige aanmelding** in het navigatie deel venster aan de linkerkant.
 8. Selecteer **aanmeldings modus op basis van wacht woorden** .
-9. Voer de **aanmeldings-URL**in. Dit is de pagina waar gebruikers hun gebruikers naam en wacht woord invoeren om zich aan te melden. *Zorg ervoor dat de aanmeldings velden op de pagina worden weer gegeven voor de URL die u opgeeft*.
-10. Selecteer **instellingen * &lt; &gt; * voor wacht woord voor eenmalige aanmelding configureren**.
+9. Voer de **aanmeldings-URL** in. Dit is de pagina waar gebruikers hun gebruikers naam en wacht woord invoeren om zich aan te melden. *Zorg ervoor dat de aanmeldings velden op de pagina worden weer gegeven voor de URL die u opgeeft*.
+10. Selecteer **instellingen *&lt; &gt;* voor wacht woord voor eenmalige aanmelding configureren**.
 11. Selecteer **aanmeldings velden hand matig detecteren**.
 14. Selecteer **OK**.
 15. Selecteer **Opslaan**.
@@ -146,10 +146,10 @@ U kunt de volgende problemen waarnemen wanneer hand matige detectie niet werkt:
 
 Als u een van deze problemen ondervindt, doet u het volgende:
 - Zorg ervoor dat de nieuwste versie van de browser extensie mijn apps is *geïnstalleerd en ingeschakeld*.
-- Zorg ervoor dat uw browser tijdens het vastleggen geen *incognito*, *InPrivate*of *Private* modus heeft. De uitbrei ding mijn apps wordt niet ondersteund in deze modus.
-- Zorg ervoor dat uw gebruikers zich niet bij de app aanmelden vanuit mijn apps in *incognito*, *InPrivate*of *Private*.
+- Zorg ervoor dat uw browser tijdens het vastleggen geen *incognito*, *InPrivate* of *Private* modus heeft. De uitbrei ding mijn apps wordt niet ondersteund in deze modus.
+- Zorg ervoor dat uw gebruikers zich niet bij de app aanmelden vanuit mijn apps in *incognito*, *InPrivate* of *Private*.
 - Probeer het hand matige vastleg proces opnieuw. Zorg ervoor dat de rode markeringen zich in de juiste velden bevinden.
-- Als het hand matige vastleg proces niet meer reageert of als de aanmeldings pagina niet reageert, kunt u het hand matige vastleg proces opnieuw proberen. Maar deze keer, na het volt ooien van het proces, drukt u op de F12-toets om de ontwikkelaars console van uw browser te openen. Selecteer het tabblad **console** . Typ **Window. Location = "* &lt; de aanmeldings-URL die u hebt opgegeven bij het configureren van &gt; de app*"** en druk op ENTER. Hiermee wordt een omleiding van pagina's afgedwongen waarmee het proces wordt beëindigd en worden de opgenomen velden opgeslagen.
+- Als het hand matige vastleg proces niet meer reageert of als de aanmeldings pagina niet reageert, kunt u het hand matige vastleg proces opnieuw proberen. Maar deze keer, na het volt ooien van het proces, drukt u op de F12-toets om de ontwikkelaars console van uw browser te openen. Selecteer het tabblad **console** . Typ **Window. Location = "*&lt; de aanmeldings-URL die u hebt opgegeven bij het configureren van &gt; de app*"** en druk op ENTER. Hiermee wordt een omleiding van pagina's afgedwongen waarmee het proces wordt beëindigd en worden de opgenomen velden opgeslagen.
 
 ## <a name="request-support"></a>Ondersteuning aanvragen 
 Als er een fout bericht wordt weer gegeven wanneer u SSO instelt en gebruikers toewijst, opent u een ondersteunings ticket. Voeg zo veel mogelijk van de volgende gegevens toe:
@@ -173,7 +173,7 @@ Voer de volgende stappen uit om de details van een portal melding te bekijken:
 
 ### <a name="send-notification-details-to-a-support-engineer-to-get-help"></a>Verzend Details van de melding naar een ondersteunings technicus om hulp te krijgen
 
-Het is belang rijk dat u *alle* details die in deze sectie worden vermeld, deelt met ondersteuning zodat u snel aan de slag kunt. Als u deze wilt vastleggen, kunt u een scherm opname maken of een **Kopieer fout**selecteren.
+Het is belang rijk dat u *alle* details die in deze sectie worden vermeld, deelt met ondersteuning zodat u snel aan de slag kunt. Als u deze wilt vastleggen, kunt u een scherm opname maken of een **Kopieer fout** selecteren.
 
 De volgende informatie legt uit wat elk meldings item betekent en biedt voor beelden.
 

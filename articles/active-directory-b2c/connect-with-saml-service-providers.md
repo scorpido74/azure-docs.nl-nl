@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/26/2020
+ms.date: 11/16/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6f7888e978fd4eb19232c156ce65b6e4967d9c5a
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 80ecd02f9aebbca66169d64d6c6d0302d58ca439
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94575965"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647661"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Een SAML-toepassing registreren in Azure AD B2C
 
@@ -131,7 +131,7 @@ U kunt de waarde van de `IssuerUri` meta gegevens wijzigen. Dit is de URI van de
       <OutputTokenFormat>SAML2</OutputTokenFormat>
       <Metadata>
         <!-- The issuer contains the policy name; it should be the same name as configured in the relying party application. B2C_1A_signup_signin_SAML is used below. -->
-        <!--<Item Key="IssuerUri">https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/B2C_1A_signup_signin_SAML</Item>-->
+        <!--<Item Key="IssuerUri">https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/B2C_1A_signup_signin_saml</Item>-->
       </Metadata>
       <CryptographicKeys>
         <Key Id="MetadataSigning" StorageReferenceId="B2C_1A_SamlIdpCert"/>
@@ -260,7 +260,7 @@ Het uiteindelijke Relying Party-beleids bestand moet er als volgt uitzien:
 
 Sla de wijzigingen op en upload het nieuwe beleids bestand. Nadat u beide beleids regels (de extensie en de Relying Party bestanden) hebt geüpload, opent u een webbrowser en navigeert u naar de meta gegevens van het beleid.
 
-Azure AD B2C IDP-beleid bevat informatie die wordt gebruikt in het SAML-protocol om de configuratie van een SAML-ID-provider beschikbaar te maken. Meta gegevens definiëren de locatie van de services, zoals aanmelden en afmelden, certificaten, aanmeldings methode en meer. De meta gegevens van het Azure AD B2C beleid zijn beschikbaar op de volgende URL. Vervang door `tenant-name` de naam van uw Azure AD B2C Tenant en `policy-name` met de naam (id) van het beleid bijvoorbeeld.../B2C_1A_SAML2_signup_signin/samlp/metadata:
+Azure AD B2C IDP-beleid bevat informatie die wordt gebruikt in het SAML-protocol om de configuratie van een SAML-ID-provider beschikbaar te maken. Meta gegevens definiëren de locatie van de services, zoals aanmelden en afmelden, certificaten, aanmeldings methode en meer. De meta gegevens van het Azure AD B2C beleid zijn beschikbaar op de volgende URL. Vervang door `tenant-name` de naam van uw Azure AD B2C Tenant en `policy-name` met de naam (id) van het beleid bijvoorbeeld.../B2C_1A_signup_signin_saml/samlp/metadata:
 
 `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
 
@@ -339,10 +339,10 @@ De meta gegevens kunnen als "statische meta gegevens" of "dynamische meta gegeve
 
 Enkele of alle volgende zijn doorgaans vereist:
 
-* **Meta gegevens** : `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
-* **Verlener** : de SAML-aanvraag `issuer` waarde moet overeenkomen met een van de uri's die zijn geconfigureerd in het- `identifierUris` element van het toepassings registratie manifest. Als de SAML `issuer` -aanvraag naam niet aanwezig is in het `identifierUris` element, [voegt u deze toe aan het manifest voor toepassings registratie](#identifieruris). Bijvoorbeeld `https://contoso.onmicrosoft.com/app-name`. 
-* **Aanmeldings-URL/SAML-eind punt/SAML-URL** : Controleer de waarde in het meta gegevensbestand Azure AD B2C-SAML-beleid voor het `<SingleSignOnService>` XML-element
-* **Certificaat** : dit is *B2C_1A_SamlIdpCert* , maar zonder de persoonlijke sleutel. De open bare sleutel van het certificaat ophalen:
+* **Meta gegevens**: `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
+* **Verlener**: de SAML-aanvraag `issuer` waarde moet overeenkomen met een van de uri's die zijn geconfigureerd in het- `identifierUris` element van het toepassings registratie manifest. Als de SAML `issuer` -aanvraag naam niet aanwezig is in het `identifierUris` element, [voegt u deze toe aan het manifest voor toepassings registratie](#identifieruris). Bijvoorbeeld `https://contoso.onmicrosoft.com/app-name`. 
+* **Aanmeldings-URL/SAML-eind punt/SAML-URL**: Controleer de waarde in het meta gegevensbestand Azure AD B2C-SAML-beleid voor het `<SingleSignOnService>` XML-element
+* **Certificaat**: dit is *B2C_1A_SamlIdpCert*, maar zonder de persoonlijke sleutel. De open bare sleutel van het certificaat ophalen:
 
     1. Ga naar de meta gegevens-URL die hierboven is opgegeven.
     1. Kopieer de waarde in het `<X509Certificate>` element.
@@ -428,7 +428,7 @@ We bieden een volledig voor beeld van een beleid dat u kunt gebruiken voor het t
 
 1. Het [voorbeeld beleid voor door SAML-SP geïnitieerde aanmelding](https://github.com/azure-ad-b2c/saml-sp/tree/master/policy/SAML-SP-Initiated) downloaden
 1. Werk `TenantId` bij met de naam van uw Tenant, bijvoorbeeld *contoso.b2clogin.com*
-1. Behoud de beleids naam van *B2C_1A_SAML2_signup_signin*
+1. Behoud de beleids naam van *B2C_1A_signup_signin_saml*
 
 ## <a name="supported-and-unsupported-saml-modalities"></a>Ondersteunde en niet-ondersteunde SAML-modaliteiten
 

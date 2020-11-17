@@ -1,5 +1,5 @@
 ---
-title: Voorbereiden voor herstel na noodgevallen van Azure VMware Solution-VM met Azure Site Recovery
+title: Azure VMware Solution voorbereiden op herstel naar Azure Site Recovery na een noodgeval
 description: Leer hoe u Azure VMware Solution-servers kunt voorbereiden op herstel naar Azure na een noodgeval met behulp van de Azure Site Recovery-service.
 author: Harsha-CS
 manager: rochakm
@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 09/29/2020
 ms.author: harshacs
 ms.custom: MVC
-ms.openlocfilehash: 9b04faf6797d04404dc0c5d617af2fd62a68c49a
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.openlocfilehash: 8e77ede7b04c95bfd6b6b8f660c8d811e7434c0f
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91814217"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395441"
 ---
-# <a name="prepare-azure-vmware-solution-servers-for-disaster-recovery-to-azure"></a>Azure VMware Solution-servers voorbereiden op herstel naar Azure na een noodgeval
+# <a name="prepare-azure-vmware-solution-for-disaster-recovery-to-azure-site-recovery"></a>Azure VMware Solution voorbereiden op herstel naar Azure Site Recovery na een noodgeval
 
 In dit artikel wordt beschreven hoe u Azure VMware Solution-servers kunt voorbereiden op herstel naar Azure na een noodgeval met behulp van de [Azure Site Recovery](site-recovery-overview.md)-services. 
 

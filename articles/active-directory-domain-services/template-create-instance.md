@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: sample
 ms.date: 07/09/2020
 ms.author: joflore
-ms.openlocfilehash: f257a186f05dc94923d1d39829b5ed68b518f20c
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 30fc6b0b7eae6b3dd3477944a5d9ddacf83c677a
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967627"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041686"
 ---
 # <a name="create-an-azure-active-directory-domain-services-managed-domain-using-an-azure-resource-manager-template"></a>Een beheerd domein maken in Azure Active Directory Domain Services met behulp van een Azure Resource Manager-sjabloon
 
@@ -71,10 +71,10 @@ Registreer eerst de Azure AD Domain Services-resourceprovider met behulp van de 
 Register-AzResourceProvider -ProviderNamespace Microsoft.AAD
 ```
 
-Maak met behulp van de cmdlet [New-AzureADServicePrincipal][New-AzureADServicePrincipal] een service-principal in Azure AD voor Azure AD DS voor communicatie en zelf-verificatie. Er wordt een specifieke toepassings-id gebruikt met de naam *Domeincontrollerservices* met de id *2565bd9d-da50-47d4-8b85-4c97f669dc36*. Wijzig deze toepassings-id niet.
+Maak met behulp van de cmdlet [New-AzureADServicePrincipal][New-AzureADServicePrincipal] een service-principal in Azure AD voor Azure AD DS voor communicatie en zelf-verificatie. Er wordt een specifieke toepassings-id gebruikt met de naam *Domeincontrollerservices* met de id *6ba9a5d4-8456-4118-b521-9c5ca10cdf84*. Wijzig deze toepassings-id niet.
 
 ```powershell
-New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
+New-AzureADServicePrincipal -AppId "6ba9a5d4-8456-4118-b521-9c5ca10cdf84"
 ```
 
 Maak nu met de cmdlet [New-AzureADGroup][New-AzureADGroup] een Azure AD-groep met de naam *AAD DC Administrators*. Aan gebruikers die zijn toegevoegd aan deze groep, worden vervolgens machtigingen verleend voor het uitvoeren van beheertaken in het beheerde domein.
@@ -126,7 +126,7 @@ Als onderdeel van de Resource Manager-resourcedefinitie zijn de volgende configu
 | domainName              | De DNS-domeinnaam voor uw beheerde domein, waarbij u rekening houdt met de vorige punten over de namen van prefixen en conflicten. |
 | filteredSync            | In Azure AD DS kunt u *alle* gebruikers en groepen synchroniseren die beschikbaar zijn in Azure AD, of een synchronisatie *met een bereik* van alleen specifieke groepen.<br /><br /> Zie [Synchronisatie met een bereik in Azure AD Domain Services][scoped-sync] voor meer informatie over synchronisatie met een bereik.|
 | notificationSettings    | Als er waarschuwingen worden gegenereerd in het beheerde domein, kunnen e-mailmeldingen worden verzonden. <br /><br />*Globale beheerders* van de Azure-tenant en leden van de groep *AAD DC Administrators* kunnen worden *Ingeschakeld* voor deze meldingen.<br /><br /> Indien gewenst kunt u aanvullende ontvangers voor meldingen toevoegen wanneer er meldingen zijn die aandacht vereisen.|
-| domainConfigurationType | Standaard wordt een beheerd domein gemaakt als een *gebruiker*sforest. Met dit type forest worden alle objecten van Azure AD gesynchroniseerd, waaronder alle gebruikersaccounts die zijn gemaakt in een on-premises AD DS-omgeving. U hoeft geen *domainConfiguration*-waarde op te geven om een gebruikersforest te maken.<br /><br /> Met een *resource*forest worden alleen gebruikers en groepen gesynchroniseerd die rechtstreeks in Azure AD zijn gemaakt. Stel de waarde in op *ResourceTrusting* om een resourceforest te maken.<br /><br />Voor meer informatie over *resource*forests, zoals redenen om deze te gebruiken en hoe u foresttrusts maakt met on-premises AD DS-domeinen, raadpleegt u [Overzicht van Azure AD DS-resourceforests][resource-forests].|
+| domainConfigurationType | Standaard wordt een beheerd domein gemaakt als een *gebruiker* sforest. Met dit type forest worden alle objecten van Azure AD gesynchroniseerd, waaronder alle gebruikersaccounts die zijn gemaakt in een on-premises AD DS-omgeving. U hoeft geen *domainConfiguration*-waarde op te geven om een gebruikersforest te maken.<br /><br /> Met een *resource* forest worden alleen gebruikers en groepen gesynchroniseerd die rechtstreeks in Azure AD zijn gemaakt. Stel de waarde in op *ResourceTrusting* om een resourceforest te maken.<br /><br />Voor meer informatie over *resource* forests, zoals redenen om deze te gebruiken en hoe u foresttrusts maakt met on-premises AD DS-domeinen, raadpleegt u [Overzicht van Azure AD DS-resourceforests][resource-forests].|
 
 De volgende verkorte parameterdefinitie laat zien hoe deze waarden worden gedeclareerd. Er wordt een gebruikersforest met de naam *aaddscontoso.com* gemaakt met alle gebruikers van Azure AD die worden gesynchroniseerd met het beheerde domein:
 

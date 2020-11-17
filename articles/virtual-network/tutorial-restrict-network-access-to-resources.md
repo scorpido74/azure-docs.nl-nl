@@ -16,12 +16,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 08/23/2018
 ms.author: kumud
-ms.openlocfilehash: 85fc5687b82947ed16bde0c30ca2b947514ba958
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e6716d2ad4252169cfbbf611b0dadc5b077cd362
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74186375"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042560"
 ---
 # <a name="tutorial-restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-portal"></a>Zelfstudie: Netwerktoegang tot PaaS-resources beperken met service-eindpunten voor een virtueel netwerk met behulp van de Azure-portal
 
@@ -90,7 +90,7 @@ Standaard kunnen alle VM's in een subnet met alle resources communiceren. U kunt
 
 1. Selecteer **+ Een resource maken** in de linkerbovenhoek van Azure Portal.
 2. Selecteer **Netwerken** en selecteer **Netwerkbeveiligingsgroep**.
-3. Voer onder **Een netwerkbeveiligingsgroep maken** de volgende informatie in of selecteer deze, en selecteer**Maken**:
+3. Voer onder **Een netwerkbeveiligingsgroep maken** de volgende informatie in of selecteer deze, en selecteer **Maken**:
 
     |Instelling|Waarde|
     |----|----|
@@ -195,13 +195,13 @@ Standaard accepteren opslagaccounts netwerkverbindingen van clients in ieder net
     |Virtuele netwerken|Selecteer **myVirtualNetwork** onder **Virtuele netwerken**|
     |Subnetten| Selecteer **Privé** onder **Subnetten**|
 
-    ![Firewalls en virtuele netwerken](./media/tutorial-restrict-network-access-to-resources/storage-firewalls-and-virtual-networks.png)
+    ![Schermopname van het deelvenster Netwerken toevoegen, waarin u de opgegeven waarden kunt invoeren.](./media/tutorial-restrict-network-access-to-resources/storage-firewalls-and-virtual-networks.png)
 
 5. Selecteer **Opslaan**.
 6. Sluit het vak **Firewalls en virtuele netwerken**.
-7. Kies onder **INSTELLINGEN ** voor het opslagaccount **Toegangssleutels**, zoals in de volgende afbeelding:
+7. Kies onder **INSTELLINGEN** voor het opslagaccount **Toegangssleutels**, zoals in de volgende afbeelding:
 
-      ![Firewalls en virtuele netwerken](./media/tutorial-restrict-network-access-to-resources/storage-access-key.png)
+      ![Schermopname waarop Toegangssleutels is geselecteerd in Instellingen, waar u een sleutel kunt verkrijgen.](./media/tutorial-restrict-network-access-to-resources/storage-access-key.png)
 
 8. Noteer de **Sleutel**-waarde, want u moet deze in een latere stap handmatig invoeren bij het toewijzen van de bestandsshare aan een stationsletter in een VM.
 

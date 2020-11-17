@@ -1,18 +1,18 @@
 ---
-title: Een IoT Plug en Play-apparaat verbinden met een algemene module | Microsoft Docs
-description: Gebruik van voorbeeldcode van een C# IoT Plug en play-apparaat in een algemene module.
+title: Zelfstudie - Een Azure IoT Plug en Play-apparaat verbinden met een algemene module | Microsoft Docs
+description: Zelfstudie - Gebruik van voorbeeldcode van een C# IoT Plug en play-apparaat in een algemene module.
 author: ericmitt
 ms.author: ericmitt
 ms.date: 9/22/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: d425152f83821e1d157065370bd02e2d990ec876
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: dc86340026ec7b85afc9e5208ea8ef8c32d8bac6
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426930"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421461"
 ---
 # <a name="tutorial-connect-an-iot-plug-and-play-module-c"></a>Zelfstudie: Een IoT Plug en Play-apparaat verbinden (C#)
 
@@ -33,7 +33,7 @@ Om deze zelfstudie in Windows te voltooien, installeert u de volgende software i
 
 Gebruik de Azure IoT-verkenner om een nieuw apparaat met de naam **my-module-device** toe te voegen aan uw IoT-hub.
 
-Voeg een module met de naam **my-module** toe aan het apparaat **my-module-device** :
+Voeg een module met de naam **my-module** toe aan het apparaat **my-module-device**:
 
 1. Ga in de Azure IoT-verkenner naar het apparaat **my-module-device**.
 

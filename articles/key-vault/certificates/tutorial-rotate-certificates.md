@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: eeceb1279579055bfff33f0a4413f0798418faed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d981e902f829eb0fa8283b6a38ae376a780bcc9
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83201512"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289752"
 ---
 # <a name="tutorial-configure-certificate-auto-rotation-in-key-vault"></a>Zelfstudie: Automatische rotatie van certificaten in Key Vault configureren
 
@@ -41,13 +41,13 @@ Meld u aan bij Azure Portal op https://portal.azure.com.
 
 ## <a name="create-a-vault"></a>Een kluis maken
 
-Maak een sleutelkluis of selecteer een bestaande kluis om bewerkingen in uit te voeren (raadpleeg [Stappen om een sleutelkluis te maken](../quick-create-portal.md)). In het voorbeeld is de naam van de sleutelkluis **Voorbeeldkluis**.
+Maak een sleutelkluis of selecteer een bestaande kluis om bewerkingen in uit te voeren (raadpleeg [Stappen om een sleutelkluis te maken](../secrets/quick-create-portal.md)). In het voorbeeld is de naam van de sleutelkluis **Voorbeeldkluis**.
 
 ![Uitvoer nadat de sleutelkluis is gemaakt](../media/certificates/tutorial-import-cert/vault-properties.png)
 
 ## <a name="create-a-certificate-in-key-vault"></a>Een certificaat maken in Key Vault
 
-Maak een certificaat of importeer een certificaat in de sleutelkluis (raadpleeg [Stappen om een certificaat te maken in Key Vault](../quick-create-portal.md)). In dit geval werkt u met een certificaat die **Voorbeeldcertificaat** heet.
+Maak een certificaat of importeer een certificaat in de sleutelkluis (raadpleeg [Stappen om een certificaat te maken in Key Vault](../secrets/quick-create-portal.md)). In dit geval werkt u met een certificaat die **Voorbeeldcertificaat** heet.
 
 ## <a name="update-certificate-lifecycle-attributes"></a>De levenscycluskenmerken van een certificaat bijwerken
 
@@ -95,7 +95,7 @@ Key Vault roteert automatisch certificaten via gevestigde partnerschappen met CA
 1. Selecteer het certificaat dat u wilt bijwerken. In dit geval werkt u met een certificaat die **Voorbeeldcertificaat** heet.
 1. Selecteer **Uitgiftebeleid** in de bovenste menubalk.
 
-   ![Certificaateigenschappen](../media/certificates/tutorial-rotate-cert/cert-issuance-policy.png)
+   ![Schermopname waarop de knop Uitgiftebeleid is gemarkeerd.](../media/certificates/tutorial-rotate-cert/cert-issuance-policy.png)
 
 1. Werk op het scherm **Uitgiftebeleid** de volgende waarden bij:
 
@@ -121,7 +121,7 @@ Set-AzureKeyVaultCertificatePolicy -VaultName $vaultName
 ```
 
 > [!TIP]
-> Om het verlengingsbeleid voor een lijst certificaten te bewerken, voert u `File.csv` met `VaultName,CertName` in zoals in het volgende voorbeeld:
+> Om het verlengingsbeleid voor een 
 > <br/>
  `vault1,Cert1` <br/>
 >  `vault2,Cert2`
@@ -134,7 +134,7 @@ Set-AzureKeyVaultCertificatePolicy -VaultName $vaultName
 > }
 >  ```
 > 
-Raadpleeg [az keyvault certificate](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-set-attributes) voor meer informatie over de parameters.
+Raadpleeg [az keyvault certificate](/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-set-attributes) voor meer informatie over de parameters.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -152,5 +152,5 @@ De resourcegroep verwijderen via de portal:
 
 In deze zelfstudie hebt u de levenscycluskenmerken van een certificaat bijgewerkt. Voor meer informatie over Key Vault en hoe u Key Vault integreert met uw toepassingen gaat u verder met een van de volgende artikelen:
 
-- Lees meer over [Certificaten maken beheren in Azure Key Vault](https://docs.microsoft.com/azure/key-vault/certificates/create-certificate-scenarios).
+- Lees meer over [Certificaten maken beheren in Azure Key Vault](./create-certificate-scenarios.md).
 - Raadpleeg het [Overzicht van Key Vault](../general/overview.md).

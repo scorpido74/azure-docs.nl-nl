@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 04/08/2020
 ms.author: lcozzens
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 3e6403f41d8e4b52ca64e9fa452524fa25efe870
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff11546225a3b07cbe9f8773dab2139636af787e
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88213244"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124795"
 ---
 # <a name="tutorial-use-key-vault-references-in-an-aspnet-core-app"></a>Zelfstudie: Key Vault-referenties gebruiken in een ASP.NET Core-app
 
@@ -51,7 +51,7 @@ Voordat u met deze zelfstudie begint, moet u de [.NET Core SDK](https://dotnet.m
 
 1. Selecteer de optie **Een resource maken** in de linkerbovenhoek van Azure Portal:
 
-    ![Uitvoer nadat het maken van de Key Vault is voltooid](./media/quickstarts/search-services.png)
+    ![Schermopname van de optie Een resource maken, in de Microsoft Azure-portal.](./media/quickstarts/search-services.png)
 1. Typ **Key Vault** in het zoekvak.
 1. Selecteer in de lijst met resultaten **Key Vaults** aan de linkerkant.
 1. Selecteer **Toevoegen** in **Key Vaults**.
@@ -65,7 +65,7 @@ Voordat u met deze zelfstudie begint, moet u de [.NET Core SDK](https://dotnet.m
 
 Vanaf nu is uw Azure-account als enige gemachtigd om bewerkingen op deze nieuwe Key Vault uit te voeren.
 
-![Uitvoer nadat het maken van de Key Vault is voltooid](./media/quickstarts/vault-properties.png)
+![Schermopname van uw sleutelkluis.](./media/quickstarts/vault-properties.png)
 
 ## <a name="add-a-secret-to-key-vault"></a>Een geheim toevoegen aan Key Vault
 

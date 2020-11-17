@@ -8,12 +8,12 @@ ms.custom: mvc, devx-track-azurecli
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 06/25/2019
-ms.openlocfilehash: 475c2dfecbc882575955627d73b7159fa33ac4d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 019e6e738ea312b7e6a16c44354c7dcd54e24f2f
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710172"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93331893"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-azure-cli"></a>Zelfstudie: Een Azure Database for PostgreSQL ontwerpen - Single Server ontwerpen met behulp van Azure CLI 
 In deze zelfstudie gebruikt u Azure CLI (Command Line Interface of opdrachtregelinterface in goed Nederlands) en andere hulpprogramma's om deze bewerkingen uit te voeren:
@@ -27,6 +27,9 @@ In deze zelfstudie gebruikt u Azure CLI (Command Line Interface of opdrachtregel
 > * Gegevens terugzetten
 
 U kunt de Azure Cloud Shell gebruiken in de browser of [Azure CLI installeren]( /cli/azure/install-azure-cli) op uw eigen computer om de opdrachten in deze zelfstudie uit te voeren.
+
+## <a name="prerequisites"></a>Vereisten
+Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
@@ -199,9 +202,9 @@ az postgres server restore --resource-group myresourcegroup --name mydemoserver-
 
 De opdracht `az postgres server restore` vereist de volgende parameters:
 
-| Instelling | Voorgestelde waarde | Beschrijving  |
+| Instelling | Voorgestelde waarde | Beschrijving  |
 | --- | --- | --- |
-| resource-group |  myResourceGroup |  De resourcegroep waarin de bronserver bestaat.  |
+| resource-group |  myResourceGroup |  De resourcegroep waarin de bronserver bestaat.  |
 | naam | mydemoserver-restored | De naam van de nieuwe server die door de opdracht restore is gemaakt. |
 | restore-point-in-time | 2017-04-13T13:59:00Z | Selecteer een bepaald tijdstip om naar te herstellen. Deze datum en tijd moet binnen de back-upretentieperiode van de bronserver vallen. Gebruik ISO8601-notatie voor datum en tijd. U kunt bijvoorbeeld uw eigen lokale tijdzone, zoals `2017-04-13T05:59:00-08:00`, gebruiken of de UTC Zulu-notatie `2017-04-13T13:59:00Z`. |
 | source-server | mydemoserver | De naam of ID van de bronserver voor het herstellen. |
@@ -210,16 +213,21 @@ Wanneer u een server naar een bepaald tijdstip herstelt, wordt er een nieuwe ser
 
 De opdracht is synchroon en keert terug nadat de server is hersteld. Nadat het herstel is voltooid, zoekt u de nieuwe server. Controleer of de gegevens zijn hersteld zoals verwacht.
 
+## <a name="clean-up-resources"></a>Resources opschonen
+
+In de voorgaande stappen hebt u Azure-resources in een resourcegroep gemaakt. Als u deze resources in de toekomst niet nodig denkt te hebben, kunt u de servergroep verwijderen. Druk op de knop *Verwijderen* op de pagina *Overzicht* voor uw servergroep. Wanneer u daarom op een pop-uppagina wordt gevraagd, bevestigt u de naam van de servergroep en klikt u op de laatste knop *Verwijderen*.
+
 
 ## <a name="next-steps"></a>Volgende stappen
 In deze zelfstudie hebt u geleerd hoe u Azure CLI (Command Line Interface of opdrachtregelinterface) en andere hulpprogramma's gebruikt om deze bewerkingen uit te voeren:
 > [!div class="checklist"]
 > * Een Azure-database voor PostgreSQL-server maken
 > * De serverfirewall configureren
-> * Het hulpprogramma [**psql**](https://www.postgresql.org/docs/9.6/static/app-psql.html) gebruiken om een database te maken
+> * Het hulpprogramma **psql** gebruiken om een database te maken
 > * Voorbeeldgegevens laden
 > * Querygegevens
 > * Gegevens bijwerken
 > * Gegevens terugzetten
 
-Als u meer informatie wilt over het gebruik van Azure Portal voor vergelijkbare taken, gaat u verder met deze zelfstudie: [Uw eerste Azure Database for PostgreSQL ontwerpen met Azure Portal](tutorial-design-database-using-azure-portal.md)
+> [!div class="nextstepaction"]
+> [Uw eerste Azure Database for PostgreSQL ontwerpen met Azure Portal](tutorial-design-database-using-azure-portal.md)

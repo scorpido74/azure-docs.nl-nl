@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/19/2017
 ms.custom: mvc
-ms.openlocfilehash: af8479f6460a6cc555d7ea67dcfe65c779878624
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 057b211179c6932d4214e6118e3fa97b95145ba0
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91357859"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926628"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Runtime-uitzonderingen vinden en diagnosticeren met behulp van Azure Application Insights
 
@@ -81,7 +81,7 @@ De Snapshot Debugger verzamelt momentopnamen van de meest frequente uitzondering
 
 3. De eerste aanroep met geldige waarden is **ValidZipCode**, en we zien dat er een postcode is opgegeven met letters die niet kan worden omgezet in een geheel getal.  Dit lijkt de fout in de code te zijn die moet worden gecorrigeerd.
 
-    ![Foutopsporingsmomentopname](media/tutorial-runtime-exceptions/debug-snapshot-02.png)
+    ![Schermopname van de fout in de code, die moet worden gecorrigeerd.    ](media/tutorial-runtime-exceptions/debug-snapshot-02.png)
 
 4. U kunt deze momentopname downloaden naar Visual Studio, waar we de werkelijke code kunnen vinden die moet worden gecorrigeerd. Hiertoe klikt u op **Momentopname downloaden**.
 5. De momentopname wordt geladen in Visual Studio.

@@ -8,18 +8,18 @@ ms.devlang: json
 ms.topic: tutorial
 ms.date: 12/02/2019
 ms.custom: mvc
-ms.openlocfilehash: 66d09503f5db95811f807aa7faa83b92facca992
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a6923f0a1d568cc695b86d1538ba55a3eb3444da
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92543692"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341481"
 ---
 # <a name="tutorial-provision-an-azure-database-for-mysql-server-using-azure-resource-manager-template"></a>Zelfstudie: Een Azure Database for MySQL-server inrichten met behulp van een Azure Resource Manager-sjabloon
 
 Met de [Azure Database for MySQL REST API](/rest/api/mysql/) kunnen DevOps-technici de inrichting, configuratie en bewerkingen van beheerde MySQL-servers en -databases in Azure automatiseren en integreren.  Met de API kunnen MySQL-servers en -databases in de Azure Database for MySQL-service worden gemaakt, opgesomd, beheerd en verwijderd.
 
-Azure Resource Manager maakt gebruik van de onderliggende REST-API om de Azure-resources te declareren en te programmeren die nodig zijn voor grootschalige implementaties, in lijn met de infrastructuur als codeconcept. De sjabloon maakt een parameter van de Azure-resourcenaam, de SKU, het netwerk, de firewallconfiguratie en de instellingen, zodat deze eenmalig kan worden gemaakt en meerdere malen kan worden gebruikt.  Azure Resource Manager-sjablonen kunnen eenvoudig worden gemaakt met behulp van [Azure Portal](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md) of [Visual Studio Code](../azure-resource-manager/templates/quickstart-create-templates-use-visual-studio-code.md?tabs=CLI). Ze zijn bedoeld voor het inpakken van toepassingen, standaardisatie en automatisering van de implementatie, geschikt voor integratie in de CI/CD-pijplijn van DevOps.  Als u bijvoorbeeld snel een web-app met Azure Database for MySQL-back-end wilt implementeren, kunt u de end-to-end-implementatie uitvoeren met behulp van deze [snelstartsjabloon](https://azure.microsoft.com/resources/templates/101-webapp-managed-mysql/) uit de GitHub-galerie.
+Azure Resource Manager maakt gebruik van de onderliggende REST API om de Azure-resources te declareren en te programmeren die nodig zijn voor grootschalige implementaties, in lijn met de infrastructuur als codeconcept. De sjabloon maakt een parameter van de Azure-resourcenaam, de SKU, het netwerk, de firewallconfiguratie en de instellingen, zodat deze eenmalig kan worden gemaakt en meerdere malen kan worden gebruikt.  Azure Resource Manager-sjablonen kunnen eenvoudig worden gemaakt met behulp van [Azure Portal](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md) of [Visual Studio Code](../azure-resource-manager/templates/quickstart-create-templates-use-visual-studio-code.md?tabs=CLI). Ze zijn bedoeld voor het inpakken van toepassingen, standaardisatie en automatisering van de implementatie, geschikt voor integratie in de CI/CD-pijplijn van DevOps.  Als u bijvoorbeeld snel een web-app met Azure Database for MySQL-back-end wilt implementeren, kunt u de end-to-end-implementatie uitvoeren met behulp van deze [snelstartsjabloon](https://azure.microsoft.com/resources/templates/101-webapp-managed-mysql/) uit de GitHub-galerie.
 
 In deze zelfstudie gebruikt u een sjabloon van Azure Resource Manager en andere hulpprogramma's om het volgende te leren:
 
@@ -29,6 +29,8 @@ In deze zelfstudie gebruikt u een sjabloon van Azure Resource Manager en andere 
 > * Voorbeeldgegevens laden
 > * Querygegevens
 > * Gegevens bijwerken
+
+## <a name="prerequisites"></a>Vereisten
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis Azure-account](https://azure.microsoft.com/free/) aan voordat u begint.
 
@@ -115,7 +117,7 @@ Als u verbinding met uw server wilt maken, moet u hostgegevens en toegangsrefere
 az mysql server show --resource-group myresourcegroup --name mydemoserver
 ```
 
-Het resultaat wordt in JSON-indeling weergegeven. Noteer de **fullyQualifiedDomainName** en de **administratorLogin** .
+Het resultaat wordt in JSON-indeling weergegeven. Noteer de **fullyQualifiedDomainName** en de **administratorLogin**.
 ```json
 {
   "administratorLogin": "myadmin",
@@ -199,13 +201,47 @@ De rij wordt dan meteen bijgewerkt wanneer u gegevens ophaalt.
 SELECT * FROM inventory;
 ```
 
+## <a name="clean-up-resources"></a>Resources opschonen
+
+Als de resourcegroep niet meer nodig is, verwijdert u deze. Hierdoor worden ook de resources in de resourcegroep verwijderd.
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+
+1. Zoek en selecteer [Resourcegroepen](https://portal.azure.com) in **Azure Portal**.
+
+2. Kies in de lijst met resourcegroepen de naam van uw resourcegroep.
+
+3. Selecteer op de pagina **Overzicht** van uw resourcegroep de optie **Resourcegroep verwijderen**.
+
+4. Typ de naam van de resourcegroep in het bevestigingsvenster. Selecteer vervolgens **Verwijderen**.
+
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+
+```azurepowershell-interactive
+$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+Remove-AzResourceGroup -Name $resourceGroupName
+Write-Host "Press [ENTER] to continue..."
+```
+
+# <a name="cli"></a>[CLI](#tab/CLI)
+
+```azurecli-interactive
+echo "Enter the Resource Group name:" &&
+read resourceGroupName &&
+az group delete --name $resourceGroupName &&
+echo "Press [ENTER] to continue ..."
+```
+
+---
+
 ## <a name="next-steps"></a>Volgende stappen
 In deze zelfstudie hebt u het volgende geleerd:
 > [!div class="checklist"]
 > * Een Azure Database for MySQL-server met VNet-service-eindpunt maken met behulp van een Azure Resource Manager-sjabloon
-> * Het [opdrachtregelprogramma mysql](https://dev.mysql.com/doc/refman/5.6/en/mysql.html) gebruiken om een database te maken
+> * Het opdrachtregelprogramma mysql gebruiken om een database te maken
 > * Voorbeeldgegevens laden
 > * Querygegevens
 > * Gegevens bijwerken
-> 
+
+> [!div class="nextstepaction"]
 > [Toepassingen koppelen met Azure Database voor MySQL](./howto-connection-string.md)

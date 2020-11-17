@@ -4,21 +4,21 @@ description: Gebruikers bulksgewijs toevoegen in het Azure AD-beheer centrum in 
 services: active-directory
 author: curtand
 ms.author: curtand
-manager: mtillman
-ms.date: 08/11/2020
+manager: daveba
+ms.date: 11/15/2020
 ms.topic: how-to
 ms.service: active-directory
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8e6ab8fd726eaba309f0949020139901dd3712f
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 42e26e9b1e3548d3caeff58079ec489c2d282a63
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375390"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94646879"
 ---
 # <a name="bulk-create-users-in-azure-active-directory"></a>Gebruikers bulksgewijs maken in Azure Active Directory
 
@@ -51,7 +51,7 @@ De rijen in een gedownloade CSV-sjabloon zijn als volgt:
 - De vereiste kolommen worden het eerst weergegeven.
 - Het is niet raadzaam om nieuwe kolommen aan de sjabloon toe te voegen. Eventuele extra kolommen die u toevoegt, worden genegeerd en niet verwerkt.
 - U wordt aangeraden altijd de meest recente versie van de CSV-sjabloon te downloaden.
-- Controleer of er geen onbedoelde witruimte voor/na een veld is. Voor een **principal-naam**van de gebruiker, waardoor een spatie kan worden geïmporteerd.
+- Controleer of er geen onbedoelde witruimte voor/na een veld is. Voor een **principal-naam** van de gebruiker, waardoor een spatie kan worden geïmporteerd.
 
 ## <a name="to-create-users-in-bulk"></a>Gebruikers bulksgewijs maken
 
@@ -65,7 +65,7 @@ De rijen in een gedownloade CSV-sjabloon zijn als volgt:
 
    [![Het CSV-bestand bevat namen en Id's van de gebruikers die moeten worden gemaakt](./media/users-bulk-add/add-csv-file.png)](./media/users-bulk-add/add-csv-file.png#lightbox)
 
-1. Blader op de pagina **bulk maken gebruiker** onder uw CSV-bestand uploaden naar het bestand. Wanneer u het bestand selecteert en op **verzenden**klikt, wordt de validatie van het CSV-bestand gestart.
+1. Blader op de pagina **bulk maken gebruiker** onder uw CSV-bestand uploaden naar het bestand. Wanneer u het bestand selecteert en op **verzenden** klikt, wordt de validatie van het CSV-bestand gestart.
 1. Nadat de bestands inhoud is gevalideerd, ziet u dat het **bestand is geüpload**. Als er fouten zijn, moet u deze corrigeren voordat u de taak kunt verzenden.
 1. Wanneer de validatie van uw bestand wordt door gegeven, selecteert u **verzenden** om de Azure bulk bewerking te starten waarmee de nieuwe gebruikers worden geïmporteerd.
 1. Wanneer de import bewerking is voltooid, ziet u een melding van de taak status van de bulk bewerking.

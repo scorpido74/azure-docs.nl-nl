@@ -9,18 +9,18 @@ manager: daveba
 ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
-ms.subservice: users-groups-roles
-ms.date: 08/13/2020
+ms.subservice: enterprise-users
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56f16dea1f81f7f6a35409d8481550fd000864b1
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: c4f298cf7487e00f6ee6a8aa8913fd32f8c6beee
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375474"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647100"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Scenario's, beperkingen en bekende problemen met behulp van groepen voor het beheren van licenties in Azure Active Directory
 
@@ -110,7 +110,7 @@ Hier volgt een voor beeld van hoe dit proces eruit kan zien:
 
 2. U hebt een melding ontvangen van micro soft dat het E5-product wordt uitgebreid met een nieuwe service- *Microsoft stream*. Wanneer de service beschikbaar wordt in uw organisatie, kunt u het volgende doen:
 
-3. Ga naar de [**Azure Active Directory > licenties > alle producten**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) Blade en selecteer *Office 365 Enter prise E5*en selecteer vervolgens **gelicentieerde groepen** om een lijst weer te geven van alle groepen met dat product.
+3. Ga naar de [**Azure Active Directory > licenties > alle producten**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) Blade en selecteer *Office 365 Enter prise E5* en selecteer vervolgens **gelicentieerde groepen** om een lijst weer te geven van alle groepen met dat product.
 
 4. Klik op de groep die u wilt controleren (in dit geval *O365 E5-alleen Exchange*). Hiermee opent u het tabblad **licenties** . Als u op de E5-licentie klikt, wordt een Blade met alle ingeschakelde Services geopend.
    > [!NOTE]

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/20/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: ced33bb17e9c24faa127b27adacce9cab011e1d8
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 7ecccd64921b2d95155318fe91c897725e340b7e
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426260"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94334666"
 ---
 ::: zone target="docs"
 
@@ -78,7 +78,7 @@ Als u een hostcomputer met Windows Server gebruikt, voert u deze stappen uit om 
     
     ![Gebruikersnaam en wachtwoord voor een share ophalen](media/data-box-deploy-copy-data/get-share-credentials2.png)
 
-3. Om vanaf uw hostcomputer toegang te krijgen tot de shares die zijn gekoppeld aan uw opslagaccount ( *utsac1* in het volgende voorbeeld), opent u een opdrachtvenster. Typ in de opdrachtprompt:
+3. Om vanaf uw hostcomputer toegang te krijgen tot de shares die zijn gekoppeld aan uw opslagaccount (*utsac1* in het volgende voorbeeld), opent u een opdrachtvenster. Typ in de opdrachtprompt:
 
     `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
 
@@ -103,7 +103,7 @@ Als u een hostcomputer met Windows Server gebruikt, voert u deze stappen uit om 
     
     ![Shares weergegeven in Verkenner](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png)
 
-    **Maak altijd een map voor de bestanden die u van plan bent te kopiëren in de bestandsshare en kopieer de bestanden vervolgens naar die map**. De map gemaakt onder shares met blok-blobs en pagina-blobs vertegenwoordigt een container waarnaar gegevens als blobs worden geüpload. Het is niet mogelijk om bestanden rechtstreeks te kopiëren naar de *root* -map in het opslagaccount.
+    **Maak altijd een map voor de bestanden die u van plan bent te kopiëren in de bestandsshare en kopieer de bestanden vervolgens naar die map**. De map gemaakt onder shares met blok-blobs en pagina-blobs vertegenwoordigt een container waarnaar gegevens als blobs worden geüpload. Het is niet mogelijk om bestanden rechtstreeks te kopiëren naar de *root*-map in het opslagaccount.
     
 Als u een Linux-client gebruikt, gebruikt u de volgende opdracht om de SMB-share koppelen. De parameter "vers" hieronder is de versie van SMB die ondersteuning biedt voor uw Linux-host. Geef de juiste versie op in de onderstaande opdracht. Zie [Ondersteunde bestandssystemen voor Linux-clients](./data-box-system-requirements.md#supported-file-transfer-protocols-for-clients) voor versies van SMB die door Data Box worden ondersteund 
 
@@ -229,11 +229,11 @@ Als er fouten zijn tijdens het kopieerproces, krijgt u een melding.
 
 Selecteer **Lijst met problemen downloaden**.
 
-![Fouten opgetreden tijdens kopieerproces downloaden en bekijken 2](media/data-box-deploy-copy-data/view-errors-2.png)
+![Verbinding maken en kopiëren, Lijst met problemen downloaden](media/data-box-deploy-copy-data/view-errors-2.png)
 
 Open de lijst om de details van de fout weer te geven en selecteer de oplossings-URL om de aanbevolen oplossing weer te geven.
 
-![Fouten opgetreden tijdens kopieerproces downloaden en bekijken 3](media/data-box-deploy-copy-data/view-errors-3.png)
+![Verbinding maken en kopiëren, fouten bij downloaden en weergeven](media/data-box-deploy-copy-data/view-errors-3.png)
 
 Zie [Foutenlogboeken bekijken tijdens het kopiëren van gegevens naar Data Box](data-box-logs.md#view-error-log-during-data-copy) voor meer informatie. Zie [Problemen met Data Box oplossen](data-box-troubleshoot.md) voor een gedetailleerde lijst met fouten tijdens het kopiëren van gegevens.
 

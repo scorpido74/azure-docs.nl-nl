@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: c300faf33f57518d26f82234bdff94a37235cd66
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 2d65889a841655fe27994d3855f30f7a7e20e1ed
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275797"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647593"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Procedure: claims aanpassen die worden verzonden in tokens voor een specifieke app in een Tenant (preview-versie)
 
@@ -239,6 +239,9 @@ Er zijn bepaalde sets claims die bepalen hoe en wanneer ze worden gebruikt in to
 
 Als u wilt bepalen welke claims worden verzonden en waar de gegevens vandaan komen, gebruikt u de eigenschappen van een claim toewijzings beleid. Als er geen beleid is ingesteld, worden er door het systeem tokens uitgegeven die de kern claimset, de basis claimset en eventuele [optionele claims](active-directory-optional-claims.md) bevatten die de toepassing heeft ontvangen.
 
+> [!NOTE]
+> Claims in de set met kern claims zijn aanwezig in elk token, ongeacht waar deze eigenschap is ingesteld.
+
 ### <a name="include-basic-claim-set"></a>Basis claimset toevoegen
 
 **Teken reeks:** IncludeBasicClaimSet
@@ -250,8 +253,7 @@ Als u wilt bepalen welke claims worden verzonden en waar de gegevens vandaan kom
 - Als deze eigenschap is ingesteld op True, worden alle claims in de set basis claims verzonden in tokens die door het beleid worden beïnvloed.
 - Als deze eigenschap is ingesteld op False, bevinden claims in de set basis claims zich niet in de tokens, tenzij ze afzonderlijk worden toegevoegd in de eigenschappen van het claim schema van hetzelfde beleid.
 
-> [!NOTE]
-> Claims in de set met kern claims zijn aanwezig in elk token, ongeacht waar deze eigenschap is ingesteld.
+
 
 ### <a name="claims-schema"></a>Claim schema
 
@@ -260,7 +262,7 @@ Als u wilt bepalen welke claims worden verzonden en waar de gegevens vandaan kom
 **Gegevens type:** JSON-blob met een of meer claim schema vermeldingen
 
 **Samen vatting:** Met deze eigenschap wordt gedefinieerd welke claims aanwezig zijn in de tokens die door het beleid worden beïnvloed, naast de set met basis claims en de kern claimset.
-Voor elke claim schema vermelding die in deze eigenschap is gedefinieerd, is bepaalde informatie vereist. Geef op waar de gegevens vandaan komen (**waarde**, **bron/id-paar**of **bron-ExtensionID**) en welke claim de gegevens worden verzonden als (**claim type**).
+Voor elke claim schema vermelding die in deze eigenschap is gedefinieerd, is bepaalde informatie vereist. Geef op waar de gegevens vandaan komen (**waarde**, **bron/id-paar** of **bron-ExtensionID**) en welke claim de gegevens worden verzonden als (**claim type**).
 
 ### <a name="claim-schema-entry-elements"></a>Elementen van claim schema vermeldingen
 
@@ -322,7 +324,7 @@ Het ID-element identificeert welke eigenschap van de bron de waarde voor de clai
 | Gebruiker | othermail | Andere E-mail |
 | Gebruiker | country | Land/regio |
 | Gebruiker | city | Plaats |
-| Gebruiker | staat | Staat |
+| Gebruiker | staat | Status |
 | Gebruiker | jobtitle | Functie |
 | Gebruiker | employeeid | Werknemers-id |
 | Gebruiker | facsimiletelephonenumber | Telefoon nummer Fax |
@@ -439,8 +441,7 @@ Beleids regels voor claim toewijzing kunnen alleen worden toegewezen aan Service
 
 In azure AD zijn veel scenario's mogelijk wanneer u claims kunt aanpassen die worden verzonden in tokens voor specifieke service-principals. In deze sectie worden enkele algemene scenario's besproken die u kunnen helpen bij het begrijpt van het gebruik van het claim toewijzings beleid type.
 
-> [!NOTE]
-> Bij het maken van een claim toewijzings beleid kunt u ook een claim van een uitbreidings kenmerk van een Directory-schema in tokens verzenden. Gebruik *ExtensionID* voor het kenmerk extension in plaats van id in het *-* `ClaimsSchema` element.  Zie [kenmerken van Directory-schema uitbreiding gebruiken](active-directory-schema-extensions.md)voor meer informatie over extensie kenmerken.
+Bij het maken van een claim toewijzings beleid kunt u ook een claim van een uitbreidings kenmerk van een Directory-schema in tokens verzenden. Gebruik *ExtensionID* voor het kenmerk extension in plaats van id in het *-* `ClaimsSchema` element.  Zie [kenmerken van Directory-schema uitbreiding gebruiken](active-directory-schema-extensions.md)voor meer informatie over extensie kenmerken.
 
 #### <a name="prerequisites"></a>Vereisten
 
@@ -531,7 +532,7 @@ In dit voor beeld maakt u een beleid dat een aangepaste claim ' JoinedData ' uit
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 - Zie [How to: claims aanpassen die zijn uitgegeven in het SAML-token voor zakelijke toepassingen voor](active-directory-saml-claims-customization.md) meer informatie over het aanpassen van claims die zijn uitgegeven in het SAML-token via de Azure Portal.
 - Zie voor meer informatie over extensie kenmerken de [kenmerken van Directory-schema-extensies gebruiken in claims](active-directory-schema-extensions.md).

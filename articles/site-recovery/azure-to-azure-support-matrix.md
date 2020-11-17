@@ -4,12 +4,12 @@ description: Hiermee wordt een overzicht gegeven van de ondersteuning voor herst
 ms.topic: article
 ms.date: 07/14/2020
 ms.author: raynew
-ms.openlocfilehash: b73a6b8c024cfa5ed7188bbf3fed2bbb7142a2a0
-ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
+ms.openlocfilehash: c54c4608f04c8f98e21309ca531452ae0a34fdf2
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93186634"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94646369"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Ondersteuningsmatrix voor herstel na noodgeval van Azure-VM's tussen Azure-regio's
 
@@ -131,7 +131,7 @@ Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5,
 18,04 LTS | [9,36](https://support.microsoft.com/help/4578241/) | 4.15.0-20-algemeen naar 4.15.0-112-generic </br> 4.18.0-13-algemeen naar 4.18.0-25-algemeen </br> 5.0.0-15-generic naar 5.0.0-58-generic </br> 5.3.0-19-generic naar 5.3.0-65-generic </br> 5.4.0-37-generic naar 5.4.0-42-generic</br> 4.15.0-1009-Azure naar 4.15.0-1092-Azure </br> 4.18.0-1006-Azure naar 4.18.0-1025-Azure </br> 5.0.0-1012-Azure naar 5.0.0-1036-Azure </br> 5.3.0-1007-Azure naar 5.3.0-1032-Azure </br> 5.4.0-1020-Azure naar 5.4.0-1022-Azure </br> 5.0.0-60-generic & 5.3.0-1035-Azure tot en met 9,36 Hot Fix patch * *|
 18,04 LTS | [9,34](https://support.microsoft.com/help/4570609), [9,35](https://support.microsoft.com/help/4573888/) | 4.15.0-20-algemeen naar 4.15.0-108-generic </br> 4.18.0-13-algemeen naar 4.18.0-25-algemeen </br> 5.0.0-15-algemeen naar 5.0.0-52-generic </br> 5.3.0-19-Gene riek tot 5.3.0-61-algemeen </br> 4.15.0-1009-Azure naar 4.15.0-1089-Azure </br> 4.18.0-1006-Azure naar 4.18.0-1025-Azure </br> 5.0.0-1012-Azure naar 5.0.0-1036-Azure </br> 5.3.0-1007-Azure naar 5.3.0-1031-Azure </br> 4.15.0-109-generic, 5.0.0-53-generic, 5.3.0-62-generic, 4.15.0-1091-Azure & 5.3.0-1032-Azure tot en met 9,35 Hot Fix patch * *|
 |||
-20,04 LTS |[9,38](https://support.microsoft.com/help/4590304/) | 5.4.0-26-generic tot 5.4.0-48 </br> -generic 5.4.0-1010-Azure tot 5.4.0-1026-Azure </br> 5.4.0-51-generic, 5.4.0-52-algemeen, 5.8.0-23-generic, 5.4.0-1031-Azure tot en met 9,38 Hot Fix patch * *
+20,04 LTS |[9,38](https://support.microsoft.com/help/4590304/) | 5.4.0-26-generic tot 5.4.0-48 </br> -generic 5.4.0-1010-Azure tot 5.4.0-1026-Azure </br> 5.4.0-51-generic, 5.4.0-52-generic, 5.8.0-23-algemeen, 5.8.0-25-generic, 5.4.0-1031-Azure tot en met 9,38 Hot Fix patch * *
 20,04 LTS |[9,37](https://support.microsoft.com/help/4582666/) | 5.4.0-26-generic naar 5.4.0-45 </br> -generic 5.4.0-1010-Azure naar 5.4.0-1023-Azure </br> 5.4.0-47-generic, 5.4.0-48-generic, 5.4.0-1025-Azure, 5.4.0-1026-Azure tot en met 9,37 Hot Fix patch * *
 20,04 LTS |[9,36](https://support.microsoft.com/help/4578241/) | 5.4.0-26-generic naar 5.4.0-42 </br> -generic 5.4.0-1010-Azure naar 5.4.0-1022-Azure
 
@@ -146,7 +146,7 @@ Debian 7 |  [9,34](https://support.microsoft.com/help/4570609), [9,35](https://s
 Debian 8 | [9,35](https://support.microsoft.com/help/4573888/, ), [9,36](https://support.microsoft.com/help/4578241/), [9,37](https://support.microsoft.com/help/4582666/), [9,38](https://support.microsoft.com/help/4590304/) | 3.16.0-4-amd64 tot 3.16.0-11-amd64, 4.9.0 -0. bpo. 4-amd64 tot 4.9.0 -0. bpo. 11-amd64 |
 Debian 8 | [9,34](https://support.microsoft.com/help/4570609) | 3.16.0-4-amd64 tot 3.16.0-10-amd64, 4.9.0 -0. bpo. 4-amd64 tot 4.9.0 -0. bpo. 11-amd64 |
 |||
-Debian 9,1 | [9,38](https://support.microsoft.com/help/4590304/) | 4.9.0-1-amd64 tot 4.9.0-13-amd64 </br> 4.19.0 -0. bpo. 1-amd64 to 4.19.0 -0. bpo. 11-amd64 </br> 4.19.0 -0. bpo. 1-Cloud-amd64 to 4.19.0 -0. bpo. 11-Cloud-amd64 </br> 
+Debian 9,1 | [9,38](https://support.microsoft.com/help/4590304/) | 4.9.0-1-amd64 tot 4.9.0-13-amd64 </br> 4.19.0 -0. bpo. 1-amd64 to 4.19.0 -0. bpo. 11-amd64 </br> 4.19.0 -0. bpo. 1-Cloud-amd64 to 4.19.0 -0. bpo. 11-Cloud-amd64 </br> 4.9.0-14-amd64, 4.19.0 -0. bpo. 12-amd64, 4.19.0 -0. bpo. 12-Cloud-amd64 tot en met 9,38 Hot Fix patch * *
 Debian 9,1 | [9,37](https://support.microsoft.com/help/4582666/) | 4.9.0-3-amd64 tot 4.9.0-13-amd64, 4.19.0 -0. bpo. 6-amd64 tot 4.19.0 -0. bpo. 10-amd64, 4.19.0 -0. bpo. 6-Cloud-amd64 tot 4.19.0 -0. bpo. 10-Cloud-amd64
 
 #### <a name="supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines"></a>Ondersteunde SUSE Linux Enterprise Server 12 kernel-versies voor virtuele Azure-machines
@@ -280,7 +280,7 @@ Interne Load Balancer | Ondersteund | De vooraf geconfigureerde load balancer ko
 Openbaar IP-adres | Ondersteund | Een bestaand openbaar IP-adres koppelen aan de NIC. U kunt ook een openbaar IP-adres maken en dit koppelen aan de NIC met behulp van een Azure Automation script in een herstel plan.
 NSG op NIC | Ondersteund | Koppel de NSG aan de NIC met behulp van een Azure Automation script in een herstel plan.
 NSG op subnet | Ondersteund | Koppel de NSG aan het subnet met behulp van een Azure Automation script in een herstel plan.
-Gereserveerd (statisch) IP-adres | Ondersteund | Als de NIC op de bron-VM een statisch IP-adres heeft en het doel-subnet hetzelfde IP-adres beschikbaar heeft, wordt het toegewezen aan de virtuele machine waarvoor een failover is uitgevoerd.<br/><br/> Als het doel-subnet niet hetzelfde IP-adres beschikbaar heeft, is een van de beschik bare IP-adressen in het subnet gereserveerd voor de virtuele machine.<br/><br/> U kunt ook een vast IP-adres en een subnet opgeven in de instellingen voor de **gerepliceerde items**  >  **Settings**  >  **Compute-en netwerk**  >  **netwerk interfaces** .
+Gereserveerd (statisch) IP-adres | Ondersteund | Als de NIC op de bron-VM een statisch IP-adres heeft en het doel-subnet hetzelfde IP-adres beschikbaar heeft, wordt het toegewezen aan de virtuele machine waarvoor een failover is uitgevoerd.<br/><br/> Als het doel-subnet niet hetzelfde IP-adres beschikbaar heeft, is een van de beschik bare IP-adressen in het subnet gereserveerd voor de virtuele machine.<br/><br/> U kunt ook een vast IP-adres en een subnet opgeven in de instellingen voor de **gerepliceerde items**  >  **Settings**  >  **Compute-en netwerk**  >  **netwerk interfaces**.
 Dynamisch IP-adres | Ondersteund | Als de NIC op de bron dynamische IP-adres Sering heeft, is de NIC op de virtuele machine waarvoor een failover is uitgevoerd, standaard ook dynamisch.<br/><br/> U kunt dit zo nodig wijzigen in een vast IP-adres.
 Meerdere IP-adressen | Niet ondersteund | Wanneer u een failover van een virtuele machine met meerdere IP-adressen hebt uitgevoerd, wordt alleen het primaire IP-adres van de NIC in de bron regio bewaard. Als u meerdere IP-adressen wilt toewijzen, kunt u virtuele machines toevoegen aan een [herstel plan](recovery-plan-overview.md) en een script koppelen om extra IP-adressen toe te wijzen aan het plan, of u kunt de wijziging hand matig of met een script uitvoeren na een failover.
 Traffic Manager     | Ondersteund | U kunt Traffic Manager vooraf configureren zodat verkeer regel matig wordt gerouteerd naar het eind punt in de bron regio, en naar het eind punt in de doel regio in het geval van een failover.

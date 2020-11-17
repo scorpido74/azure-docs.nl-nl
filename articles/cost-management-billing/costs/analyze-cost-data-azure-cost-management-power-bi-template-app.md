@@ -3,17 +3,17 @@ title: Azure-kosten analyseren met de Power BI-app
 description: In dit artikel wordt uitgelegd hoe de Azure Cost Management Power BI-app wordt geïnstalleerd en gebruikt.
 author: bandersmsft
 ms.author: banders
-ms.date: 10/14/2020
+ms.date: 11/09/2020
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: benshy
-ms.openlocfilehash: 7282ef9269c1168214fe57d3faa5488e531af8da
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 1c5adf58f670f3cadcedbe710568551004b77b78
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131119"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413238"
 ---
 # <a name="analyze-cost-with-the-azure-cost-management-power-bi-app-for-enterprise-agreements-ea"></a>Analyseer kosten met de Azure Cost Management Power BI-app voor Enterprise Agreements (EA)
 
@@ -38,15 +38,15 @@ De app installeren:
 1. Open [Azure Cost Management Power BI-app](https://aka.ms/costmgmt/ACMApp).
 2. Selecteer **Nu downloaden** op de pagina Power BI AppSource.
 3. Selecteer **Doorgaan** om de gebruiksvoorwaarden en het privacybeleid te accepteren.
-4. Selecteer in het vak **Deze Power BI-app installeren** de optie **Installeren** .
-5. Maak zo nodig een werkruimte en selecteer **Doorgaan** .
+4. Selecteer in het vak **Deze Power BI-app installeren** de optie **Installeren**.
+5. Maak zo nodig een werkruimte en selecteer **Doorgaan**.
 6. Wanneer de installatie is voltooid, wordt er een melding weergegeven dat de nieuwe app gereed is.
-7. Selecteer **Ga naar app** .
-8. Selecteer in **Aan de slag met uw nieuwe app-** , onder **Verbinding maken met uw gegevens** de optie **Verbinding maken** .  
+7. Selecteer **Ga naar app**.
+8. Selecteer in **Aan de slag met uw nieuwe app-** , onder **Verbinding maken met uw gegevens** de optie **Verbinding maken**.  
   ![Aan de slag met uw nieuwe app - Verbinding maken](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/connect-data2.png)
-9. Voer in het weergegeven dialoogvenster uw EA-inschrijvingsnummer in voor **BillingProfileIdOrEnrollmentNumber** . Geef het aantal maanden aan gegevens op dat moet worden opgehaald. Behoud de standaardwaarde voor **Bereik** van **Inschrijvingsnummer** en selecteer **Volgende** .  
+9. Voer in het weergegeven dialoogvenster uw EA-inschrijvingsnummer in voor **BillingProfileIdOrEnrollmentNumber**. Geef het aantal maanden aan gegevens op dat moet worden opgehaald. Behoud de standaardwaarde voor **Bereik** van **Inschrijvingsnummer** en selecteer **Volgende**.  
   ![Informatie over EA-inschrijving invoeren](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number.png)  
-10. Het volgende dialoogvenster maakt verbinding met Azure en haalt gegevens op die nodig zijn voor gereserveerde instantieaanbevelingen. *Laat de standaardwaarden zoals ze geconfigureerd zijn* en selecteer **Aanmelden** .  
+10. Het volgende dialoogvenster maakt verbinding met Azure en haalt gegevens op die nodig zijn voor gereserveerde instantieaanbevelingen. *Laat de standaardwaarden zoals ze geconfigureerd zijn* en selecteer **Aanmelden**.  
   ![Schermopname van het dialoogvenster Verbinding maken met Azure Cost Management met standaardwaarden.](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit.png)  
 11. De laatste installatiestap maakt verbinding met uw EA-inschrijving en vereist een [Enterprise Administrator](../manage/understand-ea-roles.md)-account. Selecteer **Aanmelden** voor verificatie met uw EA-inschrijving. Met deze stap wordt ook een actie voor gegevensvernieuwing in Power BI gestart.  
   ![Verbinding maken met EA-inschrijving](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-auth.png)  
@@ -61,36 +61,36 @@ Nadat het vernieuwen van de gegevens is voltooid, selecteert u de Azure Cost Man
 
 De volgende rapporten zijn beschikbaar in de app.
 
-**Aan de slag** : bevat handige koppelingen naar documentatie en koppelingen om feedback te geven.
+**Aan de slag**: bevat handige koppelingen naar documentatie en koppelingen om feedback te geven.
 
-**Accountoverzicht** : het rapport bevat een maandoverzicht met informatie zoals:
+**Accountoverzicht**: het rapport bevat een maandoverzicht met informatie zoals:
 
 - Kosten tegen tegoed
 - Nieuwe aankopen
 - Kosten voor Azure Marketplace
 - Overschrijdingen en totale kosten
 
-**Gebruik op basis van abonnementen en resourcegroepen** : bevat een overzicht van het verloop van kosten en grafieken met kosten per abonnement en resourcegroep.
+**Gebruik op basis van abonnementen en resourcegroepen**: bevat een overzicht van het verloop van kosten en grafieken met kosten per abonnement en resourcegroep.
 
-**Gebruik op basis van services** : bevat het verloop van gebruik per MeterCategory. U kunt uw gebruiksgegevens bijhouden en afwijkingen weergeven om inzicht te krijgen in pieken en dalen.
+**Gebruik op basis van services**: bevat het verloop van gebruik per MeterCategory. U kunt uw gebruiksgegevens bijhouden en afwijkingen weergeven om inzicht te krijgen in pieken en dalen.
 
-**Top 5 drijfveren voor gebruik** : het rapport bevat een gefilterd kostenoverzicht met de top 5 voor MeterCategory en de bijbehorende MeterName.
+**Top 5 drijfveren voor gebruik**: het rapport bevat een gefilterd kostenoverzicht met de top 5 voor MeterCategory en de bijbehorende MeterName.
 
-**Gebruik van Windows Server AHB** : het rapport bevat het aantal virtuele machines waarvoor Azure Hybrid Benefit is ingeschakeld. Ook wordt het aantal kernen/vCPU's weergegeven dat door de virtuele machines wordt gebruikt.
+**Gebruik van Windows Server AHB**: het rapport bevat het aantal virtuele machines waarvoor Azure Hybrid Benefit is ingeschakeld. Ook wordt het aantal kernen/vCPU's weergegeven dat door de virtuele machines wordt gebruikt.
 
 ![Volledig rapport Azure Hybrid Benefits](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ahb-report-full.png)
 
-Het rapport identificeert ook Windows-VM's waarvoor Hybrid Benefit is **ingeschakeld** , maar wanneer er _minder dan_ 8 vCPU's zijn. Het rapport laat ook zien waar Hybrid Benefit **niet is ingeschakeld** met 8 _of meer_ vcPU's. Deze informatie helpt u om volledig gebruik te kunnen maken van Hybrid Benefit. Pas het voordeel toe op uw duurste virtuele machines voor een maximale besparing.
+Het rapport identificeert ook Windows-VM's waarvoor Hybrid Benefit is **ingeschakeld**, maar wanneer er _minder dan_ 8 vCPU's zijn. Het rapport laat ook zien waar Hybrid Benefit **niet is ingeschakeld** met 8 _of meer_ vcPU's. Deze informatie helpt u om volledig gebruik te kunnen maken van Hybrid Benefit. Pas het voordeel toe op uw duurste virtuele machines voor een maximale besparing.
 
 ![Azure Hybrid Benefit: minder dan 8 vCPU's en vCPU's niet ingeschakeld](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ahb-report.png)
 
-**Toerekenen aan een gereserveerde instantie** : het rapport laat zien waar en hoeveel van een gereserveerde instantie (RI) voordeel wordt toegepast per regio, abonnement, resourcegroep of resource. In het rapport wordt voor de weergave gebruikgemaakt van afgeschreven gebruiksgegevens.
+**Toerekenen aan een gereserveerde instantie**: het rapport laat zien waar en hoeveel van een gereserveerde instantie (RI) voordeel wordt toegepast per regio, abonnement, resourcegroep of resource. In het rapport wordt voor de weergave gebruikgemaakt van afgeschreven gebruiksgegevens.
 
 U kunt een filter toepassen op _chargetype_ om gegevens over onderbenutting van gereserveerde instanties weer te geven.
 
 Zie [Kosten en gebruik van Enterprise Agreement-reserveringen ophalen](../reservations/understand-reserved-instance-usage-ea.md) voor meer informatie over afgeschreven kosten.
 
-**Besparingen op gereserveerde instanties** : het rapport toont de gerealiseerde besparingen op basis van reserveringen voor abonnement, resourcegroep en resourceniveau. Hiermee wordt het volgende weergegeven:
+**Besparingen op gereserveerde instanties**: het rapport toont de gerealiseerde besparingen op basis van reserveringen voor abonnement, resourcegroep en resourceniveau. Hiermee wordt het volgende weergegeven:
 
 - Kosten met reservering
 - Geschatte kosten op aanvraag als de reservering niet van toepassing is op het gebruik
@@ -124,9 +124,9 @@ Met de _Genormaliseerde grootte_ en de waarden voor _Aanbevolen genormaliseerd a
 
 Zie de sectie [VM-RI-dekking (gedeelde aanbeveling)](#shared-recommendation) voor meer informatie over het gebruik van het rapport.
 
-**RI-aankopen** : in het rapport worden RI-aankopen weergegeven voor de opgegeven periode.
+**RI-aankopen**: in het rapport worden RI-aankopen weergegeven voor de opgegeven periode.
 
-**Prijzenoverzicht** : het rapport bevat een gedetailleerde lijst met specifieke prijzen voor een factureringsaccount of EA-inschrijving.
+**Prijzenoverzicht**: het rapport bevat een gedetailleerde lijst met specifieke prijzen voor een factureringsaccount of EA-inschrijving.
 
 ## <a name="troubleshoot-problems"></a>Problemen oplossen
 
@@ -204,8 +204,8 @@ De volgende informatie bevat een overzicht van de gegevens die beschikbaar zijn 
 | [**Budgetten**](/rest/api/consumption/budgets/get#definitions) | Budgetgegevens om de werkelijke kosten of het gebruik te bekijken voor bestaande budgetdoelen. |
 | [**Prijzenoverzichten**](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet#see-also) | Toepasselijke metertarieven voor het verstrekte factureringsprofiel of de verstrekte EA-inschrijving. |
 | [**RI-kosten**](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-charges#response) | Kosten die zijn gekoppeld aan uw gereserveerde instanties in de afgelopen 24 maanden. |
-| [**RI-aanbevelingen (gedeeld)**](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#response) | Aankoopaanbevelingen voor gereserveerde instanties op basis van de trends in het gebruik van al uw abonnementen voor de afgelopen 7, 30 of 60 dagen. |
-| [**RI-aanbevelingen (enkelvoudig)**](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#response-1) | Aankoopaanbevelingen voor gereserveerde instanties op basis van uw trends in het gebruik van uw abonnement voor de afgelopen 7, 30 of 60 dagen. |
+| [**RI-aanbevelingen (gedeeld)**](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#response) | Aankoopaanbevelingen voor gereserveerde instanties op basis van de trends in het gebruik van al uw abonnementen voor de afgelopen 7 dagen. |
+| [**RI-aanbevelingen (enkelvoudig)**](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#response-1) | Aankoopaanbevelingen voor gereserveerde instanties op basis van uw trends in het gebruik van uw abonnement voor de afgelopen 7 dagen. |
 | [**Gegevens over RI-gebruik**](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage#response) | Verbruiksgegevens voor uw bestaande gereserveerde instanties in de afgelopen maand. |
 | [**Overzicht van het gebruik van RI**](/rest/api/consumption/reservationssummaries/list) | Percentage dagelijks reserveringsgebruik van Azure |
 | [**Gebruiksgegevens**](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#usage-details-field-definitions) | Een uitsplitsing van verbruikte hoeveelheden en geschatte kosten voor het gegeven factureringsprofiel in de EA-inschrijving. |

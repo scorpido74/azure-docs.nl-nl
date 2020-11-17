@@ -12,12 +12,12 @@ ms.topic: sample
 ms.date: 10/02/2020
 ms.author: joflore
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 4b2ea0806f70d9f99982b9d9af9c462ff0099966
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 46fdaed4a3e1dbbe5575cd573061a480bf330389
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967950"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041954"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>Azure Active Directory Domain Services inschakelen met behulp van PowerShell
 
@@ -44,12 +44,12 @@ U hebt de volgende resources nodig om dit artikel te voltooien:
 
 Voor Azure AD DS is een service-principal en een Azure AD-groep vereist. Met deze resources kunnen via het met Azure AD DS beheerde domein gegevens worden gesynchroniseerd, en worden gedefinieerd welke gebruikers beheerdersbevoegdheden hebben in het beheerde domein.
 
-Maak eerst een service-principal in Azure AD voor Azure AD DS voor communicatie en zelf-verificatie. Er wordt een specifieke toepassings-id gebruikt met de naam *Domeincontrollerservices* met de id *2565bd9d-da50-47d4-8b85-4c97f669dc36*. Wijzig deze toepassings-id niet.
+Maak eerst een service-principal in Azure AD voor Azure AD DS voor communicatie en zelf-verificatie. Er wordt een specifieke toepassings-id gebruikt met de naam *Domeincontrollerservices* met de id *6ba9a5d4-8456-4118-b521-9c5ca10cdf84*. Wijzig deze toepassings-id niet.
 
 Maak een service-principal in Azure AD met behulp van de [New-AzureADServicePrincipal][New-AzureADServicePrincipal]-cmdlet:
 
 ```powershell
-New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
+New-AzureADServicePrincipal -AppId "6ba9a5d4-8456-4118-b521-9c5ca10cdf84"
 ```
 
 Maak nu een Azure AD-groep met de naam *AAD DC-beheerders*. Aan gebruikers die zijn toegevoegd aan deze groep, worden vervolgens machtigingen verleend voor het uitvoeren van beheertaken in het beheerde domein.
@@ -252,7 +252,7 @@ Connect-AzureAD
 Connect-AzAccount
 
 # Create the service principal for Azure AD Domain Services.
-New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
+New-AzureADServicePrincipal -AppId "6ba9a5d4-8456-4118-b521-9c5ca10cdf84"
 
 # First, retrieve the object ID of the 'AAD DC Administrators' group.
 $GroupObjectId = Get-AzureADGroup `

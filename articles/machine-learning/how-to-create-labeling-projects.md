@@ -1,19 +1,19 @@
 ---
 title: Een gegevenslabelproject maken
 titleSuffix: Azure Machine Learning
-description: Leer hoe u labelprojecten maakt en uitvoert om gegevens te taggen voor machine learning.  De hulpprogramma's omvatten met ML ondersteund labelen, of handmatig HTIL-labelen (Human-in-the-loop) om te helpen met de taak.
+description: Leer hoe u labelprojecten maakt en uitvoert om gegevens te taggen voor machine learning.  Gebruik met ML ondersteund labelen, of handmatig HTIL-labelen (Human-in-the-loop) om te helpen met de taak.
 author: sdgilley
 ms.author: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: e30140dc23e64bfc733a0a51fa77fe811ba8fbc7
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: da046fd633120944231ee440605367bdb730cbff
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776116"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94543218"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Een gegevenslabelproject maken en labels exporteren 
 
@@ -189,7 +189,7 @@ Als u het project wilt onderbreken of opnieuw wilt starten, schakelt u de status
 
 Op het tabblad **Dashboard** wordt de voortgang van de labeltaak weergegeven.
 
-:::image type="content" source="media/how-to-create-labeling-projects/labeling-dashboard.png" alt-text="Wizard Labelproject maken":::
+:::image type="content" source="media/how-to-create-labeling-projects/labeling-dashboard.png" alt-text="Dashboard voor gegevens labelen":::
 
 In het voortgangsdiagram ziet u hoeveel items zijn gelabeld en hoeveel er nog niet zijn gedaan.  Items in behandeling zijn mogelijk:
 
@@ -260,4 +260,4 @@ Het COCO-bestand wordt gemaakt in de Blob-standaardopslag van de Azure Machine L
 
 * [Zelfstudie: Uw eerst labelproject maken voor afbeeldingsclassificatie](tutorial-labeling.md).
 * Afbeeldingen labelen voor [afbeeldingsclassificatie of objectdetectie](how-to-label-images.md)
-* Meer informatie over [Azure Machine Learning en Machine Learning Studio (klassiek)](compare-azure-ml-to-studio-classic.md)
+* Meer informatie over [Azure Machine Learning en Machine Learning Studio (klassiek)](./overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)

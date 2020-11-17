@@ -7,20 +7,20 @@ documentationcenter: ''
 author: curtand
 manager: daveba
 ms.service: active-directory
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: how-to
 ms.workload: identity
-ms.date: 11/08/2019
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7529d72c3d94e3c7bef58c6a26af62b97ac92d9
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: bd61a33bdcc0d18dee7dba651f097f7cd49e7149
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375402"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647030"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Problemen met licentie toewijzing voor een groep in Azure Active Directory identificeren en oplossen
 
@@ -42,7 +42,7 @@ Wanneer u gebruikmaakt van op groepen gebaseerde licentie verlening, kunnen deze
 
    ![lijst met gebruikers in de fout status van de groeps licentie](./media/licensing-groups-resolve-problems/list-of-users-with-errors.png)
 
-1. Als u alle groepen wilt zoeken die ten minste één fout bevatten, selecteert u op de Blade **Azure Active Directory** **licenties**en selecteert u vervolgens **overzicht**. Er wordt een informatie venster weer gegeven wanneer groepen uw aandacht vereisen.
+1. Als u alle groepen wilt zoeken die ten minste één fout bevatten, selecteert u op de Blade **Azure Active Directory** **licenties** en selecteert u vervolgens **overzicht**. Er wordt een informatie venster weer gegeven wanneer groepen uw aandacht vereisen.
 
    ![Overzicht en informatie over groepen met de fout status](./media/licensing-groups-resolve-problems/group-errors-widget.png)
 
@@ -56,9 +56,9 @@ De volgende secties bevatten een beschrijving van elk mogelijk probleem en de ma
 
 **Probleem:** Er zijn niet voldoende beschik bare licenties voor een van de producten die in de groep zijn opgegeven. U moet een licentie voor het product aanschaffen of ongebruikte licenties van andere gebruikers of groepen maken.
 
-Ga naar **Azure Active Directory**  >  **licenties**voor  >  **alle producten**om te zien hoeveel licenties er beschikbaar zijn.
+Ga naar **Azure Active Directory**  >  **licenties** voor  >  **alle producten** om te zien hoeveel licenties er beschikbaar zijn.
 
-Als u wilt zien welke gebruikers en groepen licenties gebruiken, selecteert u een product. Onder **gelicentieerde gebruikers**ziet u een lijst met alle gebruikers aan wie licenties rechtstreeks of via een of meer groepen zijn toegewezen. Onder **gelicentieerde groepen**ziet u alle groepen waaraan de producten zijn toegewezen.
+Als u wilt zien welke gebruikers en groepen licenties gebruiken, selecteert u een product. Onder **gelicentieerde gebruikers** ziet u een lijst met alle gebruikers aan wie licenties rechtstreeks of via een of meer groepen zijn toegewezen. Onder **gelicentieerde groepen** ziet u alle groepen waaraan de producten zijn toegewezen.
 
 **Power shell:** Power shell-cmdlets rapporteren deze fout als _CountViolation_.
 
@@ -165,13 +165,13 @@ Vanaf nu hebben alle gebruikers die zijn toegevoegd aan deze groep één licenti
 
 Afhankelijk van de stappen die u hebt genomen om de fouten op te lossen, kan het nodig zijn om hand matig de verwerking van een groep te activeren om de gebruikers status bij te werken.
 
-Als u bijvoorbeeld een aantal licenties vrijmaakt door directe licentie toewijzingen van gebruikers te verwijderen, moet u de verwerking van groepen die eerder geen licentie voor alle gebruikers leden hebben, activeren. Als u een groep opnieuw wilt verwerken, gaat u naar het deel venster groep, opent u **licenties**en selecteert u vervolgens de knop opnieuw **verwerken** op de werk balk.
+Als u bijvoorbeeld een aantal licenties vrijmaakt door directe licentie toewijzingen van gebruikers te verwijderen, moet u de verwerking van groepen die eerder geen licentie voor alle gebruikers leden hebben, activeren. Als u een groep opnieuw wilt verwerken, gaat u naar het deel venster groep, opent u **licenties** en selecteert u vervolgens de knop opnieuw **verwerken** op de werk balk.
 
 ## <a name="force-user-license-processing-to-resolve-errors"></a>De verwerking van de gebruikers licentie afdwingen om fouten op te lossen
 
 Afhankelijk van de stappen die u hebt genomen om de fouten op te lossen, kan het nodig zijn om hand matig de verwerking van een gebruiker te activeren om de status van de gebruikers bij te werken.
 
-Wanneer u bijvoorbeeld een probleem met het proxy adres voor een betrokken gebruiker oplost, moet u de verwerking van de gebruiker activeren. Als u een gebruiker opnieuw wilt verwerken, gaat u naar het deel venster gebruikers, opent u **licenties**en selecteert u vervolgens de knop opnieuw **verwerken** op de werk balk.
+Wanneer u bijvoorbeeld een probleem met het proxy adres voor een betrokken gebruiker oplost, moet u de verwerking van de gebruiker activeren. Als u een gebruiker opnieuw wilt verwerken, gaat u naar het deel venster gebruikers, opent u **licenties** en selecteert u vervolgens de knop opnieuw **verwerken** op de werk balk.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/10/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: fb1415874c42e3913d98d4a674732a4d9b98a0c5
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: ecc6e1e1a543f3190e9f73512ca0b9ae45cc3fe9
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123905"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335210"
 ---
 # <a name="tutorial-copy-data-from-azure-data-box-via-smb-preview"></a>Zelfstudie: Gegevens kopiëren uit Azure Data Box via SMB (preview)
 
@@ -54,7 +54,7 @@ Als u een hostcomputer met Windows Server gebruikt, voert u deze stappen uit om 
 
 2. Kopieer in het dialoogvenster Verbinding maken met share en gegevens kopiëren de **Gebruikersnaam** en het **Wachtwoord** voor de share. Selecteer **OK**.
     
-    ![Sharereferenties 2 ophalen](media/data-box-deploy-export-copy-data/get-share-credentials-2.png)
+    ![Referenties voor delen ophalen, toegang delen en gegevens kopiëren](media/data-box-deploy-export-copy-data/get-share-credentials-2.png)
 
 3. Om vanaf uw hostcomputer toegang te krijgen tot de shares die zijn gekoppeld aan uw opslagaccount (*exportbvtdataset2* in het volgende voorbeeld), opent u een opdrachtvenster. Typ in de opdrachtprompt:
 
@@ -73,13 +73,13 @@ Als u een hostcomputer met Windows Server gebruikt, voert u deze stappen uit om 
     The command completed successfully.
     ```
 
-4. Druk op Windows-toets+R. Geef in het venster **Uitvoeren** het `\\<device IP address>` op. Selecteer **OK** om Verkenner te openen.
+5. Druk op Windows-toets+R. Geef in het venster **Uitvoeren** het `\\<device IP address>` op. Selecteer **OK** om Verkenner te openen.
     
-    ![Verbinding maken met share via Verkenner](media/data-box-deploy-export-copy-data/connect-shares-file-explorer-1.png)
+    ![Verbinding maken met share via Verkenner, apparaat-id invoeren](media/data-box-deploy-export-copy-data/connect-shares-file-explorer-1.png)
 
     Als het goed is, worden de shares nu weergegeven als mappen.
     
-    ![Verbinding met de share maken via Verkenner 2](media/data-box-deploy-export-copy-data/connect-shares-file-explorer-2.png)
+    ![Verbinding maken met share via Verkenner, shares weergeven](media/data-box-deploy-export-copy-data/connect-shares-file-explorer-2.png)
 
     
 Als u een Linux-client gebruikt, gebruikt u de volgende opdracht om de SMB-share koppelen. De parameter "vers" hieronder is de versie van SMB die ondersteuning biedt voor uw Linux-host. Geef de juiste versie op in de onderstaande opdracht. Zie [Ondersteunde bestandssystemen voor Linux-clients](./data-box-system-requirements.md#supported-file-transfer-protocols-for-clients) voor versies van SMB die door Data Box worden ondersteund 

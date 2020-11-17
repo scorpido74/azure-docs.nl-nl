@@ -1,76 +1,86 @@
 ---
-title: Fouten opsporen in uw API's met behulp van de tracering van aanvragen in Azure API Management | Microsoft Docs
-description: Volg de stappen van deze zelfstudie voor informatie over het controleren van de verwerkingsstappen van aanvragen in Azure API Management.
+title: "Zelfstudie: Fouten opsporen in API's in Azure API Management met behulp van de tracering van aanvragen"
+description: Volg de stappen in deze zelfstudie om tracering in te schakelen en aanvraagverwerkingsstappen te controleren in Azure API Management.
 services: api-management
 documentationcenter: ''
 author: vladvino
-manager: cfowler
 editor: ''
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
-ms.custom: mvc
 ms.topic: tutorial
-ms.date: 06/15/2018
+ms.date: 10/30/2020
 ms.author: apimpm
-ms.openlocfilehash: fc5e8c7a7aa0d4693d96c3405ec0e180a6d13f8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 531e346569b85ababc382f997fd7764a92b3d05f
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75768521"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542311"
 ---
-# <a name="debug-your-apis-using-request-tracing"></a>Fouten opsporen in uw API's met behulp van de tracering van aanvragen
+# <a name="tutorial-debug-your-apis-using-request-tracing"></a>Zelfstudie: Fouten opsporen in uw API's met behulp van de tracering van aanvragen
 
-In deze zelfstudie wordt beschreven hoe u aanvraagverwerking inspecteert om u te helpen bij het opsporen van fouten en oplossen van problemen van uw API. 
+In deze zelfstudie wordt beschreven hoe u aanvraagverwerking controleert (traceert) in Azure API Management om u te helpen fouten op te sporen en problemen op te lossen in uw API. 
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Een aanroep traceren
+> * Een voorbeeld van een aanroep traceren
+> * Aanvraagverwerkingsstappen controleren
 
-![API-inspector](media/api-management-howto-api-inspector/api-inspector001.PNG)
+:::image type="content" source="media/api-management-howto-api-inspector/api-inspector-001.png" alt-text="API-inspector":::
 
 ## <a name="prerequisites"></a>Vereisten
 
 + Informatie over de [terminologie van Azure API Management](api-management-terminology.md).
 + Voltooi de volgende snelstartgids: [Een Azure API Management-exemplaar maken](get-started-create-service-instance.md).
-+ Voltooi ook de volgende zelfstudie: [Uw eerste API importeren en publiceren](import-and-publish.md).
++ Voltooi de volgende zelfstudie: [Uw eerste API importeren en publiceren](import-and-publish.md).
+
+## <a name="verify-allow-tracing-setting"></a>Instelling 'Traceren toestaan' verifiëren 
+
+De instelling **Traceren toestaan** voor het abonnement dat voor uw API wordt gebruikt, moet ingeschakeld zijn. Als u het ingebouwde all-access abonnement gebruikt, is de instelling standaard ingeschakeld. Om dit te verifiëren in de portal, gaat u naar uw exemplaar van API Management en selecteert u **Abonnementen**.
+
+   :::image type="content" source="media/api-management-howto-api-inspector/allow-tracing.png" alt-text="Traceren toestaan voor abonnement":::
 
 ## <a name="trace-a-call"></a>Een aanroep traceren
 
-![API-tracering](media/api-management-howto-api-inspector/06-DebugYourAPIs-01-TraceCall.png)
-
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com) en ga naar uw exemplaar van API Management.
 1. Selecteer **API's**.
-2. Klik in de API-lijst op **Demo Conference API**.
-3. Ga naar het tabblad **Test**.
-4. Selecteer de bewerking **GetSpeakers**.
-5. Zorg ervoor dat u een HTTP-header opneemt met de naam **Ocp-Apim-Trace** met de waarde ingesteld op **true**.
+1. Selecteer **Demo Conference-API** in uw lijst met API's.
+1. Selecteer het tabblad **Testen**.
+1. Selecteer de bewerking **GetSpeakers**.
+1. Bevestig dat de HTTP-aanvraagheader **Ocp-Apim-Trace: True** en een geldige waarde voor **Ocp-Apim-Subscription-Key** bevat. Als dat niet het geval is, selecteert u **+ Header toevoegen** om de header toe te voegen.
+1. Selecteer **Verzenden** om een API-aanroep te maken.
 
-   > [!NOTE]
-   > * Als de Ocp-Apim-Subscription-Key niet automatisch wordt ingevuld, kunt u deze ophalen door naar het Ontwikkelaarsportal te gaan en de sleutels op de profielpagina weer te geven.
-   > * Als u een trace wilt hebben wanneer de Ocp-Apim-Trace HTTP-header wordt gebruikt, moet de instelling **Traceren toestaan** voor de abonnementssleutel worden ingeschakeld. Als u de instelling **Traceren toestaan** wilt configureren, selecteert u in het linkermenu, onder **API Management**, de optie **Abonnementen**.
-   >   ![Tracering toestaan in het deelvenster Abonnementen van API Management](media/api-management-howto-api-inspector/allowtracing.png)
+  :::image type="content" source="media/api-management-howto-api-inspector/06-debug-your-apis-01-trace-call.png" alt-text="API-tracering configureren":::
 
-6. Klik op **Verzenden** om een API-aanroep te maken. 
-7. Wacht totdat de aanroep voltooid is. 
-8. Ga naar het tabblad **Traceren** in de **API-console**. U kunt klikken op een van de volgende koppelingen naar gedetailleerde traceringsinformatie: **inkomende**, **back-end**, **uitgaande**.
+> [!TIP]
+> Als **Ocp-Apim-Subscription-Key** niet automatisch is ingevuld in de HTTP-aanvraag, kunt u deze ophalen in de portal. Selecteer **Abonnementen** en open het contextmenu ( **...** ) voor uw abonnement. Selecteer **Sleutels weergeven/verbergen**. U kunt sleutels indien nodig ook opnieuw genereren. Voeg vervolgens een sleutel aan de header toe.
 
-    In de **inkomende** sectie ziet u de oorspronkelijke aanvraag die API Management heeft ontvangen van de aanroeper en alle beleidsregels die worden toegepast op de aanvraag met inbegrip van de beleidsregels voor frequentielimiet en set-header die we hebben toegevoegd in stap 2.
+## <a name="review-trace-information"></a>Traceringsgegevens controleren
 
-    In de **back-end**-sectie ziet u de verzoeken die API Management heeft verzonden naar de API-back-end en het antwoord daarop.
+1. Nadat de aanroep is voltooid, gaat u naar het tabblad **Tracering** in het **HTTP-antwoord**.
+1. Selecteer een van de volgende koppelingen om naar gedetailleerde traceringsgegevens te gaan: **Inkomend**, **Back-end**, **Uitgaand**.
 
-    In de **uitgaande** sectie ziet u alle beleidsregels die worden toegepast op het antwoord voor het terugzenden naar de aanroeper.
+     :::image type="content" source="media/api-management-howto-api-inspector/response-trace.png" alt-text="Antwoordtracering controleren":::
+
+    * **Inkomend**: Toont de oorspronkelijke aanvraag die API Management van de aanroepende functie heeft ontvangen en de beleidsregels die op de aanvraag worden toegepast. Als u bijvoorbeeld beleidsregels hebt toegevoegd in [Zelfstudie: Uw API transformeren en beveiligen](transform-api.md), worden ze daar weergegeven.
+
+    * **Back-end**: Toont de aanvragen die API Management naar de API-back-end heeft verzonden en het antwoord daarop.
+
+    * **Uitgaand**: Toont de beleidsregels die op het antwoord worden toegepast voordat het naar de aanroepende functie wordt teruggestuurd.
 
     > [!TIP]
     > Bij elke stap wordt ook de verstreken tijd weergegeven vanaf dat de aanvraag is ontvangen door de API Management.
 
+1. Op het tabblad **Bericht** toont de header **ocp-apim-trace-location** de locatie van de traceringsgegevens die in Azure Blob Storage zijn opgeslagen. Ga indien nodig naar deze locatie om de traceringsgegevens op te halen.
+
+     :::image type="content" source="media/api-management-howto-api-inspector/response-message.png" alt-text="Traceringslocatie in Azure Storage":::
 ## <a name="next-steps"></a>Volgende stappen
 
 In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
-> * Een aanroep traceren
+> * Een voorbeeld van een aanroep traceren
+> * Aanvraagverwerkingsstappen controleren
 
 Ga door naar de volgende zelfstudie:
 

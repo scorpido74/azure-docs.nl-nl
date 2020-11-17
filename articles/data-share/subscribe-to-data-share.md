@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 08/14/2020
-ms.openlocfilehash: 4d4ef9f1d80604373463450adf597f8202611175
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 9031ea2d862a23df5d597b790fffc49e624e53fb
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216569"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491916"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>Zelfstudie: Gegevens accepteren en ontvangen met Azure Data Share  
 
@@ -130,7 +130,14 @@ Deze stappen zijn alleen van toepassing bij delen op basis van momentopnamen.
    ![Gegevenssets van consumenten](./media/consumer-datasets.png "Toewijzing voor gegevenssets van consumenten") 
 
 ## <a name="view-history"></a>Geschiedenis weergeven
-Deze stap geldt alleen voor delen op basis van momentopnamen. Selecteer het tabblad **Geschiedenis** om de geschiedenis van uw momentopnamen weer te geven. Hier vindt u een geschiedenis van alle momentopnamen die zijn gegenereerd voor de afgelopen dertig dagen. 
+Deze stap geldt alleen voor delen op basis van momentopnamen. Selecteer het tabblad **Geschiedenis** om de geschiedenis van uw momentopnamen weer te geven. Hier vindt u een geschiedenis van alle momentopnamen die zijn gegenereerd voor de afgelopen dertig dagen.
+
+## <a name="clean-up-resources"></a>Resources opschonen
+
+Wanneer u de resource niet langer nodig hebt, gaat u naar de pagina **Overzicht Data Share** en selecteert u **Verwijderen** om de resource te verwijderen.
 
 ## <a name="next-steps"></a>Volgende stappen
-In deze zelfstudie hebt u geleerd hoe u een Azure-gegevensshare accepteert en ontvangt. Voor meer informatie over Azure Data Share-concepten gaat u naar [Concepten: Azure Data Share-terminologie](terminology.md).
+In deze zelfstudie hebt u geleerd hoe u een Azure-gegevensshare accepteert en ontvangt. Voor meer informatie over Azure Data Share-concepten gaat u naar Azure Data Share-terminologie.
+
+> [!div class="nextstepaction"]
+> [Azure Data Share-concepten](terminology.md)

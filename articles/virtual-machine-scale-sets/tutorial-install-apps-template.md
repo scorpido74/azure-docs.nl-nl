@@ -9,12 +9,12 @@ ms.subservice: template
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 357d3aaa9cf9e324f8dd27636b9f34f503f566de
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 2d748f787b40bb26e9faebb028d71c6c3e30ee55
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746012"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94516557"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-an-azure-template"></a>Zelfstudie: Toepassingen installeren in een schaalset met een Azure-sjabloon
 Als u toepassingen wilt uitvoeren op de exemplaren van een virtuele machine (VM) in een schaalset, moet u eerst de toepassingsonderdelen en de vereiste bestanden installeren. In een vorige zelfstudie hebt u geleerd om een aangepaste VM-installatiekopie te maken en te gebruiken voor het implementeren van uw VM-exemplaren. Deze aangepaste installatiekopie bevat handmatige installaties van toepassingen en configuraties. U kunt de installatie van toepassingen op een schaalset ook automatiseren nadat elk VM-exemplaar is geïmplementeerd. Bovendien kunt u toepassingen bijwerken die al worden uitgevoerd in een schaalset. In deze zelfstudie leert u het volgende:
@@ -24,11 +24,11 @@ Als u toepassingen wilt uitvoeren op de exemplaren van een virtuele machine (VM)
 > * De aangepaste scriptextensie van Azure gebruiken
 > * Een actieve toepassing in een schaalset bijwerken
 
-Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze zelfstudie Azure CLI 2.0.29 of hoger gebruiken. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren]( /cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
+- Voor dit artikel is versie 2.0.29 of hoger van Azure CLI vereist. Als u Azure Cloud Shell gebruikt, is de nieuwste versie al geïnstalleerd.
 
 
 ## <a name="what-is-the-azure-custom-script-extension"></a>Wat is de aangepaste scriptextensie van Azure?
@@ -40,9 +40,9 @@ Als u de aangepaste scriptextensie in actie wilt zien, maakt u een schaalset die
 
 
 ## <a name="create-custom-script-extension-definition"></a>Definitie van de aangepaste scriptextensie maken
-Wanneer u een schaalset voor virtuele machines definieert op basis van een Azure-sjabloon, kan de resourceprovider *Microsoft.Compute/virtualMachineScaleSets* een sectie over uitbreidingen bevatten. In de sectie *extensionsProfile* wordt beschreven wat er wordt toegepast op de VM-exemplaren in een schaalset. Als u de aangepaste scriptextensie wilt gebruiken, geeft u de uitgever *Microsoft.Azure.Extensions* op en het type *CustomScript* .
+Wanneer u een schaalset voor virtuele machines definieert op basis van een Azure-sjabloon, kan de resourceprovider *Microsoft.Compute/virtualMachineScaleSets* een sectie over uitbreidingen bevatten. In de sectie *extensionsProfile* wordt beschreven wat er wordt toegepast op de VM-exemplaren in een schaalset. Als u de aangepaste scriptextensie wilt gebruiken, geeft u de uitgever *Microsoft.Azure.Extensions* op en het type *CustomScript*.
 
-De eigenschap *fileUris* wordt gebruikt voor het definiëren van de bron-installatiescripts of -pakketten. U start de installatie door de vereiste scripts te definiëren in *commandToExecute* . In het volgende voorbeeld definieert u een voorbeeldscript van GitHub waarmee de NGINX-webserver wordt geïnstalleerd en geconfigureerd:
+De eigenschap *fileUris* wordt gebruikt voor het definiëren van de bron-installatiescripts of -pakketten. U start de installatie door de vereiste scripts te definiëren in *commandToExecute*. In het volgende voorbeeld definieert u een voorbeeldscript van GitHub waarmee de NGINX-webserver wordt geïnstalleerd en geconfigureerd:
 
 ```json
 "extensionProfile": {
@@ -70,7 +70,7 @@ Zie [https://github.com/Azure-Samples/compute-automation-configurations/blob/mas
 
 
 ## <a name="create-a-scale-set"></a>Een schaalset maken
-We gaan de voorbeeldsjabloon gebruiken om een schaalset te maken en de aangepaste scriptextensie toe te passen. Maak eerst een resourcegroep met [az group create](/cli/azure/group). In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *eastus* :
+We gaan de voorbeeldsjabloon gebruiken om een schaalset te maken en de aangepaste scriptextensie toe te passen. Maak eerst een resourcegroep met [az group create](/cli/azure/group). In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *eastus*:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -108,7 +108,7 @@ Sluit de webbrowser niet af, zodat u in de volgende stap een bijgewerkte versie 
 
 
 ## <a name="update-app-deployment"></a>App-implementatie bijwerken
-Gedurende de levenscyclus van een schaalset moet u wellicht een bijgewerkte versie van uw toepassing implementeren. U kunt met de aangepaste scriptextensie verwijzen naar een bijgewerkt implementatiescript en vervolgens de extensie opnieuw op uw schaalset toepassen. Bij het maken van de schaalset in een vorige stap is *upgradePolicy* ingesteld op *Automatic* . Met deze instelling kunnen de VM-exemplaren in de schaalset automatisch de meest recente versie van uw toepassing bijwerken en toepassen.
+Gedurende de levenscyclus van een schaalset moet u wellicht een bijgewerkte versie van uw toepassing implementeren. U kunt met de aangepaste scriptextensie verwijzen naar een bijgewerkt implementatiescript en vervolgens de extensie opnieuw op uw schaalset toepassen. Bij het maken van de schaalset in een vorige stap is *upgradePolicy* ingesteld op *Automatic*. Met deze instelling kunnen de VM-exemplaren in de schaalset automatisch de meest recente versie van uw toepassing bijwerken en toepassen.
 
 Als u de aangepaste scriptextensie wilt bijwerken, wijzigt u de sjabloon om deze te laten verwijzen naar een nieuw installatiescript. U moet een nieuwe bestandsnaam gebruiken, anders wordt de wijziging niet herkend door de aangepaste scriptextensie. De scriptextensie kijkt namelijk niet naar de inhoud van het script om eventuele wijzigingen vast te stellen. In de volgende definitie wordt een bijgewerkt installatiescript gebruikt waarbij *_v2* is toegevoegd aan de naam:
 
